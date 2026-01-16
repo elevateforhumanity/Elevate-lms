@@ -1,973 +1,252 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import {
-  BookOpen,
-  Download,
-  FileText,
-  Shield,
-  Users,
-  AlertCircle,
-} from 'lucide-react';
+import { BookOpen, Download, ChevronRight, FileText, Shield, Users, Clock, Award } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Student Handbook | Elevate for Humanity',
-  description:
-    'Complete guide to policies, procedures, and student rights at Elevate for Humanity',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/student-handbook',
-  },
+  title: 'Student Handbook | Elevate For Humanity',
+  description: 'Complete guide to policies, procedures, and expectations for students in our training programs.',
 };
 
-export default function StudentHandbook() {
+export const dynamic = 'force-dynamic';
+
+export default async function StudentHandbookPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  const { data: handbook } = await supabase
+    .from('documents')
+    .select('*')
+    .eq('type', 'student-handbook')
+    .eq('is_active', true)
+    .single();
+
+  const { data: acknowledgment } = user ? await supabase
+    .from('handbook_acknowledgments')
+    .select('*')
+    .eq('user_id', user.id)
+    .eq('handbook_type', 'student')
+    .single() : { data: null };
+
+  const sections = [
+    { title: 'Welcome & Mission', description: 'Our commitment to your success', icon: BookOpen },
+    { title: 'Program Expectations', description: 'Attendance, participation, and conduct', icon: Users },
+    { title: 'Academic Policies', description: 'Grading, assessments, and certifications', icon: Award },
+    { title: 'Code of Conduct', description: 'Professional behavior standards', icon: Shield },
+    { title: 'Attendance Policy', description: 'Requirements and procedures', icon: Clock },
+    { title: 'Support Services', description: 'Resources available to you', icon: FileText },
+  ];
+
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Header */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="max-w-4xl mx-auto px-6 py-8">
-          <h1 className="text-4xl font-bold text-black mb-2 text-2xl md:text-3xl lg:text-4xl">
-            Student Handbook
-          </h1>
-          <p className="text-lg text-black">Academic Year 2025-2026</p>
-          <div className="mt-4">
-            <a
-              href="/downloads/student-handbook-2025.pdf"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-brand-blue-600 text-white rounded-lg hover:bg-brand-blue-700 transition"
-              download
-            >
-              <Download className="w-5 h-5" />
-              Download PDF
-            </a>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="relative min-h-[350px] flex items-center">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Student Handbook</h1>
+          <p className="text-xl text-blue-100 max-w-2xl">
+            Your complete guide to policies, procedures, and expectations during your training program.
+          </p>
+        </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        {/* Download Section */}
+        <div className="bg-white rounded-xl shadow-sm border p-6 mb-8">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center">
+                <BookOpen className="w-7 h-7 text-blue-600" />
+              </div>
+              <div>
+                <h2 className="font-semibold text-lg">Student Handbook 2024</h2>
+                <p className="text-sm text-gray-500">
+                  Last updated: {handbook?.updated_at ? new Date(handbook.updated_at).toLocaleDateString() : 'January 2024'}
+                </p>
+              </div>
+            </div>
+            {handbook?.file_url ? (
+              <a
+                href={handbook.file_url}
+                className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700"
+              >
+                <Download className="w-4 h-4" /> Download PDF
+              </a>
+            ) : (
+              <button className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700">
+                <Download className="w-4 h-4" /> Download PDF
+              </button>
+            )}
           </div>
         </div>
-      </div>
 
-      {/* Table of Contents */}
-      <div className="max-w-4xl mx-auto px-6 py-8">
-        <div className="bg-white rounded-xl shadow-sm p-8 mb-8">
-          <h2 className="text-2xl font-bold text-black mb-6">
-            Table of Contents
-          </h2>
-          <nav role="navigation" aria-label="Main navigation" className="space-y-2">
-            <a
-              href="#welcome"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              1. Welcome Message
-            </a>
-            <a
-              href="#mission"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              2. Mission & Values
-            </a>
-            <a
-              href="#academic"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              3. Academic Policies
-            </a>
-            <a
-              href="#conduct"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              4. Code of Conduct
-            </a>
-            <a
-              href="#rights"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              5. Student Rights (FERPA)
-            </a>
-            <a
-              href="#services"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              6. Student Services
-            </a>
-            <a
-              href="#financial"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              7. Financial Information
-            </a>
-            <a
-              href="#refund"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              8. Refund Policy
-            </a>
-            <a
-              href="#withdrawal"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              9. Withdrawal Policy
-            </a>
-            <a
-              href="#safety"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              10. Campus Safety
-            </a>
-            <a
-              href="#grievance"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              11. Complaint & Grievance Procedures
-            </a>
-            <a
-              href="#graduation"
-              className="block text-brand-blue-600 hover:text-brand-blue-700"
-            >
-              12. Graduation Requirements
-            </a>
-          </nav>
+        {/* Table of Contents */}
+        <div className="bg-white rounded-xl shadow-sm border p-6 mb-8">
+          <h2 className="font-semibold text-lg mb-6">Table of Contents</h2>
+          <div className="space-y-3">
+            {sections.map((section, index) => (
+              <Link
+                key={section.title}
+                href={`#section-${index + 1}`}
+                className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 transition group"
+              >
+                <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center group-hover:bg-blue-100">
+                  <section.icon className="w-5 h-5 text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-medium">{section.title}</h3>
+                  <p className="text-sm text-gray-500">{section.description}</p>
+                </div>
+                <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600" />
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Content Sections */}
         <div className="space-y-8">
-          {/* Welcome */}
-          <section id="welcome" className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-              Welcome to Elevate for Humanity
-            </h2>
-            <p className="text-black mb-4">
-              Welcome! We are thrilled to have you join our community of
-              learners. This handbook contains important information about your
-              rights, responsibilities, and the resources available to support
-              your success.
+          <section id="section-1" className="bg-white rounded-xl shadow-sm border p-6">
+            <h2 className="text-xl font-bold mb-4">Welcome & Mission</h2>
+            <p className="text-gray-600 mb-4">
+              Welcome to Elevate For Humanity! We are committed to providing you with the skills, 
+              knowledge, and support you need to launch a successful career. Our mission is to 
+              break the cycle of poverty through workforce development.
             </p>
-            <p className="text-black">
-              Our mission is to provide accessible, high-quality workforce
-              training that empowers you to achieve economic self-sufficiency
-              and contribute to your community. We are committed to your
-              success.
+            <p className="text-gray-600">
+              As a student, you are joining a community of learners dedicated to personal and 
+              professional growth. We believe in your potential and are here to support you 
+              every step of the way.
             </p>
           </section>
 
-          {/* Mission */}
-          <section id="mission" className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-              Mission & Values
-            </h2>
-            <div className="space-y-4">
+          <section id="section-2" className="bg-white rounded-xl shadow-sm border p-6">
+            <h2 className="text-xl font-bold mb-4">Program Expectations</h2>
+            <ul className="space-y-3 text-gray-600">
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-blue-600 rounded-full mt-2"></span>
+                Attend all scheduled classes and training sessions
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-blue-600 rounded-full mt-2"></span>
+                Participate actively in discussions and activities
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-blue-600 rounded-full mt-2"></span>
+                Complete all assignments and assessments on time
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-blue-600 rounded-full mt-2"></span>
+                Maintain professional conduct at all times
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-blue-600 rounded-full mt-2"></span>
+                Communicate proactively with instructors and staff
+              </li>
+            </ul>
+          </section>
+
+          <section id="section-3" className="bg-white rounded-xl shadow-sm border p-6">
+            <h2 className="text-xl font-bold mb-4">Academic Policies</h2>
+            <div className="space-y-4 text-gray-600">
               <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Our Mission
-                </h3>
-                <p className="text-black">
-                  To provide accessible, high-quality workforce training and
-                  career development programs that empower individuals to
-                  achieve economic self-sufficiency and contribute to their
-                  communities.
-                </p>
+                <h3 className="font-medium text-gray-900 mb-2">Grading</h3>
+                <p>Programs use a competency-based assessment model. You must demonstrate proficiency in all required skills to earn your certification.</p>
               </div>
               <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Our Values
-                </h3>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                  <li>
-                    <strong>Access:</strong> Remove barriers to education
-                  </li>
-                  <li>
-                    <strong>Quality:</strong> Industry-recognized training
-                  </li>
-                  <li>
-                    <strong>Support:</strong> Wraparound services for success
-                  </li>
-                  <li>
-                    <strong>Integrity:</strong> Ethical and transparent
-                    operations
-                  </li>
-                  <li>
-                    <strong>Community:</strong> Building stronger communities
-                  </li>
-                </ul>
+                <h3 className="font-medium text-gray-900 mb-2">Certifications</h3>
+                <p>Upon successful completion, you will receive industry-recognized certifications that qualify you for employment in your field.</p>
               </div>
             </div>
           </section>
 
-          {/* Academic Policies */}
-          <section id="academic" className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-              Academic Policies
-            </h2>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Attendance Policy
-                </h3>
-                <p className="text-black mb-2">
-                  Regular attendance is essential for success. Students must
-                  maintain:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Minimum 80% attendance for all courses</li>
-                  <li>
-                    Notify instructor of absences in advance when possible
-                  </li>
-                  <li>Make up missed work within one week</li>
-                  <li>Excessive absences may result in dismissal</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Grading Policy
-                </h3>
-                <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-slate-200">
-                    <thead>
-                      <tr>
-                        <th className="px-4 py-2 text-left text-sm font-semibold text-black">
-                          Grade
-                        </th>
-                        <th className="px-4 py-2 text-left text-sm font-semibold text-black">
-                          Percentage
-                        </th>
-                        <th className="px-4 py-2 text-left text-sm font-semibold text-black">
-                          Description
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-200">
-                      <tr>
-                        <td className="px-4 py-2">A</td>
-                        <td className="px-4 py-2">90-100%</td>
-                        <td className="px-4 py-2">Excellent</td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-2">B</td>
-                        <td className="px-4 py-2">80-89%</td>
-                        <td className="px-4 py-2">Good</td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-2">C</td>
-                        <td className="px-4 py-2">70-79%</td>
-                        <td className="px-4 py-2">Satisfactory</td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-2">D</td>
-                        <td className="px-4 py-2">60-69%</td>
-                        <td className="px-4 py-2">Below Standard</td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-2">F</td>
-                        <td className="px-4 py-2">Below 60%</td>
-                        <td className="px-4 py-2">Failing</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p className="text-black mt-2">
-                  Minimum passing grade: C (70%)
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Academic Integrity
-                </h3>
-                <p className="text-black mb-2">
-                  Academic honesty is expected. Violations include:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Plagiarism or cheating</li>
-                  <li>Unauthorized collaboration</li>
-                  <li>Falsifying records</li>
-                  <li>Using unauthorized materials during assessments</li>
-                </ul>
-                <p className="text-black mt-2">
-                  <strong>Consequences:</strong> First offense - warning; Second
-                  offense - course failure; Third offense - dismissal from
-                  program.
-                </p>
-                <div className="mt-4">
-                  <Link
-                    href="/academic-integrity"
-                    className="inline-flex items-center gap-2 text-brand-blue-600 hover:text-brand-blue-700 font-semibold"
-                  >
-                    <span>View Complete Academic Integrity Policy</span>
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Satisfactory Academic Progress (SAP)
-                </h3>
-                <p className="text-black mb-2">Students must maintain:</p>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Minimum 2.0 GPA (C average)</li>
-                  <li>Complete 67% of attempted coursework</li>
-                  <li>
-                    Progress toward completion within 150% of program length
-                  </li>
-                </ul>
-                <p className="text-black mt-2">
-                  SAP is reviewed at the end of each term. Students not meeting
-                  SAP may be placed on academic probation or dismissed.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Makeup Work Policy
-                </h3>
-                <p className="text-black mb-2">
-                  Students who miss class due to excused absences may make up
-                  missed work:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Request makeup work within 24 hours of return</li>
-                  <li>Complete makeup work within one week of absence</li>
-                  <li>Makeup exams must be scheduled with instructor</li>
-                  <li>Late work may receive reduced credit (10% per day)</li>
-                  <li>
-                    Excused absences: illness, family emergency, court
-                    appearance, military duty
-                  </li>
-                </ul>
-                <p className="text-black mt-2">
-                  <strong>Unexcused absences:</strong> Makeup work may not be
-                  accepted. Contact your instructor immediately.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Attendance Tracking
-                </h3>
-                <p className="text-black mb-2">
-                  Attendance is tracked daily for all students:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Sign in/out required for each class session</li>
-                  <li>Tardiness (15+ minutes late) counts as 0.5 absence</li>
-                  <li>
-                    Early departure (15+ minutes early) counts as 0.5 absence
-                  </li>
-                  <li>3 tardies = 1 absence</li>
-                  <li>
-                    Attendance warnings issued at 10%, 15%, and 20% absence rate
-                  </li>
-                </ul>
-                <p className="text-black mt-2">
-                  <strong>Excessive Absences:</strong> Students exceeding 20%
-                  absence rate may be dismissed from the program.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Code of Conduct */}
-          <section id="conduct" className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-              Code of Conduct
-            </h2>
-            <p className="text-black mb-4">
-              All students are expected to conduct themselves professionally and
-              respectfully.
+          <section id="section-4" className="bg-white rounded-xl shadow-sm border p-6">
+            <h2 className="text-xl font-bold mb-4">Code of Conduct</h2>
+            <p className="text-gray-600 mb-4">
+              All students are expected to conduct themselves professionally and respectfully. 
+              This includes treating fellow students, instructors, and staff with dignity and respect.
             </p>
-
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Expected Behavior
-                </h3>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Treat all individuals with respect and dignity</li>
-                  <li>Arrive on time and prepared for class</li>
-                  <li>Follow safety protocols and procedures</li>
-                  <li>Use technology appropriately</li>
-                  <li>Maintain professional appearance</li>
-                  <li>Respect property and facilities</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Prohibited Conduct
-                </h3>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Harassment, discrimination, or bullying</li>
-                  <li>Violence or threats of violence</li>
-                  <li>Possession of weapons or illegal substances</li>
-                  <li>Theft or vandalism</li>
-                  <li>Disruption of educational activities</li>
-                  <li>Academic dishonesty</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Disciplinary Actions
-                </h3>
-                <p className="text-black">
-                  Violations may result in: verbal warning, written warning,
-                  probation, suspension, or dismissal. Serious violations may
-                  result in immediate dismissal and law enforcement
-                  notification.
-                </p>
-              </div>
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <h3 className="font-medium text-red-800 mb-2">Prohibited Conduct</h3>
+              <ul className="text-sm text-red-700 space-y-1">
+                <li>• Harassment or discrimination of any kind</li>
+                <li>• Academic dishonesty or cheating</li>
+                <li>• Possession of weapons or illegal substances</li>
+                <li>• Disruptive behavior in class</li>
+              </ul>
             </div>
           </section>
 
-          {/* Student Rights - FERPA */}
-          <section id="rights" className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-              Student Rights (FERPA)
-            </h2>
-            <p className="text-black mb-4">
-              The Family Educational Rights and Privacy Act (FERPA) protects
-              your education records.
+          <section id="section-5" className="bg-white rounded-xl shadow-sm border p-6">
+            <h2 className="text-xl font-bold mb-4">Attendance Policy</h2>
+            <p className="text-gray-600 mb-4">
+              Regular attendance is essential for your success. Students must maintain at least 
+              80% attendance to remain in good standing.
             </p>
-
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Your Rights Under FERPA
-                </h3>
-                <ul className="list-disc list-inside space-y-2 text-black ml-4">
-                  <li>
-                    <strong>Inspect and Review:</strong> You have the right to
-                    inspect and review your education records within 45 days of
-                    request.
-                  </li>
-                  <li>
-                    <strong>Request Amendment:</strong> You may request
-                    correction of records you believe are inaccurate or
-                    misleading.
-                  </li>
-                  <li>
-                    <strong>Consent to Disclosure:</strong> Your written consent
-                    is required before we disclose your records (with certain
-                    exceptions).
-                  </li>
-                  <li>
-                    <strong>File Complaint:</strong> You may file a complaint
-                    with the U.S. Department of Education if you believe your
-                    rights have been violated.
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  How to Access Your Records
-                </h3>
-                <p className="text-black">
-                  Submit a written request to the Registrar's Office. Records
-                  will be available within 45 days. Contact:{' '}
-                  <a
-                    href="mailto:registrar@www.elevateforhumanity.org"
-                    className="text-brand-blue-600 hover:text-brand-blue-700"
-                  >
-                    registrar@www.elevateforhumanity.org
-                  </a>
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Directory Information
-                </h3>
-                <p className="text-black mb-2">
-                  We may disclose "directory information" without consent unless
-                  you opt out. Directory information includes:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Name, address, phone number, email</li>
-                  <li>Program of study, enrollment status</li>
-                  <li>Dates of attendance, degrees/certificates earned</li>
-                </ul>
-                <p className="text-black mt-2">
-                  To opt out, submit a written request to the Registrar's
-                  Office.
-                </p>
-              </div>
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <h3 className="font-medium text-yellow-800 mb-2">Absence Procedures</h3>
+              <p className="text-sm text-yellow-700">
+                If you must miss class, notify your instructor as soon as possible. 
+                Excessive absences may result in dismissal from the program.
+              </p>
             </div>
           </section>
 
-          {/* Financial Information */}
-          <section id="financial" className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-              Financial Information
-            </h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Tuition and Fees
-                </h3>
-                <p className="text-black mb-2">
-                  Tuition varies by program. All costs are disclosed in the
-                  enrollment agreement before enrollment.
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Tuition includes all required materials and supplies</li>
-                  <li>Registration fee: Non-refundable</li>
-                  <li>Payment plans available</li>
-                  <li>Financial aid accepted (WIOA, WRG, JRI)</li>
-                </ul>
+          <section id="section-6" className="bg-white rounded-xl shadow-sm border p-6">
+            <h2 className="text-xl font-bold mb-4">Support Services</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <h3 className="font-medium mb-2">Career Services</h3>
+                <p className="text-sm text-gray-600">Resume help, interview prep, and job placement assistance</p>
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Payment Options
-                </h3>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Full payment at enrollment (5% discount)</li>
-                  <li>Monthly payment plans (no interest)</li>
-                  <li>WIOA funding (100% covered)</li>
-                  <li>Workforce Ready Grant</li>
-                  <li>Justice Reinvestment Initiative</li>
-                </ul>
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <h3 className="font-medium mb-2">Academic Support</h3>
+                <p className="text-sm text-gray-600">Tutoring, study groups, and additional instruction</p>
               </div>
-            </div>
-          </section>
-
-          {/* Refund Policy */}
-          <section id="refund" className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-              Refund Policy
-            </h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Cancellation Before Start Date
-                </h3>
-                <p className="text-black">
-                  Students who cancel enrollment before the program start date
-                  receive a full refund of all tuition and fees paid, minus the
-                  non-refundable registration fee ($100).
-                </p>
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <h3 className="font-medium mb-2">Personal Support</h3>
+                <p className="text-sm text-gray-600">Counseling referrals and emergency assistance</p>
               </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Withdrawal After Start Date
-                </h3>
-                <p className="text-black mb-2">
-                  Refunds are calculated based on the percentage of program
-                  completed:
-                </p>
-                <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-slate-200">
-                    <thead>
-                      <tr>
-                        <th className="px-4 py-2 text-left text-sm font-semibold text-black">
-                          Time in Program
-                        </th>
-                        <th className="px-4 py-2 text-left text-sm font-semibold text-black">
-                          Tuition Charged
-                        </th>
-                        <th className="px-4 py-2 text-left text-sm font-semibold text-black">
-                          Refund
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-200">
-                      <tr>
-                        <td className="px-4 py-2">0-10%</td>
-                        <td className="px-4 py-2">10%</td>
-                        <td className="px-4 py-2">90%</td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-2">11-25%</td>
-                        <td className="px-4 py-2">25%</td>
-                        <td className="px-4 py-2">75%</td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-2">26-50%</td>
-                        <td className="px-4 py-2">50%</td>
-                        <td className="px-4 py-2">50%</td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-2">51-75%</td>
-                        <td className="px-4 py-2">75%</td>
-                        <td className="px-4 py-2">25%</td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-2">Over 75%</td>
-                        <td className="px-4 py-2">100%</td>
-                        <td className="px-4 py-2">0%</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Refund Processing
-                </h3>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Refunds processed within 30 days of withdrawal</li>
-                  <li>Refunds issued to original payment method</li>
-                  <li>Financial aid refunds returned to funding source</li>
-                  <li>Registration fee is non-refundable</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Dismissal for Non-Payment
-                </h3>
-                <p className="text-black">
-                  Students dismissed for non-payment are not eligible for
-                  refunds. Outstanding balances must be paid before transcripts
-                  or certificates are released.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Withdrawal Policy */}
-          <section
-            id="withdrawal"
-            className="bg-white rounded-xl shadow-sm p-8"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-              Withdrawal Policy
-            </h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Voluntary Withdrawal
-                </h3>
-                <p className="text-black mb-2">
-                  Students may withdraw from a program at any time by:
-                </p>
-                <ol className="list-decimal list-inside space-y-1 text-black ml-4">
-                  <li>
-                    Completing a withdrawal form (available at Student Services
-                    or online)
-                  </li>
-                  <li>Meeting with an academic advisor to discuss options</li>
-                  <li>
-                    Returning all school property (books, equipment, ID card)
-                  </li>
-                  <li>Settling any outstanding financial obligations</li>
-                </ol>
-                <p className="text-black mt-2">
-                  <strong>Effective Date:</strong> Withdrawal is effective on
-                  the date the form is submitted or the last date of attendance,
-                  whichever is later.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Administrative Withdrawal
-                </h3>
-                <p className="text-black mb-2">
-                  The school may administratively withdraw students for:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Excessive absences (over 20% of program hours)</li>
-                  <li>Failure to maintain Satisfactory Academic Progress</li>
-                  <li>Non-payment of tuition and fees</li>
-                  <li>Violation of code of conduct</li>
-                  <li>Failure to return from leave of absence</li>
-                </ul>
-                <p className="text-black mt-2">
-                  Students will receive written notice before administrative
-                  withdrawal and have the right to appeal.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Leave of Absence
-                </h3>
-                <p className="text-black mb-2">
-                  Students may request a leave of absence for medical, family,
-                  or military reasons:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Maximum 180 days per 12-month period</li>
-                  <li>Written request required with documentation</li>
-                  <li>Must be in good academic standing</li>
-                  <li>Return date must be specified</li>
-                  <li>Failure to return results in withdrawal</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Re-Entry After Withdrawal
-                </h3>
-                <p className="text-black">
-                  Students who withdraw may apply for re-entry within 12 months.
-                  Re-entry is subject to:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Space availability in the program</li>
-                  <li>Resolution of previous academic or financial issues</li>
-                  <li>Meeting with academic advisor</li>
-                  <li>Updated enrollment agreement</li>
-                  <li>Payment of any outstanding balances</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* Campus Safety */}
-          <section id="safety" className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-              Campus Safety
-            </h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Emergency Procedures
-                </h3>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>
-                    <strong>Fire:</strong> Evacuate immediately using nearest
-                    exit. Assemble at designated area.
-                  </li>
-                  <li>
-                    <strong>Medical Emergency:</strong> Call 911. Notify staff
-                    immediately.
-                  </li>
-                  <li>
-                    <strong>Severe Weather:</strong> Move to interior rooms away
-                    from windows.
-                  </li>
-                  <li>
-                    <strong>Active Threat:</strong> Run, Hide, Fight. Call 911
-                    when safe.
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Safety Protocols
-                </h3>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>Wear required safety equipment in labs/workshops</li>
-                  <li>Report safety hazards immediately</li>
-                  <li>Follow equipment operating procedures</li>
-                  <li>Keep emergency exits clear</li>
-                  <li>
-                    Know location of fire extinguishers and first aid kits
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Security
-                </h3>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>ID badges must be worn at all times</li>
-                  <li>Report suspicious activity to staff</li>
-                  <li>Do not prop open security doors</li>
-                  <li>Secure personal belongings</li>
-                  <li>Visitors must check in at front desk</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* Grievance Procedures */}
-          <section id="grievance" className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-              Complaint & Grievance Procedures
-            </h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Informal Resolution
-                </h3>
-                <p className="text-black">
-                  Students are encouraged to first attempt informal resolution
-                  by discussing concerns directly with the instructor or staff
-                  member involved. Most issues can be resolved at this level.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Formal Complaint Process
-                </h3>
-                <p className="text-black mb-2">
-                  If informal resolution is unsuccessful:
-                </p>
-                <ol className="list-decimal list-inside space-y-2 text-black ml-4">
-                  <li>
-                    <strong>Submit Written Complaint:</strong> Complete
-                    grievance form (available at Student Services or online)
-                    within 30 days of incident. Include date, description, and
-                    desired resolution.
-                  </li>
-                  <li>
-                    <strong>Investigation:</strong> Complaint will be
-                    investigated within 5 business days. Both parties may be
-                    interviewed.
-                  </li>
-                  <li>
-                    <strong>Resolution Meeting:</strong> Meeting scheduled with
-                    student, involved parties, and administrator to discuss
-                    findings and resolution.
-                  </li>
-                  <li>
-                    <strong>Written Decision:</strong> Decision issued in
-                    writing within 10 business days of complaint submission.
-                  </li>
-                </ol>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Appeal Process
-                </h3>
-                <p className="text-black">
-                  Students may appeal the decision to the Executive Director
-                  within 10 business days. The Executive Director's decision is
-                  final.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  External Complaints
-                </h3>
-                <p className="text-black mb-2">
-                  Students may also file complaints with external agencies:
-                </p>
-                <div className="space-y-2 text-black ml-4">
-                  <div>
-                    <p className="font-semibold">
-                      Indiana Commission for Higher Education
-                    </p>
-                    <p>8888 Keystone Xing, Suite 1300, Indianapolis, IN 46240</p>
-                    <p>Phone: (317) 314-3757</p>
-                    <p>Website: www.in.gov/che</p>
-                  </div>
-                  <div className="mt-2">
-                    <p className="font-semibold">
-                      Council on Occupational Education
-                    </p>
-                    <p>
-                      7840 Roswell Road, Building 300, Suite 325, Atlanta, GA
-                      30350
-                    </p>
-                    <p>Phone: (770) 396-3898</p>
-                    <p>Website: www.council.org</p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Non-Retaliation
-                </h3>
-                <p className="text-black">
-                  The school prohibits retaliation against students who file
-                  complaints in good faith. Any retaliation should be reported
-                  immediately to the Executive Director.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Graduation Requirements */}
-          <section
-            id="graduation"
-            className="bg-white rounded-xl shadow-sm p-8"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-              Graduation Requirements
-            </h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Requirements for Graduation
-                </h3>
-                <p className="text-black mb-2">
-                  To graduate, students must:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-black ml-4">
-                  <li>
-                    Complete all required coursework with minimum C grade (70%)
-                  </li>
-                  <li>Achieve minimum 2.0 cumulative GPA</li>
-                  <li>Complete all required clock hours</li>
-                  <li>Pass all required assessments and certifications</li>
-                  <li>Maintain satisfactory attendance (80%+)</li>
-                  <li>Fulfill all financial obligations</li>
-                  <li>Return all school property</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Graduation Ceremony
-                </h3>
-                <p className="text-black">
-                  Graduation ceremonies are held quarterly. Graduates receive a
-                  certificate of completion and are recognized for their
-                  achievements. Family and friends are welcome to attend.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-black mb-2">
-                  Transcripts
-                </h3>
-                <p className="text-black">
-                  Official transcripts are available upon request. The first
-                  transcript is free; additional copies are $10 each.
-                  Transcripts are not released if financial obligations are
-                  outstanding.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Contact Information */}
-          <section className="bg-blue-50 rounded-xl p-8">
-            <h2 className="text-2xl font-bold text-black mb-4">
-              Need Help?
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="font-bold text-black mb-2">
-                  General Information
-                </h3>
-                <p className="text-black">Phone: 317-314-3757</p>
-                <p className="text-black">
-                  Email: info@www.elevateforhumanity.org
-                </p>
-              </div>
-              <div>
-                <h3 className="font-bold text-black mb-2">
-                  Student Services
-                </h3>
-                <p className="text-black">Phone: 317-314-3757</p>
-                <p className="text-black">
-                  Email: support@www.elevateforhumanity.org
-                </p>
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <h3 className="font-medium mb-2">Technology Support</h3>
+                <p className="text-sm text-gray-600">Help with LMS, equipment, and software</p>
               </div>
             </div>
           </section>
         </div>
+
+        {/* Acknowledgment */}
+        {user && !acknowledgment && (
+          <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
+            <h3 className="font-semibold mb-4">Acknowledge Handbook</h3>
+            <form action="/api/handbook/acknowledge" method="POST">
+              <input type="hidden" name="type" value="student" />
+              <label className="flex items-start gap-3 mb-4">
+                <input type="checkbox" name="confirm" required className="mt-1" />
+                <span className="text-sm text-gray-600">
+                  I have read and understand the Student Handbook. I agree to abide by all policies and procedures.
+                </span>
+              </label>
+              <button
+                type="submit"
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700"
+              >
+                Acknowledge
+              </button>
+            </form>
+          </div>
+        )}
+
+        {acknowledgment && (
+          <div className="mt-8 bg-green-50 border border-green-200 rounded-xl p-6">
+            <p className="text-green-700">
+              ✓ You acknowledged this handbook on {new Date(acknowledgment.acknowledged_at).toLocaleDateString()}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

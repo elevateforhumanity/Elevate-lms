@@ -66,10 +66,10 @@ export default function PlatformPage() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact?topic=platform-demo"
+              href="/store/demo"
               className="inline-flex items-center justify-center px-8 py-3 text-base font-bold text-white bg-brand-green-600 rounded-lg hover:bg-green-700 transition-colors"
             >
-              Request a Demo
+              Watch Demo Live
             </Link>
             <Link
               href="/licensing"
@@ -275,10 +275,10 @@ export default function PlatformPage() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact?topic=platform-demo"
+              href="/store/demo"
               className="inline-flex items-center justify-center px-8 py-3 text-base font-bold text-white bg-brand-green-600 rounded-lg hover:bg-green-700 transition-colors"
             >
-              Request a Demo
+              Watch Demo Live
             </Link>
             <Link
               href="/licensing"

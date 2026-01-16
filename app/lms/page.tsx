@@ -1,482 +1,364 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
-import { CheckCircle, ArrowRight, Play, Star, BookOpen } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import {
+  BookOpen,
+  Play,
+  Award,
+  Clock,
+  BarChart3,
+  Calendar,
+  MessageSquare,
+  Bell,
+  Settings,
+  ChevronRight,
+  CheckCircle,
+  Target,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Learning Management System | Elevate for Humanity',
-  description:
-    'Access interactive courses, video lessons, quizzes, and collaboration tools. Learn at your own pace with our modern LMS platform.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms',
-  },
+  title: 'Learning Dashboard | Elevate for Humanity',
+  description: 'Access your courses, track progress, and continue learning.',
 };
 
-export default function LMSLandingPage() {
-  const features = [
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Video Lessons',
-      description: 'High-quality video content with expert instructors',
-      href: '/programs',
-    },
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Interactive Courses',
-      description: 'Engaging lessons with quizzes and hands-on activities',
-      href: '/programs',
-    },
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Discussion Forums',
-      description: 'Connect with classmates and instructors',
-      href: '/programs',
-    },
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Earn Certificates',
-      description: 'Get recognized for completing courses',
-      href: '/programs',
-    },
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Live Chat Support',
-      description: '24/7 help when you need it',
-      href: '/contact',
-    },
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Track Progress',
-      description: 'Monitor your learning journey in real-time',
-      href: '/programs',
-    },
-  ];
+export const dynamic = 'force-dynamic';
 
-  const courses = [
-    {
-      title: 'Healthcare Fundamentals',
-      instructor: 'Dr. Sarah Johnson',
-      students: 'Multiple cohorts',
-      rating: 4.9,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/healthcare',
-      duration: '4-6 weeks',
-      level: 'Beginner',
-    },
-    {
-      title: 'HVAC Technician Training',
-      instructor: 'Mike Rodriguez',
-      students: 'Multiple cohorts',
-      rating: 4.8,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/hvac-technician',
-      duration: '6-12 months',
-      level: 'Beginner to Advanced',
-    },
-    {
-      title: 'Business Management',
-      instructor: 'Jennifer Lee',
-      students: 'Multiple cohorts',
-      rating: 4.9,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/business',
-      duration: '8-10 weeks',
-      level: 'Intermediate',
-    },
-    {
-      title: 'CDL Training',
-      instructor: 'James Wilson',
-      students: 'Multiple cohorts',
-      rating: 4.9,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/cdl-transportation',
-      duration: '3-4 weeks',
-      level: 'Beginner',
-    },
-    {
-      title: 'Barber Apprenticeship',
-      instructor: 'Licensed Barber Mentors',
-      students: 'Multiple cohorts',
-      rating: 4.8,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/barber-apprenticeship',
-      duration: '15-18 months',
-      level: 'Beginner to Advanced',
-    },
-    {
-      title: 'Medical Assistant',
-      instructor: 'Dr. Emily Chen',
-      students: 'Multiple cohorts',
-      rating: 4.9,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/healthcare',
-      duration: '8-12 weeks',
-      level: 'Beginner',
-    },
-  ];
+export default async function LMSPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/login?redirect=/lms');
+  }
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single();
+
+  // Get enrolled courses with progress
+  const { data: enrollments } = await supabase
+    .from('enrollments')
+    .select(`
+      id,
+      progress,
+      status,
+      enrolled_at,
+      last_accessed,
+      course:courses(
+        id,
+        title,
+        description,
+        thumbnail_url,
+        duration_hours,
+        lesson_count
+      )
+    `)
+    .eq('user_id', user.id)
+    .order('last_accessed', { ascending: false });
+
+  // Get recent activity
+  const { data: recentActivity } = await supabase
+    .from('lesson_progress')
+    .select(`
+      id,
+      completed_at,
+      lesson:lessons(title, course_id)
+    `)
+    .eq('user_id', user.id)
+    .order('completed_at', { ascending: false })
+    .limit(5);
+
+  // Get upcoming assignments
+  const { data: assignments } = await supabase
+    .from('assignments')
+    .select('*')
+    .in('course_id', enrollments?.map((e: any) => e.course?.id).filter(Boolean) || [])
+    .gte('due_date', new Date().toISOString())
+    .order('due_date', { ascending: true })
+    .limit(5);
+
+  // Get certificates earned
+  const { data: certificates } = await supabase
+    .from('certificates')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('issued_at', { ascending: false })
+    .limit(3);
+
+  // Get unread notifications
+  const { count: notificationCount } = await supabase
+    .from('notifications')
+    .select('*', { count: 'exact', head: true })
+    .eq('user_id', user.id)
+    .eq('is_read', false);
+
+  // Calculate overall progress
+  const totalProgress = enrollments?.length 
+    ? Math.round(enrollments.reduce((sum: number, e: any) => sum + (e.progress || 0), 0) / enrollments.length)
+    : 0;
+
+  const completedCourses = enrollments?.filter((e: any) => e.progress === 100).length || 0;
+
+  // Find course to continue (most recently accessed, not completed)
+  const continueCourse = enrollments?.find((e: any) => e.progress > 0 && e.progress < 100);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section - Course Teaser Style */}
-      <section className="relative py-20 px-4 bg-gradient-to-br from-teal-600 to-teal-800 text-white overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-              backgroundSize: '40px 40px',
-            }}
-          ></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Content */}
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white py-6">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between">
             <div>
-              {/* Logo */}
-              <div className="mb-6">
-                <Image
-                  src="/logo.png"
-                  alt="Elevate for Humanity"
-                  width={150}
-                  height={60}
-                  className="brightness-0 invert"
-                />
-              </div>
-
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
-                <BookOpen className="w-5 h-5" />
-                <span className="text-sm font-semibold">
-                  Learning Management System
-                </span>
-              </div>
-
-              <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight uppercase">
-                Learn Anywhere, Anytime
-              </h1>
-
-              <p className="text-xl text-teal-100 mb-8 leading-relaxed">
-                Access interactive courses, video lessons, quizzes, and
-                collaboration tools. Learn at your own pace with our modern LMS
-                platform.
-              </p>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div className="text-3xl font-black mb-1">50+</div>
-                  <div className="text-xs text-teal-100">Courses</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div className="text-3xl font-black mb-1">5,000+</div>
-                  <div className="text-xs text-teal-100">Students</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div className="text-3xl font-black mb-1">24/7</div>
-                  <div className="text-xs text-teal-100">Access</div>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/dashboards"
-                  className="inline-flex items-center justify-center gap-3 bg-orange-500 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-xl hover:bg-orange-600 hover:scale-105 transition-all"
-                >
-                  <span>Access LMS</span>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-                <Link
-                  href="#courses"
-                  className="inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white hover:text-teal-600 transition-all"
-                >
-                  <Play className="w-5 h-5" />
-                  <span>Browse Courses</span>
-                </Link>
-              </div>
+              <h1 className="text-2xl font-bold">Welcome back, {profile?.full_name || 'Learner'}</h1>
+              <p className="text-indigo-200">Continue your learning journey</p>
             </div>
-
-            {/* Right Column - Hero Image */}
-            <div className="relative">
-              <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
-                <Image
-                  src="/images/lms-hero-banner.png"
-                  alt="LMS Platform - Interactive Learning"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-6">
-              Everything You Need to Succeed
-            </h2>
-            <p className="text-xl text-black max-w-3xl mx-auto">
-              Our LMS platform provides all the tools and resources for
-              effective online learning
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, idx) => {
-              return (
-                <Link
-                  key={idx}
-                  href={feature.href}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-gray-100 hover:border-teal-500 hover:shadow-xl transition-all group"
-                >
-                  <div className="relative h-48 w-full overflow-hidden">
-                    <Image
-                      src={feature.image}
-                      alt={feature.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-8">
-                    <h3 className="text-xl font-bold text-black mb-3 group-hover:text-teal-600 transition-colors">
-                      {feature.title} →
-                    </h3>
-                    <p className="text-black leading-relaxed mb-4">
-                      {feature.description}
-                    </p>
-                    <span className="text-teal-600 font-semibold text-sm">
-                      Learn More →
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Our LMS */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-6">
-              Why Choose Our LMS?
-            </h2>
-            <p className="text-xl text-black max-w-3xl mx-auto">
-              Modern learning platform designed for workforce development
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Learn at Your Own Pace
-                </h3>
-                <p className="text-black">
-                  Access courses anytime, anywhere. Study when it fits your
-                  schedule.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Expert Instructors
-                </h3>
-                <p className="text-black">
-                  Learn from industry professionals with real-world experience.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Interactive Learning
-                </h3>
-                <p className="text-black">
-                  Engage with videos, quizzes, discussions, and hands-on
-                  projects.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Mobile Friendly
-                </h3>
-                <p className="text-black">
-                  Learn on any device - desktop, tablet, or smartphone.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Track Your Progress
-                </h3>
-                <p className="text-black">
-                  Monitor completion, grades, and achievements in real-time.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Earn Certificates
-                </h3>
-                <p className="text-black">
-                  Receive industry-recognized certificates upon completion.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Available Courses Section */}
-      <section id="courses" className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-6">
-              Available Courses
-            </h2>
-            <p className="text-xl text-black max-w-3xl mx-auto">
-              Explore our training programs - each course has its own dedicated
-              page with full details
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {courses.map((course, idx) => (
-              <Link
-                key={idx}
-                href={course.href}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-gray-100 hover:border-teal-500 hover:shadow-2xl transition-all hover:-translate-y-2 transform group"
-              >
-                <div className="relative h-48 bg-gradient-to-br from-teal-500 to-teal-600">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <BookOpen className="w-16 h-16 text-white opacity-50" />
-                  </div>
-                  <div className="absolute top-4 right-4 bg-white px-3 py-2 rounded-full text-sm font-bold text-teal-600">
-                    {course.level}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-black mb-2 group-hover:text-teal-600 transition-colors">
-                    {course.title} →
-                  </h3>
-                  <p className="text-black mb-3 text-sm">
-                    Instructor: {course.instructor}
-                  </p>
-                  <div className="flex items-center justify-between mb-4 text-sm">
-                    <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="font-bold text-black">
-                        {course.rating}
-                      </span>
-                    </div>
-                    <div className="text-black">{course.duration}</div>
-                  </div>
-                  <div className="text-teal-600 font-semibold text-sm">
-                    View Course Details →
-                  </div>
-                </div>
+            <div className="flex items-center gap-3">
+              <Link href="/lms/notifications" className="relative p-2 bg-indigo-500 rounded-lg hover:bg-indigo-400">
+                <Bell className="w-5 h-5" />
+                {notificationCount && notificationCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                    {notificationCount > 9 ? '9+' : notificationCount}
+                  </span>
+                )}
               </Link>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/programs"
-              className="inline-flex items-center gap-2 bg-teal-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-700 transition-colors"
-            >
-              View All Programs
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+              <Link href="/lms/settings" className="p-2 bg-indigo-500 rounded-lg hover:bg-indigo-400">
+                <Settings className="w-5 h-5" />
+              </Link>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Testimonial Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex justify-center gap-1 mb-6">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className="w-8 h-8 fill-yellow-400 text-yellow-400"
-              />
-            ))}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Continue Learning Banner */}
+        {continueCourse && (
+          <div className="bg-white rounded-xl shadow-sm border p-6 mb-8">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-20 h-14 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
+                  {continueCourse.course?.thumbnail_url ? (
+                    <img src={continueCourse.course.thumbnail_url} alt="" className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <BookOpen className="w-6 h-6 text-gray-400" />
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Continue where you left off</p>
+                  <h2 className="font-semibold text-lg">{continueCourse.course?.title}</h2>
+                  <div className="flex items-center gap-2 mt-1">
+                    <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-indigo-600 rounded-full" 
+                        style={{ width: `${continueCourse.progress}%` }} 
+                      />
+                    </div>
+                    <span className="text-sm text-gray-500">{continueCourse.progress}% complete</span>
+                  </div>
+                </div>
+              </div>
+              <Link 
+                href={`/lms/courses/${continueCourse.course?.id}`}
+                className="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-indigo-700"
+              >
+                <Play className="w-4 h-4" /> Continue
+              </Link>
+            </div>
           </div>
-          <blockquote className="text-2xl md:text-3xl font-bold text-black mb-6 leading-relaxed">
-            "The LMS platform made learning so easy. I could study at my own
-            pace and the instructors were always available to help."
-          </blockquote>
-          <p className="text-xl text-black">
-            — Marcus Thompson, CNA Graduate
-          </p>
+        )}
+
+        {/* Stats Row */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-white rounded-xl shadow-sm border p-5">
+            <BookOpen className="w-7 h-7 text-indigo-600 mb-2" />
+            <div className="text-2xl font-bold">{enrollments?.length || 0}</div>
+            <div className="text-gray-600 text-sm">Enrolled Courses</div>
+          </div>
+          <div className="bg-white rounded-xl shadow-sm border p-5">
+            <CheckCircle className="w-7 h-7 text-green-600 mb-2" />
+            <div className="text-2xl font-bold">{completedCourses}</div>
+            <div className="text-gray-600 text-sm">Completed</div>
+          </div>
+          <div className="bg-white rounded-xl shadow-sm border p-5">
+            <Award className="w-7 h-7 text-yellow-500 mb-2" />
+            <div className="text-2xl font-bold">{certificates?.length || 0}</div>
+            <div className="text-gray-600 text-sm">Certificates</div>
+          </div>
+          <div className="bg-white rounded-xl shadow-sm border p-5">
+            <Target className="w-7 h-7 text-purple-600 mb-2" />
+            <div className="text-2xl font-bold">{totalProgress}%</div>
+            <div className="text-gray-600 text-sm">Overall Progress</div>
+          </div>
         </div>
-      </section>
 
-      {/* Final CTA */}
-      <section className="py-20 px-4 bg-gradient-to-br from-orange-500 to-orange-600 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Logo */}
-          <div className="mb-6">
-            <Image
-              src="/logo.png"
-              alt="Elevate for Humanity"
-              width={150}
-              height={60}
-              className="mx-auto brightness-0 invert"
-            />
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* My Courses */}
+            <div className="bg-white rounded-xl shadow-sm border p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-lg font-semibold">My Courses</h2>
+                <Link href="/lms/courses" className="text-indigo-600 text-sm font-medium hover:underline">
+                  View All
+                </Link>
+              </div>
+              {enrollments && enrollments.length > 0 ? (
+                <div className="space-y-4">
+                  {enrollments.slice(0, 4).map((enrollment: any) => (
+                    <Link 
+                      key={enrollment.id} 
+                      href={`/lms/courses/${enrollment.course?.id}`}
+                      className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
+                    >
+                      <div className="w-16 h-12 bg-gray-200 rounded overflow-hidden flex-shrink-0">
+                        {enrollment.course?.thumbnail_url ? (
+                          <img src={enrollment.course.thumbnail_url} alt="" className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <BookOpen className="w-5 h-5 text-gray-400" />
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-medium truncate">{enrollment.course?.title}</h3>
+                        <div className="flex items-center gap-3 mt-1">
+                          <div className="flex-1 max-w-[120px] h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                            <div 
+                              className="h-full bg-indigo-600 rounded-full" 
+                              style={{ width: `${enrollment.progress || 0}%` }} 
+                            />
+                          </div>
+                          <span className="text-xs text-gray-500">{enrollment.progress || 0}%</span>
+                        </div>
+                      </div>
+                      <ChevronRight className="w-5 h-5 text-gray-400" />
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-8">
+                  <BookOpen className="w-12 h-12 mx-auto mb-3 text-gray-300" />
+                  <p className="text-gray-500 mb-3">No courses enrolled yet</p>
+                  <Link href="/programs" className="text-indigo-600 font-medium hover:underline">
+                    Browse Available Programs
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Upcoming Assignments */}
+            <div className="bg-white rounded-xl shadow-sm border p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-lg font-semibold">Upcoming Assignments</h2>
+                <Link href="/lms/assignments" className="text-indigo-600 text-sm font-medium hover:underline">
+                  View All
+                </Link>
+              </div>
+              {assignments && assignments.length > 0 ? (
+                <div className="space-y-3">
+                  {assignments.map((assignment: any) => (
+                    <div key={assignment.id} className="flex items-center justify-between p-3 border rounded-lg">
+                      <div>
+                        <h3 className="font-medium">{assignment.title}</h3>
+                        <p className="text-sm text-gray-500">{assignment.course_title}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-medium text-orange-600">
+                          {new Date(assignment.due_date).toLocaleDateString()}
+                        </p>
+                        <p className="text-xs text-gray-500">Due</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-6 text-gray-500">
+                  <CheckCircle className="w-8 h-8 mx-auto mb-2 text-green-400" />
+                  <p>No upcoming assignments</p>
+                </div>
+              )}
+            </div>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-black mb-6">
-            Ready to Start Learning?
-          </h2>
-          <p className="text-xl text-orange-100 mb-10">
-            Join 5,000+ students already learning on our platform
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply"
-              className="inline-flex items-center gap-3 bg-white text-orange-600 px-10 py-5 rounded-xl text-lg font-black shadow-2xl hover:scale-105 transition-all"
-            >
-              <span>Apply Now - 100% Free</span>
-              <ArrowRight className="w-6 h-6" />
-            </Link>
-            <Link
-              href="/lms/dashboard"
-              className="inline-flex items-center gap-3 bg-orange-700 border-2 border-white text-white px-10 py-5 rounded-xl text-lg font-black hover:bg-orange-800 transition-all"
-            >
-              <span>Access LMS</span>
-              <ArrowRight className="w-6 h-6" />
-            </Link>
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Recent Activity */}
+            <div className="bg-white rounded-xl shadow-sm border p-6">
+              <h2 className="text-lg font-semibold mb-4">Recent Activity</h2>
+              {recentActivity && recentActivity.length > 0 ? (
+                <div className="space-y-3">
+                  {recentActivity.map((activity: any) => (
+                    <div key={activity.id} className="flex items-start gap-3">
+                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-sm font-medium">{activity.lesson?.title}</p>
+                        <p className="text-xs text-gray-500">
+                          {new Date(activity.completed_at).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-gray-500">No recent activity</p>
+              )}
+            </div>
+
+            {/* Certificates */}
+            <div className="bg-white rounded-xl shadow-sm border p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-lg font-semibold">Certificates</h2>
+                <Link href="/lms/certificates" className="text-indigo-600 text-sm font-medium hover:underline">
+                  View All
+                </Link>
+              </div>
+              {certificates && certificates.length > 0 ? (
+                <div className="space-y-3">
+                  {certificates.map((cert: any) => (
+                    <div key={cert.id} className="flex items-center gap-3 p-2 bg-yellow-50 rounded-lg">
+                      <Award className="w-5 h-5 text-yellow-600" />
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-sm truncate">{cert.title}</p>
+                        <p className="text-xs text-gray-500">
+                          {new Date(cert.issued_at).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-4">
+                  <Award className="w-8 h-8 mx-auto mb-2 text-gray-300" />
+                  <p className="text-sm text-gray-500">Complete courses to earn certificates</p>
+                </div>
+              )}
+            </div>
+
+            {/* Quick Links */}
+            <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-6">
+              <h3 className="font-semibold mb-3">Quick Links</h3>
+              <div className="space-y-2 text-sm">
+                <Link href="/lms/schedule" className="flex items-center gap-2 text-indigo-600 hover:underline">
+                  <Calendar className="w-4 h-4" /> Class Schedule
+                </Link>
+                <Link href="/lms/messages" className="flex items-center gap-2 text-indigo-600 hover:underline">
+                  <MessageSquare className="w-4 h-4" /> Messages
+                </Link>
+                <Link href="/lms/analytics" className="flex items-center gap-2 text-indigo-600 hover:underline">
+                  <BarChart3 className="w-4 h-4" /> Learning Analytics
+                </Link>
+                <Link href="/support" className="flex items-center gap-2 text-indigo-600 hover:underline">
+                  <Clock className="w-4 h-4" /> Get Help
+                </Link>
+              </div>
+            </div>
           </div>
-          <p className="text-orange-100 mt-6">
-            Already enrolled? Log in to access your courses
-          </p>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

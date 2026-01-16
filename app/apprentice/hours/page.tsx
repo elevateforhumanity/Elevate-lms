@@ -1,327 +1,146 @@
-"use client";
-import React from 'react';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { Clock, Plus, Calendar, CheckCircle, AlertCircle } from 'lucide-react';
 
-import { useEffect, useMemo, useState } from 'react';
-type Entry = {
-  id: string;
-  log_date: string;
-  start_at: string;
-  end_at: string;
-  minutes: number;
-  hour_type: 'RTI' | 'OJT';
-  funding_phase: 'PRE_WIOA' | 'WIOA' | 'POST_CERT';
-  status: 'DRAFT' | 'SUBMITTED' | 'APPROVED' | 'REJECTED' | 'LOCKED';
-  milady_module_ref?: string | null;
-  activity_note?: string | null;
+export const metadata: Metadata = {
+  title: 'Log Hours | Apprentice Portal',
+  description: 'Track and log your apprenticeship hours.',
 };
 
-function minutesToHrsMin(m: number) {
-  const hrs = Math.floor(m / 60);
-  const min = m % 60;
-  if (hrs <= 0) return `${min}m`;
-  if (min === 0) return `${hrs}h`;
-  return `${hrs}h ${min}m`;
-}
+export const dynamic = 'force-dynamic';
 
-export default function ApprenticeHoursPage() {
-  const [entries, setEntries] = useState<Entry[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+export default async function ApprenticeHoursPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
-  const [entry_date, setEntryDate] = useState(() =>
-    new Date().toISOString().slice(0, 10)
-  );
-  const [start_at, setStartAt] = useState(() =>
-    new Date().toISOString().slice(0, 16)
-  );
-  const [end_at, setEndAt] = useState(() => {
-    const d = new Date();
-    d.setHours(d.getHours() + 1);
-    return d.toISOString().slice(0, 16);
-  });
-
-  const [hour_type, setHourType] = useState<'RTI' | 'OJT'>('OJT');
-  const [funding_phase, setFundingPhase] = useState<
-    'PRE_WIOA' | 'WIOA' | 'POST_CERT'
-  >('PRE_WIOA');
-  const [milady_module_ref, setMiladyRef] = useState('');
-  const [activity_note, setActivityNote] = useState('');
-  const [attest, setAttest] = useState(false);
-
-  async function refresh() {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch('/api/time/entries', { cache: 'no-store' });
-      if (!res.ok) throw new Error(await res.text());
-      const json = await res.json();
-      setEntries(json.entries ?? json.data ?? []);
-    } catch (err: any) {
-      setError(err?.message ?? 'Failed to load entries');
-    } finally {
-      setLoading(false);
-    }
+  if (!user) {
+    redirect('/login?redirect=/apprentice/hours');
   }
 
-  useEffect(() => {
-    refresh();
-  }, []);
+  // Get apprentice profile
+  const { data: apprentice } = await supabase
+    .from('apprentices')
+    .select('*, program:program_id(name, required_hours)')
+    .eq('user_id', user.id)
+    .single();
 
-  const weeklyTotal = useMemo(() => {
-    const now = new Date();
-    const cutoff = new Date(now);
-    cutoff.setDate(now.getDate() - 7);
-    const mins = entries
-      .filter((e) => new Date(e.log_date) >= cutoff)
-      .reduce((s, e) => s + (e.minutes ?? 0), 0);
-    return minutesToHrsMin(mins);
-  }, [entries]);
+  // Get hour logs
+  const { data: hourLogs } = await supabase
+    .from('apprentice_hours')
+    .select('*')
+    .eq('apprentice_id', apprentice?.id)
+    .order('date', { ascending: false })
+    .limit(20);
 
-  async function submit() {
-    setSaving(true);
-    setError(null);
-    try {
-      const payload = {
-        entry_date,
-        start_at: new Date(start_at).toISOString(),
-        end_at: new Date(end_at).toISOString(),
-        hour_type,
-        funding_phase,
-        milady_module_ref: milady_module_ref || null,
-        activity_note: activity_note || null,
-        apprentice_attest: attest,
-      };
-
-      const res = await fetch('/api/time/entries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error(await res.text());
-
-      setAttest(false);
-      setMiladyRef('');
-      setActivityNote('');
-      await refresh();
-    } catch (err: any) {
-      setError(err?.message ?? 'Failed to submit');
-    } finally {
-      setSaving(false);
-    }
-  }
+  // Calculate totals
+  const totalHours = hourLogs?.reduce((sum: number, log: any) => sum + (log.hours || 0), 0) || 0;
+  const requiredHours = apprentice?.program?.required_hours || 2000;
+  const progressPercent = Math.min((totalHours / requiredHours) * 100, 100);
 
   return (
-    <div className="p-6 space-y-4 max-w-7xl mx-auto">
-      <div className="space-y-1">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-black">Log Apprenticeship Hours</h1>
-          <a
-            href="/apprentice/transfer-hours"
-            className="text-sm text-purple-600 hover:text-purple-700 font-medium"
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-2xl font-bold">Apprenticeship Hours</h1>
+            <p className="text-gray-600">Track and log your training hours</p>
+          </div>
+          <Link
+            href="/apprentice/hours/log"
+            className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition"
           >
-            Transfer Hours →
-          </a>
+            <Plus className="w-5 h-5" />
+            Log Hours
+          </Link>
         </div>
-        <p className="text-sm text-black">
-          Indiana IPLA requires 1,500 hours. Log your RTI (theory) and OJT (hands-on) hours weekly.
-        </p>
-        <div className="flex items-center gap-4 text-xs text-slate-500">
-          <span>
-            Last 7 days:{' '}
-            <span className="font-semibold">{weeklyTotal}</span>
-          </span>
-          <span className="text-slate-300">|</span>
-          <span>
-            RTI = Related Technical Instruction (Milady)
-          </span>
-          <span className="text-slate-300">|</span>
-          <span>
-            OJT = On-the-Job Training (Shop)
-          </span>
-        </div>
-      </div>
 
-      {error ? (
-        <div className="border border-red-300 bg-red-50 rounded p-3 text-sm text-red-800">
-          {error}
-        </div>
-      ) : null}
-
-      <div className="border border-slate-200 rounded-lg p-6 space-y-4 bg-white shadow-sm">
-        <h2 className="text-lg font-semibold text-black">New Entry</h2>
-
-        <div className="grid md:grid-cols-3 gap-4">
-          <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-black">
-              Entry date
-            </label>
-            <input
-              type="date"
-              className="border border-slate-300 rounded px-3 py-2 text-sm"
-              value={entry_date}
-              onChange={(e) => setEntryDate(e.target.value)}
+        {/* Progress Overview */}
+        <div className="bg-white rounded-xl shadow-sm border p-6 mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-semibold">Progress Overview</h2>
+            <span className="text-2xl font-bold text-blue-600">
+              {totalHours.toLocaleString()} / {requiredHours.toLocaleString()} hours
+            </span>
+          </div>
+          <div className="bg-gray-200 rounded-full h-4 mb-2">
+            <div 
+              className="bg-blue-600 h-4 rounded-full transition-all" 
+              style={{ width: `${progressPercent}%` }}
             />
           </div>
+          <p className="text-sm text-gray-500">
+            {progressPercent.toFixed(1)}% complete • {(requiredHours - totalHours).toLocaleString()} hours remaining
+          </p>
+        </div>
 
-          <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-black">
-              Start time
-            </label>
-            <input
-              type="datetime-local"
-              className="border border-slate-300 rounded px-3 py-2 text-sm"
-              value={start_at}
-              onChange={(e) => setStartAt(e.target.value)}
-            />
+        {/* Quick Stats */}
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white rounded-xl shadow-sm border p-6">
+            <Clock className="w-8 h-8 text-blue-500 mb-3" />
+            <div className="text-2xl font-bold">{totalHours}</div>
+            <div className="text-gray-600">Total Hours Logged</div>
           </div>
-
-          <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-black">
-              End time
-            </label>
-            <input
-              type="datetime-local"
-              className="border border-slate-300 rounded px-3 py-2 text-sm"
-              value={end_at}
-              onChange={(e) => setEndAt(e.target.value)}
-            />
+          <div className="bg-white rounded-xl shadow-sm border p-6">
+            <Calendar className="w-8 h-8 text-green-500 mb-3" />
+            <div className="text-2xl font-bold">{hourLogs?.length || 0}</div>
+            <div className="text-gray-600">Log Entries</div>
+          </div>
+          <div className="bg-white rounded-xl shadow-sm border p-6">
+            <CheckCircle className="w-8 h-8 text-purple-500 mb-3" />
+            <div className="text-2xl font-bold">{requiredHours - totalHours}</div>
+            <div className="text-gray-600">Hours Remaining</div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4">
-          <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-black">
-              Hour type
-            </label>
-            <select
-              className="border border-slate-300 rounded px-3 py-2 text-sm"
-              value={hour_type}
-              onChange={(e) => setHourType(e.target.value as any)}
-            >
-              <option value="RTI">RTI (Milady / theory)</option>
-              <option value="OJT">OJT (hands-on)</option>
-            </select>
+        {/* Hour Logs */}
+        <div className="bg-white rounded-xl shadow-sm border">
+          <div className="p-6 border-b">
+            <h2 className="text-lg font-semibold">Recent Hour Logs</h2>
           </div>
-
-          <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-black">
-              Funding phase
-            </label>
-            <select
-              className="border border-slate-300 rounded px-3 py-2 text-sm"
-              value={funding_phase}
-              onChange={(e) => setFundingPhase(e.target.value as any)}
-            >
-              <option value="PRE_WIOA">PRE_WIOA</option>
-              <option value="WIOA">WIOA</option>
-              <option value="POST_CERT">POST_CERT</option>
-            </select>
-          </div>
-
-          <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-black">
-              Milady module (optional)
-            </label>
-            <input
-              className="border border-slate-300 rounded px-3 py-2 text-sm"
-              value={milady_module_ref}
-              onChange={(e) => setMiladyRef(e.target.value)}
-              placeholder="Example: Ch 3 / Lesson 2"
-            />
-          </div>
-        </div>
-
-        <div className="flex flex-col">
-          <label className="text-xs font-semibold mb-1 text-black">
-            Activity note (optional)
-          </label>
-          <input
-            className="border border-slate-300 rounded px-3 py-2 text-sm"
-            value={activity_note}
-            onChange={(e) => setActivityNote(e.target.value)}
-            placeholder="What you worked on today…"
-          />
-        </div>
-
-        <label className="flex items-center gap-2 text-sm">
-          <input
-            type="checkbox"
-            checked={attest}
-            onChange={(e) => setAttest(e.target.checked)}
-            className="w-4 h-4"
-          />
-          <span className="text-black">
-            I attest these hours are accurate and were completed as logged.
-          </span>
-        </label>
-
-        <button
-          className="border border-slate-300 rounded px-6 py-2 text-sm font-semibold bg-brand-blue-600 text-white hover:bg-brand-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
-          onClick={submit}
-          disabled={saving || !attest}
-        >
-          {saving ? 'Submitting…' : 'Submit Hours'}
-        </button>
-      </div>
-
-      <div className="border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm">
-        <div className="px-4 py-3 text-sm font-bold bg-slate-100 text-black border-b border-slate-200">
-          Recent Entries
-        </div>
-        {loading ? (
-          <div className="px-4 py-8 text-sm text-slate-500 text-center">
-            Loading…
-          </div>
-        ) : entries.length === 0 ? (
-          <div className="px-4 py-8 text-sm text-slate-500 text-center">
-            No entries yet.
-          </div>
-        ) : (
-          <div className="divide-y divide-slate-200">
-            {entries.slice(0, 25).map((e) => (
-              <div
-                key={e.id}
-                className="px-4 py-3 text-sm flex flex-wrap gap-3 items-center justify-between hover:bg-slate-50 transition"
-              >
-                <div className="space-y-1">
-                  <div className="font-semibold text-black">
-                    {e.log_date} • {e.hour_type} • {e.funding_phase}
-                  </div>
-                  <div className="text-xs text-black">
-                    {new Date(e.start_at).toLocaleString()} →{' '}
-                    {new Date(e.end_at).toLocaleString()} •{' '}
-                    {minutesToHrsMin(e.minutes)} •{' '}
-                    <span
-                      className={`inline-block px-2 py-0.5 rounded ${
-                        e.status === 'SUBMITTED'
-                          ? 'bg-yellow-100 text-yellow-800'
-                          : e.status === 'APPROVED'
-                            ? 'bg-brand-green-100 text-green-800'
-                            : e.status === 'REJECTED'
-                              ? 'bg-red-100 text-red-800'
-                              : 'bg-slate-100 text-black'
-                      }`}
-                    >
-                      {e.status}
-                    </span>
-                  </div>
-                  {e.milady_module_ref ? (
-                    <div className="text-xs text-black">
-                      <span className="font-semibold">Milady:</span>{' '}
-                      {e.milady_module_ref}
+          {hourLogs && hourLogs.length > 0 ? (
+            <div className="divide-y">
+              {hourLogs.map((log: any) => (
+                <div key={log.id} className="p-6 flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <Clock className="w-6 h-6 text-blue-600" />
                     </div>
-                  ) : null}
-                  {e.activity_note ? (
-                    <div className="text-xs text-black">
-                      {e.activity_note}
+                    <div>
+                      <h3 className="font-medium">{log.activity || 'Training'}</h3>
+                      <p className="text-sm text-gray-500">
+                        {new Date(log.date).toLocaleDateString()}
+                      </p>
                     </div>
-                  ) : null}
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="text-right">
+                      <div className="font-bold text-lg">{log.hours} hours</div>
+                      <div className="text-sm text-gray-500">{log.supervisor || 'Supervisor'}</div>
+                    </div>
+                    {log.verified ? (
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                    ) : (
+                      <AlertCircle className="w-5 h-5 text-yellow-500" />
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          ) : (
+            <div className="p-8 text-center">
+              <Clock className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+              <p className="text-gray-500">No hours logged yet</p>
+              <Link
+                href="/apprentice/hours/log"
+                className="inline-block mt-4 text-blue-600 font-medium hover:underline"
+              >
+                Log your first hours
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

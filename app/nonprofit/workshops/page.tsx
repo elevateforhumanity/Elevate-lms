@@ -1,118 +1,214 @@
-import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
-
-export const metadata: Metadata = generateMetadata({
-  title: 'Workshops',
-  description: 'Free workshops on career development, job readiness, and professional skills training.',
-  path: '/nonprofit/workshops',
-});
-
 import Link from 'next/link';
-import { Calendar, Clock, Users, MapPin } from 'lucide-react';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { Calendar, Clock, MapPin, Users, ArrowRight } from 'lucide-react';
 
-export default function WorkshopsPage() {
-  const workshops = [
+export const metadata: Metadata = {
+  title: 'Workshops | Selfish Inc.',
+  description: 'Interactive workshops on mindfulness, healing, and personal growth.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/nonprofit/workshops',
+  },
+};
+
+export const dynamic = 'force-dynamic';
+
+export default async function WorkshopsPage() {
+  const supabase = await createClient();
+
+  // Get upcoming workshops
+  const { data: upcomingWorkshops } = await supabase
+    .from('workshops')
+    .select('*')
+    .eq('is_active', true)
+    .gte('date', new Date().toISOString())
+    .order('date', { ascending: true });
+
+  // Get past workshops for reference
+  const { data: pastWorkshops } = await supabase
+    .from('workshops')
+    .select('*')
+    .eq('is_active', true)
+    .lt('date', new Date().toISOString())
+    .order('date', { ascending: false })
+    .limit(6);
+
+  // Get workshop categories
+  const { data: categories } = await supabase
+    .from('workshop_categories')
+    .select('*')
+    .eq('is_active', true)
+    .order('name', { ascending: true });
+
+  const defaultWorkshops = [
     {
-      title: 'Mindfulness & Meditation',
-      description:
-        'Learn techniques to reduce stress and increase present-moment awareness',
-      date: 'Every Tuesday',
-      time: '6:00 PM - 7:30 PM',
+      id: 1,
+      title: 'Mindfulness Meditation Basics',
+      description: 'Learn foundational meditation techniques for stress relief and mental clarity.',
+      date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+      duration: '2 hours',
       location: 'Virtual',
-      spots: '15 spots available',
+      capacity: 20,
+      price: 0,
     },
     {
-      title: 'Trauma Recovery Support Group',
-      description: 'Safe space to share experiences and healing strategies',
-      date: 'Every Thursday',
-      time: '7:00 PM - 8:30 PM',
-      location: 'Virtual',
-      spots: '12 spots available',
+      id: 2,
+      title: 'Healing Through Art',
+      description: 'Express and process emotions through creative art therapy techniques.',
+      date: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+      duration: '3 hours',
+      location: 'Indianapolis',
+      capacity: 15,
+      price: 25,
     },
     {
-      title: 'Holistic Wellness Workshop',
-      description: 'Mind, body, and spirit integration practices',
-      date: 'First Saturday of Month',
-      time: '10:00 AM - 2:00 PM',
-      location: 'In-Person & Virtual',
-      spots: '20 spots available',
+      id: 3,
+      title: 'Building Resilience',
+      description: 'Develop mental and emotional resilience for life\'s challenges.',
+      date: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000).toISOString(),
+      duration: '2 hours',
+      location: 'Virtual',
+      capacity: 25,
+      price: 0,
     },
   ];
 
+  const displayWorkshops = upcomingWorkshops && upcomingWorkshops.length > 0 
+    ? upcomingWorkshops 
+    : defaultWorkshops;
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="py-20 px-4 bg-gradient-to-br from-purple-50 to-white text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-black text-black mb-6">
-            Workshops
-          </h1>
-          <p className="text-xl text-black mb-8">
-            Join our healing workshops and connect with a supportive community
+      <section className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-20">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Calendar className="w-16 h-16 mx-auto mb-6" />
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Workshops</h1>
+          <p className="text-xl text-purple-100">
+            Interactive sessions for mindfulness, healing, and personal growth
           </p>
         </div>
       </section>
 
-      {/* Workshops Grid */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {workshops.map((workshop, index) => (
-              <div
-                key={index}
-                className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
-              >
-                <h3 className="text-2xl font-bold text-black mb-4">
-                  {workshop.title}
-                </h3>
-                <p className="text-black mb-6">{workshop.description}</p>
-                <div className="space-y-3 text-sm text-black">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-purple-600" />
-                    {workshop.date}
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        <Link href="/nonprofit" className="text-purple-600 hover:text-purple-700 mb-8 inline-block">
+          ← Back to Selfish Inc.
+        </Link>
+
+        {/* Upcoming Workshops */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8">Upcoming Workshops</h2>
+          
+          {displayWorkshops.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {displayWorkshops.map((workshop: any) => (
+                <div key={workshop.id} className="bg-white border rounded-xl overflow-hidden hover:shadow-lg transition">
+                  <div className="bg-purple-100 p-4">
+                    <div className="text-purple-600 font-bold text-lg">
+                      {new Date(workshop.date).toLocaleDateString('en-US', { 
+                        month: 'short', 
+                        day: 'numeric' 
+                      })}
+                    </div>
+                    <div className="text-purple-500 text-sm">
+                      {new Date(workshop.date).toLocaleDateString('en-US', { weekday: 'long' })}
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-purple-600" />
-                    {workshop.time}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-purple-600" />
-                    {workshop.location}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-purple-600" />
-                    {workshop.spots}
+                  <div className="p-6">
+                    <h3 className="font-bold text-lg mb-2">{workshop.title}</h3>
+                    <p className="text-gray-600 text-sm mb-4">{workshop.description}</p>
+                    
+                    <div className="space-y-2 text-sm text-gray-500 mb-4">
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4" />
+                        <span>{workshop.duration}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4" />
+                        <span>{workshop.location}</span>
+                      </div>
+                      {workshop.capacity && (
+                        <div className="flex items-center gap-2">
+                          <Users className="w-4 h-4" />
+                          <span>{workshop.capacity} spots</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-purple-600">
+                        {workshop.price === 0 ? 'Free' : `$${workshop.price}`}
+                      </span>
+                      <Link
+                        href={`/nonprofit/workshops/${workshop.id}`}
+                        className="inline-flex items-center gap-1 text-purple-600 font-medium hover:underline"
+                      >
+                        Register <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
-                <Link
-                  href="/nonprofit/sign-up"
-                  className="mt-6 block w-full text-center bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
-                >
-                  Sign Up
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-gray-50 rounded-xl p-8 text-center">
+              <Calendar className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p className="text-gray-600">No upcoming workshops scheduled.</p>
+              <p className="text-gray-500 text-sm mt-2">
+                Sign up for our newsletter to be notified of new workshops.
+              </p>
+            </div>
+          )}
+        </section>
 
-      {/* CTA */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-black mb-4">
-            Ready to Begin Your Healing Journey?
-          </h2>
-          <p className="text-lg text-black mb-8">
-            Sign up for a workshop today and take the first step toward wellness
+        {/* Categories */}
+        {categories && categories.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold mb-6">Workshop Categories</h2>
+            <div className="flex flex-wrap gap-3">
+              {categories.map((category: any) => (
+                <span 
+                  key={category.id}
+                  className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium"
+                >
+                  {category.name}
+                </span>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Past Workshops */}
+        {pastWorkshops && pastWorkshops.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold mb-6">Past Workshops</h2>
+            <div className="grid md:grid-cols-3 gap-4">
+              {pastWorkshops.map((workshop: any) => (
+                <div key={workshop.id} className="bg-gray-50 rounded-lg p-4">
+                  <div className="text-sm text-gray-500 mb-1">
+                    {new Date(workshop.date).toLocaleDateString()}
+                  </div>
+                  <h3 className="font-semibold">{workshop.title}</h3>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* CTA */}
+        <section className="bg-purple-50 border border-purple-200 rounded-xl p-8 text-center">
+          <h3 className="text-2xl font-bold mb-4">Want to Host a Workshop?</h3>
+          <p className="text-gray-600 mb-6">
+            We offer custom workshops for organizations and groups.
           </p>
-          <Link
-            href="/nonprofit/sign-up"
-            className="inline-block bg-purple-600 text-white px-10 py-4 rounded-lg text-lg font-bold hover:bg-purple-700 transition-colors"
+          <Link 
+            href="/contact" 
+            className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition"
           >
-            Sign Up Now
+            Contact Us
           </Link>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

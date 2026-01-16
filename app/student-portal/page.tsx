@@ -1,487 +1,294 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   BookOpen,
   Calendar,
   FileText,
   Users,
   Award,
-  TrendingUp,
   Clock,
-  CheckCircle,
-  Video,
   MessageSquare,
   Briefcase,
   GraduationCap,
-  Target,
   BarChart3,
-  Mail,
-  Phone,
-  Download,
-  ExternalLink,
-  ArrowRight,
   Bell,
   Settings,
-  HelpCircle,
+  ArrowRight,
+  CheckCircle,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/student-portal',
-  },
   title: 'Student Portal | Elevate For Humanity',
-  description:
-    'Access your courses, track progress, connect with instructors, view grades, manage your schedule, and access career services. Your complete student dashboard.',
-  keywords: ['student portal', 'student dashboard', 'course access', 'grades', 'schedule', 'career services', 'student resources'],
+  description: 'Access your courses, track progress, view grades, and manage your schedule.',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function StudentPortalPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/login?redirect=/student-portal');
+  }
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single();
+
+  const { data: enrollments } = await supabase
+    .from('enrollments')
+    .select(`
+      id,
+      status,
+      progress,
+      enrolled_at,
+      course:courses(id, title, thumbnail_url)
+    `)
+    .eq('user_id', user.id)
+    .order('enrolled_at', { ascending: false })
+    .limit(4);
+
+  const { data: assignments } = await supabase
+    .from('assignments')
+    .select('*')
+    .in('course_id', enrollments?.map((e: any) => e.course?.id).filter(Boolean) || [])
+    .gte('due_date', new Date().toISOString())
+    .order('due_date', { ascending: true })
+    .limit(5);
+
+  const { data: announcements } = await supabase
+    .from('announcements')
+    .select('*')
+    .eq('is_active', true)
+    .order('created_at', { ascending: false })
+    .limit(3);
+
+  const { data: certificates } = await supabase
+    .from('certificates')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('issued_at', { ascending: false })
+    .limit(3);
+
+  const { count: messageCount } = await supabase
+    .from('messages')
+    .select('*', { count: 'exact', head: true })
+    .eq('recipient_id', user.id)
+    .eq('is_read', false);
+
   const quickLinks = [
-    {
-      icon: BookOpen,
-      title: 'My Courses',
-      description: 'Access course materials, lectures, and assignments',
-      href: '/student-portal/courses',
-      color: 'blue',
-    },
-    {
-      icon: Calendar,
-      title: 'Schedule',
-      description: 'View class schedule, deadlines, and upcoming events',
-      href: '/student-portal/schedule',
-      color: 'green',
-    },
-    {
-      icon: BarChart3,
-      title: 'Grades & Progress',
-      description: 'Track your academic performance and completion status',
-      href: '/student-portal/grades',
-      color: 'purple',
-    },
-    {
-      icon: Users,
-      title: 'Instructors',
-      description: 'Connect with instructors and get support',
-      href: '/student-portal/instructors',
-      color: 'orange',
-    },
-    {
-      icon: Briefcase,
-      title: 'Career Services',
-      description: 'Resume help, job placement, and interview prep',
-      href: '/career-services',
-      color: 'teal',
-    },
-    {
-      icon: FileText,
-      title: 'Documents',
-      description: 'Transcripts, certificates, and important forms',
-      href: '/student-portal/documents',
-      color: 'indigo',
-    },
-  ];
-
-  const resources = [
-    {
-      icon: Video,
-      title: 'Video Tutorials',
-      description: 'Step-by-step guides for using the portal and course tools',
-      href: '/student-portal/tutorials',
-    },
-    {
-      icon: HelpCircle,
-      title: 'Student Handbook',
-      description: 'Policies, procedures, and important information',
-      href: '/student-portal/handbook',
-    },
-    {
-      icon: MessageSquare,
-      title: 'Discussion Forums',
-      description: 'Connect with classmates and study groups',
-      href: '/student-portal/forums',
-    },
-    {
-      icon: Award,
-      title: 'Certifications',
-      description: 'View earned credentials and download certificates',
-      href: '/student-portal/certifications',
-    },
-  ];
-
-  const careerServices = [
-    {
-      icon: FileText,
-      title: 'Resume Building',
-      description: 'Professional resume writing and review services',
-      href: '/career-services/resume-building',
-    },
-    {
-      icon: Users,
-      title: 'Interview Prep',
-      description: 'Mock interviews and expert feedback',
-      href: '/career-services/interview-prep',
-    },
-    {
-      icon: Briefcase,
-      title: 'Job Placement',
-      description: 'Direct connections to hiring employers',
-      href: '/career-services/job-placement',
-    },
-    {
-      icon: Calendar,
-      title: 'Networking Events',
-      description: 'Career fairs and industry meetups',
-      href: '/career-services/networking-events',
-    },
-  ];
-
-  const supportOptions = [
-    {
-      icon: Phone,
-      title: 'Call Student Services',
-      description: '(317) 314-3757',
-      href: 'tel:317-314-3757',
-    },
-    {
-      icon: Mail,
-      title: 'Email Support',
-      description: 'students@www.elevateforhumanity.org',
-      href: 'mailto:students@www.elevateforhumanity.org',
-    },
-    {
-      icon: MessageSquare,
-      title: 'Live Chat',
-      description: 'Available Mon-Fri 9AM-6PM EST',
-      href: '/contact',
-    },
-    {
-      icon: HelpCircle,
-      title: 'Help Center',
-      description: 'FAQs and troubleshooting guides',
-      href: '/student-portal/help',
-    },
-  ];
-
-  const announcements = [
-    {
-      title: 'Spring 2026 Registration Open',
-      date: 'January 15, 2026',
-      description: 'Register for spring courses now. Priority deadline is February 1st.',
-      type: 'info',
-    },
-    {
-      title: 'Career Fair - February 8th',
-      date: 'January 12, 2026',
-      description: '50+ employers hiring. Register to attend in-person or virtually.',
-      type: 'event',
-    },
-    {
-      title: 'Financial Aid Reminder',
-      date: 'January 10, 2026',
-      description: 'Complete your FAFSA renewal by March 1st to maintain eligibility.',
-      type: 'important',
-    },
-  ];
-
-  const faqs = [
-    {
-      question: 'How do I access my courses?',
-      answer:
-        'Click "My Courses" from the dashboard. All enrolled courses will appear with direct links to course materials, lectures, and assignments.',
-    },
-    {
-      question: 'Where can I view my grades?',
-      answer:
-        'Navigate to "Grades & Progress" to see current grades, assignment scores, and overall completion percentage for each course.',
-    },
-    {
-      question: 'How do I contact my instructor?',
-      answer:
-        'Go to "Instructors" to see contact information, office hours, and messaging options for all your instructors.',
-    },
-    {
-      question: 'Can I download my transcripts?',
-      answer:
-        'Yes! Visit "Documents" to request official transcripts, download unofficial transcripts, and access certificates.',
-    },
-    {
-      question: 'What career services are available?',
-      answer:
-        'All students have free access to resume building, interview prep, job placement assistance, and networking events. Click "Career Services" to learn more.',
-    },
-    {
-      question: 'How do I get technical support?',
-      answer:
-        'Contact student services via phone, email, or live chat. Technical support is available Monday-Friday 9AM-6PM EST.',
-    },
+    { icon: BookOpen, title: 'My Courses', href: '/student-portal/courses', color: 'blue' },
+    { icon: Calendar, title: 'Schedule', href: '/student-portal/schedule', color: 'green' },
+    { icon: BarChart3, title: 'Grades', href: '/student-portal/grades', color: 'purple' },
+    { icon: Users, title: 'Instructors', href: '/student-portal/instructors', color: 'orange' },
+    { icon: Briefcase, title: 'Career Services', href: '/career-services', color: 'teal' },
+    { icon: FileText, title: 'Documents', href: '/student-portal/documents', color: 'indigo' },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-8.jpg"
-          alt="Student Portal"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/80" />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Student Portal
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
-            Your complete dashboard for courses, grades, schedule, career services, and student resources
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 text-white/90 mb-8">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
-              <span>24/7 Course Access</span>
+      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold">Welcome back, {profile?.full_name || 'Student'}</h1>
+              <p className="text-blue-100 mt-1">Your learning dashboard</p>
             </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
-              <span>Real-Time Grades</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
-              <span>Career Support</span>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/lms/dashboard"
-              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition"
-            >
-              <GraduationCap className="w-5 h-5" />
-              Sign In to My Dashboard
-            </Link>
-            <Link
-              href="/apply"
-              className="inline-flex items-center justify-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition border-2 border-white"
-            >
-              Not Enrolled? Apply Now
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Links Dashboard */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-black mb-4">Quick Access</h2>
-          <p className="text-xl text-gray-600 mb-12">
-            Everything you need in one place
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {quickLinks.map((link, index) => (
-              <Link
-                key={index}
-                href={link.href}
-                className="bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-blue-600 hover:shadow-lg transition group"
-              >
-                <link.icon className={`w-12 h-12 text-${link.color}-600 mb-4`} />
-                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-blue-600 transition">
-                  {link.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{link.description}</p>
-                <span className="text-blue-600 font-semibold text-sm flex items-center gap-1">
-                  Access Now <ArrowRight className="w-4 h-4" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Announcements */}
-      <section className="bg-gray-100 py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center gap-3 mb-8">
-            <Bell className="w-8 h-8 text-orange-600" />
-            <h2 className="text-3xl font-black text-black">Announcements</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {announcements.map((announcement, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-xl p-6 border-l-4 ${
-                  announcement.type === 'important'
-                    ? 'border-red-600'
-                    : announcement.type === 'event'
-                    ? 'border-green-600'
-                    : 'border-blue-600'
-                }`}
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-lg font-bold text-black">
-                    {announcement.title}
-                  </h3>
-                  <span
-                    className={`text-xs px-2 py-2 rounded-full ${
-                      announcement.type === 'important'
-                        ? 'bg-red-100 text-red-700'
-                        : announcement.type === 'event'
-                        ? 'bg-green-100 text-green-700'
-                        : 'bg-blue-100 text-blue-700'
-                    }`}
-                  >
-                    {announcement.type}
+            <div className="flex items-center gap-4">
+              <Link href="/student-portal/messages" className="relative p-2 bg-blue-500 rounded-lg hover:bg-blue-400">
+                <MessageSquare className="w-5 h-5" />
+                {messageCount && messageCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                    {messageCount}
                   </span>
+                )}
+              </Link>
+              <Link href="/student-portal/settings" className="p-2 bg-blue-500 rounded-lg hover:bg-blue-400">
+                <Settings className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="grid lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-6">
+            {/* Quick Links */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="bg-white rounded-xl border p-4 hover:shadow-md transition flex items-center gap-3"
+                >
+                  <div className={`w-10 h-10 bg-${link.color}-100 rounded-lg flex items-center justify-center`}>
+                    <link.icon className={`w-5 h-5 text-${link.color}-600`} />
+                  </div>
+                  <span className="font-medium">{link.title}</span>
+                </Link>
+              ))}
+            </div>
+
+            {/* My Courses */}
+            <div className="bg-white rounded-xl shadow-sm border p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold">My Courses</h2>
+                <Link href="/student-portal/courses" className="text-blue-600 text-sm font-medium hover:underline">
+                  View All
+                </Link>
+              </div>
+              {enrollments && enrollments.length > 0 ? (
+                <div className="space-y-4">
+                  {enrollments.map((enrollment: any) => (
+                    <div key={enrollment.id} className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
+                      <div className="w-16 h-12 bg-gray-200 rounded overflow-hidden flex-shrink-0">
+                        {enrollment.course?.thumbnail_url ? (
+                          <img src={enrollment.course.thumbnail_url} alt="" className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <BookOpen className="w-6 h-6 text-gray-400" />
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-medium truncate">{enrollment.course?.title}</h3>
+                        <div className="flex items-center gap-2 mt-1">
+                          <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-blue-600 rounded-full"
+                              style={{ width: `${enrollment.progress || 0}%` }}
+                            />
+                          </div>
+                          <span className="text-sm text-gray-500">{enrollment.progress || 0}%</span>
+                        </div>
+                      </div>
+                      <Link href={`/lms/courses/${enrollment.course?.id}`} className="text-blue-600 text-sm font-medium">
+                        Continue
+                      </Link>
+                    </div>
+                  ))}
                 </div>
-                <p className="text-sm text-gray-500 mb-3">{announcement.date}</p>
-                <p className="text-gray-600">{announcement.description}</p>
+              ) : (
+                <div className="text-center py-8 text-gray-500">
+                  <BookOpen className="w-10 h-10 mx-auto mb-3 text-gray-300" />
+                  <p>No courses enrolled yet</p>
+                  <Link href="/programs" className="text-blue-600 font-medium hover:underline">
+                    Browse Programs
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Upcoming Assignments */}
+            <div className="bg-white rounded-xl shadow-sm border p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold">Upcoming Deadlines</h2>
+                <Link href="/student-portal/assignments" className="text-blue-600 text-sm font-medium hover:underline">
+                  View All
+                </Link>
               </div>
-            ))}
+              {assignments && assignments.length > 0 ? (
+                <div className="space-y-3">
+                  {assignments.map((assignment: any) => (
+                    <div key={assignment.id} className="flex items-center justify-between p-3 border rounded-lg">
+                      <div>
+                        <h3 className="font-medium">{assignment.title}</h3>
+                        <p className="text-sm text-gray-500">{assignment.course_title}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-medium text-orange-600">
+                          {new Date(assignment.due_date).toLocaleDateString()}
+                        </p>
+                        <p className="text-xs text-gray-500">Due</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-6 text-gray-500">
+                  <CheckCircle className="w-8 h-8 mx-auto mb-2 text-green-400" />
+                  <p>No upcoming deadlines</p>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Career Services */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-black mb-4">
-            Career Services
-          </h2>
-          <p className="text-xl text-gray-600 mb-12">
-            Free support to help you land your dream job
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {careerServices.map((service, index) => (
-              <Link
-                key={index}
-                href={service.href}
-                className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-green-600 transition text-center group"
-              >
-                <service.icon className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-black mb-2 group-hover:text-green-600 transition">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{service.description}</p>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link
-              href="/career-services"
-              className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-700 transition"
-            >
-              View All Career Services
-              <ExternalLink className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Student Resources */}
-      <section className="bg-gray-100 py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-black mb-4">
-            Student Resources
-          </h2>
-          <p className="text-xl text-gray-600 mb-12">
-            Tools and information to support your success
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {resources.map((resource, index) => (
-              <Link
-                key={index}
-                href={resource.href}
-                className="bg-white rounded-xl p-6 hover:shadow-lg transition"
-              >
-                <resource.icon className="w-10 h-10 text-blue-600 mb-4" />
-                <h3 className="text-lg font-bold text-black mb-2">
-                  {resource.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{resource.description}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Support Options */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-black mb-4 text-center">
-            Need Help?
-          </h2>
-          <p className="text-xl text-gray-600 mb-12 text-center">
-            Student services is here to support you
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {supportOptions.map((option, index) => (
-              <Link
-                key={index}
-                href={option.href}
-                className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-blue-600 transition text-center"
-              >
-                <option.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-black mb-2">
-                  {option.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{option.description}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="bg-gray-100 py-16">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-black mb-12 text-center">
-            Frequently Asked Questions
-          </h2>
+          {/* Sidebar */}
           <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="bg-white border-2 border-gray-200 rounded-xl p-6"
-              >
-                <h3 className="text-xl font-bold text-black mb-3">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600">{faq.answer}</p>
+            {/* Announcements */}
+            <div className="bg-white rounded-xl shadow-sm border p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Bell className="w-5 h-5 text-orange-500" />
+                <h2 className="text-lg font-semibold">Announcements</h2>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              {announcements && announcements.length > 0 ? (
+                <div className="space-y-4">
+                  {announcements.map((announcement: any) => (
+                    <div key={announcement.id} className="border-l-4 border-blue-500 pl-3">
+                      <h3 className="font-medium text-sm">{announcement.title}</h3>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {new Date(announcement.created_at).toLocaleDateString()}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-gray-500">No announcements</p>
+              )}
+            </div>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-black mb-6">
-            Ready to Start Your Journey?
-          </h2>
-          <p className="text-xl text-white/90 mb-8">
-            Join thousands of students building successful careers through our programs
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply"
-              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition"
-            >
-              Apply Now
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/pathways"
-              className="inline-flex items-center justify-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition border-2 border-white"
-            >
-              Browse Pathways
-              <BookOpen className="w-5 h-5" />
-            </Link>
+            {/* Certificates */}
+            <div className="bg-white rounded-xl shadow-sm border p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Award className="w-5 h-5 text-yellow-500" />
+                <h2 className="text-lg font-semibold">Certificates</h2>
+              </div>
+              {certificates && certificates.length > 0 ? (
+                <div className="space-y-3">
+                  {certificates.map((cert: any) => (
+                    <div key={cert.id} className="flex items-center gap-3 p-2 bg-yellow-50 rounded-lg">
+                      <GraduationCap className="w-5 h-5 text-yellow-600" />
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-sm truncate">{cert.title}</p>
+                        <p className="text-xs text-gray-500">
+                          {new Date(cert.issued_at).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-4 text-gray-500">
+                  <Award className="w-8 h-8 mx-auto mb-2 text-gray-300" />
+                  <p className="text-sm">Complete courses to earn certificates</p>
+                </div>
+              )}
+            </div>
+
+            {/* Quick Help */}
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+              <h3 className="font-semibold mb-3">Need Help?</h3>
+              <div className="space-y-2 text-sm">
+                <Link href="/student-portal/handbook" className="block text-blue-600 hover:underline">
+                  Student Handbook
+                </Link>
+                <Link href="/faq" className="block text-blue-600 hover:underline">
+                  FAQs
+                </Link>
+                <Link href="/support" className="block text-blue-600 hover:underline">
+                  Contact Support
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

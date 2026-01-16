@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { 
   ArrowRight, 
@@ -29,8 +30,45 @@ export const metadata: Metadata = {
   },
 };
 
-export default function LicensePage() {
+export const dynamic = 'force-dynamic';
+
+export default async function LicensePage() {
+  const supabase = await createClient();
   const startingPrice = getStartingPrice();
+
+  // Get license tiers from database
+  const { data: licenseTiers } = await supabase
+    .from('license_tiers')
+    .select('*')
+    .eq('is_active', true)
+    .order('price', { ascending: true });
+
+  // Get testimonials from licensees
+  const { data: testimonials } = await supabase
+    .from('testimonials')
+    .select('*')
+    .eq('category', 'licensee')
+    .eq('is_featured', true)
+    .limit(3);
+
+  // Get current licensees/partners
+  const { data: partners } = await supabase
+    .from('partners')
+    .select('id, name, logo_url')
+    .eq('type', 'licensee')
+    .eq('is_active', true)
+    .limit(6);
+
+  const displayTiers = licenseTiers && licenseTiers.length > 0 ? licenseTiers : LICENSE_TIERS;
+
+  const features = [
+    { icon: GraduationCap, title: 'LMS Platform', description: 'Full learning management system with courses, assessments, and certifications' },
+    { icon: Users, title: 'Student Management', description: 'Enrollment, progress tracking, and outcome reporting' },
+    { icon: Briefcase, title: 'Employer Portal', description: 'Connect graduates with hiring employers' },
+    { icon: Route, title: 'Career Pathways', description: 'Guided career paths with skill mapping' },
+    { icon: ClipboardCheck, title: 'Compliance Tracking', description: 'WIOA, apprenticeship, and regulatory compliance' },
+    { icon: Handshake, title: 'Partner Network', description: 'Access to employer and training provider network' },
+  ];
 
   return (
     <div>
@@ -58,225 +96,178 @@ export default function LicensePage() {
                   href={ROUTES.schedule}
                   className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-orange-700 transition text-sm sm:text-lg"
                 >
-                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
-                  Schedule a Demo
+                  <Calendar className="w-5 h-5" />
+                  Schedule Demo
                 </Link>
                 <Link
-                  href={ROUTES.demo}
-                  className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-white/20 transition text-sm sm:text-lg border border-white/20"
+                  href={ROUTES.pricing}
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-white/20 transition text-sm sm:text-lg"
                 >
-                  View Demo Pages
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                  View Pricing
+                  <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
 
-              <p className="text-slate-400 text-xs sm:text-sm hidden sm:block">
-                White-label ready • Hybrid delivery • Earn-While-You-Learn support • Compliance-minded workflows
+              <p className="text-slate-400 text-sm">
+                Starting at ${startingPrice.toLocaleString()}/year
               </p>
             </div>
 
-            <div className="relative hidden lg:block">
-              <div className="bg-gradient-to-br from-orange-500/20 to-slate-700/50 rounded-2xl p-8 backdrop-blur-sm border border-white/10">
-                <div className="bg-slate-800 rounded-xl p-6 shadow-2xl">
-                  <div className="flex items-center gap-2 mb-6">
-                    <div className="w-3 h-3 rounded-full bg-red-500" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                    <div className="w-3 h-3 rounded-full bg-green-500" />
-                  </div>
-                  
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="bg-slate-700/50 rounded-lg p-4 text-center">
-                      <GraduationCap className="w-8 h-8 text-orange-400 mx-auto mb-2" />
-                      <p className="text-white font-semibold">Programs</p>
-                      <p className="text-slate-400 text-sm">Configurable</p>
-                    </div>
-                    <div className="bg-slate-700/50 rounded-lg p-4 text-center">
-                      <Users className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                      <p className="text-white font-semibold">Learners</p>
-                      <p className="text-slate-400 text-sm">Unlimited</p>
-                    </div>
-                    <div className="bg-slate-700/50 rounded-lg p-4 text-center">
-                      <Building2 className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                      <p className="text-white font-semibold">Employers</p>
-                      <p className="text-slate-400 text-sm">Pipeline Ready</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHO IT'S FOR */}
-      <section className="py-12 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-8 sm:mb-12">Built for</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
-            <div className="bg-slate-50 rounded-lg sm:rounded-xl p-5 sm:p-8 text-center hover:shadow-lg transition">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                <Building2 className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600" />
-              </div>
-              <h3 className="text-base sm:text-xl font-bold text-slate-900 mb-2 sm:mb-3">Training Providers</h3>
-              <p className="text-sm sm:text-base text-slate-600">Deliver workforce programs with compliance tracking and learner management.</p>
-            </div>
-
-            <div className="bg-slate-50 rounded-lg sm:rounded-xl p-5 sm:p-8 text-center hover:shadow-lg transition">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                <Users className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" />
-              </div>
-              <h3 className="text-base sm:text-xl font-bold text-slate-900 mb-2 sm:mb-3">Workforce Organizations</h3>
-              <p className="text-sm sm:text-base text-slate-600">Support underserved populations with structured pathways to employment.</p>
-            </div>
-
-            <div className="bg-slate-50 rounded-lg sm:rounded-xl p-5 sm:p-8 text-center hover:shadow-lg transition">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                <Briefcase className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
-              </div>
-              <h3 className="text-base sm:text-xl font-bold text-slate-900 mb-2 sm:mb-3">Employers & Sponsors</h3>
-              <p className="text-sm sm:text-base text-slate-600">Connect with trained candidates and manage apprenticeship programs.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* MODULES */}
-      <section className="py-12 sm:py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-3 sm:mb-4">Modules included</h2>
-          <p className="text-sm sm:text-base text-slate-600 text-center mb-8 sm:mb-12 max-w-2xl mx-auto">
-            Everything you need to run workforce training programs.
-          </p>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-            {[
-              { icon: GraduationCap, title: 'LMS Delivery', desc: 'Course management, progress tracking', color: 'orange' },
-              { icon: Route, title: 'Programs', desc: 'Career pathways, catalogs', color: 'blue' },
-              { icon: ClipboardCheck, title: 'Intake', desc: 'Screening, eligibility', color: 'green' },
-              { icon: Handshake, title: 'Employer', desc: 'Partner portals, OJT', color: 'purple' },
-            ].map((module, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 rounded-lg sm:rounded-xl overflow-hidden hover:shadow-lg transition">
-                <div className={`h-20 sm:h-32 bg-gradient-to-br from-${module.color}-500 to-${module.color}-600 flex items-center justify-center`}>
-                  <module.icon className="w-10 h-10 sm:w-16 sm:h-16 text-white/80" />
-                </div>
-                <div className="p-3 sm:p-6">
-                  <h3 className="text-sm sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2">{module.title}</h3>
-                  <p className="text-slate-600 text-xs sm:text-sm mb-2 sm:mb-4">{module.desc}</p>
-                  <Link href={ROUTES.licenseFeatures} className="text-orange-600 text-xs sm:text-sm font-medium hover:text-orange-700 inline-flex items-center gap-1">
-                    Details <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* INTEGRATIONS PREVIEW */}
-      <section className="py-12 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-8 sm:mb-12">Integrations</h2>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-10">
-            {INTEGRATIONS.map((integration) => (
-              <div key={integration.id} className="bg-slate-50 rounded-lg sm:rounded-xl p-4 sm:p-6 text-center">
-                <Zap className="w-8 h-8 sm:w-10 sm:h-10 text-slate-600 mx-auto mb-2 sm:mb-4" />
-                <h3 className="font-semibold text-slate-900 mb-1 text-sm sm:text-base">{integration.name}</h3>
-                <p className="text-slate-500 text-xs sm:text-sm">{integration.status}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Link
-              href={ROUTES.licenseIntegrations}
-              className="inline-flex items-center gap-2 bg-slate-900 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-slate-800 transition text-sm sm:text-base"
-            >
-              See Integrations <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* PRICING PREVIEW */}
-      <section className="py-12 sm:py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-8 sm:mb-12">Licensing</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-6 sm:mb-8">
-            {LICENSE_TIERS.slice(0, 3).map((tier) => (
-              <div 
-                key={tier.id} 
-                className={`rounded-lg sm:rounded-xl p-4 sm:p-6 ${
-                  tier.featured 
-                    ? 'bg-orange-600 text-white relative' 
-                    : tier.id === 'enterprise' 
-                      ? 'bg-slate-900 text-white' 
-                      : 'bg-white border-2 border-slate-200'
-                }`}
-              >
-                {tier.featured && (
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-3 py-0.5 rounded-full text-[10px] sm:text-xs font-bold">
-                    POPULAR
-                  </div>
-                )}
-                <h3 className={`text-base sm:text-lg font-bold mb-1 sm:mb-2 ${tier.featured ? 'mt-1' : ''}`}>{tier.name}</h3>
-                <p className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3">{tier.price}</p>
-                <p className={`text-xs sm:text-sm mb-3 sm:mb-4 ${tier.featured ? 'text-orange-100' : tier.id === 'enterprise' ? 'text-slate-300' : 'text-slate-600'}`}>
-                  {tier.description}
-                </p>
-                <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
-                  {tier.includes.slice(0, 3).map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <CheckCircle className={`w-3 h-3 sm:w-4 sm:h-4 mt-0.5 flex-shrink-0 ${tier.featured ? 'text-white' : tier.id === 'enterprise' ? 'text-orange-400' : 'text-green-600'}`} />
-                      <span>{item}</span>
+            <div className="hidden lg:block">
+              <div className="bg-white/5 backdrop-blur rounded-2xl p-8 border border-white/10">
+                <h3 className="text-white font-semibold mb-4">Platform Highlights</h3>
+                <ul className="space-y-3">
+                  {features.slice(0, 4).map((feature, index) => (
+                    <li key={index} className="flex items-center gap-3 text-slate-300">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                      {feature.title}
                     </li>
                   ))}
                 </ul>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Platform Features</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div key={index} className="bg-gray-50 rounded-xl p-6">
+                  <Icon className="w-10 h-10 text-orange-600 mb-4" />
+                  <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Tiers */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">Licensing Options</h2>
+          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            Choose the tier that fits your organization's needs
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {displayTiers.map((tier: any, index: number) => (
+              <div 
+                key={index} 
+                className={`bg-white rounded-xl p-8 shadow-sm border-2 ${
+                  tier.popular ? 'border-orange-500' : 'border-transparent'
+                }`}
+              >
+                {tier.popular && (
+                  <span className="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    Most Popular
+                  </span>
+                )}
+                <h3 className="text-2xl font-bold mt-4">{tier.name}</h3>
+                <div className="text-3xl font-bold text-orange-600 my-4">
+                  ${tier.price?.toLocaleString()}<span className="text-lg text-gray-500">/year</span>
+                </div>
+                <p className="text-gray-600 mb-6">{tier.description}</p>
+                <ul className="space-y-3 mb-8">
+                  {tier.features?.map((feature: string, i: number) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={ROUTES.schedule}
+                  className={`block text-center py-3 rounded-lg font-semibold transition ${
+                    tier.popular 
+                      ? 'bg-orange-600 text-white hover:bg-orange-700' 
+                      : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                  }`}
+                >
+                  Get Started
+                </Link>
+              </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <p className="text-center text-slate-500 text-xs sm:text-sm mb-6 sm:mb-8 px-4">
-            Monthly option: {LICENSE_TIERS[3].price}
+      {/* Testimonials */}
+      {testimonials && testimonials.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12">What Licensees Say</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial: any) => (
+                <div key={testimonial.id} className="bg-gray-50 rounded-xl p-6">
+                  <p className="text-gray-600 italic mb-4">"{testimonial.content}"</p>
+                  <div className="font-semibold">{testimonial.name}</div>
+                  {testimonial.organization && (
+                    <div className="text-sm text-gray-500">{testimonial.organization}</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Partners */}
+      {partners && partners.length > 0 && (
+        <section className="py-12 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <h3 className="text-center text-gray-500 mb-8">Trusted by organizations across Indiana</h3>
+            <div className="flex flex-wrap justify-center items-center gap-8">
+              {partners.map((partner: any) => (
+                <div key={partner.id} className="grayscale hover:grayscale-0 transition">
+                  {partner.logo_url ? (
+                    <img src={partner.logo_url} alt={partner.name} className="h-12 object-contain" />
+                  ) : (
+                    <span className="text-gray-400 font-medium">{partner.name}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA */}
+      <section className="py-16 bg-orange-600">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Ready to Transform Your Workforce Programs?
+          </h2>
+          <p className="text-orange-100 mb-8">
+            Schedule a demo to see how the Elevate platform can work for your organization.
           </p>
-
-          <div className="text-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href={ROUTES.licensePricing}
-              className="inline-flex items-center gap-2 bg-orange-600 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-orange-700 transition text-sm sm:text-base"
+              href={ROUTES.schedule}
+              className="bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
             >
-              View Full Pricing <ArrowRight className="w-4 h-4" />
+              Schedule Demo
+            </Link>
+            <Link
+              href="/contact"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-orange-700 transition"
+            >
+              Contact Sales
             </Link>
           </div>
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="py-12 sm:py-20 bg-gradient-to-r from-orange-600 to-orange-500">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
-            See it live in a guided demo
-          </h2>
-          <p className="text-orange-100 mb-6 sm:mb-8 text-sm sm:text-lg">
-            Walk through the platform with our team.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Link
-              href={ROUTES.schedule}
-              className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-orange-50 transition text-sm sm:text-base"
-            >
-              <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
-              Schedule a Demo
-            </Link>
-            <Link
-              href={ROUTES.demo}
-              className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold border-2 border-white hover:bg-white/10 transition text-sm sm:text-base"
-            >
-              Explore Demo Pages
-            </Link>
-          </div>
+      {/* Disclaimer */}
+      <section className="py-8 bg-gray-100">
+        <div className="max-w-4xl mx-auto px-4 text-center text-sm text-gray-500">
+          <p>{DISCLAIMERS.pricing}</p>
         </div>
       </section>
     </div>

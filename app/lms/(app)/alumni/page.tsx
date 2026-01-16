@@ -1,164 +1,223 @@
-'use client';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import Link from 'next/link';
+import {
+  GraduationCap,
+  Users,
+  Briefcase,
+  Calendar,
+  MapPin,
+  MessageSquare,
+  Award,
+} from 'lucide-react';
 
-import { useState } from 'react';
-import { Users, Briefcase, Calendar, MessageCircle, Award, MapPin } from 'lucide-react';
+export const metadata: Metadata = {
+  title: 'Alumni Network | LMS',
+  description: 'Connect with fellow graduates and access alumni resources.',
+};
 
-export default function AlumniPage() {
-  const [filter, setFilter] = useState('all');
+export const dynamic = 'force-dynamic';
 
-  const alumni = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      program: 'Healthcare - CNA',
-      graduated: '2024',
-      currentRole: 'Certified Nursing Assistant',
-      company: 'Community Hospital',
-      location: 'Indianapolis, IN',
-      image: '/images/programs-new/program-21.jpg',
-      available: true
-    },
-    {
-      id: 2,
-      name: 'Michael Chen',
-      program: 'Technology - Web Development',
-      graduated: '2023',
-      currentRole: 'Full Stack Developer',
-      company: 'Tech Solutions Inc',
-      location: 'Indianapolis, IN',
-      image: '/images/team-new/team-2.jpg',
-      available: true
-    },
-    {
-      id: 3,
-      name: 'Jessica Martinez',
-      program: 'Skilled Trades - HVAC',
-      graduated: '2024',
-      currentRole: 'HVAC Technician',
-      company: 'Climate Control Services',
-      location: 'Carmel, IN',
-      image: '/images/programs-new/program-27.jpg',
-      available: false
-    }
-  ];
+export default async function AlumniPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  // Get alumni members
+  const { data: alumni } = await supabase
+    .from('profiles')
+    .select('id, full_name, avatar_url, graduation_year, program, company, job_title, location')
+    .eq('role', 'alumni')
+    .order('graduation_year', { ascending: false })
+    .limit(20);
+
+  // Get alumni count
+  const { count: alumniCount } = await supabase
+    .from('profiles')
+    .select('*', { count: 'exact', head: true })
+    .eq('role', 'alumni');
+
+  // Get upcoming alumni events
+  const { data: events } = await supabase
+    .from('events')
+    .select('*')
+    .eq('event_type', 'alumni')
+    .gte('start_date', new Date().toISOString())
+    .order('start_date', { ascending: true })
+    .limit(3);
+
+  // Get success stories
+  const { data: stories } = await supabase
+    .from('success_stories')
+    .select('*')
+    .eq('is_published', true)
+    .order('created_at', { ascending: false })
+    .limit(3);
+
+  // Check if current user is alumni
+  let isAlumni = false;
+  if (user) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+    isAlumni = profile?.role === 'alumni';
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Alumni Network</h1>
-      
-      <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-8">
-        <h2 className="text-xl font-bold mb-2">Connect with Graduates</h2>
-        <p className="text-black">
-          Network with over 2,000 Elevate for Humanity alumni. Get career advice, mentorship, and professional connections.
-        </p>
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-3xl font-bold">Alumni Network</h1>
+          <p className="text-gray-600">Connect with {alumniCount || 0} graduates</p>
+        </div>
+        {isAlumni && (
+          <Link
+            href="/lms/alumni/profile"
+            className="bg-amber-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-amber-700"
+          >
+            Edit My Profile
+          </Link>
+        )}
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-white rounded-lg shadow-md p-6 text-center">
-          <Users className="w-12 h-12 text-blue-600 mx-auto mb-3" />
-          <div className="text-3xl font-bold mb-1">2,045</div>
-          <div className="text-black">Alumni</div>
+      {/* Stats */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="bg-white rounded-xl shadow-sm border p-5 text-center">
+          <GraduationCap className="w-8 h-8 text-amber-600 mx-auto mb-2" />
+          <div className="text-2xl font-bold">{alumniCount || 0}</div>
+          <div className="text-gray-600 text-sm">Total Alumni</div>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-6 text-center">
-          <Briefcase className="w-12 h-12 text-green-600 mx-auto mb-3" />
-          <div className="text-3xl font-bold mb-1">87%</div>
-          <div className="text-black">Employed</div>
+        <div className="bg-white rounded-xl shadow-sm border p-5 text-center">
+          <Briefcase className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+          <div className="text-2xl font-bold">85%</div>
+          <div className="text-gray-600 text-sm">Employed</div>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-6 text-center">
-          <Award className="w-12 h-12 text-purple-600 mx-auto mb-3" />
-          <div className="text-3xl font-bold mb-1">150+</div>
-          <div className="text-black">Companies</div>
+        <div className="bg-white rounded-xl shadow-sm border p-5 text-center">
+          <Users className="w-8 h-8 text-green-600 mx-auto mb-2" />
+          <div className="text-2xl font-bold">50+</div>
+          <div className="text-gray-600 text-sm">Companies</div>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm border p-5 text-center">
+          <MapPin className="w-8 h-8 text-purple-600 mx-auto mb-2" />
+          <div className="text-2xl font-bold">20+</div>
+          <div className="text-gray-600 text-sm">Cities</div>
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <div className="flex gap-4 mb-6">
-          <button
-            onClick={() => setFilter('all')}
-            className={`px-4 py-2 rounded-lg font-semibold transition ${
-              filter === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-black hover:bg-gray-200'
-            }`}
-          >
-            All Alumni
-          </button>
-          <button
-            onClick={() => setFilter('available')}
-            className={`px-4 py-2 rounded-lg font-semibold transition ${
-              filter === 'available' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-black hover:bg-gray-200'
-            }`}
-          >
-            Available for Mentorship
-          </button>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {alumni
-            .filter(a => filter === 'all' || (filter === 'available' && a.available))
-            .map((person) => (
-              <div key={person.id} className="border rounded-lg p-6 hover:shadow-lg transition">
-                <img
-                  src={person.image}
-                  alt={person.name}
-                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                />
-                <h3 className="text-xl font-bold text-center mb-2">{person.name}</h3>
-                <p className="text-sm text-blue-600 text-center mb-3">{person.program}</p>
-                
-                <div className="space-y-2 text-sm text-black">
-                  <div className="flex items-center gap-2">
-                    <Briefcase className="w-4 h-4" />
-                    <span>{person.currentRole}</span>
+      <div className="grid lg:grid-cols-3 gap-8">
+        {/* Alumni Directory */}
+        <div className="lg:col-span-2">
+          <div className="bg-white rounded-xl shadow-sm border p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-semibold">Alumni Directory</h2>
+              <Link href="/lms/alumni/directory" className="text-amber-600 text-sm font-medium hover:underline">
+                View All
+              </Link>
+            </div>
+            {alumni && alumni.length > 0 ? (
+              <div className="grid md:grid-cols-2 gap-4">
+                {alumni.map((member: any) => (
+                  <div key={member.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      {member.avatar_url ? (
+                        <img src={member.avatar_url} alt="" className="w-full h-full rounded-full object-cover" />
+                      ) : (
+                        <GraduationCap className="w-6 h-6 text-amber-600" />
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-medium truncate">{member.full_name}</h3>
+                      {member.job_title && member.company && (
+                        <p className="text-sm text-gray-500 truncate">
+                          {member.job_title} at {member.company}
+                        </p>
+                      )}
+                      {member.graduation_year && (
+                        <p className="text-xs text-gray-400">Class of {member.graduation_year}</p>
+                      )}
+                    </div>
+                    <Link href={`/lms/alumni/${member.id}`} className="text-amber-600 text-sm">
+                      View
+                    </Link>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Award className="w-4 h-4" />
-                    <span>{person.company}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4" />
-                    <span>{person.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    <span>Graduated {person.graduated}</span>
-                  </div>
-                </div>
-
-                {person.available && (
-                  <button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition flex items-center justify-center gap-2">
-                    <MessageCircle className="w-4 h-4" />
-                    Connect
-                  </button>
-                )}
+                ))}
               </div>
-            ))}
-        </div>
-      </div>
+            ) : (
+              <div className="text-center py-8 text-gray-500">
+                <Users className="w-10 h-10 mx-auto mb-3 text-gray-300" />
+                <p>No alumni profiles yet</p>
+              </div>
+            )}
+          </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-bold mb-4">Upcoming Events</h2>
-          <div className="space-y-4">
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h3 className="font-semibold">Alumni Networking Mixer</h3>
-              <p className="text-sm text-black">March 15, 2026 • 6:00 PM</p>
-              <p className="text-sm text-slate-500">Downtown Indianapolis</p>
-            </div>
-            <div className="border-l-4 border-green-600 pl-4">
-              <h3 className="font-semibold">Career Fair</h3>
-              <p className="text-sm text-black">April 20, 2026 • 10:00 AM</p>
-              <p className="text-sm text-slate-500">Convention Center</p>
-            </div>
+          {/* Success Stories */}
+          <div className="bg-white rounded-xl shadow-sm border p-6 mt-6">
+            <h2 className="text-xl font-semibold mb-4">Success Stories</h2>
+            {stories && stories.length > 0 ? (
+              <div className="space-y-4">
+                {stories.map((story: any) => (
+                  <div key={story.id} className="border-l-4 border-amber-500 pl-4">
+                    <h3 className="font-medium">{story.title}</h3>
+                    <p className="text-sm text-gray-600 mt-1">{story.excerpt}</p>
+                    <Link href={`/success-stories/${story.slug}`} className="text-amber-600 text-sm hover:underline">
+                      Read More
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-gray-500">Success stories coming soon</p>
+            )}
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-bold mb-4">Mentorship Program</h2>
-          <p className="text-black mb-4">
-            Connect with experienced alumni for career guidance and professional development.
-          </p>
-          <button className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition">
-            Request a Mentor
-          </button>
+        {/* Sidebar */}
+        <div className="space-y-6">
+          {/* Upcoming Events */}
+          <div className="bg-white rounded-xl shadow-sm border p-6">
+            <h2 className="text-lg font-semibold mb-4">Alumni Events</h2>
+            {events && events.length > 0 ? (
+              <div className="space-y-3">
+                {events.map((event: any) => (
+                  <div key={event.id} className="p-3 bg-amber-50 rounded-lg">
+                    <div className="flex items-center gap-2 text-amber-600 text-sm mb-1">
+                      <Calendar className="w-4 h-4" />
+                      {new Date(event.start_date).toLocaleDateString()}
+                    </div>
+                    <h3 className="font-medium">{event.title}</h3>
+                    <Link href={`/events/${event.id}`} className="text-amber-600 text-sm hover:underline">
+                      Details
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-4 text-gray-500">
+                <Calendar className="w-8 h-8 mx-auto mb-2 text-gray-300" />
+                <p className="text-sm">No upcoming events</p>
+              </div>
+            )}
+          </div>
+
+          {/* Quick Links */}
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
+            <h3 className="font-semibold mb-3">Alumni Resources</h3>
+            <div className="space-y-2 text-sm">
+              <Link href="/lms/alumni/directory" className="flex items-center gap-2 text-amber-700 hover:underline">
+                <Users className="w-4 h-4" /> Full Directory
+              </Link>
+              <Link href="/lms/alumni/mentorship" className="flex items-center gap-2 text-amber-700 hover:underline">
+                <MessageSquare className="w-4 h-4" /> Mentorship Program
+              </Link>
+              <Link href="/lms/alumni/jobs" className="flex items-center gap-2 text-amber-700 hover:underline">
+                <Briefcase className="w-4 h-4" /> Job Board
+              </Link>
+              <Link href="/lms/certificates" className="flex items-center gap-2 text-amber-700 hover:underline">
+                <Award className="w-4 h-4" /> Certificates
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

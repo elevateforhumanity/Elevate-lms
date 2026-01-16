@@ -1,202 +1,174 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { Calendar as CalendarIcon, Video, Users, Clock } from 'lucide-react';
+import { Calendar as CalendarIcon, Clock, BookOpen, Bell } from 'lucide-react';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/calendar',
-  },
-  title: 'Calendar - Book Virtual Team Meeting | Elevate For Humanity',
-  description:
-    'Schedule a virtual team meeting with Elevate for Humanity. Book your consultation, program orientation, or career advising session.',
+  title: 'My Calendar | Elevate For Humanity',
+  description: 'View your personal schedule, enrolled classes, and important dates.',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function CalendarPage() {
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <CalendarIcon className="h-20 w-20 text-white mx-auto mb-6" />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
-              Book a Virtual Team Meeting
-            </h1>
-            <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto">
-              Schedule a consultation, program orientation, or career advising
-              session with our team.
-            </p>
-          </div>
-        </div>
-      </section>
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
-      {/* Meeting Types */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-black mb-6">
-              What Can We Help You With?
-            </h2>
-            <p className="text-xl text-black max-w-3xl mx-auto">
-              Choose the type of meeting that best fits your needs.
-            </p>
-          </div>
+  let enrollments = null;
+  let assignments = null;
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-blue-600 transition-colors">
-              <Video className="h-12 w-12 text-blue-600 mb-4" />
-              <h3 className="text-2xl font-bold text-black mb-3">
-                Program Consultation
-              </h3>
-              <p className="text-black mb-4">
-                Learn about our programs, funding options, and enrollment
-                process.
-              </p>
-              <ul className="space-y-2 text-sm text-black">
-                <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-green-600" />
-                  30 minutes
-                </li>
-                <li className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-green-600" />
-                  One-on-one or group
-                </li>
-              </ul>
-            </div>
+  if (user) {
+    const { data: enrollmentData } = await supabase
+      .from('enrollments')
+      .select(`
+        id,
+        course:courses(id, title, schedule, start_date, end_date)
+      `)
+      .eq('user_id', user.id)
+      .eq('status', 'active');
+    enrollments = enrollmentData;
 
-            <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-purple-600 transition-colors">
-              <Users className="h-12 w-12 text-purple-600 mb-4" />
-              <h3 className="text-2xl font-bold text-black mb-3">
-                Career Advising
-              </h3>
-              <p className="text-black mb-4">
-                Get personalized career guidance and explore your options.
-              </p>
-              <ul className="space-y-2 text-sm text-black">
-                <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-green-600" />
-                  45 minutes
-                </li>
-                <li className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-green-600" />
-                  One-on-one
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-orange-600 transition-colors">
-              <CalendarIcon className="h-12 w-12 text-orange-600 mb-4" />
-              <h3 className="text-2xl font-bold text-black mb-3">
-                Program Orientation
-              </h3>
-              <p className="text-black mb-4">
-                Attend a group orientation to learn about getting started.
-              </p>
-              <ul className="space-y-2 text-sm text-black">
-                <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-green-600" />
-                  60 minutes
-                </li>
-                <li className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-green-600" />
-                  Group session
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Calendly Embed */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-            <h2 className="text-3xl font-black text-black mb-4 text-center">
-              Schedule Your Meeting
-            </h2>
-            <p className="text-lg text-black mb-8 text-center">
-              Choose a time that works for you. All meetings are conducted via
-              Zoom.
-            </p>
-
-            <div className="rounded-2xl border-2 border-gray-200 overflow-hidden">
-              <CalendlyEmbed />
-            </div>
-
-            <p className="mt-6 text-sm text-black text-center">
-              If the calendar does not load, use this link:{' '}
-              <a
-                className="text-blue-600 hover:text-blue-700 font-semibold underline"
-                href={process.env.NEXT_PUBLIC_CALENDLY_URL || '#'}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open Calendly
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-6">
-            Prefer to Apply First?
-          </h2>
-          <p className="text-xl text-white mb-8">
-            Start your application and we'll reach out to schedule a meeting.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply"
-              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-bold hover:bg-gray-100 transition-colors"
-            >
-              Apply Now - It's Free
-            </Link>
-            <Link
-              href="/programs"
-              className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/10 transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function CalendlyEmbed() {
-  const url = process.env.NEXT_PUBLIC_CALENDLY_URL;
-
-  if (!url) {
-    return (
-      <div className="p-8 text-center">
-        <p className="text-sm text-red-700 font-semibold mb-2">
-          Calendly is not configured.
-        </p>
-        <p className="text-sm text-black">
-          Add{' '}
-          <span className="font-mono bg-gray-100 px-2 py-2 rounded">
-            NEXT_PUBLIC_CALENDLY_URL
-          </span>{' '}
-          in Vercel → Environment Variables.
-        </p>
-      </div>
-    );
+    const courseIds = enrollments?.map((e: any) => e.course?.id).filter(Boolean) || [];
+    if (courseIds.length > 0) {
+      const { data: assignmentData } = await supabase
+        .from('assignments')
+        .select('*')
+        .in('course_id', courseIds)
+        .gte('due_date', new Date().toISOString())
+        .order('due_date', { ascending: true })
+        .limit(10);
+      assignments = assignmentData;
+    }
   }
 
+  const { data: programs } = await supabase
+    .from('programs')
+    .select('id, name, start_date, schedule')
+    .eq('is_active', true)
+    .limit(10);
+
   return (
-    <iframe
-      title="Calendly Scheduling"
-      src={`${url}?hide_gdpr_banner=1`}
-      className="w-full"
-      style={{ height: 820 }}
-      frameBorder="0"
-      scrolling="no"
-      allow="camera; microphone; fullscreen"
-      loading="lazy"
-    />
+    <div className="min-h-screen bg-gray-50">
+      <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <h1 className="text-4xl font-bold mb-2">My Calendar</h1>
+          <p className="text-purple-100">Your personal schedule and important dates</p>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {!user && (
+          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-8 text-center">
+            <CalendarIcon className="w-12 h-12 text-purple-400 mx-auto mb-3" />
+            <h2 className="text-lg font-semibold text-purple-900 mb-2">Sign in to see your schedule</h2>
+            <p className="text-purple-700 mb-4">View your enrolled classes, assignments, and deadlines.</p>
+            <Link href="/login?redirect=/calendar" className="inline-block bg-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-purple-700">
+              Sign In
+            </Link>
+          </div>
+        )}
+
+        <div className="grid lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-6">
+            {user && (
+              <>
+                <div>
+                  <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                    <BookOpen className="w-5 h-5 text-purple-600" />
+                    My Classes
+                  </h2>
+                  <div className="space-y-3">
+                    {enrollments && enrollments.length > 0 ? enrollments.map((enrollment: any) => (
+                      <div key={enrollment.id} className="bg-white rounded-lg shadow-sm border p-4">
+                        <div className="flex items-start gap-4">
+                          <div className="bg-purple-100 rounded-lg p-3">
+                            <BookOpen className="w-5 h-5 text-purple-600" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-semibold">{enrollment.course?.title}</h3>
+                            <div className="flex gap-4 mt-2 text-sm text-gray-500">
+                              <span className="flex items-center gap-1">
+                                <Clock className="w-4 h-4" />
+                                {enrollment.course?.schedule || 'Schedule TBD'}
+                              </span>
+                            </div>
+                          </div>
+                          <Link href={`/courses/${enrollment.course?.id}`} className="text-purple-600 text-sm font-medium hover:underline">
+                            View
+                          </Link>
+                        </div>
+                      </div>
+                    )) : (
+                      <div className="bg-white rounded-lg shadow-sm border p-6 text-center text-gray-500">
+                        <BookOpen className="w-10 h-10 mx-auto mb-3 text-gray-300" />
+                        <p>No enrolled classes</p>
+                        <Link href="/programs" className="text-purple-600 font-medium hover:underline">Browse Programs</Link>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                    <Bell className="w-5 h-5 text-orange-500" />
+                    Upcoming Deadlines
+                  </h2>
+                  <div className="space-y-3">
+                    {assignments && assignments.length > 0 ? assignments.map((assignment: any) => (
+                      <div key={assignment.id} className="bg-white rounded-lg shadow-sm border p-4">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h3 className="font-medium">{assignment.title}</h3>
+                            <p className="text-sm text-gray-500">{assignment.course_title}</p>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-sm font-medium text-orange-600">
+                              {new Date(assignment.due_date).toLocaleDateString()}
+                            </div>
+                            <div className="text-xs text-gray-500">Due</div>
+                          </div>
+                        </div>
+                      </div>
+                    )) : (
+                      <div className="bg-white rounded-lg shadow-sm border p-6 text-center text-gray-500">
+                        No upcoming deadlines
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold mb-4">Program Schedules</h2>
+            <div className="space-y-3">
+              {programs && programs.length > 0 ? programs.map((program: any) => (
+                <Link key={program.id} href={`/programs/${program.id}`} className="block bg-white rounded-lg shadow-sm border p-4 hover:shadow-md transition">
+                  <h3 className="font-semibold text-gray-900">{program.name}</h3>
+                  <p className="text-sm text-gray-600 mt-1">{program.schedule || 'Schedule TBD'}</p>
+                  {program.start_date && (
+                    <p className="text-xs text-purple-600 mt-2">
+                      Starts: {new Date(program.start_date).toLocaleDateString()}
+                    </p>
+                  )}
+                </Link>
+              )) : (
+                <div className="bg-white rounded-lg shadow-sm border p-4 text-center text-gray-500">
+                  No active programs
+                </div>
+              )}
+            </div>
+
+            <div className="mt-6">
+              <Link href="/events" className="block bg-purple-50 border border-purple-200 rounded-lg p-4 text-center hover:bg-purple-100 transition">
+                <CalendarIcon className="w-8 h-8 text-purple-600 mx-auto mb-2" />
+                <span className="font-medium text-purple-700">View Public Events</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

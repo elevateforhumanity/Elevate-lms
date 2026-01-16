@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { 
   ArrowRight, 
@@ -9,6 +10,7 @@ import {
   Clock,
   DollarSign,
   Building2,
+  Phone,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -19,7 +21,9 @@ export const metadata: Metadata = {
   },
 };
 
-const PATHWAYS = [
+export const dynamic = 'force-dynamic';
+
+const DEFAULT_PATHWAYS = [
   {
     title: 'I Want to Train for a New Career',
     description: 'Explore programs in healthcare, skilled trades, technology, and more.',
@@ -45,12 +49,62 @@ const PATHWAYS = [
     title: 'I Have a Background (Second Chance)',
     description: 'Many programs welcome justice-involved individuals.',
     icon: Heart,
-    href: '/programs?filter=second-chance',
+    href: '/jri',
     color: 'amber',
   },
 ];
 
-export default function StartPage() {
+export default async function StartPage() {
+  const supabase = await createClient();
+
+  // Get pathways from database
+  const { data: pathways } = await supabase
+    .from('pathways')
+    .select('*')
+    .eq('is_active', true)
+    .order('order', { ascending: true });
+
+  // Get featured programs
+  const { data: featuredPrograms } = await supabase
+    .from('programs')
+    .select('id, name, slug, description, duration')
+    .eq('is_active', true)
+    .eq('is_featured', true)
+    .limit(4);
+
+  // Get quick stats
+  const { data: stats } = await supabase
+    .from('statistics')
+    .select('*')
+    .eq('category', 'homepage')
+    .order('order', { ascending: true })
+    .limit(4);
+
+  const displayPathways = pathways && pathways.length > 0 ? pathways : DEFAULT_PATHWAYS;
+
+  const defaultStats = [
+    { label: 'Programs Available', value: '20+' },
+    { label: 'Students Trained', value: '2,500+' },
+    { label: 'Job Placement Rate', value: '85%' },
+    { label: 'Partner Employers', value: '150+' },
+  ];
+
+  const displayStats = stats && stats.length > 0 ? stats : defaultStats;
+
+  const colorClasses: Record<string, string> = {
+    blue: 'bg-blue-50 border-blue-200 hover:border-blue-400',
+    green: 'bg-green-50 border-green-200 hover:border-green-400',
+    purple: 'bg-purple-50 border-purple-200 hover:border-purple-400',
+    amber: 'bg-amber-50 border-amber-200 hover:border-amber-400',
+  };
+
+  const iconColorClasses: Record<string, string> = {
+    blue: 'text-blue-600',
+    green: 'text-green-600',
+    purple: 'text-purple-600',
+    amber: 'text-amber-600',
+  };
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}
@@ -73,36 +127,26 @@ export default function StartPage() {
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {PATHWAYS.map((pathway, index) => {
-              const Icon = pathway.icon;
-              const colorClasses = {
-                blue: 'bg-blue-50 border-blue-200 hover:border-blue-400',
-                green: 'bg-green-50 border-green-200 hover:border-green-400',
-                purple: 'bg-purple-50 border-purple-200 hover:border-purple-400',
-                amber: 'bg-amber-50 border-amber-200 hover:border-amber-400',
-              };
-              const iconColors = {
-                blue: 'bg-blue-600',
-                green: 'bg-green-600',
-                purple: 'bg-purple-600',
-                amber: 'bg-amber-600',
-              };
-
+            {displayPathways.map((pathway: any, index: number) => {
+              const Icon = pathway.icon || GraduationCap;
+              const color = pathway.color || 'blue';
               return (
                 <Link
                   key={index}
-                  href={pathway.href}
-                  className={`block p-6 rounded-xl border-2 transition-all hover:shadow-lg ${colorClasses[pathway.color as keyof typeof colorClasses]}`}
+                  href={pathway.href || '/programs'}
+                  className={`block p-6 rounded-xl border-2 transition-all ${colorClasses[color] || colorClasses.blue}`}
                 >
                   <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${iconColors[pathway.color as keyof typeof iconColors]}`}>
-                      <Icon className="w-6 h-6 text-white" />
+                    <div className={`p-3 rounded-lg bg-white ${iconColorClasses[color] || iconColorClasses.blue}`}>
+                      <Icon className="w-6 h-6" />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-black mb-2">{pathway.title}</h3>
-                      <p className="text-slate-600">{pathway.description}</p>
-                      <span className="inline-flex items-center gap-1 mt-3 text-blue-600 font-semibold">
-                        Get Started <ArrowRight className="w-4 h-4" />
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">
+                        {pathway.title}
+                      </h3>
+                      <p className="text-gray-600 mb-3">{pathway.description}</p>
+                      <span className={`inline-flex items-center gap-1 font-medium ${iconColorClasses[color] || iconColorClasses.blue}`}>
+                        Explore <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
                   </div>
@@ -113,55 +157,122 @@ export default function StartPage() {
         </div>
       </section>
 
-      {/* Quick Steps */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 md:px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-10">
-            How It Works
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { step: 1, title: 'Explore Programs', desc: 'Browse career training options' },
-              { step: 2, title: 'Check Eligibility', desc: 'See if you qualify for funding' },
-              { step: 3, title: 'Apply', desc: 'Submit your application' },
-              { step: 4, title: 'Start Training', desc: 'Begin your new career path' },
-            ].map((item) => (
-              <div key={item.step} className="text-center">
-                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">
-                  {item.step}
+      {/* Stats */}
+      <section className="py-12 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {displayStats.map((stat: any, index: number) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-1">
+                  {stat.value}
                 </div>
-                <h3 className="font-bold text-black mb-1">{item.title}</h3>
-                <p className="text-sm text-slate-600">{item.desc}</p>
+                <div className="text-gray-600">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Featured Programs */}
+      {featuredPrograms && featuredPrograms.length > 0 && (
+        <section className="py-12 md:py-16 bg-slate-50">
+          <div className="max-w-5xl mx-auto px-4">
+            <h2 className="text-2xl font-bold text-center mb-8">Popular Programs</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {featuredPrograms.map((program: any) => (
+                <Link
+                  key={program.id}
+                  href={`/programs/${program.slug || program.id}`}
+                  className="bg-white rounded-xl p-6 border hover:shadow-md transition group"
+                >
+                  <h3 className="font-bold text-lg mb-2 group-hover:text-blue-600 transition">
+                    {program.name}
+                  </h3>
+                  {program.description && (
+                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                      {program.description}
+                    </p>
+                  )}
+                  {program.duration && (
+                    <div className="flex items-center gap-1 text-sm text-gray-500">
+                      <Clock className="w-4 h-4" />
+                      {program.duration}
+                    </div>
+                  )}
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <Link
+                href="/programs"
+                className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:underline"
+              >
+                View All Programs <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* How It Works */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-center mb-8">How It Works</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-blue-600 font-bold text-xl">1</span>
+              </div>
+              <h3 className="font-bold mb-2">Apply</h3>
+              <p className="text-gray-600 text-sm">
+                Complete a simple application and we'll check your eligibility for free training.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-blue-600 font-bold text-xl">2</span>
+              </div>
+              <h3 className="font-bold mb-2">Train</h3>
+              <p className="text-gray-600 text-sm">
+                Enroll in your chosen program and earn industry-recognized certifications.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-blue-600 font-bold text-xl">3</span>
+              </div>
+              <h3 className="font-bold mb-2">Work</h3>
+              <p className="text-gray-600 text-sm">
+                Connect with employers and start your new career.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="py-12 md:py-16 bg-slate-100">
-        <div className="max-w-3xl mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-            Not Sure Where to Start?
+      <section className="py-12 md:py-16 bg-blue-600">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            Ready to Get Started?
           </h2>
-          <p className="text-lg text-slate-600 mb-8">
-            Talk to an advisor who can help you find the right program and funding options.
+          <p className="text-blue-100 mb-8">
+            Apply today and take the first step toward your new career.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors"
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
             >
               Apply Now
-              <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-800 font-bold rounded-lg hover:bg-slate-50 transition-colors border-2 border-slate-300"
+            <a
+              href="tel:3173143757"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition"
             >
-              Contact Us
-            </Link>
+              <Phone className="w-5 h-5" />
+              (317) 314-3757
+            </a>
           </div>
         </div>
       </section>

@@ -57,7 +57,7 @@ export default function QuickApplyForm() {
               required
               aria-required="true"
               className="w-full min-h-[44px] px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-              placeholder="John Doe"
+              placeholder="Full name as it appears on your ID"
             />
           </div>
 

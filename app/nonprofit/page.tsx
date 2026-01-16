@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { Heart, Users, Sparkles, BookOpen, Calendar, Gift } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Nonprofit | Mental Wellness & Holistic Healing',
@@ -11,10 +13,73 @@ export const metadata: Metadata = {
   },
 };
 
-export default function NonprofitPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function NonprofitPage() {
+  const supabase = await createClient();
+
+  // Get nonprofit programs/services
+  const { data: services } = await supabase
+    .from('nonprofit_services')
+    .select('*')
+    .eq('is_active', true)
+    .order('order', { ascending: true });
+
+  // Get upcoming workshops
+  const { data: workshops } = await supabase
+    .from('workshops')
+    .select('*')
+    .eq('is_active', true)
+    .gte('date', new Date().toISOString())
+    .order('date', { ascending: true })
+    .limit(3);
+
+  // Get testimonials
+  const { data: testimonials } = await supabase
+    .from('testimonials')
+    .select('*')
+    .eq('category', 'nonprofit')
+    .eq('is_featured', true)
+    .limit(3);
+
+  const defaultServices = [
+    {
+      title: 'Mental Wellness',
+      description: 'Counseling and support services for mental health and emotional well-being.',
+      href: '/nonprofit/mental-wellness',
+      icon: Heart,
+    },
+    {
+      title: 'Divorce Counseling',
+      description: 'Supportive guidance through the challenges of divorce and separation.',
+      href: '/nonprofit/divorce-counseling',
+      icon: Users,
+    },
+    {
+      title: 'Young Adult Wellness',
+      description: 'Programs designed specifically for young adults navigating life transitions.',
+      href: '/nonprofit/young-adult-wellness',
+      icon: Sparkles,
+    },
+    {
+      title: 'Workshops',
+      description: 'Interactive workshops on mindfulness, healing, and personal growth.',
+      href: '/nonprofit/workshops',
+      icon: BookOpen,
+    },
+    {
+      title: 'Healing Products',
+      description: 'Curated products to support your wellness journey.',
+      href: '/nonprofit/healing-products',
+      icon: Gift,
+    },
+  ];
+
+  const displayServices = services && services.length > 0 ? services : defaultServices;
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Exact replica */}
+      {/* Hero Section */}
       <section className="relative py-20 px-4 text-center">
         <div className="max-w-6xl mx-auto">
           {/* Logo */}
@@ -28,7 +93,7 @@ export default function NonprofitPage() {
             />
           </div>
 
-          {/* Animated Headline - Exact from Wix */}
+          {/* Headline */}
           <h1 className="text-4xl md:text-6xl font-black text-black mb-8 leading-tight">
             "Welcome to Selfish Inc. Your Partner in Mental Wellness and
             Holistic Healing"
@@ -37,8 +102,7 @@ export default function NonprofitPage() {
           {/* Donate Button */}
           <div className="mb-12">
             <Link
-              href="https://donate.stripe.com/5kA5kn7EsfrD08w4gg"
-              target="_blank"
+              href="/nonprofit/donations"
               className="inline-block bg-purple-600 text-white px-10 py-4 rounded-lg text-lg font-bold hover:bg-purple-700 transition-colors shadow-lg"
             >
               Donate
@@ -75,118 +139,124 @@ export default function NonprofitPage() {
         </div>
       </section>
 
-      {/* Healing Products Section */}
+      {/* Services Section */}
       <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {displayServices.map((service: any, index: number) => {
+              const IconComponent = service.icon || Heart;
+              return (
+                <Link
+                  key={index}
+                  href={service.href || '#'}
+                  className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition group"
+                >
+                  <IconComponent className="w-12 h-12 text-purple-600 mb-4 group-hover:scale-110 transition" />
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-gray-600">{service.description}</p>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Workshops */}
+      {workshops && workshops.length > 0 && (
+        <section className="py-16 px-4 bg-purple-50">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Upcoming Workshops</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {workshops.map((workshop: any) => (
+                <div key={workshop.id} className="bg-white rounded-xl p-6 shadow-sm">
+                  <div className="flex items-center gap-2 text-purple-600 mb-3">
+                    <Calendar className="w-5 h-5" />
+                    <span className="text-sm font-medium">
+                      {new Date(workshop.date).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">{workshop.title}</h3>
+                  <p className="text-gray-600 text-sm mb-4">{workshop.description}</p>
+                  <Link
+                    href={`/nonprofit/workshops/${workshop.id}`}
+                    className="text-purple-600 font-medium hover:underline"
+                  >
+                    Learn More →
+                  </Link>
+                </div>
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <Link
+                href="/nonprofit/workshops"
+                className="inline-block bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition"
+              >
+                View All Workshops
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Testimonials */}
+      {testimonials && testimonials.length > 0 && (
+        <section className="py-16 px-4 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">What People Say</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial: any) => (
+                <div key={testimonial.id} className="bg-gray-50 rounded-xl p-6">
+                  <p className="text-gray-600 italic mb-4">"{testimonial.content}"</p>
+                  <div className="font-semibold">{testimonial.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Meet the Founder */}
+      <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-            Shop our healing Products-browse items designed to uplift your mood
-            and body.
-          </h2>
+          <h2 className="text-3xl font-bold mb-6">Meet the Founder</h2>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Learn about the vision and mission behind Selfish Inc. and our commitment 
+            to mental wellness and holistic healing.
+          </p>
           <Link
-            href="https://curvaturebodysculpting.store/"
-            target="_blank"
-            className="inline-block bg-brand-orange-600 text-white px-12 py-4 rounded-lg text-lg font-bold hover:bg-brand-orange-700 transition-colors shadow-lg uppercase"
+            href="/nonprofit/meet-the-founder"
+            className="inline-block bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition"
           >
-            SHOP NOW
+            Meet Our Founder
           </Link>
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="py-12 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="relative h-[400px] bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <svg
-                  className="w-10 h-10 text-purple-600"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              <p className="text-black">Video: 00:00 / 01:26</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Programs Section - Exact from Wix */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Trauma Recovery */}
-            <div className="group block">
-              <div className="relative h-64 rounded-lg overflow-hidden mb-4">
-                <Image
-                  src="https://static.wixstatic.com/media/a9980c_49b5dda3ab744437846dedd6063e8f04~mv2.jpg"
-                  alt="Freckled face reflecting silent trauma"
-                  fill
-                  className="object-cover transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-black">
-                Trauma Recovery
-              </h3>
-            </div>
-
-            {/* Addiction Rehabilitation */}
-            <div className="group block">
-              <div className="relative h-64 rounded-lg overflow-hidden mb-4">
-                <Image
-                  src="https://static.wixstatic.com/media/11062b_d43c4524d004480cac5e896e52182b75~mv2.jpg"
-                  alt="Doctor's touch: support and understanding"
-                  fill
-                  className="object-cover transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-black">
-                Addiction Rehabilitation
-              </h3>
-            </div>
-
-            {/* Divorce Support */}
-            <div className="group block">
-              <div className="relative h-64 rounded-lg overflow-hidden mb-4">
-                <Image
-                  src="https://static.wixstatic.com/media/8e2a95a81bd67d6d59f9fc086239d1be.jpg"
-                  alt="This scene powerfully captures the emotional complexity of divorce"
-                  fill
-                  className="object-cover transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-black">
-                Divorce Support
-              </h3>
-            </div>
-          </div>
-
-          {/* Programs Link */}
-          <div className="text-center mt-12">
+      {/* CTA Section */}
+      <section className="py-16 px-4 bg-purple-600 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">Support Our Mission</h2>
+          <p className="text-purple-100 mb-8 max-w-2xl mx-auto">
+            Your donation helps us provide mental wellness services and holistic healing 
+            programs to those in need.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/rise-foundation/programs"
-              className="text-lg text-purple-600 hover:text-purple-700 font-semibold underline"
+              href="/nonprofit/donations"
+              className="bg-white text-purple-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
             >
-              Mindfulness Workshops, Mental Wellness Programs Holistic, Mental
-              Health
+              Donate Now
+            </Link>
+            <Link
+              href="/nonprofit/sign-up"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-purple-700 transition"
+            >
+              Sign Up for Updates
             </Link>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-4 bg-gray-100 text-center">
-        <p className="text-sm text-black">
-          Do Not Sell My Personal Information
-        </p>
-      </footer>
     </div>
   );
 }

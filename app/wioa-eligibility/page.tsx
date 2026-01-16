@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import Image from 'next/image';
-import { DollarSign, GraduationCap, Home } from 'lucide-react';
+import { DollarSign, GraduationCap, Home, CheckCircle, Users, Briefcase } from 'lucide-react';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
@@ -27,7 +27,75 @@ export const metadata: Metadata = {
   },
 };
 
-export default function WIOAEligibilityPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function WIOAEligibilityPage() {
+  const supabase = await createClient();
+
+  // Get eligibility criteria from database
+  const { data: eligibilityCriteria } = await supabase
+    .from('eligibility_criteria')
+    .select('*')
+    .eq('funding_type', 'WIOA')
+    .eq('is_active', true)
+    .order('order', { ascending: true });
+
+  // Get FAQs about WIOA
+  const { data: faqs } = await supabase
+    .from('faqs')
+    .select('*')
+    .eq('category', 'wioa')
+    .eq('is_active', true)
+    .order('order', { ascending: true });
+
+  // Get programs that accept WIOA funding
+  const { data: programs } = await supabase
+    .from('programs')
+    .select('id, name, slug, description')
+    .eq('is_active', true)
+    .eq('accepts_wioa', true)
+    .limit(6);
+
+  const defaultCriteria = [
+    {
+      title: 'Adults (18+)',
+      description: 'You must be 18 years or older and legally authorized to work in the United States.',
+      icon: Users,
+    },
+    {
+      title: 'Indiana Resident',
+      description: 'You must be a resident of Indiana to qualify for state WIOA funding.',
+      icon: Home,
+    },
+    {
+      title: 'Employment Status',
+      description: 'Unemployed, underemployed, or seeking better employment opportunities.',
+      icon: Briefcase,
+    },
+    {
+      title: 'Income Guidelines',
+      description: 'Meet income requirements based on household size (most working families qualify).',
+      icon: DollarSign,
+    },
+  ];
+
+  const displayCriteria = eligibilityCriteria && eligibilityCriteria.length > 0 
+    ? eligibilityCriteria 
+    : defaultCriteria;
+
+  const priorityGroups = [
+    'Veterans and eligible spouses',
+    'Recipients of public assistance (SNAP, TANF, SSI)',
+    'Low-income individuals',
+    'Basic skills deficient individuals',
+    'Individuals with disabilities',
+    'Ex-offenders',
+    'Homeless individuals',
+    'Youth aging out of foster care',
+    'English language learners',
+    'Long-term unemployed (27+ weeks)',
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <ModernLandingHero
@@ -55,7 +123,7 @@ export default function WIOAEligibilityPage() {
             <h2 className="text-2xl font-black text-green-900 mb-2">
               Good News!
             </h2>
-            <p className="text-lg text-black">
+            <p className="text-lg text-gray-700">
               Most people qualify for WIOA funding. If you're looking to start a
               new career or upgrade your skills, you likely qualify.
             </p>
@@ -66,187 +134,123 @@ export default function WIOAEligibilityPage() {
           </h2>
 
           <div className="space-y-6 mb-12">
-            <div className="bg-white border-2 border-slate-200 rounded-lg p-6 hover:border-orange-500 transition-colors">
-              <h3 className="text-lg font-bold text-black mb-3">
-                ✓ Adults (18+)
-              </h3>
-              <p className="text-black">
-                You must be 18 years or older and legally authorized to work in
-                the United States.
-              </p>
-            </div>
-
-            <div className="bg-white border-2 border-slate-200 rounded-lg p-6 hover:border-orange-500 transition-colors">
-              <h3 className="text-lg font-bold text-black mb-3">
-                ✓ Indiana Residents
-              </h3>
-              <p className="text-black">
-                You must be a resident of Indiana. Proof of residency required
-                (utility bill, lease agreement, etc.).
-              </p>
-            </div>
-
-            <div className="bg-white border-2 border-slate-200 rounded-lg p-6 hover:border-orange-500 transition-colors">
-              <h3 className="text-lg font-bold text-black mb-3">
-                ✓ Employment Status
-              </h3>
-              <p className="text-black mb-3">You qualify if you are:</p>
-              <ul className="list-disc list-inside space-y-2 text-black">
-                <li>Unemployed</li>
-                <li>Underemployed (working part-time but want full-time)</li>
-                <li>Low-income and seeking better employment</li>
-                <li>Receiving public assistance (SNAP, TANF, etc.)</li>
-                <li>Dislocated worker (laid off, plant closure, etc.)</li>
-              </ul>
-            </div>
-
-            <div className="bg-white border-2 border-slate-200 rounded-lg p-6 hover:border-orange-500 transition-colors">
-              <h3 className="text-lg font-bold text-black mb-3">
-                ✓ Education Level
-              </h3>
-              <p className="text-black">
-                High school diploma or GED preferred, but not always required.
-                Some programs accept students working toward their GED.
-              </p>
-            </div>
+            {displayCriteria.map((criteria: any, index: number) => {
+              const IconComponent = criteria.icon || CheckCircle;
+              return (
+                <div 
+                  key={index} 
+                  className="bg-white border-2 border-slate-200 rounded-lg p-6 hover:border-orange-500 transition-colors"
+                >
+                  <h3 className="text-lg font-bold text-black mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    {criteria.title}
+                  </h3>
+                  <p className="text-gray-600">{criteria.description}</p>
+                </div>
+              );
+            })}
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">
-            Priority Groups
-          </h2>
-          <p className="text-lg text-black mb-6">
-            WIOA gives priority to individuals who are:
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-4 mb-12">
-            <Link href="/wioa-eligibility/veterans" className="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition border-2 border-transparent hover:border-orange-500">
-              <p className="font-semibold text-black">• Veterans →</p>
-              <p className="text-sm text-black mt-1">Priority services for military veterans</p>
-            </Link>
-            <Link href="/wioa-eligibility/low-income" className="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition border-2 border-transparent hover:border-orange-500">
-              <p className="font-semibold text-black">• Low-Income Individuals →</p>
-              <p className="text-sm text-black mt-1">Income-based eligibility criteria</p>
-            </Link>
-            <Link href="/wioa-eligibility/public-assistance" className="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition border-2 border-transparent hover:border-orange-500">
-              <p className="font-semibold text-black">• Public Assistance Recipients →</p>
-              <p className="text-sm text-black mt-1">SNAP, TANF, and other programs</p>
-            </Link>
-            <div className="bg-orange-50 p-4 rounded-lg">
-              <p className="font-semibold text-black">
-                • Individuals with disabilities
-              </p>
-            </div>
-            <div className="bg-orange-50 p-4 rounded-lg">
-              <p className="font-semibold text-black">• Ex-offenders</p>
-            </div>
-            <div className="bg-orange-50 p-4 rounded-lg">
-              <p className="font-semibold text-black">
-                • Homeless individuals
-              </p>
-            </div>
-          </div>
-
-          <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">
-            What You'll Need to Apply
-          </h2>
-
-          <div className="bg-blue-50 p-6 rounded-lg mb-12">
-            <ul className="space-y-3 text-black">
-              <li className="flex items-start">
-                <span className="text-2xl mr-3">📋</span>
-                <span>
-                  <strong>Social Security Card</strong> or proof of SSN
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-2xl mr-3">
-                  <Home className="w-5 h-5 inline-block" />
-                </span>
-                <span>
-                  <strong>Proof of Residency</strong> (utility bill, lease,
-                  mortgage statement)
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-2xl mr-3">
-                  <GraduationCap className="w-5 h-5 inline-block" />
-                </span>
-                <span>
-                  <strong>High School Diploma or GED</strong> (if applicable)
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-2xl mr-3">
-                  <DollarSign className="w-5 h-5 inline-block" />
-                </span>
-                <span>
-                  <strong>Income Documentation</strong> (pay stubs, tax returns,
-                  or proof of public assistance)
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-2xl mr-3">🪪</span>
-                <span>
-                  <strong>Valid ID</strong> (driver's license or state ID)
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          <div id="form" className="bg-white border-2 border-gray-900 p-8 rounded-lg">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-black">
-              Check Your Eligibility
-            </h2>
-            <p className="text-base md:text-lg mb-6 text-black">
-              Fill out this quick form and we'll help you determine if you qualify for WIOA funding
+          {/* Priority Groups */}
+          <div className="bg-blue-50 rounded-xl p-8 mb-12">
+            <h3 className="text-2xl font-bold mb-6">Priority Service Groups</h3>
+            <p className="text-gray-600 mb-6">
+              The following groups receive priority for WIOA services:
             </p>
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-bold text-black mb-2">Full Name *</label>
-                <input type="text" required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none" />
-              </div>
-              <div>
-                <label className="block text-sm font-bold text-black mb-2">Email *</label>
-                <input type="email" required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none" />
-              </div>
-              <div>
-                <label className="block text-sm font-bold text-black mb-2">Phone *</label>
-                <input type="tel" required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none" />
-              </div>
-              <div>
-                <label className="block text-sm font-bold text-black mb-2">Employment Status *</label>
-                <select required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none">
-                  <option value="">Select...</option>
-                  <option>Unemployed</option>
-                  <option>Underemployed</option>
-                  <option>Employed - Seeking Better Job</option>
-                  <option>Receiving Public Assistance</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-bold text-black mb-2">Indiana Resident? *</label>
-                <select required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none">
-                  <option value="">Select...</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
-              </div>
-              <button type="submit" className="w-full px-8 py-4 bg-gray-900 text-white font-bold rounded-lg hover:bg-gray-800 transition-all shadow-lg">
-                Check My Eligibility
-              </button>
-            </form>
+            <div className="grid md:grid-cols-2 gap-3">
+              {priorityGroups.map((group, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <span className="text-gray-700">{group}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-8 text-center">
-            <p className="text-black mb-4">Or contact us directly:</p>
+          {/* Programs */}
+          {programs && programs.length > 0 && (
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold mb-6">WIOA-Approved Programs</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                {programs.map((program: any) => (
+                  <Link
+                    key={program.id}
+                    href={`/programs/${program.slug || program.id}`}
+                    className="bg-white border rounded-lg p-4 hover:shadow-md transition"
+                  >
+                    <h4 className="font-semibold">{program.name}</h4>
+                    {program.description && (
+                      <p className="text-sm text-gray-600 mt-1 line-clamp-2">{program.description}</p>
+                    )}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* FAQs */}
+          {faqs && faqs.length > 0 && (
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
+              <div className="space-y-4">
+                {faqs.map((faq: any) => (
+                  <div key={faq.id} className="bg-white rounded-lg p-6 border">
+                    <h4 className="font-semibold mb-2">{faq.question}</h4>
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* CTA Form */}
+          <div id="form" className="bg-white rounded-2xl shadow-lg p-8 border-2 border-green-500">
+            <h3 className="text-2xl font-bold text-center mb-4">
+              Check Your Eligibility
+            </h3>
+            <p className="text-gray-600 text-center mb-8">
+              Not sure if you qualify? Apply and we'll help determine your eligibility.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/contact"
-                className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-100 transition-all shadow-xl"
+                href="/apply"
+                className="bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition text-center"
               >
-                Contact Us for Help
+                Apply for Free Training
               </Link>
+              <a
+                href="tel:3173143757"
+                className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-50 transition text-center"
+              >
+                Call (317) 314-3757
+              </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Other Funding Options */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8">
+            Other Funding Options
+          </h2>
+          <p className="text-gray-600 text-center mb-8">
+            Don't qualify for WIOA? You may be eligible for other funding programs:
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link href="/wioa-eligibility/veterans" className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition">
+              <h3 className="font-bold mb-2">Veterans Benefits</h3>
+              <p className="text-sm text-gray-600">GI Bill and veteran-specific training programs</p>
+            </Link>
+            <Link href="/wioa-eligibility/public-assistance" className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition">
+              <h3 className="font-bold mb-2">Public Assistance</h3>
+              <p className="text-sm text-gray-600">SNAP, TANF, and other assistance recipients</p>
+            </Link>
+            <Link href="/wioa-eligibility/low-income" className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition">
+              <h3 className="font-bold mb-2">Low Income</h3>
+              <p className="text-sm text-gray-600">Income-based eligibility guidelines</p>
+            </Link>
           </div>
         </div>
       </section>

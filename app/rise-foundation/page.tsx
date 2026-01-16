@@ -1,228 +1,262 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
-import UniversalNav from '@/components/UniversalNav';
+import { createClient } from '@/lib/supabase/server';
+import Link from 'next/link';
+import {
+  Heart,
+  Users,
+  Sparkles,
+  ArrowRight,
+  Phone,
+  Mail,
+  Calendar,
+  Shield,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  title:
-    'Selfish Inc. (dba) Rise Forward Foundation | Mental Wellness & Holistic Healing',
-  description:
-    'Welcome to Selfish Inc. Your Partner in Mental Wellness and Holistic Healing',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/rise-foundation',
-  },
-  openGraph: {
-    title: 'Rise Forward Foundation - Mental Wellness',
-    description: 'Your partner in mental wellness and holistic healing.',
-    url: 'https://www.elevateforhumanity.org/rise-foundation',
-    siteName: 'Elevate for Humanity',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Rise Foundation' }],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Rise Forward Foundation - Mental Wellness',
-    description: 'Your partner in mental wellness and holistic healing.',
-    images: ['/og-default.jpg'],
-  },
+  title: 'Rise Forward Foundation | Healing & Recovery Support',
+  description: 'Supporting individuals through trauma recovery, divorce support, addiction rehabilitation, and mental wellness programs.',
 };
 
-export default function RiseFoundationPage() {
-  const navLinks = [
-    { label: 'Home', href: '/rise-foundation' },
-    { label: 'About', href: '/rise-foundation/about' },
-    { label: 'Programs', href: '/rise-foundation/programs' },
-    { label: 'Trauma Recovery', href: '/rise-foundation/trauma-recovery' },
-    { label: 'Addiction', href: '/rise-foundation/addiction-rehabilitation' },
-    { label: 'Divorce Support', href: '/rise-foundation/divorce-support' },
-    { label: 'Events', href: '/rise-foundation/events' },
-    { label: 'Get Involved', href: '/rise-foundation/get-involved' },
+export const dynamic = 'force-dynamic';
+
+export default async function RiseFoundationPage() {
+  const supabase = await createClient();
+
+  // Get programs
+  const { data: programs } = await supabase
+    .from('rise_programs')
+    .select('*')
+    .eq('is_active', true)
+    .order('order', { ascending: true });
+
+  // Get stats
+  const { count: peopleHelped } = await supabase
+    .from('rise_participants')
+    .select('*', { count: 'exact', head: true });
+
+  // Get upcoming events
+  const { data: events } = await supabase
+    .from('events')
+    .select('*')
+    .eq('organization', 'rise-foundation')
+    .gte('start_date', new Date().toISOString())
+    .order('start_date', { ascending: true })
+    .limit(3);
+
+  // Get testimonials
+  const { data: testimonials } = await supabase
+    .from('testimonials')
+    .select('*')
+    .eq('organization', 'rise-foundation')
+    .eq('is_published', true)
+    .limit(3);
+
+  const defaultPrograms = [
+    {
+      id: '1',
+      title: 'Trauma Recovery',
+      description: 'Comprehensive support for individuals healing from traumatic experiences. Individual and group therapy options available.',
+      icon: 'heart',
+      href: '/rise-foundation/trauma-recovery',
+      image_url: 'https://images.pexels.com/photos/3958379/pexels-photo-3958379.jpeg?auto=compress&cs=tinysrgb&w=800',
+    },
+    {
+      id: '2',
+      title: 'Divorce Support',
+      description: 'Navigate the challenges of divorce with professional guidance. Support groups, counseling, and practical resources.',
+      icon: 'users',
+      href: '/rise-foundation/divorce-support',
+      image_url: 'https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=800',
+    },
+    {
+      id: '3',
+      title: 'Addiction Rehabilitation',
+      description: 'Evidence-based recovery programs for substance abuse. Outpatient services, support groups, and aftercare planning.',
+      icon: 'sparkles',
+      href: '/rise-foundation/addiction-rehabilitation',
+      image_url: 'https://images.pexels.com/photos/4506105/pexels-photo-4506105.jpeg?auto=compress&cs=tinysrgb&w=800',
+    },
+    {
+      id: '4',
+      title: 'Mental Wellness',
+      description: 'Holistic mental health support including counseling, workshops, and wellness programs for lasting wellbeing.',
+      icon: 'shield',
+      href: '/rise-foundation/mental-wellness',
+      image_url: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=800',
+    },
   ];
 
+  const displayPrograms = programs && programs.length > 0 ? programs : defaultPrograms;
+
   return (
-    <main className="min-h-screen bg-white">
-      <UniversalNav
-        links={navLinks}
-        ctaText="Donate"
-        ctaHref="https://donate.stripe.com/5kA5kn7EsfrD08w4gg"
-        bgColor="bg-purple-600"
-        textColor="text-white"
-        logo="Selfish Inc."
-        logoHref="/rise-foundation"
-      />
-
-      {/* Hero Section with Background Image */}
-      <section className="relative py-32 px-4 text-center">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://static.wixstatic.com/media/a9980c_542c794668484ecc911de7f139dad437~mv2.jpg"
-            alt="Mental wellness background"
-            fill
-            className="object-cover opacity-20"
-            sizes="100vw"
-            priority
-          />
-        </div>
-
-        <div className="max-w-6xl mx-auto relative z-10">
-          {/* Headline */}
-          <h1 className="text-4xl md:text-6xl font-black text-black mb-8 leading-tight">
-            "Welcome to Selfish Inc. Your Partner in Mental Wellness and
-            Holistic Healing"
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="relative min-h-[500px] flex items-center">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-purple-800/80" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-white">
+          <div className="flex items-center gap-2 mb-4">
+            <Heart className="w-8 h-8 text-pink-400" />
+            <span className="text-pink-200 font-medium">Rise Forward Foundation</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Healing Starts Here
           </h1>
-
-          {/* Donate Button */}
-          <div className="mb-12">
+          <p className="text-xl text-purple-100 max-w-2xl mb-8">
+            Supporting individuals and families through life's most challenging moments. 
+            Trauma recovery, divorce support, addiction rehabilitation, and mental wellness programs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="https://donate.stripe.com/5kA5kn7EsfrD08w4gg"
-              target="_blank"
-              className="inline-block bg-purple-600 text-white px-10 py-4 rounded-lg text-lg font-bold hover:bg-purple-700 transition-colors shadow-lg"
+              href="/rise-foundation/get-involved"
+              className="inline-flex items-center justify-center gap-2 bg-pink-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-pink-600"
             >
-              Donate
+              Get Support <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/donate"
+              className="inline-flex items-center justify-center gap-2 bg-white text-purple-700 px-8 py-4 rounded-xl font-bold hover:bg-gray-100"
+            >
+              <Heart className="w-5 h-5" /> Donate
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Mind Body Spirit Image Section */}
-      <section className="py-12 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="relative h-[400px] rounded-lg overflow-hidden border-4 border-gray-200">
-              <Image
-                src="https://static.wixstatic.com/media/a9980c_542c794668484ecc911de7f139dad437~mv2.jpg"
-                alt="Mind, Body and spirit words engraved on zen stones"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                loading="lazy"
-              />
+      {/* Stats */}
+      <section className="py-12 bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <div className="text-4xl font-bold text-purple-600">{peopleHelped || 500}+</div>
+              <div className="text-gray-600">People Helped</div>
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden border-4 border-gray-200">
-              <Image
-                src="https://static.wixstatic.com/media/a9980c_50880ae14adb46c09fb5244b2fa65c84~mv2.webp"
-                alt="Rocks of strength and resilience"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                loading="lazy"
-              />
+            <div>
+              <div className="text-4xl font-bold text-purple-600">4</div>
+              <div className="text-gray-600">Core Programs</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-purple-600">24/7</div>
+              <div className="text-gray-600">Crisis Support</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-purple-600">100%</div>
+              <div className="text-gray-600">Confidential</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Healing Products Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-            Shop our healing Products-browse items designed to uplift your mood
-            and body.
-          </h2>
-          <Link
-            href="https://curvaturebodysculpting.store/"
-            target="_blank"
-            className="inline-block bg-brand-orange-600 text-white px-12 py-4 rounded-lg text-lg font-bold hover:bg-brand-orange-700 transition-colors shadow-lg uppercase"
-          >
-            SHOP NOW
-          </Link>
-        </div>
-      </section>
-
-      {/* Video Section - Will be added */}
-      <section className="py-12 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center text-black">
-            <p>Video section - to be added</p>
+      {/* Programs */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Our Programs</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Comprehensive support services designed to help you heal, grow, and thrive.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {displayPrograms.map((program: any) => (
+              <Link
+                key={program.id}
+                href={program.href || `/rise-foundation/${program.slug}`}
+                className="group bg-white rounded-2xl shadow-sm border overflow-hidden hover:shadow-lg transition"
+              >
+                <div className="h-56 relative">
+                  {program.image_url ? (
+                    <img
+                      src={program.image_url}
+                      alt={program.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">
+                    {program.title}
+                  </h3>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">{program.description}</p>
+                  <span className="inline-flex items-center gap-1 text-purple-600 font-medium group-hover:underline">
+                    Learn More <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Programs Section - Exact from Wix */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Trauma Recovery */}
-            <Link
-              href="/rise-foundation/trauma-recovery"
-              className="group block"
-            >
-              <div className="relative h-64 rounded-lg overflow-hidden mb-4">
-                <Image
-                  src="https://static.wixstatic.com/media/a9980c_49b5dda3ab744437846dedd6063e8f04~mv2.jpg"
-                  alt="Freckled face reflecting silent trauma"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-black group-hover:text-purple-600 transition-colors">
-                Trauma Recovery
-              </h3>
-            </Link>
-
-            {/* Addiction Rehabilitation */}
-            <Link
-              href="/rise-foundation/addiction-rehabilitation"
-              className="group block"
-            >
-              <div className="relative h-64 rounded-lg overflow-hidden mb-4">
-                <Image
-                  src="https://static.wixstatic.com/media/11062b_d43c4524d004480cac5e896e52182b75~mv2.jpg"
-                  alt="Doctor's touch: support and understanding"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-black group-hover:text-purple-600 transition-colors">
-                Addiction Rehabilitation
-              </h3>
-            </Link>
-
-            {/* Divorce Support */}
-            <Link
-              href="/rise-foundation/divorce-support"
-              className="group block"
-            >
-              <div className="relative h-64 rounded-lg overflow-hidden mb-4">
-                <Image
-                  src="https://static.wixstatic.com/media/8e2a95a81bd67d6d59f9fc086239d1be.jpg"
-                  alt="This scene powerfully captures the emotional complexity of divorce"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-black group-hover:text-purple-600 transition-colors">
-                Divorce Support
-              </h3>
-            </Link>
+      {/* Testimonials */}
+      {testimonials && testimonials.length > 0 && (
+        <section className="py-16 bg-purple-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12">Stories of Hope</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {testimonials.map((testimonial: any) => (
+                <div key={testimonial.id} className="bg-white rounded-xl p-6 shadow-sm">
+                  <p className="text-gray-600 italic mb-4">"{testimonial.content}"</p>
+                  <p className="font-medium">- {testimonial.name}</p>
+                </div>
+              ))}
+            </div>
           </div>
+        </section>
+      )}
 
-          {/* Programs Link */}
-          <div className="text-center mt-12">
-            <Link
-              href="/rise-foundation/our-programs"
-              className="text-lg text-purple-600 hover:text-purple-700 font-semibold underline"
-            >
-              Mindfulness Workshops, Mental Wellness Programs Holistic, Mental
-              Health
-            </Link>
+      {/* Events */}
+      {events && events.length > 0 && (
+        <section className="py-16">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8">Upcoming Events</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {events.map((event: any) => (
+                <div key={event.id} className="bg-white rounded-xl shadow-sm border p-6">
+                  <div className="flex items-center gap-2 text-purple-600 text-sm mb-2">
+                    <Calendar className="w-4 h-4" />
+                    {new Date(event.start_date).toLocaleDateString()}
+                  </div>
+                  <h3 className="font-semibold text-lg mb-2">{event.title}</h3>
+                  <p className="text-gray-600 text-sm">{event.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
+        </section>
+      )}
+
+      {/* Contact CTA */}
+      <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Take the First Step?</h2>
+          <p className="text-xl text-purple-100 mb-8">
+            Our compassionate team is here to support you. All services are confidential.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <Link
+              href="/rise-foundation/get-involved"
+              className="inline-flex items-center justify-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100"
+            >
+              Get Started
+            </Link>
+            <a
+              href="tel:+13173143757"
+              className="inline-flex items-center justify-center gap-2 bg-purple-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-400 border-2 border-white"
+            >
+              <Phone className="w-5 h-5" /> Call Now
+            </a>
+          </div>
+          <p className="text-purple-200 text-sm">
+            Crisis Line Available 24/7 • All Services Confidential
+          </p>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-4 bg-gray-100 text-center">
-        <p className="text-sm text-black">
-          Do Not Sell My Personal Information
-        </p>
-      </footer>
-    </main>
+    </div>
   );
 }

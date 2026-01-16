@@ -1,296 +1,274 @@
-import Link from 'next/link';
 import { Metadata } from 'next';
-import Image from 'next/image';
-import { Target, TrendingUp, Users, ArrowRight, Calendar, CheckCircle, MessageCircle, Briefcase } from 'lucide-react';
-import { CareerHero } from '../components/CareerHero';
+import { createClient } from '@/lib/supabase/server';
+import Link from 'next/link';
+import { MessageSquare, Calendar, User, Target, Compass, ArrowRight, CheckCircle, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Career Counseling Services | One-on-One Career Guidance | Elevate for Humanity',
-  description:
-    'Professional career counseling for long-term success. Get personalized guidance, goal setting, career pathway planning, and ongoing support from experienced counselors.',
-  keywords: 'career counseling, career guidance, career planning, professional development, career coach, job counseling',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/career-services/career-counseling',
-  },
+  title: 'Career Counseling | Career Services | Elevate For Humanity',
+  description: 'One-on-one career guidance to help you discover your path, set goals, and achieve professional success.',
 };
 
-export default function CareerCounselingPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function CareerCounselingPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  // Get counselors
+  const { data: counselors } = await supabase
+    .from('profiles')
+    .select('id, full_name, avatar_url, bio, specialties')
+    .eq('role', 'counselor')
+    .eq('is_active', true)
+    .limit(4);
+
+  // Get user's appointments if logged in
+  let appointments = null;
+  if (user) {
+    const { data } = await supabase
+      .from('counseling_appointments')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('scheduled_at', { ascending: true });
+    appointments = data;
+  }
+
+  // Get stats
+  const { count: sessionsCompleted } = await supabase
+    .from('counseling_appointments')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'completed');
+
+  const services = [
+    {
+      icon: Compass,
+      title: 'Career Exploration',
+      description: 'Discover careers that match your interests, skills, and values.',
+    },
+    {
+      icon: Target,
+      title: 'Goal Setting',
+      description: 'Create actionable plans to achieve your short and long-term career goals.',
+    },
+    {
+      icon: MessageSquare,
+      title: 'Decision Support',
+      description: 'Get guidance on job offers, career changes, and professional decisions.',
+    },
+    {
+      icon: User,
+      title: 'Personal Development',
+      description: 'Build confidence, communication skills, and professional presence.',
+    },
+  ];
+
+  const topics = [
+    'Choosing the right career path',
+    'Transitioning to a new industry',
+    'Work-life balance strategies',
+    'Dealing with workplace challenges',
+    'Building professional confidence',
+    'Long-term career planning',
+    'Salary and benefits negotiation',
+    'Professional networking strategies',
+  ];
+
   return (
-    <div className="min-h-screen bg-white">
-      <CareerHero
-        badge="💼 Career Counseling"
-        title="Professional Career Counseling"
-        description="Work with experienced career counselors to define your goals, explore opportunities, and create a personalized plan for long-term career success. Available to all students and alumni."
-      />
-
-      {/* Quick Facts */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-purple-50 rounded-xl p-6 border-2 border-purple-200">
-            <h3 className="text-xl font-bold text-black mb-4">Session Length</h3>
-            <p className="text-3xl font-black text-purple-600 mb-2">45-60 min</p>
-            <p className="text-black">Per counseling session</p>
-          </div>
-
-          <div className="bg-blue-50 rounded-xl p-6 border-2 border-blue-200">
-            <h3 className="text-xl font-bold text-black mb-4">Availability</h3>
-            <p className="text-3xl font-black text-blue-600 mb-2">Free</p>
-            <p className="text-black">For students and alumni</p>
-          </div>
-
-          <div className="bg-green-50 rounded-xl p-6 border-2 border-green-200">
-            <h3 className="text-xl font-bold text-black mb-4">Format</h3>
-            <p className="text-3xl font-black text-green-600 mb-2">Flexible</p>
-            <p className="text-black">In-person, phone, or video</p>
-          </div>
-        </div>
-
-        {/* What We Offer */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-black mb-8">What We Offer</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <Target className="w-12 h-12 text-purple-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-4">Goal Setting & Planning</h3>
-              <ul className="space-y-2 text-black">
-                <li>• Define short-term and long-term career goals</li>
-                <li>• Create actionable career development plans</li>
-                <li>• Identify skills and experience needed for advancement</li>
-                <li>• Set realistic timelines and milestones</li>
-                <li>• Develop strategies to overcome obstacles</li>
-              </ul>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <TrendingUp className="w-12 h-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-4">Career Pathway Exploration</h3>
-              <ul className="space-y-2 text-black">
-                <li>• Explore career options in your field</li>
-                <li>• Understand advancement opportunities</li>
-                <li>• Research salary expectations and job outlook</li>
-                <li>• Identify transferable skills</li>
-                <li>• Plan career transitions and pivots</li>
-              </ul>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <CheckCircle className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-4">Skills Assessment</h3>
-              <ul className="space-y-2 text-black">
-                <li>• Evaluate your current skills and strengths</li>
-                <li>• Identify areas for professional development</li>
-                <li>• Discover hidden talents and interests</li>
-                <li>• Match skills to career opportunities</li>
-                <li>• Create personalized development plans</li>
-              </ul>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <Users className="w-12 h-12 text-orange-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-4">Ongoing Support</h3>
-              <ul className="space-y-2 text-black">
-                <li>• Regular check-ins and progress reviews</li>
-                <li>• Accountability and motivation</li>
-                <li>• Guidance through career transitions</li>
-                <li>• Support during job searches</li>
-                <li>• Lifetime access for alumni</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* How It Works */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-black mb-8">How Career Counseling Works</h2>
-          <div className="bg-gray-50 rounded-xl p-8 border-2 border-gray-200">
-            <div className="space-y-8">
-              <div className="flex gap-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                  1
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-black mb-2">Schedule Your Session</h3>
-                  <p className="text-black">
-                    Book an appointment online, by phone, or in person. Choose a time that works for your schedule.
-                    Sessions available weekdays and select evenings.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                  2
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-black mb-2">Initial Assessment</h3>
-                  <p className="text-black">
-                    Your counselor will learn about your background, interests, goals, and challenges. We'll discuss
-                    your current situation and where you want to be in your career.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                  3
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-black mb-2">Create Your Plan</h3>
-                  <p className="text-black">
-                    Together, we'll develop a personalized career action plan with specific goals, timelines, and
-                    steps. You'll leave with clear direction and actionable next steps.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                  4
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-black mb-2">Ongoing Support</h3>
-                  <p className="text-black">
-                    Schedule follow-up sessions as needed. Your counselor is available for check-ins, questions,
-                    and support as you progress toward your goals.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Who Benefits */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-black mb-8">Who Benefits from Career Counseling</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-black mb-2">Current Students</h3>
-              <p className="text-black">
-                Plan your career path while in training. Understand job opportunities and prepare for your
-                first role in your new field.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-black mb-2">Recent Graduates</h3>
-              <p className="text-black">
-                Navigate your first job search, negotiate offers, and successfully transition into your
-                new career with confidence.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-black mb-2">Alumni</h3>
-              <p className="text-black">
-                Advance in your current role, explore new opportunities, or make a career change with
-                ongoing support from your counselor.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Success Stories */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-black mb-8">Success Stories</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-blue-50 rounded-xl p-8 border-2 border-blue-200">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
-                  M
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-black">Maria Rodriguez</h3>
-                  <p className="text-sm text-gray-600">CNA Graduate → LPN Student</p>
-                </div>
-              </div>
-              <p className="text-black italic mb-4">
-                "My career counselor helped me see that I could advance beyond CNA. We created a plan for
-                me to become an LPN, and now I'm enrolled in nursing school while working full-time."
-              </p>
-              <p className="text-sm text-gray-600">Salary increase: $16/hr → $24/hr (projected)</p>
-            </div>
-
-            <div className="bg-green-50 rounded-xl p-8 border-2 border-green-200">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
-                  J
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-black">James Thompson</h3>
-                  <p className="text-sm text-gray-600">CDL Graduate → Fleet Manager</p>
-                </div>
-              </div>
-              <p className="text-black italic mb-4">
-                "I thought driving was my only option. Career counseling showed me a path to management.
-                Three years later, I'm managing a fleet of 20 drivers."
-              </p>
-              <p className="text-sm text-gray-600">Salary increase: $45K → $72K annually</p>
-            </div>
-          </div>
-        </div>
-
-        {/* FAQ */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-black mb-8">Frequently Asked Questions</h2>
-          <div className="space-y-6">
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-black mb-2">How often should I meet with a career counselor?</h3>
-              <p className="text-black">
-                It varies by individual needs. Most students benefit from monthly sessions during training and
-                quarterly check-ins after graduation. You can schedule as often as needed.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-black mb-2">Is career counseling really free?</h3>
-              <p className="text-black">
-                Yes! Career counseling is included as part of our commitment to your success. There are no
-                additional fees for students or alumni.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-black mb-2">Can I switch counselors if needed?</h3>
-              <p className="text-black">
-                Absolutely. We want you to work with someone you're comfortable with. Just let us know and
-                we'll match you with a different counselor.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-black mb-2">What if I'm not sure what I want to do?</h3>
-              <p className="text-black">
-                That's exactly what career counseling is for! We'll help you explore options, assess your
-                interests and skills, and discover career paths you may not have considered.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl p-8 md:p-12 text-white text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Plan Your Career Success?</h2>
-          <p className="text-xl mb-8">
-            Schedule your first career counseling session today and take control of your professional future.
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="relative min-h-[400px] flex items-center">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-900/90 to-orange-800/80" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
+          <Link href="/career-services" className="text-orange-200 hover:text-white mb-4 inline-block">
+            ← Career Services
+          </Link>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Career Counseling</h1>
+          <p className="text-xl text-orange-100 max-w-2xl mb-8">
+            One-on-one guidance to help you navigate your career journey with confidence.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {user ? (
             <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white text-purple-600 font-bold rounded-lg hover:bg-gray-100 transition-colors"
+              href="/career-services/career-counseling/schedule"
+              className="inline-flex items-center gap-2 bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100"
             >
-              <Calendar className="w-5 h-5" />
-              Schedule Counseling
+              Schedule Appointment <ArrowRight className="w-5 h-5" />
             </Link>
+          ) : (
             <Link
-              href="/career-services"
-              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-purple-600 transition-colors"
+              href="/login?redirect=/career-services/career-counseling"
+              className="inline-flex items-center gap-2 bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100"
             >
-              <Briefcase className="w-5 h-5" />
-              View All Services
+              Sign In to Schedule <ArrowRight className="w-5 h-5" />
             </Link>
+          )}
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-10 bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-3 gap-6 text-center">
+            <div>
+              <div className="text-3xl font-bold text-orange-600">{sessionsCompleted || 500}+</div>
+              <div className="text-gray-600">Sessions Completed</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-orange-600">{counselors?.length || 4}</div>
+              <div className="text-gray-600">Career Counselors</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-orange-600">Free</div>
+              <div className="text-gray-600">For Students</div>
+            </div>
           </div>
         </div>
       </section>
+
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Services */}
+            <div>
+              <h2 className="text-2xl font-bold mb-6">What We Offer</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                {services.map((service) => (
+                  <div key={service.title} className="bg-white rounded-xl shadow-sm border p-6">
+                    <service.icon className="w-10 h-10 text-orange-600 mb-4" />
+                    <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
+                    <p className="text-gray-600">{service.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Topics */}
+            <div className="bg-white rounded-xl shadow-sm border p-6">
+              <h2 className="text-xl font-semibold mb-4">Topics We Can Help With</h2>
+              <div className="grid md:grid-cols-2 gap-3">
+                {topics.map((topic) => (
+                  <div key={topic} className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                    <span className="text-gray-600">{topic}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* User's Appointments */}
+            {user && appointments && appointments.length > 0 && (
+              <div className="bg-white rounded-xl shadow-sm border p-6">
+                <h2 className="text-xl font-semibold mb-4">Your Appointments</h2>
+                <div className="space-y-3">
+                  {appointments.map((apt: any) => (
+                    <div key={apt.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                      <div className="flex items-center gap-3">
+                        <Calendar className="w-5 h-5 text-orange-600" />
+                        <div>
+                          <p className="font-medium">{apt.type || 'Career Counseling'}</p>
+                          <p className="text-sm text-gray-500">
+                            {new Date(apt.scheduled_at).toLocaleString()}
+                          </p>
+                        </div>
+                      </div>
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        apt.status === 'scheduled' ? 'bg-blue-100 text-blue-700' :
+                        apt.status === 'completed' ? 'bg-green-100 text-green-700' :
+                        'bg-gray-100 text-gray-700'
+                      }`}>
+                        {apt.status}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Counselors */}
+            {counselors && counselors.length > 0 && (
+              <div>
+                <h2 className="text-2xl font-bold mb-6">Our Counselors</h2>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {counselors.map((counselor: any) => (
+                    <div key={counselor.id} className="bg-white rounded-xl shadow-sm border p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
+                          {counselor.avatar_url ? (
+                            <img src={counselor.avatar_url} alt="" className="w-full h-full rounded-full object-cover" />
+                          ) : (
+                            <User className="w-8 h-8 text-orange-600" />
+                          )}
+                        </div>
+                        <div>
+                          <h3 className="font-semibold">{counselor.full_name}</h3>
+                          <p className="text-sm text-gray-500">Career Counselor</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-600 text-sm">{counselor.bio || 'Dedicated to helping you achieve your career goals.'}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Schedule CTA */}
+            <div className="bg-orange-50 border border-orange-200 rounded-xl p-6">
+              <h3 className="font-semibold mb-3">Book a Session</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Schedule a free one-on-one session with a career counselor.
+              </p>
+              <Link
+                href="/career-services/career-counseling/schedule"
+                className="block w-full text-center bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700"
+              >
+                Schedule Now
+              </Link>
+            </div>
+
+            {/* Session Info */}
+            <div className="bg-white rounded-xl shadow-sm border p-6">
+              <h3 className="font-semibold mb-4">Session Details</h3>
+              <div className="space-y-3 text-sm">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-gray-400" />
+                  <span>30-60 minute sessions</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-gray-400" />
+                  <span>In-person or virtual</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MessageSquare className="w-4 h-4 text-gray-400" />
+                  <span>Confidential discussions</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Related Services */}
+            <div className="bg-gray-50 rounded-xl p-6">
+              <h3 className="font-semibold mb-3">Related Services</h3>
+              <div className="space-y-2 text-sm">
+                <Link href="/career-services/resume-building" className="block text-orange-600 hover:underline">
+                  Resume Building
+                </Link>
+                <Link href="/career-services/interview-prep" className="block text-orange-600 hover:underline">
+                  Interview Preparation
+                </Link>
+                <Link href="/career-services/job-placement" className="block text-orange-600 hover:underline">
+                  Job Placement
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

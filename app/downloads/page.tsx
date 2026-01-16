@@ -1,13 +1,11 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import {
   Download,
   FileText,
   BookOpen,
   GraduationCap,
-  Shield,
-  Users,
-  Briefcase,
   FileCheck,
 } from 'lucide-react';
 
@@ -20,7 +18,9 @@ export const metadata: Metadata = {
   },
 };
 
-const resources = {
+export const dynamic = 'force-dynamic';
+
+const defaultResources = {
   handbooks: [
     {
       title: 'Student Handbook 2025-2026',
@@ -89,7 +89,6 @@ const resources = {
       file: 'enrollment-application.pdf',
       size: '500 KB',
     },
-
     {
       title: 'Change of Information Form',
       file: 'change-of-information.pdf',
@@ -147,18 +146,40 @@ const resources = {
   ],
 };
 
-export default function DownloadsPage() {
+export default async function DownloadsPage() {
+  const supabase = await createClient();
+
+  // Get documents from database
+  const { data: documents } = await supabase
+    .from('documents')
+    .select('*')
+    .eq('is_public', true)
+    .order('category', { ascending: true })
+    .order('title', { ascending: true });
+
+  // Group documents by category
+  const handbooks = documents?.filter((d: any) => d.category === 'handbook') || [];
+  const workbooks = documents?.filter((d: any) => d.category === 'workbook') || [];
+  const forms = documents?.filter((d: any) => d.category === 'form') || [];
+  const guides = documents?.filter((d: any) => d.category === 'guide') || [];
+
+  // Use database data if available, otherwise use defaults
+  const displayHandbooks = handbooks.length > 0 ? handbooks : defaultResources.handbooks;
+  const displayWorkbooks = workbooks.length > 0 ? workbooks : defaultResources.workbooks;
+  const displayForms = forms.length > 0 ? forms : defaultResources.forms;
+  const displayGuides = guides.length > 0 ? guides : defaultResources.guides;
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <section className="bg-white text-white py-16">
+      <section className="bg-slate-800 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Download className="w-16 h-16 mx-auto mb-6" />
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Download Center
             </h1>
-            <p className="text-base md:text-lg text-blue-100">
+            <p className="text-base md:text-lg text-slate-200">
               Access handbooks, workbooks, forms, and resources for students and
               staff
             </p>
@@ -179,7 +200,7 @@ export default function DownloadsPage() {
             </a>
             <a
               href="#workbooks"
-              className="flex items-center gap-2 px-6 py-3 bg-green-50 text-green-700 rounded-lg hover:bg-brand-green-100 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors"
             >
               <GraduationCap className="w-5 h-5" />
               <span className="font-semibold">Workbooks</span>
@@ -209,13 +230,13 @@ export default function DownloadsPage() {
             {/* Handbooks */}
             <div id="handbooks">
               <div className="flex items-center gap-3 mb-8">
-                <BookOpen className="w-8 h-8 text-brand-blue-600" />
+                <BookOpen className="w-8 h-8 text-blue-600" />
                 <h2 className="text-2xl md:text-3xl font-bold">Handbooks</h2>
               </div>
               <div className="grid md:grid-cols-2 gap-6">
-                {resources.handbooks.map((item, index) => (
+                {displayHandbooks.map((item: any, index: number) => (
                   <div
-                    key={index}
+                    key={item.id || index}
                     className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow"
                   >
                     <div className="flex items-start justify-between mb-3">
@@ -223,24 +244,29 @@ export default function DownloadsPage() {
                         <h3 className="text-lg font-semibold mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-black mb-3">
+                        <p className="text-sm text-gray-600 mb-3">
                           {item.description}
                         </p>
-                        <div className="flex items-center gap-4 text-sm text-black">
-                          <span>{item.size}</span>
-                          <span>•</span>
-                          <span>Updated {item.updated}</span>
+                        <div className="flex items-center gap-4 text-sm text-gray-500">
+                          <span>{item.size || item.file_size}</span>
+                          {item.updated && (
+                            <>
+                              <span>•</span>
+                              <span>Updated {item.updated}</span>
+                            </>
+                          )}
                         </div>
                       </div>
-                      <FileText className="w-8 h-8 text-brand-blue-600 flex-shrink-0" />
+                      <FileText className="w-8 h-8 text-blue-600 flex-shrink-0" />
                     </div>
-                    <button
-                      className="w-full mt-4 flex items-center justify-center gap-2 bg-brand-blue-600 text-white px-4 py-2 rounded-lg hover:bg-brand-blue-700 transition-colors"
-                      aria-label={`Download ${item.title}`}
+                    <a
+                      href={item.url || `/downloads/${item.file}`}
+                      className="w-full mt-4 flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                      download
                     >
                       <Download className="w-4 h-4" />
                       <span>Download PDF</span>
-                    </button>
+                    </a>
                   </div>
                 ))}
               </div>
@@ -249,15 +275,15 @@ export default function DownloadsPage() {
             {/* Workbooks */}
             <div id="workbooks">
               <div className="flex items-center gap-3 mb-8">
-                <GraduationCap className="w-8 h-8 text-brand-green-600" />
+                <GraduationCap className="w-8 h-8 text-green-600" />
                 <h2 className="text-2xl md:text-3xl font-bold">
                   Program Workbooks
                 </h2>
               </div>
               <div className="grid md:grid-cols-2 gap-6">
-                {resources.workbooks.map((item, index) => (
+                {displayWorkbooks.map((item: any, index: number) => (
                   <div
-                    key={index}
+                    key={item.id || index}
                     className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow"
                   >
                     <div className="flex items-start justify-between mb-3">
@@ -265,22 +291,23 @@ export default function DownloadsPage() {
                         <h3 className="text-lg font-semibold mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-black mb-3">
+                        <p className="text-sm text-gray-600 mb-3">
                           {item.description}
                         </p>
-                        <div className="text-sm text-black">
-                          <span>{item.size}</span>
+                        <div className="text-sm text-gray-500">
+                          <span>{item.size || item.file_size}</span>
                         </div>
                       </div>
-                      <BookOpen className="w-8 h-8 text-brand-green-600 flex-shrink-0" />
+                      <BookOpen className="w-8 h-8 text-green-600 flex-shrink-0" />
                     </div>
-                    <button
-                      className="w-full mt-4 flex items-center justify-center gap-2 bg-brand-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
-                      aria-label={`Download ${item.title}`}
+                    <a
+                      href={item.url || `/downloads/${item.file}`}
+                      className="w-full mt-4 flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                      download
                     >
                       <Download className="w-4 h-4" />
                       <span>Download PDF</span>
-                    </button>
+                    </a>
                   </div>
                 ))}
               </div>
@@ -295,23 +322,24 @@ export default function DownloadsPage() {
                 </h2>
               </div>
               <div className="grid md:grid-cols-3 gap-6">
-                {resources.forms.map((item, index) => (
+                {displayForms.map((item: any, index: number) => (
                   <div
-                    key={index}
+                    key={item.id || index}
                     className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow"
                   >
                     <FileText className="w-8 h-8 text-purple-600 mb-3" />
                     <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                    <div className="text-sm text-black mb-4">
-                      <span>{item.size}</span>
+                    <div className="text-sm text-gray-500 mb-4">
+                      <span>{item.size || item.file_size}</span>
                     </div>
-                    <button
+                    <a
+                      href={item.url || `/downloads/${item.file}`}
                       className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm"
-                      aria-label={`Download ${item.title}`}
+                      download
                     >
                       <Download className="w-4 h-4" />
                       <span>Download</span>
-                    </button>
+                    </a>
                   </div>
                 ))}
               </div>
@@ -320,15 +348,15 @@ export default function DownloadsPage() {
             {/* Guides */}
             <div id="guides">
               <div className="flex items-center gap-3 mb-8">
-                <FileText className="w-8 h-8 text-brand-orange-600" />
+                <FileText className="w-8 h-8 text-orange-600" />
                 <h2 className="text-2xl md:text-3xl font-bold">
                   Student Guides
                 </h2>
               </div>
               <div className="grid md:grid-cols-2 gap-6">
-                {resources.guides.map((item, index) => (
+                {displayGuides.map((item: any, index: number) => (
                   <div
-                    key={index}
+                    key={item.id || index}
                     className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow"
                   >
                     <div className="flex items-start justify-between mb-3">
@@ -336,22 +364,23 @@ export default function DownloadsPage() {
                         <h3 className="text-lg font-semibold mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-black mb-3">
+                        <p className="text-sm text-gray-600 mb-3">
                           {item.description}
                         </p>
-                        <div className="text-sm text-black">
-                          <span>{item.size}</span>
+                        <div className="text-sm text-gray-500">
+                          <span>{item.size || item.file_size}</span>
                         </div>
                       </div>
-                      <FileText className="w-8 h-8 text-brand-orange-600 flex-shrink-0" />
+                      <FileText className="w-8 h-8 text-orange-600 flex-shrink-0" />
                     </div>
-                    <button
-                      className="w-full mt-4 flex items-center justify-center gap-2 bg-brand-orange-600 text-white px-4 py-2 rounded-lg hover:bg-brand-orange-700 transition-colors"
-                      aria-label={`Download ${item.title}`}
+                    <a
+                      href={item.url || `/downloads/${item.file}`}
+                      className="w-full mt-4 flex items-center justify-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors"
+                      download
                     >
                       <Download className="w-4 h-4" />
                       <span>Download PDF</span>
-                    </button>
+                    </a>
                   </div>
                 ))}
               </div>
@@ -366,20 +395,20 @@ export default function DownloadsPage() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-blue-50 rounded-lg p-8 text-center">
               <h2 className="text-2xl font-bold mb-4">Need Help?</h2>
-              <p className="text-black mb-6">
+              <p className="text-gray-600 mb-6">
                 Can't find what you're looking for? Our student services team is
                 here to help.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link
                   href="/contact"
-                  className="bg-brand-blue-600 text-white px-6 py-3 rounded-lg hover:bg-brand-blue-700 transition-colors font-semibold"
+                  className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
                 >
                   Contact Support
                 </Link>
                 <Link
                   href="/student-handbook"
-                  className="bg-white text-brand-blue-600 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors font-semibold border-2 border-brand-blue-600"
+                  className="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors font-semibold border-2 border-blue-600"
                 >
                   View Student Handbook
                 </Link>
@@ -392,13 +421,13 @@ export default function DownloadsPage() {
       {/* Accessibility Notice */}
       <section className="py-8 bg-gray-100">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center text-sm text-black">
+          <div className="max-w-4xl mx-auto text-center text-sm text-gray-600">
             <p>
               All documents are provided in PDF format. If you need documents in
               an alternative format for accessibility purposes, please contact{' '}
               <a
                 href="mailto:accessibility@www.elevateforhumanity.org"
-                className="text-brand-blue-600 hover:underline"
+                className="text-blue-600 hover:underline"
               >
                 accessibility@www.elevateforhumanity.org
               </a>

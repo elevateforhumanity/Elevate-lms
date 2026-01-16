@@ -1,225 +1,156 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import Image from 'next/image';
+import { CheckCircle, DollarSign, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'WIOA Eligibility for Public Assistance Recipients | Elevate for Humanity',
-  description: 'WIOA eligibility for SNAP, TANF, SSI, and other public assistance recipients. Free career training.',
+  title: 'WIOA Eligibility - Public Assistance Recipients | Elevate for Humanity',
+  description: 'SNAP, TANF, and SSI recipients automatically qualify for WIOA-funded career training.',
 };
 
-export default function PublicAssistancePage() {
+export const dynamic = 'force-dynamic';
+
+export default async function PublicAssistancePage() {
+  const supabase = await createClient();
+
+  // Get programs
+  const { data: programs } = await supabase
+    .from('programs')
+    .select('id, name, slug, description')
+    .eq('is_active', true)
+    .eq('accepts_wioa', true)
+    .limit(6);
+
+  const qualifyingPrograms = [
+    { name: 'SNAP', full: 'Supplemental Nutrition Assistance Program (Food Stamps)' },
+    { name: 'TANF', full: 'Temporary Assistance for Needy Families' },
+    { name: 'SSI', full: 'Supplemental Security Income' },
+    { name: 'SSDI', full: 'Social Security Disability Insurance' },
+    { name: 'Medicaid', full: 'Indiana Health Coverage Programs' },
+    { name: 'HUD', full: 'Housing Assistance / Section 8' },
+  ];
+
+  const benefits = [
+    'Automatic income eligibility - no additional verification needed',
+    '100% free training - tuition, books, and supplies covered',
+    'Priority enrollment in high-demand programs',
+    'Career counseling and job placement assistance',
+    'Support services (transportation, childcare assistance)',
+  ];
+
   return (
     <main className="min-h-screen bg-gray-50">
-      <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/hero-images/pathways-hero.jpg"
-          alt="Public Assistance Recipients"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Public Assistance Recipients</h1>
-          <p className="text-xl">Automatic WIOA eligibility for those receiving government assistance</p>
+      <section className="bg-green-600 text-white py-16">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <DollarSign className="w-16 h-16 mx-auto mb-4" />
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Public Assistance Recipients
+          </h1>
+          <p className="text-xl text-green-100">
+            If you receive public assistance, you automatically qualify for WIOA funding
+          </p>
         </div>
       </section>
 
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <Link href="/wioa-eligibility" className="text-blue-600 hover:underline mb-6 inline-block">← Back to WIOA Eligibility</Link>
+        <Link href="/wioa-eligibility" className="text-blue-600 hover:underline mb-6 inline-block">
+          ← Back to WIOA Eligibility
+        </Link>
 
+        {/* Qualifying Programs */}
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-3xl font-bold text-black mb-6">Public Assistance Eligibility</h2>
-          
-          <div className="prose max-w-none">
-            <p className="text-lg text-black mb-6">
-              If you currently receive public assistance, you <strong>automatically qualify</strong> for WIOA-funded training. No additional income verification needed.
-            </p>
-
-            <h3 className="text-2xl font-bold text-black mb-4">Qualifying Programs</h3>
-            
-            <div className="space-y-4 mb-8">
-              <div className="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-600">
-                <h4 className="text-xl font-bold text-black mb-2">SNAP (Food Stamps)</h4>
-                <p className="text-black mb-2">Supplemental Nutrition Assistance Program</p>
-                <ul className="list-disc pl-6 text-black text-sm space-y-1">
-                  <li>Must have active SNAP benefits</li>
-                  <li>Bring current EBT card or benefit letter</li>
-                  <li>Letter must be dated within last 6 months</li>
-                </ul>
+          <h2 className="text-2xl font-bold mb-6">Qualifying Assistance Programs</h2>
+          <p className="text-gray-600 mb-6">
+            If you currently receive any of the following, you automatically meet 
+            WIOA income eligibility requirements:
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {qualifyingPrograms.map((program, index) => (
+              <div key={index} className="bg-green-50 rounded-lg p-4">
+                <div className="font-bold text-green-700">{program.name}</div>
+                <div className="text-sm text-gray-600">{program.full}</div>
               </div>
-
-              <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
-                <h4 className="text-xl font-bold text-black mb-2">TANF (Temporary Assistance)</h4>
-                <p className="text-black mb-2">Temporary Assistance for Needy Families</p>
-                <ul className="list-disc pl-6 text-black text-sm space-y-1">
-                  <li>Cash assistance recipients</li>
-                  <li>Must be currently receiving benefits</li>
-                  <li>Bring TANF approval letter or case number</li>
-                </ul>
-              </div>
-
-              <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-600">
-                <h4 className="text-xl font-bold text-black mb-2">SSI (Supplemental Security Income)</h4>
-                <p className="text-black mb-2">For individuals with disabilities or seniors</p>
-                <ul className="list-disc pl-6 text-black text-sm space-y-1">
-                  <li>Must be receiving SSI payments</li>
-                  <li>Bring SSI award letter or benefit statement</li>
-                  <li>Different from Social Security retirement</li>
-                </ul>
-              </div>
-
-              <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-600">
-                <h4 className="text-xl font-bold text-black mb-2">General Assistance</h4>
-                <p className="text-black mb-2">State or local cash assistance programs</p>
-                <ul className="list-disc pl-6 text-black text-sm space-y-1">
-                  <li>County-level assistance programs</li>
-                  <li>Emergency assistance recipients</li>
-                  <li>Bring documentation from assistance office</li>
-                </ul>
-              </div>
-
-              <div className="bg-red-50 p-6 rounded-lg border-l-4 border-red-600">
-                <h4 className="text-xl font-bold text-black mb-2">Other Qualifying Programs</h4>
-                <ul className="list-disc pl-6 text-black space-y-1">
-                  <li>Medicaid (income-based, not disability-based)</li>
-                  <li>WIC (Women, Infants, and Children)</li>
-                  <li>Free or Reduced School Lunch (for your children)</li>
-                  <li>Housing Assistance (Section 8, public housing)</li>
-                  <li>LIHEAP (Energy assistance)</li>
-                </ul>
-              </div>
-            </div>
-
-            <h3 className="text-2xl font-bold text-black mb-4">What You Get</h3>
-            <div className="bg-gray-50 p-6 rounded-lg mb-6">
-              <ul className="space-y-3 text-black">
-                <li><strong>✓ 100% Free Training:</strong> No tuition, fees, or hidden costs</li>
-                <li><strong>✓ Books & Supplies:</strong> All materials provided at no cost</li>
-                <li><strong>✓ Certification Exams:</strong> Testing fees covered</li>
-                <li><strong>✓ Transportation Help:</strong> Gas cards or bus passes available</li>
-                <li><strong>✓ Childcare Assistance:</strong> Help with childcare costs during training</li>
-                <li><strong>✓ Work Clothing:</strong> Uniforms or work attire if needed</li>
-                <li><strong>✓ Job Placement:</strong> Direct connections to employers</li>
-                <li><strong>✓ Career Counseling:</strong> One-on-one support throughout</li>
-              </ul>
-            </div>
-
-            <h3 className="text-2xl font-bold text-black mb-4">Required Documents</h3>
-            <div className="bg-yellow-50 p-6 rounded-lg mb-6">
-              <p className="font-bold text-black mb-3">Bring ALL of the following:</p>
-              <ul className="list-disc pl-6 space-y-2 text-black">
-                <li><strong>Valid ID:</strong> Driver's license or state-issued ID</li>
-                <li><strong>Social Security Card:</strong> Original or certified copy</li>
-                <li><strong>Proof of Residency:</strong> Utility bill, lease, or mail dated within 30 days</li>
-                <li><strong>Benefit Verification:</strong> Current benefit letter, EBT card, or case documentation</li>
-                <li><strong>Work Authorization:</strong> Birth certificate, passport, or naturalization papers</li>
-              </ul>
-            </div>
-
-            <h3 className="text-2xl font-bold text-black mb-4">Application Process</h3>
-            <div className="space-y-4 mb-6">
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold">1</div>
-                <div>
-                  <h4 className="font-bold text-black">Submit Online Application</h4>
-                  <p className="text-black text-sm">Takes 10 minutes. We'll review within 2-3 days.</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold">2</div>
-                <div>
-                  <h4 className="font-bold text-black">Gather Your Documents</h4>
-                  <p className="text-black text-sm">Collect ID, Social Security card, benefit letter, and proof of address.</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold">3</div>
-                <div>
-                  <h4 className="font-bold text-black">Meet with WIOA Counselor</h4>
-                  <p className="text-black text-sm">We schedule this for you. Bring your documents. Takes about 1 hour.</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold">4</div>
-                <div>
-                  <h4 className="font-bold text-black">Get Approved & Choose Program</h4>
-                  <p className="text-black text-sm">Usually approved same day. Pick your training program.</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold">5</div>
-                <div>
-                  <h4 className="font-bold text-black">Start Training</h4>
-                  <p className="text-black text-sm">Begin classes within 2-4 weeks. Everything is covered.</p>
-                </div>
-              </div>
-            </div>
-
-            <h3 className="text-2xl font-bold text-black mb-4">Available Training Programs</h3>
-            <div className="grid md:grid-cols-3 gap-4 mb-6">
-              <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-black mb-2">Healthcare</h4>
-                <ul className="text-sm text-black space-y-1">
-                  <li>• Medical Assistant</li>
-                  <li>• Phlebotomy</li>
-                  <li>• Home Health Aide</li>
-                </ul>
-              </div>
-              <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-black mb-2">Skilled Trades</h4>
-                <ul className="text-sm text-black space-y-1">
-                  <li>• HVAC Technician</li>
-                  <li>• Electrical</li>
-                  <li>• Plumbing</li>
-                  <li>• Construction</li>
-                </ul>
-              </div>
-              <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-black mb-2">Technology</h4>
-                <ul className="text-sm text-black space-y-1">
-                  <li>• IT Support</li>
-                  <li>• Cybersecurity</li>
-                  <li>• Web Development</li>
-                </ul>
-              </div>
-              <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-black mb-2">Business</h4>
-                <ul className="text-sm text-black space-y-1">
-                  <li>• Accounting</li>
-                  <li>• Management</li>
-                  <li>• Customer Service</li>
-                </ul>
-              </div>
-              <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-black mb-2">CDL</h4>
-                <ul className="text-sm text-black space-y-1">
-                  <li>• Commercial Driver</li>
-                  <li>• Class A License</li>
-                  <li>• Job placement help</li>
-                </ul>
-              </div>
-              <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-black mb-2">Barber & Beauty</h4>
-                <ul className="text-sm text-black space-y-1">
-                  <li>• Barbering</li>
-                  <li>• Cosmetology</li>
-                  <li>• Esthetics</li>
-                </ul>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        <div className="bg-gray-900 text-white p-8 rounded-lg text-center">
-          <h3 className="text-2xl font-bold mb-4">You Already Qualify!</h3>
-          <p className="mb-6">If you receive public assistance, you're eligible for free training. Apply today.</p>
+        {/* Benefits */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold mb-6">What You Get</h2>
+          <ul className="space-y-4">
+            {benefits.map((benefit, index) => (
+              <li key={index} className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-700">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Required Documents */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-bold mb-6">Required Documents</h2>
+          <ul className="space-y-3">
+            <li className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <span>Proof of public assistance (award letter, benefit statement, or EBT card)</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <span>Valid government-issued ID</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <span>Proof of Indiana residency</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <span>Social Security card</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Programs */}
+        {programs && programs.length > 0 && (
+          <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-6">Available Training Programs</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {programs.map((program: any) => (
+                <Link
+                  key={program.id}
+                  href={`/programs/${program.slug || program.id}`}
+                  className="border rounded-lg p-4 hover:shadow-md transition"
+                >
+                  <h3 className="font-semibold">{program.name}</h3>
+                  {program.description && (
+                    <p className="text-sm text-gray-600 mt-1 line-clamp-2">{program.description}</p>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* CTA */}
+        <div className="bg-green-600 rounded-lg p-8 text-center text-white">
+          <h3 className="text-2xl font-bold mb-4">Ready to Start Your Career?</h3>
+          <p className="text-green-100 mb-6">
+            Apply today - your public assistance status qualifies you for free training.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/apply" className="px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-100 transition">
+            <Link
+              href="/apply"
+              className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition"
+            >
               Apply Now
             </Link>
-            <Link href="/contact" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition">
-              Have Questions?
-            </Link>
+            <a
+              href="tel:3173143757"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition"
+            >
+              <Phone className="w-5 h-5" />
+              (317) 314-3757
+            </a>
           </div>
         </div>
       </div>

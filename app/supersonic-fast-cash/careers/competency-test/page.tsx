@@ -443,7 +443,7 @@ export default function CompetencyTest() {
                   value={applicantName}
                   onChange={(e) => setApplicantName(e.target.value)}
                   className="w-full px-4 py-3 border rounded-lg"
-                  placeholder="John Doe"
+                  placeholder="Your full name"
                 />
               </div>
               <div>

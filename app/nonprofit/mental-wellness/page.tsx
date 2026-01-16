@@ -1,43 +1,148 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { Heart, Brain, Sparkles, Calendar, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Mental Wellness | Selfish Inc.',
-  description: 'Mental wellness programs and support services',
+  description: 'Mental wellness programs and support services for mind, body, and spirit.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/nonprofit/mental-wellness',
   },
 };
 
-export default function MentalWellnessPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function MentalWellnessPage() {
+  const supabase = await createClient();
+
+  // Get mental wellness services
+  const { data: services } = await supabase
+    .from('nonprofit_services')
+    .select('*')
+    .eq('category', 'mental-wellness')
+    .eq('is_active', true)
+    .order('order', { ascending: true });
+
+  // Get upcoming workshops
+  const { data: workshops } = await supabase
+    .from('workshops')
+    .select('*')
+    .eq('category', 'mental-wellness')
+    .eq('is_active', true)
+    .gte('date', new Date().toISOString())
+    .order('date', { ascending: true })
+    .limit(3);
+
+  // Get testimonials
+  const { data: testimonials } = await supabase
+    .from('testimonials')
+    .select('*')
+    .eq('category', 'mental-wellness')
+    .eq('is_featured', true)
+    .limit(2);
+
+  const defaultServices = [
+    { title: 'Mindfulness and Meditation', description: 'Learn techniques to calm your mind and find inner peace' },
+    { title: 'Stress Management', description: 'Develop healthy coping strategies for life\'s challenges' },
+    { title: 'Mental Health Counseling', description: 'One-on-one support from trained professionals' },
+    { title: 'Wellness Coaching', description: 'Personalized guidance for your wellness journey' },
+    { title: 'Group Therapy', description: 'Connect with others on similar journeys' },
+    { title: 'Holistic Healing', description: 'Integrate mind, body, and spirit approaches' },
+  ];
+
+  const displayServices = services && services.length > 0 ? services : defaultServices;
+
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto px-4 py-16">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-20">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Brain className="w-16 h-16 mx-auto mb-6" />
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Mental Wellness</h1>
+          <p className="text-xl text-purple-100">
+            Holistic programs for mind, body, and spirit
+          </p>
+        </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-4 py-12">
         <Link href="/nonprofit" className="text-purple-600 hover:text-purple-700 mb-8 inline-block">
           ← Back to Selfish Inc.
         </Link>
 
-        <h1 className="text-4xl font-bold text-black mb-6">Mental Wellness</h1>
+        {/* Services */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8">Our Programs</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {displayServices.map((service: any, index: number) => (
+              <div key={index} className="bg-purple-50 rounded-xl p-6">
+                <CheckCircle className="w-6 h-6 text-purple-600 mb-3" />
+                <h3 className="font-bold text-lg mb-2">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-        <div className="prose prose-lg max-w-none">
-          <p className="text-xl text-black mb-8">
-            Holistic mental wellness programs for mind, body, and spirit.
+        {/* Upcoming Workshops */}
+        {workshops && workshops.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Upcoming Workshops</h2>
+            <div className="space-y-4">
+              {workshops.map((workshop: any) => (
+                <div key={workshop.id} className="bg-white border rounded-xl p-6 hover:shadow-md transition">
+                  <div className="flex items-center gap-2 text-purple-600 mb-2">
+                    <Calendar className="w-5 h-5" />
+                    <span className="font-medium">
+                      {new Date(workshop.date).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-lg">{workshop.title}</h3>
+                  <p className="text-gray-600 mt-1">{workshop.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Testimonials */}
+        {testimonials && testimonials.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold mb-6">What People Say</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {testimonials.map((testimonial: any) => (
+                <div key={testimonial.id} className="bg-gray-50 rounded-xl p-6">
+                  <p className="text-gray-600 italic mb-4">"{testimonial.content}"</p>
+                  <div className="font-semibold">{testimonial.name}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* CTA */}
+        <section className="bg-purple-50 border border-purple-200 rounded-xl p-8 text-center">
+          <Heart className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+          <h3 className="text-2xl font-bold mb-4">Start Your Wellness Journey</h3>
+          <p className="text-gray-600 mb-6">
+            Explore our workshops and programs designed to support your mental wellness.
           </p>
-
-          <h2 className="text-2xl font-bold text-black mt-8 mb-4">Our Programs</h2>
-          <ul className="list-disc pl-6 text-black space-y-2 mb-8">
-            <li>Mindfulness and meditation</li>
-            <li>Stress management workshops</li>
-            <li>Mental health counseling</li>
-            <li>Wellness coaching</li>
-          </ul>
-
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mt-8">
-            <Link href="/nonprofit/workshops" className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/nonprofit/workshops" 
+              className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition"
+            >
               View Workshops
             </Link>
+            <Link 
+              href="/contact" 
+              className="border border-purple-600 text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition"
+            >
+              Contact Us
+            </Link>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

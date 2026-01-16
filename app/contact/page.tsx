@@ -163,7 +163,7 @@ export default function ContactPage() {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors"
-                    placeholder="John Doe"
+                    placeholder="Your full name"
                   />
                 </div>
 

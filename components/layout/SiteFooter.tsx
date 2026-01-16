@@ -126,7 +126,7 @@ export default function SiteFooter() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/store" className="hover:text-white transition">Platform Licensing</Link></li>
               <li><Link href="/store/licenses" className="hover:text-white transition">License Tiers</Link></li>
-              <li><Link href="/demo" className="hover:text-white transition">Request Demo</Link></li>
+              <li><Link href="/store/demo" className="hover:text-white transition">Watch Demo Live</Link></li>
             </ul>
             <h3 className="text-white font-bold text-sm mb-4 mt-6">Resources</h3>
             <ul className="space-y-2 text-sm">

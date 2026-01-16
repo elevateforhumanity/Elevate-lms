@@ -1,136 +1,90 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Button } from '@/components/ui/Button';
+import { Newspaper, Calendar, ArrowRight, Tag } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'News & Press | Elevate for Humanity',
-  description: 'Latest news, updates, and press releases from Elevate for Humanity.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/news',
-  },
+  title: 'News | Elevate For Humanity',
+  description: 'Latest news, updates, and announcements from Elevate for Humanity.',
 };
 
-export default function NewsPage() {
-  const newsItems = [
-    {
-      title: 'Elevate for Humanity Expands Healthcare Training Programs',
-      date: '2024-01-15',
-      excerpt:
-        'New CNA and Medical Assistant programs now available in partnership with local healthcare providers.',
-      category: 'Program Launch',
-    },
-    {
-      title: 'Partnership Announcement: EmployIndy Workforce Initiative',
-      date: '2024-01-10',
-      excerpt:
-        'Elevate partners with EmployIndy to provide free training to Indianapolis residents.',
-      category: 'Partnership',
-    },
-    {
-      title: '500+ Students Placed in Jobs This Year',
-      date: '2023-12-20',
-      excerpt:
-        'Record-breaking year for job placements across healthcare, skilled trades, and technology sectors.',
-      category: 'Milestone',
-    },
-  ];
+export const dynamic = 'force-dynamic';
+
+export default async function NewsPage() {
+  const supabase = await createClient();
+
+  const { data: articles } = await supabase
+    .from('news_articles')
+    .select('*')
+    .eq('is_published', true)
+    .order('published_at', { ascending: false })
+    .limit(12);
+
+  const { data: categories } = await supabase
+    .from('news_categories')
+    .select('*')
+    .order('name', { ascending: true });
 
   return (
-    <div className="min-h-screen">
-      {/* Hero with Image */}
-      <section className="relative w-full -mt-[72px]">
-        <div className="relative min-h-[70vh] w-full overflow-hidden">
-          <Image
-            src="/images/programs/workforce-readiness-hero.jpg"
-            alt="News and Updates"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/90 to-orange-700/90" />
-          
-          <div className="relative z-10 flex items-center justify-center min-h-[70vh]">
-            <div className="container mx-auto px-4 text-white">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">News & Press</h1>
-              <p className="text-xl md:text-2xl text-orange-100 max-w-3xl">
-                Stay updated with the latest news, announcements, and success
-                stories from Elevate for Humanity.
-              </p>
-            </div>
-          </div>
+    <div className="min-h-screen bg-gray-50">
+      <div className="bg-gradient-to-r from-slate-700 to-slate-800 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">News & Updates</h1>
+          <p className="text-xl text-slate-300 max-w-2xl">
+            Stay informed about our programs, partnerships, and community impact.
+          </p>
         </div>
-      </section>
+      </div>
 
-      {/* News List */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto space-y-8">
-            {newsItems.map((item, index) => (
-              <article
-                key={index}
-                className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-shadow"
-              >
-                <div className="relative w-full h-48">
-                  <Image
-                    src="/images/programs/cpr-certification-group-hd.jpg"
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-sm text-black mb-2">
-                    <time>{new Date(item.date).toLocaleDateString()}</time>
-                    <span className="mx-2">•</span>
-                    <span className="text-orange-600 font-medium">
-                      {item.category}
-                    </span>
-                  </div>
-                  <h2 className="text-2xl font-bold mb-3">{item.title}</h2>
-                  <p className="text-black mb-4">{item.excerpt}</p>
-                  <Link
-                    href="#"
-                    className="text-orange-600 font-semibold hover:underline"
-                  >
-                    Read More →
-                  </Link>
-                </div>
-              </article>
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        {categories && categories.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-8">
+            <Link href="/news" className="px-4 py-2 bg-slate-700 text-white rounded-full text-sm font-medium">
+              All News
+            </Link>
+            {categories.map((cat: any) => (
+              <Link key={cat.id} href={`/news?category=${cat.slug}`} className="px-4 py-2 bg-white border rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50">
+                {cat.name}
+              </Link>
             ))}
           </div>
+        )}
 
-          <div className="text-center mt-12">
-            <p className="text-black mb-4">
-              Looking for press materials or media inquiries?
-            </p>
-            <Link href="/contact">
-              <Button variant="outline">Contact Our Press Team</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Signup */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Stay Informed</h2>
-            <p className="text-black mb-8">
-              Subscribe to our newsletter for the latest updates, success
-              stories, and program announcements.
-            </p>
-            <div className="flex gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-              />
-              <Button>Subscribe</Button>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {articles && articles.length > 0 ? articles.map((article: any) => (
+            <article key={article.id} className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-md transition">
+              {article.image_url && (
+                <div className="h-48 bg-gray-200">
+                  <img src={article.image_url} alt={article.title} className="w-full h-full object-cover" />
+                </div>
+              )}
+              <div className="p-6">
+                <div className="flex items-center gap-2 text-slate-500 text-sm mb-2">
+                  <Calendar className="w-4 h-4" />
+                  {new Date(article.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                </div>
+                <h2 className="font-semibold text-lg mb-2 line-clamp-2">{article.title}</h2>
+                <p className="text-gray-600 text-sm mb-4 line-clamp-3">{article.excerpt}</p>
+                {article.category && (
+                  <div className="flex items-center gap-1 text-xs text-slate-500 mb-3">
+                    <Tag className="w-3 h-3" />
+                    {article.category}
+                  </div>
+                )}
+                <Link href={`/news/${article.slug}`} className="inline-flex items-center gap-1 text-slate-700 font-medium hover:underline">
+                  Read More <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </article>
+          )) : (
+            <div className="col-span-full text-center py-12 bg-white rounded-lg border">
+              <Newspaper className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No News Articles Yet</h3>
+              <p className="text-gray-600">Check back soon for updates!</p>
             </div>
-          </div>
+          )}
         </div>
-      </section>
+      </div>
     </div>
   );
 }

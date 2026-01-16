@@ -1,221 +1,126 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { 
-  MessageCircle, 
-  Phone, 
-  Mail, 
-  FileText, 
-  HelpCircle, 
-  Clock,
-  BookOpen,
-  Users,
-  CreditCard,
-  GraduationCap,
-  Wrench,
-  AlertCircle
-} from 'lucide-react';
+import { LifeBuoy, MessageSquare, Phone, Mail, FileText, Clock, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Support Center | Elevate For Humanity',
-  description: 'Get help with enrollment, programs, technical issues, and more. Contact our support team or browse our knowledge base.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/support',
-  },
+  title: 'Support | Elevate For Humanity',
+  description: 'Get help with your account, programs, or technical issues.',
 };
 
-const supportCategories = [
-  {
-    icon: GraduationCap,
-    title: 'Enrollment & Admissions',
-    description: 'Questions about applying, eligibility, and getting started',
-    href: '/support/help?category=enrollment',
-    color: 'bg-blue-100 text-blue-600',
-  },
-  {
-    icon: BookOpen,
-    title: 'Programs & Courses',
-    description: 'Information about training programs, schedules, and curriculum',
-    href: '/support/help?category=program',
-    color: 'bg-green-100 text-green-600',
-  },
-  {
-    icon: CreditCard,
-    title: 'Billing & Financial Aid',
-    description: 'WIOA funding, payment plans, and financial questions',
-    href: '/support/help?category=billing',
-    color: 'bg-purple-100 text-purple-600',
-  },
-  {
-    icon: Wrench,
-    title: 'Technical Support',
-    description: 'Login issues, portal access, and technical problems',
-    href: '/support/help?category=technical',
-    color: 'bg-orange-100 text-orange-600',
-  },
-  {
-    icon: Users,
-    title: 'Career Services',
-    description: 'Job placement, resume help, and career counseling',
-    href: '/support/help?category=general',
-    color: 'bg-teal-100 text-teal-600',
-  },
-  {
-    icon: AlertCircle,
-    title: 'Urgent Issues',
-    description: 'Time-sensitive matters requiring immediate attention',
-    href: '/support/ticket?category=urgent',
-    color: 'bg-red-100 text-red-600',
-  },
-];
+export const dynamic = 'force-dynamic';
 
-const quickLinks = [
-  { title: 'How to Apply for WIOA Funding', href: '/support/help/how-to-apply-wioa-funding' },
-  { title: 'Reset Your Password', href: '/support/help/how-to-reset-password' },
-  { title: 'Access Student Portal', href: '/support/help/how-to-access-student-portal' },
-  { title: 'Program Duration & Schedules', href: '/support/help/how-long-are-training-programs' },
-  { title: 'Is Training Really Free?', href: '/support/help/is-training-really-free' },
-  { title: 'Job Placement Services', href: '/support/help/job-placement-services' },
-];
+export default async function SupportPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
-export default function SupportPage() {
+  const { data: tickets } = user ? await supabase
+    .from('support_tickets')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false })
+    .limit(5) : { data: null };
+
+  const supportOptions = [
+    { icon: MessageSquare, title: 'Live Chat', desc: 'Chat with our support team', href: '/support/chat', available: 'Mon-Fri 9am-5pm' },
+    { icon: Mail, title: 'Email Support', desc: 'Send us a message', href: '/contact', available: 'Response within 24 hours' },
+    { icon: Phone, title: 'Phone Support', desc: 'Call us directly', href: 'tel:+1234567890', available: 'Mon-Fri 9am-5pm' },
+    { icon: FileText, title: 'Help Center', desc: 'Browse help articles', href: '/help', available: 'Available 24/7' },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">How Can We Help?</h1>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Find answers in our help center or contact our support team.
+      <div className="bg-gradient-to-r from-sky-600 to-sky-700 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Support Center</h1>
+          <p className="text-xl text-sky-100 max-w-2xl">
+            We're here to help. Choose how you'd like to get support.
           </p>
-          <div className="max-w-2xl mx-auto">
-            <form action="/support/help" method="GET" className="relative">
-              <input
-                type="text"
-                name="q"
-                placeholder="Search for help articles..."
-                className="w-full px-6 py-4 rounded-full text-black text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
-              />
-              <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
-                Search
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {supportOptions.map((option) => (
+            <Link key={option.title} href={option.href} className="bg-white rounded-xl shadow-sm border p-6 hover:shadow-md transition text-center">
+              <option.icon className="w-10 h-10 text-sky-600 mx-auto mb-4" />
+              <h3 className="font-semibold text-lg mb-2">{option.title}</h3>
+              <p className="text-gray-600 text-sm mb-3">{option.desc}</p>
+              <div className="flex items-center justify-center gap-1 text-xs text-gray-500">
+                <Clock className="w-3 h-3" />
+                {option.available}
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-8">
+          <div className="bg-white rounded-xl shadow-sm border p-8">
+            <h2 className="text-xl font-bold mb-6">Submit a Support Request</h2>
+            <form className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                <input type="text" className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="Brief description of your issue" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                <select className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                  <option>Account Issues</option>
+                  <option>Program Questions</option>
+                  <option>Technical Support</option>
+                  <option>Billing</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <textarea rows={4} className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="Please describe your issue in detail..." />
+              </div>
+              <button type="submit" className="w-full bg-sky-600 text-white py-3 rounded-lg font-semibold hover:bg-sky-700">
+                Submit Request
               </button>
             </form>
           </div>
-        </div>
-      </section>
 
-      <section className="py-12 bg-white border-b">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-6">
-            <a href="tel:+13173143757" className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition group">
-              <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center">
-                <Phone className="w-7 h-7 text-green-600" />
-              </div>
-              <div>
-                <h3 className="font-bold text-black">Call Us</h3>
-                <p className="text-gray-600">(317) 314-3757</p>
-                <p className="text-sm text-gray-500">Mon-Fri 8am-6pm EST</p>
-              </div>
-            </a>
-            <a href="mailto:support@www.elevateforhumanity.org" className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition group">
-              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
-                <Mail className="w-7 h-7 text-blue-600" />
-              </div>
-              <div>
-                <h3 className="font-bold text-black">Email Us</h3>
-                <p className="text-gray-600">support@www.elevateforhumanity.org</p>
-                <p className="text-sm text-gray-500">Response within 24 hours</p>
-              </div>
-            </a>
-            <Link href="/support/ticket" className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition group">
-              <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center">
-                <FileText className="w-7 h-7 text-purple-600" />
-              </div>
-              <div>
-                <h3 className="font-bold text-black">Submit a Ticket</h3>
-                <p className="text-gray-600">Create a support request</p>
-                <p className="text-sm text-gray-500">Track your issue online</p>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl font-bold text-black mb-8 text-center">Browse by Category</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {supportCategories.map((category) => (
-              <Link key={category.title} href={category.href} className="p-6 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-blue-300 transition group">
-                <div className={`w-12 h-12 ${category.color} rounded-lg flex items-center justify-center mb-4`}>
-                  <category.icon className="w-6 h-6" />
+          <div>
+            <h2 className="text-xl font-bold mb-6">Your Recent Tickets</h2>
+            {user ? (
+              tickets && tickets.length > 0 ? (
+                <div className="space-y-4">
+                  {tickets.map((ticket: any) => (
+                    <div key={ticket.id} className="bg-white rounded-lg shadow-sm border p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-medium">{ticket.subject}</span>
+                        <span className={`text-xs px-2 py-1 rounded-full ${
+                          ticket.status === 'open' ? 'bg-green-100 text-green-700' :
+                          ticket.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
+                          'bg-gray-100 text-gray-700'
+                        }`}>
+                          {ticket.status}
+                        </span>
+                      </div>
+                      <p className="text-gray-600 text-sm">{new Date(ticket.created_at).toLocaleDateString()}</p>
+                    </div>
+                  ))}
                 </div>
-                <h3 className="font-bold text-black mb-2 group-hover:text-blue-600 transition">{category.title}</h3>
-                <p className="text-gray-600 text-sm">{category.description}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl font-bold text-black mb-8 text-center">Popular Help Articles</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {quickLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition group">
-                <HelpCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                <span className="text-black group-hover:text-blue-600 transition">{link.title}</span>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link href="/support/help" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold">
-              <BookOpen className="w-5 h-5" />
-              Browse All Help Articles
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-white rounded-2xl p-8 shadow-sm">
-            <div className="flex items-center gap-3 mb-6">
-              <Clock className="w-8 h-8 text-blue-600" />
-              <h2 className="text-2xl font-bold text-black">Support Hours & Response Times</h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="font-bold text-black mb-4">Office Hours</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex justify-between"><span>Monday - Friday</span><span className="font-medium">8:00 AM - 6:00 PM EST</span></li>
-                  <li className="flex justify-between"><span>Saturday</span><span className="font-medium">9:00 AM - 2:00 PM EST</span></li>
-                  <li className="flex justify-between"><span>Sunday</span><span className="font-medium">Closed</span></li>
-                </ul>
+              ) : (
+                <div className="bg-white rounded-lg shadow-sm border p-8 text-center text-gray-500">
+                  <LifeBuoy className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                  <p>No support tickets yet</p>
+                </div>
+              )
+            ) : (
+              <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
+                <LifeBuoy className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                <p className="text-gray-600 mb-4">Sign in to view your support tickets</p>
+                <Link href="/login?redirect=/support" className="text-sky-600 font-medium hover:underline">
+                  Sign In
+                </Link>
               </div>
-              <div>
-                <h3 className="font-bold text-black mb-4">Response Times</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex justify-between"><span>Phone Support</span><span className="font-medium text-green-600">Immediate</span></li>
-                  <li className="flex justify-between"><span>Email</span><span className="font-medium">Within 24 hours</span></li>
-                  <li className="flex justify-between"><span>Support Tickets</span><span className="font-medium">24-48 hours</span></li>
-                  <li className="flex justify-between"><span>Urgent Issues</span><span className="font-medium text-orange-600">Same day</span></li>
-                </ul>
-              </div>
-            </div>
+            )}
           </div>
         </div>
-      </section>
-
-      <section className="py-16 bg-blue-600 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Still Need Help?</h2>
-          <p className="text-xl text-blue-100 mb-8">Our support team is ready to assist you.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/support/ticket" className="px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition">Submit a Support Ticket</Link>
-            <a href="tel:+13173143757" className="px-8 py-4 bg-blue-700 text-white font-bold rounded-lg hover:bg-blue-800 transition border-2 border-white">Call (317) 314-3757</a>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

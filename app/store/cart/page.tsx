@@ -1,96 +1,178 @@
-'use client';
-
-import { useState } from 'react';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { ShoppingCart, Trash2, ArrowRight, ArrowLeft } from 'lucide-react';
+import {
+  ShoppingCart,
+  Trash2,
+  Plus,
+  Minus,
+  ArrowLeft,
+  CreditCard,
+  ShieldCheck,
+} from 'lucide-react';
 
-export default function CartPage() {
-  const [cartItems, setCartItems] = useState<any[]>([]);
+export const metadata: Metadata = {
+  title: 'Shopping Cart | Elevate for Humanity',
+  description: 'Review your cart and proceed to checkout.',
+};
 
-  const removeItem = (index: number) => {
-    setCartItems(cartItems.filter((_, i) => i !== index));
-  };
+export const dynamic = 'force-dynamic';
 
-  const total = cartItems.reduce((sum: any, item: any) => sum + item.price, 0);
+export default async function CartPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/login?redirect=/store/cart');
+  }
+
+  // Get cart items with product details
+  const { data: cartItems } = await supabase
+    .from('cart_items')
+    .select(`
+      id,
+      quantity,
+      product:products(
+        id,
+        name,
+        price,
+        image_url,
+        type
+      )
+    `)
+    .eq('user_id', user.id);
+
+  const subtotal = cartItems?.reduce((sum: number, item: any) => {
+    return sum + (item.product?.price || 0) * item.quantity;
+  }, 0) || 0;
+
+  const tax = subtotal * 0.07; // 7% tax
+  const total = subtotal + tax;
 
   return (
-    <div className="min-h-screen bg-white py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-3 mb-8">
-          <ShoppingCart className="w-8 h-8 text-orange-600" />
-          <h1 className="text-4xl font-black text-black">Shopping Cart</h1>
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="flex items-center gap-4 mb-8">
+          <Link href="/store" className="text-gray-500 hover:text-gray-700">
+            <ArrowLeft className="w-5 h-5" />
+          </Link>
+          <h1 className="text-2xl font-bold">Shopping Cart</h1>
         </div>
 
-        {cartItems.length === 0 ? (
-          <div className="text-center py-16">
-            <ShoppingCart className="w-24 h-24 text-gray-300 mx-auto mb-6" />
-            <h2 className="text-2xl font-bold text-black mb-4">
-              Your cart is empty
-            </h2>
-            <p className="text-black mb-8">
-              Add items from the store to get started
-            </p>
-            <Link
-              href="/store"
-              className="inline-flex items-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-700 transition"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Continue Shopping
-            </Link>
-          </div>
-        ) : (
-          <>
-            <div className="space-y-4 mb-8">
-              {cartItems.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-white border-2 border-gray-200 rounded-xl p-6 flex items-center justify-between"
-                >
-                  <div>
-                    <h3 className="text-xl font-bold text-black mb-2">
-                      {item.name}
-                    </h3>
-                    <p className="text-black">${item.price}</p>
+        {cartItems && cartItems.length > 0 ? (
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Cart Items */}
+            <div className="lg:col-span-2 space-y-4">
+              {cartItems.map((item: any) => (
+                <div key={item.id} className="bg-white rounded-xl shadow-sm border p-4">
+                  <div className="flex gap-4">
+                    <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                      {item.product?.image_url ? (
+                        <img 
+                          src={item.product.image_url} 
+                          alt={item.product.name} 
+                          className="w-full h-full object-cover" 
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <ShoppingCart className="w-6 h-6 text-gray-400" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold">{item.product?.name}</h3>
+                      <p className="text-sm text-gray-500 capitalize">{item.product?.type}</p>
+                      <div className="flex items-center justify-between mt-3">
+                        <div className="flex items-center gap-2">
+                          <form action={`/api/cart/update`} method="POST">
+                            <input type="hidden" name="itemId" value={item.id} />
+                            <input type="hidden" name="quantity" value={item.quantity - 1} />
+                            <button 
+                              type="submit"
+                              className="w-8 h-8 flex items-center justify-center border rounded hover:bg-gray-50"
+                              disabled={item.quantity <= 1}
+                            >
+                              <Minus className="w-4 h-4" />
+                            </button>
+                          </form>
+                          <span className="w-8 text-center font-medium">{item.quantity}</span>
+                          <form action={`/api/cart/update`} method="POST">
+                            <input type="hidden" name="itemId" value={item.id} />
+                            <input type="hidden" name="quantity" value={item.quantity + 1} />
+                            <button 
+                              type="submit"
+                              className="w-8 h-8 flex items-center justify-center border rounded hover:bg-gray-50"
+                            >
+                              <Plus className="w-4 h-4" />
+                            </button>
+                          </form>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <span className="font-bold">
+                            ${((item.product?.price || 0) * item.quantity).toFixed(2)}
+                          </span>
+                          <form action={`/api/cart/remove`} method="POST">
+                            <input type="hidden" name="itemId" value={item.id} />
+                            <button 
+                              type="submit"
+                              className="text-red-500 hover:text-red-700"
+                            >
+                              <Trash2 className="w-5 h-5" />
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => removeItem(index)}
-                    className="text-red-600 hover:text-red-700 p-2"
-                  >
-                    <Trash2 className="w-5 h-5" />
-                  </button>
                 </div>
               ))}
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-6 mb-8">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xl font-bold text-black">Total:</span>
-                <span className="text-3xl font-black text-orange-600">
-                  ${total}
-                </span>
+            {/* Order Summary */}
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-xl shadow-sm border p-6 sticky top-8">
+                <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
+                <div className="space-y-3 mb-6">
+                  <div className="flex justify-between text-gray-600">
+                    <span>Subtotal</span>
+                    <span>${subtotal.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between text-gray-600">
+                    <span>Tax (7%)</span>
+                    <span>${tax.toFixed(2)}</span>
+                  </div>
+                  <div className="border-t pt-3 flex justify-between font-bold text-lg">
+                    <span>Total</span>
+                    <span>${total.toFixed(2)}</span>
+                  </div>
+                </div>
+                <Link
+                  href="/store/checkout"
+                  className="w-full flex items-center justify-center gap-2 bg-orange-600 text-white py-3 rounded-lg font-semibold hover:bg-orange-700"
+                >
+                  <CreditCard className="w-5 h-5" />
+                  Proceed to Checkout
+                </Link>
+                <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-500">
+                  <ShieldCheck className="w-4 h-4" />
+                  Secure checkout
+                </div>
               </div>
-              <p className="text-sm text-black">
-                100% of proceeds support free training programs
-              </p>
             </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/store"
-                className="inline-flex items-center justify-center gap-2 bg-gray-200 text-black px-8 py-4 rounded-xl font-bold hover:bg-gray-300 transition"
-              >
-                <ArrowLeft className="w-5 h-5" />
-                Continue Shopping
-              </Link>
-              <Link
-                href="/store/checkout"
-                className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-700 transition flex-1"
-              >
-                Proceed to Checkout
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-          </>
+          </div>
+        ) : (
+          <div className="bg-white rounded-xl shadow-sm border p-12 text-center">
+            <ShoppingCart className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+            <h2 className="text-xl font-semibold mb-2">Your cart is empty</h2>
+            <p className="text-gray-600 mb-6">Browse our store to find resources that support your journey.</p>
+            <Link
+              href="/store"
+              className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-700"
+            >
+              Continue Shopping
+            </Link>
+          </div>
         )}
       </div>
     </div>

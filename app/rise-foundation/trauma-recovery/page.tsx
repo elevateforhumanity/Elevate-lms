@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { Heart, Shield, Users, Phone, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Trauma Recovery | Rise Forward Foundation',
@@ -9,57 +11,143 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TraumaRecoveryPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function TraumaRecoveryPage() {
+  const supabase = await createClient();
+
+  // Get trauma recovery services
+  const { data: services } = await supabase
+    .from('foundation_services')
+    .select('*')
+    .eq('category', 'trauma-recovery')
+    .eq('is_active', true)
+    .order('order', { ascending: true });
+
+  // Get support groups
+  const { data: supportGroups } = await supabase
+    .from('support_groups')
+    .select('*')
+    .eq('category', 'trauma')
+    .eq('is_active', true);
+
+  // Get testimonials
+  const { data: testimonials } = await supabase
+    .from('testimonials')
+    .select('*')
+    .eq('category', 'trauma-recovery')
+    .eq('is_featured', true)
+    .limit(2);
+
+  const defaultServices = [
+    { title: 'Individual Counseling', description: 'One-on-one support with trained trauma specialists' },
+    { title: 'Group Therapy', description: 'Connect with others on similar healing journeys' },
+    { title: 'EMDR Therapy', description: 'Evidence-based treatment for trauma processing' },
+    { title: 'Mindfulness Programs', description: 'Learn techniques for managing triggers and anxiety' },
+    { title: 'Peer Support', description: 'Connect with trained peer support specialists' },
+    { title: 'Family Support', description: 'Resources for families supporting loved ones' },
+  ];
+
+  const displayServices = services && services.length > 0 ? services : defaultServices;
+
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto px-4 py-16">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-20">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Shield className="w-16 h-16 mx-auto mb-6" />
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Trauma Recovery</h1>
+          <p className="text-xl text-purple-100">
+            Supporting your journey to healing and wholeness
+          </p>
+        </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-4 py-12">
         <Link href="/rise-foundation" className="text-purple-600 hover:text-purple-700 mb-8 inline-block">
           ← Back to Rise Forward Foundation
         </Link>
 
-        <h1 className="text-4xl font-bold text-black mb-6">
-          Trauma Recovery
-        </h1>
-
-        <div className="prose prose-lg max-w-none">
-          <p className="text-xl text-black mb-8">
-            Supporting individuals on their journey to healing and recovery from trauma.
-          </p>
-
-          <h2 className="text-2xl font-bold text-black mt-8 mb-4">
-            Our Approach
-          </h2>
-          <p className="text-black mb-4">
+        {/* Introduction */}
+        <section className="mb-12">
+          <p className="text-lg text-gray-600">
             We provide compassionate, evidence-based support for individuals recovering from trauma.
-            Our programs focus on holistic healing, addressing mind, body, and spirit.
+            Our programs focus on holistic healing, addressing mind, body, and spirit. You don't 
+            have to walk this path alone.
           </p>
+        </section>
 
-          <h2 className="text-2xl font-bold text-black mt-8 mb-4">
-            Services Offered
-          </h2>
-          <ul className="list-disc pl-6 text-black space-y-2 mb-8">
-            <li>Individual counseling and support</li>
-            <li>Group therapy sessions</li>
-            <li>Mindfulness and meditation practices</li>
-            <li>Holistic healing workshops</li>
-            <li>Peer support networks</li>
-          </ul>
-
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mt-8">
-            <h3 className="text-xl font-bold text-black mb-3">
-              Get Support
-            </h3>
-            <p className="text-black mb-4">
-              If you or someone you know needs trauma recovery support, we're here to help.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition"
-            >
-              Contact Us
-            </Link>
+        {/* Services */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8">Our Services</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {displayServices.map((service: any, index: number) => (
+              <div key={index} className="bg-purple-50 rounded-xl p-6">
+                <CheckCircle className="w-6 h-6 text-purple-600 mb-3" />
+                <h3 className="font-bold text-lg mb-2">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
+              </div>
+            ))}
           </div>
-        </div>
+        </section>
+
+        {/* Support Groups */}
+        {supportGroups && supportGroups.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold mb-6">Support Groups</h2>
+            <div className="space-y-4">
+              {supportGroups.map((group: any) => (
+                <div key={group.id} className="bg-white border rounded-xl p-6">
+                  <div className="flex items-center gap-2 text-purple-600 mb-2">
+                    <Users className="w-5 h-5" />
+                    <span className="font-medium">{group.schedule}</span>
+                  </div>
+                  <h3 className="font-bold text-lg">{group.title}</h3>
+                  <p className="text-gray-600 mt-1">{group.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Testimonials */}
+        {testimonials && testimonials.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold mb-6">Stories of Healing</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {testimonials.map((testimonial: any) => (
+                <div key={testimonial.id} className="bg-gray-50 rounded-xl p-6">
+                  <p className="text-gray-600 italic mb-4">"{testimonial.content}"</p>
+                  <div className="font-semibold">{testimonial.name}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* CTA */}
+        <section className="bg-purple-50 border border-purple-200 rounded-xl p-8 text-center">
+          <Heart className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+          <h3 className="text-2xl font-bold mb-4">Ready to Begin Your Healing Journey?</h3>
+          <p className="text-gray-600 mb-6">
+            Reach out today for a confidential consultation. We're here to help.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/contact" 
+              className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition"
+            >
+              Get Support
+            </Link>
+            <a 
+              href="tel:3173143757"
+              className="inline-flex items-center justify-center gap-2 border border-purple-600 text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition"
+            >
+              <Phone className="w-5 h-5" />
+              Crisis Line
+            </a>
+          </div>
+        </section>
       </div>
     </div>
   );

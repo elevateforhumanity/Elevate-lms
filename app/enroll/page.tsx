@@ -1,18 +1,42 @@
 import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
-
-export const metadata: Metadata = generateMetadata({
-  title: 'Enroll Now',
-  description: 'Start your career training journey. Enroll in free workforce development programs with WIOA funding in Indianapolis.',
-  path: '/enroll',
-});
-
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import ProgramHowItWorks from '@/components/program/ProgramHowItWorks';
 import ProgramFAQ from '@/components/program/ProgramFAQ';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
-export default function EnrollPage() {
+export const metadata: Metadata = {
+  title: 'Enroll Now | Elevate For Humanity',
+  description: 'Start your career training journey. Enroll in free workforce development programs with WIOA funding in Indianapolis.',
+};
+
+export const dynamic = 'force-dynamic';
+
+export default async function EnrollPage() {
+  const supabase = await createClient();
+
+  // Get available programs for enrollment
+  const { data: programs } = await supabase
+    .from('programs')
+    .select('id, name, slug, description, duration, is_active')
+    .eq('is_active', true)
+    .eq('accepting_enrollments', true)
+    .order('name', { ascending: true });
+
+  // Get funding options
+  const { data: fundingOptions } = await supabase
+    .from('funding_options')
+    .select('*')
+    .eq('is_active', true);
+
+  const defaultFunding = [
+    { code: 'WRG', name: 'Workforce Ready Grant', description: 'Indiana state funding for workforce training' },
+    { code: 'WIOA', name: 'Workforce Innovation', description: 'Federal workforce development funding' },
+    { code: 'JRI', name: 'Justice Reinvestment', description: 'Funding for justice-involved individuals' },
+  ];
+
+  const displayFunding = fundingOptions && fundingOptions.length > 0 ? fundingOptions : defaultFunding;
+
   return (
     <div className="min-h-screen bg-white">
       <ModernLandingHero
@@ -45,24 +69,14 @@ export default function EnrollPage() {
               Most students qualify for 100% free training through:
             </p>
             <ul className="space-y-3 mb-8 text-black max-w-md mx-auto">
-              <li className="flex items-start gap-3">
-                <span className="text-green-600 font-bold text-xl">✓</span>
-                <span>
-                  <strong>WRG</strong> - Workforce Ready Grant
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-green-600 font-bold text-xl">✓</span>
-                <span>
-                  <strong>WIOA</strong> - Workforce Innovation
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-green-600 font-bold text-xl">✓</span>
-                <span>
-                  <strong>JRI</strong> - Justice Reinvestment
-                </span>
-              </li>
+              {displayFunding.map((funding: any) => (
+                <li key={funding.code} className="flex items-start gap-3">
+                  <span className="text-green-600 font-bold text-xl">✓</span>
+                  <span>
+                    <strong>{funding.code}</strong> - {funding.name}
+                  </span>
+                </li>
+              ))}
             </ul>
             <p className="text-sm text-black mb-8 text-center">
               No tuition. No debt. We help you apply and handle all paperwork.
@@ -74,6 +88,30 @@ export default function EnrollPage() {
               Apply for Free Training
             </Link>
           </div>
+
+          {/* Available Programs */}
+          {programs && programs.length > 0 && (
+            <div className="mt-12">
+              <h2 className="text-2xl font-bold text-center mb-6">Available Programs</h2>
+              <div className="grid gap-4">
+                {programs.map((program: any) => (
+                  <Link
+                    key={program.id}
+                    href={`/programs/${program.slug || program.id}`}
+                    className="block bg-white rounded-xl border p-6 hover:shadow-md transition"
+                  >
+                    <h3 className="font-semibold text-lg">{program.name}</h3>
+                    {program.description && (
+                      <p className="text-gray-600 text-sm mt-1 line-clamp-2">{program.description}</p>
+                    )}
+                    {program.duration && (
+                      <p className="text-sm text-green-600 mt-2">Duration: {program.duration}</p>
+                    )}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="text-center mt-12">
             <p className="text-black mb-2">Questions?</p>

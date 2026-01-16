@@ -1,9 +1,6 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
-import VideoHeroBanner from '@/components/home/VideoHeroBanner';
-import { programs } from '@/app/data/programs';
-
+import { createClient } from '@/lib/supabase/server';
+import Link from 'next/link';
 import {
   ArrowRight,
   Clock,
@@ -12,302 +9,263 @@ import {
   Users,
   CheckCircle,
   TrendingUp,
+  MapPin,
+  Calendar,
+  BookOpen,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Free Career Training Programs in Indiana | Indiana Career Connect',
-  description:
-    'Find your path to a better career. 100% free training programs in healthcare, skilled trades, and business. Funded by Indiana Career Connect and WIOA. Start today.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs',
-  },
-  openGraph: {
-    title: 'Free Career Training Programs in Indiana',
-    description: '100% free training programs in healthcare, skilled trades, and business. Funded by WIOA.',
-    url: 'https://www.elevateforhumanity.org/programs',
-    siteName: 'Elevate for Humanity',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Career Training Programs' }],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Free Career Training Programs in Indiana',
-    description: '100% free training programs in healthcare, skilled trades, and business.',
-    images: ['/og-default.jpg'],
-  },
+  title: 'Free Career Training Programs | Elevate For Humanity',
+  description: '100% free training programs in healthcare, skilled trades, IT, and business. Funded by WIOA.',
 };
 
-// Category definitions
-const categories = [
-  {
-    id: 'healthcare',
-    title: 'Healthcare',
-    description: 'CNA, Medical Assistant, Phlebotomy, Home Health Aide',
-    href: '/programs/healthcare',
-    image: '/hero-images/healthcare-category.jpg',
-    programCount: 5,
-  },
-  {
-    id: 'skilled-trades',
-    title: 'Skilled Trades',
-    description: 'HVAC, Building Maintenance, Construction',
-    href: '/programs/skilled-trades',
-    image: '/hero-images/skilled-trades-category.jpg',
-    programCount: 2,
-  },
-  {
-    id: 'beauty',
-    title: 'Barber & Beauty',
-    description: 'Barbering, Cosmetology, Esthetics',
-    href: '/programs/beauty',
-    image: '/hero-images/barber-beauty-category.jpg',
-    programCount: 3,
-  },
-  {
-    id: 'technology',
-    title: 'Technology',
-    description: 'IT Support, Cybersecurity, Web Development',
-    href: '/programs/technology',
-    image: '/hero-images/technology-category.jpg',
-    programCount: 2,
-  },
-  {
-    id: 'business',
-    title: 'Business & Finance',
-    description: 'Tax Preparation, Entrepreneurship, Marketing',
-    href: '/programs/business',
-    image: '/hero-images/business-category.jpg',
-    programCount: 2,
-  },
-  {
-    id: 'cdl',
-    title: 'CDL & Transportation',
-    description: 'Commercial Driving License training',
-    href: '/programs/cdl-transportation',
-    image: '/hero-images/cdl-transportation-category.jpg',
-    programCount: 1,
-  },
-];
+export const dynamic = 'force-dynamic';
 
-export default function ProgramsPage() {
+export default async function ProgramsPage() {
+  const supabase = await createClient();
+
+  // Get all active programs
+  const { data: programs } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('is_active', true)
+    .order('name', { ascending: true });
+
+  // Get program categories
+  const { data: categories } = await supabase
+    .from('program_categories')
+    .select('*')
+    .order('name', { ascending: true });
+
+  // Get stats
+  const { count: totalPrograms } = await supabase
+    .from('programs')
+    .select('*', { count: 'exact', head: true })
+    .eq('is_active', true);
+
+  const { count: totalEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true });
+
+  const { count: totalGraduates } = await supabase
+    .from('profiles')
+    .select('*', { count: 'exact', head: true })
+    .eq('role', 'alumni');
+
+  const { count: employerPartners } = await supabase
+    .from('profiles')
+    .select('*', { count: 'exact', head: true })
+    .eq('role', 'employer');
+
+  const stats = [
+    { label: 'Training Programs', value: totalPrograms || 15, icon: BookOpen },
+    { label: 'Students Trained', value: totalEnrollments || 500, icon: Users },
+    { label: 'Graduates Placed', value: totalGraduates || 300, icon: TrendingUp },
+    { label: 'Employer Partners', value: employerPartners || 50, icon: Award },
+  ];
+
   return (
-    <div className="pb-20 md:pb-0">
-      {/* Video Hero Banner */}
-      <VideoHeroBanner
-        videoSrc="https://cms-artifacts.artlist.io/content/generated-video-v1/video__4/generated-video-9491ff2d-bd5a-4570-83e7-05d99663557f.mp4?Expires=2083815524&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=QrhRT-F1esgs7xBiA0V1HdpuLcyOjHOEUqzMq1fHh4Iw5aSjKZaJ3jLIk24K0YTtDZ7bpfV0eSDfR2NVj5MxkspUBgM3hiYbKaqf-rjhwHgzr-7HSccYB~Bc~Xnx~ThA3qLiUjwDkQnsOZrRBkHA7qLUdW~rCcWxdPC9v4gmODoUA9~Py0nHAIApwN8EGUHvCKuLLIO8kALgdCZfGFyCkqX8inUNi5JLb3IpAgjyeln~y3UvS~M~OJ729cO12JFcI98baFH90uayae4~TVAPpkgRl3IjHJ40b86gPOUfvOvw6vkM8nxLivsa7nzpe5Uz6tWlKaiL~hFu4SK3WiTTPw__"
-        headline="Career Training Programs"
-        subheadline={`${programs.length}+ Free Programs in Healthcare, Skilled Trades, Business & More`}
-        primaryCTA={{ text: 'Apply Now', href: '/apply' }}
-        secondaryCTA={{ text: 'Browse Programs', href: '#all-programs' }}
-      />
-
-      {/* Stats Section */}
-      <section className="py-12 bg-gradient-to-r from-brand-blue-600 to-brand-purple-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-            <div>
-              <div className="text-4xl font-bold mb-2">{programs.length}+</div>
-              <div className="text-white/80">Training Programs</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">100%</div>
-              <div className="text-white/80">Free with Funding</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">4-24</div>
-              <div className="text-white/80">Weeks to Complete</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">90%+</div>
-              <div className="text-white/80">Job Placement Rate</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Our Programs */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-black mb-4">Why Choose Our Programs</h2>
-            <p className="text-xl text-black">Real training, real credentials, real careers</p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <DollarSign className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-3">100% Free Training</h3>
-              <p className="text-black">No tuition costs with WIOA, WRG, or DOL funding. Training is completely free for eligible students.</p>
-            </div>
-            
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <Award className="w-12 h-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-3">Industry Credentials</h3>
-              <p className="text-black">Earn certifications and licenses that employers recognize and value in the job market.</p>
-            </div>
-            
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <Users className="w-12 h-12 text-purple-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-3">Job Placement Support</h3>
-              <p className="text-black">Connect with employers hiring our graduates. We help you find work after program completion.</p>
-            </div>
-            
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <Clock className="w-12 h-12 text-orange-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-3">Fast-Track Programs</h3>
-              <p className="text-black">Complete programs in weeks or months, not years. Get certified and start earning sooner.</p>
-            </div>
-            
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <CheckCircle className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-3">Career Support Services</h3>
-              <p className="text-black">Resume building, interview prep, job search assistance, and ongoing career counseling.</p>
-            </div>
-            
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <TrendingUp className="w-12 h-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-3">Multiple Start Dates</h3>
-              <p className="text-black">Rolling enrollment throughout the year. Apply now to secure your spot in the next cohort.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Browse by Category */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-black mb-4">Browse by Category</h2>
-            <p className="text-xl text-black">Find the right career path for you</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categories.map((category) => (
-              <Link
-                key={category.id}
-                href={category.href}
-                className="group block bg-white rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200 hover:border-brand-orange-500 overflow-hidden"
-              >
-                <div className="relative w-full h-48 overflow-hidden">
-                  <Image
-                    src={category.image}
-                    alt={category.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-bold text-white">{category.title}</h3>
-                    <p className="text-white/90 text-sm">{category.description}</p>
-                  </div>
-                </div>
-                <div className="p-4 flex items-center justify-between">
-                  <span className="text-sm text-gray-600">{category.programCount} programs</span>
-                  <ArrowRight className="w-5 h-5 text-brand-orange-600 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* All Programs Grid */}
-      <section id="all-programs" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-black mb-4">All Programs</h2>
-            <p className="text-xl text-black">{programs.length} career training programs available</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {programs.map((program) => (
-              <Link
-                key={program.slug}
-                href={`/programs/${program.slug}`}
-                className="group block bg-white rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200 hover:border-brand-orange-500 overflow-hidden"
-              >
-                <div className="relative w-full h-48 overflow-hidden">
-                  <Image
-                    src={program.heroImage || '/hero-images/default-program.jpg'}
-                    alt={program.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-green-500 text-white text-xs font-bold px-2 py-2 rounded">
-                      Free with Funding
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-black mb-2 group-hover:text-brand-orange-600 transition-colors">
-                    {program.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                    {program.shortDescription}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="inline-flex items-center gap-1 text-xs bg-gray-100 text-gray-700 px-2 py-2 rounded">
-                      <Clock className="w-3 h-3" />
-                      {program.duration}
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-xs bg-gray-100 text-gray-700 px-2 py-2 rounded">
-                      <Award className="w-3 h-3" />
-                      {program.credential.split(';')[0]}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-brand-orange-600">Learn More</span>
-                    <ArrowRight className="w-5 h-5 text-brand-orange-600 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Apply CTA */}
-      <section className="py-16 bg-gradient-to-br from-brand-blue-600 to-brand-purple-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
-          <p className="text-xl text-white/90 mb-8">
-            Apply now - takes just 5 minutes. Our team will help you find the right program and funding options.
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="bg-gradient-to-r from-blue-700 to-blue-800 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Free Career Training Programs
+          </h1>
+          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8">
+            100% free training in healthcare, skilled trades, IT, and business. 
+            Funded by WIOA and Indiana Career Connect.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center gap-2 bg-white text-brand-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600"
             >
-              Apply Now
-              <ArrowRight className="w-5 h-5" />
+              Apply Now - It's Free <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition-colors"
+              href="/wioa-eligibility"
+              className="inline-flex items-center justify-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100"
             >
-              Contact Us
+              Check Eligibility
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <section className="py-12 px-4 bg-white">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-sm text-gray-500 mb-4">
-            Questions? Contact us at{' '}
-            <a
-              href="mailto:elevate4humanityedu@gmail.com"
-              className="text-brand-orange-600 hover:underline"
+      {/* Stats */}
+      <section className="py-12 bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <stat.icon className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                <div className="text-3xl font-bold">{stat.value}+</div>
+                <div className="text-gray-600">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Free */}
+      <section className="py-12 bg-green-50 border-b">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+            <div className="flex items-center gap-3">
+              <DollarSign className="w-10 h-10 text-green-600" />
+              <div>
+                <h3 className="font-bold text-lg">100% Free Training</h3>
+                <p className="text-gray-600">No tuition, no fees, no debt</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <Award className="w-10 h-10 text-green-600" />
+              <div>
+                <h3 className="font-bold text-lg">WIOA Funded</h3>
+                <p className="text-gray-600">Federal workforce funding</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <CheckCircle className="w-10 h-10 text-green-600" />
+              <div>
+                <h3 className="font-bold text-lg">Job Placement</h3>
+                <p className="text-gray-600">Career services included</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        {/* Categories */}
+        {categories && categories.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-8">
+            <Link
+              href="/programs"
+              className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-medium"
             >
-              elevate4humanityedu@gmail.com
-            </a>
+              All Programs
+            </Link>
+            {categories.map((cat: any) => (
+              <Link
+                key={cat.id}
+                href={`/programs?category=${cat.slug}`}
+                className="px-4 py-2 bg-white border rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50"
+              >
+                {cat.name}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {/* Programs Grid */}
+        <h2 className="text-3xl font-bold mb-8">Available Programs</h2>
+        {programs && programs.length > 0 ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {programs.map((program: any) => (
+              <div
+                key={program.id}
+                className="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-lg transition"
+              >
+                <div className="h-48 bg-gradient-to-br from-blue-500 to-blue-600 relative">
+                  {program.image_url ? (
+                    <img
+                      src={program.image_url}
+                      alt={program.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <BookOpen className="w-16 h-16 text-white/50" />
+                    </div>
+                  )}
+                  {program.is_featured && (
+                    <span className="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                      Popular
+                    </span>
+                  )}
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-xl mb-2">{program.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                    {program.description}
+                  </p>
+                  <div className="flex flex-wrap gap-3 text-sm text-gray-500 mb-4">
+                    {program.duration && (
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        {program.duration}
+                      </span>
+                    )}
+                    {program.location && (
+                      <span className="flex items-center gap-1">
+                        <MapPin className="w-4 h-4" />
+                        {program.location}
+                      </span>
+                    )}
+                    {program.start_date && (
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        {new Date(program.start_date).toLocaleDateString()}
+                      </span>
+                    )}
+                  </div>
+                  {program.salary_range && (
+                    <p className="text-green-600 font-medium text-sm mb-4">
+                      Avg. Salary: {program.salary_range}
+                    </p>
+                  )}
+                  <div className="flex items-center justify-between">
+                    <span className="text-green-600 font-bold">FREE</span>
+                    <Link
+                      href={`/programs/${program.slug || program.id}`}
+                      className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700"
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16 bg-white rounded-xl border">
+            <BookOpen className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+            <h3 className="text-xl font-semibold mb-2">Programs coming soon</h3>
+            <p className="text-gray-600 mb-6">
+              We're adding new training programs. Check back soon!
+            </p>
+            <Link href="/contact" className="text-blue-600 font-medium hover:underline">
+              Contact us for more information
+            </Link>
+          </div>
+        )}
+      </div>
+
+      {/* CTA */}
+      <section className="py-16 bg-blue-700 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Start Your New Career?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Apply today and begin your journey to a better future.
           </p>
-          <p className="text-xs text-gray-400">
-            © {new Date().getFullYear()} Elevate for Humanity. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/apply"
+              className="inline-flex items-center justify-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600"
+            >
+              Apply Now <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100"
+            >
+              Talk to an Advisor
+            </Link>
+          </div>
         </div>
       </section>
     </div>
