@@ -7,37 +7,37 @@ export default function Programs() {
       title: 'Healthcare',
       description: 'Train for careers as a Certified Nursing Assistant (CNA), Medical Assistant, or Home Health Aide. Programs include clinical training, certification preparation, and job placement support.',
       href: '/programs/healthcare',
-      image: '/media/programs/efh-cna-hero.jpg',
+      image: '/hero-images/healthcare-category.jpg',
     },
     {
       title: 'Skilled Trades',
       description: 'Learn HVAC installation and repair, electrical systems, plumbing, or construction trades. Hands-on training leads to industry certifications and apprenticeship opportunities.',
       href: '/programs/skilled-trades',
-      image: '/media/programs/efh-building-tech-hero.jpg',
+      image: '/hero-images/skilled-trades-category.jpg',
     },
     {
       title: 'Barber & Beauty',
       description: 'Complete state-approved training in barbering, cosmetology, or esthetics. Programs meet licensing requirements and include practical experience in working salons.',
       href: '/programs/barber-apprenticeship',
-      image: '/media/programs/efh-barber-hero.jpg',
+      image: '/hero-images/barber-hero.jpg',
     },
     {
       title: 'Technology',
       description: 'Build skills in IT support, cybersecurity, or web development. Training covers industry-standard tools and prepares you for recognized certifications like CompTIA A+.',
       href: '/programs/technology',
-      image: '/media/programs/efh-building-tech-card.jpg',
+      image: '/hero-images/technology-hero.jpg',
     },
     {
       title: 'Business',
       description: 'Study accounting, business management, or entrepreneurship. Programs focus on practical skills employers need, from bookkeeping to business planning.',
       href: '/programs/business',
-      image: '/media/programs/workforce-readiness-hero.jpg',
+      image: '/hero-images/business-hero.jpg',
     },
     {
       title: 'CDL & Transportation',
       description: 'Earn your Commercial Driver\'s License (CDL) through approved training. Includes classroom instruction, behind-the-wheel training, and job placement assistance.',
       href: '/programs/cdl-transportation',
-      image: '/media/programs/cdl-hero.jpg',
+      image: '/hero-images/cdl-transportation-category.jpg',
     },
   ];
 
