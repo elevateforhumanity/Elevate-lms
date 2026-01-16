@@ -32,11 +32,19 @@ export const SEO_KEYWORDS = {
 
   cna: [
     'CNA training Indianapolis',
-    'free CNA classes Indiana',
+    'CNA classes Indiana',
     'certified nursing assistant',
     'CNA certification Indianapolis',
-    'WIOA CNA program',
-    'WRG CNA funding',
+    'CNA program Indiana',
+    'nursing assistant training',
+  ],
+
+  medicalAssistant: [
+    'medical assistant training Indianapolis',
+    'free medical assistant classes Indiana',
+    'WIOA medical assistant program',
+    'WRG medical assistant funding',
+    'medical assistant certification',
   ],
 
   funding: [

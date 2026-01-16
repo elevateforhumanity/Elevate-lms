@@ -7,18 +7,19 @@ import { Shield, CheckCircle, Users, Award } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Federal Funded Programs | WIOA & WRG | Elevate for Humanity',
   description:
-    '100% free training programs funded by WIOA, WRG, and federal grants. CNA, CDL, Healthcare, and more. No cost to you.',
+    '100% free training programs funded by WIOA, WRG, and federal grants. Medical Assistant, CDL, Healthcare, and more. No cost to you.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/federal-funded',
   },
 };
 
+// Note: CNA is self-pay, not federally funded
 const federalFundedSlugs = [
-  'cna',
+  'medical-assistant',
   'phlebotomy-technician',
   'home-health-aide',
   'direct-support-professional',
-  'cdl',
+  'cdl-training',
 ];
 
 export default function FederalFundedProgramsPage() {

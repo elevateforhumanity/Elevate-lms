@@ -972,14 +972,15 @@ function Step4Authorization({
 
 function Step5Program({ formData, updateField }: any) {
   const programs = [
-    'CNA (Certified Nursing Assistant)',
+    'Medical Assistant',
     'HVAC Technician',
     'Building Maintenance',
     'Barber Apprenticeship',
-    'Medical Assistant',
+    'Phlebotomy Technician',
     'Tax Preparation',
     "CDL (Commercial Driver's License)",
     'Direct Support Professional',
+    'Home Health Aide',
     'Other',
   ];
 

@@ -228,12 +228,11 @@ export const programs: Program[] = [
       'CNA certification eligibility (state-approved program partner)',
     approvals: [
       'Training Partner: Choice Medical (State-Approved CNA Program)',
-      'Federal WIOA funding eligible',
-      'State WRG funding eligible',
+      'Indiana State Board of Health Approved',
     ],
     fundingOptions: [
-      'WIOA (Workforce Innovation & Opportunity Act) - Federal',
-      'WRG (Workforce Readiness & Growth) - State',
+      'Self-Pay Program',
+      'Payment plans available',
       'Training delivered by Choice Medical',
     ],
     highlights: [
@@ -270,6 +269,8 @@ export const programs: Program[] = [
       label: 'Talk to Healthcare Career Coach',
       href: '/contact?topic=cna',
     },
+    price: 1200, // Self-pay program
+    fundingType: 'self-pay',
   },
   {
     slug: 'cdl-training',

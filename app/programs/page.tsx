@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
-import { ProgramFitNavigator } from '@/components/chatbot/ProgramFitNavigator';
 import { programs } from '@/app/data/programs';
 
 import {
@@ -101,13 +100,6 @@ export default function ProgramsPage() {
         primaryCTA={{ text: 'Apply Now', href: '/apply' }}
         secondaryCTA={{ text: 'Browse Programs', href: '#all-programs' }}
       />
-
-      {/* Program Fit Navigator */}
-      <section className="py-8 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ProgramFitNavigator variant="inline" />
-        </div>
-      </section>
 
       {/* Stats Section */}
       <section className="py-12 bg-gradient-to-r from-brand-blue-600 to-brand-purple-600">

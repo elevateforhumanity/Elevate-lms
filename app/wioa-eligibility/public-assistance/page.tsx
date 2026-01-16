@@ -160,7 +160,6 @@ export default function PublicAssistancePage() {
               <div className="border-2 border-gray-200 p-4 rounded-lg">
                 <h4 className="font-bold text-black mb-2">Healthcare</h4>
                 <ul className="text-sm text-black space-y-1">
-                  <li>• CNA (4-6 weeks)</li>
                   <li>• Medical Assistant</li>
                   <li>• Phlebotomy</li>
                   <li>• Home Health Aide</li>

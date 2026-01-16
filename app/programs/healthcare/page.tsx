@@ -5,9 +5,9 @@ import { Heart, Stethoscope } from 'lucide-react';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 
 export const metadata: Metadata = {
-  title: 'Healthcare Programs | Free CNA, Medical Assistant Training',
+  title: 'Healthcare Programs | Medical Assistant, CNA Training',
   description:
-    'CNA, Medical Assistant, Phlebotomy, and Home Health Aide training programs. 100% funded through WIOA and state grants. Start your healthcare career today.',
+    'Medical Assistant training funded through WIOA and state grants. CNA certification available as self-pay. Start your healthcare career today.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/healthcare',
   },
@@ -40,7 +40,7 @@ export default function HealthcarePage() {
               <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
               <div>
                 <h3 className="font-bold text-black mb-1">Cost</h3>
-                <p className="text-black">Free with funding when eligible</p>
+                <p className="text-black">Varies by program</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -158,33 +158,50 @@ export default function HealthcarePage() {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-3xl font-bold text-black mb-6">
-            Funding Options
+            Funding & Payment Options
           </h2>
-          <p className="text-black mb-6">You may qualify for:</p>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">WIOA</h3>
-              <p className="text-black text-sm">
-                Workforce Innovation and Opportunity Act funding
-              </p>
+          
+          {/* Funded Programs */}
+          <div className="mb-8">
+            <h3 className="text-xl font-bold text-black mb-4">State-Funded Programs (Medical Assistant)</h3>
+            <p className="text-black mb-4">Medical Assistant training may be funded through:</p>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                <h4 className="font-bold text-black mb-2">WIOA</h4>
+                <p className="text-black text-sm">
+                  Workforce Innovation and Opportunity Act funding
+                </p>
+              </div>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                <h4 className="font-bold text-black mb-2">WRG</h4>
+                <p className="text-black text-sm">Workforce Ready Grant</p>
+              </div>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                <h4 className="font-bold text-black mb-2">JRI</h4>
+                <p className="text-black text-sm">
+                  Justice Reinvestment Initiative
+                </p>
+              </div>
             </div>
-            <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">WRG</h3>
-              <p className="text-black text-sm">Workforce Ready Grant</p>
-            </div>
-            <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">JRI</h3>
-              <p className="text-black text-sm">
-                Justice Reinvestment Initiative
-              </p>
-            </div>
-            <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">
-                Employer Sponsorship
-              </h3>
-              <p className="text-black text-sm">
-                Some employers sponsor training
-              </p>
+          </div>
+
+          {/* Self-Pay Programs */}
+          <div className="mb-8">
+            <h3 className="text-xl font-bold text-black mb-4">Self-Pay Programs (CNA)</h3>
+            <p className="text-black mb-4">CNA certification is a self-pay program with flexible payment options:</p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                <h4 className="font-bold text-black mb-2">Payment Plans</h4>
+                <p className="text-black text-sm">
+                  Flexible payment plans available to fit your budget
+                </p>
+              </div>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                <h4 className="font-bold text-black mb-2">Employer Sponsorship</h4>
+                <p className="text-black text-sm">
+                  Some employers offer tuition reimbursement
+                </p>
+              </div>
             </div>
           </div>
         </div>

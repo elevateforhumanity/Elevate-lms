@@ -67,7 +67,7 @@ export default function VeteransPage() {
             <div className="grid md:grid-cols-2 gap-4 mb-6">
               <div className="border-2 border-gray-200 p-4 rounded-lg">
                 <h4 className="font-bold text-black mb-2">Healthcare</h4>
-                <p className="text-sm text-black">CNA, Medical Assistant, Phlebotomy</p>
+                <p className="text-sm text-black">Medical Assistant, Phlebotomy, Home Health Aide</p>
               </div>
               <div className="border-2 border-gray-200 p-4 rounded-lg">
                 <h4 className="font-bold text-black mb-2">Skilled Trades</h4>

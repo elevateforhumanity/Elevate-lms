@@ -17,9 +17,9 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    quote: "I was unemployed for 8 months. WIOA paid for my CNA training, and I earned $18/hour during my apprenticeship. Now I'm making $42,000 a year with full benefits.",
+    quote: "I was unemployed for 8 months. WIOA paid for my Medical Assistant training, and I started working right after graduation. Now I'm making $42,000 a year with full benefits.",
     name: "Sarah Martinez",
-    title: "CNA Graduate, 2024",
+    title: "Medical Assistant Graduate, 2024",
     rating: 5,
     image: "/testimonials/sarah.jpg"
   },

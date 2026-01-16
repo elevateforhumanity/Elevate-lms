@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { ProgramFitNavigator } from '@/components/chatbot/ProgramFitNavigator';
 
 export default function SiteFooter() {
   return (
@@ -135,7 +134,6 @@ export default function SiteFooter() {
               <li><Link href="/success-stories" className="hover:text-white transition">Success Stories</Link></li>
               <li><Link href="/help" className="hover:text-white transition">Help</Link></li>
               <li><Link href="/faq" className="hover:text-white transition">FAQ</Link></li>
-              <li><ProgramFitNavigator variant="minimal" className="hover:text-white transition" /></li>
             </ul>
           </div>
         </div>
