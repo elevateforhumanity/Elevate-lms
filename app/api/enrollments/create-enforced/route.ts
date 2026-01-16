@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
     // Get intake record for linking
     const { data: intake } = await supabase
       .from('intake_records')
-      .select('id, funding_pathway')
+      .select('id, funding_pathway, employer_name')
       .eq('user_id', user.id)
       .eq('program_id', programId)
       .eq('status', 'completed')
