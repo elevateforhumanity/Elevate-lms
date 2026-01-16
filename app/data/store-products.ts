@@ -13,6 +13,13 @@ export interface PlatformApp {
   icon?: string;
 }
 
+export interface PaymentPlan {
+  months: number;
+  monthlyPrice: number;
+  totalPrice: number;
+  stripePriceId?: string;
+}
+
 export interface StoreProduct {
   id: string;
   slug: string;
@@ -28,6 +35,7 @@ export interface StoreProduct {
   idealFor: string[];
   stripeProductId?: string;
   stripePriceId?: string;
+  paymentPlans?: PaymentPlan[];
 }
 
 // Platform Apps (Modular Components)
@@ -157,6 +165,11 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     requiresApproval: false,
     stripeProductId: 'prod_efh_core_platform',
     stripePriceId: 'price_efh_core_4999',
+    paymentPlans: [
+      { months: 3, monthlyPrice: 1750, totalPrice: 5250, stripePriceId: 'price_efh_core_3mo' },
+      { months: 6, monthlyPrice: 900, totalPrice: 5400, stripePriceId: 'price_efh_core_6mo' },
+      { months: 12, monthlyPrice: 475, totalPrice: 5700, stripePriceId: 'price_efh_core_12mo' },
+    ],
   },
   {
     id: 'efh-school-license',
@@ -199,6 +212,11 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     requiresApproval: true,
     stripeProductId: 'prod_efh_school_license',
     stripePriceId: 'price_efh_school_15000',
+    paymentPlans: [
+      { months: 3, monthlyPrice: 5250, totalPrice: 15750, stripePriceId: 'price_efh_school_3mo' },
+      { months: 6, monthlyPrice: 2750, totalPrice: 16500, stripePriceId: 'price_efh_school_6mo' },
+      { months: 12, monthlyPrice: 1450, totalPrice: 17400, stripePriceId: 'price_efh_school_12mo' },
+    ],
   },
   {
     id: 'efh-enterprise',

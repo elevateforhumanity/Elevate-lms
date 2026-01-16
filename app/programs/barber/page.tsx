@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { Scissors, Clock, DollarSign, Award, MapPin, Calendar, ArrowRight, CheckCircle, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Barber Apprenticeship Program | Free Training | Elevate For Humanity',
-  description: 'Become a licensed barber through our apprenticeship program. Learn cutting, styling, and business skills while earning.',
+  title: 'Barber Apprenticeship Program | $4,980 Tuition | Elevate For Humanity',
+  description: 'Become a licensed barber through our fee-based USDOL Registered Apprenticeship program. Learn cutting, styling, and business skills.',
 };
 
 export const dynamic = 'force-dynamic';
@@ -66,7 +66,7 @@ export default async function BarberProgramPage() {
           </Link>
           <div className="flex items-center gap-3 mb-4">
             <Scissors className="w-10 h-10" />
-            <span className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full">100% FREE</span>
+            <span className="bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full">USDOL Registered</span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             Barber Apprenticeship
@@ -112,8 +112,8 @@ export default async function BarberProgramPage() {
               <div className="text-gray-600">Months</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-green-600">FREE</div>
-              <div className="text-gray-600">Training</div>
+              <div className="text-3xl font-bold text-purple-600">$4,980</div>
+              <div className="text-gray-600">Tuition</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-purple-600">1,500</div>

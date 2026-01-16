@@ -10,8 +10,9 @@
 
 /* Show content immediately - no FOUC prevention needed */
 /* Fonts load fast enough with preconnect, no need to hide content */
-body {
+html, body {
   opacity: 1;
+  background-color: #ffffff;
 }
 
 /* ============================================================================

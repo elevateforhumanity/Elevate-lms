@@ -1,14 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { 
   Play, 
-  BookOpen, 
-  Users, 
-  BarChart, 
-  Settings, 
   ChevronRight,
   ChevronLeft,
   ExternalLink,
@@ -17,19 +12,24 @@ import {
   GraduationCap,
   Building2,
   Briefcase,
-  Zap
+  Settings,
+  Zap,
+  Users,
+  RefreshCw,
 } from 'lucide-react';
+
+interface DemoPage {
+  name: string;
+  path: string;
+  description: string;
+}
 
 interface DemoSection {
   id: string;
   title: string;
   description: string;
   icon: React.ReactNode;
-  pages: {
-    name: string;
-    path: string;
-    description: string;
-  }[];
+  pages: DemoPage[];
 }
 
 const DEMO_SECTIONS: DemoSection[] = [
@@ -53,12 +53,11 @@ const DEMO_SECTIONS: DemoSection[] = [
     description: 'Student experience inside the LMS',
     icon: <GraduationCap className="w-6 h-6" />,
     pages: [
-      { name: 'LMS Dashboard', path: '/lms/dashboard?demo=true', description: 'Student home with progress' },
-      { name: 'My Courses', path: '/lms/courses?demo=true', description: 'Enrolled courses list' },
-      { name: 'Course Player', path: '/lms/courses/demo-course?demo=true', description: 'Video lessons and content' },
-      { name: 'Achievements', path: '/lms/achievements?demo=true', description: 'Badges and certificates' },
-      { name: 'Resources', path: '/lms/resources?demo=true', description: 'Learning materials' },
-      { name: 'Community', path: '/lms/community?demo=true', description: 'Discussion forums' },
+      { name: 'LMS Dashboard', path: '/lms/dashboard', description: 'Student home with progress' },
+      { name: 'My Courses', path: '/lms/courses', description: 'Enrolled courses list' },
+      { name: 'Achievements', path: '/lms/achievements', description: 'Badges and certificates' },
+      { name: 'Resources', path: '/lms/resources', description: 'Learning materials' },
+      { name: 'Community', path: '/lms/community', description: 'Discussion forums' },
     ],
   },
   {
@@ -67,7 +66,7 @@ const DEMO_SECTIONS: DemoSection[] = [
     description: 'Program management and reporting tools',
     icon: <Settings className="w-6 h-6" />,
     pages: [
-      { name: 'Admin Dashboard', path: '/admin/dashboard', description: 'Overview and metrics' },
+      { name: 'Admin Dashboard', path: '/admin', description: 'Overview and metrics' },
       { name: 'Enrollments', path: '/admin/enrollments', description: 'Manage student enrollments' },
       { name: 'Applications', path: '/admin/applications', description: 'Review applications' },
       { name: 'Courses', path: '/admin/courses', description: 'Course management' },
@@ -81,7 +80,7 @@ const DEMO_SECTIONS: DemoSection[] = [
     description: 'Partner employers can post jobs and hire graduates',
     icon: <Briefcase className="w-6 h-6" />,
     pages: [
-      { name: 'Employer Dashboard', path: '/employer/dashboard', description: 'Hiring overview' },
+      { name: 'Employer Dashboard', path: '/employer', description: 'Hiring overview' },
       { name: 'Post a Job', path: '/employers/post-job', description: 'Create job listings' },
       { name: 'Browse Graduates', path: '/employer/candidates', description: 'Find qualified candidates' },
       { name: 'Hire Graduates', path: '/hire-graduates', description: 'Partnership information' },
@@ -103,43 +102,71 @@ const DEMO_SECTIONS: DemoSection[] = [
 
 export default function InteractiveDemoPage() {
   const [activeSection, setActiveSection] = useState<string>('public');
-  const [activePage, setActivePage] = useState<string>('/');
+  const [activePage, setActivePage] = useState<string>('/programs');
   const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>('desktop');
+  const [iframeKey, setIframeKey] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const currentSection = DEMO_SECTIONS.find(s => s.id === activeSection);
+  const currentPageInfo = currentSection?.pages.find(p => p.path === activePage);
+
+  useEffect(() => {
+    setIsLoading(true);
+  }, [activePage]);
+
+  const handleSectionChange = (sectionId: string) => {
+    const section = DEMO_SECTIONS.find(s => s.id === sectionId);
+    if (section && section.pages.length > 0) {
+      setActiveSection(sectionId);
+      setActivePage(section.pages[0].path);
+      setIframeKey(prev => prev + 1);
+    }
+  };
+
+  const handlePageChange = (path: string) => {
+    setActivePage(path);
+    setIframeKey(prev => prev + 1);
+  };
+
+  const refreshIframe = () => {
+    setIframeKey(prev => prev + 1);
+    setIsLoading(true);
+  };
 
   return (
     <div className="min-h-screen bg-slate-900">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-8">
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-6 sm:py-8">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 text-blue-200 text-sm mb-2">
                 <Play className="w-4 h-4" />
                 <span>Interactive Demo - No Login Required</span>
               </div>
-              <h1 className="text-3xl font-bold">Explore the Platform</h1>
-              <p className="text-blue-100 mt-1">Click any page to see it live. This is the actual platform.</p>
+              <h1 className="text-2xl sm:text-3xl font-bold">Explore the Platform</h1>
+              <p className="text-blue-100 mt-1 text-sm sm:text-base">Click any page to see it live in the preview below.</p>
             </div>
             <div className="flex items-center gap-4">
               <div className="flex bg-white/20 rounded-lg p-1">
                 <button
                   onClick={() => setViewMode('desktop')}
                   className={`p-2 rounded ${viewMode === 'desktop' ? 'bg-white text-blue-600' : 'text-white'}`}
+                  title="Desktop view"
                 >
                   <Monitor className="w-5 h-5" />
                 </button>
                 <button
                   onClick={() => setViewMode('mobile')}
                   className={`p-2 rounded ${viewMode === 'mobile' ? 'bg-white text-blue-600' : 'text-white'}`}
+                  title="Mobile view"
                 >
                   <Smartphone className="w-5 h-5" />
                 </button>
               </div>
               <Link
                 href="/store/licenses"
-                className="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 transition"
+                className="bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 transition text-sm sm:text-base"
               >
                 Get License
               </Link>
@@ -148,20 +175,17 @@ export default function InteractiveDemoPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex gap-8">
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Sidebar */}
-          <div className="w-72 flex-shrink-0">
-            <div className="bg-slate-800 rounded-xl p-4 sticky top-24">
+          <div className="w-full lg:w-72 flex-shrink-0">
+            <div className="bg-slate-800 rounded-xl p-4 lg:sticky lg:top-24">
               <h2 className="text-white font-bold mb-4">Demo Sections</h2>
               <div className="space-y-2">
                 {DEMO_SECTIONS.map((section) => (
                   <button
                     key={section.id}
-                    onClick={() => {
-                      setActiveSection(section.id);
-                      setActivePage(section.pages[0].path);
-                    }}
+                    onClick={() => handleSectionChange(section.id)}
                     className={`w-full flex items-center gap-3 p-3 rounded-lg transition text-left ${
                       activeSection === section.id
                         ? 'bg-blue-600 text-white'
@@ -185,7 +209,7 @@ export default function InteractiveDemoPage() {
                     {currentSection.pages.map((page) => (
                       <button
                         key={page.path}
-                        onClick={() => setActivePage(page.path)}
+                        onClick={() => handlePageChange(page.path)}
                         className={`w-full flex items-center justify-between p-2 rounded text-sm transition ${
                           activePage === page.path
                             ? 'bg-slate-700 text-white'
@@ -231,28 +255,31 @@ export default function InteractiveDemoPage() {
           </div>
 
           {/* Main Content - Live Preview */}
-          <div className="flex-1">
-            {/* Page Info */}
-            <div className="bg-slate-800 rounded-t-xl p-4 flex items-center justify-between">
+          <div className="flex-1 min-w-0">
+            {/* Page Info Bar */}
+            <div className="bg-slate-800 rounded-t-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <div className="text-white font-medium">
-                  {currentSection?.pages.find(p => p.path === activePage)?.name || 'Page'}
-                </div>
-                <div className="text-slate-400 text-sm">
-                  {currentSection?.pages.find(p => p.path === activePage)?.description}
-                </div>
+                <div className="text-white font-medium">{currentPageInfo?.name || 'Page'}</div>
+                <div className="text-slate-400 text-sm">{currentPageInfo?.description}</div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="bg-slate-700 px-3 py-1 rounded text-slate-300 text-sm font-mono">
+                <button
+                  onClick={refreshIframe}
+                  className="p-2 text-slate-400 hover:text-white transition"
+                  title="Refresh preview"
+                >
+                  <RefreshCw className="w-4 h-4" />
+                </button>
+                <div className="bg-slate-700 px-3 py-1 rounded text-slate-300 text-xs sm:text-sm font-mono truncate max-w-[150px] sm:max-w-none">
                   {activePage}
                 </div>
                 <a
                   href={activePage}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-blue-400 hover:text-blue-300 text-sm"
+                  className="flex items-center gap-1 text-blue-400 hover:text-blue-300 text-sm whitespace-nowrap"
                 >
-                  Open in new tab
+                  Open
                   <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
@@ -260,15 +287,25 @@ export default function InteractiveDemoPage() {
 
             {/* iframe Preview */}
             <div 
-              className={`bg-white rounded-b-xl overflow-hidden shadow-2xl ${
+              className={`bg-white rounded-b-xl overflow-hidden shadow-2xl relative ${
                 viewMode === 'mobile' ? 'max-w-[375px] mx-auto' : ''
               }`}
               style={{ height: viewMode === 'mobile' ? '667px' : '700px' }}
             >
+              {isLoading && (
+                <div className="absolute inset-0 bg-slate-100 flex items-center justify-center z-10">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <p className="text-slate-600">Loading preview...</p>
+                  </div>
+                </div>
+              )}
               <iframe
-                src={activePage}
+                key={iframeKey}
+                src={`${activePage}${activePage.includes('?') ? '&' : '?'}embed=true`}
                 className="w-full h-full border-0"
                 title="Demo Preview"
+                onLoad={() => setIsLoading(false)}
               />
             </div>
 
@@ -279,32 +316,30 @@ export default function InteractiveDemoPage() {
                   const pages = currentSection?.pages || [];
                   const currentIndex = pages.findIndex(p => p.path === activePage);
                   if (currentIndex > 0) {
-                    setActivePage(pages[currentIndex - 1].path);
+                    handlePageChange(pages[currentIndex - 1].path);
                   }
                 }}
-                className="flex items-center gap-2 text-slate-400 hover:text-white transition"
+                disabled={!currentSection || currentSection.pages.findIndex(p => p.path === activePage) === 0}
+                className="flex items-center gap-2 text-slate-400 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <ChevronLeft className="w-5 h-5" />
-                Previous Page
+                <span className="hidden sm:inline">Previous</span>
               </button>
               <div className="text-slate-500 text-sm">
-                {currentSection?.pages.findIndex(p => p.path === activePage) !== undefined && (
-                  <>
-                    Page {(currentSection?.pages.findIndex(p => p.path === activePage) || 0) + 1} of {currentSection?.pages.length}
-                  </>
-                )}
+                Page {(currentSection?.pages.findIndex(p => p.path === activePage) ?? 0) + 1} of {currentSection?.pages.length ?? 0}
               </div>
               <button
                 onClick={() => {
                   const pages = currentSection?.pages || [];
                   const currentIndex = pages.findIndex(p => p.path === activePage);
                   if (currentIndex < pages.length - 1) {
-                    setActivePage(pages[currentIndex + 1].path);
+                    handlePageChange(pages[currentIndex + 1].path);
                   }
                 }}
-                className="flex items-center gap-2 text-slate-400 hover:text-white transition"
+                disabled={!currentSection || currentSection.pages.findIndex(p => p.path === activePage) === (currentSection?.pages.length ?? 0) - 1}
+                className="flex items-center gap-2 text-slate-400 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Next Page
+                <span className="hidden sm:inline">Next</span>
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
@@ -312,8 +347,8 @@ export default function InteractiveDemoPage() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">Ready to Launch Your Training Platform?</h2>
+        <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 sm:p-8 text-center text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">Ready to Launch Your Training Platform?</h2>
           <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
             Get the complete platform with all features you just explored. White-label it with your brand.
           </p>
@@ -325,10 +360,10 @@ export default function InteractiveDemoPage() {
               View Pricing
             </Link>
             <Link
-              href="/ai-studio"
-              className="bg-purple-700 text-white px-8 py-3 rounded-lg font-bold hover:bg-purple-800 transition border border-white/20"
+              href="/contact"
+              className="bg-white/20 text-white px-8 py-3 rounded-lg font-bold hover:bg-white/30 transition border border-white/30"
             >
-              Try AI Studio
+              Contact Sales
             </Link>
           </div>
         </div>
