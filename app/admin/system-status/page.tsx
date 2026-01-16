@@ -63,56 +63,88 @@ async function checkCreatorPlatformCapabilities(supabase: any): Promise<CreatorC
   const baseUrl = 'https://www.elevateforhumanity.org';
   const capabilities: CreatorCapability[] = [];
   
-  // 1. Instructor Posts / Announcements
-  const { count: announcementCount } = await supabase
-    .from('announcements')
-    .select('*', { count: 'exact', head: true });
+  // Helper to check if table exists and is accessible
+  async function tableCheck(tableName: string): Promise<'active' | 'partial' | 'missing'> {
+    try {
+      const { error } = await supabase.from(tableName).select('id').limit(1);
+      if (error) {
+        if (error.code === '42501') return 'active'; // RLS blocking = table exists
+        if (error.code === 'PGRST205') return 'missing'; // Table doesn't exist
+        return 'partial';
+      }
+      return 'active';
+    } catch {
+      return 'missing';
+    }
+  }
+  
+  // 1. Instructor Posts / Announcements (uses 'announcements' table)
+  const announcementStatus = await tableCheck('announcements');
   capabilities.push({
     name: 'Instructor Posts/Announcements',
-    status: announcementCount !== null ? 'active' : 'missing',
+    status: announcementStatus,
     route: '/instructor/dashboard',
     dbTable: 'announcements',
     liveUrl: `${baseUrl}/instructor/dashboard`,
     description: 'Instructors can post announcements to enrolled learners'
   });
   
-  // 2. Community Discussion Threads
-  const { count: threadCount } = await supabase
-    .from('discussion_topics')
-    .select('*', { count: 'exact', head: true });
+  // 2. Forum Threads (uses 'forum_threads' table - actual table name)
+  const forumThreadStatus = await tableCheck('forum_threads');
   capabilities.push({
-    name: 'Community Discussion Threads',
-    status: threadCount !== null ? 'active' : 'missing',
-    route: '/courses/[courseId]/discussions',
-    dbTable: 'discussion_topics',
+    name: 'Forum Discussion Threads',
+    status: forumThreadStatus,
+    route: '/lms/forums',
+    dbTable: 'forum_threads',
     liveUrl: `${baseUrl}/lms/forums`,
     description: 'Learners can create and participate in discussion threads'
   });
   
-  // 3. Discussion Replies
-  const { count: replyCount } = await supabase
-    .from('discussion_replies')
-    .select('*', { count: 'exact', head: true });
+  // 3. Forum Posts/Replies (uses 'forum_posts' table)
+  const forumPostStatus = await tableCheck('forum_posts');
   capabilities.push({
-    name: 'Discussion Replies',
-    status: replyCount !== null ? 'active' : 'missing',
-    route: '/api/discussions/reply',
-    dbTable: 'discussion_replies',
+    name: 'Forum Replies',
+    status: forumPostStatus,
+    route: '/api/forums/posts',
+    dbTable: 'forum_posts',
     liveUrl: `${baseUrl}/lms/forums`,
-    description: 'Learners can reply to discussion threads'
+    description: 'Learners can reply to forum threads'
   });
   
-  // 4. Creator Dashboard
+  // 4. Discussion Posts (alternative discussion system)
+  const discussionPostStatus = await tableCheck('discussion_posts');
   capabilities.push({
-    name: 'Creator Dashboard',
-    status: 'active',
-    route: '/creator/dashboard',
-    dbTable: 'creator_profiles',
-    liveUrl: `${baseUrl}/creator/dashboard`,
-    description: 'Dedicated space for content creators to manage courses'
+    name: 'Course Discussions',
+    status: discussionPostStatus,
+    route: '/courses/[courseId]/discussions',
+    dbTable: 'discussion_posts',
+    liveUrl: `${baseUrl}/courses`,
+    description: 'Course-specific discussion threads'
   });
   
-  // 5. Instructor Dashboard
+  // 5. Program Announcements (NEW - requires migration)
+  const programAnnouncementStatus = await tableCheck('program_announcements');
+  capabilities.push({
+    name: 'Program Announcements',
+    status: programAnnouncementStatus,
+    route: '/instructor/programs/[id]/announcements',
+    dbTable: 'program_announcements',
+    liveUrl: `${baseUrl}/instructor/programs`,
+    description: 'Program-wide announcements (REQUIRES MIGRATION)'
+  });
+  
+  // 6. Program Discussions (NEW - requires migration)
+  const programDiscussionStatus = await tableCheck('program_discussions');
+  capabilities.push({
+    name: 'Program Discussions',
+    status: programDiscussionStatus,
+    route: '/programs/[slug]/discussions',
+    dbTable: 'program_discussions',
+    liveUrl: `${baseUrl}/programs`,
+    description: 'Program community discussions (REQUIRES MIGRATION)'
+  });
+  
+  // 7. Instructor Dashboard (route exists, uses profiles table)
   capabilities.push({
     name: 'Instructor Dashboard',
     status: 'active',

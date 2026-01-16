@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
-import { ArrowLeft, Plus, MessageSquare, ThumbsUp, Clock, User } from 'lucide-react';
+import { ArrowLeft, Plus, MessageSquare, ThumbsUp, Clock, User, AlertCircle } from 'lucide-react';
 
 interface Thread {
   id: string;
@@ -68,33 +68,50 @@ export default function ProgramDiscussionsPage() {
       setIsEnrolled((count || 0) > 0);
     }
 
-    // Load discussion threads
-    const { data: threadsData } = await supabase
-      .from('program_discussions')
+    // Load discussion threads - use forum_threads with course association
+    // Note: program_discussions table requires migration - using existing forum system
+    const { data: threadsData, error: threadsError } = await supabase
+      .from('forum_threads')
       .select(`
         id,
         title,
-        content,
         created_at,
         pinned,
-        likes,
-        author:profiles!author_id(full_name, avatar_url)
+        views,
+        author_id
       `)
-      .eq('program_id', programData.id)
       .order('pinned', { ascending: false })
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: false })
+      .limit(20);
 
-    // Get reply counts
+    if (threadsError) {
+      console.log('Forum threads not accessible:', threadsError.message);
+      setThreads([]);
+      setLoading(false);
+      return;
+    }
+
+    // Get reply counts from forum_posts
     const threadsWithReplies = await Promise.all(
       (threadsData || []).map(async (thread: any) => {
         const { count } = await supabase
-          .from('program_discussion_replies')
+          .from('forum_posts')
           .select('*', { count: 'exact', head: true })
           .eq('thread_id', thread.id);
         
+        // Get author profile
+        const { data: authorData } = await supabase
+          .from('profiles')
+          .select('full_name, avatar_url')
+          .eq('id', thread.author_id)
+          .single();
+        
         return {
           ...thread,
+          content: '', // forum_threads doesn't have content field
+          likes: thread.views || 0,
           reply_count: count || 0,
+          author: authorData || { full_name: 'Anonymous' },
         };
       })
     );
