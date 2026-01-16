@@ -46,15 +46,17 @@ export default function StorePage() {
               Elevate for Humanity
             </Link>
             <div className="flex items-center gap-4">
-              <Link href={ROUTES.license} className="text-slate-600 hover:text-orange-600 transition text-sm font-medium">
+              <Link href={ROUTES.license} className="text-slate-600 hover:text-orange-600 transition text-sm font-medium hidden sm:block">
                 Platform Licensing
               </Link>
+              <Link href="/login" className="text-slate-600 hover:text-orange-600 transition text-sm font-medium">
+                Sign In
+              </Link>
               <Link
-                href="/demo"
+                href="/signup"
                 className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-orange-700 transition"
               >
-                <ArrowRight className="w-4 h-4" />
-                Preview Demo
+                Sign Up
               </Link>
             </div>
           </div>
