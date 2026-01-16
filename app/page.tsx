@@ -46,70 +46,39 @@ export default function HomePage() {
         secondaryCTA={{ text: "View Programs", href: "/programs" }}
       />
 
-      {/* Features with Your Icon Images */}
-      {/* Removed duplicate main tag - ConditionalLayout already provides main#main-content */}
+      {/* Why Choose Our Programs - Paragraph with Image */}
       <section className="py-8 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-black mb-2 md:mb-4">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-black mb-4">
               Why Choose Our Programs
             </h2>
-            <p className="text-base md:text-xl text-black max-w-3xl mx-auto">
-              Real training, real credentials, real careers
-            </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-            {[
-              {
-                icon: "/images/icons/dollar.png",
-                title: "100% Free Training",
-                description: "No tuition costs with WIOA, WRG, or DOL funding. Training is completely free for eligible students."
-              },
-              {
-                icon: "/images/icons/users.png",
-                title: "Job Placement Support",
-                description: "Connect with employers hiring our graduates. Resume help, interview prep, and job search assistance included."
-              },
-              {
-                icon: "/images/icons/clock.png",
-                title: "Fast-Track Programs",
-                description: "Complete programs in weeks or months, not years. Get certified and start earning sooner."
-              },
-              {
-                icon: "/images/icons/award.png",
-                title: "Industry Credentials",
-                description: "State licenses, national certifications, DOL-registered apprenticeships. Credentials employers recognize."
-              },
-              {
-                icon: "/images/icons/shield.png",
-                title: "Career Support",
-                description: "Resume building, interview coaching, job matching, and ongoing career counseling throughout your journey."
-              },
-              {
-                icon: "/images/icons/trending-up.png",
-                title: "Multiple Start Dates",
-                description: "Rolling enrollment throughout the year. Apply now to secure your spot in the next available cohort."
-              }
-            ].map((feature, index) => (
-              <div key={index} className="text-center p-3 md:p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
-                <div className="relative w-12 h-12 md:w-20 md:h-20 mx-auto mb-2 md:mb-4">
-                  <Image
-                    src={feature.icon}
-                    alt={feature.title}
-                    fill
-                    priority
-                    className="object-contain"
-                  />
-                </div>
-                <h3 className="text-sm md:text-xl font-bold text-black mb-1 md:mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-xs md:text-base text-black leading-relaxed hidden md:block">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Image */}
+            <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/images/why-choose-hero.jpg"
+                alt="Students in training program"
+                fill
+                priority
+                className="object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="space-y-4 md:space-y-6">
+              <p className="text-base md:text-lg text-black leading-relaxed">
+                Real training, real credentials, real careers. Our programs provide 100% free training with WIOA, WRG, or DOL funding - no tuition costs for eligible students. We connect you with employers hiring our graduates and provide resume help, interview prep, and job search assistance.
+              </p>
+              <p className="text-base md:text-lg text-black leading-relaxed">
+                Complete fast-track programs in weeks or months, not years, and earn industry credentials that employers recognize including state licenses, national certifications, and DOL-registered apprenticeships. You'll receive ongoing career support with resume building, interview coaching, and job matching throughout your journey.
+              </p>
+              <p className="text-base md:text-lg text-black leading-relaxed">
+                With rolling enrollment and multiple start dates throughout the year, you can apply now to secure your spot in the next available cohort and start your path to a rewarding career.
+              </p>
+            </div>
           </div>
         </div>
       </section>
