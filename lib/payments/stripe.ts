@@ -100,8 +100,12 @@ export class StripeService {
   }
   // Get subscription
   async getSubscription(subscriptionId: string): Promise<Subscription | null> {
-    //
-    // Mock response
+    // In production, call Stripe API to fetch subscription
+    // For now, return mock data if subscriptionId is provided
+    if (!subscriptionId) {
+      return null;
+    }
+    // Mock response for development/testing
     return {
       id: subscriptionId,
       customerId: 'cus_123',
@@ -110,7 +114,6 @@ export class StripeService {
       currentPeriodEnd: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
       cancelAtPeriodEnd: false,
     };
-    return null;
   }
   // List products
   async listProducts(): Promise<Product[]> {
@@ -147,9 +150,13 @@ export class StripeService {
     paymentIntentId: string,
     amount?: number
   ): Promise<boolean> {
-    //
+    // In production, call Stripe API to process refund
+    // For now, validate input and return mock success
+    if (!paymentIntentId) {
+      return false;
+    }
+    // Mock successful refund for development/testing
     return true;
-    return false;
   }
   // Webhook handler
   async handleWebhook(payload: string, signature: string): Promise<void> {
