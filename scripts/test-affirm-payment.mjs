@@ -41,7 +41,7 @@ const testConfig = {
   amount: 4890, // $48.90 for testing
   courseId: 'barber-apprenticeship',
   courseName: 'Barber Apprenticeship',
-  userEmail: 'affirm-test@elevateforhumanity.institute',
+  userEmail: 'affirm-test@elevateforhumanity.org',
   userName: 'Affirm Test Student',
   userPhone: '555-555-5555',
 };

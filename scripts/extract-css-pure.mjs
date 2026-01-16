@@ -13,7 +13,7 @@ import https from 'https';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const TARGET_URL = 'https://elevateforhumanity.institute';
+const TARGET_URL = 'https://www.elevateforhumanity.org';
 const OUTPUT_DIR = path.join(process.cwd(), 'extracted-styles');
 
 function httpsGet(url) {

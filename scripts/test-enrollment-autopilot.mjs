@@ -35,7 +35,7 @@ if (missingVars.length > 0) {
 
 // Configuration
 const config = {
-  studentEmail: process.env.TEST_STUDENT_EMAIL || 'autopilot-test@elevateforhumanity.institute',
+  studentEmail: process.env.TEST_STUDENT_EMAIL || 'autopilot-test@elevateforhumanity.org',
   studentPassword: process.env.TEST_STUDENT_PASSWORD || 'AutopilotTest123!',
   programSlug: process.env.TEST_PROGRAM_SLUG || 'barber-apprenticeship',
   skipPayment: true,

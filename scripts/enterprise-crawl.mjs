@@ -3,7 +3,7 @@
 //
 // Usage:
 //  node scripts/enterprise-crawl.mjs \
-//    --base=https://elevateforhumanity.institute \
+//    --base=https://www.elevateforhumanity.org \
 //    --out=sites/marketing \
 //    --chunk=2000 \
 //    --latest=1000 \
@@ -21,7 +21,7 @@ const arg = (k, d = null) => {
   const m = process.argv.find((a) => a.startsWith(`--${k}=`));
   return m ? m.split('=')[1] : d;
 };
-const BASE = (arg('base') || 'https://elevateforhumanity.institute').replace(
+const BASE = (arg('base') || 'https://www.elevateforhumanity.org').replace(
   /\/$/,
   ''
 );
