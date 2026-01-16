@@ -8,44 +8,65 @@ export const Footer: React.FC = () => {
 
   const footerLinks = {
     programs: [
-      { name: 'CNA Training', href: '/programs/cna' },
-      { name: 'HVAC Technician', href: '/programs/hvac' },
-      { name: 'Barber Apprenticeship', href: '/programs/barber' },
-      { name: 'CDL Truck Driving', href: '/programs/truck-driving' },
+      { name: 'Healthcare', href: '/programs/healthcare' },
+      { name: 'Skilled Trades', href: '/programs/skilled-trades' },
+      { name: 'Beauty & Wellness', href: '/programs/beauty' },
+      { name: 'Business & Finance', href: '/programs/business-financial' },
+      { name: 'Technology', href: '/programs/technology' },
+      { name: 'Apprenticeships', href: '/programs/apprenticeships' },
       { name: 'All Programs', href: '/programs' },
-      { name: 'Compare Programs', href: '/compare' },
+    ],
+    services: [
+      { name: 'Tax Services', href: '/tax' },
+      { name: 'SupersonicFastCash', href: '/supersonic-fast-cash' },
+      { name: 'VITA Free Tax Help', href: '/vita' },
+      { name: 'Rise Foundation', href: '/rise-foundation' },
+      { name: 'Career Services', href: '/career-services' },
+      { name: 'AI Studio', href: '/ai-studio' },
     ],
     students: [
       { name: 'Apply Now', href: '/apply' },
       { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
-      { name: 'Financial Aid', href: '/financial-aid' },
+      { name: 'Funding Options', href: '/funding' },
       { name: 'Student Portal', href: '/lms/dashboard' },
-      { name: 'Career Services', href: '/career-services' },
+      { name: 'Course Catalog', href: '/courses' },
       { name: 'Success Stories', href: '/success-stories' },
+    ],
+    platform: [
+      { name: 'LMS Overview', href: '/lms' },
+      { name: 'Store & Licensing', href: '/store' },
+      { name: 'Platform Demo', href: '/store/demo' },
+      { name: 'Pricing', href: '/pricing' },
+      { name: 'Community Hub', href: '/community' },
+      { name: 'Marketplace', href: '/marketplace' },
+    ],
+    employers: [
+      { name: 'Hire Graduates', href: '/hire-graduates' },
+      { name: 'Post a Job', href: '/employers/post-job' },
+      { name: 'Employer Portal', href: '/employer/dashboard' },
+      { name: 'Workforce Partners', href: '/workforce-partners' },
+      { name: 'Apprenticeships', href: '/employers/apprenticeships' },
     ],
     resources: [
       { name: 'FAQ', href: '/faq' },
       { name: 'Blog', href: '/blog' },
-      { name: 'Resources Library', href: '/resources' },
+      { name: 'Help Center', href: '/help' },
       { name: 'Calendar', href: '/calendar' },
-      { name: 'AI Tutor', href: '/ai-tutor' },
       { name: 'Contact Support', href: '/contact' },
-      { name: 'Platform Demo', href: '/demo' },
-      { name: 'Admin Dashboard', href: '/admin/dashboard' },
-      { name: 'System Status', href: '/admin/system-status' },
-    ],
-    employers: [
-      { name: 'Hire Our Graduates', href: '/employers' },
-      { name: 'Post a Job', href: '/employer/post-job' },
-      { name: 'Employer Dashboard', href: '/employer/dashboard' },
-      { name: 'Workforce Partners', href: '/partners/workforce' },
     ],
     company: [
       { name: 'About Us', href: '/about' },
-      { name: 'Contact', href: '/contact' },
+      { name: 'Leadership Team', href: '/about/team' },
+      { name: 'Partners', href: '/partners' },
       { name: 'Careers', href: '/careers' },
+      { name: 'Contact', href: '/contact' },
+    ],
+    legal: [
       { name: 'Privacy Policy', href: '/privacy-policy' },
       { name: 'Terms of Service', href: '/terms-of-service' },
+      { name: 'Accessibility', href: '/accessibility' },
+      { name: 'Compliance', href: '/compliance' },
+      { name: 'Sitemap', href: '/sitemap-page' },
     ],
   };
 
@@ -98,12 +119,29 @@ export const Footer: React.FC = () => {
 
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8">
           {/* Programs */}
           <div>
             <h4 className="text-white font-semibold mb-4">Programs</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {footerLinks.programs.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm font-medium hover:text-orange-400 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Services</h4>
+            <ul className="space-y-2">
+              {footerLinks.services.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -119,7 +157,7 @@ export const Footer: React.FC = () => {
           {/* For Students */}
           <div>
             <h4 className="text-white font-semibold mb-4">For Students</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {footerLinks.students.map((link) => (
                 <li key={link.name}>
                   <Link
@@ -133,11 +171,11 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Platform */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Resources</h4>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
+            <h4 className="text-white font-semibold mb-4">Platform</h4>
+            <ul className="space-y-2">
+              {footerLinks.platform.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -153,8 +191,25 @@ export const Footer: React.FC = () => {
           {/* For Employers */}
           <div>
             <h4 className="text-white font-semibold mb-4">For Employers</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {footerLinks.employers.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm font-medium hover:text-orange-400 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Resources</h4>
+            <ul className="space-y-2">
+              {footerLinks.resources.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -170,8 +225,25 @@ export const Footer: React.FC = () => {
           {/* Company */}
           <div>
             <h4 className="text-white font-semibold mb-4">Company</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {footerLinks.company.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm font-medium hover:text-orange-400 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Legal</h4>
+            <ul className="space-y-2">
+              {footerLinks.legal.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}

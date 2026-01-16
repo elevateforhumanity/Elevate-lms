@@ -1,70 +1,37 @@
-// @ts-nocheck
+/**
+ * Grants Sync API Route
+ * Syncs grant opportunities from Grants.gov to local database
+ */
+
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
-// app/api/grants/sync/route.ts
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { logger } from '@/lib/logger';
+import {
+  searchWorkforceGrants,
+  searchEducationGrants,
+  searchDOLGrants,
+  searchHHSGrants,
+  type GrantsGovOpportunity,
+} from '@/lib/integrations/grants-gov';
 
-type RawGrant = {
-  externalId: string;
-  title: string;
-  agency: string;
-  summary: string;
-  eligibility: string;
-  naicsTags: string[];
-  categories: string[];
-  locationLimit: string;
-  dueDate: string;
-  url: string;
-  raw: any;
-};
-
-async function fetchMockGrants(): Promise<RawGrant[]> {
-  // Replace this later with real Grants.gov / state feeds
-  return [
-    {
-      externalId: 'EFH-DEMO-001',
-      title: 'Workforce Training for Healthcare & Trades',
-      agency: 'Indiana Department of Workforce Development',
-      summary:
-        'Funding to support training programs in healthcare, trades, and apprenticeships for underserved communities.',
-      eligibility: 'Nonprofits and training providers.',
-      naicsTags: ['624190', '611519', '611430'],
-      categories: ['workforce', 'nonprofit'],
-      locationLimit: 'IN',
-      dueDate: '2025-12-31',
-      url: 'https://example-grants.gov/EFH-DEMO-001',
-      raw: { demo: true },
-    },
-    {
-      externalId: 'EFH-DEMO-002',
-      title: 'Small Business Wellness & Beauty Grant',
-      agency: 'Local Economic Development Agency',
-      summary:
-        'Grants for wellness, beauty, and body-contouring businesses to expand services, hire staff, and provide training.',
-      eligibility: 'Small businesses in beauty, wellness, and personal care.',
-      naicsTags: ['812199', '621399'],
-      categories: ['small_business', 'beauty', 'wellness'],
-      locationLimit: 'US',
-      dueDate: '2025-10-01',
-      url: 'https://example-grants.gov/EFH-DEMO-002',
-      raw: { demo: true },
-    },
-  ];
-}
-
+/**
+ * POST /api/grants/sync
+ * Sync grants from Grants.gov to local database
+ */
 export async function POST() {
   try {
+    // Ensure grant source exists
     const { data: source, error: sourceError } = await supabaseAdmin
       .from('grant_sources')
       .upsert(
         {
-          name: 'EFH Demo Grants',
-          code: 'efh_demo_source',
-          base_url: 'https://example-grants.gov',
+          name: 'Grants.gov',
+          code: 'grants_gov',
+          base_url: 'https://www.grants.gov',
         },
         { onConflict: 'code' }
       )
@@ -72,44 +39,116 @@ export async function POST() {
       .single();
 
     if (sourceError || !source) {
-      logger.error(sourceError);
+      logger.error('Failed to ensure grant source:', sourceError);
       return NextResponse.json(
         { error: 'Failed to ensure grant source' },
         { status: 500 }
       );
     }
 
-    const rawGrants = await fetchMockGrants();
+    // Fetch grants from multiple relevant categories
+    const [workforceGrants, educationGrants, dolGrants, hhsGrants] = await Promise.all([
+      searchWorkforceGrants(),
+      searchEducationGrants(),
+      searchDOLGrants(),
+      searchHHSGrants(),
+    ]);
 
-    for (const g of rawGrants) {
+    // Combine and deduplicate
+    const allOpportunities = [
+      ...workforceGrants.opportunities,
+      ...educationGrants.opportunities,
+      ...dolGrants.opportunities,
+      ...hhsGrants.opportunities,
+    ];
+
+    const uniqueOpportunities = Array.from(
+      new Map(allOpportunities.map(o => [o.id, o])).values()
+    );
+
+    logger.info(`Found ${uniqueOpportunities.length} unique grant opportunities`);
+
+    let imported = 0;
+    let errors = 0;
+
+    for (const grant of uniqueOpportunities) {
       const { error } = await supabaseAdmin.from('grant_opportunities').upsert(
         {
           source_id: source.id,
-          external_id: g.externalId,
-          title: g.title,
-          agency: g.agency,
-          summary: g.summary,
-          eligibility: g.eligibility,
-          naics_tags: g.naicsTags,
-          categories: g.categories,
-          location_limit: g.locationLimit,
-          due_date: g.dueDate,
-          url: g.url,
-          raw_json: g.raw,
+          external_id: grant.id,
+          title: grant.title,
+          agency: grant.agency.name,
+          summary: grant.synopsis?.synopsisDesc || '',
+          eligibility: grant.eligibility?.additionalInfo || '',
+          cfda_number: grant.cfdaList?.[0]?.cfdaNumber || null,
+          categories: grant.synopsis?.fundingActivityCategories || [],
+          award_ceiling: grant.award?.ceiling || null,
+          award_floor: grant.award?.floor || null,
+          due_date: grant.dates.closeDate || null,
+          status: grant.status,
+          url: grant.opportunityUrl,
+          raw_json: grant,
         },
         { onConflict: 'source_id,external_id' }
       );
 
       if (error) {
-        logger.error('Error upserting grant', g.externalId, error);
+        logger.error('Error upserting grant:', grant.id, error);
+        errors++;
+      } else {
+        imported++;
       }
     }
 
-    return NextResponse.json({ ok: true, imported: rawGrants.length });
+    return NextResponse.json({
+      ok: true,
+      source: 'grants.gov',
+      found: uniqueOpportunities.length,
+      imported,
+      errors,
+      breakdown: {
+        workforce: workforceGrants.totalCount,
+        education: educationGrants.totalCount,
+        dol: dolGrants.totalCount,
+        hhs: hhsGrants.totalCount,
+      },
+    });
   } catch (err) {
-    logger.error(err);
+    logger.error('Unexpected error during grant sync:', err);
     return NextResponse.json(
       { error: 'Unexpected error during grant sync' },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * GET /api/grants/sync
+ * Get sync status and recent grants
+ */
+export async function GET() {
+  try {
+    // Get grant counts
+    const { count: totalGrants } = await supabaseAdmin
+      .from('grant_opportunities')
+      .select('*', { count: 'exact', head: true });
+
+    // Get upcoming deadlines
+    const { data: upcomingDeadlines } = await supabaseAdmin
+      .from('grant_opportunities')
+      .select('id, title, agency, due_date, award_ceiling')
+      .gte('due_date', new Date().toISOString().split('T')[0])
+      .order('due_date', { ascending: true })
+      .limit(10);
+
+    return NextResponse.json({
+      totalGrants: totalGrants || 0,
+      upcomingDeadlines: upcomingDeadlines || [],
+    });
+  } catch (err) {
+    logger.error('Error getting sync status:', err);
+    return NextResponse.json(
+      { error: 'Failed to get sync status' },
       { status: 500 }
     );
   }

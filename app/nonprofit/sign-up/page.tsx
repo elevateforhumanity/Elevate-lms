@@ -6,10 +6,37 @@ import { useState } from 'react';
 
 export default function SignUpPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError('');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
+      interest: 'nonprofit_workshop',
+      message: `Workshop signup: ${formData.get('workshop') || 'General interest'}`,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error('Failed to submit');
+      setSubmitted(true);
+    } catch (err) {
+      setError('Failed to submit. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {

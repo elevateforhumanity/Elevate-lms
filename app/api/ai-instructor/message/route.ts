@@ -23,15 +23,28 @@ const contextPrompts = {
 };
 
 export async function POST(req: NextRequest) {
-  try {
-    if (!openai) {
-      return NextResponse.json(
-        { error: 'AI instructor not configured' },
-        { status: 503 }
-      );
-    }
+  // Fallback messages for when API is not configured
+  const fallbackMessages = {
+    welcome:
+      "Welcome to your training program! I'm your AI instructor, here to guide you every step of the way. Together, we'll build the skills you need for a successful career. Let's get started!",
+    lesson:
+      "Let's dive into this lesson together. Remember, learning is a journey - take your time, ask questions, and don't be afraid to make mistakes. Every expert was once a beginner!",
+    encouragement:
+      "You're making excellent progress! Your dedication and hard work are truly paying off. Keep pushing forward - you're closer to your goals than you think!",
+    completion:
+      "Congratulations on completing this module! This is a significant achievement. Take a moment to celebrate your success, then get ready for the next exciting challenge ahead!",
+  };
 
+  try {
     const { programId, lessonId, context = 'welcome' } = await req.json();
+
+    // If no OpenAI configured, return helpful fallback
+    if (!openai) {
+      return NextResponse.json({
+        message: fallbackMessages[context as keyof typeof fallbackMessages] || fallbackMessages.welcome,
+        fallback: true
+      });
+    }
 
     const systemPrompt =
       contextPrompts[context as keyof typeof contextPrompts] ||
@@ -70,21 +83,7 @@ export async function POST(req: NextRequest) {
       error instanceof Error ? error : new Error(String(error))
     );
 
-    // Fallback messages if API fails
-    const fallbackMessages = {
-      welcome:
-        "Welcome to your training! I'm here to guide you every step of the way. Let's get started on your path to success!",
-      lesson:
-        "Let's dive into this lesson together. Take your time, ask questions, and remember - every expert was once a beginner!",
-      encouragement:
-        "You're making great progress! Keep up the excellent work. Your dedication is paying off!",
-      completion:
-        "Congratulations on completing this module! You've worked hard and it shows. Ready for the next challenge?",
-    };
-
-    const { context = 'welcome' } = await req
-      .json()
-      .catch(() => ({ context: 'welcome' }));
+    const context = 'welcome';
 
     return NextResponse.json({
       message:

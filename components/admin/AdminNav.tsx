@@ -130,6 +130,38 @@ export default function AdminNav({ userRole }: AdminNavProps) {
         { href: '/admin/migrations', label: 'Migrations' },
       ],
     },
+    {
+      label: 'AI Studio',
+      icon: Zap,
+      submenu: [
+        { href: '/ai-studio', label: 'AI Studio' },
+        { href: '/admin/ai-console', label: 'AI Console' },
+        { href: '/admin/course-generator', label: 'Course Generator' },
+        { href: '/admin/video-generator', label: 'Video Generator' },
+        { href: '/admin/course-studio-ai', label: 'AI Course Studio' },
+      ],
+    },
+    {
+      label: 'CRM',
+      icon: Users,
+      submenu: [
+        { href: '/admin/crm', label: 'CRM Hub' },
+        { href: '/admin/crm/contacts', label: 'Contacts' },
+        { href: '/admin/crm/campaigns', label: 'Campaigns' },
+        { href: '/admin/crm/deals', label: 'Deals' },
+        { href: '/admin/crm/leads', label: 'Leads' },
+      ],
+    },
+    {
+      label: 'Store',
+      icon: ShoppingCart,
+      submenu: [
+        { href: '/store', label: 'Store Front' },
+        { href: '/admin/licensing', label: 'Licensing' },
+        { href: '/store/demo', label: 'Live Demo' },
+        { href: '/store/licenses', label: 'Licenses' },
+      ],
+    },
   ];
 
   const isActive = (href: string) => {

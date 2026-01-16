@@ -90,7 +90,14 @@ export default function CheckoutPage() {
   const params = useParams();
   const router = useRouter();
   const [clientSecret, setClientSecret] = useState<string | null>(null);
-  const [product, setProduct] = useState<unknown>(null);
+  const [product, setProduct] = useState<{
+    id: string;
+    slug: string;
+    name: string;
+    price: number;
+    priceDisplay: string;
+    features: string[];
+  } | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

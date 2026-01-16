@@ -10,7 +10,7 @@ export default function EmployerDemo() {
   const [candidates, setCandidates] = useState([
     { id: 1, name: 'Sarah Mitchell', program: 'CNA', progress: 95, status: 'Interview', match: 95, avatar: '/images/gallery/image9.jpg' },
     { id: 2, name: 'James Thompson', program: 'CNA', progress: 88, status: 'Review', match: 88, avatar: '/images/testimonials/student-david.jpg' },
-    { id: 3, name: 'Lisa Rodriguez', program: 'MA', progress: 67, status: 'Screen', match: 82, avatar: '/images/testimonials/testimonial-medical-assistant.png' },
+    { id: 3, name: 'Lisa Rodriguez', program: 'MA', progress: 67, status: 'Screen', match: 82, avatar: '/images/testimonials/testimonial-medical-assistant.jpg' },
     { id: 4, name: 'Michael Chen', program: 'Phlebotomy', progress: 100, status: 'Offer', match: 91, avatar: '/images/testimonials/student-marcus.jpg' },
   ]);
 

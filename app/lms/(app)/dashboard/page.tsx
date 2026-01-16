@@ -478,6 +478,13 @@ export default async function StudentDashboardOrchestrated() {
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 <Link
+                  href="/lms/ai-tutor"
+                  aria-label="AI Tutor"
+                  className="p-3 bg-purple-50 border-2 border-purple-200 rounded-lg hover:border-purple-500 hover:shadow text-sm font-semibold text-purple-700"
+                >
+                  🤖 AI Tutor
+                </Link>
+                <Link
                   href="/lms/courses"
                   aria-label="Link"
                   className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm"

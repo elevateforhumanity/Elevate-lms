@@ -146,8 +146,8 @@ function SubscriptionsContent() {
       if (data.url) {
         window.location.href = data.url;
       }
-    } catch (err: unknown) {
-      logger.error('Subscription err:', err);
+    } catch (err) {
+      logger.error('Subscription err:', err instanceof Error ? err : new Error(String(err)));
       toast.error(
         (err instanceof Error ? err.message : String(err)) ||
           'Failed to start subscription'
@@ -176,8 +176,8 @@ function SubscriptionsContent() {
       if (data.url) {
         window.location.href = data.url;
       }
-    } catch (err: unknown) {
-      logger.error('Portal err:', err);
+    } catch (err) {
+      logger.error('Portal err:', err instanceof Error ? err : new Error(String(err)));
       toast.error(
         (err instanceof Error ? err.message : String(err)) ||
           'Failed to open billing portal'

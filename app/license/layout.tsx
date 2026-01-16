@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Calendar } from 'lucide-react';
 import { ROUTES } from '@/lib/pricing';
+import { GuidedDemoChat } from '@/components/store/GuidedDemoChat';
 
 export const metadata: Metadata = {
   title: 'License the Elevate LMS | Elevate for Humanity',
@@ -113,6 +114,9 @@ export default function LicenseLayout({
           </div>
         </div>
       </footer>
+
+      {/* Guided Demo Chat */}
+      <GuidedDemoChat />
     </div>
   );
 }

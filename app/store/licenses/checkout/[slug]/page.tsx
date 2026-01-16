@@ -20,12 +20,29 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
+interface StoreProduct {
+  id: string;
+  slug: string;
+  name: string;
+  price: number;
+  features: string[];
+}
+
+interface CustomerInfo {
+  name?: string;
+  email: string;
+  organization?: string;
+  organizationName?: string;
+  contactName?: string;
+  phone?: string;
+}
+
 function CheckoutForm({
   product,
   customerInfo,
 }: {
-  product: unknown;
-  customerInfo: unknown;
+  product: StoreProduct;
+  customerInfo: CustomerInfo;
 }) {
   const stripe = useStripe();
   const elements = useElements();
@@ -145,8 +162,8 @@ export default function LicenseCheckoutPage() {
       } else {
         alert('Failed to create payment intent');
       }
-    } catch (error: unknown) {
-      logger.error('Error creating payment intent:', error);
+    } catch (err) {
+      logger.error('Error creating payment intent:', err instanceof Error ? err : new Error(String(err)));
       alert('Failed to process request');
     }
   };

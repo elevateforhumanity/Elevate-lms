@@ -48,6 +48,7 @@ export const publicNav: NavSection[] = [
       { label: 'Resume Building', href: '/career-services/resume-building' },
       { label: 'Interview Prep', href: '/career-services/interview-prep' },
       { label: 'Free VITA Tax Prep', href: '/vita' },
+      { label: 'Tax Preparation', href: '/supersonic-fast-cash' },
     ],
   },
   {
@@ -64,13 +65,30 @@ export const publicNav: NavSection[] = [
       { label: 'About Us', href: '/about' },
       { label: 'How It Works', href: '/how-it-works' },
       { label: 'Success Stories', href: '/success-stories' },
+      { label: 'Rise Foundation', href: '/rise-foundation' },
       { label: 'Contact', href: '/contact' },
       { label: 'FAQ', href: '/faq' },
     ],
   },
   {
+    label: 'Community',
+    items: [
+      { label: 'Community Hub', href: '/community' },
+      { label: 'Marketplace', href: '/community/marketplace' },
+      { label: 'Teachers', href: '/community/teachers' },
+      { label: 'Developers', href: '/community/developers' },
+      { label: 'Admins', href: '/community/admins' },
+    ],
+  },
+  {
     label: 'Store',
-    href: '/store',
+    items: [
+      { label: 'All Products', href: '/store' },
+      { label: 'Platform Licenses', href: '/store/licenses' },
+      { label: 'AI Studio', href: '/ai-studio' },
+      { label: 'Integrations', href: '/store/integrations' },
+      { label: 'Live Demo', href: '/store/demo' },
+    ],
   },
 ];
 

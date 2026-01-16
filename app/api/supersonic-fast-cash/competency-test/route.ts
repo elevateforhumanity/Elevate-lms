@@ -116,16 +116,19 @@ export async function POST(request: NextRequest) {
 
     // Save result if user is logged in
     if (user) {
-      await supabase
-        .from('competency_tests')
-        .insert({
-          user_id: user.id,
-          score,
-          passed,
-          answers: JSON.stringify(answers),
-          completed_at: new Date().toISOString(),
-        })
-        .catch(() => {}); // Ignore if table doesn't exist
+      try {
+        await supabase
+          .from('competency_tests')
+          .insert({
+            user_id: user.id,
+            score,
+            passed,
+            answers: JSON.stringify(answers),
+            completed_at: new Date().toISOString(),
+          });
+      } catch {
+        // Table may not exist yet - ignore
+      }
     }
 
     return NextResponse.json({

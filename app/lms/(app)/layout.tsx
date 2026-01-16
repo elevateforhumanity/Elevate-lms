@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { LMSNavigation } from '@/components/lms/LMSNavigation';
+import { AIInstructorWidget } from '@/components/AIInstructorWidget';
 
 export default function LmsAppLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -73,6 +74,8 @@ export default function LmsAppLayout({ children }: { children: ReactNode }) {
       )}
       <LMSNavigation user={user} profile={profile} />
       <main>{children}</main>
+      {/* AI Instructor Widget - Available on all LMS pages */}
+      <AIInstructorWidget context="lesson" />
     </div>
   );
 }

@@ -11,7 +11,7 @@ export default function AdminDemo() {
     { id: 1, name: 'Darius Williams', email: 'd.williams@email.com', program: 'Barber', progress: 42, status: 'active', avatar: '/images/testimonials/student-marcus.jpg' },
     { id: 2, name: 'Sarah Mitchell', email: 's.mitchell@email.com', program: 'CNA', progress: 95, status: 'active', avatar: '/images/gallery/image9.jpg' },
     { id: 3, name: 'Marcus Johnson', email: 'm.johnson@email.com', program: 'HVAC', progress: 28, status: 'active', avatar: '/images/testimonials/student-david.jpg' },
-    { id: 4, name: 'Lisa Rodriguez', email: 'l.rodriguez@email.com', program: 'MA', progress: 67, status: 'active', avatar: '/images/testimonials/testimonial-medical-assistant.png' },
+    { id: 4, name: 'Lisa Rodriguez', email: 'l.rodriguez@email.com', program: 'MA', progress: 67, status: 'active', avatar: '/images/testimonials/testimonial-medical-assistant.jpg' },
     { id: 5, name: 'James Thompson', email: 'j.thompson@email.com', program: 'CDL', progress: 85, status: 'active', avatar: '/images/testimonials/student-graduate-testimonial.jpg' },
   ]);
 

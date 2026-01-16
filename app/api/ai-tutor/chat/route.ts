@@ -25,14 +25,33 @@ export async function POST(request: NextRequest) {
   }
 
   const openaiKey = process.env.OPENAI_API_KEY;
+  
+  // If no API key, provide helpful fallback responses
   if (!openaiKey) {
-    return NextResponse.json(
-      {
-        error:
-          'OpenAI API key not configured. Please add OPENAI_API_KEY to your environment variables.',
-      },
-      { status: 500 }
-    );
+    const fallbackResponses: Record<string, string[]> = {
+      chat: [
+        "I'm here to help you with your studies! While my AI capabilities are being configured, here are some tips:\n\n1. **Break down complex topics** into smaller, manageable parts\n2. **Use active recall** - test yourself instead of just re-reading\n3. **Teach what you learn** to someone else\n4. **Take regular breaks** using the Pomodoro technique\n\nFor specific questions about your coursework, please reach out to your instructor or check the course materials.",
+        "Great question! While I'm being set up, here's what I recommend:\n\n**Study Strategies:**\n- Create flashcards for key terms\n- Practice with sample questions\n- Join study groups in the community forum\n- Review your notes within 24 hours of class\n\nYour instructor and classmates are also great resources!",
+        "I'd love to help you learn! While my full capabilities are being activated, here are some resources:\n\n📚 **Course Materials** - Review your lesson content\n👥 **Community Forums** - Ask questions and discuss with peers\n📧 **Instructor Support** - Reach out for specific help\n📖 **Study Guides** - Check the resources section\n\nKeep up the great work with your studies!"
+      ],
+      essay: [
+        "I'm your essay writing assistant! While my AI is being configured, here's a solid essay structure:\n\n**Introduction:**\n- Hook to grab attention\n- Background context\n- Clear thesis statement\n\n**Body Paragraphs:**\n- Topic sentence\n- Evidence/examples\n- Analysis\n- Transition\n\n**Conclusion:**\n- Restate thesis\n- Summarize key points\n- Final thought/call to action\n\nRemember: Strong essays have clear arguments supported by evidence!",
+        "Essay writing tips while I'm being set up:\n\n✍️ **Planning:** Outline before you write\n📝 **Drafting:** Get ideas down, don't edit yet\n🔍 **Revising:** Focus on structure and arguments\n✏️ **Editing:** Fix grammar and polish\n\n**Common mistakes to avoid:**\n- Vague thesis statements\n- Lack of evidence\n- Poor transitions\n- Weak conclusions"
+      ],
+      'study-guide': [
+        "Let me help you create a study guide! Here's a template:\n\n**Topic: [Your Subject]**\n\n**Key Concepts:**\n1. [Main idea 1]\n2. [Main idea 2]\n3. [Main idea 3]\n\n**Important Terms:**\n- Term 1: Definition\n- Term 2: Definition\n\n**Practice Questions:**\n1. Question about concept 1\n2. Question about concept 2\n\n**Summary:**\nBrief overview of the main points.\n\nFill this in with your course content for an effective study guide!",
+        "Study guide creation tips:\n\n📋 **Organize by topic** - Group related concepts\n🎯 **Focus on objectives** - What should you know?\n❓ **Include practice questions** - Test yourself\n📊 **Use visual aids** - Diagrams, charts, timelines\n🔗 **Connect concepts** - Show relationships\n\nReview your course materials and create summaries for each major topic!"
+      ]
+    };
+    
+    const responses = fallbackResponses[mode as string] || fallbackResponses.chat;
+    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+    
+    return NextResponse.json({
+      message: randomResponse,
+      conversationId: null,
+      fallback: true
+    });
   }
 
   try {
