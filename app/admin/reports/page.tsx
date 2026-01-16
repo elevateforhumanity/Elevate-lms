@@ -69,6 +69,12 @@ export default async function ReportsPage() {
             >
               Back to Dashboard
             </Link>
+            <Link
+              href="/admin/reports/samples"
+              className="bg-brand-blue-600 hover:bg-brand-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors border-2 border-white"
+            >
+              View Sample Reports
+            </Link>
           </div>
         </div>
       </section>
