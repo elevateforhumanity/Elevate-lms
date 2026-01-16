@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -8,6 +9,9 @@ import {
   Phone,
   CheckCircle,
   DollarSign,
+  Building2,
+  Users,
+  Award,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -19,7 +23,50 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AgenciesPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function AgenciesPage() {
+  const supabase = await createClient();
+
+  // Get agency partners
+  const { data: partners } = await supabase
+    .from('partners')
+    .select('id, name, logo_url, type')
+    .eq('type', 'agency')
+    .eq('is_active', true)
+    .limit(8);
+
+  // Get compliance certifications
+  const { data: certifications } = await supabase
+    .from('certifications')
+    .select('*')
+    .eq('type', 'organizational')
+    .eq('is_active', true);
+
+  // Get case studies
+  const { data: caseStudies } = await supabase
+    .from('case_studies')
+    .select('*')
+    .eq('category', 'agency')
+    .eq('is_featured', true)
+    .limit(3);
+
+  const complianceFeatures = [
+    { icon: Shield, title: 'DOL Registered', description: 'Registered apprenticeship sponsor with the Department of Labor' },
+    { icon: FileCheck, title: 'ETPL Approved', description: 'Listed on Indiana\'s Eligible Training Provider List' },
+    { icon: Award, title: 'WIOA Compliant', description: 'Full compliance with Workforce Innovation and Opportunity Act' },
+    { icon: TrendingUp, title: 'Outcome Tracking', description: 'Real-time reporting on placement, retention, and wages' },
+  ];
+
+  const platformFeatures = [
+    'Multi-tenant architecture for regional deployment',
+    'Integrated case management and tracking',
+    'Automated WIOA reporting and compliance',
+    'Employer engagement portal',
+    'Career pathway mapping',
+    'Skills-based matching',
+  ];
+
   return (
     <div className="bg-white">
       {/* HERO */}
@@ -32,6 +79,7 @@ export default function AgenciesPage() {
           priority
           sizes="100vw"
         />
+        <div className="absolute inset-0 bg-slate-900/60" />
 
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -44,317 +92,156 @@ export default function AgenciesPage() {
               <p className="text-xl md:text-2xl mb-8">
                 DOL registered. ETPL approved. WIOA compliant. Ready to license.
               </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/license/demo"
+                  className="bg-orange-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-orange-700 transition text-center"
+                >
+                  Schedule Demo
+                </Link>
+                <Link
+                  href="/license"
+                  className="bg-white/10 backdrop-blur text-white px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition text-center"
+                >
+                  View Licensing Options
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* THREE ALIGNMENT POINTS */}
+      {/* Compliance Features */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Built for Government Compliance</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {complianceFeatures.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div key={index} className="bg-white rounded-xl p-6 shadow-sm border text-center">
+                  <Icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                  <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
+                  <p className="text-gray-600 text-sm">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Features */}
       <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-black mb-12">
-            Government Alignment
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-slate-50 rounded-xl p-8 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-11 w-11 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-black mb-3">
-                DOL Registered Apprenticeship Sponsor
-              </h3>
-              <p className="text-black mb-4">
-                U.S. Department of Labor official registration
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Enterprise-Ready Platform</h2>
+              <p className="text-gray-600 mb-8">
+                Our platform is designed for workforce boards, state agencies, and regional 
+                partnerships. Deploy across multiple jurisdictions while maintaining 
+                centralized oversight and reporting.
               </p>
-              <div className="font-mono text-sm text-black">
-                RAPIDS: 2025-IN-132301
-              </div>
-            </div>
-
-            <div className="bg-slate-50 rounded-xl p-8 text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FileCheck className="h-11 w-11 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-black mb-3">
-                ETPL Approved Provider
-              </h3>
-              <p className="text-black mb-4">
-                Indiana Department of Workforce Development approved
-              </p>
-              <div className="font-mono text-sm text-black">
-                Active since 2020
-              </div>
-            </div>
-
-            <div className="bg-slate-50 rounded-xl p-8 text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="h-11 w-11 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-bold text-black mb-3">
-                WIOA Compliant Programs
-              </h3>
-              <p className="text-black mb-4">
-                All programs eligible for workforce funding
-              </p>
-              <div className="font-mono text-sm text-black">
-                1,500+ participants tracked
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHAT YOU GET (CAPABILITIES) */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-black mb-12">
-            What You Get
-          </h2>
-          <div className="space-y-4">
-            <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Real-Time Compliance Dashboards
-                </h3>
-                <p className="text-black">
-                  RAPIDS, ETPL, and WIOA reporting automated. No manual data
-                  entry.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Automated Reporting
-                </h3>
-                <p className="text-black">
-                  Generate compliance reports with one click. Audit-ready
-                  documentation.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Multi-Tenant Architecture
-                </h3>
-                <p className="text-black">
-                  White-label ready. Deploy for multiple regions or providers
-                  simultaneously.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHO THIS IS FOR */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-black mb-12">
-            Who This Is For
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-blue-50 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-black mb-4">
-                WorkOne Regions
-              </h3>
-              <p className="text-black mb-6">
-                Track WIOA and WRG funded participants, monitor outcomes,
-                generate compliance reports automatically.
-              </p>
-              <ul className="space-y-3 text-black">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span>Real-time dashboards</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span>Automated RAPIDS reporting</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span>Outcome tracking</span>
-                </li>
+              <ul className="space-y-3">
+                {platformFeatures.map((feature, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
               </ul>
             </div>
-
-            <div className="bg-green-50 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-black mb-4">
-                Training Providers
-              </h3>
-              <p className="text-black mb-6">
-                License our platform to deliver workforce-funded programs
-                without building your own LMS and compliance systems.
-              </p>
-              <ul className="space-y-3 text-black">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span>White-label LMS</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span>Mobile app included</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span>Certificate generation</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-purple-50 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-black mb-4">
-                State Agencies
-              </h3>
-              <p className="text-black mb-6">
-                Monitor statewide workforce initiatives, track performance
-                metrics, ensure compliance across multiple providers.
-              </p>
-              <ul className="space-y-3 text-black">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span>Multi-provider oversight</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span>Performance analytics</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span>Custom reporting</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-orange-50 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-black mb-4">
-                Nonprofits
-              </h3>
-              <p className="text-black mb-6">
-                Deliver accredited training programs with built-in funding
-                navigation and employer connections.
-              </p>
-              <ul className="space-y-3 text-black">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                  <span>Grant-ready programs</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                  <span>Employer partnerships</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                  <span>Outcome tracking</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PROOF (METRICS) */}
-      <section className="py-16 bg-blue-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-black mb-12">
-            Proven Track Record
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 text-center shadow-sm">
-              <div className="text-5xl font-bold text-green-600 mb-2">5</div>
-              <div className="text-black text-lg">
-                DOL Registered Programs
-              </div>
-            </div>
-            <div className="bg-white rounded-xl p-8 text-center shadow-sm">
-              <div className="text-5xl font-bold text-green-600 mb-2">2020</div>
-              <div className="text-black text-lg">ETPL Approved Since</div>
-            </div>
-            <div className="bg-white rounded-xl p-8 text-center shadow-sm">
-              <div className="text-5xl font-bold text-green-600 mb-2">
-                1,500+
-              </div>
-              <div className="text-black text-lg">
-                WIOA Participants Tracked
+            <div className="bg-gray-100 rounded-xl p-8">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-white rounded-lg p-6 text-center">
+                  <Building2 className="w-10 h-10 text-blue-600 mx-auto mb-3" />
+                  <div className="text-2xl font-bold">50+</div>
+                  <div className="text-gray-600 text-sm">Partner Organizations</div>
+                </div>
+                <div className="bg-white rounded-lg p-6 text-center">
+                  <Users className="w-10 h-10 text-blue-600 mx-auto mb-3" />
+                  <div className="text-2xl font-bold">10,000+</div>
+                  <div className="text-gray-600 text-sm">Participants Served</div>
+                </div>
+                <div className="bg-white rounded-lg p-6 text-center">
+                  <DollarSign className="w-10 h-10 text-blue-600 mx-auto mb-3" />
+                  <div className="text-2xl font-bold">$5M+</div>
+                  <div className="text-gray-600 text-sm">Funding Managed</div>
+                </div>
+                <div className="bg-white rounded-lg p-6 text-center">
+                  <TrendingUp className="w-10 h-10 text-blue-600 mx-auto mb-3" />
+                  <div className="text-2xl font-bold">85%</div>
+                  <div className="text-gray-600 text-sm">Placement Rate</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* PLATFORM CAPABILITIES */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-black mb-12">
-            Platform Capabilities
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              'RAPIDS integration',
-              'ETPL reporting',
-              'Multi-tenant SaaS',
-              'Mobile app (iOS/Android)',
-              'AI tutoring',
-              'Gamification',
-              'Push notifications',
-              'Offline mode',
-              'Certificate generation',
-              'Employer dashboards',
-              'Compliance automation',
-              'Real-time analytics',
-            ].map((capability) => (
-              <div
-                key={capability}
-                className="bg-slate-50 rounded-lg p-4 flex items-center gap-3"
-              >
-                <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                <span className="text-black font-medium">{capability}</span>
-              </div>
-            ))}
+      {/* Partners */}
+      {partners && partners.length > 0 && (
+        <section className="py-12 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <h3 className="text-center text-gray-500 mb-8">Trusted by agencies across Indiana</h3>
+            <div className="flex flex-wrap justify-center items-center gap-8">
+              {partners.map((partner: any) => (
+                <div key={partner.id} className="grayscale hover:grayscale-0 transition">
+                  {partner.logo_url ? (
+                    <img src={partner.logo_url} alt={partner.name} className="h-12 object-contain" />
+                  ) : (
+                    <span className="text-gray-400 font-medium">{partner.name}</span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* ONE CTA */}
-      <section className="py-16 bg-green-600 text-white">
+      {/* Case Studies */}
+      {caseStudies && caseStudies.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12">Success Stories</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {caseStudies.map((study: any) => (
+                <div key={study.id} className="bg-gray-50 rounded-xl p-6">
+                  <h3 className="font-bold text-lg mb-2">{study.title}</h3>
+                  <p className="text-gray-600 mb-4">{study.summary}</p>
+                  {study.results && (
+                    <div className="text-green-600 font-medium">{study.results}</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA */}
+      <section className="py-16 bg-blue-600">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Schedule a Platform Demo
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Ready to Modernize Your Workforce System?
           </h2>
-          <p className="text-xl text-green-100 mb-8">
-            See how our workforce infrastructure can support your organization's
-            goals.
+          <p className="text-blue-100 mb-8">
+            Schedule a demo to see how our platform can support your agency's goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+13173143757"
-              className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-green-600 rounded-lg font-bold text-xl hover:bg-green-50 transition shadow-2xl"
-            >
-              <Phone className="h-10 w-10" />
-              Call (317) 314-3757
-            </a>
             <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-green-700 text-white rounded-lg font-bold text-xl hover:bg-green-800 transition border-2 border-white"
+              href="/license/demo"
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
             >
               Schedule Demo
             </Link>
-          </div>
-          <p className="mt-6 text-green-100">
-            Or email{' '}
             <a
-              href="mailto:elevate4humanityedu@gmail.com"
-              className="underline font-semibold hover:text-white"
+              href="tel:3173143757"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition"
             >
-              elevate4humanityedu@gmail.com
+              <Phone className="w-5 h-5" />
+              (317) 314-3757
             </a>
-          </p>
+          </div>
         </div>
       </section>
     </div>
