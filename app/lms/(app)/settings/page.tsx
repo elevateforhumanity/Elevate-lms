@@ -1,145 +1,238 @@
-export const dynamic = 'force-dynamic';
-
 import { Metadata } from 'next';
-import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { 
+  User, 
+  Bell, 
+  Lock, 
+  Globe,
+  Palette,
+  CreditCard,
+  Shield,
+  LogOut,
+  ChevronRight,
+  Camera,
+  Mail,
+  Phone
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/settings',
-  },
-  title: 'Settings | LMS | Elevate For Humanity',
-  description: 'Manage your account settings and preferences.',
+  title: 'Settings | Student Portal',
+  description: 'Manage your account settings, notifications, and preferences.',
 };
+
+export const dynamic = 'force-dynamic';
+
+const SETTINGS_SECTIONS = [
+  {
+    title: 'Profile',
+    description: 'Update your personal information and profile picture',
+    icon: User,
+    href: '/lms/settings/profile',
+    color: 'bg-blue-100 text-blue-600',
+  },
+  {
+    title: 'Notifications',
+    description: 'Manage email and push notification preferences',
+    icon: Bell,
+    href: '/lms/settings/notifications',
+    color: 'bg-orange-100 text-orange-600',
+  },
+  {
+    title: 'Security',
+    description: 'Change password and manage two-factor authentication',
+    icon: Lock,
+    href: '/lms/settings/security',
+    color: 'bg-red-100 text-red-600',
+  },
+  {
+    title: 'Privacy',
+    description: 'Control your data and privacy settings',
+    icon: Shield,
+    href: '/lms/settings/privacy',
+    color: 'bg-green-100 text-green-600',
+  },
+  {
+    title: 'Language & Region',
+    description: 'Set your preferred language and timezone',
+    icon: Globe,
+    href: '/lms/settings/language',
+    color: 'bg-purple-100 text-purple-600',
+  },
+  {
+    title: 'Appearance',
+    description: 'Customize the look and feel of your dashboard',
+    icon: Palette,
+    href: '/lms/settings/appearance',
+    color: 'bg-pink-100 text-pink-600',
+  },
+];
 
 export default async function SettingsPage() {
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
-    redirect('/login?next=/lms/settings');
+    redirect('/login');
   }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
+  let profile: any = null;
+
+  try {
+    const { data: profileData } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', user.id)
+      .single();
+
+    if (profileData) {
+      profile = profileData;
+    }
+  } catch (error) {
+    // Table may not exist
+  }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold mb-8">Settings</h1>
+    <div className="min-h-screen bg-slate-50 py-8">
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-slate-900">Settings</h1>
+          <p className="text-slate-600 mt-1">Manage your account and preferences</p>
+        </div>
 
-          {/* Profile Settings */}
-          <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">Profile Settings</h2>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email
-                </label>
-                <p className="text-gray-900">{user.email}</p>
+        {/* Profile Card */}
+        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-8">
+          <div className="flex items-center gap-6">
+            <div className="relative">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                {profile?.full_name?.[0]?.toUpperCase() || user.email?.[0]?.toUpperCase() || 'U'}
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Name
-                </label>
-                <p className="text-gray-900">
-                  {profile?.full_name || 'Not set'}
-                </p>
+              <button className="absolute bottom-0 right-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition">
+                <Camera className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="flex-1">
+              <h2 className="text-xl font-bold text-slate-900">
+                {profile?.full_name || 'Student'}
+              </h2>
+              <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-slate-600">
+                <div className="flex items-center gap-1">
+                  <Mail className="w-4 h-4" />
+                  {user.email}
+                </div>
+                {profile?.phone && (
+                  <div className="flex items-center gap-1">
+                    <Phone className="w-4 h-4" />
+                    {profile.phone}
+                  </div>
+                )}
               </div>
+            </div>
+            <Link
+              href="/lms/settings/profile"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition"
+            >
+              Edit Profile
+            </Link>
+          </div>
+        </div>
+
+        {/* Settings Grid */}
+        <div className="grid md:grid-cols-2 gap-4 mb-8">
+          {SETTINGS_SECTIONS.map((section) => {
+            const IconComponent = section.icon;
+            return (
               <Link
-                href="/lms/profile"
-                className="inline-block text-brand-blue-600 hover:text-brand-blue-700 font-medium"
+                key={section.title}
+                href={section.href}
+                className="bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-300 hover:shadow-md transition group"
               >
-                Edit Profile →
+                <div className="flex items-start gap-4">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${section.color}`}>
+                    <IconComponent className="w-6 h-6" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition">
+                      {section.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 mt-1">{section.description}</p>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                </div>
               </Link>
-            </div>
-          </div>
+            );
+          })}
+        </div>
 
-          {/* Notification Settings */}
-          <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">Notifications</h2>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-medium">Email Notifications</p>
-                  <p className="text-sm text-gray-600">
-                    Receive updates about your courses
-                  </p>
-                </div>
-                <button className="bg-brand-blue-600 text-white px-4 py-2 rounded-lg text-sm">
-                  Enabled
-                </button>
-              </div>
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-medium">Course Reminders</p>
-                  <p className="text-sm text-gray-600">
-                    Get reminded about upcoming deadlines
-                  </p>
-                </div>
-                <button className="bg-brand-blue-600 text-white px-4 py-2 rounded-lg text-sm">
-                  Enabled
-                </button>
-              </div>
-            </div>
+        {/* Account Actions */}
+        <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+          <div className="p-6 border-b border-slate-200">
+            <h2 className="text-lg font-bold text-slate-900">Account</h2>
           </div>
-
-          {/* Privacy Settings */}
-          <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">Privacy</h2>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-medium">Profile Visibility</p>
-                  <p className="text-sm text-gray-600">
-                    Control who can see your profile
-                  </p>
+          <div className="divide-y divide-slate-200">
+            <Link
+              href="/lms/settings/billing"
+              className="flex items-center justify-between p-6 hover:bg-slate-50 transition"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
+                  <CreditCard className="w-5 h-5 text-slate-600" />
                 </div>
-                <select className="border rounded-lg px-3 py-2 text-sm">
-                  <option>Public</option>
-                  <option>Private</option>
-                  <option>Classmates Only</option>
-                </select>
-              </div>
-              <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-medium">Show Progress</p>
-                  <p className="text-sm text-gray-600">
-                    Display your learning progress on leaderboard
-                  </p>
+                  <h3 className="font-medium text-slate-900">Billing & Payments</h3>
+                  <p className="text-sm text-slate-600">Manage payment methods and view invoices</p>
                 </div>
-                <button className="bg-brand-blue-600 text-white px-4 py-2 rounded-lg text-sm">
-                  Enabled
-                </button>
               </div>
-            </div>
-          </div>
-
-          {/* Account Actions */}
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <h2 className="text-xl font-semibold mb-4">Account</h2>
-            <div className="space-y-4">
-              <Link
-                href="/reset"
-                className="block text-brand-blue-600 hover:text-brand-blue-700 font-medium"
+              <ChevronRight className="w-5 h-5 text-slate-400" />
+            </Link>
+            <Link
+              href="/lms/settings/data"
+              className="flex items-center justify-between p-6 hover:bg-slate-50 transition"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
+                  <Shield className="w-5 h-5 text-slate-600" />
+                </div>
+                <div>
+                  <h3 className="font-medium text-slate-900">Data & Privacy</h3>
+                  <p className="text-sm text-slate-600">Download your data or delete your account</p>
+                </div>
+              </div>
+              <ChevronRight className="w-5 h-5 text-slate-400" />
+            </Link>
+            <form action="/api/auth/signout" method="POST">
+              <button
+                type="submit"
+                className="flex items-center justify-between p-6 hover:bg-red-50 transition w-full text-left"
               >
-                Change Password
-              </Link>
-              <Link
-                href="/help"
-                className="block text-brand-blue-600 hover:text-brand-blue-700 font-medium"
-              >
-                Help & Support
-              </Link>
-            </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                    <LogOut className="w-5 h-5 text-red-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-red-600">Sign Out</h3>
+                    <p className="text-sm text-slate-600">Sign out of your account on this device</p>
+                  </div>
+                </div>
+              </button>
+            </form>
           </div>
+        </div>
+
+        {/* Help */}
+        <div className="mt-8 text-center">
+          <p className="text-slate-600">
+            Need help? Visit our{' '}
+            <Link href="/lms/support" className="text-blue-600 font-medium hover:text-blue-700">
+              Support Center
+            </Link>
+            {' '}or{' '}
+            <Link href="/contact" className="text-blue-600 font-medium hover:text-blue-700">
+              Contact Us
+            </Link>
+          </p>
         </div>
       </div>
     </div>
