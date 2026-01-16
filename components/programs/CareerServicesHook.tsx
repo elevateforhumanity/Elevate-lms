@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { FileText, Users, Calendar, ArrowRight, X, CheckCircle } from 'lucide-react';
+import { FileText, Users, Calendar, ArrowRight, X, CheckCircle, AlertCircle } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 
 interface CareerServicesHookProps {
   programName: string;
@@ -46,15 +47,59 @@ export function CareerServicesHook({ programName, programSlug }: CareerServicesH
     setShowModal(true);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In production, this would submit to an API
-    setSubmitted(true);
-    setTimeout(() => {
-      setShowModal(false);
-      setSubmitted(false);
-      setSelectedService(null);
-    }, 2000);
+    setSubmitting(true);
+    setError(null);
+    
+    const formData = new FormData(e.currentTarget);
+    const supabase = createClient();
+    
+    try {
+      // Get current user if logged in
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      // Insert into customer_service_tickets table
+      const { error: insertError } = await supabase
+        .from('customer_service_tickets')
+        .insert({
+          user_id: user?.id || null,
+          subject: `Career Services Request: ${services.find(s => s.id === selectedService)?.title}`,
+          description: `
+Program: ${programName}
+Service Requested: ${services.find(s => s.id === selectedService)?.title}
+Name: ${formData.get('name')}
+Email: ${formData.get('email')}
+Phone: ${formData.get('phone') || 'Not provided'}
+Notes: ${formData.get('notes') || 'None'}
+          `.trim(),
+          category: 'career_services',
+          priority: 'medium',
+          status: 'open',
+        });
+
+      if (insertError) {
+        console.error('Failed to submit request:', insertError);
+        setError('Failed to submit request. Please try again or contact us directly.');
+        setSubmitting(false);
+        return;
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setShowModal(false);
+        setSubmitted(false);
+        setSelectedService(null);
+      }, 2000);
+    } catch (err) {
+      console.error('Error submitting request:', err);
+      setError('An error occurred. Please try again.');
+    }
+    
+    setSubmitting(false);
   };
 
   return (
@@ -127,6 +172,13 @@ export function CareerServicesHook({ programName, programSlug }: CareerServicesH
                   Fill out this form and our career services team will reach out to schedule your session.
                 </p>
 
+                {error && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-700 text-sm">
+                    <AlertCircle className="w-4 h-4" />
+                    {error}
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -134,6 +186,7 @@ export function CareerServicesHook({ programName, programSlug }: CareerServicesH
                     </label>
                     <input
                       type="text"
+                      name="name"
                       required
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="Your name"
@@ -145,6 +198,7 @@ export function CareerServicesHook({ programName, programSlug }: CareerServicesH
                     </label>
                     <input
                       type="email"
+                      name="email"
                       required
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="your@email.com"
@@ -156,6 +210,7 @@ export function CareerServicesHook({ programName, programSlug }: CareerServicesH
                     </label>
                     <input
                       type="tel"
+                      name="phone"
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="(555) 555-5555"
                     />
@@ -166,6 +221,7 @@ export function CareerServicesHook({ programName, programSlug }: CareerServicesH
                     </label>
                     <input
                       type="text"
+                      name="program"
                       value={programName}
                       readOnly
                       className="w-full px-4 py-2 border border-gray-200 rounded-lg bg-gray-50 text-gray-600"
@@ -176,6 +232,7 @@ export function CareerServicesHook({ programName, programSlug }: CareerServicesH
                       Additional Notes (optional)
                     </label>
                     <textarea
+                      name="notes"
                       rows={3}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="Any specific questions or needs?"
@@ -183,9 +240,10 @@ export function CareerServicesHook({ programName, programSlug }: CareerServicesH
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition"
+                    disabled={submitting}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition disabled:opacity-50"
                   >
-                    Submit Request
+                    {submitting ? 'Submitting...' : 'Submit Request'}
                   </button>
                 </form>
               </>

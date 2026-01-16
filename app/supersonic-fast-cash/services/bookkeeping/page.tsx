@@ -30,11 +30,13 @@ export const metadata = {
 export default async function BookkeepingPage() {
   const supabase = await createClient();
   
-  // Fetch bookkeeping services
-  const { data: services } = await supabase
+  // Fetch bookkeeping services from database (if available)
+  const { data: dbServices } = await supabase
     .from('tax_services')
     .select('*')
     .eq('type', 'bookkeeping');
+  
+  // Static services list
   const services = [
     {
       icon: FileText,

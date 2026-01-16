@@ -34,8 +34,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Force dynamic rendering - don't try to statically generate at build time
-export const dynamic = 'force-dynamic';
+// revalidate is set to 0 to ensure fresh data
 export const revalidate = 0;
 
 export default async function CareersPage() {

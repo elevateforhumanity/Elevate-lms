@@ -19,7 +19,7 @@ export default async function BlogPage() {
       *,
       author:profiles(full_name, avatar_url)
     `)
-    .eq('is_published', true)
+    .eq('status', 'published')
     .order('published_at', { ascending: false })
     .limit(12);
 
@@ -29,8 +29,8 @@ export default async function BlogPage() {
       *,
       author:profiles(full_name, avatar_url)
     `)
-    .eq('is_published', true)
-    .eq('is_featured', true)
+    .eq('status', 'published')
+    .order('views', { ascending: false })
     .order('published_at', { ascending: false })
     .limit(1)
     .single();

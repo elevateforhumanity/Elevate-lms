@@ -1,11 +1,6 @@
-export const dynamic = 'force-dynamic';
-import { createClient } from '@/lib/supabase/server';
-
-
 "use client";
 
 import React from 'react';
-
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
