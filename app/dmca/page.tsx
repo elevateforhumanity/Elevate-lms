@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -10,7 +13,15 @@ export const metadata: Metadata = {
     'Digital Millennium Copyright Act (DMCA) policy and copyright infringement notification procedures.',
 };
 
-export default function DMCAPage() {
+export default async function DMCAPage() {
+  const supabase = await createClient();
+  
+  // Fetch DMCA policy
+  const { data: policy } = await supabase
+    .from('legal_documents')
+    .select('*')
+    .eq('type', 'dmca')
+    .single();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Clean, No Image */}

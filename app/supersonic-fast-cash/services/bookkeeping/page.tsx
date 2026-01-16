@@ -1,3 +1,4 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -17,6 +18,8 @@ import {
   Mail,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Professional Bookkeeping Services | Supersonic Fast Cash',
   description:
@@ -24,7 +27,14 @@ export const metadata = {
   keywords: ['bookkeeping services', 'small business accounting', 'financial records', 'expense tracking', 'QuickBooks', 'payroll processing', 'bank reconciliation'],
 };
 
-export default function BookkeepingPage() {
+export default async function BookkeepingPage() {
+  const supabase = await createClient();
+  
+  // Fetch bookkeeping services
+  const { data: services } = await supabase
+    .from('tax_services')
+    .select('*')
+    .eq('type', 'bookkeeping');
   const services = [
     {
       icon: FileText,

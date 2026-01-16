@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Scale, Users, Shield, Phone, Mail, CheckCircle, AlertCircle } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -11,7 +14,15 @@ export const metadata: Metadata = {
     'Elevate for Humanity is an equal opportunity employer and provider. We do not discriminate on the basis of race, color, religion, sex, national origin, age, disability, or veteran status.',
 };
 
-export default function EqualOpportunityPage() {
+export default async function EqualOpportunityPage() {
+  const supabase = await createClient();
+  
+  // Fetch EEO policy
+  const { data: policy } = await supabase
+    .from('legal_documents')
+    .select('*')
+    .eq('type', 'equal_opportunity')
+    .single();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

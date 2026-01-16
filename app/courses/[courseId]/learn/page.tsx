@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -12,7 +15,15 @@ export const metadata: Metadata = {
     'Manage learn settings and development.',
 };
 
-export default async function LearnPage() {
+export default async function LearnPage({ params }: { params: { courseId: string } }) {
+  const supabase = await createClient();
+  
+  // Fetch course content
+  const { data: course } = await supabase
+    .from('courses')
+    .select('*, lessons(*)')
+    .eq('id', params.courseId)
+    .single();
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

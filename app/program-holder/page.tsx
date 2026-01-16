@@ -1,8 +1,11 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -14,6 +17,16 @@ export const metadata: Metadata = {
 };
 
 export default async function ProgramHolderPage() {
+  const supabase = await createClient();
+  
+  // Fetch program holder stats
+  const { count: programCount } = await supabase
+    .from('programs')
+    .select('*', { count: 'exact', head: true });
+  
+  const { count: studentCount } = await supabase
+    .from('students')
+    .select('*', { count: 'exact', head: true });
   return (
     <div className="min-h-screen bg-white">
       <ModernLandingHero

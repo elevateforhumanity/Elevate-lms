@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 
@@ -16,6 +17,14 @@ export const metadata: Metadata = {
 };
 
 export default async function TrainingPage() {
+  const supabase = await createClient();
+  
+  // Fetch training data
+  const { data: training } = await supabase
+    .from('training_records')
+    .select('*')
+    .order('start_date', { ascending: false });
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

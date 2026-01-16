@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Supersonic Fast Cash Diy Interview | Elevate For Humanity',
@@ -7,7 +10,14 @@ export const metadata: Metadata = {
 
 import Link from 'next/link';
 
-export default function DIYInterviewPage() {
+export default async function DIYInterviewPage() {
+  const supabase = await createClient();
+  
+  // Fetch interview questions
+  const { data: questions } = await supabase
+    .from('tax_interview_questions')
+    .select('*')
+    .order('order_index');
   return (
     <div className="min-h-screen bg-gray-50 py-16">
       <div className="max-w-4xl mx-auto px-6">

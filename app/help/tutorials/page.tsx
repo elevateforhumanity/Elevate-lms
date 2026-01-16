@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -15,6 +16,8 @@ import {
   Search,
   Filter,
 } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -223,7 +226,16 @@ const tutorials = [
   },
 ];
 
-export default function TutorialsPage() {
+export default async function TutorialsPage() {
+  const supabase = await createClient();
+  
+  // Fetch tutorials from database
+  const { data: dbTutorials } = await supabase
+    .from('tutorials')
+    .select('*')
+    .eq('status', 'published')
+    .order('order_index');
+
   const featuredTutorials = tutorials.filter((t) => t.featured);
 
   return (

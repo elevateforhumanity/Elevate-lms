@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Briefcase } from 'lucide-react';
 import { CompactHero } from '@/components/heroes/CompactHero';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Business & Financial Services Programs | Free Training',
@@ -13,7 +16,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BusinessFinancialPage() {
+export default async function BusinessFinancialPage() {
+  const supabase = await createClient();
+  
+  // Fetch business financial programs
+  const { data: programs } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('category', 'business_financial');
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

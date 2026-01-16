@@ -1,8 +1,11 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { videos } from '../../lms-data/videos';
 import { Play } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Training Videos | Elevate for Humanity',
@@ -13,7 +16,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function VideosPage() {
+export default async function VideosPage() {
+  const supabase = await createClient();
+  
+  // Fetch videos from database
+  const { data: dbVideos } = await supabase
+    .from('videos')
+    .select('*')
+    .eq('status', 'published')
+    .order('created_at', { ascending: false });
   const categories = Array.from(new Set(videos.map((v) => v.category)));
 
   return (

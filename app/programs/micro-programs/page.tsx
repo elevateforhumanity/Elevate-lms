@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import { programs } from '@/app/data/programs';
 import { Zap, Clock, Target, TrendingUp } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:
@@ -22,7 +25,15 @@ const microProgramSlugs = [
   'emergency-health-safety-tech',
 ];
 
-export default function MicroProgramsPage() {
+export default async function MicroProgramsPage() {
+  const supabase = await createClient();
+  
+  // Fetch micro programs
+  const { data: dbMicroPrograms } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('type', 'micro');
+
   const microPrograms = programs.filter((p) =>
     microProgramSlugs.includes(p.slug)
   );

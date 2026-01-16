@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:
@@ -13,7 +16,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CdlTransportationPage() {
+export default async function CdlTransportationPage() {
+  const supabase = await createClient();
+  
+  // Fetch CDL program
+  const { data: program } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('slug', 'cdl-transportation')
+    .single();
   return (
     <div className="min-h-screen bg-white">
       <VideoHeroBanner

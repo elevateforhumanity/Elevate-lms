@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Business & Administration Programs | Free QuickBooks, Office Training',
@@ -12,7 +15,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BusinessPage() {
+export default async function BusinessPage() {
+  const supabase = await createClient();
+  
+  // Fetch business programs
+  const { data: businessPrograms } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('category', 'business');
   return (
     <div className="min-h-screen bg-gray-50">
       <VideoHeroBanner

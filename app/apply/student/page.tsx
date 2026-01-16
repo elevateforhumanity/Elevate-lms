@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import StudentApplicationForm from './StudentApplicationForm';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Student Application | Elevate for Humanity',
@@ -9,7 +12,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function StudentApplicationPage() {
+export default async function StudentApplicationPage() {
+  const supabase = await createClient();
+  
+  // Fetch available programs for application
+  const { data: programs } = await supabase
+    .from('programs')
+    .select('id, name, slug')
+    .eq('accepting_applications', true);
   return (
     <div className="min-h-screen bg-slate-50">
       <section className="border-b border-slate-200 bg-white">

@@ -1,16 +1,26 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { 
   Building2, Calendar, CheckCircle, 
   ArrowRight, Users, Briefcase, CreditCard, Phone
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'How to Pay for Training | Elevate for Humanity',
   description: 'Elevate for Humanity places students into one of three funding pathways—workforce-funded, employer-sponsored, or structured tuition.',
 };
 
-export default function TuitionPage() {
+export default async function TuitionPage() {
+  const supabase = await createClient();
+  
+  // Fetch tuition info
+  const { data: tuitionInfo } = await supabase
+    .from('tuition_options')
+    .select('*')
+    .order('order_index');
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}

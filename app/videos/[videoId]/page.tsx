@@ -1,13 +1,12 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { videos, getVideoById } from '../../../lms-data/videos';
 import { ArrowLeft } from 'lucide-react';
 
-// Force static generation at build time
-export const dynamic = 'force-static';
-export const dynamicParams = false;
+export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {
   return videos.map((video) => ({
@@ -59,12 +58,21 @@ export async function generateMetadata({
   };
 }
 
-export default function VideoWatchPage({
+export default async function VideoWatchPage({
   params,
 }: {
   params: { videoId: string };
 }) {
-  const video = getVideoById(params.videoId);
+  const supabase = await createClient();
+  
+  // Try database first
+  const { data: dbVideo } = await supabase
+    .from('videos')
+    .select('*')
+    .eq('id', params.videoId)
+    .single();
+
+  const video = dbVideo || getVideoById(params.videoId);
 
   if (!video) {
     notFound();

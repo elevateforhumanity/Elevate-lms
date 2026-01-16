@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import { ArrowRight, Clock, DollarSign, Award, CheckCircle } from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Beauty Industry Apprenticeships | Barber, Cosmetology, Esthetics, Nails',
@@ -57,7 +60,15 @@ const beautyPrograms = [
   },
 ];
 
-export default function BeautyProgramsPage() {
+export default async function BeautyProgramsPage() {
+  const supabase = await createClient();
+  
+  // Fetch beauty programs
+  const { data: dbBeautyPrograms } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('category', 'beauty');
+
   return (
     <div className="pb-20 md:pb-0">
       <ModernLandingHero

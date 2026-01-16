@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
@@ -13,6 +14,8 @@ import {
   Users,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/mentorship',
@@ -22,10 +25,16 @@ export const metadata: Metadata = {
     'Connect with industry professionals for guidance, support, and career development. Our mentorship program pairs you with experienced mentors in your field.',
 };
 
-export const dynamic = 'force-static';
-export const revalidate = 3600; // 1 hour
+export default async function MentorshipPage() {
+  const supabase = await createClient();
+  
+  // Fetch mentorship program info
+  const { data: mentors } = await supabase
+    .from('mentors')
+    .select('*')
+    .eq('status', 'active')
+    .limit(10);
 
-export default function MentorshipPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Banner */}

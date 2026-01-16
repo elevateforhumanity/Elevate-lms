@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Image from 'next/image';
 import VideoHeroSection from '@/components/home/VideoHeroSection';
 import Intro from '@/components/home/Intro';
@@ -6,6 +7,8 @@ import Orientation from '@/components/home/Orientation';
 import Testimonials from '@/components/home/Testimonials';
 import Assurance from '@/components/home/Assurance';
 import Start from '@/components/home/Start';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Elevate for Humanity | Workforce and Education Hub',
@@ -30,10 +33,14 @@ export const metadata: Metadata = {
   },
 };
 
-// Use ISR for optimal performance with fresh content
-export const revalidate = 60;
+export default async function HomePage() {
+  const supabase = await createClient();
+  
+  // Fetch homepage stats
+  const { count: studentCount } = await supabase
+    .from('students')
+    .select('*', { count: 'exact', head: true });
 
-export default function HomePage() {
   return (
     <>
       {/* Video Hero Banner - autoplays on all devices */}

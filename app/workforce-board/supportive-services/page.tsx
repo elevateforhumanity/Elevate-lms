@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 
@@ -17,6 +18,14 @@ export const metadata: Metadata = {
 };
 
 export default async function SupportiveServicesPage() {
+  const supabase = await createClient();
+  
+  // Fetch supportive services
+  const { data: services } = await supabase
+    .from('supportive_services')
+    .select('*')
+    .eq('status', 'active');
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

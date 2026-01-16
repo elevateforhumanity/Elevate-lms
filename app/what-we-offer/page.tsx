@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -13,6 +16,14 @@ export const metadata: Metadata = {
 };
 
 export default async function WhatWeOfferPage() {
+  const supabase = await createClient();
+  
+  // Fetch offerings
+  const { data: offerings } = await supabase
+    .from('offerings')
+    .select('*')
+    .eq('status', 'active')
+    .order('order_index');
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

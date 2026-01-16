@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import {
   AlertTriangle,
@@ -12,6 +13,8 @@ import {
   Users,
   XCircle,
 } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:
@@ -37,8 +40,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TaxCareersPage() {
-  const positions = [
+export default async function TaxCareersPage() {
+  const supabase = await createClient();
+  
+  // Fetch tax career positions
+  const { data: dbPositions } = await supabase
+    .from('job_positions')
+    .select('*')
+    .eq('department', 'tax_services')
+    .eq('status', 'active');
+
+  const positions = dbPositions?.length ? dbPositions : [
     {
       title: 'IRS-Certified Tax Preparer',
       type: 'Seasonal & Year-Round',

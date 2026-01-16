@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import StaffApplicationForm from './StaffApplicationForm';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Staff / Instructor Application | Elevate for Humanity',
@@ -10,7 +13,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function StaffApplicationPage() {
+export default async function StaffApplicationPage() {
+  const supabase = await createClient();
+  
+  // Fetch application settings
+  const { data: settings } = await supabase
+    .from('site_settings')
+    .select('*')
+    .eq('key', 'staff_applications')
+    .single();
   return (
     <div className="min-h-screen bg-slate-50">
       <section className="border-b border-slate-200 bg-white">

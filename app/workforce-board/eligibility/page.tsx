@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 
@@ -16,6 +17,14 @@ export const metadata: Metadata = {
 };
 
 export default async function EligibilityPage() {
+  const supabase = await createClient();
+  
+  // Fetch eligibility criteria
+  const { data: criteria } = await supabase
+    .from('eligibility_criteria')
+    .select('*')
+    .order('category');
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

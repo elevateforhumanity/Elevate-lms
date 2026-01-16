@@ -1,8 +1,11 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Stethoscope, CheckCircle } from 'lucide-react';
 import { CompactHero } from '@/components/heroes/CompactHero';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Drug & Alcohol Specimen Collector Certification | Free DOT Training',
@@ -20,7 +23,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  const supabase = await createClient();
+  
+  // Fetch drug collector program
+  const { data: program } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('slug', 'drug-collector')
+    .single();
+
   return (
     <div className="min-h-screen bg-white">
       <CompactHero

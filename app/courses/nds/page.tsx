@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink, CheckCircle, Clock, Award, Truck } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -12,7 +15,14 @@ export const metadata: Metadata = {
     'DOT-required training for CDL drivers and transportation professionals. Drug & alcohol testing, FMCSA regulations, and safety compliance.',
 };
 
-export default function NdsPage() {
+export default async function NdsPage() {
+  const supabase = await createClient();
+  
+  // Fetch NDS courses
+  const { data: ndsCourses } = await supabase
+    .from('courses')
+    .select('*')
+    .eq('provider', 'nds');
   const courseCategories = [
     {
       name: 'DOT Required Training',

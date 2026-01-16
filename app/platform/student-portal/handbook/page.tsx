@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,6 +16,14 @@ export const metadata: Metadata = {
 };
 
 export default async function HandbookPage() {
+  const supabase = await createClient();
+  
+  // Fetch handbook content
+  const { data: handbook } = await supabase
+    .from('handbooks')
+    .select('*')
+    .eq('type', 'student')
+    .single();
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

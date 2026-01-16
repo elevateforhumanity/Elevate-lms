@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { TrendingUp, Users, Award, Target, ArrowRight } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Impact & Outcomes | Elevate for Humanity',
@@ -11,7 +14,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ImpactPage() {
+export default async function ImpactPage() {
+  const supabase = await createClient();
+  
+  // Fetch impact metrics
+  const { data: metrics } = await supabase
+    .from('impact_metrics')
+    .select('*')
+    .order('category');
   return (
     <div className="bg-white">
       {/* Hero */}

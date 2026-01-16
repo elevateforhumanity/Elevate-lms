@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -10,6 +11,8 @@ import {
   Zap,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Banking Services - Powered by EPS Financial | Elevate for Humanity',
   description:
@@ -19,7 +22,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BankingPage() {
+export default async function BankingPage() {
+  const supabase = await createClient();
+  
+  // Fetch banking services
+  const { data: services } = await supabase
+    .from('banking_services')
+    .select('*')
+    .order('order_index');
+
   return (
     <div className="bg-white">
       {/* Hero */}

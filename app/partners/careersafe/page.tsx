@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -22,7 +23,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CAREERSAFEPage() {
+export default async function CAREERSAFEPage() {
+  const supabase = await createClient();
+  
+  // Fetch CareerSafe partner info
+  const { data: partner } = await supabase
+    .from('partners')
+    .select('*')
+    .eq('slug', 'careersafe')
+    .single();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

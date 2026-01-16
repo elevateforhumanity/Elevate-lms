@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Shield, CheckCircle, FileText, Lock, Download, ExternalLink } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Compliance Documentation | Elevate for Humanity Store',
@@ -10,7 +13,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CompliancePage() {
+export default async function CompliancePage() {
+  const supabase = await createClient();
+  
+  // Fetch compliance documents
+  const { data: documents } = await supabase
+    .from('compliance_documents')
+    .select('*')
+    .order('category');
   return (
     <div className="min-h-screen bg-white">
       <section className="bg-gradient-to-br from-green-600 to-blue-600 text-white py-20">

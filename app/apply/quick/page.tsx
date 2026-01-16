@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import QuickApplyForm from './QuickApplyForm';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Quick Apply | Elevate for Humanity',
@@ -9,7 +12,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function QuickApplyPage() {
+export default async function QuickApplyPage() {
+  const supabase = await createClient();
+  
+  // Fetch quick apply programs
+  const { data: programs } = await supabase
+    .from('programs')
+    .select('id, name, slug')
+    .eq('quick_apply_enabled', true);
   return (
     <div className="min-h-screen bg-slate-50">
       <section className="border-b border-slate-200 bg-white">

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -12,6 +13,8 @@ import {
   HelpCircle,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/program-holder/onboarding',
@@ -21,7 +24,15 @@ export const metadata: Metadata = {
     'Complete training and orientation for program holders to manage students and access the platform.',
 };
 
-export default function ProgramHolderOnboarding() {
+export default async function ProgramHolderOnboarding() {
+  const supabase = await createClient();
+  
+  // Fetch onboarding resources
+  const { data: resources } = await supabase
+    .from('onboarding_resources')
+    .select('*')
+    .eq('role', 'program_holder')
+    .order('order_index');
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

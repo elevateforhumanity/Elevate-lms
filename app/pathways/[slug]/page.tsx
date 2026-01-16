@@ -1,11 +1,23 @@
 import { notFound } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import Image from "next/image";
 import { PATHWAYS } from "@/lib/pathways/data";
 
+export const dynamic = 'force-dynamic';
+
 export default async function PathwayDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const pathway = PATHWAYS.find((p) => p.slug === slug);
+  const supabase = await createClient();
+  
+  // Try to fetch from database first
+  const { data: dbPathway } = await supabase
+    .from('pathways')
+    .select('*')
+    .eq('slug', slug)
+    .single();
+
+  const pathway = dbPathway || PATHWAYS.find((p) => p.slug === slug);
   if (!pathway) return notFound();
 
   return (

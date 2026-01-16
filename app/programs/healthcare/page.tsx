@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Heart, Stethoscope } from 'lucide-react';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Healthcare Programs | Medical Assistant, CNA Training',
@@ -13,7 +16,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HealthcarePage() {
+export default async function HealthcarePage() {
+  const supabase = await createClient();
+  
+  // Fetch healthcare programs
+  const { data: healthcarePrograms } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('category', 'healthcare');
   return (
     <div className="min-h-screen bg-gray-50">
       <VideoHeroBanner

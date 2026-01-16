@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -10,7 +13,15 @@ export const metadata: Metadata = {
     'Learn about our refund policy for training programs and tax services at Elevate For Humanity.',
 };
 
-export default function RefundPolicyPage() {
+export default async function RefundPolicyPage() {
+  const supabase = await createClient();
+  
+  // Fetch refund policy
+  const { data: policy } = await supabase
+    .from('legal_documents')
+    .select('*')
+    .eq('type', 'refund_policy')
+    .single();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - No Gradient, No Image, No CTAs */}

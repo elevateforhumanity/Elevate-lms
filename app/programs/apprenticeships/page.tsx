@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import { programs } from '@/app/data/programs';
 import { Briefcase, Clock, DollarSign, Award } from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:
@@ -15,9 +18,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = 'force-static';
-export const revalidate = 3600; // 1 hour
-
 const apprenticeshipSlugs = [
   'barber-apprenticeship',
   'hvac-technician',
@@ -25,7 +25,15 @@ const apprenticeshipSlugs = [
   'building-technician',
 ];
 
-export default function ApprenticeshipProgramsPage() {
+export default async function ApprenticeshipProgramsPage() {
+  const supabase = await createClient();
+  
+  // Fetch apprenticeship programs
+  const { data: dbApprenticeships } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('type', 'apprenticeship');
+
   const apprenticeships = programs.filter((p) =>
     apprenticeshipSlugs.includes(p.slug)
   );

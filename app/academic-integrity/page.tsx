@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -10,6 +11,8 @@ import {
   CheckCircle,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Academic Integrity Policy | Elevate for Humanity',
   description: 'Academic honesty, plagiarism policy, and code of conduct',
@@ -18,7 +21,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AcademicIntegrityPage() {
+export default async function AcademicIntegrityPage() {
+  const supabase = await createClient();
+  
+  // Fetch academic integrity policy
+  const { data: policy } = await supabase
+    .from('legal_documents')
+    .select('*')
+    .eq('type', 'academic_integrity')
+    .single();
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}

@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -10,10 +13,16 @@ export const metadata: Metadata = {
     'Learn about how Elevate For Humanity uses cookies and similar technologies on our website.',
 };
 
-export const dynamic = 'force-static';
-export const revalidate = 86400; // 24 hours
+export default async function CookiesPage() {
+  const supabase = await createClient();
+  
+  // Fetch cookie policy content
+  const { data: policy } = await supabase
+    .from('legal_documents')
+    .select('*')
+    .eq('type', 'cookie_policy')
+    .single();
 
-export default function CookiesPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - No Gradient */}

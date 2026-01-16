@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Supersonic Fast Cash Diy Start | Elevate For Humanity',
@@ -7,7 +10,15 @@ export const metadata: Metadata = {
 
 import Link from 'next/link';
 
-export default function DIYStartPage() {
+export default async function DIYStartPage() {
+  const supabase = await createClient();
+  
+  // Fetch DIY tax info
+  const { data: diyInfo } = await supabase
+    .from('tax_services')
+    .select('*')
+    .eq('type', 'diy')
+    .single();
   return (
     <div className="min-h-screen bg-gray-50 py-16">
       <div className="max-w-4xl mx-auto px-6">

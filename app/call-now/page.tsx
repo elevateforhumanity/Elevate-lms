@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -13,6 +16,14 @@ export const metadata: Metadata = {
 };
 
 export default async function CallNowPage() {
+  const supabase = await createClient();
+  
+  // Fetch contact info
+  const { data: contact } = await supabase
+    .from('site_settings')
+    .select('*')
+    .eq('key', 'contact_info')
+    .single();
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

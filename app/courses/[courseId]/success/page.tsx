@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import { generateMetadata } from '@/lib/seo/metadata';
 import Link from 'next/link';
 import { CheckCircle, Play, Award, BookOpen } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Enrollment Successful',
@@ -9,11 +12,19 @@ export const metadata: Metadata = generateMetadata({
   path: '/courses/success',
 });
 
-export default function EnrollmentSuccessPage({
+export default async function EnrollmentSuccessPage({
   params,
 }: {
   params: { courseId: string };
 }) {
+  const supabase = await createClient();
+  
+  // Fetch course info
+  const { data: course } = await supabase
+    .from('courses')
+    .select('id, title, slug')
+    .eq('id', params.courseId)
+    .single();
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

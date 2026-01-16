@@ -1,6 +1,9 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Phone } from 'lucide-react';
 import { SubpageHero } from '../components/SubpageHero';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Refund Advance Options | Supersonic Fast Cash',
@@ -11,7 +14,14 @@ export const metadata = {
   },
 };
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const supabase = await createClient();
+  
+  // Fetch pricing info
+  const { data: pricing } = await supabase
+    .from('tax_services')
+    .select('*')
+    .eq('type', 'refund_advance');
   return (
     <div className="min-h-screen bg-gray-50">
       <SubpageHero

@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink, CheckCircle, Clock, Award } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -12,7 +15,14 @@ export const metadata: Metadata = {
     'Access OSHA-authorized safety training courses through our CareerSafe partnership. OSHA 10, OSHA 30, and specialized safety certifications.',
 };
 
-export default function CareerSafePage() {
+export default async function CareerSafePage() {
+  const supabase = await createClient();
+  
+  // Fetch CareerSafe courses
+  const { data: courses } = await supabase
+    .from('courses')
+    .select('*')
+    .eq('provider', 'careersafe');
   const courseCategories = [
     {
       name: 'OSHA 10-Hour',

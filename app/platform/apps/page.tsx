@@ -1,8 +1,11 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PLATFORM_APPS } from '@/app/data/store-products';
 import { ArrowLeft, Check, Zap } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -13,7 +16,14 @@ export const metadata: Metadata = {
     'Explore the modular apps included with Elevate platform licenses. LMS, enrollment, payments, case management, and more.',
 };
 
-export default function PlatformAppsPage() {
+export default async function PlatformAppsPage() {
+  const supabase = await createClient();
+  
+  // Fetch platform apps
+  const { data: dbApps } = await supabase
+    .from('platform_apps')
+    .select('*')
+    .order('name');
   const coreApps = PLATFORM_APPS.filter((app) => app.enabledByDefault);
   const premiumApps = PLATFORM_APPS.filter((app) => !app.enabledByDefault);
 

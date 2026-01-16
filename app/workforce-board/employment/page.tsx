@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 
@@ -16,6 +17,14 @@ export const metadata: Metadata = {
 };
 
 export default async function EmploymentPage() {
+  const supabase = await createClient();
+  
+  // Fetch employment data
+  const { data: employment } = await supabase
+    .from('employment_records')
+    .select('*')
+    .order('created_at', { ascending: false });
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

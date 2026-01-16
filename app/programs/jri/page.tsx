@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import { programs } from '@/app/data/programs';
 import {
   Heart,
@@ -12,6 +13,8 @@ import {
   Clock,
   GraduationCap,
 } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:
@@ -33,7 +36,15 @@ const jriProgramSlugs = [
   'peer-recovery-coach',
 ];
 
-export default function JRIProgramsPage() {
+export default async function JRIProgramsPage() {
+  const supabase = await createClient();
+  
+  // Fetch JRI programs
+  const { data: dbPrograms } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('category', 'jri');
+
   const jriPrograms = programs.filter((p) => jriProgramSlugs.includes(p.slug));
 
   return (

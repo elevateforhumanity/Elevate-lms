@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -13,7 +16,15 @@ export const metadata: Metadata = {
     'Manage [attemptId] settings and development.',
 };
 
-export default async function attemptIdPage() {
+export default async function attemptIdPage({ params }: { params: { attemptId: string } }) {
+  const supabase = await createClient();
+  
+  // Fetch quiz attempt results
+  const { data: attempt } = await supabase
+    .from('quiz_attempts')
+    .select('*, quiz:quizzes(*)')
+    .eq('id', params.attemptId)
+    .single();
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

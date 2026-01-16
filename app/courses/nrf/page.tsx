@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -9,6 +10,8 @@ import {
   ShoppingBag,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/courses/nrf',
@@ -18,7 +21,15 @@ export const metadata: Metadata = {
     'Industry-recognized retail and customer service credentials from the National Retail Federation. Free with program enrollment.',
 };
 
-export default function NrfPage() {
+export default async function NrfPage() {
+  const supabase = await createClient();
+  
+  // Fetch NRF courses
+  const { data: nrfCourses } = await supabase
+    .from('courses')
+    .select('*')
+    .eq('provider', 'nrf');
+
   const courses = [
     {
       id: 'customer-service-sales',

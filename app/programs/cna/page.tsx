@@ -1,9 +1,12 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Stethoscope, CheckCircle, Clock, DollarSign, Award, Users, Building2 } from 'lucide-react';
 import { VideoHero } from '@/components/heroes/VideoHero';
 import { ProgramNav } from '@/components/programs/ProgramNav';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:
@@ -17,7 +20,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  const supabase = await createClient();
+  
+  // Fetch CNA program
+  const { data: program } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('slug', 'cna')
+    .single();
+
   const navSections = [
     { id: 'overview', label: 'Overview' },
     { id: 'curriculum', label: "What You'll Learn" },

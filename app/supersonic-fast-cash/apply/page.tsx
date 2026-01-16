@@ -1,12 +1,23 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Apply | Supersonic Fast Cash',
   description: 'Apply to work with Supersonic Fast Cash as a tax preparer or office staff.',
 };
 
-export default function ApplyPage() {
+export default async function ApplyPage() {
+  const supabase = await createClient();
+  
+  // Fetch job openings
+  const { data: jobs } = await supabase
+    .from('job_positions')
+    .select('*')
+    .eq('company', 'supersonic')
+    .eq('status', 'active');
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}

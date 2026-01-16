@@ -1,6 +1,8 @@
 // @ts-nocheck
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = getProductBySlug(params.slug);
@@ -20,8 +22,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ProductDetailPage({ params }: Props) {
-  const product = getProductBySlug(params.slug);
+export default async function ProductDetailPage({ params }: Props) {
+  const supabase = await createClient();
+  
+  // Try database first
+  const { data: dbProduct } = await supabase
+    .from('platform_products')
+    .select('*')
+    .eq('slug', params.slug)
+    .single();
+
+  const product = dbProduct || getProductBySlug(params.slug);
 
   if (!product) {
     notFound();

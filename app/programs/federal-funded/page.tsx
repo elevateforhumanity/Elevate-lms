@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import { programs } from '@/app/data/programs';
 import { Shield, CheckCircle, Users, Award } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Federal Funded Programs | WIOA & WRG | Elevate for Humanity',
@@ -22,7 +25,15 @@ const federalFundedSlugs = [
   'cdl-training',
 ];
 
-export default function FederalFundedProgramsPage() {
+export default async function FederalFundedProgramsPage() {
+  const supabase = await createClient();
+  
+  // Fetch federal funded programs
+  const { data: dbPrograms } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('funding_type', 'federal');
+
   const federalPrograms = programs.filter((p) =>
     federalFundedSlugs.includes(p.slug)
   );

@@ -1,6 +1,9 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FileText, DollarSign, Building, Calculator, Shield, Clock, CheckCircle } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Tax Services | Supersonic Fast Cash',
@@ -98,7 +101,15 @@ const services = [
   },
 ];
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const supabase = await createClient();
+  
+  // Fetch services
+  const { data: dbServices } = await supabase
+    .from('tax_services')
+    .select('*')
+    .eq('company', 'supersonic');
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}

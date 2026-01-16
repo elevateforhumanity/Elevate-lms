@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -13,7 +16,15 @@ export const metadata: Metadata = {
     'Manage quiz settings and development.',
 };
 
-export default async function QuizPage() {
+export default async function QuizPage({ params }: { params: { courseId: string; lessonId: string } }) {
+  const supabase = await createClient();
+  
+  // Fetch quiz for lesson
+  const { data: quiz } = await supabase
+    .from('quizzes')
+    .select('*, questions(*)')
+    .eq('lesson_id', params.lessonId)
+    .single();
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

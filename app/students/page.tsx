@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -13,6 +14,8 @@ import {
   TrendingUp
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'For Students | Free Career Training | Elevate for Humanity',
   description: '100% free career training with job placement. No cost, no debt. Get certified and start earning in weeks.',
@@ -21,7 +24,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function StudentsPage() {
+export default async function StudentsPage() {
+  const supabase = await createClient();
+  
+  // Fetch student stats
+  const { count: studentCount } = await supabase
+    .from('students')
+    .select('*', { count: 'exact', head: true });
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

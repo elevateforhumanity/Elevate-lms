@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Employer Benefits | Elevate for Humanity',
@@ -11,7 +14,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function EmployerBenefitsPage() {
+export default async function EmployerBenefitsPage() {
+  const supabase = await createClient();
+  
+  // Fetch benefit content
+  const { data: benefits } = await supabase
+    .from('content_blocks')
+    .select('*')
+    .eq('page', 'employer_benefits');
   return (
     <div className="min-h-screen">
       <div className="bg-gradient-to-br from-orange-600 to-orange-700 text-white py-12">

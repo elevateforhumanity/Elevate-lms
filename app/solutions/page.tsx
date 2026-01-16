@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -11,6 +12,8 @@ import {
   CheckCircle,
   ArrowRight,
 } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Solutions | Elevate For Humanity LMS',
@@ -93,7 +96,15 @@ const products = [
   },
 ];
 
-export default function SolutionsPage() {
+export default async function SolutionsPage() {
+  const supabase = await createClient();
+  
+  // Fetch solutions
+  const { data: solutions } = await supabase
+    .from('solutions')
+    .select('*')
+    .order('order_index');
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

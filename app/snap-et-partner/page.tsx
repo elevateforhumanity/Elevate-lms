@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import {
   CheckCircle,
@@ -9,6 +10,8 @@ import {
   FileText,
   Clock,
 } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:
@@ -31,7 +34,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function SNAPETPartnerPage() {
+export default async function SNAPETPartnerPage() {
+  const supabase = await createClient();
+  
+  // Fetch SNAP E&T partner info
+  const { data: partnerInfo } = await supabase
+    .from('partners')
+    .select('*')
+    .eq('type', 'snap_et')
+    .single();
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}

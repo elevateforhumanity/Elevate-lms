@@ -1,3 +1,4 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import {
   FileText,
@@ -8,6 +9,8 @@ import {
   CheckCircle,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Tax Tools & Calculators | Supersonic Fast Cash',
   description: 'IRS forms, tax due dates, and financial calculators',
@@ -16,7 +19,15 @@ export const metadata = {
   },
 };
 
-export default function TaxToolsPage() {
+export default async function TaxToolsPage() {
+  const supabase = await createClient();
+  
+  // Fetch tax tools
+  const { data: tools } = await supabase
+    .from('tax_tools')
+    .select('*')
+    .order('category');
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}

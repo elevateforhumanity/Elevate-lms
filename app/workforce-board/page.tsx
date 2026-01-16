@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -17,6 +18,8 @@ import {
   Briefcase,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/workforce-board',
@@ -27,7 +30,14 @@ export const metadata: Metadata = {
     'Comprehensive workforce board portal for program oversight, performance metrics, compliance monitoring, and strategic planning. Real-time data and reporting.',
 };
 
-export default function WorkforceBoardPage() {
+export default async function WorkforceBoardPage() {
+  const supabase = await createClient();
+  
+  // Fetch workforce board stats
+  const { count: participantCount } = await supabase
+    .from('participants')
+    .select('*', { count: 'exact', head: true });
+
   const features = [
     {
       icon: BarChart3,

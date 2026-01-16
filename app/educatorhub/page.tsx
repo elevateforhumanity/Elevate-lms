@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -13,6 +16,13 @@ export const metadata: Metadata = {
 };
 
 export default async function EducatorhubPage() {
+  const supabase = await createClient();
+  
+  // Fetch educator resources
+  const { data: resources } = await supabase
+    .from('educator_resources')
+    .select('*')
+    .order('created_at', { ascending: false });
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

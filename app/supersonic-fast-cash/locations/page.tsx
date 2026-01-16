@@ -1,5 +1,8 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { MapPin, Phone, Mail, Clock, Car, Video } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Locations & Hours | Supersonic Fast Cash',
@@ -10,7 +13,14 @@ export const metadata = {
   },
 };
 
-export default function LocationsPage() {
+export default async function LocationsPage() {
+  const supabase = await createClient();
+  
+  // Fetch locations
+  const { data: locations } = await supabase
+    .from('locations')
+    .select('*')
+    .eq('brand', 'supersonic');
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}

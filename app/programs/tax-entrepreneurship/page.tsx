@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Tax Preparation & Entrepreneurship',
@@ -11,7 +14,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TaxEntrepreneurshipPage() {
+export default async function TaxEntrepreneurshipPage() {
+  const supabase = await createClient();
+  
+  // Fetch tax entrepreneurship program
+  const { data: program } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('slug', 'tax-entrepreneurship')
+    .single();
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}

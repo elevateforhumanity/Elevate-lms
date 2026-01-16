@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:
@@ -15,7 +18,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  const supabase = await createClient();
+  
+  // Fetch tax preparation program
+  const { data: program } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('slug', 'tax-preparation')
+    .single();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero with Picture */}

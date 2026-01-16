@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -14,6 +17,14 @@ export const metadata: Metadata = {
 };
 
 export default async function WorkforceAnalyticsPage() {
+  const supabase = await createClient();
+  
+  // Fetch analytics data
+  const { data: analytics } = await supabase
+    .from('workforce_analytics')
+    .select('*')
+    .order('date', { ascending: false })
+    .limit(30);
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

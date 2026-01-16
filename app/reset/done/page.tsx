@@ -1,11 +1,18 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Reset Done | Elevate For Humanity',
   description: 'Elevate For Humanity - Reset Done page',
 };
 
-export default function ResetDonePage() {
+export default async function ResetDonePage() {
+  const supabase = await createClient();
+  
+  // Log reset completion
+  await supabase.from('page_views').insert({ page: 'reset_done' }).select();
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg text-center">

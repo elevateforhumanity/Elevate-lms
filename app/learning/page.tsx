@@ -1,5 +1,8 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { BookOpen, FileText, NotebookPen, Compass, BookMarked, GraduationCap, ArrowRight } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Learning Hub - Resources & Tools | Elevate Hub',
@@ -9,7 +12,15 @@ export const metadata = {
   },
 };
 
-export default function LearningHubPage() {
+export default async function LearningHubPage() {
+  const supabase = await createClient();
+  
+  // Fetch learning resources
+  const { data: resources } = await supabase
+    .from('learning_resources')
+    .select('*')
+    .eq('status', 'published')
+    .order('category');
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}

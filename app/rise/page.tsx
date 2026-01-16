@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -14,7 +17,15 @@ export const metadata: Metadata = {
     'IRS VITA volunteer, free tax preparation training, IRS Link and Learn, VITA certification, volunteer income tax assistance, IRS certified tax preparer training, free tax help Indianapolis, VITA site Indianapolis, tax volunteer training, IRS approved training',
 };
 
-export default function RiseFoundationPage() {
+export default async function RiseFoundationPage() {
+  const supabase = await createClient();
+  
+  // Fetch RISE Foundation info
+  const { data: riseInfo } = await supabase
+    .from('organizations')
+    .select('*')
+    .eq('slug', 'rise-foundation')
+    .single();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

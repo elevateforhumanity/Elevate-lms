@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import { generateMetadata } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = generateMetadata({
@@ -9,9 +10,16 @@ export const metadata: Metadata = generateMetadata({
 
 import { ComplianceBar } from '@/components/ComplianceBar';
 
-export const revalidate = 3600; // 1 hour ISR cache
+export const dynamic = 'force-dynamic';
 
-export default function ArchitecturePage() {
+export default async function ArchitecturePage() {
+  const supabase = await createClient();
+  
+  // Fetch architecture docs
+  const { data: docs } = await supabase
+    .from('documentation')
+    .select('*')
+    .eq('category', 'architecture');
   return (
     <div className="bg-white">
       <ComplianceBar />

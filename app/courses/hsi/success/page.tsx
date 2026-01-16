@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -13,6 +16,10 @@ export const metadata: Metadata = {
 };
 
 export default async function SuccessPage() {
+  const supabase = await createClient();
+  
+  // Log success page visit
+  await supabase.from('page_views').insert({ page: 'hsi_course_success' }).select();
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

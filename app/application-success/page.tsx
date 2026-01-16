@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import { generateMetadata } from '@/lib/seo/metadata';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Application-Success',
@@ -10,7 +13,11 @@ export const metadata: Metadata = generateMetadata({
 import Link from 'next/link';
 import { PartyPopper } from 'lucide-react';
 
-export default function ApplicationSuccessPage() {
+export default async function ApplicationSuccessPage() {
+  const supabase = await createClient();
+  
+  // Log success page visit
+  await supabase.from('page_views').insert({ page: 'application_success' }).select();
   return (
     <div className="mx-auto max-w-2xl px-4 py-16">
       <div className="rounded-2xl border bg-white p-8 shadow-sm text-center">

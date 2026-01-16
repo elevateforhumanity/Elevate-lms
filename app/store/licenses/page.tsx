@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Check, ArrowRight, Zap, Shield, Users, Globe } from 'lucide-react';
 import { STORE_PRODUCTS } from '@/app/data/store-products';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Platform Licenses | Elevate for Humanity Store',
@@ -9,7 +12,14 @@ export const metadata: Metadata = {
     'License the complete Elevate for Humanity workforce training platform. White-label solutions for schools, training providers, and workforce agencies.',
 };
 
-export default function LicensesPage() {
+export default async function LicensesPage() {
+  const supabase = await createClient();
+  
+  // Fetch license products
+  const { data: licenses } = await supabase
+    .from('store_products')
+    .select('*')
+    .eq('category', 'license');
   return (
     <div className="bg-white">
       {/* Hero */}

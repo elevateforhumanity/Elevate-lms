@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
@@ -12,10 +13,16 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
+export const dynamic = 'force-dynamic';
 
-export default function EmployersPage() {
+export default async function EmployersPage() {
+  const supabase = await createClient();
+  
+  // Fetch employer and job stats
+  const { count: jobCount } = await supabase
+    .from('jobs')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'active');
   return (
     <div className="min-h-screen">
       {/* Hero Section with Background Image */}

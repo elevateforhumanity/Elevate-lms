@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Meet the Founder | Selfish Inc.',
@@ -9,7 +12,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MeetTheFounderPage() {
+export default async function MeetTheFounderPage() {
+  const supabase = await createClient();
+  
+  // Fetch founder info
+  const { data: founder } = await supabase
+    .from('team_members')
+    .select('*')
+    .eq('role', 'founder')
+    .single();
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-4xl mx-auto px-4 py-16">

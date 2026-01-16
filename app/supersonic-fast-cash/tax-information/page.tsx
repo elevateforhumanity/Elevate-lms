@@ -1,5 +1,8 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { FileText, Calendar, FolderOpen, TrendingUp, CheckCircle } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Tax Information | Supersonic Fast Cash',
@@ -9,7 +12,14 @@ export const metadata = {
   },
 };
 
-export default function TaxInformationPage() {
+export default async function TaxInformationPage() {
+  const supabase = await createClient();
+  
+  // Fetch tax information
+  const { data: taxInfo } = await supabase
+    .from('tax_information')
+    .select('*')
+    .order('category');
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}

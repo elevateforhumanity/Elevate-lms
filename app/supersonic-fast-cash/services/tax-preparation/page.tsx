@@ -1,13 +1,23 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FileText, DollarSign, Clock, CheckCircle } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Tax Preparation Services | Supersonic Fast Cash',
   description: 'Professional tax preparation for individuals and families. IRS-certified preparers.',
 };
 
-export default function TaxPreparationPage() {
+export default async function TaxPreparationPage() {
+  const supabase = await createClient();
+  
+  // Fetch tax preparation services
+  const { data: services } = await supabase
+    .from('tax_services')
+    .select('*')
+    .eq('type', 'tax_preparation');
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}

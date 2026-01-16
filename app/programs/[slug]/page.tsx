@@ -1,10 +1,13 @@
 import { notFound } from 'next/navigation';
+import { createClient } from '@/lib/supabase/server';
 import fs from 'fs';
 import path from 'path';
 import { programs, type Program } from '@/app/data/programs';
 import { ProgramTemplate } from '@/components/programs/ProgramTemplate';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ slug: string }>;
 
@@ -89,7 +92,16 @@ export default async function ProgramDetailPage({
   params: Params;
 }) {
   const { slug } = await params;
-  const program = await loadProgram(slug);
+  const supabase = await createClient();
+  
+  // Try database first
+  const { data: dbProgram } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('slug', slug)
+    .single();
+
+  const program = dbProgram || await loadProgram(slug);
 
   // Return 404 if program not found
   if (!program) {

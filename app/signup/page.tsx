@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import SignupForm from './SignupForm';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -12,6 +15,14 @@ export const metadata: Metadata = {
 };
 
 export default async function SignupPage() {
+  const supabase = await createClient();
+  
+  // Check if signups are enabled
+  const { data: settings } = await supabase
+    .from('site_settings')
+    .select('*')
+    .eq('key', 'signup_enabled')
+    .single();
   return (
     <div className="min-h-screen bg-slate-50">
       <div className="mx-auto max-w-3xl px-4 py-10">

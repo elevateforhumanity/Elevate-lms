@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -10,6 +11,8 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -34,7 +37,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function EmployerPage() {
+export default async function EmployerPage() {
+  const supabase = await createClient();
+  
+  // Fetch employer stats
+  const { count: employerCount } = await supabase
+    .from('employers')
+    .select('*', { count: 'exact', head: true });
+
   return (
     <div className="bg-white">
       <ModernLandingHero

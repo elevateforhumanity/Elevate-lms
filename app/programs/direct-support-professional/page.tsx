@@ -1,8 +1,11 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Heart, CheckCircle, Users, Award, Clock, DollarSign } from 'lucide-react';
 import { CompactHero } from '@/components/heroes/CompactHero';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Direct Support Professional Training | Free DSP Program Indiana',
@@ -20,7 +23,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  const supabase = await createClient();
+  
+  // Fetch DSP program info
+  const { data: program } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('slug', 'direct-support-professional')
+    .single();
+
   return (
     <div className="min-h-screen bg-white">
       <CompactHero

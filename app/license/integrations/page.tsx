@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Zap, Database, Mail, Award, Calendar, ArrowRight, CheckCircle, AlertCircle, ArrowRightLeft } from 'lucide-react';
 import { INTEGRATIONS, DISCLAIMERS, ROUTES } from '@/lib/pricing';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Integrations | Elevate LMS Licensing',
@@ -24,7 +27,15 @@ const statusColors: Record<string, { bg: string; text: string }> = {
   'Configurable': { bg: 'bg-purple-100', text: 'text-purple-700' },
 };
 
-export default function IntegrationsPage() {
+export default async function IntegrationsPage() {
+  const supabase = await createClient();
+  
+  // Fetch integrations
+  const { data: dbIntegrations } = await supabase
+    .from('integrations')
+    .select('*')
+    .eq('status', 'active');
+
   return (
     <div>
       {/* Header */}

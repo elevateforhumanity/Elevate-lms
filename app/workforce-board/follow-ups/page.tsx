@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 
@@ -16,6 +17,14 @@ export const metadata: Metadata = {
 };
 
 export default async function FollowUpsPage() {
+  const supabase = await createClient();
+  
+  // Fetch follow-ups
+  const { data: followUps } = await supabase
+    .from('follow_ups')
+    .select('*')
+    .order('due_date', { ascending: true });
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

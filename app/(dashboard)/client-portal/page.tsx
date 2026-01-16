@@ -1,5 +1,6 @@
 // app/(dashboard)/client-portal/page.tsx - Elevate Client Portal
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import {
   Upload,
@@ -14,6 +15,8 @@ import {
   FolderOpen,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Client Portal | Elevate for Humanity',
   description:
@@ -23,7 +26,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ClientPortalPage() {
+export default async function ClientPortalPage() {
+  const supabase = await createClient();
+  
+  // Fetch client portal features
+  const { data: features } = await supabase
+    .from('portal_features')
+    .select('*')
+    .eq('portal', 'client');
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}

@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import { Users, Target, Clock, DollarSign, Award, CheckCircle, ArrowRight, Building2 } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Talent Pipeline Program | Employers | Elevate for Humanity',
@@ -90,7 +93,15 @@ const benefits = [
   },
 ];
 
-export default function TalentPipelinePage() {
+export default async function TalentPipelinePage() {
+  const supabase = await createClient();
+  
+  // Fetch pipeline stats
+  const { count: candidateCount } = await supabase
+    .from('students')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'job_ready');
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Technology & IT Programs | Free CompTIA, Google IT Training',
@@ -12,10 +15,14 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = 'force-static';
-export const revalidate = 3600; // 1 hour
-
-export default function TechnologyPage() {
+export default async function TechnologyPage() {
+  const supabase = await createClient();
+  
+  // Fetch technology programs
+  const { data: techPrograms } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('category', 'technology');
   return (
     <div className="min-h-screen bg-gray-50">
       <VideoHeroBanner

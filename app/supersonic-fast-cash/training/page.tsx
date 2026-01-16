@@ -1,13 +1,23 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpen, Video, FileText, Award } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Tax Preparer Training | Supersonic Fast Cash',
   description: 'IRS-certified tax preparer training program. Learn tax preparation and complete your training.',
 };
 
-export default function TrainingPage() {
+export default async function TrainingPage() {
+  const supabase = await createClient();
+  
+  // Fetch training info
+  const { data: training } = await supabase
+    .from('training_programs')
+    .select('*')
+    .eq('company', 'supersonic');
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}

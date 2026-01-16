@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { CheckCircle } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Application Submitted',
@@ -9,7 +12,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function StaffApplicationSuccess() {
+export default async function StaffApplicationSuccess() {
+  const supabase = await createClient();
+  
+  // Log success page visit
+  await supabase.from('page_views').insert({ page: 'staff_application_success' }).select();
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
       <div className="max-w-2xl w-full bg-white border border-slate-200 rounded-lg p-8 text-center">

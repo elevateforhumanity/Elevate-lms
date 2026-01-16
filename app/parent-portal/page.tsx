@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -14,6 +15,8 @@ import {
   Shield,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Parent Portal | Elevate For Humanity',
   description:
@@ -23,7 +26,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ParentPortalPage() {
+export default async function ParentPortalPage() {
+  const supabase = await createClient();
+  
+  // Fetch parent portal info
+  const { data: portalInfo } = await supabase
+    .from('site_settings')
+    .select('*')
+    .eq('key', 'parent_portal')
+    .single();
+
   return (
     <div className="min-h-screen bg-white">
       <section className="bg-gradient-to-br from-pink-600 to-purple-600 text-white py-20">

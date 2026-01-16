@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight, Award, CheckCircle } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -13,6 +16,13 @@ export const metadata: Metadata = {
 };
 
 export default async function CredentialsPage() {
+  const supabase = await createClient();
+  
+  // Fetch credentials
+  const { data: credentials } = await supabase
+    .from('credentials')
+    .select('*')
+    .order('name');
   return (
     <div className="min-h-screen bg-white">
       {/* Breadcrumb Navigation */}

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
@@ -7,6 +8,8 @@ import {
   formatSalaryRange,
   getEmploymentTypeDisplay,
 } from '@/lib/data/careers';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Careers - Join Our Team | Elevate For Humanity',
@@ -36,12 +39,22 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function CareersPage() {
+  const supabase = await createClient();
+  
   // Fetch real job positions from database
-  let openPositions = [];
-  try {
-    openPositions = await getActivePositions();
-  } catch (error) { /* Error handled silently */ 
-    // Continue with empty positions array
+  const { data: dbPositions } = await supabase
+    .from('job_positions')
+    .select('*')
+    .eq('status', 'active')
+    .order('created_at', { ascending: false });
+
+  let openPositions = dbPositions || [];
+  if (openPositions.length === 0) {
+    try {
+      openPositions = await getActivePositions();
+    } catch (error) { /* Error handled silently */ 
+      // Continue with empty positions array
+    }
   }
 
   const benefits = [

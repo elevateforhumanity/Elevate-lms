@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Apprenticeship Programs | Elevate for Humanity',
@@ -12,7 +15,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ApprenticeshipPage() {
+export default async function ApprenticeshipPage() {
+  const supabase = await createClient();
+  
+  // Fetch apprenticeship programs
+  const { data: programs } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('type', 'apprenticeship');
   return (
     <div className="min-h-screen">
       <div className="bg-gradient-to-br from-orange-600 to-orange-700 text-white py-12">

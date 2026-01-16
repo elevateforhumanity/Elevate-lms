@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Plug, CheckCircle, Code, Zap, Database, Mail, CreditCard, Users } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Integrations & API | Elevate for Humanity Store',
@@ -10,7 +13,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function IntegrationsPage() {
+export default async function IntegrationsPage() {
+  const supabase = await createClient();
+  
+  // Fetch available integrations
+  const { data: integrations } = await supabase
+    .from('integrations')
+    .select('*')
+    .eq('status', 'active');
   return (
     <div className="min-h-screen bg-white">
       <section className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white py-20">

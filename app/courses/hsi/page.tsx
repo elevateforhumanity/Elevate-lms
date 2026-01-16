@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Settings } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -12,7 +15,14 @@ export const metadata: Metadata = {
     'Access 1,200+ OSHA-compliant safety training courses through our HSI partnership. 100% free for eligible students.',
 };
 
-export default function HsiPage() {
+export default async function HsiPage() {
+  const supabase = await createClient();
+  
+  // Fetch HSI courses
+  const { data: hsiCourses } = await supabase
+    .from('courses')
+    .select('*')
+    .eq('provider', 'hsi');
   const courseCategories = [
     {
       name: 'OSHA Safety',

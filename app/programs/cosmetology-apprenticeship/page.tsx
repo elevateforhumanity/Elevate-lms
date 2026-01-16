@@ -1,5 +1,6 @@
 // @ts-nocheck
 import type { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -7,6 +8,8 @@ import {
   XCircle,
 } from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:
@@ -20,7 +23,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CosmetologyApprenticeshipPage() {
+export default async function CosmetologyApprenticeshipPage() {
+  const supabase = await createClient();
+  
+  // Fetch cosmetology apprenticeship program
+  const { data: program } = await supabase
+    .from('programs')
+    .select('*')
+    .eq('slug', 'cosmetology-apprenticeship')
+    .single();
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

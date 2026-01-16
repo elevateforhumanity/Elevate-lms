@@ -1,10 +1,13 @@
 // app/tax-self-prep/page.tsx - Self-Preparation Tax Software (TurboTax Style)
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { CountUp } from '@/components/animations/CountUp';
 import { BarChart, Lock, Smartphone, Zap } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -15,7 +18,14 @@ export const metadata: Metadata = {
     'Easy, guided tax preparation software. File your taxes yourself with step-by-step guidance. Free to start.',
 };
 
-export default function TaxSelfPrepPage() {
+export default async function TaxSelfPrepPage() {
+  const supabase = await createClient();
+  
+  // Fetch tax prep pricing
+  const { data: pricing } = await supabase
+    .from('tax_services')
+    .select('*')
+    .eq('type', 'self_prep');
   return (
     <div className="min-h-screen bg-white">
       {/* Hero - TurboTax Style */}

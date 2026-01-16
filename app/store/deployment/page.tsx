@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Rocket, Server, Code, CheckCircle, Clock, Zap, Shield, Database } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Deployment & Setup | Elevate for Humanity Store',
@@ -10,7 +13,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DeploymentPage() {
+export default async function DeploymentPage() {
+  const supabase = await createClient();
+  
+  // Fetch deployment options
+  const { data: options } = await supabase
+    .from('deployment_options')
+    .select('*');
   return (
     <div className="min-h-screen bg-white">
       <section className="bg-gradient-to-br from-purple-600 to-blue-600 text-white py-20">

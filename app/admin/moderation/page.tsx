@@ -1,38 +1,64 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Moderation Queue | Admin',
   description: 'Review and moderate forum posts',
 };
 
-export default function ModerationPage() {
+export default async function ModerationPage() {
+  const supabase = await createClient();
+  
+  // Fetch flagged posts from database
+  const { data: flaggedPosts } = await supabase
+    .from('forum_posts')
+    .select('id, title, content, created_at, user_id, status')
+    .eq('status', 'flagged')
+    .order('created_at', { ascending: false });
+
+  const posts = flaggedPosts || [];
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Moderation Queue</h1>
 
       <div className="bg-white rounded-lg shadow p-6">
-        <h2 className="text-xl font-semibold mb-4">Flagged Posts</h2>
+        <h2 className="text-xl font-semibold mb-4">
+          Flagged Posts ({posts.length})
+        </h2>
 
         <div className="space-y-4">
-          <div className="border rounded p-4">
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="font-semibold">Post Title</h3>
-                <p className="text-sm text-black">
-                  Posted by User • 2 hours ago
-                </p>
-                <p className="mt-2">Post content preview...</p>
+          {posts.length === 0 ? (
+            <p className="text-gray-500 py-4">No flagged posts to review.</p>
+          ) : (
+            posts.map((post) => (
+              <div key={post.id} className="border rounded p-4">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="font-semibold">{post.title || 'Untitled Post'}</h3>
+                    <p className="text-sm text-black">
+                      Posted {new Date(post.created_at).toLocaleDateString()}
+                    </p>
+                    <p className="mt-2">{post.content?.substring(0, 200)}...</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <form action={`/api/admin/moderation/${post.id}/approve`} method="POST">
+                      <button className="bg-green-600 text-white px-3 py-2 rounded text-sm hover:bg-green-700" aria-label="Approve post">
+                        Approve
+                      </button>
+                    </form>
+                    <form action={`/api/admin/moderation/${post.id}/remove`} method="POST">
+                      <button className="bg-red-600 text-white px-3 py-2 rounded text-sm hover:bg-red-700" aria-label="Remove post">
+                        Remove
+                      </button>
+                    </form>
+                  </div>
+                </div>
               </div>
-              <div className="flex gap-2">
-                <button className="bg-green-600 text-white px-3 py-2 rounded text-sm hover:bg-green-700" aria-label="Action button">
-                  Approve
-                </button>
-                <button className="bg-red-600 text-white px-3 py-2 rounded text-sm hover:bg-red-700" aria-label="Action button">
-                  Remove
-                </button>
-              </div>
-            </div>
-          </div>
+            ))
+          )}
         </div>
 
         <div className="mt-6 text-sm text-black">

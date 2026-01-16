@@ -1,3 +1,4 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -17,6 +18,8 @@ import {
   Calculator,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Professional Payroll Services | Supersonic Fast Cash',
   description:
@@ -24,7 +27,15 @@ export const metadata = {
   keywords: ['payroll services', 'payroll processing', 'direct deposit', 'payroll taxes', 'W-2 preparation', '1099 filing', 'payroll compliance'],
 };
 
-export default function PayrollPage() {
+export default async function PayrollPage() {
+  const supabase = await createClient();
+  
+  // Fetch payroll services
+  const { data: dbServices } = await supabase
+    .from('tax_services')
+    .select('*')
+    .eq('type', 'payroll');
+
   const services = [
     {
       icon: DollarSign,

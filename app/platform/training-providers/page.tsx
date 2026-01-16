@@ -1,293 +1,240 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header } from '@/components/ui/Header';
-import { Footer } from '@/components/ui/Footer';
-import { 
-  GraduationCap, 
-  Users, 
-  BarChart, 
-  DollarSign, 
-  CheckCircle,
-  Globe,
-  Award,
-  BookOpen,
-  Settings,
-  TrendingUp,
-  Shield,
-  ChevronRight
-} from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/platform/training-providers',
   },
-  title: 'Training Provider Portal | Elevate For Humanity',
-  description: 'Partner with us to deliver workforce training programs. Access our LMS platform, student management tools, and funding opportunities.',
+  title: 'Training Providers | Elevate For Humanity',
+  description:
+    'Manage training-providers settings and development.',
 };
 
-const PORTAL_FEATURES = [
-  {
-    icon: BookOpen,
-    title: 'Course Management',
-    description: 'Create, upload, and manage your training courses with our intuitive course builder. Support for video, documents, quizzes, and interactive content.',
-  },
-  {
-    icon: Users,
-    title: 'Student Management',
-    description: 'Track student enrollment, progress, attendance, and completion rates. Manage cohorts and communicate with learners.',
-  },
-  {
-    icon: BarChart,
-    title: 'Analytics Dashboard',
-    description: 'Real-time insights into program performance, student outcomes, completion rates, and employment placement metrics.',
-  },
-  {
-    icon: DollarSign,
-    title: 'Revenue Management',
-    description: 'Track tuition payments, manage billing, process refunds, and access detailed financial reports.',
-  },
-  {
-    icon: Award,
-    title: 'Certification System',
-    description: 'Issue verifiable digital certificates and credentials. Track certification status and manage renewals.',
-  },
-  {
-    icon: Shield,
-    title: 'Compliance Tools',
-    description: 'Stay compliant with WIOA, ETPL, and accreditation requirements. Automated reporting and documentation.',
-  },
-];
-
-const BENEFITS = [
-  'White-label LMS platform with your branding',
-  'Access to WIOA-funded student referrals',
-  'Automated compliance reporting',
-  'Student recruitment and marketing support',
-  'Employer partnership connections',
-  'Technical support and training',
-];
-
-const PROGRAM_TYPES = [
-  { name: 'Healthcare Training', examples: 'CNA, Medical Assistant, Phlebotomy' },
-  { name: 'Skilled Trades', examples: 'HVAC, Electrical, Welding, Plumbing' },
-  { name: 'Beauty & Cosmetology', examples: 'Barber, Cosmetology, Esthetician' },
-  { name: 'Business & IT', examples: 'Tax Prep, Bookkeeping, IT Support' },
-  { name: 'Transportation', examples: 'CDL, Forklift, Heavy Equipment' },
-  { name: 'Professional Services', examples: 'Real Estate, Insurance, Notary' },
-];
-
-export default function TrainingProvidersPage() {
+export default async function TrainingProvidersPage() {
+  const supabase = await createClient();
+  
+  // Fetch training providers
+  const { data: providers } = await supabase
+    .from('training_providers')
+    .select('*')
+    .eq('status', 'active');
   return (
-    <>
-      <Header />
-      <main className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 text-white overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
-          <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-medium mb-6">
-                  <GraduationCap className="w-4 h-4" />
-                  <span>For Training Providers</span>
-                </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-                  Training Provider Portal
-                </h1>
-                <p className="text-xl text-purple-100 mb-8 leading-relaxed">
-                  Partner with us to expand your reach, streamline operations, and connect your 
-                  programs with funded students and employer partners.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Link
-                    href="/program-holder/dashboard"
-                    className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-xl font-bold hover:bg-purple-50 transition shadow-lg"
-                  >
-                    Access Portal
-                  </Link>
-                  <Link
-                    href="/partners/training-provider"
-                    className="inline-flex items-center gap-2 bg-purple-500/30 backdrop-blur text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-500/40 transition border border-white/30"
-                  >
-                    Become a Partner
-                  </Link>
-                </div>
-              </div>
-              <div className="relative hidden lg:block">
-                <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/heroes/training-provider.jpg"
-                    alt="Training Provider Portal"
-                    fill
-                    className="object-cover"
-                    sizes="50vw"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/artlist/hero-training-3.jpg"
+          alt="Training Providers"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Training Providers
+          </h1>
+          <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
+            Manage training-providers for career
+            growth and development.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/programs"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              View Programs
+            </Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Stats Bar */}
-        <section className="bg-slate-900 text-white py-8">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {/* Content Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Feature Grid */}
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <div className="text-4xl font-black">150+</div>
-                <div className="text-slate-400">Training Partners</div>
-              </div>
-              <div>
-                <div className="text-4xl font-black">50+</div>
-                <div className="text-slate-400">Program Types</div>
-              </div>
-              <div>
-                <div className="text-4xl font-black">10K+</div>
-                <div className="text-slate-400">Students Trained</div>
-              </div>
-              <div>
-                <div className="text-4xl font-black">$5M+</div>
-                <div className="text-slate-400">Funding Accessed</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features Grid */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
-                Powerful Provider Tools
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Everything you need to manage your training programs, students, and business operations.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {PORTAL_FEATURES.map((feature) => {
-                const IconComponent = feature.icon;
-                return (
-                  <div
-                    key={feature.title}
-                    className="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition"
-                  >
-                    <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
-                      <IconComponent className="w-7 h-7 text-purple-600" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">
-                      {feature.title}
-                    </h3>
-                    <p className="text-slate-600">
-                      {feature.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Program Types */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
-                Programs We Support
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                We partner with training providers across multiple industries and program types.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {PROGRAM_TYPES.map((program) => (
-                <div
-                  key={program.name}
-                  className="bg-white rounded-xl p-6 border border-slate-200 hover:border-purple-300 hover:shadow-md transition"
-                >
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{program.name}</h3>
-                  <p className="text-slate-600 text-sm">{program.examples}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
-                  Why Partner With Us?
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                  Training Providers
                 </h2>
-                <p className="text-lg text-slate-600 mb-8">
-                  Join our network of training providers and gain access to students, funding, 
-                  technology, and employer connections that help your programs thrive.
+                <p className="text-black mb-6">
+                  Manage training-providers for
+                  career growth and development.
                 </p>
-                
-                <div className="space-y-4">
-                  {BENEFITS.map((benefit, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-700">{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-8">
-                  <Link
-                    href="/partners/training-provider"
-                    className="inline-flex items-center gap-2 text-purple-600 font-bold hover:text-purple-700"
-                  >
-                    Learn More About Partnership
-                    <ChevronRight className="w-5 h-5" />
-                  </Link>
-                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>100% free training programs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Industry-standard certifications</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Career support and job placement</span>
+                  </li>
+                </ul>
               </div>
-              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/business/training-classroom.jpg"
-                  alt="Training Classroom"
+                  src="/images/artlist/hero-training-3.jpg"
+                  alt="Training Providers"
                   fill
                   className="object-cover"
-                  sizes="50vw"
+                  quality={100}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-purple-600 to-indigo-700 text-white">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-black mb-6">
-              Ready to Grow Your Training Business?
+            {/* Feature Cards */}
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-brand-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Learn</h3>
+                <p className="text-black">
+                  Access quality training programs
+                </p>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-brand-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Certify</h3>
+                <p className="text-black">Earn industry certifications</p>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Work</h3>
+                <p className="text-black">Get hired in your field</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-brand-blue-700 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Ready to Get Started?
             </h2>
-            <p className="text-xl text-purple-100 mb-8">
-              Join our network of training providers and start connecting with funded students today.
+            <p className="text-base md:text-lg text-blue-100 mb-8">
+              Join thousands who have launched successful careers through our
+              programs.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/apply/program-holder"
-                className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-xl font-bold hover:bg-purple-50 transition"
-              >
-                Apply to Partner
-              </Link>
+            <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-purple-500/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-500/40 transition border border-white/30"
+                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
               >
-                Schedule a Demo
+                Apply Now
+              </Link>
+              <Link
+                href="/programs"
+                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
+              >
+                Browse Programs
               </Link>
             </div>
           </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+        </div>
+      </section>
+    </div>
   );
 }

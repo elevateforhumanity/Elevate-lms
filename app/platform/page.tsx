@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import { generateMetadata } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = generateMetadata({
@@ -9,9 +10,17 @@ export const metadata: Metadata = generateMetadata({
 
 import Link from 'next/link';
 
-export const revalidate = 3600; // 1 hour ISR cache
+export const dynamic = 'force-dynamic';
 
-export default function PlatformPage() {
+export default async function PlatformPage() {
+  const supabase = await createClient();
+  
+  // Fetch platform info
+  const { data: platformInfo } = await supabase
+    .from('site_settings')
+    .select('*')
+    .eq('key', 'platform_info')
+    .single();
   return (
     <div className="bg-white">
       {/* Hero Section */}
