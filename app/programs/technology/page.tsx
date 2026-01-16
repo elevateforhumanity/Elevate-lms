@@ -27,7 +27,7 @@ export default async function TechnologyPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <VideoHeroBanner
-        videoSrc="/videos/hero-home.mp4"
+        videoSrc="https://cms-artifacts.artlist.io/content/generated-video-v1/video__6/generated-video-740f3982-002e-4fb5-a11e-69b8470854f9.mp4?Expires=2083944637&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=YlhyEbsb3rAqk7QNsmr6QdFmh629vcNO7RzRbRTtx35-D03T9rzHOSBT5fkR4TJf4jOKiEJIkAKwE2cFpupODGpyn0w9ib89mnb0OHyI~Z~r3021-rrVATrLK-JoqhnIib~HKFpy~D5608xdLuXR37VGVBJ3RbxEi1AFCs-1lvuvhPIKDyTohIwcBJjiAr7KYQK6ltkIu3MshI23omu9KIZcxAB~-Tab-z4ojSWoahjO7S6XMsvXPtn6dmxEhpheXTlm3pYWY2Ox8avzq4dsJhI4Ot2w0J1OD39ou3PoQ~lq1akErQ54xAA6ZC9gD8XpbNFa7H4yF~rUzAQ0zxrxtg__"
         headline="Technology & IT Programs"
         subheadline="Launch Your Tech Career - IT Support, Networking & Cybersecurity"
         primaryCTA={{ text: 'Apply Now', href: '/apply' }}
