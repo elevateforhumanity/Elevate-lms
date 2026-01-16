@@ -68,7 +68,7 @@ export default function SiteHeader() {
             {/* Mobile menu button - visible on mobile and tablets */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-black hover:text-blue-600 transition"
+              className="md:hidden p-2 text-black hover:text-blue-600 transition"
               aria-label="Open menu"
               aria-expanded={mobileMenuOpen}
             >
