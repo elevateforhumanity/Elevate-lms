@@ -3,6 +3,16 @@
  * Single source of truth for all program content, descriptions, and CTAs
  */
 
+// Bundled pricing options for programs
+export interface PricingTier {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  includes: string[];
+  popular?: boolean;
+}
+
 export type Program = {
   slug: string;
   name: string;
@@ -37,6 +47,10 @@ export type Program = {
   curriculum?: Module[];
   faq?: FAQ[];
   testimonials?: Testimonial[];
+  // Bundled pricing support
+  pricingTiers?: PricingTier[];
+  examVoucherPrice?: number;
+  retakeVoucherPrice?: number;
 };
 
 interface Module {

@@ -2,8 +2,9 @@ import Link from 'next/link';
 import { Phone, Mail } from 'lucide-react';
 import type { Program } from '@/app/data/programs';
 import { ProgramPaymentButton } from './ProgramPaymentButton';
+import { PricingTiers } from './PricingTiers';
+import { CareerServicesHook } from './CareerServicesHook';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
-import { CredentialsOutcomes } from './CredentialsOutcomes';
 
 export function ProgramTemplate({ program }: { program: Program }) {
   return (
@@ -52,6 +53,12 @@ export function ProgramTemplate({ program }: { program: Program }) {
                   className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg"
                 >
                   View Courses
+                </Link>
+                <Link
+                  href={`/programs/${program.slug}/discussions`}
+                  className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg"
+                >
+                  Community
                 </Link>
                 {program.ctaSecondary && (
                   <Link
@@ -102,6 +109,67 @@ export function ProgramTemplate({ program }: { program: Program }) {
                   </li>
                 ))}
             </ul>
+
+            {/* Credentials & Outcomes Box */}
+            <div className="mt-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl p-6">
+              <h3 className="text-xl font-bold mb-4 text-blue-900 flex items-center gap-2">
+                <span className="text-2xl">🎓</span> Credentials You'll Earn
+              </h3>
+              
+              {/* Certificate of Completion */}
+              <div className="mb-4 bg-white rounded-xl p-4 border border-blue-100">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-blue-600 font-bold">📜</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">Certificate of Completion</h4>
+                    <p className="text-sm text-gray-600">
+                      Issued by Elevate for Humanity upon successful program completion
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Third-Party Certifications */}
+              {program.credential && (
+                <div className="bg-white rounded-xl p-4 border border-green-200">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span className="text-green-600 font-bold">✅</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">Industry Certification</h4>
+                      <p className="text-sm text-gray-600 mb-2">
+                        {program.credential}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        Third-party certification recognized by employers nationwide
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Post-Completion Pathway */}
+              <div className="mt-4 pt-4 border-t border-blue-200">
+                <h4 className="font-semibold text-blue-900 mb-2">What Happens After Completion?</h4>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-500">→</span>
+                    Career services support and job placement assistance
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-500">→</span>
+                    Access to employer partner network
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-500">→</span>
+                    Pathway to advanced certifications and career growth
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
 
           {/* Middle: What You'll Learn */}
@@ -211,6 +279,19 @@ export function ProgramTemplate({ program }: { program: Program }) {
         </section>
       )}
 
+      {/* PRICING OPTIONS */}
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <PricingTiers
+          programSlug={program.slug}
+          programName={program.name}
+          tiers={program.pricingTiers}
+          basePrice={program.price || 0}
+          examVoucherPrice={program.examVoucherPrice || 0}
+          retakeVoucherPrice={program.retakeVoucherPrice || 0}
+          fundingAvailable={program.fundingOptions && program.fundingOptions.length > 0}
+        />
+      </section>
+
       {/* HOW TO ENROLL */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <h2 className="text-3xl font-bold mb-8 text-black text-center">
@@ -283,13 +364,55 @@ export function ProgramTemplate({ program }: { program: Program }) {
         </section>
       )}
 
-      {/* CREDENTIALS & OUTCOMES */}
+      {/* CAREER SERVICES HOOK */}
       <section className="max-w-6xl mx-auto px-4 py-12">
-        <CredentialsOutcomes
-          programName={program.name}
-          partnerCertifications={program.certifications || []}
-          employmentOutcomes={program.outcomes || []}
-        />
+        <CareerServicesHook programName={program.name} programSlug={program.slug} />
+      </section>
+
+      {/* POST-COMPLETION PATHWAY */}
+      <section className="bg-gradient-to-r from-indigo-600 to-purple-600 py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-white text-center">
+            What Happens After Completion?
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                <span className="text-2xl">🎯</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Career Services</h3>
+              <p className="text-white/80">
+                Resume review, interview prep, and job search assistance from our career services team.
+              </p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                <span className="text-2xl">🤝</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Employer Connections</h3>
+              <p className="text-white/80">
+                Direct introductions to hiring employers in our partner network actively seeking graduates.
+              </p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                <span className="text-2xl">📈</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Career Advancement</h3>
+              <p className="text-white/80">
+                Pathways to advanced certifications, specializations, and leadership roles in your field.
+              </p>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/career-services"
+              className="inline-flex items-center gap-2 bg-white text-indigo-600 hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition"
+            >
+              Learn About Career Services →
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* FINAL CTA */}

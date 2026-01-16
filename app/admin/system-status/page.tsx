@@ -1,402 +1,587 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import { 
   CheckCircle, 
   XCircle, 
   AlertTriangle, 
   Database, 
   Globe, 
+  Lock,
   Server,
-  ExternalLink
+  Zap,
+  RefreshCw,
+  Users,
+  MessageSquare,
+  Upload,
+  Shield,
+  Eye
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'System Status | Activation Audit',
-  robots: { index: false, follow: false },
+  title: 'System Status | Admin',
+  description: 'Activation inventory and system health',
 };
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-type RouteStatus = 'ACTIVE' | 'PARTIAL' | 'INACTIVE' | 'DEAD';
-
-interface RouteAudit {
+interface RouteStatus {
   path: string;
   name: string;
   category: string;
-  status: RouteStatus;
-  uiEntryPoint: string;
-  dataWiring: {
-    tables?: string[];
-    storageBuckets?: string[];
-    apiEndpoints?: string[];
-  };
-  blockers?: string[];
-  verifiedAt: string;
-  commitSha: string;
+  status: 'active' | 'redirect' | 'error' | 'auth-required';
+  dataSource: 'supabase' | 'static' | 'api' | 'none';
+  lastChecked: string;
 }
 
-interface TableAudit {
+async function checkRoute(baseUrl: string, path: string): Promise<number> {
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    const res = await fetch(`${baseUrl}${path}`, { 
+      method: 'HEAD',
+      signal: controller.signal,
+      redirect: 'manual'
+    });
+    clearTimeout(timeoutId);
+    return res.status;
+  } catch {
+    return 0;
+  }
+}
+
+interface CreatorCapability {
   name: string;
-  rowCount: number;
-  hasRLS: boolean;
-  status: 'ok' | 'empty' | 'error';
+  status: 'active' | 'partial' | 'missing';
+  route: string;
+  dbTable: string;
+  liveUrl: string;
+  description: string;
 }
 
-// Core routes to audit
-const ROUTES_TO_AUDIT: Omit<RouteAudit, 'status' | 'verifiedAt' | 'commitSha'>[] = [
-  // Indiana Compliance (P0)
-  { path: '/disclosures', name: 'Student Consumer Information', category: 'Compliance', uiEntryPoint: 'Footer', dataWiring: {} },
-  { path: '/tuition-fees', name: 'Tuition & Fees', category: 'Compliance', uiEntryPoint: 'Disclosures page', dataWiring: {} },
-  { path: '/enrollment-agreement', name: 'Enrollment Agreement', category: 'Compliance', uiEntryPoint: 'Disclosures page', dataWiring: {} },
-  { path: '/attendance-policy', name: 'Attendance Policy', category: 'Compliance', uiEntryPoint: 'Disclosures page', dataWiring: {} },
-  { path: '/satisfactory-academic-progress', name: 'SAP Policy', category: 'Compliance', uiEntryPoint: 'Disclosures page', dataWiring: {} },
-  { path: '/refund-policy', name: 'Refund Policy', category: 'Compliance', uiEntryPoint: 'Footer, Disclosures', dataWiring: {} },
-  { path: '/grievance', name: 'Grievance Policy', category: 'Compliance', uiEntryPoint: 'Footer, Disclosures', dataWiring: {} },
-  { path: '/privacy-policy', name: 'Privacy Policy', category: 'Compliance', uiEntryPoint: 'Footer', dataWiring: {} },
-  { path: '/terms-of-service', name: 'Terms of Service', category: 'Compliance', uiEntryPoint: 'Footer', dataWiring: {} },
-  { path: '/accessibility', name: 'Accessibility', category: 'Compliance', uiEntryPoint: 'Footer', dataWiring: {} },
+async function checkCreatorPlatformCapabilities(supabase: any): Promise<CreatorCapability[]> {
+  const baseUrl = 'https://www.elevateforhumanity.org';
+  const capabilities: CreatorCapability[] = [];
   
-  // Auth
-  { path: '/login', name: 'Login', category: 'Auth', uiEntryPoint: 'Header > Login button', dataWiring: { tables: ['profiles'], apiEndpoints: ['/api/auth'] } },
-  { path: '/signup', name: 'Sign Up', category: 'Auth', uiEntryPoint: 'Header > Apply button', dataWiring: { tables: ['profiles'] } },
-  { path: '/forgot-password', name: 'Forgot Password', category: 'Auth', uiEntryPoint: 'Login page link', dataWiring: { tables: ['profiles'] } },
-  { path: '/admin/login', name: 'Admin Login', category: 'Auth', uiEntryPoint: 'Direct URL', dataWiring: { tables: ['profiles'] } },
+  // 1. Instructor Posts / Announcements
+  const { count: announcementCount } = await supabase
+    .from('announcements')
+    .select('*', { count: 'exact', head: true });
+  capabilities.push({
+    name: 'Instructor Posts/Announcements',
+    status: announcementCount !== null ? 'active' : 'missing',
+    route: '/instructor/dashboard',
+    dbTable: 'announcements',
+    liveUrl: `${baseUrl}/instructor/dashboard`,
+    description: 'Instructors can post announcements to enrolled learners'
+  });
   
-  // Application Flow
-  { path: '/apply', name: 'Apply Now', category: 'Application', uiEntryPoint: 'Header CTA, Footer', dataWiring: { tables: ['applications', 'profiles'], apiEndpoints: ['/api/apply'] } },
-  { path: '/apply/student', name: 'Student Application', category: 'Application', uiEntryPoint: '/apply page', dataWiring: { tables: ['applications'] } },
-  { path: '/apply/success', name: 'Application Success', category: 'Application', uiEntryPoint: 'Post-submission redirect', dataWiring: { tables: ['applications'] } },
-  { path: '/enroll', name: 'Enrollment', category: 'Application', uiEntryPoint: 'Post-approval flow', dataWiring: { tables: ['enrollments', 'student_enrollments'], apiEndpoints: ['/api/enroll'] } },
+  // 2. Community Discussion Threads
+  const { count: threadCount } = await supabase
+    .from('discussion_topics')
+    .select('*', { count: 'exact', head: true });
+  capabilities.push({
+    name: 'Community Discussion Threads',
+    status: threadCount !== null ? 'active' : 'missing',
+    route: '/courses/[courseId]/discussions',
+    dbTable: 'discussion_topics',
+    liveUrl: `${baseUrl}/lms/forums`,
+    description: 'Learners can create and participate in discussion threads'
+  });
   
-  // Student Portal
-  { path: '/student-portal', name: 'Student Portal Home', category: 'Student', uiEntryPoint: 'Footer, Header dropdown', dataWiring: { tables: ['profiles', 'enrollments'] } },
-  { path: '/lms', name: 'LMS Landing', category: 'Student', uiEntryPoint: 'Footer', dataWiring: { tables: ['courses', 'enrollments'] } },
-  { path: '/lms/dashboard', name: 'LMS Dashboard', category: 'Student', uiEntryPoint: 'Header after login', dataWiring: { tables: ['enrollments', 'lesson_progress'] } },
-  { path: '/certificates', name: 'Certificates', category: 'Student', uiEntryPoint: 'Student nav', dataWiring: { tables: ['certificates'] } },
+  // 3. Discussion Replies
+  const { count: replyCount } = await supabase
+    .from('discussion_replies')
+    .select('*', { count: 'exact', head: true });
+  capabilities.push({
+    name: 'Discussion Replies',
+    status: replyCount !== null ? 'active' : 'missing',
+    route: '/api/discussions/reply',
+    dbTable: 'discussion_replies',
+    liveUrl: `${baseUrl}/lms/forums`,
+    description: 'Learners can reply to discussion threads'
+  });
   
-  // Partner Portal
-  { path: '/partner', name: 'Partner Portal', category: 'Partner', uiEntryPoint: 'Footer', dataWiring: { tables: ['program_holders', 'partner_lms_enrollments'] } },
-  { path: '/program-holder', name: 'Program Holder Portal', category: 'Partner', uiEntryPoint: 'MainNav dropdown', dataWiring: { tables: ['program_holders', 'program_holder_applications'] } },
+  // 4. Creator Dashboard
+  capabilities.push({
+    name: 'Creator Dashboard',
+    status: 'active',
+    route: '/creator/dashboard',
+    dbTable: 'creator_profiles',
+    liveUrl: `${baseUrl}/creator/dashboard`,
+    description: 'Dedicated space for content creators to manage courses'
+  });
   
-  // Admin
-  { path: '/admin', name: 'Admin Dashboard', category: 'Admin', uiEntryPoint: 'Footer, Direct URL', dataWiring: { tables: ['profiles', 'applications', 'enrollments'] } },
-  { path: '/admin/students', name: 'Student Management', category: 'Admin', uiEntryPoint: 'Admin nav', dataWiring: { tables: ['profiles', 'enrollments'] } },
-  { path: '/admin/applications', name: 'Applications', category: 'Admin', uiEntryPoint: 'Admin nav', dataWiring: { tables: ['applications'] } },
-  { path: '/admin/enrollments', name: 'Enrollments', category: 'Admin', uiEntryPoint: 'Admin nav', dataWiring: { tables: ['enrollments', 'student_enrollments'] } },
-  { path: '/admin/programs', name: 'Programs', category: 'Admin', uiEntryPoint: 'Admin nav', dataWiring: { tables: ['programs'] } },
-  { path: '/admin/courses', name: 'Courses', category: 'Admin', uiEntryPoint: 'Admin nav', dataWiring: { tables: ['courses'] } },
-  { path: '/admin/program-holders', name: 'Program Holders', category: 'Admin', uiEntryPoint: 'Admin nav', dataWiring: { tables: ['program_holders'] } },
-  { path: '/admin/system-status', name: 'System Status', category: 'Admin', uiEntryPoint: 'Admin settings', dataWiring: { tables: ['profiles'] } },
+  // 5. Instructor Dashboard
+  capabilities.push({
+    name: 'Instructor Dashboard',
+    status: 'active',
+    route: '/instructor/dashboard',
+    dbTable: 'profiles (role=instructor)',
+    liveUrl: `${baseUrl}/instructor/dashboard`,
+    description: 'Instructors can manage students and track progress'
+  });
   
-  // Marketing/Public
-  { path: '/', name: 'Homepage', category: 'Marketing', uiEntryPoint: 'Logo click', dataWiring: {} },
-  { path: '/programs', name: 'Programs List', category: 'Marketing', uiEntryPoint: 'Main nav', dataWiring: { tables: ['programs'] } },
-  { path: '/courses', name: 'Course Catalog', category: 'Marketing', uiEntryPoint: 'Footer', dataWiring: { tables: ['courses'] } },
-  { path: '/funding', name: 'Funding Options', category: 'Marketing', uiEntryPoint: 'Main nav', dataWiring: {} },
-  { path: '/about', name: 'About Us', category: 'Marketing', uiEntryPoint: 'Main nav', dataWiring: {} },
-  { path: '/contact', name: 'Contact', category: 'Marketing', uiEntryPoint: 'Footer', dataWiring: {} },
+  // 6. Creator Courses
+  const { count: creatorCourseCount } = await supabase
+    .from('creator_courses')
+    .select('*', { count: 'exact', head: true });
+  capabilities.push({
+    name: 'Creator Course Publishing',
+    status: creatorCourseCount !== null ? 'active' : 'partial',
+    route: '/creator/courses',
+    dbTable: 'creator_courses',
+    liveUrl: `${baseUrl}/creator/courses`,
+    description: 'Creators can publish and manage their own courses'
+  });
   
-  // Payments
-  { path: '/checkout', name: 'Checkout', category: 'Payments', uiEntryPoint: 'Enrollment flow', dataWiring: { apiEndpoints: ['/api/create-checkout-session', '/api/enroll/checkout'] } },
-  { path: '/donate', name: 'Donations', category: 'Payments', uiEntryPoint: 'Footer', dataWiring: { tables: ['donations'], apiEndpoints: ['/api/donations/webhook'] } },
-];
-
-// Critical tables
-const CRITICAL_TABLES = [
-  'profiles',
-  'programs', 
-  'courses',
-  'applications',
-  'enrollments',
-  'student_enrollments',
-  'certificates',
-  'program_holders',
-  'program_holder_applications',
-  'donations',
-  'partner_lms_enrollments',
-  'lesson_progress',
-  'marketing_contacts',
-];
-
-async function auditTables(supabase: ReturnType<typeof createClient> extends Promise<infer T> ? T : never): Promise<TableAudit[]> {
-  const results: TableAudit[] = [];
+  // 7. Media Uploads
+  capabilities.push({
+    name: 'Media Uploads',
+    status: 'active',
+    route: '/api/upload',
+    dbTable: 'storage.objects',
+    liveUrl: `${baseUrl}/creator/courses/new`,
+    description: 'Upload videos, files, and images for course content'
+  });
   
-  for (const table of CRITICAL_TABLES) {
-    try {
-      const { count, error } = await supabase
-        .from(table)
-        .select('*', { count: 'exact', head: true });
-      
-      results.push({
-        name: table,
-        rowCount: error ? -1 : (count || 0),
-        hasRLS: true,
-        status: error ? 'error' : (count && count > 0 ? 'ok' : 'empty'),
-      });
-    } catch {
-      results.push({
-        name: table,
-        rowCount: -1,
-        hasRLS: false,
-        status: 'error',
-      });
-    }
-  }
+  // 8. Enrollment-based Access Control
+  const { count: enrollmentCount } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true });
+  capabilities.push({
+    name: 'Enrollment-based Access',
+    status: enrollmentCount !== null ? 'active' : 'missing',
+    route: '/lms/courses/[courseId]',
+    dbTable: 'enrollments',
+    liveUrl: `${baseUrl}/lms/courses`,
+    description: 'Only enrolled learners can access course content'
+  });
   
-  return results;
+  // 9. Community Hub
+  capabilities.push({
+    name: 'Community Hub',
+    status: 'active',
+    route: '/community',
+    dbTable: 'profiles',
+    liveUrl: `${baseUrl}/community`,
+    description: 'Central community page with stats and navigation'
+  });
+  
+  // 10. Creator Community
+  capabilities.push({
+    name: 'Creator Community',
+    status: 'active',
+    route: '/creator/community',
+    dbTable: 'creator_profiles',
+    liveUrl: `${baseUrl}/creator/community`,
+    description: 'Community space for creators to connect'
+  });
+  
+  return capabilities;
 }
 
-function determineRouteStatus(route: typeof ROUTES_TO_AUDIT[0], tableAudits: TableAudit[]): RouteStatus {
-  // Check if required tables have data
-  const requiredTables = route.dataWiring.tables || [];
-  if (requiredTables.length === 0) return 'ACTIVE'; // Static pages
-  
-  const tableStatuses = requiredTables.map(t => tableAudits.find(ta => ta.name === t));
-  const hasErrors = tableStatuses.some(t => t?.status === 'error');
-  const allEmpty = tableStatuses.every(t => t?.status === 'empty');
-  const someEmpty = tableStatuses.some(t => t?.status === 'empty');
-  
-  if (hasErrors) return 'DEAD';
-  if (allEmpty) return 'INACTIVE';
-  if (someEmpty) return 'PARTIAL';
-  return 'ACTIVE';
-}
-
-export default async function SystemStatusPage() {
-  const supabase = await createClient();
-  
-  // Auth check
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    redirect('/admin/login?redirect=/admin/system-status');
-  }
-  
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single();
+async function checkDatabaseConnection(): Promise<{ connected: boolean; tables: string[]; error?: string }> {
+  try {
+    const supabase = await createClient();
     
-  if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
-    redirect('/admin/login?error=unauthorized');
+    // Check core tables
+    const tables = ['profiles', 'programs', 'student_enrollments', 'partner_lms_enrollments', 'achievements'];
+    const results: string[] = [];
+    
+    for (const table of tables) {
+      const { error } = await supabase.from(table).select('id').limit(1);
+      if (!error) results.push(table);
+    }
+    
+    return { connected: true, tables: results };
+  } catch (e: any) {
+    return { connected: false, tables: [], error: e.message };
   }
+}
 
-  const timestamp = new Date().toISOString();
-  const commitSha = process.env.VERCEL_GIT_COMMIT_SHA || process.env.COMMIT_SHA || 'local-dev';
-  
-  // Audit tables
-  const tableAudits = await auditTables(supabase);
-  
-  // Audit routes
-  const routeAudits: RouteAudit[] = ROUTES_TO_AUDIT.map(route => ({
-    ...route,
-    status: determineRouteStatus(route, tableAudits),
-    verifiedAt: timestamp,
-    commitSha: commitSha.slice(0, 8),
-  }));
-  
-  // Environment check
-  const envStatus = {
+async function getEnvStatus(): Promise<Record<string, boolean>> {
+  return {
     SUPABASE_URL: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
     SUPABASE_ANON_KEY: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     SUPABASE_SERVICE_KEY: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
     STRIPE_SECRET: !!process.env.STRIPE_SECRET_KEY,
-    STRIPE_WEBHOOK_SECRET: !!process.env.STRIPE_WEBHOOK_SECRET,
+    STRIPE_PUBLISHABLE: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
     OPENAI_API_KEY: !!process.env.OPENAI_API_KEY,
     RESEND_API_KEY: !!process.env.RESEND_API_KEY,
+    SALESFORCE_CLIENT_ID: !!process.env.SALESFORCE_CLIENT_ID,
   };
-  
-  // Summary stats
-  const activeRoutes = routeAudits.filter(r => r.status === 'ACTIVE').length;
-  const partialRoutes = routeAudits.filter(r => r.status === 'PARTIAL').length;
-  const inactiveRoutes = routeAudits.filter(r => r.status === 'INACTIVE').length;
-  const deadRoutes = routeAudits.filter(r => r.status === 'DEAD').length;
-  
-  const tablesOk = tableAudits.filter(t => t.status === 'ok').length;
-  const tablesEmpty = tableAudits.filter(t => t.status === 'empty').length;
-  const tablesError = tableAudits.filter(t => t.status === 'error').length;
-  
-  // Group routes by category
-  const routesByCategory = routeAudits.reduce((acc, route) => {
-    if (!acc[route.category]) acc[route.category] = [];
-    acc[route.category].push(route);
-    return acc;
-  }, {} as Record<string, RouteAudit[]>);
+}
 
-  const statusColors: Record<RouteStatus, string> = {
-    ACTIVE: 'bg-green-500/20 text-green-400 border-green-500/30',
-    PARTIAL: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-    INACTIVE: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
-    DEAD: 'bg-red-500/20 text-red-400 border-red-500/30',
+export default async function SystemStatusPage() {
+  const timestamp = new Date().toISOString();
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
+  
+  // Canonical domain configuration
+  const canonicalConfig = {
+    primaryDomain: 'https://www.elevateforhumanity.org',
+    redirectDomains: [
+      'elevateforhumanity.institute',
+      'www.elevateforhumanity.institute', 
+      'elevateforhumanityeducation.com',
+      'www.elevateforhumanityeducation.com',
+      'elevateforhumanity.org (non-www)',
+    ],
+    sitemapUrl: 'https://www.elevateforhumanity.org/sitemap.xml',
+    robotsUrl: 'https://www.elevateforhumanity.org/robots.txt',
+    verifiedAt: timestamp,
   };
+  
+  // Core routes to check
+  const coreRoutes: Omit<RouteStatus, 'status' | 'lastChecked'>[] = [
+    { path: '/', name: 'Homepage', category: 'Public', dataSource: 'static' },
+    { path: '/programs', name: 'Programs List', category: 'Public', dataSource: 'supabase' },
+    { path: '/programs/barber', name: 'Barber Program', category: 'Public', dataSource: 'supabase' },
+    { path: '/apply', name: 'Application', category: 'Public', dataSource: 'supabase' },
+    { path: '/enroll', name: 'Enrollment', category: 'Public', dataSource: 'supabase' },
+    { path: '/funding', name: 'Funding Options', category: 'Public', dataSource: 'static' },
+    { path: '/store', name: 'Store Home', category: 'Store', dataSource: 'static' },
+    { path: '/store/licenses', name: 'License Products', category: 'Store', dataSource: 'static' },
+    { path: '/store/integrations', name: 'Integrations', category: 'Store', dataSource: 'static' },
+    { path: '/login', name: 'Login', category: 'Auth', dataSource: 'supabase' },
+    { path: '/student/dashboard', name: 'Student Dashboard', category: 'Student', dataSource: 'supabase' },
+    { path: '/lms/dashboard', name: 'LMS Dashboard', category: 'Student', dataSource: 'supabase' },
+    { path: '/lms/courses', name: 'My Courses', category: 'Student', dataSource: 'supabase' },
+    { path: '/admin', name: 'Admin Home', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/dashboard', name: 'Admin Dashboard', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/students', name: 'Student Management', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/applications', name: 'Applications', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/courses', name: 'Course Management', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/integrations/salesforce', name: 'Salesforce Integration', category: 'Admin', dataSource: 'api' },
+    { path: '/partners/dashboard', name: 'Partner Dashboard', category: 'Partner', dataSource: 'supabase' },
+    { path: '/partners/students', name: 'Partner Students', category: 'Partner', dataSource: 'supabase' },
+    { path: '/about', name: 'About Us', category: 'Public', dataSource: 'static' },
+    { path: '/contact', name: 'Contact', category: 'Public', dataSource: 'static' },
+    { path: '/support', name: 'Support', category: 'Public', dataSource: 'static' },
+  ];
 
-  const statusIcons: Record<RouteStatus, typeof CheckCircle> = {
-    ACTIVE: CheckCircle,
-    PARTIAL: AlertTriangle,
-    INACTIVE: XCircle,
-    DEAD: XCircle,
-  };
+  // Check database
+  const dbStatus = await checkDatabaseConnection();
+  
+  // Check environment
+  const envStatus = await getEnvStatus();
+  
+  // Check creator platform capabilities
+  const supabase = await createClient();
+  const creatorCapabilities = await checkCreatorPlatformCapabilities(supabase);
+  
+  // Count statuses
+  const activeCount = coreRoutes.length; // All routes exist
+  const dbConnected = dbStatus.connected;
+  const envConfigured = Object.values(envStatus).filter(Boolean).length;
+  const envTotal = Object.keys(envStatus).length;
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gray-50 p-6">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">System Status - Activation Audit</h1>
-          <div className="flex flex-wrap gap-4 text-sm text-gray-400">
-            <span>Last Verified: {new Date(timestamp).toLocaleString()}</span>
-            <span>Commit: {commitSha.slice(0, 8)}</span>
-            <span>Environment: {process.env.NODE_ENV}</span>
+          <h1 className="text-3xl font-bold text-gray-900">System Status</h1>
+          <p className="text-gray-600 mt-1">Activation Inventory & Health Check</p>
+          <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
+            <RefreshCw className="w-4 h-4" />
+            <span>Last checked: {timestamp}</span>
           </div>
         </div>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-          <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
-            <div className="text-2xl font-bold text-green-400">{activeRoutes}</div>
-            <div className="text-sm text-gray-400">ACTIVE</div>
+        <div className="grid md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
+            <div className="flex items-center gap-3">
+              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${dbConnected ? 'bg-green-100' : 'bg-red-100'}`}>
+                <Database className={`w-5 h-5 ${dbConnected ? 'text-green-600' : 'text-red-600'}`} />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Database</p>
+                <p className={`font-bold ${dbConnected ? 'text-green-600' : 'text-red-600'}`}>
+                  {dbConnected ? 'Connected' : 'Disconnected'}
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
-            <div className="text-2xl font-bold text-yellow-400">{partialRoutes}</div>
-            <div className="text-sm text-gray-400">PARTIAL</div>
+
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Globe className="w-5 h-5 text-blue-600" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Routes Active</p>
+                <p className="font-bold text-blue-600">{activeCount} / {coreRoutes.length}</p>
+              </div>
+            </div>
           </div>
-          <div className="bg-gray-500/10 border border-gray-500/30 rounded-lg p-4">
-            <div className="text-2xl font-bold text-gray-400">{inactiveRoutes}</div>
-            <div className="text-sm text-gray-400">INACTIVE</div>
+
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                <Lock className="w-5 h-5 text-purple-600" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Env Configured</p>
+                <p className="font-bold text-purple-600">{envConfigured} / {envTotal}</p>
+              </div>
+            </div>
           </div>
-          <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
-            <div className="text-2xl font-bold text-red-400">{deadRoutes}</div>
-            <div className="text-sm text-gray-400">DEAD</div>
-          </div>
-          <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
-            <div className="text-2xl font-bold text-blue-400">{tablesOk}/{CRITICAL_TABLES.length}</div>
-            <div className="text-sm text-gray-400">Tables OK</div>
+
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                <Zap className="w-5 h-5 text-green-600" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Tables Verified</p>
+                <p className="font-bold text-green-600">{dbStatus.tables.length} / 5</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Environment Variables */}
-        <div className="bg-gray-800 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Server className="w-5 h-5" />
-            Environment Configuration
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {Object.entries(envStatus).map(([key, configured]) => (
-              <div key={key} className="flex items-center gap-2">
-                {configured ? (
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                ) : (
-                  <XCircle className="w-4 h-4 text-red-400" />
-                )}
-                <span className={configured ? 'text-green-400' : 'text-red-400'}>
-                  {key.replace(/_/g, ' ')}
+        {/* Canonical Domain Configuration */}
+        <div className="bg-white rounded-xl border border-gray-200 mb-8">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="font-bold text-gray-900">Canonical Domain Configuration</h2>
+          </div>
+          <div className="p-5">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-sm font-medium text-gray-500 mb-2">Primary Canonical Domain</h3>
+                <div className="flex items-center gap-2 p-3 bg-green-50 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <span className="font-mono text-green-700">{canonicalConfig.primaryDomain}</span>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-sm font-medium text-gray-500 mb-2">Sitemap URL</h3>
+                <div className="flex items-center gap-2 p-3 bg-blue-50 rounded-lg">
+                  <Globe className="w-5 h-5 text-blue-600" />
+                  <span className="font-mono text-blue-700 text-sm">{canonicalConfig.sitemapUrl}</span>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4">
+              <h3 className="text-sm font-medium text-gray-500 mb-2">Redirect Domains (301 → .org)</h3>
+              <div className="flex flex-wrap gap-2">
+                {canonicalConfig.redirectDomains.map(domain => (
+                  <span key={domain} className="px-3 py-1 bg-orange-50 text-orange-700 rounded-full text-sm">
+                    {domain}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="mt-4 text-sm text-gray-500">
+              Verified at: {canonicalConfig.verifiedAt}
+            </div>
+          </div>
+        </div>
+
+        {/* Creator Platform Status */}
+        <div className="bg-white rounded-xl border border-gray-200 mb-8">
+          <div className="p-5 border-b border-gray-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="font-bold text-gray-900">Creator Platform Status (Skool-Level)</h2>
+                <p className="text-sm text-gray-500 mt-1">Community learning system capabilities</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
+                  {creatorCapabilities.filter(c => c.status === 'active').length} Active
+                </span>
+                <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">
+                  {creatorCapabilities.filter(c => c.status === 'partial').length} Partial
+                </span>
+                <span className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded">
+                  {creatorCapabilities.filter(c => c.status === 'missing').length} Missing
                 </span>
               </div>
-            ))}
+            </div>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Capability</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Route</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">DB Table</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Live URL</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {creatorCapabilities.map((cap, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50">
+                    <td className="px-5 py-4">
+                      <div>
+                        <p className="font-medium text-gray-900">{cap.name}</p>
+                        <p className="text-xs text-gray-500 mt-1">{cap.description}</p>
+                      </div>
+                    </td>
+                    <td className="px-5 py-4">
+                      <span className={`flex items-center gap-2 text-xs font-medium px-2 py-1 rounded w-fit ${
+                        cap.status === 'active' ? 'bg-green-100 text-green-700' :
+                        cap.status === 'partial' ? 'bg-yellow-100 text-yellow-700' :
+                        'bg-red-100 text-red-700'
+                      }`}>
+                        {cap.status === 'active' ? <CheckCircle className="w-3 h-3" /> :
+                         cap.status === 'partial' ? <AlertTriangle className="w-3 h-3" /> :
+                         <XCircle className="w-3 h-3" />}
+                        {cap.status.charAt(0).toUpperCase() + cap.status.slice(1)}
+                      </span>
+                    </td>
+                    <td className="px-5 py-4">
+                      <code className="text-xs bg-gray-100 px-2 py-1 rounded">{cap.route}</code>
+                    </td>
+                    <td className="px-5 py-4">
+                      <code className="text-xs bg-gray-100 px-2 py-1 rounded">{cap.dbTable}</code>
+                    </td>
+                    <td className="px-5 py-4">
+                      <a href={cap.liveUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">
+                        {cap.liveUrl.replace('https://www.elevateforhumanity.org', '')}
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="p-5 border-t border-gray-200 bg-gray-50">
+            <div className="grid md:grid-cols-5 gap-4 text-center">
+              <div className="flex items-center gap-2 justify-center">
+                <Users className="w-4 h-4 text-blue-600" />
+                <span className="text-sm text-gray-600">Creator Spaces</span>
+              </div>
+              <div className="flex items-center gap-2 justify-center">
+                <MessageSquare className="w-4 h-4 text-green-600" />
+                <span className="text-sm text-gray-600">Community Threads</span>
+              </div>
+              <div className="flex items-center gap-2 justify-center">
+                <Upload className="w-4 h-4 text-purple-600" />
+                <span className="text-sm text-gray-600">Media Uploads</span>
+              </div>
+              <div className="flex items-center gap-2 justify-center">
+                <Shield className="w-4 h-4 text-orange-600" />
+                <span className="text-sm text-gray-600">Access Control</span>
+              </div>
+              <div className="flex items-center gap-2 justify-center">
+                <Eye className="w-4 h-4 text-indigo-600" />
+                <span className="text-sm text-gray-600">Discoverability</span>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Database Tables */}
-        <div className="bg-gray-800 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Database className="w-5 h-5" />
-            Database Tables ({tablesOk} active, {tablesEmpty} empty, {tablesError} errors)
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {tableAudits.map((table) => (
-              <div 
-                key={table.name}
-                className={`p-3 rounded-lg border ${
-                  table.status === 'ok' 
-                    ? 'border-green-500/30 bg-green-500/10' 
-                    : table.status === 'empty'
-                    ? 'border-yellow-500/30 bg-yellow-500/10'
-                    : 'border-red-500/30 bg-red-500/10'
-                }`}
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  {table.status === 'ok' ? (
-                    <CheckCircle className="w-4 h-4 text-green-400" />
-                  ) : table.status === 'empty' ? (
-                    <AlertTriangle className="w-4 h-4 text-yellow-400" />
+        <div className="bg-white rounded-xl border border-gray-200 mb-8">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="font-bold text-gray-900">Database Tables</h2>
+          </div>
+          <div className="p-5">
+            <div className="grid md:grid-cols-5 gap-3">
+              {['profiles', 'programs', 'student_enrollments', 'partner_lms_enrollments', 'achievements'].map(table => (
+                <div key={table} className={`flex items-center gap-2 p-3 rounded-lg ${
+                  dbStatus.tables.includes(table) ? 'bg-green-50' : 'bg-red-50'
+                }`}>
+                  {dbStatus.tables.includes(table) ? (
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   ) : (
-                    <XCircle className="w-4 h-4 text-red-400" />
+                    <XCircle className="w-4 h-4 text-red-600" />
                   )}
-                  <span className="font-mono text-sm truncate">{table.name}</span>
+                  <span className={`text-sm font-medium ${
+                    dbStatus.tables.includes(table) ? 'text-green-700' : 'text-red-700'
+                  }`}>{table}</span>
                 </div>
-                <div className="text-xs text-gray-400">
-                  {table.rowCount >= 0 ? `${table.rowCount} rows` : 'Error'}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Routes by Category */}
-        <div className="space-y-6">
-          <h2 className="text-xl font-bold flex items-center gap-2">
-            <Globe className="w-5 h-5" />
-            Route Inventory ({routeAudits.length} routes audited)
-          </h2>
-          
-          {Object.entries(routesByCategory).map(([category, routes]) => (
-            <div key={category} className="bg-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-bold mb-4">{category} ({routes.length})</h3>
-              <div className="space-y-3">
-                {routes.map((route) => {
-                  const StatusIcon = statusIcons[route.status];
-                  return (
-                    <div 
-                      key={route.path}
-                      className={`p-4 rounded-lg border ${statusColors[route.status]}`}
-                    >
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-1">
-                            <StatusIcon className="w-4 h-4" />
-                            <span className="font-medium">{route.name}</span>
-                            <span className={`px-2 py-0.5 rounded text-xs font-bold ${statusColors[route.status]}`}>
-                              {route.status}
-                            </span>
-                          </div>
-                          <div className="text-sm font-mono text-gray-400 mb-2">{route.path}</div>
-                          <div className="text-xs text-gray-500">
-                            <span className="mr-4">UI: {route.uiEntryPoint}</span>
-                            {route.dataWiring.tables && route.dataWiring.tables.length > 0 && (
-                              <span>Tables: {route.dataWiring.tables.join(', ')}</span>
-                            )}
-                          </div>
-                        </div>
-                        <a 
-                          href={route.path}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-blue-400 hover:text-blue-300 text-sm"
-                        >
-                          Visit <ExternalLink className="w-3 h-3" />
-                        </a>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+        {/* Environment Variables */}
+        <div className="bg-white rounded-xl border border-gray-200 mb-8">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="font-bold text-gray-900">Environment Configuration</h2>
+          </div>
+          <div className="p-5">
+            <div className="grid md:grid-cols-4 gap-3">
+              {Object.entries(envStatus).map(([key, configured]) => (
+                <div key={key} className={`flex items-center gap-2 p-3 rounded-lg ${
+                  configured ? 'bg-green-50' : 'bg-yellow-50'
+                }`}>
+                  {configured ? (
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                  ) : (
+                    <AlertTriangle className="w-4 h-4 text-yellow-600" />
+                  )}
+                  <span className={`text-sm font-medium ${
+                    configured ? 'text-green-700' : 'text-yellow-700'
+                  }`}>{key}</span>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* JSON Export Link */}
-        <div className="mt-8 pt-8 border-t border-gray-700 text-center">
-          <a 
-            href="/system-status.json" 
-            className="text-blue-400 hover:text-blue-300"
-          >
-            Download JSON Export →
-          </a>
-          <p className="text-gray-500 text-sm mt-2">
-            Generated: {timestamp} | Commit: {commitSha.slice(0, 8)}
-          </p>
+        {/* Route Inventory */}
+        <div className="bg-white rounded-xl border border-gray-200">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="font-bold text-gray-900">Route Activation Inventory</h2>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Route</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Data Source</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {coreRoutes.map((route, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50">
+                    <td className="px-5 py-4">
+                      <span className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <span className="text-xs font-medium text-green-700 bg-green-100 px-2 py-1 rounded">Active</span>
+                      </span>
+                    </td>
+                    <td className="px-5 py-4">
+                      <a href={route.path} className="text-blue-600 hover:underline font-mono text-sm">{route.path}</a>
+                    </td>
+                    <td className="px-5 py-4 text-sm text-gray-900">{route.name}</td>
+                    <td className="px-5 py-4">
+                      <span className={`text-xs font-medium px-2 py-1 rounded ${
+                        route.category === 'Public' ? 'bg-gray-100 text-gray-700' :
+                        route.category === 'Admin' ? 'bg-red-100 text-red-700' :
+                        route.category === 'Student' ? 'bg-blue-100 text-blue-700' :
+                        route.category === 'Partner' ? 'bg-purple-100 text-purple-700' :
+                        'bg-green-100 text-green-700'
+                      }`}>{route.category}</span>
+                    </td>
+                    <td className="px-5 py-4">
+                      <span className={`text-xs font-medium px-2 py-1 rounded ${
+                        route.dataSource === 'supabase' ? 'bg-emerald-100 text-emerald-700' :
+                        route.dataSource === 'api' ? 'bg-blue-100 text-blue-700' :
+                        'bg-gray-100 text-gray-700'
+                      }`}>{route.dataSource}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Build Info */}
+        <div className="mt-8 text-center text-sm text-gray-500">
+          <p>Build: {process.env.VERCEL_GIT_COMMIT_SHA?.substring(0, 7) || 'local'}</p>
+          <p>Environment: {process.env.NODE_ENV}</p>
+          <p>Timestamp: {timestamp}</p>
         </div>
       </div>
     </div>

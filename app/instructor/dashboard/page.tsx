@@ -246,12 +246,33 @@ export default async function ProgramHolderDashboard() {
               <div className="mt-8">
                 <h3 className="text-lg font-semibold text-black mb-4">Instructor Tools</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  <Link href="/instructor/courses" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Courses</Link>
-                  <Link href="/instructor/students" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Students</Link>
-                  <Link href="/instructor/programs" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Programs</Link>
-                  <Link href="/instructor/campaigns" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Campaigns</Link>
-                  <Link href="/instructor/analytics" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Analytics</Link>
-                  <Link href="/instructor/settings" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Settings</Link>
+                  <Link href="/instructor/courses" aria-label="Courses" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Courses</Link>
+                  <Link href="/instructor/students" aria-label="Students" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Students</Link>
+                  <Link href="/instructor/programs" aria-label="Programs" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Programs</Link>
+                  <Link href="/instructor/campaigns" aria-label="Campaigns" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Campaigns</Link>
+                  <Link href="/instructor/analytics" aria-label="Analytics" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Analytics</Link>
+                  <Link href="/instructor/settings" aria-label="Settings" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Settings</Link>
+                </div>
+              </div>
+
+              {/* Community & Announcements */}
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-black mb-4">Community</h3>
+                <div className="space-y-2">
+                  <Link 
+                    href="/community" 
+                    className="block w-full text-left px-4 py-3 bg-purple-50 hover:bg-purple-100 rounded-lg transition border border-purple-200"
+                  >
+                    <p className="font-medium text-purple-900">Community Hub</p>
+                    <p className="text-xs text-purple-700">Connect with students and instructors</p>
+                  </Link>
+                  <Link 
+                    href="/lms/forums" 
+                    className="block w-full text-left px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition border border-blue-200"
+                  >
+                    <p className="font-medium text-blue-900">Discussion Forums</p>
+                    <p className="text-xs text-blue-700">View and moderate discussions</p>
+                  </Link>
                 </div>
               </div>
             </div>

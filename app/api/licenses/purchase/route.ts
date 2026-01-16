@@ -2,9 +2,15 @@ import { createClient } from '@/lib/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-10-29.clover',
-});
+// Initialize Stripe only if key is available
+const getStripe = () => {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    return null;
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: '2025-10-29.clover',
+  });
+};
 
 export async function POST(request: NextRequest) {
   try {
@@ -85,6 +91,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Create Stripe payment intent
+    const stripe = getStripe();
+    if (!stripe) {
+      return NextResponse.json(
+        { error: 'Payment processing not configured' },
+        { status: 503 }
+      );
+    }
+    
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: 'usd',
