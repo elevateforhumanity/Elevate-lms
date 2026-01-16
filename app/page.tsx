@@ -46,16 +46,78 @@ export default async function HomePage() {
       {/* Video Hero Banner - autoplays on all devices */}
       <VideoHeroSection />
 
-      {/* Free Career Training Banner */}
-      <section className="py-8 md:py-12 bg-gradient-to-r from-blue-600 to-purple-600">
+      {/* Flagship Program: Barber Apprenticeship */}
+      <section className="py-12 md:py-16 bg-gradient-to-r from-purple-700 via-purple-600 to-indigo-700">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <span className="inline-block px-4 py-1 bg-white/20 text-white text-sm font-bold rounded-full mb-4">
+                ⭐ USDOL Registered Apprenticeship
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
+                Barber Apprenticeship Program
+              </h2>
+              <p className="text-lg md:text-xl text-white/90 mb-6">
+                Earn while you learn. Get your Indiana Barber License through our USDOL-registered apprenticeship. 
+                Work with a licensed sponsor, build real skills, and launch your career.
+              </p>
+              <ul className="text-white/90 space-y-2 mb-8">
+                <li className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span> USDOL Registered Apprenticeship
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span> Pathway to Indiana Barber License (IPLA)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span> Earn income while training
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span> 1,800 hours hands-on experience
+                </li>
+              </ul>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="/programs/barber-apprenticeship"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-purple-700 font-bold rounded-xl hover:bg-gray-100 transition-colors shadow-lg text-lg"
+                >
+                  Learn More
+                </a>
+                <a
+                  href="/apply?program=barber-apprenticeship"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-purple-500 text-white font-bold rounded-xl hover:bg-purple-400 transition-colors border-2 border-white text-lg"
+                >
+                  Apply Now
+                </a>
+              </div>
+            </div>
+            <div className="hidden md:block">
+              <div className="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">💈</div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Become a Licensed Barber</h3>
+                  <p className="text-white/80 mb-6">Join Indiana's premier barber apprenticeship program</p>
+                  <div className="grid grid-cols-2 gap-4 text-center">
+                    <div className="bg-white/10 rounded-lg p-4">
+                      <div className="text-3xl font-black text-white">1,800</div>
+                      <div className="text-sm text-white/70">Training Hours</div>
+                    </div>
+                    <div className="bg-white/10 rounded-lg p-4">
+                      <div className="text-3xl font-black text-white">$45K+</div>
+                      <div className="text-sm text-white/70">Avg. Salary</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Other Programs Banner */}
+      <section className="py-8 md:py-10 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
-          <span className="inline-block px-4 py-1 bg-white/20 text-white text-sm font-semibold rounded-full mb-4">
-            100% Government Funded
-          </span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">
-            Free Career Training
-          </h2>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 mb-2">Also offering free training in:</p>
+          <p className="text-xl md:text-2xl font-bold text-white">
             Healthcare • Skilled Trades • Technology • Business
           </p>
         </div>
