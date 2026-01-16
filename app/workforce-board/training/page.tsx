@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Workforce Board Training | Elevate For Humanity',
   description:
-    'Explore Training and discover opportunities for career growth and development.',
+    'Manage training settings and development.',
 };
 
 export default async function TrainingPage() {
@@ -35,7 +35,7 @@ export default async function TrainingPage() {
             Training
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Training and discover opportunities for career growth and
+            Manage training settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -66,7 +66,7 @@ export default async function TrainingPage() {
                   Training
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Training and discover opportunities for career growth
+                  Manage training for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">

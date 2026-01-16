@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Social | Elevate For Humanity',
   description:
-    'Explore Social and discover opportunities for career growth and development.',
+    'Manage social settings and development.',
 };
 
 export default async function SocialPage() {
@@ -92,7 +92,7 @@ export default async function SocialPage() {
             Social
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Social and discover opportunities for career growth and
+            Manage social settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -121,7 +121,7 @@ export default async function SocialPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Social</h2>
                 <p className="text-black mb-6">
-                  Explore Social and discover opportunities for career growth
+                  Manage social for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">
@@ -177,7 +177,7 @@ export default async function SocialPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-7.jpg"
                   alt="Social"
                   fill
                   className="object-cover"

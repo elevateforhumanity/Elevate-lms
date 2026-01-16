@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   },
   title: 'Training Programs | Elevate For Humanity',
   description:
-    'Explore our workforce training programs and discover opportunities for career growth and development.',
+    'Manage training settings and development.',
 };
 
 export default async function TrainingPage() {
@@ -17,7 +17,7 @@ export default async function TrainingPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-3.jpg"
           alt="Training Programs"
           fill
           className="object-cover"
@@ -31,7 +31,7 @@ export default async function TrainingPage() {
             Training Programs
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore our workforce training programs and discover opportunities
+            Manage training
             for career growth and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

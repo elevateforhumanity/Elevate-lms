@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Opportunities | Elevate For Humanity',
   description:
-    'Explore Opportunities and discover opportunities for career growth and development.',
+    'Manage opportunities settings and development.',
 };
 
 export default async function OpportunitiesPage() {
@@ -56,7 +56,7 @@ export default async function OpportunitiesPage() {
             Opportunities
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Opportunities and discover opportunities for career growth
+            Manage opportunities for career growth
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

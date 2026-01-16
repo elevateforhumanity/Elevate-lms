@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Api | Elevate For Humanity',
   description:
-    'Explore Api and discover opportunities for career growth and development.',
+    'Manage api settings and development.',
 };
 
 export default async function ApiPage() {
@@ -18,7 +18,7 @@ export default async function ApiPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-3.jpg"
           alt="Api"
           fill
           className="object-cover"
@@ -32,7 +32,7 @@ export default async function ApiPage() {
             Api
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Api and discover opportunities for career growth and
+            Manage api settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,7 +61,7 @@ export default async function ApiPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Api</h2>
                 <p className="text-black mb-6">
-                  Explore Api and discover opportunities for career growth and
+                  Manage api settings and
                   development.
                 </p>
                 <ul className="space-y-3">
@@ -117,7 +117,7 @@ export default async function ApiPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-4.jpg"
                   alt="Api"
                   fill
                   className="object-cover"

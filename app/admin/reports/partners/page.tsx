@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Admin Partners | Elevate For Humanity',
   description:
-    'Explore Partners and discover opportunities for career growth and development.',
+    'Manage partners settings and development.',
 };
 
 export default async function PartnersPage() {
@@ -66,7 +66,7 @@ export default async function PartnersPage() {
             Partners
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Partners and discover opportunities for career growth and
+            Manage partners settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

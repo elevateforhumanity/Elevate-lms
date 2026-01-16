@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Attempt Details | Elevate For Humanity',
   description:
-    'Explore [attemptId] and discover opportunities for career growth and development at Elevate For Humanity.',
+    'Manage [attemptId] settings and development at Elevate For Humanity.',
 };
 
 export default async function QuizReviewPage({
@@ -51,7 +51,7 @@ export default async function QuizReviewPage({
       {/* Hero Section */}
       <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-8.jpg"
           alt="[attemptId]"
           fill
           className="object-cover"
@@ -300,7 +300,7 @@ export default async function QuizReviewPage({
                                         </div>
                                         <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                                           <Image
-                                            src="/images/artlist/hero-training-2.jpg"
+                                            src="/images/artlist/hero-training-1.jpg"
                                             alt="Students learning"
                                             fill
                                             className="object-cover"

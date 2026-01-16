@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Staff | Elevate For Humanity',
   description:
-    'Explore Staff and discover opportunities for career growth and development.',
+    'Manage staff settings and development.',
 };
 
 export default async function StaffPage() {
@@ -34,7 +34,7 @@ export default async function StaffPage() {
             Staff
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Staff and discover opportunities for career growth and
+            Manage staff settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,7 +63,7 @@ export default async function StaffPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Staff</h2>
                 <p className="text-black mb-6">
-                  Explore Staff and discover opportunities for career growth and
+                  Manage staff settings and
                   development.
                 </p>
                 <ul className="space-y-3">

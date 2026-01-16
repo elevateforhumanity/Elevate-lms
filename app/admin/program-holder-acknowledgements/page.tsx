@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Program Holder Acknowledgements | Elevate For Humanity',
   description:
-    'Explore Program Holder Acknowledgements and discover opportunities for career growth and development.',
+    'Manage program-holder-acknowledgements settings and development.',
 };
 
 export default async function ProgramHolderAcknowledgementsPage() {
@@ -70,7 +70,7 @@ export default async function ProgramHolderAcknowledgementsPage() {
             Program Holder Acknowledgements
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Program Holder Acknowledgements and discover opportunities
+            Manage program-holder-acknowledgements
             for career growth and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

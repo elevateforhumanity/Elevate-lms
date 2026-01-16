@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Adaptive | Elevate For Humanity',
   description:
-    'Explore Adaptive and discover opportunities for career growth and development.',
+    'Manage adaptive settings and development.',
 };
 
 export default async function AdaptivePage() {
@@ -78,7 +78,7 @@ export default async function AdaptivePage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-4.jpg"
           alt="Adaptive"
           fill
           className="object-cover"
@@ -92,7 +92,7 @@ export default async function AdaptivePage() {
             Adaptive
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Adaptive and discover opportunities for career growth and
+            Manage adaptive settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -123,7 +123,7 @@ export default async function AdaptivePage() {
                   Adaptive
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Adaptive and discover opportunities for career growth
+                  Manage adaptive for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">

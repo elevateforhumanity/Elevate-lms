@@ -68,7 +68,7 @@ export default async function ProgressPage() {
             Progress
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Progress and discover opportunities for career growth and
+            Manage progress settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

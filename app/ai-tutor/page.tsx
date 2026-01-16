@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Ai Tutor | Elevate For Humanity',
   description:
-    'Explore Ai Tutor and discover opportunities for career growth and development.',
+    'Manage ai-tutor settings and development.',
 };
 
 export default async function AiTutorPage() {
@@ -118,7 +118,7 @@ export default async function AiTutorPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-3.jpg"
                   alt="Ai Tutor"
                   fill
                   className="object-cover"

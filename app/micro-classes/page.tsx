@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Micro Classes | Elevate For Humanity',
   description:
-    'Explore Micro Classes and discover opportunities for career growth and development.',
+    'Manage micro-classes settings and development.',
 };
 
 const microClasses = [
@@ -101,7 +101,7 @@ export default async function MicroClassesPage() {
             Micro Classes
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Micro Classes and discover opportunities for career growth
+            Manage micro-classes for career growth
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -132,7 +132,7 @@ export default async function MicroClassesPage() {
                   Micro Classes
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Micro Classes and discover opportunities for career
+                  Manage micro-classes for career
                   growth and development.
                 </p>
                 <ul className="space-y-3">
@@ -188,7 +188,7 @@ export default async function MicroClassesPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-8.jpg"
                   alt="Micro Classes"
                   fill
                   className="object-cover"

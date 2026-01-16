@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Create New Course | Elevate For Humanity',
   description:
-    'Explore New and discover opportunities for career growth and development.',
+    'Manage new settings and development.',
 };
 
 export default async function NewPage() {
@@ -78,7 +78,7 @@ export default async function NewPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-4.jpg"
           alt="New"
           fill
           className="object-cover"
@@ -92,7 +92,7 @@ export default async function NewPage() {
             New
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore New and discover opportunities for career growth and
+            Manage new settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -121,7 +121,7 @@ export default async function NewPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">New</h2>
                 <p className="text-black mb-6">
-                  Explore New and discover opportunities for career growth and
+                  Manage new settings and
                   development.
                 </p>
                 <ul className="space-y-3">

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Sales | Elevate For Humanity',
   description:
-    'Explore Sales and discover opportunities for career growth and development.',
+    'Manage sales settings and development.',
 };
 
 export default async function SalesPage() {
@@ -20,7 +20,7 @@ export default async function SalesPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-4.jpg"
           alt="Sales"
           fill
           className="object-cover"
@@ -34,7 +34,7 @@ export default async function SalesPage() {
             Sales
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Sales and discover opportunities for career growth and
+            Manage sales settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,7 +63,7 @@ export default async function SalesPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Sales</h2>
                 <p className="text-black mb-6">
-                  Explore Sales and discover opportunities for career growth and
+                  Manage sales settings and
                   development.
                 </p>
                 <ul className="space-y-3">
@@ -119,7 +119,7 @@ export default async function SalesPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-5.jpg"
                   alt="Sales"
                   fill
                   className="object-cover"

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Google Classroom | Elevate For Humanity',
   description:
-    'Explore Google Classroom and discover opportunities for career growth and development.',
+    'Manage google-classroom settings and development.',
 };
 
 export default async function GoogleClassroomPage() {
@@ -66,7 +66,7 @@ export default async function GoogleClassroomPage() {
             Google Classroom
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Google Classroom and discover opportunities for career
+            Manage google-classroom for career
             growth and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

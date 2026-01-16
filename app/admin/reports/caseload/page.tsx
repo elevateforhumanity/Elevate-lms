@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Caseload | Elevate For Humanity',
   description:
-    'Explore Caseload and discover opportunities for career growth and development.',
+    'Manage caseload settings and development.',
 };
 
 export default async function CaseloadPage() {
@@ -66,7 +66,7 @@ export default async function CaseloadPage() {
             Caseload
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Caseload and discover opportunities for career growth and
+            Manage caseload settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

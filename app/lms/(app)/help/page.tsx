@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Help | Elevate For Humanity',
   description:
-    'Explore Help and discover opportunities for career growth and development.',
+    'Manage help settings and development.',
 };
 
 export default async function HelpPage() {
@@ -77,7 +77,7 @@ export default async function HelpPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-3.jpg"
           alt="Help"
           fill
           className="object-cover"
@@ -91,7 +91,7 @@ export default async function HelpPage() {
             Help
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Help and discover opportunities for career growth and
+            Manage help settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -120,7 +120,7 @@ export default async function HelpPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Help</h2>
                 <p className="text-black mb-6">
-                  Explore Help and discover opportunities for career growth and
+                  Manage help settings and
                   development.
                 </p>
                 <ul className="space-y-3">
@@ -176,7 +176,7 @@ export default async function HelpPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-1.jpg"
                   alt="Help"
                   fill
                   className="object-cover"

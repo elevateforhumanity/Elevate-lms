@@ -101,7 +101,7 @@ export default async function ProgramHolderPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image priority
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-7.jpg"
                   alt="Program Holder"
                   fill
                   className="object-cover"

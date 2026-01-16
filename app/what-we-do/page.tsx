@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'What We Do | Elevate For Humanity',
   description:
-    'Explore What We Do and discover opportunities for career growth and development.',
+    'Manage what-we-do settings and development.',
 };
 
 export default async function WhatWeDoPage() {
@@ -18,7 +18,7 @@ export default async function WhatWeDoPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-5.jpg"
           alt="What We Do"
           fill
           className="object-cover"
@@ -32,7 +32,7 @@ export default async function WhatWeDoPage() {
             What We Do
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore What We Do and discover opportunities for career growth and
+            Manage what-we-do settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,7 +63,7 @@ export default async function WhatWeDoPage() {
                   What We Do
                 </h2>
                 <p className="text-black mb-6">
-                  Explore What We Do and discover opportunities for career
+                  Manage what-we-do for career
                   growth and development.
                 </p>
                 <ul className="space-y-3">
@@ -119,7 +119,7 @@ export default async function WhatWeDoPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-4.jpg"
                   alt="What We Do"
                   fill
                   className="object-cover"

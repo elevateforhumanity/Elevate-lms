@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Application Review | Elevate For Humanity',
   description:
-    'Explore [id] and discover opportunities for career growth and development.',
+    'Manage [id] settings and development.',
 };
 
 export default async function idPage() {
@@ -66,7 +66,7 @@ export default async function idPage() {
             [id]
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore [id] and discover opportunities for career growth and
+            Manage [id] settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

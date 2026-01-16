@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Quiz Results | Elevate For Humanity',
   description:
-    'Explore [attemptId] and discover opportunities for career growth and development.',
+    'Manage [attemptId] settings and development.',
 };
 
 export default async function attemptIdPage() {
@@ -79,7 +79,7 @@ export default async function attemptIdPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-8.jpg"
           alt="[attemptId]"
           fill
           className="object-cover"
@@ -93,7 +93,7 @@ export default async function attemptIdPage() {
             [attemptId]
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore [attemptId] and discover opportunities for career growth and
+            Manage [attemptId] settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -124,7 +124,7 @@ export default async function attemptIdPage() {
                   [attemptId]
                 </h2>
                 <p className="text-black mb-6">
-                  Explore [attemptId] and discover opportunities for career
+                  Manage [attemptId] for career
                   growth and development.
                 </p>
                 <ul className="space-y-3">
@@ -180,7 +180,7 @@ export default async function attemptIdPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-8.jpg"
                   alt="[attemptId]"
                   fill
                   className="object-cover"

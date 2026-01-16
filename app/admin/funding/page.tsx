@@ -67,7 +67,7 @@ export default async function FundingPage() {
             Funding
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Funding and discover opportunities for career growth and
+            Manage funding settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

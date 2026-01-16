@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Live Qa | Elevate For Humanity',
   description:
-    'Explore Live Qa and discover opportunities for career growth and development.',
+    'Manage live-qa settings and development.',
 };
 
 export default async function LiveQaPage() {
@@ -61,7 +61,7 @@ export default async function LiveQaPage() {
             Live Qa
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Live Qa and discover opportunities for career growth and
+            Manage live-qa settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

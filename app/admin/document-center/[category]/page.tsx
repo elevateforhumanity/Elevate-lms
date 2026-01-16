@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: '[category] | Elevate For Humanity',
   description:
-    'Explore [category] and discover opportunities for career growth and development.',
+    'Manage [category] settings and development.',
 };
 
 export default async function categoryPage() {
@@ -67,7 +67,7 @@ export default async function categoryPage() {
             [category]
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore [category] and discover opportunities for career growth and
+            Manage [category] settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

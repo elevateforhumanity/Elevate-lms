@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Payroll | Elevate For Humanity',
   description:
-    'Explore Payroll and discover opportunities for career growth and development.',
+    'Manage payroll settings and development.',
 };
 
 export default async function PayrollPage() {
@@ -65,7 +65,7 @@ export default async function PayrollPage() {
             Payroll
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Payroll and discover opportunities for career growth and
+            Manage payroll settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

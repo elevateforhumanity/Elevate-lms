@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Funding Playbook | Elevate For Humanity',
   description:
-    'Explore Funding Playbook and discover opportunities for career growth and development.',
+    'Manage funding-playbook settings and development.',
 };
 
 export default async function FundingPlaybookPage() {
@@ -68,7 +68,7 @@ export default async function FundingPlaybookPage() {
             Funding Playbook
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Funding Playbook and discover opportunities for career
+            Manage funding-playbook for career
             growth and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

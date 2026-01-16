@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Time Off | Elevate For Humanity',
   description:
-    'Explore Time Off and discover opportunities for career growth and development.',
+    'Manage time-off settings and development.',
 };
 
 export default async function TimeOffPage() {
@@ -34,7 +34,7 @@ export default async function TimeOffPage() {
             Time Off
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Time Off and discover opportunities for career growth and
+            Manage time-off settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -65,7 +65,7 @@ export default async function TimeOffPage() {
                   Time Off
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Time Off and discover opportunities for career growth
+                  Manage time-off for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">
@@ -121,7 +121,7 @@ export default async function TimeOffPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-8.jpg"
                   alt="Time Off"
                   fill
                   className="object-cover"

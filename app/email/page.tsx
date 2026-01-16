@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Email | Elevate For Humanity',
   description:
-    'Explore Email and discover opportunities for career growth and development.',
+    'Manage email settings and development.',
 };
 
 export default async function EmailPage() {
@@ -18,7 +18,7 @@ export default async function EmailPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-8.jpg"
           alt="Email"
           fill
           className="object-cover"
@@ -32,7 +32,7 @@ export default async function EmailPage() {
             Email
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Email and discover opportunities for career growth and
+            Manage email settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,7 +61,7 @@ export default async function EmailPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Email</h2>
                 <p className="text-black mb-6">
-                  Explore Email and discover opportunities for career growth and
+                  Manage email settings and
                   development.
                 </p>
                 <ul className="space-y-3">
@@ -117,7 +117,7 @@ export default async function EmailPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-1.jpg"
                   alt="Email"
                   fill
                   className="object-cover"

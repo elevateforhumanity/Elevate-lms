@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
   title: 'How It Works | Elevate For Humanity',
   description:
-    'Explore How It Works and discover opportunities for career growth and development.',
+    'Manage how-it-works settings and development.',
 };
 
 export default async function HowItWorksPage() {
@@ -19,7 +19,7 @@ export default async function HowItWorksPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-7.jpg"
           alt="How It Works"
           fill
           className="object-cover"
@@ -33,7 +33,7 @@ export default async function HowItWorksPage() {
             How It Works
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore How It Works and discover opportunities for career growth
+            Manage how-it-works for career growth
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -64,7 +64,7 @@ export default async function HowItWorksPage() {
                   How It Works
                 </h2>
                 <p className="text-gray-700 mb-6">
-                  Explore How It Works and discover opportunities for career
+                  Manage how-it-works for career
                   growth and development.
                 </p>
                 <ul className="space-y-3">
@@ -120,7 +120,7 @@ export default async function HowItWorksPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-5.jpg"
                   alt="How It Works"
                   fill
                   className="object-cover"

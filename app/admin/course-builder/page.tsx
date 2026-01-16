@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Course Builder | Elevate For Humanity',
   description:
-    'Explore Course Builder and discover opportunities for career growth and development.',
+    'Manage course-builder settings and development.',
 };
 
 export default async function CourseBuilderPage() {
@@ -69,7 +69,7 @@ export default async function CourseBuilderPage() {
             Course Builder
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Course Builder and discover opportunities for career growth
+            Manage course-builder for career growth
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

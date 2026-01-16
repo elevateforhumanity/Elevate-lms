@@ -401,7 +401,7 @@ export default async function Page() {
                 </div>
                 <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/artlist/hero-training-2.jpg"
+                    src="/images/artlist/hero-training-6.jpg"
                     alt="Students learning"
                     fill
                     className="object-cover"

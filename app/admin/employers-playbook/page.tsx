@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Employers Playbook | Elevate For Humanity',
   description:
-    'Explore Employers Playbook and discover opportunities for career growth and development.',
+    'Manage employers-playbook settings and development.',
 };
 
 export default async function EmployersPlaybookPage() {
@@ -69,7 +69,7 @@ export default async function EmployersPlaybookPage() {
             Employers Playbook
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Employers Playbook and discover opportunities for career
+            Manage employers-playbook for career
             growth and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

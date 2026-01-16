@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Revenue | Elevate For Humanity',
   description:
-    'Explore Revenue and discover opportunities for career growth and development.',
+    'Manage revenue settings and development.',
 };
 
 export default async function RevenuePage() {
@@ -66,7 +66,7 @@ export default async function RevenuePage() {
             Revenue
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Revenue and discover opportunities for career growth and
+            Manage revenue settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

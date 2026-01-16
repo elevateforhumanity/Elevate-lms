@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Call Now | Elevate For Humanity',
   description:
-    'Explore Call Now and discover opportunities for career growth and development.',
+    'Manage call-now settings and development.',
 };
 
 export default async function CallNowPage() {
@@ -18,7 +18,7 @@ export default async function CallNowPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-7.jpg"
           alt="Call Now"
           fill
           className="object-cover"
@@ -32,7 +32,7 @@ export default async function CallNowPage() {
             Call Now
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Call Now and discover opportunities for career growth and
+            Manage call-now settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,7 +63,7 @@ export default async function CallNowPage() {
                   Call Now
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Call Now and discover opportunities for career growth
+                  Manage call-now for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">
@@ -119,7 +119,7 @@ export default async function CallNowPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-6.jpg"
                   alt="Call Now"
                   fill
                   className="object-cover"

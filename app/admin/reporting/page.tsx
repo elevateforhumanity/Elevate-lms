@@ -67,7 +67,7 @@ export default async function ReportingPage() {
             Reporting
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Reporting and discover opportunities for career growth and
+            Manage reporting settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

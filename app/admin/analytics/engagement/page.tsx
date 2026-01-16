@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Engagement | Elevate For Humanity',
   description:
-    'Explore Engagement and discover opportunities for career growth and development.',
+    'Manage engagement settings and development.',
 };
 
 export default async function EngagementPage() {
@@ -65,7 +65,7 @@ export default async function EngagementPage() {
             Engagement
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Engagement and discover opportunities for career growth and
+            Manage engagement settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

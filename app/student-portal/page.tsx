@@ -222,7 +222,7 @@ export default async function StudentPortalPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-8.jpg"
           alt="Student Portal"
           fill
           className="object-cover"

@@ -61,7 +61,7 @@ export default function StudentsPage() {
       {/* Hero */}
       <section className="relative h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-6.jpg"
           alt="Students in training"
           fill
           sizes="100vw"

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Partner | Elevate For Humanity',
   description:
-    'Explore Partner and discover opportunities for career growth and development.',
+    'Manage partner settings and development.',
 };
 
 export default async function PartnerPage() {
@@ -34,7 +34,7 @@ export default async function PartnerPage() {
             Partner
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Partner and discover opportunities for career growth and
+            Manage partner settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,7 +63,7 @@ export default async function PartnerPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Partner</h2>
                 <p className="text-black mb-6">
-                  Explore Partner and discover opportunities for career growth
+                  Manage partner for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">

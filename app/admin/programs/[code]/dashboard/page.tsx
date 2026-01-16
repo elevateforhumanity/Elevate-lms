@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Dashboard | Elevate For Humanity',
   description:
-    'Explore Dashboard and discover opportunities for career growth and development.',
+    'Manage dashboard settings and development.',
 };
 
 export default async function DashboardPage() {
@@ -67,7 +67,7 @@ export default async function DashboardPage() {
             Dashboard
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Dashboard and discover opportunities for career growth and
+            Manage dashboard settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

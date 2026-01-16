@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Program Holder MOU | Elevate For Humanity',
   description:
-    'Explore Mou and discover opportunities for career growth and development.',
+    'Manage mou settings and development.',
 };
 
 export default async function MouPage() {
@@ -56,7 +56,7 @@ export default async function MouPage() {
             Mou
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Mou and discover opportunities for career growth and
+            Manage mou settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

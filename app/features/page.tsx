@@ -195,7 +195,7 @@ export default async function FeaturesPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/artlist/hero-training-2.jpg"
+                src="/images/artlist/hero-training-1.jpg"
                 alt="Learning Experience"
                 fill
                 className="object-cover"

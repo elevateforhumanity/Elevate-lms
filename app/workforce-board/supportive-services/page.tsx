@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Supportive Services | Elevate For Humanity',
   description:
-    'Explore Supportive Services and discover opportunities for career growth and development.',
+    'Manage supportive-services settings and development.',
 };
 
 export default async function SupportiveServicesPage() {
@@ -36,7 +36,7 @@ export default async function SupportiveServicesPage() {
             Supportive Services
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Supportive Services and discover opportunities for career
+            Manage supportive-services for career
             growth and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -67,7 +67,7 @@ export default async function SupportiveServicesPage() {
                   Supportive Services
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Supportive Services and discover opportunities for
+                  Manage supportive-services for
                   career growth and development.
                 </p>
                 <ul className="space-y-3">

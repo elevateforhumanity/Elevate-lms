@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Program Generator | Elevate For Humanity',
   description:
-    'Explore Program Generator and discover opportunities for career growth and development.',
+    'Manage program-generator settings and development.',
 };
 
 export default async function ProgramGeneratorPage() {
@@ -68,7 +68,7 @@ export default async function ProgramGeneratorPage() {
             Program Generator
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Program Generator and discover opportunities for career
+            Manage program-generator for career
             growth and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Certificates | Elevate For Humanity',
   description:
-    'Explore Certificates and discover opportunities for career growth and development.',
+    'Manage certificates settings and development.',
 };
 
 export default async function CertificatesPage() {

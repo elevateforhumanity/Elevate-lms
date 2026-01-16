@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Add New Employee | Elevate For Humanity',
   description:
-    'Explore New and discover opportunities for career growth and development.',
+    'Manage new settings and development.',
 };
 
 export default async function NewPage() {
@@ -65,7 +65,7 @@ export default async function NewPage() {
             New
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore New and discover opportunities for career growth and
+            Manage new settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

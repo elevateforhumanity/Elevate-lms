@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Grants | Elevate For Humanity',
   description:
-    'Explore Grants and discover opportunities for career growth and development.',
+    'Manage grants settings and development.',
 };
 
 export default async function GrantsPage() {
@@ -20,7 +20,7 @@ export default async function GrantsPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-3.jpg"
           alt="Grants"
           fill
           className="object-cover"
@@ -34,7 +34,7 @@ export default async function GrantsPage() {
             Grants
           </h1>
           <p className="text-base md:text-lg mb-4 text-gray-100">
-            Explore Grants and discover opportunities for career growth and
+            Manage grants settings and
             development.
           </p>
           <div className="mb-8">
@@ -72,7 +72,7 @@ export default async function GrantsPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Grants</h2>
                 <p className="text-black mb-6">
-                  Explore Grants and discover opportunities for career growth
+                  Manage grants for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">
@@ -128,7 +128,7 @@ export default async function GrantsPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-1.jpg"
                   alt="Grants"
                   fill
                   className="object-cover"

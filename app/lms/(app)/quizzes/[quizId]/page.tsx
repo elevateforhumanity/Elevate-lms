@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: '[quizId] | Elevate For Humanity',
   description:
-    'Explore [quizId] and discover opportunities for career growth and development.',
+    'Manage [quizId] settings and development.',
 };
 
 export default async function quizIdPage() {
@@ -92,7 +92,7 @@ export default async function quizIdPage() {
             [quizId]
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore [quizId] and discover opportunities for career growth and
+            Manage [quizId] settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -123,7 +123,7 @@ export default async function quizIdPage() {
                   [quizId]
                 </h2>
                 <p className="text-black mb-6">
-                  Explore [quizId] and discover opportunities for career growth
+                  Manage [quizId] for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">
@@ -179,7 +179,7 @@ export default async function quizIdPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-7.jpg"
                   alt="[quizId]"
                   fill
                   className="object-cover"

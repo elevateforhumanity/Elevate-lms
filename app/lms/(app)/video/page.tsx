@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Video | Elevate For Humanity',
   description:
-    'Explore Video and discover opportunities for career growth and development.',
+    'Manage video settings and development.',
 };
 
 export default async function VideoPage() {
@@ -57,7 +57,7 @@ export default async function VideoPage() {
             Video
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Video and discover opportunities for career growth and
+            Manage video settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: '[forumId] | Elevate For Humanity',
   description:
-    'Explore [forumId] and discover opportunities for career growth and development.',
+    'Manage [forumId] settings and development.',
 };
 
 export default async function forumIdPage() {
@@ -91,7 +91,7 @@ export default async function forumIdPage() {
             [forumId]
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore [forumId] and discover opportunities for career growth and
+            Manage [forumId] settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -122,7 +122,7 @@ export default async function forumIdPage() {
                   [forumId]
                 </h2>
                 <p className="text-black mb-6">
-                  Explore [forumId] and discover opportunities for career growth
+                  Manage [forumId] for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">
@@ -178,7 +178,7 @@ export default async function forumIdPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-7.jpg"
                   alt="[forumId]"
                   fill
                   className="object-cover"

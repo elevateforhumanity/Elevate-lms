@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Bulk | Elevate For Humanity',
   description:
-    'Explore Bulk and discover opportunities for career growth and development.',
+    'Manage bulk settings and development.',
 };
 
 export default async function BulkPage() {
@@ -65,7 +65,7 @@ export default async function BulkPage() {
             Bulk
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Bulk and discover opportunities for career growth and
+            Manage bulk settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

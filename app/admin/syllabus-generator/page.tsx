@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Syllabus Generator | Elevate For Humanity',
   description:
-    'Explore Syllabus Generator and discover opportunities for career growth and development.',
+    'Manage syllabus-generator settings and development.',
 };
 
 export default async function SyllabusGeneratorPage() {
@@ -68,7 +68,7 @@ export default async function SyllabusGeneratorPage() {
             Syllabus Generator
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Syllabus Generator and discover opportunities for career
+            Manage syllabus-generator for career
             growth and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

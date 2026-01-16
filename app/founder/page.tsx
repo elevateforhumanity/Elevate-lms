@@ -18,7 +18,7 @@ export default function FounderPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-5.jpg"
           alt="Founder & Leadership"
           fill
           className="object-cover brightness-50"

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Onboarding MOU | Elevate For Humanity',
   description:
-    'Explore Mou and discover opportunities for career growth and development.',
+    'Manage mou settings and development.',
 };
 
 export default async function MouPage() {
@@ -34,7 +34,7 @@ export default async function MouPage() {
             Mou
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Mou and discover opportunities for career growth and
+            Manage mou settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,7 +63,7 @@ export default async function MouPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Mou</h2>
                 <p className="text-black mb-6">
-                  Explore Mou and discover opportunities for career growth and
+                  Manage mou settings and
                   development.
                 </p>
                 <ul className="space-y-3">
@@ -119,7 +119,7 @@ export default async function MouPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-1.jpg"
                   alt="Mou"
                   fill
                   className="object-cover"

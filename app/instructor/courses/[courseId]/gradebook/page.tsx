@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Gradebook | Elevate For Humanity',
   description:
-    'Explore Gradebook and discover opportunities for career growth and development.',
+    'Manage gradebook settings and development.',
 };
 
 export default async function GradebookPage() {
@@ -57,7 +57,7 @@ export default async function GradebookPage() {
             Gradebook
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Gradebook and discover opportunities for career growth and
+            Manage gradebook settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

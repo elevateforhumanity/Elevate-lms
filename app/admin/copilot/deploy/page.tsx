@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Deploy | Elevate For Humanity',
   description:
-    'Explore Deploy and discover opportunities for career growth and development.',
+    'Manage deploy settings and development.',
 };
 
 export default async function DeployPage() {
@@ -66,7 +66,7 @@ export default async function DeployPage() {
             Deploy
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Deploy and discover opportunities for career growth and
+            Manage deploy settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

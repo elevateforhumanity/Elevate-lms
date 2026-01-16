@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'How To Use | Elevate For Humanity',
   description:
-    'Explore How To Use and discover opportunities for career growth and development.',
+    'Manage how-to-use settings and development.',
 };
 
 export default async function HowToUsePage() {
@@ -56,7 +56,7 @@ export default async function HowToUsePage() {
             How To Use
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore How To Use and discover opportunities for career growth and
+            Manage how-to-use settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

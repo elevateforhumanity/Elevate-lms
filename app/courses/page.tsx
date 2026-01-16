@@ -32,7 +32,7 @@ export default function CoursesPage() {
           loop
           muted
           playsInline
-          poster="/images/artlist/hero-training-1.jpg"
+          poster="/images/artlist/hero-training-8.jpg"
         >
           <source src="https://cms-artifacts.artlist.io/content/generated-video-v1/video__5/generated-video-c913a513-dde0-4ac7-ae3c-53a453b8b83d.mp4?Expires=2083815719&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=OXubeStSFGiDeF3SU9CQ6JrV2wpxCGlBIwtaznCzrLxiU40aP3onFcEjjtoXpgeUpDrcYE8pktArkwkDCKhrMOTl47Xn9Em3wjkxKxKNkYBcMV4Yw8l1TmvJkIrrhjThOLNLTnlXULArDYVRaIz8YtyycHzUhSELydq8S0xs7SNurTMpEP1PqnrDEp2QmEK2bYPTJQGu90Lftpb3GA4dV2BOby0yCfW-opetSwQcDxfUIn~UgKzBgCyEWW2YdwVbicUPFl895Q01iJQMh1p0Ba7ordWrKjcdQSXfu2uzYzfifCaYLhQNo-23MmMRcPw28rfaea5A-r6K34pQZzRZtg__" type="video/mp4" />
         </video>

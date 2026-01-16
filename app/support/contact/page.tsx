@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Contact | Elevate For Humanity',
   description:
-    'Explore Contact and discover opportunities for career growth and development.',
+    'Manage contact settings and development.',
 };
 
 export default async function ContactPage() {
@@ -32,7 +32,7 @@ export default async function ContactPage() {
             Contact
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Contact and discover opportunities for career growth and
+            Manage contact settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,7 +61,7 @@ export default async function ContactPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Contact</h2>
                 <p className="text-black mb-6">
-                  Explore Contact and discover opportunities for career growth
+                  Manage contact for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">

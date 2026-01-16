@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Internal Docs | Elevate For Humanity',
   description:
-    'Explore Internal Docs and discover opportunities for career growth and development.',
+    'Manage internal-docs settings and development.',
 };
 
 export default async function InternalDocsPage() {
@@ -69,7 +69,7 @@ export default async function InternalDocsPage() {
             Internal Docs
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Internal Docs and discover opportunities for career growth
+            Manage internal-docs for career growth
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

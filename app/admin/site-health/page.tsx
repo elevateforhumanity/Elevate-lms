@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Site Health | Elevate For Humanity',
   description:
-    'Explore Site Health and discover opportunities for career growth and development.',
+    'Manage site-health settings and development.',
 };
 
 export default async function SiteHealthPage() {
@@ -69,7 +69,7 @@ export default async function SiteHealthPage() {
             Site Health
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Site Health and discover opportunities for career growth and
+            Manage site-health settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

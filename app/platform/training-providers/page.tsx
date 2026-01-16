@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Training Providers | Elevate For Humanity',
   description:
-    'Explore Training Providers and discover opportunities for career growth and development.',
+    'Manage training-providers settings and development.',
 };
 
 export default async function TrainingProvidersPage() {
@@ -20,7 +20,7 @@ export default async function TrainingProvidersPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-3.jpg"
           alt="Training Providers"
           fill
           className="object-cover"
@@ -34,7 +34,7 @@ export default async function TrainingProvidersPage() {
             Training Providers
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Training Providers and discover opportunities for career
+            Manage training-providers for career
             growth and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -65,7 +65,7 @@ export default async function TrainingProvidersPage() {
                   Training Providers
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Training Providers and discover opportunities for
+                  Manage training-providers for
                   career growth and development.
                 </p>
                 <ul className="space-y-3">
@@ -121,7 +121,7 @@ export default async function TrainingProvidersPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-3.jpg"
                   alt="Training Providers"
                   fill
                   className="object-cover"

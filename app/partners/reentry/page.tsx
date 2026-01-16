@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Reentry | Elevate For Humanity',
   description:
-    'Explore Reentry and discover opportunities for career growth and development.',
+    'Manage reentry settings and development.',
 };
 
 export default async function ReentryPage() {
@@ -34,7 +34,7 @@ export default async function ReentryPage() {
             Reentry
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Reentry and discover opportunities for career growth and
+            Manage reentry settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,7 +63,7 @@ export default async function ReentryPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Reentry</h2>
                 <p className="text-black mb-6">
-                  Explore Reentry and discover opportunities for career growth
+                  Manage reentry for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">

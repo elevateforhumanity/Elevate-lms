@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Mobile Sync | Elevate For Humanity',
   description:
-    'Explore Mobile Sync and discover opportunities for career growth and development.',
+    'Manage mobile-sync settings and development.',
 };
 
 export default async function MobileSyncPage() {
@@ -68,7 +68,7 @@ export default async function MobileSyncPage() {
             Mobile Sync
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Mobile Sync and discover opportunities for career growth and
+            Manage mobile-sync settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Assignment Details | Elevate For Humanity',
   description:
-    'Explore [id] and discover opportunities for career growth and development.',
+    'Manage [id] settings and development.',
 };
 
 export default async function idPage() {
@@ -78,7 +78,7 @@ export default async function idPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-4.jpg"
           alt="[id]"
           fill
           className="object-cover"
@@ -92,7 +92,7 @@ export default async function idPage() {
             [id]
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore [id] and discover opportunities for career growth and
+            Manage [id] settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -121,7 +121,7 @@ export default async function idPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">[id]</h2>
                 <p className="text-black mb-6">
-                  Explore [id] and discover opportunities for career growth and
+                  Manage [id] settings and
                   development.
                 </p>
                 <ul className="space-y-3">

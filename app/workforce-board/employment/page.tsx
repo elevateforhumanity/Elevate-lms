@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Employment | Elevate For Humanity',
   description:
-    'Explore Employment and discover opportunities for career growth and development.',
+    'Manage employment settings and development.',
 };
 
 export default async function EmploymentPage() {
@@ -35,7 +35,7 @@ export default async function EmploymentPage() {
             Employment
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Employment and discover opportunities for career growth and
+            Manage employment settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -66,7 +66,7 @@ export default async function EmploymentPage() {
                   Employment
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Employment and discover opportunities for career
+                  Manage employment for career
                   growth and development.
                 </p>
                 <ul className="space-y-3">

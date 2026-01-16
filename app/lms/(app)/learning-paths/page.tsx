@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Learning Paths | Elevate For Humanity',
   description:
-    'Explore Learning Paths and discover opportunities for career growth and development.',
+    'Manage learning-paths settings and development.',
 };
 
 export default async function LearningPathsPage() {
@@ -78,7 +78,7 @@ export default async function LearningPathsPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-8.jpg"
           alt="Learning Paths"
           fill
           className="object-cover"
@@ -92,7 +92,7 @@ export default async function LearningPathsPage() {
             Learning Paths
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Learning Paths and discover opportunities for career growth
+            Manage learning-paths for career growth
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -123,7 +123,7 @@ export default async function LearningPathsPage() {
                   Learning Paths
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Learning Paths and discover opportunities for career
+                  Manage learning-paths for career
                   growth and development.
                 </p>
                 <ul className="space-y-3">
@@ -179,7 +179,7 @@ export default async function LearningPathsPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-8.jpg"
                   alt="Learning Paths"
                   fill
                   className="object-cover"

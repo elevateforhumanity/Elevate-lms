@@ -77,7 +77,7 @@ export default async function AdminPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Admin</h2>
                 <p className="text-black mb-6">
-                  Explore Admin and discover opportunities for career growth and
+                  Manage admin settings and
                   development.
                 </p>
                 <ul className="space-y-3">
@@ -133,7 +133,7 @@ export default async function AdminPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-3.jpg"
                   alt="Admin"
                   fill
                   className="object-cover"

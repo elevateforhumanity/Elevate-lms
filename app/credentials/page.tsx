@@ -122,7 +122,7 @@ export default async function CredentialsPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-4.jpg"
                   alt="Credentials"
                   fill
                   className="object-cover"

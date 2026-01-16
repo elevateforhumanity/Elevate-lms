@@ -369,7 +369,7 @@ export default function MentorshipPage() {
                   Mentorship
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Mentorship and discover opportunities for career
+                  Manage mentorship for career
                   growth and development.
                 </p>
                 <ul className="space-y-3">
@@ -425,7 +425,7 @@ export default function MentorshipPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-4.jpg"
                   alt="Mentorship"
                   fill
                   className="object-cover"

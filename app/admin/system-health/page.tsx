@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'System Health | Elevate For Humanity',
   description:
-    'Explore System Health and discover opportunities for career growth and development.',
+    'Manage system-health settings and development.',
 };
 
 export default async function SystemHealthPage() {
@@ -68,7 +68,7 @@ export default async function SystemHealthPage() {
             System Health
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore System Health and discover opportunities for career growth
+            Manage system-health for career growth
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

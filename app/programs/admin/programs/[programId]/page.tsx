@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: '[programId] | Elevate For Humanity',
   description:
-    'Explore [programId] and discover opportunities for career growth and development.',
+    'Manage [programId] settings and development.',
 };
 
 export default async function programIdPage() {
@@ -61,7 +61,7 @@ export default async function programIdPage() {
             [programId]
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore [programId] and discover opportunities for career growth and
+            Manage [programId] settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

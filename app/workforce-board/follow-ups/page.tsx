@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Follow Ups | Elevate For Humanity',
   description:
-    'Explore Follow Ups and discover opportunities for career growth and development.',
+    'Manage follow-ups settings and development.',
 };
 
 export default async function FollowUpsPage() {
@@ -35,7 +35,7 @@ export default async function FollowUpsPage() {
             Follow Ups
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Follow Ups and discover opportunities for career growth and
+            Manage follow-ups settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -66,7 +66,7 @@ export default async function FollowUpsPage() {
                   Follow Ups
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Follow Ups and discover opportunities for career
+                  Manage follow-ups for career
                   growth and development.
                 </p>
                 <ul className="space-y-3">

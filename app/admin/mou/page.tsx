@@ -68,7 +68,7 @@ export default async function MouPage() {
             Mou
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Mou and discover opportunities for career growth and
+            Manage mou settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

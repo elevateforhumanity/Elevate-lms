@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'About | Elevate For Humanity',
   description:
-    'Explore About and discover opportunities for career growth and development.',
+    'Manage about settings and development.',
 };
 
 const navLinks = [
@@ -52,7 +52,7 @@ export default async function AboutPage() {
             About
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore About and discover opportunities for career growth and
+            Manage about settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,7 +81,7 @@ export default async function AboutPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">About</h2>
                 <p className="text-black mb-6">
-                  Explore About and discover opportunities for career growth and
+                  Manage about settings and
                   development.
                 </p>
                 <ul className="space-y-3">
@@ -137,7 +137,7 @@ export default async function AboutPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-8.jpg"
                   alt="About"
                   fill
                   className="object-cover"

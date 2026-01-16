@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Partner Portal | Elevate For Humanity',
   description:
-    'Explore Partner Portal and discover opportunities for career growth and development.',
+    'Manage partner-portal settings and development.',
 };
 
 export default async function PartnerPortalPage() {
@@ -18,7 +18,7 @@ export default async function PartnerPortalPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-2.jpg"
           alt="Partner Portal"
           fill
           className="object-cover"
@@ -32,7 +32,7 @@ export default async function PartnerPortalPage() {
             Partner Portal
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Partner Portal and discover opportunities for career growth
+            Manage partner-portal for career growth
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,7 +63,7 @@ export default async function PartnerPortalPage() {
                   Partner Portal
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Partner Portal and discover opportunities for career
+                  Manage partner-portal for career
                   growth and development.
                 </p>
                 <ul className="space-y-3">

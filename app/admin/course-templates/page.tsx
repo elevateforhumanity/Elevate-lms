@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Course Templates | Elevate For Humanity',
   description:
-    'Explore Course Templates and discover opportunities for career growth and development.',
+    'Manage course-templates settings and development.',
 };
 
 export default async function CourseTemplatesPage() {
@@ -68,7 +68,7 @@ export default async function CourseTemplatesPage() {
             Course Templates
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Course Templates and discover opportunities for career
+            Manage course-templates for career
             growth and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

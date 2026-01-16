@@ -37,7 +37,7 @@ export default function PathwaysPage() {
     <main className="w-full">
       <header className="relative min-h-[400px] flex items-center">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/artlist/hero-training-6.jpg"
           alt="Workforce training pathways"
           fill
           className="object-cover"

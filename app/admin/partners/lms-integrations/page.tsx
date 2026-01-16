@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Lms Integrations | Elevate For Humanity',
   description:
-    'Explore Lms Integrations and discover opportunities for career growth and development.',
+    'Manage lms-integrations settings and development.',
 };
 
 export default async function LmsIntegrationsPage() {
@@ -66,7 +66,7 @@ export default async function LmsIntegrationsPage() {
             Lms Integrations
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Lms Integrations and discover opportunities for career
+            Manage lms-integrations for career
             growth and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

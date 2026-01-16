@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Charts | Elevate For Humanity',
   description:
-    'Explore Charts and discover opportunities for career growth and development.',
+    'Manage charts settings and development.',
 };
 
 export default async function ChartsPage() {
@@ -66,7 +66,7 @@ export default async function ChartsPage() {
             Charts
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Charts and discover opportunities for career growth and
+            Manage charts settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

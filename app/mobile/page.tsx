@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Mobile | Elevate For Humanity',
   description:
-    'Explore Mobile and discover opportunities for career growth and development.',
+    'Manage mobile settings and development.',
 };
 
 export default async function MobilePage() {
@@ -32,7 +32,7 @@ export default async function MobilePage() {
             Mobile
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Mobile and discover opportunities for career growth and
+            Manage mobile settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,7 +61,7 @@ export default async function MobilePage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Mobile</h2>
                 <p className="text-black mb-6">
-                  Explore Mobile and discover opportunities for career growth
+                  Manage mobile for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">
@@ -117,7 +117,7 @@ export default async function MobilePage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-6.jpg"
                   alt="Mobile"
                   fill
                   className="object-cover"

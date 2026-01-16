@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Portfolio | Elevate For Humanity',
   description:
-    'Explore Portfolio and discover opportunities for career growth and development.',
+    'Manage portfolio settings and development.',
 };
 
 export default async function PortfolioPage() {
@@ -57,7 +57,7 @@ export default async function PortfolioPage() {
             Portfolio
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Portfolio and discover opportunities for career growth and
+            Manage portfolio settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

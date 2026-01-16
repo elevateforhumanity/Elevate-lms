@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
   title: 'Training Providers | Elevate For Humanity',
   description:
-    'Explore Training Providers and discover opportunities for career growth and development.',
+    'Manage training-providers settings and development.',
 };
 
 export default async function TrainingProvidersPage() {
@@ -22,7 +22,7 @@ export default async function TrainingProvidersPage() {
         accentText="Providers"
         subheadline="Partner with us to deliver training and expand your reach"
         description="Join our network of approved training providers and help students access free career training through WIOA funding. We provide support, resources, and a streamlined partnership process."
-        imageSrc="/images/artlist/hero-training-2.jpg"
+        imageSrc="/images/artlist/hero-training-6.jpg"
         imageAlt="Training Providers"
         primaryCTA={{ text: "Get Started", href: "/partners/training-provider" }}
         secondaryCTA={{ text: "View Programs", href: "/programs" }}
@@ -45,7 +45,7 @@ export default async function TrainingProvidersPage() {
                   Training Providers
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Training Providers and discover opportunities for
+                  Manage training-providers for
                   career growth and development.
                 </p>
                 <ul className="space-y-3">
@@ -101,7 +101,7 @@ export default async function TrainingProvidersPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image priority
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-6.jpg"
                   alt="Training Providers"
                   fill
                   className="object-cover"

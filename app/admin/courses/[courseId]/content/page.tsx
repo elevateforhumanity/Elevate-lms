@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Content | Elevate For Humanity',
   description:
-    'Explore Content and discover opportunities for career growth and development.',
+    'Manage content settings and development.',
 };
 
 export default async function ContentPage() {
@@ -66,7 +66,7 @@ export default async function ContentPage() {
             Content
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Content and discover opportunities for career growth and
+            Manage content settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Badges | Elevate For Humanity',
   description:
-    'Explore Badges and discover opportunities for career growth and development.',
+    'Manage badges settings and development.',
 };
 
 export default async function BadgesPage() {
@@ -57,7 +57,7 @@ export default async function BadgesPage() {
             Badges
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Badges and discover opportunities for career growth and
+            Manage badges settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

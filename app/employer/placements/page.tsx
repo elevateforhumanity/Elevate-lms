@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Placements | Elevate For Humanity',
   description:
-    'Explore Placements and discover opportunities for career growth and development.',
+    'Manage placements settings and development.',
 };
 
 export default async function PlacementsPage() {
@@ -56,7 +56,7 @@ export default async function PlacementsPage() {
             Placements
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Placements and discover opportunities for career growth and
+            Manage placements settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

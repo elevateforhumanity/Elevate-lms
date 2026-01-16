@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Employee | Elevate For Humanity',
   description:
-    'Explore Employee and discover opportunities for career growth and development.',
+    'Manage employee settings and development.',
 };
 
 export default async function EmployeePage() {
@@ -32,7 +32,7 @@ export default async function EmployeePage() {
             Employee
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Employee and discover opportunities for career growth and
+            Manage employee settings and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,7 +63,7 @@ export default async function EmployeePage() {
                   Employee
                 </h2>
                 <p className="text-black mb-6">
-                  Explore Employee and discover opportunities for career growth
+                  Manage employee for career growth
                   and development.
                 </p>
                 <ul className="space-y-3">
@@ -119,7 +119,7 @@ export default async function EmployeePage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/artlist/hero-training-1.jpg"
                   alt="Employee"
                   fill
                   className="object-cover"
