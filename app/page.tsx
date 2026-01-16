@@ -72,7 +72,7 @@ export default async function HomePage() {
                   <span className="text-green-400">✓</span> Earn income while training
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> 1,800 hours hands-on experience
+                  <span className="text-green-400">✓</span> 2,000 hours hands-on experience
                 </li>
               </ul>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -98,7 +98,7 @@ export default async function HomePage() {
                   <p className="text-white/80 mb-6">Join Indiana's premier barber apprenticeship program</p>
                   <div className="grid grid-cols-2 gap-4 text-center">
                     <div className="bg-white/10 rounded-lg p-4">
-                      <div className="text-3xl font-black text-white">1,800</div>
+                      <div className="text-3xl font-black text-white">2,000</div>
                       <div className="text-sm text-white/70">Training Hours</div>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4">
