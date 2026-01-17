@@ -2,24 +2,42 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Menu, X } from 'lucide-react';
 import { getNavigation } from '@/config/navigation-clean';
 import { useUser } from '@/hooks/useUser';
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { user } = useUser();
   const navigation = getNavigation();
   const navItems = useMemo(() => navigation.main, [navigation]);
 
+  // Track scroll for transparent → solid header
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 sm:h-16 lg:h-18">
+      {/* Header - Transparent on hero, solid on scroll */}
+      <header 
+        className={`fixed top-0 left-0 right-0 z-50 h-[56px] sm:h-[70px] transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-white shadow-sm' 
+            : 'bg-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+          <div className="flex items-center justify-between h-full">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 flex-shrink-0 min-h-[44px]">
+            <Link href="/" className="flex items-center gap-2 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="Elevate for Humanity"
@@ -28,18 +46,24 @@ export default function SiteHeader() {
                 className="w-8 h-8 sm:w-9 sm:h-9"
                 priority
               />
-              <span className="hidden sm:inline text-gray-900 font-bold text-base sm:text-lg">
+              <span className={`hidden sm:inline font-bold text-lg transition-colors ${
+                isScrolled ? 'text-gray-900' : 'text-white'
+              }`}>
                 Elevate
               </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+            <nav className="hidden md:flex items-center h-full">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors py-2"
+                  className={`relative h-full flex items-center px-4 lg:px-6 text-sm font-medium transition-colors
+                    before:absolute before:bottom-0 before:left-2 before:right-2 before:h-[3px] before:bg-blue-600 
+                    before:opacity-0 before:transition-opacity hover:before:opacity-100
+                    ${isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'}
+                  `}
                 >
                   {item.name}
                 </Link>
@@ -47,25 +71,33 @@ export default function SiteHeader() {
             </nav>
 
             {/* Right side */}
-            <div className="flex items-center gap-2 sm:gap-4">
+            <div className="flex items-center gap-3 sm:gap-4">
               {user ? (
                 <Link
                   href="/lms/dashboard"
-                  className="hidden sm:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors min-h-[44px]"
+                  className={`hidden sm:inline-flex items-center text-sm font-medium transition-colors ${
+                    isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white/90 hover:text-white'
+                  }`}
                 >
                   Dashboard
                 </Link>
               ) : (
                 <Link
                   href="/login"
-                  className="hidden sm:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors min-h-[44px]"
+                  className={`hidden sm:inline-flex items-center text-sm font-medium transition-colors ${
+                    isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white/90 hover:text-white'
+                  }`}
                 >
                   Sign In
                 </Link>
               )}
               <Link
                 href="/apply"
-                className="hidden sm:inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-colors min-h-[44px]"
+                className={`hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full transition-colors ${
+                  isScrolled 
+                    ? 'bg-blue-600 text-white hover:bg-blue-700' 
+                    : 'bg-white text-gray-900 hover:bg-gray-100'
+                }`}
               >
                 Apply Now
               </Link>
@@ -73,9 +105,10 @@ export default function SiteHeader() {
               {/* Mobile menu button */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 text-gray-700 hover:text-blue-600 transition-colors"
+                className={`md:hidden flex items-center justify-center w-10 h-10 transition-colors ${
+                  isScrolled ? 'text-gray-700' : 'text-white'
+                }`}
                 aria-label="Open menu"
-                aria-expanded={mobileMenuOpen}
               >
                 <Menu className="w-6 h-6" />
               </button>
@@ -84,17 +117,17 @@ export default function SiteHeader() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu - Full screen overlay */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-[100] md:hidden">
           {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/50"
             onClick={() => setMobileMenuOpen(false)}
           />
           
           {/* Menu Panel */}
-          <div className="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl">
+          <nav className="absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-xl">
             <div className="flex items-center justify-between p-4 border-b">
               <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
                 <Image
@@ -108,21 +141,21 @@ export default function SiteHeader() {
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center w-11 h-11 -mr-2 text-gray-700 hover:text-blue-600"
+                className="flex items-center justify-center w-10 h-10 text-gray-700"
                 aria-label="Close menu"
               >
                 <X className="w-6 h-6" />
               </button>
             </div>
             
-            <nav className="p-4">
+            <div className="p-4">
               <ul className="space-y-1">
                 {navItems.map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors min-h-[48px]"
+                      className="flex items-center px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -135,7 +168,7 @@ export default function SiteHeader() {
                   <Link
                     href="/lms/dashboard"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center w-full px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 border border-gray-300 rounded-lg transition-colors min-h-[48px]"
+                    className="flex items-center justify-center w-full px-4 py-3 text-base font-medium text-gray-700 border border-gray-300 rounded-full transition-colors"
                   >
                     Dashboard
                   </Link>
@@ -143,7 +176,7 @@ export default function SiteHeader() {
                   <Link
                     href="/login"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center w-full px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 border border-gray-300 rounded-lg transition-colors min-h-[48px]"
+                    className="flex items-center justify-center w-full px-4 py-3 text-base font-medium text-gray-700 border border-gray-300 rounded-full transition-colors"
                   >
                     Sign In
                   </Link>
@@ -151,13 +184,13 @@ export default function SiteHeader() {
                 <Link
                   href="/apply"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center w-full px-4 py-3 bg-blue-600 text-white text-base font-semibold rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-colors min-h-[48px]"
+                  className="flex items-center justify-center w-full px-4 py-3 bg-blue-600 text-white text-base font-semibold rounded-full hover:bg-blue-700 transition-colors"
                 >
                   Apply Now
                 </Link>
               </div>
-            </nav>
-          </div>
+            </div>
+          </nav>
         </div>
       )}
     </>
