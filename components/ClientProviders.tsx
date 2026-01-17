@@ -25,20 +25,21 @@ const PerformanceMonitor = dynamic(
   { ssr: false }
 );
 
-const ScraperDetection = dynamic(
-  () => import('@/components/ScraperDetection').then((mod) => ({ default: mod.ScraperDetection })),
-  { ssr: false }
-);
+// Security components disabled - they interfere with development and user experience
+// const ScraperDetection = dynamic(
+//   () => import('@/components/ScraperDetection').then((mod) => ({ default: mod.ScraperDetection })),
+//   { ssr: false }
+// );
 
-const CopyrightProtection = dynamic(
-  () => import('@/components/CopyrightProtection').then((mod) => ({ default: mod.CopyrightProtection })),
-  { ssr: false }
-);
+// const CopyrightProtection = dynamic(
+//   () => import('@/components/CopyrightProtection').then((mod) => ({ default: mod.CopyrightProtection })),
+//   { ssr: false }
+// );
 
-const SecurityMonitor = dynamic(
-  () => import('@/components/SecurityMonitor').then((mod) => ({ default: mod.SecurityMonitor })),
-  { ssr: false }
-);
+// const SecurityMonitor = dynamic(
+//   () => import('@/components/SecurityMonitor').then((mod) => ({ default: mod.SecurityMonitor })),
+//   { ssr: false }
+// );
 
 export function ClientProviders() {
   return (
@@ -48,9 +49,7 @@ export function ClientProviders() {
       <AILiveChat />
       <CookieBanner />
       <PerformanceMonitor />
-      <ScraperDetection />
-      <CopyrightProtection />
-      <SecurityMonitor />
+      {/* Security components disabled - they block DevTools and interfere with UX */}
     </>
   );
 }
