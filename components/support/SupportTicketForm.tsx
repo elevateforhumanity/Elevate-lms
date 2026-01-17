@@ -41,7 +41,7 @@ export function SupportTicketForm() {
           value={subject}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setSubject(e.target.value)}
           className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100"
-          Content="Describe the issue"
+          placeholder="Describe the issue"
           required
         />
       </div>
@@ -53,7 +53,7 @@ export function SupportTicketForm() {
           value={message}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setMessage(e.target.value)}
           className="mt-1 h-24 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100"
-          Content="Tell us what happened, steps to reproduce, and any error messages."
+          placeholder="Tell us what happened, steps to reproduce, and any error messages."
           required
         />
       </div>

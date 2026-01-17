@@ -41,7 +41,7 @@ export function HelpSearchBox() {
             type="search"
             value={query}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setQuery(e.target.value)}
-            Content='Search help articles (e.g. "barber apprenticeship attendance")'
+            placeholder='Search help articles (e.g. "barber apprenticeship attendance")'
             className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm shadow-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100"
           />
           <button

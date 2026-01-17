@@ -64,7 +64,7 @@ export function SimpleCaptcha({ onVerify, className = '' }: SimpleCaptchaProps) 
           value={userAnswer}
           onChange={handleChange}
           onKeyPress={(e) => e.key === 'Enter' && handleVerify()}
-          Content="?"
+          placeholder="?"
           className="w-20 px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
           disabled={isVerified}
         />

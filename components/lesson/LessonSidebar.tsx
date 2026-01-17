@@ -219,7 +219,7 @@ export function LessonSidebar({
           <input
             value={bookmarkLabel}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setBookmarkLabel(e.target.value)}
-            Content="Label (optional)"
+            placeholder="Label (optional)"
             className="flex-1 rounded border px-2 py-2 text-[11px]"
           />
           <button
@@ -263,7 +263,7 @@ export function LessonSidebar({
         <textarea
           value={noteBody}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNoteBody(e.target.value)}
-          Content="Write a note about this lesson…"
+          placeholder="Write a note about this lesson…"
           className="h-16 w-full resize-none rounded border px-2 py-2 text-[11px]"
         />
         <div className="flex items-center justify-between">
@@ -355,13 +355,13 @@ export function LessonSidebar({
             <input
               value={questionTitle}
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setQuestionTitle(e.target.value)}
-              Content="Short question title"
+              placeholder="Short question title"
               className="w-full rounded border px-2 py-2 text-[11px]"
             />
             <textarea
               value={questionBody}
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setQuestionBody(e.target.value)}
-              Content="Describe your question…"
+              placeholder="Describe your question…"
               className="h-16 w-full resize-none rounded border px-2 py-2 text-[11px]"
             />
             <button
@@ -422,7 +422,7 @@ export function LessonSidebar({
                       <textarea
                         value={answerBody}
                         onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setAnswerBody(e.target.value)}
-                        Content="Type your answer…"
+                        placeholder="Type your answer…"
                         className="h-12 w-full resize-none rounded border px-2 py-2 text-[11px]"
                       />
                       <button

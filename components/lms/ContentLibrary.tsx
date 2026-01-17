@@ -213,7 +213,7 @@ export default function ContentLibrary() {
                   HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
                 >
               ) => setSearchQuery(e.target.value)}
-              Content="Search content..."
+              placeholder="Search content..."
               className="w-full pl-10 pr-4 py-2 border rounded-lg"
             />
           </div>

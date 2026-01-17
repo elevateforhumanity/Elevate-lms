@@ -167,7 +167,7 @@ d="M5 13l4 4L19 7" />
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setDescription(e.target.value)}
                     rows={3}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                    Content="Provide any additional context..."
+                    placeholder="Provide any additional context..."
                   />
                 </div>
 

@@ -58,7 +58,7 @@ export default function RecapCreateForm() {
             className="h-10 rounded-xl border px-3 text-sm"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            Content="EFH + Partner onboarding call"
+            placeholder="EFH + Partner onboarding call"
           />
         </label>
 
@@ -82,7 +82,7 @@ export default function RecapCreateForm() {
               className="h-10 rounded-xl border px-3 text-sm"
               value={attendeeEmail}
               onChange={(e) => setAttendeeEmail(e.target.value)}
-              Content="kristi@example.com"
+              placeholder="kristi@example.com"
             />
           </label>
         </div>
@@ -95,7 +95,7 @@ export default function RecapCreateForm() {
             className="min-h-[220px] rounded-xl border p-3 text-sm leading-relaxed"
             value={transcript}
             onChange={(e) => setTranscript(e.target.value)}
-            Content="Paste call notes or transcript here…"
+            placeholder="Paste call notes or transcript here…"
           />
         </label>
 

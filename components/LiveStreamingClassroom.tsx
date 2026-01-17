@@ -209,7 +209,7 @@ export function LiveStreamingClassroom() {
                     <div className="flex gap-2">
                       <input
                         type="text"
-                        Content="Type a message..."
+                        placeholder="Type a message..."
                         className="flex-1 px-3 py-2 bg-gray-700 text-white rounded border-none focus:ring-2 focus:ring-red-600"
                       />
                       <button className="px-4 py-2 bg-brand-orange-600 hover:bg-brand-orange-700 text-white rounded">

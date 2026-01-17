@@ -92,7 +92,7 @@ export function ReportProduct({ productId }: { productId: string }) {
             onChange={(e) => setDetails(e.target.value)}
             className="w-full border border-gray-300 rounded px-3 py-2"
             rows={3}
-            Content="Additional information (optional)"
+            placeholder="Additional information (optional)"
           />
         </div>
 
@@ -105,7 +105,7 @@ export function ReportProduct({ productId }: { productId: string }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-gray-300 rounded px-3 py-2"
-            Content="For follow-up if needed"
+            placeholder="For follow-up if needed"
           />
         </div>
 

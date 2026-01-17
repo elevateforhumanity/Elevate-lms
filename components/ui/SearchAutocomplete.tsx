@@ -22,7 +22,7 @@ export interface SearchAutocompleteProps {
 }
 
 export const SearchAutocomplete: React.FC<SearchAutocompleteProps> = ({
-  Content = 'Search programs, courses...',
+  placeholder = 'Search programs, courses...',
   results,
   onSearch,
   onSelect,
@@ -107,7 +107,7 @@ export const SearchAutocomplete: React.FC<SearchAutocompleteProps> = ({
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           onFocus={() => query.length > 0 && setIsOpen(true)}
-          Content={Content}
+          placeholder={Content}
           className="w-full pl-10 pr-10 py-2.5 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           aria-label="Search"
           aria-autocomplete="list"

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   BookOpen,
   Play,
@@ -108,15 +109,15 @@ export default async function LMSPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white py-6">
+      <div className="bg-blue-900 text-white py-6">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold">Welcome back, {profile?.full_name || 'Learner'}</h1>
-              <p className="text-indigo-200">Continue your learning journey</p>
+              <p className="text-blue-200">Continue your learning journey</p>
             </div>
             <div className="flex items-center gap-3">
-              <Link href="/lms/notifications" className="relative p-2 bg-indigo-500 rounded-lg hover:bg-indigo-400">
+              <Link href="/lms/notifications" className="relative p-2 bg-blue-800 rounded-lg hover:bg-blue-700">
                 <Bell className="w-5 h-5" />
                 {notificationCount && notificationCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
@@ -124,7 +125,7 @@ export default async function LMSPage() {
                   </span>
                 )}
               </Link>
-              <Link href="/lms/settings" className="p-2 bg-indigo-500 rounded-lg hover:bg-indigo-400">
+              <Link href="/lms/settings" className="p-2 bg-blue-800 rounded-lg hover:bg-blue-700">
                 <Settings className="w-5 h-5" />
               </Link>
             </div>
@@ -153,7 +154,7 @@ export default async function LMSPage() {
                   <div className="flex items-center gap-2 mt-1">
                     <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-indigo-600 rounded-full" 
+                        className="h-full bg-blue-900 rounded-full" 
                         style={{ width: `${continueCourse.progress}%` }} 
                       />
                     </div>
@@ -163,7 +164,7 @@ export default async function LMSPage() {
               </div>
               <Link 
                 href={`/lms/courses/${continueCourse.course?.id}`}
-                className="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-indigo-700"
+                className="flex items-center gap-2 bg-red-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-red-700"
               >
                 <Play className="w-4 h-4" /> Continue
               </Link>
@@ -174,7 +175,7 @@ export default async function LMSPage() {
         {/* Stats Row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-xl shadow-sm border p-5">
-            <BookOpen className="w-7 h-7 text-indigo-600 mb-2" />
+            <BookOpen className="w-7 h-7 text-blue-900 mb-2" />
             <div className="text-2xl font-bold">{enrollments?.length || 0}</div>
             <div className="text-gray-600 text-sm">Enrolled Courses</div>
           </div>
@@ -189,7 +190,7 @@ export default async function LMSPage() {
             <div className="text-gray-600 text-sm">Certificates</div>
           </div>
           <div className="bg-white rounded-xl shadow-sm border p-5">
-            <Target className="w-7 h-7 text-purple-600 mb-2" />
+            <Target className="w-7 h-7 text-red-600 mb-2" />
             <div className="text-2xl font-bold">{totalProgress}%</div>
             <div className="text-gray-600 text-sm">Overall Progress</div>
           </div>
@@ -202,7 +203,7 @@ export default async function LMSPage() {
             <div className="bg-white rounded-xl shadow-sm border p-6">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold">My Courses</h2>
-                <Link href="/lms/courses" className="text-indigo-600 text-sm font-medium hover:underline">
+                <Link href="/lms/courses" className="text-blue-900 text-sm font-medium hover:underline">
                   View All
                 </Link>
               </div>
@@ -228,7 +229,7 @@ export default async function LMSPage() {
                         <div className="flex items-center gap-3 mt-1">
                           <div className="flex-1 max-w-[120px] h-1.5 bg-gray-200 rounded-full overflow-hidden">
                             <div 
-                              className="h-full bg-indigo-600 rounded-full" 
+                              className="h-full bg-blue-900 rounded-full" 
                               style={{ width: `${enrollment.progress || 0}%` }} 
                             />
                           </div>
@@ -243,7 +244,7 @@ export default async function LMSPage() {
                 <div className="text-center py-8">
                   <BookOpen className="w-12 h-12 mx-auto mb-3 text-gray-300" />
                   <p className="text-gray-500 mb-3">No courses enrolled yet</p>
-                  <Link href="/programs" className="text-indigo-600 font-medium hover:underline">
+                  <Link href="/programs" className="text-blue-900 font-medium hover:underline">
                     Browse Available Programs
                   </Link>
                 </div>
@@ -254,7 +255,7 @@ export default async function LMSPage() {
             <div className="bg-white rounded-xl shadow-sm border p-6">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold">Upcoming Assignments</h2>
-                <Link href="/lms/assignments" className="text-indigo-600 text-sm font-medium hover:underline">
+                <Link href="/lms/assignments" className="text-blue-900 text-sm font-medium hover:underline">
                   View All
                 </Link>
               </div>
@@ -267,7 +268,7 @@ export default async function LMSPage() {
                         <p className="text-sm text-gray-500">{assignment.course_title}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm font-medium text-orange-600">
+                        <p className="text-sm font-medium text-red-600">
                           {new Date(assignment.due_date).toLocaleDateString()}
                         </p>
                         <p className="text-xs text-gray-500">Due</p>
@@ -312,7 +313,7 @@ export default async function LMSPage() {
             <div className="bg-white rounded-xl shadow-sm border p-6">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold">Certificates</h2>
-                <Link href="/lms/certificates" className="text-indigo-600 text-sm font-medium hover:underline">
+                <Link href="/lms/certificates" className="text-blue-900 text-sm font-medium hover:underline">
                   View All
                 </Link>
               </div>
@@ -339,19 +340,19 @@ export default async function LMSPage() {
             </div>
 
             {/* Quick Links */}
-            <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-6">
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
               <h3 className="font-semibold mb-3">Quick Links</h3>
               <div className="space-y-2 text-sm">
-                <Link href="/lms/schedule" className="flex items-center gap-2 text-indigo-600 hover:underline">
+                <Link href="/lms/schedule" className="flex items-center gap-2 text-blue-900 hover:underline">
                   <Calendar className="w-4 h-4" /> Class Schedule
                 </Link>
-                <Link href="/lms/messages" className="flex items-center gap-2 text-indigo-600 hover:underline">
+                <Link href="/lms/messages" className="flex items-center gap-2 text-blue-900 hover:underline">
                   <MessageSquare className="w-4 h-4" /> Messages
                 </Link>
-                <Link href="/lms/analytics" className="flex items-center gap-2 text-indigo-600 hover:underline">
+                <Link href="/lms/analytics" className="flex items-center gap-2 text-blue-900 hover:underline">
                   <BarChart3 className="w-4 h-4" /> Learning Analytics
                 </Link>
-                <Link href="/support" className="flex items-center gap-2 text-indigo-600 hover:underline">
+                <Link href="/support" className="flex items-center gap-2 text-blue-900 hover:underline">
                   <Clock className="w-4 h-4" /> Get Help
                 </Link>
               </div>

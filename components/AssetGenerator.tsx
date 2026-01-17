@@ -214,7 +214,7 @@ export default function AssetGenerator() {
               <textarea
                 className="w-full border border-brand-border-dark rounded-lg px-4 py-2 focus:ring-2 focus:ring-brand-focus focus:border-transparent"
                 rows={4}
-                Content="Describe what the asset should communicate..."
+                placeholder="Describe what the asset should communicate..."
                 value={content}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setContent(e.target.value)}
               />
@@ -283,7 +283,7 @@ export default function AssetGenerator() {
                 <input
                   type="text"
                   className="w-full border border-brand-border-dark rounded-lg px-4 py-2 focus:ring-2 focus:ring-brand-focus focus:border-transparent"
-                  Content="e.g., Program Launch Social Post"
+                  placeholder="e.g., Program Launch Social Post"
                   value={assetName}
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setAssetName(e.target.value)}
                 />

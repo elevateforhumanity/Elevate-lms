@@ -103,7 +103,7 @@ export function NoteTaking({ courseId, lessonId, videoTimestamp }: NoteTakingPro
         <textarea
           value={currentNote}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setCurrentNote(e.target.value)}
-          Content="Take a note..."
+          placeholder="Take a note..."
           className="w-full h-24 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
         />
         <div className="flex items-center justify-between mt-2">
@@ -131,7 +131,7 @@ export function NoteTaking({ courseId, lessonId, videoTimestamp }: NoteTakingPro
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
         <input
           type="text"
-          Content="Search notes..."
+          placeholder="Search notes..."
           value={searchQuery}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setSearchQuery(e.target.value)}
           className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"

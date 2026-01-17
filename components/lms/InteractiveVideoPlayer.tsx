@@ -487,7 +487,7 @@ export default function InteractiveVideoPlayer({
                   value={newNote}
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNewNote(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && addNote()}
-                  Content="Add a note at current timestamp..."
+                  placeholder="Add a note at current timestamp..."
                   className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded text-white"
                 />
                 <button

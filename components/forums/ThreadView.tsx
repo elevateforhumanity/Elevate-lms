@@ -116,7 +116,7 @@ export function ThreadView({
           <textarea
             value={replyContent}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setReplyContent(e.target.value)}
-            Content="Share your thoughts..."
+            placeholder="Share your thoughts..."
             className="w-full bg-slate-900 text-white rounded-lg p-4 min-h-[120px] focus:outline-none focus:ring-2 focus:ring-orange-500"
             disabled={isSubmitting}
           />

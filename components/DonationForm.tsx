@@ -106,7 +106,7 @@ export default function DonationForm() {
               setCustomAmount(e.target.value);
               setSelectedAmount(null);
             }}
-            Content="Enter amount"
+            placeholder="Enter amount"
             className="w-full pl-8 pr-4 py-3 border-2 border-slate-300 rounded-lg text-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
           />
         </div>

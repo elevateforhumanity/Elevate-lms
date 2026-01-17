@@ -265,7 +265,7 @@ export default function SiteSearch() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                Content="Search programs, pages, events..."
+                placeholder="Search programs, pages, events..."
                 className="flex-1 text-lg outline-none"
                 autoFocus
               />

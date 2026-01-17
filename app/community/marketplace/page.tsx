@@ -2,8 +2,6 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Header } from '@/components/ui/Header';
-import { Footer } from '@/components/ui/Footer';
 import { 
   BookOpen, 
   Users, 
@@ -135,7 +133,6 @@ export default async function CommunityMarketplacePage() {
 
   return (
     <>
-      <Header />
       <main className="min-h-screen bg-slate-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700 text-white">
@@ -507,7 +504,6 @@ export default async function CommunityMarketplacePage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

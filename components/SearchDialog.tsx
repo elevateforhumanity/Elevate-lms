@@ -86,7 +86,7 @@ export function SearchDialog() {
         </DialogHeader>
         <div className="flex flex-col gap-4">
           <Input
-            Content="Search programs, pages..."
+            placeholder="Search programs, pages..."
             value={query}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setQuery(e.target.value)}
             className="h-12"

@@ -37,7 +37,7 @@ function GlobalSearchContent() {
         <input
           type="search"
           className="w-full rounded-full border border-slate-200 bg-white pl-12 pr-32 py-4 text-sm md:text-base shadow-card focus:border-accent-500 focus:outline-none focus:ring-4 focus:ring-accent-100 transition-all"
-          Content="Search programs, courses, or topics…"
+          placeholder="Search programs, courses, or topics…"
           value={query}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setQuery(e.target.value)}
         />
@@ -59,7 +59,7 @@ export function GlobalSearch() {
         <div className="relative">
           <input
             type="search"
-            Content="Search courses..."
+            placeholder="Search courses..."
             className="w-full rounded-full border-2 border-slate-200 bg-white px-6 py-3 pr-32 text-base shadow-sm focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20 transition-all duration-200"
             disabled
           />

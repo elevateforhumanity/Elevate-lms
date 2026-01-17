@@ -128,14 +128,14 @@ export function CourseReviewsSection({ courseId }: { courseId: string }) {
 
         <input
           type="text"
-          Content="Short title (optional)"
+          placeholder="Short title (optional)"
           value={title}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setTitle(e.target.value)}
           className="w-full rounded border px-2 py-2 text-xs"
         />
 
         <textarea
-          Content="Share details that will help other learners…"
+          placeholder="Share details that will help other learners…"
           value={text}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setText(e.target.value)}
           className="h-20 w-full rounded border px-2 py-2 text-xs"

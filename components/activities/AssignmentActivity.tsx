@@ -154,7 +154,7 @@ export function AssignmentActivity({
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setSubmissionText(e.target.value)}
                 rows={8}
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                Content="Enter your submission text here..."
+                placeholder="Enter your submission text here..."
               />
             </div>
           )}
@@ -172,7 +172,7 @@ export function AssignmentActivity({
                   value={submissionUrl}
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setSubmissionUrl(e.target.value)}
                   className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                  Content="https://..."
+                  placeholder="https://..."
                 />
               </div>
             </div>

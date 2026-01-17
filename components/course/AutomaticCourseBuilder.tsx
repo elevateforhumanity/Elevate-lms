@@ -192,7 +192,7 @@ export default function AutomaticCourseBuilder() {
             onChange={(e) => setPrompt(e.target.value)}
             rows={6}
             className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
-            Content="Example: Create a comprehensive HVAC technician training course that covers system basics, installation, maintenance, troubleshooting, and EPA 608 certification preparation. Include hands-on exercises and real-world scenarios."
+            placeholder="Example: Create a comprehensive HVAC technician training course that covers system basics, installation, maintenance, troubleshooting, and EPA 608 certification preparation. Include hands-on exercises and real-world scenarios."
           />
 
           <div className="mt-6 flex items-center justify-between">

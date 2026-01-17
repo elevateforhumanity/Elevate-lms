@@ -1,308 +1,58 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Stethoscope, CheckCircle, Clock, DollarSign, Award, Users, Building2 } from 'lucide-react';
-import { VideoHero } from '@/components/heroes/VideoHero';
-import { ProgramNav } from '@/components/programs/ProgramNav';
-import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
-
-export const dynamic = 'force-dynamic';
+import { ProgramPageTemplate, ProgramData } from '@/components/programs/ProgramPageTemplate';
 
 export const metadata: Metadata = {
-  title:
-    'CNA Training Indiana | Certified Nursing Assistant | Indianapolis',
-  description:
-    'CNA training in Indianapolis. Industry-aligned preparation for CNA certification. 6-8 weeks, job placement support included. Start earning $16-$20/hour.',
-  keywords:
-    'CNA training Indiana, CNA classes Indianapolis, certified nursing assistant Indiana, CNA certification Indianapolis, CNA job placement, CNA training Indiana',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/cna',
-  },
+  title: 'CNA Training | Elevate for Humanity',
+  description: 'Certified Nursing Assistant training in Indiana. 4-6 weeks, job placement support. Start earning $16-$20/hour.',
 };
 
-export default async function Page() {
-  const supabase = await createClient();
-  
-  // Fetch CNA program
-  const { data: program } = await supabase
-    .from('programs')
-    .select('*')
-    .eq('slug', 'cna')
-    .single();
+const programData: ProgramData = {
+  title: 'Certified Nursing Assistant (CNA)',
+  category: 'Healthcare Programs',
+  categoryHref: '/programs/healthcare',
+  description: 'Become a Certified Nursing Assistant in 4-6 weeks. Work in hospitals, nursing homes, and home health settings.',
+  image: '/images/healthcare/hero-programs-healthcare.jpg',
+  duration: '4-6 weeks',
+  tuition: '$0*',
+  salary: '$35K+',
+  demand: 'High',
+  highlights: [
+    'State certification included',
+    'Hands-on clinical training',
+    'Job placement support',
+  ],
+  skills: [
+    'Patient care fundamentals and activities of daily living (ADLs)',
+    'Vital signs monitoring (blood pressure, pulse, temperature)',
+    'Infection control and safety protocols',
+    'Patient positioning and mobility assistance',
+    'Basic nutrition and feeding assistance',
+    'Documentation and reporting',
+    'Communication with patients and healthcare team',
+    'Indiana CNA state exam preparation',
+  ],
+  outcomes: [
+    'Certified Nursing Assistant',
+    'Hospital CNA',
+    'Nursing Home Aide',
+    'Home Health Aide',
+    'Rehabilitation Aide',
+    'Hospice Aide',
+  ],
+  requirements: [
+    'High school diploma or GED',
+    '18 years or older',
+    'Pass background check',
+    'Ability to lift 50 lbs',
+    'TB test and immunizations',
+  ],
+  relatedPrograms: [
+    { title: 'Medical Assistant', href: '/programs/healthcare', description: 'Clinical and administrative skills' },
+    { title: 'Phlebotomy', href: '/programs/healthcare', description: 'Blood draw certification' },
+    { title: 'Patient Care Tech', href: '/programs/healthcare', description: 'Advanced patient care' },
+  ],
+};
 
-  const navSections = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'curriculum', label: "What You'll Learn" },
-    { id: 'schedule', label: 'Schedule' },
-    { id: 'requirements', label: 'Requirements' },
-    { id: 'career', label: 'Career Outlook' },
-  ];
-
-  return (
-    <>
-      <VideoHero
-        videoSrc="/videos/cna-hero.mp4"
-        badge={{
-          icon: Stethoscope,
-          text: 'Healthcare Career',
-        }}
-        headline="Become a Certified Nursing Assistant"
-        description="CNA training with industry-aligned preparation for state certification. Job placement support included. Start earning $16-$20/hour."
-        primaryCTA={{ text: 'Apply Now', href: '/apply' }}
-        secondaryCTA={{ text: 'Talk to an Advisor', href: '/contact' }}
-      />
-
-      <ProgramNav sections={navSections} />
-
-      {/* Program Overview with Image */}
-      <section id="overview" className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
-          <div>
-            <h2 className="text-3xl font-bold text-black mb-6">Launch Your Healthcare Career</h2>
-            <p className="text-lg text-gray-700 mb-6">
-              Certified Nursing Assistants (CNAs) are essential healthcare professionals who provide direct patient care in hospitals, nursing homes, and home health settings. Our comprehensive training program prepares you for Indiana state certification and immediate employment.
-            </p>
-            <p className="text-gray-700 mb-6">
-              With a growing demand for healthcare workers, CNAs enjoy excellent job security, competitive wages, and opportunities for career advancement into nursing and other healthcare roles.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 text-green-600">
-                <CheckCircle className="w-5 h-5" />
-                <span className="font-medium">State Certification Prep</span>
-              </div>
-              <div className="flex items-center gap-2 text-green-600">
-                <CheckCircle className="w-5 h-5" />
-                <span className="font-medium">Clinical Experience</span>
-              </div>
-              <div className="flex items-center gap-2 text-green-600">
-                <CheckCircle className="w-5 h-5" />
-                <span className="font-medium">Job Placement Support</span>
-              </div>
-            </div>
-          </div>
-          <div className="relative h-[400px] rounded-2xl overflow-hidden">
-            <Image
-              src="/images/efh/programs/cna.jpg"
-              alt="CNA training in progress"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {/* Quick Facts */}
-          <div className="bg-green-50 rounded-xl p-6 border-2 border-green-200">
-            <h3 className="text-xl font-bold text-black mb-4">
-              Program Length
-            </h3>
-            <p className="text-3xl font-black text-green-600 mb-2">6-8 Weeks</p>
-            <p className="text-black">Full-time training</p>
-          </div>
-
-          <div className="bg-blue-50 rounded-xl p-6 border-2 border-blue-200">
-            <h3 className="text-xl font-bold text-black mb-4">Cost</h3>
-            <p className="text-3xl font-black text-blue-600 mb-2">Varies</p>
-            <p className="text-black">Funding options available</p>
-          </div>
-
-          <div className="bg-orange-50 rounded-xl p-6 border-2 border-orange-200">
-            <h3 className="text-xl font-bold text-black mb-4">
-              Starting Salary
-            </h3>
-            <p className="text-3xl font-black text-orange-600 mb-2">
-              $16-$20/hr
-            </p>
-            <p className="text-black">Entry-level positions</p>
-          </div>
-        </div>
-
-        {/* What You'll Learn */}
-        <div id="curriculum" className="mb-16">
-          <h2 className="text-3xl font-bold text-black mb-8">
-            What You'll Learn
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-xl font-bold text-black mb-4">
-                Clinical Skills
-              </h3>
-              <ul className="space-y-2 text-black">
-                <li>
-                  • Vital signs monitoring (blood pressure, temperature, pulse)
-                </li>
-                <li>• Patient hygiene and personal care</li>
-                <li>• Mobility assistance and transfers</li>
-                <li>• Feeding and nutrition support</li>
-                <li>• Infection control and safety procedures</li>
-              </ul>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-xl font-bold text-black mb-4">
-                Professional Skills
-              </h3>
-              <ul className="space-y-2 text-black">
-                <li>• Medical terminology</li>
-                <li>• Patient communication and empathy</li>
-                <li>• Documentation and record keeping</li>
-                <li>• HIPAA compliance and patient privacy</li>
-                <li>• Working with healthcare teams</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Program Schedule */}
-        <div id="schedule" className="mb-16">
-          <h2 className="text-3xl font-bold text-black mb-8">
-            Program Schedule
-          </h2>
-          <div className="bg-gray-50 rounded-xl p-8 border-2 border-gray-200">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-bold text-black mb-4">
-                  Classroom Training
-                </h3>
-                <p className="text-black mb-4">
-                  4 weeks of classroom instruction covering:
-                </p>
-                <ul className="space-y-2 text-black">
-                  <li>• Anatomy and physiology basics</li>
-                  <li>• Nursing assistant duties and responsibilities</li>
-                  <li>• Patient care procedures</li>
-                  <li>• Safety and emergency protocols</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-bold text-black mb-4">
-                  Clinical Experience
-                </h3>
-                <p className="text-black mb-4">
-                  2-4 weeks of hands-on training in:
-                </p>
-                <ul className="space-y-2 text-black">
-                  <li>• Nursing homes and long-term care facilities</li>
-                  <li>• Hospitals and medical centers</li>
-                  <li>• Supervised patient care</li>
-                  <li>• Real-world healthcare environment</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Requirements */}
-        <div id="requirements" className="mb-16">
-          <h2 className="text-3xl font-bold text-black mb-8">
-            Requirements
-          </h2>
-          <div className="bg-white rounded-xl p-8 border-2 border-gray-200">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-bold text-black mb-4">
-                  To Enroll:
-                </h3>
-                <ul className="space-y-2 text-black">
-                  <li>• High school diploma or GED</li>
-                  <li>• Valid government-issued ID</li>
-                  <li>• Background check (required for healthcare)</li>
-                  <li>• Drug screening</li>
-                  <li>• TB test and immunizations</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-bold text-black mb-4">
-                  To Graduate:
-                </h3>
-                <ul className="space-y-2 text-black">
-                  <li>• Complete all classroom hours</li>
-                  <li>• Pass skills competency exam</li>
-                  <li>• Complete clinical rotation hours</li>
-                  <li>• Pass written final exam</li>
-                  <li>• Pass state certification exam</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Credentials & Outcomes */}
-        <div id="credentials" className="mb-16">
-          <CredentialsOutcomes
-            programName="CNA"
-            partnerCertifications={[
-              'Indiana State CNA Certification (issued by Indiana State Department of Health)',
-              'CPR/BLS Certification (issued by American Heart Association or equivalent)',
-            ]}
-            employmentOutcomes={[
-              'Certified Nursing Assistant in hospitals, nursing homes, and home health',
-              'Patient Care Technician',
-              'Home Health Aide',
-              'Pathway to LPN or RN programs',
-            ]}
-          />
-        </div>
-
-        {/* Career Opportunities */}
-        <div id="career" className="mb-16">
-          <h2 className="text-3xl font-bold text-black mb-8">
-            Career Opportunities
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-black mb-2">
-                Nursing Homes
-              </h3>
-              <p className="text-black mb-2">$16-$18/hour</p>
-              <p className="text-sm text-black">Long-term patient care</p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-black mb-2">
-                Hospitals
-              </h3>
-              <p className="text-black mb-2">$17-$20/hour</p>
-              <p className="text-sm text-black">Acute care settings</p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-black mb-2">
-                Home Health
-              </h3>
-              <p className="text-black mb-2">$18-$22/hour</p>
-              <p className="text-sm text-black">In-home patient care</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Next Steps */}
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-xl p-8 text-white text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Ready to Start Your Healthcare Career?
-          </h2>
-          <p className="text-xl mb-8">
-            Apply now and begin training in as little as 2 weeks
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply"
-              className="px-10 py-4 bg-white text-green-600 font-bold rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              Apply Now
-            </Link>
-            <Link
-              href="/contact"
-              className="px-10 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-green-600 transition-colors"
-            >
-              Talk to an Advisor
-            </Link>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+export default function CNAPage() {
+  return <ProgramPageTemplate program={programData} />;
 }

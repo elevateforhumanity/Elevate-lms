@@ -116,7 +116,7 @@ export default function WorkOneChecklist() {
                 defaultValue={it.notes || ''}
                 onBlur={(e) => setNotes(it.id, e.target.value)}
                 className="min-h-[60px] rounded-xl border p-2 text-sm leading-relaxed"
-                Content="Example: Appointment booked for Jan 8 at 10:30am (WorkOne Indy North)…"
+                placeholder="Example: Appointment booked for Jan 8 at 10:30am (WorkOne Indy North)…"
               />
               <div className="text-[11px] text-neutral-500">
                 Saves on blur (tap outside the box).

@@ -83,7 +83,7 @@ export function StudentFeedbackRating() {
                   <textarea
                     value={comment}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setComment(e.target.value)}
-                    Content="Share your experience with this course..."
+                    placeholder="Share your experience with this course..."
                     className="w-full px-4 py-2 border rounded-lg h-32"
                   />
                 </div>

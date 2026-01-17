@@ -95,7 +95,7 @@ export function LiveChatSupport() {
             value={message}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setMessage(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-            Content="Type your message..."
+            placeholder="Type your message..."
             className="flex-1 px-3 py-2 border rounded-lg text-sm"
           />
           <button

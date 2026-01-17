@@ -156,7 +156,7 @@ export function BlockchainCredentialVerification() {
                   <input
                     type="text"
                     className="w-full px-4 py-3 border rounded-lg"
-                    Content="e.g., ABC123 or 0x7f9fade1c0d57a7af66ab4ead79fade..."
+                    placeholder="e.g., ABC123 or 0x7f9fade1c0d57a7af66ab4ead79fade..."
                     value={verificationCode}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setVerificationCode(e.target.value)}
                   />

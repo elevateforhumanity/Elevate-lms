@@ -243,7 +243,7 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
                 value={feedback}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFeedback(e.target.value)}
                 rows={6}
-                Content="Provide feedback to the student..."
+                placeholder="Provide feedback to the student..."
                 className="w-full px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-sm"
               />
             </div>

@@ -112,13 +112,13 @@ export function CourseReviewsPanel({
           <input
             value={title}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setTitle(e.target.value)}
-            Content="Short headline (optional)"
+            placeholder="Short headline (optional)"
             className="w-full rounded border px-2 py-2 text-xs"
           />
           <textarea
             value={body}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setBody(e.target.value)}
-            Content="Share what you liked about this course…"
+            placeholder="Share what you liked about this course…"
             className="h-20 w-full resize-none rounded border px-2 py-2 text-xs"
           />
           {error && (

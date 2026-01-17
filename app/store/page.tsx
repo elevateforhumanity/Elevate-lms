@@ -69,23 +69,23 @@ export default async function StorePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-orange-600 to-orange-700 text-white py-12">
+      <div className="bg-blue-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-4xl font-bold mb-2">Store</h1>
-              <p className="text-orange-100 text-lg">
+              <p className="text-blue-200 text-lg">
                 Every purchase supports free training programs
               </p>
             </div>
             <Link 
               href="/store/cart" 
-              className="relative flex items-center gap-2 bg-white text-orange-600 px-5 py-2.5 rounded-lg font-medium hover:bg-orange-50"
+              className="relative flex items-center gap-2 bg-white text-blue-900 px-5 py-2.5 rounded-lg font-medium hover:bg-gray-100"
             >
               <ShoppingCart className="w-5 h-5" />
               Cart
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
@@ -100,7 +100,7 @@ export default async function StorePage() {
           <div className="flex flex-wrap gap-2 mb-8">
             <Link 
               href="/store" 
-              className="px-4 py-2 bg-orange-600 text-white rounded-full text-sm font-medium"
+              className="px-4 py-2 bg-blue-900 text-white rounded-full text-sm font-medium"
             >
               All Products
             </Link>
@@ -119,7 +119,7 @@ export default async function StorePage() {
         {/* Featured Products */}
         {featuredProducts && featuredProducts.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-6">Featured</h2>
+            <h2 className="text-2xl font-bold text-blue-900 mb-6">Featured</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {featuredProducts.map((product: any) => (
                 <ProductCard 
@@ -134,7 +134,7 @@ export default async function StorePage() {
 
         {/* All Products */}
         <section>
-          <h2 className="text-2xl font-bold mb-6">All Products</h2>
+          <h2 className="text-2xl font-bold text-blue-900 mb-6">All Products</h2>
           {products && products.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {products.map((product: any) => (
@@ -155,15 +155,15 @@ export default async function StorePage() {
         </section>
 
         {/* Mission Banner */}
-        <section className="mt-16 bg-orange-50 border border-orange-200 rounded-2xl p-8 text-center">
-          <Heart className="w-10 h-10 text-orange-600 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-3">Your Purchase Makes a Difference</h2>
+        <section className="mt-16 bg-red-50 border border-red-200 rounded-2xl p-8 text-center">
+          <Heart className="w-10 h-10 text-red-600 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-blue-900 mb-3">Your Purchase Makes a Difference</h2>
           <p className="text-gray-600 max-w-2xl mx-auto mb-6">
             100% of proceeds support free workforce training programs for underserved communities.
           </p>
           <Link 
             href="/donate"
-            className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-700"
+            className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700"
           >
             Make a Donation <ArrowRight className="w-4 h-4" />
           </Link>
@@ -181,17 +181,17 @@ function ProductCard({ product, isPurchased }: { product: any; isPurchased: bool
           <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
         </div>
       ) : (
-        <div className="h-40 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
+        <div className="h-40 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
           {product.type === 'digital' ? (
-            <Download className="w-10 h-10 text-orange-400" />
+            <Download className="w-10 h-10 text-blue-400" />
           ) : (
-            <BookOpen className="w-10 h-10 text-orange-400" />
+            <BookOpen className="w-10 h-10 text-blue-400" />
           )}
         </div>
       )}
       <div className="p-4">
         {product.is_featured && (
-          <div className="flex items-center gap-1 text-orange-600 text-xs font-medium mb-2">
+          <div className="flex items-center gap-1 text-red-600 text-xs font-medium mb-2">
             <Star className="w-3 h-3 fill-current" /> Featured
           </div>
         )}
@@ -214,7 +214,7 @@ function ProductCard({ product, isPurchased }: { product: any; isPurchased: bool
           ) : (
             <Link 
               href={`/store/product/${product.id}`}
-              className="text-orange-600 text-sm font-medium hover:underline"
+              className="text-blue-900 text-sm font-medium hover:underline"
             >
               View Details
             </Link>

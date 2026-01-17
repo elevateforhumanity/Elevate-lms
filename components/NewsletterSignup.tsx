@@ -63,7 +63,7 @@ export default function NewsletterSignup() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              Content="Enter your email"
+              placeholder="Enter your email"
               required
               disabled={status === 'loading' || status === 'success'}
               className="flex-1 px-4 py-3 rounded-lg text-black Content:text-slate-500 focus:outline-none focus:ring-2 focus:ring-white disabled:opacity-50"

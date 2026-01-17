@@ -1,7 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { Header } from '@/components/ui/Header';
-import { Footer } from '@/components/ui/Footer';
 
 export const dynamic = 'force-dynamic';
 
@@ -216,7 +214,6 @@ export default async function SitemapPage() {
 
   return (
     <>
-      <Header />
       <main className="min-h-screen bg-slate-50">
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
           <div className="max-w-7xl mx-auto px-4">
@@ -274,7 +271,6 @@ export default async function SitemapPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

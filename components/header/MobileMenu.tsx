@@ -55,7 +55,7 @@ export function MobileMenu({ isOpen, onClose, items, user }: MobileMenuProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="lg:hidden fixed inset-0 bg-black/50 z-[100000]"
+            className="md:hidden fixed inset-0 bg-black/20 z-[100000]"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -64,96 +64,63 @@ export function MobileMenu({ isOpen, onClose, items, user }: MobileMenuProps) {
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
-            className="lg:hidden fixed right-0 top-0 bottom-0 w-80 max-w-full bg-white z-[100001] overflow-y-auto shadow-2xl focus:outline-none"
+            transition={{ type: 'tween', duration: 0.25 }}
+            className="md:hidden fixed right-0 top-0 bottom-0 w-72 bg-white z-[100001] overflow-y-auto shadow-xl focus:outline-none"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
             tabIndex={-1}
           >
-            <div className="p-4 border-b border-gray-200 flex items-center justify-between">
-              <h2 id="mobile-menu-title" className="text-lg font-bold text-black">Menu</h2>
+            <div className="p-5 flex items-center justify-between">
+              <span className="font-semibold text-gray-900">Menu</span>
               <button
                 onClick={onClose}
-                className="p-2 text-black hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded"
+                className="p-2 text-gray-500 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100"
                 aria-label="Close menu"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Primary CTAs at top */}
-            <div className="p-4 border-b border-gray-200 space-y-3">
-              <Link
-                href="/apply"
-                onClick={onClose}
-                className="block w-full text-center px-4 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
-              >
-                Apply Now
-              </Link>
-              {user ? (
-                <Link
-                  href="/lms/dashboard"
-                  onClick={onClose}
-                  className="block w-full text-center px-4 py-3 border border-gray-300 text-black font-medium rounded-lg hover:bg-gray-50 transition"
-                >
-                  My Dashboard
-                </Link>
-              ) : (
-                <Link
-                  href="/login"
-                  onClick={onClose}
-                  className="block w-full text-center px-4 py-3 border border-gray-300 text-black font-medium rounded-lg hover:bg-gray-50 transition"
-                >
-                  Login
-                </Link>
-              )}
-            </div>
-
-            <nav className="px-4 py-6 space-y-4" aria-labelledby="mobile-menu-title">
-              {items.map((item) => {
-                const isActive = pathname === item.href;
-
-                if (item.children) {
+            <nav className="px-5 py-4" aria-label="Mobile navigation">
+              <div className="space-y-1">
+                {items.map((item) => {
+                  const isActive = pathname === item.href;
                   return (
-                    <div key={item.name} className="space-y-2">
-                      <div className="font-bold text-black text-lg" role="heading" aria-level={3}>
-                        {item.name}
-                      </div>
-                      {item.children.map((child) => {
-                        const childActive = pathname === child.href;
-                        return (
-                          <Link
-                            key={child.name}
-                            href={child.href}
-                            onClick={onClose}
-                            className={`block pl-4 py-2 transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded ${
-                              childActive ? 'text-blue-600 font-semibold' : 'text-black hover:text-blue-600'
-                            }`}
-                            aria-current={childActive ? 'page' : undefined}
-                          >
-                            {child.name}
-                          </Link>
-                        );
-                      })}
-                    </div>
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={onClose}
+                      className={`block py-3 text-base font-medium transition-colors ${
+                        isActive ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                      aria-current={isActive ? 'page' : undefined}
+                    >
+                      {item.name}
+                    </Link>
                   );
-                }
+                })}
+              </div>
 
-                return (
+              <div className="mt-8 pt-6 border-t border-gray-100">
+                {user ? (
                   <Link
-                    key={item.name}
-                    href={item.href}
+                    href="/lms/dashboard"
                     onClick={onClose}
-                    className={`block py-2 text-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded ${
-                      isActive ? 'text-blue-600' : 'text-black hover:text-blue-600'
-                    }`}
-                    aria-current={isActive ? 'page' : undefined}
+                    className="block w-full text-center px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors"
                   >
-                    {item.name}
+                    Dashboard
                   </Link>
-                );
-              })}
+                ) : (
+                  <Link
+                    href="/apply"
+                    onClick={onClose}
+                    className="block w-full text-center px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors"
+                  >
+                    Get Started
+                  </Link>
+                )}
+              </div>
             </nav>
           </motion.div>
         </>

@@ -186,7 +186,7 @@ d="M5 13l4 4L19 7" />
                     value={title}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setTitle(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    Content="Brief summary of your feedback"
+                    placeholder="Brief summary of your feedback"
                     required
                   />
                 </div>
@@ -201,7 +201,7 @@ d="M5 13l4 4L19 7" />
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setDescription(e.target.value)}
                     rows={5}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    Content="Provide as much detail as possible..."
+                    placeholder="Provide as much detail as possible..."
                     required
                   />
                 </div>

@@ -92,7 +92,7 @@ export default async function StudentPortalPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-8">
+      <div className="bg-blue-900 text-white py-8">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div>

@@ -77,7 +77,7 @@ export default function ContentLibrary() {
         <div className="flex-1">
           <input
             type="text"
-            Content="Search content..."
+            placeholder="Search content..."
             value={searchTerm}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setSearchTerm(e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"

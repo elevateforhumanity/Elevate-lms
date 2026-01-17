@@ -163,7 +163,7 @@ export default function AICareerCounseling() {
                     value={inputMessage}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setInputMessage(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                    Content="Type your message..."
+                    placeholder="Type your message..."
                     className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
                   />
                   <Button onClick={handleSendMessage}>Send</Button>

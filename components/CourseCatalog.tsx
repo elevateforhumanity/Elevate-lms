@@ -151,7 +151,7 @@ export function CourseCatalog() {
             <div className="lg:col-span-2">
               <input
                 type="text"
-                Content="Search courses..."
+                placeholder="Search courses..."
                 value={searchQuery}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setSearchQuery(e.target.value)}
                 className="w-full px-4 py-2 border rounded-lg"

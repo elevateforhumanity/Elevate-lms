@@ -190,7 +190,7 @@ d="M6 18L18 6M6 6l12 12" />
                 type="text"
                 value={input}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setInput(e.target.value)}
-                Content="Type your message..."
+                placeholder="Type your message..."
                 className="flex-1 rounded-xl border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 disabled={isLoading}
               />

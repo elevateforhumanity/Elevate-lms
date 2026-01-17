@@ -100,7 +100,7 @@ export function ApplicationForm() {
                 <Input
                   value={formData.firstName}
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData({...formData, firstName: e.target.value})}
-                  Content="John"
+                  placeholder="John"
                 />
               </div>
               <div>
@@ -110,7 +110,7 @@ export function ApplicationForm() {
                 <Input
                   value={formData.lastName}
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData({...formData, lastName: e.target.value})}
-                  Content="Doe"
+                  placeholder="Doe"
                 />
               </div>
               <div>
@@ -160,7 +160,7 @@ export function ApplicationForm() {
                 <Input
                   value={formData.address}
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData({...formData, address: e.target.value})}
-                  Content="123 Main St"
+                  placeholder="123 Main St"
                 />
               </div>
               <div className="grid md:grid-cols-3 gap-6">
@@ -171,7 +171,7 @@ export function ApplicationForm() {
                   <Input
                     value={formData.city}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData({...formData, city: e.target.value})}
-                    Content="Indianapolis"
+                    placeholder="Indianapolis"
                   />
                 </div>
                 <div>
@@ -181,7 +181,7 @@ export function ApplicationForm() {
                   <Input
                     value={formData.state}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData({...formData, state: e.target.value})}
-                    Content="WI"
+                    placeholder="WI"
                   />
                 </div>
                 <div>
@@ -191,7 +191,7 @@ export function ApplicationForm() {
                   <Input
                     value={formData.zip}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData({...formData, zip: e.target.value})}
-                    Content="53202"
+                    placeholder="53202"
                   />
                 </div>
               </div>
@@ -273,7 +273,7 @@ export function ApplicationForm() {
                 min="1"
                 value={formData.householdSize}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData({...formData, householdSize: e.target.value})}
-                Content="Number of people in household"
+                placeholder="Number of people in household"
               />
             </div>
           </div>

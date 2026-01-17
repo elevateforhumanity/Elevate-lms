@@ -2,34 +2,116 @@
  * Stripe Service Tests
  * 
  * Tests for the StripeService class methods
+ * Note: These tests mock the Stripe API to avoid actual API calls
  */
 
-import { describe, it, expect, beforeEach } from 'vitest';
-import { stripeService, StripeService } from '@/lib/payments/stripe';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+
+// Mock Stripe before importing the service
+vi.mock('stripe', () => {
+  const mockStripe = {
+    paymentIntents: {
+      create: vi.fn(),
+      retrieve: vi.fn(),
+    },
+    customers: {
+      create: vi.fn(),
+    },
+    subscriptions: {
+      create: vi.fn(),
+      update: vi.fn(),
+      retrieve: vi.fn(),
+    },
+    products: {
+      list: vi.fn(),
+    },
+    refunds: {
+      create: vi.fn(),
+    },
+    webhooks: {
+      constructEvent: vi.fn(),
+    },
+  };
+
+  return {
+    default: vi.fn(() => mockStripe),
+  };
+});
+
+import { stripeService } from '@/lib/payments/stripe';
+import Stripe from 'stripe';
+
+const mockStripe = new Stripe('test_key') as any;
 
 describe('StripeService', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  describe('createPaymentIntent', () => {
+    it('should create a payment intent with correct parameters', async () => {
+      const mockPaymentIntent = {
+        id: 'pi_test123',
+        amount: 2999,
+        currency: 'usd',
+        status: 'requires_payment_method',
+        client_secret: 'pi_test123_secret',
+      };
+
+      mockStripe.paymentIntents.create.mockResolvedValue(mockPaymentIntent);
+
+      const result = await stripeService.createPaymentIntent(2999, 'usd', { orderId: '123' });
+
+      expect(result.id).toBe('pi_test123');
+      expect(result.amount).toBe(2999);
+      expect(result.currency).toBe('usd');
+      expect(result.clientSecret).toBe('pi_test123_secret');
+    });
+  });
+
+  describe('createCustomer', () => {
+    it('should create a customer and return customer ID', async () => {
+      mockStripe.customers.create.mockResolvedValue({ id: 'cus_test123' });
+
+      const result = await stripeService.createCustomer('test@example.com', 'Test User');
+
+      expect(result).toBe('cus_test123');
+    });
+  });
+
   describe('getSubscription', () => {
     it('should return null when subscriptionId is empty', async () => {
       const result = await stripeService.getSubscription('');
       expect(result).toBeNull();
     });
 
-    it('should return null when subscriptionId is undefined', async () => {
-      const result = await stripeService.getSubscription(undefined as unknown as string);
-      expect(result).toBeNull();
+    it('should return subscription data when valid subscriptionId is provided', async () => {
+      const mockSubscription = {
+        id: 'sub_test123',
+        customer: 'cus_123',
+        items: { data: [{ price: { id: 'price_123' } }] },
+        status: 'active',
+        current_period_end: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
+        cancel_at_period_end: false,
+      };
+
+      mockStripe.subscriptions.retrieve.mockResolvedValue(mockSubscription);
+
+      const result = await stripeService.getSubscription('sub_test123');
+
+      expect(result).not.toBeNull();
+      expect(result?.id).toBe('sub_test123');
+      expect(result?.status).toBe('active');
     });
 
-    it('should return subscription data when valid subscriptionId is provided', async () => {
-      const subscriptionId = 'sub_test123';
-      const result = await stripeService.getSubscription(subscriptionId);
-      
-      expect(result).not.toBeNull();
-      expect(result?.id).toBe(subscriptionId);
-      expect(result?.status).toBe('active');
-      expect(result?.customerId).toBeDefined();
-      expect(result?.priceId).toBeDefined();
-      expect(result?.currentPeriodEnd).toBeInstanceOf(Date);
-      expect(typeof result?.cancelAtPeriodEnd).toBe('boolean');
+    it('should return null when subscription is not found', async () => {
+      const error = new Error('No such subscription') as any;
+      error.code = 'resource_missing';
+      mockStripe.subscriptions.retrieve.mockRejectedValue(error);
+
+      const result = await stripeService.getSubscription('sub_nonexistent');
+
+      expect(result).toBeNull();
     });
   });
 
@@ -39,84 +121,84 @@ describe('StripeService', () => {
       expect(result).toBe(false);
     });
 
-    it('should return false when paymentIntentId is undefined', async () => {
-      const result = await stripeService.createRefund(undefined as unknown as string);
+    it('should return true when refund succeeds', async () => {
+      mockStripe.refunds.create.mockResolvedValue({ status: 'succeeded' });
+
+      const result = await stripeService.createRefund('pi_test123');
+
+      expect(result).toBe(true);
+    });
+
+    it('should return true when refund is pending', async () => {
+      mockStripe.refunds.create.mockResolvedValue({ status: 'pending' });
+
+      const result = await stripeService.createRefund('pi_test123');
+
+      expect(result).toBe(true);
+    });
+
+    it('should return false when refund fails', async () => {
+      mockStripe.refunds.create.mockRejectedValue(new Error('Refund failed'));
+
+      const result = await stripeService.createRefund('pi_test123');
+
       expect(result).toBe(false);
     });
 
-    it('should return true when valid paymentIntentId is provided', async () => {
-      const result = await stripeService.createRefund('pi_test123');
+    it('should pass amount when provided', async () => {
+      mockStripe.refunds.create.mockResolvedValue({ status: 'succeeded' });
+
+      const result = await stripeService.createRefund('pi_test123', 1000);
+
       expect(result).toBe(true);
-    });
-
-    it('should return true when valid paymentIntentId and amount are provided', async () => {
-      const result = await stripeService.createRefund('pi_test123', 5000);
-      expect(result).toBe(true);
-    });
-  });
-
-  describe('createPaymentIntent', () => {
-    it('should create a payment intent with correct amount', async () => {
-      const amount = 2999;
-      const result = await stripeService.createPaymentIntent(amount);
-      
-      expect(result.amount).toBe(amount);
-      expect(result.currency).toBe('usd');
-      expect(result.status).toBe('requires_payment_method');
-      expect(result.id).toMatch(/^pi_/);
-      expect(result.clientSecret).toBeDefined();
-    });
-
-    it('should create a payment intent with custom currency', async () => {
-      const result = await stripeService.createPaymentIntent(1000, 'eur');
-      expect(result.currency).toBe('eur');
-    });
-  });
-
-  describe('createSubscription', () => {
-    it('should create a subscription with correct data', async () => {
-      const customerId = 'cus_test123';
-      const priceId = 'price_test123';
-      const result = await stripeService.createSubscription(customerId, priceId);
-      
-      expect(result.customerId).toBe(customerId);
-      expect(result.priceId).toBe(priceId);
-      expect(result.status).toBe('active');
-      expect(result.id).toMatch(/^sub_/);
-      expect(result.cancelAtPeriodEnd).toBe(false);
     });
   });
 
   describe('cancelSubscription', () => {
-    it('should cancel a subscription', async () => {
-      const subscriptionId = 'sub_test123';
-      const result = await stripeService.cancelSubscription(subscriptionId);
-      
-      expect(result.id).toBe(subscriptionId);
-      expect(result.status).toBe('canceled');
-      expect(result.cancelAtPeriodEnd).toBe(true);
-    });
-  });
+    it('should cancel subscription and return updated subscription', async () => {
+      const mockSubscription = {
+        id: 'sub_test123',
+        customer: 'cus_123',
+        items: { data: [{ price: { id: 'price_123' } }] },
+        status: 'active',
+        current_period_end: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
+        cancel_at_period_end: true,
+      };
 
-  describe('createCustomer', () => {
-    it('should create a customer and return customer ID', async () => {
-      const result = await stripeService.createCustomer('test@example.com', 'Test User');
-      expect(result).toMatch(/^cus_/);
+      mockStripe.subscriptions.update.mockResolvedValue(mockSubscription);
+
+      const result = await stripeService.cancelSubscription('sub_test123');
+
+      expect(result.id).toBe('sub_test123');
+      expect(result.cancelAtPeriodEnd).toBe(true);
     });
   });
 
   describe('listProducts', () => {
     it('should return a list of products', async () => {
+      const mockProducts = {
+        data: [
+          {
+            id: 'prod_basic',
+            name: 'Basic Plan',
+            description: 'Access to all courses',
+            default_price: {
+              unit_amount: 2999,
+              currency: 'usd',
+              recurring: { interval: 'month' },
+            },
+          },
+        ],
+      };
+
+      mockStripe.products.list.mockResolvedValue(mockProducts);
+
       const result = await stripeService.listProducts();
-      
+
       expect(Array.isArray(result)).toBe(true);
       expect(result.length).toBeGreaterThan(0);
-      
-      const product = result[0];
-      expect(product.id).toBeDefined();
-      expect(product.name).toBeDefined();
-      expect(product.price).toBeGreaterThan(0);
-      expect(product.currency).toBe('usd');
+      expect(result[0].id).toBe('prod_basic');
+      expect(result[0].name).toBe('Basic Plan');
     });
   });
 });

@@ -80,7 +80,7 @@ export function QuizBuilder() {
                     type="text"
                     value={quizTitle}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setQuizTitle(e.target.value)}
-                    Content="e.g., JavaScript Fundamentals Quiz"
+                    placeholder="e.g., JavaScript Fundamentals Quiz"
                     className="w-full px-4 py-2 border rounded-lg"
                   />
                 </div>
@@ -109,7 +109,7 @@ export function QuizBuilder() {
                   <textarea
                     value={currentQuestion.question}
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setCurrentQuestion({ ...currentQuestion, question: e.target.value })}
-                    Content="Enter your question..."
+                    placeholder="Enter your question..."
                     className="w-full px-4 py-2 border rounded-lg h-24"
                   />
                 </div>
@@ -130,7 +130,7 @@ export function QuizBuilder() {
                             type="text"
                             value={option}
                             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => updateOption(index, e.target.value)}
-                            Content={`Option ${index + 1}`}
+                            placeholder={`Option ${index + 1}`}
                             className="flex-1 px-4 py-2 border rounded-lg"
                           />
                         </div>

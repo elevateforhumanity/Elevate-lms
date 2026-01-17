@@ -133,21 +133,21 @@ export default function CookieConsent() {
             <div className="flex items-center gap-3 flex-shrink-0">
               <button
                 onClick={handleReject}
-                className="px-4 py-2 text-sm font-medium text-black bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded transition-colors"
                 aria-label="Reject all cookies"
               >
-                Reject All
+                Reject
               </button>
               <button
                 onClick={handleAccept}
-                className="px-6 py-2 text-sm font-medium text-white bg-brand-orange-600 hover:bg-brand-orange-700 rounded-lg transition-colors shadow-sm"
+                className="px-5 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 rounded transition-colors"
                 aria-label="Accept all cookies"
               >
-                Accept All
+                Accept
               </button>
               <button
                 onClick={handleClose}
-                className="p-2 text-gray-400 hover:text-black transition-colors"
+                className="p-2 text-gray-400 hover:text-gray-900 transition-colors"
                 aria-label="Close cookie consent banner"
               >
                 <X className="w-5 h-5" />

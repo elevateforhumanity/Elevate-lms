@@ -15,7 +15,7 @@ export function SearchBar() {
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
         <input
           type="text"
-          Content="Search courses, programs..."
+          placeholder="Search courses, programs..."
           value={query}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setQuery(e.target.value)}
           onFocus={() => setIsOpen(true)}

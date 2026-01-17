@@ -1,4 +1,10 @@
-// Stripe payment integration
+import Stripe from 'stripe';
+
+// Initialize Stripe with secret key
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+  apiVersion: '2024-06-20',
+});
+
 export interface PaymentIntent {
   id: string;
   amount: number;
@@ -6,6 +12,7 @@ export interface PaymentIntent {
   status: 'succeeded' | 'processing' | 'requires_payment_method' | 'canceled';
   clientSecret: string;
 }
+
 export interface Subscription {
   id: string;
   customerId: string;
@@ -14,6 +21,7 @@ export interface Subscription {
   currentPeriodEnd: Date;
   cancelAtPeriodEnd: boolean;
 }
+
 export interface Product {
   id: string;
   name: string;
@@ -22,164 +30,273 @@ export interface Product {
   currency: string;
   interval?: 'month' | 'year';
 }
+
 export class StripeService {
   private static instance: StripeService;
-  private apiKey: string;
-  private constructor() {
-    this.apiKey = process.env.STRIPE_SECRET_KEY || '';
-  }
+
+  private constructor() {}
+
   static getInstance(): StripeService {
     if (!StripeService.instance) {
       StripeService.instance = new StripeService();
     }
     return StripeService.instance;
   }
+
   // Create payment intent
   async createPaymentIntent(
     amount: number,
     currency: string = 'usd',
     metadata?: Record<string, string>
   ): Promise<PaymentIntent> {
-    // In production, call Stripe API
-    //
-    // Mock response
-    return {
-      id: `pi_${Date.now()}`,
-      amount,
-      currency,
-      status: 'requires_payment_method',
-      clientSecret: `pi_${Date.now()}_secret_${Math.random()}`,
-    };
+    try {
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount,
+        currency,
+        metadata,
+        automatic_payment_methods: {
+          enabled: true,
+        },
+      });
+
+      return {
+        id: paymentIntent.id,
+        amount: paymentIntent.amount,
+        currency: paymentIntent.currency,
+        status: paymentIntent.status as PaymentIntent['status'],
+        clientSecret: paymentIntent.client_secret || '',
+      };
+    } catch (error) {
+      console.error('Error creating payment intent:', error);
+      throw error;
+    }
   }
+
   // Confirm payment
   async confirmPayment(paymentIntentId: string): Promise<PaymentIntent> {
-    //
-    // Mock response
-    return {
-      id: paymentIntentId,
-      amount: 0,
-      currency: 'usd',
-      status: 'succeeded',
-      clientSecret: '',
-    };
+    try {
+      const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+
+      return {
+        id: paymentIntent.id,
+        amount: paymentIntent.amount,
+        currency: paymentIntent.currency,
+        status: paymentIntent.status as PaymentIntent['status'],
+        clientSecret: paymentIntent.client_secret || '',
+      };
+    } catch (error) {
+      console.error('Error confirming payment:', error);
+      throw error;
+    }
   }
+
   // Create customer
   async createCustomer(email: string, name: string): Promise<string> {
-    //
-    // Mock response
-    return `cus_${Date.now()}`;
+    try {
+      const customer = await stripe.customers.create({
+        email,
+        name,
+      });
+
+      return customer.id;
+    } catch (error) {
+      console.error('Error creating customer:', error);
+      throw error;
+    }
   }
+
   // Create subscription
   async createSubscription(
     customerId: string,
     priceId: string
   ): Promise<Subscription> {
-    //
-    // Mock response
-    return {
-      id: `sub_${Date.now()}`,
-      customerId,
-      priceId,
-      status: 'active',
-      currentPeriodEnd: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-      cancelAtPeriodEnd: false,
-    };
+    try {
+      const subscription = await stripe.subscriptions.create({
+        customer: customerId,
+        items: [{ price: priceId }],
+        payment_behavior: 'default_incomplete',
+        expand: ['latest_invoice.payment_intent'],
+      });
+
+      return {
+        id: subscription.id,
+        customerId: subscription.customer as string,
+        priceId: subscription.items.data[0].price.id,
+        status: subscription.status as Subscription['status'],
+        currentPeriodEnd: new Date(subscription.current_period_end * 1000),
+        cancelAtPeriodEnd: subscription.cancel_at_period_end,
+      };
+    } catch (error) {
+      console.error('Error creating subscription:', error);
+      throw error;
+    }
   }
+
   // Cancel subscription
   async cancelSubscription(subscriptionId: string): Promise<Subscription> {
-    //
-    // Mock response
-    return {
-      id: subscriptionId,
-      customerId: '',
-      priceId: '',
-      status: 'canceled',
-      currentPeriodEnd: new Date(),
-      cancelAtPeriodEnd: true,
-    };
+    try {
+      const subscription = await stripe.subscriptions.update(subscriptionId, {
+        cancel_at_period_end: true,
+      });
+
+      return {
+        id: subscription.id,
+        customerId: subscription.customer as string,
+        priceId: subscription.items.data[0].price.id,
+        status: subscription.status as Subscription['status'],
+        currentPeriodEnd: new Date(subscription.current_period_end * 1000),
+        cancelAtPeriodEnd: subscription.cancel_at_period_end,
+      };
+    } catch (error) {
+      console.error('Error canceling subscription:', error);
+      throw error;
+    }
   }
+
   // Get subscription
   async getSubscription(subscriptionId: string): Promise<Subscription | null> {
-    // In production, call Stripe API to fetch subscription
-    // For now, return mock data if subscriptionId is provided
     if (!subscriptionId) {
       return null;
     }
-    // Mock response for development/testing
-    return {
-      id: subscriptionId,
-      customerId: 'cus_123',
-      priceId: 'price_123',
-      status: 'active',
-      currentPeriodEnd: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-      cancelAtPeriodEnd: false,
-    };
+
+    try {
+      const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+
+      return {
+        id: subscription.id,
+        customerId: subscription.customer as string,
+        priceId: subscription.items.data[0].price.id,
+        status: subscription.status as Subscription['status'],
+        currentPeriodEnd: new Date(subscription.current_period_end * 1000),
+        cancelAtPeriodEnd: subscription.cancel_at_period_end,
+      };
+    } catch (error: any) {
+      if (error.code === 'resource_missing') {
+        return null;
+      }
+      console.error('Error getting subscription:', error);
+      throw error;
+    }
   }
+
   // List products
   async listProducts(): Promise<Product[]> {
-    // Mock products
-    return [
-      {
-        id: 'prod_basic',
-        name: 'Basic Plan',
-        description: 'Access to all courses',
-        price: 2999,
-        currency: 'usd',
-        interval: 'month',
-      },
-      {
-        id: 'prod_pro',
-        name: 'Pro Plan',
-        description: 'All courses + 1-on-1 mentoring',
-        price: 4999,
-        currency: 'usd',
-        interval: 'month',
-      },
-      {
-        id: 'prod_enterprise',
-        name: 'Enterprise Plan',
-        description: 'Custom solutions for organizations',
-        price: 9999,
-        currency: 'usd',
-        interval: 'month',
-      },
-    ];
+    try {
+      const products = await stripe.products.list({
+        active: true,
+        expand: ['data.default_price'],
+      });
+
+      return products.data.map((product) => {
+        const price = product.default_price as Stripe.Price;
+        return {
+          id: product.id,
+          name: product.name,
+          description: product.description || '',
+          price: price?.unit_amount || 0,
+          currency: price?.currency || 'usd',
+          interval: price?.recurring?.interval as 'month' | 'year' | undefined,
+        };
+      });
+    } catch (error) {
+      console.error('Error listing products:', error);
+      throw error;
+    }
   }
+
   // Process refund
   async createRefund(
     paymentIntentId: string,
     amount?: number
   ): Promise<boolean> {
-    // In production, call Stripe API to process refund
-    // For now, validate input and return mock success
     if (!paymentIntentId) {
       return false;
     }
-    // Mock successful refund for development/testing
-    return true;
+
+    try {
+      const refundParams: Stripe.RefundCreateParams = {
+        payment_intent: paymentIntentId,
+      };
+
+      if (amount) {
+        refundParams.amount = amount;
+      }
+
+      const refund = await stripe.refunds.create(refundParams);
+
+      return refund.status === 'succeeded' || refund.status === 'pending';
+    } catch (error) {
+      console.error('Error creating refund:', error);
+      return false;
+    }
   }
+
   // Webhook handler
   async handleWebhook(payload: string, signature: string): Promise<void> {
-    // Verify webhook signature
-    //
-    // Process webhook events
-    const event = JSON.parse(payload);
-    switch (event.type) {
-      case 'payment_intent.succeeded':
-        //
-        break;
-      case 'payment_intent.payment_failed':
-        //
-        break;
-      case 'customer.subscription.created':
-        //
-        break;
-      case 'customer.subscription.deleted':
-        //
-        break;
-      default:
-      //
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+    if (!webhookSecret) {
+      throw new Error('Stripe webhook secret not configured');
+    }
+
+    try {
+      const event = stripe.webhooks.constructEvent(
+        payload,
+        signature,
+        webhookSecret
+      );
+
+      switch (event.type) {
+        case 'payment_intent.succeeded':
+          const paymentIntent = event.data.object as Stripe.PaymentIntent;
+          console.log('Payment succeeded:', paymentIntent.id);
+          // Handle successful payment (e.g., update order status, send confirmation email)
+          break;
+
+        case 'payment_intent.payment_failed':
+          const failedPayment = event.data.object as Stripe.PaymentIntent;
+          console.log('Payment failed:', failedPayment.id);
+          // Handle failed payment (e.g., notify user, update order status)
+          break;
+
+        case 'customer.subscription.created':
+          const newSubscription = event.data.object as Stripe.Subscription;
+          console.log('Subscription created:', newSubscription.id);
+          // Handle new subscription (e.g., grant access, send welcome email)
+          break;
+
+        case 'customer.subscription.updated':
+          const updatedSubscription = event.data.object as Stripe.Subscription;
+          console.log('Subscription updated:', updatedSubscription.id);
+          // Handle subscription update (e.g., update user access level)
+          break;
+
+        case 'customer.subscription.deleted':
+          const deletedSubscription = event.data.object as Stripe.Subscription;
+          console.log('Subscription deleted:', deletedSubscription.id);
+          // Handle subscription cancellation (e.g., revoke access, send cancellation email)
+          break;
+
+        case 'invoice.paid':
+          const paidInvoice = event.data.object as Stripe.Invoice;
+          console.log('Invoice paid:', paidInvoice.id);
+          // Handle paid invoice (e.g., extend subscription, send receipt)
+          break;
+
+        case 'invoice.payment_failed':
+          const failedInvoice = event.data.object as Stripe.Invoice;
+          console.log('Invoice payment failed:', failedInvoice.id);
+          // Handle failed invoice payment (e.g., notify user, retry payment)
+          break;
+
+        default:
+          console.log('Unhandled event type:', event.type);
+      }
+    } catch (error) {
+      console.error('Webhook error:', error);
+      throw error;
     }
   }
 }
+
 export const stripeService = StripeService.getInstance();

@@ -91,7 +91,7 @@ export function AnnouncementsSystem({
                 value={newAnnouncement.title}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNewAnnouncement({ ...newAnnouncement, title: e.target.value })}
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                Content="Announcement title..."
+                placeholder="Announcement title..."
               />
             </div>
 
@@ -104,7 +104,7 @@ export function AnnouncementsSystem({
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNewAnnouncement({ ...newAnnouncement, content: e.target.value })}
                 rows={6}
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                Content="Write your announcement..."
+                placeholder="Write your announcement..."
               />
             </div>
 

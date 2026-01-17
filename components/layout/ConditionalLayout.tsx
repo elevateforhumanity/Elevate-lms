@@ -8,19 +8,39 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
+  // Routes that should NOT show the marketing header/footer
+  const hideMarketingLayout = 
+    pathname?.startsWith('/lms/') ||
+    pathname?.startsWith('/student/') ||
+    pathname?.startsWith('/admin/') ||
+    pathname?.startsWith('/login') ||
+    pathname?.startsWith('/signup') ||
+    pathname?.startsWith('/auth/');
+
+  if (hideMarketingLayout) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <a href="#main-content" className="skip-to-main">
+          Skip to main content
+        </a>
+        <main id="main-content" className="flex-1" role="main" tabIndex={-1}>
+          {children}
+        </main>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen flex flex-col [--header-h:72px]">
+    <div className="min-h-screen flex flex-col">
       <a href="#main-content" className="skip-to-main">
         Skip to main content
       </a>
       
-      <header className="fixed inset-x-0 top-0 z-[99999] h-[var(--header-h)] bg-white shadow-sm" role="banner">
-        <SiteHeader />
-      </header>
+      <SiteHeader />
 
       <main
         id="main-content"
-        className="pt-[var(--header-h)] flex-1"
+        className="flex-1"
         role="main"
         tabIndex={-1}
       >

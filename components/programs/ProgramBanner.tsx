@@ -118,7 +118,7 @@ function WorkOneChecklist() {
               onChange={(e) =>
                 save({ ...state, appointmentDate: e.target.value })
               }
-              Content="MM/DD/YYYY @ time"
+              placeholder="MM/DD/YYYY @ time"
               className="mt-1 w-full rounded-xl border px-3 py-2 text-sm"
             />
           </label>

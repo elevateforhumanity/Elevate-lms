@@ -1,8 +1,6 @@
-// @ts-nocheck
 "use client";
 
-import React from 'react';
-
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -15,12 +13,25 @@ import {
   Menu,
   X,
   Search,
+  LogOut,
+  Calendar,
+  MessageSquare,
+  Settings,
 } from 'lucide-react';
-import { useState } from 'react';
 
 interface LMSNavigationProps {
-  user: any;
-  profile: any;
+  user: {
+    id: string;
+    email: string;
+  } | null;
+  profile: {
+    id: string;
+    full_name?: string;
+    first_name?: string;
+    last_name?: string;
+    avatar_url?: string;
+    role?: string;
+  } | null;
 }
 
 export function LMSNavigation({ user, profile }: LMSNavigationProps) {
@@ -31,90 +42,124 @@ export function LMSNavigation({ user, profile }: LMSNavigationProps) {
   const navItems = [
     { href: '/lms/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/lms/courses', label: 'My Courses', icon: BookOpen },
+    { href: '/lms/schedule', label: 'Schedule', icon: Calendar },
+    { href: '/lms/messages', label: 'Messages', icon: MessageSquare },
     { href: '/lms/certificates', label: 'Certificates', icon: Award },
-    { href: '/lms/profile', label: 'Profile', icon: User },
   ];
 
   const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(href + '/');
+    pathname === href || pathname?.startsWith(href + '/');
+
+  const userInitials = profile?.first_name && profile?.last_name
+    ? `${profile.first_name[0]}${profile.last_name[0]}`
+    : profile?.full_name
+      ? profile.full_name.split(' ').map(n => n[0]).join('').slice(0, 2)
+      : 'U';
+
+  const userName = profile?.full_name || 
+    (profile?.first_name && profile?.last_name 
+      ? `${profile.first_name} ${profile.last_name}` 
+      : 'Student');
 
   return (
-    <nav role="navigation" aria-label="Main navigation" className="bg-gradient-to-r from-green-600 to-blue-600 border-b-4 border-green-700 sticky top-0 z-50 shadow-lg">
+    <nav role="navigation" aria-label="LMS navigation" className="bg-blue-900 sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/lms/dashboard" aria-label="Elevate for Humanity Learning Portal" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg p-1">
+          <Link 
+            href="/lms/dashboard" 
+            aria-label="Learning Portal Home" 
+            className="flex items-center gap-3 group"
+          >
+            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform p-1">
               <Image
                 src="/logo.png"
                 alt="Elevate for Humanity"
-                width={36}
-                height={36}
+                width={32}
+                height={32}
                 className="w-full h-full object-contain"
               />
             </div>
-            <span className="font-black text-xl text-white hidden md:block uppercase tracking-tight">
+            <span className="font-bold text-lg text-white hidden sm:block">
               Learning Portal
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold transition-all ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
                     isActive(item.href)
-                      ? 'bg-white text-green-600 shadow-lg'
-                      : 'text-white hover:bg-white/20 hover:backdrop-blur-sm'
+                      ? 'bg-white text-blue-900'
+                      : 'text-white/90 hover:bg-white/10'
                   }`}
                 >
-                  <Icon className="w-5 h-5" />
-                  {item.label}
+                  <Icon className="w-4 h-4" />
+                  <span className="hidden xl:inline">{item.label}</span>
                 </Link>
               );
             })}
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             {/* Search */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="p-2 hover:bg-white/20 rounded-lg transition text-white"
+              className="p-2 hover:bg-white/10 rounded-lg transition text-white"
+              aria-label="Search"
             >
-              <Search className="w-5 h-5 text-black" />
+              <Search className="w-5 h-5" />
             </button>
 
             {/* Notifications */}
             <NotificationBell />
 
-            {/* User Menu */}
-            <div className="hidden md:flex items-center gap-3 pl-3 border-l border-slate-200">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                {profile?.first_name?.[0] || 'U'}
-                {profile?.last_name?.[0] || ''}
-              </div>
-              <div className="hidden lg:block">
-                <div className="text-sm font-semibold text-black">
-                  {profile?.first_name || 'User'} {profile?.last_name || ''}
+            {/* Settings - Desktop */}
+            <Link
+              href="/lms/settings"
+              className="hidden md:flex p-2 hover:bg-white/10 rounded-lg transition text-white"
+              aria-label="Settings"
+            >
+              <Settings className="w-5 h-5" />
+            </Link>
+
+            {/* User Menu - Desktop */}
+            <div className="hidden md:flex items-center gap-3 ml-2 pl-4 border-l border-white/20">
+              {profile?.avatar_url ? (
+                <Image
+                  src={profile.avatar_url}
+                  alt={userName}
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 rounded-full object-cover"
+                />
+              ) : (
+                <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  {userInitials}
                 </div>
-                <div className="text-xs text-slate-500">Student</div>
+              )}
+              <div className="hidden lg:block">
+                <div className="text-sm font-medium text-white">{userName}</div>
+                <div className="text-xs text-white/60">{profile?.role || 'Student'}</div>
               </div>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-slate-100 rounded-lg transition"
+              className="lg:hidden p-2 hover:bg-white/10 rounded-lg transition text-white"
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-black" />
+                <X className="w-6 h-6" />
               ) : (
-                <Menu className="w-6 h-6 text-black" />
+                <Menu className="w-6 h-6" />
               )}
             </button>
           </div>
@@ -122,13 +167,13 @@ export function LMSNavigation({ user, profile }: LMSNavigationProps) {
 
         {/* Search Bar */}
         {searchOpen && (
-          <div className="py-4 border-t border-slate-200">
+          <div className="py-4 border-t border-white/10">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
-                Content="Search courses, lessons, certificates..."
-                className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Search courses, lessons, certificates..."
+                className="w-full pl-10 pr-4 py-3 bg-white border-0 rounded-lg focus:ring-2 focus:ring-red-500"
                 autoFocus
               />
             </div>
@@ -137,7 +182,7 @@ export function LMSNavigation({ user, profile }: LMSNavigationProps) {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-200">
+          <div className="lg:hidden py-4 border-t border-white/10">
             <div className="space-y-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -146,10 +191,10 @@ export function LMSNavigation({ user, profile }: LMSNavigationProps) {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg font-semibold transition ${
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition ${
                       isActive(item.href)
-                        ? 'bg-blue-50 text-blue-600'
-                        : 'text-black hover:bg-slate-50'
+                        ? 'bg-white text-blue-900'
+                        : 'text-white hover:bg-white/10'
                     }`}
                   >
                     <Icon className="w-5 h-5" />
@@ -158,25 +203,54 @@ export function LMSNavigation({ user, profile }: LMSNavigationProps) {
                 );
               })}
             </div>
-            <div className="mt-4 pt-4 border-t border-slate-200">
+            
+            {/* Mobile User Section */}
+            <div className="mt-4 pt-4 border-t border-white/10">
               <div className="flex items-center gap-3 px-4 py-2">
-                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
-                  {profile?.first_name?.[0] || 'U'}
-                  {profile?.last_name?.[0] || ''}
-                </div>
-                <div>
-                  <div className="font-semibold text-black">
-                    {profile?.first_name || 'User'} {profile?.last_name || ''}
+                {profile?.avatar_url ? (
+                  <Image
+                    src={profile.avatar_url}
+                    alt={userName}
+                    width={40}
+                    height={40}
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                ) : (
+                  <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">
+                    {userInitials}
                   </div>
-                  <div className="text-sm text-slate-500">{user.email}</div>
+                )}
+                <div>
+                  <div className="font-medium text-white">{userName}</div>
+                  <div className="text-sm text-white/60">{user?.email}</div>
                 </div>
               </div>
-              <Link
-                href="/api/auth/signout"
-                className="block px-4 py-2 mt-2 text-brand-orange-600 hover:bg-red-50 rounded-lg font-semibold"
-              >
-                Sign Out
-              </Link>
+              
+              <div className="mt-2 space-y-1">
+                <Link
+                  href="/lms/profile"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-2 text-white hover:bg-white/10 rounded-lg"
+                >
+                  <User className="w-5 h-5" />
+                  Profile
+                </Link>
+                <Link
+                  href="/lms/settings"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-2 text-white hover:bg-white/10 rounded-lg"
+                >
+                  <Settings className="w-5 h-5" />
+                  Settings
+                </Link>
+                <Link
+                  href="/api/auth/signout"
+                  className="flex items-center gap-3 px-4 py-2 text-red-300 hover:bg-red-500/20 rounded-lg"
+                >
+                  <LogOut className="w-5 h-5" />
+                  Sign Out
+                </Link>
+              </div>
             </div>
           </div>
         )}

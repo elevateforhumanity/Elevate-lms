@@ -490,7 +490,7 @@ export default function ComprehensiveEnrollmentWizard({
                       type={showSSN ? 'text' : 'password'}
                       value={formData.ssn}
                       onChange={(e) => updateField('ssn', e.target.value)}
-                      Content="XXX-XX-XXXX"
+                      placeholder="XXX-XX-XXXX"
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                       required
                     />
@@ -555,7 +555,7 @@ export default function ComprehensiveEnrollmentWizard({
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => updateField('phone', e.target.value)}
-                    Content="(XXX) XXX-XXXX"
+                    placeholder="(XXX) XXX-XXXX"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     required
                   />
@@ -570,7 +570,7 @@ export default function ComprehensiveEnrollmentWizard({
                   type="tel"
                   value={formData.alternatePhone}
                   onChange={(e) => updateField('alternatePhone', e.target.value)}
-                  Content="(XXX) XXX-XXXX"
+                  placeholder="(XXX) XXX-XXXX"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
               </div>
@@ -642,7 +642,7 @@ export default function ComprehensiveEnrollmentWizard({
                     type="text"
                     value={formData.zip}
                     onChange={(e) => updateField('zip', e.target.value)}
-                    Content="XXXXX"
+                    placeholder="XXXXX"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     required
                   />

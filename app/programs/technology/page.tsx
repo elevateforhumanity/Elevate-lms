@@ -1,345 +1,170 @@
 import type { Metadata } from 'next';
-import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
-import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import VideoHeroBanner from '@/components/home/VideoHeroBanner';
-
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Technology & IT Programs | Free CompTIA, Google IT Training',
-  description:
-    'CompTIA A+, Network+, Google IT Support, and Cybersecurity training programs. 100% funded through WIOA and state grants. Launch your tech career today.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/technology',
-  },
+  title: 'Technology Programs | Elevate for Humanity',
+  description: 'CompTIA A+, Cybersecurity, Network+ training. Free for eligible Indiana residents.',
 };
 
-export default async function TechnologyPage() {
-  const supabase = await createClient();
-  
-  // Fetch technology programs
-  const { data: techPrograms } = await supabase
-    .from('programs')
-    .select('*')
-    .eq('category', 'technology');
+const programs = [
+  {
+    title: 'CompTIA A+ IT Support',
+    duration: '12 weeks',
+    description: 'Entry-level IT support and troubleshooting certification.',
+    href: '/programs/technology',
+  },
+  {
+    title: 'Cybersecurity Fundamentals',
+    duration: '10 weeks',
+    description: 'Security concepts, threat detection, and network protection.',
+    href: '/programs/technology',
+  },
+  {
+    title: 'Network+ Certification',
+    duration: '8 weeks',
+    description: 'Network infrastructure and administration skills.',
+    href: '/programs/technology',
+  },
+  {
+    title: 'Microsoft Office Specialist',
+    duration: '6 weeks',
+    description: 'Excel, Word, PowerPoint certification for office productivity.',
+    href: '/programs/technology',
+  },
+];
+
+export default function TechnologyPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <VideoHeroBanner
-        videoSrc="https://cms-artifacts.artlist.io/content/generated-video-v1/video__6/generated-video-740f3982-002e-4fb5-a11e-69b8470854f9.mp4?Expires=2083944637&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=YlhyEbsb3rAqk7QNsmr6QdFmh629vcNO7RzRbRTtx35-D03T9rzHOSBT5fkR4TJf4jOKiEJIkAKwE2cFpupODGpyn0w9ib89mnb0OHyI~Z~r3021-rrVATrLK-JoqhnIib~HKFpy~D5608xdLuXR37VGVBJ3RbxEi1AFCs-1lvuvhPIKDyTohIwcBJjiAr7KYQK6ltkIu3MshI23omu9KIZcxAB~-Tab-z4ojSWoahjO7S6XMsvXPtn6dmxEhpheXTlm3pYWY2Ox8avzq4dsJhI4Ot2w0J1OD39ou3PoQ~lq1akErQ54xAA6ZC9gD8XpbNFa7H4yF~rUzAQ0zxrxtg__"
-        headline="Technology & IT Programs"
-        subheadline="Launch Your Tech Career - IT Support, Networking & Cybersecurity"
-        primaryCTA={{ text: 'Apply Now', href: '/apply' }}
-        secondaryCTA={{ text: 'View All Programs', href: '/programs' }}
-      />
-
-      {/* At-a-Glance */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-8">At-a-Glance</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="flex items-start gap-4">
-              <Image src="/images/icons/clock.png" alt="Duration" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
-              <div>
-                <h3 className="font-bold text-black mb-1">Duration</h3>
-                <p className="text-black">8-16 weeks</p>
+    <>
+      {/* Hero */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="max-w-xl">
+              <Link href="/programs" className="text-sm text-gray-500 hover:text-gray-900 mb-4 inline-block">
+                ← Back to Programs
+              </Link>
+              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                Technology Programs
+              </h1>
+              <p className="text-xl text-gray-600 mb-8">
+                Launch your tech career. CompTIA, Microsoft, and Cybersecurity certifications.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/apply"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gray-900 text-white text-base font-medium rounded-full hover:bg-gray-800 transition-colors"
+                >
+                  Apply Now
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-gray-900 text-base font-medium rounded-full hover:border-gray-900 transition-colors"
+                >
+                  Contact Us
+                </Link>
               </div>
             </div>
-            <div className="flex items-start gap-4">
-              <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
-              <div>
-                <h3 className="font-bold text-black mb-1">Cost</h3>
-                <p className="text-black">Free with funding when eligible</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <Image src="/images/icons/shield.png" alt="Format" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
-              <div>
-                <h3 className="font-bold text-black mb-1">Format</h3>
-                <p className="text-black">Hybrid (online & hands-on labs)</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <Image src="/images/icons/award.png" alt="Outcome" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
-              <div>
-                <h3 className="font-bold text-black mb-1">Outcome</h3>
-                <p className="text-black">
-                  CompTIA A+, Network+, Google IT certification
-                </p>
-              </div>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/technology/hero-program-it-support.jpg"
+                alt="Technology training"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* About the Program */}
-      <section className="bg-gray-50 py-16">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-6">
-            About the Program
-          </h2>
-          <div className="bg-white rounded-xl p-8 shadow-sm">
-            <p className="text-black mb-4">
-              Our Technology & IT Support pathway equips you with core IT support, networking, and cybersecurity skills. Learn hands-on in a lab setting and prepare for industry-recognized certifications that employers value.
-            </p>
-            <p className="text-black">
-              From troubleshooting networks to setting up systems and supporting users, you'll gain real-world experience that prepares you for entry-level IT positions with growth potential.
-            </p>
+      {/* Quick Facts */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <p className="text-3xl font-bold text-gray-900">6-12</p>
+              <p className="text-gray-600">Weeks</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-gray-900">$0</p>
+              <p className="text-gray-600">Tuition (if eligible)</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-gray-900">$50K+</p>
+              <p className="text-gray-600">Avg. Starting Salary</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-gray-900">High</p>
+              <p className="text-gray-600">Job Demand</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Who This Program Is For */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-6">
-            Who This Program Is For
+      {/* Programs */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-12">
+            Available Programs
           </h2>
-          <div className="bg-gray-50 rounded-xl p-8 shadow-sm">
-            <ul className="space-y-4 list-disc list-inside">
-              <li className="text-black">
-                Career changers interested in technology
-              </li>
-              <li className="text-black">
-                No prior IT experience required
-              </li>
-              <li className="text-black">
-                Tech-curious individuals ready to learn
-              </li>
-              <li className="text-black">
-                Justice-impacted individuals welcome
-              </li>
+          <div className="grid md:grid-cols-2 gap-6">
+            {programs.map((program) => (
+              <Link
+                key={program.title}
+                href={program.href}
+                className="group p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors"
+              >
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="text-xl font-semibold text-gray-900 group-hover:underline">
+                    {program.title}
+                  </h3>
+                  <span className="text-sm text-gray-500">{program.duration}</span>
+                </div>
+                <p className="text-gray-600">{program.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What You'll Learn */}
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">
+              What you'll learn
+            </h2>
+            <ul className="space-y-4 text-lg text-gray-600">
+              <li>Hardware and software troubleshooting</li>
+              <li>Network configuration and administration</li>
+              <li>Cybersecurity fundamentals and best practices</li>
+              <li>Operating systems (Windows, Linux, macOS)</li>
+              <li>Cloud computing basics</li>
+              <li>Industry certification exam preparation</li>
             </ul>
           </div>
         </div>
       </section>
 
-      {/* Benefits Grid */}
-      <section className="bg-gray-50 py-16">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-8">
-            Program Benefits
+      {/* CTA */}
+      <section className="py-20 lg:py-28 bg-gray-900">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+            Start your tech career
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-4xl mb-4">💻</div>
-              <h3 className="font-bold text-black mb-2">Real-World Skills</h3>
-              <p className="text-black text-sm">
-                Troubleshoot networks, set up systems, and support users in live lab environments
-              </p>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-4xl mb-4">🎓</div>
-              <h3 className="font-bold text-black mb-2">Industry Certifications</h3>
-              <p className="text-black text-sm">
-                Prepare for CompTIA A+, Network+, and Google IT Support credentials
-              </p>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-4xl mb-4">💰</div>
-              <h3 className="font-bold text-black mb-2">Funded Training</h3>
-              <p className="text-black text-sm">
-                Training fully covered for eligible Indiana residents via WIOA grants
-              </p>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-4xl mb-4">🎖</div>
-              <h3 className="font-bold text-black mb-2">Veteran Eligible</h3>
-              <p className="text-black text-sm">
-                VA education benefits accepted for qualified veterans
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Funding Options */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-6">
-            Funding Options
-          </h2>
-          <p className="text-black mb-6">You may qualify for:</p>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">WIOA</h3>
-              <p className="text-black text-sm">
-                Workforce Innovation and Opportunity Act funding
-              </p>
-            </div>
-            <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">WRG</h3>
-              <p className="text-black text-sm">Workforce Ready Grant</p>
-            </div>
-            <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">JRI</h3>
-              <p className="text-black text-sm">
-                Justice Reinvestment Initiative
-              </p>
-            </div>
-            <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">
-                Employer Sponsorship
-              </h3>
-              <p className="text-black text-sm">
-                Some employers sponsor IT training
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Support Services */}
-      <section className="bg-gray-50 py-16">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-6">
-            Support Services
-          </h2>
-          <p className="text-black mb-6">We help coordinate:</p>
-          <div className="bg-white rounded-xl p-8 shadow-sm">
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-black">Case management</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-black">
-                  Career counseling and job placement
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-black">Transportation resources</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-black">Equipment and tools assistance</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-black">Documentation support</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Career Outcomes */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-6">
-            Career Outcomes
-          </h2>
-          <p className="text-black mb-6">Students typically move into:</p>
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-green-50 rounded-lg p-6 text-center">
-              <h3 className="font-bold text-black mb-2">
-                Helpdesk Support Technician
-              </h3>
-            </div>
-            <div className="bg-green-50 rounded-lg p-6 text-center">
-              <h3 className="font-bold text-black mb-2">Network Administrator</h3>
-            </div>
-            <div className="bg-green-50 rounded-lg p-6 text-center">
-              <h3 className="font-bold text-black mb-2">
-                IT Field Support
-              </h3>
-            </div>
-            <div className="bg-green-50 rounded-lg p-6 text-center">
-              <h3 className="font-bold text-black mb-2">Systems Technician</h3>
-            </div>
-            <div className="bg-green-50 rounded-lg p-6 text-center">
-              <h3 className="font-bold text-black mb-2">
-                Cybersecurity Analyst (entry)
-              </h3>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Next Steps */}
-      <section className="bg-white text-white py-16">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">Next Steps</h2>
-          <div className="space-y-4 text-left max-w-2xl mx-auto mb-8">
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-brand-orange-600 text-white font-bold flex items-center justify-center flex-shrink-0">
-                1
-              </div>
-              <div>
-                <h3 className="font-bold mb-1">Apply</h3>
-                <p className="text-black text-sm">
-                  Submit your application online
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-brand-orange-600 text-white font-bold flex items-center justify-center flex-shrink-0">
-                2
-              </div>
-              <div>
-                <h3 className="font-bold mb-1">Meet with advisor</h3>
-                <p className="text-black text-sm">
-                  Discuss your goals and eligibility
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-brand-orange-600 text-white font-bold flex items-center justify-center flex-shrink-0">
-                3
-              </div>
-              <div>
-                <h3 className="font-bold mb-1">Confirm eligibility</h3>
-                <p className="text-black text-sm">
-                  We help with funding paperwork
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-brand-orange-600 text-white font-bold flex items-center justify-center flex-shrink-0">
-                4
-              </div>
-              <div>
-                <h3 className="font-bold mb-1">Enroll</h3>
-                <p className="text-black text-sm">
-                  Start your training program
-                </p>
-              </div>
-            </div>
-          </div>
+          <p className="text-lg text-gray-300 mb-8">
+            Free training for eligible Indiana residents.
+          </p>
           <Link
             href="/apply"
-            className="inline-block px-10 py-5 bg-brand-orange-600 hover:bg-brand-orange-700 text-white font-bold text-xl rounded-lg transition-all shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 text-base font-medium rounded-full hover:bg-gray-100 transition-colors"
           >
             Apply Now
           </Link>
         </div>
       </section>
-
-      {/* Credentials & Outcomes */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <CredentialsOutcomes
-            programName="Technology & IT"
-            partnerCertifications={[
-              'CompTIA A+ Certification (issued by CompTIA)',
-              'CompTIA Network+ Certification (issued by CompTIA)',
-              'CompTIA Security+ Certification (issued by CompTIA)',
-              'Microsoft Office Specialist (issued by Certiport/Microsoft)',
-              'IC3 Digital Literacy Certification (issued by Certiport)',
-            ]}
-            employmentOutcomes={[
-              'IT Support Specialist',
-              'Help Desk Technician',
-              'Network Administrator',
-              'Cybersecurity Analyst',
-              'Desktop Support Technician',
-            ]}
-          />
-        </div>
-      </section>
-    </div>
+    </>
   );
 }
