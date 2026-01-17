@@ -25,17 +25,19 @@ const PerformanceMonitor = dynamic(
   { ssr: false }
 );
 
-// Security components disabled - they interfere with development and user experience
-// const ScraperDetection = dynamic(
-//   () => import('@/components/ScraperDetection').then((mod) => ({ default: mod.ScraperDetection })),
-//   { ssr: false }
-// );
+// ScraperDetection - monitors only, doesn't block anything
+const ScraperDetection = dynamic(
+  () => import('@/components/ScraperDetection').then((mod) => ({ default: mod.ScraperDetection })),
+  { ssr: false }
+);
 
+// CopyrightProtection DISABLED - shows dark popup that blocks UX
 // const CopyrightProtection = dynamic(
 //   () => import('@/components/CopyrightProtection').then((mod) => ({ default: mod.CopyrightProtection })),
 //   { ssr: false }
 // );
 
+// SecurityMonitor DISABLED - logs too much, clears console
 // const SecurityMonitor = dynamic(
 //   () => import('@/components/SecurityMonitor').then((mod) => ({ default: mod.SecurityMonitor })),
 //   { ssr: false }
@@ -49,7 +51,7 @@ export function ClientProviders() {
       <AILiveChat />
       <CookieBanner />
       <PerformanceMonitor />
-      {/* Security components disabled - they block DevTools and interfere with UX */}
+      <ScraperDetection />
     </>
   );
 }
