@@ -40,7 +40,7 @@ const programs = [
     duration: '12-20 Weeks',
     items: ['IT Support', 'Cybersecurity', 'Cloud Computing'],
     href: '/programs/technology',
-    image: '/images/technology/hero-program-it-support.jpg',
+    image: '/images/technology/hero-programs-technology.jpg',
     alt: 'Technology Training',
   },
 ];
@@ -98,7 +98,7 @@ export default function HomePage() {
       />
 
       {/* Hero Section - Fast loading like Industrious */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-end overflow-hidden">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-end overflow-hidden bg-slate-900">
         {/* Background video - compressed 741KB, loads fast */}
         {/* Key mobile fixes: webkit-playsinline, muted MUST be present for autoplay */}
         <video
@@ -109,7 +109,6 @@ export default function HomePage() {
           playsInline
           autoPlay
           preload="auto"
-          poster="/images/artlist/hero-training-1.jpg"
           webkit-playsinline="true"
         >
           <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
@@ -484,7 +483,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden">
               <Image
-                src="/images/beauty/hero-barber-training.jpg"
+                src="/images/beauty/program-barber-training.jpg"
                 alt="Barber Apprenticeship Program"
                 fill
                 className="object-cover"
