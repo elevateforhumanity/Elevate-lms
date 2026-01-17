@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 export default function EmployerPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="py-20 lg:py-28 bg-white">
+      {/* Hero - pt accounts for fixed header */}
+      <section className="pt-24 pb-20 lg:pt-32 lg:pb-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="max-w-xl">

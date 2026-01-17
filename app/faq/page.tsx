@@ -40,7 +40,7 @@ export default async function FAQPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-16">
+      <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white pt-24 pb-16 lg:pt-32">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
           <p className="text-xl text-orange-100 max-w-2xl mb-8">

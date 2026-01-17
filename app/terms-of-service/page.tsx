@@ -24,7 +24,7 @@ export default async function TermsOfServicePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Clean, No Gradient, No Image, No CTAs */}
-      <section className="bg-slate-900 text-white py-16">
+      <section className="bg-slate-900 text-white pt-24 pb-16 lg:pt-32">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Terms of Service
