@@ -19,6 +19,27 @@ const NAV_ITEMS = [
     ]
   },
   { 
+    name: 'Services', 
+    href: '/services',
+    subItems: [
+      { name: 'Career Services', href: '/career-services' },
+      { name: 'Job Placement', href: '/job-placement' },
+      { name: 'Drug Testing', href: '/drug-testing' },
+      { name: 'Certifications', href: '/certifications' },
+      { name: 'Training Providers', href: '/training-providers' },
+    ]
+  },
+  { 
+    name: 'Store', 
+    href: '/store',
+    subItems: [
+      { name: 'Shop All', href: '/shop' },
+      { name: 'Courses', href: '/store/courses' },
+      { name: 'Workbooks', href: '/workbooks' },
+      { name: 'Merchandise', href: '/store/merchandise' },
+    ]
+  },
+  { 
     name: 'How It Works', 
     href: '/how-it-works',
     subItems: [
