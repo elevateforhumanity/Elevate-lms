@@ -487,66 +487,51 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Certifications You Can Earn */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
+      {/* Certifications You Can Earn - Compact horizontal */}
+      <section className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
-              Graduate with Credentials Employers Want
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Our programs prepare you for industry-recognized certifications and state licenses that lead directly to jobs.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
-              <div className="text-3xl mb-2">🏥</div>
-              <p className="font-semibold text-slate-900 text-sm">CNA Certification</p>
-              <p className="text-xs text-slate-500">Healthcare</p>
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 text-center">
+            Graduate with Credentials Employers Want
+          </h2>
+          <p className="text-sm text-slate-600 text-center mb-6">
+            Industry-recognized certifications and state licenses
+          </p>
+          
+          {/* Horizontal scrolling on mobile, grid on desktop */}
+          <div className="flex overflow-x-auto pb-2 gap-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:overflow-visible scrollbar-hide">
+            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
+              <div className="text-2xl mb-1">🏥</div>
+              <p className="font-semibold text-slate-900 text-xs">CNA</p>
             </div>
-            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
-              <div className="text-3xl mb-2">❄️</div>
-              <p className="font-semibold text-slate-900 text-sm">HVAC EPA 608</p>
-              <p className="text-xs text-slate-500">Skilled Trades</p>
+            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
+              <div className="text-2xl mb-1">❄️</div>
+              <p className="font-semibold text-slate-900 text-xs">HVAC EPA</p>
             </div>
-            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
-              <div className="text-3xl mb-2">💻</div>
-              <p className="font-semibold text-slate-900 text-sm">CompTIA A+</p>
-              <p className="text-xs text-slate-500">Technology</p>
+            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
+              <div className="text-2xl mb-1">💻</div>
+              <p className="font-semibold text-slate-900 text-xs">CompTIA</p>
             </div>
-            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
-              <div className="text-3xl mb-2">🚛</div>
-              <p className="font-semibold text-slate-900 text-sm">CDL Class A</p>
-              <p className="text-xs text-slate-500">Transportation</p>
+            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
+              <div className="text-2xl mb-1">🚛</div>
+              <p className="font-semibold text-slate-900 text-xs">CDL</p>
             </div>
-            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
-              <div className="text-3xl mb-2">✂️</div>
-              <p className="font-semibold text-slate-900 text-sm">Barber License</p>
-              <p className="text-xs text-slate-500">Apprenticeship</p>
+            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
+              <div className="text-2xl mb-1">✂️</div>
+              <p className="font-semibold text-slate-900 text-xs">Barber</p>
             </div>
-            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
-              <div className="text-3xl mb-2">📊</div>
-              <p className="font-semibold text-slate-900 text-sm">QuickBooks</p>
-              <p className="text-xs text-slate-500">Business</p>
+            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
+              <div className="text-2xl mb-1">📊</div>
+              <p className="font-semibold text-slate-900 text-xs">QuickBooks</p>
             </div>
           </div>
           
-          {/* Partners Row */}
-          <div className="mt-12 pt-8 border-t border-slate-200">
-            <p className="text-center text-slate-500 mb-6">Approved Training Provider</p>
-            <div className="flex flex-wrap justify-center gap-8 items-center">
-              <div className="flex items-center gap-2 text-slate-600">
-                <span className="font-semibold">WorkOne Indiana</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-600">
-                <span className="font-semibold">WIOA Approved</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-600">
-                <span className="font-semibold">ETPL Listed</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-600">
-                <span className="font-semibold">USDOL Registered</span>
-              </div>
+          {/* Partners Row - Compact */}
+          <div className="mt-6 pt-4 border-t border-slate-200">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-slate-500">
+              <span>WorkOne Indiana</span>
+              <span>WIOA Approved</span>
+              <span>ETPL Listed</span>
+              <span>USDOL Registered</span>
             </div>
           </div>
         </div>
