@@ -74,17 +74,6 @@ export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [showContent, setShowContent] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Detect mobile for video optimization
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   // Animate content on mount
   useEffect(() => {
@@ -92,13 +81,28 @@ export default function HomePage() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Video autoplay with mobile consideration
+  // Video autoplay - aggressive loading for all devices
   useEffect(() => {
     const video = videoRef.current;
-    if (video && !isMobile) {
+    if (!video) return;
+
+    // Force load and play
+    const handleCanPlay = () => {
+      setVideoLoaded(true);
       video.play().catch(() => {});
+    };
+
+    // If already ready, play immediately
+    if (video.readyState >= 3) {
+      handleCanPlay();
+    } else {
+      video.addEventListener('canplaythrough', handleCanPlay);
     }
-  }, [isMobile]);
+
+    return () => {
+      video.removeEventListener('canplaythrough', handleCanPlay);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -113,32 +117,29 @@ export default function HomePage() {
 
       {/* Hero Section - Optimized for all devices */}
       <section className="relative w-full min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-end overflow-hidden">
-        {/* Fallback/Mobile image - always visible on mobile, hidden when video loads on desktop */}
+        {/* Fallback image - hidden when video loads */}
         <Image
           src="/images/artlist/hero-training-1.jpg"
           alt="Career Training"
           fill
-          className={`object-cover ${!isMobile && videoLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-1000`}
+          className={`object-cover ${videoLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}
           priority
           quality={85}
           sizes="100vw"
         />
         
-        {/* Video - only render on tablet+ for performance */}
-        {!isMobile && (
-          <video
-            ref={videoRef}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
-            loop
-            muted
-            playsInline
-            autoPlay
-            preload="auto"
-            onLoadedData={() => setVideoLoaded(true)}
-          >
-            <source src="/videos/hero-home.mp4" type="video/mp4" />
-          </video>
-        )}
+        {/* Video - plays on all devices */}
+        <video
+          ref={videoRef}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          loop
+          muted
+          playsInline
+          autoPlay
+          preload="auto"
+        >
+          <source src="/videos/hero-home.mp4" type="video/mp4" />
+        </video>
         
         {/* Subtle bottom gradient for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
