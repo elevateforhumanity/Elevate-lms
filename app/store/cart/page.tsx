@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ShoppingCart,
   Trash2,
@@ -67,12 +68,14 @@ export default async function CartPage() {
               {cartItems.map((item: any) => (
                 <div key={item.id} className="bg-white rounded-xl shadow-sm border p-4">
                   <div className="flex gap-4">
-                    <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                    <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0 relative">
                       {item.product?.image_url ? (
-                        <img 
+                        <Image 
                           src={item.product.image_url} 
                           alt={item.product.name} 
-                          className="w-full h-full object-cover" 
+                          fill
+                          className="object-cover" 
+                          sizes="80px"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">

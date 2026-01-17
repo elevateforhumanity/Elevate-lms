@@ -16,6 +16,7 @@ export function CareerHero({ title, description, badge }: CareerHeroProps) {
           loop
           muted
           playsInline
+          poster="/images/artlist/hero-training-1.jpg"
           className="w-full h-full object-cover opacity-40"
         >
           <source src="/videos/career-services-hero.mp4" type="video/mp4" />

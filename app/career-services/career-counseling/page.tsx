@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import Image from 'next/image';
 import { MessageSquare, Calendar, User, Target, Compass, ArrowRight, CheckCircle, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -196,9 +197,9 @@ export default async function CareerCounselingPage() {
                   {counselors.map((counselor: any) => (
                     <div key={counselor.id} className="bg-white rounded-xl shadow-sm border p-6">
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
+                        <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center relative overflow-hidden">
                           {counselor.avatar_url ? (
-                            <img src={counselor.avatar_url} alt="" className="w-full h-full rounded-full object-cover" />
+                            <Image src={counselor.avatar_url} alt="" fill className="rounded-full object-cover" sizes="64px" />
                           ) : (
                             <User className="w-8 h-8 text-orange-600" />
                           )}

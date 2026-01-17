@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   BookOpen,
   Calendar,
@@ -147,9 +148,9 @@ export default async function StudentPortalPage() {
                 <div className="space-y-4">
                   {enrollments.map((enrollment: any) => (
                     <div key={enrollment.id} className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
-                      <div className="w-16 h-12 bg-gray-200 rounded overflow-hidden flex-shrink-0">
+                      <div className="w-16 h-12 bg-gray-200 rounded overflow-hidden flex-shrink-0 relative">
                         {enrollment.course?.thumbnail_url ? (
-                          <img src={enrollment.course.thumbnail_url} alt="" className="w-full h-full object-cover" />
+                          <Image src={enrollment.course.thumbnail_url} alt="" fill className="object-cover" sizes="64px" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
                             <BookOpen className="w-6 h-6 text-gray-400" />

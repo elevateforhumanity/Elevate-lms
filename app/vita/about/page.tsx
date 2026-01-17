@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Heart, Award, Users, DollarSign, CheckCircle } from 'lucide-react';
@@ -130,9 +131,9 @@ export default async function VITAAboutPage() {
             <div className="grid md:grid-cols-3 gap-6">
               {team.map((member: any) => (
                 <div key={member.id} className="text-center">
-                  <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-3 overflow-hidden">
+                  <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-3 overflow-hidden relative">
                     {member.photo_url && (
-                      <img src={member.photo_url} alt={member.name} className="w-full h-full object-cover" />
+                      <Image src={member.photo_url} alt={member.name} fill className="object-cover" sizes="80px" />
                     )}
                   </div>
                   <h3 className="font-semibold">{member.name}</h3>

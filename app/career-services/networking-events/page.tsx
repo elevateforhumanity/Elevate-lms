@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Calendar, MapPin, Users, Clock, ArrowRight, Building2, Briefcase } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -110,8 +111,8 @@ export default async function NetworkingEventsPage() {
               {upcomingEvents.map((event: any) => (
                 <div key={event.id} className="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-md transition">
                   {event.image_url && (
-                    <div className="h-40 bg-gray-200">
-                      <img src={event.image_url} alt={event.title} className="w-full h-full object-cover" />
+                    <div className="h-40 bg-gray-200 relative">
+                      <Image src={event.image_url} alt={event.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                   )}
                   <div className="p-5">
@@ -158,8 +159,8 @@ export default async function NetworkingEventsPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {eventTypes.map((type) => (
               <div key={type.title} className="bg-white rounded-xl shadow-sm border overflow-hidden">
-                <div className="h-40">
-                  <img src={type.image} alt={type.title} className="w-full h-full object-cover" />
+                <div className="h-40 relative">
+                  <Image src={type.image} alt={type.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
                 <div className="p-5">
                   <h3 className="font-semibold text-lg mb-2">{type.title}</h3>

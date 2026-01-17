@@ -107,6 +107,7 @@ export default function HomePage() {
           autoPlay
           preload="auto"
           webkit-playsinline="true"
+          poster="/images/artlist/hero-training-1.jpg"
         >
           <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>

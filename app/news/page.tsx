@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Newspaper, Calendar, ArrowRight, Tag } from 'lucide-react';
@@ -54,8 +55,8 @@ export default async function NewsPage() {
           {articles && articles.length > 0 ? articles.map((article: any) => (
             <article key={article.id} className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-md transition">
               {article.image_url && (
-                <div className="h-48 bg-gray-200">
-                  <img src={article.image_url} alt={article.title} className="w-full h-full object-cover" />
+                <div className="h-48 bg-gray-200 relative">
+                  <Image src={article.image_url} alt={article.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
               )}
               <div className="p-6">

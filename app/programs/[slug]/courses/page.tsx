@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { BookOpen, Clock, Award, DollarSign, CheckCircle, Users } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ProgramCoursesPage() {
   const params = useParams();
@@ -175,10 +176,12 @@ export default function ProgramCoursesPage() {
               return (
                 <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
                   <div className="relative aspect-video overflow-hidden bg-gray-100">
-                    <img 
+                    <Image 
                       src={courseImage} 
                       alt={course.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = '/images/og-default.jpg';

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Calendar, MapPin, Clock, Users, ArrowRight } from 'lucide-react';
@@ -44,8 +45,8 @@ export default async function EventsPage() {
           {upcomingEvents && upcomingEvents.length > 0 ? upcomingEvents.map((event: any) => (
             <div key={event.id} className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-md transition">
               {event.image_url && (
-                <div className="h-40 bg-gray-200">
-                  <img src={event.image_url} alt={event.title} className="w-full h-full object-cover" />
+                <div className="h-40 bg-gray-200 relative">
+                  <Image src={event.image_url} alt={event.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
               )}
               <div className="p-6">

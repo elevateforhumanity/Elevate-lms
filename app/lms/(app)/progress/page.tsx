@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   TrendingUp, 
   Clock, 
@@ -256,12 +257,14 @@ export default async function ProgressPage() {
                         className="block p-6 hover:bg-slate-50 transition"
                       >
                         <div className="flex items-start gap-4">
-                          <div className="w-16 h-16 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <div className="w-16 h-16 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0 relative overflow-hidden">
                             {enrollment.courses?.thumbnail_url ? (
-                              <img 
+                              <Image 
                                 src={enrollment.courses.thumbnail_url} 
                                 alt="" 
-                                className="w-full h-full object-cover rounded-xl"
+                                fill
+                                className="object-cover rounded-xl"
+                                sizes="64px"
                               />
                             ) : (
                               <BookOpen className="w-8 h-8 text-slate-400" />

@@ -139,9 +139,9 @@ export default async function LMSPage() {
           <div className="bg-white rounded-xl shadow-sm border p-6 mb-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="w-20 h-14 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
+                <div className="w-20 h-14 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0 relative">
                   {continueCourse.course?.thumbnail_url ? (
-                    <img src={continueCourse.course.thumbnail_url} alt="" className="w-full h-full object-cover" />
+                    <Image src={continueCourse.course.thumbnail_url} alt="" fill className="object-cover" sizes="80px" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
                       <BookOpen className="w-6 h-6 text-gray-400" />
@@ -215,9 +215,9 @@ export default async function LMSPage() {
                       href={`/lms/courses/${enrollment.course?.id}`}
                       className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
                     >
-                      <div className="w-16 h-12 bg-gray-200 rounded overflow-hidden flex-shrink-0">
+                      <div className="w-16 h-12 bg-gray-200 rounded overflow-hidden flex-shrink-0 relative">
                         {enrollment.course?.thumbnail_url ? (
-                          <img src={enrollment.course.thumbnail_url} alt="" className="w-full h-full object-cover" />
+                          <Image src={enrollment.course.thumbnail_url} alt="" fill className="object-cover" sizes="64px" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
                             <BookOpen className="w-5 h-5 text-gray-400" />

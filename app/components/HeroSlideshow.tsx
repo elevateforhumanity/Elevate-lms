@@ -41,6 +41,7 @@ export default function HeroSlideshow() {
         autoPlay
         playsInline
         preload="none"
+        poster="/images/artlist/hero-training-1.jpg"
         className="absolute inset-0 w-full h-full object-cover"
         style={{
           objectFit: 'cover',

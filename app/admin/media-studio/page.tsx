@@ -18,6 +18,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import Image from 'next/image';
+import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 
@@ -51,6 +52,7 @@ export default function MediaStudioPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFiles, setSelectedFiles] = useState<Set<string>>(new Set());
+  const [deleteDialog, setDeleteDialog] = useState<{ open: boolean; fileName: string }>({ open: false, fileName: '' });
 
   useEffect(() => {
     loadBuckets();
@@ -110,8 +112,13 @@ export default function MediaStudioPage() {
   }
   };
 
-  const deleteFile = async (fileName: string) => {
-    if (!confirm(`Delete ${fileName}?`)) return;
+  const handleDeleteClick = (fileName: string) => {
+    setDeleteDialog({ open: true, fileName });
+  };
+
+  const deleteFile = async () => {
+    const fileName = deleteDialog.fileName;
+    setDeleteDialog({ open: false, fileName: '' });
 
     try {
       const res = await fetch(
@@ -328,7 +335,7 @@ export default function MediaStudioPage() {
                       View
                     </button>
                     <button
-                      onClick={() => deleteFile(file.name)}
+                      onClick={() => handleDeleteClick(file.name)}
                       className="text-xs py-2 px-2 bg-red-50 text-brand-orange-600 rounded hover:bg-red-100"
                     >
                       <Trash2 className="w-3 h-3" />
@@ -371,7 +378,7 @@ export default function MediaStudioPage() {
                     </td>
                     <td className="px-4 py-3 text-right">
                       <button
-                        onClick={() => deleteFile(file.name)}
+                        onClick={() => handleDeleteClick(file.name)}
                         className="text-brand-orange-600 hover:text-red-700"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -413,6 +420,17 @@ export default function MediaStudioPage() {
           </div>
         </section>
       </div>
+
+      {/* Delete Confirmation Dialog */}
+      <ConfirmDialog
+        open={deleteDialog.open}
+        onOpenChange={(open) => setDeleteDialog({ ...deleteDialog, open })}
+        title="Delete File"
+        description={`Are you sure you want to delete "${deleteDialog.fileName}"? This action cannot be undone.`}
+        confirmText="Delete"
+        variant="danger"
+        onConfirm={deleteFile}
+      />
     </div>
   );
 }

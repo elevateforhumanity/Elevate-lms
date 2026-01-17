@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 import { Gift, ShoppingBag, Heart, Star } from 'lucide-react';
 
@@ -129,12 +130,14 @@ export default async function HealingProductsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayProducts.map((product: any) => (
               <div key={product.id} className="bg-white border rounded-xl overflow-hidden hover:shadow-lg transition group">
-                <div className="aspect-square bg-amber-50 flex items-center justify-center">
+                <div className="aspect-square bg-amber-50 flex items-center justify-center relative">
                   {product.image_url ? (
-                    <img 
+                    <Image 
                       src={product.image_url} 
                       alt={product.name}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   ) : (
                     <Gift className="w-16 h-16 text-amber-300" />

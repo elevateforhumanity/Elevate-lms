@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { BookOpen, Calendar, User, ArrowRight, Tag } from 'lucide-react';
@@ -51,8 +52,8 @@ export default async function BlogPage() {
           <div className="mb-12">
             <div className="bg-white rounded-xl shadow-sm border overflow-hidden md:flex">
               {featuredPost.image_url && (
-                <div className="md:w-1/2 h-64 md:h-auto bg-gray-200">
-                  <img src={featuredPost.image_url} alt={featuredPost.title} className="w-full h-full object-cover" />
+                <div className="md:w-1/2 h-64 md:h-auto bg-gray-200 relative">
+                  <Image src={featuredPost.image_url} alt={featuredPost.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                 </div>
               )}
               <div className="p-8 md:w-1/2 flex flex-col justify-center">
@@ -82,8 +83,8 @@ export default async function BlogPage() {
           {posts && posts.length > 0 ? posts.map((post: any) => (
             <article key={post.id} className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-md transition">
               {post.image_url && (
-                <div className="h-48 bg-gray-200">
-                  <img src={post.image_url} alt={post.title} className="w-full h-full object-cover" />
+                <div className="h-48 bg-gray-200 relative">
+                  <Image src={post.image_url} alt={post.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
               )}
               <div className="p-6">

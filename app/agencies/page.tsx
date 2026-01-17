@@ -185,9 +185,9 @@ export default async function AgenciesPage() {
             <h3 className="text-center text-gray-500 mb-8">Trusted by agencies across Indiana</h3>
             <div className="flex flex-wrap justify-center items-center gap-8">
               {partners.map((partner: any) => (
-                <div key={partner.id} className="grayscale hover:grayscale-0 transition">
+                <div key={partner.id} className="grayscale hover:grayscale-0 transition relative h-12 w-32">
                   {partner.logo_url ? (
-                    <img src={partner.logo_url} alt={partner.name} className="h-12 object-contain" />
+                    <Image src={partner.logo_url} alt={partner.name} fill className="object-contain" sizes="128px" />
                   ) : (
                     <span className="text-gray-400 font-medium">{partner.name}</span>
                   )}

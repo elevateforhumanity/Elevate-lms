@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   GraduationCap,
   Users,
@@ -119,9 +120,9 @@ export default async function AlumniPage() {
               <div className="grid md:grid-cols-2 gap-4">
                 {alumni.map((member: any) => (
                   <div key={member.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0 relative overflow-hidden">
                       {member.avatar_url ? (
-                        <img src={member.avatar_url} alt="" className="w-full h-full rounded-full object-cover" />
+                        <Image src={member.avatar_url} alt="" fill className="rounded-full object-cover" sizes="48px" />
                       ) : (
                         <GraduationCap className="w-6 h-6 text-amber-600" />
                       )}

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Calendar, Clock, MapPin, User, Video, Building } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -178,9 +179,9 @@ export default async function BookingPage() {
             <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
               {staff.map((member: any) => (
                 <div key={member.id} className="bg-white rounded-xl shadow-sm border p-6 text-center">
-                  <div className="w-20 h-20 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden">
+                  <div className="w-20 h-20 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden relative">
                     {member.avatar_url ? (
-                      <img src={member.avatar_url} alt={member.name} className="w-full h-full object-cover" />
+                      <Image src={member.avatar_url} alt={member.name} fill className="object-cover" sizes="80px" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
                         <User className="w-10 h-10 text-slate-400" />

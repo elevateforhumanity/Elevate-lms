@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   FileText,
   CheckCircle,
@@ -160,9 +161,9 @@ export default async function ResumeBuildingPage() {
                 <div className="grid md:grid-cols-2 gap-4">
                   {templates.map((template: any) => (
                     <div key={template.id} className="border rounded-lg p-4 hover:border-blue-300 transition">
-                      <div className="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center">
+                      <div className="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center relative">
                         {template.preview_url ? (
-                          <img src={template.preview_url} alt={template.name} className="h-full object-contain" />
+                          <Image src={template.preview_url} alt={template.name} fill className="object-contain" sizes="200px" />
                         ) : (
                           <FileText className="w-10 h-10 text-gray-400" />
                         )}

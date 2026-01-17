@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import {
@@ -177,8 +178,8 @@ function ProductCard({ product, isPurchased }: { product: any; isPurchased: bool
   return (
     <div className="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-md transition">
       {product.image_url ? (
-        <div className="h-40 bg-gray-100">
-          <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+        <div className="h-40 bg-gray-100 relative">
+          <Image src={product.image_url} alt={product.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 25vw" />
         </div>
       ) : (
         <div className="h-40 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
