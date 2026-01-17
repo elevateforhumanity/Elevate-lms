@@ -126,7 +126,7 @@ export default async function VITAPage() {
                     <h3 className="font-bold text-lg">VITA Tax Preparation Site</h3>
                     <p className="text-gray-600">8888 Keystone Crossing, Suite 1300</p>
                     <p className="text-gray-600">Indianapolis, IN 46240</p>
-                    <p className="text-sm text-green-600 mt-2">Call (317) 314-3757 for appointment</p>
+                    <p className="text-sm text-black mt-2">Call (317) 314-3757 for appointment</p>
                   </div>
                 </div>
               </div>
