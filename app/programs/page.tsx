@@ -91,7 +91,7 @@ export default function ProgramsPage() {
           preload="auto"
           poster="/images/artlist/hero-training-3.jpg"
         >
-          <source src="/videos/career-services-hero.mp4" type="video/mp4" />
+          <source src="https://cms-artifacts.artlist.io/content/generated-video-v1/video__2/generated-video-8361d89c-dd89-4f35-8d8c-2a658bdf8954.mp4?Expires=2084018726&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=OlS7X8jj9Xz-HlVB4K8Af-P1WxERGo5AkhdCwjfwCwt4kHYyuXsECxPgr~z03~drKxMMqz-O-JbXDH9r8RUN6p1v25NHsXuYtdIkaJ3WQ9V0TRRks~XanrDvJsppWVhVDJnaKc2LKfWKVYL6oWtIV-S94LV07PVawHe1zFILTiiIA92A5JypsiXdNUaZ7FBDvZCb~KkmWLRoBPiDAAzBZ7qVN9nonWNz-3STUIF~jjgrD9Iln8N76tgzWTfOVifCr7hNRbjkKAqqTf4CZVr67xjYYHndvqgJWbUWAdx5rpTWyoauMKPcQ2~nApkXtyD5-CfQA4SeypkEVtemwygFMw__" type="video/mp4" />
         </video>
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />

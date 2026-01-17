@@ -143,25 +143,34 @@ export default function HomePage() {
         </video>
         
         {/* Lighter gradient for brighter feel */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
         
-        {/* Hero Content - Minimal, let voiceover do the talking */}
+        {/* Hero Content - Clear value proposition */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
           <div 
-            className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            <Link 
-              href="/apply"
-              className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors text-lg"
-            >
-              Apply Now
-            </Link>
-            <Link 
-              href="/programs"
-              className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
-            >
-              View Programs
-            </Link>
+            {/* Headline - visible for users with sound off */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 max-w-3xl">
+              Free Career Training in Indianapolis
+            </h1>
+            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl">
+              Get certified in healthcare, skilled trades, or technology — at no cost if you qualify.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link 
+                href="/apply"
+                className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors text-lg"
+              >
+                Apply Now
+              </Link>
+              <Link 
+                href="/programs"
+                className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
+              >
+                View Programs
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -535,6 +544,128 @@ export default function HomePage() {
             <span>WIOA Approved</span>
             <span>•</span>
             <span>ETPL Listed</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4 text-center">
+            What Our Graduates Say
+          </h2>
+          <p className="text-lg text-slate-600 text-center mb-12 max-w-2xl mx-auto">
+            Real stories from people who changed their careers through our programs.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <div className="bg-slate-50 rounded-2xl p-6 sm:p-8">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-slate-700 mb-6 text-lg leading-relaxed">
+                "I was working minimum wage jobs for years. This program got me CNA certified in 8 weeks, and now I'm making $18/hour with benefits. It really changed my life."
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <span className="text-blue-600 font-bold text-lg">TJ</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900">Tanya J.</p>
+                  <p className="text-sm text-slate-500">CNA Graduate, 2024</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="bg-slate-50 rounded-2xl p-6 sm:p-8">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-slate-700 mb-6 text-lg leading-relaxed">
+                "The barber apprenticeship let me earn while I learned. I'm now a licensed barber with my own chair. Best decision I ever made."
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                  <span className="text-green-600 font-bold text-lg">MR</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900">Marcus R.</p>
+                  <p className="text-sm text-slate-500">Barber Apprentice Graduate, 2024</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="bg-slate-50 rounded-2xl p-6 sm:p-8">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-slate-700 mb-6 text-lg leading-relaxed">
+                "I thought I was too old to start over at 42. WIOA covered everything - tuition, books, even gas money. Now I'm an HVAC tech making real money."
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                  <span className="text-orange-600 font-bold text-lg">DW</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900">David W.</p>
+                  <p className="text-sm text-slate-500">HVAC Graduate, 2024</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Badges / Partners Section */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-slate-100">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-center text-sm text-slate-500 mb-8">Approved and recognized by</p>
+          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12">
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-2">
+                <span className="text-2xl">🏛️</span>
+              </div>
+              <span className="text-xs text-slate-600 font-medium">WIOA Approved</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-2">
+                <span className="text-2xl">📋</span>
+              </div>
+              <span className="text-xs text-slate-600 font-medium">ETPL Listed</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-2">
+                <span className="text-2xl">🤝</span>
+              </div>
+              <span className="text-xs text-slate-600 font-medium">WorkOne Partner</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-2">
+                <span className="text-2xl">🎓</span>
+              </div>
+              <span className="text-xs text-slate-600 font-medium">USDOL Registered</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-2">
+                <span className="text-2xl">⚖️</span>
+              </div>
+              <span className="text-xs text-slate-600 font-medium">State Licensed</span>
+            </div>
           </div>
         </div>
       </section>
