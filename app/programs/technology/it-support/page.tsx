@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'IT Support Training | Elevate for Humanity',
@@ -30,6 +31,9 @@ export default function ITSupportPage() {
           </div>
         </div>
       </section>
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs />
 
       {/* Content */}
       <section className="py-12">
