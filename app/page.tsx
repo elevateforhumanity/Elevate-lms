@@ -2,8 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import SiteHeader from '@/components/layout/SiteHeader';
-import SiteFooter from '@/components/layout/SiteFooter';
+
 import AutoPlayTTS from '@/components/AutoPlayTTS';
 import { useEffect, useState, useRef } from 'react';
 
@@ -88,8 +87,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <SiteHeader />
-      
       {/* Auto-playing welcome message */}
       <AutoPlayTTS 
         text={WELCOME_MESSAGE} 
@@ -579,7 +576,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <SiteFooter />
     </div>
   );
 }
