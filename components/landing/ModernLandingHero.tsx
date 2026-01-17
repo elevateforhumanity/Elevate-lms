@@ -105,7 +105,7 @@ export default function ModernLandingHero({
   );
 
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-white py-16 md:py-24">
+    <section className="bg-gradient-to-br from-gray-50 to-white pt-24 pb-16 md:pt-32 md:pb-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {imageOnRight ? (

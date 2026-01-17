@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
-import AutoPlayTTS from '@/components/AutoPlayTTS';
+
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
-const TECH_MESSAGE = "Welcome to our technology training programs. Learn IT support, cybersecurity, or web development. Tech careers offer excellent pay and remote work options. Training is available at no cost if you qualify.";
+
 
 const programs = [
   {
@@ -50,7 +50,7 @@ export default function TechnologyProgramsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <AutoPlayTTS text={TECH_MESSAGE} delay={1000} />
+
 
       {/* Hero */}
       <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">

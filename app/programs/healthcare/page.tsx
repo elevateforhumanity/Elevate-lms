@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
-import AutoPlayTTS from '@/components/AutoPlayTTS';
+
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
-const HEALTHCARE_MESSAGE = "Welcome to our healthcare training programs. Become a Certified Nursing Assistant, Direct Support Professional, or Drug Collector. Training is available at no cost if you qualify. Start your healthcare career today.";
+
 
 const programs = [
   {
@@ -50,7 +50,7 @@ export default function HealthcareProgramsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <AutoPlayTTS text={HEALTHCARE_MESSAGE} delay={1000} />
+
 
       {/* Hero */}
       <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">

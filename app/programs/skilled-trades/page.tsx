@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
-import AutoPlayTTS from '@/components/AutoPlayTTS';
+
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
-const TRADES_MESSAGE = "Welcome to our skilled trades training programs. Learn HVAC, get your CDL, or start a barber apprenticeship. These are high-paying careers with strong job security. Training is available at no cost if you qualify.";
+
 
 const programs = [
   {
@@ -50,7 +50,7 @@ export default function SkilledTradesProgramsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <AutoPlayTTS text={TRADES_MESSAGE} delay={1000} />
+
 
       {/* Hero */}
       <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
