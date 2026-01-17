@@ -434,7 +434,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden">
               <Image
-                src="/images/programs/barber.jpg"
+                src="/images/beauty/hero-barber-training.jpg"
                 alt="Barber Apprenticeship Program"
                 fill
                 className="object-cover"
@@ -453,24 +453,54 @@ export default function HomePage() {
               <p className="text-lg text-slate-600 mb-6">
                 Earn while you learn. Get your Indiana Barber License through our USDOL-registered apprenticeship. Work with a licensed sponsor, build real skills, and launch your career.
               </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-slate-700">
-                  <CheckIcon />
-                  USDOL Registered Apprenticeship
-                </li>
-                <li className="flex items-center gap-3 text-slate-700">
-                  <CheckIcon />
-                  Pathway to Indiana Barber License (IPLA)
-                </li>
-                <li className="flex items-center gap-3 text-slate-700">
-                  <CheckIcon />
-                  Earn income while training
-                </li>
-                <li className="flex items-center gap-3 text-slate-700">
-                  <CheckIcon />
-                  1,500 hours hands-on experience
-                </li>
-              </ul>
+              <div className="bg-slate-50 rounded-xl p-6 mb-6">
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-slate-900">USDOL Registered Apprenticeship</span>
+                      <p className="text-sm text-slate-600">Nationally recognized credential</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-slate-900">Pathway to Indiana Barber License (IPLA)</span>
+                      <p className="text-sm text-slate-600">Meet state board requirements</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-slate-900">Earn income while training</span>
+                      <p className="text-sm text-slate-600">Get paid from day one</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-slate-900">1,500 hours hands-on experience</span>
+                      <p className="text-sm text-slate-600">Learn from licensed barbers</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
               <div className="flex flex-wrap gap-4">
                 <Link 
                   href="/programs/barber-apprenticeship"
