@@ -176,7 +176,7 @@ export default async function RiseFoundationPage() {
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500" />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-black/40" />
                   <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">
                     {program.title}
                   </h3>

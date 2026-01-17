@@ -74,7 +74,7 @@ export default function VideoHeroSection() {
       </video>
 
       {/* Subtle overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* Content */}
       <div className="relative z-10 w-full pb-12 md:pb-16">

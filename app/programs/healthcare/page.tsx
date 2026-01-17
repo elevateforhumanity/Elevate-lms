@@ -67,7 +67,7 @@ export default function HealthcareProgramsPage() {
           <source src="/videos/cna-hero.mp4" type="video/mp4" />
         </video>
         
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
           <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

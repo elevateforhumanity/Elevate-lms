@@ -138,8 +138,8 @@ export default function HomePage() {
           <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>
         
-        {/* Lighter gradient for brighter feel */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
+        {/* Subtle overlay for text readability - no gradient */}
+        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
         
         {/* Hero Content - Million dollar value proposition */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
@@ -269,30 +269,14 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="bg-slate-900 rounded-2xl p-6 sm:p-8">
-            <div className="grid md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">$0</div>
-                <p className="text-sm text-slate-300">Out-of-pocket tuition for eligible students</p>
-              </div>
-              <div>
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">8-16</div>
-                <p className="text-sm text-slate-300">Weeks to complete most programs</p>
-              </div>
-              <div>
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">100%</div>
-                <p className="text-sm text-slate-300">Job placement support for graduates</p>
-              </div>
-            </div>
-            <div className="text-center mt-6">
-              <Link 
-                href="/wioa-eligibility"
-                className="inline-flex items-center justify-center bg-blue-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-blue-700 transition-colors text-sm"
-              >
-                Check If You Qualify
-              </Link>
-            </div>
+          {/* CTA */}
+          <div className="text-center">
+            <Link 
+              href="/wioa-eligibility"
+              className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors text-sm"
+            >
+              Check If You Qualify
+            </Link>
           </div>
         </div>
       </section>
@@ -541,7 +525,7 @@ export default function HomePage() {
           
           <div className="grid md:grid-cols-3 gap-5">
             {/* Testimonial 1 */}
-            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl p-5 border border-blue-100 shadow-sm">
+            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
               <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -552,7 +536,7 @@ export default function HomePage() {
               <p className="text-slate-700 mb-4 text-sm leading-relaxed italic">
                 "This program got me CNA certified in 8 weeks. Now I'm making <span className="font-semibold text-green-600">$18/hour with benefits</span>. It changed my life."
               </p>
-              <div className="flex items-center gap-3 pt-3 border-t border-blue-100">
+              <div className="flex items-center gap-3 pt-3 border-t border-slate-200">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-sm">TJ</span>
                 </div>
@@ -564,7 +548,7 @@ export default function HomePage() {
             </div>
 
             {/* Testimonial 2 */}
-            <div className="bg-gradient-to-br from-green-50 to-white rounded-xl p-5 border border-green-100 shadow-sm">
+            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
               <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -575,7 +559,7 @@ export default function HomePage() {
               <p className="text-slate-700 mb-4 text-sm leading-relaxed italic">
                 "The barber apprenticeship let me <span className="font-semibold text-green-600">earn while I learned</span>. Now I'm licensed with my own chair."
               </p>
-              <div className="flex items-center gap-3 pt-3 border-t border-green-100">
+              <div className="flex items-center gap-3 pt-3 border-t border-slate-200">
                 <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-sm">MR</span>
                 </div>
@@ -587,7 +571,7 @@ export default function HomePage() {
             </div>
 
             {/* Testimonial 3 */}
-            <div className="bg-gradient-to-br from-orange-50 to-white rounded-xl p-5 border border-orange-100 shadow-sm">
+            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
               <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -598,7 +582,7 @@ export default function HomePage() {
               <p className="text-slate-700 mb-4 text-sm leading-relaxed italic">
                 "I thought I was too old at 42. <span className="font-semibold text-green-600">WIOA covered everything</span>. Now I'm an HVAC tech making real money."
               </p>
-              <div className="flex items-center gap-3 pt-3 border-t border-orange-100">
+              <div className="flex items-center gap-3 pt-3 border-t border-slate-200">
                 <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-sm">DW</span>
                 </div>
@@ -621,7 +605,7 @@ export default function HomePage() {
       </section>
 
       {/* Trust Badges / Partners Section - Professional */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white border-y border-slate-200">
+      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-slate-50 border-y border-slate-200">
         <div className="max-w-5xl mx-auto">
           <p className="text-center text-xs uppercase tracking-wider text-slate-400 font-medium mb-6">Approved & Recognized By</p>
           <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
@@ -675,7 +659,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section - With Urgency */}
-      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-blue-700">
+      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-blue-600">
         <div className="max-w-4xl mx-auto text-center">
           {/* Urgency banner */}
           <div className="inline-flex items-center gap-2 bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-full text-xs font-bold mb-4">

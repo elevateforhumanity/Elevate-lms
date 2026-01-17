@@ -121,7 +121,7 @@ export default function ShopPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-black/40" />
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <h3 className="font-semibold">{cat.name}</h3>
                     <p className="text-sm text-white/80">{cat.count} items</p>
