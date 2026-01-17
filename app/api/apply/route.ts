@@ -49,9 +49,11 @@ export const POST = withRateLimit(
         last_name: lastName,
         email,
         phone,
-        program_id: program,
+        city: 'Not provided',
+        zip: '00000',
+        program_interest: program,
         status: 'pending',
-        notes: `Funding: ${funding}. ${eligible ? 'Prescreen pass' : 'Manual review'}${pathway_slug ? `. Pathway: ${pathway_slug}` : ''}`,
+        support_notes: `Funding: ${funding}. ${eligible ? 'Prescreen pass' : 'Manual review'}${pathway_slug ? `. Pathway: ${pathway_slug}` : ''}`,
       };
 
       // Try with new columns first, fall back without them
