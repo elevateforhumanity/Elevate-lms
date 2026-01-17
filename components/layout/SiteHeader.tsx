@@ -16,6 +16,8 @@ const NAV_ITEMS = [
       { name: 'Technology', href: '/programs/technology' },
       { name: 'Business', href: '/programs/business' },
       { name: 'Apprenticeships', href: '/apprenticeships' },
+      { name: 'JRI Programs', href: '/jri' },
+      { name: 'Micro Classes', href: '/micro-classes' },
     ]
   },
   { 
@@ -23,10 +25,11 @@ const NAV_ITEMS = [
     href: '/services',
     subItems: [
       { name: 'Career Services', href: '/career-services' },
-      { name: 'Job Placement', href: '/job-placement' },
       { name: 'Drug Testing', href: '/drug-testing' },
       { name: 'Certifications', href: '/certifications' },
       { name: 'Training Providers', href: '/training-providers' },
+      { name: 'VITA Tax Prep', href: '/vita' },
+      { name: 'Mentorship', href: '/mentorship' },
     ]
   },
   { 
@@ -34,9 +37,9 @@ const NAV_ITEMS = [
     href: '/store',
     subItems: [
       { name: 'Shop All', href: '/shop' },
-      { name: 'Courses', href: '/store/courses' },
+      { name: 'Courses', href: '/courses' },
       { name: 'Workbooks', href: '/workbooks' },
-      { name: 'Merchandise', href: '/store/merchandise' },
+      { name: 'Marketplace', href: '/marketplace' },
     ]
   },
   { 
@@ -45,7 +48,9 @@ const NAV_ITEMS = [
     subItems: [
       { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
       { name: 'Funding & Grants', href: '/funding' },
+      { name: 'Tuition & Fees', href: '/tuition-fees' },
       { name: 'FAQ', href: '/faq' },
+      { name: 'Outcomes', href: '/outcomes' },
     ]
   },
   { 
@@ -55,6 +60,8 @@ const NAV_ITEMS = [
       { name: 'Hire Graduates', href: '/hire-graduates' },
       { name: 'Partner With Us', href: '/partners' },
       { name: 'Workforce Solutions', href: '/solutions' },
+      { name: 'OJT & Funding', href: '/ojt-and-funding' },
+      { name: 'Workforce Board', href: '/workforce-board' },
     ]
   },
   { 
@@ -63,18 +70,21 @@ const NAV_ITEMS = [
     subItems: [
       { name: 'Student Dashboard', href: '/lms/dashboard' },
       { name: 'My Courses', href: '/lms/courses' },
-      { name: 'Certificates', href: '/lms/certificates' },
-      { name: 'Grades', href: '/lms/grades' },
+      { name: 'Certificates', href: '/certificates' },
+      { name: 'Leaderboard', href: '/leaderboard' },
+      { name: 'Community', href: '/community' },
     ]
   },
   { 
-    name: 'Dashboards', 
+    name: 'Portals', 
     href: '/dashboard',
     subItems: [
       { name: 'Admin Dashboard', href: '/admin' },
       { name: 'Staff Portal', href: '/staff-portal' },
       { name: 'Partner Portal', href: '/partner-portal' },
       { name: 'Employer Portal', href: '/employer-portal' },
+      { name: 'Student Portal', href: '/student-portal' },
+      { name: 'Instructor Portal', href: '/instructor' },
     ]
   },
   { 
@@ -85,6 +95,8 @@ const NAV_ITEMS = [
       { name: 'Success Stories', href: '/success-stories' },
       { name: 'Contact', href: '/contact' },
       { name: 'Careers', href: '/careers' },
+      { name: 'Locations', href: '/locations' },
+      { name: 'Impact', href: '/impact' },
     ]
   },
   { 
@@ -92,8 +104,11 @@ const NAV_ITEMS = [
     href: '/resources',
     subItems: [
       { name: 'Blog', href: '/blog' },
+      { name: 'News', href: '/news' },
       { name: 'Events', href: '/events' },
+      { name: 'Webinars', href: '/webinars' },
       { name: 'Support', href: '/support' },
+      { name: 'Downloads', href: '/downloads' },
     ]
   },
 ];
