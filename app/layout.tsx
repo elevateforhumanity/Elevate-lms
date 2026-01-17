@@ -46,8 +46,9 @@ export const metadata: Metadata = {
   description:
     'Workforce infrastructure that connects public funding, employer demand, and credential-backed training to drive measurable outcomes.',
 
+  // Homepage canonical - child pages should override with their own
   alternates: {
-    canonical: SITE_URL,
+    canonical: 'https://www.elevateforhumanity.org',
   },
 
   keywords: [

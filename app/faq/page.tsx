@@ -6,6 +6,9 @@ import { HelpCircle, ChevronDown, Search, MessageSquare } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'FAQ | Elevate For Humanity',
   description: 'Frequently asked questions about our programs and services.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/faq',
+  },
 };
 
 export const dynamic = 'force-dynamic';

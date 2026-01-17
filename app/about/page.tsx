@@ -5,6 +5,9 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   title: 'About | Elevate for Humanity',
   description: 'Free career training and job placement for Indiana residents.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/about',
+  },
 };
 
 export default function AboutPage() {

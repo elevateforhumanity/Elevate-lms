@@ -5,6 +5,9 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   title: 'Programs | Elevate for Humanity',
   description: 'Free career training programs in healthcare, skilled trades, technology, and business.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/programs',
+  },
 };
 
 const programs = [
