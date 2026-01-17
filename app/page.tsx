@@ -114,36 +114,20 @@ export default function HomePage() {
         {/* Lighter gradient for brighter feel */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
         
-        {/* Hero Content */}
+        {/* Hero Content - Minimal, let voiceover do the talking */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
-          <p 
-            className={`text-sm sm:text-base text-blue-400 font-medium mb-2 uppercase tracking-wide transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            Career Training at No Cost If You Qualify
-          </p>
-          <h1 
-            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 max-w-4xl transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            Get trained. Get certified. <em className="italic font-normal">Get hired.</em>
-          </h1>
-          <p 
-            className={`text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-2xl transition-all duration-700 delay-100 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            We provide job training in healthcare, skilled trades, and technology. WIOA-funded programs mean no tuition for eligible students. Graduate with real credentials and job placement support.
-          </p>
           <div 
             className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-            style={{ transitionDelay: '200ms' }}
           >
             <Link 
               href="/apply"
-              className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors text-base sm:text-lg"
+              className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors text-lg"
             >
               Apply Now
             </Link>
             <Link 
               href="/programs"
-              className="inline-flex items-center text-white text-base sm:text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
+              className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
             >
               View Programs
             </Link>
