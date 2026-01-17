@@ -80,13 +80,13 @@ export default function SiteHeader() {
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center h-full">
+            {/* Desktop Navigation - show on sm (640px) and up */}
+            <nav className="hidden sm:flex items-center h-full">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`relative h-full flex items-center px-4 lg:px-6 text-sm font-medium transition-colors
+                  className={`relative h-full flex items-center px-3 sm:px-4 lg:px-6 text-sm font-medium transition-colors
                     before:absolute before:bottom-0 before:left-2 before:right-2 before:h-[3px] before:bg-blue-600 
                     before:opacity-0 before:transition-opacity hover:before:opacity-100
                     ${!mounted || isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'}
@@ -129,10 +129,10 @@ export default function SiteHeader() {
                 Apply Now
               </Link>
 
-              {/* Mobile menu button */}
+              {/* Mobile menu button - only show on xs screens */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className={`md:hidden flex items-center justify-center w-10 h-10 transition-colors ${textColor}`}
+                className={`sm:hidden flex items-center justify-center w-10 h-10 transition-colors ${textColor}`}
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -144,7 +144,7 @@ export default function SiteHeader() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] md:hidden">
+        <div className="fixed inset-0 z-[100] sm:hidden">
           <div 
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileMenuOpen(false)}
