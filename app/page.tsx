@@ -1,260 +1,280 @@
-import { Metadata } from 'next';
-import Image from 'next/image';
-import VideoHeroSection from '@/components/home/VideoHeroSection';
-import Intro from '@/components/home/Intro';
-import Orientation from '@/components/home/Orientation';
-import Testimonials from '@/components/home/Testimonials';
-import Assurance from '@/components/home/Assurance';
-import Start from '@/components/home/Start';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Elevate for Humanity | Workforce and Education Hub',
-  description:
-    'A regulated workforce development and credentialing institute connecting students to approved training, recognized credentials, and real career pathways.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org',
+import Link from 'next/link';
+import Image from 'next/image';
+import SiteHeader from '@/components/layout/SiteHeader';
+import SiteFooter from '@/components/layout/SiteFooter';
+import AutoPlayTTS from '@/components/AutoPlayTTS';
+import { useRef, useEffect, useState } from 'react';
+
+// Welcome message for TTS
+const WELCOME_MESSAGE = "Welcome to Elevate for Humanity. Launch your new career today with free workforce training for Indiana residents. Explore our healthcare, skilled trades, and technology programs.";
+
+// Reusable checkmark icon
+const CheckIcon = () => (
+  <svg className="w-4 h-4 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+  </svg>
+);
+
+// Program card data
+const programs = [
+  {
+    title: 'Healthcare',
+    duration: '8-12 Weeks',
+    items: ['CNA Certification', 'Medical Assistant', 'Phlebotomy'],
+    href: '/programs/healthcare',
+    image: '/images/healthcare/cna-training.jpg',
+    alt: 'Healthcare Training',
   },
-  openGraph: {
-    title: 'Elevate for Humanity - Free Career Training',
-    description: 'Workforce development connecting students to approved training, credentials, and career pathways.',
-    url: 'https://www.elevateforhumanity.org',
-    siteName: 'Elevate for Humanity',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Elevate for Humanity' }],
-    type: 'website',
+  {
+    title: 'Skilled Trades',
+    duration: '10-16 Weeks',
+    items: ['HVAC Technician', 'Electrical', 'Welding'],
+    href: '/programs/skilled-trades',
+    image: '/images/trades/hero-program-hvac.jpg',
+    alt: 'Skilled Trades Training',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Elevate for Humanity - Free Career Training',
-    description: 'Workforce development connecting students to training and career pathways.',
-    images: ['/og-default.jpg'],
+  {
+    title: 'Technology',
+    duration: '12-20 Weeks',
+    items: ['IT Support', 'Cybersecurity', 'Cloud Computing'],
+    href: '/programs/technology',
+    image: '/images/technology/hero-program-it-support.jpg',
+    alt: 'Technology Training',
   },
-};
+];
+
+// Value props data
+const valueProps = [
+  {
+    title: 'Real skills, real jobs',
+    href: '/programs',
+    linkText: 'See Programs',
+    image: '/images/artlist/hero-training-2.jpg',
+    alt: 'Hands-on training',
+  },
+  {
+    title: 'Free for Indiana residents',
+    href: '/about',
+    linkText: 'Learn More',
+    image: '/images/artlist/hero-training-3.jpg',
+    alt: 'Career support',
+  },
+  {
+    title: 'Career support included',
+    href: '/employers',
+    linkText: 'For Employers',
+    image: '/images/artlist/hero-training-4.jpg',
+    alt: 'Job placement',
+  },
+];
 
 export default function HomePage() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile for video optimization
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Animate content on mount
+  useEffect(() => {
+    const timer = setTimeout(() => setShowContent(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Video autoplay with mobile consideration
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video && !isMobile) {
+      video.play().catch(() => {});
+    }
+  }, [isMobile]);
 
   return (
-    <>
-      {/* Video Hero Banner - autoplays on all devices */}
-      <VideoHeroSection />
+    <div className="min-h-screen bg-white">
+      <SiteHeader />
+      
+      {/* Auto-playing welcome message */}
+      <AutoPlayTTS 
+        text={WELCOME_MESSAGE} 
+        voice="en-US-JennyNeural"
+        delay={1500}
+      />
 
-      {/* Flagship Program: Barber Apprenticeship */}
-      <section className="py-12 md:py-16 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <span className="inline-block px-4 py-1 bg-white/20 text-white text-sm font-bold rounded-full mb-4">
-                ⭐ USDOL Registered Apprenticeship
-              </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
-                Barber Apprenticeship Program
-              </h2>
-              <p className="text-lg md:text-xl text-white/90 mb-6">
-                Earn while you learn. Get your Indiana Barber License through our USDOL-registered apprenticeship. 
-                Work with a licensed sponsor, build real skills, and launch your career.
-              </p>
-              <ul className="text-white/90 space-y-2 mb-8">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> USDOL Registered Apprenticeship
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Pathway to Indiana Barber License (IPLA)
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> Earn income while training
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-400">✓</span> 2,000 hours hands-on experience
-                </li>
-              </ul>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="/programs/barber-apprenticeship"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-bold rounded-xl hover:bg-gray-100 transition-colors shadow-lg text-lg"
-                >
-                  Learn More
-                </a>
-                <a
-                  href="/apply?program=barber-apprenticeship"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-blue-500 text-white font-bold rounded-xl hover:bg-blue-400 transition-colors border-2 border-white text-lg"
-                >
-                  Apply Now
-                </a>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">💈</div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Become a Licensed Barber</h3>
-                  <p className="text-white/80 mb-6">Join Indiana's premier barber apprenticeship program</p>
-                  <div className="grid grid-cols-3 gap-3 text-center">
-                    <div className="bg-white/10 rounded-lg p-4">
-                      <div className="text-2xl font-black text-white">2,000</div>
-                      <div className="text-xs text-white/70">Hours</div>
-                    </div>
-                    <div className="bg-white/10 rounded-lg p-4">
-                      <div className="text-2xl font-black text-white">$4,980</div>
-                      <div className="text-xs text-white/70">Tuition</div>
-                    </div>
-                    <div className="bg-white/10 rounded-lg p-4">
-                      <div className="text-2xl font-black text-white">$45K+</div>
-                      <div className="text-xs text-white/70">Avg. Salary</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Other Programs Banner */}
-      <section className="py-8 md:py-10 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
-          <p className="text-lg text-white/80 mb-2">Also offering free training in:</p>
-          <p className="text-xl md:text-2xl font-bold text-white">
-            Healthcare • Skilled Trades • Technology • Business
+      {/* Hero Section - Optimized for all devices */}
+      <section className="relative w-full min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-end overflow-hidden">
+        {/* Fallback/Mobile image - always visible on mobile, hidden when video loads on desktop */}
+        <Image
+          src="/images/artlist/hero-training-1.jpg"
+          alt="Career Training"
+          fill
+          className={`object-cover ${!isMobile && videoLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-1000`}
+          priority
+          quality={85}
+          sizes="100vw"
+        />
+        
+        {/* Video - only render on tablet+ for performance */}
+        {!isMobile && (
+          <video
+            ref={videoRef}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+            loop
+            muted
+            playsInline
+            autoPlay
+            preload="auto"
+            onLoadedData={() => setVideoLoaded(true)}
+          >
+            <source src="/videos/hero-home.mp4" type="video/mp4" />
+          </video>
+        )}
+        
+        {/* Subtle bottom gradient for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
+          <h1 
+            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 sm:mb-4 max-w-4xl transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            Launch your <em className="italic font-normal">new career</em> today.
+          </h1>
+          <p 
+            className={`text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-xl transition-all duration-700 delay-100 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            Free workforce training for Indiana residents
           </p>
+          <Link 
+            href="/programs"
+            className={`inline-flex items-center text-white text-base sm:text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300 min-h-[44px] ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            style={{ transitionDelay: '200ms' }}
+          >
+            Explore Programs
+          </Link>
         </div>
       </section>
 
-      {/* Why Choose Our Programs - Paragraph with Image */}
-      <section className="py-8 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-black mb-4">
-              Why Choose Our Programs
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Image */}
-            <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/images/artlist/hero-training-1.png"
-                alt="Students in training program"
-                fill
-                priority
-                className="object-cover"
-              />
-            </div>
-
-            {/* Content */}
-            <div className="space-y-4 md:space-y-6">
-              <p className="text-base md:text-lg text-black leading-relaxed">
-                Real training, real credentials, real careers. Our programs provide 100% free training with WIOA, WRG, or DOL funding - no tuition costs for eligible students. We connect you with employers hiring our graduates and provide resume help, interview prep, and job search assistance.
-              </p>
-              <p className="text-base md:text-lg text-black leading-relaxed">
-                Complete fast-track programs in weeks or months, not years, and earn industry credentials that employers recognize including state licenses, national certifications, and DOL-registered apprenticeships. You'll receive ongoing career support with resume building, interview coaching, and job matching throughout your journey.
-              </p>
-              <p className="text-base md:text-lg text-black leading-relaxed">
-                With rolling enrollment and multiple start dates throughout the year, you can apply now to secure your spot in the next available cohort and start your path to a rewarding career.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Geographic Coverage */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
-            Serving Indiana Residents Statewide
+      {/* Programs Section */}
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
+            Training programs for every path
           </h2>
-          <p className="text-lg md:text-xl text-black max-w-3xl mx-auto mb-8">
-            With training locations across Indiana and online options, we make career training accessible to all Hoosiers
+          <Link 
+            href="/programs" 
+            className="inline-flex items-center text-blue-600 border-b border-blue-600 pb-0.5 hover:text-blue-800 hover:border-blue-800 mb-8 sm:mb-10 md:mb-12 min-h-[44px] text-sm sm:text-base"
+          >
+            Explore All Programs
+          </Link>
+
+          {/* Program Cards - Responsive grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {programs.map((program) => (
+              <article 
+                key={program.title}
+                className="group bg-slate-50 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="p-5 sm:p-6">
+                  <span className="text-xs sm:text-sm text-slate-500 uppercase tracking-wide">
+                    {program.duration}
+                  </span>
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mt-2 mb-3 sm:mb-4">
+                    {program.title}
+                  </h3>
+                  <ul className="space-y-2 mb-5 sm:mb-6">
+                    {program.items.map((item) => (
+                      <li key={item} className="flex items-center gap-2 text-sm sm:text-base text-slate-600">
+                        <CheckIcon />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link 
+                    href={program.href} 
+                    className="inline-flex items-center text-blue-600 border-b border-blue-600 pb-0.5 hover:text-blue-800 min-h-[44px] text-sm sm:text-base"
+                  >
+                    Learn More
+                  </Link>
+                </div>
+                <div className="relative h-40 sm:h-48">
+                  <Image
+                    src={program.image}
+                    alt={program.alt}
+                    fill
+                    className="object-cover"
+                    quality={80}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading="lazy"
+                  />
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Value Props Section */}
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {valueProps.map((prop) => (
+              <article key={prop.title} className="group">
+                <div className="relative h-56 sm:h-64 md:h-72 rounded-2xl overflow-hidden mb-4 sm:mb-6">
+                  <Image
+                    src={prop.image}
+                    alt={prop.alt}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    quality={80}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-2">
+                  {prop.title}
+                </h3>
+                <Link 
+                  href={prop.href} 
+                  className="inline-flex items-center text-blue-600 border-b border-blue-600 pb-0.5 hover:text-blue-800 min-h-[44px] text-sm sm:text-base"
+                >
+                  {prop.linkText}
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-blue-600">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
+            Ready to start your journey?
+          </h2>
+          <p className="text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8">
+            Apply today and begin training within weeks.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-3xl font-black text-blue-600 mb-2">Indianapolis</div>
-              <div className="text-sm text-black">Main Campus</div>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-3xl font-black text-blue-600 mb-2">Fort Wayne</div>
-              <div className="text-sm text-black">Training Center</div>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-3xl font-black text-blue-600 mb-2">Evansville</div>
-              <div className="text-sm text-black">Partner Site</div>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-3xl font-black text-blue-600 mb-2">Online</div>
-              <div className="text-sm text-black">Statewide Access</div>
-            </div>
-          </div>
+          <Link 
+            href="/apply"
+            className="inline-flex items-center justify-center bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-blue-50 active:bg-blue-100 transition-colors min-h-[48px] text-base sm:text-lg"
+          >
+            Apply Now
+          </Link>
         </div>
       </section>
 
-      {/* Partners & Credentials */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
-              Trusted Partners & Recognized Credentials
-            </h2>
-            <p className="text-lg text-black max-w-3xl mx-auto">
-              We partner with leading organizations to provide industry-recognized training and certifications
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center mb-12">
-            <div className="flex flex-col items-center gap-2">
-              <div className="h-20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-black text-black">WorkOne</div>
-                  <div className="text-xs text-black">Indiana</div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <div className="h-20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-black text-black">Certiport</div>
-                  <div className="text-xs text-black">Testing Center</div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <div className="h-20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-black text-black">WIOA</div>
-                  <div className="text-xs text-black">Approved Provider</div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <div className="h-20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-black text-black">ETPL</div>
-                  <div className="text-xs text-black">Listed Programs</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-gray-50 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold text-black mb-4">
-              Industry-Recognized Certifications
-            </h3>
-            <div className="flex flex-wrap justify-center gap-4 text-sm font-semibold text-black">
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">CompTIA A+</span>
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">CNA Certification</span>
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">HVAC EPA 608</span>
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">CDL Class A</span>
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">QuickBooks Certified</span>
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">Microsoft Office Specialist</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Keep existing sections */}
-      <Intro />
-      <Orientation />
-      <Testimonials />
-      <Assurance />
-      <Start />
-      {/* Removed closing main tag - ConditionalLayout handles it */}
-    </>
+      <SiteFooter />
+    </div>
   );
 }
