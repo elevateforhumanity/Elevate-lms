@@ -5,7 +5,7 @@ import Image from 'next/image';
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
 import AutoPlayTTS from '@/components/AutoPlayTTS';
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 // Welcome message for TTS
 const WELCOME_MESSAGE = "Welcome to Elevate for Humanity. Launch your new career today with free workforce training for Indiana residents. Explore our healthcare, skilled trades, and technology programs.";
@@ -72,7 +72,6 @@ const valueProps = [
 
 export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
   const [showContent, setShowContent] = useState(false);
 
   // Animate content on mount
@@ -81,27 +80,12 @@ export default function HomePage() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Video autoplay - aggressive loading for all devices
+  // Play video immediately
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
-
-    // Force load and play
-    const handleCanPlay = () => {
-      setVideoLoaded(true);
+    if (video) {
       video.play().catch(() => {});
-    };
-
-    // If already ready, play immediately
-    if (video.readyState >= 3) {
-      handleCanPlay();
-    } else {
-      video.addEventListener('canplaythrough', handleCanPlay);
     }
-
-    return () => {
-      video.removeEventListener('canplaythrough', handleCanPlay);
-    };
   }, []);
 
   return (
@@ -115,30 +99,20 @@ export default function HomePage() {
         delay={1500}
       />
 
-      {/* Hero Section - Optimized for all devices */}
+      {/* Hero Section - Fast loading like Industrious */}
       <section className="relative w-full min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-end overflow-hidden">
-        {/* Fallback image - hidden when video loads */}
-        <Image
-          src="/images/artlist/hero-training-1.jpg"
-          alt="Career Training"
-          fill
-          className={`object-cover ${videoLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}
-          priority
-          quality={85}
-          sizes="100vw"
-        />
-        
-        {/* Video - plays on all devices */}
+        {/* Background video - compressed 741KB, loads fast */}
         <video
           ref={videoRef}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className="absolute inset-0 w-full h-full object-cover"
           loop
           muted
           playsInline
           autoPlay
-          preload="auto"
+          preload="metadata"
+          poster="/images/artlist/hero-training-1.jpg"
         >
-          <source src="/videos/hero-home.mp4" type="video/mp4" />
+          <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>
         
         {/* Subtle bottom gradient for text readability */}
