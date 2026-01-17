@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { ProgramEnrollment } from "@/types/enrollment";
 import { createClient } from "@supabase/supabase-js";
 

@@ -132,7 +132,7 @@ export default function HomePage() {
   // Play video immediately - works on all devices including iPad/laptop
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video) return undefined;
 
     // Force attributes required for autoplay on all browsers
     video.muted = true;

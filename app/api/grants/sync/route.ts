@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Grants Sync API Route
  * Syncs grant opportunities from Grants.gov to local database

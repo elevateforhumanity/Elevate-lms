@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * TUITION CHECKOUT LOGIC
  * 

@@ -143,7 +143,7 @@ export default function SiteHeader() {
 
   // Track scroll for transparent → solid header
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') return undefined;
     
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);

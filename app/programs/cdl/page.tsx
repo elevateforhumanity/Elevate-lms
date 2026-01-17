@@ -16,6 +16,11 @@ const programData: ProgramData = {
   tuition: '$0*',
   salary: '$50K+',
   demand: 'Very High',
+  highlights: [
+    'Class A CDL in 4-8 weeks',
+    'Job placement assistance',
+    'WIOA funding available',
+  ],
   skills: [
     'Pre-trip vehicle inspection',
     'Basic vehicle control and maneuvering',

@@ -40,7 +40,7 @@ export default function ProgramsPage() {
   // Play video immediately - works on all devices including iPad/laptop
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video) return undefined;
 
     video.muted = true;
     video.playsInline = true;

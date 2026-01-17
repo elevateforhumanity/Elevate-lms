@@ -16,6 +16,11 @@ const programData: ProgramData = {
   tuition: '$0*',
   salary: '$45K+',
   demand: 'High',
+  highlights: [
+    'EPA 608 certification included',
+    'Hands-on lab training',
+    'WIOA funding available',
+  ],
   skills: [
     'HVAC system fundamentals and theory',
     'Heating system installation and repair',

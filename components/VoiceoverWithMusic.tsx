@@ -59,7 +59,7 @@ export default function VoiceoverWithMusic({
   }, []);
 
   useEffect(() => {
-    if (hasPlayed || typeof window === 'undefined') return;
+    if (hasPlayed || typeof window === 'undefined') return undefined;
 
     const audio = new Audio(audioSrc);
     audio.preload = 'auto';

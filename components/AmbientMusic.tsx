@@ -83,7 +83,7 @@ export default function AmbientMusic({
   }, [isPlaying, volume]);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') return undefined;
 
     const audio = new Audio(src);
     audio.preload = 'auto';
