@@ -24,73 +24,12 @@ export default async function StorePage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  // Get all products (handle missing table gracefully)
-  let products: any[] = [];
-  let categories: any[] = [];
-  let featuredProducts: any[] = [];
-  let cartCount = 0;
-  let purchases: any[] = [];
-
-  try {
-    const { data } = await supabase
-      .from('products')
-      .select('*')
-      .eq('is_active', true)
-      .order('created_at', { ascending: false });
-    products = data || [];
-  } catch (e) {
-    // Table may not exist
-  }
-
-  try {
-    const { data } = await supabase
-      .from('product_categories')
-      .select('*')
-      .order('name', { ascending: true });
-    categories = data || [];
-  } catch (e) {
-    // Table may not exist
-  }
-
-  try {
-    const { data } = await supabase
-      .from('products')
-      .select('*')
-      .eq('is_active', true)
-      .eq('is_featured', true)
-      .limit(4);
-    featuredProducts = data || [];
-  } catch (e) {
-    // Table may not exist
-  }
-
-  // Get user's cart count if logged in
-  if (user) {
-    try {
-      const { count } = await supabase
-        .from('cart_items')
-        .select('*', { count: 'exact', head: true })
-        .eq('user_id', user.id);
-      cartCount = count || 0;
-    } catch (e) {
-      // Table may not exist
-    }
-  }
-
-  // Get user's purchases if logged in
-  if (user) {
-    try {
-      const { data } = await supabase
-        .from('purchases')
-        .select('product_id')
-        .eq('user_id', user.id);
-      purchases = data || [];
-    } catch (e) {
-      // Table may not exist
-    }
-  }
-
-  const purchasedIds = purchases.map(p => p.product_id);
+  // Initialize with empty arrays - store tables may not exist yet
+  const products: any[] = [];
+  const categories: any[] = [];
+  const featuredProducts: any[] = [];
+  const cartCount = 0;
+  const purchasedIds: string[] = [];
 
   return (
     <div className="min-h-screen bg-gray-50">
