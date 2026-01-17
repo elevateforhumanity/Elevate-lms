@@ -1,14 +1,8 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
-import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import {
   ShoppingCart,
-  Download,
-  BookOpen,
   Gift,
-  Star,
-  Tag,
   ArrowRight,
   Heart,
 } from 'lucide-react';
@@ -21,15 +15,7 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function StorePage() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
-  // Initialize with empty arrays - store tables may not exist yet
-  const products: any[] = [];
-  const categories: any[] = [];
-  const featuredProducts: any[] = [];
   const cartCount = 0;
-  const purchasedIds: string[] = [];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -60,63 +46,17 @@ export default async function StorePage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Categories */}
-        {categories && categories.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-8">
-            <Link 
-              href="/store" 
-              className="px-4 py-2 bg-blue-900 text-white rounded-full text-sm font-medium"
-            >
-              All Products
-            </Link>
-            {categories.map((cat: any) => (
-              <Link 
-                key={cat.id} 
-                href={`/store?category=${cat.slug}`}
-                className="px-4 py-2 bg-white border rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50"
-              >
-                {cat.name}
-              </Link>
-            ))}
-          </div>
-        )}
-
-        {/* Featured Products */}
-        {featuredProducts && featuredProducts.length > 0 && (
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-blue-900 mb-6">Featured</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {featuredProducts.map((product: any) => (
-                <ProductCard 
-                  key={product.id} 
-                  product={product} 
-                  isPurchased={purchasedIds.includes(product.id)}
-                />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* All Products */}
+        {/* Products Coming Soon */}
         <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-6">All Products</h2>
-          {products && products.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {products.map((product: any) => (
-                <ProductCard 
-                  key={product.id} 
-                  product={product}
-                  isPurchased={purchasedIds.includes(product.id)}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16 bg-white rounded-xl border">
-              <Gift className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-              <h3 className="text-lg font-medium mb-2">No products available</h3>
-              <p className="text-gray-600">Browse our courses and training programs instead.</p>
-            </div>
-          )}
+          <h2 className="text-2xl font-bold text-blue-900 mb-6">Products</h2>
+          <div className="text-center py-16 bg-white rounded-xl border">
+            <Gift className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+            <h3 className="text-lg font-medium mb-2">Store Coming Soon</h3>
+            <p className="text-gray-600 mb-4">Digital resources and products will be available here.</p>
+            <Link href="/programs" className="text-blue-600 font-medium hover:underline">
+              Browse our training programs instead →
+            </Link>
+          </div>
         </section>
 
         {/* Mission Banner */}
@@ -133,58 +73,6 @@ export default async function StorePage() {
             Make a Donation <ArrowRight className="w-4 h-4" />
           </Link>
         </section>
-      </div>
-    </div>
-  );
-}
-
-function ProductCard({ product, isPurchased }: { product: any; isPurchased: boolean }) {
-  return (
-    <div className="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-md transition">
-      {product.image_url ? (
-        <div className="h-40 bg-gray-100 relative">
-          <Image src={product.image_url} alt={product.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 25vw" />
-        </div>
-      ) : (
-        <div className="h-40 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-          {product.type === 'digital' ? (
-            <Download className="w-10 h-10 text-blue-400" />
-          ) : (
-            <BookOpen className="w-10 h-10 text-blue-400" />
-          )}
-        </div>
-      )}
-      <div className="p-4">
-        {product.is_featured && (
-          <div className="flex items-center gap-1 text-red-600 text-xs font-medium mb-2">
-            <Star className="w-3 h-3 fill-current" /> Featured
-          </div>
-        )}
-        <h3 className="font-semibold mb-1">{product.name}</h3>
-        <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            <Tag className="w-4 h-4 text-gray-400" />
-            <span className="font-bold text-lg">
-              {product.price === 0 ? 'Free' : `$${product.price}`}
-            </span>
-          </div>
-          {isPurchased ? (
-            <Link 
-              href={`/store/downloads/${product.id}`}
-              className="text-green-600 text-sm font-medium"
-            >
-              Download
-            </Link>
-          ) : (
-            <Link 
-              href={`/store/product/${product.id}`}
-              className="text-blue-900 text-sm font-medium hover:underline"
-            >
-              View Details
-            </Link>
-          )}
-        </div>
       </div>
     </div>
   );
