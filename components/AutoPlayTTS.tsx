@@ -27,18 +27,38 @@ export default function AutoPlayTTS({ text, delay = 1500 }: AutoPlayTTSProps) {
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 1;
-    utterance.pitch = 1;
-    utterance.volume = 1;
+    // Slightly slower rate and natural pitch for less robotic sound
+    utterance.rate = 0.92;
+    utterance.pitch = 1.05;
+    utterance.volume = 0.9;
 
-    // Try to find a good English voice
+    // Try to find a natural-sounding English voice
     const voices = window.speechSynthesis.getVoices();
-    const englishVoice = voices.find(v => 
-      v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Microsoft') || v.name.includes('Samantha'))
-    ) || voices.find(v => v.lang.startsWith('en'));
     
-    if (englishVoice) {
-      utterance.voice = englishVoice;
+    // Prefer these voices in order (most natural sounding)
+    const preferredVoices = [
+      'Samantha', // macOS - very natural
+      'Karen', // macOS Australian - natural
+      'Daniel', // macOS British - natural
+      'Google US English', // Chrome - decent
+      'Microsoft Zira', // Windows - decent female
+      'Microsoft David', // Windows - decent male
+    ];
+    
+    let selectedVoice = null;
+    for (const preferred of preferredVoices) {
+      selectedVoice = voices.find(v => v.name.includes(preferred) && v.lang.startsWith('en'));
+      if (selectedVoice) break;
+    }
+    
+    // Fallback to any English voice
+    if (!selectedVoice) {
+      selectedVoice = voices.find(v => v.lang.startsWith('en-US')) || 
+                      voices.find(v => v.lang.startsWith('en'));
+    }
+    
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
     }
 
     utterance.onend = () => {

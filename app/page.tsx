@@ -6,8 +6,8 @@ import Image from 'next/image';
 import AutoPlayTTS from '@/components/AutoPlayTTS';
 import { useEffect, useState, useRef } from 'react';
 
-// Welcome message for TTS - longer, more informative
-const WELCOME_MESSAGE = "Welcome to Elevate for Humanity, Indiana's premier workforce training institute. We offer career training at no cost if you qualify through WIOA, WRG, and JRI funding programs. No tuition, no debt, just real credentials and job placement support. Whether you're looking to become a CNA, HVAC technician, barber, or IT professional, we're here to help you launch your new career. Apply today and start your journey to a better future.";
+// Welcome message for TTS - natural, conversational tone
+const WELCOME_MESSAGE = "Hey, welcome! We help people get into careers like healthcare, skilled trades, and tech. The best part? If you qualify, training is completely free through state and federal programs. No loans, no debt. Just real skills and a real job at the end. Ready to get started?";
 
 // Reusable checkmark icon
 const CheckIcon = () => (
@@ -151,7 +151,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* WIOA Card */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
-              <div className="relative h-48">
+              <div className="relative aspect-square">
                 <Image
                   src="/images/artlist/hero-training-6.jpg"
                   alt="WIOA funded career training"
@@ -178,7 +178,7 @@ export default function HomePage() {
             
             {/* Apprenticeships Card */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
-              <div className="relative h-48">
+              <div className="relative aspect-square">
                 <Image
                   src="/images/artlist/hero-training-7.jpg"
                   alt="Apprenticeship training"
@@ -205,7 +205,7 @@ export default function HomePage() {
             
             {/* Other Funding Card */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
-              <div className="relative h-48">
+              <div className="relative aspect-square">
                 <Image
                   src="/images/artlist/hero-training-8.jpg"
                   alt="Additional funding programs"
@@ -272,15 +272,15 @@ export default function HomePage() {
             Explore All Programs
           </Link>
 
-          {/* Program Cards - 3 columns horizontal with image on top */}
+          {/* Program Cards - 3 columns with square images */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {programs.map((program) => (
               <article 
                 key={program.title}
                 className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-100"
               >
-                {/* Image on top */}
-                <div className="relative h-48 sm:h-56">
+                {/* Square image container */}
+                <div className="relative aspect-square">
                   <Image
                     src={program.image}
                     alt={program.alt}

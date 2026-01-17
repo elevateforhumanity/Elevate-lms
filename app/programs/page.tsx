@@ -6,7 +6,8 @@ import { useEffect, useState, useRef } from 'react';
 import AutoPlayTTS from '@/components/AutoPlayTTS';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
-const PROGRAMS_MESSAGE = "Explore our career training programs in healthcare, skilled trades, and technology. All programs are available at no cost if you qualify through WIOA, WRG, or JRI funding. Click on a program to learn more and start your application.";
+// More natural, conversational voiceover - less robotic
+const PROGRAMS_MESSAGE = "Hey there! Looking for a new career? We've got training programs in healthcare, trades, and tech. And here's the thing - if you qualify for funding, it won't cost you a dime. Take a look around and see what fits.";
 
 const programs = [
   {
@@ -59,9 +60,9 @@ export default function ProgramsPage() {
           playsInline
           autoPlay
           preload="auto"
-          poster="/images/artlist/hero-training-1.jpg"
+          poster="/images/artlist/hero-training-3.jpg"
         >
-          <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
+          <source src="/videos/career-services-hero.mp4" type="video/mp4" />
         </video>
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
