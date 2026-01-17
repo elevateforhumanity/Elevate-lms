@@ -7,7 +7,7 @@ import AutoPlayTTS from '@/components/AutoPlayTTS';
 import { useEffect, useState, useRef } from 'react';
 
 // Welcome message for TTS - longer, more informative
-const WELCOME_MESSAGE = "Welcome to Elevate for Humanity, Indiana's premier workforce training institute. We offer 100% free career training in healthcare, skilled trades, and technology through WIOA, WRG, and JRI funding programs. No tuition, no debt, just real credentials and job placement support. Whether you're looking to become a CNA, HVAC technician, barber, or IT professional, we're here to help you launch your new career. Apply today and start your journey to a better future.";
+const WELCOME_MESSAGE = "Welcome to Elevate for Humanity, Indiana's premier workforce training institute. We offer career training at no cost if you qualify through WIOA, WRG, and JRI funding programs. No tuition, no debt, just real credentials and job placement support. Whether you're looking to become a CNA, HVAC technician, barber, or IT professional, we're here to help you launch your new career. Apply today and start your journey to a better future.";
 
 // Reusable checkmark icon
 const CheckIcon = () => (
@@ -119,7 +119,7 @@ export default function HomePage() {
           <p 
             className={`text-sm sm:text-base text-blue-400 font-medium mb-2 uppercase tracking-wide transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            Free Career Training for Indiana Residents
+            Career Training at No Cost If You Qualify
           </p>
           <h1 
             className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 max-w-4xl transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -129,7 +129,7 @@ export default function HomePage() {
           <p 
             className={`text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-2xl transition-all duration-700 delay-100 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            We provide free job training in healthcare, skilled trades, and technology. WIOA-funded programs mean no tuition for eligible students. Graduate with real credentials and job placement support.
+            We provide job training in healthcare, skilled trades, and technology. WIOA-funded programs mean no tuition for eligible students. Graduate with real credentials and job placement support.
           </p>
           <div 
             className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -139,7 +139,7 @@ export default function HomePage() {
               href="/apply"
               className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors text-base sm:text-lg"
             >
-              Apply Now - It&apos;s Free
+              Apply Now
             </Link>
             <Link 
               href="/programs"
@@ -151,12 +151,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How Free Training Works */}
+      {/* How No-Cost Training Works */}
       <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              How Is Training Free?
+              How Can Training Be No Cost?
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
               Federal and state workforce programs pay for your training - not you. These programs exist to help people get jobs in high-demand fields. We help you access them.

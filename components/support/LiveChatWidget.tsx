@@ -222,3 +222,17 @@ export function LiveChatWidget() {
   // Fall back to built-in widget
   return <FallbackChatWidget />;
 }
+
+// Wrapper that hides chat on store pages (store has its own GuidedDemoChat)
+import { usePathname } from 'next/navigation';
+
+export function ConditionalLiveChatWidget() {
+  const pathname = usePathname();
+  
+  // Don't show on store pages - they have GuidedDemoChat
+  if (pathname?.startsWith('/store')) {
+    return null;
+  }
+  
+  return <LiveChatWidget />;
+}

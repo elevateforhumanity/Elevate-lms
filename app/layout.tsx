@@ -10,7 +10,7 @@ import { ClientProviders } from '@/components/ClientProviders';
 import { UnregisterServiceWorker } from '@/components/UnregisterServiceWorker';
 import { VersionGuard } from '@/components/VersionGuard';
 import CookieConsent from '@/components/CookieConsent';
-import { LiveChatWidget } from '@/components/support/LiveChatWidget';
+import { ConditionalLiveChatWidget } from '@/components/support/LiveChatWidget';
 import { Inter } from 'next/font/google';
 import { GoogleAnalytics } from '@/components/analytics/google-analytics';
 
@@ -219,7 +219,7 @@ export default function RootLayout({
         <ConditionalLayout>{children}</ConditionalLayout>
         <ClientProviders />
         <CookieConsent />
-        <LiveChatWidget />
+        <ConditionalLiveChatWidget />
         <InstallPrompt />
 
         <Toaster
