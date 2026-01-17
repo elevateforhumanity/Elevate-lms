@@ -487,52 +487,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Certifications You Can Earn - Compact horizontal */}
-      <section className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 text-center">
-            Graduate with Credentials Employers Want
+      {/* Three Industries - Compact */}
+      <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6 text-center">
+            Training in 3 High-Demand Industries
           </h2>
-          <p className="text-sm text-slate-600 text-center mb-6">
-            Industry-recognized certifications and state licenses
-          </p>
           
-          {/* Horizontal scrolling on mobile, grid on desktop */}
-          <div className="flex overflow-x-auto pb-2 gap-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:overflow-visible scrollbar-hide">
-            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl mb-1">🏥</div>
-              <p className="font-semibold text-slate-900 text-xs">CNA</p>
+          {/* 3 Industries - always horizontal */}
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
+              <div className="text-3xl mb-2">🏥</div>
+              <p className="font-bold text-slate-900 text-sm">Healthcare</p>
+              <p className="text-xs text-slate-500">CNA, MA, Phlebotomy</p>
             </div>
-            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl mb-1">❄️</div>
-              <p className="font-semibold text-slate-900 text-xs">HVAC EPA</p>
+            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
+              <div className="text-3xl mb-2">🔧</div>
+              <p className="font-bold text-slate-900 text-sm">Skilled Trades</p>
+              <p className="text-xs text-slate-500">HVAC, CDL, Electrical</p>
             </div>
-            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl mb-1">💻</div>
-              <p className="font-semibold text-slate-900 text-xs">CompTIA</p>
-            </div>
-            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl mb-1">🚛</div>
-              <p className="font-semibold text-slate-900 text-xs">CDL</p>
-            </div>
-            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl mb-1">✂️</div>
-              <p className="font-semibold text-slate-900 text-xs">Barber</p>
-            </div>
-            <div className="flex-shrink-0 w-28 sm:w-auto bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl mb-1">📊</div>
-              <p className="font-semibold text-slate-900 text-xs">QuickBooks</p>
+            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
+              <div className="text-3xl mb-2">💻</div>
+              <p className="font-bold text-slate-900 text-sm">Technology</p>
+              <p className="text-xs text-slate-500">IT, Cybersecurity</p>
             </div>
           </div>
           
           {/* Partners Row - Compact */}
-          <div className="mt-6 pt-4 border-t border-slate-200">
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-slate-500">
-              <span>WorkOne Indiana</span>
-              <span>WIOA Approved</span>
-              <span>ETPL Listed</span>
-              <span>USDOL Registered</span>
-            </div>
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs text-slate-400">
+            <span>WorkOne Indiana</span>
+            <span>•</span>
+            <span>WIOA Approved</span>
+            <span>•</span>
+            <span>ETPL Listed</span>
           </div>
         </div>
       </section>
