@@ -149,8 +149,8 @@ export default async function StorePage() {
           ) : (
             <div className="text-center py-16 bg-white rounded-xl border">
               <Gift className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-              <h3 className="text-lg font-medium mb-2">Products coming soon</h3>
-              <p className="text-gray-600">Check back for digital resources and courses.</p>
+              <h3 className="text-lg font-medium mb-2">No products available</h3>
+              <p className="text-gray-600">Browse our courses and training programs instead.</p>
             </div>
           )}
         </section>

@@ -154,13 +154,13 @@ export default async function TransparencyPage() {
                   <FileText className="w-10 h-10 text-blue-600 mb-4" />
                   <h3 className="font-semibold text-lg mb-2">2023 Annual Report</h3>
                   <p className="text-gray-600 text-sm mb-4">Complete overview of our programs, outcomes, and financials.</p>
-                  <span className="text-blue-600 font-medium">Coming Soon</span>
+                  <span className="text-blue-600 font-medium">Available on Request</span>
                 </div>
                 <div className="bg-white rounded-xl shadow-sm border p-6">
                   <FileText className="w-10 h-10 text-blue-600 mb-4" />
                   <h3 className="font-semibold text-lg mb-2">2022 Annual Report</h3>
                   <p className="text-gray-600 text-sm mb-4">Our growth and impact in the second year of operations.</p>
-                  <span className="text-blue-600 font-medium">Coming Soon</span>
+                  <span className="text-blue-600 font-medium">Available on Request</span>
                 </div>
                 <div className="bg-white rounded-xl shadow-sm border p-6">
                   <FileText className="w-10 h-10 text-blue-600 mb-4" />
