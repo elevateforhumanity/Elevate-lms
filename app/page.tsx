@@ -201,11 +201,95 @@ export default function HomePage() {
 
 
 
-      {/* Who We Serve Section */}
+      {/* How We Help You Section */}
       <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Training Funded by Programs That Work
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              We connect you with federal and state workforce programs that pay for your training. You focus on learning - we handle the paperwork.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {/* WIOA Card */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+              <div className="relative h-48">
+                <Image
+                  src="/images/artlist/hero-training-2.jpg"
+                  alt="WIOA funded training"
+                  fill
+                  className="object-cover"
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">WIOA Funding</h3>
+                <p className="text-slate-600 mb-4">
+                  The Workforce Innovation and Opportunity Act covers tuition, books, and supplies for eligible adults and dislocated workers. If you qualify, your training is completely free.
+                </p>
+                <Link href="/wioa-eligibility" className="text-blue-600 border-b border-blue-600 pb-0.5 hover:text-blue-800">
+                  Check Eligibility
+                </Link>
+              </div>
+            </div>
+
+            {/* Earn While You Learn Card */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+              <div className="relative h-48">
+                <Image
+                  src="/images/artlist/hero-training-3.jpg"
+                  alt="Apprenticeship training"
+                  fill
+                  className="object-cover"
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Earn While You Learn</h3>
+                <p className="text-slate-600 mb-4">
+                  Our registered apprenticeship programs let you get paid while training. Work alongside experienced professionals and graduate with real job experience and industry credentials.
+                </p>
+                <Link href="/programs" className="text-blue-600 border-b border-blue-600 pb-0.5 hover:text-blue-800">
+                  View Apprenticeships
+                </Link>
+              </div>
+            </div>
+
+            {/* Reentry Card */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+              <div className="relative h-48">
+                <Image
+                  src="/images/artlist/hero-training-4.jpg"
+                  alt="Justice-involved reentry programs"
+                  fill
+                  className="object-cover"
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Second Chance Programs</h3>
+                <p className="text-slate-600 mb-4">
+                  Justice Reinvestment Initiative (JRI) funding supports reentry training. We partner with employers who hire based on skills, not background. Your past does not define your future.
+                </p>
+                <Link href="/reentry" className="text-blue-600 border-b border-blue-600 pb-0.5 hover:text-blue-800">
+                  Learn More
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Who We Serve */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden">
+            <div className="relative h-80 sm:h-96 lg:h-[450px] rounded-2xl overflow-hidden">
               <Image
                 src="/images/artlist/hero-training-5.jpg"
                 alt="Students in career training"
@@ -217,20 +301,39 @@ export default function HomePage() {
               />
             </div>
             <div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
                 Who We Serve
-              </h2>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                Students seeking career training, displaced workers needing new skills, veterans transitioning to civilian careers, and anyone eligible for workforce development funding.
-              </p>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                We help you access the training you qualify for and guide you from enrollment through certification to employment.
+              </h3>
+              <ul className="space-y-4 text-lg text-slate-600 mb-8">
+                <li className="flex items-start gap-3">
+                  <CheckIcon />
+                  <span>Adults seeking a career change or first-time job training</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckIcon />
+                  <span>Displaced workers who lost jobs due to layoffs or closures</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckIcon />
+                  <span>Veterans transitioning to civilian careers</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckIcon />
+                  <span>Justice-involved individuals ready for a fresh start</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckIcon />
+                  <span>Anyone eligible for WIOA, SNAP E&T, or other workforce funding</span>
+                </li>
+              </ul>
+              <p className="text-lg text-slate-600 mb-8">
+                We guide you from enrollment through certification to employment. No confusion, no runaround - just a clear path to a real job.
               </p>
               <Link 
                 href="/apply"
-                className="inline-flex items-center text-blue-600 border-b-2 border-blue-600 pb-1 hover:text-blue-800 hover:border-blue-800 text-lg font-medium"
+                className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
               >
-                Start Your Journey
+                Apply Now - It&apos;s Free
               </Link>
             </div>
           </div>
