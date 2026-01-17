@@ -119,30 +119,17 @@ export default async function VITAPage() {
                 </div>
               ))
             ) : (
-              <>
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <div className="flex items-start gap-4">
-                    <MapPin className="w-6 h-6 text-green-600 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-bold text-lg">Main Office</h3>
-                      <p className="text-gray-600">123 Education Way</p>
-                      <p className="text-gray-600">Indianapolis, IN 46204</p>
-                      <p className="text-sm text-green-600 mt-2">Mon-Sat: 9am-5pm</p>
-                    </div>
+              <div className="bg-gray-50 rounded-xl p-6 md:col-span-2">
+                <div className="flex items-start gap-4">
+                  <MapPin className="w-6 h-6 text-green-600 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-lg">VITA Tax Preparation Site</h3>
+                    <p className="text-gray-600">8888 Keystone Crossing, Suite 1300</p>
+                    <p className="text-gray-600">Indianapolis, IN 46240</p>
+                    <p className="text-sm text-green-600 mt-2">Call (317) 314-3757 for appointment</p>
                   </div>
                 </div>
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <div className="flex items-start gap-4">
-                    <MapPin className="w-6 h-6 text-green-600 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-bold text-lg">Community Center</h3>
-                      <p className="text-gray-600">456 Community Blvd</p>
-                      <p className="text-gray-600">Indianapolis, IN 46205</p>
-                      <p className="text-sm text-green-600 mt-2">Tue-Thu: 10am-6pm</p>
-                    </div>
-                  </div>
-                </div>
-              </>
+              </div>
             )}
           </div>
           <div className="text-center mt-8">
