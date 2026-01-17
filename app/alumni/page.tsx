@@ -1,0 +1,174 @@
+import { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Users, Briefcase, Award, Calendar, ArrowRight, MapPin } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Alumni Network | Elevate For Humanity',
+  description: 'Join our alumni network. Connect with graduates, access job opportunities, and continue your professional development.',
+};
+
+const stats = [
+  { label: 'Active Alumni', value: '2,500+' },
+  { label: 'Job Placements', value: '89%' },
+  { label: 'Avg Salary Increase', value: '45%' },
+  { label: 'Partner Employers', value: '150+' },
+];
+
+const benefits = [
+  {
+    icon: Briefcase,
+    title: 'Job Board Access',
+    description: 'Exclusive access to job postings from our employer partners specifically for Elevate graduates.',
+  },
+  {
+    icon: Users,
+    title: 'Networking Events',
+    description: 'Monthly virtual and in-person networking events to connect with fellow alumni and industry professionals.',
+  },
+  {
+    icon: Award,
+    title: 'Continued Learning',
+    description: 'Discounted access to advanced certifications and continuing education courses.',
+  },
+  {
+    icon: Calendar,
+    title: 'Mentorship Program',
+    description: 'Give back by mentoring current students or receive guidance from experienced professionals.',
+  },
+];
+
+const featuredAlumni = [
+  {
+    name: 'Marcus Johnson',
+    program: 'HVAC Technician',
+    company: 'Carrier Corporation',
+    image: '/images/artlist/hero-training-1.jpg',
+    quote: 'Elevate gave me the skills and confidence to start a new career at 35.',
+  },
+  {
+    name: 'Sarah Williams',
+    program: 'CNA Certification',
+    company: 'IU Health',
+    image: '/images/artlist/hero-training-2.jpg',
+    quote: 'The hands-on training prepared me for real-world healthcare situations.',
+  },
+  {
+    name: 'David Chen',
+    program: 'IT Support',
+    company: 'Salesforce',
+    image: '/images/artlist/hero-training-3.jpg',
+    quote: 'From warehouse worker to IT professional in just 6 months.',
+  },
+];
+
+export default function AlumniPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-blue-900 to-blue-700 text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+              Elevate Alumni Network
+            </h1>
+            <p className="text-xl text-blue-100 mb-8">
+              Join thousands of graduates who have transformed their careers. Access exclusive job opportunities, networking events, and continued learning resources.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/login"
+                className="inline-flex items-center gap-2 bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+              >
+                Sign In to Alumni Portal
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
+              >
+                Contact Alumni Services
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-12 bg-gray-50 border-b">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">{stat.value}</div>
+                <div className="text-gray-600">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-12">Alumni Benefits</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="bg-white border rounded-xl p-6 hover:shadow-lg transition-shadow">
+                <benefit.icon className="w-10 h-10 text-blue-600 mb-4" />
+                <h3 className="text-lg font-semibold mb-2">{benefit.title}</h3>
+                <p className="text-gray-600 text-sm">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Alumni */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-12">Featured Alumni</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {featuredAlumni.map((alumni) => (
+              <div key={alumni.name} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                <div className="relative h-48">
+                  <Image
+                    src={alumni.image}
+                    alt={alumni.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-semibold text-lg">{alumni.name}</h3>
+                  <p className="text-blue-600 text-sm mb-2">{alumni.program}</p>
+                  <p className="text-gray-500 text-sm flex items-center gap-1 mb-4">
+                    <MapPin className="w-3 h-3" /> {alumni.company}
+                  </p>
+                  <p className="text-gray-600 italic text-sm">"{alumni.quote}"</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 lg:py-24 bg-blue-600 text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Join Our Network?</h2>
+          <p className="text-xl text-blue-100 mb-8">
+            All Elevate graduates automatically become part of our alumni network. Sign in to access your benefits.
+          </p>
+          <Link
+            href="/login"
+            className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+          >
+            Access Alumni Portal
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
