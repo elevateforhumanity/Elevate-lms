@@ -18,8 +18,8 @@ fi
 echo "✓ NEXT_PUBLIC_SUPABASE_URL is set"
 echo "✓ NEXT_PUBLIC_SUPABASE_ANON_KEY is set"
 
-# Run the build
-echo "Running pnpm build..."
-pnpm build
+# Run the build with webpack (not Turbopack)
+echo "Running pnpm build with webpack..."
+NEXT_TURBOPACK=0 pnpm build
 
 echo "=== Build Complete ==="

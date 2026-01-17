@@ -2,6 +2,9 @@ import { withSentryConfig } from '@sentry/nextjs';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Disable Turbopack, use webpack
+  // turbopack: false, // This doesn't work in Next 16
+
   // Force cache bust - build timestamp + deployment marker
   generateBuildId: async () => {
     return `build-${Date.now()}-production`;
