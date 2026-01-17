@@ -4,37 +4,76 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import AutoPlayTTS from '@/components/AutoPlayTTS';
-import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
-const HEALTHCARE_MESSAGE = "Welcome to our healthcare training programs. Become a Certified Nursing Assistant, Direct Support Professional, or Drug Collector. Training is available at no cost if you qualify. Start your healthcare career today.";
+interface Program {
+  title: string;
+  duration: string;
+  description: string;
+  href: string;
+  image: string;
+}
 
-const programs = [
-  {
-    title: 'CNA Certification',
-    duration: '4-6 Weeks',
-    description: 'Become a Certified Nursing Assistant and start your healthcare career.',
-    href: '/programs/cna',
-    image: '/images/healthcare/hero-program-patient-care.jpg',
-  },
-  {
-    title: 'Direct Support Professional',
-    duration: '2-4 Weeks',
-    description: 'Support individuals with disabilities in daily living activities.',
-    href: '/programs/direct-support-professional',
-    image: '/images/healthcare/hero-program-medical-assistant.jpg',
-  },
-  {
-    title: 'Drug Collector',
-    duration: '1-2 Weeks',
-    description: 'Certified specimen collection for drug testing facilities.',
-    href: '/programs/drug-collector',
-    image: '/images/healthcare/hero-program-phlebotomy.jpg',
-  },
-];
+interface Stat {
+  icon: string;
+  title: string;
+  subtitle: string;
+}
 
-export default function HealthcareProgramsPage() {
+interface ProgramPageLayoutProps {
+  voiceoverMessage: string;
+  videoSrc: string;
+  programs: Program[];
+  stats: Stat[];
+  accentColor: 'blue' | 'orange' | 'purple' | 'green' | 'red';
+  ctaText: string;
+  applyLink: string;
+}
+
+const colorClasses = {
+  blue: {
+    badge: 'bg-blue-600',
+    cta: 'bg-blue-600',
+    ctaHover: 'hover:bg-blue-700',
+    ctaText: 'text-blue-600',
+  },
+  orange: {
+    badge: 'bg-orange-500',
+    cta: 'bg-orange-500',
+    ctaHover: 'hover:bg-orange-600',
+    ctaText: 'text-orange-600',
+  },
+  purple: {
+    badge: 'bg-purple-600',
+    cta: 'bg-purple-600',
+    ctaHover: 'hover:bg-purple-700',
+    ctaText: 'text-purple-600',
+  },
+  green: {
+    badge: 'bg-green-600',
+    cta: 'bg-green-600',
+    ctaHover: 'hover:bg-green-700',
+    ctaText: 'text-green-600',
+  },
+  red: {
+    badge: 'bg-red-600',
+    cta: 'bg-red-600',
+    ctaHover: 'hover:bg-red-700',
+    ctaText: 'text-red-600',
+  },
+};
+
+export default function ProgramPageLayout({
+  voiceoverMessage,
+  videoSrc,
+  programs,
+  stats,
+  accentColor,
+  ctaText,
+  applyLink,
+}: ProgramPageLayoutProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
+  const colors = colorClasses[accentColor];
 
   useEffect(() => {
     const timer = setTimeout(() => setShowContent(true), 100);
@@ -49,10 +88,10 @@ export default function HealthcareProgramsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
-      <AutoPlayTTS text={HEALTHCARE_MESSAGE} delay={1000} />
+    <>
+      <AutoPlayTTS text={voiceoverMessage} delay={1000} />
 
-      {/* Hero */}
+      {/* Hero - Clean video with just CTAs */}
       <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
         <video
           ref={videoRef}
@@ -63,7 +102,7 @@ export default function HealthcareProgramsPage() {
           autoPlay
           preload="auto"
         >
-          <source src="/videos/cna-hero.mp4" type="video/mp4" />
+          <source src={videoSrc} type="video/mp4" />
         </video>
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
@@ -71,8 +110,8 @@ export default function HealthcareProgramsPage() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
           <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <Link 
-              href="/apply?program=healthcare"
-              className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors text-lg"
+              href={applyLink}
+              className={`inline-flex items-center justify-center ${colors.cta} text-white px-8 py-4 rounded-full font-semibold ${colors.ctaHover} transition-colors text-lg`}
             >
               Apply Now
             </Link>
@@ -86,13 +125,10 @@ export default function HealthcareProgramsPage() {
         </div>
       </section>
 
-      {/* Breadcrumbs */}
-      <Breadcrumbs />
-
       {/* Programs Grid */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className={`grid gap-6 ${programs.length === 1 ? 'max-w-md mx-auto' : programs.length === 2 ? 'md:grid-cols-2 max-w-3xl mx-auto' : 'md:grid-cols-3'}`}>
             {programs.map((program) => (
               <Link
                 key={program.title}
@@ -107,7 +143,7 @@ export default function HealthcareProgramsPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     quality={85}
                   />
-                  <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                  <div className={`absolute top-3 right-3 ${colors.badge} text-white px-3 py-1 rounded-full text-xs font-semibold`}>
                     {program.duration}
                   </div>
                 </div>
@@ -126,17 +162,32 @@ export default function HealthcareProgramsPage() {
         </div>
       </section>
 
+      {/* Stats */}
+      <section className="py-10 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <div className={`grid gap-6 text-center ${stats.length === 3 ? 'grid-cols-3' : 'grid-cols-2 sm:grid-cols-4'}`}>
+            {stats.map((stat, i) => (
+              <div key={i}>
+                <div className="text-3xl mb-2">{stat.icon}</div>
+                <h3 className="font-bold text-gray-900">{stat.title}</h3>
+                <p className="text-sm text-gray-600">{stat.subtitle}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="py-10 bg-blue-600">
+      <section className={`py-10 ${colors.cta}`}>
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <Link
-            href="/apply?program=healthcare"
-            className="inline-block bg-white text-blue-600 px-8 py-3 font-semibold rounded-full hover:bg-blue-50 transition-colors"
+            href={applyLink}
+            className={`inline-block bg-white ${colors.ctaText} px-8 py-3 font-semibold rounded-full hover:bg-opacity-90 transition-colors`}
           >
-            Start Your Healthcare Career
+            {ctaText}
           </Link>
         </div>
       </section>
-    </div>
+    </>
   );
 }

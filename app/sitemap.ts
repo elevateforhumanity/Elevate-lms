@@ -18,26 +18,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Program pages (0.9)
   const programs = [
+    '/programs/healthcare',
+    '/programs/skilled-trades',
+    '/programs/technology',
     '/programs/cna',
+    '/programs/hvac',
+    '/programs/cdl',
     '/programs/cdl-transportation',
+    '/programs/barber',
     '/programs/barber-apprenticeship',
     '/programs/cosmetology-apprenticeship',
     '/programs/esthetician-apprenticeship',
     '/programs/nail-technician-apprenticeship',
     '/programs/beauty',
-    '/programs/healthcare',
-    '/programs/skilled-trades',
-    '/programs/business-financial',
-    '/programs/tax-preparation',
-    '/programs/technology',
     '/programs/business',
+    '/programs/business-financial',
     '/programs/direct-support-professional',
     '/programs/drug-collector',
     '/programs/federal-funded',
     '/programs/jri',
     '/programs/micro-programs',
+    '/programs/tax-preparation',
     '/programs/tax-entrepreneurship',
-    '/programs/apprenticeships',
+    '/programs/technology/it-support',
+    '/programs/technology/cybersecurity',
+    '/programs/technology/web-development',
   ];
 
   // Important pages (0.8)
