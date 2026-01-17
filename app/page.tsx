@@ -495,7 +495,7 @@ export default function HomePage() {
                       </svg>
                     </div>
                     <div>
-                      <span className="font-semibold text-slate-900">1,500 hours hands-on experience</span>
+                      <span className="font-semibold text-slate-900">2,000 hours hands-on experience</span>
                       <p className="text-sm text-slate-600">Learn from licensed barbers</p>
                     </div>
                   </li>
