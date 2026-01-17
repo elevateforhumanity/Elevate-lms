@@ -116,6 +116,7 @@
   "devDependencies": {
     "@axe-core/playwright": "4.11.0",
     "@eslint/js": "^9.38.0",
+    "@netlify/plugin-nextjs": "^5.15.5",
     "@next/bundle-analyzer": "16.1.1",
     "@playwright/test": "1.57.0",
     "@tailwindcss/forms": "0.5.10",
@@ -198,7 +199,7 @@
     "make:logo": "python3 tools/make_logo_assets.py",
     "lint:ts-nocheck": "bash -c '! grep -r \"@ts-nocheck\" app lib components --include=\"*.ts\" --include=\"*.tsx\" 2>/dev/null || echo \"Warning: @ts-nocheck found in codebase\"'",
     "prebuild": "echo 'Migrations already run in Supabase - skipping' && node scripts/write-build-marker.mjs",
-    "build": "NODE_OPTIONS='--max-old-space-size=8192 --max-semi-space-size=128' next build --no-turbopack",
+    "build": "NODE_OPTIONS='--max-old-space-size=8192 --max-semi-space-size=128' next build",
     "build:fast": "NODE_OPTIONS='--max-old-space-size=8192' SKIP_ENV_VALIDATION=true next build",
     "postbuild": "echo 'Next.js build complete'",
     "verify:build": "bash scripts/verify-build.sh || true",

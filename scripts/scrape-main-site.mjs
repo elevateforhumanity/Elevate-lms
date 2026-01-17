@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Scrape Main Site Content
- * Pulls pages from www.elevateforhumanity.institute and creates dynamic pages
+ * Pulls pages from www.www.elevateforhumanity.org and creates dynamic pages
  */
 
 import https from 'https';

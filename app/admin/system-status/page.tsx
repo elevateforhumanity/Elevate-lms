@@ -253,8 +253,8 @@ export default async function SystemStatusPage() {
   const canonicalConfig = {
     primaryDomain: 'https://www.elevateforhumanity.org',
     redirectDomains: [
-      'elevateforhumanity.institute',
-      'www.elevateforhumanity.institute', 
+      'www.elevateforhumanity.org',
+      'www.www.elevateforhumanity.org', 
       'elevateforhumanityeducation.com',
       'www.elevateforhumanityeducation.com',
       'elevateforhumanity.org (non-www)',

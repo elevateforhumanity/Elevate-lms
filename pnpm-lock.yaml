@@ -318,6 +318,9 @@ importers:
       '@eslint/js':
         specifier: ^9.38.0
         version: 9.39.2
+      '@netlify/plugin-nextjs':
+        specifier: ^5.15.5
+        version: 5.15.5
       '@next/bundle-analyzer':
         specifier: 16.1.1
         version: 16.1.1
@@ -1171,6 +1174,10 @@ packages:
       monaco-editor: '>= 0.25.0 < 1'
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  '@netlify/plugin-nextjs@5.15.5':
+    resolution: {integrity: sha512-Lvix59vHCEfvopILvdfIK2EPe/CrLH5qrIdwYnJbxpp/SSVgklsHpBrfNM9ADTr310r+WJRDz11NcDyHu3iT9w==}
+    engines: {node: '>=18.0.0'}
 
   '@next/bundle-analyzer@16.1.1':
     resolution: {integrity: sha512-aNJy301GGH8k36rDgrYdnyYEdjRQg6csMi1njzqHo+3qyZvOOWMHSv+p7SztNTzP5RU2KRwX0pPwYBtDcE+vVA==}
@@ -8283,6 +8290,8 @@ snapshots:
       monaco-editor: 0.55.1
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
+
+  '@netlify/plugin-nextjs@5.15.5': {}
 
   '@next/bundle-analyzer@16.1.1':
     dependencies:

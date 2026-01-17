@@ -284,13 +284,8 @@ const nextConfig = {
     const isPreview = process.env.NODE_ENV === 'preview';
     const host = process.env.URL || '';
     
-    // Noindex for .institute domain
-    const robotsHeaders = host.includes('elevateforhumanity.institute') ? [
-      {
-        key: 'X-Robots-Tag',
-        value: 'noindex, nofollow',
-      },
-    ] : [];
+    // No special handling needed - single canonical domain: www.elevateforhumanity.org
+    const robotsHeaders = [];
     
     // Base security headers for all environments
     const securityHeaders = [

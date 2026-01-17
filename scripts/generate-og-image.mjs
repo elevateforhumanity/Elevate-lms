@@ -33,7 +33,7 @@ const svg = `
   <rect x="0" y="530" width="${width}" height="100" fill="rgba(0,0,0,0.3)"/>
 
   <text x="600" y="590" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#ffffff" text-anchor="middle">
-    www.elevateforhumanity.institute
+    www.www.elevateforhumanity.org
   </text>
 </svg>
 `;

@@ -2,7 +2,7 @@
 
 /**
  * Pure Node.js CSS Extractor - Zero Dependencies
- * Extracts CSS and styling from elevateforhumanity.institute
+ * Extracts CSS and styling from www.elevateforhumanity.org
  */
 
 import fs from 'fs/promises';
@@ -331,7 +331,7 @@ function generateTailwindConfig(tokens) {
 
   return `/** @type {import('tailwindcss').Config} */
 /**
- * Tailwind Config - Extracted from elevateforhumanity.institute
+ * Tailwind Config - Extracted from www.elevateforhumanity.org
  * Generated: ${new Date().toISOString()}
  */
 module.exports = {

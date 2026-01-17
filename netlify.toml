@@ -1,80 +1,57 @@
-# Netlify Configuration for Next.js
-# Elevate for Humanity LMS Platform
-# Primary domain: www.elevateforhumanity.org
+# Netlify Configuration - Elevate for Humanity
+# Canonical domain: www.elevateforhumanity.org (with www)
 
 [build]
-  command = "bash scripts/netlify-build.sh"
+  command = "pnpm run build"
   publish = ".next"
-  
-[build.environment]
-  NODE_VERSION = "20.11.1"
-  NPM_FLAGS = "--legacy-peer-deps"
-  NEXT_TELEMETRY_DISABLED = "1"
-  NODE_OPTIONS = "--max-old-space-size=8192"
-  NETLIFY_SKIP_SECRET_SCANNING = "true"
-  # Enable Next.js edge runtime
-  NEXT_USE_NETLIFY_EDGE = "true"
 
-# Next.js Runtime Plugin with edge functions
+[build.environment]
+  NODE_VERSION = "20"
+  NETLIFY_USE_PNPM = "true"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Enable Netlify Image CDN
-[images]
-  remote_images = [".*"]
+# ============================================
+# CANONICAL DOMAIN REDIRECTS (301 = permanent)
+# All traffic funnels to www.elevateforhumanity.org
+# ============================================
 
-# CRITICAL: Allow Cloudflare verification (MUST BE FIRST)
-[[redirects]]
-  from = "/.well-known/*"
-  to = "/:splat"
-  status = 200
-
-# ===========================================
-# CANONICAL DOMAIN: www.elevateforhumanity.org
-# All other domains 301 redirect here
-# ===========================================
-
-# Redirect .institute domains to .org
-[[redirects]]
-  from = "https://elevateforhumanity.institute/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 301
-  force = true
-
+# Institute -> org (with www)
 [[redirects]]
   from = "https://www.elevateforhumanity.institute/*"
   to = "https://www.elevateforhumanity.org/:splat"
   status = 301
   force = true
 
-# Redirect .education domains to .org
+# Institute naked -> org
 [[redirects]]
-  from = "https://elevateforhumanityeducation.com/*"
+  from = "https://elevateforhumanity.institute/*"
   to = "https://www.elevateforhumanity.org/:splat"
   status = 301
   force = true
 
+# Education domain -> org
 [[redirects]]
   from = "https://www.elevateforhumanityeducation.com/*"
   to = "https://www.elevateforhumanity.org/:splat"
   status = 301
   force = true
 
-# Redirect Netlify preview/deploy domains to .org
 [[redirects]]
-  from = "https://*.netlify.app/*"
+  from = "https://elevateforhumanityeducation.com/*"
   to = "https://www.elevateforhumanity.org/:splat"
   status = 301
   force = true
 
-# Redirect non-www to www (canonical)
+# Naked org -> www org (canonical)
 [[redirects]]
   from = "https://elevateforhumanity.org/*"
   to = "https://www.elevateforhumanity.org/:splat"
   status = 301
   force = true
 
-# Force HTTPS
+# HTTP -> HTTPS
 [[redirects]]
   from = "http://elevateforhumanity.org/*"
   to = "https://www.elevateforhumanity.org/:splat"
@@ -87,56 +64,61 @@
   status = 301
   force = true
 
-[[redirects]]
-  from = "/index.html"
-  to = "/"
-  status = 301
+# ============================================
+# ROUTE REDIRECTS
+# ============================================
 
-# Fix broken program-holder/apply links
-[[redirects]]
-  from = "/program-holder/apply"
-  to = "/apply"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/program-holder/apply/*"
-  to = "/apply"
-  status = 301
-  force = true
-
-# Fix broken student/dashboard links
 [[redirects]]
   from = "/student/dashboard"
   to = "/student-portal"
-  status = 301
+  status = 308
   force = true
 
 [[redirects]]
   from = "/student/dashboard/*"
   to = "/student-portal"
-  status = 301
+  status = 308
   force = true
 
-# Fix broken partner-with-us links (route doesn't exist)
+[[redirects]]
+  from = "/student"
+  to = "/student-portal"
+  status = 308
+  force = true
+
 [[redirects]]
   from = "/partner-with-us"
   to = "/partner"
-  status = 301
+  status = 308
   force = true
 
-# Headers for security and caching
+[[redirects]]
+  from = "/program-holder/apply"
+  to = "/apply"
+  status = 308
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+# ============================================
+# HEADERS
+# ============================================
+
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
+    X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
-# Static assets - immutable cache (1 year)
 [[headers]]
   for = "/_next/static/*"
   [headers.values]
@@ -148,41 +130,6 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/videos/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/fonts/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.ico"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.svg"
-  [headers.values]
-    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
-
-# HTML pages - short cache with revalidation
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-# API routes - no cache
-[[headers]]
   for = "/api/*"
   [headers.values]
-    Cache-Control = "no-store, no-cache, must-revalidate"
-
-# Edge Functions for API routes (optional - Next.js handles this)
-# Netlify automatically routes /api/* to Next.js API routes
-
-# Function configuration
-[functions]
-  node_bundler = "esbuild"
-  directory = "netlify/functions"
+    Cache-Control = "no-store"
