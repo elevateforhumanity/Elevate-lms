@@ -4,7 +4,6 @@ import { usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
-import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
 // Lazy load audio component
 const PageAudio = dynamic(() => import('@/components/PageAudio'), { ssr: false });
@@ -48,7 +47,6 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
         role="main"
         tabIndex={-1}
       >
-        <Breadcrumbs />
         {children}
       </main>
 

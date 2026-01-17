@@ -3,11 +3,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
-import AutoPlayTTS from '@/components/AutoPlayTTS';
-import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
-// More natural, conversational voiceover - less robotic
-const PROGRAMS_MESSAGE = "Hey there! Looking for a new career? We've got training programs in healthcare, trades, and tech. And here's the thing - if you qualify for funding, it won't cost you a dime. Take a look around and see what fits.";
+
+
 
 const programs = [
   {
@@ -77,7 +75,7 @@ export default function ProgramsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <AutoPlayTTS text={PROGRAMS_MESSAGE} delay={1000} />
+
 
       {/* Hero - Clean video with just CTAs */}
       <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
@@ -114,8 +112,7 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* Breadcrumbs */}
-      <Breadcrumbs />
+
 
       {/* Programs Grid */}
       <section className="py-12 bg-white">
