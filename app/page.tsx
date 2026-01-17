@@ -21,39 +21,54 @@ function useUserState() {
     courses?: { title: string; slug: string };
   }>>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [authChecked, setAuthChecked] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Fetch user auth state
-    fetch('/api/auth/me')
-      .then(res => res.ok ? res.json() : null)
-      .then(data => {
-        if (data?.user) {
-          setUser(data.user);
-          // If logged in, fetch enrollments
-          fetch('/api/student/enrollments')
-            .then(res => res.ok ? res.json() : null)
-            .then(enrollData => {
-              setEnrollments(enrollData?.enrollments || []);
-              setIsLoading(false);
-            })
-            .catch(() => setIsLoading(false));
-        } else {
-          setUser(null);
-          setIsLoading(false);
+    const checkAuth = async () => {
+      try {
+        // Fetch user auth state
+        const authRes = await fetch('/api/auth/me', {
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+        });
+        
+        if (authRes.ok) {
+          const data = await authRes.json();
+          if (data?.user) {
+            setUser(data.user);
+            
+            // If logged in, fetch enrollments
+            try {
+              const enrollRes = await fetch('/api/student/enrollments', {
+                credentials: 'include',
+              });
+              if (enrollRes.ok) {
+                const enrollData = await enrollRes.json();
+                setEnrollments(enrollData?.enrollments || []);
+              }
+            } catch {
+              // Enrollment fetch failed, continue without enrollments
+            }
+          }
         }
-      })
-      .catch(() => {
+      } catch {
+        // Auth check failed, user is not logged in
         setUser(null);
+      } finally {
         setIsLoading(false);
-      });
+        setAuthChecked(true);
+      }
+    };
+
+    checkAuth();
   }, []);
 
   const activeEnrollment = enrollments.find(e => e.status === 'active');
   const hasApplication = enrollments.length > 0;
 
-  return { user, enrollments, activeEnrollment, hasApplication, isLoading };
+  return { user, enrollments, activeEnrollment, hasApplication, isLoading, authChecked };
 }
 
 // Welcome message for TTS - natural, conversational tone
@@ -99,7 +114,7 @@ const programs = [
 export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
-  const { user, activeEnrollment, hasApplication, isLoading } = useUserState();
+  const { user, activeEnrollment, hasApplication, isLoading, authChecked } = useUserState();
 
   // Animate content on mount
   useEffect(() => {
