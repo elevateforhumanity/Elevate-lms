@@ -56,32 +56,62 @@ export default function HomePage() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Play video immediately - with mobile retry
+  // Play video immediately - works on all devices including iPad/laptop
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Force muted (required for mobile autoplay)
+    // Force attributes required for autoplay on all browsers
     video.muted = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
     
-    const playVideo = () => {
-      video.play().catch(() => {
-        // Retry after a short delay on mobile
-        setTimeout(() => {
-          video.play().catch(() => {});
-        }, 500);
-      });
+    const playVideo = async () => {
+      try {
+        await video.play();
+      } catch {
+        // If autoplay fails, try again with user interaction simulation
+        const retryPlay = async () => {
+          try {
+            video.currentTime = 0;
+            await video.play();
+          } catch {
+            // Final fallback: play on any user interaction
+            const playOnInteraction = () => {
+              video.play().catch(() => {});
+              document.removeEventListener('click', playOnInteraction);
+              document.removeEventListener('touchstart', playOnInteraction);
+              document.removeEventListener('scroll', playOnInteraction);
+            };
+            document.addEventListener('click', playOnInteraction, { once: true });
+            document.addEventListener('touchstart', playOnInteraction, { once: true });
+            document.addEventListener('scroll', playOnInteraction, { once: true });
+          }
+        };
+        setTimeout(retryPlay, 100);
+      }
     };
 
-    // Play when video is ready
-    if (video.readyState >= 2) {
-      playVideo();
-    } else {
-      video.addEventListener('loadeddata', playVideo, { once: true });
-    }
+    // Try to play immediately
+    playVideo();
+
+    // Also try when video data is loaded
+    video.addEventListener('loadeddata', playVideo);
+    video.addEventListener('canplay', playVideo);
+    
+    // Try again when page becomes visible (for tab switches)
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        playVideo();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
 
     return () => {
       video.removeEventListener('loadeddata', playVideo);
+      video.removeEventListener('canplay', playVideo);
+      document.removeEventListener('visibilitychange', handleVisibility);
     };
   }, []);
 

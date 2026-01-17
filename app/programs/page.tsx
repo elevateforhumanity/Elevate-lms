@@ -39,11 +39,40 @@ export default function ProgramsPage() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Play video immediately - works on all devices including iPad/laptop
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
     video.muted = true;
-    video.play().catch(() => {});
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    
+    const playVideo = async () => {
+      try {
+        await video.play();
+      } catch {
+        setTimeout(() => {
+          video.play().catch(() => {});
+        }, 100);
+      }
+    };
+
+    playVideo();
+    video.addEventListener('loadeddata', playVideo);
+    video.addEventListener('canplay', playVideo);
+    
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') playVideo();
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      video.removeEventListener('loadeddata', playVideo);
+      video.removeEventListener('canplay', playVideo);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, []);
 
   return (
