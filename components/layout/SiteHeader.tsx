@@ -37,6 +37,26 @@ const NAV_ITEMS = [
     ]
   },
   { 
+    name: 'LMS', 
+    href: '/lms',
+    subItems: [
+      { name: 'Student Dashboard', href: '/lms/dashboard' },
+      { name: 'My Courses', href: '/lms/courses' },
+      { name: 'Certificates', href: '/lms/certificates' },
+      { name: 'Grades', href: '/lms/grades' },
+    ]
+  },
+  { 
+    name: 'Dashboards', 
+    href: '/dashboard',
+    subItems: [
+      { name: 'Admin Dashboard', href: '/admin' },
+      { name: 'Staff Portal', href: '/staff-portal' },
+      { name: 'Partner Portal', href: '/partner-portal' },
+      { name: 'Employer Portal', href: '/employer-portal' },
+    ]
+  },
+  { 
     name: 'About', 
     href: '/about',
     subItems: [
