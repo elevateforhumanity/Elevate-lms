@@ -13,8 +13,10 @@ import {
   Search,
   ChevronRight,
   Clock,
-  CheckCircle
+  CheckCircle,
+  PenSquare
 } from 'lucide-react';
+import { SupportForm } from './SupportForm';
 
 export const metadata: Metadata = {
   title: 'Support | Student Portal',
@@ -205,6 +207,17 @@ export default async function SupportPage() {
                   </div>
                 </a>
               </div>
+            </div>
+
+            {/* Submit Support Request */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <PenSquare className="w-5 h-5 text-blue-600" />
+                </div>
+                <h3 className="font-bold text-slate-900">Submit a Request</h3>
+              </div>
+              <SupportForm />
             </div>
 
             {/* AI Tutor */}
