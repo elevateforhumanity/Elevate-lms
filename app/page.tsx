@@ -45,30 +45,7 @@ const programs = [
   },
 ];
 
-// Value props data
-const valueProps = [
-  {
-    title: 'Real skills, real jobs',
-    href: '/programs',
-    linkText: 'See Programs',
-    image: '/images/artlist/hero-training-2.jpg',
-    alt: 'Hands-on training',
-  },
-  {
-    title: 'Free for Indiana residents',
-    href: '/about',
-    linkText: 'Learn More',
-    image: '/images/artlist/hero-training-3.jpg',
-    alt: 'Career support',
-  },
-  {
-    title: 'Career support included',
-    href: '/employers',
-    linkText: 'For Employers',
-    image: '/images/artlist/hero-training-4.jpg',
-    alt: 'Job placement',
-  },
-];
+
 
 export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -80,12 +57,33 @@ export default function HomePage() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Play video immediately
+  // Play video immediately - with mobile retry
   useEffect(() => {
     const video = videoRef.current;
-    if (video) {
-      video.play().catch(() => {});
+    if (!video) return;
+
+    // Force muted (required for mobile autoplay)
+    video.muted = true;
+    
+    const playVideo = () => {
+      video.play().catch(() => {
+        // Retry after a short delay on mobile
+        setTimeout(() => {
+          video.play().catch(() => {});
+        }, 500);
+      });
+    };
+
+    // Play when video is ready
+    if (video.readyState >= 2) {
+      playVideo();
+    } else {
+      video.addEventListener('loadeddata', playVideo, { once: true });
     }
+
+    return () => {
+      video.removeEventListener('loadeddata', playVideo);
+    };
   }, []);
 
   return (
@@ -102,6 +100,7 @@ export default function HomePage() {
       {/* Hero Section - Fast loading like Industrious */}
       <section className="relative w-full min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-end overflow-hidden">
         {/* Background video - compressed 741KB, loads fast */}
+        {/* Key mobile fixes: webkit-playsinline, muted MUST be present for autoplay */}
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
@@ -109,8 +108,9 @@ export default function HomePage() {
           muted
           playsInline
           autoPlay
-          preload="metadata"
+          preload="auto"
           poster="/images/artlist/hero-training-1.jpg"
+          webkit-playsinline="true"
         >
           <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>
@@ -199,34 +199,40 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Value Props Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
+
+
+      {/* Who We Serve Section */}
+      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {valueProps.map((prop) => (
-              <article key={prop.title} className="group">
-                <div className="relative h-56 sm:h-64 md:h-72 rounded-2xl overflow-hidden mb-4 sm:mb-6">
-                  <Image
-                    src={prop.image}
-                    alt={prop.alt}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    quality={80}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    loading="lazy"
-                  />
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-2">
-                  {prop.title}
-                </h3>
-                <Link 
-                  href={prop.href} 
-                  className="inline-flex items-center text-blue-600 border-b border-blue-600 pb-0.5 hover:text-blue-800 min-h-[44px] text-sm sm:text-base"
-                >
-                  {prop.linkText}
-                </Link>
-              </article>
-            ))}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/artlist/hero-training-5.jpg"
+                alt="Students in career training"
+                fill
+                className="object-cover"
+                quality={85}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                Who We Serve
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                Students seeking career training, displaced workers needing new skills, veterans transitioning to civilian careers, and anyone eligible for workforce development funding.
+              </p>
+              <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                We help you access the training you qualify for and guide you from enrollment through certification to employment.
+              </p>
+              <Link 
+                href="/apply"
+                className="inline-flex items-center text-blue-600 border-b-2 border-blue-600 pb-1 hover:text-blue-800 hover:border-blue-800 text-lg font-medium"
+              >
+                Start Your Journey
+              </Link>
+            </div>
           </div>
         </div>
       </section>
