@@ -6,6 +6,56 @@ import Image from 'next/image';
 import VoiceoverWithMusic from '@/components/VoiceoverWithMusic';
 import { useEffect, useState, useRef } from 'react';
 
+// User state hook - fetches auth and enrollment data
+function useUserState() {
+  const [user, setUser] = useState<{ 
+    id?: string; 
+    email?: string; 
+    firstName?: string;
+    lastName?: string;
+  } | null>(null);
+  const [enrollments, setEnrollments] = useState<Array<{
+    id: string;
+    status: string;
+    progress: number;
+    courses?: { title: string; slug: string };
+  }>>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    // Fetch user auth state
+    fetch('/api/auth/me')
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (data?.user) {
+          setUser(data.user);
+          // If logged in, fetch enrollments
+          fetch('/api/student/enrollments')
+            .then(res => res.ok ? res.json() : null)
+            .then(enrollData => {
+              setEnrollments(enrollData?.enrollments || []);
+              setIsLoading(false);
+            })
+            .catch(() => setIsLoading(false));
+        } else {
+          setUser(null);
+          setIsLoading(false);
+        }
+      })
+      .catch(() => {
+        setUser(null);
+        setIsLoading(false);
+      });
+  }, []);
+
+  const activeEnrollment = enrollments.find(e => e.status === 'active');
+  const hasApplication = enrollments.length > 0;
+
+  return { user, enrollments, activeEnrollment, hasApplication, isLoading };
+}
+
 // Welcome message for TTS - natural, conversational tone
 const WELCOME_MESSAGE = "Hey, welcome! We help people get into careers like healthcare, skilled trades, and tech. The best part? If you qualify, training is completely free through state and federal programs. No loans, no debt. Just real skills and a real job at the end. Ready to get started?";
 
@@ -49,6 +99,7 @@ const programs = [
 export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
+  const { user, activeEnrollment, hasApplication, isLoading } = useUserState();
 
   // Animate content on mount
   useEffect(() => {
@@ -146,33 +197,145 @@ export default function HomePage() {
           <div 
             className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
+            {/* Personalized Welcome for Logged-in Users */}
+            {user && !isLoading && (
+              <div className="mb-4 inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                <span className="text-white text-sm">
+                  Welcome back{user.firstName ? `, ${user.firstName}` : ''}!
+                </span>
+                {activeEnrollment && (
+                  <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">
+                    {activeEnrollment.progress || 0}% complete
+                  </span>
+                )}
+              </div>
+            )}
+
             {/* Headline */}
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 max-w-3xl leading-tight">
-              Launch Your New Career in 8-16 Weeks — <span className="text-blue-400">100% Free</span>
+              {user && activeEnrollment 
+                ? 'Continue Your Training Journey'
+                : 'Launch Your New Career in 8-16 Weeks — '
+              }
+              {!user || !activeEnrollment ? <span className="text-blue-400">100% Free</span> : null}
             </h1>
             <p className="text-base sm:text-lg text-white/90 mb-4 max-w-2xl">
-              Indiana's workforce programs pay for your training. No loans. No debt. Just real skills and a real job.
+              {user && activeEnrollment
+                ? `You're making progress in ${activeEnrollment.courses?.title || 'your program'}. Keep going!`
+                : "Indiana's workforce programs pay for your training. No loans. No debt. Just real skills and a real job."
+              }
             </p>
             
-            {/* CTAs */}
+            {/* Auth-Aware CTAs */}
             <div className="flex flex-wrap gap-3 items-center">
-              <Link 
-                href="/apply"
-                className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
-              >
-                Apply Now — It's Free
-              </Link>
-              <Link 
-                href="tel:317-314-3757"
-                className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                (317) 314-3757
-              </Link>
+              {!isLoading && (
+                <>
+                  {user && activeEnrollment ? (
+                    // Logged in with active enrollment - show Continue Learning
+                    <>
+                      <Link 
+                        href="/lms/dashboard"
+                        className="inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition-all hover:scale-105 text-base shadow-lg shadow-green-600/30"
+                      >
+                        Continue Learning
+                      </Link>
+                      <Link 
+                        href="/student/progress"
+                        className="inline-flex items-center gap-2 text-white text-base hover:text-green-400 transition-colors"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        View Progress
+                      </Link>
+                    </>
+                  ) : user && hasApplication ? (
+                    // Logged in with application but no active enrollment
+                    <>
+                      <Link 
+                        href="/lms/dashboard"
+                        className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
+                      >
+                        Go to Dashboard
+                      </Link>
+                      <Link 
+                        href="/apply"
+                        className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
+                      >
+                        Continue Application
+                      </Link>
+                    </>
+                  ) : user ? (
+                    // Logged in but no enrollments
+                    <>
+                      <Link 
+                        href="/apply"
+                        className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
+                      >
+                        Start Your Application
+                      </Link>
+                      <Link 
+                        href="/programs"
+                        className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
+                      >
+                        Browse Programs
+                      </Link>
+                    </>
+                  ) : (
+                    // Not logged in - default CTAs
+                    <>
+                      <Link 
+                        href="/apply"
+                        className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
+                      >
+                        Apply Now — It's Free
+                      </Link>
+                      <Link 
+                        href="tel:317-314-3757"
+                        className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        (317) 314-3757
+                      </Link>
+                    </>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
       </section>
+
+      {/* Personalized Progress Section - Only for logged-in users with enrollments */}
+      {user && activeEnrollment && !isLoading && (
+        <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-50 to-blue-50 border-b border-green-100">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-1">
+                  Your Learning Progress
+                </h2>
+                <p className="text-sm text-slate-600">
+                  {activeEnrollment.courses?.title || 'Current Program'} • {activeEnrollment.progress || 0}% complete
+                </p>
+              </div>
+              <div className="flex items-center gap-4">
+                {/* Progress Bar */}
+                <div className="w-48 h-3 bg-slate-200 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-green-500 rounded-full transition-all duration-500"
+                    style={{ width: `${activeEnrollment.progress || 0}%` }}
+                  />
+                </div>
+                <Link
+                  href="/lms/dashboard"
+                  className="inline-flex items-center justify-center bg-green-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-green-700 transition-colors text-sm"
+                >
+                  Continue Learning
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* How No-Cost Training Works */}
       <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
@@ -658,35 +821,62 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section - With Urgency */}
-      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-blue-600">
+      {/* CTA Section - Auth-Aware */}
+      <section className={`py-10 sm:py-12 px-4 sm:px-6 lg:px-8 ${user && activeEnrollment ? 'bg-green-600' : 'bg-blue-600'}`}>
         <div className="max-w-4xl mx-auto text-center">
-          {/* Urgency banner */}
-          <div className="inline-flex items-center gap-2 bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-full text-xs font-bold mb-4">
-            <span className="w-2 h-2 bg-yellow-900 rounded-full animate-pulse"></span>
-            Next Class Starts February 3rd — Limited Seats Available
-          </div>
+          {/* Urgency banner - only for non-enrolled users */}
+          {!user || !activeEnrollment ? (
+            <div className="inline-flex items-center gap-2 bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+              <span className="w-2 h-2 bg-yellow-900 rounded-full animate-pulse"></span>
+              Next Class Starts February 3rd — Limited Seats Available
+            </div>
+          ) : null}
           
           <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
-            Your New Career Starts Here
+            {user && activeEnrollment 
+              ? "Keep Up the Great Work!"
+              : "Your New Career Starts Here"
+            }
           </h2>
-          <p className="text-sm sm:text-base text-blue-100 mb-5">
-            Apply in 2 minutes. Get approved in 48 hours. Start training within weeks.
+          <p className="text-sm sm:text-base text-white/90 mb-5">
+            {user && activeEnrollment
+              ? "You're making progress. Every lesson brings you closer to your new career."
+              : "Apply in 2 minutes. Get approved in 48 hours. Start training within weeks."
+            }
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link 
-              href="/apply"
-              className="inline-flex items-center justify-center bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all hover:scale-105 text-sm shadow-lg"
-            >
-              Apply Now — It's Free
-            </Link>
-            <Link 
-              href="tel:317-314-3757"
-              className="inline-flex items-center justify-center border-2 border-white text-white px-5 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors text-sm gap-2"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-              (317) 314-3757
-            </Link>
+            {user && activeEnrollment ? (
+              <>
+                <Link 
+                  href="/lms/dashboard"
+                  className="inline-flex items-center justify-center bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-green-50 transition-all hover:scale-105 text-sm shadow-lg"
+                >
+                  Continue Learning
+                </Link>
+                <Link 
+                  href="/student/progress"
+                  className="inline-flex items-center justify-center border-2 border-white text-white px-5 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors text-sm gap-2"
+                >
+                  View Full Progress
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link 
+                  href="/apply"
+                  className="inline-flex items-center justify-center bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all hover:scale-105 text-sm shadow-lg"
+                >
+                  Apply Now — It's Free
+                </Link>
+                <Link 
+                  href="tel:317-314-3757"
+                  className="inline-flex items-center justify-center border-2 border-white text-white px-5 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors text-sm gap-2"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  (317) 314-3757
+                </Link>
+              </>
+            )}
           </div>
           
           {/* Trust indicators */}
@@ -707,21 +897,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Sticky Mobile CTA */}
+      {/* Sticky Mobile CTA - Auth-Aware */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 p-3 shadow-lg">
         <div className="flex gap-2">
-          <Link 
-            href="/apply"
-            className="flex-1 inline-flex items-center justify-center bg-blue-600 text-white py-3 rounded-lg font-semibold text-sm"
-          >
-            Apply Now — Free
-          </Link>
-          <Link 
-            href="tel:317-314-3757"
-            className="inline-flex items-center justify-center bg-gray-100 text-gray-700 px-4 py-3 rounded-lg"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          </Link>
+          {user && activeEnrollment ? (
+            <>
+              <Link 
+                href="/lms/dashboard"
+                className="flex-1 inline-flex items-center justify-center bg-green-600 text-white py-3 rounded-lg font-semibold text-sm"
+              >
+                Continue Learning
+              </Link>
+              <Link 
+                href="/student/progress"
+                className="inline-flex items-center justify-center bg-gray-100 text-gray-700 px-4 py-3 rounded-lg"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </Link>
+            </>
+          ) : user ? (
+            <>
+              <Link 
+                href="/lms/dashboard"
+                className="flex-1 inline-flex items-center justify-center bg-blue-600 text-white py-3 rounded-lg font-semibold text-sm"
+              >
+                Go to Dashboard
+              </Link>
+              <Link 
+                href="/apply"
+                className="inline-flex items-center justify-center bg-gray-100 text-gray-700 px-4 py-3 rounded-lg text-sm font-medium"
+              >
+                Apply
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link 
+                href="/apply"
+                className="flex-1 inline-flex items-center justify-center bg-blue-600 text-white py-3 rounded-lg font-semibold text-sm"
+              >
+                Apply Now — Free
+              </Link>
+              <Link 
+                href="tel:317-314-3757"
+                className="inline-flex items-center justify-center bg-gray-100 text-gray-700 px-4 py-3 rounded-lg"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </Link>
+            </>
+          )}
         </div>
       </div>
 
