@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import AutoPlayTTS from '@/components/AutoPlayTTS';
+import VoiceoverWithMusic from '@/components/VoiceoverWithMusic';
 import { useEffect, useState, useRef } from 'react';
 
 // Welcome message for TTS - natural, conversational tone
@@ -117,12 +117,8 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Auto-playing welcome message */}
-      <AutoPlayTTS 
-        text={WELCOME_MESSAGE} 
-        voice="en-US-JennyNeural"
-        delay={1500}
-      />
+      {/* Professional voiceover */}
+      <VoiceoverWithMusic audioSrc="/audio/welcome-voiceover.mp3" delay={1500} />
 
       {/* Hero Section - Optimized for all screen sizes including Chromebooks */}
       <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-blue-900">
@@ -135,7 +131,7 @@ export default function HomePage() {
           muted
           playsInline
           autoPlay
-          preload="auto"
+          preload="metadata"
           webkit-playsinline="true"
           poster="/images/artlist/hero-training-1.jpg"
         >
@@ -150,12 +146,6 @@ export default function HomePage() {
           <div 
             className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            {/* Trust badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1 mb-4">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-              <span className="text-white/90 text-xs font-medium">500+ Graduates Placed in Jobs</span>
-            </div>
-            
             {/* Headline */}
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 max-w-3xl leading-tight">
               Launch Your New Career in 8-16 Weeks — <span className="text-blue-400">100% Free</span>
@@ -163,22 +153,6 @@ export default function HomePage() {
             <p className="text-base sm:text-lg text-white/90 mb-4 max-w-2xl">
               Indiana's workforce programs pay for your training. No loans. No debt. Just real skills and a real job.
             </p>
-            
-            {/* Social proof stats */}
-            <div className="flex flex-wrap gap-4 sm:gap-6 mb-6 text-white/80 text-sm">
-              <div className="flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
-                <span>WIOA Approved</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
-                <span>State Licensed</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
-                <span>Job Placement Support</span>
-              </div>
-            </div>
             
             {/* CTAs */}
             <div className="flex flex-wrap gap-3 items-center">
@@ -557,12 +531,11 @@ export default function HomePage() {
       <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
-            <span className="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full mb-3">SUCCESS STORIES</span>
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-2">
-              Real People. Real Results.
+              What Our Graduates Say
             </h2>
             <p className="text-sm text-slate-600 max-w-2xl mx-auto">
-              Join 500+ graduates who launched new careers through our programs.
+              Real stories from people who changed their careers.
             </p>
           </div>
           

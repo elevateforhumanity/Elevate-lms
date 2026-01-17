@@ -27,10 +27,10 @@ export default function AutoPlayTTS({ text, delay = 1500 }: AutoPlayTTSProps) {
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
-    // Slightly slower rate and natural pitch for less robotic sound
-    utterance.rate = 0.92;
-    utterance.pitch = 1.05;
-    utterance.volume = 0.9;
+    // More natural speech settings - slower rate, warmer pitch
+    utterance.rate = 0.88;
+    utterance.pitch = 1.1;
+    utterance.volume = 0.85;
 
     // Try to find a natural-sounding English voice
     const voices = window.speechSynthesis.getVoices();
@@ -67,6 +67,23 @@ export default function AutoPlayTTS({ text, delay = 1500 }: AutoPlayTTSProps) {
     };
     
     utterance.onstart = () => {
+      setHasPlayed(true);
+      setShowPlayButton(false);
+    };
+    
+    // Chrome bug workaround: speech cuts off after ~15 seconds
+    // Keep speech alive by resuming periodically
+    const keepAlive = setInterval(() => {
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      } else {
+        clearInterval(keepAlive);
+      }
+    }, 10000);
+    
+    utterance.onend = () => {
+      clearInterval(keepAlive);
       setHasPlayed(true);
       setShowPlayButton(false);
     };
@@ -116,8 +133,18 @@ export default function AutoPlayTTS({ text, delay = 1500 }: AutoPlayTTSProps) {
     }
 
     // On desktop/laptop - autoplay works
+    // Wait for voices to load, then play
     const timer = setTimeout(() => {
-      playTTS();
+      // Ensure voices are loaded
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length === 0) {
+        // Voices not loaded yet, wait for them
+        window.speechSynthesis.onvoiceschanged = () => {
+          playTTS();
+        };
+      } else {
+        playTTS();
+      }
     }, delay);
 
     return () => clearTimeout(timer);

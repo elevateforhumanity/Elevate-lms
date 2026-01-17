@@ -1,9 +1,13 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import dynamic from 'next/dynamic';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+
+// Lazy load audio component
+const PageAudio = dynamic(() => import('@/components/PageAudio'), { ssr: false });
 
 export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -40,13 +44,16 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
 
       <main
         id="main-content"
-        className="flex-1"
+        className="flex-1 pt-[56px] sm:pt-[70px]"
         role="main"
         tabIndex={-1}
       >
         <Breadcrumbs />
         {children}
       </main>
+
+      {/* Ambient music on pages without video heroes */}
+      <PageAudio />
 
       <SiteFooter />
     </div>
