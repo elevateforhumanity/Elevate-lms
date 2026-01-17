@@ -25,23 +25,20 @@ const PerformanceMonitor = dynamic(
   { ssr: false }
 );
 
-// ScraperDetection - monitors only, doesn't block anything
 const ScraperDetection = dynamic(
   () => import('@/components/ScraperDetection').then((mod) => ({ default: mod.ScraperDetection })),
   { ssr: false }
 );
 
-// CopyrightProtection DISABLED - shows dark popup that blocks UX
-// const CopyrightProtection = dynamic(
-//   () => import('@/components/CopyrightProtection').then((mod) => ({ default: mod.CopyrightProtection })),
-//   { ssr: false }
-// );
+const CopyrightProtection = dynamic(
+  () => import('@/components/CopyrightProtection').then((mod) => ({ default: mod.CopyrightProtection })),
+  { ssr: false }
+);
 
-// SecurityMonitor DISABLED - logs too much, clears console
-// const SecurityMonitor = dynamic(
-//   () => import('@/components/SecurityMonitor').then((mod) => ({ default: mod.SecurityMonitor })),
-//   { ssr: false }
-// );
+const SecurityMonitor = dynamic(
+  () => import('@/components/SecurityMonitor').then((mod) => ({ default: mod.SecurityMonitor })),
+  { ssr: false }
+);
 
 export function ClientProviders() {
   return (
@@ -52,6 +49,8 @@ export function ClientProviders() {
       <CookieBanner />
       <PerformanceMonitor />
       <ScraperDetection />
+      <CopyrightProtection />
+      <SecurityMonitor />
     </>
   );
 }

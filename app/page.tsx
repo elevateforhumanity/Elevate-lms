@@ -338,145 +338,6 @@ export default function HomePage() {
 
 
 
-      {/* How We Help You Section */}
-      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Training Funded by Programs That Work
-            </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              We connect you with federal and state workforce programs that pay for your training. You focus on learning - we handle the paperwork.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {/* WIOA Card */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-              <div className="relative h-48">
-                <Image
-                  src="/images/artlist/hero-training-2.jpg"
-                  alt="WIOA funded training"
-                  fill
-                  className="object-cover"
-                  quality={80}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">WIOA Funding</h3>
-                <p className="text-slate-600 mb-4">
-                  The Workforce Innovation and Opportunity Act covers tuition, books, and supplies for eligible adults and dislocated workers. If you qualify, your training is completely free.
-                </p>
-                <Link href="/wioa-eligibility" className="text-blue-600 border-b border-blue-600 pb-0.5 hover:text-blue-800">
-                  Check Eligibility
-                </Link>
-              </div>
-            </div>
-
-            {/* Earn While You Learn Card */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-              <div className="relative h-48">
-                <Image
-                  src="/images/artlist/hero-training-3.jpg"
-                  alt="Apprenticeship training"
-                  fill
-                  className="object-cover"
-                  quality={80}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Earn While You Learn</h3>
-                <p className="text-slate-600 mb-4">
-                  Our registered apprenticeship programs let you get paid while training. Work alongside experienced professionals and graduate with real job experience and industry credentials.
-                </p>
-                <Link href="/programs" className="text-blue-600 border-b border-blue-600 pb-0.5 hover:text-blue-800">
-                  View Apprenticeships
-                </Link>
-              </div>
-            </div>
-
-            {/* Reentry Card */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-              <div className="relative h-48">
-                <Image
-                  src="/images/artlist/hero-training-4.jpg"
-                  alt="Justice-involved reentry programs"
-                  fill
-                  className="object-cover"
-                  quality={80}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Second Chance Programs</h3>
-                <p className="text-slate-600 mb-4">
-                  Justice Reinvestment Initiative (JRI) funding supports reentry training. We partner with employers who hire based on skills, not background. Your past does not define your future.
-                </p>
-                <Link href="/reentry" className="text-blue-600 border-b border-blue-600 pb-0.5 hover:text-blue-800">
-                  Learn More
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Who We Serve */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-80 sm:h-96 lg:h-[450px] rounded-2xl overflow-hidden">
-              <Image
-                src="/images/artlist/hero-training-5.jpg"
-                alt="Students in career training"
-                fill
-                className="object-cover"
-                quality={85}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                loading="lazy"
-              />
-            </div>
-            <div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
-                Who We Serve
-              </h3>
-              <ul className="space-y-4 text-lg text-slate-600 mb-8">
-                <li className="flex items-start gap-3">
-                  <CheckIcon />
-                  <span>Adults seeking a career change or first-time job training</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckIcon />
-                  <span>Displaced workers who lost jobs due to layoffs or closures</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckIcon />
-                  <span>Veterans transitioning to civilian careers</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckIcon />
-                  <span>Justice-involved individuals ready for a fresh start</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckIcon />
-                  <span>Anyone eligible for WIOA, SNAP E&T, or other workforce funding</span>
-                </li>
-              </ul>
-              <p className="text-lg text-slate-600 mb-8">
-                We guide you from enrollment through certification to employment. No confusion, no runaround - just a clear path to a real job.
-              </p>
-              <Link 
-                href="/apply"
-                className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
-              >
-                Apply Now - It&apos;s Free
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Featured Program - Barber Apprenticeship */}
       <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -577,48 +438,51 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Choose Our Programs */}
-      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
+      {/* Why Choose Us - Compact */}
+      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-slate-100">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
-            Why Choose Our Programs
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="flex items-center gap-3 bg-white rounded-xl p-4">
+              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-bold">$0</span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">100% Free Training</h3>
-              <p className="text-slate-400">WIOA, WRG, or DOL funding covers tuition for eligible students</p>
+              <div>
+                <p className="font-semibold text-slate-900 text-sm">Free Training</p>
+                <p className="text-xs text-slate-500">WIOA funded</p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-3 bg-white rounded-xl p-4">
+              <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Job Placement</h3>
-              <p className="text-slate-400">Resume help, interview prep, and connections to hiring employers</p>
+              <div>
+                <p className="font-semibold text-slate-900 text-sm">Job Placement</p>
+                <p className="text-xs text-slate-500">Career support</p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-3 bg-white rounded-xl p-4">
+              <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Fast-Track Programs</h3>
-              <p className="text-slate-400">Complete in weeks or months, not years</p>
+              <div>
+                <p className="font-semibold text-slate-900 text-sm">Fast-Track</p>
+                <p className="text-xs text-slate-500">8-16 weeks</p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-3 bg-white rounded-xl p-4">
+              <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Real Credentials</h3>
-              <p className="text-slate-400">State licenses, national certifications, DOL apprenticeships</p>
+              <div>
+                <p className="font-semibold text-slate-900 text-sm">Credentials</p>
+                <p className="text-xs text-slate-500">Certifications</p>
+              </div>
             </div>
           </div>
         </div>
