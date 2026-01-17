@@ -117,8 +117,8 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Professional voiceover */}
-      <VoiceoverWithMusic audioSrc="/audio/welcome-voiceover.mp3" delay={1500} />
+      {/* Professional voiceover - starts immediately after page loads */}
+      <VoiceoverWithMusic audioSrc="/audio/welcome-voiceover.mp3" delay={100} />
 
       {/* Hero Section - Optimized for all screen sizes including Chromebooks */}
       <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-blue-900">

@@ -56,8 +56,8 @@ export function Breadcrumbs() {
         dangerouslySetInnerHTML={{ __html: sanitizeHtml(JSON.stringify(structuredData)) }}
       />
 
-      {/* Visual Breadcrumbs */}
-      <nav aria-label="Breadcrumb" className="bg-slate-50 border-b border-slate-200">
+      {/* Visual Breadcrumbs - pt accounts for fixed header */}
+      <nav aria-label="Breadcrumb" className="bg-slate-50 border-b border-slate-200 pt-[56px] sm:pt-[70px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3">
           <ol className="flex items-center space-x-2 text-sm">
             {breadcrumbs.map((crumb, index) => {
