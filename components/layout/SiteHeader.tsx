@@ -2,14 +2,59 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
-// Hardcoded nav items - no external dependencies that could fail
+// Main navigation with dropdowns for sub-pages
 const NAV_ITEMS = [
-  { name: 'Programs', href: '/programs' },
-  { name: 'For Employers', href: '/employer' },
-  { name: 'About', href: '/about' },
+  { 
+    name: 'Programs', 
+    href: '/programs',
+    subItems: [
+      { name: 'Healthcare', href: '/programs/healthcare' },
+      { name: 'Skilled Trades', href: '/programs/skilled-trades' },
+      { name: 'Technology', href: '/programs/technology' },
+      { name: 'Business', href: '/programs/business' },
+      { name: 'Apprenticeships', href: '/apprenticeships' },
+    ]
+  },
+  { 
+    name: 'How It Works', 
+    href: '/how-it-works',
+    subItems: [
+      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
+      { name: 'Funding & Grants', href: '/funding' },
+      { name: 'FAQ', href: '/faq' },
+    ]
+  },
+  { 
+    name: 'For Employers', 
+    href: '/employer',
+    subItems: [
+      { name: 'Hire Graduates', href: '/hire-graduates' },
+      { name: 'Partner With Us', href: '/partners' },
+      { name: 'Workforce Solutions', href: '/solutions' },
+    ]
+  },
+  { 
+    name: 'About', 
+    href: '/about',
+    subItems: [
+      { name: 'Our Team', href: '/team' },
+      { name: 'Success Stories', href: '/success-stories' },
+      { name: 'Contact', href: '/contact' },
+      { name: 'Careers', href: '/careers' },
+    ]
+  },
+  { 
+    name: 'Resources', 
+    href: '/resources',
+    subItems: [
+      { name: 'Blog', href: '/blog' },
+      { name: 'Events', href: '/events' },
+      { name: 'Support', href: '/support' },
+    ]
+  },
 ];
 
 // Safe user hook that never throws
@@ -80,20 +125,38 @@ export default function SiteHeader() {
               </span>
             </Link>
 
-            {/* Desktop Navigation - show on sm (640px) and up */}
-            <nav className="hidden sm:flex items-center h-full">
+            {/* Desktop Navigation - show on md (768px) and up */}
+            <nav className="hidden md:flex items-center h-full">
               {NAV_ITEMS.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`relative h-full flex items-center px-3 sm:px-4 lg:px-6 text-sm font-medium transition-colors
-                    before:absolute before:bottom-0 before:left-2 before:right-2 before:h-[3px] before:bg-blue-600 
-                    before:opacity-0 before:transition-opacity hover:before:opacity-100
-                    ${!mounted || isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'}
-                  `}
-                >
-                  {item.name}
-                </Link>
+                <div key={item.name} className="relative h-full group">
+                  <Link
+                    href={item.href}
+                    className={`relative h-full flex items-center gap-1 px-3 lg:px-4 text-sm font-medium transition-colors
+                      before:absolute before:bottom-0 before:left-2 before:right-2 before:h-[3px] before:bg-blue-600 
+                      before:opacity-0 before:transition-opacity group-hover:before:opacity-100
+                      ${!mounted || isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'}
+                    `}
+                  >
+                    {item.name}
+                    {item.subItems && <ChevronDown className="w-3 h-3" />}
+                  </Link>
+                  {/* Dropdown */}
+                  {item.subItems && (
+                    <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      <div className="bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-[200px]">
+                        {item.subItems.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               ))}
             </nav>
 
@@ -112,7 +175,7 @@ export default function SiteHeader() {
               {user ? (
                 <Link
                   href="/lms/dashboard"
-                  className={`hidden sm:inline-flex items-center text-sm font-medium transition-colors ${
+                  className={`hidden md:inline-flex items-center text-sm font-medium transition-colors ${
                     !mounted || isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white/90 hover:text-white'
                   }`}
                 >
@@ -121,7 +184,7 @@ export default function SiteHeader() {
               ) : (
                 <Link
                   href="/login"
-                  className={`hidden sm:inline-flex items-center text-sm font-medium transition-colors ${
+                  className={`hidden md:inline-flex items-center text-sm font-medium transition-colors ${
                     !mounted || isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white/90 hover:text-white'
                   }`}
                 >
@@ -130,7 +193,7 @@ export default function SiteHeader() {
               )}
               <Link
                 href="/apply"
-                className={`hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full transition-colors ${
+                className={`hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full transition-colors ${
                   !mounted || isScrolled 
                     ? 'bg-blue-600 text-white hover:bg-blue-700' 
                     : 'bg-white text-gray-900 hover:bg-gray-100'
@@ -139,10 +202,10 @@ export default function SiteHeader() {
                 Apply Now
               </Link>
 
-              {/* Mobile menu button - only show on xs screens */}
+              {/* Mobile menu button - show on smaller screens */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className={`sm:hidden flex items-center justify-center w-10 h-10 transition-colors ${textColor}`}
+                className={`md:hidden flex items-center justify-center w-10 h-10 transition-colors ${textColor}`}
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -154,13 +217,13 @@ export default function SiteHeader() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] sm:hidden">
+        <div className="fixed inset-0 z-[100] md:hidden">
           <div 
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <nav className="absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-xl">
-            <div className="flex items-center justify-between p-4 border-b">
+          <nav className="absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-xl overflow-y-auto">
+            <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white">
               <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
                 <Image src="/logo.png" alt="Elevate" width={32} height={32} className="w-8 h-8" />
                 <span className="text-gray-900 font-bold">Elevate</span>
@@ -180,10 +243,26 @@ export default function SiteHeader() {
                     <Link
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
+                      className="flex items-center px-4 py-3 text-base font-semibold text-gray-900 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
                     >
                       {item.name}
                     </Link>
+                    {/* Sub-items */}
+                    {item.subItems && (
+                      <ul className="ml-4 mt-1 space-y-1">
+                        {item.subItems.map((subItem) => (
+                          <li key={subItem.name}>
+                            <Link
+                              href={subItem.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
+                            >
+                              {subItem.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </li>
                 ))}
               </ul>
