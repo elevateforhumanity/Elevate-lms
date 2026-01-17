@@ -120,23 +120,111 @@ export default function HomePage() {
         
         {/* Hero Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
-          <h1 
-            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 sm:mb-4 max-w-4xl transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          <p 
+            className={`text-sm sm:text-base text-blue-400 font-medium mb-2 uppercase tracking-wide transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            Launch your <em className="italic font-normal">new career</em> today.
+            Free Career Training for Indiana Residents
+          </p>
+          <h1 
+            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 max-w-4xl transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            Get trained. Get certified. <em className="italic font-normal">Get hired.</em>
           </h1>
           <p 
-            className={`text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-xl transition-all duration-700 delay-100 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-2xl transition-all duration-700 delay-100 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            Free workforce training for Indiana residents
+            We provide free job training in healthcare, skilled trades, and technology. WIOA-funded programs mean no tuition for eligible students. Graduate with real credentials and job placement support.
           </p>
-          <Link 
-            href="/programs"
-            className={`inline-flex items-center text-white text-base sm:text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300 min-h-[44px] ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          <div 
+            className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             style={{ transitionDelay: '200ms' }}
           >
-            Explore Programs
-          </Link>
+            <Link 
+              href="/apply"
+              className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors text-base sm:text-lg"
+            >
+              Apply Now - It&apos;s Free
+            </Link>
+            <Link 
+              href="/programs"
+              className="inline-flex items-center text-white text-base sm:text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
+            >
+              View Programs
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* How Free Training Works */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+              How Is Training Free?
+            </h2>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+              Federal and state workforce programs pay for your training - not you. These programs exist to help people get jobs in high-demand fields. We help you access them.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-slate-800 rounded-2xl p-6">
+              <div className="text-blue-400 font-semibold text-sm uppercase tracking-wide mb-2">WIOA Funding</div>
+              <h3 className="text-xl font-bold mb-3">Workforce Innovation & Opportunity Act</h3>
+              <p className="text-slate-300 mb-4">
+                Federal program that pays for job training for adults, dislocated workers, and youth. Covers tuition, books, supplies, and even transportation or childcare in some cases.
+              </p>
+              <p className="text-slate-400 text-sm">
+                <strong>Who qualifies:</strong> Unemployed, underemployed, low-income, veterans, single parents, individuals with disabilities, or those receiving public assistance.
+              </p>
+            </div>
+            
+            <div className="bg-slate-800 rounded-2xl p-6">
+              <div className="text-green-400 font-semibold text-sm uppercase tracking-wide mb-2">Apprenticeships</div>
+              <h3 className="text-xl font-bold mb-3">Earn While You Learn</h3>
+              <p className="text-slate-300 mb-4">
+                USDOL-registered apprenticeships let you work and get paid while training. Your employer sponsors your education. You graduate with experience and a job.
+              </p>
+              <p className="text-slate-400 text-sm">
+                <strong>Programs:</strong> Barber, HVAC, Electrical, Plumbing, and more. Start earning from day one while building your career.
+              </p>
+            </div>
+            
+            <div className="bg-slate-800 rounded-2xl p-6">
+              <div className="text-purple-400 font-semibold text-sm uppercase tracking-wide mb-2">Other Funding</div>
+              <h3 className="text-xl font-bold mb-3">Additional Support Programs</h3>
+              <p className="text-slate-300 mb-4">
+                SNAP Employment & Training, Trade Adjustment Assistance (TAA), Justice Reinvestment Initiative (JRI), and employer-sponsored training can also cover costs.
+              </p>
+              <p className="text-slate-400 text-sm">
+                <strong>We help you find:</strong> The right funding source for your situation. Most students qualify for at least one program.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 text-center border-t border-slate-700 pt-12">
+            <div>
+              <div className="text-4xl sm:text-5xl font-bold text-blue-400 mb-2">$0</div>
+              <p className="text-slate-300">Out-of-pocket tuition for eligible students</p>
+            </div>
+            <div>
+              <div className="text-4xl sm:text-5xl font-bold text-blue-400 mb-2">8-16</div>
+              <p className="text-slate-300">Weeks to complete most programs</p>
+            </div>
+            <div>
+              <div className="text-4xl sm:text-5xl font-bold text-blue-400 mb-2">100%</div>
+              <p className="text-slate-300">Job placement support for graduates</p>
+            </div>
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link 
+              href="/wioa-eligibility"
+              className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Check If You Qualify
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -457,34 +545,66 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Trusted Partners */}
+      {/* Certifications You Can Earn */}
       <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-slate-500 mb-8">Trusted Partners & Recognized Credentials</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-white rounded-lg shadow-sm flex items-center justify-center mb-2">
-                <span className="text-2xl font-bold text-blue-600">W1</span>
-              </div>
-              <span className="text-sm text-slate-600">WorkOne Indiana</span>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
+              Graduate with Credentials Employers Want
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Our programs prepare you for industry-recognized certifications and state licenses that lead directly to jobs.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
+              <div className="text-3xl mb-2">🏥</div>
+              <p className="font-semibold text-slate-900 text-sm">CNA Certification</p>
+              <p className="text-xs text-slate-500">Healthcare</p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-white rounded-lg shadow-sm flex items-center justify-center mb-2">
-                <span className="text-2xl font-bold text-green-600">C</span>
-              </div>
-              <span className="text-sm text-slate-600">Certiport Testing</span>
+            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
+              <div className="text-3xl mb-2">❄️</div>
+              <p className="font-semibold text-slate-900 text-sm">HVAC EPA 608</p>
+              <p className="text-xs text-slate-500">Skilled Trades</p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-white rounded-lg shadow-sm flex items-center justify-center mb-2">
-                <span className="text-2xl font-bold text-purple-600">W</span>
-              </div>
-              <span className="text-sm text-slate-600">WIOA Approved</span>
+            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
+              <div className="text-3xl mb-2">💻</div>
+              <p className="font-semibold text-slate-900 text-sm">CompTIA A+</p>
+              <p className="text-xs text-slate-500">Technology</p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-white rounded-lg shadow-sm flex items-center justify-center mb-2">
-                <span className="text-2xl font-bold text-orange-600">E</span>
+            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
+              <div className="text-3xl mb-2">🚛</div>
+              <p className="font-semibold text-slate-900 text-sm">CDL Class A</p>
+              <p className="text-xs text-slate-500">Transportation</p>
+            </div>
+            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
+              <div className="text-3xl mb-2">✂️</div>
+              <p className="font-semibold text-slate-900 text-sm">Barber License</p>
+              <p className="text-xs text-slate-500">Apprenticeship</p>
+            </div>
+            <div className="bg-white rounded-xl p-4 text-center shadow-sm">
+              <div className="text-3xl mb-2">📊</div>
+              <p className="font-semibold text-slate-900 text-sm">QuickBooks</p>
+              <p className="text-xs text-slate-500">Business</p>
+            </div>
+          </div>
+          
+          {/* Partners Row */}
+          <div className="mt-12 pt-8 border-t border-slate-200">
+            <p className="text-center text-slate-500 mb-6">Approved Training Provider</p>
+            <div className="flex flex-wrap justify-center gap-8 items-center">
+              <div className="flex items-center gap-2 text-slate-600">
+                <span className="font-semibold">WorkOne Indiana</span>
               </div>
-              <span className="text-sm text-slate-600">ETPL Listed</span>
+              <div className="flex items-center gap-2 text-slate-600">
+                <span className="font-semibold">WIOA Approved</span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-600">
+                <span className="font-semibold">ETPL Listed</span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-600">
+                <span className="font-semibold">USDOL Registered</span>
+              </div>
             </div>
           </div>
         </div>
