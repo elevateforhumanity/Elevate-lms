@@ -6,8 +6,8 @@ import Image from 'next/image';
 import AutoPlayTTS from '@/components/AutoPlayTTS';
 import { useEffect, useState, useRef } from 'react';
 
-// Welcome message for TTS
-const WELCOME_MESSAGE = "Welcome to Elevate for Humanity. Launch your new career today with free workforce training for Indiana residents. Explore our healthcare, skilled trades, and technology programs.";
+// Welcome message for TTS - longer, more informative
+const WELCOME_MESSAGE = "Welcome to Elevate for Humanity, Indiana's premier workforce training institute. We offer 100% free career training in healthcare, skilled trades, and technology through WIOA, WRG, and JRI funding programs. No tuition, no debt, just real credentials and job placement support. Whether you're looking to become a CNA, HVAC technician, barber, or IT professional, we're here to help you launch your new career. Apply today and start your journey to a better future.";
 
 // Reusable checkmark icon
 const CheckIcon = () => (
@@ -23,7 +23,7 @@ const programs = [
     duration: '8-12 Weeks',
     items: ['CNA Certification', 'Medical Assistant', 'Phlebotomy'],
     href: '/programs/healthcare',
-    image: '/images/healthcare/cna-training.jpg',
+    image: '/images/healthcare/program-cna-training.jpg',
     alt: 'Healthcare Training',
   },
   {
@@ -95,12 +95,12 @@ export default function HomePage() {
       />
 
       {/* Hero Section - Fast loading like Industrious */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-end overflow-hidden bg-slate-900">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-end overflow-hidden bg-blue-900">
         {/* Background video - compressed 741KB, loads fast */}
         {/* Key mobile fixes: webkit-playsinline, muted MUST be present for autoplay */}
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover brightness-110"
           loop
           muted
           playsInline
@@ -111,8 +111,8 @@ export default function HomePage() {
           <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>
         
-        {/* Subtle bottom gradient for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
+        {/* Lighter gradient for brighter feel */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
         
         {/* Hero Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
@@ -287,21 +287,34 @@ export default function HomePage() {
             Explore All Programs
           </Link>
 
-          {/* Program Cards - Responsive grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* Program Cards - 3 columns horizontal with image on top */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {programs.map((program) => (
               <article 
                 key={program.title}
-                className="group bg-slate-50 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-100"
               >
-                <div className="p-5 sm:p-6">
-                  <span className="text-xs sm:text-sm text-slate-500 uppercase tracking-wide">
+                {/* Image on top */}
+                <div className="relative h-48 sm:h-56">
+                  <Image
+                    src={program.image}
+                    alt={program.alt}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    quality={85}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                     {program.duration}
-                  </span>
-                  <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mt-2 mb-3 sm:mb-4">
+                  </div>
+                </div>
+                {/* Content below */}
+                <div className="p-5 sm:p-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
                     {program.title}
                   </h3>
-                  <ul className="space-y-2 mb-5 sm:mb-6">
+                  <ul className="space-y-2 mb-5">
                     {program.items.map((item) => (
                       <li key={item} className="flex items-center gap-2 text-sm sm:text-base text-slate-600">
                         <CheckIcon />
@@ -311,21 +324,10 @@ export default function HomePage() {
                   </ul>
                   <Link 
                     href={program.href} 
-                    className="inline-flex items-center text-blue-600 border-b border-blue-600 pb-0.5 hover:text-blue-800 min-h-[44px] text-sm sm:text-base"
+                    className="inline-flex items-center justify-center w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
                   >
                     Learn More
                   </Link>
-                </div>
-                <div className="relative h-40 sm:h-48">
-                  <Image
-                    src={program.image}
-                    alt={program.alt}
-                    fill
-                    className="object-cover"
-                    quality={80}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    loading="lazy"
-                  />
                 </div>
               </article>
             ))}
