@@ -37,9 +37,6 @@ const nextConfig = {
     } : false,
   },
 
-  // Transpile edge-tts (ships as .ts)
-  transpilePackages: ['edge-tts'],
-
   // Experimental features for better performance
   experimental: {
     optimizePackageImports: [
