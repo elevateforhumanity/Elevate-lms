@@ -143,32 +143,57 @@ export default function HomePage() {
         </video>
         
         {/* Lighter gradient for brighter feel */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
         
-        {/* Hero Content - Clear value proposition */}
+        {/* Hero Content - Million dollar value proposition */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
           <div 
             className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            {/* Headline - visible for users with sound off */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 max-w-3xl">
-              Free Career Training in Indianapolis
+            {/* Trust badge */}
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1 mb-4">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="text-white/90 text-xs font-medium">500+ Graduates Placed in Jobs</span>
+            </div>
+            
+            {/* Headline */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 max-w-3xl leading-tight">
+              Launch Your New Career in 8-16 Weeks — <span className="text-blue-400">100% Free</span>
             </h1>
-            <p className="text-base sm:text-lg text-white/90 mb-6 max-w-2xl">
-              Get certified in healthcare, skilled trades, or technology — at no cost if you qualify.
+            <p className="text-base sm:text-lg text-white/90 mb-4 max-w-2xl">
+              Indiana's workforce programs pay for your training. No loans. No debt. Just real skills and a real job.
             </p>
-            <div className="flex flex-wrap gap-3">
+            
+            {/* Social proof stats */}
+            <div className="flex flex-wrap gap-4 sm:gap-6 mb-6 text-white/80 text-sm">
+              <div className="flex items-center gap-1.5">
+                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+                <span>WIOA Approved</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+                <span>State Licensed</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+                <span>Job Placement Support</span>
+              </div>
+            </div>
+            
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-3 items-center">
               <Link 
                 href="/apply"
-                className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors text-base"
+                className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
               >
-                Apply Now
+                Apply Now — It's Free
               </Link>
               <Link 
-                href="/programs"
-                className="inline-flex items-center text-white text-base border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
+                href="tel:317-314-3757"
+                className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
               >
-                View Programs
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                (317) 314-3757
               </Link>
             </div>
           </div>
@@ -528,153 +553,223 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials Section - Compact for Chromebook */}
+      {/* Testimonials Section - Professional */}
       <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-2 text-center">
-            What Our Graduates Say
-          </h2>
-          <p className="text-sm text-slate-600 text-center mb-6 max-w-2xl mx-auto">
-            Real stories from people who changed their careers.
-          </p>
+          <div className="text-center mb-8">
+            <span className="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full mb-3">SUCCESS STORIES</span>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-2">
+              Real People. Real Results.
+            </h2>
+            <p className="text-sm text-slate-600 max-w-2xl mx-auto">
+              Join 500+ graduates who launched new careers through our programs.
+            </p>
+          </div>
           
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-5">
             {/* Testimonial 1 */}
-            <div className="bg-slate-50 rounded-xl p-4">
-              <div className="flex items-center gap-0.5 mb-2">
+            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl p-5 border border-blue-100 shadow-sm">
+              <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
               </div>
-              <p className="text-slate-700 mb-3 text-sm leading-relaxed">
-                "This program got me CNA certified in 8 weeks. Now I'm making $18/hour with benefits."
+              <p className="text-slate-700 mb-4 text-sm leading-relaxed italic">
+                "This program got me CNA certified in 8 weeks. Now I'm making <span className="font-semibold text-green-600">$18/hour with benefits</span>. It changed my life."
               </p>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-xs">TJ</span>
+              <div className="flex items-center gap-3 pt-3 border-t border-blue-100">
+                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">TJ</span>
                 </div>
                 <div>
                   <p className="font-semibold text-slate-900 text-sm">Tanya J.</p>
-                  <p className="text-xs text-slate-500">CNA Graduate</p>
+                  <p className="text-xs text-slate-500">CNA Graduate • Indianapolis</p>
                 </div>
               </div>
             </div>
 
             {/* Testimonial 2 */}
-            <div className="bg-slate-50 rounded-xl p-4">
-              <div className="flex items-center gap-0.5 mb-2">
+            <div className="bg-gradient-to-br from-green-50 to-white rounded-xl p-5 border border-green-100 shadow-sm">
+              <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
               </div>
-              <p className="text-slate-700 mb-3 text-sm leading-relaxed">
-                "The barber apprenticeship let me earn while I learned. Now I'm licensed with my own chair."
+              <p className="text-slate-700 mb-4 text-sm leading-relaxed italic">
+                "The barber apprenticeship let me <span className="font-semibold text-green-600">earn while I learned</span>. Now I'm licensed with my own chair."
               </p>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                  <span className="text-green-600 font-bold text-xs">MR</span>
+              <div className="flex items-center gap-3 pt-3 border-t border-green-100">
+                <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">MR</span>
                 </div>
                 <div>
                   <p className="font-semibold text-slate-900 text-sm">Marcus R.</p>
-                  <p className="text-xs text-slate-500">Barber Graduate</p>
+                  <p className="text-xs text-slate-500">Barber Graduate • Marion County</p>
                 </div>
               </div>
             </div>
 
             {/* Testimonial 3 */}
-            <div className="bg-slate-50 rounded-xl p-4">
-              <div className="flex items-center gap-0.5 mb-2">
+            <div className="bg-gradient-to-br from-orange-50 to-white rounded-xl p-5 border border-orange-100 shadow-sm">
+              <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
               </div>
-              <p className="text-slate-700 mb-3 text-sm leading-relaxed">
-                "WIOA covered everything at 42. Now I'm an HVAC tech making real money."
+              <p className="text-slate-700 mb-4 text-sm leading-relaxed italic">
+                "I thought I was too old at 42. <span className="font-semibold text-green-600">WIOA covered everything</span>. Now I'm an HVAC tech making real money."
               </p>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                  <span className="text-orange-600 font-bold text-xs">DW</span>
+              <div className="flex items-center gap-3 pt-3 border-t border-orange-100">
+                <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">DW</span>
                 </div>
                 <div>
                   <p className="font-semibold text-slate-900 text-sm">David W.</p>
-                  <p className="text-xs text-slate-500">HVAC Graduate</p>
+                  <p className="text-xs text-slate-500">HVAC Graduate • Age 42</p>
                 </div>
               </div>
             </div>
           </div>
+          
+          {/* View more link */}
+          <div className="text-center mt-6">
+            <Link href="/success-stories" className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 text-sm font-medium">
+              Read more success stories
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Trust Badges / Partners Section - Compact */}
-      <section className="py-6 px-4 sm:px-6 lg:px-8 bg-slate-100">
+      {/* Trust Badges / Partners Section - Professional */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white border-y border-slate-200">
         <div className="max-w-5xl mx-auto">
-          <p className="text-center text-xs text-slate-500 mb-4">Approved and recognized by</p>
-          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8">
-            <div className="flex flex-col items-center">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm mb-1">
-                <span className="text-lg">🏛️</span>
+          <p className="text-center text-xs uppercase tracking-wider text-slate-400 font-medium mb-6">Approved & Recognized By</p>
+          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
+              <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-xs">W</span>
               </div>
-              <span className="text-xs text-slate-600">WIOA</span>
+              <div className="text-left">
+                <span className="text-xs font-semibold text-slate-800 block">WIOA</span>
+                <span className="text-[10px] text-slate-500">Approved Provider</span>
+              </div>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm mb-1">
-                <span className="text-lg">📋</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
+              <div className="w-8 h-8 bg-green-600 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-xs">E</span>
               </div>
-              <span className="text-xs text-slate-600">ETPL</span>
+              <div className="text-left">
+                <span className="text-xs font-semibold text-slate-800 block">ETPL</span>
+                <span className="text-[10px] text-slate-500">Listed Provider</span>
+              </div>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm mb-1">
-                <span className="text-lg">🤝</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
+              <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-xs">W1</span>
               </div>
-              <span className="text-xs text-slate-600">WorkOne</span>
+              <div className="text-left">
+                <span className="text-xs font-semibold text-slate-800 block">WorkOne</span>
+                <span className="text-[10px] text-slate-500">Indiana Partner</span>
+              </div>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm mb-1">
-                <span className="text-lg">🎓</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
+              <div className="w-8 h-8 bg-purple-600 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-xs">US</span>
               </div>
-              <span className="text-xs text-slate-600">USDOL</span>
+              <div className="text-left">
+                <span className="text-xs font-semibold text-slate-800 block">USDOL</span>
+                <span className="text-[10px] text-slate-500">Registered</span>
+              </div>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm mb-1">
-                <span className="text-lg">⚖️</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
+              <div className="w-8 h-8 bg-slate-700 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-xs">IN</span>
               </div>
-              <span className="text-xs text-slate-600">Licensed</span>
+              <div className="text-left">
+                <span className="text-xs font-semibold text-slate-800 block">Indiana</span>
+                <span className="text-[10px] text-slate-500">State Licensed</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section - Compact */}
-      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-blue-600">
+      {/* CTA Section - With Urgency */}
+      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-blue-700">
         <div className="max-w-4xl mx-auto text-center">
+          {/* Urgency banner */}
+          <div className="inline-flex items-center gap-2 bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+            <span className="w-2 h-2 bg-yellow-900 rounded-full animate-pulse"></span>
+            Next Class Starts February 3rd — Limited Seats Available
+          </div>
+          
           <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
-            Ready to start your journey?
+            Your New Career Starts Here
           </h2>
-          <p className="text-sm sm:text-base text-blue-100 mb-4">
-            Apply today and begin training within weeks.
+          <p className="text-sm sm:text-base text-blue-100 mb-5">
+            Apply in 2 minutes. Get approved in 48 hours. Start training within weeks.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link 
               href="/apply"
-              className="inline-flex items-center justify-center bg-white text-blue-600 px-5 py-2.5 rounded-full font-semibold hover:bg-blue-50 transition-colors text-sm"
+              className="inline-flex items-center justify-center bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all hover:scale-105 text-sm shadow-lg"
             >
-              Apply Now
+              Apply Now — It's Free
             </Link>
             <Link 
-              href="/login"
-              className="inline-flex items-center justify-center border-2 border-white text-white px-5 py-2.5 rounded-full font-semibold hover:bg-white/10 transition-colors text-sm"
+              href="tel:317-314-3757"
+              className="inline-flex items-center justify-center border-2 border-white text-white px-5 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors text-sm gap-2"
             >
-              Login
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              (317) 314-3757
             </Link>
+          </div>
+          
+          {/* Trust indicators */}
+          <div className="flex flex-wrap justify-center gap-4 mt-6 text-blue-200 text-xs">
+            <span className="flex items-center gap-1">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+              No credit check
+            </span>
+            <span className="flex items-center gap-1">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+              No upfront costs
+            </span>
+            <span className="flex items-center gap-1">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+              Job placement support
+            </span>
           </div>
         </div>
       </section>
+
+      {/* Sticky Mobile CTA */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 p-3 shadow-lg">
+        <div className="flex gap-2">
+          <Link 
+            href="/apply"
+            className="flex-1 inline-flex items-center justify-center bg-blue-600 text-white py-3 rounded-lg font-semibold text-sm"
+          >
+            Apply Now — Free
+          </Link>
+          <Link 
+            href="tel:317-314-3757"
+            className="inline-flex items-center justify-center bg-gray-100 text-gray-700 px-4 py-3 rounded-lg"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </Link>
+        </div>
+      </div>
+
+      {/* Spacer for sticky CTA on mobile */}
+      <div className="h-16 md:hidden"></div>
 
     </div>
   );
