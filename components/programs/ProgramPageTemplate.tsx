@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+export type OutcomeItem = string | { title: string; description: string };
+
 export interface ProgramData {
   title: string;
   category: string;
@@ -15,7 +17,7 @@ export interface ProgramData {
   demand: string;
   highlights: string[];
   skills: string[];
-  outcomes: string[];
+  outcomes: OutcomeItem[];
   requirements?: string[];
   relatedPrograms?: { title: string; href: string; description: string }[];
 }
@@ -159,12 +161,21 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
           <h2 className="text-2xl font-bold text-gray-900 mb-12">
             Career outcomes
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {(program.outcomes || []).map((outcome, index) => (
-              <div key={index} className="p-4 bg-white rounded-lg">
-                <p className="font-medium text-gray-900">{outcome}</p>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {(program.outcomes || []).map((outcome, index) => {
+              const isObject = typeof outcome === 'object';
+              const title = isObject ? outcome.title : outcome;
+              const description = isObject ? outcome.description : null;
+              
+              return (
+                <div key={index} className="p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all">
+                  <h3 className="font-bold text-gray-900 text-lg mb-2">{title}</h3>
+                  {description && (
+                    <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -38,11 +38,26 @@ const programData: ProgramData = {
     'Business basics and chair rental',
   ],
   outcomes: [
-    'Licensed Barber (Indiana)',
-    'Barbershop Employee',
-    'Chair Renter',
-    'Shop Owner',
-    'Mobile Barber',
+    {
+      title: 'Licensed Barber (Indiana)',
+      description: 'Work legally as a barber anywhere in Indiana. Perform haircuts, shaves, and grooming services. Average starting salary $35K-$45K.',
+    },
+    {
+      title: 'Barbershop Employee',
+      description: 'Join an established shop as a staff barber. Steady paycheck, benefits at some shops, build your clientele with shop traffic.',
+    },
+    {
+      title: 'Chair Renter',
+      description: 'Rent a station in an existing shop. Keep more of your earnings (typically 60-70%), set your own hours, build your personal brand.',
+    },
+    {
+      title: 'Shop Owner',
+      description: 'Open your own barbershop. Full control over your business, hire other barbers, build equity. Top earners make $80K-$150K+.',
+    },
+    {
+      title: 'Mobile Barber',
+      description: 'Bring barbering to clients at homes, offices, or events. Flexible schedule, premium pricing, growing demand for convenience.',
+    },
   ],
   requirements: [
     '18 years or older (17 with HS diploma)',
