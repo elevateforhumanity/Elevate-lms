@@ -114,6 +114,13 @@ const programs = [
 export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
+  
+  // AUTH STATE DETECTION: Fetches user auth status and enrollment data
+  // - user: Current authenticated user or null
+  // - activeEnrollment: User's active course enrollment with progress
+  // - hasApplication: Whether user has any enrollments/applications
+  // - isLoading: True while fetching auth state
+  // - authChecked: True after auth check completes (success or failure)
   const { user, activeEnrollment, hasApplication, isLoading, authChecked } = useUserState();
 
   // Animate content on mount
