@@ -156,74 +156,124 @@ export default function HomePage() {
       </section>
 
       {/* How Free Training Works */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4">
               How Is Training Free?
             </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
               Federal and state workforce programs pay for your training - not you. These programs exist to help people get jobs in high-demand fields. We help you access them.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-slate-800 rounded-2xl p-6">
-              <div className="text-blue-400 font-semibold text-sm uppercase tracking-wide mb-2">WIOA Funding</div>
-              <h3 className="text-xl font-bold mb-3">Workforce Innovation & Opportunity Act</h3>
-              <p className="text-slate-300 mb-4">
-                Federal program that pays for job training for adults, dislocated workers, and youth. Covers tuition, books, supplies, and even transportation or childcare in some cases.
-              </p>
-              <p className="text-slate-400 text-sm">
-                <strong>Who qualifies:</strong> Unemployed, underemployed, low-income, veterans, single parents, individuals with disabilities, or those receiving public assistance.
-              </p>
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {/* WIOA Card */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+              <div className="relative h-48">
+                <Image
+                  src="/images/artlist/hero-training-6.jpg"
+                  alt="WIOA funded career training"
+                  fill
+                  className="object-cover"
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  loading="lazy"
+                />
+                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                  WIOA FUNDING
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Workforce Innovation & Opportunity Act</h3>
+                <p className="text-slate-600 mb-4">
+                  Federal program that pays for job training for adults, dislocated workers, and youth. Covers tuition, books, supplies, and even transportation or childcare.
+                </p>
+                <p className="text-sm text-slate-500">
+                  <strong className="text-slate-700">Who qualifies:</strong> Unemployed, underemployed, low-income, veterans, single parents, individuals with disabilities, or those receiving public assistance.
+                </p>
+              </div>
             </div>
             
-            <div className="bg-slate-800 rounded-2xl p-6">
-              <div className="text-green-400 font-semibold text-sm uppercase tracking-wide mb-2">Apprenticeships</div>
-              <h3 className="text-xl font-bold mb-3">Earn While You Learn</h3>
-              <p className="text-slate-300 mb-4">
-                USDOL-registered apprenticeships let you work and get paid while training. Your employer sponsors your education. You graduate with experience and a job.
-              </p>
-              <p className="text-slate-400 text-sm">
-                <strong>Programs:</strong> Barber, HVAC, Electrical, Plumbing, and more. Start earning from day one while building your career.
-              </p>
+            {/* Apprenticeships Card */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+              <div className="relative h-48">
+                <Image
+                  src="/images/artlist/hero-training-7.jpg"
+                  alt="Apprenticeship training"
+                  fill
+                  className="object-cover"
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  loading="lazy"
+                />
+                <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                  APPRENTICESHIPS
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Earn While You Learn</h3>
+                <p className="text-slate-600 mb-4">
+                  USDOL-registered apprenticeships let you work and get paid while training. Your employer sponsors your education. Graduate with experience and a job.
+                </p>
+                <p className="text-sm text-slate-500">
+                  <strong className="text-slate-700">Programs:</strong> Barber, HVAC, Electrical, Plumbing, and more. Start earning from day one while building your career.
+                </p>
+              </div>
             </div>
             
-            <div className="bg-slate-800 rounded-2xl p-6">
-              <div className="text-purple-400 font-semibold text-sm uppercase tracking-wide mb-2">Other Funding</div>
-              <h3 className="text-xl font-bold mb-3">Additional Support Programs</h3>
-              <p className="text-slate-300 mb-4">
-                SNAP Employment & Training, Trade Adjustment Assistance (TAA), Justice Reinvestment Initiative (JRI), and employer-sponsored training can also cover costs.
-              </p>
-              <p className="text-slate-400 text-sm">
-                <strong>We help you find:</strong> The right funding source for your situation. Most students qualify for at least one program.
-              </p>
+            {/* Other Funding Card */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+              <div className="relative h-48">
+                <Image
+                  src="/images/artlist/hero-training-8.jpg"
+                  alt="Additional funding programs"
+                  fill
+                  className="object-cover"
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  loading="lazy"
+                />
+                <div className="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                  OTHER FUNDING
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Additional Support Programs</h3>
+                <p className="text-slate-600 mb-4">
+                  SNAP Employment & Training, Trade Adjustment Assistance (TAA), Justice Reinvestment Initiative (JRI), and employer-sponsored training can cover costs.
+                </p>
+                <p className="text-sm text-slate-500">
+                  <strong className="text-slate-700">We help you find:</strong> The right funding source for your situation. Most students qualify for at least one program.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 text-center border-t border-slate-700 pt-12">
-            <div>
-              <div className="text-4xl sm:text-5xl font-bold text-blue-400 mb-2">$0</div>
-              <p className="text-slate-300">Out-of-pocket tuition for eligible students</p>
+          {/* Stats */}
+          <div className="bg-slate-900 rounded-2xl p-8 sm:p-12">
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div>
+                <div className="text-4xl sm:text-5xl font-bold text-white mb-2">$0</div>
+                <p className="text-slate-300">Out-of-pocket tuition for eligible students</p>
+              </div>
+              <div>
+                <div className="text-4xl sm:text-5xl font-bold text-white mb-2">8-16</div>
+                <p className="text-slate-300">Weeks to complete most programs</p>
+              </div>
+              <div>
+                <div className="text-4xl sm:text-5xl font-bold text-white mb-2">100%</div>
+                <p className="text-slate-300">Job placement support for graduates</p>
+              </div>
             </div>
-            <div>
-              <div className="text-4xl sm:text-5xl font-bold text-blue-400 mb-2">8-16</div>
-              <p className="text-slate-300">Weeks to complete most programs</p>
+            <div className="text-center mt-8">
+              <Link 
+                href="/wioa-eligibility"
+                className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
+              >
+                Check If You Qualify
+              </Link>
             </div>
-            <div>
-              <div className="text-4xl sm:text-5xl font-bold text-blue-400 mb-2">100%</div>
-              <p className="text-slate-300">Job placement support for graduates</p>
-            </div>
-          </div>
-          
-          <div className="text-center mt-12">
-            <Link 
-              href="/wioa-eligibility"
-              className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
-            >
-              Check If You Qualify
-            </Link>
           </div>
         </div>
       </section>
