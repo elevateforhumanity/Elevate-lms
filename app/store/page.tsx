@@ -24,45 +24,70 @@ export default async function StorePage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  // Get all products
-  const { data: products } = await supabase
-    .from('products')
-    .select('*')
-    .eq('is_active', true)
-    .order('created_at', { ascending: false });
+  // Get all products (handle missing table gracefully)
+  let products: any[] = [];
+  let categories: any[] = [];
+  let featuredProducts: any[] = [];
+  let cartCount = 0;
+  let purchases: any[] = [];
 
-  // Get product categories
-  const { data: categories } = await supabase
-    .from('product_categories')
-    .select('*')
-    .order('name', { ascending: true });
+  try {
+    const { data } = await supabase
+      .from('products')
+      .select('*')
+      .eq('is_active', true)
+      .order('created_at', { ascending: false });
+    products = data || [];
+  } catch (e) {
+    // Table may not exist
+  }
 
-  // Get featured products
-  const { data: featuredProducts } = await supabase
-    .from('products')
-    .select('*')
-    .eq('is_active', true)
-    .eq('is_featured', true)
-    .limit(4);
+  try {
+    const { data } = await supabase
+      .from('product_categories')
+      .select('*')
+      .order('name', { ascending: true });
+    categories = data || [];
+  } catch (e) {
+    // Table may not exist
+  }
+
+  try {
+    const { data } = await supabase
+      .from('products')
+      .select('*')
+      .eq('is_active', true)
+      .eq('is_featured', true)
+      .limit(4);
+    featuredProducts = data || [];
+  } catch (e) {
+    // Table may not exist
+  }
 
   // Get user's cart count if logged in
-  let cartCount = 0;
   if (user) {
-    const { count } = await supabase
-      .from('cart_items')
-      .select('*', { count: 'exact', head: true })
-      .eq('user_id', user.id);
-    cartCount = count || 0;
+    try {
+      const { count } = await supabase
+        .from('cart_items')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', user.id);
+      cartCount = count || 0;
+    } catch (e) {
+      // Table may not exist
+    }
   }
 
   // Get user's purchases if logged in
-  let purchases: any[] = [];
   if (user) {
-    const { data } = await supabase
-      .from('purchases')
-      .select('product_id')
-      .eq('user_id', user.id);
-    purchases = data || [];
+    try {
+      const { data } = await supabase
+        .from('purchases')
+        .select('product_id')
+        .eq('user_id', user.id);
+      purchases = data || [];
+    } catch (e) {
+      // Table may not exist
+    }
   }
 
   const purchasedIds = purchases.map(p => p.product_id);
