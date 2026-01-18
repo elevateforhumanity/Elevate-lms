@@ -21,7 +21,7 @@ export default async function QuizzesPage() {
 
   let quizzes: any[] = [];
   let attempts: any[] = [];
-  let stats = { available: 0, completed: 0, passed: 0, avgScore: 0 };
+  const stats = { available: 0, completed: 0, passed: 0, avgScore: 0 };
 
   try {
     const { data: enrollments } = await supabase

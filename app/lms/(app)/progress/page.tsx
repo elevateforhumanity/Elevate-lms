@@ -35,7 +35,7 @@ export default async function ProgressPage() {
 
   let enrollments: any[] = [];
   let recentActivity: any[] = [];
-  let stats = {
+  const stats = {
     totalCourses: 0,
     completedCourses: 0,
     totalLessons: 0,

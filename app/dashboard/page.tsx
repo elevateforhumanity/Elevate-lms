@@ -25,14 +25,19 @@ export default async function DashboardPage() {
     switch (role) {
       case 'admin':
         redirect('/admin/dashboard');
+        break; // redirect throws, but ESLint requires break
       case 'staff':
         redirect('/staff-portal/dashboard');
+        break;
       case 'instructor':
         redirect('/instructor/dashboard');
+        break;
       case 'program_holder':
         redirect('/program-holder/dashboard');
+        break;
       case 'employer':
         redirect('/employer/dashboard');
+        break;
       default:
         redirect('/student/dashboard');
     }

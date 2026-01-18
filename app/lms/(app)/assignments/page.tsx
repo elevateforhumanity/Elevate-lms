@@ -21,7 +21,7 @@ export default async function AssignmentsPage() {
 
   let assignments: any[] = [];
   let submissions: any[] = [];
-  let stats = { pending: 0, submitted: 0, graded: 0, overdue: 0 };
+  const stats = { pending: 0, submitted: 0, graded: 0, overdue: 0 };
 
   try {
     const { data: enrollments } = await supabase
