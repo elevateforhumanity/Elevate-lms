@@ -190,20 +190,21 @@ export default function AILiveChat({
     return (
       <>
         {/* Chat Button - Modern gradient design */}
+        {/* bottom-20 on mobile to avoid sticky CTA, bottom-6 on desktop */}
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-full shadow-2xl hover:shadow-blue-500/40 transition-all hover:scale-110 flex items-center justify-center z-50 group"
+          className="fixed bottom-20 md:bottom-6 right-4 md:right-6 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-full shadow-2xl hover:shadow-blue-500/40 transition-all hover:scale-110 flex items-center justify-center z-40 group"
           aria-label="Open chat"
         >
-          <MessageCircle className="w-7 h-7 group-hover:scale-110 transition-transform" />
-          <span className="absolute -top-1 -right-1 w-5 h-5 bg-orange-500 rounded-full animate-pulse border-2 border-white flex items-center justify-center">
-            <span className="text-[10px] font-bold">AI</span>
+          <MessageCircle className="w-6 h-6 md:w-7 md:h-7 group-hover:scale-110 transition-transform" />
+          <span className="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 bg-orange-500 rounded-full animate-pulse border-2 border-white flex items-center justify-center">
+            <span className="text-[8px] md:text-[10px] font-bold">AI</span>
           </span>
         </button>
 
         {/* Popup Message */}
         {showPopup && (
-          <div className="fixed bottom-24 right-6 bg-white rounded-2xl shadow-2xl p-4 z-50 max-w-xs animate-slide-up border border-slate-200">
+          <div className="fixed bottom-36 md:bottom-24 right-4 md:right-6 bg-white rounded-2xl shadow-2xl p-4 z-40 max-w-xs animate-slide-up border border-slate-200">
             <button
               onClick={() => setShowPopup(false)}
               className="absolute -top-2 -right-2 w-6 h-6 bg-slate-600 text-white rounded-full flex items-center justify-center hover:bg-slate-700 transition"
@@ -239,8 +240,8 @@ export default function AILiveChat({
 
   return (
     <div
-      className={`fixed bottom-6 right-6 w-96 bg-white rounded-2xl shadow-2xl z-50 flex flex-col transition-all border border-slate-200 ${
-        isMinimized ? 'h-16' : 'h-[600px]'
+      className={`fixed bottom-20 md:bottom-6 right-2 md:right-6 w-[calc(100vw-1rem)] md:w-96 max-w-md bg-white rounded-2xl shadow-2xl z-50 flex flex-col transition-all border border-slate-200 ${
+        isMinimized ? 'h-16' : 'h-[70vh] md:h-[600px]'
       }`}
     >
       {/* Header - Modern gradient */}
