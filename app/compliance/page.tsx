@@ -1,234 +1,104 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { Shield, FileText, CheckCircle, AlertTriangle, Lock, Eye, Download } from 'lucide-react';
+import { Shield, FileText, CheckCircle, AlertTriangle, Clock, Download } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Compliance | Elevate For Humanity',
-  description: 'Our commitment to regulatory compliance, data privacy, and ethical operations.',
-};
+export const metadata: Metadata = { title: 'Compliance Center | Elevate LMS' };
 
-export const dynamic = 'force-dynamic';
-
-export default async function CompliancePage() {
-  const supabase = await createClient();
-
-  // Get compliance documents
-  const { data: documents } = await supabase
-    .from('documents')
-    .select('*')
-    .eq('category', 'compliance')
-    .eq('is_public', true)
-    .order('title', { ascending: true });
-
-  // Get certifications
-  const { data: certifications } = await supabase
-    .from('certifications')
-    .select('*')
-    .eq('type', 'organizational')
-    .eq('is_active', true);
-
-  const complianceAreas = [
-    {
-      icon: Shield,
-      title: 'WIOA Compliance',
-      description: 'We maintain full compliance with Workforce Innovation and Opportunity Act requirements as an Eligible Training Provider.',
-      items: ['Performance reporting', 'Eligibility verification', 'Equal opportunity', 'Participant records'],
-    },
-    {
-      icon: Lock,
-      title: 'Data Privacy',
-      description: 'We protect student and partner data in accordance with federal and state privacy regulations.',
-      items: ['FERPA compliance', 'Data encryption', 'Access controls', 'Breach notification'],
-    },
-    {
-      icon: Eye,
-      title: 'Accessibility',
-      description: 'Our programs and facilities are accessible to individuals with disabilities.',
-      items: ['ADA compliance', 'WCAG 2.1 AA web standards', 'Reasonable accommodations', 'Assistive technology'],
-    },
-    {
-      icon: FileText,
-      title: 'Financial Compliance',
-      description: 'We maintain transparent financial practices and undergo regular audits.',
-      items: ['Annual independent audit', 'Grant compliance', 'IRS Form 990', 'Financial controls'],
-    },
+export default function CompliancePage() {
+  const documents = [
+    { id: '1', title: 'Student Handbook', version: '2025.1', updated: 'Jan 2025', status: 'current' },
+    { id: '2', title: 'Privacy Policy', version: '3.2', updated: 'Dec 2024', status: 'current' },
+    { id: '3', title: 'Terms of Service', version: '2.8', updated: 'Nov 2024', status: 'current' },
+    { id: '4', title: 'Accreditation Certificate', version: '2024', updated: 'Sep 2024', status: 'current' },
+    { id: '5', title: 'Safety Guidelines', version: '1.5', updated: 'Oct 2024', status: 'current' },
   ];
 
-  const policies = [
-    { title: 'Privacy Policy', href: '/policies/privacy', description: 'How we collect, use, and protect your data' },
-    { title: 'Terms of Service', href: '/policies/terms', description: 'Terms governing use of our services' },
-    { title: 'Non-Discrimination Policy', href: '/policies/non-discrimination', description: 'Our commitment to equal opportunity' },
-    { title: 'Grievance Procedure', href: '/policies/grievance', description: 'How to file a complaint or concern' },
-    { title: 'Data Retention Policy', href: '/policies/data-retention', description: 'How long we keep your information' },
-    { title: 'Accessibility Statement', href: '/policies/accessibility', description: 'Our accessibility commitments' },
+  const certifications = [
+    { name: 'ACCSC Accredited', description: 'Accrediting Commission of Career Schools and Colleges', valid: 'Through 2027' },
+    { name: 'State Licensed', description: 'Licensed in all operating states', valid: 'Annual renewal' },
+    { name: 'VA Approved', description: 'Approved for GI Bill benefits', valid: 'Active' },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
-      <section className="relative min-h-[400px] flex items-center">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/80" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
+      <div className="bg-blue-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center gap-3 mb-4">
             <Shield className="w-10 h-10" />
+            <h1 className="text-4xl font-bold">Compliance Center</h1>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Compliance</h1>
-          <p className="text-xl text-slate-200 max-w-2xl">
-            Our commitment to regulatory compliance, data privacy, and ethical operations.
+          <p className="text-xl text-blue-200 max-w-2xl">
+            Access our policies, certifications, and compliance documentation.
           </p>
         </div>
-      </section>
-
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        {/* Compliance Areas */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Compliance Areas</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {complianceAreas.map((area) => (
-              <div key={area.title} className="bg-white rounded-xl shadow-sm border p-6">
-                <area.icon className="w-10 h-10 text-slate-700 mb-4" />
-                <h3 className="font-semibold text-xl mb-2">{area.title}</h3>
-                <p className="text-gray-600 mb-4">{area.description}</p>
-                <ul className="space-y-2">
-                  {area.items.map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-gray-500">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      {item}
-                    </li>
+      </div>
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Policy Documents</h2>
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+              <table className="w-full">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Document</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Version</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Updated</th>
+                    <th className="px-6 py-3 text-center text-sm font-semibold text-gray-900">Status</th>
+                    <th className="px-6 py-3 text-center text-sm font-semibold text-gray-900">Action</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {documents.map((doc) => (
+                    <tr key={doc.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-3">
+                          <FileText className="w-5 h-5 text-gray-400" />
+                          <span className="font-medium text-gray-900">{doc.title}</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 text-gray-600">{doc.version}</td>
+                      <td className="px-6 py-4 text-gray-600">{doc.updated}</td>
+                      <td className="px-6 py-4 text-center">
+                        <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-medium">
+                          {doc.status}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <button className="text-blue-600 hover:text-blue-700">
+                          <Download className="w-5 h-5" />
+                        </button>
+                      </td>
+                    </tr>
                   ))}
-                </ul>
-              </div>
-            ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </section>
-
-        {/* Policies */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Policies & Procedures</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {policies.map((policy) => (
-              <Link
-                key={policy.title}
-                href={policy.href}
-                className="bg-white rounded-xl shadow-sm border p-5 hover:shadow-md transition"
-              >
-                <h3 className="font-semibold mb-1">{policy.title}</h3>
-                <p className="text-sm text-gray-600">{policy.description}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Documents */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Compliance Documents</h2>
-          {documents && documents.length > 0 ? (
-            <div className="grid md:grid-cols-3 gap-6">
-              {documents.map((doc: any) => (
-                <div key={doc.id} className="bg-white rounded-xl shadow-sm border p-6">
-                  <FileText className="w-8 h-8 text-slate-600 mb-3" />
-                  <h3 className="font-semibold mb-2">{doc.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4">{doc.description}</p>
-                  {doc.file_url && (
-                    <a
-                      href={doc.file_url}
-                      className="inline-flex items-center gap-2 text-slate-700 font-medium hover:underline"
-                    >
-                      <Download className="w-4 h-4" /> Download
-                    </a>
-                  )}
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Certifications</h2>
+            <div className="space-y-4">
+              {certifications.map((cert, index) => (
+                <div key={index} className="bg-white rounded-xl shadow-sm p-6">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900">{cert.name}</h3>
+                      <p className="text-sm text-gray-600 mt-1">{cert.description}</p>
+                      <p className="text-xs text-gray-500 mt-2">{cert.valid}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
-          ) : (
-            <div className="bg-white rounded-xl shadow-sm border p-8 text-center">
-              <FileText className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-600">Compliance documents available upon request.</p>
-              <Link href="/contact" className="text-slate-700 font-medium hover:underline mt-2 inline-block">
-                Contact Us
+            <div className="mt-6 bg-blue-50 rounded-xl p-6">
+              <h3 className="font-semibold text-blue-900 mb-2">Questions?</h3>
+              <p className="text-sm text-blue-700 mb-4">Contact our compliance team for any questions about our policies.</p>
+              <Link href="/contact" className="text-blue-600 hover:underline text-sm font-medium">
+                Contact Compliance Team
               </Link>
             </div>
-          )}
-        </section>
-
-        {/* Certifications */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Certifications & Accreditations</h2>
-          <div className="bg-white rounded-xl shadow-sm border p-8">
-            {certifications && certifications.length > 0 ? (
-              <div className="grid md:grid-cols-3 gap-6">
-                {certifications.map((cert: any) => (
-                  <div key={cert.id} className="flex items-center gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-500" />
-                    <span className="font-medium">{cert.name}</span>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <span className="font-medium">WIOA Eligible Training Provider</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <span className="font-medium">501(c)(3) Tax-Exempt Status</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <span className="font-medium">Indiana Career Connect Partner</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <span className="font-medium">Equal Opportunity Employer</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <span className="font-medium">ADA Compliant Facilities</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <span className="font-medium">FERPA Compliant</span>
-                </div>
-              </div>
-            )}
           </div>
-        </section>
-
-        {/* Report Concern */}
-        <section>
-          <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-8">
-            <div className="flex items-start gap-4">
-              <AlertTriangle className="w-8 h-8 text-yellow-600 flex-shrink-0" />
-              <div>
-                <h3 className="font-semibold text-lg mb-2">Report a Compliance Concern</h3>
-                <p className="text-gray-600 mb-4">
-                  If you have concerns about compliance, ethics, or misconduct, we encourage you to report them. 
-                  All reports are taken seriously and investigated thoroughly.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link
-                    href="/compliance/report"
-                    className="inline-flex items-center justify-center bg-yellow-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-yellow-700"
-                  >
-                    Submit a Report
-                  </Link>
-                  <Link
-                    href="/policies/grievance"
-                    className="inline-flex items-center justify-center border border-yellow-600 text-yellow-700 px-6 py-2 rounded-lg font-medium hover:bg-yellow-100"
-                  >
-                    View Grievance Procedure
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
       </div>
     </div>
   );

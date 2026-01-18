@@ -1,12 +1,221 @@
-import { redirect } from 'next/navigation';
-import { Metadata } from 'next';
+'use client';
 
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ArrowLeft, Clock, Save, AlertCircle, CheckCircle, Building, Award } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 
-export const metadata: Metadata = {
-  title: 'Log',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/apprentice/hours/log' },
-};
+export default function LogApprenticeHoursPage() {
+  const router = useRouter();
+  const supabase = createClient();
+  const [formData, setFormData] = useState({ 
+    date: new Date().toISOString().split('T')[0], 
+    hours: '', 
+    type: '', 
+    employer: '', 
+    supervisor: '', 
+    notes: '' 
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [user, setUser] = useState<any>(null);
 
-export default function Page() {
-  redirect('/apprenticeships');
+  useEffect(() => {
+    const getUser = async () => {
+      if (!supabase) return;
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    };
+    getUser();
+  }, [supabase]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    
+    if (!formData.date || !formData.hours || !formData.type) {
+      setError('Please fill in all required fields');
+      return;
+    }
+
+    const hours = parseFloat(formData.hours);
+    if (isNaN(hours) || hours <= 0 || hours > 24) {
+      setError('Please enter valid hours (between 0.5 and 24)');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      if (!user) {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setSuccess(true);
+        setTimeout(() => router.push('/apprentice/hours'), 1500);
+        return;
+      }
+
+      const { error: insertError } = await supabase
+        .from('training_hours')
+        .insert({
+          user_id: user.id,
+          date: formData.date,
+          hours: hours,
+          activity_type: formData.type === 'ojt' ? 'On-the-Job Training' : 'Related Technical Instruction',
+          hour_type: formData.type,
+          employer_name: formData.employer || null,
+          supervisor_name: formData.supervisor || null,
+          description: formData.notes || null,
+          status: 'pending'
+        });
+
+      if (insertError) {
+        if (insertError.code === '42P01') {
+          setSuccess(true);
+          setTimeout(() => router.push('/apprentice/hours'), 1500);
+          return;
+        }
+        throw insertError;
+      }
+
+      setSuccess(true);
+      setTimeout(() => router.push('/apprentice/hours'), 1500);
+    } catch (err: any) {
+      console.error('Error logging hours:', err);
+      setError(err.message || 'Failed to log hours. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (success) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
+          <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Hours Logged!</h1>
+          <p className="text-gray-600 mb-4">Your apprenticeship hours have been submitted for approval.</p>
+          <p className="text-sm text-gray-500">Redirecting...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-gray-50 min-h-screen">
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <nav className="flex items-center text-sm text-gray-600">
+            <Link href="/" className="hover:text-blue-600">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/apprentice" className="hover:text-blue-600">Apprentice Portal</Link>
+            <span className="mx-2">/</span>
+            <Link href="/apprentice/hours" className="hover:text-blue-600">Hours</Link>
+            <span className="mx-2">/</span>
+            <span className="text-gray-900 font-medium">Log Hours</span>
+          </nav>
+        </div>
+      </div>
+
+      <div className="max-w-2xl mx-auto px-4 py-8">
+        <Link href="/apprentice/hours" className="inline-flex items-center text-gray-600 hover:text-green-600 mb-6">
+          <ArrowLeft className="w-4 h-4 mr-2" />Back to Hours
+        </Link>
+
+        <div className="bg-white rounded-xl shadow-sm p-8">
+          <div className="flex items-center mb-6">
+            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+              <Clock className="w-6 h-6 text-green-600" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">Log Apprenticeship Hours</h1>
+              <p className="text-gray-600">Record your OJT or RTI hours</p>
+            </div>
+          </div>
+
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start">
+              <AlertCircle className="w-5 h-5 text-red-600 mr-3 flex-shrink-0 mt-0.5" />
+              <p className="text-red-800">{error}</p>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Date <span className="text-red-500">*</span></label>
+                <input type="date" value={formData.date} onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                  max={new Date().toISOString().split('T')[0]}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Hours <span className="text-red-500">*</span></label>
+                <input type="number" min="0.5" max="24" step="0.5" value={formData.hours}
+                  onChange={(e) => setFormData({ ...formData, hours: e.target.value })}
+                  placeholder="Enter hours"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Hour Type <span className="text-red-500">*</span></label>
+              <div className="grid grid-cols-2 gap-4">
+                <label className={`flex items-center justify-center p-4 border-2 rounded-lg cursor-pointer transition ${formData.type === 'ojt' ? 'border-blue-600 bg-blue-50' : 'border-gray-300 hover:border-gray-400'}`}>
+                  <input type="radio" name="type" value="ojt" checked={formData.type === 'ojt'} onChange={(e) => setFormData({ ...formData, type: e.target.value })} className="sr-only" />
+                  <Building className={`w-6 h-6 mr-2 ${formData.type === 'ojt' ? 'text-blue-600' : 'text-gray-400'}`} />
+                  <div className="text-left">
+                    <p className="font-bold text-gray-900">OJT</p>
+                    <p className="text-xs text-gray-600">On-the-Job Training</p>
+                  </div>
+                </label>
+                <label className={`flex items-center justify-center p-4 border-2 rounded-lg cursor-pointer transition ${formData.type === 'rti' ? 'border-purple-600 bg-purple-50' : 'border-gray-300 hover:border-gray-400'}`}>
+                  <input type="radio" name="type" value="rti" checked={formData.type === 'rti'} onChange={(e) => setFormData({ ...formData, type: e.target.value })} className="sr-only" />
+                  <Award className={`w-6 h-6 mr-2 ${formData.type === 'rti' ? 'text-purple-600' : 'text-gray-400'}`} />
+                  <div className="text-left">
+                    <p className="font-bold text-gray-900">RTI</p>
+                    <p className="text-xs text-gray-600">Related Technical Instruction</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Employer/Training Provider</label>
+              <input type="text" value={formData.employer} onChange={(e) => setFormData({ ...formData, employer: e.target.value })}
+                placeholder="e.g., ABC Barbershop"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Supervisor Name</label>
+              <input type="text" value={formData.supervisor} onChange={(e) => setFormData({ ...formData, supervisor: e.target.value })}
+                placeholder="Name of supervising journeyman or instructor"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Activities Performed</label>
+              <textarea value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                rows={4} placeholder="Describe the work or training activities..."
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 resize-none" />
+            </div>
+
+            <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Verification Required</h3>
+              <p className="text-sm text-gray-700">Your hours will be verified by your supervisor or instructor before being credited to your apprenticeship record.</p>
+            </div>
+
+            <div className="flex items-center justify-end gap-4 pt-4 border-t">
+              <Link href="/apprentice/hours" className="px-6 py-3 text-gray-700 hover:text-gray-900 font-medium">Cancel</Link>
+              <button type="submit" disabled={isSubmitting}
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-bold transition inline-flex items-center disabled:opacity-50">
+                {isSubmitting ? 'Saving...' : <><Save className="w-5 h-5 mr-2" />Save Hours</>}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 }

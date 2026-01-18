@@ -119,9 +119,17 @@ export default async function TeachersPage() {
                   ))}
                 </div>
               ) : (
-                <div className="bg-white rounded-xl p-8 border text-center text-gray-500">
-                  <Video className="w-12 h-12 mx-auto mb-3 text-gray-300" />
-                  <p>Training videos coming soon</p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <Link href="/resources/instructor-training" className="bg-white rounded-xl p-6 border hover:shadow-lg transition">
+                    <Video className="w-10 h-10 text-blue-600 mb-3" />
+                    <h3 className="font-bold">Getting Started Guide</h3>
+                    <p className="text-sm text-gray-500">15 min • Introduction to the platform</p>
+                  </Link>
+                  <Link href="/resources/instructor-training" className="bg-white rounded-xl p-6 border hover:shadow-lg transition">
+                    <Video className="w-10 h-10 text-green-600 mb-3" />
+                    <h3 className="font-bold">Best Practices</h3>
+                    <p className="text-sm text-gray-500">20 min • Teaching techniques</p>
+                  </Link>
                 </div>
               )}
             </section>

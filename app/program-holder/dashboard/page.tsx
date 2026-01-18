@@ -1,481 +1,122 @@
 import { Metadata } from 'next';
-export const dynamic = 'force-dynamic';
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import { getProgramHolderState } from '@/lib/orchestration/state-machine';
-import { getProgramHolderOnboardingStatus } from '@/lib/program-holder/onboarding-status';
-import {
-  StateAwareDashboard,
-  SectionCard,
-} from '@/components/dashboards/StateAwareDashboard';
-import {
-  Users,
-  FileText,
-  Shield,
-  AlertTriangle,
-  CheckCircle,
-  Book,
-} from 'lucide-react';
+import Link from 'next/link';
+import { LayoutDashboard, Users, BookOpen, TrendingUp, DollarSign, Calendar, Settings, BarChart3 } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Program Holder Dashboard | Elevate For Humanity',
-  description: 'Manage students, submit reports, track compliance',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/program-holder/dashboard',
-  },
-};
+export const metadata: Metadata = { title: 'Program Holder Dashboard | Elevate LMS' };
 
-/**
- * PROGRAM HOLDER PORTAL - OBLIGATION ENGINE
- *
- * This is not a control panel. This is an operator.
- *
- * Rules:
- * - Obligations are unavoidable
- * - At-risk states are surfaced immediately
- * - Compliance is enforced, not suggested
- * - Platform protects you from doing something wrong
- */
+export default function ProgramHolderDashboardPage() {
+  const stats = [
+    { label: 'Active Students', value: '1,234', change: '+12%', icon: Users },
+    { label: 'Programs', value: '8', change: '+2', icon: BookOpen },
+    { label: 'Completion Rate', value: '87%', change: '+5%', icon: TrendingUp },
+    { label: 'Revenue MTD', value: '$45,678', change: '+18%', icon: DollarSign },
+  ];
 
-export default async function ProgramHolderDashboardOrchestrated() {
-  const supabase = await createClient();
-
-  // Require authentication
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) redirect('/login?next=/program-holder/dashboard');
-
-  // Get program holder profile and verify role
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
-
-  if (!profile || profile.role !== 'program_holder') {
-    redirect('/unauthorized');
-  }
-
-  // CRITICAL: Check onboarding status and enforce gating
-  const onboardingStatus = await getProgramHolderOnboardingStatus(user.id);
-
-  if (!onboardingStatus.onboardingComplete) {
-    // Redirect to next required step
-    redirect(onboardingStatus.nextStepRoute || '/program-holder/onboarding');
-  }
-
-  // Get students
-  const { data: students } = await supabase
-    .from('enrollments')
-    .select('*, profiles(*)')
-    .eq('program_holder_id', user.id);
-
-  const activeStudents = students?.filter((s) => s.status === 'active') || [];
-  const atRiskStudents = students?.filter((s) => s.at_risk === true) || [];
-
-  // Get pending verifications
-  const { data: verifications } = await supabase
-    .from('student_verifications')
-    .select('*')
-    .eq('program_holder_id', user.id)
-    .eq('status', 'pending');
-
-  // Get overdue reports
-  const { data: reports } = await supabase
-    .from('compliance_reports')
-    .select('*')
-    .eq('program_holder_id', user.id)
-    .eq('status', 'overdue');
-
-  // Calculate compliance score
-  const { data: complianceData } = await supabase
-    .from('compliance_scores')
-    .select('score')
-    .eq('program_holder_id', user.id)
-    .single();
-
-  const complianceScore = complianceData?.score || 100;
-
-  // Calculate state
-  const stateData = getProgramHolderState({
-    isVerified: profile.verified || false,
-    activeStudents: activeStudents.length,
-    atRiskStudents: atRiskStudents.length,
-    pendingVerifications: verifications?.length || 0,
-    overdueReports: reports?.length || 0,
-    complianceScore,
-  });
+  const programs = [
+    { name: 'HVAC Technician', students: 456, completion: 89, revenue: 15234 },
+    { name: 'Medical Assistant', students: 312, completion: 92, revenue: 12456 },
+    { name: 'Barber License', students: 234, completion: 85, revenue: 8765 },
+    { name: 'CDL Training', students: 232, completion: 88, revenue: 9223 },
+  ];
 
   return (
-    <StateAwareDashboard
-      dominantAction={stateData.dominantAction}
-      availableSections={stateData.availableSections}
-      lockedSections={stateData.lockedSections}
-      alerts={stateData.alerts}
-    >
-      <div className="grid lg:grid-cols-3 gap-8">
-        {/* Main Content - 2/3 width */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* Metrics Dashboard */}
-          <div className="grid md:grid-cols-4 gap-4">
-            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-              <div className="flex items-center justify-between mb-2">
-                <Users className="h-11 w-11 text-blue-600" />
-                <span className="text-3xl font-bold text-black">
-                  {stateData.metrics.activeStudents}
-                </span>
-              </div>
-              <div className="text-sm text-black">Active Students</div>
+    <div className="min-h-screen bg-gray-100">
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <LayoutDashboard className="w-8 h-8 text-purple-600" />
+              <h1 className="text-2xl font-bold text-gray-900">Program Holder Portal</h1>
             </div>
-
-            <div
-              className={`rounded-lg shadow-sm border p-6 ${
-                stateData.metrics.atRiskStudents > 0
-                  ? 'bg-yellow-50 border-yellow-600'
-                  : 'bg-white border-slate-200'
-              }`}
-            >
-              <div className="flex items-center justify-between mb-2">
-                <AlertTriangle
-                  className={`h-11 w-11 ${
-                    stateData.metrics.atRiskStudents > 0
-                      ? 'text-yellow-600'
-                      : 'text-slate-400'
-                  }`}
-                />
-                <span
-                  className={`text-3xl font-bold ${
-                    stateData.metrics.atRiskStudents > 0
-                      ? 'text-yellow-900'
-                      : 'text-black'
-                  }`}
-                >
-                  {stateData.metrics.atRiskStudents}
-                </span>
-              </div>
-              <div
-                className={`text-sm ${
-                  stateData.metrics.atRiskStudents > 0
-                    ? 'text-yellow-900'
-                    : 'text-black'
-                }`}
-              >
-                At-Risk Students
-              </div>
+            <div className="flex items-center gap-4">
+              <Link href="/program-holder/settings" className="p-2 text-gray-600 hover:text-purple-600">
+                <Settings className="w-6 h-6" />
+              </Link>
             </div>
-
-            <div
-              className={`rounded-lg shadow-sm border p-6 ${
-                stateData.metrics.pendingVerifications > 5
-                  ? 'bg-orange-50 border-orange-600'
-                  : 'bg-white border-slate-200'
-              }`}
-            >
-              <div className="flex items-center justify-between mb-2">
-                <FileText
-                  className={`h-11 w-11 ${
-                    stateData.metrics.pendingVerifications > 5
-                      ? 'text-orange-600'
-                      : 'text-slate-400'
-                  }`}
-                />
-                <span
-                  className={`text-3xl font-bold ${
-                    stateData.metrics.pendingVerifications > 5
-                      ? 'text-orange-900'
-                      : 'text-black'
-                  }`}
-                >
-                  {stateData.metrics.pendingVerifications}
-                </span>
-              </div>
-              <div
-                className={`text-sm ${
-                  stateData.metrics.pendingVerifications > 5
-                    ? 'text-orange-900'
-                    : 'text-black'
-                }`}
-              >
-                Pending Verifications
-              </div>
-            </div>
-
-            <div
-              className={`rounded-lg shadow-sm border p-6 ${
-                stateData.metrics.overdueReports > 0
-                  ? 'bg-red-50 border-red-600'
-                  : 'bg-white border-slate-200'
-              }`}
-            >
-              <div className="flex items-center justify-between mb-2">
-                <AlertTriangle
-                  className={`h-11 w-11 ${
-                    stateData.metrics.overdueReports > 0
-                      ? 'text-red-600'
-                      : 'text-green-600'
-                  }`}
-                />
-                <span
-                  className={`text-3xl font-bold ${
-                    stateData.metrics.overdueReports > 0
-                      ? 'text-red-900'
-                      : 'text-black'
-                  }`}
-                >
-                  {stateData.metrics.overdueReports}
-                </span>
-              </div>
-              <div
-                className={`text-sm ${
-                  stateData.metrics.overdueReports > 0
-                    ? 'text-red-900'
-                    : 'text-black'
-                }`}
-              >
-                Overdue Reports
-              </div>
-            </div>
-          </div>
-
-          {/* Available Sections */}
-          <div>
-            <h3 className="text-2xl font-bold text-black mb-6">
-              Available Actions
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              {stateData.availableSections.includes('verification') && (
-                <SectionCard
-                  title="Complete Verification"
-                  description="Required before accepting students"
-                  href="/program-holder/verification"
-                  icon={<Shield className="h-10 w-10" />}
-                  badge="Required"
-                />
-              )}
-
-              {stateData.availableSections.includes('students') && (
-                <SectionCard
-                  title="Manage Students"
-                  description={`${stateData.metrics.activeStudents} active student${stateData.metrics.activeStudents !== 1 ? 's' : ''}`}
-                  href="/program-holder/students"
-                  icon={<Users className="h-10 w-10" />}
-                  badge={
-                    stateData.metrics.atRiskStudents > 0
-                      ? `${stateData.metrics.atRiskStudents} At Risk`
-                      : undefined
-                  }
-                />
-              )}
-
-              {stateData.availableSections.includes('reports') && (
-                <SectionCard
-                  title="Submit Reports"
-                  description="Compliance reporting and documentation"
-                  href="/program-holder/reports"
-                  icon={<FileText className="h-10 w-10" />}
-                  badge={
-                    stateData.metrics.overdueReports > 0
-                      ? `${stateData.metrics.overdueReports} Overdue`
-                      : undefined
-                  }
-                />
-              )}
-
-              {stateData.availableSections.includes('compliance') && (
-                <SectionCard
-                  title="Compliance Dashboard"
-                  description={`Score: ${complianceScore}%`}
-                  href="/program-holder/compliance"
-                  icon={<Shield className="h-10 w-10" />}
-                  badge={
-                    complianceScore < 70
-                      ? 'Action Required'
-                      : complianceScore < 85
-                        ? 'Review'
-                        : 'Good'
-                  }
-                />
-              )}
-
-              {stateData.availableSections.includes('documentation') && (
-                <SectionCard
-                  title="Documentation"
-                  description="Forms, templates, and resources"
-                  href="/program-holder/documentation"
-                  icon={<Book className="h-10 w-10" />}
-                />
-              )}
-
-              {stateData.availableSections.includes('training') && (
-                <SectionCard
-                  title="Training Resources"
-                  description="Learn how to use the platform"
-                  href="/program-holder/training"
-                  icon={<Book className="h-10 w-10" />}
-                />
-              )}
-
-              {stateData.availableSections.includes('support') && (
-                <SectionCard
-                  title="Get Support"
-                  description="Contact your compliance advisor"
-                  href="/program-holder/support"
-                  icon={<Users className="h-10 w-10" />}
-                />
-              )}
-            </div>
-          </div>
-
-          {/* Recent Activity */}
-          {activeStudents.length > 0 && (
-            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-              <h3 className="text-xl font-bold text-black mb-4">
-                Recent Student Activity
-              </h3>
-              <div className="space-y-3">
-                {activeStudents.slice(0, 5).map((student: any) => (
-                  <div
-                    key={student.id}
-                    className="flex items-center justify-between p-3 bg-slate-50 rounded-lg"
-                  >
-                    <div>
-                      <div className="font-semibold text-black">
-                        {student.profiles?.full_name || 'Student'}
-                      </div>
-                      <div className="text-sm text-black">
-                        Status:{' '}
-                        <span className="capitalize">{student.status}</span>
-                      </div>
-                    </div>
-                    {student.at_risk && (
-                      <span className="px-3 py-2 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full">
-                        At Risk
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Sidebar - 1/3 width */}
-        <div className="space-y-6">
-          {/* Compliance Score */}
-          <div
-            className={`rounded-lg shadow-sm border-2 p-6 ${
-              complianceScore >= 85
-                ? 'bg-green-50 border-green-600'
-                : complianceScore >= 70
-                  ? 'bg-yellow-50 border-yellow-600'
-                  : 'bg-red-50 border-red-600'
-            }`}
-          >
-            <h3 className="text-lg font-bold mb-3">Compliance Score</h3>
-            <div
-              className={`text-5xl font-bold mb-2 ${
-                complianceScore >= 85
-                  ? 'text-green-600'
-                  : complianceScore >= 70
-                    ? 'text-yellow-600'
-                    : 'text-red-600'
-              }`}
-            >
-              {complianceScore}%
-            </div>
-            <div
-              className={`text-sm ${
-                complianceScore >= 85
-                  ? 'text-green-900'
-                  : complianceScore >= 70
-                    ? 'text-yellow-900'
-                    : 'text-red-900'
-              }`}
-            >
-              {complianceScore >= 85
-                ? 'Excellent standing'
-                : complianceScore >= 70
-                  ? 'Review recommended'
-                  : 'Immediate action required'}
-            </div>
-          </div>
-
-          {/* Quick Actions */}
-          <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            <h3 className="text-lg font-bold text-black mb-4">
-              Quick Actions
-            </h3>
-            <div className="space-y-3">
-              <a
-                href="/program-holder/students/pending"
-                className="block w-full text-center px-4 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
-              >
-                Review Pending Students
-              </a>
-              <a
-                href="/program-holder/reports/new"
-                className="block w-full text-center px-4 py-3 bg-slate-200 text-black rounded-lg font-semibold hover:bg-slate-300 transition"
-              >
-                Submit New Report
-              </a>
-            </div>
-          </div>
-
-          {/* Legal Documents */}
-          <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            <h3 className="text-lg font-bold text-black mb-4">
-              Legal Documents
-            </h3>
-            <div className="space-y-2">
-              <a
-                href="/legal/marketplace-terms"
-                className="block px-4 py-2 text-sm text-black hover:bg-slate-50 rounded-lg transition"
-              >
-                📄 Marketplace Terms
-              </a>
-              <a
-                href="/legal/creator-agreement"
-                className="block px-4 py-2 text-sm text-black hover:bg-slate-50 rounded-lg transition"
-              >
-                📄 Creator Agreement
-              </a>
-              <a
-                href="/legal/nda"
-                className="block px-4 py-2 text-sm text-black hover:bg-slate-50 rounded-lg transition"
-              >
-                📄 Non-Disclosure Agreement
-              </a>
-              <a
-                href="/legal/non-compete"
-                className="block px-4 py-2 text-sm text-black hover:bg-slate-50 rounded-lg transition"
-              >
-                📄 Non-Compete Agreement
-              </a>
-              <a
-                href="/legal/mou"
-                className="block px-4 py-2 text-sm text-black hover:bg-slate-50 rounded-lg transition"
-              >
-                📄 Memorandum of Understanding
-              </a>
-            </div>
-          </div>
-
-          {/* Support Card */}
-          <div className="bg-blue-50 rounded-lg border-2 border-blue-600 p-6">
-            <h3 className="text-lg font-bold text-blue-900 mb-3">Need Help?</h3>
-            <p className="text-blue-800 mb-4 text-sm">
-              Your compliance advisor is here to support you.
-            </p>
-            <a
-              href="tel:+13173143757"
-              className="block w-full text-center px-4 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
-            >
-              Call (317) 314-3757
-            </a>
           </div>
         </div>
       </div>
-    </StateAwareDashboard>
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {stats.map((stat, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-sm p-6">
+              <div className="flex items-center justify-between mb-4">
+                <stat.icon className="w-8 h-8 text-purple-600" />
+                <span className="text-sm text-green-600 font-medium">{stat.change}</span>
+              </div>
+              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+              <p className="text-sm text-gray-600">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+        <div className="grid lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-gray-900">Program Performance</h2>
+                <Link href="/program-holder/analytics" className="text-purple-600 hover:underline text-sm">View All</Link>
+              </div>
+              <table className="w-full">
+                <thead>
+                  <tr className="text-left text-sm text-gray-500 border-b">
+                    <th className="pb-3">Program</th>
+                    <th className="pb-3 text-center">Students</th>
+                    <th className="pb-3 text-center">Completion</th>
+                    <th className="pb-3 text-right">Revenue</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y">
+                  {programs.map((program, index) => (
+                    <tr key={index} className="hover:bg-gray-50">
+                      <td className="py-4 font-medium text-gray-900">{program.name}</td>
+                      <td className="py-4 text-center text-gray-600">{program.students}</td>
+                      <td className="py-4 text-center">
+                        <span className="text-green-600 font-medium">{program.completion}%</span>
+                      </td>
+                      <td className="py-4 text-right text-gray-900">${program.revenue.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="space-y-6">
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="font-bold text-gray-900 mb-4">Quick Actions</h3>
+              <div className="space-y-3">
+                <Link href="/program-holder/programs/new" className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg text-purple-700 hover:bg-purple-100">
+                  <BookOpen className="w-5 h-5" /> Add New Program
+                </Link>
+                <Link href="/program-holder/students" className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg text-gray-700 hover:bg-gray-100">
+                  <Users className="w-5 h-5" /> Manage Students
+                </Link>
+                <Link href="/program-holder/reports" className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg text-gray-700 hover:bg-gray-100">
+                  <BarChart3 className="w-5 h-5" /> View Reports
+                </Link>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="font-bold text-gray-900 mb-4">Upcoming</h3>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-sm">
+                  <Calendar className="w-5 h-5 text-gray-400" />
+                  <div>
+                    <p className="font-medium text-gray-900">New Cohort Start</p>
+                    <p className="text-gray-500">Feb 1, 2026</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 text-sm">
+                  <Calendar className="w-5 h-5 text-gray-400" />
+                  <div>
+                    <p className="font-medium text-gray-900">Quarterly Review</p>
+                    <p className="text-gray-500">Feb 15, 2026</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

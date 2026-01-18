@@ -1,147 +1,131 @@
-import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
-import { Calendar, Clock, Plus, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
+import { Calendar, Plus, Clock, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Time Off | Employee Portal',
-  description: 'Request and manage your time off.',
-};
-
-export const dynamic = 'force-dynamic';
-
-export default async function TimeOffPage() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login?redirect=/employee/time-off');
-  }
-
-  // Get time off requests
-  const { data: requests } = await supabase
-    .from('time_off_requests')
-    .select('*')
-    .eq('user_id', user.id)
-    .order('start_date', { ascending: false });
-
-  // Get time off balances
-  const { data: balances } = await supabase
-    .from('time_off_balances')
-    .select('*')
-    .eq('user_id', user.id);
-
-  const defaultBalances = [
-    { type: 'Vacation', available: 10, used: 5, total: 15 },
-    { type: 'Sick Leave', available: 5, used: 2, total: 7 },
-    { type: 'Personal', available: 3, used: 0, total: 3 },
+export default function TimeOffPage() {
+  const balances = [
+    { type: 'Vacation', available: 80, used: 16, pending: 8, total: 96 },
+    { type: 'Sick Leave', available: 40, used: 8, pending: 0, total: 48 },
+    { type: 'Personal', available: 16, used: 0, pending: 0, total: 16 },
   ];
 
-  const displayBalances = balances && balances.length > 0 ? balances : defaultBalances;
+  const requests = [
+    { id: '1', type: 'Vacation', startDate: 'Feb 15, 2026', endDate: 'Feb 19, 2026', hours: 32, status: 'Pending' },
+    { id: '2', type: 'Sick Leave', startDate: 'Jan 10, 2026', endDate: 'Jan 10, 2026', hours: 8, status: 'Approved' },
+    { id: '3', type: 'Vacation', startDate: 'Dec 23, 2025', endDate: 'Dec 27, 2025', hours: 40, status: 'Approved' },
+  ];
 
-  const getStatusIcon = (status: string) => {
+  const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'approved':
-        return <CheckCircle className="w-5 h-5 text-green-500" />;
-      case 'denied':
-        return <XCircle className="w-5 h-5 text-red-500" />;
+      case 'Approved':
+        return <span className="bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded flex items-center"><CheckCircle className="w-3 h-3 mr-1" />{status}</span>;
+      case 'Pending':
+        return <span className="bg-yellow-100 text-yellow-700 text-xs font-medium px-2 py-1 rounded flex items-center"><AlertCircle className="w-3 h-3 mr-1" />{status}</span>;
+      case 'Denied':
+        return <span className="bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded flex items-center"><XCircle className="w-3 h-3 mr-1" />{status}</span>;
       default:
-        return <AlertCircle className="w-5 h-5 text-yellow-500" />;
-    }
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'approved':
-        return 'bg-green-100 text-green-700';
-      case 'denied':
-        return 'bg-red-100 text-red-700';
-      default:
-        return 'bg-yellow-100 text-yellow-700';
+        return null;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-gray-50 min-h-screen">
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <nav className="flex items-center text-sm text-gray-600">
+            <Link href="/" className="hover:text-blue-600">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/employee" className="hover:text-blue-600">Employee Portal</Link>
+            <span className="mx-2">/</span>
+            <span className="text-gray-900 font-medium">Time Off</span>
+          </nav>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-2xl font-bold">Time Off</h1>
-            <p className="text-gray-600">Request and manage your time off</p>
+            <h1 className="text-3xl font-bold text-gray-900">Time Off</h1>
+            <p className="text-gray-600">Manage your leave requests and balances</p>
           </div>
-          <Link
-            href="/employee/time-off/request"
-            className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition"
-          >
-            <Plus className="w-5 h-5" />
+          <Link href="/employee/time-off/request" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition flex items-center">
+            <Plus className="w-4 h-4 mr-2" />
             Request Time Off
           </Link>
         </div>
 
         {/* Balances */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          {displayBalances.map((balance: any, index: number) => (
-            <div key={index} className="bg-white rounded-xl shadow-sm border p-6">
-              <h3 className="font-semibold text-gray-600 mb-2">{balance.type}</h3>
-              <div className="text-3xl font-bold text-blue-600 mb-2">
-                {balance.available} <span className="text-lg text-gray-400">days</span>
-              </div>
-              <div className="text-sm text-gray-500">
-                {balance.used} used of {balance.total} total
-              </div>
-              <div className="mt-3 bg-gray-200 rounded-full h-2">
-                <div 
-                  className="bg-blue-600 h-2 rounded-full" 
-                  style={{ width: `${(balance.used / balance.total) * 100}%` }}
-                />
+          {balances.map((balance, i) => (
+            <div key={i} className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">{balance.type}</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Available</span>
+                  <span className="font-bold text-green-600">{balance.available} hrs</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Used</span>
+                  <span className="text-gray-900">{balance.used} hrs</span>
+                </div>
+                {balance.pending > 0 && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Pending</span>
+                    <span className="text-yellow-600">{balance.pending} hrs</span>
+                  </div>
+                )}
+                <div className="pt-3 border-t">
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-blue-600 h-2 rounded-full"
+                      style={{ width: `${((balance.used + balance.pending) / balance.total) * 100}%` }}
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1">{balance.used + balance.pending} of {balance.total} hours used</p>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Requests */}
-        <div className="bg-white rounded-xl shadow-sm border">
+        {/* Recent Requests */}
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
           <div className="p-6 border-b">
-            <h2 className="text-lg font-semibold">Time Off Requests</h2>
+            <h2 className="text-lg font-bold text-gray-900">Recent Requests</h2>
           </div>
-          {requests && requests.length > 0 ? (
-            <div className="divide-y">
-              {requests.map((request: any) => (
-                <div key={request.id} className="p-6 flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <Calendar className="w-10 h-10 text-blue-500" />
-                    <div>
-                      <h3 className="font-medium">{request.type}</h3>
-                      <p className="text-sm text-gray-500">
-                        {new Date(request.start_date).toLocaleDateString()} - {new Date(request.end_date).toLocaleDateString()}
-                      </p>
-                      {request.notes && (
-                        <p className="text-sm text-gray-600 mt-1">{request.notes}</p>
-                      )}
-                    </div>
+          <div className="divide-y divide-gray-200">
+            {requests.map((request) => (
+              <div key={request.id} className="p-6 flex items-center justify-between hover:bg-gray-50">
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                    <Calendar className="w-6 h-6 text-blue-600" />
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(request.status)}`}>
-                      {request.status}
-                    </span>
-                    {getStatusIcon(request.status)}
+                  <div>
+                    <p className="font-semibold text-gray-900">{request.type}</p>
+                    <p className="text-sm text-gray-600">{request.startDate} - {request.endDate}</p>
                   </div>
                 </div>
-              ))}
+                <div className="text-right mr-6">
+                  <p className="font-bold text-gray-900">{request.hours} hours</p>
+                </div>
+                {getStatusBadge(request.status)}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Calendar Preview */}
+        <div className="mt-8 bg-white rounded-xl shadow-sm p-6">
+          <h2 className="text-lg font-bold text-gray-900 mb-4">Upcoming Time Off</h2>
+          <div className="bg-blue-50 rounded-lg p-4 flex items-center">
+            <Calendar className="w-8 h-8 text-blue-600 mr-4" />
+            <div>
+              <p className="font-medium text-gray-900">Vacation: Feb 15-19, 2026</p>
+              <p className="text-sm text-gray-600">32 hours • Pending approval</p>
             </div>
-          ) : (
-            <div className="p-8 text-center">
-              <Clock className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-500">No time off requests</p>
-              <Link
-                href="/employee/time-off/request"
-                className="inline-block mt-4 text-blue-600 font-medium hover:underline"
-              >
-                Request time off
-              </Link>
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

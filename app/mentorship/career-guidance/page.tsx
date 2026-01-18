@@ -1,12 +1,86 @@
-import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
-
+import Link from 'next/link';
+import Image from 'next/image';
+import { Compass, CheckCircle, ArrowRight, Users, Target, TrendingUp } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Career Guidance',
+  title: 'Career Guidance Mentorship | Elevate for Humanity',
+  description: 'Get personalized career guidance from experienced mentors. Navigate your career path with expert advice and support.',
   alternates: { canonical: 'https://www.elevateforhumanity.org/mentorship/career-guidance' },
 };
 
 export default function CareerGuidancePage() {
-  redirect('/mentorship');
+  const benefits = [
+    { title: 'Personalized Advice', description: 'One-on-one sessions tailored to your goals' },
+    { title: 'Industry Insights', description: 'Learn from professionals in your field' },
+    { title: 'Career Planning', description: 'Create a roadmap for your success' },
+    { title: 'Decision Support', description: 'Get help making important career choices' },
+  ];
+
+  return (
+    <div className="bg-white">
+      <div className="bg-gray-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <nav className="flex items-center text-sm text-gray-600">
+            <Link href="/" className="hover:text-blue-600">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/mentorship" className="hover:text-blue-600">Mentorship</Link>
+            <span className="mx-2">/</span>
+            <span className="text-gray-900 font-medium">Career Guidance</span>
+          </nav>
+        </div>
+      </div>
+
+      <section className="relative h-[350px] flex items-center justify-center text-white overflow-hidden">
+        <Image src="/images/hero/hero-career-services.jpg" alt="Career Guidance" fill className="object-cover" priority sizes="100vw" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/80" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <Compass className="w-16 h-16 mx-auto mb-4 text-white/80" />
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Career Guidance</h1>
+          <p className="text-xl text-blue-100">Navigate your career path with expert mentorship</p>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What You Will Get</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((benefit, i) => (
+              <div key={i} className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{benefit.title}</h3>
+                <p className="text-gray-600">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How It Works</h2>
+          <div className="space-y-6">
+            {['Apply for mentorship and share your goals', 'Get matched with an experienced mentor in your field', 'Schedule regular sessions to discuss your career', 'Receive guidance, feedback, and support'].map((step, i) => (
+              <div key={i} className="flex items-start bg-white rounded-lg p-6 shadow-sm">
+                <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mr-4 flex-shrink-0">{i + 1}</div>
+                <p className="text-gray-700 pt-2">{step}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-blue-900 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
+          <p className="text-xl text-blue-100 mb-8">Connect with a mentor who can help guide your career.</p>
+          <Link href="/apply" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-bold transition inline-flex items-center">
+            Apply for Mentorship <ArrowRight className="ml-2 w-5 h-5" />
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
 }
