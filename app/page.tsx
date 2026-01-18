@@ -367,10 +367,70 @@ export default function HomePage() {
           {/* CTA */}
           <div className="text-center">
             <Link 
-              href="/wioa-eligibility"
+              href="/apply"
               className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors text-sm"
             >
-              Check If You Qualify
+              Start Eligibility & Choose a Career Path
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Pathway Disclosure - How Our Program Works */}
+      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6 text-center">
+            Our Structured Career Pathway
+          </h2>
+          
+          {/* 3-Stage Visual */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {/* Stage 1 */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+              <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-lg mb-4">1</div>
+              <h3 className="font-semibold text-slate-900 mb-2">Eligibility & Career Alignment</h3>
+              <p className="text-sm text-slate-600">
+                We determine your funding eligibility and help you select the right career pathway based on your goals and qualifications.
+              </p>
+            </div>
+            
+            {/* Stage 2 */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+              <div className="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold text-lg mb-4">2</div>
+              <h3 className="font-semibold text-slate-900 mb-2">Training & On-the-Job Learning</h3>
+              <p className="text-sm text-slate-600">
+                Complete occupational training with structured on-the-job learning aligned to your specific career pathway.
+              </p>
+            </div>
+            
+            {/* Stage 3 */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+              <div className="w-10 h-10 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold text-lg mb-4">3</div>
+              <h3 className="font-semibold text-slate-900 mb-2">Internship & Job Placement</h3>
+              <p className="text-sm text-slate-600">
+                Employer-hosted internship or work-based placement designed to support your transition into employment.
+              </p>
+            </div>
+          </div>
+          
+          {/* Disclosure Text */}
+          <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 text-sm text-slate-700">
+            <p>
+              <strong>Important:</strong> Elevate for Humanity delivers all training through a structured career pathway. 
+              Participants begin with an eligibility and career alignment phase, where funding eligibility is determined and program selection occurs. 
+              Once eligibility is confirmed, participants enter occupational training with structured on-the-job learning aligned to a specific career pathway. 
+              Training is followed by an employer-hosted internship or work-based placement designed to support transition into employment. 
+              Program enrollment, training, and placement are contingent upon eligibility, funding availability, and employer participation.
+            </p>
+          </div>
+          
+          {/* CTA */}
+          <div className="text-center mt-6">
+            <Link 
+              href="/apply"
+              className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Start Eligibility & Choose a Career Path
             </Link>
           </div>
         </div>

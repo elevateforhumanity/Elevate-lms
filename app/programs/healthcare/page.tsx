@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 
 
 
@@ -91,6 +92,9 @@ export default function HealthcareProgramsPage() {
 
       {/* Breadcrumbs */}
       <Breadcrumbs />
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Healthcare" programSlug="healthcare" />
 
       {/* Programs Grid */}
       <section className="py-12 bg-white">

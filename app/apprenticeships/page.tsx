@@ -22,8 +22,7 @@ import {
   Menu,
   X,
 } from 'lucide-react';
-
-
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 
 export default function ApprenticeshipsPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -343,6 +342,9 @@ export default function ApprenticeshipsPage() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Apprenticeship" programSlug="apprenticeship" />
 
       {/* Benefits Section */}
       <section className="py-12 md:py-16 bg-gray-50">
