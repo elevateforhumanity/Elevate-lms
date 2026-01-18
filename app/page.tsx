@@ -203,7 +203,7 @@ export default function HomePage() {
       <VoiceoverWithMusic audioSrc="/audio/welcome-voiceover.mp3" delay={100} />
 
       {/* Hero Section - Optimized for all screen sizes: mobile, tablet, laptop, desktop */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-slate-900">
+      <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-800">
         {/* Background video - autoplay on ALL devices */}
         {/* Required for autoplay: muted, playsinline, autoplay attributes */}
         <video
@@ -221,8 +221,8 @@ export default function HomePage() {
           <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>
         
-        {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+        {/* Light overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent pointer-events-none" />
         
         {/* Hero Content - Million dollar value proposition */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
