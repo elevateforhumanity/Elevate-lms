@@ -8,18 +8,34 @@ import { Phone, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 // Pathway slug to program name mapping
 const PATHWAY_TO_PROGRAM: Record<string, string> = {
+  // General categories
+  'healthcare': 'Healthcare (General Interest)',
+  'skilled-trades': 'Skilled Trades (General Interest)',
+  'technology': 'Technology (General Interest)',
+  'business': 'Business (General Interest)',
+  'apprenticeship': 'Apprenticeship (General Interest)',
+  // Healthcare
   'cna-certification': 'CNA (Certified Nursing Assistant)',
   'medical-assistant': 'Medical Assistant',
   'phlebotomy': 'Phlebotomy',
+  'direct-support-professional': 'Direct Support Professional',
+  'drug-collector': 'Drug Collector',
+  // Skilled Trades
   'hvac-technician': 'HVAC Technician',
   'electrical-apprenticeship': 'Electrical',
   'plumbing-apprenticeship': 'Plumbing',
+  'welding': 'Welding',
+  'cdl-training': 'CDL (Commercial Driver License)',
+  // Beauty & Barbering
   'barber-apprenticeship': 'Barber Apprenticeship',
   'cosmetology': 'Cosmetology',
-  'cdl-training': 'CDL (Commercial Driver License)',
+  'esthetician-apprenticeship': 'Esthetician Apprenticeship',
+  'nail-technician-apprenticeship': 'Nail Technician Apprenticeship',
+  // Technology
   'it-support': 'IT Support',
   'cybersecurity': 'Cybersecurity',
   'web-development': 'Web Development',
+  // Business
   'accounting': 'Accounting',
   'business-management': 'Business Management',
 };

@@ -237,7 +237,7 @@ export default function ApprenticeshipsPage() {
                 Contact
               </Link>
               <Link
-                href="/apply"
+                href="/apply?pathway=apprenticeship"
                 className="px-6 py-2 bg-orange-600 text-white rounded-lg font-bold hover:bg-orange-700 transition-colors"
               >
                 Apply Now
@@ -292,7 +292,7 @@ export default function ApprenticeshipsPage() {
                 Contact
               </Link>
               <Link
-                href="/apply"
+                href="/apply?pathway=apprenticeship"
                 className="mx-6 my-4 px-6 py-3 bg-orange-600 text-white text-center rounded-lg font-bold hover:bg-orange-700 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -333,7 +333,7 @@ export default function ApprenticeshipsPage() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
-                href="/apply"
+                href="/apply?pathway=apprenticeship"
                 className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 font-bold text-base md:text-lg rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
               >
                 Apply Today
@@ -607,7 +607,7 @@ export default function ApprenticeshipsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/apply"
+              href="/apply?pathway=apprenticeship"
               className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-orange-600 text-white font-bold text-base md:text-lg rounded-lg hover:bg-orange-700 transition-colors shadow-lg"
             >
               Apply Now
@@ -706,7 +706,7 @@ export default function ApprenticeshipsPage() {
                 </li>
                 <li>
                   <Link
-                    href="/apply"
+                    href="/apply?pathway=apprenticeship"
                     className="text-black hover:text-white transition-colors"
                   >
                     Apply Now

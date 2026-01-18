@@ -90,10 +90,16 @@ export default function BarberApprenticeshipApplyPage() {
           <div className="flex items-start gap-3">
             <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-amber-900 font-medium">This is a self-pay program</p>
-              <p className="text-sm text-amber-800">
-                State workforce funding (WIOA) is not available for this apprenticeship. 
+              <p className="text-amber-900 font-medium">Self-Pay Option</p>
+              <p className="text-sm text-amber-800 mb-2">
+                This is a direct enrollment for self-pay students. 
                 Payment plans are available. Program fee details will be provided after application review.
+              </p>
+              <p className="text-sm text-amber-800">
+                <strong>Looking for funded training?</strong>{' '}
+                <a href="/apply?pathway=barber-apprenticeship" className="text-blue-600 hover:underline font-medium">
+                  Check your eligibility for WIOA/WRG funding first →
+                </a>
               </p>
             </div>
           </div>
