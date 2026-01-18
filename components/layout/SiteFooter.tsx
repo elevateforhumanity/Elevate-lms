@@ -9,26 +9,72 @@ const footerSections = [
   {
     title: 'Programs',
     links: [
+      { name: 'All Programs', href: '/programs' },
       { name: 'Healthcare', href: '/programs/healthcare' },
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
       { name: 'Business', href: '/programs/business' },
+      { name: 'Apprenticeships', href: '/apprenticeships' },
     ],
   },
   {
-    title: 'Resources',
+    title: 'Services',
     links: [
+      { name: 'Career Services', href: '/career-services' },
+      { name: 'VITA Tax Prep', href: '/vita' },
+      { name: 'Store', href: '/store' },
+      { name: 'Courses', href: '/courses' },
+      { name: 'Mentorship', href: '/mentorship' },
+    ],
+  },
+  {
+    title: 'Get Started',
+    links: [
+      { name: 'Apply Now', href: '/apply' },
       { name: 'How It Works', href: '/how-it-works' },
-      { name: 'FAQs', href: '/faq' },
-      { name: 'Blog', href: '/blog' },
+      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
+      { name: 'FAQ', href: '/faq' },
+      { name: 'Funding', href: '/funding' },
+    ],
+  },
+  {
+    title: 'For Employers',
+    links: [
+      { name: 'Employer Overview', href: '/employer' },
+      { name: 'Hire Graduates', href: '/hire-graduates' },
+      { name: 'Partner With Us', href: '/partner-with-us' },
+      { name: 'Workforce Board', href: '/workforce-board' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { name: 'About', href: '/about' },
+      { name: 'About Us', href: '/about' },
       { name: 'Contact', href: '/contact' },
-      { name: 'For Employers', href: '/employer' },
+      { name: 'Team', href: '/team' },
+      { name: 'Careers', href: '/careers' },
+      { name: 'Locations', href: '/locations' },
+      { name: 'Donate', href: '/donate' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { name: 'Blog', href: '/blog' },
+      { name: 'News', href: '/news' },
+      { name: 'Events', href: '/events' },
+      { name: 'Support', href: '/support' },
+      { name: 'Community', href: '/community' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Terms of Service', href: '/terms-of-service' },
+      { name: 'Accessibility', href: '/accessibility' },
+      { name: 'Disclosures', href: '/disclosures' },
+      { name: 'Policies', href: '/policies' },
     ],
   },
 ];
@@ -102,7 +148,7 @@ export default function SiteFooter() {
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden sm:grid sm:grid-cols-4 gap-8">
+        <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
           {footerSections.map((section) => (
             <div key={section.title}>
               <h3 className="text-xs font-medium uppercase tracking-wider text-gray-400 mb-3">
