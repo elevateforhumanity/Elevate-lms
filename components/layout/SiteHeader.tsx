@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 // Main navigation with dropdowns for sub-pages
@@ -132,31 +132,7 @@ function useSafeUser() {
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const user = useSafeUser();
-
-  // Track mount state to avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Track scroll for transparent → solid header
-  useEffect(() => {
-    if (typeof window === 'undefined') return undefined;
-    
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Server-side render with solid header to avoid flash
-  const headerBg = 'bg-white shadow-sm';
-  // Force black text on white header
-  const textColor = 'text-gray-900';
 
   return (
     <>
@@ -175,9 +151,7 @@ export default function SiteHeader() {
                 className="w-8 h-8 sm:w-9 sm:h-9"
                 priority
               />
-              <span className={`hidden sm:inline font-bold text-lg transition-colors ${
-                !mounted || isScrolled ? 'text-gray-900' : 'text-white'
-              }`}>
+              <span className="hidden sm:inline font-bold text-lg text-gray-900">
                 Elevate
               </span>
             </Link>
@@ -222,9 +196,7 @@ export default function SiteHeader() {
               {/* Phone number - desktop only */}
               <a
                 href="tel:317-314-3757"
-                className={`hidden lg:inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${
-                  !mounted || isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white/90 hover:text-white'
-                }`}
+                className="hidden lg:inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 (317) 314-3757
@@ -232,29 +204,21 @@ export default function SiteHeader() {
               {user ? (
                 <Link
                   href="/lms/dashboard"
-                  className={`hidden md:inline-flex items-center text-sm font-medium transition-colors ${
-                    !mounted || isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white/90 hover:text-white'
-                  }`}
+                  className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
                 >
                   Dashboard
                 </Link>
               ) : (
                 <Link
                   href="/login"
-                  className={`hidden md:inline-flex items-center text-sm font-medium transition-colors ${
-                    !mounted || isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white/90 hover:text-white'
-                  }`}
+                  className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
                 >
                   Sign In
                 </Link>
               )}
               <Link
                 href="/apply"
-                className={`hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full transition-colors ${
-                  !mounted || isScrolled 
-                    ? 'bg-blue-600 text-white hover:bg-blue-700' 
-                    : 'bg-white text-gray-900 hover:bg-gray-100'
-                }`}
+                className="hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
               >
                 Apply Now
               </Link>
@@ -262,7 +226,7 @@ export default function SiteHeader() {
               {/* Mobile menu button - show on smaller screens */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className={`md:hidden flex items-center justify-center w-10 h-10 transition-colors ${textColor}`}
+                className="md:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
