@@ -111,6 +111,12 @@ const programs = [
 
 
 
+
+export const metadata: Metadata = {
+  title: 'Home',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/' },
+};
+
 export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
@@ -480,11 +486,11 @@ export default function HomePage() {
           </Link>
 
           {/* Program Cards - 3 columns with compact images */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {programs.map((program) => (
               <article 
                 key={program.title}
-                className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-100"
+                className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-100 max-w-sm mx-auto sm:max-w-none"
               >
                 {/* Compact image container */}
                 <div className="relative h-36 md:h-32 lg:h-40">
