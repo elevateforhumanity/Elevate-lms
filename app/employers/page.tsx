@@ -1,64 +1,197 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Button } from '@/components/ui/Button';
+import {
+  Users,
+  Award,
+  DollarSign,
+  Clock,
+  CheckCircle,
+  ArrowRight,
+  Phone,
+  Building2,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Hire Job-Ready Talent | Elevate for Humanity',
+  title: 'For Employers | Elevate for Humanity',
   description:
-    'Connect with skilled, certified candidates ready to join your workforce. Post jobs, build apprenticeships, and grow your team.',
+    'Hire trained, certified candidates ready to work. Build apprenticeships, access talent pipelines, and grow your workforce.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/employers',
   },
 };
 
-export const dynamic = 'force-dynamic';
-
-export default async function EmployersPage() {
-  const supabase = await createClient();
-  
-  // Fetch employer and job stats
-  const { count: jobCount } = await supabase
-    .from('jobs')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'active');
+export default function EmployersPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section with Background Image */}
-      <section className="relative w-full -mt-[72px]">
-        <div className="relative min-h-[70vh] w-full overflow-hidden">
-          <Image
-            src="/images/programs/workforce-readiness-hero.jpg"
-            alt="Workforce Training"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/90 to-orange-700/90" />
-          
-          <div className="relative z-10 flex items-center justify-center min-h-[70vh]">
-            <div className="container mx-auto px-4">
-              <div className="max-w-3xl text-white">
-                <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                  Hire Job-Ready Talent
-                </h1>
-                <p className="text-xl md:text-2xl text-orange-100 mb-8">
-                  Connect with skilled, certified candidates who have completed
-                  industry-recognized training programs. Build your workforce with
-                  confidence.
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="max-w-3xl">
+            <p className="text-orange-400 font-medium mb-4">For Employers</p>
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+              Hire Trained, Certified Candidates
+            </h1>
+            <p className="text-xl text-gray-300 mb-8">
+              Access a pipeline of job-ready talent who have completed hands-on training 
+              and earned industry credentials. No recruiting fees. No guesswork.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/contact?type=employer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full transition-colors"
+              >
+                Partner With Us
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <a
+                href="tel:317-314-3757"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full transition-colors"
+              >
+                <Phone className="w-5 h-5" />
+                (317) 314-3757
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Partner */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
+            Why Employers Partner With Us
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            We solve your hiring challenges by providing trained, vetted candidates 
+            who are ready to contribute from day one.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Users,
+                title: 'Pre-Screened Talent',
+                description: 'Candidates have completed training and demonstrated commitment.',
+              },
+              {
+                icon: Award,
+                title: 'Certified Skills',
+                description: 'Industry-recognized credentials verify their competency.',
+              },
+              {
+                icon: DollarSign,
+                title: 'No Recruiting Fees',
+                description: 'Access our talent pipeline at no cost to your organization.',
+              },
+              {
+                icon: Clock,
+                title: 'Faster Onboarding',
+                description: 'Trained candidates require less ramp-up time.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="text-center">
+                <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="w-7 h-7 text-orange-600" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            How It Works
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                step: 1,
+                title: 'Tell Us Your Needs',
+                description: 'Share your hiring requirements, timeline, and the skills you need.',
+              },
+              {
+                step: 2,
+                title: 'We Match Candidates',
+                description: 'We connect you with trained candidates who fit your criteria.',
+              },
+              {
+                step: 3,
+                title: 'You Hire',
+                description: 'Interview and hire candidates directly. No middleman fees.',
+              },
+            ].map((item) => (
+              <div key={item.step} className="bg-white rounded-2xl p-6 shadow-sm">
+                <div className="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center text-lg font-bold mb-4">
+                  {item.step}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Apprenticeship Option */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 md:p-12 text-white">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <Building2 className="w-12 h-12 text-orange-400 mb-4" />
+                <h2 className="text-3xl font-bold mb-4">
+                  Host an Apprentice
+                </h2>
+                <p className="text-gray-300 mb-6">
+                  Become a host site for our barber apprenticeship program. Train the next 
+                  generation while building your team. Apprentices complete 2,000 hours of 
+                  supervised training at your shop.
                 </p>
-                <div className="flex gap-4">
-                  <Link href="/employers/post-job">
-                    <Button size="lg" variant="secondary">
-                      Post a Job
-                    </Button>
-                  </Link>
-                  <Link href="/contact">
-                    <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-                      Contact Us
-                    </Button>
-                  </Link>
+                <ul className="space-y-3 mb-8">
+                  {[
+                    'Train talent to your standards',
+                    'Build loyalty before they are licensed',
+                    'Contribute to the profession',
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-orange-400" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/contact?type=host-shop"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full transition-colors"
+                >
+                  Become a Host Shop
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+              <div className="hidden md:block">
+                <div className="bg-white/10 rounded-2xl p-6">
+                  <h3 className="font-semibold mb-4">Apprenticeship Details</h3>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">Duration</span>
+                      <span>2,000 hours</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">Credential</span>
+                      <span>State Barber License</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">Your Role</span>
+                      <span>Supervise & Train</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">Cost to You</span>
+                      <span>None</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -66,127 +199,55 @@ export default async function EmployersPage() {
         </div>
       </section>
 
-      {/* What Employers Get */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-4">
-            What You Get as an Employer Partner
+      {/* Industries */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
+            Industries We Serve
           </h2>
-          <p className="text-xl text-black text-center mb-12 max-w-3xl mx-auto">
-            Access to trained, certified candidates ready to work. No recruiting fees. No placement costs.
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Our training programs prepare candidates for careers in these high-demand fields.
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">Free Job Postings</h3>
-              <p className="text-black mb-4">
-                Post unlimited job openings at no cost. Your listings go directly to students completing relevant training programs.
-              </p>
-              <ul className="space-y-2 text-black">
-                <li>• No posting fees</li>
-                <li>• Direct access to candidates</li>
-                <li>• Targeted by program/skill</li>
-              </ul>
-            </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">Pre-Trained Candidates</h3>
-              <p className="text-black mb-4">
-                Candidates have completed industry-recognized training and hold certifications required for the role.
-              </p>
-              <ul className="space-y-2 text-black">
-                <li>• Industry certifications</li>
-                <li>• Hands-on training completed</li>
-                <li>• Background checks available</li>
-              </ul>
-            </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">Apprenticeship Support</h3>
-              <p className="text-black mb-4">
-                We help you set up DOL-registered apprenticeship programs with administrative support and funding guidance.
-              </p>
-              <ul className="space-y-2 text-black">
-                <li>• DOL registration assistance</li>
-                <li>• Curriculum development</li>
-                <li>• Compliance support</li>
-              </ul>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              'Barbering & Cosmetology',
+              'Healthcare (CNA, Phlebotomy)',
+              'Skilled Trades',
+              'Professional Services',
+            ].map((industry) => (
+              <div key={industry} className="bg-white rounded-xl p-4 text-center shadow-sm">
+                <p className="font-medium text-gray-900">{industry}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section with Real Images */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Our Services
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-br from-orange-500 to-orange-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Ready to Build Your Team?
           </h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/images/programs/efh-business-startup-marketing-hero.jpg"
-                  alt="Job Postings"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Job Postings</h3>
-                <p className="text-black mb-4">
-                  Post your open positions and connect directly with qualified
-                  candidates from our talent pool.
-                </p>
-                <Link href="/employers/post-job" className="text-orange-600 font-semibold hover:underline">
-                  Post a Job →
-                </Link>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/images/programs/efh-barber-hero.jpg"
-                  alt="Apprenticeships"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Apprenticeships</h3>
-                <p className="text-black mb-4">
-                  Build your workforce through DOL-registered apprenticeship
-                  programs with our support.
-                </p>
-                <Link href="/employers/apprenticeships" className="text-orange-600 font-semibold hover:underline">
-                  Learn More →
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/programs/cna-hd.jpg"
-            alt="Join Our Platform"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-orange-600/90" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Hire Trained Talent?
-          </h2>
-          <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
-            Post your job openings for free and connect with certified candidates.
+          <p className="text-xl text-orange-100 mb-8">
+            Contact us to discuss your hiring needs and access our talent pipeline.
           </p>
-          <Link href="/employers/post-job">
-            <Button size="lg" variant="secondary">
-              Post Your First Job
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact?type=employer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-orange-600 font-semibold rounded-full hover:bg-gray-100 transition-colors"
+            >
+              Contact Us
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <a
+              href="tel:317-314-3757"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange-700 text-white font-semibold rounded-full hover:bg-orange-800 transition-colors"
+            >
+              <Phone className="w-5 h-5" />
+              (317) 314-3757
+            </a>
+          </div>
         </div>
       </section>
     </div>
