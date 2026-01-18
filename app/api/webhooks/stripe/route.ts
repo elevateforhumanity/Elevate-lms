@@ -58,6 +58,32 @@ export async function POST(request: NextRequest) {
     case 'checkout.session.completed': {
       const session = event.data.object as Stripe.Checkout.Session;
 
+      // LANE A: Handle LICENSE purchase (platform license)
+      if (session.metadata?.product_type === 'license') {
+        try {
+          const { provisionLicense } = await import('@/lib/licensing/provisioning');
+          
+          const result = await provisionLicense({
+            licenseType: (session.metadata.license_type as 'basic' | 'professional' | 'enterprise') || 'basic',
+            companyName: session.metadata.company_name || 'Unknown Company',
+            adminEmail: session.customer_email || session.metadata.admin_email || '',
+            companyDomain: session.metadata.company_domain,
+            stripeCustomerId: session.customer as string,
+            stripeSubscriptionId: session.subscription as string || undefined,
+            paymentType: session.mode === 'subscription' ? 'subscription' : 'one_time',
+          });
+
+          if (result.success) {
+            logger.info(`✅ License provisioned: ${result.tenantId} for ${session.metadata.company_name}`);
+          } else {
+            logger.error(`❌ License provisioning failed: ${result.error}`);
+          }
+        } catch (err: any) {
+          logger.error('Error provisioning license:', err instanceof Error ? err : new Error(String(err)));
+        }
+        break;
+      }
+
       // LANE B: Handle store subscription checkout
       if (
         session.mode === 'subscription' &&
@@ -756,8 +782,13 @@ export async function POST(request: NextRequest) {
           `❌ Subscription payment failed: ${(invoice as any).subscription}`
         );
 
-        // Subscription status will be updated by customer.subscription.updated event
-        // Could send notification email here
+        // Check if this is a license subscription and suspend if needed
+        try {
+          const { enforceSubscriptionStatus } = await import('@/lib/licensing/provisioning');
+          await enforceSubscriptionStatus((invoice as any).subscription);
+        } catch (err) {
+          logger.error('Error enforcing subscription status:', err);
+        }
       }
       break;
     }
