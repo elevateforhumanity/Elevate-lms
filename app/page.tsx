@@ -507,7 +507,7 @@ export default function HomePage() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     loading="lazy"
                   />
-                  <div className="absolute top-3 left-3 bg-blue-600 text-white px-2 py-0.5 rounded-full text-xs font-semibold">
+                  <div className="absolute top-3 left-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap">
                     {program.duration}
                   </div>
                 </div>
@@ -553,7 +553,7 @@ export default function HomePage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 loading="lazy"
               />
-              <div className="absolute top-3 left-3 bg-yellow-500 text-black px-2 py-0.5 rounded-full text-xs font-semibold flex items-center gap-1">
+              <div className="absolute top-3 left-3 bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 whitespace-nowrap">
                 <span>⭐</span> USDOL Registered
               </div>
             </div>

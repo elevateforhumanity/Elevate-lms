@@ -142,16 +142,16 @@ export default function SiteHeader() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex items-center justify-between h-full">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+            <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="Elevate for Humanity"
-                width={36}
-                height={36}
-                className="w-8 h-8 sm:w-9 sm:h-9"
+                width={44}
+                height={44}
+                className="w-10 h-10 sm:w-11 sm:h-11"
                 priority
               />
-              <span className="hidden sm:inline font-bold text-lg text-gray-900">
+              <span className="hidden sm:inline font-bold text-xl text-gray-900">
                 Elevate
               </span>
             </Link>
