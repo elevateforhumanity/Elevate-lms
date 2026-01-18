@@ -2,11 +2,45 @@
 
 import { usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import { Component, ErrorInfo, ReactNode } from 'react';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
 
 // Lazy load audio component
 const PageAudio = dynamic(() => import('@/components/PageAudio'), { ssr: false });
+
+// Error boundary prevents full page crash if header fails to render
+class HeaderErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(): { hasError: boolean } {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error('Header render error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <header className="w-full h-16 bg-white border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+            <a href="/" className="font-bold text-black">Elevate for Humanity</a>
+            <a href="/apply" className="px-4 py-2 bg-blue-600 text-white rounded-lg">Apply Now</a>
+          </div>
+        </header>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -39,7 +73,9 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
         Skip to main content
       </a>
       
-      <SiteHeader />
+      <HeaderErrorBoundary>
+        <SiteHeader />
+      </HeaderErrorBoundary>
 
       <main
         id="main-content"
