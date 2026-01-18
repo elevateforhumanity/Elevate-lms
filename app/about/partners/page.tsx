@@ -47,6 +47,23 @@ const certificationPartners = [
   },
 ];
 
+const credentialedTrainingPartners = [
+  {
+    name: 'National Drug Screening',
+    initials: 'NDS',
+    description: 'DOT and non-DOT drug testing services with 20,000+ nationwide collection sites',
+    website: 'https://www.nationaldrugscreening.com',
+    color: 'bg-blue-600',
+  },
+  {
+    name: 'MyDrugTestTraining',
+    initials: 'MDTT',
+    description: 'DOT-compliant training courses for supervisors, collectors, and employers',
+    website: 'https://www.mydrugtesttraining.com',
+    color: 'bg-green-600',
+  },
+];
+
 const employerPartners = [
   'Community Health Network',
   'Eskenazi Health',
@@ -170,6 +187,45 @@ export default function PartnersPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Credentialed Training Partners */}
+      <section className="py-16 md:py-24 bg-blue-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
+            Credentialed Training Partners
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            We partner with industry-leading providers to deliver specialized training and compliance services.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {credentialedTrainingPartners.map((partner) => (
+              <a 
+                key={partner.name} 
+                href={partner.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white p-8 rounded-xl flex items-center gap-6 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className={`w-20 h-20 flex-shrink-0 ${partner.color} rounded-lg flex items-center justify-center`}>
+                  <span className="text-white font-bold text-xl">{partner.initials}</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{partner.name}</h3>
+                  <p className="text-gray-600">{partner.description}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              href="/drug-testing"
+              className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition"
+            >
+              View Drug Testing Services
+            </Link>
           </div>
         </div>
       </section>
