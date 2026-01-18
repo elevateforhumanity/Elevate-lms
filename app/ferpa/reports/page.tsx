@@ -2,17 +2,26 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { ChevronRight } from 'lucide-react';
+import {
+  ChevronRight,
+  BarChart3,
+  Download,
+  Calendar,
+  FileText,
+  TrendingUp,
+  Users,
+  Clock,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'FERPA Reports | Elevate for Humanity',
-  description: 'Generate FERPA compliance reports.',
+  title: 'Reports | FERPA Portal',
+  description: 'Generate FERPA compliance and audit reports.',
   robots: { index: false, follow: false },
 };
 
 export const dynamic = 'force-dynamic';
 
-export default async function Page() {
+export default async function FerpaReportsPage() {
   const supabase = await createClient();
 
   if (!supabase) {
@@ -20,45 +29,180 @@ export default async function Page() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+          <p className="text-gray-600">Database connection failed.</p>
         </div>
       </div>
     );
   }
 
   const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login');
-  }
+  if (!user) redirect('/login?next=/ferpa/reports');
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('role, full_name')
+    .select('role')
     .eq('id', user.id)
     .single();
 
-  if (!profile || !['admin', 'super_admin', 'staff'].includes(profile.role)) {
-    redirect('/dashboard');
-  }
+  const allowedRoles = ['admin', 'super_admin', 'ferpa_officer'];
+  if (!profile || !allowedRoles.includes(profile.role)) redirect('/unauthorized');
+
+  // Get report data
+  const { count: totalRequests } = await supabase
+    .from('ferpa_access_requests')
+    .select('*', { count: 'exact', head: true });
+
+  const { count: completedRequests } = await supabase
+    .from('ferpa_access_requests')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'completed');
+
+  const { count: auditLogEntries } = await supabase
+    .from('ferpa_audit_log')
+    .select('*', { count: 'exact', head: true });
+
+  const reportTypes = [
+    {
+      id: 'access-log',
+      name: 'Access Log Report',
+      description: 'Detailed log of all student record access',
+      icon: FileText,
+      color: 'blue',
+    },
+    {
+      id: 'disclosure',
+      name: 'Disclosure Report',
+      description: 'Summary of all third-party disclosures',
+      icon: Users,
+      color: 'green',
+    },
+    {
+      id: 'request-summary',
+      name: 'Request Summary',
+      description: 'Overview of access requests by type and status',
+      icon: BarChart3,
+      color: 'purple',
+    },
+    {
+      id: 'training',
+      name: 'Training Compliance',
+      description: 'Staff FERPA training completion status',
+      icon: TrendingUp,
+      color: 'orange',
+    },
+    {
+      id: 'response-time',
+      name: 'Response Time Analysis',
+      description: 'Average response times for requests',
+      icon: Clock,
+      color: 'red',
+    },
+    {
+      id: 'annual',
+      name: 'Annual Compliance Report',
+      description: 'Comprehensive yearly compliance summary',
+      icon: Calendar,
+      color: 'indigo',
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">FERPA Reports</h1>
-          <p className="text-gray-600 mt-2">Generate FERPA compliance reports.</p>
+    <div className="min-h-screen bg-gray-50">
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+            <Link href="/ferpa" className="hover:text-gray-700">FERPA Portal</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900 font-medium">Reports</span>
+          </nav>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">Reports & Analytics</h1>
+              <p className="text-gray-600 mt-1">Generate compliance and audit reports</p>
+            </div>
+            <Link
+              href="/ferpa/reports/generate"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            >
+              <BarChart3 className="w-4 h-4" />
+              Custom Report
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
+            <p className="text-sm text-gray-500">Total Requests</p>
+            <p className="text-3xl font-bold text-gray-900">{totalRequests || 0}</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
+            <p className="text-sm text-gray-500">Completed</p>
+            <p className="text-3xl font-bold text-green-600">{completedRequests || 0}</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
+            <p className="text-sm text-gray-500">Audit Log Entries</p>
+            <p className="text-3xl font-bold text-gray-900">{auditLogEntries || 0}</p>
+          </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <ChevronRight className="w-8 h-8 text-blue-600" />
-            </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Coming Soon</h2>
-            <p className="text-gray-600 max-w-md mx-auto">
-              This feature is currently under development. Check back soon for updates.
-            </p>
+        {/* Report Types */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+          <div className="px-6 py-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">Available Reports</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
+            {reportTypes.map((report) => {
+              const Icon = report.icon;
+              const colorClasses: Record<string, string> = {
+                blue: 'bg-blue-100 text-blue-600',
+                green: 'bg-green-100 text-green-600',
+                purple: 'bg-purple-100 text-purple-600',
+                orange: 'bg-orange-100 text-orange-600',
+                red: 'bg-red-100 text-red-600',
+                indigo: 'bg-indigo-100 text-indigo-600',
+              };
+
+              return (
+                <div
+                  key={report.id}
+                  className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                >
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 ${colorClasses[report.color]}`}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900">{report.name}</h3>
+                  <p className="text-sm text-gray-500 mt-1 mb-4">{report.description}</p>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href={`/ferpa/reports/generate?type=${report.id}`}
+                      className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                    >
+                      Generate
+                    </Link>
+                    <span className="text-gray-300">|</span>
+                    <button className="text-sm text-gray-600 hover:text-gray-900 font-medium inline-flex items-center gap-1">
+                      <Download className="w-3 h-3" />
+                      Export
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Recent Reports */}
+        <div className="mt-8 bg-white rounded-xl shadow-sm border border-gray-200">
+          <div className="px-6 py-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">Recently Generated</h2>
+          </div>
+          <div className="p-6 text-center text-gray-500">
+            <FileText className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+            <p>No reports generated yet</p>
+            <p className="text-sm mt-1">Generated reports will appear here</p>
           </div>
         </div>
       </div>
