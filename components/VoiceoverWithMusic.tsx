@@ -71,26 +71,18 @@ export default function VoiceoverWithMusic({
       setTimeout(() => setIsVisible(false), 300);
     };
 
-    const timer = setTimeout(playAudio, delay);
-
-    const handleInteraction = () => {
-      if (!hasPlayed) playAudio();
-    };
-
-    document.addEventListener('click', handleInteraction, { once: true });
-    document.addEventListener('touchstart', handleInteraction, { once: true, passive: true });
+    // Show play button immediately - don't try autoplay (browsers block it)
+    setShowPlayButton(true);
+    setIsVisible(true);
 
     return () => {
-      clearTimeout(timer);
       if (progressInterval.current) clearInterval(progressInterval.current);
-      document.removeEventListener('click', handleInteraction);
-      document.removeEventListener('touchstart', handleInteraction);
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
       }
     };
-  }, [audioSrc, delay, hasPlayed, playAudio]);
+  }, [audioSrc, hasPlayed]);
 
   if (!isVisible && !showPlayButton) return null;
 
