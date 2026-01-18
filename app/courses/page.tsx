@@ -6,6 +6,8 @@ import { createClient } from '@/lib/supabase/server';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Course Catalog | Elevate for Humanity',
   description: 'Explore career-focused training programs in healthcare, skilled trades, technology, and more. Find the right course to launch your new career.',

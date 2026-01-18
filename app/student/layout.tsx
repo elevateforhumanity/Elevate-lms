@@ -25,6 +25,7 @@ export default async function StudentLayout({
   children: React.ReactNode;
 }) {
   const supabase = await createClient();
+  if (!supabase) { redirect("/login"); }
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {

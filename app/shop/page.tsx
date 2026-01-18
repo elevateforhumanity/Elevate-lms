@@ -7,6 +7,8 @@ import { PageTracker } from '@/components/analytics/PageTracker';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Shop | Elevate for Humanity',
   description: 'Shop professional tools, equipment, apparel, and study materials for your career training programs. Quality gear at student-friendly prices.',

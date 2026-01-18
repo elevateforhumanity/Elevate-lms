@@ -12,6 +12,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function ApprenticeHandbookPage() {
   const supabase = await createClient();
+  if (!supabase) { redirect('/login'); }
 
   // Get handbook sections
   const { data: sections } = await supabase

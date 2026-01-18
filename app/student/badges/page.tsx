@@ -23,6 +23,7 @@ const allBadges = [
 
 export default async function BadgesPage() {
   const supabase = await createClient();
+  if (!supabase) { redirect("/login"); }
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
