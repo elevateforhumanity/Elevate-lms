@@ -69,8 +69,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'MOS: Word Associate (Office 2019)',
-    stripeProductId: 'prod_mos_word',
-    stripePriceId: 'price_mos_word_164',
+    stripeProductId: 'prod_ToOcsNmb02bjBo',
+    stripePriceId: 'price_1SqlpNIRNf5vPH3A38N4L47Q',
   },
   {
     id: 'mos-excel',
@@ -105,8 +105,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'MOS: Excel Associate (Office 2019)',
-    stripeProductId: 'prod_mos_excel',
-    stripePriceId: 'price_mos_excel_164',
+    stripeProductId: 'prod_ToOcAdQlYPdHT1',
+    stripePriceId: 'price_1SqlpNIRNf5vPH3AEsbrjjlD',
   },
   {
     id: 'mos-powerpoint',
@@ -141,8 +141,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'MOS: PowerPoint (Office 2019)',
-    stripeProductId: 'prod_mos_powerpoint',
-    stripePriceId: 'price_mos_powerpoint_164',
+    stripeProductId: 'prod_ToOcpMqwtWHeun',
+    stripePriceId: 'price_1SqlpOIRNf5vPH3ARbLV76C4',
   },
   // Adobe Creative Certifications
   {
@@ -178,8 +178,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'Adobe Certified Professional: Photoshop',
-    stripeProductId: 'prod_adobe_photoshop',
-    stripePriceId: 'price_adobe_photoshop_210',
+    stripeProductId: 'prod_ToOcHPghEhBVxf',
+    stripePriceId: 'price_1SqlpOIRNf5vPH3AefF2yHZm',
   },
   {
     id: 'adobe-illustrator',
@@ -214,8 +214,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'Adobe Certified Professional: Illustrator',
-    stripeProductId: 'prod_adobe_illustrator',
-    stripePriceId: 'price_adobe_illustrator_210',
+    stripeProductId: 'prod_ToOcI8kvY0lf1b',
+    stripePriceId: 'price_1SqlpPIRNf5vPH3AQee7E16q',
   },
   // IT & Cybersecurity
   {
@@ -251,8 +251,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'IT Specialist: Cybersecurity',
-    stripeProductId: 'prod_it_cybersecurity',
-    stripePriceId: 'price_it_cybersecurity_164',
+    stripeProductId: 'prod_ToOcT7uUW4caek',
+    stripePriceId: 'price_1SqlpPIRNf5vPH3A5GUQiCeC',
   },
   {
     id: 'it-python',
@@ -287,8 +287,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'IT Specialist: Python',
-    stripeProductId: 'prod_it_python',
-    stripePriceId: 'price_it_python_164',
+    stripeProductId: 'prod_ToOcsUxpJIfU8Y',
+    stripePriceId: 'price_1SqlpPIRNf5vPH3ArxXlgvOQ',
   },
   // Healthcare & Safety
   {
@@ -323,8 +323,8 @@ export const COURSES: Course[] = [
       'Physical ability to perform CPR',
     ],
     certification: 'CPR/AED Certification (2 years)',
-    stripeProductId: 'prod_cpr_aed',
-    stripePriceId: 'price_cpr_aed_135',
+    stripeProductId: 'prod_ToOcJG15sZmjNF',
+    stripePriceId: 'price_1SqlpQIRNf5vPH3AuBDEQ1S0',
   },
   {
     id: 'first-aid',
@@ -357,8 +357,8 @@ export const COURSES: Course[] = [
       'No prior experience needed',
     ],
     certification: 'First Aid Certification (2 years)',
-    stripeProductId: 'prod_first_aid',
-    stripePriceId: 'price_first_aid_135',
+    stripeProductId: 'prod_ToOcL7IHOZhrhv',
+    stripePriceId: 'price_1SqlpQIRNf5vPH3ARBULadiH',
   },
   {
     id: 'bls-healthcare',
@@ -392,8 +392,8 @@ export const COURSES: Course[] = [
       'Physical ability to perform CPR',
     ],
     certification: 'BLS Provider Certification (2 years)',
-    stripeProductId: 'prod_bls',
-    stripePriceId: 'price_bls_159',
+    stripeProductId: 'prod_ToOck2oisCNMLC',
+    stripePriceId: 'price_1SqlpQIRNf5vPH3AMZTCkY42',
   },
   // Business & Accounting
   {
@@ -429,8 +429,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'Intuit Certified QuickBooks User',
-    stripeProductId: 'prod_quickbooks',
-    stripePriceId: 'price_quickbooks_210',
+    stripeProductId: 'prod_ToOcVoymakl9pB',
+    stripePriceId: 'price_1SqlpRIRNf5vPH3A7wveFPS1',
   },
   // Food Safety
   {
@@ -465,8 +465,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'Food Handler Certification',
-    stripeProductId: 'prod_food_handler',
-    stripePriceId: 'price_food_handler_64',
+    stripeProductId: 'prod_ToOcD5LwZyA8ve',
+    stripePriceId: 'price_1SqlpRIRNf5vPH3AkWT3BHsp',
   },
   // Workplace Safety
   {
@@ -501,8 +501,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'OSHA 10-Hour General Industry Card',
-    stripeProductId: 'prod_osha_10',
-    stripePriceId: 'price_osha_10_89',
+    stripeProductId: 'prod_ToOciQSu0Uf8P8',
+    stripePriceId: 'price_1SqlpSIRNf5vPH3AmqZrtzA6',
   },
   {
     id: 'osha-30',
@@ -536,8 +536,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'OSHA 30-Hour General Industry Card',
-    stripeProductId: 'prod_osha_30',
-    stripePriceId: 'price_osha_30_189',
+    stripeProductId: 'prod_ToOcBKwZWcroDG',
+    stripePriceId: 'price_1SqlpSIRNf5vPH3AQ2SWR7y6',
   },
   // Digital Literacy
   {
@@ -573,8 +573,8 @@ export const COURSES: Course[] = [
       'Internet connection',
     ],
     certification: 'IC3 Digital Literacy Certification',
-    stripeProductId: 'prod_ic3',
-    stripePriceId: 'price_ic3_164',
+    stripeProductId: 'prod_ToOcPREsNnbGes',
+    stripePriceId: 'price_1SqlpSIRNf5vPH3AmIo6o4v7',
   },
 ];
 

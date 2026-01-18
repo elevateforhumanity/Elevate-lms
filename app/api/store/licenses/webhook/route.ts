@@ -6,8 +6,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { stripe } from '@/lib/stripe/client';
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { headers } from 'next/headers';
-import { sendWelcomeEmail } from '@/lib/email';
+import { Resend } from 'resend';
+import { generateLicenseKey, hashLicenseKey } from '@/lib/store/license';
+import { generateLicenseWelcomeEmail } from '@/lib/email-templates/license-welcome';
+import { logger } from '@/lib/logger';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
@@ -52,8 +58,10 @@ export async function POST(request: NextRequest) {
           .single();
 
         if (purchase) {
+          const adminSupabase = createAdminClient();
+          
           // Create tenant
-          const { data: tenant } = await supabase
+          const { data: tenant } = await adminSupabase
             .from('tenants')
             .insert({
               name: purchase.organization_name,
@@ -64,23 +72,38 @@ export async function POST(request: NextRequest) {
             .single();
 
           if (tenant) {
+            // Generate license key
+            const licenseKey = generateLicenseKey();
+            const licenseKeyHash = hashLicenseKey(licenseKey);
+            
             // Create license
             const validUntil = new Date();
             validUntil.setFullYear(validUntil.getFullYear() + 1); // 1 year
 
-            await supabase.from('licenses').insert({
+            const features = getFeatures(purchase.license_type);
+            const maxUsers = getMaxUsers(purchase.license_type);
+            const maxDeployments = getMaxDeployments(purchase.license_type);
+
+            await adminSupabase.from('licenses').insert({
+              license_key: licenseKeyHash,
+              domain: 'pending-setup',
+              customer_email: purchase.contact_email,
               tenant_id: tenant.id,
               tier: mapLicenseTypeToTier(purchase.license_type),
               status: 'active',
-              max_users: getMaxUsers(purchase.license_type),
-              max_programs: getMaxPrograms(purchase.license_type),
-              features: getFeatures(purchase.license_type),
-              valid_from: new Date().toISOString(),
-              valid_until: validUntil.toISOString(),
+              max_users: maxUsers,
+              max_deployments: maxDeployments,
+              features: features,
+              expires_at: validUntil.toISOString(),
+              metadata: {
+                product_slug: purchase.product_slug,
+                organization_name: purchase.organization_name,
+                purchased_at: new Date().toISOString(),
+              },
             });
 
             // Update purchase with tenant_id
-            await supabase
+            await adminSupabase
               .from('license_purchases')
               .update({
                 tenant_id: tenant.id,
@@ -88,16 +111,39 @@ export async function POST(request: NextRequest) {
               })
               .eq('id', purchase.id);
 
-            // Send welcome email
+            // Send comprehensive welcome email with license key
             try {
-              await sendWelcomeEmail({
-                to: purchase.email,
-                tenantId: tenant.id,
+              const emailData = {
+                organizationName: purchase.organization_name,
+                contactName: purchase.contact_name,
+                email: purchase.contact_email,
+                licenseKey: licenseKey, // Send the actual key (only time it's sent)
+                licenseType: purchase.license_type as 'single' | 'school' | 'enterprise',
+                tier: mapLicenseTypeToTier(purchase.license_type),
+                expiresAt: validUntil.toISOString(),
+                features: features,
+                repoUrl: getRepoUrl(purchase.license_type),
+                maxDeployments: maxDeployments,
+                maxUsers: maxUsers,
+              };
+
+              const { subject, html, text } = generateLicenseWelcomeEmail(emailData);
+
+              await resend.emails.send({
+                from: 'Elevate for Humanity <licenses@elevateforhumanity.org>',
+                to: purchase.contact_email,
+                subject,
+                html,
+                text,
+              });
+
+              logger.info('License welcome email sent', {
+                email: purchase.contact_email,
                 licenseType: purchase.license_type,
-                validUntil: validUntil.toISOString(),
               });
             } catch (emailError) {
-              // Don't fail the webhook - license is provisioned
+              // Log but don't fail - license is provisioned
+              logger.error('Failed to send license welcome email', emailError as Error);
             }
           }
         }
@@ -207,4 +253,26 @@ function getFeatures(licenseType: string): string[] {
     default:
       return baseFeatures;
   }
+}
+
+function getMaxDeployments(licenseType: string): number {
+  switch (licenseType) {
+    case 'single':
+      return 1;
+    case 'school':
+      return 3;
+    case 'enterprise':
+      return 999; // Unlimited
+    default:
+      return 1;
+  }
+}
+
+function getRepoUrl(licenseType: string): string {
+  const repos: Record<string, string> = {
+    single: 'https://github.com/elevateforhumanity/elevate-starter',
+    school: 'https://github.com/elevateforhumanity/elevate-professional',
+    enterprise: 'https://github.com/elevateforhumanity/elevate-enterprise',
+  };
+  return repos[licenseType] || repos.single;
 }

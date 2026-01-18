@@ -44,7 +44,7 @@ export const DIGITAL_PRODUCTS: DigitalProduct[] = [
       'IRS compliance checklist',
       'Social media templates',
     ],
-    stripePriceId: 'price_tax_toolkit_49', // Create in Stripe dashboard
+    stripePriceId: 'price_1SqluqIRNf5vPH3ACSGhnzrO',
     featured: true,
   },
   {
@@ -65,7 +65,7 @@ export const DIGITAL_PRODUCTS: DigitalProduct[] = [
       'Compliance requirements',
       'Funder research tips',
     ],
-    stripePriceId: 'price_grant_guide_29', // Create in Stripe dashboard
+    stripePriceId: 'price_1SqluqIRNf5vPH3Au88XZjmR',
     featured: true,
   },
   {
@@ -86,7 +86,7 @@ export const DIGITAL_PRODUCTS: DigitalProduct[] = [
       'Email support',
       'Lifetime access',
     ],
-    stripePriceId: 'price_fund_ready_course_149', // Create in Stripe dashboard
+    stripePriceId: 'price_1SqluqIRNf5vPH3AD2ZIRqg0',
     featured: true,
   },
   {
@@ -107,7 +107,7 @@ export const DIGITAL_PRODUCTS: DigitalProduct[] = [
       'Documentation templates',
       'Audit readiness guide',
     ],
-    stripePriceId: 'price_workforce_compliance_39', // Create in Stripe dashboard
+    stripePriceId: 'price_1SqlurIRNf5vPH3AtDLNBIVX',
   },
   {
     id: 'donation',
@@ -141,7 +141,7 @@ export const DIGITAL_PRODUCTS: DigitalProduct[] = [
       'HD quality exports',
       'Commercial license',
     ],
-    stripePriceId: 'price_ai_studio_starter',
+    stripePriceId: 'price_1SqlurIRNf5vPH3A6j37XvWk',
     featured: true,
     image: '/images/store/ai-studio.jpg',
   },
@@ -166,7 +166,7 @@ export const DIGITAL_PRODUCTS: DigitalProduct[] = [
       'API access',
       'Priority support',
     ],
-    stripePriceId: 'price_ai_studio_pro',
+    stripePriceId: 'price_1SqlusIRNf5vPH3AqLbVXWn2',
     featured: true,
     image: '/images/store/ai-studio-pro.jpg',
   },
@@ -191,7 +191,7 @@ export const DIGITAL_PRODUCTS: DigitalProduct[] = [
       'Lesson script generator',
       'Lifetime access',
     ],
-    stripePriceId: 'price_ai_instructor_pack',
+    stripePriceId: 'price_1SqlusIRNf5vPH3AT11GLqso',
     featured: true,
     image: '/images/store/ai-instructors.jpg',
   },
@@ -216,7 +216,7 @@ export const DIGITAL_PRODUCTS: DigitalProduct[] = [
       'Unlimited members',
       'Source code access',
     ],
-    stripePriceId: 'price_community_hub',
+    stripePriceId: 'price_1SqlusIRNf5vPH3A4OVqbua3',
     image: '/images/store/community-hub.jpg',
   },
   {
@@ -240,7 +240,7 @@ export const DIGITAL_PRODUCTS: DigitalProduct[] = [
       'Salesforce integration',
       'Custom reports',
     ],
-    stripePriceId: 'price_crm_hub',
+    stripePriceId: 'price_1SqlutIRNf5vPH3AIb2JXemT',
     image: '/images/store/crm-hub.jpg',
   },
   {
@@ -264,7 +264,7 @@ export const DIGITAL_PRODUCTS: DigitalProduct[] = [
       'Unlimited students',
       'API access',
     ],
-    stripePriceId: 'price_ai_tutor',
+    stripePriceId: 'price_1SqlutIRNf5vPH3A3dTfpAoH',
     featured: true,
     image: '/images/store/ai-tutor.jpg',
   },
