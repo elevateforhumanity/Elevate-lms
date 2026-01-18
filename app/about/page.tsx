@@ -3,23 +3,52 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Target, Users, Award, Heart, ArrowRight } from 'lucide-react';
 
-export const metadata: Metadata = { title: 'About Us | Elevate LMS' };
+const SITE_URL = 'https://www.elevateforhumanity.org';
+
+export const metadata: Metadata = {
+  title: 'About Us | Elevate for Humanity',
+  description: 'Learn about Elevate for Humanity mission to transform lives through career-focused education. 50,000+ graduates, 95% job placement rate, 15 years of excellence.',
+  keywords: ['about elevate', 'mission', 'workforce training', 'career education', 'job placement', 'accredited'],
+  alternates: {
+    canonical: `${SITE_URL}/about`,
+  },
+  openGraph: {
+    title: 'About Us | Elevate for Humanity',
+    description: 'Learn about our mission to transform lives through career-focused education. 50,000+ graduates with 95% job placement.',
+    url: `${SITE_URL}/about`,
+    siteName: 'Elevate for Humanity',
+    type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/images/og/about-og.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'About Elevate for Humanity',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us | Elevate for Humanity',
+    description: 'Learn about our mission to transform lives through career-focused education.',
+  },
+};
+
+const values = [
+  { icon: Target, title: 'Mission-Driven', description: 'Empowering individuals through accessible, quality career education' },
+  { icon: Users, title: 'Student-Centered', description: 'Every decision we make puts our students first' },
+  { icon: Award, title: 'Excellence', description: 'Committed to the highest standards in education and training' },
+  { icon: Heart, title: 'Community', description: 'Building a supportive network of learners and professionals' },
+];
+
+const stats = [
+  { value: '50,000+', label: 'Graduates' },
+  { value: '95%', label: 'Job Placement Rate' },
+  { value: '200+', label: 'Industry Partners' },
+  { value: '15', label: 'Years of Excellence' },
+];
 
 export default function AboutPage() {
-  const values = [
-    { icon: Target, title: 'Mission-Driven', description: 'Empowering individuals through accessible, quality career education' },
-    { icon: Users, title: 'Student-Centered', description: 'Every decision we make puts our students first' },
-    { icon: Award, title: 'Excellence', description: 'Committed to the highest standards in education and training' },
-    { icon: Heart, title: 'Community', description: 'Building a supportive network of learners and professionals' },
-  ];
-
-  const stats = [
-    { value: '50,000+', label: 'Graduates' },
-    { value: '95%', label: 'Job Placement Rate' },
-    { value: '200+', label: 'Industry Partners' },
-    { value: '15', label: 'Years of Excellence' },
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       <div className="relative bg-blue-900 text-white py-24">
@@ -28,11 +57,12 @@ export default function AboutPage() {
           alt="About Elevate"
           fill
           className="object-cover opacity-30"
+          priority
         />
         <div className="relative max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">About Elevate</h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-            We're on a mission to transform lives through career-focused education, 
+            We&apos;re on a mission to transform lives through career-focused education, 
             making quality training accessible to everyone.
           </p>
         </div>
