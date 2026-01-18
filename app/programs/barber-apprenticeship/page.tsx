@@ -14,6 +14,7 @@ import {
   Calendar,
   Shield,
 } from 'lucide-react';
+import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 
 export const metadata: Metadata = {
   title: 'Barber Apprenticeship Program | 2,000-Hour Paid Training | Elevate for Humanity',
@@ -97,10 +98,10 @@ export default function BarberApprenticeshipPage() {
 
             {/* Primary CTA */}
             <Link
-              href="/programs/barber-apprenticeship/apply"
+              href="/apply?program=barber-apprenticeship"
               className="inline-flex items-center gap-2 bg-white text-zinc-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-zinc-100 transition-colors"
             >
-              Apply for the Barber Apprenticeship
+              Start Eligibility & Choose This Career Path
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -473,10 +474,11 @@ export default function BarberApprenticeshipPage() {
       {/* ============================================ */}
       {/* 8. COMPLIANCE & DISCLOSURE - Keep it clean */}
       {/* ============================================ */}
-      <section className="py-8 bg-zinc-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 bg-zinc-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <PathwayDisclosure variant="full" className="mb-6" />
           <p className="text-sm text-zinc-600 text-center">
-            <strong>Important disclosure:</strong> Licensing requirements are
+            <strong>Licensing disclosure:</strong> Licensing requirements are
             set by the state. Completion of apprenticeship hours supports
             eligibility but does not guarantee licensure. Applicants must meet
             all state requirements.
@@ -494,16 +496,16 @@ export default function BarberApprenticeshipPage() {
           </h2>
 
           <Link
-            href="/programs/barber-apprenticeship/apply"
+            href="/apply?program=barber-apprenticeship"
             className="inline-flex items-center gap-2 bg-white text-zinc-900 px-10 py-5 rounded-lg font-bold text-lg hover:bg-zinc-100 transition-colors"
           >
-            Apply for the Barber Apprenticeship
+            Start Eligibility & Choose This Career Path
             <ArrowRight className="w-5 h-5" />
           </Link>
 
-          <p className="mt-6 text-zinc-400 text-sm">
-            Applying does not obligate you. It allows us to review eligibility
-            and next steps.
+          <p className="mt-6 text-zinc-400 text-sm max-w-xl mx-auto">
+            This program is part of the Elevate for Humanity Career Pathway and begins after eligibility determination. 
+            Enrollment is contingent upon eligibility, funding availability, and employer participation.
           </p>
         </div>
       </section>

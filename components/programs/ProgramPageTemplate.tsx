@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 
 export type OutcomeItem = string | { title: string; description: string };
 
@@ -71,7 +72,7 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
               href="/apply"
               className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors"
             >
-              Apply Now
+              Start Eligibility & Choose Career Path
             </Link>
           </div>
         </div>
@@ -90,9 +91,10 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6">
               {program.title}
             </h1>
-            <p className="text-xl text-gray-500">
+            <p className="text-xl text-gray-500 mb-6">
               {program.description}
             </p>
+            <PathwayDisclosure variant="compact" />
           </div>
 
           {program.highlights && program.highlights.length > 0 && (
@@ -232,14 +234,17 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to get started?
           </h2>
-          <p className="text-gray-400 mb-8">
+          <p className="text-gray-400 mb-4">
             Free training for eligible Indiana residents.
+          </p>
+          <p className="text-gray-500 text-sm mb-8 max-w-xl">
+            This program is part of the Elevate for Humanity Career Pathway and begins after eligibility determination.
           </p>
           <Link
             href="/apply"
             className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 text-sm font-medium rounded-full hover:bg-gray-100 transition-colors"
           >
-            Apply Now
+            Start Eligibility & Choose Career Path
           </Link>
         </div>
       </section>

@@ -102,15 +102,18 @@ export default function ProgramsPage() {
               href="/apply"
               className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors text-lg"
             >
-              Apply Now
+              Start Eligibility & Choose a Career Path
             </Link>
             <Link 
               href="/wioa-eligibility"
               className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
             >
-              Check Eligibility
+              Learn About Eligibility
             </Link>
           </div>
+          <p className="text-blue-200 text-sm mt-4 max-w-xl">
+            All programs require eligibility screening before enrollment.
+          </p>
         </div>
       </section>
 

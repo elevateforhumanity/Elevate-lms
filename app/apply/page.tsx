@@ -146,30 +146,38 @@ export default function ApplyPage() {
   return (
     <>
       <ModernLandingHero
-        badge="⚡ Limited Seats Available"
-        headline="Start Your Career"
-        accentText="In 10 Minutes"
-        subheadline="Quick application. Fast response. Real results."
-        description="Our programs connect you with real career opportunities. See our outcomes data and methodology at elevateforhumanity.org/outcomes."
+        badge="⚡ Eligibility & Career Alignment"
+        headline="Start Your Career Pathway"
+        accentText="Check Eligibility First"
+        subheadline="Eligibility screening. Program selection. Career alignment."
+        description="All training begins with eligibility determination. Complete this form to check your eligibility and select a career pathway."
         imageSrc="/hero-images/apply-hero.jpg"
-        imageAlt="Apply Now"
-        primaryCTA={{ text: "Start Application", href: "#application" }}
+        imageAlt="Start Eligibility"
+        primaryCTA={{ text: "Start Eligibility Check", href: "#application" }}
         secondaryCTA={{ text: "Questions? Call Us", href: "tel:317-314-3757" }}
         features={[
-          "10-minute application with 2-3 day response",
-          "100% free training through WIOA and state grants",
-          "Job placement support and career counseling included"
+          "10-minute eligibility check with 2-3 day response",
+          "Free training for eligible participants through WIOA and state grants",
+          "Program selection occurs after eligibility is confirmed"
         ]}
         imageOnRight={true}
       />
       
       <section id="application" className="max-w-3xl mx-auto px-6 py-12">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          Start Your Application
+          Eligibility & Career Alignment
         </h1>
-        <p className="text-gray-600 mb-8">
-          10–15 minutes. Response within 2–3 business days.
+        <p className="text-gray-600 mb-4">
+          Complete this form to check your eligibility and select a career pathway. 10–15 minutes. Response within 2–3 business days.
         </p>
+        
+        {/* Pathway Disclosure */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
+          <p className="text-sm text-blue-800">
+            <strong>Career Pathway Disclosure:</strong> Elevate for Humanity delivers all training through a structured career pathway. 
+            Program enrollment, training, and placement are contingent upon eligibility, funding availability, and employer participation.
+          </p>
+        </div>
 
         {/* Error Message */}
         {error && (
