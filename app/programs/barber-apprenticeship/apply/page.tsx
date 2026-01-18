@@ -1,9 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, AlertTriangle } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Barber Apprenticeship Application',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/programs/barber-apprenticeship/apply' },
+};
 
 export default function BarberApplyPage() {
   const router = useRouter();

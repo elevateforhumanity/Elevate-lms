@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import { Video, Play, Loader2, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
 
 interface GenerationStatus {
@@ -16,6 +17,12 @@ interface GenerationResult {
   videoUrl?: string;
   error?: string;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Lesson Video Generator',
+  robots: { index: false, follow: false },
+};
 
 export default function VideoGeneratorPage() {
   const [status, setStatus] = useState<GenerationStatus | null>(null);

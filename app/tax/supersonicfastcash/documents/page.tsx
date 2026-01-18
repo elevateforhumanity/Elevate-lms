@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -12,6 +13,12 @@ interface UploadedFile {
   status: 'uploading' | 'success' | 'error';
   path?: string;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Upload Tax Documents',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/tax/supersonicfastcash/documents' },
+};
 
 export default function DocumentUploadPage() {
   const [files, setFiles] = useState<UploadedFile[]>([]);

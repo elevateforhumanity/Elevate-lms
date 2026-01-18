@@ -1,8 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+
+
+export const metadata: Metadata = {
+  title: 'Partner Portal Login',
+  robots: { index: false, follow: false },
+};
 
 export default function PartnerLoginPage() {
   const router = useRouter();

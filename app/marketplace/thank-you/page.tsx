@@ -3,6 +3,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -183,6 +184,12 @@ function MarketplaceThankYouContent() {
     </div>
   );
 }
+
+
+export const metadata: Metadata = {
+  title: 'Something Went Wrong',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/marketplace/thank-you' },
+};
 
 export default function MarketplaceThankYouPage() {
   return (

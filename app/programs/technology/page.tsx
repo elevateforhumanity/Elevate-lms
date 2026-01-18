@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 
@@ -31,6 +32,12 @@ const programs = [
     image: '/images/technology/hero-program-web-dev.jpg',
   },
 ];
+
+
+export const metadata: Metadata = {
+  title: 'Technology',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/programs/technology' },
+};
 
 export default function TechnologyProgramsPage() {
   const videoRef = useRef<HTMLVideoElement>(null);

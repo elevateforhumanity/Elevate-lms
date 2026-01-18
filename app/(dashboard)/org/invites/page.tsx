@@ -3,6 +3,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -17,6 +18,12 @@ interface Invite {
   acceptedAt?: string;
   inviterName?: string;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Organization Invitations',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/(dashboard)/org/invites' },
+};
 
 export default function OrgInvitesPage() {
   const [invites, setInvites] = useState<Invite[]>([]);

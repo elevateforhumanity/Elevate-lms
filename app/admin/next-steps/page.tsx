@@ -1,10 +1,17 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useEffect, useMemo, useState } from 'react';
 
 type Row = any;
+
+
+export const metadata: Metadata = {
+  title: 'WorkOne / ICC Progress Dashboard',
+  robots: { index: false, follow: false },
+};
 
 export default function AdminNextStepsPage() {
   const [rows, setRows] = useState<Row[]>([]);

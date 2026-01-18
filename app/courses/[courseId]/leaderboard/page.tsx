@@ -3,6 +3,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,6 +12,12 @@ import { createClient } from '@/lib/supabase/client';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+
+
+export const metadata: Metadata = {
+  title: 'Leaderboard',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/courses//leaderboard' },
+};
 
 export default function CourseLeaderboardPage() {
   const params = useParams();

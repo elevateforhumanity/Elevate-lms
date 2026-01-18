@@ -2,6 +2,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Metadata } from 'next';
 import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { loadStripe } from '@stripe/stripe-js';
@@ -39,6 +40,12 @@ const programPricing: Record<string, ProgramPricing> = {
     duration: '4-8 weeks',
     description: 'State-approved CNA training with clinical hours',
   },
+};
+
+
+export const metadata: Metadata = {
+  title: 'Program Not Found',
+  robots: { index: false, follow: false },
 };
 
 export default function CheckoutPage() {

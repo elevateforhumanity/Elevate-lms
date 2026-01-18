@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 
@@ -31,6 +32,12 @@ const programs = [
     image: '/images/beauty/program-barber-training.jpg',
   },
 ];
+
+
+export const metadata: Metadata = {
+  title: 'Skilled Trades',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/programs/skilled-trades' },
+};
 
 export default function SkilledTradesProgramsPage() {
   const videoRef = useRef<HTMLVideoElement>(null);

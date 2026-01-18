@@ -1,5 +1,12 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { CheckCircle, Phone, Mail } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Thank You for Your Interest!',
+  robots: { index: false, follow: false },
+};
 
 export default function InquirySuccessPage() {
   return (

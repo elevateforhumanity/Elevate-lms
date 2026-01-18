@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { Metadata } from 'next';
 import { Send, Bot, User, Sparkles, BookOpen, FileText, Lightbulb, Loader2 } from 'lucide-react';
 
 interface Message {
@@ -14,6 +15,12 @@ const QUICK_PROMPTS = [
   { icon: Lightbulb, text: 'Practice questions', prompt: 'Give me some practice questions to test my understanding' },
   { icon: Sparkles, text: 'Summarize lesson', prompt: 'Summarize the key points from my current lesson' },
 ];
+
+
+export const metadata: Metadata = {
+  title: 'AI Tutor',
+  robots: { index: false, follow: false },
+};
 
 export default function AITutorPage() {
   const [messages, setMessages] = useState<Message[]>([

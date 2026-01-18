@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 
@@ -31,6 +32,12 @@ const programs = [
     image: '/images/healthcare/hero-program-phlebotomy.jpg',
   },
 ];
+
+
+export const metadata: Metadata = {
+  title: 'Healthcare',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/programs/healthcare' },
+};
 
 export default function HealthcareProgramsPage() {
   const videoRef = useRef<HTMLVideoElement>(null);

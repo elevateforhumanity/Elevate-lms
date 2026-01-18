@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { FileText, Upload, CheckCircle, AlertCircle } from 'lucide-react';
@@ -19,6 +20,12 @@ interface Application {
   program_id: string;
   submitted_at: string;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Application Already Submitted',
+  robots: { index: false, follow: false },
+};
 
 export default function StudentApplicationPage() {
   const router = useRouter();

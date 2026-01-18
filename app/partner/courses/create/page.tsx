@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/client';
 import { BookOpen, Upload, CheckCircle, AlertCircle } from 'lucide-react';
 
@@ -15,6 +16,12 @@ interface License {
   status: string;
   expires_at: string | null;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Create Partner Course',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/partner/courses/create' },
+};
 
 export default function CreateCoursePage() {
   const [licenses, setLicenses] = useState<License[]>([]);

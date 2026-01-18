@@ -3,6 +3,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,6 +19,12 @@ type Report = {
   hours: number;
   status: string;
   created_at: string;
+};
+
+
+export const metadata: Metadata = {
+  title: 'Reports',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/shop/reports' },
 };
 
 export default function ShopReportsPage() {

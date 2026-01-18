@@ -1,8 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { Users, BookOpen, DollarSign, TrendingUp, ArrowLeft, Download, FileText, BarChart } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Admin',
+  robots: { index: false, follow: false },
+};
 
 export default function AdminDemoPage() {
   const [activeTab, setActiveTab] = useState('overview');

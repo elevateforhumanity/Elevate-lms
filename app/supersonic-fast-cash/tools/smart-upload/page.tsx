@@ -3,6 +3,7 @@
 'use client';
 
 import { logger } from '@/lib/logger';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { useState, useCallback, useRef } from 'react';
 import {
@@ -62,6 +63,12 @@ interface UploadedFile {
   extractedData?: ExtractedData;
   error?: string;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Smart Document Upload',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/tools/smart-upload' },
+};
 
 export default function SmartUploadPage() {
   const [files, setFiles] = useState<UploadedFile[]>([]);

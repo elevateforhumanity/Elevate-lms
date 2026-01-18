@@ -1,5 +1,12 @@
 import Link from "next/link";
+import { Metadata } from 'next';
 import Image from "next/image";
+
+
+export const metadata: Metadata = {
+  title: 'Partner With Elevate for Humanity',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/partners' },
+};
 
 export default function PartnersPage() {
   return (

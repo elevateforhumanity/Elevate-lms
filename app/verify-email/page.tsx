@@ -3,10 +3,17 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
+
+
+export const metadata: Metadata = {
+  title: 'Verify Your Email',
+  robots: { index: false, follow: false },
+};
 
 export default function VerifyEmailPage() {
   const [email, setEmail] = useState('');

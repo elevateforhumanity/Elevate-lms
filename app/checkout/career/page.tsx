@@ -1,11 +1,18 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState } from 'react';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
+
+
+export const metadata: Metadata = {
+  title: 'Career Track Access',
+  robots: { index: false, follow: false },
+};
 
 export default function CareerCheckout() {
   const [loading, setLoading] = useState(false);

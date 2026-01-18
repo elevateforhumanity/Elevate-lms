@@ -4,6 +4,7 @@
 // =====================================================
 
 import { redirect } from 'next/navigation';
+import { Metadata } from 'next';
 import { createServerSupabaseClient } from '@/lib/auth';
 import { logger } from '@/lib/logger';
 
@@ -14,6 +15,12 @@ interface PageProps {
     token: string;
   };
 }
+
+
+export const metadata: Metadata = {
+  title: 'Token',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/c/' },
+};
 
 export default async function CredentialSharePage({ params }: PageProps) {
   const { token } = params;

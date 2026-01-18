@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 
@@ -11,6 +12,12 @@ interface InviteData {
   email: string;
   expiresAt: string;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Token',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/(auth)/invite/' },
+};
 
 export default function AcceptInvitePage({
   params,

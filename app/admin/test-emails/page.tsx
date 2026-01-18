@@ -1,12 +1,19 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
+
+
+export const metadata: Metadata = {
+  title: 'Test Email System',
+  robots: { index: false, follow: false },
+};
 
 export default function TestEmailsPage() {
   const [loading, setLoading] = useState(false);

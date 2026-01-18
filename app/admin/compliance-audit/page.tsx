@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import { 
   AlertTriangle, 
   CheckCircle, 
@@ -18,6 +19,12 @@ const MONTHS = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ];
+
+
+export const metadata: Metadata = {
+  title: 'Monthly Compliance Audit',
+  robots: { index: false, follow: false },
+};
 
 export default function ComplianceAuditPage() {
   const [audits, setAudits] = useState<any[]>([]);

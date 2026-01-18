@@ -1,8 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { Phone, Mail, MapPin, Clock, MessageSquare, Send, CheckCircle } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Contact Us',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/contact' },
+};
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({

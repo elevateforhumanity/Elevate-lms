@@ -1,12 +1,19 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { CreditCard, CheckCircle, XCircle, DollarSign } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
+
+
+export const metadata: Metadata = {
+  title: 'Payment System Status',
+  robots: { index: false, follow: false },
+};
 
 export default function TestPaymentsPage() {
   const [stripeConfigured, setStripeConfigured] = useState(false);

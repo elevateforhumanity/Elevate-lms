@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -37,6 +38,12 @@ interface Campaign {
   lastPost: string | null;
   nextPost: string | null;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Social Media',
+  robots: { index: false, follow: false },
+};
 
 export default function SocialMediaPage() {
   const router = useRouter();

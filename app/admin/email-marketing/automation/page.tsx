@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -30,6 +31,12 @@ interface Workflow {
   recipients: number;
   lastRun: string | null;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Automation',
+  robots: { index: false, follow: false },
+};
 
 export default function AutomationPage() {
   const router = useRouter();

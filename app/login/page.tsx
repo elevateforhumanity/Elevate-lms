@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState, Suspense } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -205,6 +206,12 @@ function LoginForm() {
     </div>
   );
 }
+
+
+export const metadata: Metadata = {
+  title: 'Login',
+  robots: { index: false, follow: false },
+};
 
 export default function LoginPage() {
   return (

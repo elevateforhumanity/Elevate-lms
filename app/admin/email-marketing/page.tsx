@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { Metadata } from 'next';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -15,6 +16,12 @@ import {
   Plus,
   Eye,
 } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Email Marketing',
+  robots: { index: false, follow: false },
+};
 
 export default function EmailMarketingPage() {
   const router = useRouter();

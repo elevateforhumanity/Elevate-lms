@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
   Play, 
@@ -99,6 +100,12 @@ const DEMO_SECTIONS: DemoSection[] = [
     ],
   },
 ];
+
+
+export const metadata: Metadata = {
+  title: 'Explore the Platform',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/store/demo' },
+};
 
 export default function InteractiveDemoPage() {
   const [activeSection, setActiveSection] = useState<string>('public');

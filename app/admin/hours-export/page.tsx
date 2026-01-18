@@ -1,11 +1,18 @@
 "use client";
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { Calendar, Download, Clock } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
+
+
+export const metadata: Metadata = {
+  title: 'Weekly Hours Export',
+  robots: { index: false, follow: false },
+};
 
 export default function HoursExportPage() {
   const [loading, setLoading] = useState(false);

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -20,6 +21,12 @@ type Incentive = {
   hours_completed: number;
   hours_required: number;
   created_at: string;
+};
+
+
+export const metadata: Metadata = {
+  title: 'Employer Incentives',
+  robots: { index: false, follow: false },
 };
 
 export default function IncentivesPage() {

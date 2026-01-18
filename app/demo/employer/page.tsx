@@ -1,8 +1,15 @@
 'use client';
 import { useState } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Info, Home, Users, Briefcase, DollarSign, Award, Star, ChevronRight, Plus, CheckCircle, MapPin, X } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Employer',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/demo/employer' },
+};
 
 export default function EmployerDemo() {
   const [tab, setTab] = useState('pipeline');

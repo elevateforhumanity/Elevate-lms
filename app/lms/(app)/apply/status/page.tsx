@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
@@ -14,6 +15,12 @@ interface Application {
   first_name: string;
   notes: string;
 }
+
+
+export const metadata: Metadata = {
+  title: 'No Application Found',
+  robots: { index: false, follow: false },
+};
 
 export default function ApplicationStatusPage() {
   const router = useRouter();

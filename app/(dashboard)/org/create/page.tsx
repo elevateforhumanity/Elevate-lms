@@ -3,7 +3,14 @@
 export const dynamic = 'force-dynamic';
 
 import React, { useState } from 'react';
+import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
+
+
+export const metadata: Metadata = {
+  title: 'Create',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/(dashboard)/org/create' },
+};
 
 export default function CreateOrgPage() {
   const router = useRouter();

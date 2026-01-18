@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import {
   Users,
@@ -24,6 +25,12 @@ interface DashboardStats {
   todayAppointments: number;
   weeklyRevenue: number;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Supersonic Fast Cash Admin',
+  robots: { index: false, follow: false },
+};
 
 export default function SupersonicAdminDashboard() {
   const [stats, setStats] = useState<DashboardStats>({

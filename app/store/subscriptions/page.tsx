@@ -1,6 +1,7 @@
 'use client';
 
 import { logger } from '@/lib/logger';
+import { Metadata } from 'next';
 import React from 'react';
 
 import { useEffect, useState, Suspense } from 'react';
@@ -388,6 +389,12 @@ function SubscriptionsContent() {
     </div>
   );
 }
+
+
+export const metadata: Metadata = {
+  title: 'Store Subscriptions',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/store/subscriptions' },
+};
 
 export default function SubscriptionsPage() {
   return (

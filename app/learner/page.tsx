@@ -1,7 +1,14 @@
 import { redirect } from 'next/navigation';
+import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
+
+
+export const metadata: Metadata = {
+  title: 'Learner',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/learner' },
+};
 
 export default async function LearnerPage() {
   try {

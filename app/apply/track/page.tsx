@@ -3,6 +3,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState, useEffect } from 'react';
 import { Search, CheckCircle, Clock, XCircle, Phone, Mail } from 'lucide-react';
@@ -57,6 +58,12 @@ const statusConfig = {
     description:
       'Unfortunately, we cannot proceed with your application at this time.',
   },
+};
+
+
+export const metadata: Metadata = {
+  title: 'Track Your Application',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/apply/track' },
 };
 
 export default function TrackApplicationPage() {

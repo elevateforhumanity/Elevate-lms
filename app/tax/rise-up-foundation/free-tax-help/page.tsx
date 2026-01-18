@@ -1,12 +1,19 @@
 'use client';
 
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { useEffect } from 'react';
 import { Calendar } from 'lucide-react';
 
 const CALENDLY_SCRIPT = 'https://assets.calendly.com/assets/external/widget.js';
 const CALENDLY_LINK = 'https://calendly.com/elevateforhumanity/free-tax-prep';
 
+
+
+export const metadata: Metadata = {
+  title: 'Free Tax Help',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/tax/rise-up-foundation/free-tax-help' },
+};
 
 export default function FreeTaxHelpPage() {
   useEffect(() => {

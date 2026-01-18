@@ -1,8 +1,15 @@
 'use client';
 import { useState } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Info, Menu, X, Home, BookOpen, Clock, Award, Play, CheckCircle, Calendar, Plus, ChevronRight, FileText, MessageCircle, HelpCircle } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Darius Williams',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/demo/learner' },
+};
 
 export default function LearnerDemo() {
   const [tab, setTab] = useState('home');

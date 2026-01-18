@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Send, CheckCircle, AlertCircle } from 'lucide-react';
@@ -20,6 +21,12 @@ const priorities = [
   { value: 'high', label: 'High - Affecting my training' },
   { value: 'urgent', label: 'Urgent - Critical issue' },
 ];
+
+
+export const metadata: Metadata = {
+  title: 'Ticket Submitted!',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/support/ticket' },
+};
 
 export default function SubmitTicketPage() {
   const searchParams = useSearchParams();

@@ -3,6 +3,13 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
+
+
+export const metadata: Metadata = {
+  title: 'Sign Up for Workshops',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/nonprofit/sign-up' },
+};
 
 export default function SignUpPage() {
   const [submitted, setSubmitted] = useState(false);

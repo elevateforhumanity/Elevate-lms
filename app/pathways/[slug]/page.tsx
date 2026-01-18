@@ -1,10 +1,17 @@
 import { notFound } from "next/navigation";
+import { Metadata } from 'next';
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import Image from "next/image";
 import { PATHWAYS } from "@/lib/pathways/data";
 
 export const dynamic = 'force-dynamic';
+
+
+export const metadata: Metadata = {
+  title: 'pathway.title',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/pathways/' },
+};
 
 export default async function PathwayDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

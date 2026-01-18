@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { Search, CheckCircle, Clock, XCircle, Phone } from 'lucide-react';
 
@@ -11,6 +12,12 @@ interface ApplicationStatus {
   submitted_at: string;
   first_name: string;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Check Application Status',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/apply/status' },
+};
 
 export default function ApplicationStatusPage() {
   const [email, setEmail] = useState('');

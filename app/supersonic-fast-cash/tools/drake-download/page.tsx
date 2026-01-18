@@ -3,6 +3,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import {
   Download,
   FileText,
@@ -12,6 +13,12 @@ import {
   Key,
 } from 'lucide-react';
 import Link from 'next/link';
+
+
+export const metadata: Metadata = {
+  title: 'Drake Tax Software',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/tools/drake-download' },
+};
 
 export default function DrakeDownloadPage() {
   const [showCredentials, setShowCredentials] = useState(false);

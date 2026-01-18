@@ -3,6 +3,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -10,6 +11,12 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
+
+
+export const metadata: Metadata = {
+  title: 'Admin Login',
+  robots: { index: false, follow: false },
+};
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState('');

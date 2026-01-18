@@ -3,6 +3,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -12,6 +13,12 @@ import {
   FileText,
   CheckCircle,
 } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Revenue Share Calculator',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/calculator/revenue-share' },
+};
 
 export default function RevenueShareCalculator() {
   const [clientPayment, setClientPayment] = useState(300);

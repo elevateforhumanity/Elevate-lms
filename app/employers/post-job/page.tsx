@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 
 function Button({ children, variant, onClick, type, className }: { children: React.ReactNode; variant?: string; onClick?: () => void; type?: 'button' | 'submit'; className?: string }) {
@@ -13,6 +14,12 @@ function Button({ children, variant, onClick, type, className }: { children: Rea
     </button>
   );
 }
+
+
+export const metadata: Metadata = {
+  title: 'Job Posted Successfully!',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/employers/post-job' },
+};
 
 export default function PostJobPage() {
   const [formData, setFormData] = useState({

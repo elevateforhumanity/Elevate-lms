@@ -5,6 +5,7 @@
 // @ts-nocheck
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -23,6 +24,12 @@ import {
   Instagram,
   Sparkles,
 } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'New',
+  robots: { index: false, follow: false },
+};
 
 export default function NewSocialCampaignPage() {
   const router = useRouter();

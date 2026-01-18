@@ -3,6 +3,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import {
   Search,
   TrendingUp,
@@ -24,6 +25,12 @@ interface RefundStatus {
   method?: 'direct_deposit' | 'check';
   lastUpdated: string;
 }
+
+
+export const metadata: Metadata = {
+  title: 'Where's My Refund?',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/tools/refund-tracker' },
+};
 
 export default function RefundTrackerPage() {
   const [ssn, setSsn] = useState('');

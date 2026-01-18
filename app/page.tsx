@@ -109,14 +109,6 @@ const programs = [
   },
 ];
 
-
-
-
-export const metadata: Metadata = {
-  title: 'Home',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/' },
-};
-
 export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
@@ -135,62 +127,73 @@ export default function HomePage() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Play video immediately - works on all devices including iPad/laptop
+  // Force video autoplay on ALL devices (mobile, tablet, iPad, laptop, desktop)
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return undefined;
+    if (!video) return;
 
-    // Force attributes required for autoplay on all browsers
+    // Force all required attributes for autoplay on every browser
     video.muted = true;
     video.playsInline = true;
-    video.setAttribute('playsinline', '');
-    video.setAttribute('webkit-playsinline', '');
-    
-    const playVideo = async () => {
+    video.autoplay = true;
+    video.loop = true;
+    video.preload = 'auto';
+    video.setAttribute('webkit-playsinline', 'true');
+    video.setAttribute('playsinline', 'true');
+    video.setAttribute('muted', '');
+
+    const forcePlay = async () => {
+      if (!video.paused) return; // Already playing
       try {
+        video.muted = true;
+        video.volume = 0;
         await video.play();
       } catch {
-        // If autoplay fails, try again with user interaction simulation
-        const retryPlay = async () => {
-          try {
-            video.currentTime = 0;
-            await video.play();
-          } catch {
-            // Final fallback: play on any user interaction
-            const playOnInteraction = () => {
-              video.play().catch(() => {});
-              document.removeEventListener('click', playOnInteraction);
-              document.removeEventListener('touchstart', playOnInteraction);
-              document.removeEventListener('scroll', playOnInteraction);
-            };
-            document.addEventListener('click', playOnInteraction, { once: true });
-            document.addEventListener('touchstart', playOnInteraction, { once: true });
-            document.addEventListener('scroll', playOnInteraction, { once: true });
-          }
-        };
-        setTimeout(retryPlay, 100);
+        // Silent fail, will retry
       }
     };
 
-    // Try to play immediately
-    playVideo();
+    // Aggressive play attempts at multiple intervals
+    forcePlay();
+    const t1 = setTimeout(forcePlay, 50);
+    const t2 = setTimeout(forcePlay, 100);
+    const t3 = setTimeout(forcePlay, 250);
+    const t4 = setTimeout(forcePlay, 500);
+    const t5 = setTimeout(forcePlay, 1000);
 
-    // Also try when video data is loaded
-    video.addEventListener('loadeddata', playVideo);
-    video.addEventListener('canplay', playVideo);
+    // Play on all video ready events
+    video.addEventListener('loadedmetadata', forcePlay);
+    video.addEventListener('loadeddata', forcePlay);
+    video.addEventListener('canplay', forcePlay);
+    video.addEventListener('canplaythrough', forcePlay);
     
-    // Try again when page becomes visible (for tab switches)
-    const handleVisibility = () => {
-      if (document.visibilityState === 'visible') {
-        playVideo();
-      }
+    // Play on visibility change (tab switch)
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') forcePlay();
     };
-    document.addEventListener('visibilitychange', handleVisibility);
+    document.addEventListener('visibilitychange', onVisible);
+
+    // Fallback: play on any user interaction
+    const onInteract = () => {
+      forcePlay();
+      ['click', 'touchstart', 'scroll', 'mousemove', 'keydown'].forEach(e => 
+        document.removeEventListener(e, onInteract)
+      );
+    };
+    ['click', 'touchstart', 'scroll', 'mousemove', 'keydown'].forEach(e => 
+      document.addEventListener(e, onInteract, { passive: true })
+    );
 
     return () => {
-      video.removeEventListener('loadeddata', playVideo);
-      video.removeEventListener('canplay', playVideo);
-      document.removeEventListener('visibilitychange', handleVisibility);
+      [t1, t2, t3, t4, t5].forEach(clearTimeout);
+      video.removeEventListener('loadedmetadata', forcePlay);
+      video.removeEventListener('loadeddata', forcePlay);
+      video.removeEventListener('canplay', forcePlay);
+      video.removeEventListener('canplaythrough', forcePlay);
+      document.removeEventListener('visibilitychange', onVisible);
+      ['click', 'touchstart', 'scroll', 'mousemove', 'keydown'].forEach(e => 
+        document.removeEventListener(e, onInteract)
+      );
     };
   }, []);
 
@@ -199,25 +202,26 @@ export default function HomePage() {
       {/* Professional voiceover - starts immediately after page loads */}
       <VoiceoverWithMusic audioSrc="/audio/welcome-voiceover.mp3" delay={100} />
 
-      {/* Hero Section - Optimized for all screen sizes including Chromebooks */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-blue-900">
-        {/* Background video - compressed 741KB, loads fast */}
-        {/* Key mobile fixes: webkit-playsinline, muted MUST be present for autoplay */}
+      {/* Hero Section - Optimized for all screen sizes: mobile, tablet, laptop, desktop */}
+      <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-slate-900">
+        {/* Background video - autoplay on ALL devices */}
+        {/* Required for autoplay: muted, playsinline, autoplay attributes */}
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover brightness-110"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectFit: 'cover' }}
           loop
           muted
           playsInline
           autoPlay
-          preload="metadata"
-          webkit-playsinline="true"
-          poster="/images/artlist/hero-training-1.jpg"
+          preload="auto"
+          disablePictureInPicture
+          disableRemotePlayback
         >
           <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>
         
-        {/* Subtle overlay for text readability - no gradient */}
+        {/* Overlay for text readability */}
         <div className="absolute inset-0 bg-black/40 pointer-events-none" />
         
         {/* Hero Content - Million dollar value proposition */}

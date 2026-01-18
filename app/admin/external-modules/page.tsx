@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -15,6 +16,12 @@ import {
   XCircle,
   AlertCircle,
 } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'External Modules Management',
+  robots: { index: false, follow: false },
+};
 
 export default function ExternalModulesPage() {
   const supabase = createClient();

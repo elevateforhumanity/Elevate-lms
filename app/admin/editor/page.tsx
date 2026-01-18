@@ -2,6 +2,7 @@
 "use client";
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -129,6 +130,12 @@ npm run dev
 \`\`\`
 `,
 };
+
+export const metadata: Metadata = {
+  title: 'Welcome',
+  robots: { index: false, follow: false },
+};
+
 export default function EditorPage() {
   const [selectedFile, setSelectedFile] = useState<string>('/app/page.tsx');
   const [fileContent, setFileContent] = useState<string>(

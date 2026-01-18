@@ -1,6 +1,7 @@
 'use client';
 
 import { logger } from '@/lib/logger';
+import { Metadata } from 'next';
 import React, { useState, useEffect } from 'react';
 import {
   ChevronRight,
@@ -102,6 +103,12 @@ const STEPS = [
   { id: 5, title: 'Credits', icon: CheckCircle },
   { id: 6, title: 'Review & File', icon: CheckCircle },
 ];
+
+
+export const metadata: Metadata = {
+  title: 'Do Your Own Taxes',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/diy-taxes' },
+};
 
 export default function DIYTaxesPage() {
   const [currentStep, setCurrentStep] = useState(1);

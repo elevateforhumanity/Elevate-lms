@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -14,6 +15,12 @@ const TYPES = [
   'payroll',
   'other',
 ] as const;
+
+
+export const metadata: Metadata = {
+  title: 'Documents',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/(partner)/partners/documents' },
+};
 
 export default function PartnerDocumentsPage() {
   const supabase = createClient();

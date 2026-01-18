@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import { CheckCircle, AlertCircle, Loader2, Database } from 'lucide-react';
 import Link from 'next/link';
 
@@ -15,6 +16,12 @@ interface SchemaCheck {
   message: string;
   recommendations?: string[];
 }
+
+
+export const metadata: Metadata = {
+  title: 'Setup',
+  robots: { index: false, follow: false },
+};
 
 export default function MonitoringSetupPage() {
   const [checking, setChecking] = useState(true);

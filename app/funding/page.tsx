@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import {
   DollarSign,
@@ -14,6 +15,12 @@ import {
   ArrowRight,
   Briefcase,
 } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: '100% Free Training',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/funding' },
+};
 
 export default function FundingPage() {
   const fundingResources = [

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import { 
   CheckCircle, 
   XCircle, 
@@ -33,6 +34,12 @@ const STATUS_COLORS = {
   pending_signature: 'bg-amber-100 text-amber-700',
   completed: 'bg-green-100 text-green-700',
   rejected: 'bg-red-100 text-red-700',
+};
+
+
+export const metadata: Metadata = {
+  title: 'Admissions Intake Management',
+  robots: { index: false, follow: false },
 };
 
 export default function AdminIntakePage() {

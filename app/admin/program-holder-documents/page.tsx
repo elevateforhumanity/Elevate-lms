@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState, useEffect } from 'react';
 import {
@@ -36,6 +37,12 @@ interface Document {
     name: string;
   };
 }
+
+
+export const metadata: Metadata = {
+  title: 'Program Holder Documents',
+  robots: { index: false, follow: false },
+};
 
 export default function AdminProgramHolderDocuments() {
   const [documents, setDocuments] = useState<Document[]>([]);

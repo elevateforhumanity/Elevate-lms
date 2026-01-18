@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
   Inbox, 
@@ -41,6 +42,12 @@ const priorityColors: Record<string, string> = {
   medium: 'bg-blue-100 text-blue-600',
   high: 'bg-orange-100 text-orange-600',
   urgent: 'bg-red-100 text-red-600',
+};
+
+
+export const metadata: Metadata = {
+  title: 'Support Dashboard',
+  robots: { index: false, follow: false },
 };
 
 export default function AdminSupportPage() {

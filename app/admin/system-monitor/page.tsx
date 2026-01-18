@@ -1,8 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import { Activity, AlertCircle, CheckCircle, Database, Server, Zap, Users } from 'lucide-react';
 import Link from 'next/link';
+
+
+export const metadata: Metadata = {
+  title: 'System Monitor',
+  robots: { index: false, follow: false },
+};
 
 export default function SystemMonitorPage() {
   const [status, setStatus] = useState<any>(null);

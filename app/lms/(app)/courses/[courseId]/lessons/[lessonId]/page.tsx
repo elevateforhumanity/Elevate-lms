@@ -3,6 +3,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,6 +22,12 @@ import {
 } from 'lucide-react';
 import { LazyLMSDiscussionForum as DiscussionForum } from '@/components/LazyComponents';
 import { QuizSystem } from '@/components/lms/QuizSystem';
+
+
+export const metadata: Metadata = {
+  title: 'lesson.title',
+  robots: { index: false, follow: false },
+};
 
 export default function LessonPage() {
   const params = useParams();

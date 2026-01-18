@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/client';
 import { useParams, useRouter } from 'next/navigation';
 import {
@@ -18,6 +19,12 @@ interface Program {
   duration_weeks: number;
   requires_license: boolean;
 }
+
+
+export const metadata: Metadata = {
+  title: 'program.name',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/enroll/' },
+};
 
 export default function EnrollPage() {
   const params = useParams();

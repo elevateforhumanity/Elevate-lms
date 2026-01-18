@@ -1,8 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import { BookOpen, Upload, DollarSign, Clock, CheckCircle } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Create New Course',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/creator/courses/new' },
+};
 
 export default function CreatorNewCoursePage() {
   const router = useRouter();

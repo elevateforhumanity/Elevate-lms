@@ -2,6 +2,7 @@
 export const dynamic = 'force-dynamic';
 
 import Link from 'next/link';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { programs } from '@/app/data/programs';
 const grantFundedPrograms = programs.filter((p) =>
@@ -14,6 +15,12 @@ const grantFundedPrograms = programs.filter((p) =>
       f.toLowerCase().includes('grant')
   )
 );
+
+
+export const metadata: Metadata = {
+  title: '100% Free Training Programs',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/funding/grant-programs' },
+};
 
 export default function GrantProgramsPage() {
   return (

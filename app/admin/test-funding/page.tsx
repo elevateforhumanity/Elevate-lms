@@ -1,10 +1,17 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState } from 'react';
 
 export const dynamic = 'force-dynamic';
+
+
+export const metadata: Metadata = {
+  title: 'Test Funding Checkout',
+  robots: { index: false, follow: false },
+};
 
 export default function TestFundingPage() {
   const [studentId, setStudentId] = useState('');

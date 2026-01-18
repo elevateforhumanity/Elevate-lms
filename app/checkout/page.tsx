@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { redirect } from 'next/navigation';
+import { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import Stripe from 'stripe';
@@ -21,6 +22,12 @@ const PLANS = {
 } as const;
 
 type PlanKey = keyof typeof PLANS;
+
+
+export const metadata: Metadata = {
+  title: 'Payment System Not Configured',
+  robots: { index: false, follow: false },
+};
 
 export default async function CheckoutPage({
   searchParams,

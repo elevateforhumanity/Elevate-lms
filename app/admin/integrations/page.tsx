@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -9,6 +10,12 @@ import Image from 'next/image';
 import { Plug, CheckCircle, XCircle, RefreshCw, Settings } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
+
+
+export const metadata: Metadata = {
+  title: 'Integrations Management',
+  robots: { index: false, follow: false },
+};
 
 export default function IntegrationsPage() {
   const supabase = createClient();

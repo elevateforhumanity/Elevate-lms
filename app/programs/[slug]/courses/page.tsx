@@ -1,10 +1,17 @@
 'use client';
 
 import { useParams } from 'next/navigation';
+import { Metadata } from 'next';
 import { useState, useEffect } from 'react';
 import { BookOpen, Clock, Award, DollarSign, CheckCircle, Users } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+
+
+export const metadata: Metadata = {
+  title: 'Available Courses',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/programs//courses' },
+};
 
 export default function ProgramCoursesPage() {
   const params = useParams();

@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState } from 'react';
 import { Calendar, CreditCard, CheckCircle, Award } from 'lucide-react';
@@ -10,6 +11,12 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || ''
 );
+
+
+export const metadata: Metadata = {
+  title: 'IPLA Apprenticeship Exam',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/apprenticeships/ipla-exam' },
+};
 
 export default function IPLAExamSignup() {
   const [selectedDate, setSelectedDate] = useState('');

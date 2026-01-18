@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import { useParams, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
@@ -24,6 +25,12 @@ interface Thread {
   likes: number;
   pinned: boolean;
 }
+
+
+export const metadata: Metadata = {
+  title: 'thread.title',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/programs//discussions/' },
+};
 
 export default function ThreadDetailPage() {
   const params = useParams();

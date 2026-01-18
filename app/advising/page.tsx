@@ -1,11 +1,18 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 // app/advising/page.tsx
 
 export const dynamic = 'force-dynamic';
 
 import { useState } from 'react';
+
+
+export const metadata: Metadata = {
+  title: 'Talk with an advisor about your next steps.',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/advising' },
+};
 
 export default function AdvisingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);

@@ -1,11 +1,18 @@
 'use client';
 
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState } from 'react';
 import { CheckCircle, XCircle } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
+
+
+export const metadata: Metadata = {
+  title: 'Test Webhook (No Payment)',
+  robots: { index: false, follow: false },
+};
 
 export default function TestWebhookPage() {
   const [studentId, setStudentId] = useState('');

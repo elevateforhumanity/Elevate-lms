@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -28,6 +29,12 @@ function QuickTemplate({
     </button>
   );
 }
+
+
+export const metadata: Metadata = {
+  title: 'Notifications',
+  robots: { index: false, follow: false },
+};
 
 export default function NotificationsPage() {
   const router = useRouter();

@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { Metadata } from 'next';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -14,6 +15,12 @@ import {
   CheckCircle,
   TrendingUp,
 } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Thank You for Your Interest!',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/fssa-partnership-request' },
+};
 
 export default function FSSAPartnershipRequestPage() {
   const [formData, setFormData] = useState({

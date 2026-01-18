@@ -3,6 +3,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
@@ -28,6 +29,12 @@ interface PartnerCourse {
     provider_type: string;
   };
 }
+
+
+export const metadata: Metadata = {
+  title: 'Course Not Found',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/courses/partners//enroll' },
+};
 
 export default function EnrollPage({
   params,

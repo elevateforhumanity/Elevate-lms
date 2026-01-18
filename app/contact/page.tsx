@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -10,6 +11,12 @@ import {
   CheckCircle,
   Phone,
 } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Talk to a real person about your career goals',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/contact' },
+};
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({

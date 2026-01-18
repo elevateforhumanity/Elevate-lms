@@ -2,6 +2,7 @@
 "use client";
 
 import React from 'react';
+import { Metadata } from 'next';
 import { sanitizeHtml } from '@/lib/sanitize';
 
 import { useEffect, useState } from 'react';
@@ -22,6 +23,12 @@ import { emailTemplates, type EmailTemplateKey } from '@/lib/email-templates';
 
 
 export const dynamic = 'force-dynamic';
+
+
+export const metadata: Metadata = {
+  title: 'New',
+  robots: { index: false, follow: false },
+};
 
 export default function NewCampaignPage() {
   const router = useRouter();
