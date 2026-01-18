@@ -125,6 +125,7 @@ const footerSections = [
       { name: 'All Policies', href: '/policies' },
       { name: 'FERPA', href: '/ferpa' },
       { name: 'Equal Opportunity', href: '/equal-opportunity' },
+      { name: 'Site Map', href: '/site-map' },
     ],
   },
 ];
