@@ -710,7 +710,7 @@ export default async function JRIProgramsPage() {
                 </p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>
-                    Barber Apprenticeship (1,500 hours, $12-15/hr starting)
+                    Barber Apprenticeship (2,000 hours, $12-15/hr starting)
                   </li>
                   <li>HVAC Technician (2,000 hours, $15-18/hr starting)</li>
                   <li>

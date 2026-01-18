@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
+import { PathwayBlock } from '@/components/PathwayBlock';
 
 
 
@@ -153,6 +154,9 @@ export default function ProgramsPage() {
         </div>
       </section>
 
+      {/* Pathway Block */}
+      <PathwayBlock variant="dark" />
+
       {/* CTA */}
       <section className="py-10 bg-blue-600">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
@@ -160,7 +164,7 @@ export default function ProgramsPage() {
             href="/apply"
             className="inline-block bg-white text-blue-600 px-8 py-3 font-semibold rounded-full hover:bg-blue-50 transition-colors"
           >
-            Start Your Application
+            Check Eligibility & Apply
           </Link>
         </div>
       </section>

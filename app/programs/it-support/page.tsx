@@ -14,6 +14,7 @@ const programData: ProgramData = {
   image: '/images/programs-new/program-7.jpg',
   duration: '8-12 weeks',
   tuition: '$0 with WIOA',
+  fundingType: 'funded',
   salary: '$40K-$55K',
   demand: 'High',
   highlights: [

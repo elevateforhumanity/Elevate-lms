@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import VoiceoverWithMusic from '@/components/VoiceoverWithMusic';
+import { PathwayBlock } from '@/components/PathwayBlock';
 import { useEffect, useState, useRef } from 'react';
 
 // User state hook - fetches auth and enrollment data
@@ -643,6 +644,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Block */}
+      <PathwayBlock variant="light" />
 
       {/* Why Choose Us - Compact */}
       <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 bg-slate-100">

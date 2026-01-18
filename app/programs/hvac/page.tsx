@@ -14,6 +14,7 @@ const programData: ProgramData = {
   image: '/images/trades/hero-program-hvac.jpg',
   duration: '12-16 weeks',
   tuition: '$0*',
+  fundingType: 'funded',
   salary: '$45K+',
   demand: 'High',
   highlights: [

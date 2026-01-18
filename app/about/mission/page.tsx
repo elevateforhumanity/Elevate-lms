@@ -81,7 +81,7 @@ export default function MissionPage() {
               <h3 className="text-xl font-bold text-gray-900 mb-3">Excellence</h3>
               <p className="text-gray-600">
                 We deliver industry-recognized training that prepares students for real careers. 
-                Our 85% job placement rate reflects our commitment to quality.
+                Strong placement outcomes through employer partnerships reflect our commitment to quality.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm">
@@ -104,7 +104,7 @@ export default function MissionPage() {
               <Target className="w-12 h-12 text-orange-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Impact</h3>
               <p className="text-gray-600">
-                We measure success by lives changed. Over 1,000 students trained, 
+                We measure success by lives changed. Hundreds of Indiana residents trained, 
                 families supported, and communities strengthened since 2020.
               </p>
             </div>

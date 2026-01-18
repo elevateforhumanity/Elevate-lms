@@ -14,6 +14,7 @@ const programData: ProgramData = {
   image: '/images/healthcare/hero-programs-healthcare.jpg',
   duration: '4-6 weeks',
   tuition: '$0*',
+  fundingType: 'funded',
   salary: '$35K+',
   demand: 'High',
   highlights: [

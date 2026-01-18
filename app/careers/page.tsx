@@ -114,8 +114,8 @@ export default async function CareersPage() {
         primaryCTA={{ text: "View Open Positions", href: "#positions" }}
         secondaryCTA={{ text: "Learn About Our Culture", href: "#culture" }}
         features={[
-          "10,000+ students trained • 85% job placement rate",
-          "500+ employer partners • Mission-driven work",
+          "Hundreds of Indiana residents trained • Strong placement outcomes",
+          "Growing employer network • Mission-driven work",
           "Competitive benefits • Remote work options"
         ]}
         imageOnRight={true}

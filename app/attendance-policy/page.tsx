@@ -86,7 +86,7 @@ export default function AttendancePolicyPage() {
             <h3 className="font-bold text-gray-900 mb-3">Clock Hour Programs</h3>
             <p className="text-gray-700">
               Programs that require specific clock hours for certification or licensing 
-              (such as Barber Apprenticeship with 1,500 hours) must complete <strong>100%</strong> of 
+              (such as Barber Apprenticeship with 2,000 hours) must complete <strong>100%</strong> of 
               required hours. These hours are tracked separately and reported to relevant 
               licensing boards.
             </p>

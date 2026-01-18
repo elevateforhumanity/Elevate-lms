@@ -208,7 +208,7 @@ export default async function BarberProgramPage() {
                   <div>
                     <h3 className="font-bold text-lg">Indiana Barber License</h3>
                     <p className="text-gray-600">
-                      Upon completing 1,500 hours and passing the state exam, you'll receive your 
+                      Upon completing 2,000 hours and passing the state exam, you'll receive your 
                       Indiana Barber License, allowing you to work anywhere in the state.
                     </p>
                   </div>

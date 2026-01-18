@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
+import { FundingBadge } from './FundingBadge';
 
 export type OutcomeItem = string | { title: string; description: string };
 
@@ -16,6 +16,7 @@ export interface ProgramData {
   tuition: string;
   salary: string;
   demand: string;
+  fundingType?: 'funded' | 'self-pay';
   highlights: string[];
   skills: string[];
   outcomes: OutcomeItem[];
@@ -43,6 +44,15 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
         />
         <div className="absolute inset-0 bg-black/20" />
       </section>
+
+      {/* Funding Badge */}
+      {program.fundingType && (
+        <section className="bg-white border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
+            <FundingBadge type={program.fundingType} />
+          </div>
+        </section>
+      )}
 
       {/* Badges + CTA */}
       <section className="bg-white border-b border-gray-100">
@@ -72,7 +82,7 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
               href="/apply"
               className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors"
             >
-              Start Eligibility & Choose Career Path
+              Check Eligibility & Apply
             </Link>
           </div>
         </div>
@@ -91,10 +101,9 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6">
               {program.title}
             </h1>
-            <p className="text-xl text-gray-500 mb-6">
+            <p className="text-xl text-gray-500">
               {program.description}
             </p>
-            <PathwayDisclosure variant="compact" />
           </div>
 
           {program.highlights && program.highlights.length > 0 && (
@@ -234,17 +243,14 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to get started?
           </h2>
-          <p className="text-gray-400 mb-4">
+          <p className="text-gray-400 mb-8">
             Free training for eligible Indiana residents.
-          </p>
-          <p className="text-gray-500 text-sm mb-8 max-w-xl">
-            This program is part of the Elevate for Humanity Career Pathway and begins after eligibility determination.
           </p>
           <Link
             href="/apply"
             className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 text-sm font-medium rounded-full hover:bg-gray-100 transition-colors"
           >
-            Start Eligibility & Choose Career Path
+            Apply Now
           </Link>
         </div>
       </section>

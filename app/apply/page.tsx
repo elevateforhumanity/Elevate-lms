@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import { PathwayBlock } from '@/components/PathwayBlock';
 import { Phone, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 // Pathway slug to program name mapping
@@ -410,6 +411,9 @@ export default function ApplyPage() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Block */}
+      <PathwayBlock variant="light" />
     </>
   );
 }
