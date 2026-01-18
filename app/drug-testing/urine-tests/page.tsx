@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const urineTests = [
   {
     name: 'DOT 5-Panel Urine Test',
-    price: 105,
+    price: 89,
     popular: true,
     description: 'Required for CDL drivers and DOT-regulated employees.',
     includes: [
@@ -28,7 +28,7 @@ const urineTests = [
   },
   {
     name: '5-Panel Drug Test',
-    price: 97,
+    price: 79,
     description: 'Standard workplace drug screening for most employers.',
     includes: [
       'Standard urine collection',
@@ -43,7 +43,7 @@ const urineTests = [
   },
   {
     name: '10-Panel Drug Test',
-    price: 97,
+    price: 79,
     description: 'Expanded screening for comprehensive drug detection.',
     includes: [
       'Tests for 10 substance categories',
@@ -58,7 +58,7 @@ const urineTests = [
   },
   {
     name: '5-Panel + Expanded Opiates',
-    price: 105,
+    price: 89,
     description: 'Enhanced opioid detection including fentanyl and synthetics.',
     includes: [
       'Standard 5-panel drug screen',
@@ -74,7 +74,7 @@ const urineTests = [
   },
   {
     name: '4-Panel (NO THC)',
-    price: 105,
+    price: 89,
     description: 'THC-free option for states with legal cannabis.',
     includes: [
       'Tests: Cocaine, Opiates, Amphetamines, PCP',
@@ -89,7 +89,7 @@ const urineTests = [
   },
   {
     name: '5-Panel + Alcohol',
-    price: 119,
+    price: 99,
     description: 'Drug and alcohol screening in one visit.',
     includes: [
       'Standard 5-panel drug test',

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const hairTests = [
   {
     name: 'Hair Follicle 5-Panel',
-    price: 267,
+    price: 125,
     description: 'Standard 5-panel with 90-day detection window.',
     includes: [
       '90-day drug use history',
@@ -27,7 +27,7 @@ const hairTests = [
   },
   {
     name: 'Hair Follicle 10-Panel',
-    price: 412,
+    price: 189,
     popular: true,
     description: 'Comprehensive 10-panel with extended detection.',
     includes: [
@@ -44,7 +44,7 @@ const hairTests = [
   },
   {
     name: 'Hair 5-Panel (NO THC)',
-    price: 267,
+    price: 125,
     description: 'THC-free option for legal cannabis states.',
     includes: [
       '90-day detection window',

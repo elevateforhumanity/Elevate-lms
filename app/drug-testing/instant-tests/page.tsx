@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const instantTests = [
   {
     name: 'Instant Rapid 5-Panel',
-    price: 84,
+    price: 69,
     popular: true,
     description: 'Quick screening with immediate negative results.',
     includes: [
@@ -28,7 +28,7 @@ const instantTests = [
   },
   {
     name: 'Instant Rapid 10-Panel',
-    price: 97,
+    price: 79,
     description: 'Expanded rapid screening for comprehensive coverage.',
     includes: [
       'Tests for 10 substance categories',
@@ -44,7 +44,7 @@ const instantTests = [
   },
   {
     name: 'Instant 5-Panel + Alcohol',
-    price: 105,
+    price: 89,
     description: 'Rapid drug and alcohol screening combined.',
     includes: [
       'Rapid 5-panel drug screen',

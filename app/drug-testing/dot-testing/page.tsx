@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const dotTests = [
   {
     name: 'DOT Pre-Employment',
-    price: 105,
+    price: 89,
     popular: true,
     description: 'Required before hiring any DOT-regulated employee.',
     includes: [
@@ -26,7 +26,7 @@ const dotTests = [
   },
   {
     name: 'DOT Random Testing',
-    price: 105,
+    price: 89,
     description: 'Unannounced testing for DOT random pool members.',
     includes: [
       'DOT 5-panel urine drug test',
@@ -40,7 +40,7 @@ const dotTests = [
   },
   {
     name: 'DOT Post-Accident',
-    price: 105,
+    price: 89,
     description: 'Required after certain DOT-reportable accidents.',
     includes: [
       'DOT 5-panel drug test',
@@ -54,7 +54,7 @@ const dotTests = [
   },
   {
     name: 'DOT Reasonable Suspicion',
-    price: 105,
+    price: 89,
     description: 'When a trained supervisor observes signs of impairment.',
     includes: [
       'DOT 5-panel drug test',
@@ -68,7 +68,7 @@ const dotTests = [
   },
   {
     name: 'Return to Duty (RTD)',
-    price: 525,
+    price: 425,
     description: 'Required before returning to safety-sensitive duties after a violation.',
     includes: [
       'Direct observation collection',
@@ -83,7 +83,7 @@ const dotTests = [
   },
   {
     name: 'Follow-Up Testing',
-    price: 105,
+    price: 89,
     description: 'Ongoing testing after return-to-duty clearance.',
     includes: [
       'Unannounced testing per SAP plan',

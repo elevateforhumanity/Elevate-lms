@@ -18,7 +18,7 @@ const testingCategories = [
     description: 'Most common and cost-effective. Lab-confirmed results in 24-48 hours.',
     href: '/drug-testing/urine-tests',
     image: '/images/artlist/hero-training-2.jpg',
-    startingPrice: 97,
+    startingPrice: 69,
     tests: ['5-Panel', '10-Panel', 'DOT 5-Panel', 'Expanded Opiates'],
   },
   {
@@ -26,7 +26,7 @@ const testingCategories = [
     description: 'On-site results in 5-10 minutes. Perfect for high-volume screening.',
     href: '/drug-testing/instant-tests',
     image: '/images/artlist/hero-training-3.jpg',
-    startingPrice: 84,
+    startingPrice: 60,
     tests: ['Rapid 5-Panel', 'Rapid 10-Panel', 'Rapid + Alcohol'],
   },
   {
@@ -34,7 +34,7 @@ const testingCategories = [
     description: '90-day detection window. Difficult to cheat, ideal for pre-employment.',
     href: '/drug-testing/hair-tests',
     image: '/images/artlist/hero-training-4.jpg',
-    startingPrice: 267,
+    startingPrice: 125,
     tests: ['5-Panel Hair', '10-Panel Hair', 'Extended Opiates'],
   },
   {
@@ -42,8 +42,16 @@ const testingCategories = [
     description: 'FMCSA-compliant testing for commercial drivers and transportation workers.',
     href: '/drug-testing/dot-testing',
     image: '/images/artlist/hero-training-5.jpg',
-    startingPrice: 105,
+    startingPrice: 75,
     tests: ['Pre-Employment', 'Random', 'Post-Accident', 'Return to Duty'],
+  },
+  {
+    title: 'Training & Certification',
+    description: 'Online courses for supervisors, collectors, and employers. DOT-compliant certificates.',
+    href: '/drug-testing/training',
+    image: '/images/artlist/hero-training-6.jpg',
+    startingPrice: 22,
+    tests: ['Supervisor Training', 'Collector Certification', 'DER Training'],
   },
 ];
 
