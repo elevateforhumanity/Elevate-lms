@@ -56,7 +56,7 @@ export default function BarberApprenticeshipPage() {
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                 <DollarSign className="w-5 h-5 text-orange-400 mb-2" />
                 <p className="text-sm text-gray-400">Cost</p>
-                <p className="font-semibold">Funded Options</p>
+                <p className="font-semibold">Self-Pay</p>
               </div>
             </div>
 
@@ -274,25 +274,25 @@ export default function BarberApprenticeshipPage() {
         </div>
       </section>
 
-      {/* Cost & Funding */}
+      {/* Cost & Payment */}
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 text-center">
-              Cost & Funding
+              Cost & Payment
             </h2>
 
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
               <p className="text-lg text-gray-700 mb-6">
-                This program may be available at low or no upfront cost through various funding sources.
+                This is a self-pay program. State workforce funding (WIOA) is not available for this apprenticeship.
               </p>
 
-              <h3 className="font-semibold text-gray-900 mb-4">Funding may include:</h3>
+              <h3 className="font-semibold text-gray-900 mb-4">Payment options include:</h3>
               <ul className="space-y-3 mb-8">
                 {[
-                  'Workforce or apprenticeship funding (when eligible)',
-                  'Employer-supported training arrangements',
-                  'Self-pay options, if applicable',
+                  'Full payment upfront',
+                  'Payment plans available',
+                  'Employer-sponsored arrangements (if your shop participates)',
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
@@ -301,10 +301,10 @@ export default function BarberApprenticeshipPage() {
                 ))}
               </ul>
 
-              <div className="bg-blue-50 border border-blue-100 rounded-lg p-4">
-                <p className="text-blue-800 text-sm">
-                  <strong>Important:</strong> Funding eligibility varies. Applying does not guarantee 
-                  funding, but allows us to review your options and determine what you may qualify for.
+              <div className="bg-amber-50 border border-amber-100 rounded-lg p-4">
+                <p className="text-amber-800 text-sm">
+                  <strong>Program fee details</strong> will be provided after your application is reviewed. 
+                  Apply first, then we'll discuss payment options that work for you.
                 </p>
               </div>
             </div>
