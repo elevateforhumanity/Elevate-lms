@@ -98,7 +98,7 @@ export default function BarberApprenticeshipPage() {
 
             {/* Primary CTA */}
             <Link
-              href="/apply?program=barber-apprenticeship"
+              href="/apply?pathway=barber-apprenticeship"
               className="inline-flex items-center gap-2 bg-white text-zinc-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-zinc-100 transition-colors"
             >
               Start Eligibility & Choose This Career Path
@@ -496,7 +496,7 @@ export default function BarberApprenticeshipPage() {
           </h2>
 
           <Link
-            href="/apply?program=barber-apprenticeship"
+            href="/apply?pathway=barber-apprenticeship"
             className="inline-flex items-center gap-2 bg-white text-zinc-900 px-10 py-5 rounded-lg font-bold text-lg hover:bg-zinc-100 transition-colors"
           >
             Start Eligibility & Choose This Career Path
