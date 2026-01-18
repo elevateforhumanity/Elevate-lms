@@ -2,17 +2,14 @@
 
 import { usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import { Component, ErrorInfo, ReactNode, Suspense } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
 
 // Lazy load audio component
 const PageAudio = dynamic(() => import('@/components/PageAudio'), { ssr: false });
 
-// Minimal loading state - no spinner, just reserves space
-function PageSkeleton() {
-  return <div className="min-h-[60vh]" aria-busy="true" aria-label="Loading page content" />;
-}
+
 
 // Error boundary prevents full page crash if header fails to render
 class HeaderErrorBoundary extends Component<
@@ -66,9 +63,7 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
           Skip to main content
         </a>
         <main id="main-content" className="flex-1" role="main" tabIndex={-1}>
-          <Suspense fallback={<PageSkeleton />}>
-            {children}
-          </Suspense>
+          {children}
         </main>
       </div>
     );
@@ -90,9 +85,7 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
         role="main"
         tabIndex={-1}
       >
-        <Suspense fallback={<PageSkeleton />}>
-          {children}
-        </Suspense>
+        {children}
       </main>
 
       {/* Ambient music on pages without video heroes */}

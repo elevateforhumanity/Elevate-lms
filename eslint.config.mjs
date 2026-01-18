@@ -33,7 +33,8 @@ export default tseslint.config(
       '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-namespace': 'off',
       '@typescript-eslint/ban-ts-comment': 'off',
-      'react-refresh/only-export-components': 'warn',
+      // react-refresh/only-export-components: Disabled - only affects HMR during development, not production
+      'react-refresh/only-export-components': 'off',
       'no-undef': 'off',
       'no-case-declarations': 'off',
       // Downgrade to warnings - these are code quality issues, not blockers
