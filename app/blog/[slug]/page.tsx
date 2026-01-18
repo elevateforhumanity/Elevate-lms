@@ -10,6 +10,8 @@ type Params = Promise<{ slug: string }>;
 
 async function getBlogPost(slug: string) {
   const supabase = createAdminClient();
+  if (!supabase) return null;
+  
   const { data: post, error } = await supabase
     .from('blog_posts')
     .select('*')
@@ -32,6 +34,8 @@ async function getBlogPost(slug: string) {
 
 async function getRelatedPosts(category: string, currentSlug: string) {
   const supabase = createAdminClient();
+  if (!supabase) return [];
+  
   const { data: posts } = await supabase
     .from('blog_posts')
     .select('title, slug, excerpt, image, published_at')

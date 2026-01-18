@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
 import CampaignsClient from './CampaignsClient';
 
 export const dynamic = 'force-dynamic';

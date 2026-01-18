@@ -71,7 +71,7 @@ export default function ExternalModulesPage() {
       .update({
         approval_status: 'approved',
         approved_at: new Date().toISOString(),
-        approved_by: (await supabase.auth.getUser()).data.user?.id,
+        approved_by: (await supabase?.auth.getUser()).data.user?.id,
       })
       .eq('id', moduleId);
 
@@ -86,7 +86,7 @@ export default function ExternalModulesPage() {
       .update({
         approval_status: 'rejected',
         rejected_at: new Date().toISOString(),
-        rejected_by: (await supabase.auth.getUser()).data.user?.id,
+        rejected_by: (await supabase?.auth.getUser()).data.user?.id,
       })
       .eq('id', moduleId);
 

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import { Phone, GraduationCap, Award, Users, CheckCircle } from 'lucide-react';
-import { createClient } from '@/lib/supabase/server';
+
 
 export const metadata: Metadata = {
   title: 'Drug Testing Training Courses | Elevate for Humanity',
@@ -132,8 +132,6 @@ const trainingCourses = {
 };
 
 export default async function DrugTestingTrainingPage() {
-  const supabase: any = createClient();
-
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}

@@ -34,7 +34,7 @@ export default function LmsAppLayout({ children }: { children: ReactNode }) {
 
     const supabase = createClient();
 
-    supabase.auth.getUser().then(({ data, error }) => {
+    supabase?.auth.getUser().then(({ data, error }) => {
       if (error || !data?.user) {
         router.push('/login?next=/lms/dashboard');
         return;

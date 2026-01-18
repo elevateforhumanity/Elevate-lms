@@ -1,7 +1,7 @@
 /**
  * SITE NAVIGATION CONFIGURATION
  *
- * Single source of truth for global marketing site navigation.
+ * Single source of truth for global site navigation.
  * Used by SiteHeader and SiteFooter components.
  */
 

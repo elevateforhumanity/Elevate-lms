@@ -14,28 +14,20 @@ export default async function CommunityPage() {
   const supabase = await createClient();
 
   let memberCount = 1000;
-  let discussions: any[] = [];
   let events: any[] = [];
 
   if (supabase) {
     try {
+      // Get member count from profiles
       const { count } = await supabase
         .from('profiles')
         .select('*', { count: 'exact', head: true });
       if (count) memberCount = count;
 
-      const { data: discussionData } = await supabase
-        .from('discussions')
-        .select('*')
-        .eq('is_public', true)
-        .order('created_at', { ascending: false })
-        .limit(5);
-      if (discussionData) discussions = discussionData;
-
+      // Get upcoming events
       const { data: eventData } = await supabase
         .from('events')
-        .select('*')
-        .eq('event_type', 'community')
+        .select('id, title, start_date, description')
         .gte('start_date', new Date().toISOString())
         .order('start_date', { ascending: true })
         .limit(3);
@@ -82,27 +74,29 @@ export default async function CommunityPage() {
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-gray-900">Recent Discussions</h2>
+              <h2 className="text-xl font-bold text-gray-900">Discussion Forums</h2>
               <Link href="/community/discussions" className="text-violet-600 hover:underline text-sm">View All</Link>
             </div>
-            {discussions.length > 0 ? (
-              <div className="space-y-4">
-                {discussions.map((discussion: any) => (
-                  <Link key={discussion.id} href={`/community/discussions/${discussion.id}`} className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <h3 className="font-medium text-gray-900">{discussion.title}</h3>
-                    <p className="text-sm text-gray-500 mt-1">{discussion.reply_count || 0} replies</p>
-                  </Link>
-                ))}
-              </div>
-            ) : (
-              <p className="text-gray-500 text-center py-8">No discussions yet. Start one!</p>
-            )}
+            <div className="space-y-4">
+              <Link href="/community/discussions/general" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
+                <h3 className="font-medium text-gray-900">General Discussion</h3>
+                <p className="text-sm text-gray-500 mt-1">Chat about anything related to your learning journey</p>
+              </Link>
+              <Link href="/community/discussions/career" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
+                <h3 className="font-medium text-gray-900">Career Advice</h3>
+                <p className="text-sm text-gray-500 mt-1">Get tips and share experiences about job hunting</p>
+              </Link>
+              <Link href="/community/discussions/study-groups" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
+                <h3 className="font-medium text-gray-900">Study Groups</h3>
+                <p className="text-sm text-gray-500 mt-1">Find study partners and form groups</p>
+              </Link>
+            </div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold text-gray-900">Upcoming Events</h2>
-              <Link href="/community/events" className="text-violet-600 hover:underline text-sm">View All</Link>
+              <Link href="/events" className="text-violet-600 hover:underline text-sm">View All</Link>
             </div>
             {events.length > 0 ? (
               <div className="space-y-4">
@@ -116,7 +110,7 @@ export default async function CommunityPage() {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500 text-center py-8">No upcoming events.</p>
+              <p className="text-gray-500 text-center py-8">No upcoming events scheduled.</p>
             )}
           </div>
         </div>

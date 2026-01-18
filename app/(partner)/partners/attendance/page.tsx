@@ -23,6 +23,7 @@ export default function PartnerAttendancePage() {
   const [msg, setMsg] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!supabase) return;
     (async () => {
       const { data: staff } = await supabase
         .from('shop_staff')
@@ -32,11 +33,11 @@ export default function PartnerAttendancePage() {
       const first = staff?.[0]?.shop_id ?? '';
       setShopId(first);
     })();
-  }, []);
+  }, [supabase]);
 
   async function loadPlacements() {
     setMsg(null);
-    if (!shopId) return;
+    if (!shopId || !supabase) return;
 
     const { data: placements, error } = await supabase
       .from('apprentice_placements')
@@ -84,6 +85,10 @@ export default function PartnerAttendancePage() {
       submitted: false,
     }));
 
+    if (!supabase) {
+      setMsg('Service unavailable');
+      return;
+    }
     const { error } = await supabase
       .from('partner_attendance')
       .upsert(payload, {

@@ -63,6 +63,17 @@ const beautyPrograms = [
 
 export default async function BeautyProgramsPage() {
   const supabase = await createClient();
+
+  if (!supabase) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
+          <p className="text-gray-600">Please try again later.</p>
+        </div>
+      </div>
+    );
+  }
   
   // Fetch beauty programs
   const { data: dbBeautyPrograms } = await supabase

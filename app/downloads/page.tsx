@@ -20,134 +20,113 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic';
 
+// Resources available for request - actual files will be provided upon enrollment or request
 const defaultResources = {
   handbooks: [
     {
       title: 'Student Handbook 2025-2026',
-      file: 'student-handbook-2025.pdf',
-      size: '2.5 MB',
-      updated: '2025-12-12',
-      description: 'Complete guide to policies, procedures, and student rights',
-    },
-    {
-      title: 'Employee Handbook',
-      file: 'employee-handbook.pdf',
-      size: '1.8 MB',
-      updated: '2025-12-12',
-      description: 'Staff policies, benefits, and workplace guidelines',
+      description: 'Complete guide to policies, procedures, and student rights. Available to enrolled students.',
+      requiresEnrollment: true,
     },
     {
       title: 'Safety Handbook',
-      file: 'safety-handbook.pdf',
-      size: '1.2 MB',
-      updated: '2025-12-12',
-      description: 'Safety protocols and emergency procedures',
+      description: 'Safety protocols and emergency procedures for all programs.',
+      requiresEnrollment: true,
     },
     {
       title: 'FERPA Rights Guide',
-      file: 'ferpa-guide.pdf',
-      size: '800 KB',
-      updated: '2025-12-12',
-      description: 'Student privacy rights and information access',
+      description: 'Student privacy rights and information access.',
+      requiresEnrollment: false,
+      externalUrl: 'https://studentprivacy.ed.gov/faq/what-ferpa',
     },
   ],
   workbooks: [
     {
       title: 'Barbering/Cosmetology Workbook',
-      file: 'barbering-workbook.pdf',
-      size: '3.5 MB',
-      description: 'Practice exercises and skill assessments',
+      description: 'Practice exercises and skill assessments. Provided upon program enrollment.',
+      requiresEnrollment: true,
     },
     {
       title: 'CNA Training Workbook',
-      file: 'cna-workbook.pdf',
-      size: '2.8 MB',
-      description: 'Clinical skills and patient care exercises',
+      description: 'Clinical skills and patient care exercises. Provided upon program enrollment.',
+      requiresEnrollment: true,
     },
     {
       title: 'HVAC Technician Workbook',
-      file: 'hvac-workbook.pdf',
-      size: '3.2 MB',
-      description: 'Technical diagrams and troubleshooting guides',
+      description: 'Technical diagrams and troubleshooting guides. Provided upon program enrollment.',
+      requiresEnrollment: true,
     },
     {
       title: 'Tax Preparation Workbook',
-      file: 'tax-workbook.pdf',
-      size: '2.5 MB',
-      description: 'Practice returns and case studies',
-    },
-    {
-      title: 'CDL Training Workbook',
-      file: 'cdl-workbook.pdf',
-      size: '2.0 MB',
-      description: 'Pre-trip inspection and driving exercises',
+      description: 'Practice returns and case studies. Provided upon program enrollment.',
+      requiresEnrollment: true,
     },
   ],
   forms: [
     {
       title: 'Enrollment Application',
-      file: 'enrollment-application.pdf',
-      size: '500 KB',
+      description: 'Start your application online.',
+      externalUrl: '/apply',
+      isLink: true,
     },
     {
-      title: 'Change of Information Form',
-      file: 'change-of-information.pdf',
-      size: '300 KB',
-    },
-    { title: 'Withdrawal Form', file: 'withdrawal-form.pdf', size: '250 KB' },
-    { title: 'Grievance Form', file: 'grievance-form.pdf', size: '400 KB' },
-    {
-      title: 'Transcript Request Form',
-      file: 'transcript-request.pdf',
-      size: '350 KB',
+      title: 'Contact Us',
+      description: 'Request forms or ask questions.',
+      externalUrl: '/contact',
+      isLink: true,
     },
     {
-      title: 'Leave of Absence Request',
-      file: 'leave-of-absence.pdf',
-      size: '300 KB',
+      title: 'Grievance Form',
+      description: 'Submit a formal grievance. Contact student services.',
+      requiresEnrollment: true,
     },
     {
-      title: 'Re-entry Application',
-      file: 're-entry-application.pdf',
-      size: '400 KB',
+      title: 'Transcript Request',
+      description: 'Request official transcripts. Available to current and former students.',
+      requiresEnrollment: true,
     },
   ],
   guides: [
     {
-      title: 'Student Quick Start Guide',
-      file: 'student-quick-start.pdf',
-      size: '1.5 MB',
-      description: 'First-day orientation and getting started',
+      title: 'How It Works',
+      description: 'Learn about our enrollment process and programs.',
+      externalUrl: '/how-it-works',
+      isLink: true,
     },
     {
-      title: 'LMS User Guide',
-      file: 'lms-user-guide.pdf',
-      size: '2.0 MB',
-      description: 'Navigate the learning management system',
+      title: 'Funding & Financial Aid',
+      description: 'Learn about WIOA funding and financial assistance.',
+      externalUrl: '/funding',
+      isLink: true,
     },
     {
-      title: 'Financial Aid Guide',
-      file: 'financial-aid-guide.pdf',
-      size: '1.8 MB',
-      description: 'Apply for grants, loans, and scholarships',
+      title: 'Career Services',
+      description: 'Resume writing, interviews, and job placement assistance.',
+      externalUrl: '/career-services',
+      isLink: true,
     },
     {
-      title: 'Career Services Guide',
-      file: 'career-services-guide.pdf',
-      size: '1.2 MB',
-      description: 'Resume writing, interviews, and job search',
-    },
-    {
-      title: 'Accommodation Request Guide',
-      file: 'accommodation-guide.pdf',
-      size: '900 KB',
-      description: 'Request disability accommodations',
+      title: 'FAQ',
+      description: 'Frequently asked questions about our programs.',
+      externalUrl: '/faq',
+      isLink: true,
     },
   ],
 };
 
 export default async function DownloadsPage() {
   const supabase = await createClient();
+
+  if (!supabase) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
+          <p className="text-gray-600">Please try again later.</p>
+        </div>
+      </div>
+    );
+  }
 
   // Get documents from database
   const { data: documents } = await supabase
@@ -188,11 +167,12 @@ export default async function DownloadsPage() {
       </section>
 
       {/* Notice */}
-      <section className="py-4 bg-amber-50 border-b border-amber-200">
+      <section className="py-4 bg-blue-50 border-b border-blue-200">
         <div className="container mx-auto px-4">
-          <p className="text-center text-amber-800">
-            <strong>Note:</strong> Documents are available upon request. Click "Call to Request" or call{' '}
-            <a href="tel:+13173143757" className="font-bold underline">(317) 314-3757</a> to receive any document.
+          <p className="text-center text-blue-800">
+            <strong>Note:</strong> Some materials are available only to enrolled students. 
+            <Link href="/apply" className="font-bold underline ml-1">Apply now</Link> to access all resources, 
+            or call <a href="tel:+13173143757" className="font-bold underline">(317) 314-3757</a> for questions.
           </p>
         </div>
       </section>
@@ -257,15 +237,11 @@ export default async function DownloadsPage() {
                         <p className="text-sm text-gray-600 mb-3">
                           {item.description}
                         </p>
-                        <div className="flex items-center gap-4 text-sm text-gray-500">
-                          <span>{item.size || item.file_size}</span>
-                          {item.updated && (
-                            <>
-                              <span>•</span>
-                              <span>Updated {item.updated}</span>
-                            </>
-                          )}
-                        </div>
+                        {item.requiresEnrollment && (
+                          <span className="inline-block text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
+                            Available upon enrollment
+                          </span>
+                        )}
                       </div>
                       <FileText className="w-8 h-8 text-blue-600 flex-shrink-0" />
                     </div>
@@ -278,14 +254,23 @@ export default async function DownloadsPage() {
                         <Download className="w-4 h-4" />
                         <span>Download PDF</span>
                       </a>
-                    ) : (
+                    ) : item.externalUrl ? (
                       <a
-                        href="tel:+13173143757"
+                        href={item.externalUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-full mt-4 flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                       >
-                        <Download className="w-4 h-4" />
-                        <span>Call to Request</span>
+                        <FileText className="w-4 h-4" />
+                        <span>View Resource</span>
                       </a>
+                    ) : (
+                      <Link
+                        href="/apply"
+                        className="w-full mt-4 flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                      >
+                        <span>Enroll to Access</span>
+                      </Link>
                     )}
                   </div>
                 ))}
@@ -300,6 +285,9 @@ export default async function DownloadsPage() {
                   Program Workbooks
                 </h2>
               </div>
+              <p className="text-gray-600 mb-6">
+                Program workbooks are provided to enrolled students as part of their training materials.
+              </p>
               <div className="grid md:grid-cols-2 gap-6">
                 {displayWorkbooks.map((item: any, index: number) => (
                   <div
@@ -314,44 +302,32 @@ export default async function DownloadsPage() {
                         <p className="text-sm text-gray-600 mb-3">
                           {item.description}
                         </p>
-                        <div className="text-sm text-gray-500">
-                          <span>{item.size || item.file_size}</span>
-                        </div>
+                        <span className="inline-block text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
+                          Provided upon enrollment
+                        </span>
                       </div>
                       <BookOpen className="w-8 h-8 text-green-600 flex-shrink-0" />
                     </div>
-                    {item.url ? (
-                      <a
-                        href={item.url}
-                        className="w-full mt-4 flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
-                        download
-                      >
-                        <Download className="w-4 h-4" />
-                        <span>Download PDF</span>
-                      </a>
-                    ) : (
-                      <a
-                        href="tel:+13173143757"
-                        className="w-full mt-4 flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
-                      >
-                        <Download className="w-4 h-4" />
-                        <span>Call to Request</span>
-                      </a>
-                    )}
+                    <Link
+                      href="/programs"
+                      className="w-full mt-4 flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                    >
+                      <span>View Programs</span>
+                    </Link>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Forms */}
+            {/* Forms & Quick Links */}
             <div id="forms">
               <div className="flex items-center gap-3 mb-8">
                 <FileCheck className="w-8 h-8 text-purple-600" />
                 <h2 className="text-2xl md:text-3xl font-bold">
-                  Forms & Applications
+                  Forms & Quick Links
                 </h2>
               </div>
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-2 gap-6">
                 {displayForms.map((item: any, index: number) => (
                   <div
                     key={item.id || index}
@@ -359,24 +335,28 @@ export default async function DownloadsPage() {
                   >
                     <FileText className="w-8 h-8 text-purple-600 mb-3" />
                     <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                    <div className="text-sm text-gray-500 mb-4">
-                      <span>{item.size || item.file_size}</span>
-                    </div>
-                    {item.url ? (
-                      <a
-                        href={item.url}
+                    <p className="text-sm text-gray-600 mb-4">
+                      {item.description}
+                    </p>
+                    {item.isLink && item.externalUrl ? (
+                      <Link
+                        href={item.externalUrl}
                         className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm"
-                        download
                       >
-                        <Download className="w-4 h-4" />
-                        <span>Download</span>
-                      </a>
+                        <span>Go to Page</span>
+                      </Link>
+                    ) : item.requiresEnrollment ? (
+                      <Link
+                        href="/contact"
+                        className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm"
+                      >
+                        <span>Contact Student Services</span>
+                      </Link>
                     ) : (
                       <a
                         href="tel:+13173143757"
                         className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm"
                       >
-                        <Download className="w-4 h-4" />
                         <span>Call to Request</span>
                       </a>
                     )}
@@ -385,12 +365,12 @@ export default async function DownloadsPage() {
               </div>
             </div>
 
-            {/* Guides */}
+            {/* Guides & Resources */}
             <div id="guides">
               <div className="flex items-center gap-3 mb-8">
                 <FileText className="w-8 h-8 text-orange-600" />
                 <h2 className="text-2xl md:text-3xl font-bold">
-                  Student Guides
+                  Guides & Resources
                 </h2>
               </div>
               <div className="grid md:grid-cols-2 gap-6">
@@ -407,28 +387,22 @@ export default async function DownloadsPage() {
                         <p className="text-sm text-gray-600 mb-3">
                           {item.description}
                         </p>
-                        <div className="text-sm text-gray-500">
-                          <span>{item.size || item.file_size}</span>
-                        </div>
                       </div>
                       <FileText className="w-8 h-8 text-orange-600 flex-shrink-0" />
                     </div>
-                    {item.url ? (
-                      <a
-                        href={item.url}
+                    {item.externalUrl ? (
+                      <Link
+                        href={item.externalUrl}
                         className="w-full mt-4 flex items-center justify-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors"
-                        download
                       >
-                        <Download className="w-4 h-4" />
-                        <span>Download PDF</span>
-                      </a>
+                        <span>Learn More</span>
+                      </Link>
                     ) : (
                       <a
                         href="tel:+13173143757"
                         className="w-full mt-4 flex items-center justify-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors"
                       >
-                        <Download className="w-4 h-4" />
-                        <span>Call to Request</span>
+                        <span>Call for Info</span>
                       </a>
                     )}
                   </div>

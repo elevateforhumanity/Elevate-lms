@@ -11,9 +11,6 @@ import Split from 'react-split';
 import FileTree from '@/components/editor/FileTree';
 import CodeEditor from '@/components/editor/CodeEditor';
 import Terminal from '@/components/editor/Terminal';
-import { createClient } from '@/lib/supabase/server';
-
-
 export const dynamic = 'force-dynamic';
 
 // Mock file structure

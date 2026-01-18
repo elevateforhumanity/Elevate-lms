@@ -32,6 +32,11 @@ export default function AcceptInvitePage({
   async function loadInvite() {
     try {
       const supabase = createClient();
+      if (!supabase) {
+        setError('Service unavailable');
+        setLoading(false);
+        return;
+      }
 
       const { data, error } = await (supabase as any).rpc('get_org_invite_by_token', {
         p_token: params.token,
@@ -78,6 +83,11 @@ export default function AcceptInvitePage({
 
     try {
       const supabase = createClient();
+      if (!supabase) {
+        setError('Service unavailable');
+        setAccepting(false);
+        return;
+      }
 
       // Check if user is logged in
       const {

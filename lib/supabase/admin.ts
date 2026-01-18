@@ -1,16 +1,14 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-export function createAdminClient(): SupabaseClient<any> {
+export function createAdminClient(): SupabaseClient<any> | null {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!url || !key) {
-    console.error('Supabase admin credentials missing:', {
-      hasUrl: !!url,
-      hasKey: !!key,
-      urlPrefix: url?.substring(0, 20),
-    });
-    throw new Error('Supabase admin credentials not configured');
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('[Supabase Admin] Missing credentials. Admin features disabled.');
+    }
+    return null;
   }
 
   return createClient(url, key, {

@@ -39,7 +39,7 @@ export default function InstructorProgramAnnouncementsPage() {
     const supabase = createClient();
     
     // Check auth
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data: { user } } = await supabase?.auth.getUser();
     if (!user) {
       router.push('/login');
       return;
@@ -91,7 +91,7 @@ export default function InstructorProgramAnnouncementsPage() {
     setPosting(true);
     const supabase = createClient();
     
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data: { user } } = await supabase?.auth.getUser();
     if (!user) {
       router.push('/login');
       return;

@@ -8,11 +8,15 @@ export const metadata = {
 
 export default async function EmployerOnboardingReview() {
   const supabase = createAdminClient();
-
-  const { data: onboardings } = await supabase
-    .from('employer_onboarding')
-    .select('*')
-    .order('created_at', { ascending: false });
+  
+  let onboardings: any[] = [];
+  if (supabase) {
+    const { data } = await supabase
+      .from('employer_onboarding')
+      .select('*')
+      .order('created_at', { ascending: false });
+    onboardings = data || [];
+  }
 
   const statusColors: Record<string, string> = {
     submitted: 'bg-yellow-100 text-yellow-800',

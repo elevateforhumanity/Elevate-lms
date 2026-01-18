@@ -52,7 +52,7 @@ export default function DemoHubPage() {
               Explore the Platform
             </h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Browse live pages across the LMS, admin dashboards, and marketing site.
+              Browse live pages across the platform, portals, and dashboards.
             </p>
           </div>
 

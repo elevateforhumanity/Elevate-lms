@@ -20,7 +20,6 @@ import {
 import Image from 'next/image';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 export const dynamic = 'force-dynamic';
-import { createClient } from '@/lib/supabase/server';
 
 interface MediaFile {
   name: string;

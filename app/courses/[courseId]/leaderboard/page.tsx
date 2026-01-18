@@ -28,6 +28,10 @@ export default function CourseLeaderboardPage() {
 
   async function loadData() {
     const supabase = createClient();
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
 
     // Load course
     const { data: courseData } = await supabase

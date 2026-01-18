@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { Bell, Send, Users, CheckCircle, AlertCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 export const dynamic = 'force-dynamic';
-import { createClient } from '@/lib/supabase/server';
 
 function QuickTemplate({
   title,

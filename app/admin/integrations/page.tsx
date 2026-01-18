@@ -22,6 +22,10 @@ export default function IntegrationsPage() {
   }, []);
 
   async function loadData() {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
     const { data }: any = await supabase
       .from('integrations')
       .select('*')
@@ -32,6 +36,7 @@ export default function IntegrationsPage() {
   }
 
   async function toggleIntegration(id: string, currentStatus: boolean) {
+    if (!supabase) return;
     await supabase
       .from('integrations')
       .update({ is_active: !currentStatus })

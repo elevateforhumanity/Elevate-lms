@@ -19,13 +19,13 @@ export default function VerifyEmailPage() {
     try {
       const {
         data: { user },
-      } = await supabase.auth.getUser();
+      } = await supabase?.auth.getUser();
       if (!user?.email) {
         setStatus('error');
         return;
       }
 
-      const { error } = await supabase.auth.resend({
+      const { error } = await supabase?.auth.resend({
         type: 'signup',
         email: user.email,
       });

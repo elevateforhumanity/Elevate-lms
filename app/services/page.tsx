@@ -300,12 +300,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 px-4 bg-gray-100 text-center border-t border-gray-200">
-        <p className="text-sm text-black">
-          © {new Date().getFullYear()} Elevate for Humanity. All rights reserved.
-        </p>
-      </footer>
     </div>
   );
 }

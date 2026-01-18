@@ -24,7 +24,7 @@ export default function VerifyEmailPage() {
 
     if (emailParam) {
       setEmail(emailParam);
-    } else {
+    } else if (supabase) {
       // Get from current user
       supabase.auth.getUser().then(({ data }) => {
         if (data.user?.email) {
@@ -40,6 +40,7 @@ export default function VerifyEmailPage() {
     setResent(false);
 
     try {
+      if (!supabase) throw new Error('Service unavailable');
       const { error } = await supabase.auth.resend({
         type: 'signup',
         email,
