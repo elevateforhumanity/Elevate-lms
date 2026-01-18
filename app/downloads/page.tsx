@@ -187,6 +187,16 @@ export default async function DownloadsPage() {
         </div>
       </section>
 
+      {/* Notice */}
+      <section className="py-4 bg-amber-50 border-b border-amber-200">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-amber-800">
+            <strong>Note:</strong> Documents are available upon request. Click "Call to Request" or call{' '}
+            <a href="tel:+13173143757" className="font-bold underline">(317) 314-3757</a> to receive any document.
+          </p>
+        </div>
+      </section>
+
       {/* Quick Links */}
       <section className="py-8 bg-white border-b">
         <div className="container mx-auto px-4">
@@ -259,14 +269,24 @@ export default async function DownloadsPage() {
                       </div>
                       <FileText className="w-8 h-8 text-blue-600 flex-shrink-0" />
                     </div>
-                    <a
-                      href={item.url || `/downloads/${item.file}`}
-                      className="w-full mt-4 flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                      download
-                    >
-                      <Download className="w-4 h-4" />
-                      <span>Download PDF</span>
-                    </a>
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        className="w-full mt-4 flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                        download
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>Download PDF</span>
+                      </a>
+                    ) : (
+                      <a
+                        href="tel:+13173143757"
+                        className="w-full mt-4 flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>Call to Request</span>
+                      </a>
+                    )}
                   </div>
                 ))}
               </div>
@@ -300,14 +320,24 @@ export default async function DownloadsPage() {
                       </div>
                       <BookOpen className="w-8 h-8 text-green-600 flex-shrink-0" />
                     </div>
-                    <a
-                      href={item.url || `/downloads/${item.file}`}
-                      className="w-full mt-4 flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
-                      download
-                    >
-                      <Download className="w-4 h-4" />
-                      <span>Download PDF</span>
-                    </a>
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        className="w-full mt-4 flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                        download
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>Download PDF</span>
+                      </a>
+                    ) : (
+                      <a
+                        href="tel:+13173143757"
+                        className="w-full mt-4 flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>Call to Request</span>
+                      </a>
+                    )}
                   </div>
                 ))}
               </div>
@@ -332,14 +362,24 @@ export default async function DownloadsPage() {
                     <div className="text-sm text-gray-500 mb-4">
                       <span>{item.size || item.file_size}</span>
                     </div>
-                    <a
-                      href={item.url || `/downloads/${item.file}`}
-                      className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm"
-                      download
-                    >
-                      <Download className="w-4 h-4" />
-                      <span>Download</span>
-                    </a>
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm"
+                        download
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>Download</span>
+                      </a>
+                    ) : (
+                      <a
+                        href="tel:+13173143757"
+                        className="w-full flex items-center justify-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm"
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>Call to Request</span>
+                      </a>
+                    )}
                   </div>
                 ))}
               </div>
@@ -373,14 +413,24 @@ export default async function DownloadsPage() {
                       </div>
                       <FileText className="w-8 h-8 text-orange-600 flex-shrink-0" />
                     </div>
-                    <a
-                      href={item.url || `/downloads/${item.file}`}
-                      className="w-full mt-4 flex items-center justify-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors"
-                      download
-                    >
-                      <Download className="w-4 h-4" />
-                      <span>Download PDF</span>
-                    </a>
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        className="w-full mt-4 flex items-center justify-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors"
+                        download
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>Download PDF</span>
+                      </a>
+                    ) : (
+                      <a
+                        href="tel:+13173143757"
+                        className="w-full mt-4 flex items-center justify-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors"
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>Call to Request</span>
+                      </a>
+                    )}
                   </div>
                 ))}
               </div>
