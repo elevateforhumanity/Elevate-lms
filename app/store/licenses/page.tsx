@@ -35,7 +35,7 @@ export default async function LicensesPage() {
   return (
     <div className="bg-white">
       {/* Hero Section with Video */}
-      <section className="relative min-h-[600px] flex items-center overflow-hidden">
+      <section className="relative min-h-[600px] flex items-center overflow-hidden bg-zinc-900">
         {/* Video Background */}
         <video
           autoPlay
@@ -43,19 +43,9 @@ export default async function LicensesPage() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="/images/pexels/store-hero.jpg"
         >
           <source src="/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
         </video>
-        {/* Fallback Image */}
-        <Image
-          src="/images/pexels/store-hero.jpg"
-          alt="Workforce training platform"
-          fill
-          className="object-cover -z-10"
-          priority
-          quality={90}
-        />
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-zinc-900/95 via-zinc-900/80 to-zinc-900/60" />
 

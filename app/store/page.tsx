@@ -93,7 +93,7 @@ export default async function StorePage() {
   return (
     <div className="bg-white">
       {/* Hero Section with Video */}
-      <section className="relative min-h-[550px] flex items-center overflow-hidden">
+      <section className="relative min-h-[550px] flex items-center overflow-hidden bg-blue-900">
         {/* Video Background */}
         <video
           autoPlay
@@ -101,19 +101,9 @@ export default async function StorePage() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="/images/pexels/store-hero.jpg"
         >
           <source src="/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
         </video>
-        {/* Fallback Image */}
-        <Image
-          src="/images/pexels/store-hero.jpg"
-          alt="Elevate Store"
-          fill
-          className="object-cover -z-10"
-          priority
-          quality={90}
-        />
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 via-blue-900/85 to-blue-900/70" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
