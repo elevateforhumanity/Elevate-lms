@@ -2,13 +2,15 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { BookOpen, Calendar, User, ArrowRight, Tag } from 'lucide-react';
+import { BookOpen, Calendar, User, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Blog | Elevate For Humanity',
   description: 'Insights, stories, and tips from our community.',
 };
 
+// Dynamic rendering - fetches fresh data on each request
+// Required because we fetch from database
 export const dynamic = 'force-dynamic';
 
 export default async function BlogPage() {
