@@ -1,15 +1,243 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+import { 
+  Target, Search, Filter, Plus, Mail, Phone, Calendar,
+  MoreVertical, TrendingUp, Clock, ArrowRight
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'CRM Leads | Elevate for Humanity',
-  description: 'Manage CRM leads.',
+  title: 'Leads | CRM | Admin | Elevate For Humanity',
+  description: 'Manage and track sales leads.',
+  robots: { index: false, follow: false },
 };
 
-export default function Page() {
+export const dynamic = 'force-dynamic';
+
+export default async function LeadsPage() {
+  const supabase = await createClient();
+
+  if (!supabase) {
+    redirect('/login?redirect=/admin/crm/leads');
+  }
+
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/login?redirect=/admin/crm/leads');
+  }
+
+  const leads = [
+    {
+      id: 1,
+      name: 'Workforce Development Board',
+      contact: 'John Smith',
+      email: 'jsmith@wdb.gov',
+      source: 'Referral',
+      value: '$50,000',
+      stage: 'Qualified',
+      probability: 75,
+      nextAction: 'Schedule demo',
+      dueDate: 'Tomorrow',
+    },
+    {
+      id: 2,
+      name: 'Metro Healthcare System',
+      contact: 'Lisa Anderson',
+      email: 'landerson@metro.health',
+      source: 'Website',
+      value: '$35,000',
+      stage: 'Proposal',
+      probability: 60,
+      nextAction: 'Send proposal',
+      dueDate: 'Jan 22',
+    },
+    {
+      id: 3,
+      name: 'City Community College',
+      contact: 'Robert Davis',
+      email: 'rdavis@citycollege.edu',
+      source: 'Conference',
+      value: '$75,000',
+      stage: 'Discovery',
+      probability: 40,
+      nextAction: 'Needs assessment call',
+      dueDate: 'Jan 25',
+    },
+    {
+      id: 4,
+      name: 'Regional Training Center',
+      contact: 'Maria Garcia',
+      email: 'mgarcia@rtc.org',
+      source: 'Cold Outreach',
+      value: '$25,000',
+      stage: 'Initial Contact',
+      probability: 20,
+      nextAction: 'Follow-up email',
+      dueDate: 'Jan 20',
+    },
+  ];
+
+  const stages = ['All Stages', 'Initial Contact', 'Discovery', 'Qualified', 'Proposal', 'Negotiation', 'Closed Won'];
+
+  const getStageColor = (stage: string) => {
+    switch (stage) {
+      case 'Initial Contact': return 'bg-gray-100 text-gray-700';
+      case 'Discovery': return 'bg-blue-100 text-blue-700';
+      case 'Qualified': return 'bg-yellow-100 text-yellow-700';
+      case 'Proposal': return 'bg-purple-100 text-purple-700';
+      case 'Negotiation': return 'bg-orange-100 text-orange-700';
+      case 'Closed Won': return 'bg-green-100 text-green-700';
+      default: return 'bg-gray-100 text-gray-700';
+    }
+  };
+
+  const stats = [
+    { label: 'Total Leads', value: '24', change: '+5 this week' },
+    { label: 'Pipeline Value', value: '$185,000', change: '+12%' },
+    { label: 'Avg. Deal Size', value: '$46,250', change: '+8%' },
+    { label: 'Win Rate', value: '32%', change: '+3%' },
+  ];
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">CRM Leads</h1>
-      <p className="text-gray-600">This page is under construction.</p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <section className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <Target className="w-8 h-8 text-orange-600" />
+                <h1 className="text-3xl font-bold text-gray-900">Leads</h1>
+              </div>
+              <p className="text-gray-600">Track and manage your sales pipeline</p>
+            </div>
+            <Link
+              href="/admin/crm/leads/new"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors"
+            >
+              <Plus className="w-5 h-5" />
+              Add Lead
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((stat, index) => (
+              <div key={index}>
+                <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                <p className="text-gray-500 text-sm">{stat.label}</p>
+                <p className="text-green-600 text-sm font-medium">{stat.change}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Filters */}
+      <section className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search leads..."
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              />
+            </div>
+            <div className="flex gap-3">
+              <select className="px-4 py-2 border border-gray-300 rounded-lg">
+                {stages.map((stage) => (
+                  <option key={stage}>{stage}</option>
+                ))}
+              </select>
+              <select className="px-4 py-2 border border-gray-300 rounded-lg">
+                <option>All Sources</option>
+                <option>Website</option>
+                <option>Referral</option>
+                <option>Conference</option>
+                <option>Cold Outreach</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leads Table */}
+      <section className="py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <table className="w-full">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Lead</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Value</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Stage</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Probability</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Next Action</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {leads.map((lead) => (
+                  <tr key={lead.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4">
+                      <div>
+                        <p className="font-medium text-gray-900">{lead.name}</p>
+                        <p className="text-gray-500 text-sm">{lead.contact}</p>
+                        <p className="text-gray-400 text-sm">{lead.email}</p>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className="font-semibold text-gray-900">{lead.value}</span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStageColor(lead.stage)}`}>
+                        {lead.stage}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-16 h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-orange-500 rounded-full"
+                            style={{ width: `${lead.probability}%` }}
+                          />
+                        </div>
+                        <span className="text-sm text-gray-600">{lead.probability}%</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div>
+                        <p className="text-gray-900 text-sm">{lead.nextAction}</p>
+                        <p className="text-gray-500 text-xs flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          Due: {lead.dueDate}
+                        </p>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <Link
+                        href={`/admin/crm/leads/${lead.id}`}
+                        className="text-orange-600 hover:text-orange-700 font-medium text-sm"
+                      >
+                        View
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

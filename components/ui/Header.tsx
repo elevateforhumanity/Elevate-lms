@@ -42,6 +42,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
       name: 'Programs',
       href: '/programs',
       dropdown: [
+        { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
         { name: 'Healthcare', href: '/programs/healthcare' },
         { name: 'Skilled Trades', href: '/programs/skilled-trades' },
         { name: 'Beauty & Wellness', href: '/programs/beauty' },
@@ -49,6 +50,18 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
         { name: 'Technology', href: '/programs/technology' },
         { name: 'Apprenticeships', href: '/programs/apprenticeships' },
         { name: 'All Programs', href: '/programs' },
+      ],
+    },
+    {
+      name: 'Community',
+      href: '/community',
+      dropdown: [
+        { name: 'Community Hub', href: '/community' },
+        { name: 'Discussions', href: '/community/discussions' },
+        { name: 'Classroom', href: '/community/classroom' },
+        { name: 'Events', href: '/community/events' },
+        { name: 'Leaderboard', href: '/community/leaderboard' },
+        { name: 'Members', href: '/community/members' },
       ],
     },
     {
@@ -69,6 +82,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
       dropdown: [
         { name: 'Hire Graduates', href: '/hire-graduates' },
         { name: 'Host Apprentices', href: '/employers/apprenticeships' },
+        { name: 'WOTC Tax Credits', href: '/wotc' },
         { name: 'Post a Job', href: '/employers/post-job' },
         { name: 'Employer Portal', href: '/employer/dashboard' },
         { name: 'Workforce Partners', href: '/workforce-partners' },
@@ -82,20 +96,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
         { name: 'Store & Licensing', href: '/store' },
         { name: 'Platform Demo', href: '/store/demo' },
         { name: 'Pricing', href: '/pricing' },
-        { name: 'Community Hub', href: '/community' },
         { name: 'Marketplace', href: '/marketplace' },
-      ],
-    },
-    {
-      name: 'Resources',
-      href: '/resources',
-      dropdown: [
-        { name: 'Success Stories', href: '/success-stories' },
-        { name: 'FAQ', href: '/faq' },
-        { name: 'Blog', href: '/blog' },
-        { name: 'Funding Options', href: '/funding' },
-        { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
-        { name: 'Help Center', href: '/help' },
       ],
     },
     {
@@ -103,10 +104,12 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
       href: '/about',
       dropdown: [
         { name: 'Our Mission', href: '/about' },
+        { name: 'Success Stories', href: '/success-stories' },
         { name: 'Leadership Team', href: '/about/team' },
         { name: 'Partners', href: '/partners' },
         { name: 'Careers', href: '/careers' },
         { name: 'Contact Us', href: '/contact' },
+        { name: 'FAQ', href: '/faq' },
       ],
     },
   ];
