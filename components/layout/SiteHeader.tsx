@@ -135,6 +135,9 @@ export default function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const user = useSafeUser();
+  
+  // DEBUG: Force red text to see if header renders
+  const DEBUG_MODE = true;
 
   // Track mount state to avoid hydration mismatch
   useEffect(() => {
@@ -154,8 +157,10 @@ export default function SiteHeader() {
   }, []);
 
   // Server-side render with solid header to avoid flash
-  const headerBg = !mounted ? 'bg-white shadow-sm' : (isScrolled ? 'bg-white shadow-sm' : 'bg-transparent');
-  const textColor = !mounted ? 'text-gray-700' : (isScrolled ? 'text-gray-700' : 'text-white');
+  // DEBUG: Force yellow background
+  const headerBg = DEBUG_MODE ? 'bg-yellow-300 shadow-sm' : (!mounted ? 'bg-white shadow-sm' : (isScrolled ? 'bg-white shadow-sm' : 'bg-transparent'));
+  // DEBUG: Force red text
+  const textColor = DEBUG_MODE ? 'text-red-600' : (!mounted ? 'text-gray-700' : (isScrolled ? 'text-gray-700' : 'text-white'));
 
   return (
     <>
