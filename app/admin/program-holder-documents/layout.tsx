@@ -1,0 +1,17 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Admin | Program holder documents | Elevate for Humanity',
+  description: 'Elevate for Humanity - Career training and workforce development programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/admin/program-holder-documents',
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
+}
