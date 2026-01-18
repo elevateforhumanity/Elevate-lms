@@ -2,6 +2,9 @@ import { withSentryConfig } from '@sentry/nextjs';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Disable dev indicators (build indicator, etc.)
+  devIndicators: false,
+  
   // Disable Turbopack, use webpack
   // turbopack: false, // This doesn't work in Next 16
 
