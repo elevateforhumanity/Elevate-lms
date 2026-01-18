@@ -489,36 +489,36 @@ export default function HomePage() {
             Explore All Programs
           </Link>
 
-          {/* Program Cards - 3 columns with compact images */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {/* Program Cards - Full width on mobile, 3 columns on desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {programs.map((program) => (
               <article 
                 key={program.title}
-                className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-100 max-w-sm mx-auto sm:max-w-none"
+                className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-100"
               >
-                {/* Compact image container */}
-                <div className="relative h-36 md:h-32 lg:h-40">
+                {/* Image container */}
+                <div className="relative h-48 sm:h-52 lg:h-48">
                   <Image
                     src={program.image}
                     alt={program.alt}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     quality={85}
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     loading="lazy"
                   />
-                  <div className="absolute top-3 left-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap">
+                  <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap shadow-md">
                     {program.duration}
                   </div>
                 </div>
                 {/* Content below */}
-                <div className="p-4">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">
+                <div className="p-5 sm:p-6">
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
                     {program.title}
                   </h3>
-                  <ul className="space-y-1.5 mb-4">
+                  <ul className="space-y-2 mb-5">
                     {program.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2 text-sm text-slate-600">
+                      <li key={item} className="flex items-center gap-2.5 text-sm text-slate-600">
                         <CheckIcon />
                         {item}
                       </li>
@@ -526,7 +526,7 @@ export default function HomePage() {
                   </ul>
                   <Link 
                     href={program.href} 
-                    className="inline-flex items-center justify-center w-full bg-blue-600 text-white px-4 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-sm"
+                    className="inline-flex items-center justify-center w-full bg-blue-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
                   >
                     Learn More
                   </Link>
