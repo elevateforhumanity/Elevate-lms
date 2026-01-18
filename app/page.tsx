@@ -198,7 +198,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       {/* Professional voiceover - starts immediately after page loads */}
       <VoiceoverWithMusic audioSrc="/audio/welcome-voiceover.mp3" delay={100} />
 
@@ -894,8 +894,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Mobile bottom spacer to prevent CTA from covering footer */}
+      <div className="h-20 md:hidden" />
+
       {/* Sticky Mobile CTA - Auth-Aware */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 p-3 shadow-lg">
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-gray-200 p-3 shadow-lg">
         <div className="flex gap-2">
           {user && activeEnrollment ? (
             <>
@@ -945,9 +948,6 @@ export default function HomePage() {
           )}
         </div>
       </div>
-
-      {/* Spacer for sticky CTA on mobile */}
-      <div className="h-16 md:hidden"></div>
 
     </div>
   );

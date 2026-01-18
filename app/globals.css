@@ -130,8 +130,7 @@ html, body {
     @apply bg-white text-slate-900 antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    min-height: 100vh;
-    min-height: 100svh;
+    min-height: 100dvh; /* Use dynamic viewport height for mobile */
     display: flex;
     flex-direction: column;
   }
@@ -1141,7 +1140,7 @@ body {
 @media (max-width: 768px) {
   html,
   body {
-    overflow-x: hidden;
+    /* overflow-x: hidden removed - can clip fixed positioned elements */
     width: 100%;
     max-width: 100vw;
   }

@@ -283,6 +283,12 @@ export default function BarberApprenticeshipPage() {
             </h2>
 
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+              <div className="text-center mb-6">
+                <p className="text-sm text-purple-600 font-semibold uppercase tracking-wide mb-2">Self-Pay Program</p>
+                <p className="text-4xl font-bold text-gray-900">$4,980</p>
+                <p className="text-gray-500 mt-1">Total program tuition</p>
+              </div>
+              
               <p className="text-lg text-gray-700 mb-6">
                 This is a self-pay program. State workforce funding (WIOA) is not available for this apprenticeship.
               </p>

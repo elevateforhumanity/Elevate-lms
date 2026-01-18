@@ -3,15 +3,13 @@ import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
 import type { SupabaseClient } from '@supabase/supabase-js';
 
-export async function createClient(): Promise<SupabaseClient<any>> {
+export async function createClient(): Promise<SupabaseClient<any> | null> {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error(
-      'Missing Supabase environment variables. ' +
-      'Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in your environment.'
-    );
+    console.warn('[Supabase Server] Missing env vars - returning null client');
+    return null;
   }
 
   const cookieStore = await cookies();
@@ -38,15 +36,13 @@ export async function createClient(): Promise<SupabaseClient<any>> {
   );
 }
 
-export function createAdminClient(): SupabaseClient<any> {
+export function createAdminClient(): SupabaseClient<any> | null {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!supabaseUrl || !serviceRoleKey) {
-    throw new Error(
-      'Missing Supabase admin credentials. ' +
-      'Please set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in your environment.'
-    );
+    console.warn('[Supabase Admin] Missing env vars - returning null client');
+    return null;
   }
 
   return createSupabaseClient(

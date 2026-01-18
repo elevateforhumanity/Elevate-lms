@@ -1,67 +1,59 @@
-import { z } from 'zod';
+// Environment configuration with SAFE fallbacks
+// This file ensures the app NEVER crashes due to missing env vars
 
-/**
- * Environment variable validation schema
- * Validates critical env vars at runtime
- */
-const EnvSchema = z.object({
-  // Supabase (required)
-  NEXT_PUBLIC_SUPABASE_URL: z.string().url('Invalid Supabase URL'),
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: z
-    .string()
-    .min(20, 'Invalid Supabase anon key'),
+// Safe env access - returns empty string if not set
+function safeEnv(key: string): string {
+  if (typeof process === 'undefined') return '';
+  return process.env[key] || '';
+}
 
-  // Service role (required for server operations)
-  SUPABASE_SERVICE_ROLE_KEY: z.string().min(20, 'Service role key required'),
+export const env = {
+  // Supabase
+  NEXT_PUBLIC_SUPABASE_URL: safeEnv('NEXT_PUBLIC_SUPABASE_URL'),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: safeEnv('NEXT_PUBLIC_SUPABASE_ANON_KEY'),
+  SUPABASE_SERVICE_ROLE_KEY: safeEnv('SUPABASE_SERVICE_ROLE_KEY'),
+  DATABASE_URL: safeEnv('DATABASE_URL'),
+  
+  // Site
+  NEXT_PUBLIC_SITE_URL: safeEnv('NEXT_PUBLIC_SITE_URL') || 'https://www.elevateforhumanity.org',
+  
+  // Stripe
+  STRIPE_SECRET_KEY: safeEnv('STRIPE_SECRET_KEY'),
+  STRIPE_WEBHOOK_SECRET: safeEnv('STRIPE_WEBHOOK_SECRET'),
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: safeEnv('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY'),
+  
+  // Email
+  RESEND_API_KEY: safeEnv('RESEND_API_KEY'),
+  
+  // OpenAI
+  OPENAI_API_KEY: safeEnv('OPENAI_API_KEY'),
+  
+  // Turnstile
+  TURNSTILE_SECRET_KEY: safeEnv('TURNSTILE_SECRET_KEY'),
+  NEXT_PUBLIC_TURNSTILE_SITE_KEY: safeEnv('NEXT_PUBLIC_TURNSTILE_SITE_KEY'),
+} as const;
 
-  // Database URL (required)
-  DATABASE_URL: z.string().url('Invalid database URL'),
-
-  // Site URL (required)
-  NEXT_PUBLIC_SITE_URL: z.string().url('Site URL required'),
-
-  // Email (optional)
-  RESEND_API_KEY: z.string().min(10).optional(),
-
-  // Stripe (optional)
-  STRIPE_SECRET_KEY: z.string().min(20).optional(),
-  STRIPE_WEBHOOK_SECRET: z.string().min(20).optional(),
-  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(20).optional(),
-});
-
-/**
- * Validated environment variables
- * Use this instead of process.env for type safety
- *
- * @example
- * ```ts
- * import { env } from '@/lib/env';
- *
- * const supabase = createClient(
- *   env.NEXT_PUBLIC_SUPABASE_URL,
- *   env.NEXT_PUBLIC_SUPABASE_ANON_KEY
- * );
- * ```
- */
-export const env = EnvSchema.parse(process.env);
-
-/**
- * Check if service role key is configured
- */
+// Service availability checks - never throw
 export function hasServiceRoleKey(): boolean {
-  return !!env.SUPABASE_SERVICE_ROLE_KEY;
+  return Boolean(env.SUPABASE_SERVICE_ROLE_KEY);
 }
 
-/**
- * Check if email is configured
- */
 export function hasEmailConfigured(): boolean {
-  return !!env.RESEND_API_KEY;
+  return Boolean(env.RESEND_API_KEY);
 }
 
-/**
- * Check if Stripe is configured
- */
 export function hasStripeConfigured(): boolean {
-  return !!env.STRIPE_SECRET_KEY && !!env.STRIPE_WEBHOOK_SECRET;
+  return Boolean(env.STRIPE_SECRET_KEY && env.STRIPE_WEBHOOK_SECRET);
+}
+
+export function hasSupabaseConfigured(): boolean {
+  return Boolean(env.NEXT_PUBLIC_SUPABASE_URL && env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+}
+
+export function hasOpenAIConfigured(): boolean {
+  return Boolean(env.OPENAI_API_KEY);
+}
+
+export function hasTurnstileConfigured(): boolean {
+  return Boolean(env.TURNSTILE_SECRET_KEY && env.NEXT_PUBLIC_TURNSTILE_SITE_KEY);
 }

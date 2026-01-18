@@ -1,11 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-
-// Lazy load audio components
-const AmbientMusic = dynamic(() => import('./AmbientMusic'), { ssr: false });
-const VoiceoverWithMusic = dynamic(() => import('./VoiceoverWithMusic'), { ssr: false });
+import { useEffect, useState, ComponentType } from 'react';
 
 interface PageAudioProps {
   // For pages with voiceover (like homepage)
@@ -52,16 +47,38 @@ export default function PageAudio({
     return () => clearTimeout(timer);
   }, []);
 
+  const [AudioComponent, setAudioComponent] = useState<{
+    AmbientMusic: ComponentType<{ src: string }> | null;
+    VoiceoverWithMusic: ComponentType<{ audioSrc: string }> | null;
+  }>({ AmbientMusic: null, VoiceoverWithMusic: null });
+
+  useEffect(() => {
+    // Load audio components after mount
+    Promise.all([
+      import('./AmbientMusic').then(m => m.default).catch(() => null),
+      import('./VoiceoverWithMusic').then(m => m.default).catch(() => null),
+    ]).then(([Ambient, Voiceover]) => {
+      setAudioComponent({
+        AmbientMusic: Ambient,
+        VoiceoverWithMusic: Voiceover,
+      });
+    });
+  }, []);
+
   if (!mounted || disabled) return null;
 
   // If voiceover is provided, use that (homepage)
-  if (voiceoverSrc) {
-    return <VoiceoverWithMusic audioSrc={voiceoverSrc} />;
+  if (voiceoverSrc && AudioComponent.VoiceoverWithMusic) {
+    return <AudioComponent.VoiceoverWithMusic audioSrc={voiceoverSrc} />;
   }
 
   // If page has video, don't play ambient music
   if (hasVideo) return null;
 
   // Play ambient music on pages without video
-  return <AmbientMusic src={ambientMusicSrc} />;
+  if (AudioComponent.AmbientMusic) {
+    return <AudioComponent.AmbientMusic src={ambientMusicSrc} />;
+  }
+
+  return null;
 }
