@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import { Component, ErrorInfo, ReactNode } from 'react';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
+import { LogoBanner } from './LogoBanner';
 
 // Lazy load audio component
 const PageAudio = dynamic(() => import('@/components/PageAudio'), { ssr: false });
@@ -78,6 +79,9 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
       <HeaderErrorBoundary>
         <SiteHeader />
       </HeaderErrorBoundary>
+
+      {/* Logo stamp in corner for brand recognition */}
+      <LogoBanner />
 
       <main
         id="main-content"

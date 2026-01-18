@@ -6,6 +6,7 @@ import type { ReactNode } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { LMSNavigation } from '@/components/lms/LMSNavigation';
 import { AIInstructorWidget } from '@/components/AIInstructorWidget';
+import { LogoStamp } from '@/components/layout/LogoBanner';
 
 export default function LmsAppLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -74,6 +75,8 @@ export default function LmsAppLayout({ children }: { children: ReactNode }) {
       )}
       <LMSNavigation user={user} profile={profile} />
       <main>{children}</main>
+      {/* Logo stamp for brand recognition */}
+      <LogoStamp />
       {/* AI Instructor Widget - Available on all LMS pages */}
       <AIInstructorWidget context="lesson" />
     </div>
