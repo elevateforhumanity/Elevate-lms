@@ -135,9 +135,6 @@ export default function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const user = useSafeUser();
-  
-  // DEBUG: Force red text to see if header renders
-  const DEBUG_MODE = true;
 
   // Track mount state to avoid hydration mismatch
   useEffect(() => {
@@ -157,15 +154,14 @@ export default function SiteHeader() {
   }, []);
 
   // Server-side render with solid header to avoid flash
-  // DEBUG: Force yellow background
-  const headerBg = DEBUG_MODE ? 'bg-yellow-300 shadow-sm' : (!mounted ? 'bg-white shadow-sm' : (isScrolled ? 'bg-white shadow-sm' : 'bg-transparent'));
-  // DEBUG: Force red text
-  const textColor = DEBUG_MODE ? 'text-red-600' : (!mounted ? 'text-gray-700' : (isScrolled ? 'text-gray-700' : 'text-white'));
+  const headerBg = 'bg-white shadow-sm';
+  // Force black text on white header
+  const textColor = 'text-gray-900';
 
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 right-0 z-50 h-[56px] sm:h-[70px] transition-all duration-300 ${headerBg}`}
+        className={`relative w-full z-50 h-[56px] sm:h-[70px] transition-all duration-300 bg-white shadow-sm`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex items-center justify-between h-full">
@@ -195,7 +191,7 @@ export default function SiteHeader() {
                     className={`relative h-full flex items-center gap-1 px-3 lg:px-4 text-sm font-medium transition-colors
                       before:absolute before:bottom-0 before:left-2 before:right-2 before:h-[3px] before:bg-blue-600 
                       before:opacity-0 before:transition-opacity group-hover:before:opacity-100
-                      ${!mounted || isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'}
+                      text-gray-700 hover:text-gray-900
                     `}
                   >
                     {item.name}
