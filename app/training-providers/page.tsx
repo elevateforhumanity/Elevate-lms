@@ -102,7 +102,7 @@ export default function TrainingProvidersPage() {
             priority
             quality={85}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-900/70" />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
@@ -187,7 +187,7 @@ export default function TrainingProvidersPage() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3 className="text-xl font-bold text-white mb-1">{program.name}</h3>
                   <p className="text-gray-200 text-sm">{program.examples}</p>
