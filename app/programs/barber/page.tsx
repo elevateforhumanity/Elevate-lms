@@ -3,6 +3,7 @@ import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Scissors, Clock, DollarSign, Award, MapPin, Calendar, ArrowRight, CheckCircle, Users } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Barber Apprenticeship Program | $4,980 Tuition | Elevate For Humanity',
@@ -64,6 +65,19 @@ export default async function BarberProgramPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <Breadcrumbs 
+            items={[
+              { label: 'Programs', href: '/programs' },
+              { label: 'Skilled Trades', href: '/programs/skilled-trades' },
+              { label: 'Barber Program' },
+            ]} 
+          />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative min-h-[500px] flex items-center">
         <div 

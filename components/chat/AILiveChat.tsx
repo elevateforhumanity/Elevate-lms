@@ -189,32 +189,35 @@ export default function AILiveChat({
   if (!isOpen) {
     return (
       <>
-        {/* Chat Button */}
+        {/* Chat Button - Modern gradient design */}
+        {/* bottom-20 on mobile to avoid sticky CTA, bottom-6 on desktop */}
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 w-16 h-16 bg-white text-white rounded-full shadow-2xl hover: hover: transition-all hover:scale-110 flex items-center justify-center z-50 animate-bounce"
+          className="fixed bottom-20 md:bottom-6 right-4 md:right-6 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-full shadow-2xl hover:shadow-blue-500/40 transition-all hover:scale-110 flex items-center justify-center z-40 group"
           aria-label="Open chat"
         >
-          <MessageCircle className="w-8 h-8" />
-          <span className="absolute -top-1 -right-1 w-5 h-5 bg-brand-orange-500 rounded-full animate-pulse border-2 border-white" />
+          <MessageCircle className="w-6 h-6 md:w-7 md:h-7 group-hover:scale-110 transition-transform" />
+          <span className="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 bg-orange-500 rounded-full animate-pulse border-2 border-white flex items-center justify-center">
+            <span className="text-[8px] md:text-[10px] font-bold">AI</span>
+          </span>
         </button>
 
         {/* Popup Message */}
         {showPopup && (
-          <div className="fixed bottom-24 right-6 bg-white rounded-xl shadow-2xl p-4 z-50 max-w-xs animate-slide-up border-2 border-orange-500">
+          <div className="fixed bottom-36 md:bottom-24 right-4 md:right-6 bg-white rounded-2xl shadow-2xl p-4 z-40 max-w-xs animate-slide-up border border-slate-200">
             <button
               onClick={() => setShowPopup(false)}
-              className="absolute -top-2 -right-2 w-6 h-6 bg-brand-orange-500 text-white rounded-full flex items-center justify-center hover:bg-brand-orange-600 transition"
+              className="absolute -top-2 -right-2 w-6 h-6 bg-slate-600 text-white rounded-full flex items-center justify-center hover:bg-slate-700 transition"
             >
               <X className="w-4 h-4" />
             </button>
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                <Bot className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-full flex items-center justify-center flex-shrink-0">
+                <Bot className="w-5 h-5 text-white" />
               </div>
               <div>
-                <p className="font-bold text-black mb-1">Need Help?</p>
-                <p className="text-sm text-black mb-3">
+                <p className="font-bold text-slate-900 mb-1">Need Help?</p>
+                <p className="text-sm text-slate-600 mb-3">
                   Hi! I'm here to answer questions about our programs. Click to
                   chat!
                 </p>
@@ -223,7 +226,7 @@ export default function AILiveChat({
                     setIsOpen(true);
                     setShowPopup(false);
                   }}
-                  className="w-full bg-white text-white px-4 py-2 rounded-lg font-semibold hover: hover: transition"
+                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-4 py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-800 transition-all shadow-md hover:shadow-lg"
                 >
                   Start Chat
                 </button>
@@ -237,34 +240,36 @@ export default function AILiveChat({
 
   return (
     <div
-      className={`fixed bottom-6 right-6 w-96 bg-white rounded-2xl shadow-2xl z-50 flex flex-col transition-all ${
-        isMinimized ? 'h-16' : 'h-[600px]'
+      className={`fixed bottom-20 md:bottom-6 right-2 md:right-6 w-[calc(100vw-1rem)] md:w-96 max-w-md bg-white rounded-2xl shadow-2xl z-50 flex flex-col transition-all border border-slate-200 ${
+        isMinimized ? 'h-16' : 'h-[70vh] md:h-[600px]'
       }`}
     >
-      {/* Header */}
-      <div className="bg-white text-white p-4 rounded-t-2xl flex items-center justify-between">
+      {/* Header - Modern gradient */}
+      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-4 rounded-t-2xl flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="relative">
-            <Bot className="w-8 h-8" />
-            <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white" />
+            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+              <Bot className="w-6 h-6 text-white" />
+            </div>
+            <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 rounded-full border-2 border-blue-600" />
           </div>
           <div>
-            <h3 className="font-bold">AI Assistant</h3>
+            <h3 className="font-bold text-sm">AI Assistant</h3>
             <p className="text-xs text-blue-100">
-              {agentConnected ? 'Connected to agent' : 'Always here to help'}
+              {agentConnected ? 'Connected to agent' : 'Online • Instant replies'}
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <button
             onClick={() => setIsMinimized(!isMinimized)}
-            className="hover:bg-gray-500 p-2 rounded-lg transition"
+            className="hover:bg-white/20 p-2 rounded-lg transition"
           >
             <Minimize2 className="w-4 h-4" />
           </button>
           <button
             onClick={() => setIsOpen(false)}
-            className="hover:bg-gray-500 p-2 rounded-lg transition"
+            className="hover:bg-white/20 p-2 rounded-lg transition"
           >
             <X className="w-4 h-4" />
           </button>

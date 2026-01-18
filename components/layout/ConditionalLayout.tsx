@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import { Component, ErrorInfo, ReactNode } from 'react';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
+import { LogoBanner } from './LogoBanner';
 
 // Generic error boundary for layout components
 class LayoutErrorBoundary extends Component<
@@ -134,6 +135,9 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </header>
+
+      {/* Logo stamp in corner for brand recognition */}
+      <LogoBanner />
 
       <main
         id="main-content"

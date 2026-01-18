@@ -5,18 +5,112 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
-// Main navigation - clean top-level links only (subpages live on landing pages)
+// Main navigation with dropdowns for sub-pages
 const NAV_ITEMS = [
-  { name: 'Programs', href: '/programs' },
-  { name: 'Apprenticeships', href: '/apprenticeships' },
-  { name: 'How It Works', href: '/how-it-works' },
-  { name: 'Services', href: '/career-services' },
-  { name: 'VITA Tax Prep', href: '/vita' },
-  { name: 'Store', href: '/store' },
-  { name: 'For Employers', href: '/employer' },
-  { name: 'About', href: '/about' },
-  { name: 'Resources', href: '/resources' },
-  { name: 'Contact', href: '/contact' },
+  { 
+    name: 'Programs', 
+    href: '/programs',
+    subItems: [
+      { name: 'Healthcare', href: '/programs/healthcare' },
+      { name: 'Skilled Trades', href: '/programs/skilled-trades' },
+      { name: 'Technology', href: '/programs/technology' },
+      { name: 'Business', href: '/programs/business' },
+      { name: 'Apprenticeships', href: '/apprenticeships' },
+      { name: 'JRI Programs', href: '/jri' },
+      { name: 'Micro Classes', href: '/micro-classes' },
+    ]
+  },
+  { 
+    name: 'Services', 
+    href: '/services',
+    subItems: [
+      { name: 'Career Services', href: '/career-services' },
+      { name: 'Drug Testing', href: '/drug-testing' },
+      { name: 'Certifications', href: '/certifications' },
+      { name: 'Training Providers', href: '/training-providers' },
+      { name: 'VITA Tax Prep', href: '/vita' },
+      { name: 'Mentorship', href: '/mentorship' },
+    ]
+  },
+  { 
+    name: 'Store', 
+    href: '/store',
+    subItems: [
+      { name: 'Shop All', href: '/shop' },
+      { name: 'Courses', href: '/courses' },
+      { name: 'Workbooks', href: '/workbooks' },
+      { name: 'Marketplace', href: '/marketplace' },
+    ]
+  },
+  { 
+    name: 'How It Works', 
+    href: '/how-it-works',
+    subItems: [
+      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
+      { name: 'Funding & Grants', href: '/funding' },
+      { name: 'Tuition & Fees', href: '/tuition-fees' },
+      { name: 'FAQ', href: '/faq' },
+      { name: 'Outcomes', href: '/outcomes' },
+    ]
+  },
+  { 
+    name: 'For Employers', 
+    href: '/employer',
+    subItems: [
+      { name: 'Hire Graduates', href: '/hire-graduates' },
+      { name: 'Partner With Us', href: '/partners' },
+      { name: 'Workforce Solutions', href: '/solutions' },
+      { name: 'OJT & Funding', href: '/ojt-and-funding' },
+      { name: 'Workforce Board', href: '/workforce-board' },
+    ]
+  },
+  { 
+    name: 'LMS', 
+    href: '/lms',
+    subItems: [
+      { name: 'Student Dashboard', href: '/lms/dashboard' },
+      { name: 'My Courses', href: '/lms/courses' },
+      { name: 'Certificates', href: '/certificates' },
+      { name: 'Leaderboard', href: '/leaderboard' },
+      { name: 'Community', href: '/community' },
+    ]
+  },
+  { 
+    name: 'Portals', 
+    href: '/dashboard',
+    subItems: [
+      { name: 'Admin Dashboard', href: '/admin' },
+      { name: 'Staff Portal', href: '/staff-portal' },
+      { name: 'Partner Portal', href: '/partner-portal' },
+      { name: 'Employer Portal', href: '/employer-portal' },
+      { name: 'Student Portal', href: '/student-portal' },
+      { name: 'Instructor Portal', href: '/instructor' },
+    ]
+  },
+  { 
+    name: 'About', 
+    href: '/about',
+    subItems: [
+      { name: 'Our Team', href: '/team' },
+      { name: 'Success Stories', href: '/success-stories' },
+      { name: 'Contact', href: '/contact' },
+      { name: 'Careers', href: '/careers' },
+      { name: 'Locations', href: '/locations' },
+      { name: 'Impact', href: '/impact' },
+    ]
+  },
+  { 
+    name: 'Resources', 
+    href: '/resources',
+    subItems: [
+      { name: 'Blog', href: '/blog' },
+      { name: 'News', href: '/news' },
+      { name: 'Events', href: '/events' },
+      { name: 'Webinars', href: '/webinars' },
+      { name: 'Support', href: '/support' },
+      { name: 'Downloads', href: '/downloads' },
+    ]
+  },
 ];
 
 // Safe user hook that never throws
@@ -43,88 +137,108 @@ export default function SiteHeader() {
   return (
     <>
       <header 
-        style={{ 
-          position: 'fixed', 
-          top: 0, 
-          left: 0, 
-          right: 0, 
-          height: '80px', 
-          backgroundColor: '#ffffff', 
-          zIndex: 9999,
-          boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-          display: 'flex',
-          alignItems: 'center',
-          padding: '0 20px'
-        }}
+        className={`relative w-full z-50 h-[56px] sm:h-[70px] transition-all duration-300 bg-white shadow-sm`}
       >
-        <div style={{ 
-          maxWidth: '1280px', 
-          margin: '0 auto', 
-          width: '100%', 
-          height: '100%', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between',
-          padding: '0 16px'
-        }}>
-          {/* Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-            <Image
-              src="/logo.png"
-              alt="Elevate for Humanity"
-              width={44}
-              height={44}
-              style={{ width: '44px', height: '44px' }}
-              priority
-            />
-            <span style={{ fontWeight: 'bold', fontSize: '20px', color: '#111827' }}>
-              Elevate
-            </span>
-          </Link>
-
-          {/* Right side - same on all screen sizes */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            {/* Apply Now button */}
-            <Link
-              href="/apply"
-              style={{ 
-                backgroundColor: '#2563eb', 
-                color: 'white', 
-                padding: '10px 20px', 
-                borderRadius: '9999px',
-                textDecoration: 'none',
-                fontSize: '14px',
-                fontWeight: '600'
-              }}
-            >
-              Apply Now
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+          <div className="flex items-center justify-between h-full">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="Elevate for Humanity"
+                width={44}
+                height={44}
+                className="w-10 h-10 sm:w-11 sm:h-11"
+                priority
+              />
+              <span className="hidden sm:inline font-bold text-xl text-gray-900">
+                Elevate
+              </span>
             </Link>
 
-            {/* Menu button - always visible */}
-            <button
-              onClick={() => setMobileMenuOpen(true)}
-              style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                width: '44px', 
-                height: '44px',
-                backgroundColor: '#f3f4f6',
-                border: '1px solid #d1d5db',
-                borderRadius: '8px',
-                cursor: 'pointer'
-              }}
-              aria-label="Open menu"
-            >
-              <Menu style={{ width: '24px', height: '24px', color: '#111827' }} />
-            </button>
+            {/* Desktop Navigation - show on md (768px) and up */}
+            <nav className="hidden md:flex items-center h-full">
+              {NAV_ITEMS.map((item) => (
+                <div key={item.name} className="relative h-full group">
+                  <Link
+                    href={item.href}
+                    className={`relative h-full flex items-center gap-1 px-3 lg:px-4 text-sm font-medium transition-colors
+                      before:absolute before:bottom-0 before:left-2 before:right-2 before:h-[3px] before:bg-blue-600 
+                      before:opacity-0 before:transition-opacity group-hover:before:opacity-100
+                      text-gray-700 hover:text-gray-900
+                    `}
+                  >
+                    {item.name}
+                    {item.subItems && <ChevronDown className="w-3 h-3" />}
+                  </Link>
+                  {/* Dropdown */}
+                  {item.subItems && (
+                    <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      <div className="bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-[200px]">
+                        {item.subItems.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </nav>
+
+            {/* Right side */}
+            <div className="flex items-center gap-2 sm:gap-4">
+              {/* Phone number - desktop only */}
+              <a
+                href="tel:317-314-3757"
+                className="hidden lg:inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                (317) 314-3757
+              </a>
+              {user ? (
+                <Link
+                  href="/lms/dashboard"
+                  className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                >
+                  Dashboard
+                </Link>
+              ) : (
+                <Link
+                  href="/login"
+                  className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                >
+                  Sign In
+                </Link>
+              )}
+              <Link
+                href="/apply"
+                className="hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+              >
+                Apply Now
+              </Link>
+
+              {/* Mobile menu button - show on smaller screens */}
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="md:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
+                aria-label="Open menu"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Menu - shows on all screen sizes */}
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100]">
+        <div className="fixed inset-0 z-[100] md:hidden">
           <div 
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileMenuOpen(false)}
