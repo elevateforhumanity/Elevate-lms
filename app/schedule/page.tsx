@@ -1,16 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { Calendar, Video, ArrowLeft, CheckCircle, Send } from 'lucide-react';
 import { ROUTES } from '@/lib/pricing';
 
 
-export const metadata: Metadata = {
-  title: 'Schedule a Live Demo',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/schedule' },
-};
 
 export default function SchedulePage() {
   const [formData, setFormData] = useState({

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -102,10 +101,6 @@ const autopilots: AutopilotTask[] = [
 ];
 
 
-export const metadata: Metadata = {
-  title: 'Welcome',
-  robots: { index: false, follow: false },
-};
 
 export default function AutopilotsPage() {
   const router = useRouter();

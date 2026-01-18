@@ -3,7 +3,6 @@
 // @ts-nocheck
 
 import React from 'react';
-import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,10 +11,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-export const metadata: Metadata = {
-  title: 'Take',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/courses//lessons//quiz/take' },
-};
 
 export default function TakeQuizPage({
   params,

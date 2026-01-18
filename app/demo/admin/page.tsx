@@ -1,15 +1,10 @@
 'use client';
 import { useState } from 'react';
-import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Info, Menu, X, Home, Users, GraduationCap, FileText, Building2, Search, Plus, ChevronRight, Bell, Download, AlertCircle, CheckCircle, Clock } from 'lucide-react';
 
 
-export const metadata: Metadata = {
-  title: 'Programs',
-  robots: { index: false, follow: false },
-};
 
 export default function AdminDemo() {
   const [tab, setTab] = useState('home');

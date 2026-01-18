@@ -1,7 +1,6 @@
 'use client';
 
 import { logger } from '@/lib/logger';
-import { Metadata } from 'next';
 import React from 'react';
 
 import { useEffect, useState } from 'react';
@@ -88,10 +87,6 @@ function CheckoutForm({ product }: { product: any }) {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Checkout',
-  robots: { index: false, follow: false },
-};
 
 export default function CheckoutPage() {
   const params = useParams();

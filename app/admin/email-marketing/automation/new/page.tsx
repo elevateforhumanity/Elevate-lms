@@ -2,7 +2,6 @@
 "use client";
 
 import React from 'react';
-import { Metadata } from 'next';
 import { sanitizeHtml } from '@/lib/sanitize';
 
 import { useEffect, useState } from 'react';
@@ -35,10 +34,6 @@ interface EmailStep {
 }
 
 
-export const metadata: Metadata = {
-  title: 'New',
-  robots: { index: false, follow: false },
-};
 
 export default function NewWorkflowPage() {
   const router = useRouter();

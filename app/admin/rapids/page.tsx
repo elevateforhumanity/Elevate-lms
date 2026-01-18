@@ -1,14 +1,9 @@
 'use client';
 
 import { RAPIDS_CONFIG } from '@/lib/compliance/rapids-config';
-import { Metadata } from 'next';
 import { CheckCircle, XCircle, Copy, Shield, FileText } from 'lucide-react';
 
 
-export const metadata: Metadata = {
-  title: 'RAPIDS / USDOL Registration Status',
-  robots: { index: false, follow: false },
-};
 
 export default function RapidsAdminPage() {
   const programs = Object.entries(RAPIDS_CONFIG.programs).map(([key, program]) => ({

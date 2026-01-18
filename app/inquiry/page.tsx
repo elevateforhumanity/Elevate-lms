@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
-import { Metadata } from 'next';
 import { useSearchParams } from 'next/navigation';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
@@ -241,10 +240,6 @@ function InquiryForm() {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Start Your Application',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/inquiry' },
-};
 
 export default function Inquiry() {
   return (

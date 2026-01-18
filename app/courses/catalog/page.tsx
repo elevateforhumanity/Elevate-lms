@@ -3,7 +3,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -354,10 +353,6 @@ const ALL_COURSES = Object.entries(PARTNER_COURSES).flatMap(
 );
 
 
-export const metadata: Metadata = {
-  title: 'Partner Course Catalog',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/courses/catalog' },
-};
 
 export default function CoursesCatalogPage() {
   const [search, setSearch] = useState('');

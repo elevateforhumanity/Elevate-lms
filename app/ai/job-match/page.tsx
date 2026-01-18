@@ -1,16 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState } from 'react';
 import { Briefcase, Loader2 } from 'lucide-react';
 
 
-export const metadata: Metadata = {
-  title: 'Find Jobs That Match Your Skills',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/ai/job-match' },
-};
 
 export default function AIJobMatchPage() {
   const [loading, setLoading] = useState(false);

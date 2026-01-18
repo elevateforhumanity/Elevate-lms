@@ -3,7 +3,6 @@
 'use client';
 
 import { logger } from '@/lib/logger';
-import { Metadata } from 'next';
 import { useState } from 'react';
 import { Upload, FileText, CheckCircle, AlertCircle, X } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
@@ -18,10 +17,6 @@ interface UploadedFile {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Upload Your Tax Documents',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/upload-documents' },
-};
 
 export default function UploadDocumentsPage() {
   const [files, setFiles] = useState<UploadedFile[]>([]);

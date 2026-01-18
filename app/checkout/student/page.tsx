@@ -1,16 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState } from 'react';
 import Link from 'next/link';
 
 
-export const metadata: Metadata = {
-  title: 'Student Access',
-  robots: { index: false, follow: false },
-};
 
 export default function StudentCheckout() {
   const [loading, setLoading] = useState(false);

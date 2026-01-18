@@ -1,17 +1,12 @@
 'use client';
 
 import { logger } from '@/lib/logger';
-import { Metadata } from 'next';
 import { useState } from 'react';
 import { Shield, Download, FileText, CheckCircle } from 'lucide-react';
 import SignatureCanvas from 'react-signature-canvas';
 import { useRef } from 'react';
 
 
-export const metadata: Metadata = {
-  title: 'Agreement Signed Successfully!',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/sub-office-agreement' },
-};
 
 export default function SubOfficeAgreementPage() {
   const [formData, setFormData] = useState({

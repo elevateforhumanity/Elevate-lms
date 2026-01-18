@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Metadata } from 'next';
 import { 
   CheckCircle, 
   XCircle, 
@@ -37,10 +36,6 @@ const STATUS_COLORS = {
 };
 
 
-export const metadata: Metadata = {
-  title: 'Admissions Intake Management',
-  robots: { index: false, follow: false },
-};
 
 export default function AdminIntakePage() {
   const [intakes, setIntakes] = useState<any[]>([]);

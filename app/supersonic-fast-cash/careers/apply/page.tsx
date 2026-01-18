@@ -1,15 +1,10 @@
 'use client';
 import Image from 'next/image';
-import { Metadata } from 'next';
 
 import { useState } from 'react';
 import Link from 'next/link';
 
 
-export const metadata: Metadata = {
-  title: 'Application Submitted!',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/careers/apply' },
-};
 
 export default function CareersApplyPage() {
   const [formData, setFormData] = useState({

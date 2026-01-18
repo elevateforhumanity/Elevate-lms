@@ -3,7 +3,6 @@
 'use client';
 
 import { logger } from '@/lib/logger';
-import { Metadata } from 'next';
 import { useState, useEffect } from 'react';
 import {
   calculateTax,
@@ -23,10 +22,6 @@ import {
 import Link from 'next/link';
 
 
-export const metadata: Metadata = {
-  title: 'Income Tax Return Estimator',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/calculator' },
-};
 
 export default function TaxCalculatorPage() {
   const [taxReturn, setTaxReturn] = useState<TaxReturn>({

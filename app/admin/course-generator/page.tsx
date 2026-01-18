@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import { 
   Sparkles, 
@@ -32,10 +31,6 @@ interface GeneratedCourse {
 }
 
 
-export const metadata: Metadata = {
-  title: 'AI Course Generator',
-  robots: { index: false, follow: false },
-};
 
 export default function CourseGeneratorPage() {
   const router = useRouter();

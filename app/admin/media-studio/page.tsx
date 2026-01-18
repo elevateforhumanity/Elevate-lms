@@ -1,6 +1,5 @@
 "use client";
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -32,10 +31,6 @@ interface MediaFile {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Media Studio',
-  robots: { index: false, follow: false },
-};
 
 export default function MediaStudioPage() {
   const router = useRouter();

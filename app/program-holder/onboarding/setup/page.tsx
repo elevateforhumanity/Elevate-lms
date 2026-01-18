@@ -3,16 +3,11 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState } from 'react';
 import { Upload, FileText, CheckCircle, AlertCircle } from 'lucide-react';
 
 
-export const metadata: Metadata = {
-  title: 'Setup',
-  robots: { index: false, follow: false },
-};
 
 export default function ProgramHolderSetup() {
   const [step, setStep] = useState(1);

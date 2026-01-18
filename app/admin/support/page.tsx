@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
   Inbox, 
@@ -45,10 +44,6 @@ const priorityColors: Record<string, string> = {
 };
 
 
-export const metadata: Metadata = {
-  title: 'Support Dashboard',
-  robots: { index: false, follow: false },
-};
 
 export default function AdminSupportPage() {
   const [tickets, setTickets] = useState<Ticket[]>([]);

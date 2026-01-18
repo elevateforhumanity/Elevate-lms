@@ -2,7 +2,6 @@
 "use client";
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -59,10 +58,6 @@ interface AnalyticsData {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Analytics',
-  robots: { index: false, follow: false },
-};
 
 export default function AnalyticsPage() {
   const router = useRouter();

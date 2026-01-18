@@ -3,16 +3,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 
 
-export const metadata: Metadata = {
-  title: 'Document Uploaded!',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/documents/upload' },
-};
 
 export default function DocumentUploadPage() {
   const [uploading, setUploading] = useState(false);

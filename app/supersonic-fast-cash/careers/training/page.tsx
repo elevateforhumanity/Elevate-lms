@@ -1,7 +1,6 @@
 'use client';
 
 import { logger } from '@/lib/logger';
-import { Metadata } from 'next';
 import React, { useState } from 'react';
 import {
   Award,
@@ -240,10 +239,6 @@ const TRAINING_MODULES: TrainingModule[] = [
 ];
 
 
-export const metadata: Metadata = {
-  title: 'Tax Preparer Training',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/careers/training' },
-};
 
 export default function TrainingPage() {
   const [selectedModule, setSelectedModule] = useState<string | null>(null);

@@ -1,7 +1,6 @@
 'use client';
 
 import { logger } from '@/lib/logger';
-import { Metadata } from 'next';
 import { useState, useEffect } from 'react';
 import {
   Users,
@@ -30,10 +29,6 @@ interface Client {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Client Intake Dashboard',
-  robots: { index: false, follow: false },
-};
 
 export default function ClientIntakeDashboard() {
   const [clients, setClients] = useState<Client[]>([]);

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Metadata } from 'next';
 import Image from 'next/image';
 import {
   Video,
@@ -31,10 +30,6 @@ interface GeneratedAsset {
 }
 
 
-export const metadata: Metadata = {
-  title: 'AI Studio',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/ai-studio' },
-};
 
 export default function AIStudioPage() {
   const [activeTab, setActiveTab] = useState<GenerationType>('video');

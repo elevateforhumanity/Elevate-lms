@@ -1,13 +1,8 @@
 "use client";
 
 import * as Sentry from "@sentry/nextjs";
-import { Metadata } from 'next';
 
 
-export const metadata: Metadata = {
-  title: 'Sentry Test Page',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/sentry-test' },
-};
 
 export default function SentryTestPage() {
   // Only show in development

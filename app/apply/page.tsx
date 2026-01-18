@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Metadata } from 'next';
 import { useSearchParams } from 'next/navigation';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import { Phone, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
@@ -25,10 +24,6 @@ const PATHWAY_TO_PROGRAM: Record<string, string> = {
 };
 
 
-export const metadata: Metadata = {
-  title: 'Start Your Application',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/apply' },
-};
 
 export default function ApplyPage() {
   const searchParams = useSearchParams();

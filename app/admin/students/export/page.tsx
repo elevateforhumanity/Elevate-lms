@@ -1,6 +1,5 @@
 "use client";
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -8,10 +7,6 @@ import { useRouter } from 'next/navigation';
 export const dynamic = 'force-dynamic';
 
 
-export const metadata: Metadata = {
-  title: 'Export Student Data',
-  robots: { index: false, follow: false },
-};
 
 export default function ExportStudentsPage() {
   const router = useRouter();

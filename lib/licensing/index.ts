@@ -250,3 +250,30 @@ export async function logLicenseEvent(
 ): Promise<void> {
   logger.info('License event', { tenantId, event, ...metadata });
 }
+
+/**
+ * Validate API key for tenant access
+ */
+export async function validateApiKey(apiKey: string): Promise<{ valid: boolean; tenantId?: string; error?: string }> {
+  if (!apiKey) {
+    return { valid: false, error: 'API key required' };
+  }
+
+  const supabase = await createAdminClient();
+  
+  const { data: tenant, error } = await supabase
+    .from('tenants')
+    .select('id, status')
+    .eq('api_key', apiKey)
+    .single();
+
+  if (error || !tenant) {
+    return { valid: false, error: 'Invalid API key' };
+  }
+
+  if (tenant.status !== 'active') {
+    return { valid: false, error: 'Tenant is not active' };
+  }
+
+  return { valid: true, tenantId: tenant.id };
+}

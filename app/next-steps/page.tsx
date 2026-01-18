@@ -3,7 +3,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle } from 'lucide-react';
@@ -16,10 +15,6 @@ function formatPct(p?: number) {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Your Next Steps Checklist',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/next-steps' },
-};
 
 export default function NextStepsPage() {
   const [data, setData] = useState<Checklist | null>(null);

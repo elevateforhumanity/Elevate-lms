@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -11,10 +10,6 @@ import Image from 'next/image';
 export const dynamic = 'force-dynamic';
 
 
-export const metadata: Metadata = {
-  title: 'Apprenticeships',
-  robots: { index: false, follow: false },
-};
 
 export default function AdminApprenticeships() {
   const supabase = createClient();

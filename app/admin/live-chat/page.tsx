@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useEffect } from 'react';
 import Image from 'next/image';
@@ -20,10 +19,6 @@ import {
 } from 'lucide-react';
 
 
-export const metadata: Metadata = {
-  title: 'Live Chat',
-  robots: { index: false, follow: false },
-};
 
 export default function LiveChatPage() {
   const router = useRouter();

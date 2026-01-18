@@ -1,14 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/client';
 
 
-export const metadata: Metadata = {
-  title: 'Resetting Browser',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/reset' },
-};
 
 export default function ResetPage() {
   const [status, setStatus] = useState('Resetting browser...');

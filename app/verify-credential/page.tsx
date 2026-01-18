@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Metadata } from 'next';
 import Image from 'next/image';
 import {
   Search,
@@ -12,10 +11,6 @@ import {
 } from 'lucide-react';
 
 
-export const metadata: Metadata = {
-  title: 'Verify Credential',
-  robots: { index: false, follow: false },
-};
 
 export default function VerifyCredentialPage() {
   const [code, setCode] = useState('');

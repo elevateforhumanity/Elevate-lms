@@ -1,17 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Mail, Users, Send, Loader2 } from 'lucide-react';
 
 
-export const metadata: Metadata = {
-  title: 'Create Email Campaign',
-  robots: { index: false, follow: false },
-};
 
 export default function NewCampaignPage() {
   const router = useRouter();

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -16,10 +15,6 @@ import {
 } from 'lucide-react';
 
 
-export const metadata: Metadata = {
-  title: 'Book Your Appointment',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/tax/book-appointment' },
-};
 
 export default function BookAppointmentPage() {
   const [formData, setFormData] = useState({

@@ -4,7 +4,6 @@
 'use client';
 
 import { logger } from '@/lib/logger';
-import { Metadata } from 'next';
 import React from 'react';
 
 import { useState, useEffect } from 'react';
@@ -28,10 +27,6 @@ const CALENDLY_SCRIPT = 'https://assets.calendly.com/assets/external/widget.js';
 const CALENDLY_LINK = 'https://calendly.com/elevateforhumanity/paid-tax-services';
 
 
-export const metadata: Metadata = {
-  title: 'Book Your Tax Appointment',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/book-appointment' },
-};
 
 export default function BookAppointment() {
   const [step, setStep] = useState(1);

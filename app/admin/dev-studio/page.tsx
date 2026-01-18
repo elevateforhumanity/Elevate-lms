@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -40,10 +39,6 @@ const CodeEditor = dynamic(() => import('@/components/dev-studio/CodeEditor'), {
 });
 
 
-export const metadata: Metadata = {
-  title: 'Welcome',
-  robots: { index: false, follow: false },
-};
 
 export default function DevStudioPage() {
   const router = useRouter();

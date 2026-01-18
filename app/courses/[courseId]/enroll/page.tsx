@@ -1,16 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { CheckCircle, Clock, Award, CreditCard } from 'lucide-react';
 
 
-export const metadata: Metadata = {
-  title: 'Enroll Now - Instant Access',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/courses//enroll' },
-};
 
 export default function CourseEnrollPage({
   params,

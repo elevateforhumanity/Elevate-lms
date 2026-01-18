@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Metadata } from 'next';
 import { Shield, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
 interface Consent {
@@ -14,10 +13,6 @@ interface Consent {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Privacy & Consent Settings',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/student/privacy' },
-};
 
 export default function StudentPrivacyPage() {
   const [consents, setConsents] = useState<Consent[]>([]);

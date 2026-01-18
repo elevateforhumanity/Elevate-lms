@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { Metadata } from 'next';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 
@@ -30,10 +29,6 @@ const programs = [
 ];
 
 
-export const metadata: Metadata = {
-  title: 'Programs',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/programs' },
-};
 
 export default function ProgramsPage() {
   const videoRef = useRef<HTMLVideoElement>(null);

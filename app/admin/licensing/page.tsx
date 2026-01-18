@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/client';
 
 interface License {
@@ -23,10 +22,6 @@ interface Tenant {
 }
 
 
-export const metadata: Metadata = {
-  title: 'License Management',
-  robots: { index: false, follow: false },
-};
 
 export default function LicensingPage() {
   const [licenses, setLicenses] = useState<License[]>([]);

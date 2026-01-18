@@ -2,7 +2,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Metadata } from 'next';
 import { Activity, AlertCircle, CheckCircle, Clock, Database, Server, TrendingUp, Users, Zap } from 'lucide-react';
 
 interface SystemStatus {
@@ -32,10 +31,6 @@ interface RecentError {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Monitoring',
-  robots: { index: false, follow: false },
-};
 
 export default function MonitoringDashboard() {
   const [status, setStatus] = useState<SystemStatus | null>(null);

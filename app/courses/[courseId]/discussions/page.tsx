@@ -3,7 +3,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,10 +13,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 
-export const metadata: Metadata = {
-  title: 'Discussions',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/courses//discussions' },
-};
 
 export default function CourseDiscussionsPage() {
   const params = useParams();

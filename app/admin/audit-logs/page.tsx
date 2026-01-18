@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -24,10 +23,6 @@ type AuditLog = {
 };
 
 
-export const metadata: Metadata = {
-  title: 'Audit Logs',
-  robots: { index: false, follow: false },
-};
 
 export default function AuditLogsPage() {
   const [logs, setLogs] = useState<AuditLog[]>([]);

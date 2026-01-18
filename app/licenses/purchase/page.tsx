@@ -4,7 +4,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
@@ -13,10 +12,6 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
 
-export const metadata: Metadata = {
-  title: 'Purchase Program License',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/licenses/purchase' },
-};
 
 export default function PurchaseLicensePage() {
   const [selectedLicense, setSelectedLicense] = useState('');

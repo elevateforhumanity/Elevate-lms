@@ -2,7 +2,6 @@
 'use client';
 
 import { logger } from '@/lib/logger';
-import { Metadata } from 'next';
 import React, { useState, useEffect } from 'react';
 import { Clock, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
@@ -317,10 +316,6 @@ const COMPETENCY_QUESTIONS: Question[] = [
 ];
 
 
-export const metadata: Metadata = {
-  title: 'Tax Preparer Competency Test',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/careers/competency-test' },
-};
 
 export default function CompetencyTest() {
   const [started, setStarted] = useState(false);

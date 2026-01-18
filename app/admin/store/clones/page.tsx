@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState } from 'react';
 import Image from 'next/image';
@@ -20,10 +19,6 @@ import { useRouter } from 'next/navigation';
 export const dynamic = 'force-dynamic';
 
 
-export const metadata: Metadata = {
-  title: 'Clones',
-  robots: { index: false, follow: false },
-};
 
 export default function StoreBuilderPage() {
   const router = useRouter();

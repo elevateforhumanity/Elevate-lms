@@ -1,6 +1,5 @@
 "use client";
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -654,10 +653,6 @@ const adminRoutes: AdminRoute[] = [
 ];
 
 
-export const metadata: Metadata = {
-  title: 'Admin Portal Map',
-  robots: { index: false, follow: false },
-};
 
 export default function AdminPortalMapPage() {
   const [searchQuery, setSearchQuery] = useState('');

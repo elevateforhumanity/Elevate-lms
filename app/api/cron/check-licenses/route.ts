@@ -12,9 +12,14 @@ import Stripe from 'stripe';
 export const runtime = 'nodejs';
 export const maxDuration = 300;
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-12-18.acacia',
-});
+// Lazy initialization to avoid build-time errors when env var is missing
+function getStripe() {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  return new Stripe(key, { apiVersion: '2024-12-18.acacia' as Stripe.LatestApiVersion });
+}
 
 export async function GET(request: NextRequest) {
   // Verify cron secret (for security)
@@ -72,6 +77,7 @@ export async function GET(request: NextRequest) {
 
     for (const license of subscriptionLicenses || []) {
       try {
+        const stripe = getStripe();
         const subscription = await stripe.subscriptions.retrieve(license.stripe_subscription_id);
         
         const shouldBeActive = ['active', 'trialing'].includes(subscription.status);

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -25,10 +24,6 @@ import {
 } from 'lucide-react';
 
 
-export const metadata: Metadata = {
-  title: 'Earn While You Learn',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/apprenticeships' },
-};
 
 export default function ApprenticeshipsPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

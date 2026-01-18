@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Metadata } from 'next';
 import { useParams, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
@@ -15,10 +14,6 @@ interface Announcement {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Announcements',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/instructor/courses//announcements' },
-};
 
 export default function InstructorAnnouncementsPage() {
   const params = useParams();

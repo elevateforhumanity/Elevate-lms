@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -146,10 +145,6 @@ function AffirmConfirmContent() {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Processing Payment',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/payment/affirm/confirm' },
-};
 
 export default function AffirmConfirmPage() {
   return (

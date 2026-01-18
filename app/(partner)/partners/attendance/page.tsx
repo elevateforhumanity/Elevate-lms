@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 import { useEffect, useMemo, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
@@ -15,10 +14,6 @@ function startOfWeek(d: Date) {
 }
 
 
-export const metadata: Metadata = {
-  title: 'Attendance',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/(partner)/partners/attendance' },
-};
 
 export default function PartnerAttendancePage() {
   const supabase = createClient();

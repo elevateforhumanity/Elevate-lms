@@ -1,17 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Mail, Send, Users, Loader2 } from 'lucide-react';
 
 
-export const metadata: Metadata = {
-  title: 'Email My Students',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/instructor/campaigns' },
-};
 
 export default function InstructorCampaignsPage() {
   const router = useRouter();

@@ -1,16 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
 
-export const metadata: Metadata = {
-  title: 'Weekly',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/(partner)/partners/reports/weekly' },
-};
 
 export default function PartnerWeeklyReportsPage() {
   const supabase = createClient();

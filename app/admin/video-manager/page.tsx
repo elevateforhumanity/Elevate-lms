@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Metadata } from 'next';
 
 import { useState } from 'react';
 import VideoUploader from '@/components/admin/VideoUploader';
@@ -10,10 +9,6 @@ import { Check, Copy, FileText, Sparkles, Video } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 
 
-export const metadata: Metadata = {
-  title: 'Video Manager',
-  robots: { index: false, follow: false },
-};
 
 export default function VideoManagerPage() {
   const [uploadedVideos, setUploadedVideos] = useState<string[]>([]);
