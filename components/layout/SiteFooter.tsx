@@ -47,7 +47,7 @@ export default function SiteFooter() {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer style={{ backgroundColor: '#111827', color: 'white', display: 'block', padding: '40px 20px' }}>
       {/* Mobile: Accordion | Desktop: Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         

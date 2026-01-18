@@ -179,7 +179,7 @@ export default function RootLayout({
           body{margin:0;line-height:1.6;background:#fff;font-size:16px;min-height:100vh}
           img{max-width:100%;height:auto;display:block}
           button,input,select,textarea{font-family:inherit;font-size:100%}
-          .hidden{display:none}
+          /* .hidden removed - let Tailwind handle responsive visibility */
           .flex{display:flex}
           .items-center{align-items:center}
           .justify-between{justify-content:space-between}

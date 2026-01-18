@@ -79,7 +79,7 @@ export default function BarberApprenticeshipApplyPage() {
             Apply for the Barber Apprenticeship
           </h1>
           <p className="text-gray-300 text-lg">
-            2,000-hour apprenticeship program leading to Indiana state barber licensure.
+            1,500-hour apprenticeship program leading to Indiana state barber licensure.
           </p>
         </div>
       </section>
@@ -213,7 +213,7 @@ export default function BarberApprenticeshipApplyPage() {
               {/* Host Shop Question */}
               <div>
                 <label className="block text-sm font-medium text-gray-900 mb-3">
-                  Do you have a barbershop where you can complete your 2,000 hours? *
+                  Do you have a barbershop where you can complete your 1,500 hours? *
                 </label>
                 <div className="space-y-2">
                   <label className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
@@ -334,7 +334,7 @@ export default function BarberApprenticeshipApplyPage() {
                 'We review your application within 5-10 business days',
                 'You receive program fee details and payment options',
                 'We discuss host shop placement if needed',
-                'Upon enrollment, you begin your 2,000-hour apprenticeship',
+                'Upon enrollment, you begin your 1,500-hour apprenticeship',
               ].map((text, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium">

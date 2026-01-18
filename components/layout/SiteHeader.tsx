@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 // Main navigation with dropdowns for sub-pages
@@ -132,149 +132,93 @@ function useSafeUser() {
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const user = useSafeUser();
-
-  // Track mount state to avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Track scroll for transparent → solid header
-  useEffect(() => {
-    if (typeof window === 'undefined') return undefined;
-    
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Server-side render with solid header to avoid flash
-  const headerBg = 'bg-white shadow-sm';
-  // Force black text on white header
-  const textColor = 'text-gray-900';
 
   return (
     <>
       <header 
-        className={`relative w-full z-50 h-[56px] sm:h-[70px] transition-all duration-300 bg-white shadow-sm`}
+        style={{ 
+          position: 'fixed', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          height: '80px', 
+          backgroundColor: '#ffffff', 
+          zIndex: 9999,
+          boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0 20px'
+        }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-          <div className="flex items-center justify-between h-full">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-              <Image
-                src="/logo.png"
-                alt="Elevate for Humanity"
-                width={36}
-                height={36}
-                className="w-8 h-8 sm:w-9 sm:h-9"
-                priority
-              />
-              <span className={`hidden sm:inline font-bold text-lg transition-colors ${
-                !mounted || isScrolled ? 'text-gray-900' : 'text-white'
-              }`}>
-                Elevate
-              </span>
+        <div style={{ 
+          maxWidth: '1280px', 
+          margin: '0 auto', 
+          width: '100%', 
+          height: '100%', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between',
+          padding: '0 16px'
+        }}>
+          {/* Logo */}
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <Image
+              src="/logo.png"
+              alt="Elevate for Humanity"
+              width={44}
+              height={44}
+              style={{ width: '44px', height: '44px' }}
+              priority
+            />
+            <span style={{ fontWeight: 'bold', fontSize: '20px', color: '#111827' }}>
+              Elevate
+            </span>
+          </Link>
+
+          {/* Right side - same on all screen sizes */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            {/* Apply Now button */}
+            <Link
+              href="/apply"
+              style={{ 
+                backgroundColor: '#2563eb', 
+                color: 'white', 
+                padding: '10px 20px', 
+                borderRadius: '9999px',
+                textDecoration: 'none',
+                fontSize: '14px',
+                fontWeight: '600'
+              }}
+            >
+              Apply Now
             </Link>
 
-            {/* Desktop Navigation - show on md (768px) and up */}
-            <nav className="hidden md:flex items-center h-full">
-              {NAV_ITEMS.map((item) => (
-                <div key={item.name} className="relative h-full group">
-                  <Link
-                    href={item.href}
-                    className={`relative h-full flex items-center gap-1 px-3 lg:px-4 text-sm font-medium transition-colors
-                      before:absolute before:bottom-0 before:left-2 before:right-2 before:h-[3px] before:bg-blue-600 
-                      before:opacity-0 before:transition-opacity group-hover:before:opacity-100
-                      text-gray-700 hover:text-gray-900
-                    `}
-                  >
-                    {item.name}
-                    {item.subItems && <ChevronDown className="w-3 h-3" />}
-                  </Link>
-                  {/* Dropdown */}
-                  {item.subItems && (
-                    <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      <div className="bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-[200px]">
-                        {item.subItems.map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            href={subItem.href}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600"
-                          >
-                            {subItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </nav>
-
-            {/* Right side */}
-            <div className="flex items-center gap-2 sm:gap-4">
-              {/* Phone number - desktop only */}
-              <a
-                href="tel:317-314-3757"
-                className={`hidden lg:inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${
-                  !mounted || isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                (317) 314-3757
-              </a>
-              {user ? (
-                <Link
-                  href="/lms/dashboard"
-                  className={`hidden md:inline-flex items-center text-sm font-medium transition-colors ${
-                    !mounted || isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white/90 hover:text-white'
-                  }`}
-                >
-                  Dashboard
-                </Link>
-              ) : (
-                <Link
-                  href="/login"
-                  className={`hidden md:inline-flex items-center text-sm font-medium transition-colors ${
-                    !mounted || isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white/90 hover:text-white'
-                  }`}
-                >
-                  Sign In
-                </Link>
-              )}
-              <Link
-                href="/apply"
-                className={`hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full transition-colors ${
-                  !mounted || isScrolled 
-                    ? 'bg-blue-600 text-white hover:bg-blue-700' 
-                    : 'bg-white text-gray-900 hover:bg-gray-100'
-                }`}
-              >
-                Apply Now
-              </Link>
-
-              {/* Mobile menu button - show on smaller screens */}
-              <button
-                onClick={() => setMobileMenuOpen(true)}
-                className={`md:hidden flex items-center justify-center w-10 h-10 transition-colors ${textColor}`}
-                aria-label="Open menu"
-              >
-                <Menu className="w-6 h-6" />
-              </button>
-            </div>
+            {/* Menu button - always visible */}
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                width: '44px', 
+                height: '44px',
+                backgroundColor: '#f3f4f6',
+                border: '1px solid #d1d5db',
+                borderRadius: '8px',
+                cursor: 'pointer'
+              }}
+              aria-label="Open menu"
+            >
+              <Menu style={{ width: '24px', height: '24px', color: '#111827' }} />
+            </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Menu - shows on all screen sizes */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] md:hidden">
+        <div className="fixed inset-0 z-[100]">
           <div 
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileMenuOpen(false)}

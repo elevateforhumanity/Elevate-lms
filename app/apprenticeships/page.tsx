@@ -43,7 +43,7 @@ export default function ApprenticeshipsPage() {
     {
       title: 'Barber Apprenticeship',
       slug: 'barber-apprenticeship',
-      duration: '2,000 hours (1-2 years)',
+      duration: '1,500 hours (12-18 months)',
       wage: 'Earn while you learn',
       image: '/hero-images/barber-hero.jpg',
       description:

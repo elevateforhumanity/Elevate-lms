@@ -5,7 +5,7 @@ import { CheckCircle, Clock, Award, DollarSign, Users, ArrowRight, AlertCircle }
 
 export const metadata: Metadata = {
   title: 'Barber Apprenticeship Program | Elevate for Humanity',
-  description: 'Become a licensed barber through a 2,000-hour paid apprenticeship. Train under licensed barbers, earn hours toward state licensure, and gain real experience.',
+  description: 'Become a licensed barber through a 1,500-hour paid apprenticeship. Train under licensed barbers, earn hours toward state licensure, and gain real experience.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/barber-apprenticeship',
   },
@@ -29,7 +29,7 @@ export default function BarberApprenticeshipPage() {
           <div className="max-w-3xl">
             <p className="text-orange-400 font-medium mb-4">Skilled Trades Program</p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Become a Licensed Barber Through a 2,000-Hour Paid Apprenticeship
+              Become a Licensed Barber Through a 1,500-Hour Paid Apprenticeship
             </h1>
             <p className="text-xl text-gray-300 mb-8">
               Train under licensed barbers, earn hours toward state licensure, and gain real 
@@ -41,7 +41,7 @@ export default function BarberApprenticeshipPage() {
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                 <Clock className="w-5 h-5 text-orange-400 mb-2" />
                 <p className="text-sm text-gray-400">Duration</p>
-                <p className="font-semibold">2,000 Hours</p>
+                <p className="font-semibold">1,500 Hours</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                 <Users className="w-5 h-5 text-orange-400 mb-2" />
@@ -88,7 +88,7 @@ export default function BarberApprenticeshipPage() {
                   'Adults seeking a state barber license',
                   'Individuals who learn best through hands-on training',
                   'People interested in working in a licensed barbershop environment',
-                  'Applicants ready for a long-term commitment (2,000 hours)',
+                  'Applicants ready for a long-term commitment (1,500 hours)',
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
@@ -139,7 +139,7 @@ export default function BarberApprenticeshipPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: '2,000 Verified Hours',
+                title: '1,500 Verified Hours',
                 description: 'Accumulated and documented hours toward your state barber license eligibility.',
               },
               {
@@ -204,7 +204,7 @@ export default function BarberApprenticeshipPage() {
                 },
                 {
                   step: '3',
-                  title: 'Complete 2,000 Hours of Training',
+                  title: 'Complete 1,500 Hours of Training',
                   description: 'Work in a real barbershop environment, learning hands-on under professional supervision.',
                 },
                 {
@@ -252,7 +252,7 @@ export default function BarberApprenticeshipPage() {
             
             <div className="bg-orange-50 border border-orange-100 rounded-2xl p-8">
               <div className="text-center mb-8">
-                <p className="text-5xl font-bold text-orange-600 mb-2">2,000</p>
+                <p className="text-5xl font-bold text-orange-600 mb-2">1,500</p>
                 <p className="text-xl text-gray-700">Total Apprenticeship Hours</p>
               </div>
               

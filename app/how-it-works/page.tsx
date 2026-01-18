@@ -150,7 +150,7 @@ export default function HowItWorksPage() {
             {[
               {
                 name: 'Barber Apprenticeship',
-                duration: '2,000 hours',
+                duration: '1,500 hours',
                 outcome: 'State Barber License',
                 href: '/programs/barber-apprenticeship',
               },

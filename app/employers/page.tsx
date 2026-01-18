@@ -148,7 +148,7 @@ export default function EmployersPage() {
                 </h2>
                 <p className="text-gray-300 mb-6">
                   Become a host site for our barber apprenticeship program. Train the next 
-                  generation while building your team. Apprentices complete 2,000 hours of 
+                  generation while building your team. Apprentices complete 1,500 hours of 
                   supervised training at your shop.
                 </p>
                 <ul className="space-y-3 mb-8">
@@ -177,7 +177,7 @@ export default function EmployersPage() {
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-400">Duration</span>
-                      <span>2,000 hours</span>
+                      <span>1,500 hours</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-400">Credential</span>

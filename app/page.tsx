@@ -224,114 +224,14 @@ export default function HomePage() {
         {/* Overlay for text readability */}
         <div className="absolute inset-0 bg-black/40 pointer-events-none" />
         
-        {/* Hero Content - Million dollar value proposition */}
+        {/* Hero Content - Simple, clean */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
           <div 
             className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            {/* Personalized Welcome for Logged-in Users */}
-            {user && !isLoading && (
-              <div className="mb-4 inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                <span className="text-white text-sm">
-                  Welcome back{user.firstName ? `, ${user.firstName}` : ''}!
-                </span>
-                {activeEnrollment && (
-                  <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">
-                    {activeEnrollment.progress || 0}% complete
-                  </span>
-                )}
-              </div>
-            )}
-
-            {/* Headline */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 max-w-3xl leading-tight">
-              {user && activeEnrollment 
-                ? 'Continue Your Training Journey'
-                : 'Launch Your New Career in 8-16 Weeks — '
-              }
-              {!user || !activeEnrollment ? <span className="text-blue-400">100% Free</span> : null}
-            </h1>
-            <p className="text-base sm:text-lg text-white/90 mb-4 max-w-2xl">
-              {user && activeEnrollment
-                ? `You're making progress in ${activeEnrollment.courses?.title || 'your program'}. Keep going!`
-                : "Indiana's workforce programs pay for your training. No loans. No debt. Just real skills and a real job."
-              }
+            <p className="text-lg sm:text-xl md:text-2xl text-white font-medium">
+              Some programs can be <span className="text-green-400 font-bold">100% Free</span> for those who qualify
             </p>
-            
-            {/* Auth-Aware CTAs */}
-            <div className="flex flex-wrap gap-3 items-center">
-              {!isLoading && (
-                <>
-                  {user && activeEnrollment ? (
-                    // Logged in with active enrollment - show Continue Learning
-                    <>
-                      <Link 
-                        href="/lms/dashboard"
-                        className="inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition-all hover:scale-105 text-base shadow-lg shadow-green-600/30"
-                      >
-                        Continue Learning
-                      </Link>
-                      <Link 
-                        href="/student/progress"
-                        className="inline-flex items-center gap-2 text-white text-base hover:text-green-400 transition-colors"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                        View Progress
-                      </Link>
-                    </>
-                  ) : user && hasApplication ? (
-                    // Logged in with application but no active enrollment
-                    <>
-                      <Link 
-                        href="/lms/dashboard"
-                        className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
-                      >
-                        Go to Dashboard
-                      </Link>
-                      <Link 
-                        href="/apply"
-                        className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
-                      >
-                        Continue Application
-                      </Link>
-                    </>
-                  ) : user ? (
-                    // Logged in but no enrollments
-                    <>
-                      <Link 
-                        href="/apply"
-                        className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
-                      >
-                        Start Your Application
-                      </Link>
-                      <Link 
-                        href="/programs"
-                        className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
-                      >
-                        Browse Programs
-                      </Link>
-                    </>
-                  ) : (
-                    // Not logged in - default CTAs
-                    <>
-                      <Link 
-                        href="/apply"
-                        className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
-                      >
-                        Apply Now — It's Free
-                      </Link>
-                      <Link 
-                        href="tel:317-314-3757"
-                        className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                        (317) 314-3757
-                      </Link>
-                    </>
-                  )}
-                </>
-              )}
-            </div>
           </div>
         </div>
       </section>
@@ -539,6 +439,67 @@ export default function HomePage() {
 
 
 
+      {/* Two Pathways Section */}
+      <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-3">
+              Two Pathways to Your New Career
+            </h2>
+            <p className="text-base text-slate-600 max-w-2xl mx-auto">
+              Most of our programs are free through workforce funding. Some specialized programs have tuition with payment options.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Free Programs */}
+            <div className="bg-white rounded-2xl p-6 border-2 border-green-200 shadow-sm">
+              <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                <span>✓</span> No Cost to You
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Funded Programs</h3>
+              <p className="text-sm text-slate-600 mb-4">
+                WIOA, WRG, and JRI funding covers 100% of tuition for eligible participants.
+              </p>
+              <ul className="space-y-2 text-sm text-slate-700 mb-4">
+                <li>• HVAC Technician</li>
+                <li>• CNA / Healthcare</li>
+                <li>• CDL Training</li>
+                <li>• IT & Technology</li>
+              </ul>
+              <Link 
+                href="/programs"
+                className="inline-flex items-center text-green-600 font-medium text-sm hover:text-green-700"
+              >
+                View Free Programs →
+              </Link>
+            </div>
+            
+            {/* Self-Pay Programs */}
+            <div className="bg-white rounded-2xl p-6 border-2 border-purple-200 shadow-sm">
+              <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                <span>$</span> Self-Pay / Payment Plans
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Fee-Based Programs</h3>
+              <p className="text-sm text-slate-600 mb-4">
+                Specialized programs with tuition. Payment plans and financing available.
+              </p>
+              <ul className="space-y-2 text-sm text-slate-700 mb-4">
+                <li>• Barber Apprenticeship ($4,980)</li>
+                <li>• Cosmetology Training</li>
+                <li>• Esthetician Program</li>
+              </ul>
+              <Link 
+                href="/programs/barber-apprenticeship"
+                className="inline-flex items-center text-purple-600 font-medium text-sm hover:text-purple-700"
+              >
+                View Self-Pay Programs →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Program - Barber Apprenticeship */}
       <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -553,16 +514,20 @@ export default function HomePage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 loading="lazy"
               />
-              <div className="absolute top-3 left-3 bg-yellow-500 text-black px-2 py-0.5 rounded-full text-xs font-semibold flex items-center gap-1">
-                <span>⭐</span> USDOL Registered
+              <div className="absolute top-3 left-3 flex gap-2">
+                <span className="bg-yellow-500 text-black px-2 py-0.5 rounded-full text-xs font-semibold">USDOL Registered</span>
+                <span className="bg-purple-600 text-white px-2 py-0.5 rounded-full text-xs font-semibold">Self-Pay</span>
               </div>
             </div>
             <div>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-3">
                 Barber Apprenticeship Program
               </h2>
-              <p className="text-base text-slate-600 mb-4">
+              <p className="text-base text-slate-600 mb-2">
                 Earn while you learn. Get your Indiana Barber License through our USDOL-registered apprenticeship.
+              </p>
+              <p className="text-sm text-purple-700 font-medium mb-4">
+                Tuition: $4,980 • Payment plans available
               </p>
               <div className="bg-slate-50 rounded-lg p-4 mb-4">
                 <ul className="space-y-2 text-sm">
@@ -582,13 +547,13 @@ export default function HomePage() {
                     <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span>Earn while you learn</span>
+                    <span>Earn while you learn at partner shops</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span>2,000 hours hands-on training</span>
+                    <span>1,500 hours hands-on training</span>
                   </li>
                 </ul>
               </div>
@@ -600,7 +565,7 @@ export default function HomePage() {
                   Learn More
                 </Link>
                 <Link 
-                  href="/apply"
+                  href="/apply?program=barber-apprenticeship"
                   className="inline-flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors text-sm"
                 >
                   Apply Now
