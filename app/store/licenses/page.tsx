@@ -34,14 +34,25 @@ export default async function LicensesPage() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
+      {/* Hero Section with Video */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
-        {/* Background Image */}
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="/images/pexels/store-hero.jpg"
+        >
+          <source src="/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
+        </video>
+        {/* Fallback Image */}
         <Image
           src="/images/pexels/store-hero.jpg"
           alt="Workforce training platform"
           fill
-          className="object-cover"
+          className="object-cover -z-10"
           priority
           quality={90}
         />
