@@ -38,7 +38,7 @@ export default async function LicensesPage() {
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
         {/* Background Image */}
         <Image
-          src="/images/artlist/hero-training-2.jpg"
+          src="/images/pexels/store-hero.jpg"
           alt="Workforce training platform"
           fill
           className="object-cover"
@@ -402,7 +402,7 @@ export default async function LicensesPage() {
       {/* CTA */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-4.jpg"
+          src="/images/pexels/success-team.jpg"
           alt="Get started"
           fill
           className="object-cover"
