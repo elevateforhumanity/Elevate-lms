@@ -1,18 +1,36 @@
 import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { ChevronRight } from 'lucide-react';
+import {
+  ChevronRight,
+  Search,
+  Filter,
+  ShoppingCart,
+  Star,
+  Package,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Products | Elevate for Humanity',
-  description: 'Browse available products.',
-  robots: { index: false, follow: false },
+  title: 'Products | Elevate Shop',
+  description: 'Browse professional tools, supplies, and learning materials.',
 };
 
 export const dynamic = 'force-dynamic';
 
-export default async function Page() {
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  original_price?: number;
+  category: string;
+  rating: number;
+  reviews_count: number;
+  in_stock: boolean;
+  image_url?: string;
+}
+
+export default async function ProductsPage() {
   const supabase = await createClient();
 
   if (!supabase) {
@@ -20,44 +38,203 @@ export default async function Page() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+          <p className="text-gray-600">Database connection failed.</p>
         </div>
       </div>
     );
   }
 
-  const { data: { user } } = await supabase.auth.getUser();
+  // Sample products
+  const products: Product[] = [
+    {
+      id: '1',
+      name: 'Professional Clipper Set',
+      description: 'High-quality cordless clippers with multiple guards',
+      price: 89.99,
+      original_price: 119.99,
+      category: 'Barbering',
+      rating: 4.8,
+      reviews_count: 156,
+      in_stock: true,
+    },
+    {
+      id: '2',
+      name: 'Barbering Starter Kit',
+      description: 'Complete kit with clippers, scissors, combs, and cape',
+      price: 149.99,
+      category: 'Barbering',
+      rating: 4.9,
+      reviews_count: 89,
+      in_stock: true,
+    },
+    {
+      id: '3',
+      name: 'HVAC Study Guide Bundle',
+      description: 'Comprehensive study materials for EPA certification',
+      price: 79.99,
+      category: 'HVAC',
+      rating: 4.7,
+      reviews_count: 234,
+      in_stock: true,
+    },
+    {
+      id: '4',
+      name: 'Medical Assistant Exam Prep',
+      description: 'Practice tests and study guides for CMA exam',
+      price: 59.99,
+      category: 'Healthcare',
+      rating: 4.8,
+      reviews_count: 312,
+      in_stock: true,
+    },
+    {
+      id: '5',
+      name: 'Tax Preparation Software',
+      description: 'Professional tax prep software with training',
+      price: 199.99,
+      original_price: 249.99,
+      category: 'Finance',
+      rating: 4.6,
+      reviews_count: 78,
+      in_stock: true,
+    },
+    {
+      id: '6',
+      name: 'Study Flashcard Set',
+      description: 'Portable flashcards for on-the-go studying',
+      price: 15.00,
+      category: 'Study Materials',
+      rating: 4.5,
+      reviews_count: 445,
+      in_stock: true,
+    },
+    {
+      id: '7',
+      name: 'Professional Scissors Set',
+      description: 'Japanese steel cutting and thinning shears',
+      price: 129.99,
+      category: 'Barbering',
+      rating: 4.9,
+      reviews_count: 67,
+      in_stock: false,
+    },
+    {
+      id: '8',
+      name: 'Digital Multimeter',
+      description: 'Essential tool for HVAC diagnostics',
+      price: 45.99,
+      category: 'HVAC',
+      rating: 4.7,
+      reviews_count: 123,
+      in_stock: true,
+    },
+  ];
 
-  if (!user) {
-    redirect('/login');
-  }
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role, full_name')
-    .eq('id', user.id)
-    .single();
-
-  
+  const categories = ['All', 'Barbering', 'HVAC', 'Healthcare', 'Finance', 'Study Materials'];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Products</h1>
-          <p className="text-gray-600 mt-2">Browse available products.</p>
+    <div className="min-h-screen bg-gray-50">
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+            <Link href="/shop" className="hover:text-gray-700">Shop</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900 font-medium">Products</span>
+          </nav>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">Products</h1>
+              <p className="text-gray-600 mt-1">Professional tools and learning materials</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  className="pl-9 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 w-64"
+                />
+              </div>
+              <button className="inline-flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                <Filter className="w-4 h-4" />
+                Filter
+              </button>
+              <Link
+                href="/shop/cart"
+                className="inline-flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                <ShoppingCart className="w-4 h-4" />
+                Cart
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Categories */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                category === 'All'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <ChevronRight className="w-8 h-8 text-blue-600" />
+        {/* Products Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <div key={product.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+              <div className="h-40 bg-gray-100 flex items-center justify-center relative">
+                <Package className="w-16 h-16 text-gray-300" />
+                {!product.in_stock && (
+                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                    <span className="px-3 py-1 bg-white text-gray-900 rounded-full text-sm font-medium">
+                      Out of Stock
+                    </span>
+                  </div>
+                )}
+                {product.original_price && (
+                  <span className="absolute top-2 left-2 px-2 py-1 bg-red-500 text-white text-xs font-medium rounded">
+                    Sale
+                  </span>
+                )}
+              </div>
+              <div className="p-4">
+                <span className="text-xs text-gray-500">{product.category}</span>
+                <h3 className="font-semibold text-gray-900 mt-1 line-clamp-1">{product.name}</h3>
+                <p className="text-sm text-gray-500 mt-1 line-clamp-2">{product.description}</p>
+                <div className="flex items-center gap-2 mt-2">
+                  <div className="flex items-center gap-1">
+                    <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                    <span className="text-sm font-medium text-gray-900">{product.rating}</span>
+                  </div>
+                  <span className="text-sm text-gray-500">({product.reviews_count})</span>
+                </div>
+                <div className="flex items-center justify-between mt-4">
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg font-bold text-gray-900">${product.price}</span>
+                    {product.original_price && (
+                      <span className="text-sm text-gray-400 line-through">${product.original_price}</span>
+                    )}
+                  </div>
+                  <button
+                    disabled={!product.in_stock}
+                    className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <ShoppingCart className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
             </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Coming Soon</h2>
-            <p className="text-gray-600 max-w-md mx-auto">
-              This feature is currently under development. Check back soon for updates.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </div>
