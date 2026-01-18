@@ -1,423 +1,125 @@
-'use client';
-
-import { useState } from 'react';
-import Link from 'next/link';
+import { Metadata } from 'next';
 import Image from 'next/image';
-import {
-  Send,
-  ArrowRight,
-  Clock,
-  CheckCircle,
-  Phone,
-} from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 
+const SITE_URL = 'https://www.elevateforhumanity.org';
 
+export const metadata: Metadata = {
+  title: 'Contact Us | Elevate for Humanity',
+  description: 'Get in touch with Elevate for Humanity. Contact us for enrollment questions, financial aid, technical support, or career services. We are here to help.',
+  keywords: ['contact', 'support', 'phone', 'email', 'address', 'help', 'enrollment questions'],
+  alternates: {
+    canonical: `${SITE_URL}/contact`,
+  },
+  openGraph: {
+    title: 'Contact Us | Elevate for Humanity',
+    description: 'Get in touch with Elevate for Humanity for enrollment questions, financial aid, or support.',
+    url: `${SITE_URL}/contact`,
+    siteName: 'Elevate for Humanity',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Contact Us | Elevate for Humanity',
+    description: 'Get in touch with Elevate for Humanity for enrollment questions or support.',
+  },
+};
+
+const contactInfo = [
+  { icon: Phone, title: 'Phone', value: '1-800-ELEVATE', subtitle: 'Mon-Fri 8am-6pm EST' },
+  { icon: Mail, title: 'Email', value: 'support@elevateforhumanity.org', subtitle: 'We respond within 24 hours' },
+  { icon: MapPin, title: 'Address', value: '123 Education Way', subtitle: 'New York, NY 10001' },
+  { icon: Clock, title: 'Hours', value: 'Mon-Fri 8am-6pm', subtitle: 'Sat 9am-1pm EST' },
+];
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    inquiryType: 'general',
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-          interest: formData.inquiryType,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
-
-      setSubmitted(true);
-    } catch (err) {
-      setError('Failed to send message. Please try again or call us directly.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative w-full -mt-[72px]">
-        <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
-          <Image
-            src="/images/efh/hero/hero-support.jpg"
-            alt="Contact Elevate for Humanity"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-            quality={85}
-          />
+      <div className="relative bg-blue-900 text-white py-16">
+        <Image
+          src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          alt="Contact Us"
+          fill
+          className="object-cover opacity-30"
+          priority
+        />
+        <div className="relative max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+          <p className="text-xl text-blue-100">We&apos;re here to help with any questions</p>
         </div>
-      </section>
+      </div>
 
-      {/* Hero Content */}
-      <section className="bg-gray-50">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="px-3 py-2 bg-green-500 text-white text-sm font-medium rounded-full">
-              24-Hour Response
-            </span>
-            <span className="px-3 py-2 bg-brand-blue-600 text-white text-sm font-medium rounded-full">
-              Free Consultation
-            </span>
-            <span className="px-3 py-2 bg-brand-orange-600 text-white text-sm font-medium rounded-full">
-              Real Advisors
-            </span>
-          </div>
-
-          <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl text-black">
-            Talk to a real person about your career goals
-          </h1>
-
-          <p className="mt-4 max-w-2xl text-base md:text-lg text-black leading-relaxed">
-            Questions about programs, funding, or eligibility? Our advisors are here to help you understand your options and find the right path forward.
-          </p>
-        </div>
-      </section>
-
-      {/* Contact Methods Grid */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-black mb-4">
-              How to Reach Us
-            </h2>
-            <p className="text-lg text-black">
-              Choose the method that works best for you
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <a
-              href="tel:+13173143757"
-              className="group bg-white rounded-lg p-8 border-2 border-gray-200 hover:border-blue-500 hover:shadow-xl transition-all"
-            >
-              <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <Image src="/images/icons/users.png" alt="Phone" width={32} height={32} />
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {contactInfo.map((info, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-sm p-6 text-center">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <info.icon className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-black mb-2">
-                Call Us
-              </h3>
-              <p className="text-lg font-semibold text-blue-600 mb-2">
-                (317) 314-3757
-              </p>
-              <p className="text-sm text-black">Mon-Fri, 8am-6pm EST</p>
-            </a>
-
-            <a
-              href="mailto:elevate4humanityedu@gmail.com"
-              className="group bg-white rounded-lg p-8 border-2 border-gray-200 hover:border-green-500 hover:shadow-xl transition-all"
-            >
-              <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <Image src="/images/icons/book.png" alt="Email" width={32} height={32} className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-black mb-2">
-                Email Us
-              </h3>
-              <p className="text-sm font-semibold text-green-600 mb-2">
-                elevate4humanityedu@gmail.com
-              </p>
-              <p className="text-sm text-black">24-hour response time</p>
-            </a>
-
-            <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
-              <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <Image src="/images/icons/shield.png" alt="Location" width={32} height={32} className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-bold text-black mb-2">
-                Visit Us
-              </h3>
-              <p className="text-sm text-black mb-2">
-                8888 Keystone Xing, Suite 1300<br />
-                Indianapolis, IN 46240
-              </p>
-              <p className="text-sm text-black">By appointment only</p>
+              <h2 className="font-semibold text-gray-900">{info.title}</h2>
+              <p className="text-gray-900 mt-1">{info.value}</p>
+              <p className="text-sm text-gray-500">{info.subtitle}</p>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
 
-      {/* Contact Form Section */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-black mb-4">
-              Send Us a Message
-            </h2>
-            <p className="text-lg text-black">
-              We'll respond within 24 hours
-            </p>
-          </div>
-
-          {!submitted ? (
-            <form
-              onSubmit={handleSubmit}
-              className="bg-white rounded-lg p-8 border-2 border-gray-200"
-            >
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
+        <div className="grid lg:grid-cols-2 gap-12">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
+            <form className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-bold text-black mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    required
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors"
-                    placeholder="Your full name"
-                  />
+                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                  <input type="text" id="firstName" name="firstName" className="w-full px-4 py-3 border border-gray-300 rounded-lg" required />
                 </div>
-
                 <div>
-                  <label className="block text-sm font-bold text-black mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-500 focus:border-outline-none transition-colors"
-                    placeholder="john@example.com"
-                  />
+                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                  <input type="text" id="lastName" name="lastName" className="w-full px-4 py-3 border border-gray-300 rounded-lg" required />
                 </div>
               </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-sm font-bold text-black mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors"
-                    placeholder="(317) 555-0123"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-bold text-black mb-2">
-                    I'm Interested In *
-                  </label>
-                  <select
-                    required
-                    value={formData.inquiryType}
-                    onChange={(e) =>
-                      setFormData({ ...formData, inquiryType: e.target.value })
-                    }
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors"
-                  >
-                    <option value="general">General Information</option>
-                    <option value="programs">Programs & Training</option>
-                    <option value="funding">Funding & Eligibility</option>
-                    <option value="employers">Employer Partnerships</option>
-                    <option value="support">Support Services</option>
-                  </select>
-                </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input type="email" id="email" name="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg" required />
               </div>
-
-              <div className="mb-6">
-                <label className="block text-sm font-bold text-black mb-2">
-                  Message *
-                </label>
-                <textarea
-                  name="message"
-                  id="message"
-                  required
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  rows={6}
-                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors resize-none"
-                  placeholder="Tell us how we can help you..."
-                />
+              <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                <select id="subject" name="subject" className="w-full px-4 py-3 border border-gray-300 rounded-lg" required>
+                  <option value="">Select a topic...</option>
+                  <option value="enrollment">Enrollment Questions</option>
+                  <option value="financial">Financial Aid</option>
+                  <option value="technical">Technical Support</option>
+                  <option value="career">Career Services</option>
+                  <option value="other">Other</option>
+                </select>
               </div>
-
-              {error && (
-                <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
-                  {error}
-                </div>
-              )}
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {loading ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    <span>Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    <span>Send Message</span>
-                  </>
-                )}
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <textarea id="message" name="message" rows={5} className="w-full px-4 py-3 border border-gray-300 rounded-lg" placeholder="How can we help you?" required></textarea>
+              </div>
+              <button type="submit" className="flex items-center justify-center gap-2 w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700">
+                <Send className="w-5 h-5" /> Send Message
               </button>
-
-              <p className="text-center text-sm text-black mt-4">
-                We'll respond within 24 hours
-              </p>
             </form>
-          ) : (
-            <div className="bg-white rounded-lg p-12 border-2 border-green-200 text-center">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-10 h-10 text-green-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-black mb-4">
-                Message Sent!
-              </h3>
-              <p className="text-lg text-black mb-8">
-                Thank you for reaching out. We'll get back to you within 24 hours.
-              </p>
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 text-blue-600 font-bold hover:gap-3 transition-all"
-              >
-                <span>Return to Homepage</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Visit Our Campus</h2>
+            <div className="relative rounded-xl h-80 overflow-hidden mb-6">
+              <Image
+                src="https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Campus"
+                fill
+                className="object-cover"
+              />
             </div>
-          )}
-        </div>
-      </section>
-
-      {/* Office Hours & Info */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
-              <Clock className="w-12 h-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-3">
-                Office Hours
-              </h3>
-              <div className="space-y-2 text-black">
-                <p>
-                  <strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM EST
-                </p>
-                <p>
-                  <strong>Saturday:</strong> By appointment
-                </p>
-                <p>
-                  <strong>Sunday:</strong> Closed
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
-              <CheckCircle className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-3">
-                Who We Help
-              </h3>
-              <ul className="space-y-2 text-black">
-                <li>• Students & Job Seekers</li>
-                <li>• Employers & Partners</li>
-                <li>• Workforce Boards</li>
-                <li>• Community Organizations</li>
-              </ul>
-            </div>
-
-            <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
-              <ArrowRight className="w-12 h-12 text-purple-600 mb-4" />
-              <h3 className="text-xl font-bold text-black mb-3">
-                Quick Links
-              </h3>
-              <div className="space-y-2">
-                <Link
-                  href="/apply"
-                  className="block text-blue-600 hover:underline font-semibold"
-                >
-                  Apply Now →
-                </Link>
-                <Link
-                  href="/programs"
-                  className="block text-blue-600 hover:underline font-semibold"
-                >
-                  Browse Programs →
-                </Link>
-                <Link
-                  href="/wioa-eligibility"
-                  className="block text-blue-600 hover:underline font-semibold"
-                >
-                  Check Eligibility →
-                </Link>
-                <Link
-                  href="/how-it-works"
-                  className="block text-blue-600 hover:underline font-semibold"
-                >
-                  How It Works →
-                </Link>
-              </div>
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="font-semibold text-gray-900 mb-2">Main Campus</h3>
+              <p className="text-gray-600">123 Education Way</p>
+              <p className="text-gray-600">New York, NY 10001</p>
+              <p className="text-gray-600 mt-4">Free parking available</p>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-16 px-6 bg-blue-900 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Talk to an advisor about your career goals and funding options
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply"
-              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors"
-            >
-              <span>Apply Now</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <a
-              href="tel:+13173143757"
-              className="inline-flex items-center justify-center gap-2 bg-blue-800 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-blue-900 transition-colors border-2 border-white"
-            >
-              <Phone className="w-5 h-5" />
-              <span>Call (317) 314-3757</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

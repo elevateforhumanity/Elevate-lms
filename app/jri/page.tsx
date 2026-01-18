@@ -25,30 +25,50 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function JRIPage() {
+  // Safely get Supabase client - may be null if not configured
   const supabase = await createClient();
 
-  // Get JRI-eligible programs
-  const { data: programs } = await supabase
-    .from('programs')
-    .select('id, name, slug, description, duration')
-    .eq('is_active', true)
-    .eq('accepts_jri', true)
-    .order('name', { ascending: true });
+  // Initialize with defaults - will be overwritten if Supabase is available
+  let programs: any[] = [];
+  let successStories: any[] = [];
+  let stats: any[] = [];
 
-  // Get success stories
-  const { data: successStories } = await supabase
-    .from('testimonials')
-    .select('*')
-    .eq('category', 'jri')
-    .eq('is_featured', true)
-    .limit(3);
+  // Only query if Supabase is configured
+  if (supabase) {
+    try {
+      // Get JRI-eligible programs
+      const { data: programsData } = await supabase
+        .from('programs')
+        .select('id, name, slug, description, duration')
+        .eq('is_active', true)
+        .eq('accepts_jri', true)
+        .order('name', { ascending: true });
+      
+      if (programsData) programs = programsData;
 
-  // Get JRI statistics
-  const { data: stats } = await supabase
-    .from('statistics')
-    .select('*')
-    .eq('category', 'jri')
-    .order('order', { ascending: true });
+      // Get success stories
+      const { data: storiesData } = await supabase
+        .from('testimonials')
+        .select('*')
+        .eq('category', 'jri')
+        .eq('is_featured', true)
+        .limit(3);
+      
+      if (storiesData) successStories = storiesData;
+
+      // Get JRI statistics
+      const { data: statsData } = await supabase
+        .from('statistics')
+        .select('*')
+        .eq('category', 'jri')
+        .order('order', { ascending: true });
+      
+      if (statsData) stats = statsData;
+    } catch (error) {
+      console.error('[JRI Page] Database query failed:', error);
+      // Continue with defaults
+    }
+  }
 
   const defaultStats = [
     { label: 'Graduates', value: '500+', icon: GraduationCap },
@@ -194,7 +214,7 @@ export default async function JRIPage() {
               </ul>
               <div className="mt-8 text-center">
                 <p className="text-gray-600 mb-4">
-                  Not sure if you qualify? Contact us and we'll help determine your eligibility.
+                  Not sure if you qualify? Contact us and we&apos;ll help determine your eligibility.
                 </p>
                 <Link
                   href="/apply"
@@ -261,7 +281,7 @@ export default async function JRIPage() {
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {successStories.map((story: any) => (
                 <div key={story.id} className="bg-gray-50 rounded-xl p-6">
-                  <p className="text-gray-600 italic mb-4">"{story.content}"</p>
+                  <p className="text-gray-600 italic mb-4">&quot;{story.content}&quot;</p>
                   <div className="font-semibold">{story.name}</div>
                   {story.program && (
                     <div className="text-sm text-green-600">{story.program}</div>

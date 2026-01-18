@@ -13,9 +13,16 @@ export const dynamic = 'force-dynamic';
 
 export default async function EmployeePortalPage() {
   const supabase = await createClient();
+  
+  if (!supabase) {
+    redirect('/login?redirect=/employee');
+  }
+
   const { data: { user } } = await supabase.auth.getUser();
   
-  if (!user) redirect('/login?redirect=/employee');
+  if (!user) {
+    redirect('/login?redirect=/employee');
+  }
 
   const { data: profile } = await supabase
     .from('profiles')
@@ -34,7 +41,7 @@ export default async function EmployeePortalPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white py-8">
+      <div className="bg-indigo-600 text-white py-8">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-3xl font-bold">Employee Portal</h1>
           <p className="text-indigo-100">Welcome, {profile?.full_name || 'Employee'}</p>

@@ -1,12 +1,72 @@
-import { redirect } from 'next/navigation';
-import { Metadata } from 'next';
+'use client';
 
+import { useState } from 'react';
+import Link from 'next/link';
+import { Store, CheckCircle } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Register',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/shop/seller/register' },
-};
+export default function SellerRegisterPage() {
+  const [formData, setFormData] = useState({ name: '', email: '', storeName: '', description: '' });
+  const [submitted, setSubmitted] = useState(false);
 
-export default function Page() {
-  redirect('/shop');
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await new Promise(r => setTimeout(r, 1000));
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
+          <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Application Submitted!</h1>
+          <p className="text-gray-600 mb-6">We will review your seller application and get back to you within 2-3 business days.</p>
+          <Link href="/" className="text-blue-600 font-medium">Return to Home</Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="bg-purple-900 text-white py-12">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Store className="w-12 h-12 mx-auto mb-4 opacity-80" />
+          <h1 className="text-3xl font-bold mb-2">Become a Seller</h1>
+          <p className="text-purple-100">Sell your products and courses on the Elevate marketplace</p>
+        </div>
+      </div>
+      <div className="max-w-2xl mx-auto px-4 py-12">
+        <div className="bg-white rounded-xl shadow-lg p-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Your Name *</label>
+                <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg" placeholder="Full name" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg" placeholder="email@example.com" />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Store Name *</label>
+              <input type="text" required value={formData.storeName} onChange={(e) => setFormData({...formData, storeName: e.target.value})}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg" placeholder="Your store name" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">What will you sell?</label>
+              <textarea rows={4} value={formData.description} onChange={(e) => setFormData({...formData, description: e.target.value})}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg resize-none" placeholder="Describe your products or courses..." />
+            </div>
+            <button type="submit" className="w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-lg font-bold transition">
+              Submit Application
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 }

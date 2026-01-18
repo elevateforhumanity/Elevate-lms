@@ -1,9 +1,135 @@
-import { redirect } from 'next/navigation';
-import { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'New',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/messages/new' },
-};
+import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ArrowLeft, Send, Paperclip, AlertCircle } from 'lucide-react';
 
-export default function Page() { redirect('/messages'); }
+export default function NewMessagePage() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    to: '',
+    subject: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+
+  const recipients = [
+    { id: '1', name: 'Career Services', email: 'careers@elevateforhumanity.org' },
+    { id: '2', name: 'Financial Aid', email: 'financialaid@elevateforhumanity.org' },
+    { id: '3', name: 'Admissions', email: 'admissions@elevateforhumanity.org' },
+    { id: '4', name: 'Student Support', email: 'support@elevateforhumanity.org' },
+    { id: '5', name: 'My Instructor', email: 'instructor@elevateforhumanity.org' },
+  ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (!formData.to || !formData.subject || !formData.message) {
+      setError('Please fill in all required fields');
+      return;
+    }
+
+    setIsSubmitting(true);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    router.push('/messages/sent');
+  };
+
+  return (
+    <div className="bg-gray-50 min-h-screen">
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <nav className="flex items-center text-sm text-gray-600">
+            <Link href="/" className="hover:text-blue-600">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/messages" className="hover:text-blue-600">Messages</Link>
+            <span className="mx-2">/</span>
+            <span className="text-gray-900 font-medium">New Message</span>
+          </nav>
+        </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto px-4 py-8">
+        <Link href="/messages" className="inline-flex items-center text-gray-600 hover:text-blue-600 mb-6">
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back to Messages
+        </Link>
+
+        <div className="bg-white rounded-xl shadow-sm p-8">
+          <h1 className="text-2xl font-bold text-gray-900 mb-6">New Message</h1>
+
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start">
+              <AlertCircle className="w-5 h-5 text-red-600 mr-3 flex-shrink-0 mt-0.5" />
+              <p className="text-red-800">{error}</p>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">To *</label>
+              <select
+                value={formData.to}
+                onChange={(e) => setFormData({ ...formData, to: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="">Select recipient</option>
+                {recipients.map((r) => (
+                  <option key={r.id} value={r.email}>{r.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
+              <input
+                type="text"
+                value={formData.subject}
+                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                placeholder="Enter subject"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+              <textarea
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                rows={8}
+                placeholder="Type your message..."
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+              />
+            </div>
+
+            <div className="flex items-center justify-between pt-4 border-t">
+              <button type="button" className="flex items-center text-gray-600 hover:text-blue-600">
+                <Paperclip className="w-5 h-5 mr-2" />
+                Attach File
+              </button>
+              <div className="flex items-center gap-4">
+                <Link href="/messages" className="px-6 py-3 text-gray-700 hover:text-gray-900">
+                  Cancel
+                </Link>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transition inline-flex items-center disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Sending...' : (
+                    <>
+                      <Send className="w-5 h-5 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}

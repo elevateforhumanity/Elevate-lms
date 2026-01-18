@@ -32,6 +32,7 @@ function getFirstDayOfMonth(year: number, month: number) {
 
 export default async function CalendarPage() {
   const supabase = await createClient();
+  if (!supabase) { redirect("/login"); }
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {

@@ -1,201 +1,93 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingBag, BookOpen, Award, Shirt, ArrowRight, Star } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
+import { ShopClient } from './ShopClient';
+import { PageTracker } from '@/components/analytics/PageTracker';
+
+const SITE_URL = 'https://www.elevateforhumanity.org';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Shop | Elevate For Humanity',
-  description: 'Shop courses, workbooks, study materials, and Elevate merchandise. Support our mission while advancing your career.',
+  title: 'Shop | Elevate for Humanity',
+  description: 'Shop professional tools, equipment, apparel, and study materials for your career training programs. Quality gear at student-friendly prices.',
+  keywords: ['shop', 'tools', 'equipment', 'scrubs', 'study guides', 'career training', 'student supplies'],
+  alternates: {
+    canonical: `${SITE_URL}/shop`,
+  },
+  openGraph: {
+    title: 'Shop | Elevate for Humanity',
+    description: 'Shop professional tools, equipment, apparel, and study materials for your career training programs.',
+    url: `${SITE_URL}/shop`,
+    siteName: 'Elevate for Humanity',
+    type: 'website',
+    images: [{ url: `${SITE_URL}/images/og/shop-og.jpg`, width: 1200, height: 630, alt: 'Elevate Shop' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shop | Elevate for Humanity',
+    description: 'Shop professional tools, equipment, and study materials for your career training.',
+  },
 };
 
-const categories = [
-  {
-    name: 'Online Courses',
-    description: 'Self-paced learning for career advancement',
-    count: 24,
-    icon: BookOpen,
-    href: '/courses',
-    image: '/images/technology/hero-programs-technology.jpg',
-  },
-  {
-    name: 'Workbooks & Study Guides',
-    description: 'Printed and digital study materials',
-    count: 18,
-    icon: BookOpen,
-    href: '/workbooks',
-    image: '/images/healthcare/program-cna-training.jpg',
-  },
-  {
-    name: 'Certifications',
-    description: 'Industry-recognized certification prep',
-    count: 12,
-    icon: Award,
-    href: '/certifications',
-    image: '/images/trades/hero-program-hvac.jpg',
-  },
-  {
-    name: 'Merchandise',
-    description: 'Elevate branded apparel and accessories',
-    count: 15,
-    icon: Shirt,
-    href: '/store',
-    image: '/images/artlist/hero-training-1.jpg',
-  },
+const fallbackProducts = [
+  { id: '1', name: 'HVAC Tool Kit', price: 149.99, rating: 4.8, review_count: 124, category: 'Tools', image_url: 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'hvac-tool-kit' },
+  { id: '2', name: 'Medical Scrubs Set', price: 49.99, rating: 4.6, review_count: 89, category: 'Apparel', image_url: 'https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'medical-scrubs-set' },
+  { id: '3', name: 'Barber Shears Pro', price: 89.99, rating: 4.9, review_count: 156, category: 'Tools', image_url: 'https://images.pexels.com/photos/3998429/pexels-photo-3998429.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'barber-shears-pro' },
+  { id: '4', name: 'Study Guide Bundle', price: 29.99, rating: 4.7, review_count: 234, category: 'Books', image_url: 'https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'study-guide-bundle' },
+  { id: '5', name: 'Safety Glasses', price: 24.99, rating: 4.5, review_count: 67, category: 'Safety', image_url: 'https://images.pexels.com/photos/5691659/pexels-photo-5691659.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'safety-glasses' },
+  { id: '6', name: 'Elevate Hoodie', price: 59.99, rating: 4.8, review_count: 178, category: 'Apparel', image_url: 'https://images.pexels.com/photos/6311387/pexels-photo-6311387.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'elevate-hoodie' },
 ];
 
-const featuredProducts = [
-  {
-    name: 'CNA Exam Prep Course',
-    price: 49.99,
-    originalPrice: 99.99,
-    rating: 4.8,
-    reviews: 156,
-    image: '/images/healthcare/program-cna-training.jpg',
-    badge: 'Best Seller',
-  },
-  {
-    name: 'CompTIA A+ Study Guide',
-    price: 29.99,
-    originalPrice: null,
-    rating: 4.9,
-    reviews: 89,
-    image: '/images/technology/hero-programs-technology.jpg',
-    badge: null,
-  },
-  {
-    name: 'HVAC Fundamentals Workbook',
-    price: 24.99,
-    originalPrice: null,
-    rating: 4.7,
-    reviews: 67,
-    image: '/images/trades/hero-program-hvac.jpg',
-    badge: 'New',
-  },
-  {
-    name: 'Elevate T-Shirt',
-    price: 19.99,
-    originalPrice: null,
-    rating: 5.0,
-    reviews: 34,
-    image: '/images/artlist/hero-training-2.jpg',
-    badge: null,
-  },
-];
+const categories = ['All', 'Tools', 'Apparel', 'Books', 'Safety', 'Accessories'];
 
-export default function ShopPage() {
+export default async function ShopPage() {
+  let products = fallbackProducts;
+  
+  try {
+    const supabase = await createClient();
+    if (supabase) {
+      const { data } = await supabase
+        .from('shop_products')
+        .select('id, name, slug, price, rating, review_count, category, image_url')
+        .eq('is_active', true)
+        .order('is_featured', { ascending: false })
+        .order('created_at', { ascending: false })
+        .limit(12);
+      
+      if (data && data.length > 0) {
+        products = data;
+      }
+    }
+  } catch {
+    // Use fallback products
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
-      <section className="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-white border-b">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <ShoppingBag className="w-4 h-4" />
-              Support Our Mission
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              Elevate Shop
-            </h1>
-            <p className="text-xl text-gray-600 mb-6">
-              Courses, study materials, and merchandise to support your career journey. 100% of proceeds fund free training for those in need.
-            </p>
+      <PageTracker pageName="Shop" pageCategory="ecommerce" />
+      
+      <div className="relative bg-slate-900 text-white py-16">
+        <Image
+          src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          alt="Shop"
+          fill
+          className="object-cover opacity-40"
+          priority
+        />
+        <div className="relative max-w-7xl mx-auto px-4">
+          <div className="flex items-center gap-3 mb-4">
+            <ShoppingBag className="w-10 h-10" />
+            <h1 className="text-4xl font-bold">Elevate Shop</h1>
           </div>
-        </div>
-      </section>
-
-      {/* Categories */}
-      <section className="py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl font-bold mb-6">Shop by Category</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {categories.map((cat) => (
-              <Link
-                key={cat.name}
-                href={cat.href}
-                className="group bg-white rounded-xl overflow-hidden border hover:shadow-lg transition-shadow"
-              >
-                <div className="relative h-40">
-                  <Image
-                    src={cat.image}
-                    alt={cat.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/40" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <h3 className="font-semibold">{cat.name}</h3>
-                    <p className="text-sm text-white/80">{cat.count} items</p>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <p className="text-gray-600 text-sm">{cat.description}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Products */}
-      <section className="py-12 bg-white border-t">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold">Featured Products</h2>
-            <Link href="/store" className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1">
-              View All <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product) => (
-              <div key={product.name} className="bg-white rounded-xl border hover:shadow-lg transition-shadow overflow-hidden">
-                <div className="relative h-48">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                  />
-                  {product.badge && (
-                    <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">
-                      {product.badge}
-                    </span>
-                  )}
-                </div>
-                <div className="p-4">
-                  <h3 className="font-semibold mb-2">{product.name}</h3>
-                  <div className="flex items-center gap-1 mb-2">
-                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                    <span className="text-sm font-medium">{product.rating}</span>
-                    <span className="text-sm text-gray-500">({product.reviews})</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-blue-600">${product.price}</span>
-                    {product.originalPrice && (
-                      <span className="text-sm text-gray-400 line-through">${product.originalPrice}</span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Mission Banner */}
-      <section className="py-12 bg-blue-600 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-bold mb-4">Every Purchase Supports Free Training</h2>
-          <p className="text-blue-100 mb-6">
-            100% of shop proceeds go directly to funding free career training for Indiana residents who qualify for WIOA and state grants.
+          <p className="text-xl text-gray-200 max-w-2xl">
+            Get the tools and gear you need for your training programs
           </p>
-          <Link
-            href="/about"
-            className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-          >
-            Learn About Our Mission
-          </Link>
         </div>
-      </section>
+      </div>
+
+      <ShopClient products={products} categories={categories} />
     </div>
   );
 }

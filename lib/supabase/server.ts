@@ -3,56 +3,84 @@ import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
 import type { SupabaseClient } from '@supabase/supabase-js';
 
+// Check if Supabase is configured
+export function isSupabaseConfigured(): boolean {
+  return !!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+}
+
+// Returns null if Supabase is not configured - NEVER throws
 export async function createClient(): Promise<SupabaseClient<any> | null> {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    console.warn('[Supabase Server] Missing env vars - returning null client');
+    // Log warning in development, but don't crash
+    if (process.env.NODE_ENV === 'development') {
+      console.warn(
+        '[Supabase Server] Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY. ' +
+        'Database features disabled. Set these in .env.local to enable.'
+      );
+    }
     return null;
   }
 
-  const cookieStore = await cookies();
+  try {
+    const cookieStore = await cookies();
 
-  return createServerClient(
-    supabaseUrl,
-    supabaseAnonKey,
-    {
-      cookies: {
-        getAll() {
-          return cookieStore.getAll();
+    return createServerClient(
+      supabaseUrl,
+      supabaseAnonKey,
+      {
+        cookies: {
+          getAll() {
+            return cookieStore.getAll();
+          },
+          setAll(cookiesToSet) {
+            try {
+              cookiesToSet.forEach(({ name, value, options }) =>
+                cookieStore.set(name, value, options)
+              );
+            } catch {
+              // Server Component - cookies are read-only
+            }
+          },
         },
-        setAll(cookiesToSet) {
-          try {
-            cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
-            );
-          } catch (error) {
-            // Server Component
-          }
-        },
-      },
-    }
-  );
+      }
+    );
+  } catch (error) {
+    console.error('[Supabase Server] Failed to create client:', error);
+    return null;
+  }
 }
 
+// Returns null if admin client cannot be created - NEVER throws
 export function createAdminClient(): SupabaseClient<any> | null {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!supabaseUrl || !serviceRoleKey) {
-    console.warn('[Supabase Admin] Missing env vars - returning null client');
+    if (process.env.NODE_ENV === 'development') {
+      console.warn(
+        '[Supabase Admin] Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY. ' +
+        'Admin features disabled.'
+      );
+    }
     return null;
   }
 
-  return createSupabaseClient(
-    supabaseUrl,
-    serviceRoleKey,
-    {
-      auth: {
-        autoRefreshToken: false,
-        persistSession: false,
-      },
-    }
-  );
+  try {
+    return createSupabaseClient(
+      supabaseUrl,
+      serviceRoleKey,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false,
+        },
+      }
+    );
+  } catch (error) {
+    console.error('[Supabase Admin] Failed to create client:', error);
+    return null;
+  }
 }

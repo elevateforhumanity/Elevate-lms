@@ -1,139 +1,113 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import ProgramHowItWorks from '@/components/program/ProgramHowItWorks';
-import ProgramFAQ from '@/components/program/ProgramFAQ';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import { ArrowLeft, CheckCircle, CreditCard, Shield } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Enroll Now | Elevate For Humanity',
-  description: 'Start your career training journey. Enroll in free workforce development programs with WIOA funding in Indianapolis.',
-};
+export const metadata: Metadata = { title: 'Enroll | Elevate LMS' };
 
-export const dynamic = 'force-dynamic';
-
-export default async function EnrollPage() {
-  const supabase = await createClient();
-
-  // Get available programs for enrollment
-  const { data: programs } = await supabase
-    .from('programs')
-    .select('id, name, slug, description, duration, is_active')
-    .eq('is_active', true)
-    .eq('accepting_enrollments', true)
-    .order('name', { ascending: true });
-
-  // Get funding options
-  const { data: fundingOptions } = await supabase
-    .from('funding_options')
-    .select('*')
-    .eq('is_active', true);
-
-  const defaultFunding = [
-    { code: 'WRG', name: 'Workforce Ready Grant', description: 'Indiana state funding for workforce training' },
-    { code: 'WIOA', name: 'Workforce Innovation', description: 'Federal workforce development funding' },
-    { code: 'JRI', name: 'Justice Reinvestment', description: 'Funding for justice-involved individuals' },
-  ];
-
-  const displayFunding = fundingOptions && fundingOptions.length > 0 ? fundingOptions : defaultFunding;
-
+export default function EnrollPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <ModernLandingHero
-        badge="⚡ 100% Free Training Available"
-        headline="Enroll in"
-        accentText="Free Career Training"
-        subheadline="No Tuition. No Debt. Start Your New Career Today."
-        description="Most students qualify for 100% free training through WIOA, WRG, or JRI funding. We handle all the paperwork and help you every step of the way."
-        imageSrc="/og-default.jpg"
-        imageAlt="Enroll in Free Training"
-        primaryCTA={{ text: "Apply for Free Training", href: "#enrollment" }}
-        secondaryCTA={{ text: "Call 317-314-3757", href: "tel:317-314-3757" }}
-        features={[
-          "100% free training through WIOA, WRG, or JRI funding",
-          "No tuition, no debt, no hidden costs",
-          "We handle all paperwork and applications"
-        ]}
-        imageOnRight={true}
-      />
-
-      {/* Enrollment Form */}
-      <section id="enrollment" className="py-20 bg-gray-50">
-        <div className="max-w-2xl mx-auto px-4">
-          {/* FREE Training Only */}
-          <div className="bg-white rounded-2xl border-2 border-green-500 p-8 shadow-lg">
-            <div className="text-3xl font-black text-green-700 mb-4 text-center">
-              Apply for FREE Training
-            </div>
-            <p className="text-lg text-black mb-6 text-center">
-              Most students qualify for 100% free training through:
-            </p>
-            <ul className="space-y-3 mb-8 text-black max-w-md mx-auto">
-              {displayFunding.map((funding: any) => (
-                <li key={funding.code} className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold text-xl">✓</span>
-                  <span>
-                    <strong>{funding.code}</strong> - {funding.name}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="text-sm text-black mb-8 text-center">
-              No tuition. No debt. We help you apply and handle all paperwork.
-            </p>
-            <Link
-              href="/apply"
-              className="block w-full text-center px-8 py-4 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition-all text-lg"
-            >
-              Apply for Free Training
-            </Link>
+    <div className="min-h-screen bg-gray-50">
+      <div className="bg-white border-b">
+        <div className="max-w-4xl mx-auto px-4 py-4">
+          <Link href="/courses" className="flex items-center gap-2 text-gray-600 hover:text-blue-600">
+            <ArrowLeft className="w-5 h-5" /> Back to Courses
+          </Link>
+        </div>
+      </div>
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">Complete Your Enrollment</h1>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="md:col-span-2">
+            <form className="space-y-6">
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Personal Information</h2>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                    <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                    <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                    <input type="tel" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Payment Information</h2>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
+                    <div className="relative">
+                      <input type="text" placeholder="1234 5678 9012 3456" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
+                      <CreditCard className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Expiry Date</label>
+                      <input type="text" placeholder="MM/YY" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">CVV</label>
+                      <input type="text" placeholder="123" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Shield className="w-5 h-5 text-green-600" />
+                <span>Your payment information is secure and encrypted</span>
+              </div>
+              <button type="submit" className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold hover:bg-blue-700">
+                Complete Enrollment
+              </button>
+            </form>
           </div>
-
-          {/* Available Programs */}
-          {programs && programs.length > 0 && (
-            <div className="mt-12">
-              <h2 className="text-2xl font-bold text-center mb-6">Available Programs</h2>
-              <div className="grid gap-4">
-                {programs.map((program: any) => (
-                  <Link
-                    key={program.id}
-                    href={`/programs/${program.slug || program.id}`}
-                    className="block bg-white rounded-xl border p-6 hover:shadow-md transition"
-                  >
-                    <h3 className="font-semibold text-lg">{program.name}</h3>
-                    {program.description && (
-                      <p className="text-gray-600 text-sm mt-1 line-clamp-2">{program.description}</p>
-                    )}
-                    {program.duration && (
-                      <p className="text-sm text-green-600 mt-2">Duration: {program.duration}</p>
-                    )}
-                  </Link>
-                ))}
+          <div>
+            <div className="bg-white rounded-xl shadow-sm p-6 sticky top-8">
+              <h3 className="font-bold text-gray-900 mb-4">Order Summary</h3>
+              <div className="space-y-3 mb-6">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">HVAC Fundamentals</span>
+                  <span className="font-medium">$1,999</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Registration Fee</span>
+                  <span>$50</span>
+                </div>
+              </div>
+              <div className="border-t pt-4">
+                <div className="flex justify-between font-bold text-lg">
+                  <span>Total</span>
+                  <span>$2,049</span>
+                </div>
+              </div>
+              <div className="mt-6 space-y-2">
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <span>30-day money-back guarantee</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <span>Lifetime access to materials</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <span>Certificate upon completion</span>
+                </div>
               </div>
             </div>
-          )}
-
-          <div className="text-center mt-12">
-            <p className="text-black mb-2">Questions?</p>
-            <a
-              href="tel:3173143757"
-              className="text-2xl font-bold text-orange-600 hover:text-orange-700"
-            >
-              Call 317-314-3757
-            </a>
-          </div>
-
-          {/* How It Works Section */}
-          <div className="mt-12">
-            <ProgramHowItWorks programName="Enrollment" />
-          </div>
-
-          {/* FAQ Section */}
-          <div className="mt-8">
-            <ProgramFAQ />
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

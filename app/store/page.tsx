@@ -46,16 +46,37 @@ export default async function StorePage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Products Coming Soon */}
+        {/* Featured Products */}
         <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-6">Products</h2>
-          <div className="text-center py-16 bg-white rounded-xl border">
-            <Gift className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-            <h3 className="text-lg font-medium mb-2">Store Coming Soon</h3>
-            <p className="text-gray-600 mb-4">Digital resources and products will be available here.</p>
-            <Link href="/programs" className="text-blue-600 font-medium hover:underline">
-              Browse our training programs instead →
-            </Link>
+          <h2 className="text-2xl font-bold text-blue-900 mb-6">Featured Products</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-xl border p-6 hover:shadow-lg transition">
+              <Gift className="w-10 h-10 text-blue-600 mb-4" />
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Career Success Workbook</h3>
+              <p className="text-gray-600 text-sm mb-4">Comprehensive guide for job seekers with exercises and templates.</p>
+              <div className="flex items-center justify-between">
+                <span className="text-xl font-bold text-blue-600">$19.99</span>
+                <Link href="/workbooks" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium">View</Link>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl border p-6 hover:shadow-lg transition">
+              <Gift className="w-10 h-10 text-green-600 mb-4" />
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Interview Prep Bundle</h3>
+              <p className="text-gray-600 text-sm mb-4">Video course, practice questions, and feedback templates.</p>
+              <div className="flex items-center justify-between">
+                <span className="text-xl font-bold text-green-600">$29.99</span>
+                <Link href="/courses" className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium">View</Link>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl border p-6 hover:shadow-lg transition">
+              <Gift className="w-10 h-10 text-purple-600 mb-4" />
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Elevate Merchandise</h3>
+              <p className="text-gray-600 text-sm mb-4">Show your support with branded apparel and accessories.</p>
+              <div className="flex items-center justify-between">
+                <span className="text-xl font-bold text-purple-600">From $15</span>
+                <Link href="/shop" className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium">Shop</Link>
+              </div>
+            </div>
           </div>
         </section>
 

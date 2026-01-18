@@ -1,457 +1,374 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Phone, CheckCircle, Shield, Clock, MapPin } from 'lucide-react';
-import CheckoutButton from '@/components/drug-testing/CheckoutButton';
+import Image from 'next/image';
+import { Phone, CheckCircle, ArrowRight, Clock, MapPin, Shield, Beaker, Truck, Building2, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Drug Testing Services | Elevate for Humanity',
   description:
-    'Professional drug testing services for workforce programs. DOT and non-DOT testing, nationwide collection sites, MRO review included.',
+    'Professional drug testing for employers and individuals. DOT and non-DOT testing, 20,000+ nationwide locations, fast results.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/drug-testing',
   },
 };
 
-// NDS Prices with 40% markup
-const drugTestingServices = {
-  urine: [
-    {
-      name: 'DOT Urine Drug Test',
-      ndsPrice: 75,
-      price: 105, // 40% markup
-      description: 'DOT-compliant 5-panel urine drug test with MRO review',
-      popular: true,
-    },
-    {
-      name: '5 Panel Drug Test',
-      ndsPrice: 69,
-      price: 97,
-      description: 'Standard 5-panel urine drug test (COC, THC, OPI, AMP, PCP)',
-    },
-    {
-      name: '10 Panel Drug Test',
-      ndsPrice: 69,
-      price: 97,
-      description: 'Expanded 10-panel urine drug test',
-    },
-    {
-      name: '5 Panel + Expanded Opiates',
-      ndsPrice: 75,
-      price: 105,
-      description: 'Includes testing for synthetic opioids',
-    },
-    {
-      name: '4 Panel (NO THC)',
-      ndsPrice: 75,
-      price: 105,
-      description: 'Drug test without marijuana for states with legal cannabis',
-    },
-    {
-      name: '5 Panel + Alcohol',
-      ndsPrice: 85,
-      price: 119,
-      description: '5-panel drug test plus alcohol screening',
-    },
-    {
-      name: '10 Panel + Alcohol',
-      ndsPrice: 85,
-      price: 119,
-      description: '10-panel drug test plus alcohol screening',
-    },
-    {
-      name: '5 Panel + Alcohol EtG',
-      ndsPrice: 169,
-      price: 237,
-      description: '5-panel plus EtG alcohol test (detects up to 80 hours)',
-    },
-    {
-      name: '10 Panel + Alcohol EtG + Exp Opi',
-      ndsPrice: 179,
-      price: 251,
-      description: 'Comprehensive test with extended alcohol detection',
-    },
-    {
-      name: '5 Panel + Nicotine',
-      ndsPrice: 103,
-      price: 144,
-      description: '5-panel drug test plus nicotine/cotinine screening',
-    },
-  ],
-  instant: [
-    {
-      name: 'Instant Rapid 5 Panel',
-      ndsPrice: 60,
-      price: 84,
-      description: 'Rapid on-site testing with immediate results',
-    },
-    {
-      name: 'Instant Rapid 10 Panel',
-      ndsPrice: 69,
-      price: 97,
-      description: 'Rapid 10-panel on-site testing',
-    },
-    {
-      name: 'Instant Rapid 4 Panel (NO THC)',
-      ndsPrice: 60,
-      price: 84,
-      description: 'Rapid testing without marijuana',
-    },
-    {
-      name: 'Instant Rapid 9 Panel (NO THC)',
-      ndsPrice: 65,
-      price: 91,
-      description: 'Expanded rapid testing without marijuana',
-    },
-  ],
-  hair: [
-    {
-      name: 'Hair Drug Test 10 Panel',
-      ndsPrice: 294,
-      price: 412,
-      description: 'Hair follicle testing (90-day detection window)',
-    },
-    {
-      name: 'Hair Drug Test 13 Panel + Exp Opi',
-      ndsPrice: 687,
-      price: 962,
-      description: 'Comprehensive hair testing with expanded opiates',
-    },
-    {
-      name: 'Hair Drug Test 18 Panel + Exp Opi',
-      ndsPrice: 744,
-      price: 1042,
-      description: 'Most comprehensive hair drug test available',
-    },
-    {
-      name: 'Hair 4 Panel + Exp Opi + Oxi (NO THC)',
-      ndsPrice: 191,
-      price: 267,
-      description: 'Hair testing without marijuana',
-    },
-  ],
-  specialty: [
-    {
-      name: 'DOT Pre-Employment Drug Test',
-      ndsPrice: 75,
-      price: 105,
-      description: 'Required for FMCSA-regulated drivers',
-    },
-    {
-      name: 'Return to Duty DOT Test',
-      ndsPrice: 375,
-      price: 525,
-      description: 'For drivers returning after positive test',
-    },
-  ],
-};
+const testingCategories = [
+  {
+    title: 'Urine Drug Tests',
+    description: 'Most common and cost-effective. Lab-confirmed results in 24-48 hours.',
+    href: '/drug-testing/urine-tests',
+    image: '/images/artlist/hero-training-2.jpg',
+    startingPrice: 69,
+    tests: ['5-Panel', '10-Panel', 'DOT 5-Panel', 'Expanded Opiates'],
+  },
+  {
+    title: 'Instant Rapid Tests',
+    description: 'On-site results in 5-10 minutes. Perfect for high-volume screening.',
+    href: '/drug-testing/instant-tests',
+    image: '/images/artlist/hero-training-3.jpg',
+    startingPrice: 60,
+    tests: ['Rapid 5-Panel', 'Rapid 10-Panel', 'Rapid + Alcohol'],
+  },
+  {
+    title: 'Hair Follicle Tests',
+    description: '90-day detection window. Difficult to cheat, ideal for pre-employment.',
+    href: '/drug-testing/hair-tests',
+    image: '/images/artlist/hero-training-4.jpg',
+    startingPrice: 125,
+    tests: ['5-Panel Hair', '10-Panel Hair', 'Extended Opiates'],
+  },
+  {
+    title: 'DOT Testing',
+    description: 'FMCSA-compliant testing for commercial drivers and transportation workers.',
+    href: '/drug-testing/dot-testing',
+    image: '/images/artlist/hero-training-5.jpg',
+    startingPrice: 75,
+    tests: ['Pre-Employment', 'Random', 'Post-Accident', 'Return to Duty'],
+  },
+  {
+    title: 'Training & Certification',
+    description: 'Online courses for supervisors, collectors, and employers. DOT-compliant certificates.',
+    href: '/drug-testing/training',
+    image: '/images/artlist/hero-training-6.jpg',
+    startingPrice: 22,
+    tests: ['Supervisor Training', 'Collector Certification', 'DER Training'],
+  },
+];
 
-export default function DrugTestingPage() {
+const features = [
+  {
+    icon: MapPin,
+    title: '20,000+ Locations',
+    description: 'LabCorp, Quest, and clinic sites nationwide. Find one near you.',
+  },
+  {
+    icon: Clock,
+    title: 'Fast Results',
+    description: 'Most results in 24-48 hours. Instant tests in 5-10 minutes.',
+  },
+  {
+    icon: Shield,
+    title: 'MRO Review Included',
+    description: 'Licensed Medical Review Officer reviews every result.',
+  },
+  {
+    icon: Beaker,
+    title: 'SAMHSA Certified',
+    description: 'All lab testing meets federal certification standards.',
+  },
+];
+
+export default function DrugTestingLandingPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="bg-white text-white py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Drug Testing Services
+      <section className="relative min-h-[500px] flex items-center">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/healthcare/hero-programs-healthcare.jpg"
+            alt="Professional Drug Testing Services"
+            fill
+            className="object-cover"
+            priority
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-20">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 bg-green-500 px-4 py-2 rounded-full text-white text-sm font-bold mb-6">
+              <CheckCircle className="w-4 h-4" />
+              Same-Day Appointments Available
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Professional Drug Testing Services
             </h1>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Professional drug testing for workforce programs. DOT and non-DOT
-              testing, nationwide collection sites, MRO review included.
+            
+            <p className="text-xl text-white mb-8">
+              Fast, accurate, and affordable drug testing for employers and individuals. 
+              DOT and non-DOT options with nationwide collection sites.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            
+            <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="tel:+13173143757"
-                className="inline-block px-8 py-4 bg-white text-brand-blue-600 rounded-lg font-bold hover:bg-gray-50"
+                className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition text-lg"
               >
-                Call (317) 314-3757
+                <Phone className="w-5 h-5" />
+                (317) 314-3757
               </a>
               <Link
-                href="/contact"
-                className="inline-block px-8 py-4 bg-brand-blue-700 text-white rounded-lg font-bold hover:bg-brand-blue-600 border-2 border-white"
+                href="#services"
+                className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition text-lg"
               >
-                Request Information
+                View All Tests
+                <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-16 bg-gray-50">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Why Choose Our Drug Testing Services
-          </h2>
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-brand-blue-600" />
+      {/* Features Bar */}
+      <section className="py-8 bg-blue-900 text-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-6">
+            {features.map((feature) => (
+              <div key={feature.title} className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <feature.icon className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-bold">{feature.title}</h3>
+                  <p className="text-sm text-blue-200">{feature.description}</p>
+                </div>
               </div>
-              <h3 className="font-bold mb-2">MRO Review Included</h3>
-              <p className="text-sm text-black">
-                All tests reviewed by certified Medical Review Officer
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-8 h-8 text-brand-green-600" />
-              </div>
-              <h3 className="font-bold mb-2">Nationwide Network</h3>
-              <p className="text-sm text-black">
-                20,000+ collection sites across the US
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="font-bold mb-2">Fast Results</h3>
-              <p className="text-sm text-black">
-                Results typically within 24-48 hours
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-brand-orange-600" />
-              </div>
-              <h3 className="font-bold mb-2">DOT Compliant</h3>
-              <p className="text-sm text-black">
-                FMCSA-approved testing and procedures
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Urine Drug Tests */}
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-bold mb-8">Urine Drug Tests</h2>
-          <p className="text-black mb-8">
-            Lab-based urine drug testing with certified MRO review. Most common
-            testing method for workplace programs.
+      {/* Pricing Note */}
+      <section className="py-6 bg-amber-50 border-b border-amber-200">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <p className="text-amber-900 font-medium">
+            <strong>All prices are per person</strong> and include collection, lab analysis, MRO review, and electronic results delivery.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {drugTestingServices.urine.map((test) => (
-              <div
-                key={test.name}
-                className={`bg-white border-2 rounded-lg p-6 ${test.popular ? 'border-blue-500' : 'border-gray-200'}`}
+        </div>
+      </section>
+
+      {/* Testing Categories */}
+      <section id="services" className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Choose Your Test Type
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We offer a full range of drug testing options to meet your needs.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {testingCategories.map((category) => (
+              <Link
+                key={category.title}
+                href={category.href}
+                className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-xl transition-all"
               >
-                {test.popular && (
-                  <div className="bg-blue-500 text-white text-xs font-bold px-3 py-2 rounded-full inline-block mb-3">
-                    MOST POPULAR
+                <div className="relative h-48">
+                  <Image
+                    src={category.image}
+                    alt={category.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/30" />
+                  <div className="absolute bottom-4 left-4">
+                    <span className="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-bold">
+                      From ${category.startingPrice}/person
+                    </span>
                   </div>
-                )}
-                <h3 className="text-xl font-bold mb-2">{test.name}</h3>
-                <p className="text-black text-sm mb-4">{test.description}</p>
-                <div className="text-3xl font-bold text-brand-blue-600 mb-4">
-                  ${test.price}
                 </div>
-                <a
-                  href="tel:+13173143757"
-                  className="block w-full text-center px-6 py-3 bg-brand-blue-600 text-white rounded-lg font-bold hover:bg-brand-blue-700"
-                >
-                  Order Test
-                </a>
-              </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    {category.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">{category.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {category.tests.map((test) => (
+                      <span key={test} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
+                        {test}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center text-blue-600 font-bold">
+                    View Tests & Pricing
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Instant Rapid Tests */}
-      <section className="py-16 bg-gray-50">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-bold mb-8">Instant Rapid Tests</h2>
-          <p className="text-black mb-8">
-            On-site rapid testing with immediate preliminary results. Positive
-            results confirmed by lab.
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {drugTestingServices.instant.map((test) => (
-              <div
-                key={test.name}
-                className="bg-white border-2 border-gray-200 rounded-lg p-6"
-              >
-                <h3 className="text-lg font-bold mb-2">{test.name}</h3>
-                <p className="text-black text-sm mb-4">{test.description}</p>
-                <div className="text-2xl font-bold text-brand-blue-600 mb-4">
-                  ${test.price}
-                </div>
-                <a
-                  href="tel:+13173143757"
-                  className="block w-full text-center px-4 py-2 bg-brand-blue-600 text-white rounded-lg font-bold hover:bg-brand-blue-700 text-sm"
-                >
-                  Order Test
-                </a>
+      {/* Employer Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative h-[400px] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/artlist/hero-training-7.jpg"
+                alt="Employer Drug Testing Programs"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                <Building2 className="w-4 h-4" />
+                For Employers
               </div>
-            ))}
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Employer Drug Testing Programs
+              </h2>
+              <p className="text-xl text-gray-600 mb-6">
+                Comprehensive drug testing solutions for businesses of all sizes. Volume discounts available.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  'Pre-employment screening',
+                  'Random testing programs',
+                  'Post-accident testing',
+                  'Reasonable suspicion testing',
+                  'DOT compliance programs',
+                  'Dedicated account manager',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-gray-700">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/drug-testing/employer-programs"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition"
+              >
+                <Users className="w-5 h-5" />
+                Set Up Employer Account
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Hair Drug Tests */}
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-bold mb-8">Hair Drug Tests</h2>
-          <p className="text-black mb-8">
-            Hair follicle testing provides 90-day detection window. Ideal for
-            pre-employment and comprehensive screening.
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {drugTestingServices.hair.map((test) => (
-              <div
-                key={test.name}
-                className="bg-white border-2 border-gray-200 rounded-lg p-6"
-              >
-                <h3 className="text-lg font-bold mb-2">{test.name}</h3>
-                <p className="text-black text-sm mb-4">{test.description}</p>
-                <div className="text-2xl font-bold text-brand-blue-600 mb-4">
-                  ${test.price}
-                </div>
-                <a
-                  href="tel:+13173143757"
-                  className="block w-full text-center px-4 py-2 bg-brand-blue-600 text-white rounded-lg font-bold hover:bg-brand-blue-700 text-sm"
-                >
-                  Order Test
-                </a>
+      {/* DOT Section */}
+      <section className="py-20 bg-gray-900 text-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-orange-500 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                <Truck className="w-4 h-4" />
+                DOT Compliant
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DOT Specialty Tests */}
-      <section className="py-16 bg-blue-50">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-bold mb-8">DOT Specialty Tests</h2>
-          <p className="text-black mb-8">
-            FMCSA-compliant testing for commercial drivers and DOT-regulated
-            industries.
-          </p>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
-            {drugTestingServices.specialty.map((test) => (
-              <div
-                key={test.name}
-                className="bg-white border-2 border-blue-200 rounded-lg p-6"
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                DOT Drug & Alcohol Testing
+              </h2>
+              <p className="text-xl text-gray-300 mb-6">
+                FMCSA-compliant testing for CDL drivers and DOT-regulated employees. 
+                Full compliance with 49 CFR Part 40.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  'Pre-employment DOT testing',
+                  'Random testing consortium',
+                  'Post-accident testing',
+                  'Return-to-duty & follow-up',
+                  'Clearinghouse reporting',
+                  'SAP referrals available',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-gray-300">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/drug-testing/dot-testing"
+                className="inline-flex items-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-orange-600 transition"
               >
-                <h3 className="text-xl font-bold mb-2">{test.name}</h3>
-                <p className="text-black mb-4">{test.description}</p>
-                <div className="text-3xl font-bold text-brand-blue-600 mb-4">
-                  ${test.price}
-                </div>
-                <a
-                  href="tel:+13173143757"
-                  className="block w-full text-center px-6 py-3 bg-brand-blue-600 text-white rounded-lg font-bold hover:bg-brand-blue-700"
-                >
-                  Order Test
-                </a>
-              </div>
-            ))}
+                DOT Testing Details
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+            <div className="relative h-[400px] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/artlist/hero-training-8.jpg"
+                alt="DOT Drug Testing for Commercial Drivers"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-brand-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                1
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-16">
+            How It Works
+          </h2>
+          <div className="space-y-8">
+            {[
+              { step: 1, title: 'Order Your Test', desc: 'Call (317) 314-3757 or order online. We confirm your test type and send collection authorization.' },
+              { step: 2, title: 'Visit Collection Site', desc: 'Go to any of our 20,000+ nationwide locations. Bring valid photo ID. Walk-ins welcome at most sites.' },
+              { step: 3, title: 'Sample Collection', desc: 'Trained collector obtains your sample following proper chain of custody procedures.' },
+              { step: 4, title: 'Lab Analysis', desc: 'Sample sent to SAMHSA-certified lab. Positive screens confirmed with GC/MS testing.' },
+              { step: 5, title: 'MRO Review', desc: 'Medical Review Officer reviews results. Contacts donor if prescription verification needed.' },
+              { step: 6, title: 'Results Delivered', desc: 'Receive results via secure portal and email. Most results in 24-48 hours.' },
+            ].map((item) => (
+              <div key={item.step} className="flex gap-6">
+                <div className="w-14 h-14 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
+                  {item.step}
+                </div>
+                <div className="pt-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600">{item.desc}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Order Test</h3>
-                <p className="text-black">
-                  Call (317) 314-3757 to order. We'll schedule your test at a
-                  convenient collection site.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-brand-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                2
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">
-                  Visit Collection Site
-                </h3>
-                <p className="text-black">
-                  Go to the collection site (LabCorp, Quest, or local clinic).
-                  Bring photo ID.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-brand-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                3
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Sample Collection</h3>
-                <p className="text-black">
-                  Trained collector obtains sample and sends to SAMHSA-certified
-                  lab.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-brand-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                4
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">MRO Review</h3>
-                <p className="text-black">
-                  Medical Review Officer reviews results and contacts donor if
-                  needed.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-brand-green-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                5
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Results Delivered</h3>
-                <p className="text-black">
-                  Results typically available within 24-48 hours via email and
-                  online portal.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-brand-blue-600 text-white">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Ready to Order a Drug Test?
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Ready to Schedule a Drug Test?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Call us to schedule testing or get answers to your questions.
+            Call now for same-day appointments at locations near you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:+13173143757"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand-blue-600 rounded-lg font-bold hover:bg-gray-50"
+              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition text-lg"
             >
               <Phone className="w-5 h-5" />
-              Call (317) 314-3757
+              (317) 314-3757
             </a>
             <Link
               href="/contact"
-              className="inline-block px-8 py-4 bg-brand-blue-700 text-white rounded-lg font-bold hover:bg-brand-blue-600 border-2 border-white"
+              className="inline-flex items-center justify-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-800 transition text-lg border-2 border-white"
             >
-              Email Us
+              Request Quote
             </Link>
           </div>
-          <p className="mt-8 text-blue-100">
-            <strong>Address:</strong> 8888 Keystone Xing, Suite 1300,
-            Indianapolis, IN 46240
-          </p>
         </div>
       </section>
     </div>
