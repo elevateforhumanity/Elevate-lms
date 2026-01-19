@@ -92,53 +92,13 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
         Skip to main content
       </a>
       
-      <header style={{ 
-        position: 'fixed', 
-        top: 0, 
-        left: 0, 
-        right: 0, 
-        height: '70px', 
-        backgroundColor: '#ffffff', 
-        zIndex: 9999,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0 20px'
-      }}>
-        <div style={{ 
-          maxWidth: '1280px', 
-          margin: '0 auto', 
-          width: '100%', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between' 
-        }}>
-          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-            <img src="/logo.png" alt="Elevate" width="40" height="40" style={{ width: '40px', height: '40px' }} />
-            <span style={{ fontWeight: 'bold', fontSize: '20px', color: '#111827' }}>Elevate</span>
-          </a>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <a href="/apply" style={{ 
-              backgroundColor: '#2563eb', 
-              color: 'white', 
-              padding: '10px 20px', 
-              borderRadius: '9999px',
-              textDecoration: 'none',
-              fontSize: '14px',
-              fontWeight: '600'
-            }}>
-              Apply Now
-            </a>
-            <a href="/programs" style={{ color: '#374151', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>Programs</a>
-            <a href="/contact" style={{ color: '#374151', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>Contact</a>
-          </div>
-        </div>
-      </header>
+      <LayoutErrorBoundary name="Header" fallback={<FallbackHeader />}>
+        <SiteHeader />
+      </LayoutErrorBoundary>
 
       <main
         id="main-content"
-        className="flex-1"
-        style={{ paddingTop: '70px' }}
+        className="flex-1 pt-[70px]"
         role="main"
         tabIndex={-1}
       >

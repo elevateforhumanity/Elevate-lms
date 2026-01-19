@@ -132,160 +132,173 @@ function useSafeUser() {
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const user = useSafeUser();
+
+  const toggleDropdown = (name: string) => {
+    setOpenDropdown(openDropdown === name ? null : name);
+  };
 
   return (
     <>
-      <header 
-        style={{ 
-          position: 'fixed', 
-          top: 0, 
-          left: 0, 
-          right: 0, 
-          height: '80px', 
-          backgroundColor: '#ffffff', 
-          zIndex: 9999,
-          boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-          display: 'flex',
-          alignItems: 'center',
-          padding: '0 20px'
-        }}
-      >
-        <div style={{ 
-          maxWidth: '1280px', 
-          margin: '0 auto', 
-          width: '100%', 
-          height: '100%', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between',
-          padding: '0 16px'
-        }}>
+      <header className="fixed top-0 left-0 right-0 h-[70px] bg-white z-[9999] shadow-md">
+        <div className="max-w-7xl mx-auto w-full h-full flex items-center justify-between px-4">
           {/* Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+          <Link href="/" className="flex items-center gap-2 no-underline">
             <Image
               src="/logo.png"
               alt="Elevate for Humanity"
-              width={44}
-              height={44}
-              style={{ width: '44px', height: '44px' }}
+              width={40}
+              height={40}
+              className="w-10 h-10"
               priority
             />
-            <span style={{ fontWeight: 'bold', fontSize: '20px', color: '#111827' }}>
+            <span className="font-bold text-lg text-gray-900 hidden sm:inline">
               Elevate
             </span>
           </Link>
 
-          {/* Right side - same on all screen sizes */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {/* Desktop Navigation - hidden on mobile */}
+          <nav className="hidden lg:flex items-center gap-6">
+            <Link href="/programs" className="text-gray-700 hover:text-blue-600 font-medium text-sm">
+              Programs
+            </Link>
+            <Link href="/how-it-works" className="text-gray-700 hover:text-blue-600 font-medium text-sm">
+              How It Works
+            </Link>
+            <Link href="/wioa-eligibility" className="text-gray-700 hover:text-blue-600 font-medium text-sm">
+              WIOA Funding
+            </Link>
+            <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium text-sm">
+              About
+            </Link>
+            <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium text-sm">
+              Contact
+            </Link>
+          </nav>
+
+          {/* Right side */}
+          <div className="flex items-center gap-3">
+            {/* Sign In - desktop only */}
+            <Link
+              href={user ? "/lms/dashboard" : "/login"}
+              className="hidden lg:inline-flex text-gray-700 hover:text-blue-600 font-medium text-sm"
+            >
+              {user ? 'Dashboard' : 'Sign In'}
+            </Link>
+
             {/* Apply Now button */}
             <Link
               href="/apply"
-              style={{ 
-                backgroundColor: '#2563eb', 
-                color: 'white', 
-                padding: '10px 20px', 
-                borderRadius: '9999px',
-                textDecoration: 'none',
-                fontSize: '14px',
-                fontWeight: '600'
-              }}
+              className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors"
             >
               Apply Now
             </Link>
 
-            {/* Menu button - always visible */}
+            {/* Menu button - visible on mobile/tablet, hidden on desktop */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                width: '44px', 
-                height: '44px',
-                backgroundColor: '#f3f4f6',
-                border: '1px solid #d1d5db',
-                borderRadius: '8px',
-                cursor: 'pointer'
-              }}
+              className="lg:hidden flex items-center justify-center w-10 h-10 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors"
               aria-label="Open menu"
             >
-              <Menu style={{ width: '24px', height: '24px', color: '#111827' }} />
+              <Menu className="w-6 h-6 text-gray-900" />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Menu - shows on all screen sizes */}
+      {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100]">
-          <div 
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-          <nav className="absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-xl overflow-y-auto">
-            <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white">
-              <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-                <Image src="/logo.png" alt="Elevate" width={32} height={32} className="w-8 h-8" />
-                <span className="text-gray-900 font-bold">Elevate</span>
-              </Link>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center w-10 h-10 text-gray-700"
-                aria-label="Close menu"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="p-4">
-              <ul className="space-y-1">
-                {NAV_ITEMS.map((item) => (
-                  <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center px-4 py-3 text-base font-semibold text-gray-900 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
+        <div 
+          className="fixed inset-0 z-[9999] bg-black/50"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Menu Panel */}
+      {mobileMenuOpen && (
+        <nav className="fixed top-0 right-0 bottom-0 w-full max-w-[320px] bg-white z-[10000] overflow-y-auto shadow-xl">
+          {/* Menu Header */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white sticky top-0">
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 no-underline">
+              <Image src="/logo.png" alt="Elevate" width={32} height={32} />
+              <span className="font-bold text-gray-900">Elevate</span>
+            </Link>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center w-10 h-10 bg-transparent border-none cursor-pointer"
+              aria-label="Close menu"
+            >
+              <X className="w-6 h-6 text-gray-700" />
+            </button>
+          </div>
+
+          {/* Menu Items */}
+          <div className="p-4">
+            {NAV_ITEMS.map((item) => (
+              <div key={item.name} className="mb-1">
+                {item.subItems ? (
+                  <>
+                    <button
+                      onClick={() => toggleDropdown(item.name)}
+                      className={`flex items-center justify-between w-full px-4 py-3 text-base font-semibold text-gray-900 rounded-lg cursor-pointer text-left border-none ${openDropdown === item.name ? 'bg-gray-100' : 'bg-transparent'}`}
                     >
                       {item.name}
-                    </Link>
-                    {/* Sub-items */}
-                    {item.subItems && (
-                      <ul className="ml-4 mt-1 space-y-1">
+                      <ChevronDown className={`w-5 h-5 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
+                    </button>
+                    {openDropdown === item.name && (
+                      <div className="ml-4 border-l-2 border-gray-200 mt-1">
+                        <Link
+                          href={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block px-4 py-2 text-sm font-medium text-blue-600 no-underline hover:bg-gray-50"
+                        >
+                          View All {item.name}
+                        </Link>
                         {item.subItems.map((subItem) => (
-                          <li key={subItem.name}>
-                            <Link
-                              href={subItem.href}
-                              onClick={() => setMobileMenuOpen(false)}
-                              className="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
-                            >
-                              {subItem.name}
-                            </Link>
-                          </li>
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="block px-4 py-2 text-sm text-gray-600 no-underline hover:bg-gray-50 hover:text-blue-600"
+                          >
+                            {subItem.name}
+                          </Link>
                         ))}
-                      </ul>
+                      </div>
                     )}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 pt-6 border-t space-y-3">
-                <Link
-                  href={user ? "/lms/dashboard" : "/login"}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center w-full px-4 py-3 text-base font-medium text-gray-700 border border-gray-300 rounded-full"
-                >
-                  {user ? 'Dashboard' : 'Sign In'}
-                </Link>
-                <Link
-                  href="/apply"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center w-full px-4 py-3 bg-blue-600 text-white text-base font-semibold rounded-full hover:bg-blue-700"
-                >
-                  Apply Now
-                </Link>
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-4 py-3 text-base font-semibold text-gray-900 no-underline rounded-lg hover:bg-gray-50"
+                  >
+                    {item.name}
+                  </Link>
+                )}
               </div>
+            ))}
+
+            {/* Bottom Actions */}
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <Link
+                href={user ? "/lms/dashboard" : "/login"}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block w-full p-3 text-center text-base font-medium text-gray-700 border border-gray-300 rounded-full no-underline mb-3 hover:bg-gray-50"
+              >
+                {user ? 'Dashboard' : 'Sign In'}
+              </Link>
+              <Link
+                href="/apply"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block w-full p-3 text-center text-base font-semibold text-white bg-blue-600 rounded-full no-underline hover:bg-blue-700"
+              >
+                Apply Now
+              </Link>
             </div>
-          </nav>
-        </div>
+          </div>
+        </nav>
       )}
     </>
   );
