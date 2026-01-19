@@ -64,9 +64,9 @@ export default async function DonatePage() {
     .limit(5);
 
   const impactStats = [
-    { icon: Users, value: studentsHelped || 500, label: 'Students Trained' },
-    { icon: GraduationCap, value: graduatesPlaced || 300, label: 'Graduates Placed' },
-    { icon: Briefcase, value: '85%', label: 'Employment Rate' },
+    { icon: Users, value: studentsHelped || 500, label: 'Students Served' },
+    { icon: GraduationCap, value: '20+', label: 'Training Programs' },
+    { icon: Briefcase, value: '50+', label: 'Employer Partners' },
     { icon: Heart, value: totalDonors || 100, label: 'Donors' },
   ];
 

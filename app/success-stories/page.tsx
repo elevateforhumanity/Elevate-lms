@@ -94,10 +94,10 @@ export default async function SuccessStoriesPage() {
   const displayStories = stories && stories.length > 0 ? stories : defaultStories;
 
   const defaultStats = [
-    { label: 'Graduates Employed', value: '85%' },
-    { label: 'Average Salary Increase', value: '$18,000' },
-    { label: 'Students Trained', value: '2,500+' },
-    { label: 'Employer Partners', value: '150+' },
+    { label: 'Career Programs', value: '20+' },
+    { label: 'Employer Partners', value: '50+' },
+    { label: 'Training Locations', value: '5+' },
+    { label: 'Industries Served', value: '10+' },
   ];
 
   const displayStats = stats && stats.length > 0 ? stats : defaultStats;
@@ -115,8 +115,8 @@ export default async function SuccessStoriesPage() {
         primaryCTA={{ text: 'Start Your Story', href: '/apply' }}
         secondaryCTA={{ text: 'View Programs', href: '/programs' }}
         features={[
-          '85% job placement rate within 90 days',
-          'Average $18,000 salary increase',
+          'Career services and job placement support',
+          'Industry-recognized credentials',
           '100% free training through WIOA funding',
         ]}
         imageOnRight={true}

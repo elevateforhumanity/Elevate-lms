@@ -54,15 +54,15 @@ export default function ProgramPage() {
             </div>
             <div>
               <div className="text-3xl font-bold text-brand-orange-500">
-                95%
+                20+
               </div>
-              <div className="text-sm text-slate-300">Job Placement</div>
+              <div className="text-sm text-slate-300">Programs</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-brand-orange-500">
-                $45K+
+                50+
               </div>
-              <div className="text-sm text-slate-300">Starting Salary</div>
+              <div className="text-sm text-slate-300">Employer Partners</div>
             </div>
           </div>
         </div>
@@ -158,7 +158,7 @@ export default function ProgramPage() {
                 Job Placement
               </h3>
               <p className="text-black leading-relaxed">
-                95% of our graduates find employment within 90 days. We connect
+                Our career services team provides job placement support. We connect
                 you directly with hiring employers in your area.
               </p>
             </div>
@@ -405,8 +405,8 @@ export default function ProgramPage() {
               <div className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="w-10 h-10 text-blue-600" />
               </div>
-              <div className="text-3xl font-bold text-black mb-2">95%</div>
-              <div className="text-black">Job Placement Rate</div>
+              <div className="text-3xl font-bold text-black mb-2">50+</div>
+              <div className="text-black">Employer Partners</div>
             </div>
 
             <div className="text-center">
@@ -414,9 +414,9 @@ export default function ProgramPage() {
                 <DollarSign className="w-10 h-10 text-green-600" />
               </div>
               <div className="text-3xl font-bold text-black mb-2">
-                $45K+
+                100%
               </div>
-              <div className="text-black">Average Starting Salary</div>
+              <div className="text-black">Free with WIOA Funding</div>
             </div>
 
             <div className="text-center">
