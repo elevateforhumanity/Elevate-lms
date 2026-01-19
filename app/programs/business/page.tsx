@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 
 export const metadata: Metadata = {
   title: 'Business Programs | Elevate for Humanity',
@@ -72,6 +73,9 @@ export default function BusinessPage() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Business" programSlug="business" />
 
       {/* Quick Facts */}
       <section className="py-16 bg-gray-50">

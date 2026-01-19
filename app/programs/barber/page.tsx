@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Scissors, Clock, DollarSign, Award, MapPin, Calendar, ArrowRight, CheckCircle, Users } from 'lucide-react';
@@ -127,6 +128,9 @@ export default async function BarberProgramPage() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Barber" programSlug="barber" />
 
       {/* Stats */}
       <section className="py-10 bg-white border-b">

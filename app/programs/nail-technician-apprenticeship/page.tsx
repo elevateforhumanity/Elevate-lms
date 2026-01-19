@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { FundingBadge } from '@/components/programs/FundingBadge';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 import type { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
@@ -73,22 +74,17 @@ export default async function NailTechnicianApprenticeshipPage() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
-              href="/apply?program=nail-technician-apprenticeship"
+              href="/apply?pathway=nail-technician-apprenticeship"
               className="inline-flex items-center justify-center rounded-lg bg-pink-500 px-8 py-4 text-lg font-bold text-white hover:bg-pink-600 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
-              Apply Now
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-bold text-white hover:bg-white/20 transition-all shadow-xl"
-            >
-              Talk to an Advisor
+              Start Eligibility & Choose a Career Path
             </Link>
           </div>
         </div>
       </section>
 
-
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Nail Technician Apprenticeship" programSlug="nail-technician-apprenticeship" />
 
       {/* Program Description */}
       <section className="bg-white py-16">

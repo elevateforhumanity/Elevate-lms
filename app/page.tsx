@@ -9,7 +9,7 @@ import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import { useEffect, useState, useRef } from 'react';
 import { LiveOutcomesDashboard } from '@/components/outcomes/LiveOutcomesDashboard';
 
-// User state hook - fetches auth and enrollment data
+// User state hook - fetches auth and enrollment data with timeout
 function useUserState() {
   const [user, setUser] = useState<{ 
     id?: string; 
@@ -23,18 +23,22 @@ function useUserState() {
     progress: number;
     courses?: { title: string; slug: string };
   }>>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [authChecked, setAuthChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [authChecked, setAuthChecked] = useState(true);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
+
     const checkAuth = async () => {
+      setIsLoading(true);
       try {
-        // Fetch user auth state
         const authRes = await fetch('/api/auth/me', {
           credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
+          signal: controller.signal,
         });
         
         if (authRes.ok) {
@@ -42,11 +46,15 @@ function useUserState() {
           if (data?.user) {
             setUser(data.user);
             
-            // If logged in, fetch enrollments
+            // If logged in, fetch enrollments with separate timeout
             try {
+              const enrollController = new AbortController();
+              const enrollTimeout = setTimeout(() => enrollController.abort(), 2000);
               const enrollRes = await fetch('/api/student/enrollments', {
                 credentials: 'include',
+                signal: enrollController.signal,
               });
+              clearTimeout(enrollTimeout);
               if (enrollRes.ok) {
                 const enrollData = await enrollRes.json();
                 setEnrollments(enrollData?.enrollments || []);
@@ -57,15 +65,21 @@ function useUserState() {
           }
         }
       } catch {
-        // Auth check failed, user is not logged in
+        // Auth check failed or timed out, user is not logged in
         setUser(null);
       } finally {
+        clearTimeout(timeoutId);
         setIsLoading(false);
         setAuthChecked(true);
       }
     };
 
     checkAuth();
+
+    return () => {
+      clearTimeout(timeoutId);
+      controller.abort();
+    };
   }, []);
 
   const activeEnrollment = enrollments.find(e => e.status === 'active');
