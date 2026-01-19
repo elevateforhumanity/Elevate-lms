@@ -11,6 +11,8 @@ import { UnregisterServiceWorker } from '@/components/UnregisterServiceWorker';
 import { VersionGuard } from '@/components/VersionGuard';
 import CookieConsent from '@/components/CookieConsent';
 import DisableDevTools from '@/components/security/DisableDevTools';
+import { InvisibleWatermark } from '@/components/InvisibleWatermark';
+import { CopyrightProtection } from '@/components/CopyrightProtection';
 
 import { Inter } from 'next/font/google';
 import { GoogleAnalytics } from '@/components/analytics/google-analytics';
@@ -218,6 +220,8 @@ export default function RootLayout({
         <UnregisterSW />
         <VersionGuard />
         <DisableDevTools />
+        <InvisibleWatermark />
+        <CopyrightProtection />
         <ConditionalLayout>{children}</ConditionalLayout>
         <ClientProviders />
         <CookieConsent />

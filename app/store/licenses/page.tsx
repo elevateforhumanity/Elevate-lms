@@ -34,73 +34,45 @@ export default async function LicensesPage() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section with Video */}
-      <section className="relative min-h-[600px] flex items-center overflow-hidden bg-zinc-900">
-        {/* Video Background */}
+      {/* Hero Section with Video - No Overlay */}
+      <section className="relative bg-black">
+        {/* Full Video */}
         <video
           autoPlay
-          muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          controls
+          className="w-full h-auto max-h-[70vh] object-contain mx-auto"
         >
           <source src="/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
         </video>
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-900/95 via-zinc-900/80 to-zinc-900/60" />
 
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm font-bold mb-6 border border-white/20">
-              <Globe className="w-4 h-4" />
-              Platform Licensing
-            </div>
+      </section>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-              License Our Platform.
-              <br />
-              <span className="text-green-400">
-                Run Your Own Training Business.
-              </span>
+      {/* Header Section */}
+      <section className="bg-zinc-900 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">
+              License Our Platform
             </h1>
-
-            <p className="mt-6 text-xl text-gray-300 leading-relaxed max-w-2xl">
-              Get the complete Elevate for Humanity platform with your branding.
-              Everything you need to launch and scale workforce training
-              programs.
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+              Get the complete Elevate LMS with your branding. Full source code, lifetime updates.
             </p>
-
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="#pricing"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-zinc-900 bg-white rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
+                className="inline-flex items-center px-6 py-3 bg-white text-zinc-900 rounded-lg font-bold hover:bg-gray-100 transition-colors"
               >
                 View Pricing
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link
                 href="/store/demo"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-lg hover:bg-white/20 transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 transition-colors"
               >
-                Try Demo
+                Try Free Demo
               </Link>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="mt-12 flex flex-wrap gap-8 text-white/80 text-sm">
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-green-400" />
-                <span>Deploy in 30 minutes</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-green-400" />
-                <span>Full source code access</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-green-400" />
-                <span>White-label ready</span>
-              </div>
             </div>
           </div>
         </div>
@@ -246,7 +218,7 @@ export default async function LicensesPage() {
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 Get the complete source code and deploy on your own
-                infrastructure. Full control, no vendor lock-in.
+                infrastructure. 14-day free trial available.
               </p>
             </div>
 
@@ -254,8 +226,17 @@ export default async function LicensesPage() {
               {CLONE_LICENSES.map((license) => (
                 <div
                   key={license.id}
-                  className="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all"
+                  className={`bg-gray-50 rounded-2xl p-8 border-2 hover:shadow-lg transition-all ${
+                    license.slug === 'pro-license' 
+                      ? 'border-purple-500 shadow-xl' 
+                      : 'border-gray-200 hover:border-purple-300'
+                  }`}
                 >
+                  {license.slug === 'pro-license' && (
+                    <div className="inline-block px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full mb-4">
+                      Most Popular
+                    </div>
+                  )}
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {license.name}
                   </h3>
@@ -270,12 +251,20 @@ export default async function LicensesPage() {
                     <span className="text-gray-500 ml-2">one-time</span>
                   </div>
 
-                  <Link
-                    href={`/store/licenses/checkout/${license.slug}`}
-                    className="block w-full text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-bold hover:bg-purple-700 transition-colors mb-6"
-                  >
-                    Get Source Code
-                  </Link>
+                  <div className="space-y-3 mb-6">
+                    <Link
+                      href={`/store/licenses/${license.slug}/trial`}
+                      className="block w-full text-center px-6 py-3 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 transition-colors"
+                    >
+                      Start 14-Day Free Trial
+                    </Link>
+                    <Link
+                      href={`/store/licenses/${license.slug}`}
+                      className="block w-full text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-bold hover:bg-purple-700 transition-colors"
+                    >
+                      View Details
+                    </Link>
+                  </div>
 
                   <ul className="space-y-2">
                     {license.features.slice(0, 4).map((feature, idx) => (
