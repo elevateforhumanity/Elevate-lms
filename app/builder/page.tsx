@@ -108,11 +108,16 @@ export default function BuildPage() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // Scroll within the messages container, not the whole page
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
   };
 
   useEffect(() => {
-    scrollToBottom();
+    // Small delay to ensure DOM is updated
+    const timer = setTimeout(scrollToBottom, 100);
+    return () => clearTimeout(timer);
   }, [messages]);
 
   useEffect(() => {

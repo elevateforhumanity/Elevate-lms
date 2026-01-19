@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { TEMPLATE_DESIGNS, getRecommendedTemplate, TemplateDesign } from '@/lib/templates/designs';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -31,8 +32,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Get recommended template based on industry/org type
+    const template = getRecommendedTemplate(industry || 'General', organizationType || 'Training Provider');
+
     // Generate site configuration using AI
-    const prompt = `You are a learning management system configuration expert. Generate a complete site configuration for a training organization.
+    const prompt = `You are a learning management system configuration expert. Generate compelling content for a training organization website.
 
 Organization Details:
 - Name: ${organizationName}
@@ -40,19 +44,22 @@ Organization Details:
 - Industry: ${industry || 'General'}
 - Target Audience: ${targetAudience || 'Adult learners'}
 - Training Types: ${trainingTypes || 'Professional development'}
-- Brand Colors: ${brandColors || 'Auto-generate professional colors'}
 - Description: ${description || 'Not provided'}
 
-Generate a JSON configuration with:
-1. branding: { primaryColor, secondaryColor, accentColor, logoText, tagline }
-2. homepage: { heroTitle, heroSubtitle, heroCtaText, features (array of 3), testimonialPlaceholder }
-3. programs: Array of 3 suggested training programs with { name, description, duration, level }
-4. navigation: Array of nav items { label, href }
-5. footer: { description, contactEmail, socialLinks }
-6. seo: { title, description, keywords (array) }
+Generate a JSON configuration with COMPELLING, SPECIFIC content:
+1. homepage: { 
+   heroTitle: (powerful headline, 6-10 words, specific to their industry),
+   heroSubtitle: (benefit-focused, 15-25 words),
+   heroCtaText: (action verb + benefit, 2-4 words),
+   features: [3 objects with { title, description } - specific to their training type]
+}
+2. programs: [3 training programs with { name, description (2 sentences), duration, level }]
+3. stats: { students: number, completionRate: "XX%", employers: number, rating: "X.X" }
+4. testimonial: { quote: (realistic student success story, 2 sentences), author: "Name, Title" }
+5. seo: { title, description, keywords: [5 relevant keywords] }
 
-Make it specific to their industry and audience. Be creative but professional.
-Return ONLY valid JSON, no markdown or explanation.`;
+Be specific to ${industry || 'their'} industry. Use real-sounding program names.
+Return ONLY valid JSON, no markdown.`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o',
@@ -81,21 +88,80 @@ Return ONLY valid JSON, no markdown or explanation.`;
     // Generate unique preview ID
     const previewId = `preview_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
 
-    // Store in temporary storage (in production, use Redis or database)
-    // For now, we'll return it and let the client store it
+    // Merge AI content with template design
+    const finalConfig = {
+      // Template design system
+      template: {
+        id: template.id,
+        name: template.name,
+        fonts: template.fonts,
+        colors: template.colors,
+        style: template.style,
+      },
+      // Branding (use template colors, override with user preference if provided)
+      branding: {
+        primaryColor: brandColors || template.colors.primary,
+        secondaryColor: template.colors.secondary,
+        accentColor: template.colors.accent,
+        backgroundColor: template.colors.background,
+        textColor: template.colors.text,
+        logoText: organizationName,
+        tagline: siteConfig.homepage?.heroSubtitle?.slice(0, 60) || 'Empowering learners',
+      },
+      // AI-generated content
+      homepage: {
+        heroTitle: siteConfig.homepage?.heroTitle || `Welcome to ${organizationName}`,
+        heroSubtitle: siteConfig.homepage?.heroSubtitle || 'Start your learning journey today.',
+        heroCtaText: siteConfig.homepage?.heroCtaText || 'Explore Programs',
+        features: siteConfig.homepage?.features || [
+          { title: 'Expert Training', description: 'Learn from industry professionals' },
+          { title: 'Flexible Learning', description: 'Study at your own pace' },
+          { title: 'Career Support', description: 'Job placement assistance' },
+        ],
+      },
+      programs: siteConfig.programs || [
+        { name: 'Fundamentals', description: 'Build your foundation', duration: '4 weeks', level: 'Beginner' },
+        { name: 'Advanced', description: 'Take skills further', duration: '8 weeks', level: 'Intermediate' },
+        { name: 'Professional', description: 'Industry certification', duration: '12 weeks', level: 'Advanced' },
+      ],
+      stats: siteConfig.stats || {
+        students: 500,
+        completionRate: '94%',
+        employers: 50,
+        rating: '4.9',
+      },
+      testimonial: siteConfig.testimonial || {
+        quote: 'This program changed my career trajectory completely. The instructors were amazing.',
+        author: 'Recent Graduate',
+      },
+      navigation: [
+        { label: 'Home', href: '/' },
+        { label: 'Programs', href: '/programs' },
+        { label: 'About', href: '/about' },
+        { label: 'Contact', href: '/contact' },
+      ],
+      footer: {
+        description: `${organizationName} provides quality training and education for career advancement.`,
+        contactEmail: 'info@example.com',
+      },
+      seo: siteConfig.seo || {
+        title: `${organizationName} - Professional Training`,
+        description: `${organizationName} offers industry-recognized training programs.`,
+        keywords: ['training', 'education', 'career'],
+      },
+      meta: {
+        organizationName,
+        organizationType,
+        industry: industry || 'General',
+        generatedAt: new Date().toISOString(),
+        previewId,
+      },
+    };
     
     return NextResponse.json({
       success: true,
       previewId,
-      config: {
-        ...siteConfig,
-        meta: {
-          organizationName,
-          organizationType,
-          generatedAt: new Date().toISOString(),
-          previewId,
-        }
-      },
+      config: finalConfig,
       previewUrl: `/preview/${previewId}`,
     });
   } catch (error) {

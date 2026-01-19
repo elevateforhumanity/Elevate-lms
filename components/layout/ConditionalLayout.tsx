@@ -69,7 +69,12 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
     pathname.startsWith('/admin/') ||
     pathname.startsWith('/login') ||
     pathname.startsWith('/signup') ||
-    pathname.startsWith('/auth/')
+    pathname.startsWith('/auth/') ||
+    pathname.startsWith('/builder') ||
+    pathname.startsWith('/preview') ||
+    pathname.startsWith('/generate') ||
+    pathname.startsWith('/import') ||
+    pathname.startsWith('/connect')
   ) : false;
 
   // Minimal layout for app routes (LMS, admin, etc.)
