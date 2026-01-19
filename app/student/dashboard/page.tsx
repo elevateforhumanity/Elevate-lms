@@ -381,6 +381,10 @@ export default async function StudentDashboardPage() {
                   <Clock className="w-5 h-5 text-blue-600" />
                   <span className="font-medium text-slate-900">Log Training Hours</span>
                 </Link>
+                <Link href="/student/certifications" className="w-full flex items-center gap-3 p-3 text-left hover:bg-slate-50 rounded-lg transition">
+                  <Award className="w-5 h-5 text-purple-600" />
+                  <span className="font-medium text-slate-900">Track Certifications</span>
+                </Link>
                 <Link href="/programs" className="w-full flex items-center gap-3 p-3 text-left hover:bg-slate-50 rounded-lg transition">
                   <BookOpen className="w-5 h-5 text-green-600" />
                   <span className="font-medium text-slate-900">Browse Programs</span>
