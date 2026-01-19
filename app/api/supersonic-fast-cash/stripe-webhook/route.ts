@@ -36,6 +36,25 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // Idempotency check
+  const supabase = createClient(supabaseUrl, supabaseServiceKey);
+  if (supabase) {
+    const { data: existing } = await supabase
+      .from('stripe_webhook_events')
+      .select('id')
+      .eq('stripe_event_id', event.id)
+      .single();
+
+    if (existing) {
+      return NextResponse.json({ received: true, duplicate: true });
+    }
+
+    await supabase
+      .from('stripe_webhook_events')
+      .insert({ stripe_event_id: event.id, event_type: event.type, status: 'processing' })
+      .catch(() => {});
+  }
+
   // Handle the event
   switch (event.type) {
     case 'checkout.session.completed':
@@ -54,6 +73,7 @@ export async function POST(request: NextRequest) {
     default:
   }
 
+  return NextResponse.json({ received: true });
 }
 
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {

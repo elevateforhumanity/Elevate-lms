@@ -38,6 +38,24 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) { /* Error handled silently */ }
 
+  // Idempotency check
+  if (supabase) {
+    const { data: existing } = await supabase
+      .from('stripe_webhook_events')
+      .select('id')
+      .eq('stripe_event_id', event.id)
+      .single();
+
+    if (existing) {
+      return NextResponse.json({ received: true, duplicate: true });
+    }
+
+    await supabase
+      .from('stripe_webhook_events')
+      .insert({ stripe_event_id: event.id, event_type: event.type, status: 'processing' })
+      .catch(() => {});
+  }
+
   // Handle verification session events
   if (event.type === 'identity.verification_session.verified') {
     const session = event.data.object as Stripe.Identity.VerificationSession;
