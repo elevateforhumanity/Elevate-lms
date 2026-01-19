@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
-// Main navigation with dropdowns for sub-pages
+// Main navigation - focused on workforce training mission
 const NAV_ITEMS = [
   { 
     name: 'Programs', 
@@ -14,32 +14,8 @@ const NAV_ITEMS = [
       { name: 'Healthcare', href: '/programs/healthcare' },
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
-      { name: 'Business', href: '/programs/business' },
+      { name: 'CDL & Transportation', href: '/programs/cdl-transportation' },
       { name: 'Apprenticeships', href: '/apprenticeships' },
-      { name: 'JRI Programs', href: '/jri' },
-      { name: 'Micro Classes', href: '/micro-classes' },
-    ]
-  },
-  { 
-    name: 'Services', 
-    href: '/services',
-    subItems: [
-      { name: 'Career Services', href: '/career-services' },
-      { name: 'Drug Testing', href: '/drug-testing' },
-      { name: 'Certifications', href: '/certifications' },
-      { name: 'Training Providers', href: '/training-providers' },
-      { name: 'VITA Tax Prep', href: '/vita' },
-      { name: 'Mentorship', href: '/mentorship' },
-    ]
-  },
-  { 
-    name: 'Store', 
-    href: '/store',
-    subItems: [
-      { name: 'Shop All', href: '/shop' },
-      { name: 'Courses', href: '/courses' },
-      { name: 'Workbooks', href: '/workbooks' },
-      { name: 'Marketplace', href: '/marketplace' },
     ]
   },
   { 
@@ -47,65 +23,27 @@ const NAV_ITEMS = [
     href: '/how-it-works',
     subItems: [
       { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
-      { name: 'Funding & Grants', href: '/funding' },
-      { name: 'Tuition & Fees', href: '/tuition-fees' },
+      { name: 'Funding Options', href: '/funding' },
       { name: 'FAQ', href: '/faq' },
-      { name: 'Outcomes', href: '/outcomes' },
     ]
   },
   { 
     name: 'For Employers', 
-    href: '/employer',
+    href: '/employers',
     subItems: [
       { name: 'Hire Graduates', href: '/hire-graduates' },
       { name: 'Partner With Us', href: '/partners' },
-      { name: 'Workforce Solutions', href: '/solutions' },
       { name: 'OJT & Funding', href: '/ojt-and-funding' },
-      { name: 'Workforce Board', href: '/workforce-board' },
-    ]
-  },
-  { 
-    name: 'LMS', 
-    href: '/lms',
-    subItems: [
-      { name: 'Student Dashboard', href: '/lms/dashboard' },
-      { name: 'My Courses', href: '/lms/courses' },
-      { name: 'Certificates', href: '/certificates' },
-      { name: 'Leaderboard', href: '/leaderboard' },
-      { name: 'Community', href: '/community' },
-    ]
-  },
-  { 
-    name: 'Portals', 
-    href: '/dashboard',
-    subItems: [
-      { name: 'Admin Dashboard', href: '/admin' },
-      { name: 'Staff Portal', href: '/staff-portal' },
-      { name: 'Partner Portal', href: '/partner-portal' },
-      { name: 'Employer Portal', href: '/employer-portal' },
-      { name: 'Student Portal', href: '/student-portal' },
-      { name: 'Instructor Portal', href: '/instructor' },
     ]
   },
   { 
     name: 'About', 
     href: '/about',
     subItems: [
-      { name: 'Our Team', href: '/team' },
+      { name: 'Our Mission', href: '/about/mission' },
+      { name: 'Accreditation', href: '/accreditation' },
       { name: 'Success Stories', href: '/success-stories' },
       { name: 'Contact', href: '/contact' },
-      { name: 'Careers', href: '/careers' },
-      { name: 'Locations', href: '/locations' },
-      { name: 'Impact', href: '/impact' },
-    ]
-  },
-  { 
-    name: 'Resources', 
-    href: '/resources',
-    subItems: [
-      { name: 'FAQ', href: '/faq' },
-      { name: 'Events', href: '/events' },
-      { name: 'Support', href: '/support' },
     ]
   },
 ];

@@ -8,6 +8,9 @@ const LMS_DOMAIN = 'elevateforhumanityeducation.com';
 // Supersonic Fast Cash domain - routes to /supersonic-fast-cash paths
 const SUPERSONIC_DOMAIN = 'supersonicfastermoney.com';
 
+// Platform licensing subdomain - routes to /platform/licensing paths
+const PLATFORM_SUBDOMAIN = 'platform.elevateforhumanity.org';
+
 // Routes that require authentication and specific roles
 const PROTECTED_ROUTES: Record<string, string[]> = {
   '/admin': ['admin', 'super_admin'],
@@ -93,6 +96,31 @@ export async function middleware(request: NextRequest) {
 
     // Rewrite all other paths to /supersonic-fast-cash/*
     return NextResponse.rewrite(new URL(`/supersonic-fast-cash${pathname}`, request.url));
+  }
+
+  // Platform subdomain routing (platform.elevateforhumanity.org -> /platform/licensing)
+  if (host === PLATFORM_SUBDOMAIN || host === 'platform.elevateforhumanity.org') {
+    // Skip for static files and API routes
+    if (
+      pathname.startsWith('/_next') ||
+      pathname.startsWith('/api') ||
+      pathname.includes('.')
+    ) {
+      return NextResponse.next();
+    }
+
+    // Root of platform subdomain -> licensing page
+    if (pathname === '/') {
+      return NextResponse.rewrite(new URL('/platform/licensing', request.url));
+    }
+
+    // Already on /platform path, allow through
+    if (pathname.startsWith('/platform')) {
+      return NextResponse.next();
+    }
+
+    // Rewrite all other paths to /platform/licensing/*
+    return NextResponse.rewrite(new URL(`/platform/licensing${pathname}`, request.url));
   }
 
   // Redirect non-www .org to www .org
