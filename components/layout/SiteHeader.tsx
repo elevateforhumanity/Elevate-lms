@@ -132,6 +132,7 @@ function useSafeUser() {
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const user = useSafeUser();
 
   return (
@@ -261,28 +262,49 @@ export default function SiteHeader() {
               <ul className="space-y-1">
                 {NAV_ITEMS.map((item) => (
                   <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center px-4 py-3 text-base font-semibold text-gray-900 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
-                    >
-                      {item.name}
-                    </Link>
-                    {/* Sub-items */}
-                    {item.subItems && (
-                      <ul className="ml-4 mt-1 space-y-1">
-                        {item.subItems.map((subItem) => (
-                          <li key={subItem.name}>
-                            <Link
-                              href={subItem.href}
-                              onClick={() => setMobileMenuOpen(false)}
-                              className="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
-                            >
-                              {subItem.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                    {item.subItems ? (
+                      <>
+                        <button
+                          onClick={() => setExpandedSection(expandedSection === item.name ? null : item.name)}
+                          className="w-full flex items-center justify-between px-4 py-3 text-base font-semibold text-gray-900 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
+                        >
+                          {item.name}
+                          <ChevronDown className={`w-4 h-4 transition-transform ${expandedSection === item.name ? 'rotate-180' : ''}`} />
+                        </button>
+                        {/* Collapsible Sub-items */}
+                        {expandedSection === item.name && (
+                          <ul className="ml-4 mt-1 space-y-1 border-l-2 border-blue-100 pl-2">
+                            <li>
+                              <Link
+                                href={item.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:bg-slate-50 rounded-lg"
+                              >
+                                View All {item.name}
+                              </Link>
+                            </li>
+                            {item.subItems.map((subItem) => (
+                              <li key={subItem.name}>
+                                <Link
+                                  href={subItem.href}
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
+                                >
+                                  {subItem.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex items-center px-4 py-3 text-base font-semibold text-gray-900 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
+                      >
+                        {item.name}
+                      </Link>
                     )}
                   </li>
                 ))}
