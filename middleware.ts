@@ -2,9 +2,6 @@ import { createServerClient } from '@supabase/ssr';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Admin domain - routes to /admin paths
-const ADMIN_DOMAIN = 'elevateconnectsdirectory.org';
-
 // LMS domain - routes to /student-portal paths
 const LMS_DOMAIN = 'elevateforhumanityeducation.com';
 
@@ -31,36 +28,6 @@ export async function middleware(request: NextRequest) {
   // ============================================
   // DOMAIN-BASED ROUTING
   // ============================================
-
-  // Admin domain routing (elevateconnectsdirectory.org -> /admin)
-  if (host.includes(ADMIN_DOMAIN)) {
-    // Skip for static files and API routes
-    if (
-      pathname.startsWith('/_next') ||
-      pathname.startsWith('/api') ||
-      pathname.includes('.')
-    ) {
-      return NextResponse.next();
-    }
-
-    // Root of admin domain -> admin dashboard
-    if (pathname === '/') {
-      return NextResponse.rewrite(new URL('/admin', request.url));
-    }
-
-    // Already on /admin path, allow through
-    if (pathname.startsWith('/admin')) {
-      return NextResponse.next();
-    }
-
-    // Login/auth pages - allow through for admin domain
-    if (pathname === '/login' || pathname === '/signup' || pathname === '/unauthorized') {
-      return NextResponse.next();
-    }
-
-    // Rewrite all other paths to /admin/*
-    return NextResponse.rewrite(new URL(`/admin${pathname}`, request.url));
-  }
 
   // LMS domain routing (elevateforhumanityeducation.com -> /student-portal)
   if (host.includes(LMS_DOMAIN)) {

@@ -14,13 +14,13 @@
   package = "@netlify/plugin-nextjs"
 
 # ============================================
-# ADMIN DOMAIN (elevateconnectsdirectory.org)
-# Do NOT redirect - handled by middleware -> /admin
+# LMS DOMAIN (elevateforhumanityeducation.com)
+# Do NOT redirect - handled by middleware -> /student-portal
 # ============================================
 
 # ============================================
-# LMS DOMAIN (elevateforhumanityeducation.com)
-# Do NOT redirect - handled by middleware -> /student-portal
+# SUPERSONIC DOMAIN (supersonicfastermoney.com)
+# Do NOT redirect - handled by middleware -> /supersonic-fast-cash
 # ============================================
 
 # ============================================
