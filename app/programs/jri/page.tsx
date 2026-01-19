@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -81,6 +82,9 @@ export default async function JRIProgramsPage() {
           </p>
         </div>
       </section>
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="JRI Programs" programSlug="jri" />
 
       {/* Story Section */}
       <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20 bg-gray-50">

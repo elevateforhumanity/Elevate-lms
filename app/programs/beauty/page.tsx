@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import { ArrowRight, Clock, DollarSign, Award, CheckCircle } from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 
 export const dynamic = 'force-dynamic';
 
@@ -146,6 +147,9 @@ export default async function BeautyProgramsPage() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Beauty" programSlug="beauty" />
 
       {/* Program Cards */}
       <section id="programs" className="py-16 px-4 sm:px-6 lg:px-8">

@@ -89,6 +89,9 @@ export default async function BusinessFinancialPage() {
         </div>
       </section>
 
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Business & Financial Services" programSlug="business-financial" />
+
       {/* At-a-Glance */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-6">

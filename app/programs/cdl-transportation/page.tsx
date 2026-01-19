@@ -85,6 +85,9 @@ export default async function CdlTransportationPage() {
         </div>
       </section>
 
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="CDL Transportation" programSlug="cdl-transportation" />
+
       {/* About the Program */}
       <section className="bg-gray-50 py-16">
         <div className="mx-auto max-w-4xl px-6">

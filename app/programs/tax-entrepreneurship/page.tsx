@@ -75,6 +75,9 @@ export default async function TaxEntrepreneurshipPage() {
         </div>
       </section>
 
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Tax Entrepreneurship" programSlug="tax-entrepreneurship" />
+
       {/* At-a-Glance */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-6">
