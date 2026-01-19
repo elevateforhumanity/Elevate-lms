@@ -1,0 +1,45 @@
+import { NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+export async function POST(req: Request) {
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
+    }
+
+    const formData = await req.formData();
+    const itemId = formData.get('itemId') as string;
+    const quantity = parseInt(formData.get('quantity') as string);
+
+    if (!itemId) {
+      return NextResponse.json({ error: 'Item ID required' }, { status: 400 });
+    }
+
+    if (quantity <= 0) {
+      // Remove item if quantity is 0 or less
+      await supabase
+        .from('cart_items')
+        .delete()
+        .eq('id', itemId)
+        .eq('user_id', user.id);
+    } else {
+      // Update quantity
+      await supabase
+        .from('cart_items')
+        .update({ quantity })
+        .eq('id', itemId)
+        .eq('user_id', user.id);
+    }
+
+    return NextResponse.redirect(new URL('/store/cart', req.url), 303);
+  } catch (error) {
+    console.error('Cart update error:', error);
+    return NextResponse.json({ error: 'Failed to update cart' }, { status: 500 });
+  }
+}
