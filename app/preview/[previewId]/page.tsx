@@ -11,71 +11,110 @@ import {
   BookOpen, Trophy, Briefcase, Mail, Phone, MapPin
 } from 'lucide-react';
 
-// Unsplash images for different industries
+// Pexels images for different industries (free to use)
 const INDUSTRY_IMAGES: Record<string, { hero: string; programs: string[]; features: string[] }> = {
   default: {
-    hero: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&q=80',
+    hero: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
     programs: [
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80',
-      'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80',
-      'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80',
+      'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
     ],
     features: [
-      'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80',
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80',
-      'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80',
+      'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
     ],
   },
   technology: {
-    hero: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1920&q=80',
+    hero: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
     programs: [
-      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80',
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
-      'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&q=80',
+      'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
     ],
     features: [
-      'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&q=80',
-      'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80',
-      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80',
+      'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
     ],
   },
   healthcare: {
-    hero: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920&q=80',
+    hero: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
     programs: [
-      'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80',
-      'https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80',
-      'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&q=80',
+      'https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/4225880/pexels-photo-4225880.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
     ],
     features: [
-      'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80',
-      'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80',
-      'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80',
+      'https://images.pexels.com/photos/4386464/pexels-photo-4386464.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/4225920/pexels-photo-4225920.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
     ],
   },
   construction: {
-    hero: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80',
+    hero: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
     programs: [
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80',
-      'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&q=80',
-      'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80',
+      'https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
     ],
     features: [
-      'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80',
-      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80',
-      'https://images.unsplash.com/photo-1590644365607-1c5a0a1e0a1e?w=600&q=80',
+      'https://images.pexels.com/photos/1216544/pexels-photo-1216544.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/2760243/pexels-photo-2760243.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
     ],
   },
   manufacturing: {
-    hero: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1920&q=80',
+    hero: 'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
     programs: [
-      'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
-      'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=800&q=80',
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+      'https://images.pexels.com/photos/3846508/pexels-photo-3846508.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/3846517/pexels-photo-3846517.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/3846524/pexels-photo-3846524.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
     ],
     features: [
-      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80',
-      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80',
-      'https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=600&q=80',
+      'https://images.pexels.com/photos/1108117/pexels-photo-1108117.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/3846505/pexels-photo-3846505.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/3846512/pexels-photo-3846512.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+    ],
+  },
+  hospitality: {
+    hero: 'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
+    programs: [
+      'https://images.pexels.com/photos/3201920/pexels-photo-3201920.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/3201921/pexels-photo-3201921.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/2788792/pexels-photo-2788792.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    ],
+    features: [
+      'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/3201922/pexels-photo-3201922.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/2788792/pexels-photo-2788792.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+    ],
+  },
+  finance: {
+    hero: 'https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
+    programs: [
+      'https://images.pexels.com/photos/7567434/pexels-photo-7567434.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/7567565/pexels-photo-7567565.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    ],
+    features: [
+      'https://images.pexels.com/photos/7567444/pexels-photo-7567444.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/7567560/pexels-photo-7567560.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/6801647/pexels-photo-6801647.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+    ],
+  },
+  transportation: {
+    hero: 'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
+    programs: [
+      'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/93398/pexels-photo-93398.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      'https://images.pexels.com/photos/1427541/pexels-photo-1427541.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    ],
+    features: [
+      'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/93398/pexels-photo-93398.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      'https://images.pexels.com/photos/1427541/pexels-photo-1427541.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
     ],
   },
 };
@@ -83,10 +122,13 @@ const INDUSTRY_IMAGES: Record<string, { hero: string; programs: string[]; featur
 function getIndustryImages(industry?: string): { hero: string; programs: string[]; features: string[] } {
   if (!industry) return INDUSTRY_IMAGES.default;
   const key = industry.toLowerCase();
-  if (key.includes('tech') || key.includes('software') || key.includes('it')) return INDUSTRY_IMAGES.technology;
-  if (key.includes('health') || key.includes('medical') || key.includes('nursing')) return INDUSTRY_IMAGES.healthcare;
-  if (key.includes('construction') || key.includes('trade') || key.includes('hvac') || key.includes('electrical')) return INDUSTRY_IMAGES.construction;
-  if (key.includes('manufacturing') || key.includes('industrial')) return INDUSTRY_IMAGES.manufacturing;
+  if (key.includes('tech') || key.includes('software') || key.includes('it') || key.includes('computer')) return INDUSTRY_IMAGES.technology;
+  if (key.includes('health') || key.includes('medical') || key.includes('nursing') || key.includes('dental') || key.includes('pharmacy')) return INDUSTRY_IMAGES.healthcare;
+  if (key.includes('construction') || key.includes('trade') || key.includes('hvac') || key.includes('electrical') || key.includes('plumbing') || key.includes('welding')) return INDUSTRY_IMAGES.construction;
+  if (key.includes('manufacturing') || key.includes('industrial') || key.includes('factory')) return INDUSTRY_IMAGES.manufacturing;
+  if (key.includes('hospitality') || key.includes('hotel') || key.includes('restaurant') || key.includes('culinary') || key.includes('food')) return INDUSTRY_IMAGES.hospitality;
+  if (key.includes('finance') || key.includes('banking') || key.includes('accounting') || key.includes('tax')) return INDUSTRY_IMAGES.finance;
+  if (key.includes('transport') || key.includes('cdl') || key.includes('trucking') || key.includes('logistics')) return INDUSTRY_IMAGES.transportation;
   return INDUSTRY_IMAGES.default;
 }
 

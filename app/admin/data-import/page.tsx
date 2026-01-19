@@ -14,6 +14,8 @@ import {
   AlertCircle,
   Loader2,
   ArrowRight,
+  Eye,
+  X,
 } from 'lucide-react';
 
 type ImportType = 'students' | 'courses' | 'enrollments' | 'employers';
@@ -23,6 +25,12 @@ interface ImportResult {
   imported: number;
   failed: number;
   errors: string[];
+}
+
+interface PreviewData {
+  headers: string[];
+  rows: string[][];
+  totalRows: number;
 }
 
 const importTypes = [
@@ -56,12 +64,43 @@ const importTypes = [
   },
 ];
 
+function parseCSVPreview(content: string): PreviewData {
+  const lines = content.trim().split('\n');
+  if (lines.length < 1) return { headers: [], rows: [], totalRows: 0 };
+
+  const parseRow = (line: string): string[] => {
+    const values: string[] = [];
+    let current = '';
+    let inQuotes = false;
+    for (const char of line) {
+      if (char === '"') {
+        inQuotes = !inQuotes;
+      } else if (char === ',' && !inQuotes) {
+        values.push(current.trim().replace(/^["']|["']$/g, ''));
+        current = '';
+      } else {
+        current += char;
+      }
+    }
+    values.push(current.trim().replace(/^["']|["']$/g, ''));
+    return values;
+  };
+
+  const headers = parseRow(lines[0]);
+  const rows = lines.slice(1, 6).filter(l => l.trim()).map(parseRow);
+  const totalRows = lines.filter(l => l.trim()).length - 1;
+
+  return { headers, rows, totalRows };
+}
+
 export default function DataImportPage() {
   const [selectedType, setSelectedType] = useState<ImportType | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [result, setResult] = useState<ImportResult | null>(null);
   const [dragActive, setDragActive] = useState(false);
+  const [preview, setPreview] = useState<PreviewData | null>(null);
+  const [showPreview, setShowPreview] = useState(false);
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -78,14 +117,29 @@ export default function DataImportPage() {
     e.stopPropagation();
     setDragActive(false);
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      setFile(e.dataTransfer.files[0]);
+      handleFileSelect(e.dataTransfer.files[0]);
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
+      const selectedFile = e.target.files[0];
+      setFile(selectedFile);
+      
+      // Parse preview
+      const content = await selectedFile.text();
+      const previewData = parseCSVPreview(content);
+      setPreview(previewData);
+      setShowPreview(true);
     }
+  };
+
+  const handleFileSelect = async (selectedFile: File) => {
+    setFile(selectedFile);
+    const content = await selectedFile.text();
+    const previewData = parseCSVPreview(content);
+    setPreview(previewData);
+    setShowPreview(true);
   };
 
   const handleUpload = async () => {
@@ -138,6 +192,83 @@ export default function DataImportPage() {
   };
 
   return (
+    <>
+      {/* Preview Modal */}
+      {showPreview && preview && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[80vh] overflow-hidden">
+            <div className="flex items-center justify-between p-4 border-b">
+              <div className="flex items-center gap-3">
+                <Eye className="w-5 h-5 text-blue-600" />
+                <h3 className="font-bold text-gray-900">Preview Import Data</h3>
+              </div>
+              <button
+                onClick={() => setShowPreview(false)}
+                className="p-1 hover:bg-gray-100 rounded"
+              >
+                <X className="w-5 h-5 text-gray-500" />
+              </button>
+            </div>
+            <div className="p-4 overflow-auto max-h-[50vh]">
+              <p className="text-sm text-gray-600 mb-3">
+                Showing first {preview.rows.length} of {preview.totalRows} records
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      {preview.headers.map((header, idx) => (
+                        <th key={idx} className="px-3 py-2 text-left font-medium text-gray-700 border">
+                          {header}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {preview.rows.map((row, rowIdx) => (
+                      <tr key={rowIdx} className="hover:bg-gray-50">
+                        {row.map((cell, cellIdx) => (
+                          <td key={cellIdx} className="px-3 py-2 border text-gray-600">
+                            {cell || <span className="text-gray-400 italic">empty</span>}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className="flex items-center justify-between p-4 border-t bg-gray-50">
+              <p className="text-sm text-gray-600">
+                <strong>{preview.totalRows}</strong> records will be imported
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => {
+                    setShowPreview(false);
+                    setFile(null);
+                    setPreview(null);
+                  }}
+                  className="px-4 py-2 text-gray-700 hover:bg-gray-200 rounded-lg font-medium"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    setShowPreview(false);
+                    handleUpload();
+                  }}
+                  className="px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 flex items-center gap-2"
+                >
+                  <Upload className="w-4 h-4" />
+                  Confirm Import
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-8">
@@ -163,6 +294,7 @@ export default function DataImportPage() {
                     setSelectedType(type.id);
                     setFile(null);
                     setResult(null);
+                    setPreview(null);
                   }}
                   className={`p-4 rounded-lg border-2 text-left transition-all ${
                     isSelected
@@ -224,7 +356,10 @@ export default function DataImportPage() {
                     </p>
                   </div>
                   <button
-                    onClick={() => setFile(null)}
+                    onClick={() => {
+                      setFile(null);
+                      setPreview(null);
+                    }}
                     className="ml-4 text-red-600 hover:underline text-sm"
                   >
                     Remove
@@ -326,5 +461,6 @@ export default function DataImportPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
