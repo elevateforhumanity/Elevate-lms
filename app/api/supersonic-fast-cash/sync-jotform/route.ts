@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { jotFormIntegration } from '@/lib/integrations/jotform';
 import { drakeIntegration } from '@/lib/integrations/drake-software';
 import { createClient } from '@supabase/supabase-js';
+import { prepareSSNForStorage } from '@/lib/security/ssn';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -53,13 +54,16 @@ export async function POST(request: NextRequest) {
         // Parse submission
         const clientData = jotFormIntegration.parseSubmission(submission);
 
+        // Securely hash SSN before storage
+        const ssnData = clientData.ssn ? prepareSSNForStorage(clientData.ssn) : {};
+
         // Create client
         const { data: client, error: clientError } = await supabase
           .from('clients')
           .insert({
             first_name: clientData.firstName,
             last_name: clientData.lastName,
-            ssn: clientData.ssn,
+            ...ssnData, // ssn_hash and ssn_last4 instead of plain SSN
             date_of_birth: clientData.dateOfBirth,
             email: clientData.email,
             phone: clientData.phone,

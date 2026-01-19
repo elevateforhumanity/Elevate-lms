@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import crypto from 'crypto';
+import { hashSSN, getSSNLast4, isValidSSN } from '@/lib/security/ssn';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -31,15 +31,6 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
-function hashSSN(ssn: string): string {
-  return crypto.createHash('sha256').update(ssn + process.env.SSN_SALT || 'default-salt').digest('hex');
-}
-
-function getSSNLast4(ssn: string): string {
-  const cleaned = ssn.replace(/\D/g, '');
-  return cleaned.slice(-4);
-}
-
 /**
  * Track refund status - uses SSN hash for secure lookup
  */
@@ -65,13 +56,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const ssnClean = body.ssn.replace(/\D/g, '');
-    if (ssnClean.length !== 9) {
+    if (!isValidSSN(body.ssn)) {
       return NextResponse.json(
         { error: 'Invalid SSN format' },
         { status: 400 }
       );
     }
+
+    const ssnClean = body.ssn.replace(/\D/g, '');
 
     // Use hashed SSN for lookup (more secure than plain text)
     const ssnHash = hashSSN(ssnClean);

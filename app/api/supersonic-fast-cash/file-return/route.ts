@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { drakeIntegration } from '@/lib/integrations/drake-software';
 import { Resend } from 'resend';
+import { prepareSSNForStorage } from '@/lib/security/ssn';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -77,13 +78,16 @@ export async function POST(request: NextRequest) {
     const taxReturn: TaxReturnBody = await request.json();
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
+    // Securely hash SSN before storage
+    const ssnData = prepareSSNForStorage(taxReturn.ssn);
+
     // Create client record
     const { data: client, error: clientError } = await supabase
       .from('clients')
       .insert({
         first_name: taxReturn.firstName,
         last_name: taxReturn.lastName,
-        ssn: taxReturn.ssn,
+        ...ssnData, // ssn_hash and ssn_last4 instead of plain SSN
         date_of_birth: taxReturn.dateOfBirth,
         email: taxReturn.email,
         phone: taxReturn.phone,

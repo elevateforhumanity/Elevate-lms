@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
-export const maxDuration = 60;
 import { jotFormIntegration } from '@/lib/integrations/jotform';
 import { drakeIntegration } from '@/lib/integrations/drake-software';
 import { supabaseServer } from '@/lib/supabaseServer';
 import { Resend } from 'resend';
+import { prepareSSNForStorage } from '@/lib/security/ssn';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
@@ -37,12 +38,15 @@ export async function POST(request: NextRequest) {
 
 
     // Step 3: Create or update client in database
+    // Securely hash SSN before storage
+    const ssnData = clientData.ssn ? prepareSSNForStorage(clientData.ssn) : {};
+
     const { data: client, error: clientError } = await supabase
       .from('clients')
       .upsert({
         first_name: clientData.firstName,
         last_name: clientData.lastName,
-        ssn: clientData.ssn,
+        ...ssnData, // ssn_hash and ssn_last4 instead of plain SSN
         date_of_birth: clientData.dateOfBirth,
         email: clientData.email,
         phone: clientData.phone,
