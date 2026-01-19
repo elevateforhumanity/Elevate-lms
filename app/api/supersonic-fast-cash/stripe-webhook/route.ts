@@ -214,7 +214,7 @@ async function sendPurchaseConfirmationEmail(
                 <li>✓ Email support</li>
               </ul>
 
-              <p>Questions? Reply to this email or contact us at Supersonicfadtcashllc@gmail.com</p>
+              <p>Questions? Reply to this email or contact us at supersonicfastcashllc@gmail.com</p>
 
               <p>Happy learning!</p>
             </div>

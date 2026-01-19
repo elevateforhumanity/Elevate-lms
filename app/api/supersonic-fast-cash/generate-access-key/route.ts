@@ -142,7 +142,7 @@ export async function POST(request: NextRequest) {
                   <li>Start preparing tax returns and earning money!</li>
                 </ol>
 
-                <p>Questions? Reply to this email or contact us at Supersonicfadtcashllc@gmail.com</p>
+                <p>Questions? Reply to this email or contact us at supersonicfastcashllc@gmail.com</p>
               </div>
 
               <div class="footer">

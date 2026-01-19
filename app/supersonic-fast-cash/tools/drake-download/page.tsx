@@ -150,7 +150,7 @@ export default function DrakeDownloadPage() {
                 <strong>Need Access?</strong> Contact:
               </p>
               <div className="space-y-2 text-sm">
-                <div>📧 Email: <a href="mailto:Supersonicfadtcashllc@gmail.com" className="text-white hover:underline">Supersonicfadtcashllc@gmail.com</a></div>
+                <div>📧 Email: <a href="mailto:supersonicfastcashllc@gmail.com" className="text-white hover:underline">supersonicfastcashllc@gmail.com</a></div>
                 <div>📞 Phone: <a href="tel:+13173143757" className="text-white hover:underline">(317) 314-3757</a></div>
               </div>
             </div>

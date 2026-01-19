@@ -498,7 +498,7 @@ export default function SubOfficeAgreementPage() {
             Professional
           </p>
           <p className="mt-2">
-            Questions? Call (317) 314-3757 or email Supersonicfadtcashllc@gmail.com
+            Questions? Call (317) 314-3757 or email supersonicfastcashllc@gmail.com
           </p>
         </div>
       </div>

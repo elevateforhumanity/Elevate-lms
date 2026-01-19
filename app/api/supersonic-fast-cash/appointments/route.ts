@@ -117,7 +117,7 @@ export async function POST(request: NextRequest) {
     try {
       await resend.emails.send({
         from: 'Supersonic Fast Cash <noreply@www.elevateforhumanity.org>',
-        to: 'Supersonicfadtcashllc@gmail.com',
+        to: 'supersonicfastcashllc@gmail.com',
         subject: 'New Appointment Booked',
         html: `
           <h1>New Appointment</h1>

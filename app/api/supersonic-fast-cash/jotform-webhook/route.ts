@@ -196,7 +196,7 @@ export async function POST(request: NextRequest) {
     try {
       await resend.emails.send({
         from: 'SupersonicFastCash <noreply@www.elevateforhumanity.org>',
-        to: 'Supersonicfadtcashllc@gmail.com',
+        to: 'supersonicfastcashllc@gmail.com',
         subject: `New Client: ${clientData.firstName} ${clientData.lastName}`,
         html: `
           <h2>New Client Intake</h2>

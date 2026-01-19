@@ -1,19 +1,59 @@
-// @ts-nocheck
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
+import crypto from 'crypto';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
-import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
+// Simple in-memory rate limiting (use Redis in production)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT = 5; // requests per window
+const RATE_WINDOW = 60 * 1000; // 1 minute
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
+  
+  if (!record || now > record.resetTime) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_WINDOW });
+    return false;
+  }
+  
+  if (record.count >= RATE_LIMIT) {
+    return true;
+  }
+  
+  record.count++;
+  return false;
+}
+
+function hashSSN(ssn: string): string {
+  return crypto.createHash('sha256').update(ssn + process.env.SSN_SALT || 'default-salt').digest('hex');
+}
+
+function getSSNLast4(ssn: string): string {
+  const cleaned = ssn.replace(/\D/g, '');
+  return cleaned.slice(-4);
+}
+
 /**
- * Track refund status and save to database
+ * Track refund status - uses SSN hash for secure lookup
  */
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting
+    const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
@@ -25,14 +65,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // In production, integrate with IRS "Where's My Refund" API
-    // For now, use Drake Software or simulate based on filing date
+    const ssnClean = body.ssn.replace(/\D/g, '');
+    if (ssnClean.length !== 9) {
+      return NextResponse.json(
+        { error: 'Invalid SSN format' },
+        { status: 400 }
+      );
+    }
 
-    // Find tax return by SSN
+    // Use hashed SSN for lookup (more secure than plain text)
+    const ssnHash = hashSSN(ssnClean);
+    const ssnLast4 = getSSNLast4(ssnClean);
+
+    // Find tax return by SSN hash or last 4 (fallback for existing records)
     const { data: client } = await supabase
       .from('clients')
       .select('id, tax_returns(*)')
-      .eq('ssn', body.ssn)
+      .or(`ssn_hash.eq.${ssnHash},ssn_last4.eq.${ssnLast4}`)
       .single();
 
     let status = 'received';
