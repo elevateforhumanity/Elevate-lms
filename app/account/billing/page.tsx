@@ -10,12 +10,12 @@ import {
   AlertTriangle,
   Clock,
 } from 'lucide-react';
-import { PLANS, LicenseStatus } from '@/lib/license/types';
+import { PLANS, LicenseStatus, PlanId } from '@/lib/license/types';
 
 // Mock license data - in production, fetch from API/database
 const mockLicense = {
   status: 'trial' as LicenseStatus,
-  planId: 'annual' as const,
+  planId: 'starter_annual' as const,
   trialEndsAt: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000), // 10 days from now
   currentPeriodEnd: null as Date | null,
   stripeCustomerId: 'cus_mock123',
