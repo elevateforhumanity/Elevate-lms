@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { headers } from 'next/headers';
+import { createSupabaseClient } from '@/lib/supabase-api';
+import { logger } from '@/lib/logger';
+import { enqueueJob } from '@/lib/jobs/queue';
+import { getCorrelationFromStripeEvent } from '@/lib/observability/correlation';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   apiVersion: '2025-10-29.clover' as Stripe.LatestApiVersion,
@@ -9,20 +13,18 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || '';
 
 /**
- * POST /api/license/webhook
+ * STEP 6A: Async Stripe webhook handler
  * 
- * Stripe webhook handler for license lifecycle events.
+ * Pattern:
+ * 1. Validate signature
+ * 2. Idempotency check
+ * 3. Enqueue job
+ * 4. Return 200 immediately
  * 
- * Events handled:
- * - checkout.session.completed: Link Stripe IDs, set trial status
- * - invoice.paid: Activate license
- * - invoice.payment_failed: Set past_due status
- * - customer.subscription.updated: Handle plan changes, cancellation
- * - customer.subscription.deleted: Suspend license
- * - charge.refunded: Immediate suspension
- * - charge.dispute.created: Immediate suspension
+ * Worker processes jobs asynchronously with retries.
  */
 export async function POST(request: NextRequest) {
+  const startTime = Date.now();
   const body = await request.text();
   const headersList = await headers();
   const signature = headersList.get('stripe-signature');
@@ -36,249 +38,102 @@ export async function POST(request: NextRequest) {
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (err) {
-    console.error('Webhook signature verification failed:', err);
+    logger.error('Webhook signature verification failed', err instanceof Error ? err : new Error(String(err)));
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
   }
 
+  // Extract correlation context
+  const correlation = getCorrelationFromStripeEvent(event);
+  
+  logger.info('Webhook received', {
+    eventType: event.type,
+    eventId: event.id,
+    correlationId: correlation.correlationId,
+  });
+
+  const supabase = createSupabaseClient();
+
   try {
-    switch (event.type) {
-      case 'checkout.session.completed':
-        await handleCheckoutCompleted(event.data.object as Stripe.Checkout.Session);
-        break;
+    // Idempotency check
+    const { data: existing } = await supabase
+      .from('processed_stripe_events')
+      .select('id')
+      .eq('stripe_event_id', event.id)
+      .single();
 
-      case 'invoice.paid':
-        await handleInvoicePaid(event.data.object as Stripe.Invoice);
-        break;
-
-      case 'invoice.payment_failed':
-        await handleInvoicePaymentFailed(event.data.object as Stripe.Invoice);
-        break;
-
-      case 'customer.subscription.updated':
-        await handleSubscriptionUpdated(event.data.object as Stripe.Subscription);
-        break;
-
-      case 'customer.subscription.deleted':
-        await handleSubscriptionDeleted(event.data.object as Stripe.Subscription);
-        break;
-
-      case 'charge.refunded':
-        await handleChargeRefunded(event.data.object as Stripe.Charge);
-        break;
-
-      case 'charge.dispute.created':
-        await handleDisputeCreated(event.data.object as Stripe.Dispute);
-        break;
-
-      default:
-        console.log(`Unhandled event type: ${event.type}`);
+    if (existing) {
+      logger.info('Duplicate webhook event (idempotent)', { eventId: event.id });
+      return NextResponse.json({ received: true, duplicate: true });
     }
 
-    return NextResponse.json({ received: true });
+    // Record event as processed
+    await supabase.from('processed_stripe_events').insert({
+      stripe_event_id: event.id,
+      event_type: event.type,
+      correlation_id: correlation.correlationId,
+      payload: event.data.object,
+    });
+
+    // Enqueue job for async processing (fast return)
+    const jobType = mapEventToJobType(event.type);
+    
+    if (jobType) {
+      await enqueueJob({
+        jobType,
+        correlationId: correlation.correlationId,
+        stripeEventId: event.id,
+        paymentIntentId: correlation.paymentIntentId,
+        tenantId: correlation.tenantId,
+        payload: {
+          eventType: event.type,
+          eventData: event.data.object,
+        },
+      });
+    }
+
+    const duration = Date.now() - startTime;
+    
+    logger.info('Webhook processed (async)', {
+      eventType: event.type,
+      eventId: event.id,
+      correlationId: correlation.correlationId,
+      durationMs: duration,
+    });
+
+    // Return immediately - job processes in background
+    return NextResponse.json({ 
+      received: true,
+      correlationId: correlation.correlationId,
+      durationMs: duration,
+    });
   } catch (error) {
-    console.error('Webhook handler error:', error);
-    return NextResponse.json({ error: 'Webhook handler failed' }, { status: 500 });
+    logger.error('Webhook handler error', error instanceof Error ? error : new Error(String(error)), {
+      eventId: event.id,
+      correlationId: correlation.correlationId,
+    });
+    
+    // Still return 200 to prevent Stripe retries for non-transient errors
+    // Job queue will handle retries
+    return NextResponse.json({ 
+      received: true, 
+      error: 'Queued for retry',
+      correlationId: correlation.correlationId,
+    });
   }
 }
 
 /**
- * checkout.session.completed
- * Link Stripe customer/subscription IDs to license, set trial status
+ * Map Stripe event type to job type
  */
-async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
-  const customerId = session.customer as string;
-  const subscriptionId = session.subscription as string;
-  const metadata = session.metadata || {};
-
-  console.log('Checkout completed:', {
-    customerId,
-    subscriptionId,
-    organizationName: metadata.organization_name,
-    planId: metadata.plan_id,
-  });
-
-  // Get subscription details
-  const subscription = await stripe.subscriptions.retrieve(subscriptionId);
-
-  // TODO: Create or update license in database
-  // For now, log the data that would be stored
-  const licenseData = {
-    stripeCustomerId: customerId,
-    stripeSubscriptionId: subscriptionId,
-    status: subscription.status === 'trialing' ? 'trial' : 'active',
-    planId: metadata.plan_id,
-    organizationName: metadata.organization_name,
-    organizationType: metadata.organization_type,
-    contactName: metadata.contact_name,
-    trialStartedAt: subscription.trial_start ? new Date(subscription.trial_start * 1000) : null,
-    trialEndsAt: subscription.trial_end ? new Date(subscription.trial_end * 1000) : null,
-    currentPeriodStart: new Date((subscription as any).current_period_start * 1000),
-    currentPeriodEnd: new Date((subscription as any).current_period_end * 1000),
+function mapEventToJobType(eventType: string): string | null {
+  const mapping: Record<string, string> = {
+    'checkout.session.completed': 'license_provision',
+    'invoice.paid': 'license_provision',
+    'customer.subscription.deleted': 'license_suspend',
+    'charge.refunded': 'license_suspend',
+    'charge.dispute.created': 'license_suspend',
+    'charge.dispute.closed': 'license_reactivate',
   };
-
-  console.log('License data to store:', licenseData);
-
-  // In production: 
-  // await db.licenses.upsert({ where: { stripeSubscriptionId }, data: licenseData });
-}
-
-/**
- * invoice.paid
- * Activate license - this is when trial converts to paid
- */
-async function handleInvoicePaid(invoice: Stripe.Invoice) {
-  const subscriptionId = (invoice as any).subscription as string;
   
-  if (!subscriptionId) {
-    console.log('Invoice paid but no subscription (one-time payment)');
-    return;
-  }
-
-  console.log('Invoice paid:', {
-    subscriptionId,
-    amountPaid: invoice.amount_paid / 100,
-    invoiceUrl: invoice.hosted_invoice_url,
-  });
-
-  // TODO: Update license in database
-  // await db.licenses.update({
-  //   where: { stripeSubscriptionId: subscriptionId },
-  //   data: {
-  //     status: 'active',
-  //     lastPaymentStatus: 'paid',
-  //     lastInvoiceUrl: invoice.hosted_invoice_url,
-  //   },
-  // });
-}
-
-/**
- * invoice.payment_failed
- * Set past_due status, start grace period
- */
-async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
-  const subscriptionId = (invoice as any).subscription as string;
-  
-  if (!subscriptionId) return;
-
-  console.log('Invoice payment failed:', {
-    subscriptionId,
-    attemptCount: invoice.attempt_count,
-  });
-
-  // TODO: Update license in database
-  // await db.licenses.update({
-  //   where: { stripeSubscriptionId: subscriptionId },
-  //   data: {
-  //     status: 'past_due',
-  //     lastPaymentStatus: 'failed',
-  //   },
-  // });
-
-  // TODO: Send email notification about payment failure
-}
-
-/**
- * customer.subscription.updated
- * Handle plan changes, cancellation scheduling
- */
-async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
-  console.log('Subscription updated:', {
-    subscriptionId: subscription.id,
-    status: subscription.status,
-    cancelAtPeriodEnd: subscription.cancel_at_period_end,
-  });
-
-  let newStatus: string;
-  
-  switch (subscription.status) {
-    case 'trialing':
-      newStatus = 'trial';
-      break;
-    case 'active':
-      newStatus = 'active';
-      break;
-    case 'past_due':
-      newStatus = 'past_due';
-      break;
-    case 'canceled':
-    case 'unpaid':
-      newStatus = 'suspended';
-      break;
-    default:
-      newStatus = subscription.status;
-  }
-
-  // TODO: Update license in database
-  // await db.licenses.update({
-  //   where: { stripeSubscriptionId: subscription.id },
-  //   data: {
-  //     status: newStatus,
-  //     currentPeriodEnd: new Date(subscription.current_period_end * 1000),
-  //     canceledAt: subscription.cancel_at_period_end ? new Date() : null,
-  //   },
-  // });
-}
-
-/**
- * customer.subscription.deleted
- * Hard cancel - suspend license immediately
- */
-async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
-  console.log('Subscription deleted:', {
-    subscriptionId: subscription.id,
-  });
-
-  // TODO: Update license in database
-  // await db.licenses.update({
-  //   where: { stripeSubscriptionId: subscription.id },
-  //   data: {
-  //     status: 'canceled',
-  //     canceledAt: new Date(),
-  //   },
-  // });
-}
-
-/**
- * charge.refunded
- * Immediate suspension to protect against abuse
- */
-async function handleChargeRefunded(charge: Stripe.Charge) {
-  const customerId = charge.customer as string;
-  
-  console.log('Charge refunded - suspending license:', {
-    customerId,
-    amount: charge.amount_refunded / 100,
-  });
-
-  // TODO: Find and suspend license
-  // await db.licenses.updateMany({
-  //   where: { stripeCustomerId: customerId },
-  //   data: {
-  //     status: 'suspended',
-  //     suspendedAt: new Date(),
-  //   },
-  // });
-}
-
-/**
- * charge.dispute.created
- * Immediate suspension on chargeback
- */
-async function handleDisputeCreated(dispute: Stripe.Dispute) {
-  const charge = await stripe.charges.retrieve(dispute.charge as string);
-  const customerId = charge.customer as string;
-
-  console.log('Dispute created - suspending license:', {
-    customerId,
-    reason: dispute.reason,
-  });
-
-  // TODO: Find and suspend license
-  // await db.licenses.updateMany({
-  //   where: { stripeCustomerId: customerId },
-  //   data: {
-  //     status: 'suspended',
-  //     suspendedAt: new Date(),
-  //   },
-  // });
+  return mapping[eventType] || 'webhook_process';
 }

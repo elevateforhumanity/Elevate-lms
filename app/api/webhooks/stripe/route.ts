@@ -1,3 +1,20 @@
+/**
+ * CANONICAL LEARNER WEBHOOK HANDLER
+ * 
+ * This is the SINGLE entry point for all learner payment webhooks.
+ * All other webhook handlers should be deprecated or forward here.
+ * 
+ * Handles:
+ * - checkout.session.completed (subscriptions, enrollments, courses)
+ * - customer.subscription.* (subscription lifecycle)
+ * - invoice.* (payment success/failure)
+ * - charge.refunded (refunds)
+ * 
+ * For LICENSE webhooks, use /api/license/webhook instead.
+ * 
+ * Stripe Dashboard should have exactly ONE endpoint pointing here:
+ * https://www.elevateforhumanity.org/api/webhooks/stripe
+ */
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';

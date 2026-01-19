@@ -6,10 +6,15 @@ export const maxDuration = 60;
 import { createStoreProduct } from '@/lib/store/stripe-products';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
-import { toError, toErrorMessage } from '@/lib/safe';
+import { toErrorMessage } from '@/lib/safe';
+import { requireActiveLicense, LicenseError, licenseErrorResponse } from '@/lib/license/requireActiveLicense';
+import { TenantContextError } from '@/lib/tenant';
 
 export async function POST(req: NextRequest) {
   try {
+    // STEP 5B: Require active license for paid features
+    await requireActiveLicense();
+    
     const { title, price, repo, description } = await req.json();
 
     if (!title || !price || !repo) {
@@ -55,7 +60,15 @@ export async function POST(req: NextRequest) {
       productId: data.id,
       stripeProductId: product.id,
     });
-  } catch (error) { /* Error handled silently */ 
+  } catch (error) {
+    // Handle license errors with proper status codes
+    if (error instanceof LicenseError) {
+      return licenseErrorResponse(error);
+    }
+    if (error instanceof TenantContextError) {
+      return NextResponse.json({ error: error.message }, { status: error.statusCode });
+    }
+    
     logger.error(
       'Create product error:',
       error instanceof Error ? error : new Error(String(error))

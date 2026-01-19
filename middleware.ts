@@ -24,9 +24,31 @@ const PROTECTED_ROUTES: Record<string, string[]> = {
 // Routes that require authentication (any role)
 const AUTH_REQUIRED_ROUTES = ['/student', '/my-courses', '/my-progress', '/settings'];
 
+// Webhook paths that bypass auth entirely (Stripe signature verification handles security)
+// CANONICAL WEBHOOK PATHS (bypass auth)
+// Only these two should be registered in Stripe:
+// 1. /api/webhooks/stripe - All learner payments
+// 2. /api/license/webhook - License lifecycle only
+const WEBHOOK_PATHS = [
+  '/api/webhooks/stripe',      // Canonical learner webhook
+  '/api/license/webhook',      // Canonical license webhook
+  '/api/stripe/webhook',       // Deprecated - forwards to canonical
+  '/api/store/webhook',        // Deprecated - forwards to canonical
+  '/api/store/licenses/webhook', // Deprecated - forwards to canonical
+  '/api/donations/webhook',    // Donations (separate product)
+];
+
 export async function middleware(request: NextRequest) {
   const host = request.headers.get('host') || '';
   const { pathname } = request.nextUrl;
+
+  // ============================================
+  // WEBHOOK BYPASS (PATCH 4.1)
+  // Stripe webhooks use signature verification, not auth
+  // ============================================
+  if (WEBHOOK_PATHS.some(path => pathname.startsWith(path))) {
+    return NextResponse.next();
+  }
 
   // ============================================
   // DOMAIN-BASED ROUTING
@@ -207,6 +229,19 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL('/unauthorized', request.url), { status: 307 });
     }
   }
+
+  // ============================================
+  // TENANT CONTEXT INJECTION (STEP 4B)
+  // ============================================
+  // Inject tenant context headers for downstream route handlers
+  const tenantId = user.user_metadata?.tenant_id;
+  const userRole = user.user_metadata?.role || 'user';
+
+  if (tenantId) {
+    response.headers.set('x-tenant-id', tenantId);
+  }
+  response.headers.set('x-user-id', user.id);
+  response.headers.set('x-user-role', userRole);
 
   return response;
 }
