@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
@@ -8,15 +7,15 @@ import {
   BookOpen,
   Play,
   Award,
-  Clock,
-  BarChart3,
-  Calendar,
-  MessageSquare,
   Bell,
   Settings,
   ChevronRight,
   CheckCircle,
   Target,
+  Calendar,
+  MessageSquare,
+  BarChart3,
+  Clock,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -25,6 +24,54 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = 'force-dynamic';
+
+interface Course {
+  id: string;
+  title: string;
+  description: string | null;
+  thumbnail_url: string | null;
+  duration_hours: number | null;
+  lesson_count: number | null;
+}
+
+interface Enrollment {
+  id: string;
+  progress: number | null;
+  status: string;
+  enrolled_at: string;
+  last_accessed: string | null;
+  course: Course | null;
+}
+
+interface Lesson {
+  title: string;
+  course_id: string;
+}
+
+interface Activity {
+  id: string;
+  completed_at: string;
+  lesson: Lesson | null;
+}
+
+interface Assignment {
+  id: string;
+  title: string;
+  course_title: string;
+  due_date: string;
+  course_id: string;
+}
+
+interface Certificate {
+  id: string;
+  title: string;
+  issued_at: string;
+}
+
+interface Profile {
+  id: string;
+  full_name: string | null;
+}
 
 export default async function LMSPage() {
   const supabase = await createClient();
@@ -40,6 +87,8 @@ export default async function LMSPage() {
     .select('*')
     .eq('id', user.id)
     .single();
+
+  const typedProfile = profile as Profile | null;
 
   // Get enrolled courses with progress
   const { data: enrollments } = await supabase
@@ -62,6 +111,8 @@ export default async function LMSPage() {
     .eq('user_id', user.id)
     .order('last_accessed', { ascending: false });
 
+  const typedEnrollments = (enrollments || []) as Enrollment[];
+
   // Get recent activity
   const { data: recentActivity } = await supabase
     .from('lesson_progress')
@@ -74,14 +125,21 @@ export default async function LMSPage() {
     .order('completed_at', { ascending: false })
     .limit(5);
 
+  const typedActivity = (recentActivity || []) as Activity[];
+
   // Get upcoming assignments
-  const { data: assignments } = await supabase
-    .from('assignments')
-    .select('*')
-    .in('course_id', enrollments?.map((e: any) => e.course?.id).filter(Boolean) || [])
-    .gte('due_date', new Date().toISOString())
-    .order('due_date', { ascending: true })
-    .limit(5);
+  const courseIds = typedEnrollments.map(e => e.course?.id).filter(Boolean) as string[];
+  const { data: assignments } = courseIds.length > 0 
+    ? await supabase
+        .from('assignments')
+        .select('*')
+        .in('course_id', courseIds)
+        .gte('due_date', new Date().toISOString())
+        .order('due_date', { ascending: true })
+        .limit(5)
+    : { data: [] };
+
+  const typedAssignments = (assignments || []) as Assignment[];
 
   // Get certificates earned
   const { data: certificates } = await supabase
@@ -91,6 +149,8 @@ export default async function LMSPage() {
     .order('issued_at', { ascending: false })
     .limit(3);
 
+  const typedCertificates = (certificates || []) as Certificate[];
+
   // Get unread notifications
   const { count: notificationCount } = await supabase
     .from('notifications')
@@ -99,14 +159,14 @@ export default async function LMSPage() {
     .eq('is_read', false);
 
   // Calculate overall progress
-  const totalProgress = enrollments?.length 
-    ? Math.round(enrollments.reduce((sum: number, e: any) => sum + (e.progress || 0), 0) / enrollments.length)
+  const totalProgress = typedEnrollments.length 
+    ? Math.round(typedEnrollments.reduce((sum, e) => sum + (e.progress || 0), 0) / typedEnrollments.length)
     : 0;
 
-  const completedCourses = enrollments?.filter((e: any) => e.progress === 100).length || 0;
+  const completedCourses = typedEnrollments.filter(e => e.progress === 100).length;
 
   // Find course to continue (most recently accessed, not completed)
-  const continueCourse = enrollments?.find((e: any) => e.progress > 0 && e.progress < 100);
+  const continueCourse = typedEnrollments.find(e => (e.progress || 0) > 0 && (e.progress || 0) < 100);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -115,7 +175,7 @@ export default async function LMSPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold">Welcome back, {profile?.full_name || 'Learner'}</h1>
+              <h1 className="text-2xl font-bold">Welcome back, {typedProfile?.full_name || 'Learner'}</h1>
               <p className="text-blue-200">Continue your learning journey</p>
             </div>
             <div className="flex items-center gap-3">
@@ -178,7 +238,7 @@ export default async function LMSPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-xl shadow-sm border p-5">
             <BookOpen className="w-7 h-7 text-blue-900 mb-2" />
-            <div className="text-2xl font-bold">{enrollments?.length || 0}</div>
+            <div className="text-2xl font-bold">{typedEnrollments.length}</div>
             <div className="text-gray-600 text-sm">Enrolled Courses</div>
           </div>
           <div className="bg-white rounded-xl shadow-sm border p-5">
@@ -188,7 +248,7 @@ export default async function LMSPage() {
           </div>
           <div className="bg-white rounded-xl shadow-sm border p-5">
             <Award className="w-7 h-7 text-yellow-500 mb-2" />
-            <div className="text-2xl font-bold">{certificates?.length || 0}</div>
+            <div className="text-2xl font-bold">{typedCertificates.length}</div>
             <div className="text-gray-600 text-sm">Certificates</div>
           </div>
           <div className="bg-white rounded-xl shadow-sm border p-5">
@@ -209,9 +269,9 @@ export default async function LMSPage() {
                   View All
                 </Link>
               </div>
-              {enrollments && enrollments.length > 0 ? (
+              {typedEnrollments.length > 0 ? (
                 <div className="space-y-4">
-                  {enrollments.slice(0, 4).map((enrollment: any) => (
+                  {typedEnrollments.slice(0, 4).map((enrollment) => (
                     <Link 
                       key={enrollment.id} 
                       href={`/lms/courses/${enrollment.course?.id}`}
@@ -261,9 +321,9 @@ export default async function LMSPage() {
                   View All
                 </Link>
               </div>
-              {assignments && assignments.length > 0 ? (
+              {typedAssignments.length > 0 ? (
                 <div className="space-y-3">
-                  {assignments.map((assignment: any) => (
+                  {typedAssignments.map((assignment) => (
                     <div key={assignment.id} className="flex items-center justify-between p-3 border rounded-lg">
                       <div>
                         <h3 className="font-medium">{assignment.title}</h3>
@@ -292,9 +352,9 @@ export default async function LMSPage() {
             {/* Recent Activity */}
             <div className="bg-white rounded-xl shadow-sm border p-6">
               <h2 className="text-lg font-semibold mb-4">Recent Activity</h2>
-              {recentActivity && recentActivity.length > 0 ? (
+              {typedActivity.length > 0 ? (
                 <div className="space-y-3">
-                  {recentActivity.map((activity: any) => (
+                  {typedActivity.map((activity) => (
                     <div key={activity.id} className="flex items-start gap-3">
                       <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                       <div>
@@ -319,9 +379,9 @@ export default async function LMSPage() {
                   View All
                 </Link>
               </div>
-              {certificates && certificates.length > 0 ? (
+              {typedCertificates.length > 0 ? (
                 <div className="space-y-3">
-                  {certificates.map((cert: any) => (
+                  {typedCertificates.map((cert) => (
                     <div key={cert.id} className="flex items-center gap-3 p-2 bg-yellow-50 rounded-lg">
                       <Award className="w-5 h-5 text-yellow-600" />
                       <div className="flex-1 min-w-0">

@@ -1,4 +1,3 @@
-// @ts-nocheck
 export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
@@ -18,6 +17,40 @@ import {
   UserPlus,
   ChevronRight,
 } from 'lucide-react';
+
+interface Course {
+  id: string;
+  title: string;
+}
+
+interface StudyGroup {
+  id: string;
+  name: string;
+  description: string | null;
+  course_id: string | null;
+  max_members: number | null;
+  meeting_schedule: string | null;
+  is_virtual: boolean;
+  meeting_link: string | null;
+  created_at: string;
+  courses: Course | null;
+  study_group_members?: { user_id: string }[];
+}
+
+interface GroupMembership {
+  study_group_id: string;
+  role: string;
+  study_groups: StudyGroup | null;
+}
+
+interface MyGroup extends StudyGroup {
+  role: string;
+  memberCount: number;
+}
+
+interface Enrollment {
+  courses: Course | null;
+}
 
 export const metadata: Metadata = {
   alternates: {
@@ -68,8 +101,10 @@ export default async function StudyGroupsPage() {
     `)
     .eq('user_id', user.id);
 
+  const typedMemberships = (myGroupMemberships || []) as GroupMembership[];
+
   // Fetch available study groups (not joined)
-  const joinedGroupIds = myGroupMemberships?.map(m => m.study_group_id) || [];
+  const joinedGroupIds = typedMemberships.map(m => m.study_group_id);
   
   const { data: availableGroups } = await supabase
     .from('study_groups')
@@ -90,11 +125,16 @@ export default async function StudyGroupsPage() {
     .eq('user_id', user.id)
     .eq('status', 'active');
 
-  const myGroups = myGroupMemberships?.map(m => ({
-    ...m.study_groups,
-    role: m.role,
-    memberCount: 0, // Will be calculated
-  })) || [];
+  const typedEnrollments = (enrollments || []) as Enrollment[];
+  const typedAvailableGroups = (availableGroups || []) as StudyGroup[];
+
+  const myGroups: MyGroup[] = typedMemberships
+    .filter(m => m.study_groups !== null)
+    .map(m => ({
+      ...m.study_groups!,
+      role: m.role,
+      memberCount: 0,
+    }));
 
   // Calculate member counts
   for (const group of myGroups) {
@@ -142,7 +182,7 @@ export default async function StudyGroupsPage() {
             </div>
             <select className="px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
               <option value="">All Courses</option>
-              {enrollments?.map(e => (
+              {typedEnrollments.map(e => (
                 <option key={e.courses?.id} value={e.courses?.id}>
                   {e.courses?.title}
                 </option>
@@ -220,9 +260,9 @@ export default async function StudyGroupsPage() {
             {myGroups.length > 0 ? 'Discover More Groups' : 'Available Study Groups'}
           </h2>
           
-          {availableGroups && availableGroups.length > 0 ? (
+          {typedAvailableGroups.length > 0 ? (
             <div className="grid md:grid-cols-2 gap-4">
-              {availableGroups.map((group) => {
+              {typedAvailableGroups.map((group) => {
                 const memberCount = group.study_group_members?.length || 0;
                 const isFull = group.max_members && memberCount >= group.max_members;
 
