@@ -5,6 +5,7 @@ import Image from 'next/image';
 
 import VoiceoverWithMusic from '@/components/VoiceoverWithMusic';
 import { useEffect, useState, useRef } from 'react';
+import { LiveOutcomesDashboard } from '@/components/outcomes/LiveOutcomesDashboard';
 
 // User state hook - fetches auth and enrollment data
 function useUserState() {
@@ -797,6 +798,11 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* Live Outcomes Dashboard */}
+      <section className="bg-white border-y border-slate-200">
+        <LiveOutcomesDashboard />
       </section>
 
       {/* Trust Badges / Partners Section - Professional */}
