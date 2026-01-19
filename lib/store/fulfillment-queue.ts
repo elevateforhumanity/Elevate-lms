@@ -158,11 +158,10 @@ export async function getQueueStats(): Promise<{
 
 /**
  * Process fulfillment jobs (called by cron or background worker)
+ * Uses transactional provisioning for enterprise-grade reliability
  */
 export async function processFulfillmentQueue(): Promise<number> {
-  const { generateLicenseKey, hashLicenseKey } = await import('@/lib/store/license');
-  const { createAdminClient } = await import('@/lib/supabase/admin');
-  const { auditLog } = await import('@/lib/auditLog');
+  const { provisionLicense } = await import('@/lib/licensing/provisioning');
   
   let processed = 0;
   const maxBatch = 10;
@@ -172,73 +171,34 @@ export async function processFulfillmentQueue(): Promise<number> {
     if (!job) break;
     
     try {
-      const supabase = createAdminClient();
-      
-      // Generate license key
-      const licenseKey = generateLicenseKey();
-      const licenseHash = hashLicenseKey(licenseKey);
-      
-      // Store purchase
-      await supabase.from('purchases').insert({
+      // Use transactional provisioning
+      const result = await provisionLicense({
+        correlationId: job.eventId,
         email: job.email,
-        product_id: job.productId,
-        repo: job.repo,
-        stripe_event_id: job.eventId,
-      });
-      
-      // Store license
-      const { data: licenseData } = await supabase.from('licenses').insert({
-        email: job.email,
-        product_id: job.productId,
-        license_key: licenseHash,
-        stripe_event_id: job.eventId,
-      }).select('id').single();
-      
-      // Audit log
-      await auditLog({
-        action: 'CREATE',
-        entity: 'license_purchase' as any,
-        entity_id: licenseData?.id,
+        productId: job.productId,
+        paymentIntentId: job.eventId,
+        sessionId: job.sessionId,
+        amountCents: 0, // Amount not tracked in queue job
+        currency: 'usd',
         metadata: {
-          email: job.email,
-          product_id: job.productId,
-          license_generated: true,
-          stripe_event_id: job.eventId,
+          repo: job.repo,
+          download_url: job.downloadUrl,
+          product_title: job.productTitle,
           queued: true,
         },
       });
 
-      // Provision tenant automatically
-      if (licenseData?.id) {
-        const { provisionTenant } = await import('@/lib/store/provision-tenant');
-        await provisionTenant({
-          email: job.email,
-          productId: job.productId,
-          licenseId: licenseData.id,
-          stripeEventId: job.eventId,
+      if (result.success) {
+        await completeJob(job);
+        processed++;
+        logger.info('Fulfillment processed via queue', { 
+          eventId: job.eventId,
+          tenantId: result.tenantId,
+          licenseId: result.licenseId,
         });
+      } else {
+        throw new Error(result.error || 'Provisioning failed');
       }
-      
-      // Send email
-      await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/email/send`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          to: job.email,
-          subject: `Your ${job.productTitle} License Key`,
-          template: 'license-delivery',
-          data: {
-            productName: job.productTitle,
-            licenseKey: licenseKey,
-            repo: job.repo,
-            downloadUrl: job.downloadUrl || `${process.env.NEXT_PUBLIC_SITE_URL}/downloads/${job.productId}`,
-          },
-        }),
-      });
-      
-      await completeJob(job);
-      processed++;
-      logger.info('Fulfillment processed', { eventId: job.eventId });
       
     } catch (error) {
       logger.error('Fulfillment failed', error as Error);

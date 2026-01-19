@@ -10,6 +10,7 @@ import { createClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/logger';
 import { createEnrollmentCase, submitCaseForSignatures } from '@/lib/workflow/case-management';
 import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
+import { checkIdempotency, markEventProcessed, duplicateEventResponse } from '@/lib/stripe/idempotency';
 
 const stripeKey = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeKey
@@ -51,6 +52,13 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     logger.error('Webhook signature verification failed:', err);
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
+  }
+
+  // Idempotency check - prevent duplicate processing
+  const { isDuplicate } = await checkIdempotency(event.id);
+  if (isDuplicate) {
+    logger.info('Duplicate Stripe event, skipping', { eventId: event.id });
+    return duplicateEventResponse();
   }
 
   // Handle the event
@@ -793,9 +801,44 @@ export async function POST(request: NextRequest) {
       break;
     }
 
+    // Handle refunds - suspend license
+    case 'charge.refunded': {
+      const charge = event.data.object as Stripe.Charge;
+      if (charge.payment_intent) {
+        try {
+          const { handleRefund } = await import('@/lib/licensing/enforcement');
+          await handleRefund(charge.payment_intent as string);
+        } catch (err) {
+          logger.error('Error handling refund:', err);
+        }
+      }
+      break;
+    }
+
+    // Handle disputes - suspend license immediately
+    case 'charge.dispute.created': {
+      const dispute = event.data.object as Stripe.Dispute;
+      if (dispute.payment_intent) {
+        try {
+          const { handleDispute } = await import('@/lib/licensing/enforcement');
+          await handleDispute(dispute.payment_intent as string);
+        } catch (err) {
+          logger.error('Error handling dispute:', err);
+        }
+      }
+      break;
+    }
+
     default:
       logger.info(`Unhandled event type: ${event.type}`);
   }
+
+  // Mark event as processed for idempotency
+  await markEventProcessed(
+    event.id, 
+    event.type, 
+    (event.data.object as any)?.payment_intent || (event.data.object as any)?.id
+  );
 
   return NextResponse.json({ received: true });
 }

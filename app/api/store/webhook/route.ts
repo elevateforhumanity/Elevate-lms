@@ -5,42 +5,17 @@ export const maxDuration = 60;
 import { verifyWebhookSignature } from '@/lib/store/stripe';
 import { generateLicenseKey, hashLicenseKey } from '@/lib/store/license';
 import { createClient } from '@/lib/supabase/server';
-import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/logger';
 import { toErrorMessage } from '@/lib/safe';
 import { auditLog } from '@/lib/auditLog';
 import { queueFulfillment } from '@/lib/store/fulfillment-queue';
+import { checkIdempotency, markEventProcessed, duplicateEventResponse } from '@/lib/stripe/idempotency';
 
 interface ProductRecord {
   id: string;
   title: string;
   repo?: string;
   download_url?: string;
-}
-
-/**
- * Check if webhook event has already been processed (idempotency)
- */
-async function isEventProcessed(eventId: string): Promise<boolean> {
-  const supabase = createAdminClient();
-  const { data } = await supabase
-    .from('processed_webhook_events')
-    .select('id')
-    .eq('event_id', eventId)
-    .single();
-  return !!data;
-}
-
-/**
- * Mark webhook event as processed
- */
-async function markEventProcessed(eventId: string, eventType: string): Promise<void> {
-  const supabase = createAdminClient();
-  await supabase.from('processed_webhook_events').insert({
-    event_id: eventId,
-    event_type: eventType,
-    processed_at: new Date().toISOString(),
-  });
 }
 
 export async function POST(req: Request) {
@@ -64,9 +39,10 @@ export async function POST(req: Request) {
     const event = verifyWebhookSignature(body, signature, webhookSecret);
 
     // Idempotency check - prevent duplicate processing
-    if (await isEventProcessed(event.id)) {
+    const { isDuplicate } = await checkIdempotency(event.id);
+    if (isDuplicate) {
       logger.info('Webhook event already processed', { eventId: event.id });
-      return Response.json({ received: true, duplicate: true });
+      return duplicateEventResponse();
     }
 
     // Handle checkout.session.completed event
@@ -218,11 +194,13 @@ export async function POST(req: Request) {
       }
 
       // Mark event as processed
-      await markEventProcessed(event.id, event.type);
+      await markEventProcessed(event.id, event.type, session.id);
 
       return Response.json({ received: true });
     }
 
+    // Mark non-checkout events as processed too
+    await markEventProcessed(event.id, event.type);
     return Response.json({ received: true });
   } catch (error) {
     logger.error(
