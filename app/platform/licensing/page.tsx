@@ -170,7 +170,7 @@ export default function PlatformLicensingPage() {
               {
                 step: '1',
                 title: 'Request Licensing Brief',
-                description: 'Tell us about your organization, student volume, and compliance requirements. We'll send a detailed brief within 48 hours.',
+                description: 'Tell us about your organization, student volume, and compliance requirements. We will send a detailed brief within 48 hours.',
               },
               {
                 step: '2',
