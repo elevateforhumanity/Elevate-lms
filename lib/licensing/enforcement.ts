@@ -20,13 +20,13 @@ interface LicenseValidation {
 /**
  * Validate a license by key
  */
-export async function validateLicense(licenseKeyHash: string): Promise<LicenseValidation> {
+export async function validateLicense(licenseKey: string): Promise<LicenseValidation> {
   const supabase = createAdminClient();
 
   const { data: license } = await supabase
     .from('licenses')
-    .select('id, tenant_id, status, features, expires_at')
-    .eq('license_key', licenseKeyHash)
+    .select('id, tenant_id, status, features, expires_at, tier, max_users')
+    .eq('license_key', licenseKey)
     .single();
 
   if (!license) {
@@ -53,11 +53,17 @@ export async function validateLicense(licenseKeyHash: string): Promise<LicenseVa
     };
   }
 
+  // Convert features array to object
+  const featuresObj: Record<string, boolean> = {};
+  if (Array.isArray(license.features)) {
+    license.features.forEach((f: string) => { featuresObj[f] = true; });
+  }
+
   return {
     valid: true,
     status: 'active',
     tenantId: license.tenant_id,
-    features: license.features as Record<string, boolean>,
+    features: featuresObj,
     expiresAt: license.expires_at,
   };
 }

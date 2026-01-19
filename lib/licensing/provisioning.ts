@@ -98,18 +98,21 @@ export async function provisionLicense(ctx: ProvisioningContext): Promise<Provis
     });
 
     await logProvisioningEvent(correlationId, 'purchase_created', 'started');
+    const orgName = organizationName || email.split('@')[0] + ' Organization';
+    
     const { data: purchase, error: purchaseError } = await supabase
       .from('license_purchases')
       .insert({
+        organization_name: orgName,
+        contact_name: orgName + ' Admin',
+        contact_email: email,
+        license_type: 'enterprise',
+        product_slug: productId,
         stripe_payment_intent_id: paymentIntentId,
         stripe_checkout_session_id: sessionId,
-        email,
-        product_id: productId,
+        status: 'paid',
         amount_cents: amountCents,
         currency,
-        status: 'paid',
-        environment: ENVIRONMENT,
-        metadata: ctx.metadata,
       })
       .select('id')
       .single();
@@ -119,7 +122,6 @@ export async function provisionLicense(ctx: ProvisioningContext): Promise<Provis
     await logProvisioningEvent(correlationId, 'purchase_created', 'completed', undefined, paymentIntentId);
 
     await logProvisioningEvent(correlationId, 'tenant_created', 'started');
-    const orgName = organizationName || email.split('@')[0] + ' Organization';
     const slug = generateSlug(orgName);
 
     const { data: tenant, error: tenantError } = await supabase
@@ -142,18 +144,19 @@ export async function provisionLicense(ctx: ProvisioningContext): Promise<Provis
 
     await logProvisioningEvent(correlationId, 'license_created', 'started', tenantId);
     const licenseKey = generateLicenseKey();
-    const licenseHash = hashLicenseKey(licenseKey);
 
     const { data: license, error: licenseError } = await supabase
       .from('licenses')
       .insert({
-        email,
-        product_id: productId,
-        license_key: licenseHash,
+        license_key: licenseKey,
+        customer_email: email,
         tenant_id: tenantId,
+        tier: 'enterprise',
         status: 'active',
-        features: ctx.metadata?.features || {},
-        stripe_event_id: paymentIntentId,
+        max_users: 100,
+        max_deployments: 1,
+        features: ctx.metadata?.features ? Object.keys(ctx.metadata.features) : [],
+        metadata: { product_id: productId, correlation_id: correlationId },
       })
       .select('id')
       .single();
