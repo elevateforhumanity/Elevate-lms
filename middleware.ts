@@ -8,6 +8,9 @@ const ADMIN_DOMAIN = 'elevateconnectsdirectory.org';
 // LMS domain - routes to /student-portal paths
 const LMS_DOMAIN = 'elevateforhumanityeducation.com';
 
+// Supersonic Fast Cash domain - routes to /supersonic-fast-cash paths
+const SUPERSONIC_DOMAIN = 'supersonicfastermoney.com';
+
 // Routes that require authentication and specific roles
 const PROTECTED_ROUTES: Record<string, string[]> = {
   '/admin': ['admin', 'super_admin'],
@@ -93,6 +96,36 @@ export async function middleware(request: NextRequest) {
 
     // Default: rewrite to /student-portal/*
     return NextResponse.rewrite(new URL(`/student-portal${pathname}`, request.url));
+  }
+
+  // Supersonic Fast Cash domain routing (supersonicfastermoney.com -> /supersonic-fast-cash)
+  if (host.includes(SUPERSONIC_DOMAIN)) {
+    // Skip for static files and API routes
+    if (
+      pathname.startsWith('/_next') ||
+      pathname.startsWith('/api') ||
+      pathname.includes('.')
+    ) {
+      return NextResponse.next();
+    }
+
+    // Root of Supersonic domain -> supersonic-fast-cash homepage
+    if (pathname === '/') {
+      return NextResponse.rewrite(new URL('/supersonic-fast-cash', request.url));
+    }
+
+    // Already on /supersonic-fast-cash path, allow through
+    if (pathname.startsWith('/supersonic-fast-cash')) {
+      return NextResponse.next();
+    }
+
+    // Login/auth pages - allow through
+    if (pathname === '/login' || pathname === '/signup' || pathname === '/unauthorized') {
+      return NextResponse.next();
+    }
+
+    // Rewrite all other paths to /supersonic-fast-cash/*
+    return NextResponse.rewrite(new URL(`/supersonic-fast-cash${pathname}`, request.url));
   }
 
   // Redirect non-www .org to www .org
