@@ -955,7 +955,7 @@ export default function HomePage() {
       </section>
 
       {/* Sticky Mobile CTA - Auth-Aware */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 p-3 pb-4 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 p-3 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
         <div className="flex gap-2">
           {user && activeEnrollment ? (
             <>
@@ -1007,7 +1007,8 @@ export default function HomePage() {
       </div>
 
       {/* Spacer for sticky CTA on mobile */}
-      <div className="h-20 md:hidden"></div>
+      {/* Spacer for sticky CTA - accounts for button height + safe area */}
+      <div className="h-24 md:hidden"></div>
 
     </div>
   );
