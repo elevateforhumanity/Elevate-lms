@@ -52,23 +52,23 @@ export default async function EnrollSuccessPage() {
   const defaultNextSteps = [
     {
       step: 1,
-      title: 'Check Your Email',
-      description: 'We\'ve sent a confirmation email with important details about your enrollment.',
+      title: 'Start Learning Now',
+      description: 'Your courses are ready! Access them in the Learning Portal.',
     },
     {
       step: 2,
-      title: 'Complete Paperwork',
-      description: 'Review and sign any required documents sent to your email.',
+      title: 'Check Your Email',
+      description: 'We\'ve sent a confirmation email with important details.',
     },
     {
       step: 3,
-      title: 'Attend Orientation',
-      description: 'Our team will contact you to schedule your orientation session.',
+      title: 'Complete Any Paperwork',
+      description: 'Review and sign any required documents sent to your email.',
     },
     {
       step: 4,
-      title: 'Start Training',
-      description: 'Begin your journey toward a new career!',
+      title: 'Track Your Progress',
+      description: 'View your progress and earn certificates as you complete courses.',
     },
   ];
 
@@ -133,19 +133,30 @@ export default async function EnrollSuccessPage() {
           </div>
         </div>
 
-        {/* Actions */}
+        {/* Primary Action - Start Learning */}
+        <div className="mb-6">
+          <Link
+            href="/lms"
+            className="block w-full bg-green-600 text-white px-6 py-4 rounded-lg font-bold text-center text-lg hover:bg-green-700 transition"
+          >
+            <ArrowRight className="w-5 h-5 inline-block mr-2" />
+            Start Learning Now
+          </Link>
+        </div>
+
+        {/* Secondary Actions */}
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
-            href="/dashboard"
+            href="/student/dashboard"
             className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-blue-700 transition"
           >
-            Go to Dashboard
+            Student Dashboard
           </Link>
           <Link
-            href="/programs"
+            href="/student/progress"
             className="flex-1 border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold text-center hover:bg-blue-50 transition"
           >
-            Browse Programs
+            View My Progress
           </Link>
         </div>
 

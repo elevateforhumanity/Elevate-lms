@@ -7,12 +7,8 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/admin/courses/[id]/content',
-  },
-  title: 'Content | Elevate For Humanity',
-  description:
-    'Manage content settings and development.',
+  title: 'Course Content | Admin | Elevate For Humanity',
+  description: 'Manage course content and lessons.',
 };
 
 export default async function ContentPage() {

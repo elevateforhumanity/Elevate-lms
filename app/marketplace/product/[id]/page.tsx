@@ -3,9 +3,9 @@ export const dynamic = 'force-dynamic';
 import { generateMetadata } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = generateMetadata({
-  title: 'Marketplace Product [Id]',
-  description: 'Marketplace Product [Id] - Elevate for Humanity workforce training and career development programs in Indianapolis.',
-  path: '/marketplace/product/[id]',
+  title: 'Marketplace Product',
+  description: 'Digital products and resources from Elevate for Humanity creators.',
+  path: '/marketplace',
 });
 
 import { notFound } from 'next/navigation';

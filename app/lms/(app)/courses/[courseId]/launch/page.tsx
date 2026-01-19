@@ -3,9 +3,9 @@ export const dynamic = 'force-dynamic';
 import { generateInternalMetadata } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = generateInternalMetadata({
-  title: 'Lms (App) Courses [CourseId] Launch',
-  description: 'Internal page for Lms (App) Courses [CourseId] Launch',
-  path: '/lms/(app)/courses/[courseId]/launch',
+  title: 'Launch Course',
+  description: 'Launching course content',
+  path: '/lms/courses',
 });
 
 import { redirect } from 'next/navigation';

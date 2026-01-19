@@ -17,6 +17,10 @@ interface Program {
   description: string;
   duration_weeks: number;
   requires_license: boolean;
+  is_free: boolean;
+  price: number | null;
+  total_cost: number | null;
+  funding_eligible: boolean;
 }
 
 
@@ -88,34 +92,69 @@ export default function EnrollPage() {
       } = await supabase?.auth.getUser();
       if (!user) {
         setMessage('Please sign in to enroll');
+        router.push(`/login?redirect=/enroll/${programId}`);
         return;
       }
 
       if (program?.requires_license && !licenseKey) {
         setMessage('This program requires a license key');
+        setEnrolling(false);
         return;
       }
 
-      const response = await fetch('/api/enrollments/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          program_id: programId,
-          license_key: licenseKey || null,
-        }),
-      });
+      // Programs are free if: is_free=true OR funding_eligible (WIOA/WRG covers cost)
+      const isFreeProgram = program && (program.is_free === true || program.funding_eligible);
+      const isPaid = !isFreeProgram && (program?.price || program?.total_cost);
 
-      const data = await response.json();
+      if (isPaid) {
+        // Redirect to checkout for paid programs
+        const response = await fetch('/api/enroll/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName: user.user_metadata?.first_name || user.email?.split('@')[0] || '',
+            lastName: user.user_metadata?.last_name || '',
+            email: user.email,
+            programSlug: programId,
+          }),
+        });
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Enrollment failed');
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to start checkout');
+        }
+
+        if (data.checkoutUrl) {
+          window.location.href = data.checkoutUrl;
+          return;
+        }
+      } else {
+        // Free enrollment
+        const response = await fetch('/api/enroll/apply', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName: user.user_metadata?.first_name || '',
+            lastName: user.user_metadata?.last_name || '',
+            email: user.email,
+            preferredProgramId: programId,
+            licenseKey: licenseKey || null,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || 'Enrollment failed');
+        }
+
+        setMessage(data.message || 'Enrollment successful! Redirecting...');
+        setTimeout(() => {
+          router.push('/enroll/success');
+        }, 2000);
       }
-
-      setMessage('Enrollment successful! Redirecting...');
-      setTimeout(() => {
-        router.push(`/programs/${programId}`);
-      }, 2000);
-    } catch (error) { /* Error handled silently */ 
+    } catch (error: any) {
       setMessage(`Error: ${error.message}`);
     } finally {
       setEnrolling(false);
@@ -157,9 +196,24 @@ export default function EnrollPage() {
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
               <BookOpen className="w-10 h-10 sm:w-12 sm:h-12" />
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold">
-                  {program.name}
-                </h1>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <h1 className="text-2xl sm:text-3xl font-bold">
+                    {program.name}
+                  </h1>
+                  {program.is_free === true ? (
+                    <span className="px-3 py-1 bg-green-500 text-white text-sm font-bold rounded-full">
+                      FREE
+                    </span>
+                  ) : program.funding_eligible ? (
+                    <span className="px-3 py-1 bg-green-500 text-white text-sm font-bold rounded-full">
+                      FREE with WIOA/WRG
+                    </span>
+                  ) : (program.price || program.total_cost) ? (
+                    <span className="px-3 py-1 bg-white/20 text-white text-sm font-bold rounded-full">
+                      ${(program.price || program.total_cost || 0).toLocaleString()}
+                    </span>
+                  ) : null}
+                </div>
                 <p className="text-blue-100 mt-1 text-sm sm:text-base">
                   Duration: {program.duration_weeks} weeks
                 </p>
@@ -168,6 +222,11 @@ export default function EnrollPage() {
             <p className="text-base sm:text-lg text-blue-50">
               {program.description}
             </p>
+            {program.funding_eligible && (program.price || program.total_cost) && (
+              <p className="text-sm text-blue-200 mt-2">
+                Self-pay option: ${(program.price || program.total_cost || 0).toLocaleString()}
+              </p>
+            )}
           </div>
 
           <div className="p-4 sm:p-6 md:p-8">
@@ -271,11 +330,15 @@ export default function EnrollPage() {
                 {enrolling ? (
                   <>
                     <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-white"></div>
-                    Enrolling...
+                    Processing...
                   </>
                 ) : (
                   <>
-                    Enroll Now
+                    {program?.is_free === true || program?.funding_eligible
+                      ? 'Enroll Now - Free'
+                      : (program?.price || program?.total_cost)
+                        ? 'Continue to Payment'
+                        : 'Enroll Now'}
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </>
                 )}

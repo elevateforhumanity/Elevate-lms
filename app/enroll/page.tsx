@@ -1,110 +1,135 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle, CreditCard, Shield } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
 
-export const metadata: Metadata = { title: 'Enroll | Elevate LMS' };
+export const metadata: Metadata = { 
+  title: 'Enroll | Elevate For Humanity',
+  description: 'Enroll in free workforce training programs at Elevate For Humanity.',
+};
 
-export default function EnrollPage() {
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <Link href="/courses" className="flex items-center gap-2 text-gray-600 hover:text-blue-600">
-            <ArrowLeft className="w-5 h-5" /> Back to Courses
-          </Link>
+export const dynamic = 'force-dynamic';
+
+export default async function EnrollPage() {
+  const supabase = await createClient();
+
+  if (!supabase) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
+    );
+  }
+
+  // Fetch active programs
+  const { data: programs, error } = await supabase
+    .from('programs')
+    .select('id, name, slug, description, duration_weeks, is_free, price, total_cost, funding_eligible')
+    .eq('status', 'active')
+    .order('name', { ascending: true })
+    .limit(20);
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4">Enroll in a Program</h1>
+          <p className="text-xl text-blue-100">
+            Workforce training programs to launch your career
+          </p>
+          <p className="text-sm text-blue-200 mt-2">
+            Many programs are FREE through WIOA/WRG funding
+          </p>
+        </div>
+      </div>
+
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Complete Your Enrollment</h1>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-2">
-            <form className="space-y-6">
-              <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">Personal Information</h2>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                    <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                    <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
-                  </div>
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                    <input type="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
-                  </div>
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                    <input type="tel" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
-                  </div>
-                </div>
-              </div>
-              <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">Payment Information</h2>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
-                    <div className="relative">
-                      <input type="text" placeholder="1234 5678 9012 3456" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
-                      <CreditCard className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
+        <div className="bg-white rounded-xl shadow-sm p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Available Programs</h2>
+          
+          {programs && programs.length > 0 ? (
+            <div className="space-y-4">
+              {programs.map((program) => (
+                <Link
+                  key={program.id}
+                  href={`/enroll/${program.id}`}
+                  className="block p-6 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all"
+                >
+                  <div className="flex justify-between items-start">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Expiry Date</label>
-                      <input type="text" placeholder="MM/YY" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
+                      <h3 className="text-lg font-semibold text-gray-900">{program.name}</h3>
+                      {program.description && (
+                        <p className="text-gray-600 mt-1 text-sm line-clamp-2">{program.description}</p>
+                      )}
+                      {program.duration_weeks && (
+                        <p className="text-sm text-gray-500 mt-2">
+                          Duration: {program.duration_weeks} weeks
+                        </p>
+                      )}
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">CVV</label>
-                      <input type="text" placeholder="123" className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
+                    <div className="flex-shrink-0 ml-4 text-right">
+                      {(program as any).is_free === true ? (
+                        <span className="inline-block px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
+                          Free
+                        </span>
+                      ) : (program as any).funding_eligible === true ? (
+                        <div>
+                          <span className="inline-block px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
+                            Free with WIOA/WRG
+                          </span>
+                          {((program as any).price || (program as any).total_cost) ? (
+                            <p className="text-xs text-gray-500 mt-1">
+                              or ${(((program as any).price || (program as any).total_cost || 0) as number).toLocaleString()} self-pay
+                            </p>
+                          ) : null}
+                        </div>
+                      ) : ((program as any).price || (program as any).total_cost) ? (
+                        <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
+                          ${(((program as any).price || (program as any).total_cost || 0) as number).toLocaleString()}
+                        </span>
+                      ) : (
+                        <span className="inline-block px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
+                          Free
+                        </span>
+                      )}
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <Shield className="w-5 h-5 text-green-600" />
-                <span>Your payment information is secure and encrypted</span>
-              </div>
-              <button type="submit" className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold hover:bg-blue-700">
-                Complete Enrollment
-              </button>
-            </form>
-          </div>
-          <div>
-            <div className="bg-white rounded-xl shadow-sm p-6 sticky top-8">
-              <h3 className="font-bold text-gray-900 mb-4">Order Summary</h3>
-              <div className="space-y-3 mb-6">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">HVAC Fundamentals</span>
-                  <span className="font-medium">$1,999</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Registration Fee</span>
-                  <span>$50</span>
-                </div>
-              </div>
-              <div className="border-t pt-4">
-                <div className="flex justify-between font-bold text-lg">
-                  <span>Total</span>
-                  <span>$2,049</span>
-                </div>
-              </div>
-              <div className="mt-6 space-y-2">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span>30-day money-back guarantee</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span>Lifetime access to materials</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span>Certificate upon completion</span>
-                </div>
-              </div>
+                </Link>
+              ))}
             </div>
+          ) : (
+            <div className="text-center py-8">
+              <p className="text-gray-600 mb-4">No programs currently available for enrollment.</p>
+              <Link
+                href="/programs"
+                className="text-blue-600 hover:underline"
+              >
+                View all programs
+              </Link>
+            </div>
+          )}
+        </div>
+
+        <div className="bg-blue-50 rounded-xl p-6">
+          <h3 className="font-bold text-blue-900 mb-3">Need Help?</h3>
+          <p className="text-blue-800 mb-4">
+            Our enrollment team is here to help you find the right program and funding options.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="tel:3173143757"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            >
+              Call (317) 314-3757
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </div>

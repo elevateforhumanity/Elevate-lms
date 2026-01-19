@@ -84,32 +84,48 @@ export async function orchestrateEnrollment(params: {
       programHolderId,
     });
 
-    // 2. Generate enrollment steps
-    const { data: stepsResult, error: stepsError } = await supabase.rpc(
-      'generate_enrollment_steps',
-      { p_enrollment_id: enrollment.id }
+    // 2. Create course enrollments for all courses in this program
+    const coursesEnrolled = await createCourseEnrollmentsForProgram(
+      supabase,
+      studentId,
+      programId,
+      fundingSource
     );
+    
+    logger.info('[Enrollment Orchestration] Course enrollments created', {
+      enrollmentId: enrollment.id,
+      coursesEnrolled,
+    });
 
-    if (stepsError) {
-      logger.error(
-        '[Enrollment Orchestration] Failed to generate steps',
-        stepsError
+    // 4. Generate enrollment steps (optional - may not exist)
+    try {
+      const { data: stepsResult, error: stepsError } = await supabase.rpc(
+        'generate_enrollment_steps',
+        { p_enrollment_id: enrollment.id }
       );
-      // Don't fail enrollment if steps fail - can be retried
-    } else {
-      logger.info('[Enrollment Orchestration] Steps generated', {
-        enrollmentId: enrollment.id,
-        stepsCreated: stepsResult,
-      });
+
+      if (stepsError) {
+        logger.warn(
+          '[Enrollment Orchestration] Failed to generate steps (continuing)',
+          stepsError
+        );
+      } else {
+        logger.info('[Enrollment Orchestration] Steps generated', {
+          enrollmentId: enrollment.id,
+          stepsCreated: stepsResult,
+        });
+      }
+    } catch (stepsErr) {
+      logger.warn('[Enrollment Orchestration] Steps RPC not available', stepsErr);
     }
 
-    // 3. Update student enrollment_status to active
+    // 6. Update student enrollment_status to active
     await supabase
       .from('profiles')
       .update({ enrollment_status: 'active' })
       .eq('id', studentId);
 
-    // 4. Get student and program holder details for notifications
+    // 7. Get student and program holder details for notifications
     const { data: student } = await supabase
       .from('profiles')
       .select('full_name, id')
@@ -128,7 +144,7 @@ export async function orchestrateEnrollment(params: {
       .eq('slug', programId)
       .single();
 
-    // 5. Send program holder notification (idempotent)
+    // 8. Send program holder notification (idempotent)
     if (programHolder) {
       await notifyProgramHolder({
         programHolderId: programHolder.id,
@@ -141,7 +157,7 @@ export async function orchestrateEnrollment(params: {
       });
     }
 
-    // 6. Send student welcome email
+    // 9. Send student welcome email
     if (student) {
       const { data: userAuth } =
         await supabase.auth.admin.getUserById(studentId);
@@ -167,6 +183,195 @@ export async function orchestrateEnrollment(params: {
       error: 'Unexpected error during enrollment orchestration',
     };
   }
+}
+
+/**
+ * Create course enrollments for all courses in a program
+ * This gives the student access to course content in the LMS
+ */
+async function createCourseEnrollmentsForProgram(
+  supabase: any,
+  studentId: string,
+  programId: string,
+  fundingSource: string
+): Promise<number> {
+  let totalEnrolled = 0;
+
+  // First, get the program's UUID if we have a slug
+  const { data: program } = await supabase
+    .from('programs')
+    .select('id, slug')
+    .or(`id.eq.${programId},slug.eq.${programId}`)
+    .single();
+
+  const programUuid = program?.id || programId;
+  const programSlug = program?.slug || programId;
+
+  // Method 1: Get courses from program_courses junction table
+  const { data: junctionCourses } = await supabase
+    .from('program_courses')
+    .select('course_id, courses(id, title, is_published)')
+    .eq('program_id', programUuid);
+
+  if (junctionCourses && junctionCourses.length > 0) {
+    const courses = junctionCourses
+      .filter((jc: any) => jc.courses?.is_published !== false)
+      .map((jc: any) => ({ id: jc.courses.id, title: jc.courses.title }));
+    
+    if (courses.length > 0) {
+      totalEnrolled += await enrollInCourses(supabase, studentId, courses, fundingSource);
+    }
+  }
+
+  // Method 2: Get courses directly linked via program_id
+  const { data: directCourses } = await supabase
+    .from('courses')
+    .select('id, title')
+    .eq('program_id', programUuid)
+    .eq('is_published', true);
+
+  if (directCourses && directCourses.length > 0) {
+    totalEnrolled += await enrollInCourses(supabase, studentId, directCourses, fundingSource);
+  }
+
+  // Method 3: Get courses by slug/category matching (fallback)
+  if (totalEnrolled === 0) {
+    const { data: slugCourses } = await supabase
+      .from('courses')
+      .select('id, title')
+      .or(`slug.ilike.${programSlug}%,category.eq.${programSlug}`)
+      .eq('is_published', true);
+
+    if (slugCourses && slugCourses.length > 0) {
+      totalEnrolled += await enrollInCourses(supabase, studentId, slugCourses, fundingSource);
+    }
+  }
+
+  // Method 4: Enroll in partner courses if linked
+  const partnerEnrolled = await enrollInPartnerCourses(supabase, studentId, programUuid, fundingSource);
+  totalEnrolled += partnerEnrolled;
+
+  if (totalEnrolled === 0) {
+    logger.warn('[Course Enrollments] No courses found for program', { programId, programUuid, programSlug });
+  }
+
+  return totalEnrolled;
+}
+
+/**
+ * Enroll student in partner courses linked to a program
+ */
+async function enrollInPartnerCourses(
+  supabase: any,
+  studentId: string,
+  programId: string,
+  fundingSource: string
+): Promise<number> {
+  let enrolled = 0;
+
+  // Get partner courses linked to this program
+  const { data: partnerLinks } = await supabase
+    .from('partner_program_courses')
+    .select('partner_course_id, partner_courses(id, course_name, partner_id)')
+    .eq('program_id', programId);
+
+  if (!partnerLinks || partnerLinks.length === 0) {
+    return 0;
+  }
+
+  for (const link of partnerLinks) {
+    if (!link.partner_courses) continue;
+
+    // Check if already enrolled in partner course
+    const { data: existing } = await supabase
+      .from('partner_enrollments')
+      .select('id')
+      .eq('user_id', studentId)
+      .eq('partner_course_id', link.partner_course_id)
+      .single();
+
+    if (existing) continue;
+
+    // Create partner enrollment
+    const { error } = await supabase
+      .from('partner_enrollments')
+      .insert({
+        user_id: studentId,
+        partner_course_id: link.partner_course_id,
+        partner_id: link.partner_courses.partner_id,
+        status: 'active',
+        enrolled_at: new Date().toISOString(),
+        funding_source: fundingSource,
+      });
+
+    if (!error) {
+      enrolled++;
+      logger.info('[Partner Enrollments] Enrolled in partner course', {
+        studentId,
+        partnerCourseId: link.partner_course_id,
+        courseName: link.partner_courses.course_name,
+      });
+    }
+  }
+
+  return enrolled;
+}
+
+async function enrollInCourses(
+  supabase: any,
+  studentId: string,
+  courses: { id: string; title: string }[],
+  fundingSource: string
+): Promise<number> {
+  let enrolled = 0;
+
+  for (const course of courses) {
+    // Check if already enrolled
+    const { data: existing } = await supabase
+      .from('enrollments')
+      .select('user_id')
+      .eq('user_id', studentId)
+      .eq('course_id', course.id)
+      .single();
+
+    if (existing) {
+      logger.info('[Course Enrollments] Already enrolled', { 
+        studentId, 
+        courseId: course.id 
+      });
+      continue;
+    }
+
+    // Create enrollment
+    const { error: enrollError } = await supabase
+      .from('enrollments')
+      .insert({
+        user_id: studentId,
+        course_id: course.id,
+        status: 'active',
+        progress_percent: 0,
+        started_at: new Date().toISOString(),
+        enrollment_method: 'program',
+        funding_source: fundingSource,
+      });
+
+    if (enrollError) {
+      logger.warn('[Course Enrollments] Failed to enroll in course', {
+        studentId,
+        courseId: course.id,
+        error: enrollError,
+      });
+    } else {
+      enrolled++;
+      logger.info('[Course Enrollments] Enrolled in course', {
+        studentId,
+        courseId: course.id,
+        courseTitle: course.title,
+      });
+    }
+  }
+
+  return enrolled;
 }
 
 async function notifyProgramHolder(params: {
@@ -315,17 +520,40 @@ async function sendStudentWelcomeEmail(params: {
   enrollmentId: string;
 }) {
   const { studentEmail, studentName, programName, enrollmentId } = params;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.com';
 
   const emailResult = await sendEmail({
     to: studentEmail,
-    subject: `Welcome to ${programName}!`,
+    subject: `Welcome to ${programName}! Start Learning Now`,
     html: `
       <h2>Welcome to Elevate for Humanity!</h2>
       <p>Hi ${studentName},</p>
       <p>You've been successfully enrolled in <strong>${programName}</strong>.</p>
-      <p>Your first step is now available in your student portal.</p>
-      <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}/student/progress">View My Progress</a></p>
+      
+      <h3>What's Next?</h3>
+      <ol>
+        <li><strong>Access Your Courses</strong> - Your courses are ready in the Learning Portal</li>
+        <li><strong>Track Your Progress</strong> - View assignments and deadlines</li>
+        <li><strong>Earn Certificates</strong> - Complete courses to earn credentials</li>
+      </ol>
+      
+      <p style="margin: 24px 0;">
+        <a href="${siteUrl}/lms" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+          Start Learning Now
+        </a>
+      </p>
+      
+      <p>You can also access:</p>
+      <ul>
+        <li><a href="${siteUrl}/student/dashboard">Student Dashboard</a></li>
+        <li><a href="${siteUrl}/student/progress">My Progress</a></li>
+      </ul>
+      
       <p>If you have any questions, please contact your program coordinator.</p>
+      
+      <p style="color: #666; font-size: 12px; margin-top: 24px;">
+        This program is free through workforce funding (WIOA/WRG).
+      </p>
     `,
   });
 

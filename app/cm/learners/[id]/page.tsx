@@ -1,228 +1,437 @@
 import { Metadata } from 'next';
-
+import { createClient } from '@/lib/supabase/server';
+import { redirect, notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
+import {
+  ArrowLeft,
+  User,
+  Mail,
+  Phone,
+  Calendar,
+  BookOpen,
+  Award,
+  Clock,
+  MapPin,
+  Edit,
+  MessageSquare,
+  FileText,
+  CheckCircle,
+  AlertCircle,
+  Target,
+} from 'lucide-react';
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/cm/learners/[id]',
-  },
-  title: 'Learner Profile | Elevate For Humanity',
-  description:
-    'Manage [id] settings and development.',
-};
+export const dynamic = 'force-dynamic';
 
-export default async function idPage() {
+interface Props {
+  params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return {
+    title: 'Learner Profile | Case Management',
+    robots: { index: false, follow: false },
+  };
+}
+
+export default async function CMLearnerDetailPage({ params }: Props) {
+  const { id } = await params;
+  const supabase = await createClient();
+
+  if (!supabase) {
+    return (
+      <div className="p-8 text-center">
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
+      </div>
+    );
+  }
+
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login');
+
+  // Verify case manager access
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+
+  if (!['case_manager', 'admin', 'staff'].includes(profile?.role || '')) {
+    redirect('/unauthorized');
+  }
+
+  // Fetch learner
+  const { data: learner, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error || !learner) notFound();
+
+  // Fetch enrollments
+  const { data: enrollments } = await supabase
+    .from('enrollments')
+    .select(`
+      *,
+      courses (id, title),
+      programs (id, name)
+    `)
+    .eq('user_id', id)
+    .order('enrolled_at', { ascending: false });
+
+  // Fetch case notes
+  const { data: caseNotes } = await supabase
+    .from('case_notes')
+    .select(`
+      *,
+      profiles:created_by (first_name, last_name)
+    `)
+    .eq('learner_id', id)
+    .order('created_at', { ascending: false })
+    .limit(5);
+
+  // Fetch goals
+  const { data: goals } = await supabase
+    .from('learner_goals')
+    .select('*')
+    .eq('learner_id', id)
+    .order('created_at', { ascending: false });
+
+  // Fetch documents
+  const { data: documents } = await supabase
+    .from('learner_documents')
+    .select('*')
+    .eq('learner_id', id)
+    .order('created_at', { ascending: false })
+    .limit(5);
+
+  const activeEnrollments = enrollments?.filter(e => e.status === 'active').length || 0;
+  const completedGoals = goals?.filter(g => g.status === 'completed').length || 0;
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-5.jpg"
-          alt="[id]"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+    <div className="p-6 max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="mb-6">
+        <Link
+          href="/cm/learners"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-4"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Learners
+        </Link>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            [id]
-          </h1>
-          <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage [id] settings and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex items-start justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+              {learner.avatar_url ? (
+                <img src={learner.avatar_url} alt="" className="w-16 h-16 rounded-full object-cover" />
+              ) : (
+                <User className="w-8 h-8 text-blue-600" />
+              )}
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-slate-900">
+                {learner.first_name} {learner.last_name}
+              </h1>
+              <p className="text-slate-600">{learner.email}</p>
+              <div className="flex items-center gap-2 mt-1">
+                <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                  learner.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                }`}>
+                  {learner.status || 'Active'}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="flex gap-2">
             <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+              href={`/cm/learners/${id}/message`}
+              className="flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50"
             >
-              Get Started
+              <MessageSquare className="w-4 h-4" />
+              Message
             </Link>
             <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+              href={`/cm/learners/${id}/edit`}
+              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
             >
-              View Programs
+              <Edit className="w-4 h-4" />
+              Edit Profile
             </Link>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">[id]</h2>
-                <p className="text-black mb-6">
-                  Manage [id] settings and
-                  development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-2.jpg"
-                  alt="[id]"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
+      {/* Stats */}
+      <div className="grid grid-cols-4 gap-4 mb-8">
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <BookOpen className="w-5 h-5 text-blue-600" />
             </div>
-
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
-              </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{activeEnrollments}</p>
+              <p className="text-sm text-slate-600">Active Programs</p>
             </div>
           </div>
         </div>
-      </section>
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+              <Target className="w-5 h-5 text-green-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{completedGoals}</p>
+              <p className="text-sm text-slate-600">Goals Completed</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+              <FileText className="w-5 h-5 text-purple-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{caseNotes?.length || 0}</p>
+              <p className="text-sm text-slate-600">Case Notes</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+              <Award className="w-5 h-5 text-yellow-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{documents?.length || 0}</p>
+              <p className="text-sm text-slate-600">Documents</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Main Content */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Goals */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-semibold text-slate-900">Goals & Milestones</h2>
+              <Link href={`/cm/learners/${id}/goals`} className="text-sm text-blue-600 hover:underline">
+                Manage Goals
+              </Link>
+            </div>
+            {goals && goals.length > 0 ? (
+              <div className="space-y-3">
+                {goals.slice(0, 5).map((goal: any) => (
+                  <div key={goal.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        goal.status === 'completed' ? 'bg-green-100' : 'bg-yellow-100'
+                      }`}>
+                        {goal.status === 'completed' ? (
+                          <CheckCircle className="w-4 h-4 text-green-600" />
+                        ) : (
+                          <Target className="w-4 h-4 text-yellow-600" />
+                        )}
+                      </div>
+                      <div>
+                        <p className="font-medium text-slate-900">{goal.title}</p>
+                        <p className="text-sm text-slate-600">
+                          Due: {goal.due_date ? new Date(goal.due_date).toLocaleDateString() : 'No deadline'}
+                        </p>
+                      </div>
+                    </div>
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      goal.status === 'completed' ? 'bg-green-100 text-green-800' :
+                      goal.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
+                      'bg-gray-100 text-gray-800'
+                    }`}>
+                      {goal.status?.replace('_', ' ')}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-slate-500 text-center py-4">No goals set</p>
+            )}
+          </div>
+
+          {/* Case Notes */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-semibold text-slate-900">Recent Case Notes</h2>
+              <Link href={`/cm/learners/${id}/notes`} className="text-sm text-blue-600 hover:underline">
+                View All
+              </Link>
+            </div>
+            {caseNotes && caseNotes.length > 0 ? (
+              <div className="space-y-4">
+                {caseNotes.map((note: any) => (
+                  <div key={note.id} className="p-4 border border-slate-100 rounded-lg">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium text-slate-900">
+                        {note.profiles?.first_name} {note.profiles?.last_name}
+                      </span>
+                      <span className="text-xs text-slate-500">
+                        {new Date(note.created_at).toLocaleDateString()}
+                      </span>
+                    </div>
+                    <p className="text-slate-700">{note.content}</p>
+                    {note.type && (
+                      <span className="inline-block mt-2 px-2 py-0.5 bg-slate-100 text-slate-600 rounded text-xs">
+                        {note.type}
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-slate-500 text-center py-4">No case notes</p>
+            )}
+            <button className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50">
+              <FileText className="w-4 h-4" />
+              Add Case Note
+            </button>
+          </div>
+
+          {/* Enrollments */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-semibold text-slate-900">Program Enrollments</h2>
+            </div>
+            {enrollments && enrollments.length > 0 ? (
+              <div className="space-y-3">
+                {enrollments.map((enrollment: any) => (
+                  <div key={enrollment.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                    <div>
+                      <p className="font-medium text-slate-900">
+                        {enrollment.programs?.name || enrollment.courses?.title || 'Unknown'}
+                      </p>
+                      <p className="text-sm text-slate-600">
+                        Enrolled {new Date(enrollment.enrolled_at).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-medium text-slate-900">{enrollment.progress || 0}%</p>
+                      <span className={`text-xs ${
+                        enrollment.status === 'completed' ? 'text-green-600' :
+                        enrollment.status === 'active' ? 'text-blue-600' : 'text-slate-500'
+                      }`}>
+                        {enrollment.status}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-slate-500 text-center py-4">No enrollments</p>
+            )}
+          </div>
+        </div>
+
+        {/* Sidebar */}
+        <div className="space-y-6">
+          {/* Contact Info */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">Contact Information</h2>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-slate-400" />
+                <div>
+                  <p className="text-sm text-slate-600">Email</p>
+                  <p className="text-slate-900">{learner.email}</p>
+                </div>
+              </div>
+              {learner.phone && (
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-slate-400" />
+                  <div>
+                    <p className="text-sm text-slate-600">Phone</p>
+                    <p className="text-slate-900">{learner.phone}</p>
+                  </div>
+                </div>
+              )}
+              {(learner.city || learner.state) && (
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-5 h-5 text-slate-400" />
+                  <div>
+                    <p className="text-sm text-slate-600">Location</p>
+                    <p className="text-slate-900">
+                      {[learner.city, learner.state].filter(Boolean).join(', ')}
+                    </p>
+                  </div>
+                </div>
+              )}
+              <div className="flex items-center gap-3">
+                <Calendar className="w-5 h-5 text-slate-400" />
+                <div>
+                  <p className="text-sm text-slate-600">Member Since</p>
+                  <p className="text-slate-900">
+                    {new Date(learner.created_at).toLocaleDateString()}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Documents */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-semibold text-slate-900">Documents</h2>
+              <Link href={`/cm/learners/${id}/documents`} className="text-sm text-blue-600 hover:underline">
+                View All
+              </Link>
+            </div>
+            {documents && documents.length > 0 ? (
+              <div className="space-y-2">
+                {documents.map((doc: any) => (
+                  <a
+                    key={doc.id}
+                    href={doc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-2 hover:bg-slate-50 rounded-lg"
+                  >
+                    <FileText className="w-5 h-5 text-slate-500" />
+                    <span className="text-sm text-slate-700 truncate">{doc.name}</span>
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <p className="text-slate-500 text-sm">No documents uploaded</p>
+            )}
+          </div>
+
+          {/* Quick Actions */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">Quick Actions</h2>
+            <div className="space-y-2">
               <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
+                href={`/cm/learners/${id}/assessment`}
+                className="w-full flex items-center gap-3 p-3 hover:bg-slate-50 rounded-lg"
               >
-                Apply Now
+                <Target className="w-5 h-5 text-slate-500" />
+                <span>Run Assessment</span>
               </Link>
               <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
+                href={`/cm/learners/${id}/enroll`}
+                className="w-full flex items-center gap-3 p-3 hover:bg-slate-50 rounded-lg"
               >
-                Browse Programs
+                <BookOpen className="w-5 h-5 text-slate-500" />
+                <span>Enroll in Program</span>
+              </Link>
+              <Link
+                href={`/cm/learners/${id}/schedule`}
+                className="w-full flex items-center gap-3 p-3 hover:bg-slate-50 rounded-lg"
+              >
+                <Calendar className="w-5 h-5 text-slate-500" />
+                <span>Schedule Meeting</span>
               </Link>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

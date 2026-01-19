@@ -1,179 +1,291 @@
 import { Metadata } from 'next';
-export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
+import { redirect, notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
+import {
+  ArrowLeft,
+  Users,
+  BookOpen,
+  Calendar,
+  DollarSign,
+  Settings,
+  BarChart3,
+  Edit,
+  UserPlus,
+  FileText,
+  Clock,
+  CheckCircle,
+  AlertCircle,
+} from 'lucide-react';
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical:
-      'https://www.elevateforhumanity.org/program-holder/programs/[programId]',
-  },
-  title: '[programId] | Elevate For Humanity',
-  description:
-    'Manage [programId] settings and development.',
-};
+export const dynamic = 'force-dynamic';
 
-export default async function programIdPage() {
+interface Props {
+  params: Promise<{ programId: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { programId } = await params;
+  const supabase = await createClient();
+  
+  if (!supabase) return { title: 'Program | Program Holder' };
+  
+  const { data: program } = await supabase
+    .from('programs')
+    .select('name')
+    .eq('id', programId)
+    .single();
+
+  return {
+    title: program ? `${program.name} | Program Holder` : 'Program | Program Holder',
+    robots: { index: false, follow: false },
+  };
+}
+
+export default async function ProgramHolderProgramPage({ params }: Props) {
+  const { programId } = await params;
   const supabase = await createClient();
 
   if (!supabase) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
+      <div className="p-8 text-center">
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
       </div>
     );
   }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
 
-  if (!user) {
-    redirect('/login');
-  }
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login');
 
+  // Verify program holder access
   const { data: profile } = await supabase
     .from('profiles')
-    .select('*')
+    .select('role')
     .eq('id', user.id)
     .single();
 
-  // Fetch relevant data
-  const { data: items, count } = await supabase
+  if (profile?.role !== 'program_holder' && profile?.role !== 'admin') {
+    redirect('/unauthorized');
+  }
+
+  // Fetch program
+  const { data: program, error } = await supabase
     .from('programs')
+    .select('*')
+    .eq('id', programId)
+    .single();
+
+  if (error || !program) notFound();
+
+  // Fetch enrollments
+  const { data: enrollments, count: enrollmentCount } = await supabase
+    .from('enrollments')
+    .select('*, profiles(first_name, last_name, email)', { count: 'exact' })
+    .eq('program_id', programId)
+    .order('enrolled_at', { ascending: false })
+    .limit(10);
+
+  // Fetch courses in program
+  const { data: courses, count: courseCount } = await supabase
+    .from('courses')
     .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
-    .limit(20);
+    .eq('program_id', programId);
+
+  // Stats
+  const activeEnrollments = enrollments?.filter(e => e.status === 'active').length || 0;
+  const completedEnrollments = enrollments?.filter(e => e.status === 'completed').length || 0;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/hero/admin-hero.jpg"
-          alt="[programId]"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+    <div className="p-6 max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="mb-6">
+        <Link
+          href="/program-holder/programs"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-4"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Programs
+        </Link>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            [programId]
-          </h1>
-          <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage [programId] settings and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/program-holder/dashboard"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Back to Dashboard
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Total Items
-                </h3>
-                <p className="text-3xl font-bold text-brand-blue-600">
-                  {count || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Active
-                </h3>
-                <p className="text-3xl font-bold text-brand-green-600">
-                  {items?.filter((i) => i.status === 'active').length || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Recent
-                </h3>
-                <p className="text-3xl font-bold text-purple-600">
-                  {items?.filter((i) => {
-                    const created = new Date(i.created_at);
-                    const weekAgo = new Date();
-                    weekAgo.setDate(weekAgo.getDate() - 7);
-                    return created > weekAgo;
-                  }).length || 0}
-                </p>
-              </div>
-            </div>
-
-            {/* Data Display */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-2xl font-bold mb-4">Items</h2>
-              {items && items.length > 0 ? (
-                <div className="space-y-4">
-                  {items.map((item: any) => (
-                    <div
-                      key={item.id}
-                      className="p-4 border rounded-lg hover:bg-gray-50"
-                    >
-                      <p className="font-semibold">
-                        {item.title || item.name || item.id}
-                      </p>
-                      <p className="text-sm text-black">
-                        {new Date(item.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-black text-center py-8">No items found</p>
+        <div className="flex items-start justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-slate-900">{program.name}</h1>
+            <p className="text-slate-600">{program.description}</p>
+            <div className="flex items-center gap-2 mt-2">
+              <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                program.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+              }`}>
+                {program.status || 'Active'}
+              </span>
+              {program.duration_weeks && (
+                <span className="text-sm text-slate-500">
+                  <Clock className="w-4 h-4 inline mr-1" />
+                  {program.duration_weeks} weeks
+                </span>
               )}
             </div>
           </div>
+          <div className="flex gap-2">
+            <Link
+              href={`/program-holder/programs/${programId}/edit`}
+              className="flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50"
+            >
+              <Edit className="w-4 h-4" />
+              Edit Program
+            </Link>
+            <Link
+              href={`/program-holder/programs/${programId}/enroll`}
+              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            >
+              <UserPlus className="w-4 h-4" />
+              Enroll Student
+            </Link>
+          </div>
         </div>
-      </section>
+      </div>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+      {/* Stats */}
+      <div className="grid grid-cols-4 gap-4 mb-8">
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <Users className="w-5 h-5 text-blue-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{enrollmentCount || 0}</p>
+              <p className="text-sm text-slate-600">Total Enrolled</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+              <CheckCircle className="w-5 h-5 text-green-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{activeEnrollments}</p>
+              <p className="text-sm text-slate-600">Active</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+              <BookOpen className="w-5 h-5 text-purple-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{courseCount || 0}</p>
+              <p className="text-sm text-slate-600">Courses</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+              <BarChart3 className="w-5 h-5 text-yellow-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{completedEnrollments}</p>
+              <p className="text-sm text-slate-600">Completed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Enrollments */}
+        <div className="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-semibold text-slate-900">Recent Enrollments</h2>
+            <Link href={`/program-holder/programs/${programId}/students`} className="text-sm text-blue-600 hover:underline">
+              View All
+            </Link>
+          </div>
+          {enrollments && enrollments.length > 0 ? (
+            <div className="space-y-3">
+              {enrollments.map((enrollment: any) => (
+                <div key={enrollment.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                      <span className="text-blue-600 font-semibold">
+                        {enrollment.profiles?.first_name?.[0]}{enrollment.profiles?.last_name?.[0]}
+                      </span>
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-900">
+                        {enrollment.profiles?.first_name} {enrollment.profiles?.last_name}
+                      </p>
+                      <p className="text-sm text-slate-600">{enrollment.profiles?.email}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm font-medium text-slate-900">{enrollment.progress || 0}%</p>
+                    <p className="text-xs text-slate-500">{enrollment.status}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-slate-500 text-center py-8">No enrollments yet</p>
+          )}
+        </div>
+
+        {/* Sidebar */}
+        <div className="space-y-6">
+          {/* Program Details */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">Program Details</h2>
+            <div className="space-y-3">
+              {program.price && (
+                <div className="flex items-center gap-3">
+                  <DollarSign className="w-5 h-5 text-slate-400" />
+                  <div>
+                    <p className="text-sm text-slate-600">Price</p>
+                    <p className="font-medium text-slate-900">${program.price}</p>
+                  </div>
+                </div>
+              )}
+              <div className="flex items-center gap-3">
+                <Calendar className="w-5 h-5 text-slate-400" />
+                <div>
+                  <p className="text-sm text-slate-600">Created</p>
+                  <p className="font-medium text-slate-900">
+                    {new Date(program.created_at).toLocaleDateString()}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Actions */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">Quick Actions</h2>
+            <div className="space-y-2">
               <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
+                href={`/program-holder/programs/${programId}/reports`}
+                className="w-full flex items-center gap-3 p-3 hover:bg-slate-50 rounded-lg"
               >
-                Apply Now
+                <BarChart3 className="w-5 h-5 text-slate-500" />
+                <span>View Reports</span>
               </Link>
               <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
+                href={`/program-holder/programs/${programId}/courses`}
+                className="w-full flex items-center gap-3 p-3 hover:bg-slate-50 rounded-lg"
               >
-                Browse Programs
+                <BookOpen className="w-5 h-5 text-slate-500" />
+                <span>Manage Courses</span>
+              </Link>
+              <Link
+                href={`/program-holder/programs/${programId}/settings`}
+                className="w-full flex items-center gap-3 p-3 hover:bg-slate-50 rounded-lg"
+              >
+                <Settings className="w-5 h-5 text-slate-500" />
+                <span>Program Settings</span>
               </Link>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

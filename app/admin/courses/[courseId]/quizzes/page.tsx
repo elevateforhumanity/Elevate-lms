@@ -7,12 +7,8 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/admin/courses/[id]/quizzes',
-  },
-  title: 'Quizzes | Elevate For Humanity',
-  description:
-    'Manage quizzes settings and development.',
+  title: 'Course Quizzes | Admin | Elevate For Humanity',
+  description: 'Manage course quizzes and assessments.',
 };
 
 export default async function QuizzesPage() {

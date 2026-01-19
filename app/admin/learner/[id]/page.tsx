@@ -1,188 +1,362 @@
 import { Metadata } from 'next';
-export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
+import { redirect, notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
+import {
+  ArrowLeft,
+  User,
+  Mail,
+  Phone,
+  Calendar,
+  BookOpen,
+  Award,
+  Clock,
+  MapPin,
+  Edit,
+  MoreHorizontal,
+  CheckCircle,
+  XCircle,
+  AlertCircle,
+} from 'lucide-react';
 
-export const metadata: Metadata = {
-  robots: { index: false, follow: false },
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/admin/learner/[id]',
-  },
-  title: 'Admin Learner Details | Elevate For Humanity',
-  description:
-    'Manage [id] settings and development.',
-};
+export const dynamic = 'force-dynamic';
 
-export default async function idPage() {
+interface Props {
+  params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return {
+    title: 'Learner Details | Admin | Elevate for Humanity',
+    robots: { index: false, follow: false },
+  };
+}
+
+export default async function LearnerDetailPage({ params }: Props) {
+  const { id } = await params;
   const supabase = await createClient();
 
   if (!supabase) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
+      <div className="p-8 text-center">
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
+        <p className="text-gray-600">Please try again later.</p>
       </div>
     );
   }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
 
-  if (!user) {
-    redirect('/login');
-  }
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login');
 
-  const { data: profile } = await supabase
+  const { data: adminProfile } = await supabase
     .from('profiles')
-    .select('*')
+    .select('role')
     .eq('id', user.id)
     .single();
 
-  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
+  if (adminProfile?.role !== 'admin' && adminProfile?.role !== 'super_admin') {
     redirect('/unauthorized');
   }
 
-  // Fetch relevant data
-  const { data: items, count } = await supabase
+  // Fetch learner profile
+  const { data: learner, error } = await supabase
     .from('profiles')
-    .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
-    .limit(20);
+    .select('*')
+    .eq('id', id)
+    .single();
 
-  const { count: activeItems } = await supabase
-    .from('profiles')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'active');
+  if (error || !learner) {
+    notFound();
+  }
+
+  // Fetch enrollments
+  const { data: enrollments } = await supabase
+    .from('enrollments')
+    .select(`
+      *,
+      courses (id, title, thumbnail_url)
+    `)
+    .eq('user_id', id)
+    .order('enrolled_at', { ascending: false });
+
+  // Fetch certificates
+  const { data: certificates } = await supabase
+    .from('certificates')
+    .select('*')
+    .eq('user_id', id)
+    .order('issued_at', { ascending: false });
+
+  // Fetch recent activity
+  const { data: recentActivity } = await supabase
+    .from('lesson_progress')
+    .select(`
+      *,
+      lessons (title)
+    `)
+    .eq('user_id', id)
+    .order('updated_at', { ascending: false })
+    .limit(10);
+
+  const completedCourses = enrollments?.filter(e => e.progress === 100).length || 0;
+  const activeCourses = enrollments?.filter(e => e.status === 'active' && e.progress < 100).length || 0;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/hero/admin-hero.jpg"
-          alt="[id]"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+    <div className="p-6 max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="mb-6">
+        <Link
+          href="/admin/students"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-4"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Students
+        </Link>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            [id]
-          </h1>
-          <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage [id] settings and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/admin/dashboard"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Back to Dashboard
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Total Items
-                </h3>
-                <p className="text-3xl font-bold text-brand-blue-600">
-                  {count || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Active
-                </h3>
-                <p className="text-3xl font-bold text-brand-green-600">
-                  {activeItems || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Recent
-                </h3>
-                <p className="text-3xl font-bold text-purple-600">
-                  {items?.filter((i) => {
-                    const created = new Date(i.created_at);
-                    const weekAgo = new Date();
-                    weekAgo.setDate(weekAgo.getDate() - 7);
-                    return created > weekAgo;
-                  }).length || 0}
-                </p>
-              </div>
-            </div>
-
-            {/* Data Display */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-2xl font-bold mb-4">Items</h2>
-              {items && items.length > 0 ? (
-                <div className="space-y-4">
-                  {items.map((item: any) => (
-                    <div
-                      key={item.id}
-                      className="p-4 border rounded-lg hover:bg-gray-50"
-                    >
-                      <p className="font-semibold">
-                        {item.title || item.name || item.id}
-                      </p>
-                      <p className="text-sm text-black">
-                        {new Date(item.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+        <div className="flex items-start justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+              {learner.avatar_url ? (
+                <img src={learner.avatar_url} alt="" className="w-16 h-16 rounded-full object-cover" />
               ) : (
-                <p className="text-black text-center py-8">No items found</p>
+                <User className="w-8 h-8 text-blue-600" />
               )}
             </div>
+            <div>
+              <h1 className="text-2xl font-bold text-slate-900">
+                {learner.first_name} {learner.last_name}
+              </h1>
+              <p className="text-slate-600">{learner.email}</p>
+              <div className="flex items-center gap-2 mt-1">
+                <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                  learner.status === 'active' 
+                    ? 'bg-green-100 text-green-800' 
+                    : 'bg-gray-100 text-gray-800'
+                }`}>
+                  {learner.status || 'Active'}
+                </span>
+                <span className="text-xs text-slate-500">
+                  Joined {new Date(learner.created_at).toLocaleDateString()}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Link
+              href={`/admin/learner/${id}/edit`}
+              className="flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50"
+            >
+              <Edit className="w-4 h-4" />
+              Edit
+            </Link>
+            <button className="p-2 border border-slate-300 rounded-lg hover:bg-slate-50">
+              <MoreHorizontal className="w-5 h-5" />
+            </button>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
+      {/* Stats */}
+      <div className="grid grid-cols-4 gap-4 mb-8">
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <BookOpen className="w-5 h-5 text-blue-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{enrollments?.length || 0}</p>
+              <p className="text-sm text-slate-600">Total Enrollments</p>
             </div>
           </div>
         </div>
-      </section>
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+              <CheckCircle className="w-5 h-5 text-green-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{completedCourses}</p>
+              <p className="text-sm text-slate-600">Completed</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+              <Clock className="w-5 h-5 text-yellow-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{activeCourses}</p>
+              <p className="text-sm text-slate-600">In Progress</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white rounded-xl border border-slate-200 p-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+              <Award className="w-5 h-5 text-purple-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-slate-900">{certificates?.length || 0}</p>
+              <p className="text-sm text-slate-600">Certificates</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Main Content */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Enrollments */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">Course Enrollments</h2>
+            {enrollments && enrollments.length > 0 ? (
+              <div className="space-y-3">
+                {enrollments.map((enrollment: any) => (
+                  <div
+                    key={enrollment.id}
+                    className="flex items-center justify-between p-3 bg-slate-50 rounded-lg"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-slate-200 rounded-lg flex items-center justify-center">
+                        <BookOpen className="w-6 h-6 text-slate-500" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-slate-900">
+                          {enrollment.courses?.title || 'Unknown Course'}
+                        </p>
+                        <p className="text-sm text-slate-600">
+                          Enrolled {new Date(enrollment.enrolled_at).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="flex items-center gap-2">
+                        <div className="w-24 h-2 bg-slate-200 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-blue-600 rounded-full"
+                            style={{ width: `${enrollment.progress || 0}%` }}
+                          />
+                        </div>
+                        <span className="text-sm font-medium text-slate-700">
+                          {enrollment.progress || 0}%
+                        </span>
+                      </div>
+                      <span className={`text-xs ${
+                        enrollment.status === 'completed' ? 'text-green-600' :
+                        enrollment.status === 'active' ? 'text-blue-600' : 'text-slate-500'
+                      }`}>
+                        {enrollment.status}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-slate-500 text-center py-4">No enrollments found</p>
+            )}
+          </div>
+
+          {/* Recent Activity */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">Recent Activity</h2>
+            {recentActivity && recentActivity.length > 0 ? (
+              <div className="space-y-3">
+                {recentActivity.map((activity: any) => (
+                  <div key={activity.id} className="flex items-center gap-3 py-2 border-b border-slate-100 last:border-0">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                      activity.completed ? 'bg-green-100' : 'bg-blue-100'
+                    }`}>
+                      {activity.completed ? (
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                      ) : (
+                        <Clock className="w-4 h-4 text-blue-600" />
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm text-slate-900">
+                        {activity.completed ? 'Completed' : 'Started'} {activity.lessons?.title}
+                      </p>
+                      <p className="text-xs text-slate-500">
+                        {new Date(activity.updated_at).toLocaleString()}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-slate-500 text-center py-4">No recent activity</p>
+            )}
+          </div>
+        </div>
+
+        {/* Sidebar */}
+        <div className="space-y-6">
+          {/* Contact Info */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">Contact Information</h2>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-slate-400" />
+                <div>
+                  <p className="text-sm text-slate-600">Email</p>
+                  <p className="text-slate-900">{learner.email}</p>
+                </div>
+              </div>
+              {learner.phone && (
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-slate-400" />
+                  <div>
+                    <p className="text-sm text-slate-600">Phone</p>
+                    <p className="text-slate-900">{learner.phone}</p>
+                  </div>
+                </div>
+              )}
+              {(learner.city || learner.state) && (
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-5 h-5 text-slate-400" />
+                  <div>
+                    <p className="text-sm text-slate-600">Location</p>
+                    <p className="text-slate-900">
+                      {[learner.city, learner.state].filter(Boolean).join(', ')}
+                    </p>
+                  </div>
+                </div>
+              )}
+              <div className="flex items-center gap-3">
+                <Calendar className="w-5 h-5 text-slate-400" />
+                <div>
+                  <p className="text-sm text-slate-600">Member Since</p>
+                  <p className="text-slate-900">
+                    {new Date(learner.created_at).toLocaleDateString()}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Certificates */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">Certificates</h2>
+            {certificates && certificates.length > 0 ? (
+              <div className="space-y-3">
+                {certificates.map((cert: any) => (
+                  <div key={cert.id} className="flex items-center gap-3 p-2 bg-yellow-50 rounded-lg">
+                    <Award className="w-5 h-5 text-yellow-600" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-slate-900 truncate">{cert.title}</p>
+                      <p className="text-xs text-slate-500">
+                        {new Date(cert.issued_at).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-slate-500 text-center py-4">No certificates yet</p>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

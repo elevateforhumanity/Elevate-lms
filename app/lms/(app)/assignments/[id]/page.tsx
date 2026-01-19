@@ -1,22 +1,45 @@
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect, notFound } from 'next/navigation';
+import Link from 'next/link';
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
+  FileText,
+  Upload,
+  CheckCircle,
+  AlertCircle,
+  Download,
+  BookOpen,
+} from 'lucide-react';
+import AssignmentSubmitForm from '../AssignmentSubmitForm';
+
 export const dynamic = 'force-dynamic';
 
-import { Metadata } from 'next';
+interface Props {
+  params: Promise<{ id: string }>;
+}
 
-import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import Image from 'next/image';
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const supabase = await createClient();
+  
+  if (!supabase) return { title: 'Assignment | Elevate LMS' };
+  
+  const { data: assignment } = await supabase
+    .from('assignments')
+    .select('title')
+    .eq('id', id)
+    .single();
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/assignments/[id]',
-  },
-  title: 'Assignment Details | Elevate For Humanity',
-  description:
-    'Manage [id] settings and development.',
-};
+  return {
+    title: assignment ? `${assignment.title} | Elevate LMS` : 'Assignment | Elevate LMS',
+  };
+}
 
-export default async function idPage() {
+export default async function AssignmentDetailPage({ params }: Props) {
+  const { id } = await params;
   const supabase = await createClient();
 
   if (!supabase) {
@@ -24,276 +47,275 @@ export default async function idPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
   }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
 
-  if (!user) {
-    redirect('/login');
-  }
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login?redirect=/lms/assignments/' + id);
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
+  // Fetch assignment
+  const { data: assignment, error } = await supabase
+    .from('assignments')
+    .select(`
+      *,
+      courses (id, title)
+    `)
+    .eq('id', id)
     .single();
 
-  // Fetch student's courses
-  const { data: enrollments } = await supabase
-    .from('enrollments')
-    .select(
-      `
-      *,
-      courses (
-        id,
-        title,
-        description,
-        thumbnail_url
-      )
-    `
-    )
-    .eq('user_id', user.id)
-    .order('created_at', { ascending: false });
+  if (error || !assignment) notFound();
 
-  const { count: activeCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
+  // Fetch user's submission
+  const { data: submission } = await supabase
+    .from('assignment_submissions')
+    .select('*')
+    .eq('assignment_id', id)
     .eq('user_id', user.id)
-    .eq('status', 'active');
+    .single();
 
-  const { count: completedCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'completed');
-
-  const { data: recentProgress } = await supabase
-    .from('student_progress')
-    .select(
-      `
-      *,
-      courses (title)
-    `
-    )
-    .eq('student_id', user.id)
-    .order('updated_at', { ascending: false })
-    .limit(5);
+  const course = assignment.courses as { id: string; title: string } | null;
+  const isOverdue = assignment.due_date && new Date(assignment.due_date) < new Date();
+  const isSubmitted = !!submission;
+  const isGraded = submission?.grade !== null && submission?.grade !== undefined;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-4.jpg"
-          alt="[id]"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+    <div className="min-h-screen bg-slate-50 py-8">
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Back Link */}
+        <Link
+          href="/lms/assignments"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-6"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Assignments
+        </Link>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            [id]
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage [id] settings and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">[id]</h2>
-                <p className="text-black mb-6">
-                  Manage [id] settings and
-                  development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+        <div className="grid lg:grid-cols-3 gap-6">
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Assignment Header */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h1 className="text-2xl font-bold text-slate-900 mb-2">{assignment.title}</h1>
+                  {course && (
+                    <Link
+                      href={`/lms/courses/${course.id}`}
+                      className="text-blue-600 hover:underline text-sm"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
+                      {course.title}
+                    </Link>
+                  )}
+                </div>
+                {isSubmitted ? (
+                  isGraded ? (
+                    <span className="flex items-center gap-1 px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                      <CheckCircle className="w-4 h-4" />
+                      Graded
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                      <Clock className="w-4 h-4" />
+                      Submitted
+                    </span>
+                  )
+                ) : isOverdue ? (
+                  <span className="flex items-center gap-1 px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">
+                    <AlertCircle className="w-4 h-4" />
+                    Overdue
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-1 px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
+                    <Clock className="w-4 h-4" />
+                    Pending
+                  </span>
+                )}
               </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-2.jpg"
-                  alt="[id]"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+
+              {/* Due Date */}
+              {assignment.due_date && (
+                <div className={`flex items-center gap-2 p-3 rounded-lg mb-4 ${
+                  isOverdue && !isSubmitted
+                    ? 'bg-red-50 text-red-800'
+                    : 'bg-slate-50 text-slate-700'
+                }`}>
+                  <Calendar className="w-5 h-5" />
+                  <span>
+                    Due: {new Date(assignment.due_date).toLocaleDateString('en-US', {
+                      weekday: 'long',
+                      month: 'long',
+                      day: 'numeric',
+                      year: 'numeric',
+                      hour: 'numeric',
+                      minute: '2-digit',
+                    })}
+                  </span>
+                </div>
+              )}
+
+              {/* Description */}
+              {assignment.description && (
+                <div className="prose prose-slate max-w-none">
+                  <h3 className="text-lg font-semibold mb-2">Instructions</h3>
+                  <p className="text-slate-700 whitespace-pre-wrap">{assignment.description}</p>
+                </div>
+              )}
+
+              {/* Attachments */}
+              {assignment.attachments && assignment.attachments.length > 0 && (
+                <div className="mt-6">
+                  <h3 className="text-lg font-semibold mb-3">Attachments</h3>
+                  <div className="space-y-2">
+                    {assignment.attachments.map((attachment: any, idx: number) => (
+                      <a
+                        key={idx}
+                        href={attachment.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg hover:bg-slate-100"
+                      >
+                        <FileText className="w-5 h-5 text-slate-500" />
+                        <span className="flex-1">{attachment.name}</span>
+                        <Download className="w-4 h-4 text-slate-400" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Submission Section */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <h2 className="text-lg font-semibold text-slate-900 mb-4">
+                {isSubmitted ? 'Your Submission' : 'Submit Assignment'}
+              </h2>
+
+              {isSubmitted ? (
+                <div className="space-y-4">
+                  {/* Submission Details */}
+                  <div className="p-4 bg-slate-50 rounded-lg">
+                    <p className="text-sm text-slate-600 mb-1">Submitted on</p>
+                    <p className="font-medium text-slate-900">
+                      {new Date(submission.submitted_at).toLocaleString()}
+                    </p>
+                  </div>
+
+                  {submission.content && (
+                    <div>
+                      <p className="text-sm text-slate-600 mb-2">Your Response</p>
+                      <div className="p-4 bg-slate-50 rounded-lg whitespace-pre-wrap">
+                        {submission.content}
+                      </div>
+                    </div>
+                  )}
+
+                  {submission.file_url && (
+                    <div>
+                      <p className="text-sm text-slate-600 mb-2">Uploaded File</p>
+                      <a
+                        href={submission.file_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg hover:bg-blue-100"
+                      >
+                        <FileText className="w-5 h-5 text-blue-600" />
+                        <span className="flex-1 text-blue-700">View Submission</span>
+                        <Download className="w-4 h-4 text-blue-500" />
+                      </a>
+                    </div>
+                  )}
+
+                  {/* Grade */}
+                  {isGraded && (
+                    <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm text-green-700">Grade</p>
+                          <p className="text-2xl font-bold text-green-800">
+                            {submission.grade}/{assignment.max_points || 100}
+                          </p>
+                        </div>
+                        {submission.feedback && (
+                          <div className="flex-1 ml-6">
+                            <p className="text-sm text-green-700">Feedback</p>
+                            <p className="text-green-800">{submission.feedback}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <AssignmentSubmitForm assignmentId={id} />
+              )}
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Assignment Info */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <h3 className="font-semibold text-slate-900 mb-4">Assignment Details</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <FileText className="w-5 h-5 text-slate-400" />
+                  <div>
+                    <p className="text-sm text-slate-600">Type</p>
+                    <p className="font-medium text-slate-900 capitalize">
+                      {assignment.type || 'Standard'}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <BookOpen className="w-5 h-5 text-slate-400" />
+                  <div>
+                    <p className="text-sm text-slate-600">Points</p>
+                    <p className="font-medium text-slate-900">
+                      {assignment.max_points || 100} points
+                    </p>
+                  </div>
+                </div>
+                {assignment.attempts_allowed && (
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-5 h-5 text-slate-400" />
+                    <div>
+                      <p className="text-sm text-slate-600">Attempts</p>
+                      <p className="font-medium text-slate-900">
+                        {assignment.attempts_allowed} allowed
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
-              </div>
+            {/* Submission Guidelines */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <h3 className="font-semibold text-slate-900 mb-4">Submission Guidelines</h3>
+              <ul className="space-y-2 text-sm text-slate-600">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>Submit before the due date</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>Accepted formats: PDF, DOC, DOCX</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>Maximum file size: 10MB</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>Include your name in the file</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

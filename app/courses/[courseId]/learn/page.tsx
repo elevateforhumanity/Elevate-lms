@@ -7,12 +7,8 @@ import Image from 'next/image';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/courses/[courseId]/learn',
-  },
-  title: 'Learn | Elevate For Humanity',
-  description:
-    'Manage learn settings and development.',
+  title: 'Learn Course | Elevate For Humanity',
+  description: 'Access course content and learning materials.',
 };
 
 export default async function LearnPage({ params }: { params: { courseId: string } }) {

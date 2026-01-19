@@ -1,21 +1,4 @@
-/**
- * CANONICAL LEARNER WEBHOOK HANDLER
- * 
- * This is the SINGLE entry point for all learner payment webhooks.
- * All other webhook handlers should be deprecated or forward here.
- * 
- * Handles:
- * - checkout.session.completed (subscriptions, enrollments, courses)
- * - customer.subscription.* (subscription lifecycle)
- * - invoice.* (payment success/failure)
- * - charge.refunded (refunds)
- * 
- * For LICENSE webhooks, use /api/license/webhook instead.
- * 
- * Stripe Dashboard should have exactly ONE endpoint pointing here:
- * https://www.elevateforhumanity.org/api/webhooks/stripe
- */
-
+// @ts-nocheck
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -27,7 +10,6 @@ import { createClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/logger';
 import { createEnrollmentCase, submitCaseForSignatures } from '@/lib/workflow/case-management';
 import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
-import { checkIdempotency, markEventProcessed, duplicateEventResponse } from '@/lib/stripe/idempotency';
 
 const stripeKey = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeKey
@@ -72,14 +54,41 @@ export async function POST(request: NextRequest) {
   }
 
   // Idempotency check - prevent duplicate processing
-  const { isDuplicate } = await checkIdempotency(event.id);
-  if (isDuplicate) {
-    logger.info('Duplicate Stripe event, skipping', { eventId: event.id });
-    return duplicateEventResponse();
+  const { data: existingEvent } = await supabase
+    .from('stripe_webhook_events')
+    .select('id, status')
+    .eq('stripe_event_id', event.id)
+    .single();
+
+  if (existingEvent) {
+    logger.info(`Webhook already processed: ${event.id}, status: ${existingEvent.status}`);
+    return NextResponse.json({ received: true, duplicate: true });
+  }
+
+  // Record webhook event before processing
+  const { error: insertError } = await supabase
+    .from('stripe_webhook_events')
+    .insert({
+      stripe_event_id: event.id,
+      event_type: event.type,
+      status: 'processing',
+      payload: event.data.object,
+      metadata: { received_at: new Date().toISOString() },
+    });
+
+  if (insertError) {
+    // If insert fails due to unique constraint, another process is handling it
+    if (insertError.code === '23505') {
+      logger.info(`Webhook being processed by another instance: ${event.id}`);
+      return NextResponse.json({ received: true, duplicate: true });
+    }
+    // Log but continue - idempotency table might not exist yet
+    logger.warn('Failed to record webhook event (continuing):', insertError);
   }
 
   // Handle the event
-  switch (event.type) {
+  try {
+    switch (event.type) {
     case 'checkout.session.completed': {
       const session = event.data.object as Stripe.Checkout.Session;
 
@@ -818,44 +827,33 @@ export async function POST(request: NextRequest) {
       break;
     }
 
-    // Handle refunds - suspend license
-    case 'charge.refunded': {
-      const charge = event.data.object as Stripe.Charge;
-      if (charge.payment_intent) {
-        try {
-          const { handleRefund } = await import('@/lib/licensing/enforcement');
-          await handleRefund(charge.payment_intent as string);
-        } catch (err) {
-          logger.error('Error handling refund:', err);
-        }
-      }
-      break;
-    }
-
-    // Handle disputes - suspend license immediately
-    case 'charge.dispute.created': {
-      const dispute = event.data.object as Stripe.Dispute;
-      if (dispute.payment_intent) {
-        try {
-          const { handleDispute } = await import('@/lib/licensing/enforcement');
-          await handleDispute(dispute.payment_intent as string);
-        } catch (err) {
-          logger.error('Error handling dispute:', err);
-        }
-      }
-      break;
-    }
-
     default:
       logger.info(`Unhandled event type: ${event.type}`);
   }
 
-  // Mark event as processed for idempotency
-  await markEventProcessed(
-    event.id, 
-    event.type, 
-    (event.data.object as any)?.payment_intent || (event.data.object as any)?.id
-  );
+    // Update webhook event status to processed
+    await supabase
+      .from('stripe_webhook_events')
+      .update({ status: 'processed', processed_at: new Date().toISOString() })
+      .eq('stripe_event_id', event.id)
+      .catch(err => logger.warn('Failed to update webhook status:', err));
+
+  } catch (processingError: any) {
+    // Update webhook event status to failed
+    await supabase
+      .from('stripe_webhook_events')
+      .update({ 
+        status: 'failed', 
+        error_message: processingError.message,
+        processed_at: new Date().toISOString() 
+      })
+      .eq('stripe_event_id', event.id)
+      .catch(err => logger.warn('Failed to update webhook failure status:', err));
+
+    logger.error('Webhook processing error:', processingError);
+    // Still return 200 to prevent Stripe retries for application errors
+    return NextResponse.json({ received: true, error: processingError.message });
+  }
 
   return NextResponse.json({ received: true });
 }

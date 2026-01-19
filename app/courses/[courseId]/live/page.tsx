@@ -7,12 +7,8 @@ import Image from 'next/image';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/courses/[courseId]/live',
-  },
-  title: 'Live | Elevate For Humanity',
-  description:
-    'Manage live settings and development.',
+  title: 'Live Session | Elevate For Humanity',
+  description: 'Join live course sessions and interactive learning.',
 };
 
 export default async function LivePage({ params }: { params: { courseId: string } }) {

@@ -90,8 +90,8 @@ export default async function LMSPage() {
 
   const typedProfile = profile as Profile | null;
 
-  // Get enrolled courses with progress
-  const { data: enrollments } = await supabase
+  // Get enrolled courses with progress (from enrollments table)
+  const { data: courseEnrollments } = await supabase
     .from('enrollments')
     .select(`
       id,
@@ -111,7 +111,40 @@ export default async function LMSPage() {
     .eq('user_id', user.id)
     .order('last_accessed', { ascending: false });
 
-  const typedEnrollments = (enrollments || []) as Enrollment[];
+  // Also get program enrollments (workforce programs)
+  const { data: programEnrollments } = await supabase
+    .from('program_enrollments')
+    .select(`
+      id,
+      status,
+      created_at,
+      program:programs(
+        id,
+        name,
+        description,
+        slug,
+        duration_weeks
+      )
+    `)
+    .eq('student_id', user.id)
+    .in('status', ['IN_PROGRESS', 'active']);
+
+  // Also check student_enrollments (apprenticeship programs)
+  const { data: studentEnrollments } = await supabase
+    .from('student_enrollments')
+    .select(`
+      id,
+      status,
+      started_at,
+      program_slug
+    `)
+    .eq('student_id', user.id)
+    .eq('status', 'active');
+
+  // Combine all enrollments for display
+  const typedEnrollments = (courseEnrollments || []) as Enrollment[];
+  const typedProgramEnrollments = programEnrollments || [];
+  const typedStudentEnrollments = studentEnrollments || [];
 
   // Get recent activity
   const { data: recentActivity } = await supabase
@@ -312,6 +345,60 @@ export default async function LMSPage() {
                 </div>
               )}
             </div>
+
+            {/* Program Enrollments (Workforce Programs) */}
+            {(typedProgramEnrollments.length > 0 || typedStudentEnrollments.length > 0) && (
+              <div className="bg-white rounded-xl shadow-sm border p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-lg font-semibold">My Programs</h2>
+                  <Link href="/student/dashboard" className="text-blue-900 text-sm font-medium hover:underline">
+                    View Dashboard
+                  </Link>
+                </div>
+                <div className="space-y-4">
+                  {typedProgramEnrollments.map((enrollment: any) => (
+                    <Link 
+                      key={enrollment.id} 
+                      href={`/programs/${enrollment.program?.slug || enrollment.program?.id}`}
+                      className="flex items-center gap-4 p-3 bg-green-50 rounded-lg hover:bg-green-100 transition"
+                    >
+                      <div className="w-12 h-12 bg-green-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Award className="w-6 h-6 text-green-700" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-medium truncate">{enrollment.program?.name || 'Program'}</h3>
+                        <p className="text-sm text-gray-500">
+                          {enrollment.status === 'IN_PROGRESS' ? 'In Progress' : enrollment.status}
+                        </p>
+                      </div>
+                      <span className="px-2 py-1 bg-green-200 text-green-800 text-xs font-medium rounded">
+                        Workforce
+                      </span>
+                      <ChevronRight className="w-5 h-5 text-gray-400" />
+                    </Link>
+                  ))}
+                  {typedStudentEnrollments.map((enrollment: any) => (
+                    <Link 
+                      key={enrollment.id} 
+                      href={`/apprentice`}
+                      className="flex items-center gap-4 p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition"
+                    >
+                      <div className="w-12 h-12 bg-purple-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Award className="w-6 h-6 text-purple-700" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-medium truncate">{enrollment.program_slug || 'Apprenticeship'}</h3>
+                        <p className="text-sm text-gray-500">Active Apprenticeship</p>
+                      </div>
+                      <span className="px-2 py-1 bg-purple-200 text-purple-800 text-xs font-medium rounded">
+                        Apprentice
+                      </span>
+                      <ChevronRight className="w-5 h-5 text-gray-400" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Upcoming Assignments */}
             <div className="bg-white rounded-xl shadow-sm border p-6">

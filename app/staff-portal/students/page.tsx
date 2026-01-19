@@ -6,12 +6,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/staff-portal/students',
-  },
-  title: 'Staff Portal Students | Elevate For Humanity',
-  description:
-    'Manage students settings and development.',
+  robots: { index: false, follow: false },
+  title: 'Students | Staff Portal | Elevate For Humanity',
+  description: 'View and manage student enrollments and progress.',
 };
 
 export default async function StudentsPage() {
