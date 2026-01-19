@@ -9,12 +9,13 @@ import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { headers } from 'next/headers';
 import { Resend } from 'resend';
-import { generateLicenseKey, hashLicenseKey } from '@/lib/store/license';
 import { generateLicenseWelcomeEmail } from '@/lib/email-templates/license-welcome';
 import { logger } from '@/lib/logger';
+import { isEventProcessed, markEventProcessed } from '@/lib/store/idempotency';
+import { logProvisioningStep } from '@/lib/store/audit';
+import { provisionLicense } from '@/lib/store/provisioning';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
 export async function POST(request: NextRequest) {
@@ -43,11 +44,28 @@ export async function POST(request: NextRequest) {
     }
 
     const supabase = await createClient();
+    const adminSupabase = createAdminClient();
+
+    // SECTION 2: Idempotency check - CRITICAL
+    const alreadyProcessed = await isEventProcessed(supabase, event.id);
+    if (alreadyProcessed) {
+      logger.info('Skipping already processed license event', { eventId: event.id, type: event.type });
+      return NextResponse.json({ received: true, skipped: true });
+    }
 
     // Handle the event
     switch (event.type) {
       case 'payment_intent.succeeded': {
         const paymentIntent = event.data.object as Stripe.PaymentIntent;
+        const correlationId = paymentIntent.id;
+
+        // Log payment received
+        await logProvisioningStep(adminSupabase, {
+          paymentIntentId: correlationId,
+          correlationId,
+          step: 'payment_received',
+          status: 'completed',
+        });
 
         // Update license purchase status
         const { data: purchase } = await supabase
@@ -58,73 +76,57 @@ export async function POST(request: NextRequest) {
           .single();
 
         if (purchase) {
-          const adminSupabase = createAdminClient();
-          
-          // Create tenant
-          const { data: tenant } = await adminSupabase
-            .from('tenants')
-            .insert({
-              name: purchase.organization_name,
-              slug: generateSlug(purchase.organization_name),
-              status: 'active',
-            })
-            .select()
-            .single();
+          // SECTION 3: Use transactional provisioning - all or nothing
+          const result = await provisionLicense(adminSupabase, {
+            purchaseId: purchase.id,
+            paymentIntentId: paymentIntent.id,
+            organizationName: purchase.organization_name,
+            contactName: purchase.contact_name,
+            contactEmail: purchase.contact_email,
+            licenseType: purchase.license_type as 'single' | 'school' | 'enterprise',
+            productSlug: purchase.product_slug,
+          });
 
-          if (tenant) {
-            // Generate license key
-            const licenseKey = generateLicenseKey();
-            const licenseKeyHash = hashLicenseKey(licenseKey);
-            
-            // Create license
-            const validUntil = new Date();
-            validUntil.setFullYear(validUntil.getFullYear() + 1); // 1 year
-
-            const features = getFeatures(purchase.license_type);
-            const maxUsers = getMaxUsers(purchase.license_type);
-            const maxDeployments = getMaxDeployments(purchase.license_type);
-
-            await adminSupabase.from('licenses').insert({
-              license_key: licenseKeyHash,
-              domain: 'pending-setup',
-              customer_email: purchase.contact_email,
-              tenant_id: tenant.id,
-              tier: mapLicenseTypeToTier(purchase.license_type),
-              status: 'active',
-              max_users: maxUsers,
-              max_deployments: maxDeployments,
-              features: features,
-              expires_at: validUntil.toISOString(),
-              metadata: {
-                product_slug: purchase.product_slug,
-                organization_name: purchase.organization_name,
-                purchased_at: new Date().toISOString(),
-              },
+          if (result.success && result.licenseKey && result.tenantId) {
+            // SECTION 4: Send welcome email with admin access
+            await logProvisioningStep(adminSupabase, {
+              tenantId: result.tenantId,
+              correlationId,
+              paymentIntentId: paymentIntent.id,
+              step: 'email_sent',
+              status: 'started',
             });
 
-            // Update purchase with tenant_id
-            await adminSupabase
-              .from('license_purchases')
-              .update({
-                tenant_id: tenant.id,
-                status: 'provisioned',
-              })
-              .eq('id', purchase.id);
-
-            // Send comprehensive welcome email with license key
             try {
+              // Generate magic link for admin login
+              const { data: magicLink } = await adminSupabase.auth.admin.generateLink({
+                type: 'magiclink',
+                email: purchase.contact_email,
+                options: {
+                  redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/admin/setup?tenant=${result.tenantId}`,
+                },
+              });
+
+              const validUntil = new Date();
+              validUntil.setFullYear(validUntil.getFullYear() + 1);
+
+              const features = getFeatures(purchase.license_type);
+              const maxUsers = getMaxUsers(purchase.license_type);
+              const maxDeployments = getMaxDeployments(purchase.license_type);
+
               const emailData = {
                 organizationName: purchase.organization_name,
                 contactName: purchase.contact_name,
                 email: purchase.contact_email,
-                licenseKey: licenseKey, // Send the actual key (only time it's sent)
+                licenseKey: result.licenseKey,
                 licenseType: purchase.license_type as 'single' | 'school' | 'enterprise',
                 tier: mapLicenseTypeToTier(purchase.license_type),
                 expiresAt: validUntil.toISOString(),
-                features: features,
+                features,
                 repoUrl: getRepoUrl(purchase.license_type),
-                maxDeployments: maxDeployments,
-                maxUsers: maxUsers,
+                maxDeployments,
+                maxUsers,
+                loginUrl: magicLink?.properties?.action_link || `${process.env.NEXT_PUBLIC_SITE_URL}/login`,
               };
 
               const { subject, html, text } = generateLicenseWelcomeEmail(emailData);
@@ -137,16 +139,37 @@ export async function POST(request: NextRequest) {
                 text,
               });
 
-              logger.info('License welcome email sent', {
+              await logProvisioningStep(adminSupabase, {
+                tenantId: result.tenantId,
+                correlationId,
+                paymentIntentId: paymentIntent.id,
+                step: 'email_sent',
+                status: 'completed',
+              });
+
+              logger.info('License provisioning complete', {
                 email: purchase.contact_email,
                 licenseType: purchase.license_type,
+                tenantId: result.tenantId,
               });
             } catch (emailError) {
-              // Log but don't fail - license is provisioned
+              await logProvisioningStep(adminSupabase, {
+                tenantId: result.tenantId,
+                correlationId,
+                paymentIntentId: paymentIntent.id,
+                step: 'email_sent',
+                status: 'failed',
+                error: emailError instanceof Error ? emailError.message : String(emailError),
+              });
               logger.error('Failed to send license welcome email', emailError as Error);
             }
+          } else {
+            logger.error('Provisioning failed', { error: result.error, paymentIntentId: paymentIntent.id });
           }
         }
+
+        // Mark event as processed
+        await markEventProcessed(supabase, event.id, event.type, paymentIntent.id);
         break;
       }
 
@@ -157,71 +180,85 @@ export async function POST(request: NextRequest) {
           .from('license_purchases')
           .update({ status: 'failed' })
           .eq('stripe_payment_intent_id', paymentIntent.id);
+
+        await markEventProcessed(supabase, event.id, event.type, paymentIntent.id);
+        break;
+      }
+
+      // SECTION 6: Handle disputes and refunds
+      case 'charge.refunded':
+      case 'charge.dispute.created': {
+        const charge = event.data.object as Stripe.Charge;
+        const paymentIntentId = typeof charge.payment_intent === 'string' 
+          ? charge.payment_intent 
+          : charge.payment_intent?.id;
+
+        if (paymentIntentId) {
+          // Find and suspend the license
+          const { data: purchase } = await supabase
+            .from('license_purchases')
+            .select('tenant_id')
+            .eq('stripe_payment_intent_id', paymentIntentId)
+            .single();
+
+          if (purchase?.tenant_id) {
+            await adminSupabase
+              .from('licenses')
+              .update({ status: 'suspended' })
+              .eq('tenant_id', purchase.tenant_id);
+
+            logger.warn('License suspended due to dispute/refund', {
+              tenantId: purchase.tenant_id,
+              eventType: event.type,
+            });
+          }
+        }
+
+        await markEventProcessed(supabase, event.id, event.type, paymentIntentId);
         break;
       }
 
       default:
-        // Unhandled event type
+        // Mark unhandled events as processed too
+        await markEventProcessed(supabase, event.id, event.type);
         break;
     }
 
     return NextResponse.json({ received: true });
   } catch (err: unknown) {
+    logger.error('Webhook handler failed', err instanceof Error ? err : new Error(String(err)));
     return NextResponse.json(
-      {
-        error:
-          (err instanceof Error ? err.message : String(err)) ||
-          'Webhook handler failed',
-      },
+      { error: (err instanceof Error ? err.message : String(err)) || 'Webhook handler failed' },
       { status: 500 }
     );
   }
 }
 
 // Helper functions
-function generateSlug(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-}
-
 function mapLicenseTypeToTier(licenseType: string): string {
   switch (licenseType) {
-    case 'single':
-      return 'basic';
-    case 'school':
-      return 'pro';
-    case 'enterprise':
-      return 'enterprise';
-    default:
-      return 'basic';
+    case 'single': return 'basic';
+    case 'school': return 'pro';
+    case 'enterprise': return 'enterprise';
+    default: return 'basic';
   }
 }
 
 function getMaxUsers(licenseType: string): number {
   switch (licenseType) {
-    case 'single':
-      return 100;
-    case 'school':
-      return 1000;
-    case 'enterprise':
-      return 999999; // Unlimited
-    default:
-      return 100;
+    case 'single': return 100;
+    case 'school': return 1000;
+    case 'enterprise': return 999999;
+    default: return 100;
   }
 }
 
-function getMaxPrograms(licenseType: string): number {
+function getMaxDeployments(licenseType: string): number {
   switch (licenseType) {
-    case 'single':
-      return 10;
-    case 'school':
-      return 50;
-    case 'enterprise':
-      return 999999; // Unlimited
-    default:
-      return 10;
+    case 'single': return 1;
+    case 'school': return 3;
+    case 'enterprise': return 999;
+    default: return 1;
   }
 }
 
@@ -232,39 +269,11 @@ function getFeatures(licenseType: string): string[] {
     case 'single':
       return baseFeatures;
     case 'school':
-      return [
-        ...baseFeatures,
-        'partner-dashboard',
-        'case-management',
-        'compliance',
-        'white-label',
-      ];
+      return [...baseFeatures, 'partner-dashboard', 'case-management', 'compliance', 'white-label'];
     case 'enterprise':
-      return [
-        ...baseFeatures,
-        'partner-dashboard',
-        'case-management',
-        'employer-portal',
-        'compliance',
-        'white-label',
-        'ai-tutor',
-        'api-access',
-      ];
+      return [...baseFeatures, 'partner-dashboard', 'case-management', 'employer-portal', 'compliance', 'white-label', 'ai-tutor', 'api-access'];
     default:
       return baseFeatures;
-  }
-}
-
-function getMaxDeployments(licenseType: string): number {
-  switch (licenseType) {
-    case 'single':
-      return 1;
-    case 'school':
-      return 3;
-    case 'enterprise':
-      return 999; // Unlimited
-    default:
-      return 1;
   }
 }
 

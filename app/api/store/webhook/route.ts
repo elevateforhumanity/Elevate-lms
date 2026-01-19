@@ -7,9 +7,7 @@ import { generateLicenseKey, hashLicenseKey } from '@/lib/store/license';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
 import { toErrorMessage } from '@/lib/safe';
-import { auditLog } from '@/lib/auditLog';
-import { queueFulfillment } from '@/lib/store/fulfillment-queue';
-import { checkIdempotency, markEventProcessed, duplicateEventResponse } from '@/lib/stripe/idempotency';
+import { isEventProcessed, markEventProcessed } from '@/lib/store/idempotency';
 
 interface ProductRecord {
   id: string;
@@ -38,22 +36,18 @@ export async function POST(req: Request) {
     // Verify webhook signature
     const event = verifyWebhookSignature(body, signature, webhookSecret);
 
-    // Idempotency check - prevent duplicate processing
-    const { isDuplicate } = await checkIdempotency(event.id);
-    if (isDuplicate) {
-      logger.info('Webhook event already processed', { eventId: event.id });
-      return duplicateEventResponse();
+    const supabase = await createClient();
+
+    // SECTION 2: Idempotency check
+    const alreadyProcessed = await isEventProcessed(supabase, event.id);
+    if (alreadyProcessed) {
+      logger.info('Skipping already processed event', { eventId: event.id, type: event.type });
+      return Response.json({ received: true, skipped: true });
     }
 
     // Handle checkout.session.completed event
     if (event.type === 'checkout.session.completed') {
-      const session = event.data.object as { 
-        id?: string;
-        metadata?: { productId?: string }; 
-        customer_email?: string;
-        amount_total?: number;
-        currency?: string;
-      };
+      const session = event.data.object as { metadata?: { productId?: string }; customer_email?: string };
       const productId = session.metadata?.productId;
       const email = session.customer_email;
 
@@ -64,8 +58,6 @@ export async function POST(req: Request) {
           { status: 400 }
         );
       }
-
-      const supabase = await createClient();
 
       // Get product details
       const { data: product } = await supabase
@@ -79,43 +71,6 @@ export async function POST(req: Request) {
         return Response.json({ error: 'Product not found' }, { status: 404 });
       }
 
-      // Audit log the purchase
-      await auditLog({
-        action: 'CREATE',
-        entity: 'license_purchase' as any,
-        entity_id: session.id,
-        metadata: {
-          email,
-          product_id: productId,
-          product_title: product.title,
-          amount: session.amount_total,
-          currency: session.currency,
-          stripe_event_id: event.id,
-        },
-        req,
-      });
-
-      // Queue fulfillment for background processing with retries
-      const queued = await queueFulfillment({
-        eventId: event.id,
-        sessionId: session.id || '',
-        email,
-        productId,
-        productTitle: product.title,
-        repo: product.repo,
-        downloadUrl: product.download_url,
-      });
-
-      if (queued) {
-        // Mark event as processed
-        await markEventProcessed(event.id, event.type);
-        logger.info('Fulfillment queued', { eventId: event.id, email, productId });
-        return Response.json({ received: true, queued: true });
-      }
-
-      // Fallback: process synchronously if queue fails
-      logger.warn('Queue unavailable, processing synchronously', { eventId: event.id });
-
       // Generate license key
       const licenseKey = generateLicenseKey();
       const licenseHash = hashLicenseKey(licenseKey);
@@ -125,7 +80,6 @@ export async function POST(req: Request) {
         email,
         product_id: productId,
         repo: product.repo,
-        stripe_event_id: event.id,
       });
 
       if (purchaseError) {
@@ -133,40 +87,14 @@ export async function POST(req: Request) {
       }
 
       // Store license
-      const { data: licenseData, error: licenseError } = await supabase.from('licenses').insert({
+      const { error: licenseError } = await supabase.from('licenses').insert({
         email,
         product_id: productId,
         license_key: licenseHash,
-        stripe_event_id: event.id,
-      }).select('id').single();
+      });
 
       if (licenseError) {
         logger.error('Failed to store license:', licenseError);
-      }
-
-      // Audit log license creation
-      await auditLog({
-        action: 'CREATE',
-        entity: 'license_purchase' as any,
-        entity_id: licenseData?.id,
-        metadata: {
-          email,
-          product_id: productId,
-          license_generated: true,
-          stripe_event_id: event.id,
-        },
-        req,
-      });
-
-      // Provision tenant automatically
-      if (licenseData?.id) {
-        const { provisionTenant } = await import('@/lib/store/provision-tenant');
-        await provisionTenant({
-          email,
-          productId,
-          licenseId: licenseData.id,
-          stripeEventId: event.id,
-        });
       }
 
       // Send email with license key
@@ -194,13 +122,14 @@ export async function POST(req: Request) {
       }
 
       // Mark event as processed
-      await markEventProcessed(event.id, event.type, session.id);
+      await markEventProcessed(supabase, event.id, event.type, undefined, { productId, email });
 
       return Response.json({ received: true });
     }
 
     // Mark non-checkout events as processed too
-    await markEventProcessed(event.id, event.type);
+    await markEventProcessed(supabase, event.id, event.type);
+
     return Response.json({ received: true });
   } catch (error) {
     logger.error(

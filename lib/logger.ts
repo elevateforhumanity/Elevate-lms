@@ -85,9 +85,34 @@ class Logger {
   }
 
   private async sendToExternalService(entry: LogEntry) {
-    // Note: Integrate with logging service (e.g., Datadog, Sentry, CloudWatch)
-    // For now, this is a Content
+    // SECTION 8: Send errors to Sentry
     try {
+      // Sentry integration for error tracking
+      if (entry.level === 'error' && process.env.SENTRY_DSN) {
+        const Sentry = await import('@sentry/nextjs');
+        
+        if (entry.error) {
+          Sentry.captureException(entry.error, {
+            extra: {
+              message: entry.message,
+              ...entry.context,
+            },
+            tags: {
+              correlation_id: entry.context?.correlationId || entry.context?.paymentIntentId,
+            },
+          });
+        } else {
+          Sentry.captureMessage(entry.message, {
+            level: 'error',
+            extra: entry.context,
+            tags: {
+              correlation_id: entry.context?.correlationId || entry.context?.paymentIntentId,
+            },
+          });
+        }
+      }
+
+      // Also send to custom log endpoint if configured
       if (process.env.LOG_ENDPOINT) {
         await fetch(process.env.LOG_ENDPOINT, {
           method: 'POST',
@@ -95,7 +120,7 @@ class Logger {
           body: JSON.stringify(entry),
         });
       }
-    } catch (error) {
+    } catch {
       /* Fail silently to avoid infinite loops */
     }
   }
