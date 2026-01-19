@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Users, GraduationCap, Briefcase, DollarSign, TrendingUp, Award, Clock, Target } from 'lucide-react';
 
 interface OutcomesData {
@@ -57,17 +57,26 @@ export function LiveOutcomesDashboard({ initialData }: { initialData?: Partial<O
     programsOffered: 12,
   });
 
-  const [lastUpdated, setLastUpdated] = useState(new Date());
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  // Set mounted state to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+    setLastUpdated(new Date().toLocaleTimeString());
+  }, []);
 
   // Fetch live data
   useEffect(() => {
+    if (!mounted) return;
+    
     const fetchData = async () => {
       try {
         const res = await fetch('/api/outcomes/stats');
         if (res.ok) {
           const newData = await res.json();
           setData(prev => ({ ...prev, ...newData }));
-          setLastUpdated(new Date());
+          setLastUpdated(new Date().toLocaleTimeString());
         }
       } catch (error) {
         // Use default data on error
@@ -77,7 +86,7 @@ export function LiveOutcomesDashboard({ initialData }: { initialData?: Partial<O
     fetchData();
     const interval = setInterval(fetchData, 60000); // Refresh every minute
     return () => clearInterval(interval);
-  }, []);
+  }, [mounted]);
 
   const completionRate = data.totalEnrollments > 0 
     ? Math.round((data.completedEnrollments / data.totalEnrollments) * 100) 
@@ -167,9 +176,11 @@ export function LiveOutcomesDashboard({ initialData }: { initialData?: Partial<O
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Transparent, verifiable results from our training programs. Updated in real-time.
           </p>
-          <p className="text-sm text-slate-500 mt-2">
-            Last updated: {lastUpdated.toLocaleTimeString()}
-          </p>
+          {mounted && lastUpdated && (
+            <p className="text-sm text-slate-500 mt-2">
+              Last updated: {lastUpdated}
+            </p>
+          )}
         </div>
 
         {/* Stats Grid */}
