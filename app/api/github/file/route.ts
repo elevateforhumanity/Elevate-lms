@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 export const runtime = 'edge';
 export const maxDuration = 60;
 

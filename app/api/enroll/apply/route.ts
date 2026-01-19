@@ -1,5 +1,5 @@
 export const dynamic = 'force-dynamic';
-// @ts-nocheck
+
 // Using Node.js runtime for Resend compatibility
 export const maxDuration = 60;
 
