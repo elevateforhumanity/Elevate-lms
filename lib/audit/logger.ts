@@ -39,7 +39,7 @@ export type AuditAction =
 
 export interface AuditLogEntry {
   action: AuditAction;
-  user_id: string;
+  actor_id: string;
   target_type?: string;
   target_id?: string;
   metadata?: Record<string, any>;
@@ -56,7 +56,7 @@ export async function logAuditEvent(entry: AuditLogEntry): Promise<void> {
     
     await supabase.from('audit_logs').insert({
       action: entry.action,
-      user_id: entry.user_id,
+      actor_id: entry.actor_id,
       target_type: entry.target_type,
       target_id: entry.target_id,
       metadata: entry.metadata || {},
@@ -75,13 +75,13 @@ export async function logAuditEvent(entry: AuditLogEntry): Promise<void> {
  */
 export async function logEnrollmentEvent(
   action: 'enrollment.create' | 'enrollment.update' | 'enrollment.cancel' | 'enrollment.complete',
-  userId: string,
+  actorId: string,
   enrollmentId: string,
   metadata?: Record<string, any>
 ): Promise<void> {
   await logAuditEvent({
     action,
-    user_id: userId,
+    actor_id: actorId,
     target_type: 'enrollment',
     target_id: enrollmentId,
     metadata,
@@ -93,13 +93,13 @@ export async function logEnrollmentEvent(
  */
 export async function logPaymentEvent(
   action: 'payment.initiated' | 'payment.completed' | 'payment.failed' | 'payment.refunded',
-  userId: string,
+  actorId: string,
   paymentId: string,
   metadata?: Record<string, any>
 ): Promise<void> {
   await logAuditEvent({
     action,
-    user_id: userId,
+    actor_id: actorId,
     target_type: 'payment',
     target_id: paymentId,
     metadata,
@@ -111,13 +111,13 @@ export async function logPaymentEvent(
  */
 export async function logDocumentEvent(
   action: 'document.upload' | 'document.delete' | 'document.approve' | 'document.reject',
-  userId: string,
+  actorId: string,
   documentId: string,
   metadata?: Record<string, any>
 ): Promise<void> {
   await logAuditEvent({
     action,
-    user_id: userId,
+    actor_id: actorId,
     target_type: 'document',
     target_id: documentId,
     metadata,
@@ -129,13 +129,13 @@ export async function logDocumentEvent(
  */
 export async function logCertificateEvent(
   action: 'certificate.issued' | 'certificate.revoked',
-  userId: string,
+  actorId: string,
   certificateId: string,
   metadata?: Record<string, any>
 ): Promise<void> {
   await logAuditEvent({
     action,
-    user_id: userId,
+    actor_id: actorId,
     target_type: 'certificate',
     target_id: certificateId,
     metadata,
@@ -147,13 +147,13 @@ export async function logCertificateEvent(
  */
 export async function logCourseProgressEvent(
   action: 'course.started' | 'course.completed' | 'lesson.completed',
-  userId: string,
+  actorId: string,
   targetId: string,
   metadata?: Record<string, any>
 ): Promise<void> {
   await logAuditEvent({
     action,
-    user_id: userId,
+    actor_id: actorId,
     target_type: action.startsWith('course') ? 'course' : 'lesson',
     target_id: targetId,
     metadata,
@@ -165,14 +165,14 @@ export async function logCourseProgressEvent(
  */
 export async function logAdminAction(
   action: 'admin.user_role_change' | 'admin.user_suspend' | 'admin.user_activate' | 'admin.program_update' | 'admin.cohort_create' | 'admin.cohort_update',
-  adminUserId: string,
+  adminActorId: string,
   targetType: string,
   targetId: string,
   metadata?: Record<string, any>
 ): Promise<void> {
   await logAuditEvent({
     action,
-    user_id: adminUserId,
+    actor_id: adminActorId,
     target_type: targetType,
     target_id: targetId,
     metadata,
