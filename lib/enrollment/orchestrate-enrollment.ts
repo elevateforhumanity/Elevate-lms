@@ -284,7 +284,7 @@ async function enrollInPartnerCourses(
 
     // Check if already enrolled in partner course
     const { data: existing } = await supabase
-      .from('partner_enrollments')
+      .from('partner_course_enrollments')
       .select('id')
       .eq('user_id', studentId)
       .eq('partner_course_id', link.partner_course_id)
@@ -294,7 +294,7 @@ async function enrollInPartnerCourses(
 
     // Create partner enrollment
     const { error } = await supabase
-      .from('partner_enrollments')
+      .from('partner_course_enrollments')
       .insert({
         user_id: studentId,
         partner_course_id: link.partner_course_id,

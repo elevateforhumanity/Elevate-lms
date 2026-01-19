@@ -5,11 +5,12 @@
 -- ============================================================================
 
 -- ============================================================================
--- 1. CREATE partner_enrollments TABLE IF NOT EXISTS
+-- 1. CREATE partner_course_enrollments TABLE IF NOT EXISTS
 -- ============================================================================
--- This table tracks student enrollments in partner courses (Coursera, LinkedIn, etc.)
+-- Note: partner_enrollments already exists for partner organizations
+-- This table is for student enrollments in partner courses (Coursera, LinkedIn, etc.)
 
-CREATE TABLE IF NOT EXISTS public.partner_enrollments (
+CREATE TABLE IF NOT EXISTS public.partner_course_enrollments (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL,
   partner_course_id UUID,
@@ -24,27 +25,30 @@ CREATE TABLE IF NOT EXISTS public.partner_enrollments (
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
-CREATE INDEX IF NOT EXISTS idx_partner_enrollments_user ON public.partner_enrollments(user_id);
-CREATE INDEX IF NOT EXISTS idx_partner_enrollments_course ON public.partner_enrollments(partner_course_id);
-CREATE INDEX IF NOT EXISTS idx_partner_enrollments_status ON public.partner_enrollments(status);
+CREATE INDEX IF NOT EXISTS idx_partner_course_enrollments_user ON public.partner_course_enrollments(user_id);
+CREATE INDEX IF NOT EXISTS idx_partner_course_enrollments_course ON public.partner_course_enrollments(partner_course_id);
+CREATE INDEX IF NOT EXISTS idx_partner_course_enrollments_status ON public.partner_course_enrollments(status);
 
 -- Enable RLS
-ALTER TABLE public.partner_enrollments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.partner_course_enrollments ENABLE ROW LEVEL SECURITY;
 
-DROP POLICY IF EXISTS "users_own_partner_enrollments" ON public.partner_enrollments;
-CREATE POLICY "users_own_partner_enrollments" ON public.partner_enrollments
+DROP POLICY IF EXISTS "users_own_partner_course_enrollments" ON public.partner_course_enrollments;
+CREATE POLICY "users_own_partner_course_enrollments" ON public.partner_course_enrollments
   FOR ALL TO authenticated
   USING (user_id = auth.uid());
 
-DROP POLICY IF EXISTS "service_role_all_partner_enrollments" ON public.partner_enrollments;
-CREATE POLICY "service_role_all_partner_enrollments" ON public.partner_enrollments
+DROP POLICY IF EXISTS "service_role_all_partner_course_enrollments" ON public.partner_course_enrollments;
+CREATE POLICY "service_role_all_partner_course_enrollments" ON public.partner_course_enrollments
   FOR ALL TO service_role
   USING (true);
 
 -- ============================================================================
 -- 2. CREATE OR REPLACE complete_enrollment_payment FUNCTION
 -- ============================================================================
--- Updated to match webhook parameters and handle different table schemas
+
+-- Drop existing versions with different signatures
+DROP FUNCTION IF EXISTS complete_enrollment_payment(UUID, TEXT, TEXT, INTEGER);
+DROP FUNCTION IF EXISTS complete_enrollment_payment(UUID, TEXT, TEXT, TEXT, INTEGER);
 
 CREATE OR REPLACE FUNCTION complete_enrollment_payment(
   p_enrollment_id UUID,
@@ -61,6 +65,8 @@ DECLARE
   v_found BOOLEAN := false;
   v_table_name TEXT;
   v_current_status TEXT;
+  v_has_payment_status BOOLEAN;
+  v_has_stripe_payment_id BOOLEAN;
 BEGIN
   -- Try to find and update in program_enrollments first
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'program_enrollments' AND table_schema = 'public') THEN
@@ -109,13 +115,31 @@ BEGIN
         );
       END IF;
       
-      -- Update status - handle both schemas
-      UPDATE public.enrollments
-      SET 
-        status = 'active',
-        payment_status = 'paid',
-        stripe_payment_id = COALESCE(p_stripe_payment_intent_id, stripe_payment_id)
-      WHERE id = p_enrollment_id;
+      -- Check which columns exist
+      SELECT EXISTS (
+        SELECT 1 FROM information_schema.columns 
+        WHERE table_name = 'enrollments' AND column_name = 'payment_status' AND table_schema = 'public'
+      ) INTO v_has_payment_status;
+      
+      SELECT EXISTS (
+        SELECT 1 FROM information_schema.columns 
+        WHERE table_name = 'enrollments' AND column_name = 'stripe_payment_id' AND table_schema = 'public'
+      ) INTO v_has_stripe_payment_id;
+      
+      -- Update based on available columns
+      IF v_has_payment_status AND v_has_stripe_payment_id THEN
+        UPDATE public.enrollments
+        SET status = 'active', payment_status = 'paid', stripe_payment_id = p_stripe_payment_intent_id
+        WHERE id = p_enrollment_id;
+      ELSIF v_has_payment_status THEN
+        UPDATE public.enrollments
+        SET status = 'active', payment_status = 'paid'
+        WHERE id = p_enrollment_id;
+      ELSE
+        UPDATE public.enrollments
+        SET status = 'active'
+        WHERE id = p_enrollment_id;
+      END IF;
     END IF;
   END IF;
 
@@ -170,6 +194,6 @@ COMMENT ON FUNCTION complete_enrollment_payment IS 'Marks enrollment as paid/act
 -- 3. GRANT PERMISSIONS
 -- ============================================================================
 
-GRANT SELECT, INSERT, UPDATE ON public.partner_enrollments TO authenticated;
-GRANT ALL ON public.partner_enrollments TO service_role;
+GRANT SELECT, INSERT, UPDATE ON public.partner_course_enrollments TO authenticated;
+GRANT ALL ON public.partner_course_enrollments TO service_role;
 GRANT EXECUTE ON FUNCTION complete_enrollment_payment TO authenticated, anon, service_role;
