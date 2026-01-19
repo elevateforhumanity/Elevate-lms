@@ -3,12 +3,92 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   GraduationCap, Users, Award, ArrowRight, 
   Clock, BarChart3, CheckCircle, Star,
   Menu, X, Lock, Play, ChevronRight,
-  BookOpen, Trophy, Briefcase
+  BookOpen, Trophy, Briefcase, Mail, Phone, MapPin
 } from 'lucide-react';
+
+// Unsplash images for different industries
+const INDUSTRY_IMAGES: Record<string, { hero: string; programs: string[]; features: string[] }> = {
+  default: {
+    hero: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&q=80',
+    programs: [
+      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80',
+      'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80',
+      'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80',
+    ],
+    features: [
+      'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80',
+      'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80',
+      'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80',
+    ],
+  },
+  technology: {
+    hero: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1920&q=80',
+    programs: [
+      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80',
+      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
+      'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&q=80',
+    ],
+    features: [
+      'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&q=80',
+      'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80',
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80',
+    ],
+  },
+  healthcare: {
+    hero: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920&q=80',
+    programs: [
+      'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80',
+      'https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80',
+      'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&q=80',
+    ],
+    features: [
+      'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80',
+      'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80',
+      'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80',
+    ],
+  },
+  construction: {
+    hero: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80',
+    programs: [
+      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80',
+      'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&q=80',
+      'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80',
+    ],
+    features: [
+      'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80',
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80',
+      'https://images.unsplash.com/photo-1590644365607-1c5a0a1e0a1e?w=600&q=80',
+    ],
+  },
+  manufacturing: {
+    hero: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1920&q=80',
+    programs: [
+      'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
+      'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=800&q=80',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    ],
+    features: [
+      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80',
+      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80',
+      'https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=600&q=80',
+    ],
+  },
+};
+
+function getIndustryImages(industry?: string): { hero: string; programs: string[]; features: string[] } {
+  if (!industry) return INDUSTRY_IMAGES.default;
+  const key = industry.toLowerCase();
+  if (key.includes('tech') || key.includes('software') || key.includes('it')) return INDUSTRY_IMAGES.technology;
+  if (key.includes('health') || key.includes('medical') || key.includes('nursing')) return INDUSTRY_IMAGES.healthcare;
+  if (key.includes('construction') || key.includes('trade') || key.includes('hvac') || key.includes('electrical')) return INDUSTRY_IMAGES.construction;
+  if (key.includes('manufacturing') || key.includes('industrial')) return INDUSTRY_IMAGES.manufacturing;
+  return INDUSTRY_IMAGES.default;
+}
 
 interface SiteConfig {
   template?: {
@@ -55,7 +135,7 @@ interface SiteConfig {
   testimonial?: { quote: string; author: string };
   navigation: Array<{ label: string; href: string }>;
   footer: { description: string; contactEmail: string };
-  meta: { previewId: string; organizationName: string };
+  meta: { previewId: string; organizationName: string; industry?: string };
 }
 
 // Default template colors
@@ -126,6 +206,9 @@ export default function PreviewPage() {
   };
 
   const { branding, homepage, programs, stats, testimonial, navigation, footer } = config;
+
+  // Get industry-specific images
+  const images = getIndustryImages(config.meta?.industry);
 
   // Border radius mapping
   const radiusClass = {
@@ -243,101 +326,124 @@ export default function PreviewPage() {
         </header>
 
         {/* Hero Section */}
-        <section 
-          className="relative overflow-hidden"
-          style={{ 
-            background: style.heroStyle === 'centered' 
-              ? `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`
-              : colors.background,
-          }}
-        >
-          {style.heroStyle === 'centered' ? (
-            // Centered Hero
-            <div className="max-w-4xl mx-auto px-4 py-24 text-center">
-              <h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-black mb-6"
-                style={{ fontFamily: `${fonts.heading}, sans-serif`, color: colors.textOnPrimary }}
+        <section className="relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src={images.hero}
+              alt="Hero background"
+              className="w-full h-full object-cover"
+            />
+            <div 
+              className="absolute inset-0"
+              style={{ 
+                background: `linear-gradient(135deg, ${colors.primary}ee 0%, ${colors.secondary}dd 100%)`,
+              }}
+            />
+          </div>
+          
+          {/* Hero Content */}
+          <div className="relative z-10 max-w-5xl mx-auto px-4 py-24 md:py-32 text-center">
+            <h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight"
+              style={{ fontFamily: `${fonts.heading}, sans-serif`, color: colors.textOnPrimary }}
+            >
+              {homepage.heroTitle}
+            </h1>
+            <p 
+              className="text-xl md:text-2xl mb-10 opacity-90 max-w-3xl mx-auto leading-relaxed"
+              style={{ color: colors.textOnPrimary }}
+            >
+              {homepage.heroSubtitle}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                className={`px-8 py-4 font-bold text-lg transition-all hover:scale-105 hover:shadow-xl ${buttonRadius}`}
+                style={{ backgroundColor: colors.accent, color: '#ffffff' }}
               >
-                {homepage.heroTitle}
-              </h1>
-              <p 
-                className="text-xl md:text-2xl mb-8 opacity-90 max-w-2xl mx-auto"
-                style={{ color: colors.textOnPrimary }}
+                {homepage.heroCtaText}
+                <ArrowRight className="inline-block ml-2 w-5 h-5" />
+              </button>
+              <button
+                className={`px-8 py-4 font-bold text-lg border-2 transition-all hover:bg-white/20 ${buttonRadius}`}
+                style={{ borderColor: 'rgba(255,255,255,0.5)', color: colors.textOnPrimary, backgroundColor: 'rgba(255,255,255,0.1)' }}
               >
-                {homepage.heroSubtitle}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  className={`px-8 py-4 font-bold text-lg transition-transform hover:scale-105 ${buttonRadius}`}
-                  style={{ backgroundColor: colors.accent, color: '#ffffff' }}
-                >
-                  {homepage.heroCtaText}
-                  <ArrowRight className="inline-block ml-2 w-5 h-5" />
-                </button>
-                <button
-                  className={`px-8 py-4 font-bold text-lg border-2 transition-colors hover:bg-white/10 ${buttonRadius}`}
-                  style={{ borderColor: 'rgba(255,255,255,0.3)', color: colors.textOnPrimary }}
-                >
-                  Learn More
-                </button>
-              </div>
+                Watch Video
+                <Play className="inline-block ml-2 w-5 h-5" />
+              </button>
             </div>
-          ) : (
-            // Split Hero
-            <div className="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 
-                  className="text-4xl md:text-5xl font-black mb-6"
-                  style={{ fontFamily: `${fonts.heading}, sans-serif`, color: colors.text }}
-                >
-                  {homepage.heroTitle}
-                </h1>
-                <p className="text-xl mb-8" style={{ color: colors.textMuted }}>
-                  {homepage.heroSubtitle}
-                </p>
-                <button
-                  className={`px-8 py-4 font-bold text-lg transition-transform hover:scale-105 ${buttonRadius}`}
-                  style={{ backgroundColor: colors.primary, color: colors.textOnPrimary }}
-                >
-                  {homepage.heroCtaText}
-                  <ArrowRight className="inline-block ml-2 w-5 h-5" />
-                </button>
-              </div>
-              <div 
-                className={`aspect-video flex items-center justify-center ${radiusClass}`}
-                style={{ backgroundColor: colors.surface }}
-              >
-                <Play className="w-16 h-16" style={{ color: colors.primary }} />
-              </div>
-            </div>
-          )}
+          </div>
         </section>
 
         {/* Stats Section */}
         {stats && (
-          <section className="py-12 border-y" style={{ backgroundColor: colors.surface, borderColor: colors.border }}>
+          <section className="py-16" style={{ backgroundColor: colors.background }}>
             <div className="max-w-6xl mx-auto px-4">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                  <p className="text-4xl font-black" style={{ color: colors.primary }}>{stats.students}+</p>
-                  <p style={{ color: colors.textMuted }}>Students Trained</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="text-center p-6">
+                  <div 
+                    className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: `${colors.primary}15` }}
+                  >
+                    <Users className="w-8 h-8" style={{ color: colors.primary }} />
+                  </div>
+                  <p className="text-4xl font-black mb-1" style={{ color: colors.primary }}>{stats.students}+</p>
+                  <p className="font-medium" style={{ color: colors.textMuted }}>Students Trained</p>
                 </div>
-                <div>
-                  <p className="text-4xl font-black" style={{ color: colors.primary }}>{stats.completionRate}</p>
-                  <p style={{ color: colors.textMuted }}>Completion Rate</p>
+                <div className="text-center p-6">
+                  <div 
+                    className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: `${colors.accent}15` }}
+                  >
+                    <Trophy className="w-8 h-8" style={{ color: colors.accent }} />
+                  </div>
+                  <p className="text-4xl font-black mb-1" style={{ color: colors.primary }}>{stats.completionRate}</p>
+                  <p className="font-medium" style={{ color: colors.textMuted }}>Completion Rate</p>
                 </div>
-                <div>
-                  <p className="text-4xl font-black" style={{ color: colors.primary }}>{stats.employers}+</p>
-                  <p style={{ color: colors.textMuted }}>Partner Employers</p>
+                <div className="text-center p-6">
+                  <div 
+                    className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: `${colors.secondary}15` }}
+                  >
+                    <Briefcase className="w-8 h-8" style={{ color: colors.secondary }} />
+                  </div>
+                  <p className="text-4xl font-black mb-1" style={{ color: colors.primary }}>{stats.employers}+</p>
+                  <p className="font-medium" style={{ color: colors.textMuted }}>Partner Employers</p>
                 </div>
-                <div>
-                  <p className="text-4xl font-black" style={{ color: colors.primary }}>{stats.rating}</p>
-                  <p style={{ color: colors.textMuted }}>Student Rating</p>
+                <div className="text-center p-6">
+                  <div 
+                    className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: `${colors.primary}15` }}
+                  >
+                    <Star className="w-8 h-8" style={{ color: colors.primary }} />
+                  </div>
+                  <p className="text-4xl font-black mb-1" style={{ color: colors.primary }}>{stats.rating}</p>
+                  <p className="font-medium" style={{ color: colors.textMuted }}>Student Rating</p>
                 </div>
               </div>
             </div>
           </section>
         )}
+
+        {/* Trusted By Section */}
+        <section className="py-12 border-y" style={{ backgroundColor: colors.surface, borderColor: colors.border }}>
+          <div className="max-w-6xl mx-auto px-4">
+            <p className="text-center text-sm font-medium mb-8 uppercase tracking-wider" style={{ color: colors.textMuted }}>
+              Trusted by leading organizations
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60">
+              {['Company A', 'Company B', 'Company C', 'Company D', 'Company E'].map((company, idx) => (
+                <div 
+                  key={`company-${idx}`}
+                  className="text-2xl font-bold"
+                  style={{ color: colors.textMuted }}
+                >
+                  {company}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Features Section */}
         <section className="py-20 px-4" style={{ backgroundColor: colors.background }}>
@@ -348,7 +454,7 @@ export default function PreviewPage() {
             >
               Why Choose Us
             </h2>
-            <p className="text-center mb-12 max-w-2xl mx-auto" style={{ color: colors.textMuted }}>
+            <p className="text-center mb-16 max-w-2xl mx-auto text-lg" style={{ color: colors.textMuted }}>
               We provide everything you need to succeed in your career journey.
             </p>
             <div className="grid md:grid-cols-3 gap-8">
@@ -358,26 +464,40 @@ export default function PreviewPage() {
                 return (
                   <div 
                     key={`feature-${idx}`} 
-                    className={`p-8 text-center transition-transform hover:-translate-y-1 ${radiusClass}`}
+                    className={`group overflow-hidden transition-all hover:-translate-y-2 hover:shadow-xl ${radiusClass}`}
                     style={{ 
-                      backgroundColor: style.cardStyle === 'elevated' ? colors.background : colors.surface,
-                      boxShadow: style.cardStyle === 'elevated' ? '0 4px 20px rgba(0,0,0,0.08)' : 'none',
-                      border: style.cardStyle === 'bordered' ? `1px solid ${colors.border}` : 'none',
+                      backgroundColor: colors.background,
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+                      border: `1px solid ${colors.border}`,
                     }}
                   >
-                    <div 
-                      className={`w-16 h-16 flex items-center justify-center mx-auto mb-4 ${radiusClass}`}
-                      style={{ backgroundColor: `${colors.primary}15` }}
-                    >
-                      <Icon className="w-8 h-8" style={{ color: colors.primary }} />
+                    {/* Feature Image */}
+                    <div className="relative h-40 overflow-hidden">
+                      <img 
+                        src={images.features[idx % images.features.length]}
+                        alt={feature.title}
+                        className="w-full h-full object-cover transition-transform group-hover:scale-110"
+                      />
+                      <div 
+                        className="absolute inset-0"
+                        style={{ background: `linear-gradient(to top, ${colors.background}, transparent)` }}
+                      />
+                      <div 
+                        className={`absolute bottom-4 left-4 w-12 h-12 flex items-center justify-center ${radiusClass}`}
+                        style={{ backgroundColor: colors.primary }}
+                      >
+                        <Icon className="w-6 h-6" style={{ color: colors.textOnPrimary }} />
+                      </div>
                     </div>
-                    <h3 
-                      className="text-xl font-bold mb-2"
-                      style={{ fontFamily: `${fonts.heading}, sans-serif`, color: colors.text }}
-                    >
-                      {feature.title}
-                    </h3>
-                    <p style={{ color: colors.textMuted }}>{feature.description}</p>
+                    <div className="p-6">
+                      <h3 
+                        className="text-xl font-bold mb-2"
+                        style={{ fontFamily: `${fonts.heading}, sans-serif`, color: colors.text }}
+                      >
+                        {feature.title}
+                      </h3>
+                      <p style={{ color: colors.textMuted }}>{feature.description}</p>
+                    </div>
                   </div>
                 );
               })}
@@ -401,38 +521,54 @@ export default function PreviewPage() {
               {programs.map((program, idx) => (
                 <div 
                   key={`program-${idx}`}
-                  className={`overflow-hidden transition-transform hover:-translate-y-1 ${radiusClass}`}
+                  className={`overflow-hidden transition-all hover:-translate-y-2 hover:shadow-2xl ${radiusClass}`}
                   style={{ 
                     backgroundColor: colors.background,
                     boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
                   }}
                 >
-                  <div className="h-2" style={{ backgroundColor: colors.primary }} />
-                  <div className="p-6">
+                  {/* Program Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={images.programs[idx % images.programs.length]}
+                      alt={program.name}
+                      className="w-full h-full object-cover transition-transform hover:scale-110"
+                    />
+                    <div 
+                      className="absolute inset-0"
+                      style={{ background: `linear-gradient(to top, ${colors.primary}40, transparent)` }}
+                    />
                     <span 
-                      className={`inline-block px-3 py-1 text-xs font-semibold mb-3 ${radiusClass}`}
-                      style={{ backgroundColor: `${colors.accent}20`, color: colors.accent }}
+                      className={`absolute top-4 left-4 px-3 py-1 text-xs font-bold ${radiusClass}`}
+                      style={{ backgroundColor: colors.accent, color: '#ffffff' }}
                     >
                       {program.level}
                     </span>
+                  </div>
+                  <div className="p-6">
                     <h3 
                       className="text-xl font-bold mb-2"
                       style={{ fontFamily: `${fonts.heading}, sans-serif`, color: colors.text }}
                     >
                       {program.name}
                     </h3>
-                    <p className="mb-4" style={{ color: colors.textMuted }}>{program.description}</p>
-                    <div className="flex items-center gap-4 text-sm" style={{ color: colors.textMuted }}>
+                    <p className="mb-4 line-clamp-2" style={{ color: colors.textMuted }}>{program.description}</p>
+                    <div className="flex items-center justify-between text-sm mb-4" style={{ color: colors.textMuted }}>
                       <span className="flex items-center gap-1">
                         <Clock className="w-4 h-4" />
                         {program.duration}
                       </span>
+                      <span className="flex items-center gap-1">
+                        <Users className="w-4 h-4" />
+                        Open Enrollment
+                      </span>
                     </div>
                     <button
-                      className={`w-full mt-4 py-3 font-semibold transition-colors hover:opacity-90 ${radiusClass}`}
+                      className={`w-full py-3 font-semibold transition-all hover:opacity-90 ${radiusClass}`}
                       style={{ backgroundColor: colors.primary, color: colors.textOnPrimary }}
                     >
                       Learn More
+                      <ArrowRight className="inline-block ml-2 w-4 h-4" />
                     </button>
                   </div>
                 </div>
