@@ -108,7 +108,6 @@ const NAV_ITEMS = [
       { name: 'Events', href: '/events' },
       { name: 'Webinars', href: '/webinars' },
       { name: 'Support', href: '/support' },
-      { name: 'Downloads', href: '/downloads' },
     ]
   },
 ];

@@ -76,7 +76,6 @@ export function HubNavigation() {
       { name: 'Support Services', href: '/support', description: 'Barrier removal & assistance' },
       { name: 'Help Center', href: '/help', description: 'Get support' },
       { name: 'Documentation', href: '/docs', description: 'Platform documentation' },
-      { name: 'Downloads', href: '/downloads', description: 'Download resources' },
       { name: 'Forms', href: '/forms', description: 'Access forms' },
       { name: 'Grants & Funding', href: '/grants', description: 'Financial assistance' },
       { name: 'Search', href: '/search', description: 'Search everything' },

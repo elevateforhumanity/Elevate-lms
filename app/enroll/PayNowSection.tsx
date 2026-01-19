@@ -1,64 +1,74 @@
 'use client';
 
 import React from 'react';
-
+import Link from 'next/link';
 import { useState } from 'react';
 import { AffirmPaymentButton } from '@/components/payments/AffirmPaymentButton';
 
+// Programs with WIOA/WRG funding eligibility are marked - those students should apply for free training first
 const PROGRAMS = [
   {
     id: 'barber',
     label: 'Barber Apprenticeship',
     slug: 'barber-apprentice',
     price: 4980,
+    wioaEligible: false, // Apprenticeship - self-pay only
   },
   {
     id: 'dsp',
     label: 'Direct Support Professional (DSP)',
     slug: 'direct-support-professional',
     price: 4325,
-  },
-  {
-    id: 'hvac',
-    label: 'HVAC Technician',
-    slug: 'hvac-technician',
-    price: 5000,
+    wioaEligible: false,
   },
   {
     id: 'cpr',
     label: 'CPR Certification',
     slug: 'cpr-certification',
     price: 575,
-  },
-  {
-    id: 'ehst',
-    label: 'Emergency Health & Safety Tech',
-    slug: 'emergency-health-safety',
-    price: 4950,
+    wioaEligible: false,
   },
   {
     id: 'esth',
-    label: 'Professional Esthetician',
+    label: 'Esthetician Apprenticeship',
     slug: 'professional-esthetician',
     price: 4575,
+    wioaEligible: false, // Apprenticeship - self-pay only
+  },
+  {
+    id: 'cosmo',
+    label: 'Cosmetology Apprenticeship',
+    slug: 'cosmetology-apprenticeship',
+    price: 4980,
+    wioaEligible: false, // Apprenticeship - self-pay only
+  },
+  {
+    id: 'nail',
+    label: 'Nail Technician Apprenticeship',
+    slug: 'nail-technician-apprenticeship',
+    price: 2980,
+    wioaEligible: false, // Apprenticeship - self-pay only
   },
   {
     id: 'prc',
     label: 'Peer Recovery Coach',
     slug: 'peer-recovery-coach',
     price: 4750,
+    wioaEligible: false,
   },
   {
     id: 'tax',
     label: 'Tax Prep & Financial Services',
     slug: 'tax-prep-financial',
     price: 4950,
+    wioaEligible: false,
   },
   {
     id: 'biz',
     label: 'Business Startup & Marketing',
     slug: 'business-startup-marketing',
     price: 4550,
+    wioaEligible: false,
   },
 ];
 
@@ -107,11 +117,21 @@ export function PayNowSection() {
   return (
     <section className="rounded-2xl border-2 border-blue-500 bg-white p-8 shadow-sm">
       <h2 className="text-3xl font-bold text-blue-700 mb-4">
-        Pay Now &amp; Start
+        Self-Pay Programs
       </h2>
-      <p className="text-lg text-black mb-6">
-        Choose your program and complete your payment to start right away.
+      <p className="text-lg text-black mb-4">
+        These programs are for self-pay students. Choose your program and complete payment to start.
       </p>
+      
+      {/* WIOA Notice */}
+      <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+        <p className="text-green-800 text-sm">
+          <strong>Looking for FREE training?</strong> Programs like HVAC, CNA, Medical Assistant, Phlebotomy, CDL, Welding, and IT are <strong>100% free</strong> for eligible Indiana residents through WIOA/WRG funding.{' '}
+          <Link href="/apply" className="text-green-700 underline font-semibold hover:text-green-900">
+            Check your eligibility →
+          </Link>
+        </p>
+      </div>
 
       {/* Program select */}
       <div className="mb-6">

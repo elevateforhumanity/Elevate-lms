@@ -100,7 +100,6 @@ const footerSections = [
       { name: 'Community', href: '/community' },
       { name: 'Alumni', href: '/alumni' },
       { name: 'Forums', href: '/forums' },
-      { name: 'Downloads', href: '/downloads' },
     ],
   },
   {

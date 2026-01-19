@@ -628,47 +628,47 @@ export default function HomePage() {
       {/* Why Choose Us - Compact */}
       <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 bg-slate-100">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            <div className="flex items-center gap-2 bg-white rounded-lg p-3">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-xs">$0</span>
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div className="flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4">
+              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-bold text-sm sm:text-xs">$0</span>
               </div>
-              <div>
-                <p className="font-semibold text-slate-900 text-sm">Free Training</p>
-                <p className="text-xs text-slate-500">WIOA funded</p>
+              <div className="min-w-0">
+                <p className="font-semibold text-slate-900 text-sm truncate">Free Training</p>
+                <p className="text-xs text-slate-500 truncate">WIOA funded</p>
               </div>
             </div>
-            <div className="flex items-center gap-2 bg-white rounded-lg p-3">
-              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4">
+              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <div>
-                <p className="font-semibold text-slate-900 text-xs">Job Placement</p>
-                <p className="text-xs text-slate-500">Career support</p>
+              <div className="min-w-0">
+                <p className="font-semibold text-slate-900 text-sm truncate">Job Placement</p>
+                <p className="text-xs text-slate-500 truncate">Career support</p>
               </div>
             </div>
-            <div className="flex items-center gap-2 bg-white rounded-lg p-3">
-              <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4">
+              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <div>
-                <p className="font-semibold text-slate-900 text-xs">Fast-Track</p>
-                <p className="text-xs text-slate-500">8-16 weeks</p>
+              <div className="min-w-0">
+                <p className="font-semibold text-slate-900 text-sm truncate">Fast-Track</p>
+                <p className="text-xs text-slate-500 truncate">8-16 weeks</p>
               </div>
             </div>
-            <div className="flex items-center gap-2 bg-white rounded-lg p-3">
-              <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4">
+              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <div>
-                <p className="font-semibold text-slate-900 text-xs">Credentials</p>
-                <p className="text-xs text-slate-500">Certifications</p>
+              <div className="min-w-0">
+                <p className="font-semibold text-slate-900 text-sm truncate">Credentials</p>
+                <p className="text-xs text-slate-500 truncate">Certifications</p>
               </div>
             </div>
           </div>
@@ -941,7 +941,7 @@ export default function HomePage() {
       </section>
 
       {/* Sticky Mobile CTA - Auth-Aware */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 p-3 shadow-lg">
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 p-3 pb-4 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
         <div className="flex gap-2">
           {user && activeEnrollment ? (
             <>
@@ -993,7 +993,7 @@ export default function HomePage() {
       </div>
 
       {/* Spacer for sticky CTA on mobile */}
-      <div className="h-16 md:hidden"></div>
+      <div className="h-20 md:hidden"></div>
 
     </div>
   );
