@@ -1,22 +1,25 @@
-// @ts-nocheck
 import { NextRequest, NextResponse } from 'next/server';
-
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
-export const maxDuration = 60;
 import { jotFormIntegration } from '@/lib/integrations/jotform';
 import { drakeIntegration } from '@/lib/integrations/drake-software';
 import { createClient } from '@supabase/supabase-js';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+
+interface SyncJotformBody {
+  formId?: string;
+}
 
 /**
  * Manually sync JotForm submissions
  */
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const body: SyncJotformBody = await request.json();
     const formId = body.formId || process.env.JOTFORM_FORM_ID;
 
     if (!formId) {
