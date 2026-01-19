@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * @deprecated Use @/lib/licensing instead. This module will be removed in a future version.
  * 

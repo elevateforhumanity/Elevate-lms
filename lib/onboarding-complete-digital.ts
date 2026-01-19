@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Complete Digital Onboarding System
  * All forms, payroll, and documents fully digital

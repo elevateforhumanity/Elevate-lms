@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Database Queries for Programs
  * Centralized queries for programs table

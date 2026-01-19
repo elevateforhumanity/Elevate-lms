@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Partner LMS Payment Integration
  * Handles Stripe payments for paid certifications

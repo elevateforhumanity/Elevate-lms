@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Native Features - Camera, Biometrics, Geolocation, etc.
  */

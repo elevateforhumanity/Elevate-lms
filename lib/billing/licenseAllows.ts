@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { OrgConfig } from '@/lib/org/getOrgConfig';
 
 /**

@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Database Schema Guard
  * Verifies columns exist before running queries

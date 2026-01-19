@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Monitoring and Analytics for API Routes
  * Tracks auth failures, admin actions, rate limits, and errors

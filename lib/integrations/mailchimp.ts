@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import mailchimp from '@mailchimp/mailchimp_marketing';
 import * as crypto from 'crypto';
 

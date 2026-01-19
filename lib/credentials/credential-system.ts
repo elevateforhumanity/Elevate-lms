@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Comprehensive Credential System
  * Integrates with all partner platforms and credential providers

@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * TUITION WEBHOOK HANDLER
  * 

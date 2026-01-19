@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';

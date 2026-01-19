@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { getProgramById } from "@/lms-data/programs";
 import { createProgramEnrollment, updateEnrollmentStatus } from "@/lib/db/enrollments";
 import type { FundingSource } from "@/types/enrollment";

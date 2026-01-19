@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 // lib/partners/certiport.ts
 // Certiport (Pearson VUE) API Integration
 // Microsoft Office Specialist, IT Specialist, Entrepreneurship certifications

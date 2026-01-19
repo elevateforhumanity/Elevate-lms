@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { createClient } from '@/lib/supabase/server';
 
 export interface DeploymentStatus {

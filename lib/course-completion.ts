@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 // lib/course-completion.ts
 // Course completion logic including external partner modules
 

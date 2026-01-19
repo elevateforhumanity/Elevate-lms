@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { FundingBadge } from '@/components/programs/FundingBadge';
 import PathwayDisclosure from '@/components/PathwayDisclosure';

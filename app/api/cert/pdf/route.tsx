@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
 import { createRouteHandlerClient } from '@/lib/auth';

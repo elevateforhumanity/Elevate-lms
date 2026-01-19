@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 import { generateInternalMetadata } from '@/lib/seo/metadata';

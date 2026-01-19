@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Discussion Forums System
  * Threaded discussions with moderation tools

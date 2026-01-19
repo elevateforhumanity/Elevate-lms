@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Elevate For Humanity - Career training and workforce development',
 };
 
-// @ts-nocheck
+
 import { createClient } from '@/lib/supabase/server';
 export const dynamic = 'force-dynamic';
 import { redirect } from 'next/navigation';

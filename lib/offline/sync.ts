@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 // Background sync manager for offline data
 import { getDB } from './db';
 export class SyncManager {

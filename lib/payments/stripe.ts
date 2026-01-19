@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import Stripe from 'stripe';
 
 // Initialize Stripe with secret key
