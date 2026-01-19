@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import { PathwayBlock } from '@/components/PathwayBlock';
+import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import { Phone, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 // Pathway slug to program name mapping
@@ -189,12 +190,7 @@ export default function ApplyPage() {
         </p>
         
         {/* Pathway Disclosure */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
-          <p className="text-sm text-blue-800">
-            <strong>Career Pathway Disclosure:</strong> Elevate for Humanity delivers all training through a structured career pathway. 
-            Program enrollment, training, and placement are contingent upon eligibility, funding availability, and employer participation.
-          </p>
-        </div>
+        <PathwayDisclosure variant="full" className="mb-8" />
 
         {/* Error Message */}
         {error && (

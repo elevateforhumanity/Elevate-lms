@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import VoiceoverWithMusic from '@/components/VoiceoverWithMusic';
+import { PathwayBlock } from '@/components/PathwayBlock';
+import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import { useEffect, useState, useRef } from 'react';
 import { LiveOutcomesDashboard } from '@/components/outcomes/LiveOutcomesDashboard';
 
@@ -474,6 +476,9 @@ export default function HomePage() {
               Check If You Qualify
             </Link>
           </div>
+          
+          {/* Formal Pathway Disclosure */}
+          <PathwayDisclosure variant="compact" className="mt-8" />
         </div>
       </section>
 

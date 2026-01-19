@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FundingBadge } from './FundingBadge';
+import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 
 export type OutcomeItem = string | { title: string; description: string };
 
@@ -243,14 +244,22 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to get started?
           </h2>
-          <p className="text-gray-400 mb-8">
-            Free training for eligible Indiana residents.
+          <p className="text-gray-400 mb-6">
+            {program.fundingType === 'funded' 
+              ? 'Free training for eligible Indiana residents.'
+              : 'Self-pay program with payment options available.'}
           </p>
+          
+          {/* Pathway Disclosure above CTA */}
+          <div className="mb-8">
+            <PathwayDisclosure variant="compact" className="bg-gray-800 border-gray-700" />
+          </div>
+          
           <Link
             href="/apply"
             className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 text-sm font-medium rounded-full hover:bg-gray-100 transition-colors"
           >
-            Apply Now
+            Start Eligibility & Choose This Program
           </Link>
         </div>
       </section>

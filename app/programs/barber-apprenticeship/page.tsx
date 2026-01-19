@@ -16,7 +16,7 @@ const programData: ProgramData = {
   title: 'Barber Apprenticeship',
   category: 'Skilled Trades Programs',
   categoryHref: '/programs/skilled-trades',
-  description: 'Indiana State Board approved apprenticeship program. Complete 2,000 hours of hands-on training under a licensed barber sponsor. Prepare for your Indiana Barber License.',
+  description: 'Indiana State Board approved apprenticeship program. Complete 2,000 hours of hands-on training under a licensed barber sponsor. Elevate for Humanity serves as the Program Administrator, connecting apprentices with licensed barber sponsors and tracking hours toward licensure.',
   image: '/images/programs/barber.jpg',
   duration: '12-18 months',
   tuition: '$4,980',
@@ -25,8 +25,9 @@ const programData: ProgramData = {
   demand: 'High',
   highlights: [
     '2,000 hours hands-on training',
-    'Licensed barber mentor',
+    'Licensed barber sponsor/mentor',
     'State board exam prep',
+    'Elevate = Program Administrator',
   ],
   skills: [
     'Haircutting techniques (clipper, shear, razor)',

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { PathwayBlock } from '@/components/PathwayBlock';
+import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 
 
 
@@ -157,6 +158,13 @@ export default function ProgramsPage() {
       {/* Pathway Block */}
       <PathwayBlock variant="dark" />
 
+      {/* Pathway Disclosure */}
+      <section className="py-8 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <PathwayDisclosure variant="full" />
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-10 bg-blue-600">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
@@ -164,7 +172,7 @@ export default function ProgramsPage() {
             href="/apply"
             className="inline-block bg-white text-blue-600 px-8 py-3 font-semibold rounded-full hover:bg-blue-50 transition-colors"
           >
-            Check Eligibility & Apply
+            Start Eligibility & Choose This Program
           </Link>
         </div>
       </section>

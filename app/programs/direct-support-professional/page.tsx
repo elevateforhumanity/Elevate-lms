@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Heart, CheckCircle, Users, Award, Clock, DollarSign } from 'lucide-react';
 import { CompactHero } from '@/components/heroes/CompactHero';
+import { FundingBadge } from '@/components/programs/FundingBadge';
+import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 
 export const dynamic = 'force-dynamic';
 
@@ -56,9 +58,16 @@ export default async function Page() {
         }}
         headline="Direct Support Professional: Make a difference in people's lives"
         description="100% free DSP training. Help individuals with disabilities live independently and participate fully in their communities. 4-6 weeks, job placement included."
-        primaryCTA={{ text: 'Apply Now', href: '/apply' }}
-        secondaryCTA={{ text: 'Talk to an Advisor', href: '/contact' }}
+        primaryCTA={{ text: 'Start Eligibility & Choose This Program', href: '/apply' }}
+        secondaryCTA={{ text: 'Questions? Call Us', href: 'tel:317-314-3757' }}
       />
+
+      {/* Funding Badge */}
+      <section className="bg-gray-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <FundingBadge type="funded" />
+        </div>
+      </section>
 
       {/* Program Overview */}
       <section className="max-w-7xl mx-auto px-4 py-16">
@@ -238,6 +247,13 @@ export default async function Page() {
         </div>
       </section>
 
+      {/* Pathway Disclosure */}
+      <section className="bg-gray-50 py-8">
+        <div className="max-w-4xl mx-auto px-4">
+          <PathwayDisclosure variant="full" />
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-brand-blue-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -245,20 +261,20 @@ export default async function Page() {
             Ready to Start Your DSP Career?
           </h2>
           <p className="text-xl mb-8">
-            Apply today and begin training in weeks, not months.
+            Check eligibility and begin training in weeks, not months.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/apply"
               className="px-8 py-4 bg-white text-blue-600 hover:bg-gray-100 font-bold rounded-lg transition-all text-center"
             >
-              Apply Now
+              Start Eligibility & Choose This Program
             </Link>
             <Link
-              href="/contact"
+              href="tel:317-314-3757"
               className="px-8 py-4 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-lg transition-all text-center border-2 border-white"
             >
-              Contact Us
+              Questions? Call Us
             </Link>
           </div>
         </div>
