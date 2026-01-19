@@ -65,12 +65,8 @@ export function HubNavigation() {
       { name: 'White Label', href: '/white-label', description: 'White-label licensing' },
     ],
     community: [
-      { name: 'Blog', href: '/blog', description: 'Latest news & updates' },
-      { name: 'Forums', href: '/forums', description: 'Community discussions' },
-      { name: 'Events', href: '/events', description: 'Upcoming events' },
-      { name: 'Webinars', href: '/webinars', description: 'Online workshops' },
-      { name: 'Reels', href: '/reels', description: 'Video content' },
       { name: 'Success Stories', href: '/success-stories', description: 'Student success' },
+      { name: 'Events', href: '/events', description: 'Upcoming events' },
     ],
     resources: [
       { name: 'Support Services', href: '/support', description: 'Barrier removal & assistance' },

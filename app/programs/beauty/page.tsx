@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 const beautyPrograms = [
   {
     title: 'Barber Apprenticeship',
-    description: 'Complete 1,500-hour apprenticeship to become a licensed barber in Indiana. Learn cutting, styling, shaving, and business skills.',
+    description: 'Complete 2,000-hour apprenticeship to become a licensed barber in Indiana. Learn cutting, styling, shaving, and business skills.',
     href: '/programs/barber-apprenticeship',
     image: '/hero-images/barber-hero.jpg',
     hours: 1500,

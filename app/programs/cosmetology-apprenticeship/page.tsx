@@ -313,7 +313,7 @@ export default async function CosmetologyApprenticeshipPage() {
               </h3>
               <p className="text-slate-700">
                 Cosmetology covers hair styling, coloring, chemical treatments, skincare, and nail services. 
-                Barbering focuses on hair cutting, shaving, and beard trimming. Cosmetology requires 1,500 hours; barbering requires 2,000 hours in Indiana 
+                Barbering focuses on hair cutting, shaving, and beard trimming. Cosmetology requires 1,500 hours; barbering requires 2,000 hours in Indiana. 
                 but have different curricula and licensing exams.
               </p>
             </div>

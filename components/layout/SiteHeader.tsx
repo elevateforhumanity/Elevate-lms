@@ -103,10 +103,8 @@ const NAV_ITEMS = [
     name: 'Resources', 
     href: '/resources',
     subItems: [
-      { name: 'Blog', href: '/blog' },
-      { name: 'News', href: '/news' },
+      { name: 'FAQ', href: '/faq' },
       { name: 'Events', href: '/events' },
-      { name: 'Webinars', href: '/webinars' },
       { name: 'Support', href: '/support' },
     ]
   },

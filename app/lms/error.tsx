@@ -66,7 +66,7 @@ export default function LMSError({
         <div className="mt-6 pt-6 border-t border-gray-200">
           <p className="text-sm text-black">
             Technical issues?{' '}
-            <a href="mailto:Elevate4humanityedu@gmail.com" className="text-blue-600 hover:underline">
+            <a href="mailto:info@elevateforhumanity.org" className="text-blue-600 hover:underline">
               Contact Support
             </a>
           </p>

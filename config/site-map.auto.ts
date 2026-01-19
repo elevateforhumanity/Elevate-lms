@@ -476,7 +476,7 @@ export const siteMapSections: SiteMapSection[] = [
       { label: "Course", href: "/enroll/course" },
       { label: "Create", href: "/program-holder/courses/create" },
       { label: "Create Course", href: "/create-course" },
-      { label: "Curriculumupload", href: "/curriculumupload" },
+
       { label: "Dashboard", href: "/board/dashboard" },
       { label: "Dashboard", href: "/employer/dashboard" },
       { label: "Dashboard", href: "/partner/dashboard" },

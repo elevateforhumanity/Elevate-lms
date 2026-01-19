@@ -145,7 +145,7 @@ export default async function BarberProgramPage() {
               <div className="text-gray-600">Tuition</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-purple-600">1,500</div>
+              <div className="text-3xl font-bold text-purple-600">2,000</div>
               <div className="text-gray-600">Hours Required</div>
             </div>
             <div>
