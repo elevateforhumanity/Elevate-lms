@@ -138,7 +138,7 @@ export function SupersonicFooter() {
                   >
                     (317) 314-3757
                   </a>
-                  <div className="text-xs text-black">Mon-Fri 9am-7pm</div>
+                  <div className="text-xs text-gray-300">Mon-Fri 9am-7pm</div>
                 </div>
               </li>
               <li className="flex items-start gap-3">
@@ -155,7 +155,7 @@ export function SupersonicFooter() {
                 <div className="text-gray-300">
                   Indianapolis, IN
                   <br />
-                  <span className="text-sm text-black">
+                  <span className="text-sm text-gray-300">
                     Serving all 50 states
                   </span>
                 </div>
@@ -167,32 +167,32 @@ export function SupersonicFooter() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-black">
+            <div className="text-sm text-gray-300">
               © {new Date().getFullYear()} Supersonic Fast Cash. All rights
               reserved.
             </div>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <Link
                 href="/privacy"
-                className="text-black hover:text-red-400 transition-colors"
+                className="text-gray-300 hover:text-red-400 transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-black hover:text-red-400 transition-colors"
+                className="text-gray-300 hover:text-red-400 transition-colors"
               >
                 Terms of Service
               </Link>
               <Link
                 href="/supersonic-fast-cash/sub-office-agreement"
-                className="text-black hover:text-red-400 transition-colors"
+                className="text-gray-300 hover:text-red-400 transition-colors"
               >
                 Sub-Office Agreement
               </Link>
             </div>
           </div>
-          <div className="text-center mt-6 text-xs text-black">
+          <div className="text-center mt-6 text-xs text-gray-300">
             Licensed Enrolled Agent (EA) | IRS Authorized Tax Professional |
             PTIN Holder
           </div>
