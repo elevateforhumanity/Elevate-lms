@@ -124,7 +124,7 @@ export default function ProgramsPage() {
       {/* Programs Grid */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {programs.map((program) => (
               <Link
                 key={program.title}
