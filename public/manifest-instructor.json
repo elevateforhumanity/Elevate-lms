@@ -1,0 +1,48 @@
+{
+  "name": "Elevate Teach",
+  "short_name": "Teach",
+  "description": "Instructor portal for managing courses, students, and content",
+  "start_url": "/instructor",
+  "scope": "/instructor",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#7c3aed",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/instructor-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/instructor-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/instructor-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/instructor-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "My Courses",
+      "url": "/instructor/courses"
+    },
+    {
+      "name": "Students",
+      "url": "/instructor/students"
+    }
+  ]
+}

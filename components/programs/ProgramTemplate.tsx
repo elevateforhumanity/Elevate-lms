@@ -76,8 +76,11 @@ export function ProgramTemplate({ program }: { program: Program }) {
 
       {/* AT-A-GLANCE CARDS */}
       <section className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className={`grid gap-6 ${program.clockHours ? 'md:grid-cols-5' : 'md:grid-cols-4'}`}>
           <Card title="Duration" value={program.duration} />
+          {program.clockHours && (
+            <Card title="Clock Hours" value={`${program.clockHours} hrs`} highlight />
+          )}
           <Card title="Format" value={program.delivery} />
           <Card title="Schedule" value={program.schedule} />
           <Card title="Credential" value={program.credential} />
@@ -459,11 +462,15 @@ export function ProgramTemplate({ program }: { program: Program }) {
   );
 }
 
-function Card({ title, value }: { title: string; value: string }) {
+function Card({ title, value, highlight }: { title: string; value: string; highlight?: boolean }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-      <div className="text-sm text-gray-500 mb-2">{title}</div>
-      <div className="text-base font-semibold text-black">{value}</div>
+    <div className={`rounded-xl p-6 shadow-sm ${
+      highlight 
+        ? 'bg-blue-50 border-2 border-blue-200' 
+        : 'bg-white border border-gray-200'
+    }`}>
+      <div className={`text-sm mb-2 ${highlight ? 'text-blue-600 font-medium' : 'text-gray-500'}`}>{title}</div>
+      <div className={`text-base font-semibold ${highlight ? 'text-blue-900' : 'text-black'}`}>{value}</div>
     </div>
   );
 }

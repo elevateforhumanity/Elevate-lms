@@ -10,6 +10,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: 'Instructor Portal | Elevate for Humanity',
   description: 'Manage your courses, students, and teaching materials.',
+  manifest: '/manifest-instructor.json',
 };
 
 const navItems = [

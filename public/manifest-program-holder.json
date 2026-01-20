@@ -1,0 +1,52 @@
+{
+  "name": "Elevate Programs",
+  "short_name": "Programs",
+  "description": "Program holder portal for managing training programs and compliance",
+  "start_url": "/program-holder",
+  "scope": "/program-holder",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#dc2626",
+  "categories": ["education", "business"],
+  "icons": [
+    {
+      "src": "/icons/program-holder-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/program-holder-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/program-holder-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/program-holder-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Programs",
+      "url": "/program-holder/programs"
+    },
+    {
+      "name": "Students",
+      "url": "/program-holder/students"
+    },
+    {
+      "name": "Compliance",
+      "url": "/program-holder/compliance"
+    }
+  ]
+}

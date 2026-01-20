@@ -1,9 +1,17 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: 'Program Holder Portal | Elevate for Humanity',
+  description: 'Manage your training programs, students, and compliance.',
+  manifest: '/manifest-program-holder.json',
+};
+
 import {
   Shield,
   Users,
