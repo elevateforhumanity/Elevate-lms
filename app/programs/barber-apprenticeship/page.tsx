@@ -408,6 +408,54 @@ export default async function BarberApprenticeshipPage() {
         </div>
       </section>
 
+      {/* For Barbershops Section */}
+      <section className="py-16 bg-slate-900 text-white">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="text-center mb-8">
+            <span className="inline-block px-4 py-1 bg-blue-600 text-white text-sm font-bold rounded-full mb-4">
+              For Barbershop Owners
+            </span>
+            <h2 className="text-3xl font-bold mb-4">Host an Apprentice at Your Shop</h2>
+            <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+              Indiana barbershops can become worksite partners and help train the next generation of licensed barbers. We handle the compliance—you provide the mentorship.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-slate-800 p-6 rounded-xl">
+              <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4">
+                <CheckCircle className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-bold text-lg mb-2">Develop Talent</h3>
+              <p className="text-slate-400 text-sm">Train apprentices your way and potentially hire them as licensed barbers.</p>
+            </div>
+            <div className="bg-slate-800 p-6 rounded-xl">
+              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                <CheckCircle className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-bold text-lg mb-2">We Handle Compliance</h3>
+              <p className="text-slate-400 text-sm">USDOL registration, RAPIDS reporting, and related instruction—all managed by us.</p>
+            </div>
+            <div className="bg-slate-800 p-6 rounded-xl">
+              <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
+                <CheckCircle className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-bold text-lg mb-2">Flexible Compensation</h3>
+              <p className="text-slate-400 text-sm">Choose hourly, commission, or hybrid pay models that work for your shop.</p>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/partners/barbershop-apprenticeship"
+              className="inline-flex items-center justify-center rounded-lg bg-blue-600 hover:bg-blue-700 px-8 py-4 text-lg font-bold text-white transition-all"
+            >
+              Learn About Becoming a Partner
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-purple-600">
         <div className="mx-auto max-w-4xl px-6 text-center">
