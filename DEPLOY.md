@@ -6,10 +6,7 @@ Choose your deployment method:
 
 Deploy your own instance in minutes:
 
-### Vercel
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/elevateforhumanity/Elevate-lms&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY,NEXTAUTH_SECRET,STRIPE_SECRET_KEY,STRIPE_WEBHOOK_SECRET&envDescription=Required%20environment%20variables&envLink=https://github.com/elevateforhumanity/Elevate-lms/blob/main/docs/DEPLOYMENT-OPTIONS.md&project-name=elevate-lms&repository-name=elevate-lms)
-
-### Netlify
+### Netlify (Recommended)
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/elevateforhumanity/Elevate-lms)
 
 ### Railway
