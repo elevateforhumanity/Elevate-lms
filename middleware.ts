@@ -13,17 +13,38 @@ const SUPERSONIC_DOMAIN = 'supersonicfastermoney.com';
 const PLATFORM_SUBDOMAIN = 'platform.elevateforhumanity.org';
 
 // Routes that require authentication and specific roles
+// Note: Landing pages (e.g., /admin, /staff-portal) are PUBLIC
+// Only /dashboard and data routes within each portal are protected
 const PROTECTED_ROUTES: Record<string, string[]> = {
-  '/admin': ['admin', 'super_admin'],
-  '/staff-portal': ['staff', 'admin', 'super_admin', 'advisor'],
-  '/instructor': ['instructor', 'admin', 'super_admin'],
+  '/admin/dashboard': ['admin', 'super_admin'],
+  '/admin/users': ['admin', 'super_admin'],
+  '/admin/settings': ['admin', 'super_admin'],
+  '/staff-portal/dashboard': ['staff', 'admin', 'super_admin', 'advisor'],
+  '/staff-portal/students': ['staff', 'admin', 'super_admin', 'advisor'],
+  '/staff-portal/reports': ['staff', 'admin', 'super_admin', 'advisor'],
+  '/instructor/dashboard': ['instructor', 'admin', 'super_admin'],
+  '/instructor/courses': ['instructor', 'admin', 'super_admin'],
+  '/instructor/students': ['instructor', 'admin', 'super_admin'],
   '/program-holder': ['program_holder', 'admin', 'super_admin'],
   '/workforce-board': ['workforce_board', 'admin', 'super_admin'],
-  '/employer': ['employer', 'admin', 'super_admin'],
+  '/employer-portal/dashboard': ['employer', 'admin', 'super_admin'],
+  '/employer-portal/apprentices': ['employer', 'admin', 'super_admin'],
+  '/partner-portal/dashboard': ['partner', 'admin', 'super_admin'],
+  '/partner-portal/programs': ['partner', 'admin', 'super_admin'],
 };
 
-// Routes that require authentication (any role)
-const AUTH_REQUIRED_ROUTES = ['/student', '/my-courses', '/my-progress', '/settings'];
+// Routes that require authentication (any role) - dashboard/data routes only
+const AUTH_REQUIRED_ROUTES = [
+  '/student-portal/dashboard',
+  '/student-portal/courses',
+  '/student-portal/assignments',
+  '/student-portal/grades',
+  '/student-portal/messages',
+  '/student-portal/certificates',
+  '/my-courses',
+  '/my-progress',
+  '/settings/account',
+];
 
 // Webhook paths that bypass auth entirely (Stripe signature verification handles security)
 // CANONICAL WEBHOOK PATHS (bypass auth)
