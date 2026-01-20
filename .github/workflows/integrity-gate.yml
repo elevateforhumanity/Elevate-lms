@@ -1,0 +1,72 @@
+name: Integrity Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * *" # daily at 06:00 UTC
+
+concurrency:
+  group: integrity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+
+      # Integrity checks - each fails the build if issues found
+      - name: Link integrity check
+        run: npm run integrity:links
+        continue-on-error: false
+
+      - name: Media integrity check
+        run: npm run integrity:media
+        continue-on-error: false
+
+      - name: LMS course integrity check
+        run: npm run integrity:lms
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        continue-on-error: false
+
+      - name: Store product integrity check
+        run: npm run integrity:store
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        continue-on-error: false
+
+      - name: Upload integrity reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integrity-reports
+          path: |
+            reports/link_report.json
+            reports/media_report.json
+            reports/lms_integrity_report.json
+            reports/store_integrity_report.json
+          retention-days: 30
