@@ -119,7 +119,7 @@ export async function POST(req: Request) {
         {
           role: 'system',
           content:
-            assignment.ai_instructors.system_prompt ||
+            (assignment.ai_instructors as any)?.system_prompt ||
             'You are a helpful instructor.',
         },
         ...(history || []).map((msg: any) => ({

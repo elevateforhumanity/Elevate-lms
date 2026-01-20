@@ -7,6 +7,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { generateCertificateNumber, generateCertificatePDF } from "@/lib/certificates/generator";
 
+async function parseBody<T>(request: NextRequest): Promise<T> {
+  return request.json() as Promise<T>;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await parseBody<Record<string, any>>(request);

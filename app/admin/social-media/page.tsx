@@ -61,6 +61,7 @@ export default function SocialMediaPage() {
       name: 'Barber Program Promotion',
       status: 'active',
       frequency: '3x-daily',
+      platforms: ['facebook', 'instagram', 'linkedin'],
       postsScheduled: 90,
       lastPost: '2025-12-07T10:00:00Z',
       nextPost: '2025-12-07T14:00:00Z',
@@ -80,6 +81,7 @@ export default function SocialMediaPage() {
       name: 'WIOA Eligibility Info',
       status: 'paused',
       frequency: 'daily',
+      platforms: ['facebook', 'linkedin'],
       postsScheduled: 30,
       lastPost: '2025-12-06T12:00:00Z',
       nextPost: null,
@@ -209,7 +211,13 @@ export default function SocialMediaPage() {
               connected
               followers="2,847"
             />
-            <PlatformCard color="sky" connected followers="1,234" />
+            <PlatformCard
+              name="Twitter"
+              icon={Share2}
+              color="sky"
+              connected
+              followers="1,234"
+            />
             <PlatformCard
               name="LinkedIn"
               icon={Linkedin}

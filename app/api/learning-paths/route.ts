@@ -7,6 +7,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseServerClient } from "@/lib/supabaseServer";
 import { toError, toErrorMessage } from '@/lib/safe';
 
+async function parseBody<T>(request: NextRequest): Promise<T> {
+  return request.json() as Promise<T>;
+}
+
 export async function GET(request: NextRequest) {
   const supabase = getSupabaseServerClient();
 

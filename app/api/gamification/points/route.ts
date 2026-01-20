@@ -6,6 +6,10 @@ export const maxDuration = 60;
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseServerClient } from "@/lib/supabaseServer";
 
+async function parseBody<T>(request: NextRequest): Promise<T> {
+  return request.json() as Promise<T>;
+}
+
 export async function GET(request: NextRequest) {
   const supabase = getSupabaseServerClient();
 

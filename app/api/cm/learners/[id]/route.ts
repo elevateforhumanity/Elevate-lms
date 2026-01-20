@@ -94,18 +94,18 @@ export async function GET(
           : 0;
 
       // Check for certificate
+      const programs = enrollment.programs as any;
       const { data: certificate } = await supabaseAdmin
         .from('certificates')
         .select('certificate_url')
         .eq('user_id', learnerId)
-        .eq('program_id', (enrollment.programs as string)?.id)
+        .eq('program_id', programs?.id)
         .maybeSingle();
 
       enrollmentDetails.push({
         id: enrollment.id,
-        program_title:
-          (enrollment.programs as string)?.title || 'Unknown Program',
-        program_slug: (enrollment.programs as string)?.slug || '',
+        program_title: programs?.title || 'Unknown Program',
+        program_slug: programs?.slug || '',
         status: enrollment.status,
         funding_type: enrollment.funding_type,
         started_at: enrollment.started_at,

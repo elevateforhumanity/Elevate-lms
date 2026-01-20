@@ -29,8 +29,8 @@ export async function POST(req: NextRequest) {
 
     // Safety: only keep role/content
     const messages = body.messages.map((item: any) => ({
-      role: m.role === "user" ? "user" : "assistant",
-      content: String(m.content || "")
+      role: item.role === "user" ? "user" : "assistant",
+      content: String(item.content || "")
     }));
 
     const systemPrompt = `

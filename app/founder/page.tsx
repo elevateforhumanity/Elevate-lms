@@ -51,14 +51,34 @@ export default function FounderPage() {
 
             {/* Founder Statement */}
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold text-black mb-6">
-                Leadership Team
+              <h2 className="text-3xl font-bold text-black mb-2">
+                Elizabeth Greene
               </h2>
               <p className="text-xl text-brand-orange-600 font-semibold mb-6">
-                Founder & Executive Leadership
+                Founder & Chief Executive Officer
               </p>
 
-              <h3 className="text-2xl font-bold text-black mb-4">Our Story</h3>
+              <p className="text-lg text-black leading-relaxed mb-6">
+                Elizabeth Greene is a transformational leader, workforce development pioneer, and social entrepreneur who has dedicated her career to creating pathways out of poverty and into prosperity. As Founder and Chief Executive Officer of Elevate for Humanity Technical & Career Institute, she has built one of Indiana&apos;s most innovative and compliant workforce development organizations—serving justice-involved individuals, low-income families, and barrier-facing populations with dignity, excellence, and measurable results.
+              </p>
+
+              <p className="text-lg text-black leading-relaxed mb-6">
+                Under Elizabeth&apos;s visionary leadership, Elevate for Humanity has achieved unprecedented recognition and approval from federal, state, and local agencies. The organization is a U.S. Department of Labor (DOL) Registered Apprenticeship Sponsor, approved by the Indiana Department of Workforce Development (DWD) as an INTraining provider, and recognized by the Indiana Department of Education (DOE). All programs are eligible for WIOA, Workforce Ready Grant (WRG), and Justice Reinvestment Initiative (JRI) funding—making training 100% free for qualified students.
+              </p>
+
+              <p className="text-lg text-black leading-relaxed mb-6">
+                Elizabeth&apos;s accomplishments extend far beyond credentials. She has created a fully integrated ecosystem that combines workforce training, apprenticeship programs, case management, mental health support, housing assistance, and employer partnerships—all designed to address the root causes of poverty and recidivism. Her holistic approach recognizes that career success requires more than skills training; it requires wraparound support, trauma-informed care, and genuine human connection.
+              </p>
+
+              <p className="text-lg text-black leading-relaxed mb-6">
+                A master strategist and systems builder, Elizabeth has navigated complex federal and state compliance requirements to position Elevate for Humanity as a trusted partner to WorkOne Centers, EmployIndy, community corrections, reentry programs, and employers across Indiana. She has secured state licensing board approvals for cosmetology and barber programs, established partnerships with healthcare facilities for clinical training, and created apprenticeship pathways in skilled trades—all while maintaining the highest standards of quality and accountability.
+              </p>
+
+              <p className="text-lg text-black leading-relaxed mb-6">
+                Elizabeth&apos;s leadership philosophy is rooted in equity, empowerment, and excellence. She believes that every person—regardless of their past—deserves access to quality education, living-wage employment, and the opportunity to build a better future. Her work is driven by a simple but powerful conviction: when you invest in people, you transform communities.
+              </p>
+
+              <h3 className="text-2xl font-bold text-black mb-4 mt-8">Our Story</h3>
               
               <p className="text-lg text-black leading-relaxed mb-6">
                 Elevate for Humanity was founded after witnessing firsthand how disconnected workforce systems prevent motivated individuals from accessing the training, funding, and employment pathways they need to succeed.

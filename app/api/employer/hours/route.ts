@@ -62,7 +62,7 @@ export async function GET() {
       // This requires a join - we'll filter in JS for now
       const { data: allHours } = await query;
       const hours = allHours?.filter(
-        (item) => h.user_profiles?.employer_id === profile.employer_id
+        (item: any) => item.user_profiles?.employer_id === profile.employer_id
       );
       return NextResponse.json({ hours: hours || [] });
     }

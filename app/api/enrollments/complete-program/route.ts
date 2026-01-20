@@ -95,8 +95,9 @@ export async function POST(req: NextRequest) {
     const studentName = studentProfile.full_name || 
       `${studentProfile.first_name || ''} ${studentProfile.last_name || ''}`.trim() ||
       'Student';
-    const programName = enrollment.programs?.name || 'Program';
-    const programHours = enrollment.programs?.duration_hours || null;
+    const programs = enrollment.programs as any;
+    const programName = programs?.name || 'Program';
+    const programHours = programs?.duration_hours || null;
 
     // Use authoritative certificate issuance service
     const result = await issueCertificate({

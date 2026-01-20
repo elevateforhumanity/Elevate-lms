@@ -11,7 +11,7 @@ import { createSupabaseClient } from '@/lib/supabase-api';
 export async function GET(request: Request) {
   const supabase = createSupabaseClient();
   const session = await requireAuth();
-  if (!(session as string).isAdmin) {
+  if (!session || !(session as any).isAdmin) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
 

@@ -192,13 +192,13 @@ export async function POST(request: Request) {
         },
       });
     } catch (err: any) {
-      logger.error('FFmpeg error:', ffmpegError);
+      logger.error('FFmpeg error:', err);
 
       return NextResponse.json(
         {
           success: false,
           error: 'Video processing failed',
-          details: ffmpegError.message,
+          details: err?.message || 'Unknown error',
           originalUrl: `/uploads/videos/${videoFilename}`,
         },
         { status: 500 }

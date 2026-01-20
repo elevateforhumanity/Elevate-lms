@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Users, ArrowRight } from 'lucide-react';
+import { Users, ArrowRight, Mail, Linkedin } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
@@ -9,225 +9,186 @@ export const metadata: Metadata = {
   },
   title: 'Our Team | Elevate For Humanity',
   description:
-    'Meet the dedicated team powering workforce development and community impact at Elevate for Humanity.',
+    'Meet the dedicated professionals leading Elevate For Humanity\'s mission to transform lives through education and career training.',
 };
 
-// Leadership team
-const leadershipTeam = [
+const teamMembers = [
   {
     name: 'Elizabeth Greene',
-    role: 'Founder & CEO',
+    title: 'Founder & Chief Executive Officer',
     image: '/images/team/elizabeth-greene.jpg',
-    bio: 'Elizabeth founded and operates Elevate for Humanity, managing all aspects of workforce development, compliance, partnerships, and operations. She ensures every individual receives the guidance they need to succeed.',
-    focus: [
+    bio: "Elizabeth Greene is a transformational leader, workforce development pioneer, and social entrepreneur who has dedicated her career to creating pathways out of poverty and into prosperity. As Founder and Chief Executive Officer of Elevate for Humanity Technical & Career Institute, she has built one of Indiana's most innovative and compliant workforce development organizations—serving justice-involved individuals, low-income families, and barrier-facing populations with dignity, excellence, and measurable results.\n\nUnder Elizabeth's visionary leadership, Elevate for Humanity has achieved unprecedented recognition and approval from federal, state, and local agencies. The organization is a U.S. Department of Labor (DOL) Registered Apprenticeship Sponsor, approved by the Indiana Department of Workforce Development (DWD) as an INTraining provider, and recognized by the Indiana Department of Education (DOE). All programs are eligible for WIOA, Workforce Ready Grant (WRG), and Justice Reinvestment Initiative (JRI) funding—making training 100% free for qualified students.\n\nElizabeth's accomplishments extend far beyond credentials. She has created a fully integrated ecosystem that combines workforce training, apprenticeship programs, case management, mental health support, housing assistance, and employer partnerships—all designed to address the root causes of poverty and recidivism.",
+    email: 'elizabeth@elevateforhumanity.org',
+    linkedin: 'https://www.linkedin.com/in/elizabethgreene',
+    focusAreas: [
       'Workforce development program design',
       'Government contracting & compliance',
       'Strategic partnerships',
       'Community-centered systems design',
     ],
   },
-];
-
-// Add your team members here with name, role, image path, and bio
-const teamMembers: Array<{
-  name: string;
-  role: string;
-  image: string;
-  bio: string;
-}> = [
-  // Add team members in this format:
-  // {
-  //   name: 'Team Member Name',
-  //   role: 'Job Title',
-  //   image: '/images/team/member-photo.jpg',
-  //   bio: 'Brief bio about the team member.',
-  // },
-];
-
-// Instructors/Program Staff
-const instructors = [
   {
-    name: 'Healthcare Instructor',
-    role: 'CNA & Medical Training',
-    image: '/images/team/instructors/instructor-health.jpg',
-    specialty: 'Healthcare Programs',
+    name: 'Leslie Wafford',
+    title: 'Director of Community Services',
+    image: '/images/leslie-wafford.jpg',
+    bio: 'Leslie Wafford is deeply committed to building stable, empowered communities by promoting low-barrier housing access and strong eviction-prevention practices. Throughout her career, she has worked closely with diverse neighborhoods to remove barriers, support families, and create environments where residents can remain safely housed.\n\nLeslie believes in the power of education and advocacy. She is dedicated to helping individuals understand their rights and responsibilities as renters, giving them the tools they need to navigate housing challenges with confidence. Guided by her personal philosophy of "reach one, teach one," Leslie approaches her work with compassion, fairness, and a genuine desire to uplift the people and communities she serves.\n\nHer passion, experience, and community-first leadership make her a powerful asset within Elevate for Humanity\'s mission to support, educate, and strengthen individuals and families across Indiana.',
+    email: 'leslie@elevateforhumanity.org',
+    focusAreas: [
+      'Housing access & eviction prevention',
+      'Community advocacy',
+      'Tenant rights education',
+      'Family support services',
+    ],
   },
   {
-    name: 'Trades Instructor',
-    role: 'Skilled Trades Training',
-    image: '/images/team/instructors/instructor-trades.jpg',
-    specialty: 'HVAC, Electrical, Plumbing',
+    name: 'Dr. Carlina Annette Wilkes',
+    title: 'Executive Director of Financial Operations & Organizational Compliance',
+    image: '/images/carlina-wilkes.jpg',
+    bio: 'Dr. Carlina Annette Wilkes is a highly accomplished executive and retired federal professional with more than 24 years of distinguished service within the Defense Finance and Accounting Service (DFAS). Throughout her federal career, she advanced through multiple leadership and operational roles, earning recognition for her excellence in financial management, organizational compliance, workforce development, and strategic program oversight.\n\nDr. Wilkes holds the Department of Defense Financial Management Certification, Level II, demonstrating mastery in federal financial operations, accountability, and mission-aligned decision-making.\n\nHer educational background reflects a deep commitment to leadership and lifelong learning. She holds a Doctorate in Ministry, a Master of Arts in Ministry, and a Bachelor of Applied Management, supported by specialized credentials in Accounting and Paralegal Studies. This diverse expertise allows her to navigate complex organizational systems, lead and develop teams, design effective operational frameworks, and improve efficiency across government, nonprofit, and community-serving environments.',
+    email: 'carlina@elevateforhumanity.org',
+    focusAreas: [
+      'Federal financial management',
+      'Organizational compliance',
+      'Strategic program oversight',
+      'Workforce development',
+    ],
   },
   {
-    name: 'Barber Instructor',
-    role: 'Barber Apprenticeship',
-    image: '/images/team/instructors/instructor-barber.jpg',
-    specialty: 'Barber Training',
+    name: 'Alina Smith, PMHNP',
+    title: 'Psychiatric Mental Health Nurse Practitioner',
+    image: '/images/alina-smith.jpg',
+    bio: "Alina Smith is a compassionate, board-certified Psychiatric Mental Health Nurse Practitioner (PMHNP) dedicated to promoting emotional wellness and holistic healing across all stages of life. A graduate of Purdue University, she holds a Master's in Nursing with a concentration in mental health across the lifespan.\n\nAlina provides comprehensive psychiatric care for individuals aged five and older, offering evidence-based mental health assessments, behavioral health interventions, and medication management for a wide range of mental health and substance use disorders. Her clinical approach combines psychopharmacology and therapeutic support, helping clients achieve balance, stability, and emotional growth.\n\nAt Elevate for Humanity, Alina plays a key role in integrating mental health awareness and wellness strategies into workforce and community programs. She believes that access to compassionate, judgment-free mental health care is the foundation of empowerment, self-sufficiency, and lasting transformation.",
+    email: 'alina@elevateforhumanity.org',
+    focusAreas: [
+      'Psychiatric assessments',
+      'Medication management',
+      'Behavioral health interventions',
+      'Mental health integration',
+    ],
   },
   {
-    name: 'Business Instructor',
-    role: 'Business & Professional Skills',
-    image: '/images/team/instructors/instructor-business.jpg',
-    specialty: 'Business Programs',
-  },
-  {
-    name: 'Technology Instructor',
-    role: 'IT & Tech Training',
-    image: '/images/team/instructors/instructor-tech.jpg',
-    specialty: 'Technology Programs',
-  },
-  {
-    name: 'Tax Preparation Instructor',
-    role: 'VITA Tax Certification',
-    image: '/images/team/instructors/instructor-tax.jpg',
-    specialty: 'Tax Preparation',
+    name: 'Sharon Douglass',
+    title: 'Respiratory Therapy & Health Informatics Specialist',
+    image: '/images/sharon-douglas.jpg',
+    bio: "Sharon Douglass is a highly skilled healthcare professional with over 30 years of dedicated experience as a Respiratory Therapist, complemented by a Master of Science degree in Health Informatics. She is deeply committed to improving patient safety, enhancing care quality, and supporting clinical teams through expert-level respiratory care and advanced healthcare data systems.\n\nThroughout her career, Sharon has worked at the intersection of patient care, medical technology, operations management, and clinical informatics. She has supported hospitals, long-term care facilities, and healthcare organizations by implementing evidence-based respiratory practices, improving patient outcomes, and streamlining clinical workflows to increase efficiency and reduce care variations.\n\nAt Elevate for Humanity, Sharon brings her decades of clinical experience and informatics expertise to support healthcare training, workforce readiness, and patient-centered educational programs. Her passion lies in helping individuals and healthcare organizations improve safety, streamline processes, and deliver high-quality care.",
+    email: 'sharon@elevateforhumanity.org',
+    focusAreas: [
+      'Respiratory therapy',
+      'Health informatics',
+      'Clinical workflow optimization',
+      'Healthcare training',
+    ],
   },
 ];
 
 export default function TeamPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative h-[350px] flex items-center justify-center overflow-hidden bg-slate-900">
-        <Image
-          src="/images/pexels/success-team.jpg"
-          alt="Elevate for Humanity Team"
-          fill
-          className="object-cover opacity-40"
-          quality={90}
-          priority
-          sizes="100vw"
-        />
+      <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden bg-brand-blue-700">
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Users className="w-12 h-12" />
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Meet Our Team
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Dedicated professionals committed to transforming lives through workforce development
+            Dedicated professionals committed to transforming lives through
+            education, opportunity, and community empowerment.
           </p>
         </div>
       </section>
 
-      {/* Leadership Section */}
+      {/* Team Members */}
       <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Leadership</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              The vision and direction behind Elevate for Humanity
-            </p>
-          </div>
-
-          {leadershipTeam.map((leader, index) => (
-            <div key={index} className="max-w-4xl mx-auto">
-              <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200">
-                <div className="grid md:grid-cols-2 gap-0">
-                  <div className="relative h-80 md:h-auto min-h-[400px]">
-                    <Image
-                      src={leader.image}
-                      alt={leader.name}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      quality={90}
-                    />
-                  </div>
-                  <div className="p-8 flex flex-col justify-center">
-                    <h3 className="text-3xl font-bold text-gray-900 mb-2">
-                      {leader.name}
-                    </h3>
-                    <p className="text-blue-600 font-semibold text-xl mb-6">
-                      {leader.role}
-                    </p>
-                    <p className="text-gray-600 leading-relaxed mb-6">
-                      {leader.bio}
-                    </p>
-                    {leader.focus && (
-                      <div className="pt-4 border-t border-gray-200">
-                        <h4 className="font-bold text-gray-900 mb-3">
-                          Areas of Focus:
-                        </h4>
-                        <ul className="space-y-2">
-                          {leader.focus.map((item, i) => (
-                            <li key={i} className="flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                              <span className="text-sm text-gray-600">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="space-y-20">
+            {teamMembers.map((member, index) => (
+              <div
+                key={member.name}
+                className={`flex flex-col ${
+                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                } gap-12 items-start`}
+              >
+                {/* Photo */}
+                <div className="lg:w-1/3 w-full">
+                  <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl bg-gray-200">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover"
+                        quality={90}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        priority={index < 2}
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-brand-blue-600 flex items-center justify-center">
+                        <div className="text-white text-8xl font-bold">
+                          {member.name
+                            .split(' ')
+                            .map((n) => n[0])
+                            .join('')}
+                        </div>
                       </div>
                     )}
                   </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
-      {/* Team Members Section - Only show if there are team members */}
-      {teamMembers.length > 0 && (
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Team</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                The dedicated professionals who make it all happen
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {teamMembers.map((member, index) => (
-                <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100">
-                  <div className="relative h-64">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
+                  {/* Contact Info */}
+                  <div className="mt-6 space-y-3">
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="flex items-center gap-2 text-brand-blue-600 hover:text-brand-blue-700 font-medium"
+                    >
+                      <Mail className="w-4 h-4" />
+                      {member.email}
+                    </a>
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-brand-blue-600 hover:text-brand-blue-700 font-medium"
+                      >
+                        <Linkedin className="w-4 h-4" />
+                        LinkedIn Profile
+                      </a>
+                    )}
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                    <p className="text-blue-600 font-medium mb-3">{member.role}</p>
-                    <p className="text-gray-600 text-sm">{member.bio}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
-      {/* Instructors Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Instructors</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Industry experts dedicated to your success
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {instructors.map((instructor, index) => (
-              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="relative h-48">
-                  <Image
-                    src={instructor.image}
-                    alt={instructor.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                    <span className="text-white text-sm font-medium">{instructor.specialty}</span>
-                  </div>
+                  {/* Focus Areas */}
+                  {member.focusAreas && (
+                    <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                      <h4 className="font-bold text-black mb-3">Areas of Focus:</h4>
+                      <ul className="space-y-2">
+                        {member.focusAreas.map((area) => (
+                          <li key={area} className="flex items-start gap-2">
+                            <div className="w-1.5 h-1.5 bg-brand-blue-600 rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm text-black">{area}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-gray-900 mb-1">{instructor.name}</h3>
-                  <p className="text-blue-600 text-sm font-medium">{instructor.role}</p>
+
+                {/* Bio */}
+                <div className="lg:w-2/3">
+                  <h2 className="text-3xl md:text-4xl font-bold text-black mb-2">
+                    {member.name}
+                  </h2>
+                  <p className="text-lg text-brand-blue-600 font-semibold mb-6">
+                    {member.title}
+                  </p>
+                  <div className="prose prose-lg max-w-none">
+                    {member.bio.split('\n\n').map((paragraph, i) => (
+                      <p key={i} className="text-black leading-relaxed mb-4">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -235,52 +196,26 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Join Our Team Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Join Our Team</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            We are always looking for passionate individuals who want to make a difference 
-            in workforce development and community impact.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/careers"
-              className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
-            >
-              View Open Positions
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600">
+      <section className="py-16 bg-brand-blue-700 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Work With Us</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Work With Us</h2>
           <p className="text-xl text-blue-100 mb-8">
-            Interested in partnering or collaborating with our team?
+            Interested in partnering or joining our team?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/partners"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors"
             >
               Partner With Us
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-blue-700 text-white rounded-lg text-lg font-bold hover:bg-blue-800 border-2 border-white transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-blue-800 text-white rounded-lg text-lg font-bold hover:bg-blue-600 border-2 border-white transition-colors"
             >
-              Get In Touch
+              Contact Our Team
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
           </div>

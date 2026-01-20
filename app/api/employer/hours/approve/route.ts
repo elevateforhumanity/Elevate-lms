@@ -54,7 +54,8 @@ export async function POST(req: Request) {
         .eq('id', hour_id)
         .single();
 
-      if (hourRecord?.user_profiles?.employer_id !== profile.employer_id) {
+      const userProfiles = hourRecord?.user_profiles as any;
+      if (userProfiles?.employer_id !== profile.employer_id) {
         return NextResponse.json(
           { error: "Forbidden - can only approve your own students' hours" },
           { status: 403 }

@@ -67,7 +67,11 @@ export async function GET(request: NextRequest) {
       }
 
       // If no check-in found, send alert to employer
-      if (!todayLog && apprenticeship.employer?.email) {
+      const student = apprenticeship.student as any;
+      const employer = apprenticeship.employer as any;
+      const program = apprenticeship.program as any;
+      
+      if (!todayLog && employer?.email) {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_SITE_URL}/api/apprentice/email-alerts`,
           {
@@ -77,10 +81,10 @@ export async function GET(request: NextRequest) {
               type: 'missed_checkin',
               apprenticeshipId: apprenticeship.id,
               data: {
-                studentName: apprenticeship.student?.full_name,
-                employerEmail: apprenticeship.employer.email,
-                employerName: apprenticeship.employer.full_name,
-                programName: apprenticeship.program?.name,
+                studentName: student?.full_name,
+                employerEmail: employer.email,
+                employerName: employer.full_name,
+                programName: program?.name,
                 date: today,
               },
             }),
@@ -88,8 +92,8 @@ export async function GET(request: NextRequest) {
         );
 
         results.push({
-          student: apprenticeship.student?.full_name,
-          employer: apprenticeship.employer.full_name,
+          student: student?.full_name,
+          employer: employer.full_name,
           status: response.ok ? 'alert_sent' : 'failed',
         });
       }

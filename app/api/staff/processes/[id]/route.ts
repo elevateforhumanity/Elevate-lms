@@ -53,7 +53,7 @@ export async function GET(
     // Sort steps by step_number
     if (process.process_steps) {
       process.process_steps.sort(
-        (item) => a.step_number - b.step_number
+        (a: any, b: any) => a.step_number - b.step_number
       );
     }
 

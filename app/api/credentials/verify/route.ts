@@ -107,12 +107,12 @@ export async function POST(req: NextRequest) {
           revoked_at: credential.revoked_at,
           revoked_reason: credential.revoked_reason,
           student: {
-            first_name: credential.profiles?.first_name,
-            last_name: credential.profiles?.last_name,
-            email: credential.profiles?.email,
+            first_name: (credential.profiles as any)?.first_name,
+            last_name: (credential.profiles as any)?.last_name,
+            email: (credential.profiles as any)?.email,
           },
           program: {
-            title: credential.programs?.title,
+            title: (credential.programs as any)?.title,
           },
           metadata: credential.metadata,
         },
@@ -128,11 +128,11 @@ export async function POST(req: NextRequest) {
           issued_at: credential.issued_at,
           expires_at: credential.expires_at,
           student: {
-            first_name: credential.profiles?.first_name,
-            last_initial: credential.profiles?.last_name?.charAt(0) || '',
+            first_name: (credential.profiles as any)?.first_name,
+            last_initial: (credential.profiles as any)?.last_name?.charAt(0) || '',
           },
           program: {
-            title: credential.programs?.title,
+            title: (credential.programs as any)?.title,
           },
         },
         status: isRevoked ? 'revoked' : isExpired ? 'expired' : 'valid',

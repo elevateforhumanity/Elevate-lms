@@ -338,14 +338,8 @@ export function TransferHoursTable({
                       max={selectedRequest.hours_requested}
                       step="0.5"
                       value={approvalHours}
-                      onChange={(
-                        e: React.ChangeEvent<
-                          | HTMLInputElement
-                          | HTMLSelectElement
-                          | HTMLTextAreaElement
-                        >
-                      ) => setApprovalHours(e.target.value)}
-                      Content={`Max: ${selectedRequest.hours_requested}`}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setApprovalHours(e.target.value)}
+                      placeholder={`Max: ${selectedRequest.hours_requested}`}
                       className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                     <p className="text-sm text-black mt-1">

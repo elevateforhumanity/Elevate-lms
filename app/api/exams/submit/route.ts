@@ -33,7 +33,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Attempt not found' }, { status: 404 });
   }
 
-  if (attempt.student_id !== (session as string).userId) {
+  const userId = (session as any).userId || (session as any).user?.id;
+  if (attempt.student_id !== userId) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
 

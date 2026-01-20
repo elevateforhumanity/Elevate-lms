@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Exam not found' }, { status: 404 });
   }
 
-  const studentId = (session as string).userId;
+  const studentId = (session as any).userId || (session as any).user?.id;
 
   // Check attempts
   const { count } = await supabase

@@ -319,7 +319,7 @@ export async function POST(req: Request) {
       amountCents: amountCents,
     });
   } catch (err: any) {
-    logger.err('Payment finalization err:', err);
+    logger.error('Payment finalization err:', err);
     return NextResponse.json(
       {
         err:

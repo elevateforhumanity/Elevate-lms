@@ -14,7 +14,6 @@ import { useRouter } from 'next/navigation';
 export const dynamic = 'force-dynamic';
 
 import {
-
   ArrowLeft,
   Save,
   Play,
@@ -22,6 +21,7 @@ import {
   Linkedin,
   Instagram,
   Sparkles,
+  Share2,
 } from 'lucide-react';
 
 
@@ -329,6 +329,10 @@ export default function NewSocialCampaignPage() {
                   onClick={() => togglePlatform('facebook')}
                 />
                 <PlatformButton
+                  name="Twitter"
+                  icon={Share2}
+                  selected={campaign.platforms.includes('twitter')}
+                  onClick={() => togglePlatform('twitter')}
                 />
                 <PlatformButton
                   name="LinkedIn"

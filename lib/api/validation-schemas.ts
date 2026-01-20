@@ -92,7 +92,7 @@ export const enrollmentSchema = z.object({
   courseId: uuidSchema,
   userId: uuidSchema.optional(),
   paymentMethod: z.enum(['stripe', 'affirm', 'free', 'funded']).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 export const enrollmentApprovalSchema = z.object({
@@ -162,7 +162,7 @@ export const createCheckoutSchema = z.object({
   priceId: z.string().optional(),
   successUrl: urlSchema,
   cancelUrl: urlSchema,
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 export const affirmChargeSchema = z.object({
@@ -202,7 +202,7 @@ export const partnerEnrollmentSchema = z.object({
   studentEmail: emailSchema,
   courseId: uuidSchema,
   partnerId: uuidSchema,
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 export const partnerAttendanceSchema = z.object({
@@ -220,7 +220,7 @@ export const complianceReportSchema = z.object({
   startDate: dateSchema,
   endDate: dateSchema,
   reportType: z.enum(['wioa', 'ferpa', 'gdpr', 'custom']),
-  filters: z.record(z.any()).optional(),
+  filters: z.record(z.string(), z.any()).optional(),
 });
 
 // ============================================
@@ -252,7 +252,7 @@ export async function validateRequestBody<T>(
   } catch (error) {
     if (error instanceof z.ZodError) {
       throw new Error(
-        `Validation failed: ${error.errors.map(e => `${e.path.join('.')}: ${e.message}`).join(', ')}`
+        `Validation failed: ${error.issues.map(e => `${e.path.join('.')}: ${e.message}`).join(', ')}`
       );
     }
     throw error;

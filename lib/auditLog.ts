@@ -97,32 +97,79 @@ export async function auditLog({
 /**
  * Query audit logs for a specific entity
  */
+interface GetAuditLogsParams {
+  entity?: AuditEntity;
+  entity_id?: string;
+  action?: AuditAction;
+  actor_id?: string;
+  target_type?: string;
+  target_id?: string;
+  start_date?: string;
+  end_date?: string;
+  limit?: number;
+}
+
+interface GetAuditLogsResult {
+  success: boolean;
+  data?: any[];
+  logs?: any[];
+  error?: string;
+}
+
 export async function getAuditLogs(
-  entity: AuditEntity,
+  params: GetAuditLogsParams | AuditEntity,
   entity_id?: string,
   limit = 100
-) {
+): Promise<GetAuditLogsResult> {
   const supabase = createAdminClient();
+
+  // Handle both old positional args and new object params
+  let queryParams: GetAuditLogsParams;
+  if (typeof params === 'string') {
+    // Old signature: getAuditLogs(entity, entity_id, limit)
+    queryParams = {
+      entity: params as AuditEntity,
+      entity_id,
+      limit,
+    };
+  } else {
+    // New signature: getAuditLogs({ entity, entity_id, ... })
+    queryParams = params;
+  }
 
   let query = supabase
     .from('audit_logs')
     .select('*')
-    .eq('entity', entity)
     .order('created_at', { ascending: false })
-    .limit(limit);
+    .limit(queryParams.limit || 100);
 
-  if (entity_id) {
-    query = query.eq('entity_id', entity_id);
+  if (queryParams.entity) {
+    query = query.eq('entity', queryParams.entity);
+  }
+  if (queryParams.entity_id) {
+    query = query.eq('entity_id', queryParams.entity_id);
+  }
+  if (queryParams.action) {
+    query = query.eq('action', queryParams.action);
+  }
+  if (queryParams.actor_id) {
+    query = query.eq('actor_user_id', queryParams.actor_id);
+  }
+  if (queryParams.start_date) {
+    query = query.gte('created_at', queryParams.start_date);
+  }
+  if (queryParams.end_date) {
+    query = query.lte('created_at', queryParams.end_date);
   }
 
   const { data, error } = await query;
 
   if (error) {
     console.error('Failed to fetch audit logs:', error);
-    return [];
+    return { success: false, error: error.message };
   }
 
-  return data || [];
+  return { success: true, data: data || [], logs: data || [] };
 }
 
 /**

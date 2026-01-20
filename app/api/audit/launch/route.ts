@@ -376,7 +376,7 @@ function analyzeChecks(checks: any, blockers: Finding[], warnings: Finding[]) {
       title: 'Hydration Risks Detected',
       detail: 'Components may cause hydration mismatches',
       evidence: {
-        notes: checks.clientStability.hydrationRisks.map((item: any) => r.pattern),
+        notes: checks.clientStability.hydrationRisks.map((risk: any) => risk.pattern),
       },
       fix: {
         action: 'Fix hydration patterns',
@@ -410,7 +410,7 @@ function analyzeChecks(checks: any, blockers: Finding[], warnings: Finding[]) {
 
   // Feature gaps
   const highPriorityGaps = checks.features.missingComparedToBestInClass.filter(
-    (item) => f.priority === 'high'
+    (feature: any) => feature.priority === 'high'
   );
 
   if (highPriorityGaps.length > 0) {
@@ -420,18 +420,18 @@ function analyzeChecks(checks: any, blockers: Finding[], warnings: Finding[]) {
       title: 'Missing High-Priority Features',
       detail: `${highPriorityGaps.length} high-priority features missing compared to best-in-class`,
       evidence: {
-        notes: highPriorityGaps.map((item: any) => f.feature),
+        notes: highPriorityGaps.map((feature: any) => feature.feature),
       },
       fix: {
         action: 'Implement high-priority features',
-        steps: highPriorityGaps.map((item: any) => `Add: ${f.feature}`),
+        steps: highPriorityGaps.map((feature: any) => `Add: ${feature.feature}`),
         owner: 'dev',
       },
     });
   }
 }
 
-function calculateLaunchGate(data: any) {
+function calculateLaunchGate(blockers: Finding[], warnings: Finding[], checks: any) {
   let score = 100;
 
   // Deduct points

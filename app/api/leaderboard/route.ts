@@ -4,7 +4,7 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 import { NextResponse } from 'next/server';
-import { getCurrentUser } from '@/lib/auth';
+import { getCurrentUser, createServerSupabaseClient } from '@/lib/auth';
 import { toError, toErrorMessage } from '@/lib/safe';
 
 export async function GET(request: Request) {

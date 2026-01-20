@@ -247,7 +247,7 @@ export async function POST(req: Request) {
       message: 'Enrollment completed successfully',
     });
   } catch (err: any) {
-    logger.err('Enrollment completion err', err);
+    logger.error('Enrollment completion err', err);
     return NextResponse.json(
       { err: toErrorMessage(err) || 'Internal server err' },
       { status: 500 }

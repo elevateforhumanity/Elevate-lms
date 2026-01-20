@@ -39,11 +39,11 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
           alt={program.title}
           fill
           sizes="100vw"
-          className="object-cover"
+          className="object-cover brightness-105"
           priority
-          quality={85}
+          quality={90}
         />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
       </section>
 
       {/* Funding Badge */}

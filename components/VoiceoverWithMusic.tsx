@@ -134,7 +134,7 @@ export default function VoiceoverWithMusic({
     );
   }
 
-  // Play button - elegant floating button
+  // Play button - prominent floating button
   if (showPlayButton && !hasPlayed) {
     return (
       <button
@@ -143,17 +143,21 @@ export default function VoiceoverWithMusic({
         aria-label="Play welcome message"
       >
         <div className="relative">
-          {/* Pulse ring */}
-          <div className="absolute inset-0 rounded-full bg-blue-500 animate-ping opacity-20" />
+          {/* Pulse ring - more visible */}
+          <div className="absolute -inset-2 rounded-full bg-orange-500 animate-ping opacity-30" />
+          <div className="absolute -inset-1 rounded-full bg-orange-400 animate-pulse opacity-40" />
           
-          {/* Button */}
-          <div className="relative flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white pl-4 pr-5 py-3 rounded-full shadow-xl shadow-blue-500/30 hover:shadow-blue-500/40 hover:scale-105 transition-all duration-200">
-            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-              <svg className="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+          {/* Button - orange for visibility */}
+          <div className="relative flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white pl-4 pr-6 py-4 rounded-full shadow-2xl shadow-orange-500/40 hover:shadow-orange-500/50 hover:scale-105 transition-all duration-200 border-2 border-white/20">
+            <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+              <svg className="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
             </div>
-            <span className="text-sm font-semibold">Listen</span>
+            <div className="text-left">
+              <span className="text-base font-bold block">🔊 Listen</span>
+              <span className="text-xs opacity-90">Welcome message</span>
+            </div>
           </div>
         </div>
       </button>

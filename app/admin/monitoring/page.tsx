@@ -50,6 +50,7 @@ export default function MonitoringDashboard() {
 
       return () => clearInterval(interval);
     }
+    return undefined;
   }, [autoRefresh]);
 
   const fetchStatus = async () => {

@@ -68,7 +68,10 @@ export async function GET(request: NextRequest) {
       }
 
       // Only send summary if student checked in today
-      if (todayLog && apprenticeship.student?.email) {
+      const student = apprenticeship.student as any;
+      const program = apprenticeship.program as any;
+      
+      if (todayLog && student?.email) {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_SITE_URL}/api/apprentice/email-alerts`,
           {
@@ -78,9 +81,9 @@ export async function GET(request: NextRequest) {
               type: 'daily_summary',
               apprenticeshipId: apprenticeship.id,
               data: {
-                studentName: apprenticeship.student.full_name,
-                studentEmail: apprenticeship.student.email,
-                programName: apprenticeship.program?.name,
+                studentName: student.full_name,
+                studentEmail: student.email,
+                programName: program?.name,
                 todayHours: todayLog.total_hours || 0,
                 totalHours: apprenticeship.hours_completed || 0,
                 requiredHours: apprenticeship.hours_required || 1500,
@@ -94,7 +97,7 @@ export async function GET(request: NextRequest) {
         );
 
         results.push({
-          student: apprenticeship.student.full_name,
+          student: student.full_name,
           hours: todayLog.total_hours,
           status: response.ok ? 'sent' : 'failed',
         });

@@ -131,36 +131,36 @@ async function createAlertsFromVerdicts(
 
     // Create alerts
     const alerts = verdicts.map((item: any) => {
-      const enrollment = v.enrollments;
-      const studentName = enrollment.profiles?.full_name || 'Student';
+      const enrollment = item.enrollments;
+      const studentName = enrollment?.profiles?.full_name || 'Student';
 
       let message = '';
       let severity = 'medium';
 
-      if (v.status === 'NO_ACTIVITY') {
-        message = `${studentName} has no activity this week (0 of ${v.required_hours || 0} hours required).`;
+      if (item.status === 'NO_ACTIVITY') {
+        message = `${studentName} has no activity this week (0 of ${item.required_hours || 0} hours required).`;
         severity = 'high';
       } else {
-        const hoursMissing = (v.required_hours || 0) - (v.logged_hours || 0);
-        message = `${studentName} is behind this week (${v.logged_hours || 0} of ${v.required_hours || 0} hours). Missing: ${hoursMissing.toFixed(1)} hours.`;
+        const hoursMissing = (item.required_hours || 0) - (item.logged_hours || 0);
+        message = `${studentName} is behind this week (${item.logged_hours || 0} of ${item.required_hours || 0} hours). Missing: ${hoursMissing.toFixed(1)} hours.`;
         severity = 'medium';
       }
 
       return {
         alert_type: 'weekly_hours_check',
         severity,
-        student_id: enrollment.student_id,
-        enrollment_id: v.enrollment_id,
-        partner_user_id: enrollment.partner_owner_user_id,
+        student_id: enrollment?.student_id,
+        enrollment_id: item.enrollment_id,
+        partner_user_id: enrollment?.partner_owner_user_id,
         message,
         payload: {
-          verdict_id: v.id,
+          verdict_id: item.id,
           period_start: periodStart,
           period_end: periodEnd,
-          required_hours: v.required_hours,
-          logged_hours: v.logged_hours,
-          required_sessions: v.required_sessions,
-          completed_sessions: v.completed_sessions,
+          required_hours: item.required_hours,
+          logged_hours: item.logged_hours,
+          required_sessions: item.required_sessions,
+          completed_sessions: item.completed_sessions,
         },
       };
     });

@@ -58,7 +58,7 @@ export async function POST(request: Request) {
       attachment_url: item.attachmentLink,
       place_of_performance: item.placeOfPerformance || {},
       set_aside: item.typeOfSetAside,
-      raw_data: opp,
+      raw_data: item,
       last_synced_at: new Date().toISOString(),
     }));
 
@@ -93,8 +93,8 @@ export async function POST(request: Request) {
         deadline: r.response_deadline,
       })),
     });
-  } catch (error) { /* Error handled silently */ 
-    logger.err('SAM.gov sync failed:', err);
+  } catch (error: any) {
+    logger.error('SAM.gov sync failed:', error);
     return NextResponse.json(
       {
         success: false,

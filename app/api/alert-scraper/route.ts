@@ -19,8 +19,8 @@ export async function POST(request: NextRequest) {
     const body = await parseBody<Record<string, any>>(request);
     const { type, url, timestamp, ...additionalData } = body;
 
-    const ip =
-      request.ip || request.headers.get('x-forwarded-for') || 'unknown';
+    const ip = request.headers.get('x-forwarded-for') || 
+      request.headers.get('x-real-ip') || 'unknown';
     const userAgent = request.headers.get('user-agent') || 'unknown';
 
     logger.error('🚨 SCRAPING ATTEMPT DETECTED:', {

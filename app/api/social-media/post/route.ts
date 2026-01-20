@@ -186,13 +186,14 @@ async function postToLinkedIn(data: any) {
     }
 
     // LinkedIn API v2
+    const { title, content, media_url } = data;
     const postData: any = {
       author: `urn:li:organization:${organizationId}`,
       lifecycleState: 'PUBLISHED',
       specificContent: {
         'com.linkedin.ugc.ShareContent': {
           shareCommentary: {
-            text: `${title}\n\n${content}`,
+            text: `${title || ''}\n\n${content || ''}`,
           },
           shareMediaCategory: media_url ? 'IMAGE' : 'NONE',
         },
@@ -252,13 +253,14 @@ async function postToFacebook(data: any) {
       return { success: false, error: 'Facebook credentials not configured' };
     }
 
+    const { content, media_url } = data;
     const endpoint = media_url
       ? `https://graph.facebook.com/v18.0/${pageId}/photos`
       : `https://graph.facebook.com/v18.0/${pageId}/feed`;
 
     const params = new URLSearchParams({
       access_token: accessToken,
-      message: content,
+      message: content || '',
     });
 
     if (media_url) {

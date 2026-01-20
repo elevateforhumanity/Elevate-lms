@@ -39,8 +39,8 @@ export const GET = withAuth(
         const csv = [
           'Timestamp,Actor,Action,Entity,Entity ID',
           ...logs.map(
-            (item) =>
-              `${log.created_at},${log.actor_user_id || 'system'},${log.action},${log.entity},${log.entity_id || ''}`
+            (item: any) =>
+              `${item.created_at},${item.actor_user_id || 'system'},${item.action},${item.entity},${item.entity_id || ''}`
           ),
         ].join('\n');
 

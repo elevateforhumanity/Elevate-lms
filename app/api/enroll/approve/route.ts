@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
     // Get enrollment details (using enrollments table)
     const { data: enrollment, error: enrollmentError } = await supabase
       .from('enrollments')
-      .select('id, user_id, program_id, status')
+      .select('id, user_id, program_id, status, program_holder_id')
       .eq('id', enrollment_id)
       .single();
 
@@ -174,7 +174,7 @@ export async function POST(req: NextRequest) {
         },
       });
     } catch (err: any) {
-      logger.warn('Failed to write audit log (non-critical)', auditError);
+      logger.warn('Failed to write audit log (non-critical)', err);
     }
 
     // STEP 5: Notify student of approval
@@ -213,7 +213,7 @@ export async function POST(req: NextRequest) {
     } catch (err: any) {
       logger.warn(
         'Failed to send student notification (non-critical)',
-        notifError
+        err
       );
     }
 
@@ -264,7 +264,7 @@ export async function POST(req: NextRequest) {
     } catch (err: any) {
       logger.warn(
         'Failed to send program holder notification (non-critical)',
-        phNotifError
+        err
       );
     }
 
@@ -283,7 +283,7 @@ export async function POST(req: NextRequest) {
       message: 'Enrollment approved and activated successfully',
     });
   } catch (err: any) {
-    logger.err('Enrollment approval err', err);
+    logger.error('Enrollment approval err', err);
     return NextResponse.json(
       {
         err:

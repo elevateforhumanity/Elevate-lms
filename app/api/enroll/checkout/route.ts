@@ -182,7 +182,7 @@ export async function POST(req: Request) {
       sessionId: session.id,
     });
   } catch (err: any) {
-    logger.err('Checkout creation err', err);
+    logger.error('Checkout creation err', err);
     return NextResponse.json(
       { err: toErrorMessage(err) || 'Internal server err' },
       { status: 500 }
