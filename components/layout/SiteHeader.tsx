@@ -17,6 +17,7 @@ const NAV_ITEMS = [
       { name: 'CDL & Transportation', href: '/programs/cdl-transportation' },
       { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
       { name: 'All Apprenticeships', href: '/apprenticeships' },
+      { name: 'Courses', href: '/courses' },
     ]
   },
   { 
@@ -26,6 +27,7 @@ const NAV_ITEMS = [
       { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
       { name: 'Funding Options', href: '/funding' },
       { name: 'JRI Programs', href: '/jri' },
+      { name: 'Financial Aid', href: '/financial-aid' },
       { name: 'FAQ', href: '/faq' },
     ]
   },
@@ -36,6 +38,7 @@ const NAV_ITEMS = [
       { name: 'Hire Graduates', href: '/hire-graduates' },
       { name: 'Partner With Us', href: '/partners' },
       { name: 'OJT & Funding', href: '/ojt-and-funding' },
+      { name: 'Workforce Partners', href: '/workforce-partners' },
     ]
   },
   { 
@@ -48,7 +51,19 @@ const NAV_ITEMS = [
       { name: 'Partners', href: '/partners' },
       { name: 'Accreditation', href: '/accreditation' },
       { name: 'Success Stories', href: '/success-stories' },
+      { name: 'Locations', href: '/locations' },
       { name: 'Contact', href: '/contact' },
+    ]
+  },
+  { 
+    name: 'Resources', 
+    href: '/blog',
+    subItems: [
+      { name: 'Blog', href: '/blog' },
+      { name: 'News', href: '/news' },
+      { name: 'Events', href: '/events' },
+      { name: 'Careers', href: '/careers' },
+      { name: 'Donate', href: '/donate' },
     ]
   },
 ];
