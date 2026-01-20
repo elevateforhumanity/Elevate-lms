@@ -61,6 +61,7 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   // Routes that should NOT show the marketing header/footer
+  // These routes have their own layouts with custom headers/footers
   // Default to showing header/footer if pathname is null (SSR safety)
   const hideMarketingLayout = pathname ? (
     pathname.startsWith('/lms/') ||
@@ -68,7 +69,11 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
     pathname.startsWith('/admin/') ||
     pathname.startsWith('/login') ||
     pathname.startsWith('/signup') ||
-    pathname.startsWith('/auth/')
+    pathname.startsWith('/auth/') ||
+    pathname.startsWith('/supersonic-fast-cash') ||
+    pathname.startsWith('/license') ||
+    pathname.startsWith('/nonprofit') ||
+    pathname.startsWith('/rise-foundation')
   ) : false;
 
   // Minimal layout for app routes (LMS, admin, etc.)
