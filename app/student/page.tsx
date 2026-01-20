@@ -82,7 +82,7 @@ export default async function StudentPortalPage() {
               <p className="text-blue-100 mt-1">Continue your learning journey</p>
             </div>
             <Link
-              href="/notifications"
+              href="/lms/notifications"
               className="p-2 bg-white/10 rounded-lg hover:bg-white/20"
             >
               <Bell className="w-6 h-6" />

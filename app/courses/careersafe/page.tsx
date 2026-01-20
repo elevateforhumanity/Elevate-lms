@@ -266,7 +266,7 @@ export default async function CareerSafePage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Link
-              href="/programs/hvac-technician"
+              href="/programs/electrical"
               className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow"
             >
               <h3 className="text-lg font-semibold mb-2">HVAC Technician</h3>
@@ -279,7 +279,7 @@ export default async function CareerSafePage() {
             </Link>
 
             <Link
-              href="/programs/building-maintenance"
+              href="/programs/electrical"
               className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow"
             >
               <h3 className="text-lg font-semibold mb-2">
@@ -294,7 +294,7 @@ export default async function CareerSafePage() {
             </Link>
 
             <Link
-              href="/programs/home-health-aide"
+              href="/programs/cna"
               className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow"
             >
               <h3 className="text-lg font-semibold mb-2">Home Health Aide</h3>

@@ -21,7 +21,7 @@ export default function StudentPortalResourcesPage() {
           </div>
           <h2 className="text-xl font-semibold mb-2">Digital Library</h2>
           <p className="text-gray-600 mb-4">Access e-books, journals, and research databases.</p>
-          <a href="/library" className="text-blue-600 hover:underline">Browse Library →</a>
+          <a href="/lms/library" className="text-blue-600 hover:underline">Browse Library →</a>
         </div>
 
         {/* Tutoring */}
@@ -57,7 +57,7 @@ export default function StudentPortalResourcesPage() {
           </div>
           <h2 className="text-xl font-semibold mb-2">Career Services</h2>
           <p className="text-gray-600 mb-4">Resume help, job search, and career counseling.</p>
-          <a href="/career" className="text-blue-600 hover:underline">Explore Careers →</a>
+          <a href="/career-services" className="text-blue-600 hover:underline">Explore Careers →</a>
         </div>
 
         {/* IT Help Desk */}
@@ -81,7 +81,7 @@ export default function StudentPortalResourcesPage() {
           </div>
           <h2 className="text-xl font-semibold mb-2">Study Materials</h2>
           <p className="text-gray-600 mb-4">Course materials, past exams, and study guides.</p>
-          <a href="/materials" className="text-blue-600 hover:underline">View Materials →</a>
+          <a href="/lms/resources" className="text-blue-600 hover:underline">View Materials →</a>
         </div>
       </div>
 
@@ -89,7 +89,7 @@ export default function StudentPortalResourcesPage() {
       <section className="mt-8 bg-white rounded-lg shadow p-6">
         <h2 className="text-xl font-semibold mb-4">Quick Links</h2>
         <div className="grid md:grid-cols-4 gap-4">
-          <a href="/academic-calendar" className="p-3 border rounded-lg hover:bg-gray-50 text-center">
+          <a href="/lms/calendar" className="p-3 border rounded-lg hover:bg-gray-50 text-center">
             Academic Calendar
           </a>
           <a href="/student-handbook" className="p-3 border rounded-lg hover:bg-gray-50 text-center">
@@ -98,7 +98,7 @@ export default function StudentPortalResourcesPage() {
           <a href="/financial-aid" className="p-3 border rounded-lg hover:bg-gray-50 text-center">
             Financial Aid
           </a>
-          <a href="/health-services" className="p-3 border rounded-lg hover:bg-gray-50 text-center">
+          <a href="/support" className="p-3 border rounded-lg hover:bg-gray-50 text-center">
             Health Services
           </a>
         </div>

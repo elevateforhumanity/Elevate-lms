@@ -119,14 +119,13 @@ export default async function WhatToBringPage() {
           <p className="text-gray-600 mb-4">
             Print this checklist to make sure you have everything ready
           </p>
-          <a
-            href="/downloads/vita-checklist.pdf"
-            download
+          <button
+            onClick={() => window.print()}
             className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
           >
             <FileText className="w-5 h-5" />
-            Download PDF Checklist
-          </a>
+            Print This Checklist
+          </button>
         </div>
 
         {/* CTA */}

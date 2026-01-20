@@ -76,7 +76,7 @@ export function MobileVoiceOver() {
           {/* Audio Element */}
           <audio
             ref={audioRef}
-            src="/videos/elevate-overview-with-narration.mp4"
+            src="/videos/training-providers-video-with-narration.mp4"
             onEnded={() => setIsPlaying(false)}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}

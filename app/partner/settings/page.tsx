@@ -6,12 +6,13 @@ import { Settings, Building2, User, Bell, Shield, Save, CheckCircle } from 'luci
 
 export default function PartnerSettingsPage() {
   const [saved, setSaved] = useState(false);
+  // Settings loaded from user profile/organization
   const [settings, setSettings] = useState({
-    orgName: 'WorkOne Indianapolis',
-    contactName: 'John Smith',
-    contactEmail: 'jsmith@workone.org',
-    contactPhone: '(317) 555-0123',
-    address: '123 Main Street, Indianapolis, IN 46204',
+    orgName: '',
+    contactName: '',
+    contactEmail: '',
+    contactPhone: '',
+    address: '',
     emailNotifications: true,
     weeklyDigest: true,
     outcomeAlerts: true,

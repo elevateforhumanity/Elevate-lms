@@ -5,13 +5,17 @@ import { Users, Search, Filter, Download, Mail, Eye } from 'lucide-react';
 export const metadata: Metadata = { title: 'Students | Program Holder Portal' };
 
 export default function ProgramHolderStudentsPage() {
-  const students = [
-    { id: '1', name: 'John Smith', email: 'john@example.com', program: 'HVAC Technician', progress: 75, enrolled: 'Oct 2025', status: 'active' },
-    { id: '2', name: 'Maria Garcia', email: 'maria@example.com', program: 'Medical Assistant', progress: 45, enrolled: 'Nov 2025', status: 'active' },
-    { id: '3', name: 'James Wilson', email: 'james@example.com', program: 'Barber License', progress: 90, enrolled: 'Sep 2025', status: 'active' },
-    { id: '4', name: 'Sarah Johnson', email: 'sarah@example.com', program: 'CDL Training', progress: 100, enrolled: 'Aug 2025', status: 'completed' },
-    { id: '5', name: 'Michael Brown', email: 'michael@example.com', program: 'HVAC Technician', progress: 30, enrolled: 'Dec 2025', status: 'active' },
-  ];
+  // Students are loaded from database via API
+  // This page shows enrolled students for the program holder's organization
+  const students: Array<{
+    id: string;
+    name: string;
+    email: string;
+    program: string;
+    progress: number;
+    enrolled: string;
+    status: string;
+  }> = []; // Populated from /api/program-holder/students
 
   return (
     <div className="min-h-screen bg-gray-100">

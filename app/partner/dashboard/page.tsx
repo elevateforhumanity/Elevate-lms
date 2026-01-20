@@ -18,18 +18,11 @@ const fallbackStats = [
   { label: 'Upcoming Sessions', value: '12', change: 'This week', icon: Calendar },
 ];
 
-const fallbackStudents = [
-  { id: '1', name: 'John Smith', program: 'HVAC Technician', progress: 75, status: 'active' },
-  { id: '2', name: 'Maria Garcia', program: 'Medical Assistant', progress: 45, status: 'active' },
-  { id: '3', name: 'James Wilson', program: 'CDL Training', progress: 90, status: 'active' },
-  { id: '4', name: 'Sarah Johnson', program: 'Barber License', progress: 100, status: 'completed' },
-];
+// Students and schedule loaded from database
+// Empty arrays shown when no data available
+const fallbackStudents: Array<{ id: string; name: string; program: string; progress: number; status: string }> = [];
 
-const fallbackSchedule = [
-  { id: '1', title: 'HVAC Lab Session', date: 'Today', time: '2:00 PM - 5:00 PM', students: 12 },
-  { id: '2', title: 'Medical Assistant Theory', date: 'Tomorrow', time: '9:00 AM - 12:00 PM', students: 8 },
-  { id: '3', title: 'CDL Road Test Prep', date: 'Jan 22', time: '8:00 AM - 4:00 PM', students: 6 },
-];
+const fallbackSchedule: Array<{ id: string; title: string; date: string; time: string; students: number }> = [];
 
 const quickActions = [
   { title: 'Record Attendance', href: '/partner/attendance/record', icon: Calendar },
