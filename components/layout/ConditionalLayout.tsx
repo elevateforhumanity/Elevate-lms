@@ -98,7 +98,7 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
 
       <main
         id="main-content"
-        className="flex-1 pt-[70px]"
+        className="flex-1 pt-[56px] sm:pt-[70px]"
         role="main"
         tabIndex={-1}
       >
