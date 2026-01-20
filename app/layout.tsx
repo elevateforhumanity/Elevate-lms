@@ -89,7 +89,7 @@ export const metadata: Metadata = {
       'Workforce training, credentials, and community programs connecting learners to funded pathways and employer-aligned opportunities.',
     images: [
       {
-        url: '/og-default.jpg',
+        url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Elevate for Humanity',
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     title: 'Elevate for Humanity',
     description:
       'Workforce training, credentials, and community programs connecting learners to funded pathways and employer-aligned opportunities.',
-    images: ['/og-default.jpg'],
+    images: ['/images/og-image.jpg'],
   },
 
   robots: {
