@@ -129,6 +129,26 @@ export default async function ProgramDetailPage({
     { label: program.name || slug },
   ];
 
+  // Map database fields to display fields
+  const displayProgram = {
+    name: program.name || program.title,
+    description: program.full_description || program.description || program.longDescription || program.shortDescription || program.excerpt,
+    shortDescription: program.excerpt || program.shortDescription || program.description,
+    duration: program.duration_weeks ? `${program.duration_weeks} weeks` : program.duration || program.estimated_weeks ? `${program.estimated_weeks} weeks` : null,
+    hours: program.training_hours || program.estimated_hours,
+    credential: program.credential_name || program.credential_type,
+    deliveryMethod: program.delivery_method,
+    cost: program.total_cost,
+    salaryMin: program.salary_min,
+    salaryMax: program.salary_max,
+    whatYouLearn: program.what_you_learn || program.whatYouLearn,
+    careerOutcomes: program.career_outcomes || program.careerOutcomes || program.outcomes,
+    prerequisites: program.prerequisites,
+    fundingEligible: program.funding_eligible || program.wioa_approved,
+    placementRate: program.placement_rate,
+    completionRate: program.completion_rate,
+  };
+
   // If program has minimal data (from simple JSON), render simple template
   if (!program.heroTitle || !program.whatYouLearn) {
     return (
@@ -142,32 +162,112 @@ export default async function ProgramDetailPage({
         
         <div className="py-16 px-6 bg-white text-black">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold mb-6">{program.name}</h1>
-          <p className="mb-6 text-lg">
-            {program.shortDescription || program.longDescription}
-          </p>
+            <h1 className="text-3xl font-bold mb-6">{displayProgram.name}</h1>
+            
+            {/* Program Quick Facts */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-4 bg-slate-50 rounded-lg">
+              {displayProgram.duration && (
+                <div>
+                  <p className="text-sm text-gray-500">Duration</p>
+                  <p className="font-semibold">{displayProgram.duration}</p>
+                </div>
+              )}
+              {displayProgram.hours && (
+                <div>
+                  <p className="text-sm text-gray-500">Training Hours</p>
+                  <p className="font-semibold">{displayProgram.hours} hours</p>
+                </div>
+              )}
+              {displayProgram.credential && (
+                <div>
+                  <p className="text-sm text-gray-500">Credential</p>
+                  <p className="font-semibold">{displayProgram.credential}</p>
+                </div>
+              )}
+              {displayProgram.deliveryMethod && (
+                <div>
+                  <p className="text-sm text-gray-500">Format</p>
+                  <p className="font-semibold capitalize">{displayProgram.deliveryMethod}</p>
+                </div>
+              )}
+            </div>
 
-          {program.outcomes && program.outcomes.length > 0 && (
-            <>
-              <h2 className="text-xl font-semibold mb-4">What You'll Gain</h2>
-              <ul className="list-disc pl-6 space-y-2 mb-8">
-                {program.outcomes.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
-            </>
-          )}
+            {/* Description */}
+            <div className="mb-8">
+              <h2 className="text-xl font-semibold mb-3">About This Program</h2>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                {displayProgram.description}
+              </p>
+            </div>
+
+            {/* Salary Range */}
+            {(displayProgram.salaryMin || displayProgram.salaryMax) && (
+              <div className="mb-8 p-4 bg-green-50 rounded-lg">
+                <h2 className="text-xl font-semibold mb-2">Earning Potential</h2>
+                <p className="text-2xl font-bold text-green-700">
+                  ${displayProgram.salaryMin?.toLocaleString() || '—'} - ${displayProgram.salaryMax?.toLocaleString() || '—'} / year
+                </p>
+              </div>
+            )}
+
+            {/* What You'll Learn */}
+            {displayProgram.whatYouLearn && displayProgram.whatYouLearn.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-xl font-semibold mb-4">What You'll Learn</h2>
+                <ul className="list-disc pl-6 space-y-2">
+                  {(Array.isArray(displayProgram.whatYouLearn) ? displayProgram.whatYouLearn : [displayProgram.whatYouLearn]).map((item: string, idx: number) => (
+                    <li key={idx} className="text-gray-700">{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Career Outcomes */}
+            {displayProgram.careerOutcomes && displayProgram.careerOutcomes.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-xl font-semibold mb-4">Career Outcomes</h2>
+                <ul className="list-disc pl-6 space-y-2">
+                  {(Array.isArray(displayProgram.careerOutcomes) ? displayProgram.careerOutcomes : [displayProgram.careerOutcomes]).map((item: string, idx: number) => (
+                    <li key={idx} className="text-gray-700">{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Prerequisites */}
+            {displayProgram.prerequisites && (
+              <div className="mb-8">
+                <h2 className="text-xl font-semibold mb-3">Prerequisites</h2>
+                <p className="text-gray-700">{displayProgram.prerequisites}</p>
+              </div>
+            )}
+
+            {/* Funding Badge */}
+            {displayProgram.fundingEligible && (
+              <div className="mb-8 inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                ✓ Funding Available (WIOA Eligible)
+              </div>
+            )}
+
+            {/* Cost */}
+            {displayProgram.cost && (
+              <div className="mb-8">
+                <h2 className="text-xl font-semibold mb-2">Program Cost</h2>
+                <p className="text-2xl font-bold">${Number(displayProgram.cost).toLocaleString()}</p>
+                <p className="text-sm text-gray-500">Financial assistance may be available</p>
+              </div>
+            )}
 
           <div className="mt-10 flex gap-4">
             <Link
               href={program.ctaPrimary?.href || '/apply'}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition font-semibold"
             >
               {program.ctaPrimary?.label || 'Apply Now'}
             </Link>
             <Link
               href="/programs"
-              className="bg-gray-200 hover:bg-gray-300 px-6 py-2 rounded-xl transition"
+              className="bg-gray-200 hover:bg-gray-300 px-6 py-3 rounded-xl transition"
             >
               Back to Programs
             </Link>
