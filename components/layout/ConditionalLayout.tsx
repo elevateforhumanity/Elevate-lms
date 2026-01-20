@@ -60,16 +60,36 @@ function FallbackFooter() {
 export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  // Routes that should NOT show the marketing header/footer
-  // Default to showing header/footer if pathname is null (SSR safety)
-  const hideMarketingLayout = pathname ? (
-    pathname.startsWith('/lms/') ||
-    pathname.startsWith('/student/') ||
-    pathname.startsWith('/admin/') ||
-    pathname.startsWith('/login') ||
-    pathname.startsWith('/signup') ||
-    pathname.startsWith('/auth/')
-  ) : false;
+  // Routes that use AppShell (no marketing header/footer)
+  // These are authenticated app routes with their own navigation
+  const APP_SHELL_ROUTES = [
+    '/lms/',           // LMS app routes (has LMSNavigation)
+    '/admin/',         // Admin dashboard
+    '/admin-login',    // Admin login
+    '/staff-portal/',  // Staff portal
+    '/instructor/',    // Instructor portal
+    '/employer/',      // Employer dashboard
+    '/partner/',       // Partner portal
+    '/program-holder/',// Program holder dashboard
+    '/workforce-board/',// Workforce board
+    '/creator/',       // Creator dashboard
+    '/student/',       // Student routes
+  ];
+  
+  // Routes that use minimal shell (login/auth pages - no header/footer)
+  const MINIMAL_SHELL_ROUTES = [
+    '/login',
+    '/signup',
+    '/auth/',
+    '/reset-password',
+    '/forgot-password',
+    '/verify-email',
+  ];
+  
+  // Determine which shell to use
+  const useAppShell = pathname ? APP_SHELL_ROUTES.some(route => pathname.startsWith(route)) : false;
+  const useMinimalShell = pathname ? MINIMAL_SHELL_ROUTES.some(route => pathname.startsWith(route)) : false;
+  const hideMarketingLayout = useAppShell || useMinimalShell;
 
   // Minimal layout for app routes (LMS, admin, etc.)
   if (hideMarketingLayout) {
