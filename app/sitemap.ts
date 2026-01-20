@@ -47,6 +47,12 @@ const APPROVED_PAGES: Array<{
   { url: '/supersonic-fast-cash', priority: 0.9, changeFrequency: 'monthly', category: 'tax' },
   { url: '/tax-self-prep', priority: 0.8, changeFrequency: 'monthly', category: 'tax' },
   { url: '/vita', priority: 0.8, changeFrequency: 'monthly', category: 'tax' },
+  // Tax State Pages (supersonicfastermoney.com)
+  { url: '/supersonic-fast-cash/tax-preparation-indiana', priority: 0.8, changeFrequency: 'monthly', category: 'tax' },
+  { url: '/supersonic-fast-cash/tax-preparation-ohio', priority: 0.8, changeFrequency: 'monthly', category: 'tax' },
+  { url: '/supersonic-fast-cash/tax-preparation-tennessee', priority: 0.8, changeFrequency: 'monthly', category: 'tax' },
+  { url: '/supersonic-fast-cash/tax-preparation-illinois', priority: 0.8, changeFrequency: 'monthly', category: 'tax' },
+  { url: '/supersonic-fast-cash/tax-preparation-texas', priority: 0.8, changeFrequency: 'monthly', category: 'tax' },
   
   // C. PROGRAMS (Public overviews)
   { url: '/programs', priority: 0.9, changeFrequency: 'weekly', category: 'lms' },
@@ -59,6 +65,12 @@ const APPROVED_PAGES: Array<{
   
   // D. LMS PUBLIC (Non-instructional)
   { url: '/lms', priority: 0.7, changeFrequency: 'monthly', category: 'lms' },
+  // Career Training State Pages (elevateforhumanity.org)
+  { url: '/career-training-indiana', priority: 0.8, changeFrequency: 'monthly', category: 'lms' },
+  { url: '/career-training-ohio', priority: 0.8, changeFrequency: 'monthly', category: 'lms' },
+  { url: '/career-training-tennessee', priority: 0.8, changeFrequency: 'monthly', category: 'lms' },
+  { url: '/career-training-illinois', priority: 0.8, changeFrequency: 'monthly', category: 'lms' },
+  { url: '/career-training-texas', priority: 0.8, changeFrequency: 'monthly', category: 'lms' },
   
   // E. RESOURCES / KNOWLEDGE
   { url: '/faq', priority: 0.7, changeFrequency: 'monthly', category: 'resources' },
