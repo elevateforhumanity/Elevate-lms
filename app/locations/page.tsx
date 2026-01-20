@@ -186,8 +186,48 @@ export default function LocationsPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* State Services */}
       <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-black text-black mb-6 text-center">
+            Services by State
+          </h2>
+          <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            We provide career training and community support services across multiple states.
+          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { state: 'Indiana', career: '/career-training-indiana', community: '/community-services-indiana' },
+              { state: 'Ohio', career: '/career-training-ohio', community: '/community-services-ohio' },
+              { state: 'Tennessee', career: '/career-training-tennessee', community: '/community-services-tennessee' },
+              { state: 'Illinois', career: '/career-training-illinois', community: '/community-services-illinois' },
+              { state: 'Texas', career: '/career-training-texas', community: '/community-services-texas' },
+            ].map((item) => (
+              <div key={item.state} className="bg-white border-2 border-gray-200 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-black mb-4">{item.state}</h3>
+                <div className="space-y-2">
+                  <Link
+                    href={item.career}
+                    className="block text-blue-600 hover:text-blue-700 font-semibold"
+                  >
+                    Career Training Programs →
+                  </Link>
+                  <Link
+                    href={item.community}
+                    className="block text-green-600 hover:text-green-700 font-semibold"
+                  >
+                    Community Services →
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-black text-black mb-6">
             Ready to Visit?
