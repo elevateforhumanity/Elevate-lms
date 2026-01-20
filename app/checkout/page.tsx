@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
 export const dynamic = 'force-dynamic';

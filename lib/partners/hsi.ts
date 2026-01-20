@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 // lib/partners/hsi.ts
 // HSI (Health & Safety Institute) API Integration
 // CPR, AED, First Aid, Emergency Medical Responder Training

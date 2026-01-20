@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -128,6 +129,9 @@ export default async function Page() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Drug Collector" programSlug="drug-collector" />
 
       {/* What You'll Learn */}
       <section className="bg-gray-50 py-16">

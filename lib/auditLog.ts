@@ -22,7 +22,9 @@ export type AuditEntity =
   | 'ojt'
   | 'user'
   | 'audit_snapshot'
-  | 'employer_onboarding';
+  | 'employer_onboarding'
+  | 'license_purchase'
+  | 'tenant';
 
 export type ActorRole = 'sponsor' | 'employer' | 'workone' | 'admin' | 'system';
 

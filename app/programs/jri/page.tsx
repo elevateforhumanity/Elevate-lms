@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -81,6 +82,9 @@ export default async function JRIProgramsPage() {
           </p>
         </div>
       </section>
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="JRI Programs" programSlug="jri" />
 
       {/* Story Section */}
       <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20 bg-gray-50">
@@ -710,7 +714,7 @@ export default async function JRIProgramsPage() {
                 </p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>
-                    Barber Apprenticeship (1,500 hours, $12-15/hr starting)
+                    Barber Apprenticeship (2,000 hours, $12-15/hr starting)
                   </li>
                   <li>HVAC Technician (2,000 hours, $15-18/hr starting)</li>
                   <li>

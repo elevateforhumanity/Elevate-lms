@@ -141,7 +141,7 @@ export default async function StudentsPage() {
               </div>
               <h3 className="text-2xl font-bold mb-4">Job Placement</h3>
               <p className="text-black mb-4">
-                85% job placement rate. We connect you with employers actively hiring in your field.
+                Career services and job placement support. We connect you with employers actively hiring in your field.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">

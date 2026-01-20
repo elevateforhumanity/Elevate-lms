@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
@@ -87,6 +88,9 @@ export default async function BusinessFinancialPage() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Business & Financial Services" programSlug="business-financial" />
 
       {/* At-a-Glance */}
       <section className="bg-white py-16">

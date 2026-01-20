@@ -1,19 +1,24 @@
-// @ts-nocheck
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
+import { Resend } from 'resend';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
-import { createClient } from '@supabase/supabase-js';
-import { Resend } from 'resend';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
+interface AccessKeyBody {
+  email: string;
+  name: string;
+  testScore?: number;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const body: AccessKeyBody = await request.json();
     const { email, name, testScore } = body;
 
     if (!email || !name) {
@@ -142,7 +147,7 @@ export async function POST(request: NextRequest) {
                   <li>Start preparing tax returns and earning money!</li>
                 </ol>
 
-                <p>Questions? Reply to this email or contact us at Supersonicfadtcashllc@gmail.com</p>
+                <p>Questions? Reply to this email or contact us at supersonicfastcashllc@gmail.com</p>
               </div>
 
               <div class="footer">

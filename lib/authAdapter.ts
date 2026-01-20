@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { cookies, headers } from 'next/headers';
 import { createSupabaseServerClient } from './supabaseServer';
 import integrations from '../config/integrations.json';

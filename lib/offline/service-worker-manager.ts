@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Service Worker Manager
  * Handles service worker registration, updates, and offline sync coordination

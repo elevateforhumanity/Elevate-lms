@@ -1,8 +1,10 @@
 import { Metadata } from 'next';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Scissors, Clock, DollarSign, Award, MapPin, Calendar, ArrowRight, CheckCircle, Users } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Barber Apprenticeship Program | $4,980 Tuition | Elevate For Humanity',
@@ -64,6 +66,19 @@ export default async function BarberProgramPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <Breadcrumbs 
+            items={[
+              { label: 'Programs', href: '/programs' },
+              { label: 'Skilled Trades', href: '/programs/skilled-trades' },
+              { label: 'Barber Program' },
+            ]} 
+          />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative min-h-[500px] flex items-center">
         <div 
@@ -114,6 +129,9 @@ export default async function BarberProgramPage() {
         </div>
       </section>
 
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Barber" programSlug="barber" />
+
       {/* Stats */}
       <section className="py-10 bg-white border-b">
         <div className="max-w-7xl mx-auto px-4">
@@ -127,7 +145,7 @@ export default async function BarberProgramPage() {
               <div className="text-gray-600">Tuition</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-purple-600">1,500</div>
+              <div className="text-3xl font-bold text-purple-600">2,000</div>
               <div className="text-gray-600">Hours Required</div>
             </div>
             <div>
@@ -208,7 +226,7 @@ export default async function BarberProgramPage() {
                   <div>
                     <h3 className="font-bold text-lg">Indiana Barber License</h3>
                     <p className="text-gray-600">
-                      Upon completing 1,500 hours and passing the state exam, you'll receive your 
+                      Upon completing 2,000 hours and passing the state exam, you'll receive your 
                       Indiana Barber License, allowing you to work anywhere in the state.
                     </p>
                   </div>

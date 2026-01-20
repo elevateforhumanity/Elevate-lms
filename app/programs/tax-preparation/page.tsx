@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 
 export const dynamic = 'force-dynamic';
 
@@ -88,6 +89,9 @@ export default async function Page() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Tax Preparation" programSlug="tax-preparation" />
 
       {/* Why Tax Preparation */}
       <section className="py-16 px-6 bg-white">

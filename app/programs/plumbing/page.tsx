@@ -14,6 +14,7 @@ const programData: ProgramData = {
   image: '/images/programs-new/program-5.jpg',
   duration: '4-5 years',
   tuition: 'Employer Sponsored',
+  fundingType: 'funded',
   salary: '$45K-$70K',
   demand: 'Very High',
   highlights: [

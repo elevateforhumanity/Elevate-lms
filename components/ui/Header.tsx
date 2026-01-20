@@ -37,38 +37,40 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
     };
   }, [isMobileMenuOpen]);
 
+  // Navigation organized by audience: Students first, then Employers, then Platform
   const navigation = [
+    // FOR STUDENTS
     {
       name: 'Programs',
       href: '/programs',
       dropdown: [
+        { name: 'All Programs', href: '/programs' },
         { name: 'Healthcare', href: '/programs/healthcare' },
         { name: 'Skilled Trades', href: '/programs/skilled-trades' },
         { name: 'Beauty & Wellness', href: '/programs/beauty' },
-        { name: 'Business & Finance', href: '/programs/business-financial' },
         { name: 'Technology', href: '/programs/technology' },
         { name: 'Apprenticeships', href: '/programs/apprenticeships' },
-        { name: 'All Programs', href: '/programs' },
       ],
     },
     {
-      name: 'Services',
-      href: '/services',
+      name: 'How It Works',
+      href: '/how-it-works',
       dropdown: [
-        { name: 'Tax Services', href: '/tax' },
-        { name: 'SupersonicFastCash', href: '/supersonic-fast-cash' },
-        { name: 'VITA Free Tax Help', href: '/vita' },
-        { name: 'Rise Foundation', href: '/rise-foundation' },
-        { name: 'Career Services', href: '/career-services' },
-        { name: 'AI Studio', href: '/ai-studio' },
+        { name: 'Career Pathway', href: '/how-it-works' },
+        { name: 'Check Eligibility', href: '/apply' },
+        { name: 'Funding Options', href: '/funding' },
+        { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
+        { name: 'Success Stories', href: '/success-stories' },
       ],
     },
+    // FOR EMPLOYERS
     {
       name: 'For Employers',
       href: '/employers',
       dropdown: [
         { name: 'Hire Graduates', href: '/hire-graduates' },
         { name: 'Host Apprentices', href: '/employers/apprenticeships' },
+        { name: 'WOTC Tax Credits', href: '/wotc' },
         { name: 'Post a Job', href: '/employers/post-job' },
         { name: 'Employer Portal', href: '/employer/dashboard' },
         { name: 'Workforce Partners', href: '/workforce-partners' },
@@ -82,31 +84,17 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
         { name: 'Store & Licensing', href: '/store' },
         { name: 'Platform Demo', href: '/store/demo' },
         { name: 'Pricing', href: '/pricing' },
-        { name: 'Community Hub', href: '/community' },
         { name: 'Marketplace', href: '/marketplace' },
       ],
     },
-    {
-      name: 'Resources',
-      href: '/resources',
-      dropdown: [
-        { name: 'Success Stories', href: '/success-stories' },
-        { name: 'FAQ', href: '/faq' },
-        { name: 'Blog', href: '/blog' },
-        { name: 'Funding Options', href: '/funding' },
-        { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
-        { name: 'Help Center', href: '/help' },
-      ],
-    },
+    // ABOUT (secondary)
     {
       name: 'About',
       href: '/about',
       dropdown: [
         { name: 'Our Mission', href: '/about' },
-        { name: 'Leadership Team', href: '/about/team' },
-        { name: 'Partners', href: '/partners' },
-        { name: 'Careers', href: '/careers' },
         { name: 'Contact Us', href: '/contact' },
+        { name: 'FAQ', href: '/faq' },
       ],
     },
   ];

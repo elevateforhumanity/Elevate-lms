@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 // =====================================================
 // PROGRAM SCHEMA ENFORCEMENT
 // Prevents program entropy and ensures consistency

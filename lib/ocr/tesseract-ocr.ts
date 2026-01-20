@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Tesseract.js OCR Utility
  * Client-side and server-side OCR using Tesseract.js

@@ -74,7 +74,7 @@ export default function PathwaysPage() {
               { icon: Clock, title: 'Fast-Track Training', desc: 'Complete programs in weeks, not years' },
               { icon: DollarSign, title: 'Funding Available', desc: 'WIOA and other funding options' },
               { icon: Award, title: 'Industry Certifications', desc: 'Earn credentials employers want' },
-              { icon: CheckCircle, title: 'Job Placement', desc: '85%+ placement rate for graduates' },
+              { icon: CheckCircle, title: 'Job Placement', desc: 'Career services and employer connections' },
             ].map((item, i) => (
               <div key={i} className="text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">

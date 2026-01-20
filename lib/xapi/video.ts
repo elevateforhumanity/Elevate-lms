@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 // lib/xapi/video.ts
 import { getXAPIClient } from './xapi-client';
 

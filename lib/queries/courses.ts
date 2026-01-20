@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Database Queries for Courses
  * Centralized queries for courses table

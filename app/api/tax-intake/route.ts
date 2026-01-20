@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { supabaseServer } from "@/lib/supabaseServer";
 
 export const runtime = 'nodejs';

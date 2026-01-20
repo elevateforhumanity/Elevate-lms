@@ -1,21 +1,85 @@
-// @ts-nocheck
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
+import { drakeIntegration } from '@/lib/integrations/drake-software';
+import { Resend } from 'resend';
+import { prepareSSNForStorage } from '@/lib/security/ssn';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
-import { createClient } from '@supabase/supabase-js';
-import { drakeIntegration } from '@/lib/integrations/drake-software';
-import { Resend } from 'resend';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
+interface W2Income {
+  employerName: string;
+  wages: number;
+  federalWithholding: number;
+}
+
+interface Form1099Income {
+  payerName: string;
+  amount: number;
+  type: string;
+}
+
+interface SelfEmploymentIncome {
+  hasIncome: boolean;
+  businessName?: string;
+  grossReceipts?: number;
+  expenses?: number;
+}
+
+interface ItemizedDeductions {
+  mortgageInterest?: number;
+  propertyTax?: number;
+  charitableContributions?: number;
+  medicalExpenses?: number;
+  stateLocalTaxes?: number;
+}
+
+interface Dependent {
+  firstName: string;
+  lastName: string;
+  ssn: string;
+  relationship: string;
+}
+
+interface TaxReturnBody {
+  firstName: string;
+  lastName: string;
+  ssn: string;
+  dateOfBirth: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  state: string;
+  zip: string;
+  filingStatus: string;
+  spouseFirstName?: string;
+  spouseLastName?: string;
+  spouseSSN?: string;
+  spouseDateOfBirth?: string;
+  w2Income?: W2Income[];
+  form1099Income?: Form1099Income[];
+  selfEmploymentIncome?: SelfEmploymentIncome;
+  deductionType: 'standard' | 'itemized';
+  itemizedDeductions?: ItemizedDeductions;
+  dependents?: Dependent[];
+  hasChildTaxCredit?: boolean;
+  hasEITC?: boolean;
+  hasEducationCredits?: boolean;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const taxReturn = await request.json();
+    const taxReturn: TaxReturnBody = await request.json();
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+    // Securely hash SSN before storage
+    const ssnData = prepareSSNForStorage(taxReturn.ssn);
 
     // Create client record
     const { data: client, error: clientError } = await supabase
@@ -23,7 +87,7 @@ export async function POST(request: NextRequest) {
       .insert({
         first_name: taxReturn.firstName,
         last_name: taxReturn.lastName,
-        ssn: taxReturn.ssn,
+        ...ssnData, // ssn_hash and ssn_last4 instead of plain SSN
         date_of_birth: taxReturn.dateOfBirth,
         email: taxReturn.email,
         phone: taxReturn.phone,

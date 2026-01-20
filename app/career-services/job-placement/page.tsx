@@ -25,21 +25,22 @@ export default function JobPlacementPage() {
         <div className="grid md:grid-cols-4 gap-8 text-center">
           <div>
             <div className="text-4xl font-black text-brand-orange-600 mb-2">500+</div>
-            <div className="text-gray-600">Employer Partners</div>
+            <div className="text-gray-600">Employer Partners*</div>
           </div>
           <div>
             <div className="text-4xl font-black text-brand-orange-600 mb-2">85%</div>
-            <div className="text-gray-600">Placement Rate</div>
+            <div className="text-gray-600">Placement Rate*</div>
           </div>
           <div>
             <div className="text-4xl font-black text-brand-orange-600 mb-2">90 Days</div>
-            <div className="text-gray-600">Average Time to Hire</div>
+            <div className="text-gray-600">Average Time to Hire*</div>
           </div>
           <div>
             <div className="text-4xl font-black text-brand-orange-600 mb-2">Free</div>
             <div className="text-gray-600">For All Graduates</div>
           </div>
         </div>
+        <p className="text-xs text-gray-500 text-center mt-6">*Based on internal outcomes tracking. Individual results may vary.</p>
       </section>
 
       <section className="max-w-6xl mx-auto px-6 py-16">

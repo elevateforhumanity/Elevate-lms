@@ -4,9 +4,9 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import {
   ArrowLeft,
-  CreditCard,
   ShieldCheck,
   Lock,
+  CreditCard,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -29,6 +29,7 @@ export default async function CheckoutPage() {
       </div>
     );
   }
+
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
@@ -41,20 +42,14 @@ export default async function CheckoutPage() {
     .select(`
       id,
       quantity,
-      product:products(id, name, price, type)
+      product_id,
+      product:products(id, name, price, type, slug)
     `)
     .eq('user_id', user.id);
 
   if (!cartItems || cartItems.length === 0) {
     redirect('/store/cart');
   }
-
-  // Get user profile for pre-filling
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
 
   const subtotal = cartItems.reduce((sum: number, item: any) => {
     return sum + (item.product?.price || 0) * item.quantity;
@@ -74,183 +69,85 @@ export default async function CheckoutPage() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Checkout Form */}
+          {/* Checkout Info */}
           <div className="lg:col-span-2">
-            <form action="/api/store/checkout" method="POST" className="space-y-6">
-              {/* Contact Information */}
-              <div className="bg-white rounded-xl shadow-sm border p-6">
-                <h2 className="text-lg font-semibold mb-4">Contact Information</h2>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      name="fullName"
-                      defaultValue={profile?.full_name || ''}
-                      required
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      defaultValue={user.email || ''}
-                      required
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                    />
-                  </div>
+            <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                  <ShieldCheck className="w-5 h-5 text-green-600" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-semibold">Secure Checkout</h2>
+                  <p className="text-sm text-gray-500">Powered by Stripe</p>
                 </div>
               </div>
+              
+              <p className="text-gray-600 mb-6">
+                You will be redirected to Stripe&apos;s secure payment page to complete your purchase. 
+                We never store your card details on our servers.
+              </p>
 
-              {/* Payment Information */}
-              <div className="bg-white rounded-xl shadow-sm border p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <CreditCard className="w-5 h-5 text-gray-600" />
-                  <h2 className="text-lg font-semibold">Payment Information</h2>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Card Number
-                    </label>
-                    <input
-                      type="text"
-                      name="cardNumber"
-                      placeholder="1234 5678 9012 3456"
-                      required
-                      maxLength={19}
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Expiration Date
-                      </label>
-                      <input
-                        type="text"
-                        name="expiry"
-                        placeholder="MM/YY"
-                        required
-                        maxLength={5}
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        CVV
-                      </label>
-                      <input
-                        type="text"
-                        name="cvv"
-                        placeholder="123"
-                        required
-                        maxLength={4}
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Name on Card
-                    </label>
-                    <input
-                      type="text"
-                      name="cardName"
-                      defaultValue={profile?.full_name || ''}
-                      required
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                    />
-                  </div>
-                </div>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <h3 className="font-medium text-blue-900 mb-2">Payment Options Available:</h3>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• Credit/Debit Cards (Visa, Mastercard, Amex)</li>
+                  <li>• Buy Now, Pay Later (Affirm, Klarna, Afterpay)</li>
+                  <li>• Apple Pay / Google Pay</li>
+                </ul>
               </div>
 
-              {/* Billing Address */}
-              <div className="bg-white rounded-xl shadow-sm border p-6">
-                <h2 className="text-lg font-semibold mb-4">Billing Address</h2>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Street Address
-                    </label>
-                    <input
-                      type="text"
-                      name="address"
-                      defaultValue={profile?.address || ''}
-                      required
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        City
-                      </label>
-                      <input
-                        type="text"
-                        name="city"
-                        defaultValue={profile?.city || ''}
-                        required
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        State
-                      </label>
-                      <input
-                        type="text"
-                        name="state"
-                        defaultValue={profile?.state || ''}
-                        required
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                      />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        ZIP Code
-                      </label>
-                      <input
-                        type="text"
-                        name="zip"
-                        defaultValue={profile?.zip || ''}
-                        required
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Country
-                      </label>
-                      <select
-                        name="country"
-                        defaultValue="US"
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                      >
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* For single product checkout, use form POST to Stripe API */}
+              {cartItems.length === 1 && cartItems[0].product?.slug ? (
+                <form action="/api/stripe/checkout" method="POST">
+                  <input type="hidden" name="productId" value={cartItems[0].product.slug} />
+                  <input type="hidden" name="customerEmail" value={user.email || ''} />
+                  
+                  <button
+                    type="submit"
+                    className="w-full flex items-center justify-center gap-2 bg-orange-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-700 transition-colors"
+                  >
+                    <Lock className="w-5 h-5" />
+                    Proceed to Secure Payment - ${total.toFixed(2)}
+                  </button>
+                </form>
+              ) : (
+                /* For multiple items, use cart checkout API */
+                <form action="/api/store/cart-checkout" method="POST">
+                  <input type="hidden" name="customerEmail" value={user.email || ''} />
+                  
+                  <button
+                    type="submit"
+                    className="w-full flex items-center justify-center gap-2 bg-orange-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-700 transition-colors"
+                  >
+                    <Lock className="w-5 h-5" />
+                    Proceed to Secure Payment - ${total.toFixed(2)}
+                  </button>
+                </form>
+              )}
 
-              <button
-                type="submit"
-                className="w-full flex items-center justify-center gap-2 bg-orange-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-700"
-              >
-                <Lock className="w-5 h-5" />
-                Complete Purchase - ${total.toFixed(2)}
-              </button>
-            </form>
+              <p className="text-xs text-gray-500 text-center mt-4">
+                By completing this purchase, you agree to our{' '}
+                <Link href="/terms" className="text-orange-600 hover:underline">Terms of Service</Link>
+                {' '}and{' '}
+                <Link href="/privacy" className="text-orange-600 hover:underline">Privacy Policy</Link>.
+              </p>
+            </div>
+
+            {/* Trust Badges */}
+            <div className="flex items-center justify-center gap-6 text-gray-400">
+              <div className="flex items-center gap-2">
+                <Lock className="w-4 h-4" />
+                <span className="text-sm">256-bit SSL</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4" />
+                <span className="text-sm">PCI Compliant</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CreditCard className="w-4 h-4" />
+                <span className="text-sm">Secure Payments</span>
+              </div>
+            </div>
           </div>
 
           {/* Order Summary */}
@@ -261,7 +158,7 @@ export default async function CheckoutPage() {
                 {cartItems.map((item: any) => (
                   <div key={item.id} className="flex justify-between text-sm">
                     <span className="text-gray-600">
-                      {item.product?.name} x {item.quantity}
+                      {item.product?.name || 'Product'} x {item.quantity}
                     </span>
                     <span>${((item.product?.price || 0) * item.quantity).toFixed(2)}</span>
                   </div>
@@ -280,10 +177,6 @@ export default async function CheckoutPage() {
                   <span>Total</span>
                   <span>${total.toFixed(2)}</span>
                 </div>
-              </div>
-              <div className="flex items-center justify-center gap-2 mt-6 text-sm text-gray-500">
-                <ShieldCheck className="w-4 h-4" />
-                256-bit SSL encryption
               </div>
             </div>
           </div>

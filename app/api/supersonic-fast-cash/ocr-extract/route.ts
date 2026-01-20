@@ -1,14 +1,28 @@
-// @ts-nocheck
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { drakeIntegration } from '@/lib/integrations/drake-software';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
-import { createClient } from '@supabase/supabase-js';
-import { drakeIntegration } from '@/lib/integrations/drake-software';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+
+interface ExtractedData {
+  documentType: string;
+  confidence: number;
+  employer?: string;
+  payer?: string;
+  ein?: string;
+  payerEIN?: string;
+  wages?: number;
+  amount?: number;
+  federalWithholding?: number;
+  stateWithholding?: number;
+  socialSecurityWages?: number;
+  medicareWages?: number;
+}
 
 /**
  * Extract data from uploaded document using OCR
@@ -116,7 +130,7 @@ export async function POST(request: NextRequest) {
 /**
  * Extract W-2 data from file
  */
-async function extractW2Data(file: File): Promise<any> {
+async function extractW2Data(file: File): Promise<ExtractedData> {
   // In production, use Tesseract.js or Google Vision API
   // For now, return structured format
 
@@ -162,7 +176,7 @@ async function extractW2Data(file: File): Promise<any> {
 /**
  * Extract 1099 data from file
  */
-async function extract1099Data(file: File): Promise<any> {
+async function extract1099Data(file: File): Promise<ExtractedData> {
   const text = await file.text().catch(() => '');
 
   const data: any = {
@@ -189,11 +203,11 @@ async function extract1099Data(file: File): Promise<any> {
  * Save extracted income data to database
  */
 async function saveIncomeData(
-  supabase: any,
+  supabase: SupabaseClient,
   email: string,
   documentType: string,
-  extractedData: any
-) {
+  extractedData: ExtractedData
+): Promise<void> {
   try {
     // Find or create client
     const { data: client } = await supabase

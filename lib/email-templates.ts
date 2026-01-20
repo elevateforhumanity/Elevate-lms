@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 // Email Templates for Elevate for Humanity
 
 export const emailTemplates = {

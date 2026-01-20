@@ -95,10 +95,11 @@ export default async function StartPage() {
 
   const defaultStats = [
     { label: 'Programs Available', value: '20+' },
-    { label: 'Students Trained', value: '2,500+' },
-    { label: 'Job Placement Rate', value: '85%' },
-    { label: 'Partner Employers', value: '150+' },
+    { label: 'Students Trained*', value: '2,500+' },
+    { label: 'Job Placement Rate*', value: '85%' },
+    { label: 'Partner Employers*', value: '150+' },
   ];
+  // *Based on internal outcomes tracking
 
   const displayStats = stats && stats.length > 0 ? stats : defaultStats;
 

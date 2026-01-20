@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { createClient } from '@/lib/supabase/server';
 import Stripe from 'stripe';
 // Initialize Stripe (only if key is available)

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
@@ -83,6 +84,9 @@ export default async function CdlTransportationPage() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="CDL Transportation" programSlug="cdl-transportation" />
 
       {/* About the Program */}
       <section className="bg-gray-50 py-16">

@@ -7,14 +7,14 @@ const SITE_URL = 'https://www.elevateforhumanity.org';
 
 export const metadata: Metadata = {
   title: 'About Us | Elevate for Humanity',
-  description: 'Learn about Elevate for Humanity mission to transform lives through career-focused education. 50,000+ graduates, 95% job placement rate, 15 years of excellence.',
+  description: 'Learn about Elevate for Humanity mission to transform lives through career-focused education and workforce development in Indiana.',
   keywords: ['about elevate', 'mission', 'workforce training', 'career education', 'job placement', 'accredited'],
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: {
     title: 'About Us | Elevate for Humanity',
-    description: 'Learn about our mission to transform lives through career-focused education. 50,000+ graduates with 95% job placement.',
+    description: 'Learn about our mission to transform lives through career-focused education and workforce development.',
     url: `${SITE_URL}/about`,
     siteName: 'Elevate for Humanity',
     type: 'website',
@@ -42,10 +42,10 @@ const values = [
 ];
 
 const stats = [
-  { value: '50,000+', label: 'Graduates' },
-  { value: '95%', label: 'Job Placement Rate' },
-  { value: '200+', label: 'Industry Partners' },
-  { value: '15', label: 'Years of Excellence' },
+  { value: '500+', label: 'Students Served' },
+  { value: '50+', label: 'Employer Partners' },
+  { value: '20+', label: 'Training Programs' },
+  { value: '2024', label: 'Founded' },
 ];
 
 export default function AboutPage() {

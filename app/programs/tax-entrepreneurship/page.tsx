@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -73,6 +74,9 @@ export default async function TaxEntrepreneurshipPage() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Tax Entrepreneurship" programSlug="tax-entrepreneurship" />
 
       {/* At-a-Glance */}
       <section className="bg-white py-16">

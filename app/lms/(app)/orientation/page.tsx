@@ -1,8 +1,6 @@
-// @ts-nocheck
 import { createClient } from '@/lib/supabase/server';
 export const dynamic = 'force-dynamic';
 import { requireRole } from '@/lib/auth/require-role';
-import { redirect } from 'next/navigation';
 import ProgramOrientationVideo from '@/components/student/ProgramOrientationVideo';
 import { CheckCircle, Book, Users, Award, Briefcase } from 'lucide-react';
 import Link from 'next/link';

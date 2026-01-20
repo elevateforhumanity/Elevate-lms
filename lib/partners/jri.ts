@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 // lib/partners/jri.ts
 // JRI (Janitorial Resource Institute) API Integration
 // Janitorial and Custodial Training

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 import { generateInternalMetadata } from '@/lib/seo/metadata';
@@ -10,11 +9,8 @@ export const metadata: Metadata = generateInternalMetadata({
 });
 
 import { createClient } from '@/lib/supabase/server';
-import { safeFormatDate } from '@/lib/format-utils';
 import { requireRole } from '@/lib/auth/require-role';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import { getStudentState } from '@/lib/orchestration/state-machine';
 import {
   StateAwareDashboard,
@@ -37,6 +33,15 @@ import { BadgeShowcase } from '@/components/gamification/BadgeShowcase';
 import { StreakTracker } from '@/components/gamification/StreakTracker';
 import { ApprenticeProgressWidget } from '@/components/apprenticeship/ApprenticeProgressWidget';
 import { MiladyAccessCard } from '@/components/apprenticeship/MiladyAccessCard';
+
+interface Enrollment {
+  id: string;
+  status: string;
+  progress_percentage?: number;
+  partner_lms_courses?: { course_name: string } | null;
+  partner_lms_providers?: { provider_name: string } | null;
+  programs?: { name: string } | null;
+}
 
 /**
  * STUDENT PORTAL - ORCHESTRATED
@@ -86,11 +91,11 @@ export default async function StudentDashboardOrchestrated() {
     .order('created_at', { ascending: false });
 
   // Use partner enrollments if they exist, otherwise regular enrollments
-  const enrollments = partnerEnrollments && partnerEnrollments.length > 0 
+  const enrollments: Enrollment[] = (partnerEnrollments && partnerEnrollments.length > 0 
     ? partnerEnrollments 
-    : regularEnrollments;
+    : regularEnrollments) as Enrollment[] || [];
 
-  const activeEnrollment = enrollments?.find(
+  const activeEnrollment = enrollments.find(
     (e) => e.status === 'active' || e.status === 'pending'
   );
 

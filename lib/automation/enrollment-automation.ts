@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Advanced Enrollment Automation
  * Automates enrollment workflows and notifications

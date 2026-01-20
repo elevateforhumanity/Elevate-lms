@@ -7,6 +7,7 @@ import { generateLicenseKey, hashLicenseKey } from '@/lib/store/license';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
 import { toErrorMessage } from '@/lib/safe';
+import { isEventProcessed, markEventProcessed } from '@/lib/store/idempotency';
 
 interface ProductRecord {
   id: string;
@@ -35,6 +36,15 @@ export async function POST(req: Request) {
     // Verify webhook signature
     const event = verifyWebhookSignature(body, signature, webhookSecret);
 
+    const supabase = await createClient();
+
+    // SECTION 2: Idempotency check
+    const alreadyProcessed = await isEventProcessed(supabase, event.id);
+    if (alreadyProcessed) {
+      logger.info('Skipping already processed event', { eventId: event.id, type: event.type });
+      return Response.json({ received: true, skipped: true });
+    }
+
     // Handle checkout.session.completed event
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object as { metadata?: { productId?: string }; customer_email?: string };
@@ -48,8 +58,6 @@ export async function POST(req: Request) {
           { status: 400 }
         );
       }
-
-      const supabase = await createClient();
 
       // Get product details
       const { data: product } = await supabase
@@ -113,8 +121,14 @@ export async function POST(req: Request) {
         logger.error('Failed to send license email:', emailError as Error);
       }
 
+      // Mark event as processed
+      await markEventProcessed(supabase, event.id, event.type, undefined, { productId, email });
+
       return Response.json({ received: true });
     }
+
+    // Mark non-checkout events as processed too
+    await markEventProcessed(supabase, event.id, event.type);
 
     return Response.json({ received: true });
   } catch (error) {

@@ -1,0 +1,169 @@
+import { NextRequest, NextResponse } from 'next/server';
+import Stripe from 'stripe';
+import { PLANS, PlanId, TRIAL_DAYS } from '@/lib/license/types';
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+  apiVersion: '2025-10-29.clover' as Stripe.LatestApiVersion,
+});
+
+/**
+ * POST /api/license/checkout
+ * 
+ * Creates a Stripe Checkout session for license subscription.
+ * - Card required upfront (payment_method_collection: 'always')
+ * - 14-day trial, no charge until trial ends
+ * - Auto-cancels if no payment method at trial end
+ */
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { 
+      planId, 
+      organizationName, 
+      organizationType,
+      contactName, 
+      contactEmail,
+    } = body;
+
+    // Validate plan
+    if (!planId || !PLANS[planId as PlanId]) {
+      return NextResponse.json(
+        { error: 'Invalid plan selected' },
+        { status: 400 }
+      );
+    }
+
+    // Validate required fields
+    if (!organizationName || !contactName || !contactEmail) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    // Block disposable email domains
+    const disposableDomains = ['tempmail.com', 'throwaway.com', 'mailinator.com', '10minutemail.com'];
+    const emailDomain = contactEmail.split('@')[1]?.toLowerCase();
+    if (disposableDomains.includes(emailDomain)) {
+      return NextResponse.json(
+        { error: 'Please use a work email address' },
+        { status: 400 }
+      );
+    }
+
+    const plan = PLANS[planId as PlanId];
+    const origin = request.nextUrl.origin;
+
+    // Check if plan requires contact (enterprise)
+    if (plan.requiresContact) {
+      return NextResponse.json(
+        { error: 'This plan requires contacting sales. Please use the request form.' },
+        { status: 400 }
+      );
+    }
+
+    // Check if plan has a Stripe price ID
+    if (!plan.stripePriceId) {
+      return NextResponse.json(
+        { error: 'This plan is not available for self-serve checkout.' },
+        { status: 400 }
+      );
+    }
+
+    // Create or retrieve Stripe customer
+    const customers = await stripe.customers.list({
+      email: contactEmail,
+      limit: 1,
+    });
+
+    let customerId: string;
+    if (customers.data.length > 0) {
+      customerId = customers.data[0].id;
+      
+      // Check if customer already has an active subscription (prevent trial abuse)
+      const subscriptions = await stripe.subscriptions.list({
+        customer: customerId,
+        status: 'all',
+        limit: 10,
+      });
+      
+      const hasActiveOrTrialing = subscriptions.data.some(
+        sub => sub.status === 'active' || sub.status === 'trialing'
+      );
+      
+      if (hasActiveOrTrialing) {
+        return NextResponse.json(
+          { error: 'You already have an active subscription. Please manage it from your account.' },
+          { status: 400 }
+        );
+      }
+    } else {
+      const customer = await stripe.customers.create({
+        email: contactEmail,
+        name: contactName,
+        metadata: {
+          organization_name: organizationName,
+          organization_type: organizationType || 'other',
+        },
+      });
+      customerId = customer.id;
+    }
+
+    // Create Checkout Session with subscription + trial + card required
+    const session = await stripe.checkout.sessions.create({
+      customer: customerId,
+      mode: 'subscription',
+      payment_method_types: ['card'],
+      // Force card collection upfront
+      payment_method_collection: 'always',
+      line_items: [
+        {
+          price: plan.stripePriceId,
+          quantity: 1,
+        },
+      ],
+      subscription_data: {
+        trial_period_days: TRIAL_DAYS,
+        trial_settings: {
+          end_behavior: {
+            // Cancel subscription if no payment method at trial end
+            missing_payment_method: 'cancel',
+          },
+        },
+        metadata: {
+          organization_name: organizationName,
+          organization_type: organizationType || 'other',
+          plan_id: planId,
+        },
+      },
+      metadata: {
+        organization_name: organizationName,
+        organization_type: organizationType || 'other',
+        contact_name: contactName,
+        plan_id: planId,
+      },
+      success_url: `${origin}/store/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/store?canceled=true`,
+      billing_address_collection: 'required',
+      allow_promotion_codes: true,
+      // Custom text
+      custom_text: {
+        submit: {
+          message: `Your ${TRIAL_DAYS}-day free trial starts now. You won't be charged until the trial ends.`,
+        },
+      },
+    });
+
+    return NextResponse.json({ 
+      sessionId: session.id,
+      url: session.url,
+    });
+  } catch (error) {
+    console.error('Checkout error:', error);
+    const message = error instanceof Error ? error.message : 'Failed to create checkout session';
+    return NextResponse.json(
+      { error: message },
+      { status: 500 }
+    );
+  }
+}

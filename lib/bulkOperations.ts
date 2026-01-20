@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 // Bulk operations for admin functions
 
 import { createClient } from '@/lib/supabase/server';

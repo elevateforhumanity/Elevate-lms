@@ -91,10 +91,10 @@ export default async function LocationsPage() {
                       Email
                     </div>
                     <a
-                      href="mailto:Supersonicfadtcashllc@gmail.com"
+                      href="mailto:supersonicfastcashllc@gmail.com"
                       className="text-blue-600 hover:text-blue-700"
                     >
-                      Supersonicfadtcashllc@gmail.com
+                      supersonicfastcashllc@gmail.com
                     </a>
                   </div>
                 </div>

@@ -6,6 +6,8 @@ import { programs, type Program } from '@/app/data/programs';
 import { ProgramTemplate } from '@/components/programs/ProgramTemplate';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { PROGRAM_CATEGORIES } from '@/components/programs/ProgramPageWrapper';
 
 export const dynamic = 'force-dynamic';
 
@@ -119,12 +121,28 @@ export default async function ProgramDetailPage({
     return notFound();
   }
 
+  // Get category for breadcrumbs
+  const category = PROGRAM_CATEGORIES[slug];
+  const breadcrumbItems = [
+    { label: 'Programs', href: '/programs' },
+    ...(category ? [{ label: category.name, href: category.href }] : []),
+    { label: program.name || slug },
+  ];
+
   // If program has minimal data (from simple JSON), render simple template
   if (!program.heroTitle || !program.whatYouLearn) {
     return (
-      <div className="py-16 px-6 bg-white text-black">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold mb-6">{program.name}</h1>
+      <div className="min-h-screen bg-gray-50">
+        {/* Breadcrumbs */}
+        <div className="bg-white border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <Breadcrumbs items={breadcrumbItems} />
+          </div>
+        </div>
+        
+        <div className="py-16 px-6 bg-white text-black">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-3xl font-bold mb-6">{program.name}</h1>
           <p className="mb-6 text-lg">
             {program.shortDescription || program.longDescription}
           </p>
@@ -155,10 +173,21 @@ export default async function ProgramDetailPage({
             </Link>
           </div>
         </div>
+        </div>
       </div>
     );
   }
 
-  // Render full program template for complete data
-  return <ProgramTemplate program={program} />;
+  // Render full program template for complete data with breadcrumbs
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <Breadcrumbs items={breadcrumbItems} />
+        </div>
+      </div>
+      <ProgramTemplate program={program} />
+    </div>
+  );
 }

@@ -16,7 +16,7 @@ export default function CertificationsPage() {
     { name: 'EPA 608 Certification', industry: 'HVAC', duration: '2 weeks', demand: 'High' },
     { name: 'OSHA 10/30 Safety', industry: 'Construction', duration: '1-3 days', demand: 'Required' },
     { name: 'CompTIA A+', industry: 'Technology', duration: '8 weeks', demand: 'High' },
-    { name: 'Barber License', industry: 'Beauty', duration: '1500 hours', demand: 'Required' },
+    { name: 'Barber License', industry: 'Beauty', duration: '2000 hours', demand: 'Required' },
   ];
 
   return (

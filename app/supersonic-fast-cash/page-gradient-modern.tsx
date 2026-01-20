@@ -895,7 +895,7 @@ export default function SupersonicMarketingPage() {
                 <li>
                   <Phone className="w-5 h-5 inline-block" /> (317) 314-3757
                 </li>
-                <li>✉️ Supersonicfadtcashllc@gmail.com</li>
+                <li>✉️ supersonicfastcashllc@gmail.com</li>
                 <li>📍 Indianapolis, IN</li>
               </ul>
             </div>

@@ -73,7 +73,7 @@ export default function FounderPage() {
               </p>
 
               <p className="text-lg text-black leading-relaxed mb-6">
-                What started as a focused operation has grown into a workforce ecosystem serving 1,000+ individuals across Indiana with an 85% job placement rate. The organization holds active SAM.gov registration, positioning it for federal contracts and grants.
+                What started as a focused operation has grown into a workforce ecosystem serving individuals across Indiana. The organization holds active SAM.gov registration, positioning it for federal contracts and grants.
               </p>
 
               <p className="text-lg text-black leading-relaxed mb-6">
@@ -155,7 +155,7 @@ export default function FounderPage() {
               <div className="space-y-2 text-sm text-black">
                 <p><strong>Services:</strong> Training coordination, funding navigation, employer partnerships</p>
                 <p><strong>Status:</strong> Active federal registration (SAM.gov)</p>
-                <p><strong>Reach:</strong> 1,000+ individuals served across Indiana</p>
+                <p><strong>Reach:</strong> Serving individuals across Indiana</p>
               </div>
             </div>
 
@@ -209,7 +209,7 @@ export default function FounderPage() {
                 Results-Driven
               </h3>
               <p className="text-sm text-black">
-                85% job placement rate through measurable outcomes
+                Focus on measurable outcomes and career success
               </p>
             </div>
 

@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Centralized Program Data
  * Single source of truth for all program content, descriptions, and CTAs

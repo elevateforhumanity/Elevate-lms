@@ -18,9 +18,9 @@ export function SupersonicHeader() {
                 <Phone className="w-4 h-4" />
                 <span className="hidden sm:inline">(317) 314-3757</span>
               </a>
-              <a href="mailto:Supersonicfadtcashllc@gmail.com" className="hidden sm:flex items-center gap-2 hover:text-blue-200">
+              <a href="mailto:supersonicfastcashllc@gmail.com" className="hidden sm:flex items-center gap-2 hover:text-blue-200">
                 <Mail className="w-4 h-4" />
-                Supersonicfadtcashllc@gmail.com
+                supersonicfastcashllc@gmail.com
               </a>
             </div>
             <div className="hidden sm:flex items-center gap-4">

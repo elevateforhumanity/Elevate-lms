@@ -92,9 +92,8 @@ const navigation = [
     icon: FileText,
     children: [
       { name: 'MOUs', href: '/admin/docs/mou' },
-      { name: 'Handbooks', href: '/onboarding/handbook' },
-      { name: 'Privacy Policy', href: '/privacy-policy' },
       { name: 'Employee Handbook', href: '/onboarding/handbook' },
+      { name: 'Privacy Policy', href: '/privacy-policy' },
     ],
   },
   {

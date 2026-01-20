@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
@@ -358,7 +358,7 @@ export default async function StateBoardExamPage() {
               Call: 317-314-3757
             </a>
             <a
-              href="mailto:elevate4humanityedu@gmail.com"
+              href="mailto:info@elevateforhumanity.org"
               className="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg font-medium hover:bg-purple-200"
             >
               Email Support

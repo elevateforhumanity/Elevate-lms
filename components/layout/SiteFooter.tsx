@@ -9,26 +9,122 @@ const footerSections = [
   {
     title: 'Programs',
     links: [
+      { name: 'All Programs', href: '/programs' },
       { name: 'Healthcare', href: '/programs/healthcare' },
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
       { name: 'Business', href: '/programs/business' },
+      { name: 'Apprenticeships', href: '/apprenticeships' },
+      { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
+      { name: 'CNA Training', href: '/programs/cna' },
+      { name: 'HVAC Training', href: '/programs/hvac' },
+      { name: 'CDL Training', href: '/programs/cdl' },
+      { name: 'JRI Programs', href: '/jri' },
+      { name: 'Micro Classes', href: '/micro-classes' },
     ],
   },
   {
-    title: 'Resources',
+    title: 'Services',
     links: [
+      { name: 'Career Services', href: '/career-services' },
+      { name: 'VITA Tax Prep', href: '/vita' },
+      { name: 'Drug Testing', href: '/drug-testing' },
+      { name: 'Certifications', href: '/certifications' },
+      { name: 'Mentorship', href: '/mentorship' },
+      { name: 'Training Providers', href: '/training-providers' },
+      { name: 'Volunteer', href: '/volunteer' },
+    ],
+  },
+  {
+    title: 'Store',
+    links: [
+      { name: 'Store Home', href: '/store' },
+      { name: 'Courses', href: '/courses' },
+      { name: 'Shop', href: '/shop' },
+      { name: 'Workbooks', href: '/workbooks' },
+      { name: 'Marketplace', href: '/marketplace' },
+      { name: 'Pricing', href: '/pricing' },
+    ],
+  },
+  {
+    title: 'Get Started',
+    links: [
+      { name: 'Apply Now', href: '/apply' },
       { name: 'How It Works', href: '/how-it-works' },
-      { name: 'FAQs', href: '/faq' },
-      { name: 'Blog', href: '/blog' },
+      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
+      { name: 'Funding & Grants', href: '/funding' },
+      { name: 'Financial Aid', href: '/financial-aid' },
+      { name: 'Tuition & Fees', href: '/tuition-fees' },
+      { name: 'Outcomes', href: '/outcomes' },
+      { name: 'FAQ', href: '/faq' },
+    ],
+  },
+  {
+    title: 'For Employers',
+    links: [
+      { name: 'Employer Overview', href: '/employer' },
+      { name: 'Hire Graduates', href: '/hire-graduates' },
+      { name: 'Partner With Us', href: '/partner-with-us' },
+      { name: 'Partners', href: '/partners' },
+      { name: 'OJT & Funding', href: '/ojt-and-funding' },
+      { name: 'Workforce Board', href: '/workforce-board' },
+      { name: 'Workforce Partners', href: '/workforce-partners' },
+      { name: 'Government', href: '/government' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { name: 'About', href: '/about' },
+      { name: 'About Us', href: '/about' },
       { name: 'Contact', href: '/contact' },
-      { name: 'For Employers', href: '/employer' },
+      { name: 'Team', href: '/team' },
+      { name: 'Founder', href: '/founder' },
+      { name: 'Careers', href: '/careers' },
+      { name: 'Locations', href: '/locations' },
+      { name: 'Donate', href: '/donate' },
+      { name: 'Impact', href: '/impact' },
+      { name: 'Success Stories', href: '/success-stories' },
+      { name: 'Transparency', href: '/transparency' },
+      { name: 'Accreditation', href: '/accreditation' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { name: 'Blog', href: '/blog' },
+      { name: 'News', href: '/news' },
+      { name: 'Events', href: '/events' },
+      { name: 'Webinars', href: '/webinars' },
+      { name: 'Support', href: '/support' },
+      { name: 'Help Center', href: '/help' },
+      { name: 'Community', href: '/community' },
+      { name: 'Alumni', href: '/alumni' },
+      { name: 'Forums', href: '/forums' },
+    ],
+  },
+  {
+    title: 'Portals',
+    links: [
+      { name: 'Student LMS', href: '/lms' },
+      { name: 'Student Portal', href: '/student-portal' },
+      { name: 'Employer Portal', href: '/employer-portal' },
+      { name: 'Partner Portal', href: '/partner-portal' },
+      { name: 'Staff Portal', href: '/staff-portal' },
+      { name: 'Instructor Portal', href: '/instructor' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Terms of Service', href: '/terms-of-service' },
+      { name: 'Refund Policy', href: '/refund-policy' },
+      { name: 'Accessibility', href: '/accessibility' },
+      { name: 'Disclosures', href: '/disclosures' },
+      { name: 'All Policies', href: '/policies' },
+      { name: 'FERPA', href: '/ferpa' },
+      { name: 'Equal Opportunity', href: '/equal-opportunity' },
+      { name: 'Site Map', href: '/site-map' },
     ],
   },
 ];
@@ -102,7 +198,7 @@ export default function SiteFooter() {
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden sm:grid sm:grid-cols-4 gap-8">
+        <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
           {footerSections.map((section) => (
             <div key={section.title}>
               <h3 className="text-xs font-medium uppercase tracking-wider text-gray-400 mb-3">

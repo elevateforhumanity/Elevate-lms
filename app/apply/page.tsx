@@ -3,22 +3,40 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import { PathwayBlock } from '@/components/PathwayBlock';
+import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import { Phone, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 // Pathway slug to program name mapping
 const PATHWAY_TO_PROGRAM: Record<string, string> = {
+  // General categories
+  'healthcare': 'Healthcare (General Interest)',
+  'skilled-trades': 'Skilled Trades (General Interest)',
+  'technology': 'Technology (General Interest)',
+  'business': 'Business (General Interest)',
+  'apprenticeship': 'Apprenticeship (General Interest)',
+  // Healthcare
   'cna-certification': 'CNA (Certified Nursing Assistant)',
   'medical-assistant': 'Medical Assistant',
   'phlebotomy': 'Phlebotomy',
+  'direct-support-professional': 'Direct Support Professional',
+  'drug-collector': 'Drug Collector',
+  // Skilled Trades
   'hvac-technician': 'HVAC Technician',
   'electrical-apprenticeship': 'Electrical',
   'plumbing-apprenticeship': 'Plumbing',
+  'welding': 'Welding',
+  'cdl-training': 'CDL (Commercial Driver License)',
+  // Beauty & Barbering
   'barber-apprenticeship': 'Barber Apprenticeship',
   'cosmetology': 'Cosmetology',
-  'cdl-training': 'CDL (Commercial Driver License)',
+  'esthetician-apprenticeship': 'Esthetician Apprenticeship',
+  'nail-technician-apprenticeship': 'Nail Technician Apprenticeship',
+  // Technology
   'it-support': 'IT Support',
   'cybersecurity': 'Cybersecurity',
   'web-development': 'Web Development',
+  // Business
   'accounting': 'Accounting',
   'business-management': 'Business Management',
 };
@@ -172,12 +190,7 @@ export default function ApplyPage() {
         </p>
         
         {/* Pathway Disclosure */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
-          <p className="text-sm text-blue-800">
-            <strong>Career Pathway Disclosure:</strong> Elevate for Humanity delivers all training through a structured career pathway. 
-            Program enrollment, training, and placement are contingent upon eligibility, funding availability, and employer participation.
-          </p>
-        </div>
+        <PathwayDisclosure variant="full" className="mb-8" />
 
         {/* Error Message */}
         {error && (
@@ -410,6 +423,9 @@ export default function ApplyPage() {
           </div>
         </div>
       </section>
+
+      {/* Pathway Block */}
+      <PathwayBlock variant="light" />
     </>
   );
 }

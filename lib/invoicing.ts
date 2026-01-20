@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { createClient } from '@/lib/supabase/server';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';

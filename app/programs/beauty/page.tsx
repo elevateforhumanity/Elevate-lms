@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import { ArrowRight, Clock, DollarSign, Award, CheckCircle } from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 const beautyPrograms = [
   {
     title: 'Barber Apprenticeship',
-    description: 'Complete 1,500-hour apprenticeship to become a licensed barber in Indiana. Learn cutting, styling, shaving, and business skills.',
+    description: 'Complete 2,000-hour apprenticeship to become a licensed barber in Indiana. Learn cutting, styling, shaving, and business skills.',
     href: '/programs/barber-apprenticeship',
     image: '/hero-images/barber-hero.jpg',
     hours: 1500,
@@ -147,6 +148,9 @@ export default async function BeautyProgramsPage() {
         </div>
       </section>
 
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Beauty" programSlug="beauty" />
+
       {/* Program Cards */}
       <section id="programs" className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -265,9 +269,9 @@ export default async function BeautyProgramsPage() {
             <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
               Ready to Start Your Beauty Career?
             </h3>
-            <p className="text-white/90 mb-4">Apply now - takes just 5 minutes</p>
+            <p className="text-white/90 mb-4">Check eligibility first - takes just 5 minutes</p>
             <div className="inline-flex items-center gap-2 text-white font-bold">
-              <span>Apply Now</span>
+              <span>Start Eligibility & Choose This Program</span>
               <ArrowRight className="w-5 h-5" />
             </div>
           </Link>

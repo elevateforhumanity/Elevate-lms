@@ -1,23 +1,34 @@
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect, notFound } from 'next/navigation';
+import Link from 'next/link';
+import {
+  Trophy,
+  XCircle,
+  CheckCircle,
+  ArrowLeft,
+  RotateCcw,
+  Home,
+  Clock,
+  Target,
+  Award,
+} from 'lucide-react';
+
 export const dynamic = 'force-dynamic';
 
-import { Metadata } from 'next';
+interface Props {
+  params: Promise<{ quizId: string; attemptId: string }>;
+}
 
-import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import Image from 'next/image';
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return {
+    title: 'Quiz Results | Elevate LMS',
+    description: 'View your quiz results and performance.',
+  };
+}
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical:
-      'https://www.elevateforhumanity.org/lms/quizzes/[quizId]/results/[attemptId]',
-  },
-  title: 'Quiz Results | Elevate For Humanity',
-  description:
-    'Manage [attemptId] settings and development.',
-};
-
-export default async function attemptIdPage() {
+export default async function QuizResultsPage({ params }: Props) {
+  const { quizId, attemptId } = await params;
   const supabase = await createClient();
 
   if (!supabase) {
@@ -30,273 +41,268 @@ export default async function attemptIdPage() {
       </div>
     );
   }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+
+  const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
-    redirect('/login');
+    redirect('/login?redirect=/lms/quizzes/' + quizId + '/results/' + attemptId);
   }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
-
-  // Fetch student's courses
-  const { data: enrollments } = await supabase
-    .from('enrollments')
-    .select(
-      `
+  // Fetch attempt with quiz details
+  const { data: attempt, error: attemptError } = await supabase
+    .from('quiz_attempts')
+    .select(`
       *,
-      courses (
+      quizzes (
         id,
         title,
         description,
-        thumbnail_url
+        passing_score,
+        show_correct_answers,
+        max_attempts,
+        course_id,
+        courses (
+          id,
+          title
+        )
       )
-    `
-    )
+    `)
+    .eq('id', attemptId)
     .eq('user_id', user.id)
-    .order('created_at', { ascending: false });
+    .single();
 
-  const { count: activeCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'active');
+  if (attemptError || !attempt) {
+    notFound();
+  }
 
-  const { count: completedCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'completed');
-
-  const { data: recentProgress } = await supabase
-    .from('student_progress')
-    .select(
-      `
+  // Fetch attempt answers with question details
+  const { data: attemptAnswers } = await supabase
+    .from('quiz_attempt_answers')
+    .select(`
       *,
-      courses (title)
-    `
-    )
-    .eq('student_id', user.id)
-    .order('updated_at', { ascending: false })
-    .limit(5);
+      quiz_questions (
+        id,
+        question_text,
+        points,
+        quiz_answers (
+          id,
+          answer_text,
+          is_correct
+        )
+      )
+    `)
+    .eq('attempt_id', attemptId)
+    .order('created_at', { ascending: true });
+
+  // Get total attempts for this quiz
+  const { count: totalAttempts } = await supabase
+    .from('quiz_attempts')
+    .select('*', { count: 'exact', head: true })
+    .eq('quiz_id', quizId)
+    .eq('user_id', user.id)
+    .not('completed_at', 'is', null);
+
+  const quiz = attempt.quizzes as {
+    id: string;
+    title: string;
+    description: string | null;
+    passing_score: number | null;
+    show_correct_answers: boolean;
+    max_attempts: number | null;
+    course_id: string | null;
+    courses: { id: string; title: string } | null;
+  };
+
+  const passed = attempt.passed;
+  const score = attempt.score || 0;
+  const passingScore = quiz.passing_score || 70;
+  const canRetake = !quiz.max_attempts || (totalAttempts || 0) < quiz.max_attempts;
+
+  // Calculate time taken
+  const startTime = new Date(attempt.started_at).getTime();
+  const endTime = new Date(attempt.completed_at).getTime();
+  const timeTakenMs = endTime - startTime;
+  const timeTakenMinutes = Math.floor(timeTakenMs / 60000);
+  const timeTakenSeconds = Math.floor((timeTakenMs % 60000) / 1000);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-8.jpg"
-          alt="[attemptId]"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+    <div className="min-h-screen bg-slate-50 py-8">
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Back Link */}
+        <Link
+          href="/lms/quizzes"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-6"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Quizzes
+        </Link>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            [attemptId]
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage [attemptId] settings and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  [attemptId]
-                </h2>
-                <p className="text-black mb-6">
-                  Manage [attemptId] for career
-                  growth and development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-8.jpg"
-                  alt="[attemptId]"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
+        {/* Results Header */}
+        <div className={`rounded-2xl p-8 mb-8 ${
+          passed 
+            ? 'bg-gradient-to-br from-green-500 to-emerald-600' 
+            : 'bg-gradient-to-br from-red-500 to-rose-600'
+        } text-white`}>
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-3xl font-bold mb-2">{quiz.title}</h1>
+              {quiz.courses && (
+                <p className="text-white/80">{quiz.courses.title}</p>
+              )}
             </div>
-
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
-              </div>
+            <div className={`w-20 h-20 rounded-full flex items-center justify-center ${
+              passed ? 'bg-white/20' : 'bg-white/20'
+            }`}>
+              {passed ? (
+                <Trophy className="w-10 h-10" />
+              ) : (
+                <XCircle className="w-10 h-10" />
+              )}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
+          <div className="text-center py-6">
+            <p className="text-white/80 text-lg mb-2">Your Score</p>
+            <p className="text-7xl font-bold mb-2">{score}%</p>
+            <p className="text-xl">
+              {passed ? 'Congratulations! You passed!' : `You need ${passingScore}% to pass`}
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
+          </div>
+
+          {/* Stats Row */}
+          <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-white/20">
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <Target className="w-5 h-5" />
+              </div>
+              <p className="text-2xl font-bold">{attempt.points_earned || 0}/{attempt.points_possible || 0}</p>
+              <p className="text-sm text-white/80">Points Earned</p>
+            </div>
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <Clock className="w-5 h-5" />
+              </div>
+              <p className="text-2xl font-bold">{timeTakenMinutes}:{timeTakenSeconds.toString().padStart(2, '0')}</p>
+              <p className="text-sm text-white/80">Time Taken</p>
+            </div>
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <Award className="w-5 h-5" />
+              </div>
+              <p className="text-2xl font-bold">{passingScore}%</p>
+              <p className="text-sm text-white/80">Passing Score</p>
             </div>
           </div>
         </div>
-      </section>
+
+        {/* Action Buttons */}
+        <div className="flex flex-wrap gap-4 mb-8">
+          {canRetake && !passed && (
+            <Link
+              href={`/lms/quizzes/${quizId}`}
+              className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition"
+            >
+              <RotateCcw className="w-5 h-5" />
+              Retake Quiz
+            </Link>
+          )}
+          {quiz.course_id && (
+            <Link
+              href={`/lms/courses/${quiz.course_id}`}
+              className="flex items-center gap-2 px-6 py-3 border border-slate-300 rounded-xl font-semibold hover:bg-slate-50 transition"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              Back to Course
+            </Link>
+          )}
+          <Link
+            href="/lms/dashboard"
+            className="flex items-center gap-2 px-6 py-3 border border-slate-300 rounded-xl font-semibold hover:bg-slate-50 transition"
+          >
+            <Home className="w-5 h-5" />
+            Dashboard
+          </Link>
+        </div>
+
+        {/* Question Review */}
+        {quiz.show_correct_answers && attemptAnswers && attemptAnswers.length > 0 && (
+          <div className="bg-white rounded-2xl border border-slate-200 p-6">
+            <h2 className="text-xl font-bold text-slate-900 mb-6">Question Review</h2>
+            <div className="space-y-6">
+              {attemptAnswers.map((answer, index) => {
+                const question = answer.quiz_questions;
+                if (!question) return null;
+
+                const selectedAnswer = question.quiz_answers?.find(
+                  (a: { id: string }) => a.id === answer.selected_answer_id
+                );
+                const correctAnswer = question.quiz_answers?.find(
+                  (a: { is_correct: boolean }) => a.is_correct
+                );
+
+                return (
+                  <div
+                    key={answer.id}
+                    className={`p-4 rounded-xl border-2 ${
+                      answer.is_correct
+                        ? 'border-green-200 bg-green-50'
+                        : 'border-red-200 bg-red-50'
+                    }`}
+                  >
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                        answer.is_correct ? 'bg-green-500' : 'bg-red-500'
+                      } text-white font-bold text-sm`}>
+                        {index + 1}
+                      </div>
+                      <div className="flex-1">
+                        <p className="font-medium text-slate-900">{question.question_text}</p>
+                        <p className="text-sm text-slate-500 mt-1">
+                          {answer.points_earned || 0} / {question.points || 1} points
+                        </p>
+                      </div>
+                      {answer.is_correct ? (
+                        <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                      ) : (
+                        <XCircle className="w-6 h-6 text-red-500 flex-shrink-0" />
+                      )}
+                    </div>
+
+                    <div className="ml-11 space-y-2">
+                      <div className={`p-3 rounded-lg ${
+                        answer.is_correct
+                          ? 'bg-green-100 border border-green-300'
+                          : 'bg-red-100 border border-red-300'
+                      }`}>
+                        <p className="text-sm font-medium text-slate-700">Your answer:</p>
+                        <p className={answer.is_correct ? 'text-green-800' : 'text-red-800'}>
+                          {selectedAnswer?.answer_text || 'No answer selected'}
+                        </p>
+                      </div>
+
+                      {!answer.is_correct && correctAnswer && (
+                        <div className="p-3 rounded-lg bg-green-100 border border-green-300">
+                          <p className="text-sm font-medium text-slate-700">Correct answer:</p>
+                          <p className="text-green-800">{correctAnswer.answer_text}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* If answers not shown */}
+        {!quiz.show_correct_answers && (
+          <div className="bg-white rounded-2xl border border-slate-200 p-8 text-center">
+            <p className="text-slate-600">
+              Detailed answer review is not available for this quiz.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

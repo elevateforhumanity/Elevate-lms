@@ -1,5 +1,6 @@
 # Netlify Configuration - Elevate for Humanity
 # Canonical domain: www.elevateforhumanity.org (with www)
+# Admin domain: elevateconnectsdirectory.org (separate admin panel)
 
 [build]
   command = "pnpm run build"
@@ -11,6 +12,16 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# ============================================
+# LMS DOMAIN (elevateforhumanityeducation.com)
+# Do NOT redirect - handled by middleware -> /student-portal
+# ============================================
+
+# ============================================
+# SUPERSONIC DOMAIN (supersonicfastermoney.com)
+# Do NOT redirect - handled by middleware -> /supersonic-fast-cash
+# ============================================
 
 # ============================================
 # CANONICAL DOMAIN REDIRECTS (301 = permanent)
@@ -27,19 +38,6 @@
 # Institute naked -> org
 [[redirects]]
   from = "https://elevateforhumanity.institute/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 301
-  force = true
-
-# Education domain -> org
-[[redirects]]
-  from = "https://www.elevateforhumanityeducation.com/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://elevateforhumanityeducation.com/*"
   to = "https://www.elevateforhumanity.org/:splat"
   status = 301
   force = true

@@ -1,22 +1,35 @@
-// @ts-nocheck
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
+import { Resend } from 'resend';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
-import { createClient } from '@supabase/supabase-js';
-import { Resend } from 'resend';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+
+interface CareerApplicationBody {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  position?: string;
+  experience?: string;
+  hasPTIN?: boolean;
+  hasEFIN?: boolean;
+  availability?: string;
+  resumeUrl?: string;
+  coverLetter?: string;
+}
 
 /**
  * Handle career application
  */
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const body: CareerApplicationBody = await request.json();
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // Validate required fields
