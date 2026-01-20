@@ -1,0 +1,476 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { 
+  Facebook, Linkedin, Instagram, Youtube, Globe,
+  ArrowRight, Play, Users, Heart, MessageCircle,
+  Share2, ExternalLink, Calendar, Video
+} from 'lucide-react';
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const socialPlatforms = [
+  {
+    name: 'Facebook',
+    icon: Facebook,
+    color: 'bg-blue-600 hover:bg-blue-700',
+    href: 'https://www.facebook.com/profile.php?id=61571046346179',
+    followers: '2.8K',
+    description: 'Join our community for updates, success stories, and live events',
+    cta: 'Follow Us',
+  },
+  {
+    name: 'YouTube',
+    icon: Youtube,
+    color: 'bg-red-600 hover:bg-red-700',
+    href: 'https://www.youtube.com/@elevateforhumanity',
+    followers: '1.5K',
+    description: 'Watch tutorials, student testimonials, and program overviews',
+    cta: 'Subscribe',
+  },
+  {
+    name: 'LinkedIn',
+    icon: Linkedin,
+    color: 'bg-blue-700 hover:bg-blue-800',
+    href: 'https://www.linkedin.com/company/elevate-for-humanity',
+    followers: '856',
+    description: 'Connect with us for professional updates and job opportunities',
+    cta: 'Connect',
+  },
+  {
+    name: 'Instagram',
+    icon: Instagram,
+    color: 'bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600',
+    href: 'https://www.instagram.com/elevateforhumanity',
+    followers: '3.4K',
+    description: 'Behind-the-scenes content, student spotlights, and daily inspiration',
+    cta: 'Follow',
+  },
+  {
+    name: 'Google',
+    icon: Globe,
+    color: 'bg-emerald-600 hover:bg-emerald-700',
+    href: 'https://g.page/r/elevateforhumanity',
+    followers: '4.9★',
+    description: 'Leave a review and find us on Google Maps',
+    cta: 'Review Us',
+  },
+];
+
+const featuredVideos = [
+  {
+    id: 'video1',
+    title: 'Welcome to Elevate for Humanity',
+    thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800',
+    duration: '2:45',
+    views: '1.2K',
+    youtubeId: 'dQw4w9WgXcQ', // Replace with actual video ID
+  },
+  {
+    id: 'video2',
+    title: 'Student Success Story: From Unemployed to Certified',
+    thumbnail: 'https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800',
+    duration: '4:30',
+    views: '856',
+    youtubeId: 'dQw4w9WgXcQ', // Replace with actual video ID
+  },
+  {
+    id: 'video3',
+    title: 'How WIOA Funding Works',
+    thumbnail: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
+    duration: '3:15',
+    views: '2.1K',
+    youtubeId: 'dQw4w9WgXcQ', // Replace with actual video ID
+  },
+];
+
+const recentPosts = [
+  {
+    platform: 'Facebook',
+    icon: Facebook,
+    content: 'Congratulations to our latest graduating class! 15 new certified professionals ready to enter the workforce. 🎓',
+    likes: 234,
+    comments: 45,
+    shares: 12,
+    time: '2 hours ago',
+    image: 'https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=400',
+  },
+  {
+    platform: 'LinkedIn',
+    icon: Linkedin,
+    content: 'We are hiring! Looking for passionate instructors to join our team. Apply now and help transform lives through education.',
+    likes: 156,
+    comments: 23,
+    shares: 34,
+    time: '5 hours ago',
+  },
+  {
+    platform: 'Instagram',
+    icon: Instagram,
+    content: 'Behind the scenes at our Indianapolis training center. Our students are putting in the work! 💪',
+    likes: 412,
+    comments: 67,
+    shares: 28,
+    time: '1 day ago',
+    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',
+  },
+];
+
+export default function SocialMediaPage() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [animatedStats, setAnimatedStats] = useState({ followers: 0, posts: 0, engagement: 0 });
+
+  useEffect(() => {
+    setIsVisible(true);
+    
+    // Animate stats
+    const duration = 2000;
+    const steps = 60;
+    const interval = duration / steps;
+    
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      setAnimatedStats({
+        followers: Math.floor(8500 * progress),
+        posts: Math.floor(500 * progress),
+        engagement: Math.floor(95 * progress),
+      });
+      
+      if (step >= steps) clearInterval(timer);
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section with Animation */}
+      <section className="relative min-h-[500px] flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="Connect with Elevate for Humanity"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-transparent" />
+        </div>
+
+        <div className={`relative z-10 max-w-7xl mx-auto px-4 py-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 mb-6">
+              <Share2 className="w-6 h-6 text-blue-400" />
+              <span className="text-blue-400 font-medium">Connect With Us</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Follow Our
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                Journey
+              </span>
+            </h1>
+            
+            <p className="text-xl text-slate-300 mb-8">
+              Stay connected with Elevate for Humanity. Get updates, success stories, 
+              tips, and inspiration across all our social platforms.
+            </p>
+
+            {/* Animated Stats */}
+            <div className="grid grid-cols-3 gap-6 mb-8">
+              <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                <p className="text-3xl font-bold text-white">{animatedStats.followers.toLocaleString()}+</p>
+                <p className="text-slate-400">Total Followers</p>
+              </div>
+              <div className={`transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                <p className="text-3xl font-bold text-white">{animatedStats.posts}+</p>
+                <p className="text-slate-400">Posts Shared</p>
+              </div>
+              <div className={`transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                <p className="text-3xl font-bold text-white">{animatedStats.engagement}%</p>
+                <p className="text-slate-400">Engagement Rate</p>
+              </div>
+            </div>
+
+            {/* Quick Follow Buttons */}
+            <div className="flex flex-wrap gap-3">
+              {socialPlatforms.map((platform, index) => (
+                <a
+                  key={platform.name}
+                  href={platform.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 px-5 py-3 ${platform.color} text-white rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                >
+                  <platform.icon className="w-5 h-5" />
+                  {platform.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Platform Cards */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Find Us Everywhere
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Choose your favorite platform and join our growing community
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {socialPlatforms.map((platform, index) => (
+              <a
+                key={platform.name}
+                href={platform.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-slate-200 transition-all duration-500 hover:-translate-y-2`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className={`w-14 h-14 ${platform.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <platform.icon className="w-7 h-7 text-white" />
+                </div>
+                
+                <h3 className="text-xl font-bold text-slate-900 mb-1">{platform.name}</h3>
+                <p className="text-2xl font-bold text-slate-900 mb-2">{platform.followers} followers</p>
+                <p className="text-slate-600 text-sm mb-4">{platform.description}</p>
+                
+                <span className="inline-flex items-center gap-2 text-blue-600 font-medium group-hover:gap-3 transition-all">
+                  {platform.cta} <ArrowRight className="w-4 h-4" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured YouTube Videos */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <Youtube className="w-6 h-6 text-red-600" />
+                <span className="text-red-600 font-medium">YouTube Channel</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+                Featured Videos
+              </h2>
+            </div>
+            <a
+              href="https://www.youtube.com/@elevateforhumanity"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full font-medium hover:bg-red-700 transition-colors"
+            >
+              <Youtube className="w-5 h-5" />
+              Subscribe
+            </a>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {featuredVideos.map((video) => (
+              <div
+                key={video.id}
+                className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="relative aspect-video">
+                  <Image
+                    src={video.thumbnail}
+                    alt={video.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+                  
+                  {/* Play Button */}
+                  <button
+                    onClick={() => setActiveVideo(video.youtubeId)}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                      <Play className="w-7 h-7 text-white ml-1" fill="white" />
+                    </div>
+                  </button>
+                  
+                  {/* Duration Badge */}
+                  <span className="absolute bottom-3 right-3 bg-black/80 text-white text-sm px-2 py-1 rounded">
+                    {video.duration}
+                  </span>
+                </div>
+                
+                <div className="p-5">
+                  <h3 className="font-bold text-slate-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                    {video.title}
+                  </h3>
+                  <p className="text-sm text-slate-500">{video.views} views</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* YouTube Embed Modal */}
+          {activeVideo && (
+            <div 
+              className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+              onClick={() => setActiveVideo(null)}
+            >
+              <div className="relative w-full max-w-4xl aspect-video">
+                <button
+                  onClick={() => setActiveVideo(null)}
+                  className="absolute -top-12 right-0 text-white hover:text-slate-300"
+                >
+                  Close ✕
+                </button>
+                <iframe
+                  src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
+                  title="YouTube video"
+                  className="w-full h-full rounded-xl"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Recent Posts Feed */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Latest Updates
+            </h2>
+            <p className="text-xl text-slate-600">
+              See what we have been sharing across our platforms
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {recentPosts.map((post, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center">
+                    <post.icon className="w-5 h-5 text-slate-700" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-slate-900">{post.platform}</p>
+                    <p className="text-sm text-slate-500">{post.time}</p>
+                  </div>
+                </div>
+
+                {post.image && (
+                  <div className="relative h-48 rounded-xl overflow-hidden mb-4">
+                    <Image
+                      src={post.image}
+                      alt="Post image"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+
+                <p className="text-slate-700 mb-4">{post.content}</p>
+
+                <div className="flex items-center gap-6 text-sm text-slate-500">
+                  <span className="flex items-center gap-1">
+                    <Heart className="w-4 h-4" /> {post.likes}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <MessageCircle className="w-4 h-4" /> {post.comments}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Share2 className="w-4 h-4" /> {post.shares}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Join Our Community Today
+          </h2>
+          <p className="text-xl text-white/90 mb-8">
+            Follow us on your favorite platform and be part of our mission to transform lives through education.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            {socialPlatforms.map((platform) => (
+              <a
+                key={platform.name}
+                href={platform.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-900 rounded-full font-medium hover:bg-slate-100 transition-all hover:scale-105"
+              >
+                <platform.icon className="w-5 h-5" />
+                {platform.name}
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-20">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <Calendar className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            Never Miss an Update
+          </h2>
+          <p className="text-xl text-slate-600 mb-8">
+            Subscribe to our newsletter for weekly updates, success stories, and exclusive content.
+          </p>
+          
+          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 px-5 py-3 border border-slate-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <button
+              type="submit"
+              className="px-8 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+  );
+}

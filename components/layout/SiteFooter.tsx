@@ -133,6 +133,8 @@ const socialLinks = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/elevate-for-humanity' },
   { name: 'YouTube', href: 'https://www.youtube.com/@elevateforhumanity' },
   { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61571046346179' },
+  { name: 'Instagram', href: 'https://www.instagram.com/elevateforhumanity' },
+  { name: 'Google', href: 'https://g.page/r/elevateforhumanity' },
 ];
 
 export default function SiteFooter() {
