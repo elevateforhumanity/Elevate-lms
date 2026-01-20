@@ -21,6 +21,12 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic';
 
+interface OrderItem {
+  name: string;
+  quantity: number;
+  price: number;
+}
+
 interface Order {
   id: string;
   order_number: string;
@@ -29,11 +35,7 @@ interface Order {
   items_count: number;
   created_at: string;
   tracking_number?: string;
-  items: {
-    name: string;
-    quantity: number;
-    price: number;
-  }[];
+  items: OrderItem[];
 }
 
 export default async function OrderHistoryPage() {
@@ -53,44 +55,45 @@ export default async function OrderHistoryPage() {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/login?next=/shop/orders');
 
-  // Sample orders
-  const orders: Order[] = [
-    {
-      id: '1',
-      order_number: 'ORD-2026-001234',
-      status: 'delivered',
-      total: 229.98,
-      items_count: 2,
-      created_at: '2026-01-10T10:30:00Z',
-      items: [
-        { name: 'Barbering Starter Kit', quantity: 1, price: 149.99 },
-        { name: 'HVAC Study Guide Bundle', quantity: 1, price: 79.99 },
-      ],
-    },
-    {
-      id: '2',
-      order_number: 'ORD-2026-001198',
-      status: 'shipped',
-      total: 89.99,
-      items_count: 1,
-      created_at: '2026-01-08T14:15:00Z',
-      tracking_number: '1Z999AA10123456784',
-      items: [
-        { name: 'Professional Clipper Set', quantity: 1, price: 89.99 },
-      ],
-    },
-    {
-      id: '3',
-      order_number: 'ORD-2025-001156',
-      status: 'delivered',
-      total: 45.00,
-      items_count: 3,
-      created_at: '2025-12-20T09:00:00Z',
-      items: [
-        { name: 'Study Flashcards', quantity: 3, price: 15.00 },
-      ],
-    },
-  ];
+  // Fetch orders from database
+  const { data: ordersData, error } = await supabase
+    .from('orders')
+    .select(`
+      id,
+      order_number,
+      status,
+      total,
+      created_at,
+      tracking_number,
+      order_items (
+        id,
+        product_name,
+        quantity,
+        price
+      )
+    `)
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching orders:', error.message);
+  }
+
+  // Transform data to match expected format
+  const orders: Order[] = (ordersData || []).map((order: any) => ({
+    id: order.id,
+    order_number: order.order_number || `ORD-${order.id.slice(0, 8).toUpperCase()}`,
+    status: order.status || 'pending',
+    total: order.total || 0,
+    items_count: order.order_items?.length || 0,
+    created_at: order.created_at,
+    tracking_number: order.tracking_number,
+    items: (order.order_items || []).map((item: any) => ({
+      name: item.product_name || 'Product',
+      quantity: item.quantity || 1,
+      price: item.price || 0,
+    })),
+  }));
 
   const getStatusConfig = (status: string) => {
     const configs: Record<string, { label: string; color: string; icon: typeof CheckCircle }> = {
@@ -134,7 +137,6 @@ export default async function OrderHistoryPage() {
 
               return (
                 <div key={order.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                  {/* Order Header */}
                   <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                       <div>
@@ -151,7 +153,6 @@ export default async function OrderHistoryPage() {
                     </div>
                   </div>
 
-                  {/* Order Items */}
                   <div className="px-6 py-4">
                     <div className="space-y-3">
                       {order.items.map((item, index) => (
@@ -171,7 +172,6 @@ export default async function OrderHistoryPage() {
                     </div>
                   </div>
 
-                  {/* Order Actions */}
                   <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
                     <div className="flex flex-wrap gap-3">
                       <Link
