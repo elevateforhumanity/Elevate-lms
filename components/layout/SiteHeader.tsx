@@ -112,8 +112,8 @@ export default function SiteHeader() {
               </span>
             </Link>
 
-            {/* Desktop Navigation - show on md (768px) and up */}
-            <nav className="hidden md:flex items-center h-full">
+            {/* Desktop Navigation - show on lg (1024px) and up for iPad/tablet compatibility */}
+            <nav className="hidden lg:flex items-center h-full">
               {NAV_ITEMS.map((item) => (
                 <div key={item.name} className="relative h-full group">
                   <Link
@@ -160,29 +160,29 @@ export default function SiteHeader() {
               {user ? (
                 <Link
                   href="/lms/dashboard"
-                  className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                  className="hidden lg:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
                 >
                   Dashboard
                 </Link>
               ) : (
                 <Link
                   href="/login"
-                  className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                  className="hidden lg:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
                 >
                   Sign In
                 </Link>
               )}
               <Link
                 href="/apply"
-                className="hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
               >
                 Apply Now
               </Link>
 
-              {/* Mobile menu button - show on smaller screens */}
+              {/* Mobile menu button - show on smaller screens (below lg/1024px) */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="md:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
+                className="lg:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -192,9 +192,9 @@ export default function SiteHeader() {
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - shows on screens below lg (1024px) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] md:hidden">
+        <div className="fixed inset-0 z-[100] lg:hidden">
           <div 
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileMenuOpen(false)}
