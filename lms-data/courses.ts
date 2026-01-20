@@ -38,11 +38,17 @@ export interface Course {
 }
 
 /**
- * SAMPLE COURSES
+ * LMS COURSES
  *
- * 🔴 ELIZABETH:
- * Same as before, but with one SCORM-style lesson added
- * in the Tax/VITA course to show how JRI / VITA can launch.
+ * These courses are companion content for program-specific training.
+ * Video content is supplementary - primary instruction comes from
+ * partner providers (Choice Medical Institute, Milady, IRS VITA, etc.)
+ * 
+ * Lesson types:
+ * - "video": Embedded video content (uses hero videos as placeholders until program-specific content is produced)
+ * - "scorm": External SCORM package integration
+ * - "pdf": Document-based learning
+ * - "external": Links to partner training platforms
  */
 
 export const courses: Course[] = [
@@ -71,7 +77,7 @@ export const courses: Course[] = [
             title: "Welcome to Your CNA Pathway",
             type: "video",
             durationMinutes: 8,
-            videoUrl: "/videos/cna/welcome.mp4",
+            videoUrl: "/videos/cna-hero.mp4",
             description:
               "Elizabeth or an Elevate instructor welcomes learners, explains the CNA pathway, and how JRI/WRG/WEX/OJT may support training.",
           },
@@ -80,7 +86,7 @@ export const courses: Course[] = [
             title: "What a CNA Actually Does Day-to-Day",
             type: "video",
             durationMinutes: 10,
-            videoUrl: "/videos/cna/day-in-the-life.mp4",
+            videoUrl: "/videos/cna-hero.mp4",
             description:
               "Day-in-the-life overview of a CNA in long-term care, including teamwork, pace, and emotional load.",
           },
@@ -97,14 +103,14 @@ export const courses: Course[] = [
             title: "Showing Up: Attendance, Reliability & Boundaries",
             type: "video",
             durationMinutes: 12,
-            videoUrl: "/videos/cna/professionalism.mp4",
+            videoUrl: "/videos/cna-hero.mp4",
           },
           {
             id: "cna-lesson-2-2",
             title: "Communication with Residents, Families & Staff",
             type: "video",
             durationMinutes: 14,
-            videoUrl: "/videos/cna/communication.mp4",
+            videoUrl: "/videos/cna-hero.mp4",
           },
         ],
       },
@@ -135,14 +141,14 @@ export const courses: Course[] = [
             title: "Barbershop Culture & Expectations",
             type: "video",
             durationMinutes: 10,
-            videoUrl: "/videos/barber/shop-culture.mp4",
+            videoUrl: "/videos/barber-hero-final.mp4",
           },
           {
             id: "barber-lesson-1-2",
             title: "Client Experience & Building Loyal Clients",
             type: "video",
             durationMinutes: 12,
-            videoUrl: "/videos/barber/client-experience.mp4",
+            videoUrl: "/videos/barber-hero-final.mp4",
           },
         ],
       },
@@ -157,14 +163,14 @@ export const courses: Course[] = [
             title: "Logging Your Apprenticeship Hours",
             type: "video",
             durationMinutes: 8,
-            videoUrl: "/videos/barber/hours-logging.mp4",
+            videoUrl: "/videos/barber-hero-final.mp4",
           },
           {
             id: "barber-lesson-2-2",
             title: "Working with Elevate & Your Shop Owner",
             type: "video",
             durationMinutes: 9,
-            videoUrl: "/videos/barber/elevate-partnership.mp4",
+            videoUrl: "/videos/barber-hero-final.mp4",
           },
         ],
       },
@@ -196,14 +202,14 @@ export const courses: Course[] = [
             title: "Overview of VITA & Link & Learn",
             type: "video",
             durationMinutes: 10,
-            videoUrl: "/videos/tax/vita-overview.mp4",
+            videoUrl: "/videos/getting-started-hero.mp4",
           },
           {
             id: "tax-lesson-1-2",
             title: "Connecting Tax Experience to Career Paths",
             type: "video",
             durationMinutes: 12,
-            videoUrl: "/videos/tax/career-paths.mp4",
+            videoUrl: "/videos/career-services-hero.mp4",
           },
           {
             id: "tax-lesson-1-3",
@@ -226,14 +232,14 @@ export const courses: Course[] = [
             title: "Confidentiality & Ethics",
             type: "video",
             durationMinutes: 8,
-            videoUrl: "/videos/tax/confidentiality.mp4",
+            videoUrl: "/videos/getting-started-hero.mp4",
           },
           {
             id: "tax-lesson-2-2",
             title: "Customer Service Mindset in Tax Season",
             type: "video",
             durationMinutes: 9,
-            videoUrl: "/videos/tax/customer-service.mp4",
+            videoUrl: "/videos/career-services-hero.mp4",
           },
         ],
       },
