@@ -6,8 +6,28 @@ import Image from 'next/image';
 import { 
   Facebook, Linkedin, Instagram, Youtube, Globe,
   ArrowRight, Play, Users, Heart, MessageCircle,
-  Share2, ExternalLink, Calendar, Video
+  Share2, ExternalLink, Calendar, Video, Loader2
 } from 'lucide-react';
+
+// Types for social feeds
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  featured_image?: string;
+  category?: string;
+  published_at: string;
+}
+
+interface YouTubeVideo {
+  id: string;
+  title: string;
+  thumbnail: string;
+  duration: string;
+  views: string;
+  publishedAt: string;
+}
 
 // Animation variants
 const fadeInUp = {
@@ -71,14 +91,15 @@ const socialPlatforms = [
   },
 ];
 
-const featuredVideos = [
+// Default/fallback videos (replaced by live data when available)
+const defaultVideos = [
   {
     id: 'video1',
     title: 'Welcome to Elevate for Humanity',
     thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800',
     duration: '2:45',
     views: '1.2K',
-    youtubeId: 'dQw4w9WgXcQ', // Replace with actual video ID
+    youtubeId: 'dQw4w9WgXcQ',
   },
   {
     id: 'video2',
@@ -86,7 +107,7 @@ const featuredVideos = [
     thumbnail: 'https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800',
     duration: '4:30',
     views: '856',
-    youtubeId: 'dQw4w9WgXcQ', // Replace with actual video ID
+    youtubeId: 'dQw4w9WgXcQ',
   },
   {
     id: 'video3',
@@ -94,39 +115,7 @@ const featuredVideos = [
     thumbnail: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
     duration: '3:15',
     views: '2.1K',
-    youtubeId: 'dQw4w9WgXcQ', // Replace with actual video ID
-  },
-];
-
-const recentPosts = [
-  {
-    platform: 'Facebook',
-    icon: Facebook,
-    content: 'Congratulations to our latest graduating class! 15 new certified professionals ready to enter the workforce. 🎓',
-    likes: 234,
-    comments: 45,
-    shares: 12,
-    time: '2 hours ago',
-    image: 'https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=400',
-  },
-  {
-    platform: 'LinkedIn',
-    icon: Linkedin,
-    content: 'We are hiring! Looking for passionate instructors to join our team. Apply now and help transform lives through education.',
-    likes: 156,
-    comments: 23,
-    shares: 34,
-    time: '5 hours ago',
-  },
-  {
-    platform: 'Instagram',
-    icon: Instagram,
-    content: 'Behind the scenes at our Indianapolis training center. Our students are putting in the work! 💪',
-    likes: 412,
-    comments: 67,
-    shares: 28,
-    time: '1 day ago',
-    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',
+    youtubeId: 'dQw4w9WgXcQ',
   },
 ];
 
@@ -134,6 +123,9 @@ export default function SocialMediaPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [animatedStats, setAnimatedStats] = useState({ followers: 0, posts: 0, engagement: 0 });
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [youtubeVideos, setYoutubeVideos] = useState<any[]>(defaultVideos);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setIsVisible(true);
@@ -156,8 +148,65 @@ export default function SocialMediaPage() {
       if (step >= steps) clearInterval(timer);
     }, interval);
 
+    // Fetch live feeds from Durable blog and social APIs
+    async function fetchFeeds() {
+      try {
+        // Fetch blog posts from Durable via our API
+        const blogResponse = await fetch('/api/blog/posts?limit=6');
+        if (blogResponse.ok) {
+          const blogData = await blogResponse.json();
+          if (blogData.posts?.length > 0) {
+            setBlogPosts(blogData.posts);
+          }
+        }
+
+        // Fetch YouTube videos
+        const youtubeResponse = await fetch('/api/social/feeds');
+        if (youtubeResponse.ok) {
+          const socialData = await youtubeResponse.json();
+          if (socialData.data?.videos?.length > 0) {
+            setYoutubeVideos(socialData.data.videos.map((v: any) => ({
+              id: v.id,
+              title: v.title,
+              thumbnail: v.thumbnail,
+              duration: v.duration,
+              views: formatViews(v.views),
+              youtubeId: v.id,
+            })));
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching feeds:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchFeeds();
+
     return () => clearInterval(timer);
   }, []);
+
+  // Format view count
+  function formatViews(views: number): string {
+    if (views >= 1000000) return `${(views / 1000000).toFixed(1)}M`;
+    if (views >= 1000) return `${(views / 1000).toFixed(1)}K`;
+    return views.toString();
+  }
+
+  // Format relative time
+  function formatRelativeTime(dateString: string): string {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffHours / 24);
+    
+    if (diffHours < 1) return 'Just now';
+    if (diffHours < 24) return `${diffHours} hours ago`;
+    if (diffDays < 7) return `${diffDays} days ago`;
+    return date.toLocaleDateString();
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -293,7 +342,7 @@ export default function SocialMediaPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {featuredVideos.map((video) => (
+            {youtubeVideos.map((video) => (
               <div
                 key={video.id}
                 className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300"
