@@ -1,62 +1,49 @@
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Metadata } from 'next';
-import { ChevronRight } from 'lucide-react';
+import { FileText, Download, Printer, ArrowLeft, Shield } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Data Sharing Agreement | Elevate for Humanity',
-  description: 'Review the data sharing agreement.',
-  robots: { index: false, follow: false },
-};
-
-export const dynamic = 'force-dynamic';
-
-export default async function Page() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login');
-  }
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role, full_name')
-    .eq('id', user.id)
-    .single();
-
-  
-
+export default function DataSharingPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Data Sharing Agreement</h1>
-          <p className="text-gray-600 mt-2">Review the data sharing agreement.</p>
-        </div>
-
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <ChevronRight className="w-8 h-8 text-blue-600" />
+      <div className="max-w-4xl mx-auto px-4">
+        <Link href="/contracts" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6">
+          <ArrowLeft className="w-4 h-4" /> Back to Contracts
+        </Link>
+        <div className="bg-white rounded-xl shadow-sm border">
+          <div className="p-6 border-b flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Shield className="w-8 h-8 text-green-600" />
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900">Data Sharing Agreement</h1>
+                <p className="text-gray-600">Student data protection and sharing protocols</p>
+              </div>
             </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Coming Soon</h2>
-            <p className="text-gray-600 max-w-md mx-auto">
-              This feature is currently under development. Check back soon for updates.
-            </p>
+            <div className="flex gap-2">
+              <button className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50"><Printer className="w-4 h-4" /> Print</button>
+              <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"><Download className="w-4 h-4" /> Download PDF</button>
+            </div>
+          </div>
+          <div className="p-8 prose max-w-none">
+            <h2>1. Purpose</h2>
+            <p>This Data Sharing Agreement governs the collection, use, storage, and sharing of student personally identifiable information (PII) between parties.</p>
+            <h2>2. Data Categories</h2>
+            <ul>
+              <li><strong>Enrollment Data:</strong> Name, contact information, program enrollment</li>
+              <li><strong>Progress Data:</strong> Attendance, grades, completion status</li>
+              <li><strong>Outcome Data:</strong> Employment status, wage information, credential attainment</li>
+            </ul>
+            <h2>3. Permitted Uses</h2>
+            <p>Data may only be used for:</p>
+            <ul>
+              <li>Program administration and student support</li>
+              <li>Compliance reporting to funding agencies</li>
+              <li>Aggregate statistical analysis (de-identified)</li>
+            </ul>
+            <h2>4. Security Requirements</h2>
+            <p>All parties must maintain industry-standard security measures including encryption, access controls, and regular security audits.</p>
+            <h2>5. FERPA Compliance</h2>
+            <p>All data handling must comply with the Family Educational Rights and Privacy Act (FERPA) and applicable state privacy laws.</p>
+            <h2>6. Data Retention</h2>
+            <p>Student records shall be retained for 7 years following program completion or last enrollment activity.</p>
           </div>
         </div>
       </div>

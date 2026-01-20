@@ -1,62 +1,49 @@
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Metadata } from 'next';
-import { ChevronRight } from 'lucide-react';
+import { FileText, Download, Printer, ArrowLeft } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Branding Addendum | Elevate for Humanity',
-  description: 'Review the branding addendum contract.',
-  robots: { index: false, follow: false },
-};
-
-export const dynamic = 'force-dynamic';
-
-export default async function Page() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login');
-  }
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role, full_name')
-    .eq('id', user.id)
-    .single();
-
-  
-
+export default function BrandingAddendumPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Branding Addendum</h1>
-          <p className="text-gray-600 mt-2">Review the branding addendum contract.</p>
-        </div>
-
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <ChevronRight className="w-8 h-8 text-blue-600" />
+      <div className="max-w-4xl mx-auto px-4">
+        <Link href="/contracts" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6">
+          <ArrowLeft className="w-4 h-4" /> Back to Contracts
+        </Link>
+        <div className="bg-white rounded-xl shadow-sm border">
+          <div className="p-6 border-b flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <FileText className="w-8 h-8 text-blue-600" />
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900">Branding Addendum</h1>
+                <p className="text-gray-600">Co-branding and marketing guidelines</p>
+              </div>
             </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Coming Soon</h2>
-            <p className="text-gray-600 max-w-md mx-auto">
-              This feature is currently under development. Check back soon for updates.
-            </p>
+            <div className="flex gap-2">
+              <button className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50"><Printer className="w-4 h-4" /> Print</button>
+              <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"><Download className="w-4 h-4" /> Download PDF</button>
+            </div>
+          </div>
+          <div className="p-8 prose max-w-none">
+            <h2>1. Purpose</h2>
+            <p>This Branding Addendum establishes guidelines for the use of Elevate for Humanity branding materials, logos, and marketing assets by authorized partners.</p>
+            <h2>2. Logo Usage</h2>
+            <p>Partners may use the Elevate for Humanity logo in accordance with the following guidelines:</p>
+            <ul>
+              <li>Logo must maintain minimum clear space equal to the height of the "E" in Elevate</li>
+              <li>Logo may not be altered, distorted, or recolored without written approval</li>
+              <li>Logo must be used on appropriate backgrounds that maintain visibility</li>
+            </ul>
+            <h2>3. Co-Branding Materials</h2>
+            <p>All co-branded materials must be submitted for approval at least 10 business days prior to intended use. Materials include but are not limited to:</p>
+            <ul>
+              <li>Print advertisements and flyers</li>
+              <li>Digital marketing materials</li>
+              <li>Social media posts</li>
+              <li>Press releases</li>
+            </ul>
+            <h2>4. Approval Process</h2>
+            <p>Submit all materials to marketing@elevateforhumanity.org for review. Approval or revision requests will be provided within 5 business days.</p>
+            <h2>5. Term</h2>
+            <p>This addendum remains in effect for the duration of the master agreement unless terminated earlier by either party with 30 days written notice.</p>
           </div>
         </div>
       </div>

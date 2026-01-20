@@ -1,63 +1,117 @@
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
+'use client';
+
 import Link from 'next/link';
-import { Metadata } from 'next';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Plus, BookOpen, Users, Star, MoreVertical, Eye, Edit, Trash2 } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'My Courses | Elevate for Humanity',
-  description: 'Manage your created courses.',
-  robots: { index: false, follow: false },
-};
+const courses = [
+  { id: 1, title: 'Introduction to Web Development', students: 156, rating: 4.8, status: 'published', lessons: 24, revenue: 4680 },
+  { id: 2, title: 'Advanced JavaScript Patterns', students: 89, rating: 4.9, status: 'published', lessons: 18, revenue: 2670 },
+  { id: 3, title: 'React Fundamentals', students: 0, rating: 0, status: 'draft', lessons: 12, revenue: 0 },
+  { id: 4, title: 'Node.js Backend Development', students: 67, rating: 4.7, status: 'published', lessons: 20, revenue: 2010 },
+];
 
-export const dynamic = 'force-dynamic';
-
-export default async function Page() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login');
-  }
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role, full_name')
-    .eq('id', user.id)
-    .single();
-
-  
-
+export default function CreatorCoursesPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">My Courses</h1>
-          <p className="text-gray-600 mt-2">Manage your created courses.</p>
+      <div className="max-w-6xl mx-auto px-4">
+        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
+          <Link href="/" className="hover:text-orange-600">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <Link href="/creator" className="hover:text-orange-600">Creator</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900">My Courses</span>
+        </nav>
+
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">My Courses</h1>
+            <p className="text-gray-600">Manage and create your course content</p>
+          </div>
+          <button className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+            <Plus className="w-4 h-4" /> Create Course
+          </button>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <ChevronRight className="w-8 h-8 text-blue-600" />
-            </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Coming Soon</h2>
-            <p className="text-gray-600 max-w-md mx-auto">
-              This feature is currently under development. Check back soon for updates.
-            </p>
+        <div className="grid md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-white rounded-xl p-4 border">
+            <p className="text-2xl font-bold">{courses.length}</p>
+            <p className="text-gray-600 text-sm">Total Courses</p>
           </div>
+          <div className="bg-white rounded-xl p-4 border">
+            <p className="text-2xl font-bold">{courses.reduce((s, c) => s + c.students, 0)}</p>
+            <p className="text-gray-600 text-sm">Total Students</p>
+          </div>
+          <div className="bg-white rounded-xl p-4 border">
+            <p className="text-2xl font-bold">${courses.reduce((s, c) => s + c.revenue, 0).toLocaleString()}</p>
+            <p className="text-gray-600 text-sm">Total Revenue</p>
+          </div>
+          <div className="bg-white rounded-xl p-4 border">
+            <p className="text-2xl font-bold">4.8</p>
+            <p className="text-gray-600 text-sm">Avg Rating</p>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl border overflow-hidden">
+          <table className="w-full">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Course</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Students</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Rating</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Status</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Revenue</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              {courses.map(course => (
+                <tr key={course.id} className="hover:bg-gray-50">
+                  <td className="px-4 py-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <BookOpen className="w-6 h-6 text-orange-600" />
+                      </div>
+                      <div>
+                        <p className="font-medium">{course.title}</p>
+                        <p className="text-sm text-gray-500">{course.lessons} lessons</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-4 py-4">
+                    <div className="flex items-center gap-1">
+                      <Users className="w-4 h-4 text-gray-400" />
+                      <span>{course.students}</span>
+                    </div>
+                  </td>
+                  <td className="px-4 py-4">
+                    {course.rating > 0 ? (
+                      <div className="flex items-center gap-1">
+                        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                        <span>{course.rating}</span>
+                      </div>
+                    ) : (
+                      <span className="text-gray-400">-</span>
+                    )}
+                  </td>
+                  <td className="px-4 py-4">
+                    <span className={`px-2 py-1 rounded-full text-xs ${
+                      course.status === 'published' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
+                    }`}>
+                      {course.status}
+                    </span>
+                  </td>
+                  <td className="px-4 py-4 font-medium">${course.revenue.toLocaleString()}</td>
+                  <td className="px-4 py-4">
+                    <div className="flex items-center gap-2">
+                      <button className="p-1 hover:bg-gray-100 rounded"><Eye className="w-4 h-4 text-gray-500" /></button>
+                      <button className="p-1 hover:bg-gray-100 rounded"><Edit className="w-4 h-4 text-gray-500" /></button>
+                      <button className="p-1 hover:bg-gray-100 rounded"><Trash2 className="w-4 h-4 text-red-500" /></button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

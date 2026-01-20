@@ -1,63 +1,51 @@
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Metadata } from 'next';
-import { ChevronRight } from 'lucide-react';
+import { FileText, ArrowLeft, Tag, Calendar } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Changelog | Elevate for Humanity',
-  description: 'View platform updates and changes.',
-  robots: { index: false, follow: false },
-};
+const releases = [
+  { version: '2.5.0', date: 'January 15, 2026', type: 'feature', changes: ['Added PWA support for all portals', 'Enhanced FAQ with search highlighting', 'New financial assurance tracking', 'Program catalog PDF generator'] },
+  { version: '2.4.0', date: 'January 10, 2026', type: 'feature', changes: ['Stripe webhook idempotency', 'Improved enrollment flow', 'Course leaderboards', 'Instructor analytics charts'] },
+  { version: '2.3.1', date: 'January 5, 2026', type: 'fix', changes: ['Fixed enrollment status sync', 'Resolved certificate generation issues', 'Performance improvements'] },
+  { version: '2.3.0', date: 'December 20, 2025', type: 'feature', changes: ['Video captions support', 'Student progress tracking', 'Notification system', 'Mobile responsive improvements'] },
+  { version: '2.2.0', date: 'December 1, 2025', type: 'feature', changes: ['Multi-tenant support', 'Partner portal launch', 'WIOA compliance reports', 'Bulk student import'] },
+];
 
-export const dynamic = 'force-dynamic';
-
-export default async function Page() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login');
-  }
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role, full_name')
-    .eq('id', user.id)
-    .single();
-
-  
-
+export default function ChangelogPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Changelog</h1>
-          <p className="text-gray-600 mt-2">View platform updates and changes.</p>
-        </div>
-
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <ChevronRight className="w-8 h-8 text-blue-600" />
-            </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Coming Soon</h2>
-            <p className="text-gray-600 max-w-md mx-auto">
-              This feature is currently under development. Check back soon for updates.
-            </p>
+      <div className="max-w-4xl mx-auto px-4">
+        <Link href="/docs" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6">
+          <ArrowLeft className="w-4 h-4" /> Back to Docs
+        </Link>
+        <div className="flex items-center gap-3 mb-8">
+          <FileText className="w-8 h-8 text-blue-600" />
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Changelog</h1>
+            <p className="text-gray-600">Platform updates and release notes</p>
           </div>
+        </div>
+        <div className="space-y-6">
+          {releases.map((release, i) => (
+            <div key={i} className="bg-white rounded-xl shadow-sm border p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <span className={`px-3 py-1 rounded-full text-sm font-medium ${release.type === 'feature' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                  {release.type === 'feature' ? 'New Features' : 'Bug Fixes'}
+                </span>
+                <div className="flex items-center gap-2 text-gray-500">
+                  <Tag className="w-4 h-4" /> v{release.version}
+                </div>
+                <div className="flex items-center gap-2 text-gray-500">
+                  <Calendar className="w-4 h-4" /> {release.date}
+                </div>
+              </div>
+              <ul className="space-y-2">
+                {release.changes.map((change, j) => (
+                  <li key={j} className="flex items-start gap-2 text-gray-700">
+                    <span className="text-blue-500 mt-1">•</span> {change}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -1,62 +1,60 @@
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Metadata } from 'next';
-import { ChevronRight } from 'lucide-react';
+import { BookOpen, ArrowLeft, CheckCircle, Users, FileText, Settings, BarChart3 } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Program Holder Guide | Elevate for Humanity',
-  description: 'Guide for program holders.',
-  robots: { index: false, follow: false },
-};
+const sections = [
+  { icon: Users, title: 'Managing Students', items: ['Add new students', 'Track enrollment status', 'Monitor progress', 'Generate reports'] },
+  { icon: FileText, title: 'Program Administration', items: ['Update program details', 'Manage curriculum', 'Set schedules', 'Configure prerequisites'] },
+  { icon: BarChart3, title: 'Reporting & Compliance', items: ['WIOA performance reports', 'Attendance tracking', 'Outcome documentation', 'Audit preparation'] },
+  { icon: Settings, title: 'Settings & Configuration', items: ['Branding customization', 'User permissions', 'Notification preferences', 'Integration setup'] },
+];
 
-export const dynamic = 'force-dynamic';
-
-export default async function Page() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login');
-  }
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role, full_name')
-    .eq('id', user.id)
-    .single();
-
-  
-
+export default function ProgramHolderGuidePage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Program Holder Guide</h1>
-          <p className="text-gray-600 mt-2">Guide for program holders.</p>
+      <div className="max-w-4xl mx-auto px-4">
+        <Link href="/docs" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6">
+          <ArrowLeft className="w-4 h-4" /> Back to Docs
+        </Link>
+        <div className="flex items-center gap-3 mb-8">
+          <BookOpen className="w-8 h-8 text-purple-600" />
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Program Holder Guide</h1>
+            <p className="text-gray-600">Complete guide to managing your training programs</p>
+          </div>
         </div>
-
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <ChevronRight className="w-8 h-8 text-blue-600" />
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8">
+          <h2 className="font-semibold text-blue-900 mb-2">Getting Started</h2>
+          <p className="text-blue-800 mb-4">Welcome to the Elevate Program Holder Portal. This guide will help you manage your training programs effectively.</p>
+          <div className="flex gap-4">
+            <Link href="/program-holder" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Go to Portal</Link>
+            <Link href="/docs/quickstart" className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50">Quick Start</Link>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {sections.map((section, i) => (
+            <div key={i} className="bg-white rounded-xl shadow-sm border p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <section.icon className="w-5 h-5 text-purple-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900">{section.title}</h3>
+              </div>
+              <ul className="space-y-2">
+                {section.items.map((item, j) => (
+                  <li key={j} className="flex items-center gap-2 text-gray-600">
+                    <CheckCircle className="w-4 h-4 text-green-500" /> {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Coming Soon</h2>
-            <p className="text-gray-600 max-w-md mx-auto">
-              This feature is currently under development. Check back soon for updates.
-            </p>
+          ))}
+        </div>
+        <div className="mt-8 bg-white rounded-xl shadow-sm border p-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">Need Help?</h2>
+          <p className="text-gray-600 mb-4">Our support team is available to assist you with any questions.</p>
+          <div className="flex gap-4">
+            <Link href="/contact" className="px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200">Contact Support</Link>
+            <Link href="/docs" className="px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200">Browse All Docs</Link>
           </div>
         </div>
       </div>

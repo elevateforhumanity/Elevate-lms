@@ -1,63 +1,116 @@
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Metadata } from 'next';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, GraduationCap, DollarSign, Users, Calendar, ArrowRight, CheckCircle } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Rise Foundation Programs | Elevate for Humanity',
-  description: 'Explore Rise Foundation programs.',
-  robots: { index: false, follow: false },
-};
+const programs = [
+  {
+    id: 1,
+    name: 'RISE Scholarship',
+    description: 'Full tuition coverage for qualifying students pursuing technology careers',
+    amount: '$15,000',
+    deadline: 'March 31, 2024',
+    eligibility: ['GPA 3.0+', 'Financial need', 'US Citizen/Resident'],
+    spots: 50,
+    filled: 32,
+  },
+  {
+    id: 2,
+    name: 'Emergency Education Fund',
+    description: 'One-time grants for students facing unexpected financial hardship',
+    amount: 'Up to $2,500',
+    deadline: 'Rolling',
+    eligibility: ['Current enrollment', 'Demonstrated need', 'Good standing'],
+    spots: 100,
+    filled: 67,
+  },
+  {
+    id: 3,
+    name: 'Career Transition Grant',
+    description: 'Support for adults changing careers into high-demand fields',
+    amount: '$8,000',
+    deadline: 'June 15, 2024',
+    eligibility: ['Age 25+', 'Career change', 'Completed assessment'],
+    spots: 30,
+    filled: 12,
+  },
+  {
+    id: 4,
+    name: 'Community Leader Fellowship',
+    description: 'Leadership development program with mentorship and funding',
+    amount: '$20,000',
+    deadline: 'April 30, 2024',
+    eligibility: ['Community involvement', 'Leadership potential', 'Essay required'],
+    spots: 10,
+    filled: 4,
+  },
+];
 
-export const dynamic = 'force-dynamic';
-
-export default async function Page() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login');
-  }
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role, full_name')
-    .eq('id', user.id)
-    .single();
-
-  
-
+export default function RiseFoundationProgramsPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Rise Foundation Programs</h1>
-          <p className="text-gray-600 mt-2">Explore Rise Foundation programs.</p>
+      <div className="max-w-6xl mx-auto px-4">
+        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
+          <Link href="/" className="hover:text-orange-600">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <Link href="/rise-foundation" className="hover:text-orange-600">RISE Foundation</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900">Programs</span>
+        </nav>
+
+        <div className="text-center mb-10">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Foundation Programs</h1>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            The RISE Foundation provides scholarships, grants, and fellowships to support students on their educational journey.
+          </p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <ChevronRight className="w-8 h-8 text-blue-600" />
+        <div className="grid md:grid-cols-2 gap-6">
+          {programs.map(program => (
+            <div key={program.id} className="bg-white rounded-xl border p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                  <GraduationCap className="w-6 h-6 text-orange-600" />
+                </div>
+                <span className="text-2xl font-bold text-orange-600">{program.amount}</span>
+              </div>
+              
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{program.name}</h3>
+              <p className="text-gray-600 mb-4">{program.description}</p>
+              
+              <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                <span className="flex items-center gap-1">
+                  <Calendar className="w-4 h-4" /> {program.deadline}
+                </span>
+                <span className="flex items-center gap-1">
+                  <Users className="w-4 h-4" /> {program.spots - program.filled} spots left
+                </span>
+              </div>
+
+              <div className="mb-4">
+                <p className="text-sm font-medium text-gray-700 mb-2">Eligibility:</p>
+                <div className="flex flex-wrap gap-2">
+                  {program.eligibility.map((req, idx) => (
+                    <span key={idx} className="flex items-center gap-1 text-xs bg-gray-100 px-2 py-1 rounded">
+                      <CheckCircle className="w-3 h-3 text-green-500" /> {req}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <div className="flex justify-between text-sm mb-1">
+                  <span>Applications</span>
+                  <span>{program.filled}/{program.spots}</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="bg-orange-500 h-2 rounded-full" style={{ width: `${(program.filled / program.spots) * 100}%` }} />
+                </div>
+              </div>
+
+              <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+                Apply Now <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Coming Soon</h2>
-            <p className="text-gray-600 max-w-md mx-auto">
-              This feature is currently under development. Check back soon for updates.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </div>
