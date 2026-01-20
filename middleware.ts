@@ -55,7 +55,8 @@ export async function middleware(request: NextRequest) {
   // DOMAIN-BASED ROUTING
   // ============================================
 
-  // LMS domain routing (elevateforhumanityeducation.com -> /student-portal)
+  // LMS domain routing (elevateforhumanityeducation.com)
+  // Same as main site - all public pages accessible, all dashboards accessible
   if (host.includes(LMS_DOMAIN)) {
     // Skip for static files and API routes
     if (
@@ -66,29 +67,9 @@ export async function middleware(request: NextRequest) {
       return NextResponse.next();
     }
 
-    // Root of LMS domain -> student portal
-    if (pathname === '/') {
-      return NextResponse.rewrite(new URL('/student-portal', request.url));
-    }
-
-    // Already on /student-portal path, allow through
-    if (pathname.startsWith('/student-portal')) {
-      return NextResponse.next();
-    }
-
-    // Login/auth pages - allow through
-    if (pathname === '/login' || pathname === '/signup' || pathname === '/unauthorized') {
-      return NextResponse.next();
-    }
-
-    // Common student routes - rewrite to /student-portal/*
-    const studentRoutes = ['/my-courses', '/my-progress', '/courses', '/programs', '/certificates', '/settings'];
-    if (studentRoutes.some(route => pathname.startsWith(route))) {
-      return NextResponse.rewrite(new URL(`/student-portal${pathname}`, request.url));
-    }
-
-    // Default: rewrite to /student-portal/*
-    return NextResponse.rewrite(new URL(`/student-portal${pathname}`, request.url));
+    // Allow everything through - same as main site
+    // All public pages, all dashboards, all portals work the same way
+    return NextResponse.next();
   }
 
   // Supersonic Fast Cash domain routing (supersonicfastermoney.com -> /supersonic-fast-cash)
