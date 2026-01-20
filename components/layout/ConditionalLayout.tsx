@@ -63,17 +63,62 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   // Routes that use AppShell (no marketing header/footer)
   // These are authenticated app routes with their own navigation
   const APP_SHELL_ROUTES = [
-    '/lms/',           // LMS app routes (has LMSNavigation)
-    '/admin/',         // Admin dashboard
-    '/admin-login',    // Admin login
-    '/staff-portal/',  // Staff portal
-    '/instructor/',    // Instructor portal
-    '/employer/',      // Employer dashboard
-    '/partner/',       // Partner portal
-    '/program-holder/',// Program holder dashboard
-    '/workforce-board/',// Workforce board
-    '/creator/',       // Creator dashboard
-    '/student/',       // Student routes
+    '/lms/dashboard',    // LMS dashboard (has LMSNavigation)
+    '/lms/courses',      // LMS courses
+    '/lms/achievements', // LMS achievements
+    '/lms/analytics',    // LMS analytics
+    '/lms/forums',       // LMS forums
+    '/lms/learning-paths', // LMS learning paths
+    '/lms/certificates', // LMS certificates
+    '/lms/profile',      // LMS profile
+    '/lms/settings',     // LMS settings
+    '/lms/messages',     // LMS messages
+    '/lms/calendar',     // LMS calendar
+    '/lms/grades',       // LMS grades
+    '/lms/assignments',  // LMS assignments
+    '/lms/quizzes',      // LMS quizzes
+    '/lms/resources',    // LMS resources
+    '/lms/community',    // LMS community
+    '/lms/support',      // LMS support
+    '/lms/notifications',// LMS notifications
+    '/lms/progress',     // LMS progress
+    '/lms/schedule',     // LMS schedule
+    '/lms/files',        // LMS files
+    '/lms/groups',       // LMS groups
+    '/lms/leaderboard',  // LMS leaderboard
+    '/lms/badges',       // LMS badges
+    '/lms/portfolio',    // LMS portfolio
+    '/lms/placement',    // LMS placement
+    '/lms/orientation',  // LMS orientation
+    '/lms/library',      // LMS library
+    '/lms/help',         // LMS help
+    '/lms/integrations', // LMS integrations
+    '/lms/ai-tutor',     // LMS AI tutor
+    '/lms/chat',         // LMS chat
+    '/lms/collaborate',  // LMS collaborate
+    '/lms/social',       // LMS social
+    '/lms/study-groups', // LMS study groups
+    '/lms/video',        // LMS video
+    '/lms/scorm',        // LMS SCORM
+    '/lms/adaptive',     // LMS adaptive
+    '/lms/peer-review',  // LMS peer review
+    '/lms/certification',// LMS certification
+    '/lms/builder',      // LMS builder
+    '/lms/enroll',       // LMS enroll
+    '/lms/apply',        // LMS apply
+    '/lms/attendance',   // LMS attendance
+    '/lms/alumni',       // LMS alumni (app)
+    '/lms/quiz',         // LMS quiz
+    '/admin/',           // Admin dashboard
+    '/admin-login',      // Admin login
+    '/staff-portal/',    // Staff portal
+    '/instructor/',      // Instructor portal
+    '/employer/',        // Employer dashboard
+    '/partner/',         // Partner portal
+    '/program-holder/',  // Program holder dashboard
+    '/workforce-board/', // Workforce board
+    '/creator/',         // Creator dashboard
+    '/student/',         // Student routes
   ];
   
   // Routes that use minimal shell (login/auth pages - no header/footer)
@@ -86,8 +131,12 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
     '/verify-email',
   ];
   
+  // Public LMS routes that should use marketing shell
+  // /lms (root) and /lms/(public)/* are public landing pages
+  const isPublicLmsRoute = pathname === '/lms' || pathname === '/lms/';
+  
   // Determine which shell to use
-  const useAppShell = pathname ? APP_SHELL_ROUTES.some(route => pathname.startsWith(route)) : false;
+  const useAppShell = pathname && !isPublicLmsRoute ? APP_SHELL_ROUTES.some(route => pathname.startsWith(route)) : false;
   const useMinimalShell = pathname ? MINIMAL_SHELL_ROUTES.some(route => pathname.startsWith(route)) : false;
   const hideMarketingLayout = useAppShell || useMinimalShell;
 
