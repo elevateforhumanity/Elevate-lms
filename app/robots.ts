@@ -126,6 +126,26 @@ export default function robots(): MetadataRoute.Robots {
           '/sentry-test',
           '/onboarding/',
           '/demo/',
+          '/demos/',
+          '/preview/',
+          '/builder/',
+          
+          // Account and settings
+          '/account/',
+          '/settings/',
+          '/profile/',
+          '/messages/',
+          
+          // Application flows
+          '/apply/',
+          '/enroll/',
+          '/intake/',
+          '/eligibility/',
+          
+          // Success/thank you pages
+          '/success/',
+          '/thankyou/',
+          '/application-success',
         ],
       },
     ],

@@ -497,6 +497,15 @@ export default function StorePage() {
               Contact for Enterprise
             </Link>
           </div>
+          <div className="mt-12 pt-8 border-t border-slate-700">
+            <p className="text-slate-400 text-sm mb-4">Platform Resources</p>
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
+              <Link href="/programs" className="text-slate-300 hover:text-white">Programs</Link>
+              <Link href="/how-it-works" className="text-slate-300 hover:text-white">How It Works</Link>
+              <Link href="/governance" className="text-slate-300 hover:text-white">Governance</Link>
+              <Link href="/governance/security" className="text-slate-300 hover:text-white">Security</Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -12,6 +12,10 @@ import {
 export const metadata: Metadata = {
   title: 'Checkout | Elevate for Humanity',
   description: 'Complete your purchase securely.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export const dynamic = 'force-dynamic';
