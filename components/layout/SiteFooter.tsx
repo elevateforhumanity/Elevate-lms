@@ -114,6 +114,17 @@ const footerSections = [
     ],
   },
   {
+    title: 'Governance',
+    links: [
+      { name: 'Governance Hub', href: '/governance' },
+      { name: 'Security & Data Protection', href: '/governance/security' },
+      { name: 'Compliance & Disclosures', href: '/governance/compliance' },
+      { name: 'Authoritative Documents', href: '/governance/authoritative-docs' },
+      { name: 'Operational Controls', href: '/governance/operational-controls' },
+      { name: 'Governance Contact', href: '/governance/contact' },
+    ],
+  },
+  {
     title: 'Legal',
     links: [
       { name: 'Privacy Policy', href: '/privacy-policy' },

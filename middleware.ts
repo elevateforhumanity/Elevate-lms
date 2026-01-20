@@ -6,6 +6,7 @@ import type { NextRequest } from 'next/server';
 const LMS_DOMAIN = 'elevateforhumanityeducation.com';
 
 // Supersonic Fast Cash domain - routes to /supersonic-fast-cash paths
+// Note: This domain serves both tax marketing pages AND governance mirror pages
 const SUPERSONIC_DOMAIN = 'supersonicfastermoney.com';
 
 // Platform licensing subdomain - routes to /platform/licensing paths
@@ -109,6 +110,12 @@ export async function middleware(request: NextRequest) {
     // Already on /supersonic-fast-cash path, allow through
     if (pathname.startsWith('/supersonic-fast-cash')) {
       return NextResponse.next();
+    }
+
+    // Governance pages - rewrite to Supersonic-branded governance routes
+    // These pages show Supersonic branding but canonical back to Elevate
+    if (pathname.startsWith('/governance')) {
+      return NextResponse.rewrite(new URL(`/supersonic-fast-cash${pathname}`, request.url));
     }
 
     // Login/auth pages - allow through
