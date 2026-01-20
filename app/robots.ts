@@ -59,8 +59,7 @@ export default function robots(): MetadataRoute.Robots {
           '/curriculumupload',
           '/documents/upload',
           
-          // System pages
-          '/_next/',
+          // System pages (NOT /_next/ - crawlers need it for JS/CSS)
           '/test-images',
           '/cache-diagnostic',
           '/sentry-test',
