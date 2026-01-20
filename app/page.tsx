@@ -646,7 +646,7 @@ export default function HomePage() {
       {/* Why Choose Us - Compact */}
       <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 bg-slate-100">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <div className="flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4">
               <div className="w-10 h-10 sm:w-8 sm:h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-bold text-sm sm:text-xs">$0</span>

@@ -172,7 +172,7 @@ function LoginForm() {
               <p className="text-center text-sm text-black mb-4">
                 Quick Access:
               </p>
-              <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-3">
                 <Link
                   href="/lms/dashboard"
                   className="text-center px-4 py-3 bg-slate-100 text-black rounded-lg hover:bg-slate-200 transition-all text-sm font-semibold min-h-[44px] inline-flex items-center justify-center"
