@@ -1,138 +1,227 @@
-'use client';
-
-import { useState } from 'react';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { FileText, Download, Calendar, Users, TrendingUp, DollarSign, Filter, BarChart3 } from 'lucide-react';
+import { ChevronRight, FileText, Users, GraduationCap, Clock, Download, TrendingUp, Calendar } from 'lucide-react';
 
-const mockReports = [
-  { id: 1, name: 'Monthly Enrollment Summary', type: 'enrollment', date: '2026-01-15', status: 'ready' },
-  { id: 2, name: 'WIOA Quarterly Report Q4', type: 'compliance', date: '2026-01-10', status: 'ready' },
-  { id: 3, name: 'Student Outcomes Report', type: 'outcomes', date: '2026-01-08', status: 'ready' },
-  { id: 4, name: 'Attendance Summary - January', type: 'attendance', date: '2026-01-05', status: 'ready' },
-  { id: 5, name: 'Financial Aid Disbursement', type: 'financial', date: '2026-01-01', status: 'ready' },
-];
+export const metadata: Metadata = {
+  title: 'Reports | Staff Portal | Elevate For Humanity',
+  description: 'Generate and view staff reports.',
+  robots: { index: false, follow: false },
+};
 
-const reportTemplates = [
-  { id: 'enrollment', name: 'Enrollment Report', icon: Users, description: 'Student enrollment by program and date range' },
-  { id: 'attendance', name: 'Attendance Report', icon: Calendar, description: 'Daily/weekly attendance records' },
-  { id: 'outcomes', name: 'Outcomes Report', icon: TrendingUp, description: 'Completion rates and job placement' },
-  { id: 'financial', name: 'Financial Report', icon: DollarSign, description: 'Tuition, payments, and funding' },
-  { id: 'compliance', name: 'Compliance Report', icon: FileText, description: 'WIOA and regulatory compliance' },
-];
+export const dynamic = 'force-dynamic';
 
-export default function StaffReportsPage() {
-  const [dateRange, setDateRange] = useState('month');
-  const [reportType, setReportType] = useState('all');
+export default async function StaffReportsPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
-  const stats = [
-    { label: 'Reports Generated', value: '47', change: '+12 this month' },
-    { label: 'Pending Reviews', value: '3', change: 'Due this week' },
-    { label: 'Compliance Score', value: '98%', change: 'All requirements met' },
+  if (!user) {
+    redirect('/login?redirect=/staff-portal/reports');
+  }
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role, full_name')
+    .eq('id', user.id)
+    .single();
+
+  if (!profile || !['staff', 'instructor', 'admin', 'super_admin'].includes(profile.role)) {
+    redirect('/');
+  }
+
+  // Fetch report data
+  const today = new Date().toISOString().split('T')[0];
+  const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+  const monthAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+  // Student counts
+  const { count: totalStudents } = await supabase
+    .from('profiles')
+    .select('*', { count: 'exact', head: true })
+    .eq('role', 'student');
+
+  const { count: newStudentsThisWeek } = await supabase
+    .from('profiles')
+    .select('*', { count: 'exact', head: true })
+    .eq('role', 'student')
+    .gte('created_at', weekAgo);
+
+  // Enrollment stats
+  const { count: activeEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'active');
+
+  const { count: completedThisMonth } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'completed')
+    .gte('completed_at', monthAgo);
+
+  // Attendance today
+  const { count: attendanceToday } = await supabase
+    .from('attendance')
+    .select('*', { count: 'exact', head: true })
+    .eq('date', today);
+
+  // Recent enrollments for the table
+  const { data: recentEnrollments } = await supabase
+    .from('enrollments')
+    .select(`
+      id,
+      status,
+      funding_type,
+      enrolled_at,
+      student:profiles!enrollments_student_id_fkey(full_name, email),
+      program:programs(name)
+    `)
+    .order('enrolled_at', { ascending: false })
+    .limit(10);
+
+  const reportTypes = [
+    { 
+      name: 'Enrollment Report', 
+      description: 'Student enrollment data by program and funding source',
+      icon: Users,
+      href: '/staff-portal/reports/enrollments'
+    },
+    { 
+      name: 'Attendance Report', 
+      description: 'Daily and weekly attendance records',
+      icon: Calendar,
+      href: '/staff-portal/reports/attendance'
+    },
+    { 
+      name: 'Progress Report', 
+      description: 'Student progress and completion rates',
+      icon: TrendingUp,
+      href: '/staff-portal/reports/progress'
+    },
+    { 
+      name: 'Completion Report', 
+      description: 'Certificates issued and program completions',
+      icon: GraduationCap,
+      href: '/staff-portal/reports/completions'
+    },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
+        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
+          <Link href="/" className="hover:text-orange-600">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <Link href="/staff-portal" className="hover:text-orange-600">Staff Portal</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900">Reports</span>
+        </nav>
+
+        <div className="flex justify-between items-center mb-6">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Reports</h1>
-            <p className="text-gray-600">Generate and download staff reports</p>
+            <p className="text-gray-600">Generate and export reports</p>
           </div>
-          <Link href="/staff-portal" className="text-blue-600 hover:text-blue-700">← Back to Portal</Link>
         </div>
 
-        {/* Stats */}
-        <div className="grid md:grid-cols-3 gap-4 mb-8">
-          {stats.map((stat, i) => (
-            <div key={i} className="bg-white rounded-xl shadow-sm border p-6">
-              <p className="text-sm text-gray-500">{stat.label}</p>
-              <p className="text-3xl font-bold text-gray-900 mt-1">{stat.value}</p>
-              <p className="text-sm text-green-600 mt-1">{stat.change}</p>
-            </div>
+        {/* Stats Overview */}
+        <div className="grid md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-white rounded-xl p-6 border">
+            <Users className="w-8 h-8 text-blue-500 mb-2" />
+            <p className="text-2xl font-bold">{totalStudents || 0}</p>
+            <p className="text-gray-600 text-sm">Total Students</p>
+            <p className="text-xs text-green-600 mt-1">+{newStudentsThisWeek || 0} this week</p>
+          </div>
+          <div className="bg-white rounded-xl p-6 border">
+            <GraduationCap className="w-8 h-8 text-green-500 mb-2" />
+            <p className="text-2xl font-bold">{activeEnrollments || 0}</p>
+            <p className="text-gray-600 text-sm">Active Enrollments</p>
+          </div>
+          <div className="bg-white rounded-xl p-6 border">
+            <TrendingUp className="w-8 h-8 text-orange-500 mb-2" />
+            <p className="text-2xl font-bold">{completedThisMonth || 0}</p>
+            <p className="text-gray-600 text-sm">Completed This Month</p>
+          </div>
+          <div className="bg-white rounded-xl p-6 border">
+            <Clock className="w-8 h-8 text-purple-500 mb-2" />
+            <p className="text-2xl font-bold">{attendanceToday || 0}</p>
+            <p className="text-gray-600 text-sm">Attendance Today</p>
+          </div>
+        </div>
+
+        {/* Report Types */}
+        <div className="grid md:grid-cols-2 gap-4 mb-8">
+          {reportTypes.map(report => (
+            <Link key={report.name} href={report.href}
+              className="bg-white rounded-xl p-6 border hover:shadow-md transition flex items-start gap-4">
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <report.icon className="w-6 h-6 text-orange-600" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-gray-900">{report.name}</h3>
+                <p className="text-sm text-gray-500">{report.description}</p>
+              </div>
+              <ChevronRight className="w-5 h-5 text-gray-400" />
+            </Link>
           ))}
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Report Templates */}
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-xl shadow-sm border p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Generate New Report</h2>
-              <div className="space-y-3">
-                {reportTemplates.map((template) => (
-                  <button
-                    key={template.id}
-                    className="w-full flex items-start gap-3 p-3 rounded-lg border hover:border-blue-300 hover:bg-blue-50 transition-colors text-left"
-                  >
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <template.icon className="w-5 h-5 text-blue-600" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">{template.name}</p>
-                      <p className="text-sm text-gray-500">{template.description}</p>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
+        {/* Recent Enrollments Table */}
+        <div className="bg-white rounded-xl border overflow-hidden">
+          <div className="p-4 border-b flex justify-between items-center">
+            <h2 className="font-semibold">Recent Enrollments</h2>
+            <button className="flex items-center gap-2 px-3 py-1.5 text-sm border rounded-lg hover:bg-gray-50">
+              <Download className="w-4 h-4" /> Export CSV
+            </button>
           </div>
-
-          {/* Recent Reports */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl shadow-sm border">
-              <div className="p-6 border-b flex items-center justify-between">
-                <h2 className="text-lg font-semibold text-gray-900">Recent Reports</h2>
-                <div className="flex items-center gap-2">
-                  <select
-                    value={dateRange}
-                    onChange={(e) => setDateRange(e.target.value)}
-                    className="px-3 py-1.5 border rounded-lg text-sm"
-                  >
-                    <option value="week">This Week</option>
-                    <option value="month">This Month</option>
-                    <option value="quarter">This Quarter</option>
-                  </select>
-                  <select
-                    value={reportType}
-                    onChange={(e) => setReportType(e.target.value)}
-                    className="px-3 py-1.5 border rounded-lg text-sm"
-                  >
-                    <option value="all">All Types</option>
-                    <option value="enrollment">Enrollment</option>
-                    <option value="attendance">Attendance</option>
-                    <option value="compliance">Compliance</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="divide-y">
-                {mockReports.map((report) => (
-                  <div key={report.id} className="p-4 flex items-center justify-between hover:bg-gray-50">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <FileText className="w-5 h-5 text-gray-600" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">{report.name}</p>
-                        <p className="text-sm text-gray-500">Generated {report.date}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Ready</span>
-                      <button className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg">
-                        <Download className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="p-4 border-t text-center">
-                <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
-                  View All Reports →
-                </button>
-              </div>
-            </div>
-          </div>
+          <table className="w-full">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Student</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Program</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Funding</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Status</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Enrolled</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              {recentEnrollments && recentEnrollments.length > 0 ? (
+                recentEnrollments.map((enrollment: any) => (
+                  <tr key={enrollment.id} className="hover:bg-gray-50">
+                    <td className="px-4 py-3">
+                      <p className="font-medium">{enrollment.student?.full_name || 'Unknown'}</p>
+                      <p className="text-sm text-gray-500">{enrollment.student?.email}</p>
+                    </td>
+                    <td className="px-4 py-3 text-sm">{enrollment.program?.name || 'N/A'}</td>
+                    <td className="px-4 py-3">
+                      <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs uppercase">
+                        {enrollment.funding_type || 'self_pay'}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      <span className={`px-2 py-1 rounded text-xs ${
+                        enrollment.status === 'active' ? 'bg-green-100 text-green-700' :
+                        enrollment.status === 'completed' ? 'bg-blue-100 text-blue-700' :
+                        enrollment.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
+                        'bg-gray-100 text-gray-700'
+                      }`}>
+                        {enrollment.status}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 text-sm text-gray-500">
+                      {enrollment.enrolled_at ? new Date(enrollment.enrolled_at).toLocaleDateString() : 'N/A'}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={5} className="px-4 py-8 text-center text-gray-500">
+                    No enrollments found
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

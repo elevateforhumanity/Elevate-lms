@@ -1,97 +1,127 @@
-'use client';
-
-import { useState } from 'react';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { Users, MessageSquare, ThumbsUp, User, Plus, Search, Calendar, MapPin } from 'lucide-react';
+import { ChevronRight, Users, MessageSquare, ThumbsUp, Clock, User, Plus, Pin } from 'lucide-react';
 
-const mockGroups = [
-  { id: 1, title: 'CNA Study Group - Evening Session', author: 'Sarah M.', members: 8, nextMeeting: 'Tomorrow 6PM', location: 'Online', active: true },
-  { id: 2, title: 'Phlebotomy Practice Partners', author: 'Marcus J.', members: 5, nextMeeting: 'Wed 4PM', location: 'Campus Lab', active: true },
-  { id: 3, title: 'HVAC Certification Prep', author: 'David C.', members: 6, nextMeeting: 'Thu 7PM', location: 'Online', active: true },
-  { id: 4, title: 'Medical Terminology Flash Cards', author: 'Emily R.', members: 12, nextMeeting: 'Sat 10AM', location: 'Library', active: true },
-  { id: 5, title: 'IT Support Exam Prep', author: 'James W.', members: 4, nextMeeting: 'TBD', location: 'Online', active: false },
-];
+export const metadata: Metadata = {
+  title: 'Study Groups | Community | Elevate For Humanity',
+  description: 'Find and join study groups.',
+};
 
-const mockDiscussions = [
-  { id: 1, title: 'Looking for study partners for CNA exam', author: 'Ashley B.', replies: 8, time: '1 hour ago' },
-  { id: 2, title: 'Best resources for anatomy review?', author: 'Marcus J.', replies: 12, time: '3 hours ago' },
-  { id: 3, title: 'Study schedule tips for working students', author: 'Emily R.', replies: 15, time: 'Yesterday' },
-];
+export const dynamic = 'force-dynamic';
 
-export default function StudyGroupsPage() {
-  const [tab, setTab] = useState<'groups' | 'discussions'>('groups');
+export default async function StudyGroupsPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  // Fetch study group discussions
+  const { data: discussions } = await supabase
+    .from('discussions')
+    .select(`
+      id,
+      title,
+      content,
+      is_pinned,
+      created_at,
+      author:profiles!discussions_author_id_fkey(id, full_name, avatar_url),
+      replies:discussion_replies(count),
+      likes:discussion_likes(count)
+    `)
+    .eq('category', 'study-groups')
+    .order('is_pinned', { ascending: false })
+    .order('created_at', { ascending: false })
+    .limit(20);
+
+  const formatTime = (date: string) => {
+    const diff = Date.now() - new Date(date).getTime();
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    if (hours < 1) return 'Just now';
+    if (hours < 24) return `${hours} hours ago`;
+    const days = Math.floor(hours / 24);
+    if (days === 1) return 'Yesterday';
+    return `${days} days ago`;
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <Users className="w-6 h-6 text-purple-600" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Study Groups</h1>
-              <p className="text-gray-600">Find study partners and join group sessions</p>
-            </div>
+        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
+          <Link href="/" className="hover:text-orange-600">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <Link href="/community" className="hover:text-orange-600">Community</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900">Study Groups</span>
+        </nav>
+
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+            <Users className="w-6 h-6 text-purple-600" />
           </div>
-          <Link href="/community/groups/create" className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
-            <Plus className="w-4 h-4" /> Create Group
-          </Link>
+          <div className="flex-1">
+            <h1 className="text-2xl font-bold text-gray-900">Study Groups</h1>
+            <p className="text-gray-600">Find study partners and form groups</p>
+          </div>
+          {user && (
+            <Link href="/community/groups/create"
+              className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+              <Plus className="w-4 h-4" /> Create Group
+            </Link>
+          )}
         </div>
 
-        <div className="flex gap-2 mb-6">
-          <button onClick={() => setTab('groups')} className={`px-4 py-2 rounded-lg ${tab === 'groups' ? 'bg-purple-600 text-white' : 'bg-white border'}`}>
-            Study Groups
-          </button>
-          <button onClick={() => setTab('discussions')} className={`px-4 py-2 rounded-lg ${tab === 'discussions' ? 'bg-purple-600 text-white' : 'bg-white border'}`}>
-            Discussions
-          </button>
-        </div>
-
-        {tab === 'groups' ? (
-          <div className="grid md:grid-cols-2 gap-4">
-            {mockGroups.map((group) => (
-              <div key={group.id} className="bg-white rounded-xl shadow-sm border p-4 hover:border-purple-300 transition-colors">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-medium text-gray-900">{group.title}</h3>
-                  <span className={`px-2 py-0.5 text-xs rounded-full ${group.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}>
-                    {group.active ? 'Active' : 'Inactive'}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-500 mb-3">Created by {group.author}</p>
-                <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-                  <span className="flex items-center gap-1"><Users className="w-4 h-4" /> {group.members} members</span>
-                </div>
-                <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {group.nextMeeting}</span>
-                  <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> {group.location}</span>
-                </div>
-                <button className="w-full py-2 border border-purple-600 text-purple-600 rounded-lg hover:bg-purple-50">
-                  Join Group
-                </button>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="bg-white rounded-xl shadow-sm border divide-y">
-            {mockDiscussions.map((discussion) => (
-              <Link key={discussion.id} href={`/community/discussions/${discussion.id}`} className="block p-4 hover:bg-gray-50">
+        <div className="bg-white rounded-xl border divide-y">
+          {discussions && discussions.length > 0 ? (
+            discussions.map((discussion: any) => (
+              <Link key={discussion.id} href={`/community/discussions/${discussion.id}`}
+                className="block p-4 hover:bg-gray-50 transition">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                    <User className="w-5 h-5 text-gray-500" />
+                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    {discussion.author?.avatar_url ? (
+                      <img src={discussion.author.avatar_url} alt="" className="w-full h-full rounded-full object-cover" />
+                    ) : (
+                      <User className="w-5 h-5 text-gray-400" />
+                    )}
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-medium text-gray-900">{discussion.title}</h3>
-                    <p className="text-sm text-gray-500 mt-1">Posted by {discussion.author} • {discussion.time}</p>
-                    <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
-                      <span className="flex items-center gap-1"><MessageSquare className="w-4 h-4" /> {discussion.replies} replies</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      {discussion.is_pinned && <Pin className="w-4 h-4 text-orange-500" />}
+                      <h3 className="font-medium text-gray-900 truncate">{discussion.title}</h3>
+                    </div>
+                    <p className="text-sm text-gray-500 mt-1">
+                      by {discussion.author?.full_name || 'Anonymous'}
+                    </p>
+                    <div className="flex items-center gap-4 mt-2 text-sm text-gray-400">
+                      <span className="flex items-center gap-1">
+                        <MessageSquare className="w-4 h-4" />
+                        {discussion.replies?.[0]?.count || 0} replies
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <ThumbsUp className="w-4 h-4" />
+                        {discussion.likes?.[0]?.count || 0}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        {formatTime(discussion.created_at)}
+                      </span>
                     </div>
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
-        )}
+            ))
+          ) : (
+            <div className="p-12 text-center">
+              <Users className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+              <p className="font-medium text-gray-900">No study groups yet</p>
+              <p className="text-sm text-gray-500 mb-4">Create a study group to connect with peers</p>
+              {user && (
+                <Link href="/community/groups/create"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+                  <Plus className="w-4 h-4" /> Create Group
+                </Link>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

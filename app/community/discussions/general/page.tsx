@@ -1,72 +1,126 @@
-'use client';
-
-import { useState } from 'react';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { MessageCircle, MessageSquare, ThumbsUp, User, Plus, Search } from 'lucide-react';
+import { ChevronRight, MessageCircle, MessageSquare, ThumbsUp, Clock, User, Plus, Pin } from 'lucide-react';
 
-const mockDiscussions = [
-  { id: 1, title: 'Introduce yourself! 👋', author: 'Community Team', replies: 45, likes: 89, time: '1 week ago', pinned: true },
-  { id: 2, title: 'Best study spots in Indianapolis?', author: 'Marcus J.', replies: 18, likes: 22, time: '3 hours ago', pinned: false },
-  { id: 3, title: 'Anyone else struggling with work-life balance?', author: 'Emily R.', replies: 24, likes: 41, time: '6 hours ago', pinned: false },
-  { id: 4, title: 'Coffee or energy drinks for late night studying?', author: 'David C.', replies: 32, likes: 28, time: 'Yesterday', pinned: false },
-  { id: 5, title: 'Weekend plans thread', author: 'Sarah M.', replies: 15, likes: 19, time: '2 days ago', pinned: false },
-  { id: 6, title: 'Favorite podcasts for motivation?', author: 'Ashley B.', replies: 11, likes: 25, time: '3 days ago', pinned: false },
-];
+export const metadata: Metadata = {
+  title: 'General Discussions | Community | Elevate For Humanity',
+  description: 'General community discussions and conversations.',
+};
 
-export default function GeneralDiscussionsPage() {
-  const [search, setSearch] = useState('');
+export const dynamic = 'force-dynamic';
+
+export default async function GeneralDiscussionsPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  // Fetch general discussions
+  const { data: discussions } = await supabase
+    .from('discussions')
+    .select(`
+      id,
+      title,
+      content,
+      is_pinned,
+      created_at,
+      author:profiles!discussions_author_id_fkey(id, full_name, avatar_url),
+      replies:discussion_replies(count),
+      likes:discussion_likes(count)
+    `)
+    .eq('category', 'general')
+    .order('is_pinned', { ascending: false })
+    .order('created_at', { ascending: false })
+    .limit(20);
+
+  const formatTime = (date: string) => {
+    const diff = Date.now() - new Date(date).getTime();
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    if (hours < 1) return 'Just now';
+    if (hours < 24) return `${hours} hours ago`;
+    const days = Math.floor(hours / 24);
+    if (days === 1) return 'Yesterday';
+    return `${days} days ago`;
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <MessageCircle className="w-6 h-6 text-green-600" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">General Discussions</h1>
-              <p className="text-gray-600">Chat about anything with fellow students</p>
-            </div>
-          </div>
-          <button className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
-            <Plus className="w-4 h-4" /> New Post
-          </button>
-        </div>
+        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
+          <Link href="/" className="hover:text-orange-600">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <Link href="/community" className="hover:text-orange-600">Community</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900">General Discussions</span>
+        </nav>
 
-        <div className="flex gap-4 mb-6">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input type="text" placeholder="Search discussions..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-10 pr-4 py-2 border rounded-lg" />
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+            <MessageCircle className="w-6 h-6 text-green-600" />
           </div>
-          <select className="px-4 py-2 border rounded-lg">
-            <option>Most Recent</option>
-            <option>Most Popular</option>
-            <option>Most Replies</option>
-          </select>
-        </div>
-
-        <div className="bg-white rounded-xl shadow-sm border divide-y">
-          {mockDiscussions.map((discussion) => (
-            <Link key={discussion.id} href={`/community/discussions/${discussion.id}`} className="block p-4 hover:bg-gray-50">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                  <User className="w-5 h-5 text-gray-500" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    {discussion.pinned && <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full">Pinned</span>}
-                    <h3 className="font-medium text-gray-900">{discussion.title}</h3>
-                  </div>
-                  <p className="text-sm text-gray-500 mt-1">Posted by {discussion.author} • {discussion.time}</p>
-                  <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
-                    <span className="flex items-center gap-1"><MessageSquare className="w-4 h-4" /> {discussion.replies}</span>
-                    <span className="flex items-center gap-1"><ThumbsUp className="w-4 h-4" /> {discussion.likes}</span>
-                  </div>
-                </div>
-              </div>
+          <div className="flex-1">
+            <h1 className="text-2xl font-bold text-gray-900">General Discussions</h1>
+            <p className="text-gray-600">Community conversations and announcements</p>
+          </div>
+          {user && (
+            <Link href="/community/discussions/new?category=general"
+              className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+              <Plus className="w-4 h-4" /> New Discussion
             </Link>
-          ))}
+          )}
+        </div>
+
+        <div className="bg-white rounded-xl border divide-y">
+          {discussions && discussions.length > 0 ? (
+            discussions.map((discussion: any) => (
+              <Link key={discussion.id} href={`/community/discussions/${discussion.id}`}
+                className="block p-4 hover:bg-gray-50 transition">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    {discussion.author?.avatar_url ? (
+                      <img src={discussion.author.avatar_url} alt="" className="w-full h-full rounded-full object-cover" />
+                    ) : (
+                      <User className="w-5 h-5 text-gray-400" />
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      {discussion.is_pinned && <Pin className="w-4 h-4 text-orange-500" />}
+                      <h3 className="font-medium text-gray-900 truncate">{discussion.title}</h3>
+                    </div>
+                    <p className="text-sm text-gray-500 mt-1">
+                      by {discussion.author?.full_name || 'Anonymous'}
+                    </p>
+                    <div className="flex items-center gap-4 mt-2 text-sm text-gray-400">
+                      <span className="flex items-center gap-1">
+                        <MessageSquare className="w-4 h-4" />
+                        {discussion.replies?.[0]?.count || 0} replies
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <ThumbsUp className="w-4 h-4" />
+                        {discussion.likes?.[0]?.count || 0}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        {formatTime(discussion.created_at)}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <div className="p-12 text-center">
+              <MessageCircle className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+              <p className="font-medium text-gray-900">No discussions yet</p>
+              <p className="text-sm text-gray-500 mb-4">Start a conversation with the community</p>
+              {user && (
+                <Link href="/community/discussions/new?category=general"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+                  <Plus className="w-4 h-4" /> Start Discussion
+                </Link>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,121 +1,162 @@
-'use client';
-
-import { useState } from 'react';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Bell, Check, Trash2, BookOpen, Calendar, Award, MessageSquare, AlertCircle } from 'lucide-react';
+import { ChevronRight, Bell, CheckCircle, Info, AlertTriangle, Award, BookOpen, Calendar } from 'lucide-react';
 
-const mockNotifications = [
-  { id: 1, type: 'assignment', title: 'New Assignment Posted', message: 'Patient Care Assessment is due Jan 22', time: '2 hours ago', read: false },
-  { id: 2, type: 'grade', title: 'Quiz Graded', message: 'You scored 92% on Patient Safety Quiz', time: '5 hours ago', read: false },
-  { id: 3, type: 'reminder', title: 'Class Tomorrow', message: 'Clinical Skills Lab at 9:00 AM', time: 'Yesterday', read: false },
-  { id: 4, type: 'achievement', title: 'Badge Earned!', message: 'You earned the "Quick Learner" badge', time: '2 days ago', read: true },
-  { id: 5, type: 'message', title: 'Message from Instructor', message: 'Great work on your last assignment!', time: '3 days ago', read: true },
-  { id: 6, type: 'system', title: 'Schedule Updated', message: 'Your class schedule has been updated', time: '1 week ago', read: true },
-];
+export const metadata: Metadata = {
+  title: 'Notifications | Student Portal | Elevate For Humanity',
+  description: 'View your notifications.',
+  robots: { index: false, follow: false },
+};
 
-const getIcon = (type: string) => {
+export const dynamic = 'force-dynamic';
+
+const getNotificationIcon = (type: string) => {
   switch (type) {
-    case 'assignment': return <BookOpen className="w-5 h-5 text-blue-600" />;
-    case 'grade': return <Award className="w-5 h-5 text-green-600" />;
-    case 'reminder': return <Calendar className="w-5 h-5 text-orange-600" />;
-    case 'achievement': return <Award className="w-5 h-5 text-purple-600" />;
-    case 'message': return <MessageSquare className="w-5 h-5 text-blue-600" />;
-    default: return <AlertCircle className="w-5 h-5 text-gray-600" />;
+    case 'success': return CheckCircle;
+    case 'warning': return AlertTriangle;
+    case 'achievement': return Award;
+    case 'course': return BookOpen;
+    case 'event': return Calendar;
+    default: return Info;
   }
 };
 
-export default function StudentNotificationsPage() {
-  const [notifications, setNotifications] = useState(mockNotifications);
-  const [filter, setFilter] = useState('all');
+const getNotificationColor = (type: string) => {
+  switch (type) {
+    case 'success': return 'text-green-500 bg-green-100';
+    case 'warning': return 'text-yellow-500 bg-yellow-100';
+    case 'achievement': return 'text-purple-500 bg-purple-100';
+    case 'course': return 'text-blue-500 bg-blue-100';
+    case 'event': return 'text-orange-500 bg-orange-100';
+    default: return 'text-gray-500 bg-gray-100';
+  }
+};
 
-  const unreadCount = notifications.filter(n => !n.read).length;
+export default async function StudentNotificationsPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
-  const markAsRead = (id: number) => {
-    setNotifications(notifications.map(n => n.id === id ? { ...n, read: true } : n));
-  };
+  if (!user) {
+    redirect('/login?redirect=/portal/student/notifications');
+  }
 
-  const markAllAsRead = () => {
-    setNotifications(notifications.map(n => ({ ...n, read: true })));
-  };
+  // Fetch notifications
+  const { data: notifications } = await supabase
+    .from('notifications')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false })
+    .limit(50);
 
-  const deleteNotification = (id: number) => {
-    setNotifications(notifications.filter(n => n.id !== id));
-  };
+  // Count unread
+  const unreadCount = notifications?.filter(n => !n.read_at).length || 0;
 
-  const filtered = filter === 'all' ? notifications : filter === 'unread' ? notifications.filter(n => !n.read) : notifications.filter(n => n.type === filter);
+  // Group by date
+  const groupedNotifications: Record<string, typeof notifications> = {};
+  notifications?.forEach(notification => {
+    const date = new Date(notification.created_at).toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    if (!groupedNotifications[date]) {
+      groupedNotifications[date] = [];
+    }
+    groupedNotifications[date]!.push(notification);
+  });
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-3xl mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Bell className="w-6 h-6 text-blue-600" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Notifications</h1>
-              <p className="text-gray-600">{unreadCount} unread</p>
-            </div>
+        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
+          <Link href="/" className="hover:text-orange-600">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <Link href="/portal/student/dashboard" className="hover:text-orange-600">Dashboard</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900">Notifications</span>
+        </nav>
+
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Notifications</h1>
+            <p className="text-gray-600">
+              {unreadCount > 0 ? `${unreadCount} unread notifications` : 'All caught up!'}
+            </p>
           </div>
           {unreadCount > 0 && (
-            <button onClick={markAllAsRead} className="text-blue-600 hover:text-blue-700 text-sm font-medium">
-              Mark all as read
-            </button>
+            <form action={async () => {
+              'use server';
+              const supabase = await createClient();
+              await supabase
+                .from('notifications')
+                .update({ read_at: new Date().toISOString() })
+                .eq('user_id', user.id)
+                .is('read_at', null);
+            }}>
+              <button type="submit" className="text-sm text-orange-600 hover:text-orange-700">
+                Mark all as read
+              </button>
+            </form>
           )}
         </div>
 
-        <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
-          {['all', 'unread', 'assignment', 'grade', 'reminder', 'message'].map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`px-4 py-2 rounded-full text-sm whitespace-nowrap ${filter === f ? 'bg-blue-600 text-white' : 'bg-white border text-gray-600 hover:bg-gray-50'}`}
-            >
-              {f.charAt(0).toUpperCase() + f.slice(1)}
-            </button>
-          ))}
-        </div>
-
-        <div className="bg-white rounded-xl shadow-sm border divide-y">
-          {filtered.length === 0 ? (
-            <div className="p-8 text-center text-gray-500">
-              <Bell className="w-12 h-12 mx-auto mb-3 opacity-30" />
-              <p>No notifications</p>
-            </div>
-          ) : (
-            filtered.map((notification) => (
-              <div
-                key={notification.id}
-                className={`p-4 flex items-start gap-4 hover:bg-gray-50 ${!notification.read ? 'bg-blue-50/50' : ''}`}
-              >
-                <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${!notification.read ? 'bg-blue-100' : 'bg-gray-100'}`}>
-                  {getIcon(notification.type)}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <p className={`font-medium ${!notification.read ? 'text-gray-900' : 'text-gray-700'}`}>
-                        {notification.title}
-                      </p>
-                      <p className="text-sm text-gray-600 mt-0.5">{notification.message}</p>
-                      <p className="text-xs text-gray-400 mt-1">{notification.time}</p>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      {!notification.read && (
-                        <button onClick={() => markAsRead(notification.id)} className="p-1.5 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded">
-                          <Check className="w-4 h-4" />
-                        </button>
-                      )}
-                      <button onClick={() => deleteNotification(notification.id)} className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded">
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
+        {notifications && notifications.length > 0 ? (
+          <div className="space-y-6">
+            {Object.entries(groupedNotifications).map(([date, items]) => (
+              <div key={date}>
+                <h2 className="text-sm font-medium text-gray-500 mb-3">{date}</h2>
+                <div className="bg-white rounded-xl border divide-y">
+                  {items?.map((notification: any) => {
+                    const Icon = getNotificationIcon(notification.type);
+                    const colorClass = getNotificationColor(notification.type);
+                    
+                    return (
+                      <div key={notification.id} 
+                        className={`p-4 flex gap-4 ${!notification.read_at ? 'bg-orange-50/50' : ''}`}>
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${colorClass}`}>
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-start justify-between gap-2">
+                            <p className={`font-medium ${!notification.read_at ? 'text-gray-900' : 'text-gray-700'}`}>
+                              {notification.title}
+                            </p>
+                            {!notification.read_at && (
+                              <span className="w-2 h-2 bg-orange-500 rounded-full flex-shrink-0 mt-2" />
+                            )}
+                          </div>
+                          <p className="text-sm text-gray-600 mt-1">{notification.message}</p>
+                          <div className="flex items-center gap-4 mt-2">
+                            <span className="text-xs text-gray-400">
+                              {new Date(notification.created_at).toLocaleTimeString('en-US', {
+                                hour: 'numeric',
+                                minute: '2-digit'
+                              })}
+                            </span>
+                            {notification.link && (
+                              <Link href={notification.link} className="text-xs text-orange-600 hover:text-orange-700">
+                                View details →
+                              </Link>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white rounded-xl border p-12 text-center">
+            <Bell className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+            <p className="font-medium text-gray-900">No notifications</p>
+            <p className="text-sm text-gray-500">You're all caught up!</p>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,135 +1,207 @@
-'use client';
-
-import { useState } from 'react';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { FileText, Download, Calendar, TrendingUp, Users, DollarSign, BarChart3 } from 'lucide-react';
+import { ChevronRight, FileText, Download, Users, DollarSign, TrendingUp, Calendar } from 'lucide-react';
 
-const mockReports = [
-  { id: 1, name: 'Q4 2025 Referral Summary', period: 'Oct - Dec 2025', students: 45, completions: 32, placement: '89%' },
-  { id: 2, name: 'Q3 2025 Referral Summary', period: 'Jul - Sep 2025', students: 38, completions: 28, placement: '85%' },
-  { id: 3, name: 'Q2 2025 Referral Summary', period: 'Apr - Jun 2025', students: 42, completions: 35, placement: '91%' },
-  { id: 4, name: 'Q1 2025 Referral Summary', period: 'Jan - Mar 2025', students: 31, completions: 24, placement: '82%' },
-];
+export const metadata: Metadata = {
+  title: 'Reports | Partner Portal | Elevate For Humanity',
+  description: 'View partnership reports and analytics.',
+  robots: { index: false, follow: false },
+};
 
-export default function PartnerReportsPage() {
-  const [year, setYear] = useState('2025');
+export const dynamic = 'force-dynamic';
 
-  const stats = [
-    { label: 'Total Referrals YTD', value: '156', icon: Users, color: 'blue' },
-    { label: 'Completions YTD', value: '119', icon: TrendingUp, color: 'green' },
-    { label: 'Avg Placement Rate', value: '87%', icon: BarChart3, color: 'purple' },
-    { label: 'Training Value', value: '$485K', icon: DollarSign, color: 'orange' },
+export default async function PartnerReportsPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/login?redirect=/partner/reports');
+  }
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role, full_name')
+    .eq('id', user.id)
+    .single();
+
+  if (!profile || !['delegate', 'program_holder', 'admin', 'super_admin'].includes(profile.role)) {
+    redirect('/');
+  }
+
+  // Get partner's program holder record
+  const { data: programHolder } = await supabase
+    .from('program_holders')
+    .select('id, name, payout_share')
+    .eq('owner_id', user.id)
+    .single();
+
+  const partnerId = programHolder?.id || user.id;
+  const partnerField = programHolder ? 'program_holder_id' : 'delegate_id';
+
+  // Get date ranges
+  const now = new Date();
+  const thisQuarterStart = new Date(now.getFullYear(), Math.floor(now.getMonth() / 3) * 3, 1);
+  const lastQuarterStart = new Date(thisQuarterStart);
+  lastQuarterStart.setMonth(lastQuarterStart.getMonth() - 3);
+  const thisYearStart = new Date(now.getFullYear(), 0, 1);
+
+  // Fetch enrollment stats
+  const { count: totalEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq(partnerField, partnerId);
+
+  const { count: thisQuarterEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq(partnerField, partnerId)
+    .gte('enrolled_at', thisQuarterStart.toISOString());
+
+  const { count: completedEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq(partnerField, partnerId)
+    .eq('status', 'completed');
+
+  // Fetch recent completions
+  const { data: recentCompletions } = await supabase
+    .from('enrollments')
+    .select(`
+      id,
+      completed_at,
+      student:profiles!enrollments_student_id_fkey(full_name),
+      program:programs(name)
+    `)
+    .eq(partnerField, partnerId)
+    .eq('status', 'completed')
+    .order('completed_at', { ascending: false })
+    .limit(5);
+
+  // Calculate estimated payout (simplified)
+  const payoutShare = programHolder?.payout_share || 0;
+  const estimatedPayout = (completedEnrollments || 0) * 500 * (payoutShare / 100);
+
+  // Quarterly data for chart
+  const quarters = [
+    { name: 'Q1', enrollments: 0, completions: 0 },
+    { name: 'Q2', enrollments: 0, completions: 0 },
+    { name: 'Q3', enrollments: 0, completions: 0 },
+    { name: 'Q4', enrollments: 0, completions: 0 },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
+        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
+          <Link href="/" className="hover:text-orange-600">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <Link href="/partner" className="hover:text-orange-600">Partner Portal</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900">Reports</span>
+        </nav>
+
+        <div className="flex justify-between items-center mb-6">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Partner Reports</h1>
-            <p className="text-gray-600">View referral outcomes and performance metrics</p>
+            <h1 className="text-3xl font-bold text-gray-900">Partnership Reports</h1>
+            <p className="text-gray-600">Performance metrics and analytics</p>
           </div>
-          <Link href="/partner" className="text-blue-600 hover:text-blue-700">← Back to Portal</Link>
+          <button className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50">
+            <Download className="w-4 h-4" /> Export Report
+          </button>
         </div>
 
+        {/* Key Metrics */}
         <div className="grid md:grid-cols-4 gap-4 mb-8">
-          {stats.map((stat, i) => (
-            <div key={i} className="bg-white rounded-xl shadow-sm border p-6">
-              <div className={`w-10 h-10 bg-${stat.color}-100 rounded-lg flex items-center justify-center mb-3`}>
-                <stat.icon className={`w-5 h-5 text-${stat.color}-600`} />
-              </div>
-              <p className="text-sm text-gray-500">{stat.label}</p>
-              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-            </div>
-          ))}
+          <div className="bg-white rounded-xl p-6 border">
+            <Users className="w-8 h-8 text-blue-500 mb-2" />
+            <p className="text-2xl font-bold">{totalEnrollments || 0}</p>
+            <p className="text-gray-600 text-sm">Total Referrals</p>
+          </div>
+          <div className="bg-white rounded-xl p-6 border">
+            <TrendingUp className="w-8 h-8 text-green-500 mb-2" />
+            <p className="text-2xl font-bold">{thisQuarterEnrollments || 0}</p>
+            <p className="text-gray-600 text-sm">This Quarter</p>
+          </div>
+          <div className="bg-white rounded-xl p-6 border">
+            <Calendar className="w-8 h-8 text-purple-500 mb-2" />
+            <p className="text-2xl font-bold">{completedEnrollments || 0}</p>
+            <p className="text-gray-600 text-sm">Completions</p>
+          </div>
+          <div className="bg-white rounded-xl p-6 border">
+            <DollarSign className="w-8 h-8 text-orange-500 mb-2" />
+            <p className="text-2xl font-bold">${estimatedPayout.toLocaleString()}</p>
+            <p className="text-gray-600 text-sm">Est. Payout ({payoutShare}%)</p>
+          </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border">
-          <div className="p-6 border-b flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-gray-900">Quarterly Reports</h2>
-            <select value={year} onChange={(e) => setYear(e.target.value)} className="px-4 py-2 border rounded-lg">
-              <option value="2025">2025</option>
-              <option value="2024">2024</option>
-            </select>
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Quarterly Performance */}
+          <div className="bg-white rounded-xl border p-6">
+            <h2 className="font-semibold mb-4">Quarterly Performance</h2>
+            <div className="space-y-4">
+              {quarters.map((q, idx) => (
+                <div key={q.name} className="flex items-center gap-4">
+                  <span className="w-8 text-sm font-medium text-gray-500">{q.name}</span>
+                  <div className="flex-1 bg-gray-100 rounded-full h-4 overflow-hidden">
+                    <div className="bg-orange-500 h-full rounded-full" 
+                      style={{ width: `${Math.min(100, (idx + 1) * 20)}%` }} />
+                  </div>
+                  <span className="text-sm text-gray-600 w-16 text-right">
+                    {idx === Math.floor(now.getMonth() / 3) ? thisQuarterEnrollments : 0}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="divide-y">
-            {mockReports.map((report) => (
-              <div key={report.id} className="p-6 flex items-center justify-between hover:bg-gray-50">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <FileText className="w-6 h-6 text-blue-600" />
+          {/* Recent Completions */}
+          <div className="bg-white rounded-xl border p-6">
+            <h2 className="font-semibold mb-4">Recent Completions</h2>
+            {recentCompletions && recentCompletions.length > 0 ? (
+              <div className="space-y-3">
+                {recentCompletions.map((completion: any) => (
+                  <div key={completion.id} className="flex items-center justify-between py-2 border-b last:border-0">
+                    <div>
+                      <p className="font-medium">{completion.student?.full_name || 'Unknown'}</p>
+                      <p className="text-sm text-gray-500">{completion.program?.name}</p>
+                    </div>
+                    <span className="text-sm text-gray-500">
+                      {completion.completed_at ? new Date(completion.completed_at).toLocaleDateString() : 'N/A'}
+                    </span>
                   </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-gray-500 text-center py-8">No completions yet</p>
+            )}
+          </div>
+        </div>
+
+        {/* Report Downloads */}
+        <div className="mt-6 bg-white rounded-xl border p-6">
+          <h2 className="font-semibold mb-4">Available Reports</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              { name: 'Enrollment Summary', desc: 'All student enrollments', period: 'Year to Date' },
+              { name: 'Completion Report', desc: 'Completed programs', period: 'Last 12 Months' },
+              { name: 'Financial Summary', desc: 'Payout calculations', period: 'Current Quarter' },
+            ].map(report => (
+              <div key={report.name} className="border rounded-lg p-4 hover:bg-gray-50">
+                <div className="flex items-start justify-between">
                   <div>
-                    <p className="font-medium text-gray-900">{report.name}</p>
-                    <p className="text-sm text-gray-500">{report.period}</p>
+                    <FileText className="w-8 h-8 text-gray-400 mb-2" />
+                    <p className="font-medium">{report.name}</p>
+                    <p className="text-sm text-gray-500">{report.desc}</p>
+                    <p className="text-xs text-gray-400 mt-1">{report.period}</p>
                   </div>
-                </div>
-                <div className="flex items-center gap-8">
-                  <div className="text-center">
-                    <p className="text-lg font-semibold text-gray-900">{report.students}</p>
-                    <p className="text-xs text-gray-500">Referrals</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-lg font-semibold text-gray-900">{report.completions}</p>
-                    <p className="text-xs text-gray-500">Completions</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-lg font-semibold text-green-600">{report.placement}</p>
-                    <p className="text-xs text-gray-500">Placement</p>
-                  </div>
-                  <button className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50">
-                    <Download className="w-4 h-4" /> Download
+                  <button className="p-2 hover:bg-gray-100 rounded">
+                    <Download className="w-4 h-4 text-gray-500" />
                   </button>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        <div className="mt-8 grid md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-xl shadow-sm border p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Generate Custom Report</h3>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
-                <div className="grid grid-cols-2 gap-2">
-                  <input type="date" className="px-4 py-2 border rounded-lg" />
-                  <input type="date" className="px-4 py-2 border rounded-lg" />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Report Type</label>
-                <select className="w-full px-4 py-2 border rounded-lg">
-                  <option>Referral Summary</option>
-                  <option>Outcomes Report</option>
-                  <option>Funding Utilization</option>
-                </select>
-              </div>
-              <button className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                Generate Report
-              </button>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-sm border p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Scheduled Reports</h3>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <div>
-                  <p className="font-medium text-gray-900">Monthly Summary</p>
-                  <p className="text-sm text-gray-500">Sent 1st of each month</p>
-                </div>
-                <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Active</span>
-              </div>
-              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <div>
-                  <p className="font-medium text-gray-900">Quarterly Outcomes</p>
-                  <p className="text-sm text-gray-500">Sent end of quarter</p>
-                </div>
-                <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Active</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

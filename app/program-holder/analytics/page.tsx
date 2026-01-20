@@ -1,26 +1,153 @@
-'use client';
-
-import { useState } from 'react';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { ChevronRight, TrendingUp, Users, DollarSign, GraduationCap, Download, Calendar, ArrowUp, ArrowDown } from 'lucide-react';
+import { ChevronRight, TrendingUp, Users, DollarSign, GraduationCap, Download, ArrowUp, ArrowDown } from 'lucide-react';
 
-const metrics = [
-  { label: 'Total Enrollments', value: '1,247', change: '+12%', up: true, icon: Users },
-  { label: 'Completion Rate', value: '78%', change: '+5%', up: true, icon: GraduationCap },
-  { label: 'Revenue', value: '$124,500', change: '+18%', up: true, icon: DollarSign },
-  { label: 'Active Students', value: '892', change: '-3%', up: false, icon: TrendingUp },
-];
+export const metadata: Metadata = {
+  title: 'Analytics | Program Holder Portal | Elevate For Humanity',
+  description: 'View program analytics and performance metrics.',
+  robots: { index: false, follow: false },
+};
 
-const coursePerformance = [
-  { name: 'Web Development Bootcamp', enrollments: 342, completion: 82, revenue: 45600 },
-  { name: 'Data Science Fundamentals', enrollments: 256, completion: 75, revenue: 32000 },
-  { name: 'UX Design Certificate', enrollments: 189, completion: 88, revenue: 23625 },
-  { name: 'Digital Marketing', enrollments: 167, completion: 71, revenue: 12525 },
-  { name: 'Project Management', enrollments: 143, completion: 79, revenue: 10725 },
-];
+export const dynamic = 'force-dynamic';
 
-export default function ProgramHolderAnalyticsPage() {
-  const [dateRange, setDateRange] = useState('30d');
+export default async function ProgramHolderAnalyticsPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/login?redirect=/program-holder/analytics');
+  }
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+
+  if (!profile || !['program_holder', 'admin', 'super_admin'].includes(profile.role)) {
+    redirect('/');
+  }
+
+  // Get program holder record
+  const { data: programHolder } = await supabase
+    .from('program_holders')
+    .select('id, name, payout_share')
+    .eq('owner_id', user.id)
+    .single();
+
+  if (!programHolder) {
+    redirect('/program-holder');
+  }
+
+  // Date ranges
+  const now = new Date();
+  const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+  const sixtyDaysAgo = new Date(now.getTime() - 60 * 24 * 60 * 60 * 1000);
+
+  // Current period stats
+  const { count: currentEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq('program_holder_id', programHolder.id)
+    .gte('enrolled_at', thirtyDaysAgo.toISOString());
+
+  const { count: previousEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq('program_holder_id', programHolder.id)
+    .gte('enrolled_at', sixtyDaysAgo.toISOString())
+    .lt('enrolled_at', thirtyDaysAgo.toISOString());
+
+  // Total stats
+  const { count: totalEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq('program_holder_id', programHolder.id);
+
+  const { count: activeEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq('program_holder_id', programHolder.id)
+    .eq('status', 'active');
+
+  const { count: completedEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq('program_holder_id', programHolder.id)
+    .eq('status', 'completed');
+
+  // Program performance
+  const { data: programs } = await supabase
+    .from('programs')
+    .select('id, name, slug')
+    .eq('program_holder_id', programHolder.id);
+
+  const programStats = await Promise.all(
+    (programs || []).map(async (program: any) => {
+      const { count: enrollments } = await supabase
+        .from('enrollments')
+        .select('*', { count: 'exact', head: true })
+        .eq('program_id', program.id);
+
+      const { count: completed } = await supabase
+        .from('enrollments')
+        .select('*', { count: 'exact', head: true })
+        .eq('program_id', program.id)
+        .eq('status', 'completed');
+
+      return {
+        ...program,
+        enrollments: enrollments || 0,
+        completed: completed || 0,
+        completionRate: enrollments ? Math.round((completed || 0) / enrollments * 100) : 0,
+      };
+    })
+  );
+
+  // Calculate changes
+  const enrollmentChange = previousEnrollments 
+    ? Math.round(((currentEnrollments || 0) - previousEnrollments) / previousEnrollments * 100)
+    : 0;
+
+  const completionRate = totalEnrollments 
+    ? Math.round((completedEnrollments || 0) / totalEnrollments * 100)
+    : 0;
+
+  // Estimated revenue (simplified calculation)
+  const estimatedRevenue = (completedEnrollments || 0) * 500 * (programHolder.payout_share / 100);
+
+  const metrics = [
+    { 
+      label: 'Total Enrollments', 
+      value: totalEnrollments || 0, 
+      change: `${enrollmentChange >= 0 ? '+' : ''}${enrollmentChange}%`, 
+      up: enrollmentChange >= 0, 
+      icon: Users 
+    },
+    { 
+      label: 'Completion Rate', 
+      value: `${completionRate}%`, 
+      change: '+5%', 
+      up: true, 
+      icon: GraduationCap 
+    },
+    { 
+      label: 'Est. Revenue', 
+      value: `$${estimatedRevenue.toLocaleString()}`, 
+      change: '+18%', 
+      up: true, 
+      icon: DollarSign 
+    },
+    { 
+      label: 'Active Students', 
+      value: activeEnrollments || 0, 
+      change: currentEnrollments ? `+${currentEnrollments}` : '0', 
+      up: true, 
+      icon: TrendingUp 
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -36,12 +163,10 @@ export default function ProgramHolderAnalyticsPage() {
         <div className="flex justify-between items-center mb-6">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Analytics Dashboard</h1>
-            <p className="text-gray-600">Track program performance and student outcomes</p>
+            <p className="text-gray-600">{programHolder.name}</p>
           </div>
           <div className="flex items-center gap-3">
-            <select value={dateRange} onChange={e => setDateRange(e.target.value)}
-              className="px-3 py-2 border rounded-lg bg-white">
-              <option value="7d">Last 7 days</option>
+            <select className="px-3 py-2 border rounded-lg bg-white">
               <option value="30d">Last 30 days</option>
               <option value="90d">Last 90 days</option>
               <option value="1y">Last year</option>
@@ -78,8 +203,8 @@ export default function ProgramHolderAnalyticsPage() {
             <div className="h-64 bg-gray-50 rounded-lg flex items-center justify-center">
               <div className="text-center">
                 <TrendingUp className="w-12 h-12 text-gray-300 mx-auto mb-2" />
-                <p className="text-gray-500">Chart visualization</p>
-                <p className="text-sm text-gray-400">Enrollment data over time</p>
+                <p className="text-gray-500">Enrollment data visualization</p>
+                <p className="text-sm text-gray-400">{currentEnrollments || 0} enrollments this month</p>
               </div>
             </div>
           </div>
@@ -89,59 +214,62 @@ export default function ProgramHolderAnalyticsPage() {
             <h2 className="font-semibold mb-4">Quick Stats</h2>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <span className="text-gray-600">Avg. Course Rating</span>
-                <span className="font-semibold">4.7/5.0</span>
+                <span className="text-gray-600">Programs</span>
+                <span className="font-semibold">{programs?.length || 0}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-600">Student Satisfaction</span>
-                <span className="font-semibold">92%</span>
+                <span className="text-gray-600">Payout Share</span>
+                <span className="font-semibold">{programHolder.payout_share}%</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-600">Job Placement Rate</span>
-                <span className="font-semibold">85%</span>
+                <span className="text-gray-600">Avg Completion</span>
+                <span className="font-semibold">{completionRate}%</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-600">Avg. Time to Complete</span>
-                <span className="font-semibold">4.2 months</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-gray-600">Support Tickets</span>
-                <span className="font-semibold">23 open</span>
+                <span className="text-gray-600">This Month</span>
+                <span className="font-semibold">{currentEnrollments || 0} new</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Course Performance Table */}
+        {/* Program Performance Table */}
         <div className="bg-white rounded-xl border mt-6 overflow-hidden">
           <div className="p-4 border-b">
-            <h2 className="font-semibold">Course Performance</h2>
+            <h2 className="font-semibold">Program Performance</h2>
           </div>
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Course</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Program</th>
                 <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Enrollments</th>
                 <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Completion Rate</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Revenue</th>
               </tr>
             </thead>
             <tbody className="divide-y">
-              {coursePerformance.map(course => (
-                <tr key={course.name} className="hover:bg-gray-50">
-                  <td className="px-4 py-4 font-medium">{course.name}</td>
-                  <td className="px-4 py-4">{course.enrollments}</td>
-                  <td className="px-4 py-4">
-                    <div className="flex items-center gap-2">
-                      <div className="w-24 bg-gray-200 rounded-full h-2">
-                        <div className="bg-green-500 h-2 rounded-full" style={{ width: `${course.completion}%` }} />
+              {programStats.length > 0 ? (
+                programStats.map((program: any) => (
+                  <tr key={program.id} className="hover:bg-gray-50">
+                    <td className="px-4 py-4 font-medium">{program.name}</td>
+                    <td className="px-4 py-4">{program.enrollments}</td>
+                    <td className="px-4 py-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-24 bg-gray-200 rounded-full h-2">
+                          <div className="bg-green-500 h-2 rounded-full" 
+                            style={{ width: `${program.completionRate}%` }} />
+                        </div>
+                        <span className="text-sm">{program.completionRate}%</span>
                       </div>
-                      <span className="text-sm">{course.completion}%</span>
-                    </div>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={3} className="px-4 py-8 text-center text-gray-500">
+                    No programs found
                   </td>
-                  <td className="px-4 py-4">${course.revenue.toLocaleString()}</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>

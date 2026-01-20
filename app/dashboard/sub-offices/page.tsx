@@ -1,56 +1,179 @@
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Building2, Users, TrendingUp, MapPin, Phone, Mail } from 'lucide-react';
+import { ChevronRight, Building2, Users, MapPin, Phone, Mail, Plus, Edit } from 'lucide-react';
 
-const offices = [
-  { id: 1, name: 'Indianapolis Main', address: '123 Main St, Indianapolis, IN 46204', phone: '(317) 555-0100', manager: 'Sarah Johnson', students: 156, active: true },
-  { id: 2, name: 'Fort Wayne', address: '456 Oak Ave, Fort Wayne, IN 46802', phone: '(260) 555-0200', manager: 'Michael Chen', students: 89, active: true },
-  { id: 3, name: 'South Bend', address: '789 Elm St, South Bend, IN 46601', phone: '(574) 555-0300', manager: 'Emily Davis', students: 67, active: true },
-  { id: 4, name: 'Evansville', address: '321 Pine Rd, Evansville, IN 47708', phone: '(812) 555-0400', manager: 'James Wilson', students: 45, active: false },
-];
+export const metadata: Metadata = {
+  title: 'Sub-Offices | Dashboard | Elevate For Humanity',
+  description: 'Manage regional training locations.',
+  robots: { index: false, follow: false },
+};
 
-export default function SubOfficesPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function SubOfficesPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/login?redirect=/dashboard/sub-offices');
+  }
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+
+  if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
+    redirect('/');
+  }
+
+  // Fetch sub-offices
+  const { data: offices } = await supabase
+    .from('sub_offices')
+    .select(`
+      id,
+      name,
+      address,
+      city,
+      state,
+      zip_code,
+      phone,
+      email,
+      manager_id,
+      is_active,
+      created_at,
+      manager:profiles!sub_offices_manager_id_fkey(full_name)
+    `)
+    .order('name');
+
+  // Get enrollment counts per office
+  const officesWithStats = await Promise.all(
+    (offices || []).map(async (office: any) => {
+      const { count } = await supabase
+        .from('enrollments')
+        .select('*', { count: 'exact', head: true })
+        .eq('sub_office_id', office.id)
+        .eq('status', 'active');
+
+      return {
+        ...office,
+        studentCount: count || 0,
+      };
+    })
+  );
+
+  const totalStudents = officesWithStats.reduce((sum, o) => sum + o.studentCount, 0);
+  const activeOffices = officesWithStats.filter(o => o.is_active).length;
+
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
+        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
+          <Link href="/" className="hover:text-orange-600">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <Link href="/admin" className="hover:text-orange-600">Admin</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900">Sub-Offices</span>
+        </nav>
+
+        <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Sub-Offices</h1>
             <p className="text-gray-600">Manage regional training locations</p>
           </div>
-          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">+ Add Office</button>
+          <Link href="/dashboard/sub-offices/new"
+            className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+            <Plus className="w-4 h-4" /> Add Office
+          </Link>
         </div>
+
+        {/* Stats */}
         <div className="grid md:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white rounded-xl shadow-sm border p-6">
-            <div className="flex items-center gap-3"><Building2 className="w-8 h-8 text-blue-600" /><div><p className="text-sm text-gray-500">Total Offices</p><p className="text-2xl font-bold">{offices.length}</p></div></div>
+          <div className="bg-white rounded-xl p-6 border">
+            <Building2 className="w-8 h-8 text-blue-500 mb-2" />
+            <p className="text-2xl font-bold">{officesWithStats.length}</p>
+            <p className="text-gray-600 text-sm">Total Offices</p>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border p-6">
-            <div className="flex items-center gap-3"><Users className="w-8 h-8 text-green-600" /><div><p className="text-sm text-gray-500">Total Students</p><p className="text-2xl font-bold">{offices.reduce((s, o) => s + o.students, 0)}</p></div></div>
+          <div className="bg-white rounded-xl p-6 border">
+            <Users className="w-8 h-8 text-green-500 mb-2" />
+            <p className="text-2xl font-bold">{totalStudents}</p>
+            <p className="text-gray-600 text-sm">Active Students</p>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border p-6">
-            <div className="flex items-center gap-3"><TrendingUp className="w-8 h-8 text-purple-600" /><div><p className="text-sm text-gray-500">Active Offices</p><p className="text-2xl font-bold">{offices.filter(o => o.active).length}</p></div></div>
+          <div className="bg-white rounded-xl p-6 border">
+            <MapPin className="w-8 h-8 text-orange-500 mb-2" />
+            <p className="text-2xl font-bold">{activeOffices}</p>
+            <p className="text-gray-600 text-sm">Active Locations</p>
           </div>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          {offices.map((office) => (
-            <div key={office.id} className="bg-white rounded-xl shadow-sm border p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">{office.name}</h3>
-                  <span className={`px-2 py-0.5 text-xs rounded-full ${office.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}>{office.active ? 'Active' : 'Inactive'}</span>
+
+        {/* Offices Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {officesWithStats.length > 0 ? (
+            officesWithStats.map((office: any) => (
+              <div key={office.id} className={`bg-white rounded-xl border p-6 ${!office.is_active ? 'opacity-60' : ''}`}>
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <Building2 className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <span className={`px-2 py-1 rounded text-xs ${
+                    office.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
+                  }`}>
+                    {office.is_active ? 'Active' : 'Inactive'}
+                  </span>
                 </div>
-                <div className="text-right"><p className="text-2xl font-bold text-blue-600">{office.students}</p><p className="text-xs text-gray-500">students</p></div>
+                
+                <h3 className="font-semibold text-lg mb-2">{office.name}</h3>
+                
+                <div className="space-y-2 text-sm text-gray-600 mb-4">
+                  <p className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4" />
+                    {office.address}, {office.city}, {office.state} {office.zip_code}
+                  </p>
+                  {office.phone && (
+                    <p className="flex items-center gap-2">
+                      <Phone className="w-4 h-4" />
+                      {office.phone}
+                    </p>
+                  )}
+                  {office.email && (
+                    <p className="flex items-center gap-2">
+                      <Mail className="w-4 h-4" />
+                      {office.email}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex items-center justify-between pt-4 border-t">
+                  <div>
+                    <p className="text-sm text-gray-500">Manager</p>
+                    <p className="font-medium">{office.manager?.full_name || 'Unassigned'}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm text-gray-500">Students</p>
+                    <p className="font-medium">{office.studentCount}</p>
+                  </div>
+                </div>
+
+                <Link href={`/dashboard/sub-offices/${office.id}`}
+                  className="flex items-center justify-center gap-2 w-full mt-4 px-4 py-2 border rounded-lg hover:bg-gray-50">
+                  <Edit className="w-4 h-4" /> Manage
+                </Link>
               </div>
-              <div className="space-y-2 text-sm text-gray-600">
-                <p className="flex items-center gap-2"><MapPin className="w-4 h-4" /> {office.address}</p>
-                <p className="flex items-center gap-2"><Phone className="w-4 h-4" /> {office.phone}</p>
-                <p className="flex items-center gap-2"><Users className="w-4 h-4" /> Manager: {office.manager}</p>
-              </div>
-              <div className="mt-4 pt-4 border-t flex gap-2">
-                <button className="flex-1 py-2 border rounded-lg hover:bg-gray-50">View Details</button>
-                <button className="flex-1 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Manage</button>
-              </div>
+            ))
+          ) : (
+            <div className="col-span-full bg-white rounded-xl border p-12 text-center">
+              <Building2 className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+              <p className="font-medium text-gray-900">No sub-offices yet</p>
+              <p className="text-sm text-gray-500 mb-4">Add your first regional office</p>
+              <Link href="/dashboard/sub-offices/new"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+                <Plus className="w-4 h-4" /> Add Office
+              </Link>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>

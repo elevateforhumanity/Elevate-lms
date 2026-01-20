@@ -1,132 +1,181 @@
-'use client';
-
-import { useState } from 'react';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Users, Search, Filter, Download, Eye, GraduationCap, TrendingUp } from 'lucide-react';
+import { ChevronRight, Users, GraduationCap, Clock, TrendingUp, Search } from 'lucide-react';
 
-const mockStudents = [
-  { id: 1, name: 'Marcus Johnson', program: 'CNA Certification', status: 'active', progress: 75, startDate: '2025-11-15', fundingSource: 'WIOA Adult' },
-  { id: 2, name: 'Sarah Williams', program: 'Phlebotomy', status: 'active', progress: 60, startDate: '2025-12-01', fundingSource: 'WIOA Youth' },
-  { id: 3, name: 'David Chen', program: 'HVAC Technician', status: 'active', progress: 45, startDate: '2025-12-10', fundingSource: 'WIOA DW' },
-  { id: 4, name: 'Emily Rodriguez', program: 'IT Support', status: 'completed', progress: 100, startDate: '2025-09-01', fundingSource: 'WIOA Adult' },
-  { id: 5, name: 'James Wilson', program: 'CDL Training', status: 'active', progress: 30, startDate: '2026-01-05', fundingSource: 'WIOA Adult' },
-  { id: 6, name: 'Ashley Brown', program: 'Medical Assistant', status: 'on-hold', progress: 50, startDate: '2025-10-15', fundingSource: 'WIOA Youth' },
-];
+export const metadata: Metadata = {
+  title: 'Students | Partner Portal | Elevate For Humanity',
+  description: 'View and manage referred students.',
+  robots: { index: false, follow: false },
+};
 
-export default function PartnerStudentsPage() {
-  const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState('all');
+export const dynamic = 'force-dynamic';
 
-  const filtered = mockStudents.filter(s => {
-    const matchesSearch = s.name.toLowerCase().includes(search.toLowerCase()) || s.program.toLowerCase().includes(search.toLowerCase());
-    const matchesStatus = statusFilter === 'all' || s.status === statusFilter;
-    return matchesSearch && matchesStatus;
-  });
+export default async function PartnerStudentsPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
-  const stats = [
-    { label: 'Total Referred', value: '156', icon: Users },
-    { label: 'Currently Active', value: '42', icon: GraduationCap },
-    { label: 'Completed', value: '98', icon: TrendingUp },
-  ];
+  if (!user) {
+    redirect('/login?redirect=/partner/students');
+  }
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role, full_name')
+    .eq('id', user.id)
+    .single();
+
+  if (!profile || !['delegate', 'program_holder', 'admin', 'super_admin'].includes(profile.role)) {
+    redirect('/');
+  }
+
+  // Get partner's program holder record if applicable
+  const { data: programHolder } = await supabase
+    .from('program_holders')
+    .select('id, name')
+    .eq('owner_id', user.id)
+    .single();
+
+  // Fetch students referred by this partner
+  const { data: enrollments, count: totalStudents } = await supabase
+    .from('enrollments')
+    .select(`
+      id,
+      status,
+      progress,
+      funding_type,
+      enrolled_at,
+      completed_at,
+      student:profiles!enrollments_student_id_fkey(id, full_name, email, created_at),
+      program:programs(id, name, slug)
+    `, { count: 'exact' })
+    .eq(programHolder ? 'program_holder_id' : 'delegate_id', programHolder?.id || user.id)
+    .order('enrolled_at', { ascending: false });
+
+  // Calculate stats
+  const activeCount = enrollments?.filter(e => e.status === 'active').length || 0;
+  const completedCount = enrollments?.filter(e => e.status === 'completed').length || 0;
+  const avgProgress = enrollments?.length 
+    ? Math.round(enrollments.reduce((sum, e) => sum + (e.progress || 0), 0) / enrollments.length)
+    : 0;
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
+        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
+          <Link href="/" className="hover:text-orange-600">Home</Link>
+          <ChevronRight className="w-4 h-4" />
+          <Link href="/partner" className="hover:text-orange-600">Partner Portal</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900">Students</span>
+        </nav>
+
+        <div className="flex justify-between items-center mb-6">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Referred Students</h1>
-            <p className="text-gray-600">Track students you've referred to training programs</p>
+            <p className="text-gray-600">Students enrolled through your organization</p>
           </div>
-          <div className="flex gap-2">
-            <button className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50">
-              <Download className="w-4 h-4" /> Export
-            </button>
-            <Link href="/partner" className="text-blue-600 hover:text-blue-700">← Back</Link>
+          <Link href="/partner/refer" className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+            Refer New Student
+          </Link>
+        </div>
+
+        {/* Stats */}
+        <div className="grid md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-white rounded-xl p-6 border">
+            <Users className="w-8 h-8 text-blue-500 mb-2" />
+            <p className="text-2xl font-bold">{totalStudents || 0}</p>
+            <p className="text-gray-600 text-sm">Total Students</p>
+          </div>
+          <div className="bg-white rounded-xl p-6 border">
+            <Clock className="w-8 h-8 text-green-500 mb-2" />
+            <p className="text-2xl font-bold">{activeCount}</p>
+            <p className="text-gray-600 text-sm">Active</p>
+          </div>
+          <div className="bg-white rounded-xl p-6 border">
+            <GraduationCap className="w-8 h-8 text-purple-500 mb-2" />
+            <p className="text-2xl font-bold">{completedCount}</p>
+            <p className="text-gray-600 text-sm">Completed</p>
+          </div>
+          <div className="bg-white rounded-xl p-6 border">
+            <TrendingUp className="w-8 h-8 text-orange-500 mb-2" />
+            <p className="text-2xl font-bold">{avgProgress}%</p>
+            <p className="text-gray-600 text-sm">Avg Progress</p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4 mb-8">
-          {stats.map((stat, i) => (
-            <div key={i} className="bg-white rounded-xl shadow-sm border p-6 flex items-center gap-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <stat.icon className="w-6 h-6 text-blue-600" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-500">{stat.label}</p>
-                <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-              </div>
+        {/* Students Table */}
+        <div className="bg-white rounded-xl border overflow-hidden">
+          <div className="p-4 border-b">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input type="text" placeholder="Search students..." 
+                className="w-full md:w-80 pl-10 pr-4 py-2 border rounded-lg" />
             </div>
-          ))}
-        </div>
-
-        <div className="bg-white rounded-xl shadow-sm border">
-          <div className="p-4 border-b flex flex-wrap gap-4 items-center justify-between">
-            <div className="relative flex-1 min-w-[200px] max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search students..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border rounded-lg"
-              />
-            </div>
-            <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="px-4 py-2 border rounded-lg">
-              <option value="all">All Status</option>
-              <option value="active">Active</option>
-              <option value="completed">Completed</option>
-              <option value="on-hold">On Hold</option>
-            </select>
           </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">Student</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">Program</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">Funding</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">Progress</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">Status</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y">
-                {filtered.map((student) => (
-                  <tr key={student.id} className="hover:bg-gray-50">
-                    <td className="px-4 py-3">
-                      <p className="font-medium text-gray-900">{student.name}</p>
-                      <p className="text-sm text-gray-500">Started {student.startDate}</p>
+          <table className="w-full">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Student</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Program</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Funding</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Progress</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Status</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Enrolled</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              {enrollments && enrollments.length > 0 ? (
+                enrollments.map((enrollment: any) => (
+                  <tr key={enrollment.id} className="hover:bg-gray-50">
+                    <td className="px-4 py-4">
+                      <Link href={`/partner/students/${enrollment.student?.id}`} className="hover:text-orange-600">
+                        <p className="font-medium">{enrollment.student?.full_name || 'Unknown'}</p>
+                        <p className="text-sm text-gray-500">{enrollment.student?.email}</p>
+                      </Link>
                     </td>
-                    <td className="px-4 py-3 text-gray-600">{student.program}</td>
-                    <td className="px-4 py-3 text-gray-600">{student.fundingSource}</td>
-                    <td className="px-4 py-3">
-                      <div className="flex items-center gap-2">
-                        <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-blue-500 rounded-full" style={{ width: `${student.progress}%` }} />
-                        </div>
-                        <span className="text-sm text-gray-600">{student.progress}%</span>
-                      </div>
-                    </td>
-                    <td className="px-4 py-3">
-                      <span className={`px-2 py-1 text-xs rounded-full ${
-                        student.status === 'active' ? 'bg-green-100 text-green-700' :
-                        student.status === 'completed' ? 'bg-blue-100 text-blue-700' :
-                        'bg-yellow-100 text-yellow-700'
-                      }`}>
-                        {student.status}
+                    <td className="px-4 py-4 text-sm">{enrollment.program?.name || 'N/A'}</td>
+                    <td className="px-4 py-4">
+                      <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs uppercase">
+                        {enrollment.funding_type || 'self_pay'}
                       </span>
                     </td>
-                    <td className="px-4 py-3">
-                      <button className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg">
-                        <Eye className="w-4 h-4" />
-                      </button>
+                    <td className="px-4 py-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-24 bg-gray-200 rounded-full h-2">
+                          <div className="bg-orange-500 h-2 rounded-full" 
+                            style={{ width: `${enrollment.progress || 0}%` }} />
+                        </div>
+                        <span className="text-sm">{enrollment.progress || 0}%</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-4">
+                      <span className={`px-2 py-1 rounded text-xs ${
+                        enrollment.status === 'active' ? 'bg-green-100 text-green-700' :
+                        enrollment.status === 'completed' ? 'bg-blue-100 text-blue-700' :
+                        enrollment.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
+                        'bg-gray-100 text-gray-700'
+                      }`}>
+                        {enrollment.status}
+                      </span>
+                    </td>
+                    <td className="px-4 py-4 text-sm text-gray-500">
+                      {enrollment.enrolled_at ? new Date(enrollment.enrolled_at).toLocaleDateString() : 'N/A'}
                     </td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={6} className="px-4 py-12 text-center text-gray-500">
+                    <Users className="w-12 h-12 mx-auto mb-3 text-gray-300" />
+                    <p className="font-medium">No students yet</p>
+                    <p className="text-sm">Students you refer will appear here</p>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
