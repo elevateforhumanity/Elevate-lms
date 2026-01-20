@@ -57,7 +57,7 @@ export const APP_STORE_PRODUCTS: AppStoreProduct[] = [
       'Student dashboard',
       'Course materials',
     ],
-    stripePriceId: undefined, // Fill in after creating in Stripe Dashboard
+    stripePriceId: 'price_1Sree2IRNf5vPH3A3VUGFzkO',
     recommended: true,
   },
   {
@@ -77,7 +77,7 @@ export const APP_STORE_PRODUCTS: AppStoreProduct[] = [
       'Advanced analytics',
       'Career coaching resources',
     ],
-    stripePriceId: undefined, // Fill in after creating in Stripe Dashboard
+    stripePriceId: 'price_1Sree3IRNf5vPH3Ap8GN1SBP'
   },
   {
     id: 'partner-access',
