@@ -1,251 +1,266 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
-
 import Link from 'next/link';
-import Image from 'next/image';
-
-export const dynamic = 'force-dynamic';
+import { 
+  FileText, 
+  Search, 
+  Send, 
+  Clock, 
+  CheckCircle, 
+  ArrowRight,
+  Upload,
+  Shield,
+  DollarSign
+} from 'lucide-react';
 
 export const metadata: Metadata = {
+  title: 'How It Works | Supersonic Fast Cash LLC',
+  description: 'File your taxes in three simple steps. Prepare, review, and file with confidence.',
   alternates: {
-    canonical:
-      'https://elevateforhumanity.org/supersonic-fast-cash/how-it-works',
+    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/how-it-works',
   },
-  title: 'How It Works | Elevate For Humanity',
-  description:
-    'Manage how-it-works settings and development.',
 };
 
-export default async function HowItWorksPage() {
-  const supabase = await createClient();
+const steps = [
+  {
+    number: 1,
+    title: 'Prepare Your Return',
+    description: 'Answer guided questions about your income, deductions, and credits. Upload your W-2s and other documents.',
+    icon: FileText,
+    details: [
+      'Enter personal information',
+      'Upload W-2s, 1099s, and other forms',
+      'Answer questions about dependents',
+      'Review deductions and credits',
+    ],
+  },
+  {
+    number: 2,
+    title: 'Review & Verify',
+    description: 'Our system checks for errors and missed credits. Review your return before filing.',
+    icon: Search,
+    details: [
+      'Accuracy check for common errors',
+      'Credit and deduction optimization',
+      'Preview your refund or amount owed',
+      'Make corrections if needed',
+    ],
+  },
+  {
+    number: 3,
+    title: 'File & Track',
+    description: 'E-file your return securely to the IRS. Track your refund status online.',
+    icon: Send,
+    details: [
+      'Secure e-file to IRS and state',
+      'Receive confirmation of acceptance',
+      'Track refund status',
+      'Download your return for records',
+    ],
+  },
+];
 
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-  
-  // Fetch how it works steps
-  const { data: steps } = await supabase
-    .from('content_blocks')
-    .select('*')
-    .eq('page', 'supersonic_how_it_works')
-    .order('order_index');
+export default function HowItWorksPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-7.jpg"
-          alt="How It Works"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            How It Works
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl font-semibold text-gray-900 mb-4">
+            How Tax Filing Works
           </h1>
-          <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage how-it-works for career growth
-            and development.
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            File your taxes in three simple steps. We guide you through every part of the process.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Content Section */}
+      {/* Steps */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  How It Works
-                </h2>
-                <p className="text-gray-700 mb-6">
-                  Manage how-it-works for career
-                  growth and development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-16">
+            {steps.map((step, idx) => (
+              <div key={step.number} className="relative">
+                {/* Connector line */}
+                {idx < steps.length - 1 && (
+                  <div className="hidden md:block absolute left-8 top-20 w-0.5 h-32 bg-gray-200" />
+                )}
+                
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  {/* Step number */}
+                  <div className="flex-shrink-0">
+                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
+                      <span className="text-2xl font-bold text-white">{step.number}</span>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <step.icon className="w-6 h-6 text-blue-600" />
+                      <h2 className="text-2xl font-semibold text-gray-900">{step.title}</h2>
+                    </div>
+                    <p className="text-gray-600 mb-6">{step.description}</p>
+                    
+                    <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                      <h3 className="font-medium text-gray-900 mb-4">What happens in this step:</h3>
+                      <ul className="grid sm:grid-cols-2 gap-3">
+                        {step.details.map((detail, i) => (
+                          <li key={i} className="flex items-center gap-2">
+                            <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                            <span className="text-gray-700 text-sm">{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-5.jpg"
-                  alt="How It Works"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-semibold text-gray-900 text-center mb-10">
+            How Long Does It Take?
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-xl p-6 border border-gray-200 text-center">
+              <Clock className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+              <h3 className="font-semibold text-gray-900 mb-2">Preparation</h3>
+              <p className="text-2xl font-bold text-blue-600 mb-1">15-45 min</p>
+              <p className="text-sm text-gray-500">Depending on complexity</p>
             </div>
 
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-gray-600">
-                  Access quality training programs
+            <div className="bg-white rounded-xl p-6 border border-gray-200 text-center">
+              <Send className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+              <h3 className="font-semibold text-gray-900 mb-2">IRS Acceptance</h3>
+              <p className="text-2xl font-bold text-blue-600 mb-1">24-48 hrs</p>
+              <p className="text-sm text-gray-500">After e-filing</p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-gray-200 text-center">
+              <DollarSign className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+              <h3 className="font-semibold text-gray-900 mb-2">Refund</h3>
+              <p className="text-2xl font-bold text-blue-600 mb-1">10-21 days</p>
+              <p className="text-sm text-gray-500">Direct deposit</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What You Need */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-semibold text-gray-900 text-center mb-10">
+            What You'll Need
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="flex items-center gap-3 mb-4">
+                <Upload className="w-6 h-6 text-blue-600" />
+                <h3 className="font-semibold text-gray-900">Income Documents</h3>
+              </div>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• W-2 from each employer</li>
+                <li>• 1099 forms (freelance, interest, dividends)</li>
+                <li>• 1099-G (unemployment)</li>
+                <li>• Social Security statements (SSA-1099)</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="flex items-center gap-3 mb-4">
+                <FileText className="w-6 h-6 text-blue-600" />
+                <h3 className="font-semibold text-gray-900">Personal Information</h3>
+              </div>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Social Security numbers (you, spouse, dependents)</li>
+                <li>• Date of birth for all filers</li>
+                <li>• Bank account info for direct deposit</li>
+                <li>• Last year's tax return (if available)</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="flex items-center gap-3 mb-4">
+                <DollarSign className="w-6 h-6 text-blue-600" />
+                <h3 className="font-semibold text-gray-900">Deduction Records</h3>
+              </div>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Mortgage interest (Form 1098)</li>
+                <li>• Property tax statements</li>
+                <li>• Charitable donation receipts</li>
+                <li>• Medical expense records</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="flex items-center gap-3 mb-4">
+                <Shield className="w-6 h-6 text-blue-600" />
+                <h3 className="font-semibold text-gray-900">Health & Education</h3>
+              </div>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Health insurance forms (1095-A, B, or C)</li>
+                <li>• Tuition statements (1098-T)</li>
+                <li>• Student loan interest (1098-E)</li>
+                <li>• Childcare provider info</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Optional Advance */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white border border-gray-200 rounded-xl p-8">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <DollarSign className="w-6 h-6 text-blue-600" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Optional: Tax Refund Cash Advance
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  After completing your return, eligible filers may choose to receive a portion 
+                  of their refund early through our banking partners. This is completely optional 
+                  and not required to file.
                 </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-gray-600">Earn industry certifications</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-gray-600">Get hired in your field</p>
+                <Link
+                  href="/supersonic-fast-cash/cash-advance"
+                  className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700"
+                >
+                  Learn about refund advances
+                  <ArrowRight className="ml-1 w-4 h-4" />
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
-          </div>
+      {/* CTA */}
+      <section className="py-16 bg-blue-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-semibold text-white mb-4">
+            Ready to get started?
+          </h2>
+          <p className="text-blue-200 mb-8">
+            File your taxes with confidence. We'll guide you through every step.
+          </p>
+          <Link
+            href="/supersonic-fast-cash/start"
+            className="inline-flex items-center justify-center px-8 py-4 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+          >
+            Start Tax Preparation
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Link>
         </div>
       </section>
     </div>
