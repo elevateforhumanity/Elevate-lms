@@ -1,4 +1,30 @@
-// Analytics event tracking utilities
+/**
+ * GA4 Analytics Event Tracking
+ * 
+ * CORE FUNNEL EVENTS (Required for institutional analytics):
+ * - page_view: Baseline traffic
+ * - start_tax_prep: Tax funnel entry
+ * - complete_tax_prep: Tax funnel completion
+ * - refund_advance_viewed: Advance visibility
+ * - refund_advance_opt_in: Risk monitoring
+ * - store_product_view: Store intent
+ * - checkout_started: Revenue funnel
+ * - purchase_completed: Conversion
+ * - lms_course_start: LMS usage
+ * - lms_course_complete: LMS effectiveness
+ * 
+ * DATA HYGIENE:
+ * - IP anonymization ON (configured in gtag)
+ * - No PII in event names or params
+ * - No raw tax data tracked
+ * - Respect cookie consent
+ * 
+ * CONTENT GROUPINGS:
+ * - Marketing
+ * - Resources
+ * - LMS (public)
+ * - Store
+ */
 
 type EventCategory = 
   | 'engagement'
@@ -7,7 +33,13 @@ type EventCategory =
   | 'form'
   | 'video'
   | 'download'
-  | 'error';
+  | 'error'
+  | 'tax_funnel'
+  | 'store'
+  | 'lms'
+  | 'enrollment';
+
+type ContentGroup = 'marketing' | 'resources' | 'lms_public' | 'store' | 'tax';
 
 interface TrackEventParams {
   action: string;
@@ -15,19 +47,203 @@ interface TrackEventParams {
   label?: string;
   value?: number;
   nonInteraction?: boolean;
+  contentGroup?: ContentGroup;
+}
+
+// Safe gtag wrapper
+function safeGtag(command: string, ...args: any[]) {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag(command, ...args);
+  }
 }
 
 // Track generic event
-export function trackEvent({ action, category, label, value, nonInteraction }: TrackEventParams) {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', action, {
-      event_category: category,
-      event_label: label,
-      value: value,
-      non_interaction: nonInteraction,
-    });
-  }
+export function trackEvent({ action, category, label, value, nonInteraction, contentGroup }: TrackEventParams) {
+  safeGtag('event', action, {
+    event_category: category,
+    event_label: label,
+    value: value,
+    non_interaction: nonInteraction,
+    content_group: contentGroup,
+  });
 }
+
+// Set content group for page
+export function setContentGroup(group: ContentGroup) {
+  safeGtag('set', { content_group: group });
+}
+
+// ============================================
+// TAX PREPARATION FUNNEL (REQUIRED)
+// ============================================
+
+export const TaxFunnelEvents = {
+  // Tax funnel entry
+  startTaxPrep: (source?: string) => {
+    trackEvent({
+      action: 'start_tax_prep',
+      category: 'tax_funnel',
+      label: source || 'direct',
+      contentGroup: 'tax',
+    });
+  },
+
+  // Tax funnel completion
+  completeTaxPrep: (filingType?: string) => {
+    trackEvent({
+      action: 'complete_tax_prep',
+      category: 'tax_funnel',
+      label: filingType || 'standard',
+      contentGroup: 'tax',
+    });
+  },
+
+  // Refund advance viewed
+  refundAdvanceViewed: () => {
+    trackEvent({
+      action: 'refund_advance_viewed',
+      category: 'tax_funnel',
+      contentGroup: 'tax',
+    });
+  },
+
+  // Refund advance opt-in (risk monitoring)
+  refundAdvanceOptIn: () => {
+    trackEvent({
+      action: 'refund_advance_opt_in',
+      category: 'tax_funnel',
+      contentGroup: 'tax',
+    });
+  },
+};
+
+// ============================================
+// STORE / CHECKOUT FUNNEL (REQUIRED)
+// ============================================
+
+export const StoreFunnelEvents = {
+  // Store product view
+  productView: (productId: string, productName: string, price?: number) => {
+    trackEvent({
+      action: 'store_product_view',
+      category: 'store',
+      label: productName,
+      value: price,
+      contentGroup: 'store',
+    });
+  },
+
+  // Checkout started
+  checkoutStarted: (productId: string, value?: number) => {
+    trackEvent({
+      action: 'checkout_started',
+      category: 'store',
+      label: productId,
+      value: value,
+      contentGroup: 'store',
+    });
+  },
+
+  // Purchase completed
+  purchaseCompleted: (transactionId: string, value: number, productId?: string) => {
+    safeGtag('event', 'purchase_completed', {
+      event_category: 'store',
+      transaction_id: transactionId,
+      value: value,
+      product_id: productId,
+      currency: 'USD',
+      content_group: 'store',
+    });
+  },
+};
+
+// ============================================
+// LMS FUNNEL (REQUIRED)
+// ============================================
+
+export const LmsFunnelEvents = {
+  // Course start
+  courseStart: (courseId: string, courseName: string) => {
+    trackEvent({
+      action: 'lms_course_start',
+      category: 'lms',
+      label: courseName,
+      contentGroup: 'lms_public',
+    });
+  },
+
+  // Course complete
+  courseComplete: (courseId: string, courseName: string, completionMinutes?: number) => {
+    trackEvent({
+      action: 'lms_course_complete',
+      category: 'lms',
+      label: courseName,
+      value: completionMinutes,
+      contentGroup: 'lms_public',
+    });
+  },
+
+  // Lesson complete
+  lessonComplete: (courseId: string, lessonId: string) => {
+    trackEvent({
+      action: 'lms_lesson_complete',
+      category: 'lms',
+      label: `${courseId}/${lessonId}`,
+    });
+  },
+
+  // Quiz complete
+  quizComplete: (quizId: string, score: number, passed: boolean) => {
+    trackEvent({
+      action: 'lms_quiz_complete',
+      category: 'lms',
+      label: quizId,
+      value: score,
+    });
+  },
+
+  // Certificate earned
+  certificateEarned: (certificateId: string, courseName: string) => {
+    trackEvent({
+      action: 'certificate_earned',
+      category: 'lms',
+      label: courseName,
+    });
+  },
+};
+
+// ============================================
+// ENROLLMENT FUNNEL
+// ============================================
+
+export const EnrollmentEvents = {
+  // Application start
+  applicationStart: (programId?: string) => {
+    trackEvent({
+      action: 'application_start',
+      category: 'enrollment',
+      label: programId,
+    });
+  },
+
+  // Application submit
+  applicationSubmit: (programId?: string) => {
+    trackEvent({
+      action: 'application_submit',
+      category: 'enrollment',
+      label: programId,
+    });
+  },
+
+  // Enrollment complete
+  enrollmentComplete: (programId: string, programName: string) => {
+    trackEvent({
+      action: 'enrollment_complete',
+      category: 'enrollment',
+      label: programName,
+    });
+  },
+};
 
 // Pre-defined conversion events
 export const ConversionEvents = {

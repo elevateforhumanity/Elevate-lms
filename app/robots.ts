@@ -1,5 +1,34 @@
 import { MetadataRoute } from 'next';
 
+/**
+ * Robots.txt Configuration
+ * 
+ * EXPANDED INDEXING STRATEGY (with strict governance)
+ * 
+ * A page may be indexed only if it passes all 6 gates:
+ * 1. Public – no auth required
+ * 2. Stable – content does not change per user
+ * 3. Complete – no empty sections, no placeholders
+ * 4. Canonical – one clean URL, no params
+ * 5. Evergreen – valid for 6+ months
+ * 6. Governed – aligned with authoritative documents
+ * 
+ * INDEXED:
+ * - Core marketing pages
+ * - Governance/compliance docs
+ * - Public program overviews
+ * - Resource/knowledge pages
+ * - Store landing and category pages
+ * - /lms landing page (public)
+ * 
+ * BLOCKED:
+ * - All auth flows
+ * - All dashboards (user, admin, instructor, etc.)
+ * - All checkout sessions
+ * - All API routes
+ * - All query string URLs
+ * - Internal/test pages
+ */
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -7,68 +36,96 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
-          // Admin and portal pages
+          // API routes
+          '/api/',
+          
+          // Auth flows
+          '/auth/',
+          '/login',
+          '/signup',
+          '/reset/',
+          '/reset-password',
+          '/forgot-password',
+          '/verify-email',
+          '/verify-identity',
+          
+          // All dashboard routes
+          '/dashboard/',
           '/admin/',
           '/admin-login',
-          '/api/',
           '/staff-portal/',
-          '/program-holder/',
-          '/workforce-board/',
           '/instructor/',
           '/creator/',
           '/employee/',
-          '/shop/',
-          '/lms/(app)/',
-          '/programs/admin/',
-          
-          // Employer dashboard pages
+          '/program-holder/',
+          '/workforce-board/',
           '/employer/dashboard',
           '/employer/analytics',
           '/employer/candidates',
-          '/employer/compliance',
-          '/employer/documents',
-          '/employer/jobs',
-          '/employer/opportunities',
-          '/employer/placements',
-          '/employer/postings',
           '/employer/reports',
           '/employer/settings',
-          '/employer/verification',
+          '/partner/dashboard',
+          '/student/',
+          '/learner/',
+          '/portal/',
           
-          // Checkout and payment
+          // LMS app routes (auth-gated interiors)
+          '/lms/dashboard',
+          '/lms/courses/',      // Course interiors blocked, not /courses landing
+          '/lms/achievements',
+          '/lms/analytics',
+          '/lms/forums',
+          '/lms/learning-paths',
+          '/lms/certificates',
+          '/lms/profile',
+          '/lms/settings',
+          '/lms/messages',
+          '/lms/calendar',
+          '/lms/grades',
+          '/lms/assignments',
+          '/lms/quizzes',
+          '/lms/community',
+          '/lms/notifications',
+          '/lms/progress',
+          '/lms/schedule',
+          '/lms/files',
+          '/lms/groups',
+          '/lms/leaderboard',
+          '/lms/badges',
+          '/lms/portfolio',
+          '/lms/placement',
+          '/lms/library',
+          '/lms/integrations',
+          '/lms/ai-tutor',
+          '/lms/chat',
+          '/lms/collaborate',
+          '/lms/social',
+          '/lms/study-groups',
+          '/lms/video',
+          '/lms/scorm',
+          '/lms/adaptive',
+          '/lms/peer-review',
+          '/lms/builder',
+          '/lms/enroll',
+          '/lms/attendance',
+          '/lms/quiz',
+          
+          // Checkout flows
           '/checkout/',
           '/payment/',
           
-          // Auth and verification
-          '/reset/',
-          '/verify-email',
-          '/verify-identity',
-          '/auth/',
+          // Query strings (catch-all)
+          '/*?',
           
-          // Internal tools
+          // Internal/test pages
           '/usermanagement',
           '/approvals',
-          '/messages',
-          '/chat',
-          '/cm',
-          '/analytics',
-          '/reports',
-          '/metrics',
-          '/leaderboard',
           '/file-manager',
-          '/curriculumupload',
-          '/documents/upload',
-          
-          // System pages (NOT /_next/ - crawlers need it for JS/CSS)
           '/test-images',
           '/cache-diagnostic',
           '/sentry-test',
-          
-          // Redirect pages (prevent duplicate content)
-          '/license',
-          '/donations',
           '/onboarding/',
-          '/apprentice/',
+          '/demo/',
         ],
       },
     ],

@@ -1,105 +1,127 @@
 import { MetadataRoute } from 'next';
-import fs from 'fs';
-import path from 'path';
 
 const BASE_URL = 'https://www.elevateforhumanity.org';
 
-// Routes that should NOT be in sitemap (private/auth routes)
-const EXCLUDED_PREFIXES = [
-  '/admin',
-  '/lms',
-  '/student',
-  '/staff',
-  '/api',
-  '/auth',
-  '/login',
-  '/signup',
-  '/partners/admin',
-  '/partners/dashboard',
-  '/checkout',
-  '/payment',
-  '/invoice',
-  '/demo',
-  '/test',
-  '/dev',
-  '/debug',
+/**
+ * FIRST-WAVE EXPANDED INDEXING
+ * 
+ * Only pages explicitly approved are indexed.
+ * Everything else is excluded.
+ * 
+ * Indexing gates (all must pass):
+ * 1. Public – no auth required
+ * 2. Stable – content does not change per user
+ * 3. Complete – no empty sections, no placeholders
+ * 4. Canonical – one clean URL, no params
+ * 5. Evergreen – valid for 6+ months
+ * 6. Governed – aligned with authoritative documents
+ */
+
+// WAVE 1: Explicitly approved pages for indexing
+const APPROVED_PAGES: Array<{
+  url: string;
+  priority: number;
+  changeFrequency: 'daily' | 'weekly' | 'monthly' | 'yearly';
+  category: 'core' | 'tax' | 'lms' | 'resources' | 'store';
+}> = [
+  // A. CORE MARKETING & TRUST (Priority 1)
+  { url: '/', priority: 1.0, changeFrequency: 'daily', category: 'core' },
+  { url: '/about', priority: 0.9, changeFrequency: 'monthly', category: 'core' },
+  { url: '/how-it-works', priority: 0.9, changeFrequency: 'monthly', category: 'core' },
+  { url: '/contact', priority: 0.8, changeFrequency: 'monthly', category: 'core' },
+  { url: '/support', priority: 0.7, changeFrequency: 'monthly', category: 'core' },
+  { url: '/governance', priority: 0.8, changeFrequency: 'monthly', category: 'core' },
+  { url: '/governance/security', priority: 0.8, changeFrequency: 'monthly', category: 'core' },
+  { url: '/privacy', priority: 0.6, changeFrequency: 'yearly', category: 'core' },
+  { url: '/privacy-policy', priority: 0.6, changeFrequency: 'yearly', category: 'core' },
+  { url: '/terms', priority: 0.6, changeFrequency: 'yearly', category: 'core' },
+  { url: '/terms-of-service', priority: 0.6, changeFrequency: 'yearly', category: 'core' },
+  { url: '/accessibility', priority: 0.6, changeFrequency: 'yearly', category: 'core' },
+  
+  // B. SUPERSONIC FAST CASH / TAX (Public informational only)
+  { url: '/supersonic-fast-cash', priority: 0.9, changeFrequency: 'monthly', category: 'tax' },
+  { url: '/tax-self-prep', priority: 0.8, changeFrequency: 'monthly', category: 'tax' },
+  { url: '/vita', priority: 0.8, changeFrequency: 'monthly', category: 'tax' },
+  
+  // C. PROGRAMS (Public overviews)
+  { url: '/programs', priority: 0.9, changeFrequency: 'weekly', category: 'lms' },
+  { url: '/programs/healthcare', priority: 0.8, changeFrequency: 'monthly', category: 'lms' },
+  { url: '/programs/skilled-trades', priority: 0.8, changeFrequency: 'monthly', category: 'lms' },
+  { url: '/programs/technology', priority: 0.8, changeFrequency: 'monthly', category: 'lms' },
+  { url: '/programs/business', priority: 0.8, changeFrequency: 'monthly', category: 'lms' },
+  { url: '/apprenticeships', priority: 0.8, changeFrequency: 'monthly', category: 'lms' },
+  { url: '/apply', priority: 0.9, changeFrequency: 'monthly', category: 'lms' },
+  
+  // D. LMS PUBLIC (Non-instructional)
+  { url: '/lms', priority: 0.7, changeFrequency: 'monthly', category: 'lms' },
+  
+  // E. RESOURCES / KNOWLEDGE
+  { url: '/faq', priority: 0.7, changeFrequency: 'monthly', category: 'resources' },
+  { url: '/wioa-eligibility', priority: 0.8, changeFrequency: 'monthly', category: 'resources' },
+  { url: '/funding', priority: 0.7, changeFrequency: 'monthly', category: 'resources' },
+  { url: '/tuition-fees', priority: 0.7, changeFrequency: 'monthly', category: 'resources' },
+  { url: '/outcomes', priority: 0.7, changeFrequency: 'monthly', category: 'resources' },
+  { url: '/career-services', priority: 0.7, changeFrequency: 'monthly', category: 'resources' },
+  { url: '/certifications', priority: 0.7, changeFrequency: 'monthly', category: 'resources' },
+  { url: '/success-stories', priority: 0.7, changeFrequency: 'monthly', category: 'resources' },
+  
+  // F. STORE (Limited, safe)
+  { url: '/store', priority: 0.8, changeFrequency: 'weekly', category: 'store' },
+  { url: '/store/licenses', priority: 0.7, changeFrequency: 'monthly', category: 'store' },
+  { url: '/white-label', priority: 0.7, changeFrequency: 'monthly', category: 'store' },
+  
+  // G. EMPLOYERS
+  { url: '/employers', priority: 0.8, changeFrequency: 'monthly', category: 'core' },
+  { url: '/hire-graduates', priority: 0.7, changeFrequency: 'monthly', category: 'core' },
+  { url: '/partners', priority: 0.7, changeFrequency: 'monthly', category: 'core' },
+  { url: '/ojt-and-funding', priority: 0.7, changeFrequency: 'monthly', category: 'core' },
+  
+  // H. ABOUT PAGES
+  { url: '/about/mission', priority: 0.7, changeFrequency: 'yearly', category: 'core' },
+  { url: '/about/team', priority: 0.7, changeFrequency: 'monthly', category: 'core' },
+  { url: '/about/partners', priority: 0.7, changeFrequency: 'monthly', category: 'core' },
+  { url: '/team', priority: 0.7, changeFrequency: 'monthly', category: 'core' },
+  { url: '/locations', priority: 0.7, changeFrequency: 'monthly', category: 'core' },
+  { url: '/impact', priority: 0.7, changeFrequency: 'monthly', category: 'core' },
+  { url: '/careers', priority: 0.6, changeFrequency: 'weekly', category: 'core' },
+  
+  // I. BLOG / NEWS (if content-complete)
+  { url: '/blog', priority: 0.6, changeFrequency: 'weekly', category: 'resources' },
+  { url: '/news', priority: 0.6, changeFrequency: 'weekly', category: 'resources' },
+  { url: '/events', priority: 0.6, changeFrequency: 'weekly', category: 'resources' },
 ];
 
-// Priority mapping based on route patterns
-function getPriority(route: string): number {
-  if (route === '/') return 1.0;
-  if (route === '/apply' || route === '/programs') return 1.0;
-  if (route.startsWith('/programs/')) return 0.9;
-  if (route.startsWith('/apprenticeships')) return 0.9;
-  if (route === '/employers' || route === '/how-it-works') return 0.9;
-  if (route.startsWith('/about') || route === '/contact') return 0.8;
-  if (route.startsWith('/funding') || route.startsWith('/career')) return 0.8;
-  if (route.startsWith('/courses')) return 0.7;
-  if (route.startsWith('/blog') || route.startsWith('/resources')) return 0.7;
-  if (route.startsWith('/policies') || route.startsWith('/privacy') || route.startsWith('/terms')) return 0.4;
-  return 0.6;
-}
-
-// Change frequency based on route patterns
-function getChangeFreq(route: string): 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' {
-  if (route === '/' || route === '/apply') return 'daily';
-  if (route.startsWith('/programs') || route.startsWith('/blog')) return 'weekly';
-  if (route.startsWith('/policies') || route.startsWith('/privacy')) return 'yearly';
-  return 'monthly';
-}
-
-// Recursively find all page.tsx files
-function findAllPages(dir: string, basePath: string = ''): string[] {
-  const routes: string[] = [];
-  
-  try {
-    const items = fs.readdirSync(dir, { withFileTypes: true });
-    
-    for (const item of items) {
-      const fullPath = path.join(dir, item.name);
-      
-      if (item.isDirectory()) {
-        // Skip dynamic routes [param] and route groups (name)
-        if (item.name.startsWith('[') || item.name.startsWith('_')) continue;
-        
-        // Handle route groups - strip the parentheses
-        let routePart = item.name;
-        if (item.name.startsWith('(') && item.name.endsWith(')')) {
-          routePart = '';
-        }
-        
-        const newBasePath = routePart ? `${basePath}/${routePart}` : basePath;
-        routes.push(...findAllPages(fullPath, newBasePath));
-      } else if (item.name === 'page.tsx' || item.name === 'page.ts') {
-        routes.push(basePath || '/');
-      }
-    }
-  } catch {
-    // Directory doesn't exist or can't be read
-  }
-  
-  return routes;
-}
-
+/**
+ * Generate sitemap from explicitly approved pages only
+ * 
+ * This is a whitelist approach, not a blacklist.
+ * Only pages in APPROVED_PAGES are included.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
   
-  // Find all pages in the app directory
-  const appDir = path.join(process.cwd(), 'app');
-  const allRoutes = findAllPages(appDir);
-  
-  // Filter out excluded routes and deduplicate
-  const publicRoutes = [...new Set(allRoutes)]
-    .filter(route => !EXCLUDED_PREFIXES.some(prefix => route.startsWith(prefix)))
-    .sort();
-  
-  // Generate sitemap entries
-  const entries: MetadataRoute.Sitemap = publicRoutes.map(route => ({
-    url: `${BASE_URL}${route === '/' ? '' : route}`,
+  // Generate sitemap entries from approved pages only
+  const entries: MetadataRoute.Sitemap = APPROVED_PAGES.map(page => ({
+    url: `${BASE_URL}${page.url}`,
     lastModified: now,
-    changeFrequency: getChangeFreq(route),
-    priority: getPriority(route),
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
   }));
   
   return entries;
+}
+
+/**
+ * Get approved pages by category (for split sitemaps if needed)
+ */
+export function getApprovedPagesByCategory(category: 'core' | 'tax' | 'lms' | 'resources' | 'store') {
+  return APPROVED_PAGES.filter(page => page.category === category);
+}
+
+/**
+ * Check if a URL is approved for indexing
+ */
+export function isApprovedForIndexing(url: string): boolean {
+  const path = url.replace(BASE_URL, '');
+  return APPROVED_PAGES.some(page => page.url === path);
 }

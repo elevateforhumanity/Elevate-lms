@@ -59,32 +59,32 @@ const programTypes = [
   {
     name: 'Healthcare',
     examples: 'CNA, Medical Assistant, Phlebotomy, EMT',
-    image: '/images/healthcare/hero-programs-healthcare.jpg',
+    image: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Skilled Trades',
     examples: 'HVAC, Electrical, Plumbing, Welding',
-    image: '/images/trades/hero-program-hvac.jpg',
+    image: 'https://images.pexels.com/photos/8961065/pexels-photo-8961065.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Technology',
     examples: 'IT Support, Cybersecurity, Web Development',
-    image: '/images/technology/hero-programs-technology.jpg',
+    image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Transportation',
     examples: 'CDL, Forklift, Logistics',
-    image: '/images/artlist/hero-training-3.jpg',
+    image: 'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Business',
     examples: 'Accounting, Office Admin, Project Management',
-    image: '/images/artlist/hero-training-5.jpg',
+    image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Beauty & Wellness',
     examples: 'Barber, Cosmetology, Esthetician',
-    image: '/images/programs/barber.jpg',
+    image: 'https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 
@@ -95,7 +95,7 @@ export default function TrainingProvidersPage() {
       <section className="relative min-h-[500px] flex items-center">
         <div className="absolute inset-0">
           <Image
-            src="/images/artlist/hero-training-1.jpg"
+            src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1920"
             alt="Training Providers Partnership"
             fill
             className="object-cover"
@@ -224,7 +224,7 @@ export default function TrainingProvidersPage() {
             
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/artlist/hero-training-4.jpg"
+                src="https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Training classroom"
                 fill
                 className="object-cover"
