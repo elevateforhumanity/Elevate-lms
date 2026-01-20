@@ -17,7 +17,7 @@ export const demoPrograms = [
     nextLesson: 'Module 8: Men\'s Haircutting Techniques',
     schedule: 'Theory: Self-paced online | Practical: 20+ hrs/week at training site',
     certification: 'Indiana Barber License Eligible',
-    fundingEligible: ['Self-Pay', 'Affirm Financing', 'Payment Plans'],
+    fundingEligible: ['Self-Pay', 'Klarna/Afterpay/Zip Financing', 'Payment Plans'],
     totalHours: 2000,
     completedHours: 847,
   },
@@ -72,7 +72,7 @@ export const demoLearner = {
   funding: {
     status: 'Self-Pay (Active)',
     type: 'Payment Plan',
-    note: 'Monthly payments via Affirm - 4 of 12 payments completed',
+    note: 'Monthly payments via Klarna/Afterpay/Zip - 4 of 12 payments completed',
   },
   support: {
     mentor: 'James Carter, Master Barber (15+ years)',

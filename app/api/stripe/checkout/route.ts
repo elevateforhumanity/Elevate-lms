@@ -114,7 +114,7 @@ export async function POST(req: Request) {
     const session = await stripe.checkout.sessions.create({
       mode: product.billingType === 'subscription' ? 'subscription' : 'payment',
       // Let Stripe automatically handle payment methods (includes cards + BNPL)
-      // DO NOT set payment_method_types - this enables Affirm, Klarna, etc.
+      // DO NOT set payment_method_types - this enables Klarna, Afterpay, Zip, etc.
       customer_email: customerEmail || undefined,
       line_items: [
         {

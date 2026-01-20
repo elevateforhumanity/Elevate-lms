@@ -2,20 +2,10 @@
 
 import type { Program } from '@/app/data/programs';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import { ApprenticeshipBadge } from '@/components/programs/ApprenticeshipBadge';
 import { ProgramAppointmentBanner } from '@/components/programs/ProgramAppointmentBanner';
 import ProgramHowItWorks from '@/components/program/ProgramHowItWorks';
 import ProgramFAQ from '@/components/program/ProgramFAQ';
-
-const AffirmButton = dynamic(() => import('@/components/AffirmButton'), {
-  ssr: false,
-  loading: () => (
-    <button className="w-full rounded-lg bg-purple-600 px-6 py-3 text-sm font-bold text-white opacity-50 cursor-not-allowed">
-      Loading Affirm...
-    </button>
-  ),
-});
 
 export function ProgramDetails({ program }: { program: Program }) {
   const isBarberProgram = program.slug === 'barber-apprenticeship';
@@ -164,7 +154,7 @@ export function ProgramDetails({ program }: { program: Program }) {
                     </svg>
                     <div>
                       <p className="text-xs font-semibold text-blue-900 mb-1">
-                        Can't Wait for Funding? Pay Over Time with Affirm
+                        Can't Wait for Funding? Pay in 4 with Klarna/Afterpay/Zip
                       </p>
                       <p className="text-xs text-blue-800">
                         Start training immediately and split your payment into
@@ -267,7 +257,7 @@ export function ProgramDetails({ program }: { program: Program }) {
                     Pay Now / See Payment Options
                   </Link>
                   <p className="text-xs text-center text-black">
-                    Stripe • Affirm • As low as $207/month • 0% APR available
+                    Stripe • Klarna • Afterpay • Zip • Pay in 4 available
                   </p>
                 </div>
 
@@ -302,25 +292,12 @@ export function ProgramDetails({ program }: { program: Program }) {
                   </ul>
                   <div className="mt-2 pt-2 border-t border-purple-200">
                     <p className="text-xs text-black">
-                      <strong>How it works:</strong> Click "Finance with Affirm"
-                      → Get instant approval → Choose your plan → Start training
-                      today
+                      <strong>How it works:</strong> Click "Pay Now" → Select Klarna, Afterpay, or Zip at checkout → Get instant approval → Start training today
                     </p>
                   </div>
                   <p className="text-xs text-gray-500 mt-2">
-                    * Payment plans subject to credit approval. 0% APR for 3-24
-                    months available for qualified buyers.
+                    * Pay-in-4 options subject to approval. Interest-free when you pay on time.
                   </p>
-                </div>
-
-                {/* Affirm Button */}
-                <div className="mt-4">
-                  <AffirmButton
-                    programId={program.slug}
-                    programName={program.name}
-                    price={6500}
-                    fullWidth
-                  />
                 </div>
               </div>
             )}

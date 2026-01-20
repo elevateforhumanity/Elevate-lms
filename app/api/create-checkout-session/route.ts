@@ -40,12 +40,12 @@ export async function POST(request: NextRequest) {
       applicationId,
     } = await request.json();
 
-    // Enable payment methods including Affirm for larger purchases
+    // Enable payment methods (Klarna/Afterpay/Zip for BNPL)
     const paymentMethods = [
       'card', // Credit/debit cards
-      'affirm', // Affirm (monthly payments, $50-$30,000)
       'klarna', // Klarna (4 payments, up to $1,000)
       'afterpay_clearpay', // Afterpay (4 payments, up to $1,000)
+      'zip', // Zip (pay in 4)
       'us_bank_account', // ACH Direct Debit (lowest fees)
       'cashapp', // Cash App Pay (up to $7,500)
       'link', // Stripe Link (one-click)

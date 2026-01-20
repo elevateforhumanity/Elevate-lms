@@ -859,7 +859,7 @@ export default function TrainingPage() {
                 <h3 className="font-bold text-lg mb-3">Payment Options:</h3>
                 <ul className="space-y-2 text-sm">
                   <li>• Credit/Debit card</li>
-                  <li>• Affirm financing (0% APR for 3 months)</li>
+                  <li>• Pay in 4 with Klarna, Afterpay, or Zip</li>
                   <li>• Company purchase order</li>
                   <li>• Payment plans available</li>
                 </ul>

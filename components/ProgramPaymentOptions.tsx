@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-
 import { useState } from 'react';
 import { CreditCard, DollarSign, CheckCircle } from 'lucide-react';
 
@@ -18,13 +17,11 @@ export default function ProgramPaymentOptions({
   price,
   duration,
 }: ProgramPaymentOptionsProps) {
-  const [paymentMethod, setPaymentMethod] = useState<
-    'full' | 'stripe' | 'affirm'
-  >('full');
+  const [paymentMethod, setPaymentMethod] = useState<'full' | 'stripe' | 'bnpl'>('full');
 
   // Calculate payment plan options
   const stripeMonthly = Math.ceil(price / 12);
-  const affirmMonthly = Math.ceil(price / 6);
+  const bnplPayment = Math.ceil(price / 4); // Pay in 4 with Klarna/Afterpay/Zip
 
   const handlePayment = async (method: string) => {
     try {
@@ -39,11 +36,9 @@ export default function ProgramPaymentOptions({
         }),
       });
 
-      const { sessionId, affirmUrl } = await response.json();
+      const { sessionId } = await response.json();
 
-      if (method === 'affirm' && affirmUrl) {
-        window.location.href = affirmUrl;
-      } else if (sessionId) {
+      if (sessionId) {
         const stripe = await import('@stripe/stripe-js').then((m) =>
           m.loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '')
         );
@@ -52,7 +47,7 @@ export default function ProgramPaymentOptions({
           await stripeInstance.redirectToCheckout({ sessionId });
         }
       }
-    } catch (error) { /* Error handled silently */ 
+    } catch (error) {
       alert('Payment failed. Please call 317-314-3757 for assistance.');
     }
   };
@@ -61,7 +56,7 @@ export default function ProgramPaymentOptions({
     <div className="bg-white border-2 border-orange-600 rounded-xl p-8 shadow-xl">
       <div className="text-center mb-6">
         <h3 className="text-2xl font-bold mb-2">
-          Don't Qualify for Free Funding?
+          Don&apos;t Qualify for Free Funding?
         </h3>
         <p className="text-black">
           Self-pay options available with flexible payment plans
@@ -151,11 +146,11 @@ export default function ProgramPaymentOptions({
           </div>
         </button>
 
-        {/* Affirm Financing */}
+        {/* Buy Now Pay Later (Klarna/Afterpay/Zip) */}
         <button
-          onClick={() => setPaymentMethod('affirm')}
+          onClick={() => setPaymentMethod('bnpl')}
           className={`w-full text-left p-6 rounded-lg border-2 transition ${
-            paymentMethod === 'affirm'
+            paymentMethod === 'bnpl'
               ? 'border-purple-600 bg-purple-50'
               : 'border-gray-300 hover:border-purple-400'
           }`}
@@ -164,19 +159,19 @@ export default function ProgramPaymentOptions({
             <div className="flex items-start gap-3">
               <CreditCard className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
               <div>
-                <h4 className="font-bold text-lg mb-1">Affirm Financing</h4>
+                <h4 className="font-bold text-lg mb-1">Pay in 4</h4>
                 <p className="text-sm text-black mb-2">
-                  Get approved instantly - Pay over 6 months
+                  Split into 4 interest-free payments with Klarna, Afterpay, or Zip
                 </p>
                 <p className="text-2xl font-bold text-purple-600">
-                  ${affirmMonthly}/month
+                  ${bnplPayment}/payment
                 </p>
                 <p className="text-xs text-gray-500 mt-1">
-                  6 monthly payments • Fixed rates • Instant approval
+                  4 payments • 0% interest • Instant approval
                 </p>
               </div>
             </div>
-            {paymentMethod === 'affirm' && (
+            {paymentMethod === 'bnpl' && (
               <CheckCircle className="w-6 h-6 text-purple-600" />
             )}
           </div>
@@ -191,8 +186,8 @@ export default function ProgramPaymentOptions({
         {paymentMethod === 'full' && `Pay $${price.toLocaleString()} Now`}
         {paymentMethod === 'stripe' &&
           `Set Up Payment Plan - $${stripeMonthly}/mo`}
-        {paymentMethod === 'affirm' &&
-          `Apply with Affirm - $${affirmMonthly}/mo`}
+        {paymentMethod === 'bnpl' &&
+          `Pay in 4 - $${bnplPayment}/payment`}
       </button>
 
       {/* Additional Info */}

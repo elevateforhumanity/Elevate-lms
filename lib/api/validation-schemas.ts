@@ -91,7 +91,7 @@ export const contactSchema = z.object({
 export const enrollmentSchema = z.object({
   courseId: uuidSchema,
   userId: uuidSchema.optional(),
-  paymentMethod: z.enum(['stripe', 'affirm', 'free', 'funded']).optional(),
+  paymentMethod: z.enum(['stripe', 'klarna', 'afterpay', 'zip', 'free', 'funded']).optional(),
   metadata: z.record(z.any()).optional(),
 });
 
@@ -165,10 +165,11 @@ export const createCheckoutSchema = z.object({
   metadata: z.record(z.any()).optional(),
 });
 
-export const affirmChargeSchema = z.object({
+export const bnplChargeSchema = z.object({
   checkoutToken: z.string().min(1, 'Checkout token is required'),
   courseId: uuidSchema,
   amount: z.number().positive('Amount must be positive'),
+  provider: z.enum(['klarna', 'afterpay', 'zip']).optional(),
 });
 
 // ============================================

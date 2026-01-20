@@ -91,7 +91,7 @@ export default async function CheckoutPage() {
                 <h3 className="font-medium text-blue-900 mb-2">Payment Options Available:</h3>
                 <ul className="text-sm text-blue-800 space-y-1">
                   <li>• Credit/Debit Cards (Visa, Mastercard, Amex)</li>
-                  <li>• Buy Now, Pay Later (Affirm, Klarna, Afterpay)</li>
+                  <li>• Buy Now, Pay Later (Klarna, Afterpay, Zip)</li>
                   <li>• Apple Pay / Google Pay</li>
                 </ul>
               </div>

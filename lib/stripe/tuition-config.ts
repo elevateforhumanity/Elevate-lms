@@ -4,7 +4,7 @@
  * This file defines the locked-down payment structure for non-funded students.
  * 
  * THREE PAYMENT TIERS (in order of preference):
- * 1. Third-Party Financing (Affirm/Klarna) - Student approved by provider, we get paid upfront
+ * 1. Third-Party Financing (Klarna/Afterpay/Zip/Klarna) - Student approved by provider, we get paid upfront
  * 2. Employer Sponsorship - Employer pays, requires signed agreement
  * 3. Internal Payment Plan - Deposit + 6-month autopay max, strict enforcement
  * 
@@ -102,27 +102,27 @@ export const PROGRAM_TUITION: ProgramTuition[] = [
 
 /**
  * TIER 1: THIRD-PARTY FINANCING
- * Student applies through Affirm/Klarna at checkout.
+ * Student applies through Klarna/Afterpay/Zip at checkout.
  * If approved, provider pays us upfront. Provider carries default risk.
  */
 export const TIER1_THIRD_PARTY_FINANCING = {
-  name: 'Pay Over Time',
-  providers: ['affirm', 'klarna'] as const,
+  name: 'Pay in 4',
+  providers: ['klarna', 'afterpay_clearpay', 'zip'] as const,
   enabled: true,
   
   // Stripe payment method types to enable
-  stripePaymentMethods: ['affirm', 'klarna', 'afterpay_clearpay'] as const,
+  stripePaymentMethods: ['klarna', 'afterpay_clearpay', 'zip'] as const,
   
   // Terms (set by providers, not us)
   typicalTerms: {
     minAmount: 50,
-    maxAmount: 30000,
-    termMonths: { min: 3, max: 24 },
-    apr: { min: 0, max: 36 }, // Varies by provider and customer
+    maxAmount: 2000,
+    payments: 4,
+    apr: 0, // Interest-free when paid on time
   },
   
   // What we tell students
-  studentMessage: 'Pay over time with Affirm or Klarna. Get approved in minutes. Subject to approval.',
+  studentMessage: 'Pay in 4 interest-free payments with Klarna, Afterpay, or Zip. Get approved in minutes.',
   declinedMessage: 'No problem—you can use our school payment plan instead (deposit + monthly autopay).',
 };
 
@@ -229,9 +229,9 @@ export const TIER3B_EXTERNAL_FINANCING = {
   // External options
   options: [
     {
-      name: 'Third-Party Financing',
-      providers: ['affirm', 'klarna'],
-      description: 'Apply at checkout. If approved, pay over 6-24 months.',
+      name: 'Pay in 4',
+      providers: ['klarna', 'afterpay', 'zip'],
+      description: 'Apply at checkout. Split into 4 interest-free payments.',
     },
     {
       name: 'Employer Reimbursement',
@@ -240,7 +240,7 @@ export const TIER3B_EXTERNAL_FINANCING = {
   ],
   
   // What we tell students
-  studentMessage: 'For payments below $200/month or terms longer than 3 months, you\'ll need to use Affirm/Klarna or employer sponsorship.',
+  studentMessage: 'For flexible payment options, use Klarna, Afterpay, or Zip at checkout, or employer sponsorship.',
   
   // What we do NOT do
   prohibited: [
@@ -328,7 +328,7 @@ export function determinePaymentEligibility(params: {
   if (bnplApproved === true) {
     return {
       eligibility: 'third_party_financing',
-      reason: 'Student approved for Affirm/Klarna financing.',
+      reason: 'Student approved for Klarna/Afterpay/Zip/Klarna financing.',
       nextStep: 'Complete checkout with BNPL payment method.',
     };
   }

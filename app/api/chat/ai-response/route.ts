@@ -83,7 +83,7 @@ Payment options:
 - Full payment (10% discount)
 - Monthly payment plans
 - Financial aid and scholarships
-- Affirm financing (0% APR for 3 months)
+- Pay in 4 with Klarna, Afterpay, or Zip
 
 If the user asks about:
 - Specific pricing → Provide general ranges and suggest speaking with admissions

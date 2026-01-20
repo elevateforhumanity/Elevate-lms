@@ -148,7 +148,7 @@ export default async function IntegrationsPage() {
               { icon: Mail, name: 'Resend', description: 'Transactional email delivery', color: 'green' },
               { icon: Database, name: 'Supabase', description: 'PostgreSQL database and auth', color: 'emerald' },
               { icon: Code, name: 'Vercel', description: 'Hosting and deployment', color: 'black' },
-              { icon: Users, name: 'Affirm', description: 'Buy now, pay later financing', color: 'cyan' },
+              
               { icon: Zap, name: 'Twilio', description: 'SMS notifications (optional)', color: 'red' },
             ].map((integration, idx) => (
               <div key={idx} className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition">

@@ -91,6 +91,36 @@ const socialPlatforms = [
   },
 ];
 
+// Recent posts for the feed section
+const recentPosts = [
+  {
+    platform: 'Facebook',
+    icon: Facebook,
+    time: '2 hours ago',
+    content: 'Congratulations to our latest graduates! 🎓 Another cohort of skilled professionals ready to make their mark.',
+    image: 'https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=800',
+    likes: 45,
+    comments: 12,
+  },
+  {
+    platform: 'LinkedIn',
+    icon: Linkedin,
+    time: '5 hours ago',
+    content: 'We are proud to announce our partnership with local employers to provide job placement assistance for all graduates.',
+    likes: 89,
+    comments: 23,
+  },
+  {
+    platform: 'Instagram',
+    icon: Instagram,
+    time: '1 day ago',
+    content: 'Behind the scenes at our training facility! Our students are working hard to build their futures. 💪',
+    image: 'https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800',
+    likes: 156,
+    comments: 34,
+  },
+];
+
 // Default/fallback videos (replaced by live data when available)
 const defaultVideos = [
   {
