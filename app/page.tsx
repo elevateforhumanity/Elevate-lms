@@ -7,7 +7,7 @@ import VoiceoverWithMusic from '@/components/VoiceoverWithMusic';
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import { useEffect, useState, useRef } from 'react';
-import { LiveOutcomesDashboard } from '@/components/outcomes/LiveOutcomesDashboard';
+
 
 // User state hook - fetches auth and enrollment data with timeout
 function useUserState() {
@@ -823,10 +823,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Live Outcomes Dashboard */}
-      <section className="bg-white border-y border-slate-200">
-        <LiveOutcomesDashboard />
-      </section>
+
 
       {/* Trust Badges / Partners Section - Professional */}
       <section className="py-8 px-4 sm:px-6 lg:px-8 bg-slate-50 border-y border-slate-200">
