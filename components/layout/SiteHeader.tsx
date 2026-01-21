@@ -142,13 +142,13 @@ export default function SiteHeader() {
               </span>
             </Link>
 
-            {/* Desktop Navigation - visible on md (768px) and up */}
-            <nav className="hidden md:flex items-center h-full">
+            {/* Desktop Navigation - always visible */}
+            <nav className="flex items-center h-full">
               {NAV_ITEMS.map((item) => (
                 <div key={item.name} className="relative h-full group">
                   <Link
                     href={item.href}
-                    className={`relative h-full flex items-center gap-1 px-2 md:px-3 lg:px-4 text-xs md:text-sm font-medium transition-colors
+                    className={`relative h-full flex items-center gap-1 px-2 sm:px-3 lg:px-4 text-xs sm:text-sm font-medium transition-colors
                       before:absolute before:bottom-0 before:left-2 before:right-2 before:h-[3px] before:bg-blue-600 
                       before:opacity-0 before:transition-opacity group-hover:before:opacity-100
                       text-gray-700 hover:text-gray-900
