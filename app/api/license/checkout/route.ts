@@ -2,9 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { PLANS, PlanId, TRIAL_DAYS } from '@/lib/license/types';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2025-10-29.clover' as Stripe.LatestApiVersion,
-});
+// Initialize Stripe only if key is available
+const stripeKey = process.env.STRIPE_SECRET_KEY;
+const stripe = stripeKey 
+  ? new Stripe(stripeKey, { apiVersion: '2025-10-29.clover' as Stripe.LatestApiVersion })
+  : null;
 
 /**
  * POST /api/license/checkout
@@ -24,6 +26,15 @@ export async function POST(request: NextRequest) {
       contactName, 
       contactEmail,
     } = body;
+
+    // Check Stripe is configured
+    if (!stripe) {
+      console.error('Stripe not configured: STRIPE_SECRET_KEY missing');
+      return NextResponse.json(
+        { error: 'Payment system is not configured. Please contact support.' },
+        { status: 503 }
+      );
+    }
 
     // Validate plan
     if (!planId || !PLANS[planId as PlanId]) {
@@ -64,8 +75,9 @@ export async function POST(request: NextRequest) {
 
     // Check if plan has a Stripe price ID
     if (!plan.stripePriceId) {
+      console.error(`Missing Stripe price ID for plan: ${planId}. Set STRIPE_PRICE_* env vars.`);
       return NextResponse.json(
-        { error: 'This plan is not available for self-serve checkout.' },
+        { error: 'This plan is not yet configured for checkout. Please contact support.' },
         { status: 400 }
       );
     }
