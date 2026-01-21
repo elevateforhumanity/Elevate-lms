@@ -15,9 +15,12 @@ const NAV_ITEMS = [
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
       { name: 'CDL & Transportation', href: '/programs/cdl-transportation' },
+      { name: 'CNA Training', href: '/programs/cna' },
+      { name: 'Phlebotomy', href: '/programs/phlebotomy' },
+      { name: 'Medical Assistant', href: '/programs/medical-assistant' },
       { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
       { name: 'All Apprenticeships', href: '/apprenticeships' },
-      { name: 'Courses', href: '/courses' },
+      { name: 'All Courses', href: '/courses' },
     ]
   },
   { 
@@ -28,6 +31,8 @@ const NAV_ITEMS = [
       { name: 'Funding Options', href: '/funding' },
       { name: 'JRI Programs', href: '/jri' },
       { name: 'Financial Aid', href: '/financial-aid' },
+      { name: 'Career Services', href: '/career-services' },
+      { name: 'Mentorship', href: '/mentorship' },
       { name: 'FAQ', href: '/faq' },
     ]
   },
@@ -37,8 +42,21 @@ const NAV_ITEMS = [
     subItems: [
       { name: 'Hire Graduates', href: '/hire-graduates' },
       { name: 'Partner With Us', href: '/partners' },
+      { name: 'Barbershop Partners', href: '/partners/barbershop-apprenticeship' },
       { name: 'OJT & Funding', href: '/ojt-and-funding' },
       { name: 'Workforce Partners', href: '/workforce-partners' },
+    ]
+  },
+  { 
+    name: 'Services', 
+    href: '/services',
+    subItems: [
+      { name: 'Tax Preparation', href: '/tax' },
+      { name: 'Free Tax Help (VITA)', href: '/vita' },
+      { name: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
+      { name: 'Career Training - Indiana', href: '/career-training-indiana' },
+      { name: 'Career Training - Ohio', href: '/career-training-ohio' },
+      { name: 'Community Services', href: '/community' },
     ]
   },
   { 
@@ -46,22 +64,26 @@ const NAV_ITEMS = [
     href: '/about',
     subItems: [
       { name: 'Our Mission', href: '/about/mission' },
-      { name: 'Our Team', href: '/team' },
+      { name: 'Our Team', href: '/about/team' },
       { name: 'Founder', href: '/founder' },
-      { name: 'Partners', href: '/partners' },
+      { name: 'Partners', href: '/about/partners' },
       { name: 'Accreditation', href: '/accreditation' },
       { name: 'Success Stories', href: '/success-stories' },
+      { name: 'Governance', href: '/governance' },
       { name: 'Locations', href: '/locations' },
       { name: 'Contact', href: '/contact' },
     ]
   },
   { 
     name: 'Resources', 
-    href: '/blog',
+    href: '/resources',
     subItems: [
+      { name: 'Resource Hub', href: '/resources' },
       { name: 'Blog', href: '/blog' },
       { name: 'News', href: '/news' },
       { name: 'Events', href: '/events' },
+      { name: 'Help Center', href: '/help' },
+      { name: 'Alumni', href: '/alumni' },
       { name: 'Careers', href: '/careers' },
       { name: 'Donate', href: '/donate' },
     ]
