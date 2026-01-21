@@ -18,7 +18,12 @@ const PROTECTED_ROUTES: Record<string, string[]> = {
   '/instructor': ['instructor', 'admin', 'super_admin'],
   '/program-holder': ['program_holder', 'admin', 'super_admin'],
   '/workforce-board': ['workforce_board', 'admin', 'super_admin'],
-  '/employer': ['employer', 'admin', 'super_admin'],
+  '/employer-portal': ['employer', 'admin', 'super_admin'],
+  '/employer/dashboard': ['employer', 'admin', 'super_admin'],
+  '/employer/candidates': ['employer', 'admin', 'super_admin'],
+  '/employer/jobs': ['employer', 'admin', 'super_admin'],
+  '/employer/reports': ['employer', 'admin', 'super_admin'],
+  '/employer/settings': ['employer', 'admin', 'super_admin'],
 };
 
 // Routes that require authentication (any role)

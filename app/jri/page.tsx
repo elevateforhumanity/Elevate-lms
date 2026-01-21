@@ -97,38 +97,35 @@ export default async function JRIPage() {
   return (
     <div className="min-h-screen bg-zinc-900">
       {/* Hero Section with Image */}
-      <section className="relative h-[600px] bg-white">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/funding/funding-jri-program-v2.jpg"
-            alt="JRI Program - Transforming Lives Through Education"
-            fill
-            sizes="100vw"
-            className="object-cover opacity-40"
-            priority
-          />
-        </div>
-        <div className="container mx-auto px-4 relative z-10 h-full flex items-center">
-          <div className="max-w-4xl">
-            <div className="inline-block px-4 py-2 bg-green-600 text-white rounded-full text-sm font-bold mb-6">
+      <section className="relative min-h-[550px] flex items-center overflow-hidden">
+        <Image
+          src="/images/funding/funding-jri-program-v2.jpg"
+          alt="JRI Program - Transforming Lives Through Education"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
+          <div className="max-w-2xl bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+            <div className="inline-block px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-bold mb-6">
               Justice Reinvestment Initiative Partner
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+            <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
               Breaking Barriers.
               <br />
               Building Futures.
             </h1>
-            <p className="text-base md:text-lg mb-8 text-blue-100 leading-relaxed">
+            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
               The Justice Reinvestment Initiative transforms lives by providing
               fully-funded workforce training and career pathways for
-              individuals reentering society.
+              individuals reentering society. Everyone deserves a second chance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                variant="secondary"
                 asChild
-                className="text-lg px-8 py-6"
+                className="bg-green-600 hover:bg-green-700 text-white text-lg px-8 py-6"
               >
                 <Link href="/programs">
                   Explore Programs <ArrowRight className="ml-2 h-5 w-5" />
@@ -137,12 +134,32 @@ export default async function JRIPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-white/10 hover:bg-white/20 text-white border-white text-lg px-8 py-6"
+                className="bg-gray-100 hover:bg-gray-200 text-gray-900 border-gray-300 text-lg px-8 py-6"
                 asChild
               >
                 <Link href="/apply">Apply Now</Link>
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Links */}
+      <section className="py-6 bg-white border-b">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="/wioa-eligibility" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
+              WIOA Eligibility
+            </Link>
+            <Link href="/funding" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+              Funding Options
+            </Link>
+            <Link href="/programs" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+              Training Programs
+            </Link>
+            <Link href="/how-it-works" className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors">
+              How It Works
+            </Link>
           </div>
         </div>
       </section>

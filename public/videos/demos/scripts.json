@@ -1,0 +1,30 @@
+[
+  {
+    "id": "lms-overview",
+    "title": "LMS Platform Overview",
+    "script": "Welcome to the Elevate Learning Management System. \n\nI'm going to walk you through our platform that helps thousands of students achieve their career goals every year.\n\nWhen students log in, they see their personalized dashboard showing enrolled courses, upcoming deadlines, and progress tracking. The interface is clean and intuitive, designed for learners of all technical backgrounds.\n\nLet's look at the course catalog. Students can browse programs by category - Healthcare, Skilled Trades, Technology, Business, and Transportation. Each course shows duration, certification details, and funding eligibility.\n\nOnce enrolled, students access interactive lessons with video content, reading materials, and hands-on exercises. Our AI tutor is available 24/7 to answer questions and provide personalized guidance.\n\nThe assessment system includes quizzes, practical evaluations, and proctored exams. Students receive immediate feedback and can track their mastery of each topic.\n\nUpon completion, students earn industry-recognized certificates that can be shared with employers directly through our platform.\n\nThe Elevate LMS - where careers begin.",
+    "voiceoverFile": "lms-overview-voiceover.mp3",
+    "thumbnailFile": "lms-overview-thumb.jpg"
+  },
+  {
+    "id": "employer-portal",
+    "title": "Employer Portal Demo",
+    "script": "Welcome to the Elevate Employer Portal - your gateway to a pipeline of trained, certified talent.\n\nAs an employer partner, you have access to powerful tools for workforce development.\n\nThe dashboard shows your sponsored employees, their training progress, and upcoming completions. You can see exactly when candidates will be job-ready.\n\nOur candidate search lets you filter by certification, location, availability, and skills. Each candidate profile includes their training history, certifications earned, and assessment scores.\n\nThe job posting feature connects you directly with our graduate network. Post positions and receive applications from pre-screened, qualified candidates - no recruiting fees.\n\nFor On-the-Job Training programs, we handle the paperwork. Track wage reimbursements, training hours, and compliance documentation all in one place.\n\nThe analytics dashboard shows your hiring metrics, retention rates, and return on investment for training partnerships.\n\nPartner with Elevate and build your workforce with confidence.",
+    "voiceoverFile": "employer-portal-voiceover.mp3",
+    "thumbnailFile": "employer-portal-thumb.jpg"
+  },
+  {
+    "id": "admin-dashboard",
+    "title": "Admin Dashboard Tour",
+    "script": "Welcome to the Elevate Administration Dashboard - the command center for your training organization.\n\nThis tour covers the key features administrators use daily to manage programs and students.\n\nThe main dashboard provides real-time metrics: active enrollments, completion rates, revenue, and compliance status. Alerts highlight items requiring attention.\n\nStudent management gives you complete visibility into every learner's journey. View applications, track progress, manage documents, and communicate directly through the platform.\n\nThe course builder lets you create and modify training content. Add lessons, upload videos, create assessments, and set completion requirements. Our AI assistant can generate course outlines and quiz questions automatically.\n\nFinancial tools handle payments, scholarships, and funding source tracking. Generate invoices, process refunds, and reconcile accounts with integrated reporting.\n\nCompliance management ensures your programs meet regulatory requirements. Track certifications, audit documentation, and generate reports for accrediting bodies.\n\nThe Elevate Admin Dashboard - powerful tools for program excellence.",
+    "voiceoverFile": "admin-dashboard-voiceover.mp3",
+    "thumbnailFile": "admin-dashboard-thumb.jpg"
+  },
+  {
+    "id": "course-builder",
+    "title": "AI Course Builder",
+    "script": "Welcome to the Elevate AI Course Builder - create professional training content in minutes, not months.\n\nLet me show you how easy it is to build a complete course.\n\nStart by entering your course topic and target audience. Our AI analyzes industry standards and generates a comprehensive curriculum outline with modules, lessons, and learning objectives.\n\nReview and customize the structure. Drag and drop to reorder lessons, add or remove topics, and adjust the scope to match your needs.\n\nFor each lesson, the AI generates detailed content including explanations, examples, and key takeaways. You can edit, expand, or regenerate any section.\n\nAdd assessments with one click. The system creates quiz questions, practical exercises, and evaluation rubrics aligned with your learning objectives.\n\nUpload existing materials - videos, documents, or SCORM packages - and the AI integrates them seamlessly into your course structure.\n\nPreview your course exactly as students will experience it. Make final adjustments and publish when ready.\n\nThe Elevate Course Builder - professional training content, powered by AI.",
+    "voiceoverFile": "course-builder-voiceover.mp3",
+    "thumbnailFile": "course-builder-thumb.jpg"
+  }
+]

@@ -1,39 +1,46 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { drakeIntegration } from '@/lib/integrations/drake-software';
+import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/logger';
+import {
+  extractTextFromImage,
+  autoExtract,
+  extractW2Data,
+  extract1099Data,
+  extractIDData,
+} from '@/lib/ocr/tesseract-ocr';
+import { extractTextFromPDF, isPDF } from '@/lib/ocr/pdf-extract';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-export const maxDuration = 60;
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+export const maxDuration = 120; // OCR can take time
 
 interface ExtractedData {
   documentType: string;
+  raw: string;
   confidence: number;
-  employer?: string;
-  payer?: string;
-  ein?: string;
-  payerEIN?: string;
-  wages?: number;
-  amount?: number;
-  federalWithholding?: number;
-  stateWithholding?: number;
-  socialSecurityWages?: number;
-  medicareWages?: number;
+  data: Record<string, unknown>;
+  processingTime?: number;
 }
 
 /**
- * Extract data from uploaded document using OCR
+ * POST /api/supersonic-fast-cash/ocr-extract
+ * 
+ * Extract text and structured data from uploaded documents using OCR.
+ * Supports images (JPG, PNG, WEBP, TIFF) and PDFs.
+ * 
+ * Request body (multipart/form-data):
+ * - file: The document file to process
+ * - documentType: Optional hint for document type (w2, 1099, id, auto)
+ * - clientId: Optional client ID for tracking
  */
 export async function POST(request: NextRequest) {
+  const startTime = Date.now();
+
   try {
     const formData = await request.formData();
-    const file = formData.get('file') as File;
-    const documentType = formData.get('documentType') as string;
-    const email = formData.get('email') as string;
-    const phone = formData.get('phone') as string;
+    const file = formData.get('file') as File | null;
+    const documentType = (formData.get('documentType') as string) || 'auto';
+    const clientId = formData.get('clientId') as string | null;
 
     if (!file) {
       return NextResponse.json(
@@ -42,206 +49,187 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    // Validate file type
+    const allowedTypes = [
+      'image/jpeg',
+      'image/jpg',
+      'image/png',
+      'image/webp',
+      'image/tiff',
+      'application/pdf',
+    ];
 
-    // Step 1: Upload to Supabase Storage
-    const fileName = `${Date.now()}_${file.name}`;
-    const filePath = `tax-documents/${email}/${fileName}`;
-
-    const { data: uploadData, error: uploadError } = await supabase.storage
-      .from('documents')
-      .upload(filePath, file, {
-        cacheControl: '3600',
-        upsert: false,
-      });
-
-    if (uploadError) {
+    if (!allowedTypes.includes(file.type)) {
       return NextResponse.json(
-        { error: 'Failed to upload file' },
-        { status: 500 }
+        { 
+          error: 'Invalid file type',
+          message: `Supported types: ${allowedTypes.join(', ')}`,
+          received: file.type,
+        },
+        { status: 400 }
       );
     }
 
-    // Step 2: Use Drake Software OCR or fallback to text extraction
-    let extractedData: any = {};
-
-    try {
-      // Try Drake Software OCR first
-      const drakeResult = await drakeIntegration.uploadDocument(
-        'temp-return-id',
-        file,
-        documentType as any
+    // Validate file size (max 20MB)
+    const maxSize = 20 * 1024 * 1024;
+    if (file.size > maxSize) {
+      return NextResponse.json(
+        { 
+          error: 'File too large',
+          message: 'Maximum file size is 20MB',
+          received: `${(file.size / 1024 / 1024).toFixed(2)}MB`,
+        },
+        { status: 400 }
       );
+    }
 
-      extractedData = drakeResult.ocrData || {};
-    } catch (drakeError) {
+    logger.info('OCR extraction started', {
+      fileName: file.name,
+      fileType: file.type,
+      fileSize: file.size,
+      documentType,
+      clientId,
+    });
 
-      // Fallback: Basic text extraction for W-2
-      if (documentType === 'w2') {
-        extractedData = await extractW2Data(file);
-      } else if (documentType === '1099') {
-        extractedData = await extract1099Data(file);
+    let result: ExtractedData;
+
+    // Handle PDF files
+    if (isPDF(file)) {
+      const pdfResult = await extractTextFromPDF(file);
+      
+      // If PDF has text, use it directly
+      if (pdfResult.text && pdfResult.text.trim().length > 50) {
+        result = {
+          documentType: 'pdf',
+          raw: pdfResult.text,
+          confidence: 0.95, // High confidence for native PDF text
+          data: {
+            pageCount: pdfResult.pageCount,
+            isScanned: false,
+          },
+          processingTime: Date.now() - startTime,
+        };
+      } else {
+        // Scanned PDF - need OCR on images
+        // For now, return what we have with a note
+        result = {
+          documentType: 'pdf-scanned',
+          raw: pdfResult.text || '',
+          confidence: 0.5,
+          data: {
+            pageCount: pdfResult.pageCount,
+            isScanned: true,
+            note: 'Scanned PDF detected. For best results, upload individual page images.',
+          },
+          processingTime: Date.now() - startTime,
+        };
+      }
+    } else {
+      // Handle image files with OCR
+      const buffer = Buffer.from(await file.arrayBuffer());
+
+      switch (documentType.toLowerCase()) {
+        case 'w2':
+          result = await extractW2Data(buffer);
+          break;
+        case '1099':
+          result = await extract1099Data(buffer);
+          break;
+        case 'id':
+          result = await extractIDData(buffer);
+          break;
+        case 'auto':
+        default:
+          result = await autoExtract(buffer);
+          break;
+      }
+
+      result.processingTime = Date.now() - startTime;
+    }
+
+    // Log extraction to database if client ID provided
+    if (clientId) {
+      try {
+        const supabase = await createClient();
+        await supabase.from('ocr_extractions').insert({
+          client_id: clientId,
+          file_name: file.name,
+          file_type: file.type,
+          document_type: result.documentType,
+          confidence: result.confidence,
+          processing_time_ms: result.processingTime,
+          created_at: new Date().toISOString(),
+        });
+      } catch (dbError) {
+        // Don't fail the request if logging fails
+        logger.warn('Failed to log OCR extraction', { error: dbError });
       }
     }
 
-    // Step 3: Save to database
-    const { data: document, error: dbError } = await supabase
-      .from('tax_documents')
-      .insert({
-        email: email,
-        phone: phone,
-        file_name: file.name,
-        file_path: filePath,
-        file_size: file.size,
-        file_type: file.type,
-        status: 'pending_review',
-        ocr_data: extractedData,
-        created_at: new Date().toISOString(),
-      })
-      .select()
-      .single();
-
-    if (dbError) {
-      return NextResponse.json(
-        { error: 'Failed to save document' },
-        { status: 500 }
-      );
-    }
-
-    // Step 4: If we have income data, save it
-    if (extractedData.wages || extractedData.amount) {
-      await saveIncomeData(supabase, email, documentType, extractedData);
-    }
+    logger.info('OCR extraction completed', {
+      documentType: result.documentType,
+      confidence: result.confidence,
+      processingTime: result.processingTime,
+      textLength: result.raw.length,
+    });
 
     return NextResponse.json({
       success: true,
-      document: document,
-      extractedData: extractedData,
-      confidence: extractedData.confidence || 0.85,
+      ...result,
     });
   } catch (error) {
+    logger.error('OCR extraction failed', error instanceof Error ? error : new Error(String(error)));
+
     return NextResponse.json(
-      { error: 'Failed to extract data' },
+      {
+        error: 'OCR extraction failed',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      },
       { status: 500 }
     );
   }
 }
 
 /**
- * Extract W-2 data from file
+ * GET /api/supersonic-fast-cash/ocr-extract
+ * 
+ * Returns API documentation and supported features.
  */
-async function extractW2Data(file: File): Promise<ExtractedData> {
-  // In production, use Tesseract.js or Google Vision API
-  // For now, return structured format
-
-  const text = await file.text().catch(() => '');
-
-  // Parse common W-2 patterns
-  const data: any = {
-    documentType: 'w2',
-    confidence: 0.85,
-  };
-
-  // Extract employer name
-  const employerMatch = text.match(/Employer.*?name.*?\n(.*?)\n/i);
-  if (employerMatch) data.employer = employerMatch[1].trim();
-
-  // Extract EIN
-  const einMatch = text.match(/EIN.*?(\d{2}-\d{7})/i);
-  if (einMatch) data.ein = einMatch[1];
-
-  // Extract wages (Box 1)
-  const wagesMatch = text.match(/Wages.*?(\d+\.?\d*)/i);
-  if (wagesMatch) data.wages = parseFloat(wagesMatch[1]);
-
-  // Extract federal withholding (Box 2)
-  const federalMatch = text.match(/Federal.*?withheld.*?(\d+\.?\d*)/i);
-  if (federalMatch) data.federalWithholding = parseFloat(federalMatch[1]);
-
-  // Extract Social Security wages (Box 3)
-  const ssWagesMatch = text.match(/Social security wages.*?(\d+\.?\d*)/i);
-  if (ssWagesMatch) data.socialSecurityWages = parseFloat(ssWagesMatch[1]);
-
-  // Extract Medicare wages (Box 5)
-  const medicareMatch = text.match(/Medicare wages.*?(\d+\.?\d*)/i);
-  if (medicareMatch) data.medicareWages = parseFloat(medicareMatch[1]);
-
-  // Extract state withholding (Box 17)
-  const stateMatch = text.match(/State.*?tax.*?(\d+\.?\d*)/i);
-  if (stateMatch) data.stateWithholding = parseFloat(stateMatch[1]);
-
-  return data;
-}
-
-/**
- * Extract 1099 data from file
- */
-async function extract1099Data(file: File): Promise<ExtractedData> {
-  const text = await file.text().catch(() => '');
-
-  const data: any = {
-    documentType: '1099',
-    confidence: 0.85,
-  };
-
-  // Extract payer name
-  const payerMatch = text.match(/Payer.*?name.*?\n(.*?)\n/i);
-  if (payerMatch) data.payer = payerMatch[1].trim();
-
-  // Extract EIN
-  const einMatch = text.match(/EIN.*?(\d{2}-\d{7})/i);
-  if (einMatch) data.payerEIN = einMatch[1];
-
-  // Extract amount
-  const amountMatch = text.match(/(\d+\.?\d*)/);
-  if (amountMatch) data.amount = parseFloat(amountMatch[1]);
-
-  return data;
-}
-
-/**
- * Save extracted income data to database
- */
-async function saveIncomeData(
-  supabase: SupabaseClient,
-  email: string,
-  documentType: string,
-  extractedData: ExtractedData
-): Promise<void> {
-  try {
-    // Find or create client
-    const { data: client } = await supabase
-      .from('clients')
-      .select('id')
-      .eq('email', email)
-      .single();
-
-    if (!client) return;
-
-    // Find active tax return
-    const { data: taxReturn } = await supabase
-      .from('tax_returns')
-      .select('id')
-      .eq('user_id', client.id)
-      .eq('tax_year', new Date().getFullYear())
-      .single();
-
-    if (!taxReturn) return;
-
-    // Save income source
-    await supabase.from('income_sources').insert({
-      tax_return_id: taxReturn.id,
-      income_type: documentType === 'w2' ? 'w2' : '1099_misc',
-      employer_name: extractedData.employer || extractedData.payer,
-      ein: extractedData.ein || extractedData.payerEIN,
-      wages: extractedData.wages || extractedData.amount,
-      federal_withholding: extractedData.federalWithholding,
-      state_withholding: extractedData.stateWithholding,
-      social_security_wages: extractedData.socialSecurityWages,
-      medicare_wages: extractedData.medicareWages,
-      ocr_extracted: true,
-      verified: false,
-      created_at: new Date().toISOString(),
-    });
-  } catch (error) { /* Error handled silently */ }
+export async function GET() {
+  return NextResponse.json({
+    name: 'OCR Extract API',
+    version: '2.0',
+    description: 'Extract text and structured data from documents using OCR',
+    supportedFormats: [
+      'image/jpeg',
+      'image/png',
+      'image/webp',
+      'image/tiff',
+      'application/pdf',
+    ],
+    documentTypes: [
+      { type: 'auto', description: 'Auto-detect document type' },
+      { type: 'w2', description: 'W-2 Wage and Tax Statement' },
+      { type: '1099', description: '1099 Forms (NEC, MISC, etc.)' },
+      { type: 'id', description: 'ID Documents (Driver License, State ID)' },
+    ],
+    maxFileSize: '20MB',
+    usage: {
+      method: 'POST',
+      contentType: 'multipart/form-data',
+      fields: {
+        file: 'Required - The document file',
+        documentType: 'Optional - Hint for document type (auto, w2, 1099, id)',
+        clientId: 'Optional - Client ID for tracking',
+      },
+    },
+    response: {
+      success: 'boolean',
+      documentType: 'string - Detected or specified document type',
+      raw: 'string - Raw extracted text',
+      confidence: 'number - Confidence score (0-1)',
+      data: 'object - Structured extracted data',
+      processingTime: 'number - Processing time in milliseconds',
+    },
+  });
 }

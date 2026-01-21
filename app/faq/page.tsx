@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { HelpCircle, ChevronDown, Search, MessageSquare } from 'lucide-react';
+import Image from 'next/image';
+import { HelpCircle, ChevronDown, Search, MessageSquare, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'FAQ | Elevate For Humanity',
@@ -51,22 +52,58 @@ export default async function FAQPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white pt-24 pb-16 lg:pt-32">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
-          <p className="text-xl text-orange-100 max-w-2xl mb-8">
-            Find answers to common questions about our programs and services.
-          </p>
-          <div className="relative max-w-xl">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="search"
-              placeholder="Search questions..."
-              className="w-full pl-12 pr-4 py-3 rounded-lg text-gray-900 placeholder-gray-500"
-            />
+      {/* Hero with Image */}
+      <section className="relative min-h-[400px] flex items-center overflow-hidden">
+        <Image
+          src="/images/business/collaboration-1.jpg"
+          alt="Get answers to your questions"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
+          <div className="max-w-2xl bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+            <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h1>
+            <p className="text-xl text-gray-700 mb-6">
+              Find answers to common questions about our free training programs, 
+              eligibility requirements, funding options, and career services.
+            </p>
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="search"
+                placeholder="Search questions..."
+                className="w-full pl-12 pr-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 border border-gray-300"
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Quick Links */}
+      <section className="py-8 bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link href="/wioa-eligibility" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
+              WIOA Eligibility
+            </Link>
+            <Link href="/funding" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+              Funding Options
+            </Link>
+            <Link href="/programs" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+              Training Programs
+            </Link>
+            <Link href="/how-it-works" className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors">
+              How It Works
+            </Link>
+            <Link href="/contact" className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <div className="max-w-4xl mx-auto px-4 py-16">
         {categories && categories.length > 0 && (

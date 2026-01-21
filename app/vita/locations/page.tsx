@@ -34,36 +34,14 @@ export default async function VITALocationsPage() {
   const defaultLocations = [
     {
       id: 1,
-      name: 'Elevate Main Office',
-      address: '123 Education Way',
+      name: 'Elevate for Humanity - VITA Center',
+      address: '8888 Keystone Xing, Suite 1300',
       city: 'Indianapolis',
       state: 'IN',
-      zip: '46204',
+      zip: '46240',
       phone: '(317) 314-3757',
-      hours: 'Mon-Fri: 9am-5pm, Sat: 10am-2pm',
-      parking: 'Free parking available',
-    },
-    {
-      id: 2,
-      name: 'Community Center',
-      address: '456 Community Blvd',
-      city: 'Indianapolis',
-      state: 'IN',
-      zip: '46205',
-      phone: '(317) 555-0102',
-      hours: 'Tue-Thu: 10am-6pm, Sat: 9am-1pm',
-      parking: 'Street parking',
-    },
-    {
-      id: 3,
-      name: 'Library Branch',
-      address: '789 Library Lane',
-      city: 'Indianapolis',
-      state: 'IN',
-      zip: '46206',
-      phone: '(317) 555-0103',
-      hours: 'Wed-Fri: 12pm-7pm',
-      parking: 'Library parking lot',
+      hours: 'Mon-Fri: 9am-6pm, Sat: 10am-2pm',
+      parking: 'Free parking available in building garage',
     },
   ];
 
@@ -144,6 +122,30 @@ export default async function VITALocationsPage() {
           >
             Schedule Your Appointment
           </Link>
+        </div>
+
+        {/* IRS VITA Locator */}
+        <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-8">
+          <div className="text-center">
+            <h3 className="text-xl font-bold text-blue-900 mb-3">
+              Find More VITA Sites Near You
+            </h3>
+            <p className="text-blue-700 mb-6">
+              Use the official IRS VITA Locator Tool to find additional free tax preparation sites in your area.
+            </p>
+            <a
+              href="https://irs.treasury.gov/freetaxprep/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition"
+            >
+              <MapPin className="w-5 h-5" />
+              IRS VITA Site Locator
+            </a>
+            <p className="text-sm text-blue-600 mt-4">
+              Opens irs.treasury.gov in a new tab
+            </p>
+          </div>
         </div>
       </div>
     </div>

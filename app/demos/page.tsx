@@ -1,78 +1,232 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Play, Monitor, Users, Calendar, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import { Play, Monitor, Users, Calendar, ArrowRight, Clock, CheckCircle } from 'lucide-react';
+import { getVideosByCategory } from '@/lib/video/registry';
 
 export const metadata: Metadata = {
   title: 'Product Demos | Elevate For Humanity',
-  description: 'See our training platform in action. Schedule a demo or watch recorded walkthroughs.',
+  description: 'See our training platform in action. Watch demos of the LMS, employer portal, and admin dashboard.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/demos',
+  },
 };
 
 const demos = [
   {
+    id: 'demo-lms-overview',
     title: 'LMS Platform Overview',
-    description: 'See how students navigate courses, track progress, and earn certificates.',
+    description: 'See how students navigate courses, track progress, earn certificates, and interact with AI tutors.',
     duration: '15 min',
-    type: 'Video',
+    thumbnail: '/images/demos/lms-overview-thumb.jpg',
+    features: [
+      'Student dashboard walkthrough',
+      'Course enrollment and navigation',
+      'Quiz and assessment system',
+      'Certificate generation',
+      'AI tutor interaction',
+    ],
+    videoUrl: '/videos/demos/lms-overview.mp4',
+    status: 'coming-soon' as const,
   },
   {
+    id: 'demo-employer-portal',
     title: 'Employer Portal Demo',
-    description: 'Learn how employers track sponsored employees and access reports.',
+    description: 'Learn how employers track sponsored employees, post jobs, and access workforce analytics.',
     duration: '10 min',
-    type: 'Video',
+    thumbnail: '/images/demos/employer-portal-thumb.jpg',
+    features: [
+      'Candidate search and filtering',
+      'Job posting workflow',
+      'Employee progress tracking',
+      'OJT funding management',
+      'Analytics and reports',
+    ],
+    videoUrl: '/videos/demos/employer-portal.mp4',
+    status: 'coming-soon' as const,
   },
   {
+    id: 'demo-admin-dashboard',
     title: 'Admin Dashboard Tour',
-    description: 'Explore the administrative tools for managing programs and students.',
+    description: 'Explore the administrative tools for managing programs, students, courses, and compliance.',
     duration: '20 min',
-    type: 'Video',
+    thumbnail: '/images/demos/admin-dashboard-thumb.jpg',
+    features: [
+      'Student management',
+      'Course builder and authoring',
+      'Enrollment and payments',
+      'Compliance tracking',
+      'Reports and analytics',
+    ],
+    videoUrl: '/videos/demos/admin-dashboard.mp4',
+    status: 'coming-soon' as const,
+  },
+  {
+    id: 'demo-course-builder',
+    title: 'AI Course Builder',
+    description: 'Watch how to create complete courses with AI-generated content, quizzes, and video lessons.',
+    duration: '12 min',
+    thumbnail: '/images/demos/course-builder-thumb.jpg',
+    features: [
+      'AI course generation',
+      'Drag-and-drop lesson builder',
+      'Quiz and assessment creation',
+      'Video lesson integration',
+      'SCORM import support',
+    ],
+    videoUrl: '/videos/demos/course-builder.mp4',
+    status: 'coming-soon' as const,
   },
 ];
 
 export default function DemosPage() {
+  // Get any live demo videos from registry
+  const registryDemos = getVideosByCategory('Demo');
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-blue-900 to-blue-700 text-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="relative min-h-[400px] flex items-center overflow-hidden">
+        <Image
+          src="/images/business/team-1.jpg"
+          alt="Product Demos"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-blue-800/80" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 w-full">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+            <div className="inline-flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6">
+              <Monitor className="w-4 h-4" />
+              Platform Demos
+            </div>
+            <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
               See Elevate in Action
             </h1>
             <p className="text-xl text-blue-100 mb-8">
-              Watch demos of our training platform or schedule a personalized walkthrough with our team.
+              Watch demos of our training platform or schedule a personalized walkthrough 
+              with our team. See how we help organizations train their workforce.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/contact"
+                href="/contact?type=demo"
                 className="inline-flex items-center gap-2 bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-5 h-5" />
                 Schedule Live Demo
+              </Link>
+              <Link
+                href="/store/demo"
+                className="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors border border-blue-500"
+              >
+                Request Trial Access
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Demos */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12">Recorded Demos</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+      {/* Quick Links */}
+      <section className="py-4 bg-gray-100 border-b">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="/videos" className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors">
+              Training Videos
+            </Link>
+            <Link href="/webinars" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+              Webinars
+            </Link>
+            <Link href="/success-stories" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
+              Success Stories
+            </Link>
+            <Link href="/store" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+              Platform Store
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Demos Grid */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+              Platform Demos
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Explore our platform capabilities through these detailed walkthroughs
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
             {demos.map((demo) => (
-              <div key={demo.title} className="bg-white border rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="bg-gray-100 h-48 flex items-center justify-center">
-                  <Play className="w-16 h-16 text-gray-400" />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">{demo.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{demo.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">{demo.duration}</span>
-                    <Link href="/login" className="text-blue-600 font-medium text-sm">
-                      Watch Demo →
-                    </Link>
+              <div 
+                key={demo.id} 
+                className="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-blue-300 hover:shadow-xl transition-all"
+              >
+                {/* Thumbnail */}
+                <div className="relative h-56 bg-gradient-to-br from-blue-900 to-blue-700">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    {demo.status === 'coming-soon' ? (
+                      <div className="text-center">
+                        <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                          <Play className="w-10 h-10 text-white ml-1" />
+                        </div>
+                        <span className="bg-yellow-500 text-yellow-900 px-4 py-1 rounded-full text-sm font-bold">
+                          Coming Soon
+                        </span>
+                      </div>
+                    ) : (
+                      <Link 
+                        href={`/demos/${demo.id}`}
+                        className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                      >
+                        <Play className="w-10 h-10 text-blue-600 ml-1" />
+                      </Link>
+                    )}
                   </div>
+                  <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm flex items-center gap-1">
+                    <Clock className="w-3 h-3" />
+                    {demo.duration}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{demo.title}</h3>
+                  <p className="text-gray-600 mb-4">{demo.description}</p>
+                  
+                  <div className="space-y-2 mb-6">
+                    {demo.features.slice(0, 3).map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                        <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                        {feature}
+                      </div>
+                    ))}
+                    {demo.features.length > 3 && (
+                      <p className="text-sm text-gray-500 pl-6">
+                        +{demo.features.length - 3} more features
+                      </p>
+                    )}
+                  </div>
+
+                  {demo.status === 'coming-soon' ? (
+                    <button 
+                      disabled
+                      className="w-full py-3 bg-gray-100 text-gray-500 rounded-lg font-semibold cursor-not-allowed"
+                    >
+                      Demo Coming Soon
+                    </button>
+                  ) : (
+                    <Link
+                      href={`/demos/${demo.id}`}
+                      className="block w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-semibold transition-colors"
+                    >
+                      Watch Demo
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
@@ -80,20 +234,78 @@ export default function DemosPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 lg:py-24 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Want a Personalized Demo?</h2>
-          <p className="text-gray-600 mb-8">
-            Schedule a live walkthrough with our team to see how Elevate can work for your organization.
+      {/* Live Demo CTA */}
+      <section className="py-20 bg-gradient-to-br from-blue-900 to-blue-700 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Users className="w-16 h-16 mx-auto mb-6 text-blue-300" />
+          <h2 className="text-3xl md:text-4xl font-black mb-4">
+            Want a Personalized Demo?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Schedule a live walkthrough with our team to see how Elevate can work 
+            for your organization. We&apos;ll customize the demo to your specific needs.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-          >
-            Schedule Demo
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact?type=demo"
+              className="inline-flex items-center justify-center gap-2 bg-white text-blue-900 px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition-colors"
+            >
+              <Calendar className="w-5 h-5" />
+              Schedule Demo
+            </Link>
+            <a
+              href="tel:317-314-3757"
+              className="inline-flex items-center justify-center gap-2 bg-blue-800 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-600 transition-colors border border-blue-500"
+            >
+              Call (317) 314-3757
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* What You'll See */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              What You&apos;ll See in a Live Demo
+            </h2>
+            <p className="text-gray-600">
+              Our team will walk you through the entire platform
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <Monitor className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Student Experience</h3>
+              <p className="text-gray-600 text-sm">
+                See how students enroll, take courses, complete assessments, and earn certificates.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Admin Tools</h3>
+              <p className="text-gray-600 text-sm">
+                Explore course creation, student management, reporting, and compliance features.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <ArrowRight className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Integration Options</h3>
+              <p className="text-gray-600 text-sm">
+                Learn about API integrations, SSO, SCORM support, and white-label options.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

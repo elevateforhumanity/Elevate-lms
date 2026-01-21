@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowRight, CheckCircle, Users, DollarSign, Award, Briefcase } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'For Employers | Elevate for Humanity',
@@ -10,42 +11,66 @@ export const metadata: Metadata = {
 export default function EmployerPage() {
   return (
     <>
-      {/* Hero - pt accounts for fixed header */}
-      <section className="pt-24 pb-20 lg:pt-32 lg:pb-28 bg-white">
+      {/* Hero with Image */}
+      <section className="relative min-h-[550px] flex items-center overflow-hidden">
+        <Image
+          src="/images/business/handshake-1.jpg"
+          alt="Employer partnership"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 w-full">
+          <div className="max-w-2xl bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
+              <Briefcase className="w-4 h-4" />
+              For Employers
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-6">
+              Hire Trained, Job-Ready Workers
+            </h1>
+            <p className="text-xl text-gray-700 mb-8">
+              Access a pipeline of candidates with industry credentials and hands-on training. 
+              No recruiting fees. We handle the training, you get qualified workers.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/contact?type=employer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white text-base font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Partner With Us
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                href="/hire-graduates"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gray-100 text-gray-900 text-base font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                View Candidates
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Links to Subpages */}
+      <section className="py-6 bg-white border-b">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="max-w-xl">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                Hire trained,{' '}
-                <span className="italic">job-ready</span> workers.
-              </h1>
-              <p className="text-xl text-gray-600 mb-8">
-                Access candidates with industry credentials. No recruiting fees.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-gray-900 text-white text-base font-medium rounded-full hover:bg-gray-800 transition-colors"
-                >
-                  Partner With Us
-                </Link>
-                <Link
-                  href="/hire-graduates"
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-gray-900 text-base font-medium rounded-full hover:border-gray-900 transition-colors"
-                >
-                  View Candidates
-                </Link>
-              </div>
-            </div>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-              <Image
-                src="/images/artlist/hero-training-3.jpg"
-                alt="Employer partnership"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="/hire-graduates" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+              Hire Graduates
+            </Link>
+            <Link href="/ojt-and-funding" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
+              OJT & Funding
+            </Link>
+            <Link href="/workforce-partners" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+              Workforce Partners
+            </Link>
+            <Link href="/partners" className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors">
+              Partner With Us
+            </Link>
+            <Link href="/programs" className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full text-sm font-medium hover:bg-gray-300 transition-colors">
+              View Programs
+            </Link>
           </div>
         </div>
       </section>

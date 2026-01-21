@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { videos } from '../../lms-data/videos';
+import { getAllLiveVideos, getAllCategories } from '@/lib/video/registry';
 import { Play } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -30,13 +30,16 @@ export default async function VideosPage() {
     );
   }
   
-  // Fetch videos from database
+  // Fetch videos from database (for user-uploaded videos)
   const { data: dbVideos } = await supabase
     .from('videos')
     .select('*')
     .eq('status', 'published')
     .order('created_at', { ascending: false });
-  const categories = Array.from(new Set(videos.map((v) => v.category)));
+  
+  // Get videos from canonical registry
+  const videos = getAllLiveVideos();
+  const categories = getAllCategories();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -58,7 +61,7 @@ export default async function VideosPage() {
         <div className="max-w-7xl mx-auto px-4">
           {categories.map((category) => {
             const categoryVideos = videos.filter(
-              (v) => v.category === category
+              (v) => v.category === category && v.status === 'live'
             );
 
             return (
@@ -75,7 +78,7 @@ export default async function VideosPage() {
                     >
                       <div className="relative aspect-video bg-gray-200">
                         <Image
-                          src={video.thumbnailUrl}
+                          src={video.thumbnail_url}
                           alt={video.title}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -88,10 +91,10 @@ export default async function VideosPage() {
                         </div>
                       </div>
                       <div className="p-6">
-                        <h3 className="text-xl font-bold text-black mb-3 line-clamp-2">
+                        <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
                           {video.title}
                         </h3>
-                        <p className="text-black line-clamp-3">
+                        <p className="text-gray-600 line-clamp-3">
                           {video.description}
                         </p>
                       </div>

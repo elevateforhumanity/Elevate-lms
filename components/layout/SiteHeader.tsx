@@ -32,8 +32,32 @@ const NAV_ITEMS = [
       { name: 'JRI Programs', href: '/jri' },
       { name: 'Financial Aid', href: '/financial-aid' },
       { name: 'Career Services', href: '/career-services' },
-      { name: 'Mentorship', href: '/mentorship' },
       { name: 'FAQ', href: '/faq' },
+    ]
+  },
+  { 
+    name: 'LMS', 
+    href: '/lms',
+    subItems: [
+      { name: 'Student Dashboard', href: '/lms/dashboard' },
+      { name: 'My Courses', href: '/lms/courses' },
+      { name: 'My Progress', href: '/lms/progress' },
+      { name: 'Certificates', href: '/lms/certificates' },
+      { name: 'AI Tutor', href: '/lms/ai-tutor' },
+      { name: 'Study Groups', href: '/lms/study-groups' },
+      { name: 'Resources', href: '/lms/resources' },
+    ]
+  },
+  { 
+    name: 'Portals', 
+    href: '/dashboards',
+    subItems: [
+      { name: 'All Dashboards', href: '/dashboards' },
+      { name: 'Student Portal', href: '/student-portal' },
+      { name: 'Employer Portal', href: '/employer-portal' },
+      { name: 'Partner Portal', href: '/partner' },
+      { name: 'Staff Portal', href: '/staff-portal' },
+      { name: 'Admin Dashboard', href: '/admin' },
     ]
   },
   { 
@@ -54,9 +78,8 @@ const NAV_ITEMS = [
       { name: 'Tax Preparation', href: '/tax' },
       { name: 'Free Tax Help (VITA)', href: '/vita' },
       { name: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
-      { name: 'Career Training - Indiana', href: '/career-training-indiana' },
-      { name: 'Career Training - Ohio', href: '/career-training-ohio' },
-      { name: 'Community Services', href: '/community' },
+      { name: 'Store', href: '/store' },
+      { name: 'Videos & Demos', href: '/videos' },
     ]
   },
   { 
@@ -69,23 +92,8 @@ const NAV_ITEMS = [
       { name: 'Partners', href: '/about/partners' },
       { name: 'Accreditation', href: '/accreditation' },
       { name: 'Success Stories', href: '/success-stories' },
-      { name: 'Governance', href: '/governance' },
       { name: 'Locations', href: '/locations' },
       { name: 'Contact', href: '/contact' },
-    ]
-  },
-  { 
-    name: 'Resources', 
-    href: '/resources',
-    subItems: [
-      { name: 'Resource Hub', href: '/resources' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'News', href: '/news' },
-      { name: 'Events', href: '/events' },
-      { name: 'Help Center', href: '/help' },
-      { name: 'Alumni', href: '/alumni' },
-      { name: 'Careers', href: '/careers' },
-      { name: 'Donate', href: '/donate' },
     ]
   },
 ];
@@ -135,7 +143,7 @@ export default function SiteHeader() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="flex items-center h-full">
+            <nav className="hidden lg:flex items-center h-full">
               {NAV_ITEMS.map((item) => (
                 <div key={item.name} className="relative h-full group">
                   <Link
@@ -174,7 +182,7 @@ export default function SiteHeader() {
               {/* Phone number - desktop only */}
               <a
                 href="tel:317-314-3757"
-                className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                className="hidden xl:inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 (317) 314-3757
@@ -201,10 +209,10 @@ export default function SiteHeader() {
                 Apply Now
               </Link>
 
-              {/* Mobile menu button - show on smaller screens (below lg/1024px) */}
+              {/* Mobile menu button */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="md:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
+                className="lg:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -214,9 +222,9 @@ export default function SiteHeader() {
         </div>
       </header>
 
-      {/* Mobile Menu - shows on screens below lg (1024px) */}
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] md:hidden">
+        <div className="fixed inset-0 z-[100] lg:hidden">
           <div 
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileMenuOpen(false)}
@@ -248,7 +256,6 @@ export default function SiteHeader() {
                           {item.name}
                           <ChevronDown className={`w-4 h-4 transition-transform ${expandedSection === item.name ? 'rotate-180' : ''}`} />
                         </button>
-                        {/* Collapsible Sub-items */}
                         {expandedSection === item.name && (
                           <ul className="ml-4 mt-1 space-y-1 border-l-2 border-blue-100 pl-2">
                             <li>

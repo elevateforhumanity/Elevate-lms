@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Users,
   Award,
@@ -23,34 +24,64 @@ export const metadata: Metadata = {
 export default function EmployersPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="max-w-3xl">
-            <p className="text-orange-400 font-medium mb-4">For Employers</p>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+      {/* Hero with Image */}
+      <section className="relative min-h-[550px] flex items-center overflow-hidden">
+        <Image
+          src="/images/business/handshake-1.jpg"
+          alt="Partner with Elevate for Humanity"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
+          <div className="max-w-2xl bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+            <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
+              <Building2 className="w-4 h-4" />
+              For Employers
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6">
               Hire Trained, Certified Candidates
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-700 mb-8">
               Access a pipeline of job-ready talent who have completed hands-on training 
               and earned industry credentials. No recruiting fees. No guesswork.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact?type=employer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors"
               >
                 Partner With Us
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <a
                 href="tel:317-314-3757"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold rounded-lg transition-colors"
               >
                 <Phone className="w-5 h-5" />
                 (317) 314-3757
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Links */}
+      <section className="py-6 bg-gray-50 border-b">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="/hire-graduates" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+              Hire Graduates
+            </Link>
+            <Link href="/ojt-and-funding" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
+              OJT & Funding
+            </Link>
+            <Link href="/workforce-partners" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+              Workforce Partners
+            </Link>
+            <Link href="/programs" className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors">
+              View Programs
+            </Link>
           </div>
         </div>
       </section>

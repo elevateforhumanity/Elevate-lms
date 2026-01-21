@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { DollarSign, GraduationCap, Home, CheckCircle, Users, Briefcase } from 'lucide-react';
+import Image from 'next/image';
+import { DollarSign, GraduationCap, Home, CheckCircle, Users, Briefcase, ArrowRight } from 'lucide-react';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
@@ -72,21 +73,25 @@ export default async function WIOAEligibilityPage() {
       title: 'Adults (18+)',
       description: 'You must be 18 years or older and legally authorized to work in the United States.',
       icon: Users,
+      image: '/images/business/professional-1.jpg',
     },
     {
       title: 'Indiana Resident',
       description: 'You must be a resident of Indiana to qualify for state WIOA funding.',
       icon: Home,
+      image: '/images/heroes/community.jpg',
     },
     {
       title: 'Employment Status',
       description: 'Unemployed, underemployed, or seeking better employment opportunities.',
       icon: Briefcase,
+      image: '/images/business/collaboration-1.jpg',
     },
     {
       title: 'Income Guidelines',
       description: 'Meet income requirements based on household size (most working families qualify).',
       icon: DollarSign,
+      image: '/images/heroes/hero-state-funding.jpg',
     },
   ];
 
@@ -127,6 +132,29 @@ export default async function WIOAEligibilityPage() {
         imageOnRight={true}
       />
 
+      {/* Quick Links */}
+      <section className="py-6 bg-white border-b">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="/funding" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
+              All Funding Options
+            </Link>
+            <Link href="/financial-aid" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+              Financial Aid
+            </Link>
+            <Link href="/jri" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+              JRI Programs
+            </Link>
+            <Link href="/how-it-works" className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors">
+              How It Works
+            </Link>
+            <Link href="/programs" className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full text-sm font-medium hover:bg-gray-300 transition-colors">
+              View Programs
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Main Content */}
       <section id="eligibility" className="py-20 px-4 sm:px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
@@ -135,7 +163,7 @@ export default async function WIOAEligibilityPage() {
               Good News!
             </h2>
             <p className="text-lg text-gray-700">
-              Most people qualify for WIOA funding. If you're looking to start a
+              Most people qualify for WIOA funding. If you&apos;re looking to start a
               new career or upgrade your skills, you likely qualify.
             </p>
           </div>
@@ -144,19 +172,28 @@ export default async function WIOAEligibilityPage() {
             Who Qualifies for WIOA?
           </h2>
 
-          <div className="space-y-6 mb-12">
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
             {displayCriteria.map((criteria: any, index: number) => {
-              const IconComponent = criteria.icon || CheckCircle;
               return (
                 <div 
                   key={index} 
-                  className="bg-white border-2 border-slate-200 rounded-lg p-6 hover:border-orange-500 transition-colors"
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
                 >
-                  <h3 className="text-lg font-bold text-black mb-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
-                    {criteria.title}
-                  </h3>
-                  <p className="text-gray-600">{criteria.description}</p>
+                  <div className="relative h-40">
+                    <Image
+                      src={criteria.image || '/images/business/professional-1.jpg'}
+                      alt={criteria.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                      {criteria.title}
+                    </h3>
+                    <p className="text-gray-600">{criteria.description}</p>
+                  </div>
                 </div>
               );
             })}

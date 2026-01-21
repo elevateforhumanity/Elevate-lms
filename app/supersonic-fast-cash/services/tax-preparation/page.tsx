@@ -33,16 +33,17 @@ export default async function TaxPreparationPage() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
-        <Image src="/images/business/professional-1.jpg" alt="Tax Preparation" fill className="object-cover" quality={85} priority />
-        <div className="absolute inset-0 bg-black/50" />
+        <Image src="/images/business/tax-prep-certification.jpg" alt="Tax Preparation" fill className="object-cover" quality={85} priority />
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="max-w-4xl mx-auto px-6 text-center text-white">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Tax Preparation Services
-            </h1>
-            <p className="text-xl">
-              Professional tax filing for individuals and families
-            </p>
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+                Tax Preparation Services
+              </h1>
+              <p className="text-xl text-gray-700">
+                Professional tax filing for individuals and families
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -81,27 +82,33 @@ export default async function TaxPreparationPage() {
               </div>
             </div>
             <div className="bg-orange-50 rounded-lg p-8 border border-orange-200">
-              <h3 className="text-2xl font-bold mb-4">Pricing</h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold">Basic Return (W-2 only)</span>
-                  <span className="text-2xl font-bold text-orange-600">$89</span>
+              <h3 className="text-2xl font-bold mb-4">Get Started Today</h3>
+              <p className="text-gray-700 mb-6">
+                Contact us for a free consultation and personalized quote based on your tax situation.
+              </p>
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <span>Free initial consultation</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold">Standard Return</span>
-                  <span className="text-2xl font-bold text-orange-600">$149</span>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <span>Transparent pricing - no hidden fees</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold">Complex Return</span>
-                  <span className="text-2xl font-bold text-orange-600">$249+</span>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <span>Maximum refund guarantee</span>
                 </div>
               </div>
               <Link
                 href="/supersonic-fast-cash/book-appointment"
-                className="block w-full bg-orange-600 hover:bg-orange-700 text-white text-center px-8 py-3 rounded-lg font-semibold transition-colors mt-6"
+                className="block w-full bg-orange-600 hover:bg-orange-700 text-white text-center px-8 py-3 rounded-lg font-semibold transition-colors"
               >
-                Book Appointment
+                Book Free Consultation
               </Link>
+              <p className="text-center text-sm text-gray-500 mt-4">
+                Or call (317) 314-3757
+              </p>
             </div>
           </div>
 

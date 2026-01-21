@@ -5,7 +5,6 @@ import Link from 'next/link';
 import {
   ArrowRight,
   Check,
-  X,
   HelpCircle,
   Building2,
   GraduationCap,
@@ -26,18 +25,7 @@ const platformFeatures = [
   'Government-credible disclosures and UX patterns',
 ];
 
-const platformIs = [
-  'A workforce delivery system',
-  'A pathway and eligibility engine',
-  'Infrastructure for compliant program execution',
-];
 
-const platformIsNot = [
-  'Accreditation',
-  'Guaranteed funding',
-  'Guaranteed placement',
-  'Legal or compliance counsel',
-];
 
 const idealFor = [
   { name: 'Workforce development boards', icon: Building2 },
@@ -396,41 +384,7 @@ export default function StorePage() {
         </div>
       </section>
 
-      {/* What This Is / Is Not */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <Check className="w-6 h-6 text-green-600" />
-                This Platform Is
-              </h3>
-              <ul className="space-y-3">
-                {platformIs.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <X className="w-6 h-6 text-red-600" />
-                This Platform Is Not
-              </h3>
-              <ul className="space-y-3">
-                {platformIsNot.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <X className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Ideal For */}
       <section className="py-16 bg-gray-50">

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Download, FileText, Video, BookOpen, Check, ArrowRight, Zap } from 'lucide-react';
+import { Download, FileText, Video, BookOpen, Check, ArrowRight, Zap, Shield, MessageCircle } from 'lucide-react';
 import { DIGITAL_PRODUCTS } from '@/lib/store/digital-products';
 
 export const metadata: Metadata = {
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 export default function StoreDigitalPage() {
   const downloadProducts = DIGITAL_PRODUCTS.filter((p) => p.deliveryType === 'download');
   const accessProducts = DIGITAL_PRODUCTS.filter((p) => p.deliveryType === 'access');
+  const freeTools = DIGITAL_PRODUCTS.filter((p) => p.price === 0 && p.id !== 'donation');
 
   return (
     <div className="bg-white">
@@ -61,6 +62,97 @@ export default function StoreDigitalPage() {
               <div className="flex items-center gap-2">
                 <Check className="w-5 h-5 text-green-400" />
                 <span>Templates included</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Free Tools Section */}
+      <section className="py-16 bg-blue-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-8">
+            <Shield className="w-8 h-8 text-blue-300" />
+            <h2 className="text-3xl font-black text-white">Free Tools</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* SAM.gov Assistant Card */}
+            <Link
+              href="/store/sam-gov-assistant"
+              className="bg-white rounded-2xl p-8 hover:shadow-2xl transition-all group"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <MessageCircle className="w-8 h-8 text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <div className="inline-block px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full mb-3">
+                    100% Free
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    SAM.gov Registration Assistant
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    Step-by-step AI-guided walkthrough to register your organization in SAM.gov for federal grants and contracts.
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-600" />
+                      Interactive chat walkthrough
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-600" />
+                      UEI & NAICS code guidance
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-600" />
+                      No login required
+                    </li>
+                  </ul>
+                  <div className="mt-4 flex items-center gap-2 text-blue-600 font-semibold">
+                    Start Now <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+            {/* Grants.gov Navigator Card */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <FileText className="w-8 h-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <div className="inline-block px-3 py-1 bg-amber-500 text-white text-xs font-bold rounded-full mb-3">
+                    $49
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    Grants.gov Navigator
+                  </h3>
+                  <p className="text-blue-200 mb-4">
+                    AI assistant to help you search, filter, and apply for federal grants. Includes application tips and deadline tracking.
+                  </p>
+                  <ul className="space-y-2 text-sm text-blue-100">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-400" />
+                      Grant search assistance
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-400" />
+                      Eligibility checker
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-400" />
+                      Budget templates
+                    </li>
+                  </ul>
+                  <Link
+                    href="/store/digital/grants-gov-navigator"
+                    className="mt-4 inline-flex items-center gap-2 text-white font-semibold hover:text-amber-300 transition-colors"
+                  >
+                    Learn More <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

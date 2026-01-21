@@ -1,20 +1,20 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
-import ModernFeatures from '@/components/landing/ModernFeatures';
+import Image from 'next/image';
 import {
   ArrowRight,
   CheckCircle,
-  Building2,
   Users,
   Shield,
   AlertCircle,
   DollarSign,
   Clock,
   Award,
-  TrendingUp,
   FileCheck,
   Zap,
+  Calculator,
+  Phone,
+  MapPin,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -23,250 +23,248 @@ export const metadata: Metadata = {
   },
   title: 'Tax Preparation Services | Elevate For Humanity',
   description:
-    'Trusted tax help — free community-based tax preparation and professional paid tax services.',
+    'Trusted tax help — free community-based VITA tax preparation and professional Supersonic Fast Cash tax services.',
   openGraph: {
     title: 'Tax Preparation Services',
-    description: 'Free community-based tax preparation and professional paid tax services.',
+    description: 'Free VITA tax preparation and professional Supersonic Fast Cash tax services.',
     url: 'https://www.elevateforhumanity.org/tax',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Tax Services' }],
     type: 'website',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Tax Preparation Services',
-    description: 'Free and professional tax preparation services.',
-    images: ['/og-default.jpg'],
-  },
 };
 
 export default function TaxServicesPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Modern Hero with CTA Highlights */}
-      <ModernLandingHero
-        badge="⚡ Tax Season 2026 - File by April 15th"
-        headline="Get Your Maximum Refund"
-        accentText="$3,127 Average"
-        subheadline="Free VITA Tax Prep or Professional Services - You Choose"
-        description="Last year we filed 4,892 returns. Average refund: $3,127. Free service for income under $64K. Professional service for complex returns. Both IRS-certified. Both get you every dollar you deserve."
-        imageSrc="/images/business/program-tax-preparation.jpg"
-        imageAlt="Tax Preparation Services"
-        primaryCTA={{ text: "File Free (VITA) - Save $200+", href: "/tax/free" }}
-        secondaryCTA={{ text: "Professional Service - $89+", href: "/tax/professional" }}
-        features={[
-          "4,892 returns filed in 2025 • $15.3M in refunds secured",
-          "Average refund: $3,127 • Processed in 7-14 days",
-          "Free for income under $64K • Professional for complex returns"
-        ]}
-        imageOnRight={false}
-      />
-
-      {/* Features with Real Numbers */}
-      <ModernFeatures
-        title="Why 4,892 People Chose Us Last Year"
-        subtitle="Real results from tax season 2025"
-        features={[
-          {
-            icon: DollarSign,
-            title: "$15.3M in Refunds",
-            description: "Total refunds secured for clients in 2025. Average refund: $3,127. Largest refund: $12,847 (EITC + Child Tax Credit).",
-            color: "green"
-          },
-          {
-            icon: Clock,
-            title: "7-14 Day Processing",
-            description: "E-filed returns processed in 7-14 days. Direct deposit setup included. Track your refund status online 24/7.",
-            color: "blue"
-          },
-          {
-            icon: Award,
-            title: "IRS-Certified Preparers",
-            description: "All preparers pass IRS competency exam. 15+ years average experience. Accuracy guarantee on every return.",
-            color: "orange"
-          },
-          {
-            icon: FileCheck,
-            title: "100% Audit Support",
-            description: "If you get audited, we stand behind our work. Free audit assistance for all clients. Zero additional fees.",
-            color: "purple"
-          },
-          {
-            icon: TrendingUp,
-            title: "Maximum Deductions",
-            description: "We find every credit and deduction. EITC, Child Tax Credit, Education Credits, Business Expenses - we catch them all.",
-            color: "teal"
-          },
-          {
-            icon: Zap,
-            title: "Same-Day Service",
-            description: "Most returns completed same day. Walk in with documents, walk out with confirmation. Refund in 7-14 days.",
-            color: "red"
-          }
-        ]}
-        columns={3}
-      />
-
-      {/* Urgency CTA Section */}
-      <section className="bg-gradient-to-r from-orange-600 to-red-600 py-16">
-        <div className="max-w-4xl mx-auto px-6 text-center text-white">
-          <div className="text-sm font-bold uppercase tracking-wider mb-4">
-            ⏰ DEADLINE APPROACHING
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative min-h-[550px] flex items-center overflow-hidden">
+        <Image
+          src="/images/business/tax-prep-certification.jpg"
+          alt="Tax Preparation Services"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-blue-800/80" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6">
+              <DollarSign className="w-4 h-4" />
+              Tax Season 2026 - File by April 15th
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+              Tax Preparation Services
+            </h1>
+            <p className="text-xl md:text-2xl text-blue-100 mb-8">
+              Choose the tax service that fits your needs. Free VITA tax preparation for 
+              eligible individuals or professional services through Supersonic Fast Cash.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/vita"
+                className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-bold transition-colors"
+              >
+                <Users className="w-5 h-5" />
+                Free VITA Tax Prep
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                href="/supersonic-fast-cash"
+                className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg text-lg font-bold transition-colors"
+              >
+                <Zap className="w-5 h-5" />
+                Supersonic Fast Cash
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-black mb-4">
-            File by April 15th or Face Penalties
-          </h2>
-          <p className="text-xl mb-8 text-white/90">
-            Late filing penalty: 5% per month (up to 25%). Late payment penalty: 0.5% per month. 
-            Interest compounds daily. Don't lose money to penalties - file now.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/tax/free"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-orange-600 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors"
-            >
-              Book Free VITA Appointment
-              <ArrowRight className="ml-2 w-5 h-5" />
+        </div>
+      </section>
+
+      {/* Quick Links Navigation */}
+      <section className="py-4 bg-gray-100 border-b">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="/vita" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
+              VITA Free Tax Prep
             </Link>
-            <Link
-              href="/tax/professional"
-              className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg text-lg font-bold hover:bg-white hover:text-orange-600 transition-colors"
-            >
-              Professional Tax Services (SupersonicFastCash)
-              <ArrowRight className="ml-2 w-5 h-5" />
+            <Link href="/supersonic-fast-cash" className="px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium hover:bg-red-200 transition-colors">
+              Supersonic Fast Cash
+            </Link>
+            <Link href="/vita/locations" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+              Locations
+            </Link>
+            <Link href="/vita/what-to-bring" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+              What to Bring
+            </Link>
+            <Link href="/tax/volunteer" className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors">
+              Volunteer
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Choose Your Option */}
-      <section className="py-16 bg-white">
+      {/* Two Options Section */}
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-black mb-12 text-center">
-            Choose the Option That Fits You
-          </h2>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+              Choose Your Tax Service
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              We offer two distinct tax preparation options to serve different needs
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Free Tax Prep */}
-            <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <Users className="w-10 h-10 text-brand-green-600" />
-                <div>
-                  <h3 className="text-2xl font-bold text-black">
-                    Rise Up Foundation
-                  </h3>
-                  <p className="text-green-700 font-semibold">
-                    Free tax preparation for eligible individuals and families
-                  </p>
+            {/* VITA Free Tax Prep */}
+            <div className="bg-white rounded-2xl border-2 border-green-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div className="relative h-48">
+                <Image
+                  src="/images/business/collaboration-1.jpg"
+                  alt="VITA Free Tax Preparation"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    100% FREE
+                  </span>
                 </div>
               </div>
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                    <Users className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">VITA Tax Preparation</h3>
+                    <p className="text-green-600 font-semibold">Rise Up Foundation</p>
+                  </div>
+                </div>
 
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-black">No cost</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-black">
-                    IRS-aligned volunteer program
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-black">Appointment-based</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-black">
-                    Secure document handling
-                  </span>
-                </li>
-              </ul>
+                <p className="text-gray-600 mb-6">
+                  Free tax preparation for individuals and families earning under $64,000. 
+                  IRS-certified volunteers help you file accurately and claim all credits you deserve.
+                </p>
 
-              <Link
-                href="/tax/free"
-                className="block w-full text-center px-6 py-3 bg-brand-green-600 hover:bg-green-700 text-white rounded-lg font-bold transition-colors mb-4"
-              >
-                Get Free Tax Help
-              </Link>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">No cost - completely free service</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">IRS-certified volunteer preparers</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">EITC, Child Tax Credit, Education Credits</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">E-file with direct deposit</span>
+                  </li>
+                </ul>
 
-              <p className="text-xs text-black italic">
-                Free tax services are provided through Rise Up Foundation and
-                follow IRS VITA/TCE guidelines.
-              </p>
+                <Link
+                  href="/vita"
+                  className="block w-full text-center px-6 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold transition-colors"
+                >
+                  Get Free Tax Help
+                  <ArrowRight className="inline-block w-5 h-5 ml-2" />
+                </Link>
+              </div>
             </div>
 
-            {/* Paid Tax Prep */}
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <Building2 className="w-10 h-10 text-brand-blue-600" />
-                <div>
-                  <h3 className="text-2xl font-bold text-black">
-                    SupersonicFastCash
-                  </h3>
-                  <p className="text-blue-700 font-semibold">
-                    Professional tax preparation for individuals and businesses
-                  </p>
+            {/* Supersonic Fast Cash */}
+            <div className="bg-white rounded-2xl border-2 border-red-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div className="relative h-48">
+                <Image
+                  src="/images/business/professional-1.jpg"
+                  alt="Supersonic Fast Cash Tax Services"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-red-900/80 to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    PROFESSIONAL
+                  </span>
                 </div>
               </div>
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                    <Zap className="w-6 h-6 text-red-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">Supersonic Fast Cash</h3>
+                    <p className="text-red-600 font-semibold">Professional Tax Services</p>
+                  </div>
+                </div>
 
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-black">Experienced preparers</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-black">Fast turnaround</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-black">
-                    Business & self-employed support
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-black">
-                    Secure upload & appointments
-                  </span>
-                </li>
-              </ul>
+                <p className="text-gray-600 mb-6">
+                  Professional tax preparation for all income levels. Fast refunds, 
+                  same-day advances available, and support for complex tax situations.
+                </p>
 
-              <Link
-                href="/tax/professional"
-                className="block w-full text-center px-6 py-3 bg-brand-blue-600 hover:bg-brand-blue-700 text-white rounded-lg font-bold transition-colors mb-4"
-              >
-                Book Paid Tax Services
-              </Link>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">Same-day refund advances available</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">Business & self-employment returns</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">Complex tax situations welcome</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">Multiple locations & online filing</span>
+                  </li>
+                </ul>
 
-              <p className="text-xs text-black italic">
-                Paid tax services are provided by SupersonicFastCash, a
-                for-profit tax preparation business.
-              </p>
+                <Link
+                  href="/supersonic-fast-cash"
+                  className="block w-full text-center px-6 py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold transition-colors"
+                >
+                  Get Started Now
+                  <ArrowRight className="inline-block w-5 h-5 ml-2" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Compliance Notice */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-12 bg-amber-50">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="bg-white border-l-4 border-orange-500 p-6 rounded-lg shadow-sm">
+          <div className="bg-white border-l-4 border-amber-500 p-6 rounded-lg shadow-sm">
             <div className="flex items-start gap-4">
-              <AlertCircle className="w-8 h-8 text-brand-orange-600 flex-shrink-0 mt-1" />
+              <AlertCircle className="w-8 h-8 text-amber-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-black mb-3">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
                   Important Compliance Notice
                 </h3>
-                <p className="text-black leading-relaxed mb-2">
-                  Free and paid tax services are operated separately. Clients
-                  must choose one service path.
+                <p className="text-gray-700 leading-relaxed mb-2">
+                  <strong>VITA (Free Tax Prep)</strong> is provided through Rise Up Foundation, 
+                  a nonprofit organization. Services are free and performed by IRS-certified volunteers.
                 </p>
-                <p className="text-black leading-relaxed">
-                  Volunteers involved in free tax services do not receive
-                  compensation for tax preparation.
+                <p className="text-gray-700 leading-relaxed mb-2">
+                  <strong>Supersonic Fast Cash</strong> is a separate for-profit tax preparation business. 
+                  Fees apply for professional services.
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  These services operate independently. Clients must choose one service path. 
+                  Volunteers in the VITA program do not receive compensation for tax preparation.
                 </p>
               </div>
             </div>
@@ -274,58 +272,136 @@ export default function TaxServicesPage() {
         </div>
       </section>
 
+      {/* Features Grid */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+              Why Choose Our Tax Services
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Professional, accurate tax preparation you can trust
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                <DollarSign className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Maximum Refund</h3>
+              <p className="text-gray-600">
+                We find every credit and deduction you qualify for - EITC, Child Tax Credit, 
+                Education Credits, and more.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                <Clock className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Fast Processing</h3>
+              <p className="text-gray-600">
+                E-filed returns processed quickly. Direct deposit setup included. 
+                Track your refund status online.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                <Award className="w-6 h-6 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">IRS-Certified</h3>
+              <p className="text-gray-600">
+                All preparers pass IRS competency exams. Accuracy guarantee on every return we prepare.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                <Shield className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Audit Support</h3>
+              <p className="text-gray-600">
+                If you get audited, we stand behind our work. Audit assistance included for all clients.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
+                <Calculator className="w-6 h-6 text-teal-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">All Tax Situations</h3>
+              <p className="text-gray-600">
+                From simple W-2 returns to complex business taxes, self-employment, and investments.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+                <MapPin className="w-6 h-6 text-red-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Convenient Locations</h3>
+              <p className="text-gray-600">
+                Multiple locations across Indiana. Walk in with your documents and we&apos;ll take care of the rest.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Additional Resources */}
-      <section className="py-16 bg-white">
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-black mb-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
             Additional Resources
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
             <Link
               href="/tax/volunteer"
-              className="bg-gray-50 p-6 rounded-lg border-2 border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group"
+              className="bg-white p-6 rounded-xl border-2 border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group"
             >
-              <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-green-600 transition-colors">
-                <Users className="w-6 h-6 text-brand-green-600 group-hover:text-white" />
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-600 transition-colors">
+                <Users className="w-6 h-6 text-green-600 group-hover:text-white" />
               </div>
-              <h3 className="text-lg font-bold text-black mb-2">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">
                 Volunteer With Us
               </h3>
-              <p className="text-sm text-black mb-4">
+              <p className="text-sm text-gray-600 mb-4">
                 Help your community by becoming a VITA volunteer tax preparer.
               </p>
-              <div className="flex items-center text-brand-green-600 font-semibold text-sm">
+              <div className="flex items-center text-green-600 font-semibold text-sm">
                 Learn More <ArrowRight className="w-4 h-4 ml-2" />
               </div>
             </Link>
 
             <Link
               href="/tax/upload"
-              className="bg-gray-50 p-6 rounded-lg border-2 border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group"
+              className="bg-white p-6 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group"
             >
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-blue-600 transition-colors">
-                <Shield className="w-6 h-6 text-brand-blue-600 group-hover:text-white" />
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors">
+                <FileCheck className="w-6 h-6 text-blue-600 group-hover:text-white" />
               </div>
-              <h3 className="text-lg font-bold text-black mb-2">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">
                 Secure Document Upload
               </h3>
-              <p className="text-sm text-black mb-4">
+              <p className="text-sm text-gray-600 mb-4">
                 Upload your tax documents securely for faster processing.
               </p>
-              <div className="flex items-center text-brand-blue-600 font-semibold text-sm">
+              <div className="flex items-center text-blue-600 font-semibold text-sm">
                 Upload Documents <ArrowRight className="w-4 h-4 ml-2" />
               </div>
             </Link>
 
-            <div className="bg-gray-50 p-6 rounded-lg border-2 border-gray-200">
+            <div className="bg-white p-6 rounded-xl border-2 border-gray-200">
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="text-lg font-bold text-black mb-2">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">
                 IRS Resources
               </h3>
-              <p className="text-sm text-black mb-4">
+              <p className="text-sm text-gray-600 mb-4">
                 Official IRS information and free tax preparation resources.
               </p>
               <div className="space-y-2">
@@ -338,16 +414,48 @@ export default function TaxServicesPage() {
                   IRS Free Tax Prep →
                 </a>
                 <a
-                  href="https://linklearncertification.com/"
+                  href="https://www.irs.gov/refunds"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-sm text-purple-600 hover:underline"
                 >
-                  Link & Learn Taxes →
+                  Where&apos;s My Refund? →
                 </a>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-blue-900">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-6">
+            Ready to File Your Taxes?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Don&apos;t wait until the last minute. Get your maximum refund today.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/vita"
+              className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-green-700 transition-colors"
+            >
+              Free VITA Tax Prep
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/supersonic-fast-cash"
+              className="inline-flex items-center justify-center gap-2 bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-red-700 transition-colors"
+            >
+              Supersonic Fast Cash
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+          <p className="mt-8 text-blue-200">
+            <Phone className="inline-block w-4 h-4 mr-2" />
+            Questions? Call us at (317) 314-3757
+          </p>
         </div>
       </section>
     </div>

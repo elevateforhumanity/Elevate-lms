@@ -167,59 +167,230 @@ export default function FundingPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Confirmation Section */}
-      <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Success Icon */}
-          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-            <CheckCircle className="w-12 h-12 text-green-600" />
+      {/* Hero with Image */}
+      <section className="relative min-h-[600px] flex items-center overflow-hidden">
+        <Image
+          src="/images/heroes/hero-state-funding.jpg"
+          alt="Free career training funding"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 py-20 text-center">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
+            {/* Success Icon */}
+            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <CheckCircle className="w-12 h-12 text-green-600" />
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-4xl md:text-5xl font-black mb-6 text-gray-900">
+              100% Free Training
+            </h1>
+
+            {/* Subheadline */}
+            <p className="text-2xl md:text-3xl font-bold mb-6 text-green-600">
+              No Tuition. No Student Debt. Ever.
+            </p>
+
+            {/* Description */}
+            <p className="text-xl text-gray-700 mb-6 max-w-2xl mx-auto leading-relaxed">
+              All training is funded through federal workforce programs like WIOA,
+              SNAP E&T, and JRI. You pay nothing. We handle all the paperwork.
+            </p>
+
+            {/* Quick Links */}
+            <div className="flex flex-wrap gap-3 justify-center mb-6">
+              <Link href="/wioa-eligibility" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
+                WIOA Eligibility
+              </Link>
+              <Link href="/financial-aid" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+                Financial Aid
+              </Link>
+              <Link href="/jri" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+                JRI Programs
+              </Link>
+              <Link href="/how-it-works" className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors">
+                How It Works
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Indiana Career Connect Instructions */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+              How to Get Free Training Through Indiana Career Connect
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Follow these steps to apply for WIOA funding and get your training paid for
+            </p>
           </div>
 
-          {/* Headline */}
-          <h1 className="text-4xl md:text-6xl font-black mb-6 uppercase">
-            100% Free Training
-          </h1>
+          <div className="bg-blue-50 border border-blue-200 rounded-2xl p-8 mb-10">
+            <h3 className="text-2xl font-bold text-blue-900 mb-6 text-center">
+              Step-by-Step Instructions
+            </h3>
+            
+            <div className="space-y-6">
+              <div className="flex items-start gap-4 bg-white rounded-xl p-6 shadow-sm">
+                <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-lg mb-2">Create Your Indiana Career Connect Account</h4>
+                  <p className="text-gray-600 mb-3">
+                    Go to <strong>indianacareerconnect.com</strong> and click &quot;Create Account.&quot; 
+                    You&apos;ll need your email address, Social Security number, and basic contact information.
+                    This is the state&apos;s official workforce system - it&apos;s free and secure.
+                  </p>
+                  <ul className="text-sm text-gray-500 space-y-1">
+                    <li>• Have your ID and Social Security card ready</li>
+                    <li>• Use an email you check regularly</li>
+                    <li>• Complete your full profile including work history</li>
+                  </ul>
+                </div>
+              </div>
 
-          {/* Subheadline */}
-          <p className="text-2xl md:text-3xl font-bold mb-8">
-            No Tuition. No Student Debt. Ever.
-          </p>
+              <div className="flex items-start gap-4 bg-white rounded-xl p-6 shadow-sm">
+                <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-lg mb-2">Schedule an Appointment with WorkOne</h4>
+                  <p className="text-gray-600 mb-3">
+                    After creating your account, schedule an appointment with a WorkOne career advisor.
+                    You can do this online through Indiana Career Connect or by calling your local WorkOne office.
+                    The advisor will review your eligibility for WIOA funding.
+                  </p>
+                  <ul className="text-sm text-gray-500 space-y-1">
+                    <li>• Appointments are free and typically 30-60 minutes</li>
+                    <li>• Bring your ID, Social Security card, and proof of income</li>
+                    <li>• Tell them you want to enroll in training at Elevate for Humanity</li>
+                  </ul>
+                </div>
+              </div>
 
-          {/* Description */}
-          <p className="text-xl text-green-100 mb-6 max-w-2xl mx-auto leading-relaxed">
-            All training is funded through federal workforce programs like WIOA,
-            SNAP E&T, and JRI. You pay nothing. We handle all the paperwork.
-          </p>
-          
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 max-w-3xl mx-auto mb-10">
-            <h3 className="text-2xl font-bold mb-4">How It Works</h3>
-            <div className="space-y-3 text-left text-green-50">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" />
+              <div className="flex items-start gap-4 bg-white rounded-xl p-6 shadow-sm">
+                <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
                 <div>
-                  <strong className="text-white">Step 1:</strong> Visit Indiana Career Connect and create your free profile
+                  <h4 className="font-bold text-gray-900 text-lg mb-2">Get Your Eligibility Verified</h4>
+                  <p className="text-gray-600 mb-3">
+                    Your WorkOne advisor will verify your eligibility for WIOA funding based on your 
+                    income, employment status, and other factors. Most people who are unemployed, 
+                    underemployed, or low-income qualify.
+                  </p>
+                  <ul className="text-sm text-gray-500 space-y-1">
+                    <li>• Eligibility is based on household income and size</li>
+                    <li>• Veterans and their spouses get priority</li>
+                    <li>• Public assistance recipients often qualify automatically</li>
+                  </ul>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" />
+
+              <div className="flex items-start gap-4 bg-white rounded-xl p-6 shadow-sm">
+                <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">4</div>
                 <div>
-                  <strong className="text-white">Step 2:</strong> Schedule an appointment with a WorkOne career advisor
+                  <h4 className="font-bold text-gray-900 text-lg mb-2">Receive Your Training Voucher (ITA)</h4>
+                  <p className="text-gray-600 mb-3">
+                    Once approved, you&apos;ll receive an Individual Training Account (ITA) voucher.
+                    This voucher covers 100% of your tuition at Elevate for Humanity.
+                    Bring this voucher to us to complete your enrollment.
+                  </p>
+                  <ul className="text-sm text-gray-500 space-y-1">
+                    <li>• The ITA covers tuition, books, and certification fees</li>
+                    <li>• You may also qualify for support services (transportation, childcare)</li>
+                    <li>• Processing typically takes 1-2 weeks</li>
+                  </ul>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" />
+
+              <div className="flex items-start gap-4 bg-white rounded-xl p-6 shadow-sm">
+                <div className="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">5</div>
                 <div>
-                  <strong className="text-white">Step 3:</strong> Your advisor verifies eligibility and approves funding
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" />
-                <div>
-                  <strong className="text-white">Step 4:</strong> Bring your training voucher to us and start your program
+                  <h4 className="font-bold text-gray-900 text-lg mb-2">Start Your Training!</h4>
+                  <p className="text-gray-600 mb-3">
+                    Bring your ITA voucher to Elevate for Humanity and we&apos;ll complete your enrollment.
+                    You&apos;ll start your training program with $0 out of pocket.
+                    We&apos;ll also help you track your progress and prepare for employment.
+                  </p>
+                  <ul className="text-sm text-gray-500 space-y-1">
+                    <li>• We handle all paperwork with WorkOne</li>
+                    <li>• Career coaching and job placement included</li>
+                    <li>• Support services available throughout your training</li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* CTA Button */}
+          <div className="text-center">
+            <a
+              href="https://www.indianacareerconnect.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-blue-600 text-white px-10 py-5 rounded-xl font-bold text-xl hover:bg-blue-700 transition-colors shadow-lg"
+            >
+              Make Your Appointment on Indiana Career Connect
+              <ArrowRight className="w-6 h-6" />
+            </a>
+            <p className="text-gray-500 mt-4 text-sm">
+              Opens indianacareerconnect.com in a new tab
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* What Happens After */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-black text-gray-900 mb-8 text-center">
+            What Happens After You Make Your Appointment?
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                <CheckCircle className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">We Track Your Progress</h3>
+              <p className="text-gray-600">
+                Once you start the process, we monitor your application status and help 
+                resolve any issues. You&apos;ll receive updates at each milestone.
+              </p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Dedicated Support</h3>
+              <p className="text-gray-600">
+                Our enrollment team is available to answer questions and guide you 
+                through the process. Call us at (317) 314-3757 anytime.
+              </p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                <FileText className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Paperwork Assistance</h3>
+              <p className="text-gray-600">
+                Need help with forms or documentation? We can help you gather 
+                the required documents and complete applications correctly.
+              </p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                <Clock className="w-6 h-6 text-orange-600" />
+              </div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Fast Processing</h3>
+              <p className="text-gray-600">
+                Most applications are processed within 1-2 weeks. We work with 
+                WorkOne to expedite your approval so you can start training quickly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
