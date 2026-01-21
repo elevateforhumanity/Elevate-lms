@@ -113,7 +113,7 @@ export default function SiteHeader() {
             </Link>
 
             {/* Desktop Navigation - show on lg (1024px) and up for iPad/tablet compatibility */}
-            <nav className="hidden lg:flex items-center h-full">
+            <nav className="hidden md:flex items-center h-full">
               {NAV_ITEMS.map((item) => (
                 <div key={item.name} className="relative h-full group">
                   <Link
@@ -152,7 +152,7 @@ export default function SiteHeader() {
               {/* Phone number - desktop only */}
               <a
                 href="tel:317-314-3757"
-                className="hidden lg:inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 (317) 314-3757
@@ -160,21 +160,21 @@ export default function SiteHeader() {
               {user ? (
                 <Link
                   href="/lms/dashboard"
-                  className="hidden lg:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                  className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
                 >
                   Dashboard
                 </Link>
               ) : (
                 <Link
                   href="/login"
-                  className="hidden lg:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                  className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
                 >
                   Sign In
                 </Link>
               )}
               <Link
                 href="/apply"
-                className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                className="hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
               >
                 Apply Now
               </Link>
@@ -182,7 +182,7 @@ export default function SiteHeader() {
               {/* Mobile menu button - show on smaller screens (below lg/1024px) */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="lg:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
+                className="md:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -194,7 +194,7 @@ export default function SiteHeader() {
 
       {/* Mobile Menu - shows on screens below lg (1024px) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] lg:hidden">
+        <div className="fixed inset-0 z-[100] md:hidden">
           <div 
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileMenuOpen(false)}
