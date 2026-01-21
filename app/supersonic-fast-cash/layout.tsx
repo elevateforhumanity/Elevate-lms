@@ -1,7 +1,4 @@
 import { Metadata } from 'next';
-import { SupersonicHeader } from './components/Header';
-import { SupersonicFooter } from './components/Footer';
-// Note: Chat widget is provided by root layout - do not duplicate
 
 export const metadata: Metadata = {
   title: 'Supersonic Fast Cash | Tax Preparation & Refund Services',
@@ -30,11 +27,5 @@ export default function SupersonicFastCashLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <SupersonicHeader />
-      <main>{children}</main>
-      <SupersonicFooter />
-    </>
-  );
+  return <>{children}</>;
 }

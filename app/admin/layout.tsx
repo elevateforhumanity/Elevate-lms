@@ -1,11 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
-// Image asset: /images/programs-new/program-12.jpg
 import { redirect } from 'next/navigation';
 import { requireAdmin } from '@/lib/auth';
-import AdminNav from '@/components/AdminNav';
-import AdminHeader from '@/components/AdminHeader';
-import SiteFooter from '@/components/layout/SiteFooter';
 
 export const dynamic = 'force-dynamic';
 
@@ -42,19 +38,5 @@ export default async function AdminLayout({
     redirect('/admin/login?redirect=/admin');
   }
 
-  return (
-    <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar Navigation */}
-      <AdminNav />
-
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col">
-        {/* Top Header with Sign Out */}
-        <AdminHeader />
-
-        {/* Page Content */}
-        <main className="flex-1">{children}</main>
-      </div>
-    </div>
-  );
+  return <>{children}</>;
 }
