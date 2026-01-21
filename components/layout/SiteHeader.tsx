@@ -142,13 +142,13 @@ export default function SiteHeader() {
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center h-full">
+            {/* Desktop Navigation - visible on md (768px) and up */}
+            <nav className="hidden md:flex items-center h-full">
               {NAV_ITEMS.map((item) => (
                 <div key={item.name} className="relative h-full group">
                   <Link
                     href={item.href}
-                    className={`relative h-full flex items-center gap-1 px-3 lg:px-4 text-sm font-medium transition-colors
+                    className={`relative h-full flex items-center gap-1 px-2 md:px-3 lg:px-4 text-xs md:text-sm font-medium transition-colors
                       before:absolute before:bottom-0 before:left-2 before:right-2 before:h-[3px] before:bg-blue-600 
                       before:opacity-0 before:transition-opacity group-hover:before:opacity-100
                       text-gray-700 hover:text-gray-900
@@ -209,10 +209,10 @@ export default function SiteHeader() {
                 Apply Now
               </Link>
 
-              {/* Mobile menu button */}
+              {/* Mobile menu button - only on small screens */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="lg:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
+                className="md:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -222,9 +222,9 @@ export default function SiteHeader() {
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - only on small screens */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] lg:hidden">
+        <div className="fixed inset-0 z-[100] md:hidden">
           <div 
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileMenuOpen(false)}
