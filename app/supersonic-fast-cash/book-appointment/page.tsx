@@ -25,6 +25,8 @@ const stripePromise = loadStripe(
 // Calendly widget script
 const CALENDLY_SCRIPT = 'https://assets.calendly.com/assets/external/widget.js';
 const CALENDLY_LINK = 'https://calendly.com/elevateforhumanity/paid-tax-services';
+const CALENDLY_VIDEO_LINK = 'https://calendly.com/elevateforhumanity/video-tax-consultation';
+const CALENDLY_PHONE_LINK = 'https://calendly.com/elevateforhumanity/phone-tax-consultation';
 
 
 
@@ -156,10 +158,19 @@ export default function BookAppointment() {
     };
   }, []);
 
-  const openCalendly = () => {
+  const openCalendly = (type?: string) => {
     if (typeof window !== 'undefined' && (window as any).Calendly) {
+      let calendlyUrl = CALENDLY_LINK;
+      
+      // Select appropriate Calendly link based on appointment type
+      if (type === 'video' || appointmentData.appointmentType === 'video') {
+        calendlyUrl = CALENDLY_VIDEO_LINK;
+      } else if (type === 'phone' || appointmentData.appointmentType === 'phone') {
+        calendlyUrl = CALENDLY_PHONE_LINK;
+      }
+      
       (window as any).Calendly.initPopupWidget({
-        url: CALENDLY_LINK,
+        url: calendlyUrl,
         prefill: {
           name: `${appointmentData.firstName} ${appointmentData.lastName}`,
           email: appointmentData.email,
@@ -170,6 +181,11 @@ export default function BookAppointment() {
         }
       });
     }
+  };
+  
+  // Direct video call booking
+  const openVideoCall = () => {
+    openCalendly('video');
   };
 
   const handlePayment = async () => {

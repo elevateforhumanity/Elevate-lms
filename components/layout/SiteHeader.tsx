@@ -68,8 +68,8 @@ const NAV_ITEMS = [
     subItems: [
       { name: 'Free Tax Help (VITA)', href: '/vita' },
       { name: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
+      { name: 'Career Services', href: '/career-services' },
       { name: 'Store', href: '/store' },
-      { name: 'Videos & Demos', href: '/videos' },
     ]
   },
   { 
@@ -78,6 +78,7 @@ const NAV_ITEMS = [
     subItems: [
       { name: 'Our Mission', href: '/about/mission' },
       { name: 'Our Team', href: '/about/team' },
+      { name: 'Join Our Team', href: '/careers' },
       { name: 'Success Stories', href: '/success-stories' },
       { name: 'Locations', href: '/locations' },
       { name: 'Contact', href: '/contact' },
