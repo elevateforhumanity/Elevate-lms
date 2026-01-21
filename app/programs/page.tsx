@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { 
   Heart, 
   Wrench, 
@@ -157,6 +158,16 @@ export default function ProgramsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* AI Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/hero-programs-avatar.mp4"
+        avatarName="Albert"
+        position="bottom-right"
+        size="medium"
+        showOnLoad={true}
+        autoPlay={false}
+      />
+      
       {/* Hero */}
       <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
         <video

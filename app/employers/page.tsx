@@ -11,6 +11,7 @@ import {
   Phone,
   Building2,
 } from 'lucide-react';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 export const metadata: Metadata = {
   title: 'For Employers | Elevate for Humanity',
@@ -24,6 +25,16 @@ export const metadata: Metadata = {
 export default function EmployersPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* AI Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/hero-employers-avatar.mp4"
+        avatarName="Albert"
+        position="bottom-right"
+        size="medium"
+        showOnLoad={true}
+        autoPlay={false}
+      />
+      
       {/* Hero with Image */}
       <section className="relative min-h-[550px] flex items-center overflow-hidden">
         <Image

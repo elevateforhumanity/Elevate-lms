@@ -12,6 +12,8 @@ const programData: ProgramData = {
   categoryHref: '/programs/skilled-trades',
   description: 'Get your Class A Commercial Driver License and start a trucking career. High demand, competitive pay.',
   image: '/images/trades/hero-program-hvac.jpg',
+  avatarVideo: '/videos/hero-cdl-avatar.mp4',
+  avatarName: 'Amanda',
   duration: '4-8 weeks',
   tuition: '$0*',
   salary: '$50K+',

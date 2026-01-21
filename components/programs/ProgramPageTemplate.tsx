@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FundingBadge } from './FundingBadge';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 export type OutcomeItem = string | { title: string; description: string };
 
@@ -23,6 +24,8 @@ export interface ProgramData {
   outcomes: OutcomeItem[];
   requirements?: string[];
   relatedPrograms?: { title: string; href: string; description: string }[];
+  avatarVideo?: string;
+  avatarName?: string;
 }
 
 interface ProgramPageTemplateProps {
@@ -32,6 +35,18 @@ interface ProgramPageTemplateProps {
 export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
   return (
     <>
+      {/* AI Avatar Guide */}
+      {program.avatarVideo && (
+        <AvatarVideoOverlay 
+          videoSrc={program.avatarVideo}
+          avatarName={program.avatarName || 'AI Guide'}
+          position="bottom-right"
+          size="medium"
+          showOnLoad={true}
+          autoPlay={false}
+        />
+      )}
+      
       {/* Hero Image */}
       <section className="relative h-[40vh] min-h-[300px] lg:h-[50vh] lg:min-h-[400px] bg-gray-100">
         <Image

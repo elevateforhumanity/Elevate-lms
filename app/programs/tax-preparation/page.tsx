@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 export const dynamic = 'force-dynamic';
 
@@ -42,6 +43,16 @@ export default async function Page() {
     .single();
   return (
     <div className="min-h-screen bg-white">
+      {/* AI Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/hero-tax-avatar.mp4"
+        avatarName="Abigail"
+        position="bottom-right"
+        size="medium"
+        showOnLoad={true}
+        autoPlay={false}
+      />
+      
       {/* Hero with Picture */}
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[70vh] w-full overflow-hidden">

@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from 'react';
 
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 
 
@@ -53,7 +54,15 @@ export default function HealthcareProgramsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-
+      {/* AI Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/hero-healthcare-avatar.mp4"
+        avatarName="Adriana"
+        position="bottom-right"
+        size="medium"
+        showOnLoad={true}
+        autoPlay={false}
+      />
 
       {/* Hero */}
       <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
