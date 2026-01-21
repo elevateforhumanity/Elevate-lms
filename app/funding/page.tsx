@@ -13,6 +13,7 @@ import {
   CheckCircle,
   ArrowRight,
   Briefcase,
+  Clock,
 } from 'lucide-react';
 
 
