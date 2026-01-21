@@ -1,23 +1,5 @@
 'use client';
 
-/**
- * ============================================================================
- * LOCKED COMPONENT - DO NOT MODIFY WITHOUT CAREFUL TESTING
- * ============================================================================
- * 
- * This header is working correctly on all screen sizes (mobile, tablet, laptop, desktop).
- * 
- * RULES:
- * 1. DO NOT add "hidden" classes to the nav element
- * 2. DO NOT change breakpoints (sm, md, lg, xl) without testing all devices
- * 3. Keep NAV_ITEMS to 5 or fewer items to prevent overflow
- * 4. Test on laptop (1024px-1366px) after ANY changes
- * 
- * Backup: SiteHeader.backup.tsx
- * Last working commit: 9867f917
- * ============================================================================
- */
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
