@@ -15,9 +15,9 @@ const NAV_ITEMS = [
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
       { name: 'CDL & Transportation', href: '/programs/cdl-transportation' },
+      { name: 'Tax Preparation', href: '/programs/tax-preparation' },
       { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
-      { name: 'All Apprenticeships', href: '/apprenticeships' },
-      { name: 'Courses', href: '/courses' },
+      { name: 'All Courses', href: '/courses' },
     ]
   },
   { 
@@ -26,19 +26,32 @@ const NAV_ITEMS = [
     subItems: [
       { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
       { name: 'Funding Options', href: '/funding' },
-      { name: 'JRI Programs', href: '/jri' },
       { name: 'Financial Aid', href: '/financial-aid' },
+      { name: 'Career Services', href: '/career-services' },
       { name: 'FAQ', href: '/faq' },
     ]
   },
   { 
-    name: 'For Employers', 
-    href: '/employers',
+    name: 'Portals', 
+    href: '/dashboards',
     subItems: [
+      { name: 'Student Portal', href: '/student-portal' },
+      { name: 'LMS Dashboard', href: '/lms/dashboard' },
+      { name: 'Employer Portal', href: '/employer-portal' },
+      { name: 'Partner Portal', href: '/partner' },
+      { name: 'Staff Portal', href: '/staff-portal' },
       { name: 'Hire Graduates', href: '/hire-graduates' },
       { name: 'Partner With Us', href: '/partners' },
-      { name: 'OJT & Funding', href: '/ojt-and-funding' },
-      { name: 'Workforce Partners', href: '/workforce-partners' },
+    ]
+  },
+  { 
+    name: 'Services', 
+    href: '/services',
+    subItems: [
+      { name: 'Free Tax Help (VITA)', href: '/vita' },
+      { name: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
+      { name: 'Store', href: '/store' },
+      { name: 'Videos & Demos', href: '/videos' },
     ]
   },
   { 
@@ -46,24 +59,10 @@ const NAV_ITEMS = [
     href: '/about',
     subItems: [
       { name: 'Our Mission', href: '/about/mission' },
-      { name: 'Our Team', href: '/team' },
-      { name: 'Founder', href: '/founder' },
-      { name: 'Partners', href: '/partners' },
-      { name: 'Accreditation', href: '/accreditation' },
+      { name: 'Our Team', href: '/about/team' },
       { name: 'Success Stories', href: '/success-stories' },
       { name: 'Locations', href: '/locations' },
       { name: 'Contact', href: '/contact' },
-    ]
-  },
-  { 
-    name: 'Resources', 
-    href: '/blog',
-    subItems: [
-      { name: 'Blog', href: '/blog' },
-      { name: 'News', href: '/news' },
-      { name: 'Events', href: '/events' },
-      { name: 'Careers', href: '/careers' },
-      { name: 'Donate', href: '/donate' },
     ]
   },
 ];
