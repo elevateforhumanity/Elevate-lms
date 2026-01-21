@@ -137,7 +137,7 @@ export default function GroupsPage() {
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    
                     <div className="absolute bottom-3 left-3 right-3">
                       <span className="bg-white/90 text-gray-800 text-xs font-medium px-2 py-1 rounded">
                         {group.category}

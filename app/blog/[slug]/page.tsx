@@ -121,7 +121,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/40" />
+        
         <div className="relative z-10 max-w-4xl mx-auto px-6 pb-12 w-full">
           <Link 
             href="/blog" 

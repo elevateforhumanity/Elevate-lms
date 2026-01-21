@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, User, Mail, Phone, Calendar, MapPin, GraduationCap, Save, CheckCircle } from 'lucide-react';
 
@@ -11,13 +11,25 @@ export default function AddStudentPage() {
     address: '', city: '', state: 'IN', zip: '', program: '', startDate: '', fundingSource: '', notes: '',
   });
 
-  const programs = [
-    { id: 'cna', name: 'CNA Certification' },
-    { id: 'phlebotomy', name: 'Phlebotomy Technician' },
-    { id: 'hvac', name: 'HVAC Technician' },
-    { id: 'barber', name: 'Barber Apprenticeship' },
-    { id: 'it-support', name: 'IT Support Specialist' },
-  ];
+  const [programs, setPrograms] = useState<{id: string, name: string}[]>([]);
+  const [loadingPrograms, setLoadingPrograms] = useState(true);
+
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs) {
+          setPrograms(data.programs.map((p: any) => ({ id: p.slug, name: p.name })));
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoadingPrograms(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
 
   const fundingSources = [
     { id: 'wioa', name: 'WIOA Adult' },

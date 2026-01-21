@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   AlertTriangle,
   Check,
@@ -971,18 +971,28 @@ function Step4Authorization({
 }
 
 function Step5Program({ formData, updateField }: any) {
-  const programs = [
-    'Medical Assistant',
-    'HVAC Technician',
-    'Building Maintenance',
-    'Barber Apprenticeship',
-    'Phlebotomy Technician',
-    'Tax Preparation',
-    "CDL (Commercial Driver's License)",
-    'Direct Support Professional',
-    'Home Health Aide',
-    'Other',
-  ];
+  const [programs, setPrograms] = useState<string[]>([]);
+  const [loadingPrograms, setLoadingPrograms] = useState(true);
+
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs) {
+          const programNames = data.programs.map((p: any) => p.name);
+          programNames.push('Other');
+          setPrograms(programNames);
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+        setPrograms(['Other']);
+      } finally {
+        setLoadingPrograms(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -1004,8 +1014,9 @@ function Step5Program({ formData, updateField }: any) {
           onChange={(e) => updateField('program', e.target.value)}
           className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
           required
+          disabled={loadingPrograms}
         >
-          <option value="">Select a program...</option>
+          <option value="">{loadingPrograms ? 'Loading programs...' : 'Select a program...'}</option>
           {programs.map((prog) => (
             <option key={prog} value={prog}>
               {prog}

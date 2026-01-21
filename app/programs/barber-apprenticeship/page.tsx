@@ -49,7 +49,7 @@ export default async function BarberApprenticeshipPage() {
             muted
             playsInline
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+          
         </div>
 
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-32 md:py-40">

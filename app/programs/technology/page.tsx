@@ -7,37 +7,50 @@ import { useEffect, useState, useRef } from 'react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
 
+interface Program {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  category: string;
+  duration_weeks: number;
+  price: number;
+  certification: string;
+  is_active: boolean;
+}
 
-
-const programs = [
-  {
-    title: 'IT Support',
-    duration: '8-12 Weeks',
-    description: 'CompTIA A+ certification and help desk skills.',
-    href: '/programs/technology/it-support',
-    image: '/images/technology/hero-program-it-support.jpg',
-  },
-  {
-    title: 'Cybersecurity',
-    duration: '12-16 Weeks',
-    description: 'Protect networks and systems from cyber threats.',
-    href: '/programs/technology/cybersecurity',
-    image: '/images/technology/hero-program-cybersecurity.jpg',
-  },
-  {
-    title: 'Web Development',
-    duration: '16-20 Weeks',
-    description: 'Build websites and web applications.',
-    href: '/programs/technology/web-development',
-    image: '/images/technology/hero-program-web-dev.jpg',
-  },
-];
-
-
+const programImages: Record<string, string> = {
+  'it-support-specialist': '/images/technology/hero-program-it-support.jpg',
+  'it-support': '/images/technology/hero-program-it-support.jpg',
+  'cybersecurity-analyst': '/images/technology/hero-program-cybersecurity.jpg',
+  'cybersecurity': '/images/technology/hero-program-cybersecurity.jpg',
+  'web-development': '/images/technology/hero-program-web-dev.jpg',
+  'data-analytics': '/images/technology/hero-program-it-support.jpg',
+  'default': '/images/technology/hero-programs-technology.jpg',
+};
 
 export default function TechnologyProgramsPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs?category=technology');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs?.length > 0) {
+          setPrograms(data.programs);
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowContent(true), 100);
@@ -70,7 +83,7 @@ export default function TechnologyProgramsPage() {
           <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>
         
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+        
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
           <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -99,37 +112,50 @@ export default function TechnologyProgramsPage() {
       {/* Programs Grid */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
-            {programs.map((program) => (
-              <Link
-                key={program.title}
-                href={program.href}
-                className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
-              >
-                <div className="relative h-48">
-                  <Image
-                    src={program.image}
-                    alt={program.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    quality={85}
-                  />
-                  <div className="absolute top-3 right-3 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    {program.duration}
+          {loading ? (
+            <div className="grid md:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-100 rounded-xl h-80 animate-pulse" />
+              ))}
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-6">
+              {programs.map((program) => (
+                <Link
+                  key={program.id || program.slug}
+                  href={`/programs/${program.slug}`}
+                  className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={programImages[program.slug] || programImages['default']}
+                      alt={program.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      quality={85}
+                    />
+                    <div className="absolute top-3 right-3 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      {program.duration_weeks ? `${program.duration_weeks} Weeks` : 'Flexible'}
+                    </div>
+                    {program.price === 0 && (
+                      <div className="absolute top-3 left-3 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        Free
+                      </div>
+                    )}
                   </div>
-                </div>
-                <div className="p-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-2">
-                    {program.title}
-                  </h2>
-                  <p className="text-gray-600 mb-4">{program.description}</p>
-                  <span className="text-purple-600 font-semibold group-hover:underline">
-                    Learn More →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+                  <div className="p-6">
+                    <h2 className="text-xl font-bold text-gray-900 mb-2">
+                      {program.name}
+                    </h2>
+                    <p className="text-gray-600 mb-4 line-clamp-2">{program.description}</p>
+                    <span className="text-purple-600 font-semibold group-hover:underline">
+                      Learn More →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

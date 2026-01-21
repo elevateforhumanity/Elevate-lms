@@ -41,7 +41,7 @@ export default function CompanyProfilePage() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        
         <button className="absolute top-4 right-4 px-4 py-2 bg-white/90 rounded-lg hover:bg-white transition flex items-center gap-2 text-sm">
           <Camera className="w-4 h-4" />
           Change Cover

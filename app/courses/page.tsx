@@ -22,18 +22,11 @@ export const metadata: Metadata = {
   },
 };
 
-const fallbackCourses = [
-  { id: '1', title: 'HVAC Fundamentals', category: 'Trades', slug: 'hvac-fundamentals', image_url: '/images/trades/hero-program-hvac.jpg' },
-  { id: '2', title: 'Medical Assistant Certification', category: 'Healthcare', slug: 'medical-assistant', image_url: '/images/healthcare/program-cna-training.jpg' },
-  { id: '3', title: 'Professional Barber License', category: 'Beauty', slug: 'barber-license', image_url: '/images/barber-hero.jpg' },
-  { id: '4', title: 'CDL Class A Training', category: 'Transportation', slug: 'cdl-class-a', image_url: 'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=400' },
-];
-
 const categories = ['All', 'Healthcare', 'Trades', 'Beauty', 'Transportation', 'Technology'];
 
 export default async function CoursesPage() {
   const supabase = await createClient();
-  let courses = fallbackCourses;
+  let courses: any[] = [];
 
   if (supabase) {
     try {

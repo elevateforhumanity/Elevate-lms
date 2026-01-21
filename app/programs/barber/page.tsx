@@ -85,7 +85,7 @@ export default async function BarberProgramPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-800/80" />
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-white">
           <Link href="/programs" className="text-gray-300 hover:text-white mb-4 inline-block">
             ← All Programs

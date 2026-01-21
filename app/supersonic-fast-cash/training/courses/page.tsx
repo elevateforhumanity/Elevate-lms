@@ -42,66 +42,7 @@ export default async function TrainingCoursesPage() {
     .eq('is_active', true)
     .order('price', { ascending: true });
 
-  // Fallback courses if database is empty
-  const fallbackCourses: TrainingCourse[] = [
-    {
-      id: '1',
-      course_id: 'tax-basics',
-      title: 'Tax Preparation Fundamentals',
-      description: 'Complete beginner course covering everything you need to start preparing tax returns. No prior experience required!',
-      duration: '12 hours',
-      lessons_count: 24,
-      price: 199,
-      certification_name: 'Elevate for Humanity Tax Preparation Certificate',
-      is_active: true,
-    },
-    {
-      id: '2',
-      course_id: 'irs-regulations',
-      title: 'IRS Ethics & Professional Standards',
-      description: 'Learn IRS regulations, preparer responsibilities, and ethical standards to meet all compliance requirements.',
-      duration: '6 hours',
-      lessons_count: 12,
-      price: 149,
-      certification_name: 'Elevate for Humanity Ethics Certificate',
-      is_active: true,
-    },
-    {
-      id: '3',
-      course_id: 'advanced-returns',
-      title: 'Advanced Tax Strategies',
-      description: 'Master complex tax situations including rental property, investments, and multi-state returns.',
-      duration: '16 hours',
-      lessons_count: 20,
-      price: 199,
-      certification_name: 'Elevate for Humanity Advanced Tax Certificate',
-      is_active: true,
-    },
-    {
-      id: '4',
-      course_id: 'business-returns',
-      title: 'Business Tax Mastery',
-      description: 'Learn to prepare business returns for sole proprietors, partnerships, S-corps, and C-corps.',
-      duration: '20 hours',
-      lessons_count: 25,
-      price: 299,
-      certification_name: 'Elevate for Humanity Business Tax Certificate',
-      is_active: true,
-    },
-    {
-      id: '5',
-      course_id: 'software-mastery',
-      title: 'Professional Tax Software Excellence',
-      description: 'Master professional tax preparation software with real-world scenarios and hands-on practice.',
-      duration: '18 hours',
-      lessons_count: 22,
-      price: 249,
-      certification_name: 'Elevate for Humanity Tax Software Certificate',
-      is_active: true,
-    },
-  ];
-
-  const displayCourses = courses && courses.length > 0 ? courses : fallbackCourses;
+  const displayCourses = courses || [];
   const totalLessons = displayCourses.reduce((sum, c) => sum + c.lessons_count, 0);
 
   return (

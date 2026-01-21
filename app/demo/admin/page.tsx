@@ -1,14 +1,21 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Info, Menu, X, Home, Users, GraduationCap, FileText, Building2, Search, Plus, ChevronRight, Bell, Download, AlertCircle, CheckCircle, Clock } from 'lucide-react';
 
-
+interface Program {
+  name: string;
+  cat: string;
+  enrolled: number;
+  done: number;
+}
 
 export default function AdminDemo() {
   const [tab, setTab] = useState('home');
   const [search, setSearch] = useState('');
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loadingPrograms, setLoadingPrograms] = useState(true);
   const [students, setStudents] = useState([
     { id: 1, name: 'Darius Williams', email: 'd.williams@email.com', program: 'Barber', progress: 42, status: 'active', avatar: '/images/testimonials/student-marcus.jpg' },
     { id: 2, name: 'Sarah Mitchell', email: 's.mitchell@email.com', program: 'CNA', progress: 95, status: 'active', avatar: '/images/gallery/image9.jpg' },
@@ -17,16 +24,29 @@ export default function AdminDemo() {
     { id: 5, name: 'James Thompson', email: 'j.thompson@email.com', program: 'CDL', progress: 85, status: 'active', avatar: '/images/testimonials/student-graduate-testimonial.jpg' },
   ]);
 
-  const filtered = students.filter(s => s.name.toLowerCase().includes(search.toLowerCase()) || s.program.toLowerCase().includes(search.toLowerCase()));
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs) {
+          setPrograms(data.programs.slice(0, 6).map((p: any) => ({
+            name: p.name || p.title,
+            cat: p.category || 'General',
+            enrolled: Math.floor(Math.random() * 100) + 20,
+            done: Math.floor(Math.random() * 50) + 10,
+          })));
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoadingPrograms(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
 
-  const programs = [
-    { name: 'Barber Apprenticeship', cat: 'Trades', enrolled: 48, done: 12 },
-    { name: 'CNA Training', cat: 'Healthcare', enrolled: 124, done: 89 },
-    { name: 'HVAC Technician', cat: 'Trades', enrolled: 36, done: 8 },
-    { name: 'Medical Assistant', cat: 'Healthcare', enrolled: 67, done: 45 },
-    { name: 'Phlebotomy', cat: 'Healthcare', enrolled: 52, done: 38 },
-    { name: 'CDL Training', cat: 'Transport', enrolled: 28, done: 22 },
-  ];
+  const filtered = students.filter(s => s.name.toLowerCase().includes(search.toLowerCase()) || s.program.toLowerCase().includes(search.toLowerCase()));
 
   const activity = [
     { msg: 'Marcus J. enrolled in Barber', time: '15m ago', type: 'enroll' },

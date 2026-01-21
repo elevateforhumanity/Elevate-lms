@@ -100,9 +100,9 @@ export default async function CourseDetailPage({
             priority
           />
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600" />
+          
         )}
-        <div className="absolute inset-0 bg-black/50" />
+        
 
         <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
           <div className="max-w-3xl">

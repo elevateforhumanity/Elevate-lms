@@ -1,38 +1,41 @@
-import { Metadata } from 'next';
+'use client';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'Elevate for Humanity | Free Career Training',
-  description: 'Free career training and industry credentials for Indiana residents.',
-};
+interface ProgramCategory {
+  label: string;
+  title: string;
+  description: string;
+  features: string[];
+  href: string;
+  image: string;
+}
 
-const programs = [
-  {
+const categoryConfig: Record<string, Omit<ProgramCategory, 'features'>> = {
+  healthcare: {
     label: 'FOR CAREER CHANGERS',
     title: 'Healthcare Training',
     description: 'Get certified in high-demand healthcare roles.',
-    features: ['4-12 week programs', 'State certifications included', 'Job placement support'],
     href: '/programs/healthcare',
     image: '/images/healthcare/cna-training.jpg',
   },
-  {
+  trades: {
     label: 'FOR HANDS-ON LEARNERS',
     title: 'Skilled Trades',
     description: 'Build a career with in-demand trade skills.',
-    features: ['HVAC, CDL, Electrical', 'Industry credentials', 'High earning potential'],
     href: '/programs/skilled-trades',
     image: '/images/trades/hero-program-hvac.jpg',
   },
-  {
+  technology: {
     label: 'FOR TECH CAREERS',
     title: 'Technology Programs',
     description: 'Launch your career in IT and cybersecurity.',
-    features: ['CompTIA certifications', 'Hands-on labs', 'Remote work options'],
     href: '/programs/technology',
     image: '/images/technology/hero-program-it-support.jpg',
   },
-];
+};
 
 const testimonials = [
   {
@@ -58,6 +61,54 @@ const testimonials = [
 ];
 
 export default function HomePage() {
+  const [programs, setPrograms] = useState<ProgramCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs) {
+          const categoryMap: Record<string, string[]> = {};
+          
+          data.programs.forEach((p: any) => {
+            const cat = p.category?.toLowerCase() || 'other';
+            let normalizedCat = cat;
+            if (cat.includes('health')) normalizedCat = 'healthcare';
+            else if (cat.includes('trade') || cat.includes('barber') || cat.includes('beauty')) normalizedCat = 'trades';
+            else if (cat.includes('tech')) normalizedCat = 'technology';
+            
+            if (!categoryMap[normalizedCat]) {
+              categoryMap[normalizedCat] = [];
+            }
+            if (categoryMap[normalizedCat].length < 3) {
+              categoryMap[normalizedCat].push(p.name || p.title);
+            }
+          });
+
+          const cats: ProgramCategory[] = [];
+          ['healthcare', 'trades', 'technology'].forEach(key => {
+            const config = categoryConfig[key];
+            if (config && categoryMap[key]) {
+              cats.push({
+                ...config,
+                features: categoryMap[key],
+              });
+            }
+          });
+          
+          setPrograms(cats);
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
+
   return (
     <main>
       {/* Hero Section */}

@@ -92,7 +92,7 @@ export default function DrugTestingLandingPage() {
             priority
             quality={90}
           />
-          <div className="absolute inset-0 bg-black/50" />
+          
         </div>
         
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-20">
@@ -185,7 +185,7 @@ export default function DrugTestingLandingPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-black/30" />
+                  
                   <div className="absolute bottom-4 left-4">
                     <span className="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-bold">
                       From ${category.startingPrice}/person

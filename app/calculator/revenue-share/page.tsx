@@ -41,7 +41,7 @@ export default function RevenueShareCalculator() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/60"></div>
+        
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <Calculator className="w-16 h-16 mx-auto mb-4" />

@@ -7,37 +7,56 @@ import { useEffect, useState, useRef } from 'react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
 
+interface Program {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  category: string;
+  duration_weeks: number;
+  price: number;
+  certification: string;
+  is_active: boolean;
+}
 
-
-const programs = [
-  {
-    title: 'CNA Certification',
-    duration: '4-6 Weeks',
-    description: 'Become a Certified Nursing Assistant and start your healthcare career.',
-    href: '/programs/cna',
-    image: '/images/healthcare/hero-program-patient-care.jpg',
-  },
-  {
-    title: 'Direct Support Professional',
-    duration: '2-4 Weeks',
-    description: 'Support individuals with disabilities in daily living activities.',
-    href: '/programs/direct-support-professional',
-    image: '/images/healthcare/hero-program-medical-assistant.jpg',
-  },
-  {
-    title: 'Drug Collector',
-    duration: '1-2 Weeks',
-    description: 'Certified specimen collection for drug testing facilities.',
-    href: '/programs/drug-collector',
-    image: '/images/healthcare/hero-program-phlebotomy.jpg',
-  },
-];
-
-
+// Map program slugs to images
+const programImages: Record<string, string> = {
+  'cna': '/images/healthcare/hero-program-patient-care.jpg',
+  'cna-cert': '/images/healthcare/hero-program-patient-care.jpg',
+  'cna-training-wrg': '/images/healthcare/hero-program-patient-care.jpg',
+  'direct-support-professional': '/images/healthcare/hero-program-medical-assistant.jpg',
+  'dsp-training': '/images/healthcare/hero-program-medical-assistant.jpg',
+  'drug-collector': '/images/healthcare/hero-program-phlebotomy.jpg',
+  'medical-assistant': '/images/healthcare/hero-program-medical-assistant.jpg',
+  'phlebotomy-technician': '/images/healthcare/hero-program-phlebotomy.jpg',
+  'pharmacy-technician': '/images/healthcare/hero-program-medical-assistant.jpg',
+  'dental-assistant': '/images/healthcare/hero-program-patient-care.jpg',
+  'default': '/images/healthcare/hero-program-patient-care.jpg',
+};
 
 export default function HealthcareProgramsPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch programs from database
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs?category=healthcare');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs?.length > 0) {
+          setPrograms(data.programs);
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowContent(true), 100);
@@ -50,6 +69,19 @@ export default function HealthcareProgramsPage() {
     video.muted = true;
     video.play().catch(() => {});
   }, []);
+
+  const getImageForProgram = (slug: string) => {
+    return programImages[slug] || programImages['default'];
+  };
+
+  const formatDuration = (weeks: number) => {
+    if (!weeks) return 'Flexible';
+    if (weeks <= 2) return '1-2 Weeks';
+    if (weeks <= 4) return '2-4 Weeks';
+    if (weeks <= 6) return '4-6 Weeks';
+    if (weeks <= 8) return '6-8 Weeks';
+    return `${weeks} Weeks`;
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -70,7 +102,7 @@ export default function HealthcareProgramsPage() {
           <source src="/videos/cna-hero.mp4" type="video/mp4" />
         </video>
         
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+        
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
           <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -99,37 +131,50 @@ export default function HealthcareProgramsPage() {
       {/* Programs Grid */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
-            {programs.map((program) => (
-              <Link
-                key={program.title}
-                href={program.href}
-                className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
-              >
-                <div className="relative h-48">
-                  <Image
-                    src={program.image}
-                    alt={program.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    quality={85}
-                  />
-                  <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    {program.duration}
+          {loading ? (
+            <div className="grid md:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-100 rounded-xl h-80 animate-pulse" />
+              ))}
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-6">
+              {programs.map((program) => (
+                <Link
+                  key={program.id || program.slug}
+                  href={`/programs/${program.slug}`}
+                  className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={getImageForProgram(program.slug)}
+                      alt={program.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      quality={85}
+                    />
+                    <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      {formatDuration(program.duration_weeks)}
+                    </div>
+                    {program.price === 0 && (
+                      <div className="absolute top-3 left-3 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        Free
+                      </div>
+                    )}
                   </div>
-                </div>
-                <div className="p-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-2">
-                    {program.title}
-                  </h2>
-                  <p className="text-gray-600 mb-4">{program.description}</p>
-                  <span className="text-blue-600 font-semibold group-hover:underline">
-                    Learn More →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+                  <div className="p-6">
+                    <h2 className="text-xl font-bold text-gray-900 mb-2">
+                      {program.name}
+                    </h2>
+                    <p className="text-gray-600 mb-4 line-clamp-2">{program.description}</p>
+                    <span className="text-blue-600 font-semibold group-hover:underline">
+                      Learn More →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

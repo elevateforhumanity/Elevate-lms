@@ -52,7 +52,7 @@ export default async function Page() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-green-600/90 to-green-700/90" />
+          
           
           <div className="relative z-10 flex items-center justify-center min-h-[70vh]">
             <div className="max-w-5xl mx-auto px-6 text-center text-white">

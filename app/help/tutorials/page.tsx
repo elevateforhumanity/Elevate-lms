@@ -262,7 +262,7 @@ export default async function TutorialsPage() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/80" />
+        
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
@@ -304,7 +304,7 @@ export default async function TutorialsPage() {
               >
                 {/* Video Thumbnail Placeholder */}
                 <div className="relative h-48 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-black/20" />
+                  
                   <div className="relative z-10 w-16 h-16 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Play className="w-8 h-8 text-white ml-1" />
                   </div>

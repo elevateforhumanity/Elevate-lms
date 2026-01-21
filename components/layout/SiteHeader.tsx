@@ -68,7 +68,7 @@ const NAV_ITEMS = [
     name: 'LMS', 
     href: '/lms',
     subItems: [
-      { name: 'Student Dashboard', href: '/lms/dashboard' },
+      { name: 'Student Dashboard', href: '/lms' },
       { name: 'My Courses', href: '/lms/courses' },
       { name: 'Certificates', href: '/certificates' },
       { name: 'Leaderboard', href: '/leaderboard' },
@@ -108,7 +108,7 @@ const NAV_ITEMS = [
       { name: 'Events', href: '/events' },
       { name: 'Webinars', href: '/webinars' },
       { name: 'Support', href: '/support' },
-      { name: 'Downloads', href: '/downloads' },
+      { name: 'Help Center', href: '/help' },
     ]
   },
 ];
@@ -139,8 +139,57 @@ export default function SiteHeader() {
     setOpenDropdown(openDropdown === name ? null : name);
   };
 
+  // Close menu on Escape key and handle focus trap
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+        setOpenDropdown(null);
+        return;
+      }
+
+      // Focus trap: keep Tab within mobile menu
+      if (e.key === 'Tab') {
+        const menu = document.getElementById('mobile-menu');
+        if (!menu) return;
+
+        const focusableElements = menu.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement?.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement?.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    
+    // Focus first element when menu opens
+    const menu = document.getElementById('mobile-menu');
+    const firstFocusable = menu?.querySelector<HTMLElement>('a[href], button');
+    firstFocusable?.focus();
+
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
+
   return (
     <>
+      {/* Skip to main content link for keyboard/screen reader users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[10001] focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
+      >
+        Skip to main content
+      </a>
       <header className="fixed top-0 left-0 right-0 h-[70px] bg-white z-[9999] shadow-md">
         <div className="max-w-7xl mx-auto w-full h-full flex items-center justify-between px-4">
           {/* Logo */}
@@ -159,20 +208,20 @@ export default function SiteHeader() {
           </Link>
 
           {/* Desktop Navigation - hidden on mobile */}
-          <nav className="hidden lg:flex items-center gap-6">
-            <Link href="/programs" className="text-gray-700 hover:text-blue-600 font-medium text-sm">
+          <nav className="hidden lg:flex items-center gap-6" role="navigation" aria-label="Main navigation">
+            <Link href="/programs" className="text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded">
               Programs
             </Link>
-            <Link href="/how-it-works" className="text-gray-700 hover:text-blue-600 font-medium text-sm">
+            <Link href="/how-it-works" className="text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded">
               How It Works
             </Link>
-            <Link href="/wioa-eligibility" className="text-gray-700 hover:text-blue-600 font-medium text-sm">
+            <Link href="/wioa-eligibility" className="text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded">
               WIOA Funding
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium text-sm">
+            <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded">
               About
             </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium text-sm">
+            <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded">
               Contact
             </Link>
           </nav>
@@ -182,7 +231,7 @@ export default function SiteHeader() {
             {/* Sign In - desktop only */}
             <Link
               href={user ? "/lms/dashboard" : "/login"}
-              className="hidden lg:inline-flex text-gray-700 hover:text-blue-600 font-medium text-sm"
+              className="hidden lg:inline-flex text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
             >
               {user ? 'Dashboard' : 'Sign In'}
             </Link>
@@ -190,7 +239,7 @@ export default function SiteHeader() {
             {/* Apply Now button */}
             <Link
               href="/apply"
-              className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors"
+              className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               Apply Now
             </Link>
@@ -198,8 +247,10 @@ export default function SiteHeader() {
             {/* Menu button - visible on mobile/tablet, hidden on desktop */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden flex items-center justify-center w-10 h-10 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors"
+              className="lg:hidden flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-100 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
               aria-label="Open menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               <Menu className="w-6 h-6 text-gray-900" />
             </button>
@@ -217,7 +268,12 @@ export default function SiteHeader() {
 
       {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
-        <nav className="fixed top-0 right-0 bottom-0 w-full max-w-[320px] bg-white z-[10000] overflow-y-auto shadow-xl">
+        <nav 
+          id="mobile-menu"
+          className="fixed top-0 right-0 bottom-0 w-full max-w-[320px] bg-white z-[10000] overflow-y-auto shadow-xl"
+          role="navigation"
+          aria-label="Mobile navigation"
+        >
           {/* Menu Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white sticky top-0">
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 no-underline">
@@ -226,7 +282,7 @@ export default function SiteHeader() {
             </Link>
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center w-10 h-10 bg-transparent border-none cursor-pointer"
+              className="flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-transparent border-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-lg"
               aria-label="Close menu"
             >
               <X className="w-6 h-6 text-gray-700" />
@@ -242,9 +298,11 @@ export default function SiteHeader() {
                     <button
                       onClick={() => toggleDropdown(item.name)}
                       className={`flex items-center justify-between w-full px-4 py-3 text-base font-semibold text-gray-900 rounded-lg cursor-pointer text-left border-none ${openDropdown === item.name ? 'bg-gray-100' : 'bg-transparent'}`}
+                      aria-expanded={openDropdown === item.name}
+                      aria-haspopup="true"
                     >
                       {item.name}
-                      <ChevronDown className={`w-5 h-5 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`w-5 h-5 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} aria-hidden="true" />
                     </button>
                     {openDropdown === item.name && (
                       <div className="ml-4 border-l-2 border-gray-200 mt-1">

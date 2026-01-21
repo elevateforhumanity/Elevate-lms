@@ -260,7 +260,7 @@ export default function ApplyPage() {
               name="email"
               type="email"
               autoComplete="email"
-              placeholder="your.email@example.com"
+              placeholder="your.email@gmail.com"
               className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
             />
           </div>

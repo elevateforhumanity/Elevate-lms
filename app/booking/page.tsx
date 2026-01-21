@@ -95,7 +95,7 @@ export default async function BookingPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/80" />
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
           <div className="flex items-center gap-3 mb-4">
             <Calendar className="w-10 h-10" />

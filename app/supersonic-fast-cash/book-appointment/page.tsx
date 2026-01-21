@@ -547,7 +547,7 @@ export default function BookAppointment() {
                     })
                   }
                   className="w-full px-4 py-3 border rounded-lg"
-                  placeholder="john@example.com"
+                  placeholder="your.email@gmail.com"
                 />
                 <p className="text-sm text-black mt-1">
                   We'll send appointment confirmation and{' '}

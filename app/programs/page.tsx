@@ -6,35 +6,89 @@ import { useEffect, useState, useRef } from 'react';
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 
+interface ProgramCategory {
+  title: string;
+  description: string;
+  href: string;
+  image: string;
+  count: number;
+}
 
-
-
-const programs = [
-  {
+const categoryConfig = {
+  healthcare: {
     title: 'Healthcare',
-    description: 'CNA, Direct Support Professional, Drug Collector',
     href: '/programs/healthcare',
     image: '/images/healthcare/program-cna-training.jpg',
   },
-  {
+  trades: {
     title: 'Skilled Trades',
-    description: 'HVAC, CDL, Barber Apprenticeship',
     href: '/programs/skilled-trades',
     image: '/images/trades/hero-program-hvac.jpg',
   },
-  {
+  technology: {
     title: 'Technology',
-    description: 'IT Support, Cybersecurity, Web Development',
     href: '/programs/technology',
     image: '/images/technology/hero-programs-technology.jpg',
   },
-];
+};
 
 
 
 export default function ProgramsPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
+  const [categories, setCategories] = useState<ProgramCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch program categories from database
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const res = await fetch('/api/programs');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs) {
+          // Group programs by category and count
+          const categoryMap: Record<string, { programs: any[], names: string[] }> = {};
+          
+          data.programs.forEach((p: any) => {
+            const cat = p.category?.toLowerCase() || 'other';
+            let normalizedCat = cat;
+            if (cat.includes('health')) normalizedCat = 'healthcare';
+            else if (cat.includes('trade') || cat.includes('barber') || cat.includes('beauty')) normalizedCat = 'trades';
+            else if (cat.includes('tech')) normalizedCat = 'technology';
+            
+            if (!categoryMap[normalizedCat]) {
+              categoryMap[normalizedCat] = { programs: [], names: [] };
+            }
+            categoryMap[normalizedCat].programs.push(p);
+            if (categoryMap[normalizedCat].names.length < 3) {
+              categoryMap[normalizedCat].names.push(p.name);
+            }
+          });
+
+          const cats: ProgramCategory[] = [];
+          ['healthcare', 'trades', 'technology'].forEach(key => {
+            const config = categoryConfig[key as keyof typeof categoryConfig];
+            const catData = categoryMap[key];
+            if (config && catData) {
+              cats.push({
+                ...config,
+                description: catData.names.join(', '),
+                count: catData.programs.length,
+              });
+            }
+          });
+          
+          setCategories(cats);
+        }
+      } catch (error) {
+        console.error('Failed to fetch categories:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchCategories();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowContent(true), 100);
@@ -96,7 +150,7 @@ export default function ProgramsPage() {
           <source src="/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
         </video>
         
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+        
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
           <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -124,34 +178,47 @@ export default function ProgramsPage() {
       {/* Programs Grid */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
-            {programs.map((program) => (
-              <Link
-                key={program.title}
-                href={program.href}
-                className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
-              >
-                <div className="relative h-48">
-                  <Image
-                    src={program.image}
-                    alt={program.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    quality={85}
-                  />
-                </div>
-                <div className="p-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-2">
-                    {program.title}
-                  </h2>
-                  <p className="text-gray-600 mb-4">{program.description}</p>
-                  <span className="text-blue-600 font-semibold group-hover:underline">
-                    View Programs →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {loading ? (
+            <div className="grid md:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-100 rounded-xl h-80 animate-pulse" />
+              ))}
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-6">
+              {categories.map((category) => (
+                <Link
+                  key={category.title}
+                  href={category.href}
+                  className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={category.image}
+                      alt={category.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      quality={85}
+                    />
+                    {category.count > 0 && (
+                      <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        {category.count} Programs
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-6">
+                    <h2 className="text-xl font-bold text-gray-900 mb-2">
+                      {category.title}
+                    </h2>
+                    <p className="text-gray-600 mb-4">{category.description}</p>
+                    <span className="text-blue-600 font-semibold group-hover:underline">
+                      View Programs →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

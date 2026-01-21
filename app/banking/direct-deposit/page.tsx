@@ -47,7 +47,7 @@ export default function DirectDepositPage() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-700/80" />
+        
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">

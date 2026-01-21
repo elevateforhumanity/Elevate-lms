@@ -7,37 +7,60 @@ import { useEffect, useState, useRef } from 'react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
 
+interface Program {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  category: string;
+  duration_weeks: number;
+  price: number;
+  certification: string;
+  is_active: boolean;
+}
 
-
-const programs = [
-  {
-    title: 'HVAC Technician',
-    duration: '10-16 Weeks',
-    description: 'Install and repair heating, cooling, and refrigeration systems.',
-    href: '/programs/hvac',
-    image: '/images/trades/hero-program-hvac.jpg',
-  },
-  {
-    title: 'CDL Training',
-    duration: '4-6 Weeks',
-    description: 'Get your Commercial Driver License and hit the road.',
-    href: '/programs/cdl',
-    image: '/images/trades/hero-program-cdl.jpg',
-  },
-  {
-    title: 'Barber Apprenticeship',
-    duration: '12-18 Months',
-    description: 'Earn while you learn with our registered apprenticeship.',
-    href: '/programs/barber-apprenticeship',
-    image: '/images/beauty/program-barber-training.jpg',
-  },
-];
-
-
+const programImages: Record<string, string> = {
+  'hvac': '/images/trades/hero-program-hvac.jpg',
+  'hvac-tech': '/images/trades/hero-program-hvac.jpg',
+  'hvac-technician-wrg': '/images/trades/hero-program-hvac.jpg',
+  'cdl': '/images/trades/hero-program-cdl.jpg',
+  'cdl-training': '/images/trades/hero-program-cdl.jpg',
+  'cdl-training-wrg': '/images/trades/hero-program-cdl.jpg',
+  'barber-apprenticeship': '/images/beauty/program-barber-training.jpg',
+  'barber-apprenticeship-wrg': '/images/beauty/program-barber-training.jpg',
+  'barber-apprentice': '/images/beauty/program-barber-training.jpg',
+  'barber': '/images/beauty/program-barber-training.jpg',
+  'solar-panel-installation': '/images/trades/hero-program-hvac.jpg',
+  'forklift-operator': '/images/trades/hero-program-hvac.jpg',
+  'manufacturing-technician': '/images/trades/hero-program-hvac.jpg',
+  'automotive-technician': '/images/trades/hero-program-hvac.jpg',
+  'diesel-mechanic': '/images/trades/hero-program-cdl.jpg',
+  'building-maintenance-wrg': '/images/trades/hero-program-hvac.jpg',
+  'default': '/images/trades/hero-program-hvac.jpg',
+};
 
 export default function SkilledTradesProgramsPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs?category=trades');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs?.length > 0) {
+          setPrograms(data.programs);
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowContent(true), 100);
@@ -70,7 +93,7 @@ export default function SkilledTradesProgramsPage() {
           <source src="/videos/hvac-hero-final.mp4" type="video/mp4" />
         </video>
         
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+        
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
           <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -99,37 +122,50 @@ export default function SkilledTradesProgramsPage() {
       {/* Programs Grid */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
-            {programs.map((program) => (
-              <Link
-                key={program.title}
-                href={program.href}
-                className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
-              >
-                <div className="relative h-48">
-                  <Image
-                    src={program.image}
-                    alt={program.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    quality={85}
-                  />
-                  <div className="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    {program.duration}
+          {loading ? (
+            <div className="grid md:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-100 rounded-xl h-80 animate-pulse" />
+              ))}
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-6">
+              {programs.map((program) => (
+                <Link
+                  key={program.id || program.slug}
+                  href={`/programs/${program.slug}`}
+                  className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={programImages[program.slug] || programImages['default']}
+                      alt={program.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      quality={85}
+                    />
+                    <div className="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      {program.duration_weeks ? (program.duration_weeks > 20 ? `${Math.round(program.duration_weeks / 4)} Months` : `${program.duration_weeks} Weeks`) : 'Flexible'}
+                    </div>
+                    {program.price === 0 && (
+                      <div className="absolute top-3 left-3 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        Free
+                      </div>
+                    )}
                   </div>
-                </div>
-                <div className="p-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-2">
-                    {program.title}
-                  </h2>
-                  <p className="text-gray-600 mb-4">{program.description}</p>
-                  <span className="text-orange-600 font-semibold group-hover:underline">
-                    Learn More →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+                  <div className="p-6">
+                    <h2 className="text-xl font-bold text-gray-900 mb-2">
+                      {program.name}
+                    </h2>
+                    <p className="text-gray-600 mb-4 line-clamp-2">{program.description}</p>
+                    <span className="text-orange-600 font-semibold group-hover:underline">
+                      Learn More →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

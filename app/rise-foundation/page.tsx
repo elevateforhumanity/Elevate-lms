@@ -107,7 +107,7 @@ export default async function RiseFoundationPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-purple-800/80" />
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-white">
           <div className="flex items-center gap-2 mb-4">
             <Heart className="w-8 h-8 text-pink-400" />
@@ -187,7 +187,7 @@ export default async function RiseFoundationPage() {
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500" />
                   )}
-                  <div className="absolute inset-0 bg-black/40" />
+                  
                   <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">
                     {program.title}
                   </h3>

@@ -119,7 +119,7 @@ export default function DotTestingPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/60" />
+          
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-20">
           <Link href="/drug-testing" className="inline-flex items-center gap-2 text-gray-300 hover:text-white mb-6 transition">

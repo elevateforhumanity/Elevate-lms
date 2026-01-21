@@ -86,7 +86,7 @@ export default async function TransparencyPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80" />
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Transparency</h1>
           <p className="text-xl text-blue-100 max-w-2xl">

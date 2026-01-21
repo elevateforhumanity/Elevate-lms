@@ -71,7 +71,7 @@ export default function ProgramCoursesPage() {
           alt="Professional training courses and certification programs"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90"></div>
+        
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center text-white">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">

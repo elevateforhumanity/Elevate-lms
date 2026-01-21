@@ -133,7 +133,7 @@ export default async function ServicesPage() {
           quality={85}
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 to-blue-900/65"></div>
+        
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-7xl mx-auto px-6 w-full">
             <div className="max-w-3xl">

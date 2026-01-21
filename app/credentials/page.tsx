@@ -55,7 +55,7 @@ export default async function CredentialsPage() {
 
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-600 to-teal-800" />
+        
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           {/* Logo */}

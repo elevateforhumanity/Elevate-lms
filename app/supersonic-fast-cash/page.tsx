@@ -36,7 +36,7 @@ export default function SupersonicFastCashPage() {
         >
           <source src="/videos/hero-home.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/95 via-blue-900/90 to-red-900/85" />
+        
 
         {/* Animated background accents */}
         <div className="absolute inset-0 overflow-hidden">

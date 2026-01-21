@@ -70,7 +70,7 @@ export default async function VITAPage() {
           quality={90}
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-green-900/95 via-green-900/85 to-green-900/70" />
+        
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">

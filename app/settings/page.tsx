@@ -70,7 +70,7 @@ export default function SettingsPage() {
                     </div>
                     <div className="md:col-span-2">
                       <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                      <input type="email" defaultValue="john@example.com" className="w-full px-3 py-2 border rounded-lg" />
+                      <input type="email" defaultValue="" className="w-full px-3 py-2 border rounded-lg" />
                     </div>
                     <div className="md:col-span-2">
                       <label className="block text-sm font-medium text-gray-700 mb-1">Bio</label>

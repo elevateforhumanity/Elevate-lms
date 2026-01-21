@@ -21,7 +21,7 @@ export function CareerHero({ title, description, badge }: CareerHeroProps) {
         >
           <source src="/videos/career-services-hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-blue-900/80 to-brand-purple-900/60" />
+        
       </div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">

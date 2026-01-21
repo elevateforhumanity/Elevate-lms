@@ -1,35 +1,43 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
 
-export const metadata: Metadata = {
-  title: 'Business Programs | Elevate for Humanity',
-  description: 'Tax Preparation, Financial Services training. Free for eligible Indiana residents.',
-};
-
-const programs = [
-  {
-    title: 'Tax Preparation',
-    duration: '8 weeks',
-    description: 'IRS-certified tax preparer training for seasonal and year-round work.',
-    href: '/programs/tax-preparation',
-  },
-  {
-    title: 'Business & Financial Services',
-    duration: '10 weeks',
-    description: 'Bookkeeping, QuickBooks, and financial management skills.',
-    href: '/programs/business-financial',
-  },
-  {
-    title: 'Tax & Entrepreneurship',
-    duration: '12 weeks',
-    description: 'Start your own tax preparation business.',
-    href: '/programs/tax-entrepreneurship',
-  },
-];
+interface Program {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  category: string;
+  duration_weeks: number;
+  price: number;
+  certification: string;
+  is_active: boolean;
+}
 
 export default function BusinessPage() {
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs?category=business');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs?.length > 0) {
+          setPrograms(data.programs);
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
+
   return (
     <>
       {/* Hero */}
@@ -108,21 +116,34 @@ export default function BusinessPage() {
             Available Programs
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {programs.map((program) => (
-              <Link
-                key={program.title}
-                href={program.href}
-                className="group p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors"
-              >
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-semibold text-gray-900 group-hover:underline">
-                    {program.title}
-                  </h3>
-                  <span className="text-sm text-gray-500">{program.duration}</span>
-                </div>
-                <p className="text-gray-600">{program.description}</p>
-              </Link>
-            ))}
+            {loading ? (
+              [1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-100 rounded-2xl h-32 animate-pulse" />
+              ))
+            ) : (
+              programs.map((program) => (
+                <Link
+                  key={program.id || program.slug}
+                  href={`/programs/${program.slug}`}
+                  className="group p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors"
+                >
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-xl font-semibold text-gray-900 group-hover:underline">
+                      {program.name}
+                    </h3>
+                    <span className="text-sm text-gray-500">
+                      {program.duration_weeks ? `${program.duration_weeks} weeks` : 'Flexible'}
+                    </span>
+                  </div>
+                  <p className="text-gray-600">{program.description}</p>
+                  {program.price === 0 && (
+                    <span className="inline-block mt-2 text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
+                      Free for eligible participants
+                    </span>
+                  )}
+                </Link>
+              ))
+            )}
           </div>
         </div>
       </section>

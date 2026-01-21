@@ -19,7 +19,7 @@ export default function PartnersPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80" />
+        
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 text-white">
           <h1 className="text-4xl md:text-5xl font-bold">Partner With Elevate for Humanity</h1>
           <p className="mt-4 max-w-3xl text-lg text-white/90">

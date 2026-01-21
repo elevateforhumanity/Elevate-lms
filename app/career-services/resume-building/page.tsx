@@ -81,7 +81,7 @@ export default function ResumeBuildingPage() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-700/80" />
+        
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
