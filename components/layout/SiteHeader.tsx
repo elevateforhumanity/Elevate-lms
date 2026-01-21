@@ -113,7 +113,7 @@ export default function SiteHeader() {
             </Link>
 
             {/* Desktop Navigation - show on lg (1024px) and up for iPad/tablet compatibility */}
-            <nav className="hidden md:flex items-center h-full">
+            <nav className="flex items-center h-full">
               {NAV_ITEMS.map((item) => (
                 <div key={item.name} className="relative h-full group">
                   <Link
