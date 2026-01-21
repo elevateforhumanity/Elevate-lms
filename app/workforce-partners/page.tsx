@@ -75,6 +75,7 @@ export default async function WorkforcePartnersPage() {
               >
                 View Programs
               </Link>
+            </div>
           </div>
         </div>
       </section>
