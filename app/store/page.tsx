@@ -15,6 +15,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { PLANS, TRIAL_DAYS, PlanDefinition } from '@/lib/license/types';
+import PageGuide from '@/components/PageGuide';
 
 const platformFeatures = [
   'Eligibility → Training/OJT → Internship pathway engine',
