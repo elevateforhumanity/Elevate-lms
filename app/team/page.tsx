@@ -28,6 +28,32 @@ const teamMembers = [
     ],
   },
   {
+    name: 'Johanna George',
+    title: 'Director of Operations',
+    image: '/images/jozanna-george.jpg',
+    bio: "Johanna George serves as the Director of Operations at Elevate for Humanity, where she oversees the day-to-day functions that keep the organization running smoothly and efficiently. With a strong background in organizational management and a passion for community service, Johanna ensures that all programs, staff, and resources are aligned to support the mission of transforming lives through education and career training.\n\nJohanna brings extensive experience in operations management, process improvement, and team coordination. She excels at creating systems that enhance productivity while maintaining the human-centered approach that defines Elevate for Humanity's work. Her attention to detail and commitment to excellence help ensure that students, staff, and partners receive the support they need to succeed.\n\nAs a key member of the leadership team, Johanna works closely with department heads to streamline workflows, manage resources effectively, and implement best practices across the organization. Her dedication to operational excellence directly supports Elevate for Humanity's ability to serve more students and expand its impact throughout Indiana.",
+    email: 'johanna@elevateforhumanity.org',
+    focusAreas: [
+      'Operations management',
+      'Process improvement',
+      'Team coordination',
+      'Resource allocation',
+    ],
+  },
+  {
+    name: 'Delores Reynolds',
+    title: 'Student Success Coordinator',
+    image: '/images/delores-reynolds.jpg',
+    bio: "Delores Reynolds serves as the Student Success Coordinator at Elevate for Humanity, where she plays a vital role in ensuring that every student has the support, resources, and guidance they need to complete their training and achieve their career goals. With a deep commitment to student advocacy and a warm, encouraging approach, Delores helps students navigate challenges and stay on track throughout their educational journey.\n\nDelores brings years of experience in student services, case management, and community outreach. She understands the unique barriers that many students face—including transportation, childcare, housing instability, and personal challenges—and works tirelessly to connect them with the resources and support systems that can help them succeed.\n\nAt Elevate for Humanity, Delores serves as a trusted point of contact for students, providing encouragement, accountability, and practical assistance. She monitors student progress, coordinates with instructors and support staff, and celebrates every milestone along the way. Her genuine care for each student's success makes her an invaluable member of the team.",
+    email: 'delores@elevateforhumanity.org',
+    focusAreas: [
+      'Student advocacy',
+      'Case management',
+      'Retention support',
+      'Resource coordination',
+    ],
+  },
+  {
     name: 'Leslie Wafford',
     title: 'Director of Community Services',
     image: '/images/leslie-wafford.jpg',

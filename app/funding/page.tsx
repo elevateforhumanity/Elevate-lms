@@ -393,26 +393,6 @@ export default function FundingPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-green-600 text-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <div className="text-4xl font-black mb-2">$0</div>
-              <div className="text-sm text-green-100">Tuition Cost</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <div className="text-4xl font-black mb-2">100%</div>
-              <div className="text-sm text-green-100">Funded</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <div className="text-4xl font-black mb-2">5,000+</div>
-              <div className="text-sm text-green-100">Students Served</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Who Qualifies Section */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
