@@ -121,7 +121,7 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
     price: 99,
     priceDisplay: '$99',
     interval: 'month',
-    stripePriceId: process.env.STRIPE_PRICE_STARTER_MONTHLY || '',
+    stripePriceId: process.env.STRIPE_PRICE_STARTER_MONTHLY || 'price_1Ss3ZWIRNf5vPH3AuVbnrr9f',
     trialDays: TRIAL_DAYS,
     features: [
       'Up to 100 active students',
@@ -145,7 +145,7 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
     price: 899,
     priceDisplay: '$899',
     interval: 'year',
-    stripePriceId: process.env.STRIPE_PRICE_STARTER_ANNUAL || '',
+    stripePriceId: process.env.STRIPE_PRICE_STARTER_ANNUAL || 'price_1Ss3ZbIRNf5vPH3A3uBdM51z',
     trialDays: TRIAL_DAYS,
     savings: 'Save $289',
     features: [
@@ -174,7 +174,7 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
     price: 299,
     priceDisplay: '$299',
     interval: 'month',
-    stripePriceId: process.env.STRIPE_PRICE_PROFESSIONAL_MONTHLY || '',
+    stripePriceId: process.env.STRIPE_PRICE_PROFESSIONAL_MONTHLY || 'price_1Ss3ZnIRNf5vPH3AO9AOYaqR',
     trialDays: TRIAL_DAYS,
     highlighted: true,
     features: [
@@ -201,7 +201,7 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
     price: 2499,
     priceDisplay: '$2,499',
     interval: 'year',
-    stripePriceId: process.env.STRIPE_PRICE_PROFESSIONAL_ANNUAL || '',
+    stripePriceId: process.env.STRIPE_PRICE_PROFESSIONAL_ANNUAL || 'price_1Ss3ZxIRNf5vPH3AG1bn8tRu',
     trialDays: TRIAL_DAYS,
     highlighted: true,
     savings: 'Save $1,089',
