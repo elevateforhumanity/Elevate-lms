@@ -19,7 +19,7 @@ const companyData = {
   website: 'www.abchealthcare.com',
   phone: '(555) 123-4567',
   email: 'hr@abchealthcare.com',
-  address: '123 Medical Center Dr, Indianapolis, IN 46204',
+  address: '500 Medical Center Dr, Indianapolis, IN 46208',
   description: 'ABC Healthcare Services is a leading provider of home health and medical staffing solutions. We are committed to providing quality care while creating opportunities for career growth.',
   benefits: ['Health Insurance', 'Dental & Vision', '401(k) Match', 'Paid Time Off', 'Training Programs', 'Career Advancement'],
   stats: {

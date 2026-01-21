@@ -201,8 +201,8 @@ export default function CopyrightPage() {
               <ul className="list-none text-black space-y-2">
                 <li><strong>Email:</strong> dmca@www.elevateforhumanity.org</li>
                 <li><strong>Mail:</strong> DMCA Agent, Elevate for Humanity</li>
-                <li className="ml-6">123 Main Street</li>
-                <li className="ml-6">Indianapolis, IN 46204</li>
+                <li className="ml-6">3737 N Meridian St, Suite 200</li>
+                <li className="ml-6">Indianapolis, IN 46208</li>
                 <li><strong>Phone:</strong> (317) 314-3757</li>
               </ul>
             </div>

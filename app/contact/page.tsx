@@ -26,9 +26,9 @@ export const metadata: Metadata = {
 };
 
 const contactInfo = [
-  { icon: Phone, title: 'Phone', value: '1-800-ELEVATE', subtitle: 'Mon-Fri 8am-6pm EST' },
-  { icon: Mail, title: 'Email', value: 'support@elevateforhumanity.org', subtitle: 'We respond within 24 hours' },
-  { icon: MapPin, title: 'Address', value: '123 Education Way', subtitle: 'New York, NY 10001' },
+  { icon: Phone, title: 'Phone', value: '(317) 314-3757', subtitle: 'Mon-Fri 8am-6pm EST' },
+  { icon: Mail, title: 'Email', value: 'info@elevateforhumanity.org', subtitle: 'We respond within 24 hours' },
+  { icon: MapPin, title: 'Address', value: 'Indianapolis, IN', subtitle: 'Central Indiana' },
   { icon: Clock, title: 'Hours', value: 'Mon-Fri 8am-6pm', subtitle: 'Sat 9am-1pm EST' },
 ];
 
@@ -112,10 +112,10 @@ export default function ContactPage() {
               />
             </div>
             <div className="bg-white rounded-xl shadow-sm p-6">
-              <h3 className="font-semibold text-gray-900 mb-2">Main Campus</h3>
-              <p className="text-gray-600">123 Education Way</p>
-              <p className="text-gray-600">New York, NY 10001</p>
-              <p className="text-gray-600 mt-4">Free parking available</p>
+              <h3 className="font-semibold text-gray-900 mb-2">Elevate for Humanity</h3>
+              <p className="text-gray-600">Indianapolis, Indiana</p>
+              <p className="text-gray-600">Central Indiana Region</p>
+              <p className="text-gray-600 mt-4">Multiple training locations available</p>
             </div>
           </div>
         </div>

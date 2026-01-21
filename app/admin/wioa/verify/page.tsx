@@ -14,7 +14,7 @@ const applicant = {
   phone: '(555) 123-4567',
   dob: 'March 15, 1995',
   ssn: '***-**-1234',
-  address: '123 Main St, Indianapolis, IN 46204',
+  address: '3737 N Meridian St, Suite 200, Indianapolis, IN 46208',
   category: 'Adult',
   submitted: 'January 18, 2025',
 };

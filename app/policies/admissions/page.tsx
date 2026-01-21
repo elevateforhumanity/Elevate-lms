@@ -290,7 +290,7 @@ export default function AdmissionsPage() {
               <li><strong>Email:</strong> admissions@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 8:00 AM - 6:00 PM EST</li>
-              <li><strong>Location:</strong> 123 Main Street, Indianapolis, IN 46204</li>
+              <li><strong>Location:</strong> 3737 N Meridian St, Suite 200, Indianapolis, IN 46208</li>
               <li><strong>Apply Online:</strong> <a href="/apply" className="text-blue-600 hover:underline">www.elevateforhumanity.org/apply</a></li>
             </ul>
 

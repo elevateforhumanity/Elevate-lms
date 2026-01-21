@@ -41,8 +41,8 @@ export default async function VITASchedulePage() {
     .limit(20);
 
   const defaultLocations = [
-    { id: 1, name: 'Main Office', address: '123 Education Way, Indianapolis, IN 46204' },
-    { id: 2, name: 'Community Center', address: '456 Community Blvd, Indianapolis, IN 46205' },
+    { id: 1, name: 'Main Office', address: '3737 N Meridian St, Suite 200, Indianapolis, IN 46208' },
+    { id: 2, name: 'Community Center', address: '3737 N Meridian St, Suite 200, Indianapolis, IN 46208' },
   ];
 
   const displayLocations = locations && locations.length > 0 ? locations : defaultLocations;

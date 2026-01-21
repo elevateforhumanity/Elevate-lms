@@ -160,8 +160,8 @@ export default async function BookingPage() {
                     <div>
                       <h3 className="font-semibold text-lg">Main Campus</h3>
                       <p className="text-gray-600">
-                        123 Education Way<br />
-                        Indianapolis, IN 46204
+                        3737 N Meridian St, Suite 200<br />
+                        Indianapolis, IN 46208
                       </p>
                     </div>
                   </div>
