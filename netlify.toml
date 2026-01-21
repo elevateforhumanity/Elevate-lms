@@ -28,20 +28,6 @@
 # All traffic funnels to www.elevateforhumanity.org
 # ============================================
 
-# Institute -> org (with www)
-[[redirects]]
-  from = "https://www.elevateforhumanity.institute/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 301
-  force = true
-
-# Institute naked -> org
-[[redirects]]
-  from = "https://elevateforhumanity.institute/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 301
-  force = true
-
 # Naked org -> www org (canonical)
 [[redirects]]
   from = "https://elevateforhumanity.org/*"

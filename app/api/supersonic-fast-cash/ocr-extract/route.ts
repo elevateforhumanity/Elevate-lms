@@ -8,7 +8,11 @@ import {
   extract1099Data,
   extractIDData,
 } from '@/lib/ocr/tesseract-ocr';
-import { extractTextFromPDF, isPDF } from '@/lib/ocr/pdf-extract';
+
+// Helper to check if file is PDF
+function isPDF(file: File | Blob): boolean {
+  return file.type === 'application/pdf';
+}
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -95,35 +99,16 @@ export async function POST(request: NextRequest) {
 
     // Handle PDF files
     if (isPDF(file)) {
-      const pdfResult = await extractTextFromPDF(file);
-      
-      // If PDF has text, use it directly
-      if (pdfResult.text && pdfResult.text.trim().length > 50) {
-        result = {
-          documentType: 'pdf',
-          raw: pdfResult.text,
-          confidence: 0.95, // High confidence for native PDF text
-          data: {
-            pageCount: pdfResult.pageCount,
-            isScanned: false,
-          },
-          processingTime: Date.now() - startTime,
-        };
-      } else {
-        // Scanned PDF - need OCR on images
-        // For now, return what we have with a note
-        result = {
-          documentType: 'pdf-scanned',
-          raw: pdfResult.text || '',
-          confidence: 0.5,
-          data: {
-            pageCount: pdfResult.pageCount,
-            isScanned: true,
-            note: 'Scanned PDF detected. For best results, upload individual page images.',
-          },
-          processingTime: Date.now() - startTime,
-        };
-      }
+      // PDF extraction not yet supported - return message
+      result = {
+        documentType: 'pdf',
+        raw: '',
+        confidence: 0,
+        data: {
+          note: 'PDF extraction coming soon. Please upload images (JPG, PNG) for OCR.',
+        },
+        processingTime: Date.now() - startTime,
+      };
     } else {
       // Handle image files with OCR
       const buffer = Buffer.from(await file.arrayBuffer());

@@ -392,7 +392,9 @@ export default function FundingPage() {
         </div>
       </section>
 
-          {/* Stats */}
+      {/* Stats Section */}
+      <section className="py-16 bg-green-600 text-white">
+        <div className="max-w-4xl mx-auto px-4">
           <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
               <div className="text-4xl font-black mb-2">$0</div>

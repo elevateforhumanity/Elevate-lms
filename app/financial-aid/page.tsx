@@ -113,9 +113,6 @@ export default function FinancialAidPage() {
           </div>
         </div>
       </section>
-          </div>
-        </div>
-      </section>
 
       {/* Stats */}
       <section className="py-12 bg-green-50 border-b">

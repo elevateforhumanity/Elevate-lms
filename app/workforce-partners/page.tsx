@@ -73,8 +73,8 @@ export default async function WorkforcePartnersPage() {
                 href="/employers"
                 className="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
               >
-              View Programs
-            </Link>
+                View Programs
+              </Link>
           </div>
         </div>
       </section>
