@@ -31,7 +31,7 @@ const portals = [
   { 
     name: 'LMS Dashboard', 
     description: 'Access your courses and learning materials',
-    href: '/lms/dashboard', 
+    href: '/lms', 
     icon: BookOpen, 
     color: 'bg-indigo-500',
     public: true
