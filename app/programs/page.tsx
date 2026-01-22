@@ -68,7 +68,7 @@ const programCategories = [
     title: 'CDL & Transportation',
     description: 'Get your Commercial Driver\'s License and start earning quickly. CDL drivers are in high demand nationwide with starting salaries of $50,000-$80,000+. Our program includes classroom instruction, behind-the-wheel training, and job placement assistance with local and national carriers.',
     href: '/programs/cdl-transportation',
-    image: '/images/trades/hero-program-cdl.jpg',
+    image: '/images/trades/program-cdl-commercial-driving.jpg',
     icon: Truck,
     color: 'green',
     programs: [
@@ -81,7 +81,7 @@ const programCategories = [
     href: '/programs/barber-apprenticeship',
     image: '/images/barber-hero.jpg',
     icon: Scissors,
-    color: 'purple',
+    color: 'red',
     programs: [
       { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship', duration: '18-24 months', description: 'Cut, style, and groom hair for men and boys' },
       { name: 'Cosmetology Apprenticeship', href: '/programs/cosmetology-apprenticeship', duration: '18-24 months', description: 'Hair styling, coloring, and beauty treatments' },
@@ -108,8 +108,7 @@ const colorClasses: Record<string, { bg: string; text: string; light: string; bo
   orange: { bg: 'bg-orange-600', text: 'text-orange-600', light: 'bg-orange-50', border: 'border-orange-200' },
   blue: { bg: 'bg-blue-600', text: 'text-blue-600', light: 'bg-blue-50', border: 'border-blue-200' },
   green: { bg: 'bg-green-600', text: 'text-green-600', light: 'bg-green-50', border: 'border-green-200' },
-  purple: { bg: 'bg-purple-600', text: 'text-purple-600', light: 'bg-purple-50', border: 'border-purple-200' },
-  teal: { bg: 'bg-teal-600', text: 'text-teal-600', light: 'bg-teal-50', border: 'border-teal-200' },
+  teal: { bg: 'bg-blue-600', text: 'text-blue-600', light: 'bg-blue-50', border: 'border-blue-200' },
 };
 
 export default function ProgramsPage() {
