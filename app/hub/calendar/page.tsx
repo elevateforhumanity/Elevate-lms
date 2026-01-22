@@ -27,42 +27,8 @@ export default async function CalendarPage() {
     .order('start_date', { ascending: true })
     .limit(20);
 
-  // Sample events if none exist
-  const displayEvents = events && events.length > 0 ? events : [
-    {
-      id: '1',
-      title: 'Weekly Study Session',
-      description: 'Join fellow learners for collaborative study time',
-      start_date: new Date(Date.now() + 86400000).toISOString(),
-      event_type: 'study',
-      is_virtual: true,
-    },
-    {
-      id: '2',
-      title: 'Career Workshop: Resume Building',
-      description: 'Learn how to create a standout resume',
-      start_date: new Date(Date.now() + 86400000 * 3).toISOString(),
-      event_type: 'workshop',
-      is_virtual: true,
-    },
-    {
-      id: '3',
-      title: 'Industry Expert Q&A',
-      description: 'Ask questions to professionals in your field',
-      start_date: new Date(Date.now() + 86400000 * 5).toISOString(),
-      event_type: 'webinar',
-      is_virtual: true,
-    },
-    {
-      id: '4',
-      title: 'Networking Mixer',
-      description: 'Connect with employers and fellow graduates',
-      start_date: new Date(Date.now() + 86400000 * 7).toISOString(),
-      event_type: 'networking',
-      is_virtual: false,
-      location: 'Indianapolis Community Center',
-    },
-  ];
+  // Use real events only - no fake fallback data
+  const displayEvents = events || [];
 
   const getEventColor = (type: string) => {
     switch (type) {
@@ -110,6 +76,13 @@ export default async function CalendarPage() {
         </div>
 
         {/* Events List */}
+        {displayEvents.length === 0 ? (
+          <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
+            <Calendar className="w-16 h-16 text-slate-300 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-slate-900 mb-2">No upcoming events</h3>
+            <p className="text-slate-600">Check back later for scheduled events and sessions.</p>
+          </div>
+        ) : (
         <div className="space-y-4">
           {displayEvents.map((event: any) => (
             <div key={event.id} className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition">
@@ -158,7 +131,7 @@ export default async function CalendarPage() {
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">
                     <div className="flex items-center gap-2 text-sm text-slate-500">
                       <Users className="w-4 h-4" />
-                      {event.attendee_count || Math.floor(Math.random() * 20) + 5} attending
+                      {event.attendee_count || 0} attending
                     </div>
                     <button className="px-4 py-2 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 text-sm">
                       RSVP
@@ -169,6 +142,7 @@ export default async function CalendarPage() {
             </div>
           ))}
         </div>
+        )}
       </div>
     </div>
   );

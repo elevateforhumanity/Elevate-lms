@@ -282,7 +282,7 @@ export default async function CommunityPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
               <div className="relative h-48">
                 <Image
-                  src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
+                  src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg"
                   alt="Networking Event"
                   fill
                   className="object-cover"

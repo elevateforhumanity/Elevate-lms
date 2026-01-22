@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Users, Search, MapPin, Briefcase, Star, MessageSquare, ArrowRight, Filter } from 'lucide-react';
+import { Users, Search, Filter, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Members | Community | Elevate For Humanity',
@@ -13,91 +13,41 @@ export const dynamic = 'force-dynamic';
 
 export default async function MembersPage() {
   const supabase = await createClient();
+  
+  if (!supabase) redirect('/login');
 
-  let memberCount = 2500;
+  // Fetch real member count and data
+  const { data: members, count } = await supabase
+    .from('profiles')
+    .select('id, full_name, avatar_url, role, bio, points, created_at', { count: 'exact' })
+    .order('points', { ascending: false })
+    .limit(50);
 
-  if (supabase) {
-    try {
-      const { count } = await supabase
-        .from('profiles')
-        .select('*', { count: 'exact', head: true });
-      if (count) memberCount = count;
-    } catch (error) {
-      console.error('[Members] Error:', error);
-    }
-  }
+  // Get role counts for categories
+  const { data: roleCounts } = await supabase
+    .from('profiles')
+    .select('role')
+    .not('role', 'is', null);
 
-  const featuredMembers = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Healthcare Professional',
-      location: 'Indianapolis, IN',
-      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg',
-      badge: 'Top Contributor',
-      posts: 156,
-    },
-    {
-      name: 'Marcus Williams',
-      role: 'Barber Apprentice',
-      location: 'Chicago, IL',
-      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg',
-      badge: 'Rising Star',
-      posts: 89,
-    },
-    {
-      name: 'Emily Chen',
-      role: 'Career Coach',
-      location: 'Remote',
-      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg',
-      badge: 'Mentor',
-      posts: 234,
-    },
-    {
-      name: 'David Thompson',
-      role: 'HVAC Technician',
-      location: 'Detroit, MI',
-      image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
-      badge: 'Graduate',
-      posts: 67,
-    },
-    {
-      name: 'Jessica Martinez',
-      role: 'CNA Graduate',
-      location: 'Columbus, OH',
-      image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg',
-      badge: 'Success Story',
-      posts: 112,
-    },
-    {
-      name: 'Robert Brown',
-      role: 'CDL Driver',
-      location: 'Louisville, KY',
-      image: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg',
-      badge: 'Verified',
-      posts: 45,
-    },
-  ];
+  const categoryMap: Record<string, number> = {};
+  roleCounts?.forEach((r: any) => {
+    const role = r.role || 'student';
+    categoryMap[role] = (categoryMap[role] || 0) + 1;
+  });
 
-  const categories = [
-    { name: 'All Members', count: memberCount },
-    { name: 'Mentors', count: 45 },
-    { name: 'Graduates', count: 890 },
-    { name: 'Current Students', count: 1200 },
-    { name: 'Industry Professionals', count: 365 },
-  ];
+  const getInitial = (name: string | null) => {
+    return name?.charAt(0)?.toUpperCase() || 'U';
+  };
+
+  const formatRole = (role: string | null) => {
+    if (!role) return 'Student';
+    return role.charAt(0).toUpperCase() + role.slice(1).replace(/_/g, ' ');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-orange-600 to-amber-700 text-white py-20">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg"
-            alt="Community members"
-            fill
-            className="object-cover opacity-20"
-          />
-        </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4">
@@ -105,7 +55,7 @@ export default async function MembersPage() {
               <span className="text-orange-100 font-medium">Member Directory</span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-              Connect With<br />{memberCount.toLocaleString()}+ Members
+              Connect With<br />{(count || 0).toLocaleString()} Members
             </h1>
             <p className="text-xl text-orange-100 mb-8">
               Find mentors, study partners, and industry professionals who can help you on your journey.
@@ -117,7 +67,7 @@ export default async function MembersPage() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Search members by name, role, or location..."
+                  placeholder="Search members by name or role..."
                   className="w-full pl-12 pr-4 py-4 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-300"
                 />
               </div>
@@ -134,16 +84,15 @@ export default async function MembersPage() {
       <section className="py-8 bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-4">
-            {categories.map((category, index) => (
+            <button className="px-6 py-2 rounded-full font-medium bg-orange-600 text-white">
+              All Members ({(count || 0).toLocaleString()})
+            </button>
+            {Object.entries(categoryMap).slice(0, 4).map(([role, roleCount]) => (
               <button
-                key={index}
-                className={`px-6 py-2 rounded-full font-medium transition-colors ${
-                  index === 0
-                    ? 'bg-orange-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                key={role}
+                className="px-6 py-2 rounded-full font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
               >
-                {category.name} ({category.count.toLocaleString()})
+                {formatRole(role)} ({roleCount})
               </button>
             ))}
           </div>
@@ -155,74 +104,68 @@ export default async function MembersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Featured Members</h2>
-              <p className="text-gray-600">Active contributors in our community</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Community Members</h2>
+              <p className="text-gray-600">Ranked by activity and contributions</p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredMembers.map((member, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="flex items-start gap-4">
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-gray-900 truncate">{member.name}</h3>
-                    <p className="text-gray-600 text-sm">{member.role}</p>
-                    <div className="flex items-center gap-1 text-gray-500 text-sm mt-1">
-                      <MapPin className="w-3 h-3" />
-                      {member.location}
+          {members && members.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {members.map((member: any) => (
+                <div key={member.id} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                      {getInitial(member.full_name)}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-gray-900 truncate">{member.full_name || 'Member'}</h3>
+                      <p className="text-gray-600 text-sm">{formatRole(member.role)}</p>
+                      {member.bio && (
+                        <p className="text-gray-500 text-sm mt-1 line-clamp-2">{member.bio}</p>
+                      )}
                     </div>
                   </div>
-                </div>
 
-                <div className="mt-4 flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full">
-                    <Star className="w-3 h-3" />
-                    {member.badge}
-                  </span>
-                  <span className="text-gray-500 text-sm">{member.posts} posts</span>
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-sm text-gray-500">
+                      {(member.points || 0).toLocaleString()} points
+                    </span>
+                    <span className="text-xs text-gray-400">
+                      Joined {new Date(member.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                    </span>
+                  </div>
                 </div>
-
-                <div className="mt-6 flex gap-3">
-                  <button className="flex-1 px-4 py-2 bg-orange-600 text-white font-medium rounded-lg hover:bg-orange-700 transition-colors">
-                    Connect
-                  </button>
-                  <button className="px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors">
-                    <MessageSquare className="w-5 h-5" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <button className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition-colors">
-              Load More Members
-              <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-white rounded-2xl border border-gray-200 p-12 text-center">
+              <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">No members yet</h3>
+              <p className="text-gray-600 mb-6">Be the first to join the community!</p>
+              <Link 
+                href="/apply" 
+                className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700"
+              >
+                Apply Now
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-16 bg-orange-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Want to Be Featured?</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Ready to Join?</h2>
           <p className="text-orange-100 mb-8 max-w-2xl mx-auto">
-            Engage with the community, share your knowledge, and help others succeed.
+            Start your journey and connect with others working toward career success.
           </p>
           <Link
-            href="/community/discussions"
+            href="/programs"
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-orange-600 font-semibold rounded-full hover:bg-orange-50 transition-colors"
           >
-            Start Contributing
+            Browse Programs
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
