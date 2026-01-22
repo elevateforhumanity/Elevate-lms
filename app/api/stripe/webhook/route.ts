@@ -1,10 +1,8 @@
-
 export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 import { NextResponse } from 'next/server';
-import Stripe from 'stripe';
+import { stripe } from '@/lib/stripe/client';
 import { logger } from '@/lib/logger';
 
 
@@ -83,7 +81,7 @@ export async function POST(req: Request) {
       sig,
       process.env.STRIPE_WEBHOOK_SECRET
     );
-  } catch (err: any) {
+  } catch (err: unknown) {
     logger.error('Stripe webhook signature verification failed', err);
     return NextResponse.json(
       { error: 'Invalid signature' },
@@ -120,34 +118,6 @@ export async function POST(req: Request) {
           logger.info(`✅ Marked tax intake ${intakeId} as paid (session: ${session.id})`);
         }
 
-      }
-
-      // Check if this is a course enrollment payment
-      const courseId = session.metadata?.courseId;
-      const userId = session.metadata?.userId;
-      if (courseId && userId) {
-        const { createClient } = await import('@/lib/supabase/server');
-        const supabaseAdmin = createClient(
-          process.env.NEXT_PUBLIC_SUPABASE_URL!,
-          process.env.SUPABASE_SERVICE_ROLE_KEY!
-        );
-
-        // Create enrollment
-        const { error: enrollError } = await supabaseAdmin
-          .from('enrollments')
-          .insert({
-            user_id: userId,
-            course_id: courseId,
-            status: 'active',
-            progress: 0,
-            started_at: new Date().toISOString(),
-          });
-
-        if (enrollError) {
-          logger.error('Failed to create course enrollment', enrollError);
-        } else {
-          logger.info(`✅ Created course enrollment for user ${userId} in course ${courseId}`);
-        }
       }
     }
 
@@ -313,7 +283,7 @@ export async function POST(req: Request) {
             .single();
 
           await fetch(
-            `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/api/email/send`,
+            `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/api/email/send`,
             {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -326,7 +296,7 @@ export async function POST(req: Request) {
                 <p>Congratulations! Your enrollment in <strong>${programDetails?.name || 'your program'}</strong> is now active.</p>
                 <h3>Next Steps:</h3>
                 <ol>
-                  <li>Log in to your student portal: <a href="https://www.elevateforhumanity.org/login">Login Here</a></li>
+                  <li>Log in to your student portal: <a href="https://elevateforhumanity.institute/login">Login Here</a></li>
                   <li>Complete your student profile</li>
                   <li>Access your course materials</li>
                   <li>Meet your instructor</li>
@@ -383,7 +353,8 @@ export async function POST(req: Request) {
             }
           );
 
-          if (miladyResponse.ok) { /* Condition handled */ } else {
+          if (miladyResponse.ok) {
+          } else {
             const errorText = await miladyResponse.text();
             logger.warn(
               '[Webhook] ⚠️ Milady auto-enrollment failed',
@@ -479,7 +450,8 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ received: true });
-  } catch (err: any) {
+  } catch (err: unknown) {
+    console.error('Stripe webhook error:', err);
     return NextResponse.json(
       { error: 'Webhook handler failed' },
       { status: 500 }
