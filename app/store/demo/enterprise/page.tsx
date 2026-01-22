@@ -28,7 +28,7 @@ const demoSteps = [
   {
     step: 3,
     title: 'Employer Portal',
-    description: 'Employers see verified credentials for candidates they're considering.',
+    description: "Employers see verified credentials for candidates they're considering.",
     icon: Briefcase,
     detail: 'Employers verify credentials without contacting providers. Hiring decisions supported by verified completion data.',
   },

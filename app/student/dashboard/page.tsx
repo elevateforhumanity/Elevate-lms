@@ -24,7 +24,11 @@ import {
   GraduationCap,
   Calendar,
   Award,
+  Users,
 } from 'lucide-react';
+import { Leaderboard } from '@/components/Leaderboard';
+import { Gamification } from '@/components/Gamification';
+import { StudyGroups } from '@/components/StudyGroups';
 
 export const metadata: Metadata = {
   title: 'Student Dashboard | Elevate LMS',
@@ -395,6 +399,43 @@ export default async function StudentDashboardPage() {
                 </Link>
               </div>
             </div>
+
+            {/* Leaderboard */}
+            <div className="bg-white rounded-xl border border-slate-200 p-5">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-bold text-slate-900">Top Learners</h3>
+                <Link href="/student/leaderboard" className="text-sm text-blue-600 hover:text-blue-700">
+                  View All
+                </Link>
+              </div>
+              <Leaderboard />
+            </div>
+          </div>
+        </div>
+
+        {/* Community Section */}
+        <div className="mt-8 grid lg:grid-cols-2 gap-6">
+          {/* Gamification */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <Trophy className="w-5 h-5 text-yellow-500" />
+              <h3 className="font-bold text-slate-900">Your Progress</h3>
+            </div>
+            <Gamification />
+          </div>
+
+          {/* Study Groups */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5 text-blue-600" />
+                <h3 className="font-bold text-slate-900">Study Groups</h3>
+              </div>
+              <Link href="/community/groups" className="text-sm text-blue-600 hover:text-blue-700">
+                Browse All
+              </Link>
+            </div>
+            <StudyGroups />
           </div>
         </div>
       </main>

@@ -17,7 +17,11 @@ import {
   Star,
   FileText,
   Video,
+  MessageSquare,
+  Bot,
 } from 'lucide-react';
+import { DiscussionForum } from '@/components/DiscussionForum';
+import AIInstructor from '@/components/AIInstructor';
 
 type Params = Promise<{ courseId: string }>;
 
@@ -397,8 +401,28 @@ export default async function CoursePage({ params }: { params: Params }) {
                 </li>
               </ul>
             </div>
+
+            {/* AI Instructor */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Bot className="w-5 h-5 text-blue-600" />
+                <h3 className="font-semibold text-slate-900">AI Study Assistant</h3>
+              </div>
+              <AIInstructor />
+            </div>
           </div>
         </div>
+
+        {/* Course Discussion Forum */}
+        {enrollment && (
+          <div className="mt-12">
+            <div className="flex items-center gap-2 mb-6">
+              <MessageSquare className="w-6 h-6 text-blue-600" />
+              <h2 className="text-2xl font-bold text-slate-900">Course Discussions</h2>
+            </div>
+            <DiscussionForum />
+          </div>
+        )}
       </div>
     </div>
   );

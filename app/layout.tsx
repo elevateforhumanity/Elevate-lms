@@ -12,7 +12,6 @@ import CookieConsent from '@/components/CookieConsent';
 import DisableDevTools from '@/components/security/DisableDevTools';
 import { InvisibleWatermark } from '@/components/InvisibleWatermark';
 import { CopyrightProtection } from '@/components/CopyrightProtection';
-import { AIAssistantBubble } from '@/components/AIAssistantBubble';
 
 import { Inter } from 'next/font/google';
 import { GoogleAnalytics } from '@/components/analytics/google-analytics';
@@ -224,7 +223,6 @@ export default function RootLayout({
         <CopyrightProtection />
         <ConditionalLayout>{children}</ConditionalLayout>
         <ClientProviders />
-        <AIAssistantBubble />
         <CookieConsent />
         <InstallPrompt />
 
