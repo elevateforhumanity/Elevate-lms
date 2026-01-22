@@ -74,7 +74,7 @@ export default function TechnologyProgramsPage() {
           playsInline
           autoPlay
           preload="auto"
-          poster="/images/artlist/hero-training-3.jpg"
+          poster="/images/pathways/cna.jpg"
         >
           <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>

@@ -84,7 +84,7 @@ export default function AdminApprenticeships() {
       {/* Hero Section */}
       <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-5.jpg"
+          src="/images/efh/sections/classroom.jpg"
           alt="Apprenticeships"
           fill
           className="object-cover"
@@ -417,7 +417,7 @@ export default function AdminApprenticeships() {
                 </div>
                 <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/artlist/hero-training-1.jpg"
+                    src="/images/efh/sections/coaching.jpg"
                     alt="Students learning"
                     fill
                     className="object-cover"

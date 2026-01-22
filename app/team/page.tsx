@@ -139,15 +139,15 @@ export default function TeamPage() {
               >
                 {/* Photo */}
                 <div className="lg:w-1/3 w-full">
-                  <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl bg-gray-200">
+                  <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl bg-gray-100">
                     {member.image ? (
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover"
-                        quality={90}
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-top"
+                        quality={100}
+                        sizes="(max-width: 768px) 100vw, 400px"
                         priority={index < 2}
                       />
                     ) : (

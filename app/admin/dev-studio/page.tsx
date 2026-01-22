@@ -267,7 +267,7 @@ export default function DevStudioPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-6.jpg"
+          src="/images/efh/sections/staffing.jpg"
           alt="Hero"
           fill
           className="object-cover"

@@ -409,7 +409,7 @@ export default async function TaxFilingAdminPage() {
                 </div>
                 <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image priority
-                    src="/images/artlist/hero-training-1.jpg"
+                    src="/images/success-new/success-3.jpg"
                     alt="Students learning"
                     fill
                     className="object-cover"

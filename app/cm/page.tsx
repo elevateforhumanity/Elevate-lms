@@ -18,7 +18,7 @@ export default async function CmPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-6.jpg"
+          src="/images/courses/medical-assistant-10002419-cover.jpg"
           alt="Cm"
           fill
           className="object-cover"
@@ -117,7 +117,7 @@ export default async function CmPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-3.jpg"
+                  src="/images/success-new/success-1.jpg"
                   alt="Cm"
                   fill
                   className="object-cover"

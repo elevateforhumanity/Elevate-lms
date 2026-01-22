@@ -24,7 +24,7 @@ const instantTests = [
     ],
     turnaround: '5-10 minutes (negative)',
     labConfirm: '24-48 hours (if positive)',
-    image: '/images/artlist/hero-training-2.jpg',
+    image: '/images/business/professional-2.jpg',
   },
   {
     name: 'Instant Rapid 10-Panel',
@@ -40,7 +40,7 @@ const instantTests = [
     ],
     turnaround: '5-10 minutes (negative)',
     labConfirm: '24-48 hours (if positive)',
-    image: '/images/artlist/hero-training-3.jpg',
+    image: '/images/business/collaboration-1.jpg',
   },
   {
     name: 'Instant 5-Panel + Alcohol',
@@ -55,7 +55,7 @@ const instantTests = [
       'Combined reporting',
     ],
     turnaround: '5-10 minutes',
-    image: '/images/artlist/hero-training-4.jpg',
+    image: '/images/business/success-1.jpg',
   },
 ];
 

@@ -178,7 +178,7 @@ export default function ProgramsPage() {
           playsInline
           autoPlay
           preload="auto"
-          poster="/images/artlist/hero-training-3.jpg"
+          poster="/images/learners/reentry-coaching.jpg"
         >
           <source src="/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
         </video>
@@ -266,7 +266,7 @@ export default function ProgramsPage() {
             </div>
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/artlist/hero-training-1.jpg"
+                src="/images/programs/cpr-group-training-hd.jpg"
                 alt="Students in training program"
                 fill
                 className="object-cover"

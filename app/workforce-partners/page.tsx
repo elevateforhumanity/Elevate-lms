@@ -147,7 +147,7 @@ export default async function WorkforcePartnersPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-4.jpg"
+                  src="/images/courses/hvac-technician-10002289-cover.jpg"
                   alt="Workforce Partners"
                   fill
                   className="object-cover"

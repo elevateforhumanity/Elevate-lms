@@ -99,7 +99,7 @@ export default function AutomationPage() {
       {/* Hero Section */}
       <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-4.jpg"
+          src="/images/pathways/hvac.jpg"
           alt="Automation"
           fill
           className="object-cover"
@@ -465,7 +465,7 @@ export default function AutomationPage() {
                 </div>
                 <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/artlist/hero-training-4.jpg"
+                    src="/images/pathways/business-hero.jpg"
                     alt="Students learning"
                     fill
                     className="object-cover"

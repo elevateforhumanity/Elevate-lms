@@ -22,7 +22,7 @@ const dotTests = [
       'Clearinghouse query (if needed)',
       'Same-day scheduling available',
     ],
-    image: '/images/artlist/hero-training-2.jpg',
+    image: '/images/heroes/training-provider-1.jpg',
   },
   {
     name: 'DOT Random Testing',
@@ -36,7 +36,7 @@ const dotTests = [
       'MRO review included',
       'Clearinghouse reporting',
     ],
-    image: '/images/artlist/hero-training-3.jpg',
+    image: '/images/heroes/training-provider-3.jpg',
   },
   {
     name: 'DOT Post-Accident',
@@ -50,7 +50,7 @@ const dotTests = [
       'Full documentation',
       'MRO review included',
     ],
-    image: '/images/artlist/hero-training-4.jpg',
+    image: '/images/efh/sections/classroom.jpg',
   },
   {
     name: 'DOT Reasonable Suspicion',
@@ -64,7 +64,7 @@ const dotTests = [
       'MRO review included',
       'Confidential handling',
     ],
-    image: '/images/artlist/hero-training-5.jpg',
+    image: '/images/efh/sections/coaching.jpg',
   },
   {
     name: 'Return to Duty (RTD)',
@@ -79,7 +79,7 @@ const dotTests = [
       'Follow-up testing schedule setup',
       'Full compliance documentation',
     ],
-    image: '/images/artlist/hero-training-6.jpg',
+    image: '/images/efh/sections/staffing.jpg',
   },
   {
     name: 'Follow-Up Testing',
@@ -93,7 +93,7 @@ const dotTests = [
       'MRO review included',
       'Clearinghouse reporting',
     ],
-    image: '/images/artlist/hero-training-7.jpg',
+    image: '/images/learners/coaching-session.jpg',
   },
 ];
 
@@ -113,7 +113,7 @@ export default function DotTestingPage() {
       <section className="relative min-h-[400px] flex items-center">
         <div className="absolute inset-0">
           <Image
-            src="/images/artlist/hero-training-8.jpg"
+            src="/images/learners/barrier-support.jpg"
             alt="DOT Drug Testing for Commercial Drivers"
             fill
             className="object-cover"
@@ -321,7 +321,7 @@ export default function DotTestingPage() {
             </div>
             <div className="relative h-[350px] rounded-2xl overflow-hidden">
               <Image
-                src="/images/artlist/hero-training-1.jpg"
+                src="/images/learners/reentry-coaching.jpg"
                 alt="DOT Random Testing Consortium"
                 fill
                 className="object-cover"

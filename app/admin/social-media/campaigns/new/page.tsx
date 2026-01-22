@@ -125,7 +125,7 @@ export default function NewSocialCampaignPage() {
       {/* Hero Section */}
       <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-7.jpg"
+          src="/images/business/collaboration-1.jpg"
           alt="New"
           fill
           className="object-cover"

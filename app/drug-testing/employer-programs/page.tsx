@@ -99,7 +99,7 @@ export default function EmployerProgramsPage() {
       <section className="relative min-h-[400px] flex items-center">
         <div className="absolute inset-0">
           <Image
-            src="/images/artlist/hero-training-7.jpg"
+            src="/images/courses/medical-assistant-10002419-cover.jpg"
             alt="Employer Drug Testing Programs"
             fill
             className="object-cover"
@@ -290,7 +290,7 @@ export default function EmployerProgramsPage() {
             </div>
             <div className="relative h-[350px] rounded-2xl overflow-hidden">
               <Image
-                src="/images/artlist/hero-training-8.jpg"
+                src="/images/success-new/success-1.jpg"
                 alt="DOT Compliance"
                 fill
                 className="object-cover"

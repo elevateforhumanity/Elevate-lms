@@ -74,12 +74,12 @@ const programTypes = [
   {
     name: 'Transportation',
     examples: 'CDL, Forklift, Logistics',
-    image: '/images/artlist/hero-training-3.jpg',
+    image: '/images/efh/sections/coaching.jpg',
   },
   {
     name: 'Business',
     examples: 'Accounting, Office Admin, Project Management',
-    image: '/images/artlist/hero-training-5.jpg',
+    image: '/images/efh/sections/staffing.jpg',
   },
   {
     name: 'Beauty & Wellness',
@@ -95,7 +95,7 @@ export default function TrainingProvidersPage() {
       <section className="relative min-h-[500px] flex items-center">
         <div className="absolute inset-0">
           <Image
-            src="/images/artlist/hero-training-1.jpg"
+            src="/images/learners/coaching-session.jpg"
             alt="Training Providers Partnership"
             fill
             className="object-cover"
@@ -224,7 +224,7 @@ export default function TrainingProvidersPage() {
             
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/artlist/hero-training-4.jpg"
+                src="/images/learners/barrier-support.jpg"
                 alt="Training classroom"
                 fill
                 className="object-cover"

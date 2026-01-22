@@ -32,7 +32,7 @@ export default function HowItWorksPage() {
       {/* Hero with Image */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/success-new/success-10.jpg"
           alt="Career training in action"
           fill
           className="object-cover"

@@ -188,7 +188,7 @@ export default async function MicroClassesPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-8.jpg"
+                  src="/images/success-new/success-3.jpg"
                   alt="Micro Classes"
                   fill
                   className="object-cover"

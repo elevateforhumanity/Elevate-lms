@@ -63,7 +63,7 @@ export default async function ManagePage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/hero/admin-hero.jpg"
+          src="/images/courses/business-startup-marketing-10002422-cover.jpg"
           alt="Manage"
           fill
           className="object-cover"

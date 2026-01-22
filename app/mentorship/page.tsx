@@ -445,7 +445,7 @@ export default async function MentorshipPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-4.jpg"
+                  src="/images/trades/program-construction-training.jpg"
                   alt="Mentorship"
                   fill
                   className="object-cover"

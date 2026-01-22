@@ -147,7 +147,7 @@ export default function HomePage() {
             <Link href="/programs" className="group block">
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-4">
                 <Image
-                  src="/images/artlist/hero-training-1.jpg"
+                  src="/images/pathways/cna.jpg"
                   alt="Training"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -164,7 +164,7 @@ export default function HomePage() {
             <Link href="/how-it-works" className="group block">
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-4">
                 <Image
-                  src="/images/artlist/hero-training-3.jpg"
+                  src="/images/pathways/hvac.jpg"
                   alt="Free training"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"

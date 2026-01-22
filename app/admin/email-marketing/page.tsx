@@ -41,7 +41,7 @@ export default function EmailMarketingPage() {
       {/* Hero Section */}
       <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-8.jpg"
+          src="/images/learners/barrier-support.jpg"
           alt="Email Marketing"
           fill
           className="object-cover"
@@ -484,7 +484,7 @@ export default function EmailMarketingPage() {
                 </div>
                 <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/artlist/hero-training-2.jpg"
+                    src="/images/learners/reentry-coaching.jpg"
                     alt="Students learning"
                     fill
                     className="object-cover"

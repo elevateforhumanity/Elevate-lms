@@ -24,7 +24,7 @@ export default function SupersonicPage() {
     <div className="min-h-screen bg-gray-900">
       <div className="relative bg-gray-900 py-20">
         <Image
-          src="/images/artlist/hero-training-3.jpg"
+          src="/images/business/collaboration-1.jpg"
           alt="Supersonic Program"
           fill
           className="object-cover opacity-30"

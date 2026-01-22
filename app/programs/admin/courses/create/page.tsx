@@ -59,7 +59,7 @@ export default async function CreatePage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/hero/admin-hero.jpg"
+          src="/images/courses/home-health-aide-10002413-cover.jpg"
           alt="Create"
           fill
           className="object-cover"

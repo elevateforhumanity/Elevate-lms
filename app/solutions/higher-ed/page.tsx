@@ -40,7 +40,7 @@ export default async function HigherEdPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-7.jpg"
+          src="/images/trades/program-welding-training.jpg"
           alt="Higher Ed"
           fill
           className="object-cover"
@@ -141,7 +141,7 @@ export default async function HigherEdPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-7.jpg"
+                  src="/images/courses/esthetician-client-services-10002415-cover.jpg"
                   alt="Higher Ed"
                   fill
                   className="object-cover"

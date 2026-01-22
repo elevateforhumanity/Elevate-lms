@@ -784,7 +784,7 @@ export default async function VITAPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl order-2 lg:order-1">
               <Image
-                src="/images/artlist/hero-training-1.jpg"
+                src="/images/business/team-1.jpg"
                 alt="Free career training programs"
                 fill
                 className="object-cover"

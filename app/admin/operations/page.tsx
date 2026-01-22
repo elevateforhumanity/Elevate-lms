@@ -64,7 +64,7 @@ export default async function OperationsPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/hero/admin-hero.jpg"
+          src="/images/platform/student-portal-mock.jpg"
           alt="Operations"
           fill
           className="object-cover"

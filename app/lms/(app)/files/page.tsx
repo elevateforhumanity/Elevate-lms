@@ -89,7 +89,7 @@ export default async function FilesPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-6.jpg"
+          src="/images/success-new/success-6.jpg"
           alt="Files"
           fill
           className="object-cover"
@@ -188,7 +188,7 @@ export default async function FilesPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-4.jpg"
+                  src="/images/success-new/success-7.jpg"
                   alt="Files"
                   fill
                   className="object-cover"

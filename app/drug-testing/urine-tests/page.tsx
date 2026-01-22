@@ -24,7 +24,7 @@ const urineTests = [
       'Clearinghouse reporting (if applicable)',
     ],
     turnaround: '24-48 hours',
-    image: '/images/artlist/hero-training-2.jpg',
+    image: '/images/programs/cpr-group-training-hd.jpg',
   },
   {
     name: '5-Panel Drug Test',
@@ -39,7 +39,7 @@ const urineTests = [
       'Email notification when ready',
     ],
     turnaround: '24-48 hours',
-    image: '/images/artlist/hero-training-3.jpg',
+    image: '/images/pathways/cna.jpg',
   },
   {
     name: '10-Panel Drug Test',
@@ -54,7 +54,7 @@ const urineTests = [
       'Detailed results report',
     ],
     turnaround: '24-48 hours',
-    image: '/images/artlist/hero-training-4.jpg',
+    image: '/images/pathways/hvac.jpg',
   },
   {
     name: '5-Panel + Expanded Opiates',
@@ -70,7 +70,7 @@ const urineTests = [
       'MRO review included',
     ],
     turnaround: '24-48 hours',
-    image: '/images/artlist/hero-training-5.jpg',
+    image: '/images/pathways/business-hero.jpg',
   },
   {
     name: '4-Panel (NO THC)',
@@ -85,7 +85,7 @@ const urineTests = [
       'Same fast turnaround',
     ],
     turnaround: '24-48 hours',
-    image: '/images/artlist/hero-training-6.jpg',
+    image: '/images/trades/program-construction-training.jpg',
   },
   {
     name: '5-Panel + Alcohol',
@@ -100,7 +100,7 @@ const urineTests = [
       'Combined results report',
     ],
     turnaround: '24-48 hours',
-    image: '/images/artlist/hero-training-7.jpg',
+    image: '/images/trades/program-plumbing-training.jpg',
   },
 ];
 

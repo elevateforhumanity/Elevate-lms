@@ -128,7 +128,7 @@ export default async function CompliancePage() {
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/hero/admin-hero.jpg"
+          src="/images/certifications/osha.jpg"
           alt="Compliance"
           fill
           className="object-cover"

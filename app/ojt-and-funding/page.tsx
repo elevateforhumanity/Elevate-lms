@@ -145,7 +145,7 @@ export default async function OjtAndFundingPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-7.jpg"
+                  src="/images/learners/reentry-coaching.jpg"
                   alt="Ojt And Funding"
                   fill
                   className="object-cover"

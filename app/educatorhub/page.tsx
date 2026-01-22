@@ -39,7 +39,7 @@ export default async function EducatorhubPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-8.jpg"
+          src="/images/courses/business-startup-marketing-10002422-cover.jpg"
           alt="Educatorhub"
           fill
           className="object-cover"
@@ -140,7 +140,7 @@ export default async function EducatorhubPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-1.jpg"
+                  src="/images/courses/home-health-aide-10002413-cover.jpg"
                   alt="Educatorhub"
                   fill
                   className="object-cover"

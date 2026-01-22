@@ -39,7 +39,7 @@ export default async function EcosystemPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-4.jpg"
+          src="/images/learners/coaching-session.jpg"
           alt="Ecosystem"
           fill
           className="object-cover"
@@ -140,7 +140,7 @@ export default async function EcosystemPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/learners/barrier-support.jpg"
                   alt="Ecosystem"
                   fill
                   className="object-cover"
