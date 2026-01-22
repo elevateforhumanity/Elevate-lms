@@ -21,7 +21,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'hvac-1',
     name: 'Marcus Johnson',
-    photo: '/images/testimonials/marcus-j.jpg',
+    photo: '/images/testimonials/student-marcus.jpg',
     programSlug: 'hvac-technician',
     programName: 'HVAC Technician',
     quote: 'I went from working retail making $12/hour to earning $52,000 my first year as an HVAC tech. The hands-on training prepared me for real-world situations from day one.',
@@ -33,7 +33,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'hvac-2',
     name: 'David Williams',
-    photo: '/images/testimonials/david-w.jpg',
+    photo: '/images/testimonials/student-david.jpg',
     programSlug: 'hvac-technician',
     programName: 'HVAC Technician',
     quote: 'The EPA 608 certification prep was excellent. I passed on my first try and had three job offers before I even finished the program.',
@@ -47,7 +47,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'barber-1',
     name: 'Terrence Mitchell',
-    photo: '/images/testimonials/terrence-m.jpg',
+    photo: '/images/testimonials/student-sarah.jpg',
     programSlug: 'barber-apprenticeship',
     programName: 'Barber Apprenticeship',
     quote: 'Getting paid while learning was a game-changer. I built my clientele during training and now I rent my own chair making more than I ever thought possible.',
@@ -59,7 +59,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'barber-2',
     name: 'Anthony Davis',
-    photo: '/images/testimonials/anthony-d.jpg',
+    photo: '/images/testimonials/student-graduate-testimonial.jpg',
     programSlug: 'barber-apprenticeship',
     programName: 'Barber Apprenticeship',
     quote: 'I was skeptical about the apprenticeship route, but it was the best decision I made. Zero debt, real experience, and I graduated with a full book of clients.',
@@ -73,7 +73,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'cna-1',
     name: 'Keisha Brown',
-    photo: '/images/testimonials/keisha-b.jpg',
+    photo: '/images/testimonials/testimonial-success-story-2.jpg',
     programSlug: 'cna-certification',
     programName: 'CNA Certification',
     quote: 'In just 6 weeks, I went from unemployed to working at a hospital. The clinical experience gave me confidence to handle any situation.',
@@ -85,7 +85,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'cna-2',
     name: 'Maria Santos',
-    photo: '/images/testimonials/maria-s.jpg',
+    photo: '/images/testimonials/testimonial-success-story-3.jpg',
     programSlug: 'cna-certification',
     programName: 'CNA Certification',
     quote: 'This program opened doors I never knew existed. I started as a CNA and now I am in nursing school working toward my RN.',
@@ -99,7 +99,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'cdl-1',
     name: 'Robert Thompson',
-    photo: '/images/testimonials/robert-t.jpg',
+    photo: '/images/testimonials/testimonial-success-story-4.jpg',
     programSlug: 'cdl-training',
     programName: 'CDL Training',
     quote: 'I got my CDL and was on the road within a month. First year I made $68,000 with full benefits. Best career move I ever made.',
@@ -111,7 +111,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'cdl-2',
     name: 'James Wilson',
-    photo: '/images/testimonials/james-w.jpg',
+    photo: '/images/testimonials/testimonial-success-story-5.jpg',
     programSlug: 'cdl-training',
     programName: 'CDL Training',
     quote: 'The instructors were patient and thorough. I had never driven anything bigger than a pickup, and now I am hauling freight across the country.',
@@ -125,7 +125,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'phleb-1',
     name: 'Ashley Martinez',
-    photo: '/images/testimonials/ashley-m.jpg',
+    photo: '/images/testimonials/testimonial-medical-assistant.jpg',
     programSlug: 'phlebotomy-technician',
     programName: 'Phlebotomy Technician',
     quote: 'I was nervous about drawing blood, but the practice sessions built my confidence. Now I do 30+ draws a day without breaking a sweat.',
@@ -139,7 +139,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'ma-1',
     name: 'Jennifer Lee',
-    photo: '/images/testimonials/jennifer-l.jpg',
+    photo: '/images/testimonials/student-marcus.jpg',
     programSlug: 'medical-assistant',
     programName: 'Medical Assistant',
     quote: 'The externship placed me at a family practice where I was hired full-time before graduation. I love the variety of my work every day.',
@@ -153,7 +153,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'tax-1',
     name: 'Patricia Green',
-    photo: '/images/testimonials/patricia-g.jpg',
+    photo: '/images/testimonials/student-david.jpg',
     programSlug: 'tax-prep-financial-services',
     programName: 'Tax Preparation',
     quote: 'I started doing taxes part-time during tax season and made an extra $8,000. Now I run my own tax office year-round.',
@@ -165,7 +165,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'tax-2',
     name: 'Michael Carter',
-    photo: '/images/testimonials/michael-c.jpg',
+    photo: '/images/testimonials/student-sarah.jpg',
     programSlug: 'tax-prep-financial-services',
     programName: 'Tax Preparation',
     quote: 'The software training was invaluable. I prepared over 200 returns my first season and earned more than my previous full-time job.',
