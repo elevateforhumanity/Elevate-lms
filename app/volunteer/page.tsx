@@ -1,160 +1,145 @@
-import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { Heart, Users, Clock, Award, ArrowRight, Calendar, MapPin } from 'lucide-react';
+import { Metadata } from 'next';
+import { Heart, Users, Clock, MapPin, Calendar, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Volunteer Opportunities | Elevate For Humanity',
-  description: 'Make a difference in your community. Volunteer with Elevate to help others achieve their career goals.',
+  description: 'Make a difference in your community. Join our volunteer programs.',
 };
 
-const opportunities = [
-  {
-    title: 'VITA Tax Preparation',
-    description: 'Help low-income families file their taxes for free. IRS certification provided.',
-    commitment: '4-8 hours/week during tax season',
-    location: 'Indianapolis area sites',
-    icon: '📊',
-  },
-  {
-    title: 'Career Mentorship',
-    description: 'Guide students through their career journey with your professional experience.',
-    commitment: '2-4 hours/month',
-    location: 'Virtual or in-person',
-    icon: '🎯',
-  },
-  {
-    title: 'Mock Interviews',
-    description: 'Conduct practice interviews to help students prepare for job opportunities.',
-    commitment: '2-3 hours/month',
-    location: 'Virtual',
-    icon: '💼',
-  },
-  {
-    title: 'Resume Review',
-    description: 'Review and provide feedback on student resumes to improve their job prospects.',
-    commitment: 'Flexible',
-    location: 'Virtual',
-    icon: '📝',
-  },
-  {
-    title: 'Guest Speaker',
-    description: 'Share your industry expertise and career journey with our students.',
-    commitment: '1-2 hours per session',
-    location: 'Virtual or in-person',
-    icon: '🎤',
-  },
-  {
-    title: 'Event Support',
-    description: 'Help organize and run career fairs, graduation ceremonies, and community events.',
-    commitment: 'As needed',
-    location: 'Indianapolis area',
-    icon: '🎉',
-  },
-];
+export const dynamic = 'force-dynamic';
 
-const benefits = [
-  { icon: Heart, title: 'Make an Impact', description: 'Help transform lives in your community' },
-  { icon: Users, title: 'Network', description: 'Connect with professionals and community leaders' },
-  { icon: Clock, title: 'Flexible Hours', description: 'Volunteer on your own schedule' },
-  { icon: Award, title: 'Recognition', description: 'Receive certificates and letters of recommendation' },
-];
+export default async function VolunteerPage() {
+  const supabase = await createClient();
 
-export default function VolunteerPage() {
+  // Fetch volunteer opportunities from database
+  const { data: opportunities, error } = await supabase
+    .from('volunteer_opportunities')
+    .select('*')
+    .eq('is_active', true)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching opportunities:', error.message);
+  }
+
+  const opportunityList = opportunities || [];
+
+  const benefits = [
+    'Make a real impact in your community',
+    'Gain valuable experience and skills',
+    'Network with like-minded individuals',
+    'Flexible scheduling options',
+    'Certificate of volunteer service',
+    'Letter of recommendation available',
+  ];
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-purple-900 to-purple-700 text-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-purple-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Heart className="w-4 h-4" />
-              Make a Difference
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-              Volunteer With Us
-            </h1>
-            <p className="text-xl text-purple-100 mb-8">
-              Share your skills and experience to help others achieve their career goals. Every hour you give creates lasting change in someone's life.
-            </p>
-            <Link
-              href="/apply?type=volunteer"
-              className="inline-flex items-center gap-2 bg-white text-purple-900 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition-colors"
-            >
-              Apply to Volunteer
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="py-12 bg-purple-50 border-b">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="text-center">
-                <benefit.icon className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-                <div className="font-semibold mb-1">{benefit.title}</div>
-                <div className="text-gray-600 text-sm">{benefit.description}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Opportunities */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4">Volunteer Opportunities</h2>
-          <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-            Choose from a variety of ways to contribute based on your skills, interests, and availability.
+      <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white py-16">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <Heart className="w-16 h-16 mx-auto mb-4 opacity-90" />
+          <h1 className="text-4xl font-bold mb-4">Volunteer With Us</h1>
+          <p className="text-xl text-orange-100 max-w-2xl mx-auto">
+            Join our community of volunteers making a difference. Your time and skills can help transform lives.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {opportunities.map((opp) => (
-              <div key={opp.title} className="bg-white border rounded-xl p-6 hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{opp.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{opp.title}</h3>
-                <p className="text-gray-600 mb-4">{opp.description}</p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-2 text-gray-500">
-                    <Clock className="w-4 h-4" />
-                    {opp.commitment}
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-500">
-                    <MapPin className="w-4 h-4" />
-                    {opp.location}
-                  </div>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        {/* Benefits */}
+        <div className="bg-white rounded-xl border p-8 mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Volunteer?</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Heart className="w-4 h-4 text-orange-600" />
                 </div>
+                <span className="text-gray-700">{benefit}</span>
               </div>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* CTA */}
-      <section className="py-16 lg:py-24 bg-purple-600 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Make a Difference?</h2>
-          <p className="text-xl text-purple-100 mb-8">
-            Join our community of volunteers and help transform lives through education and career development.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/apply?type=volunteer"
-              className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-purple-50 transition-colors"
-            >
-              Apply Now
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+        {/* Opportunities */}
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Current Opportunities</h2>
+        
+        {opportunityList.length > 0 ? (
+          <div className="grid md:grid-cols-2 gap-6">
+            {opportunityList.map((opp: any) => (
+              <div key={opp.id} className="bg-white rounded-xl border p-6 hover:shadow-lg transition">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">{opp.title}</h3>
+                    <p className="text-sm text-gray-500">{opp.category || 'General'}</p>
+                  </div>
+                  {opp.spots_available && (
+                    <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">
+                      {opp.spots_available} spots
+                    </span>
+                  )}
+                </div>
+                <p className="text-gray-600 mb-4 line-clamp-2">{opp.description}</p>
+                <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
+                  {opp.location && (
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-4 h-4" />
+                      {opp.location}
+                    </span>
+                  )}
+                  {opp.time_commitment && (
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {opp.time_commitment}
+                    </span>
+                  )}
+                  {opp.schedule && (
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {opp.schedule}
+                    </span>
+                  )}
+                </div>
+                <Link
+                  href={`/volunteer/apply?opportunity=${opp.id}`}
+                  className="inline-flex items-center gap-2 text-orange-600 font-medium hover:underline"
+                >
+                  Apply Now <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white rounded-xl border p-12 text-center">
+            <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">No opportunities listed</h3>
+            <p className="text-gray-600 mb-6">Check back soon for new volunteer opportunities, or contact us to learn more.</p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600"
             >
               Contact Us
             </Link>
           </div>
+        )}
+
+        {/* CTA */}
+        <div className="mt-12 bg-gradient-to-r from-gray-900 to-gray-800 rounded-xl p-8 text-center text-white">
+          <h2 className="text-2xl font-bold mb-4">Ready to Make a Difference?</h2>
+          <p className="text-gray-300 mb-6 max-w-xl mx-auto">
+            Whether you have a few hours or want to commit long-term, we have opportunities for you.
+          </p>
+          <Link
+            href="/volunteer/apply"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600"
+          >
+            Apply to Volunteer <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
