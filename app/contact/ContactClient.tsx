@@ -46,7 +46,7 @@ export default function ContactClient() {
       title: 'Platform Licensing',
       description:
         'License our platform for your organization and deliver training at scale.',
-      image: '/images/artlist/cropped/hero-training-5-wide.jpg',
+      image: '/images/learners/barrier-support.jpg',
       href: '/platform/licensing',
       icon: '<Settings className="w-5 h-5 inline-block" />',
       color: ' ',

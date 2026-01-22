@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Post a Job - Hire Skilled Workers | Elevate for Humanity",
     description: "Post job openings and connect with qualified candidates trained in healthcare and skilled trades.",
-    images: ["/images/artlist/cropped/hero-training-4-wide.jpg"],
+    images: ["/images/business/collaboration-1.jpg"],
     type: "website",
   },
 };

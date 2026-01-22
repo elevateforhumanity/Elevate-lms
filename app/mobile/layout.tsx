@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Mobile App - Learn Anywhere | Elevate for Humanity",
     description: "Access your courses offline and on the go with our mobile app.",
-    images: ["/images/artlist/cropped/hero-training-1-wide.jpg"],
+    images: ["/images/efh/hero/hero-main-clean.jpg"],
     type: "website",
   },
 };

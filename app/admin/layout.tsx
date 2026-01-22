@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: 'Admin Portal | Elevate for Humanity',
     description:
       'Manage programs, students, certificates, and workforce development operations.',
-    images: ['/images/artlist/cropped/hero-training-1-wide.jpg'],
+    images: ['/images/efh/hero/hero-main-clean.jpg'],
     type: 'website',
   },
 };
