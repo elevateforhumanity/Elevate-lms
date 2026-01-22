@@ -93,7 +93,10 @@ database.json
 .netlify
 netlify/functions/node_modules/
 netlify/functions/package-lock.json
+# Core dump files (not directories)
 core.*
+!app/store/demo/core/
+
 # Temporary logs and outputs (cleanup)
 *.log
 *-summary.txt
@@ -109,16 +112,12 @@ cloudflare-token.txt
 nextjs-site-backup-*.tar.gz
 # Build trigger
 .vercel
-core
 .env*.local
 .env.certiport
 .env-branches/
 
-core
-
 # PNPM store
 .pnpm-store/
-core
 .env.local
 .env.local.backup
 public/build.json

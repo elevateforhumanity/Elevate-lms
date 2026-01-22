@@ -13,6 +13,7 @@ import {
   CheckCircle,
   AlertCircle,
   Loader2,
+  ExternalLink,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
@@ -31,6 +32,7 @@ interface Invoice {
   status: 'paid' | 'pending' | 'failed';
   date: string;
   description: string;
+  invoice_url?: string;
 }
 
 export default function BillingSettingsPage() {
@@ -39,6 +41,7 @@ export default function BillingSettingsPage() {
   const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [balance, setBalance] = useState(0);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     loadBillingData();
@@ -53,196 +56,224 @@ export default function BillingSettingsPage() {
       return;
     }
 
-    // Sample data - in production, fetch from Stripe or payment provider
-    setPaymentMethods([
-      {
-        id: '1',
-        type: 'card',
-        last4: '4242',
-        brand: 'Visa',
-        expiry: '12/26',
-        is_default: true,
-      },
-    ]);
+    try {
+      // Fetch payment methods from database
+      const { data: methods, error: methodsError } = await supabase
+        .from('payment_methods')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('is_default', { ascending: false });
 
-    setInvoices([
-      {
-        id: 'INV-001',
-        amount: 299,
-        status: 'paid',
-        date: '2026-01-15',
-        description: 'Barbering Program - Monthly Payment',
-      },
-      {
-        id: 'INV-002',
-        amount: 299,
-        status: 'paid',
-        date: '2025-12-15',
-        description: 'Barbering Program - Monthly Payment',
-      },
-      {
-        id: 'INV-003',
-        amount: 299,
-        status: 'paid',
-        date: '2025-11-15',
-        description: 'Barbering Program - Monthly Payment',
-      },
-    ]);
+      if (methodsError && methodsError.code !== 'PGRST116') {
+        console.error('Error fetching payment methods:', methodsError);
+      }
 
-    setBalance(0);
-    setLoading(false);
+      // Fetch invoices from database
+      const { data: invoiceData, error: invoicesError } = await supabase
+        .from('invoices')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('date', { ascending: false })
+        .limit(10);
+
+      if (invoicesError && invoicesError.code !== 'PGRST116') {
+        console.error('Error fetching invoices:', invoicesError);
+      }
+
+      // Fetch balance from profile
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('account_balance')
+        .eq('id', user.id)
+        .single();
+
+      setPaymentMethods(methods || []);
+      setInvoices(invoiceData || []);
+      setBalance(profile?.account_balance || 0);
+    } catch (err) {
+      console.error('Error loading billing data:', err);
+      setError('Failed to load billing information');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleManageBilling = async () => {
+    try {
+      const response = await fetch('/api/billing/portal', {
+        method: 'POST',
+      });
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    } catch (err) {
+      console.error('Error opening billing portal:', err);
+      alert('Failed to open billing portal');
+    }
+  };
+
+  const formatDate = (dateStr: string) => {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
   };
 
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-            <Link href="/lms" className="hover:text-gray-700">LMS</Link>
-            <ChevronRight className="w-4 h-4" />
-            <Link href="/lms/settings" className="hover:text-gray-700">Settings</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 font-medium">Billing</span>
-          </nav>
-          <h1 className="text-2xl font-bold text-gray-900">Billing & Payments</h1>
-          <p className="text-gray-600 mt-1">Manage payment methods and view invoices</p>
-        </div>
-      </div>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Breadcrumb */}
+        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+          <Link href="/lms" className="hover:text-gray-700">LMS</Link>
+          <ChevronRight className="w-4 h-4" />
+          <Link href="/lms/settings" className="hover:text-gray-700">Settings</Link>
+          <ChevronRight className="w-4 h-4" />
+          <span className="text-gray-900">Billing</span>
+        </nav>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">Billing & Payments</h1>
+
+        {error && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <p className="text-red-700">{error}</p>
+          </div>
+        )}
+
         {/* Account Balance */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+        <div className="bg-white rounded-xl border p-6 mb-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-500">Current Balance</p>
-              <p className="text-3xl font-bold text-gray-900">${balance.toFixed(2)}</p>
+              <h2 className="text-lg font-semibold text-gray-900">Account Balance</h2>
+              <p className="text-3xl font-bold text-gray-900 mt-2">${balance.toFixed(2)}</p>
             </div>
-            {balance > 0 ? (
-              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                Pay Now
-              </button>
-            ) : (
-              <div className="flex items-center gap-2 text-green-600">
-                <CheckCircle className="w-5 h-5" />
-                <span className="font-medium">All Paid</span>
-              </div>
-            )}
+            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+              <DollarSign className="w-6 h-6 text-green-600" />
+            </div>
           </div>
         </div>
 
         {/* Payment Methods */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 mb-8">
-          <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+        <div className="bg-white rounded-xl border p-6 mb-6">
+          <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Payment Methods</h2>
-            <button className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded-lg">
+            <button
+              onClick={handleManageBilling}
+              className="inline-flex items-center gap-2 text-blue-600 hover:underline text-sm"
+            >
               <Plus className="w-4 h-4" />
               Add Method
             </button>
           </div>
-          <div className="divide-y divide-gray-200">
-            {paymentMethods.map((method) => (
-              <div key={method.id} className="px-6 py-4 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-8 bg-gray-100 rounded flex items-center justify-center">
-                    <CreditCard className="w-6 h-6 text-gray-500" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900">
-                      {method.brand} •••• {method.last4}
-                    </p>
-                    <p className="text-sm text-gray-500">Expires {method.expiry}</p>
-                  </div>
-                  {method.is_default && (
-                    <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-medium rounded">
-                      Default
-                    </span>
-                  )}
-                </div>
-                <div className="flex items-center gap-2">
-                  {!method.is_default && (
-                    <button className="text-sm text-gray-600 hover:text-gray-900">
-                      Set Default
-                    </button>
-                  )}
-                  <button className="p-2 text-gray-400 hover:text-red-600">
-                    <Trash2 className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            ))}
-            {paymentMethods.length === 0 && (
-              <div className="px-6 py-8 text-center">
-                <CreditCard className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-500">No payment methods on file</p>
-              </div>
-            )}
-          </div>
-        </div>
 
-        {/* Payment History */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">Payment History</h2>
-          </div>
-          <div className="divide-y divide-gray-200">
-            {invoices.map((invoice) => (
-              <div key={invoice.id} className="px-6 py-4 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                    invoice.status === 'paid' ? 'bg-green-100' : 
-                    invoice.status === 'pending' ? 'bg-yellow-100' : 'bg-red-100'
-                  }`}>
-                    {invoice.status === 'paid' ? (
-                      <CheckCircle className="w-5 h-5 text-green-600" />
-                    ) : invoice.status === 'pending' ? (
-                      <DollarSign className="w-5 h-5 text-yellow-600" />
-                    ) : (
-                      <AlertCircle className="w-5 h-5 text-red-600" />
+          {paymentMethods.length > 0 ? (
+            <div className="space-y-3">
+              {paymentMethods.map((method) => (
+                <div key={method.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white rounded-lg border flex items-center justify-center">
+                      <CreditCard className="w-5 h-5 text-gray-600" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-900">
+                        {method.brand || 'Card'} •••• {method.last4}
+                      </p>
+                      {method.expiry && (
+                        <p className="text-sm text-gray-500">Expires {method.expiry}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {method.is_default && (
+                      <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">
+                        Default
+                      </span>
                     )}
                   </div>
-                  <div>
-                    <p className="font-medium text-gray-900">{invoice.description}</p>
-                    <p className="text-sm text-gray-500">
-                      {invoice.id} • {new Date(invoice.date).toLocaleDateString()}
-                    </p>
-                  </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <span className="font-semibold text-gray-900">${invoice.amount.toFixed(2)}</span>
-                  <button className="p-2 text-gray-400 hover:text-gray-600">
-                    <Download className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            ))}
-            {invoices.length === 0 && (
-              <div className="px-6 py-8 text-center">
-                <DollarSign className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-500">No payment history</p>
-              </div>
-            )}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <CreditCard className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+              <p className="text-gray-600 mb-4">No payment methods on file</p>
+              <button
+                onClick={handleManageBilling}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                <Plus className="w-4 h-4" />
+                Add Payment Method
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* Help */}
-        <div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5" />
-            <div>
-              <h3 className="font-medium text-blue-800">Need Help with Billing?</h3>
-              <p className="text-sm text-blue-700 mt-1">
-                Contact our billing department at billing@elevateforhumanity.org or call (317) 555-1234.
-              </p>
+        {/* Invoices */}
+        <div className="bg-white rounded-xl border p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Billing History</h2>
+
+          {invoices.length > 0 ? (
+            <div className="divide-y">
+              {invoices.map((invoice) => (
+                <div key={invoice.id} className="py-4 flex items-center justify-between">
+                  <div>
+                    <p className="font-medium text-gray-900">{invoice.description}</p>
+                    <p className="text-sm text-gray-500">{formatDate(invoice.date)}</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
+                      invoice.status === 'paid'
+                        ? 'bg-green-100 text-green-700'
+                        : invoice.status === 'pending'
+                        ? 'bg-yellow-100 text-yellow-700'
+                        : 'bg-red-100 text-red-700'
+                    }`}>
+                      {invoice.status === 'paid' && <CheckCircle className="w-3 h-3" />}
+                      {invoice.status === 'failed' && <AlertCircle className="w-3 h-3" />}
+                      {invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)}
+                    </span>
+                    <span className="font-semibold text-gray-900">${invoice.amount.toFixed(2)}</span>
+                    {invoice.invoice_url && (
+                      <a
+                        href={invoice.invoice_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 text-gray-400 hover:text-gray-600"
+                      >
+                        <Download className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
+          ) : (
+            <div className="text-center py-8">
+              <DollarSign className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+              <p className="text-gray-600">No billing history yet</p>
+            </div>
+          )}
+        </div>
+
+        {/* Manage Billing */}
+        <div className="mt-6 text-center">
+          <button
+            onClick={handleManageBilling}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800"
+          >
+            Manage Billing
+            <ExternalLink className="w-4 h-4" />
+          </button>
+          <p className="text-xs text-gray-500 mt-2">Opens Stripe billing portal</p>
         </div>
       </div>
     </div>
