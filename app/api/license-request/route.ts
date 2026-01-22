@@ -7,7 +7,11 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) throw new Error('RESEND_API_KEY not configured');
+  return new Resend(key);
+}
 
 export async function POST(req: Request) {
   const formData = await req.formData();
@@ -48,7 +52,7 @@ export async function POST(req: Request) {
 
   // Send notification email
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
       to: process.env.NOTIFY_EMAIL_TO || 'admin@www.elevateforhumanity.org',
       subject: `New License Request: ${payload.full_name} (${payload.desired_tier})`,
@@ -64,7 +68,7 @@ export async function POST(req: Request) {
     });
 
     // Send auto-reply to submitter
-    await resend.emails.send({
+    await getResend().emails.send({
       from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
       to: payload.email,
       subject: 'We received your licensing request | Elevate for Humanity',

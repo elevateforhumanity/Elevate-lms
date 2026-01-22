@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+function getSupabaseAdmin() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) {
+    throw new Error('Supabase credentials not configured');
+  }
+  return createClient(url, key);
+}
 
 /**
  * POST /api/provisioning/tenant
@@ -111,7 +115,7 @@ export async function POST(request: NextRequest) {
     if (licenseError) {
       console.error('License creation error:', licenseError);
       // Rollback org creation
-      await supabase.from('organizations').delete().eq('id', org.id);
+      await getSupabaseAdmin().from('organizations').delete().eq('id', org.id);
       return NextResponse.json(
         { error: 'Failed to create license' },
         { status: 500 }
@@ -119,7 +123,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Log provisioning event
-    await supabase.from('license_events').insert({
+    await getSupabaseAdmin().from('license_events').insert({
       license_id: license.id,
       organization_id: org.id,
       event_type: 'tenant_provisioned',

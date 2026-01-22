@@ -12,12 +12,13 @@ import { logAuditEvent, AuditActions } from '@/lib/audit';
 import { toError, toErrorMessage } from '@/lib/safe';
 
 
-const stripe = new Stripe(
-  process.env.STRIPE_SECRET_KEY || 'sk_test_Content',
-  {
+function getStripe() {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) throw new Error('STRIPE_SECRET_KEY not configured');
+  return new Stripe(key, {
     apiVersion: '2025-10-29.clover' as any,
-  }
-);
+  });
+}
 
 export async function POST(req: Request) {
   const supabase = createAdminClient();
@@ -31,6 +32,7 @@ export async function POST(req: Request) {
   let event: Stripe.Event;
 
   try {
+    const stripe = getStripe();
     event = stripe.webhooks.constructEvent(
       body,
       sig,

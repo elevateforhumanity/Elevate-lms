@@ -7,7 +7,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) throw new Error('RESEND_API_KEY not configured');
+  return new Resend(key);
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -38,7 +42,7 @@ export async function POST(req: NextRequest) {
 
     switch (email_type) {
       case 'welcome':
-        result = await resend.emails.send({
+        result = await getResend().emails.send({
           from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
           to: profile.email,
           subject: 'Test: Welcome Email - Elevate for Humanity',
@@ -55,7 +59,7 @@ If you're receiving this, the email system is working correctly!
         break;
 
       case 'reminder':
-        result = await resend.emails.send({
+        result = await getResend().emails.send({
           from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
           to: profile.email,
           subject: 'Test: Reminder Email - Elevate for Humanity',
@@ -75,7 +79,7 @@ Action Required:
         break;
 
       case 'notification':
-        result = await resend.emails.send({
+        result = await getResend().emails.send({
           from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
           to: profile.email,
           subject: 'Test: Notification Email - Elevate for Humanity',

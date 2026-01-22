@@ -8,7 +8,11 @@ import { createClient } from '@/lib/supabase/server';
 import { logAuditEvent, AuditActions } from '@/lib/audit';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) throw new Error('RESEND_API_KEY not configured');
+  return new Resend(key);
+}
 
 export async function POST(req: Request) {
   try {
@@ -105,7 +109,7 @@ export async function POST(req: Request) {
 
     // Send welcome email
     try {
-      await resend.emails.send({
+      await getResend().emails.send({
         from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
         to: email,
         subject: 'Shop Partner Application Received - Elevate for Humanity',

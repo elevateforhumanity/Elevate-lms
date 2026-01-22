@@ -8,7 +8,11 @@ import { parseBody, getErrorMessage } from '@/lib/api-helpers';
 import { createClient } from '@/lib/supabase/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) throw new Error('RESEND_API_KEY not configured');
+  return new Resend(key);
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -37,7 +41,7 @@ export async function POST(request: NextRequest) {
 
     // Send notification email
     try {
-      await resend.emails.send({
+      await getResend().emails.send({
         from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
         to: process.env.NOTIFY_EMAIL_TO || 'admin@www.elevateforhumanity.org',
         subject: `New Partner Inquiry: ${data.fullName} (${data.relationshipType})`,
@@ -55,7 +59,7 @@ export async function POST(request: NextRequest) {
       });
 
       // Send auto-reply to submitter
-      await resend.emails.send({
+      await getResend().emails.send({
         from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
         to: data.email,
         subject: 'We received your partner inquiry | Elevate for Humanity',
