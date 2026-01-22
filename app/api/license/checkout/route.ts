@@ -25,7 +25,25 @@ export async function POST(request: NextRequest) {
       organizationType,
       contactName, 
       contactEmail,
+      agreementsAccepted, // Required: must accept EULA, TOS, AUP, Disclosures, License Agreement
     } = body;
+
+    // Verify agreements were accepted
+    const requiredAgreements = ['eula', 'tos', 'aup', 'disclosures', 'license'];
+    if (!agreementsAccepted || !Array.isArray(agreementsAccepted)) {
+      return NextResponse.json(
+        { error: 'You must accept all required agreements to proceed' },
+        { status: 400 }
+      );
+    }
+    
+    const missingAgreements = requiredAgreements.filter(a => !agreementsAccepted.includes(a));
+    if (missingAgreements.length > 0) {
+      return NextResponse.json(
+        { error: `Missing required agreements: ${missingAgreements.join(', ')}` },
+        { status: 400 }
+      );
+    }
 
     // Check Stripe is configured
     if (!stripe) {
@@ -153,6 +171,8 @@ export async function POST(request: NextRequest) {
         organization_type: organizationType || 'other',
         contact_name: contactName,
         plan_id: planId,
+        agreements_accepted: agreementsAccepted.join(','),
+        agreements_accepted_at: new Date().toISOString(),
       },
       success_url: `${origin}/store/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/store?canceled=true`,

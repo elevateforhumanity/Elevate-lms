@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
 
 /**
  * checkout.session.completed
- * Link Stripe customer/subscription IDs to license, set trial status
+ * Create organization and license records, log agreement acceptance
  */
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const customerId = session.customer as string;
@@ -116,26 +116,106 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   // Get subscription details
   const subscription = await stripe.subscriptions.retrieve(subscriptionId);
 
-  // TODO: Create or update license in database
-  // For now, log the data that would be stored
-  const licenseData = {
-    stripeCustomerId: customerId,
-    stripeSubscriptionId: subscriptionId,
-    status: subscription.status === 'trialing' ? 'trial' : 'active',
-    planId: metadata.plan_id,
-    organizationName: metadata.organization_name,
-    organizationType: metadata.organization_type,
-    contactName: metadata.contact_name,
-    trialStartedAt: subscription.trial_start ? new Date(subscription.trial_start * 1000) : null,
-    trialEndsAt: subscription.trial_end ? new Date(subscription.trial_end * 1000) : null,
-    currentPeriodStart: new Date((subscription as any).current_period_start * 1000),
-    currentPeriodEnd: new Date((subscription as any).current_period_end * 1000),
-  };
+  // Get Supabase admin client
+  const { createAdminClient } = await import('@/lib/supabase/admin');
+  const supabase = createAdminClient();
 
-  console.log('License data to store:', licenseData);
+  try {
+    // 1. Create or update organization
+    const { data: org, error: orgError } = await supabase
+      .from('organizations')
+      .upsert({
+        name: metadata.organization_name,
+        organization_type: metadata.organization_type || 'other',
+        contact_name: metadata.contact_name,
+        contact_email: session.customer_email || metadata.contact_email,
+        stripe_customer_id: customerId,
+        status: 'active',
+        updated_at: new Date().toISOString(),
+      }, {
+        onConflict: 'stripe_customer_id',
+      })
+      .select()
+      .single();
 
-  // In production: 
-  // await db.licenses.upsert({ where: { stripeSubscriptionId }, data: licenseData });
+    if (orgError) {
+      console.error('Error creating organization:', orgError);
+      throw orgError;
+    }
+
+    console.log('Organization created/updated:', org.id);
+
+    // 2. Create license record
+    const licenseStatus = subscription.status === 'trialing' ? 'trial' : 'active';
+    const { data: license, error: licenseError } = await supabase
+      .from('licenses')
+      .upsert({
+        organization_id: org.id,
+        stripe_subscription_id: subscriptionId,
+        stripe_customer_id: customerId,
+        plan_id: metadata.plan_id,
+        status: licenseStatus,
+        trial_started_at: subscription.trial_start ? new Date(subscription.trial_start * 1000).toISOString() : null,
+        trial_ends_at: subscription.trial_end ? new Date(subscription.trial_end * 1000).toISOString() : null,
+        current_period_start: new Date((subscription as any).current_period_start * 1000).toISOString(),
+        current_period_end: new Date((subscription as any).current_period_end * 1000).toISOString(),
+        updated_at: new Date().toISOString(),
+      }, {
+        onConflict: 'stripe_subscription_id',
+      })
+      .select()
+      .single();
+
+    if (licenseError) {
+      console.error('Error creating license:', licenseError);
+      throw licenseError;
+    }
+
+    console.log('License created/updated:', license.id);
+
+    // 3. Log agreement acceptances if present
+    if (metadata.agreements_accepted) {
+      const agreements = metadata.agreements_accepted.split(',');
+      const acceptedAt = metadata.agreements_accepted_at || new Date().toISOString();
+
+      for (const agreementType of agreements) {
+        await supabase
+          .from('license_agreement_acceptances')
+          .upsert({
+            organization_id: org.id,
+            agreement_type: agreementType,
+            document_version: '1.0',
+            accepted_at: acceptedAt,
+            acceptance_context: 'checkout',
+            stripe_session_id: session.id,
+          }, {
+            onConflict: 'user_id,agreement_type,document_version',
+            ignoreDuplicates: true,
+          });
+      }
+
+      console.log('Agreement acceptances logged:', agreements);
+    }
+
+    // 4. Log license event
+    await supabase
+      .from('license_events')
+      .insert({
+        license_id: license.id,
+        event_type: 'license_created',
+        event_data: {
+          plan_id: metadata.plan_id,
+          status: licenseStatus,
+          stripe_session_id: session.id,
+        },
+      });
+
+    console.log('License provisioning complete for:', metadata.organization_name);
+
+  } catch (error) {
+    console.error('Error in handleCheckoutCompleted:', error);
+    throw error;
+  }
 }
 
 /**
