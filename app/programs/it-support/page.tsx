@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Technology Programs',
   categoryHref: '/programs/technology',
   description: 'Launch your tech career with foundational IT skills. Earn your CompTIA A+ certification and learn to support computer systems, networks, and end users.',
-  image: '/images/programs-new/program-7.jpg',
+  image: '/images/technology/hero-program-it-support.jpg',
   duration: '8-12 weeks',
   tuition: '$0 with WIOA',
   fundingType: 'funded',

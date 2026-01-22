@@ -95,8 +95,8 @@ export default function ProgramCategoryPage({
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-center overflow-hidden bg-slate-900">
+      {/* Hero Section - Compact */}
+      <section className="relative w-full min-h-[45vh] sm:min-h-[50vh] flex items-center overflow-hidden bg-slate-900">
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover brightness-75"

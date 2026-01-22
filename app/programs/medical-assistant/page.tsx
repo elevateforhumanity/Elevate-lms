@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Healthcare Programs',
   categoryHref: '/programs/healthcare',
   description: 'Train to become a Medical Assistant and work in clinics, hospitals, and physician offices. Learn both clinical procedures and front-office administration.',
-  image: '/images/programs-new/program-1.jpg',
+  image: '/images/healthcare/hero-program-medical-assistant.jpg',
   duration: '12-16 weeks',
   tuition: '$0 with WIOA',
   fundingType: 'funded',

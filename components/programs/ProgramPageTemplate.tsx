@@ -47,18 +47,18 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
         />
       )}
       
-      {/* Hero Image */}
-      <section className="relative h-[40vh] min-h-[300px] lg:h-[50vh] lg:min-h-[400px] bg-gray-100">
+      {/* Hero Image - Compact */}
+      <section className="relative h-[35vh] min-h-[250px] lg:h-[40vh] lg:min-h-[300px] bg-gray-100">
         <Image
           src={program.image}
           alt={program.title}
           fill
           sizes="100vw"
-          className="object-cover brightness-105"
+          className="object-cover"
           priority
-          quality={90}
+          quality={85}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
       </section>
 
       {/* Funding Badge */}

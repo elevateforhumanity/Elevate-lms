@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Skilled Trades Programs',
   categoryHref: '/programs/skilled-trades',
   description: 'Get your Class A Commercial Driver License and start a trucking career. High demand, competitive pay.',
-  image: '/images/trades/hero-program-hvac.jpg',
+  image: '/images/trades/hero-program-cdl.jpg',
   avatarVideo: '/videos/hero-cdl-avatar.mp4',
   avatarName: 'Amanda',
   duration: '4-8 weeks',

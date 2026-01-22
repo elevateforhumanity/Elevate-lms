@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Healthcare Programs',
   categoryHref: '/programs/healthcare',
   description: 'Fast-track certification program to become a Phlebotomy Technician. Learn proper blood draw techniques, specimen handling, and patient care in just 4-6 weeks.',
-  image: '/images/programs-new/program-2.jpg',
+  image: '/images/healthcare/cna-training.jpg',
   duration: '4-6 weeks',
   tuition: '$0 with WIOA',
   fundingType: 'funded',
