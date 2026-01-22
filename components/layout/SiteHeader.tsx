@@ -183,13 +183,7 @@ export default function SiteHeader() {
 
   return (
     <>
-      {/* Skip to main content link for keyboard/screen reader users */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[10001] focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
-      >
-        Skip to main content
-      </a>
+      {/* Skip link is provided by ConditionalLayout - no duplicate needed here */}
       <header className="fixed top-0 left-0 right-0 h-[70px] bg-white z-[9999] shadow-md">
         <div className="max-w-7xl mx-auto w-full h-full flex items-center justify-between px-4">
           {/* Logo */}
@@ -201,6 +195,7 @@ export default function SiteHeader() {
               height={40}
               className="w-10 h-10"
               priority
+              fetchPriority="high"
             />
             <span className="font-bold text-lg text-gray-900 hidden sm:inline">
               Elevate
