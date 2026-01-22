@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
-// Main navigation with dropdowns for sub-pages
+// Navigation structure for mobile menu
 const NAV_ITEMS = [
   { 
     name: 'Programs', 
@@ -113,18 +114,30 @@ const NAV_ITEMS = [
   },
 ];
 
+// Desktop navigation links
+const DESKTOP_NAV_LINKS = [
+  { name: 'Programs', href: '/programs' },
+  { name: 'How It Works', href: '/how-it-works' },
+  { name: 'WIOA Funding', href: '/wioa-eligibility' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+];
+
 // Safe user hook that never throws
 function useSafeUser() {
   const [user, setUser] = useState<{ email?: string } | null>(null);
   
   useEffect(() => {
-    // Only fetch if we're in browser
     if (typeof window === 'undefined') return;
     
-    fetch('/api/auth/me')
+    const controller = new AbortController();
+    
+    fetch('/api/auth/me', { signal: controller.signal })
       .then(res => res.ok ? res.json() : null)
       .then(data => setUser(data?.user ?? null))
       .catch(() => setUser(null));
+    
+    return () => controller.abort();
   }, []);
   
   return user;
@@ -134,30 +147,53 @@ export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const user = useSafeUser();
+  const pathname = usePathname();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLElement>(null);
 
-  const toggleDropdown = (name: string) => {
-    setOpenDropdown(openDropdown === name ? null : name);
-  };
+  // Check if a link is active
+  const isActive = useCallback((href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  }, [pathname]);
 
-  // Close menu on Escape key and handle focus trap
+  const toggleDropdown = useCallback((name: string) => {
+    setOpenDropdown(prev => prev === name ? null : name);
+  }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    setMobileMenuOpen(false);
+    setOpenDropdown(null);
+    // Return focus to menu button when closing
+    menuButtonRef.current?.focus();
+  }, []);
+
+  const openMobileMenu = useCallback(() => {
+    setMobileMenuOpen(true);
+  }, []);
+
+  // Handle escape key and focus trap
   useEffect(() => {
     if (!mobileMenuOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setMobileMenuOpen(false);
-        setOpenDropdown(null);
+        closeMobileMenu();
         return;
       }
 
-      // Focus trap: keep Tab within mobile menu
+      // Focus trap
       if (e.key === 'Tab') {
-        const menu = document.getElementById('mobile-menu');
+        const menu = mobileMenuRef.current;
         if (!menu) return;
 
         const focusableElements = menu.querySelectorAll<HTMLElement>(
           'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
         );
+        
+        if (focusableElements.length === 0) return;
+        
         const firstElement = focusableElements[0];
         const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -171,83 +207,116 @@ export default function SiteHeader() {
       }
     };
 
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', handleKeyDown);
     
-    // Focus first element when menu opens
-    const menu = document.getElementById('mobile-menu');
-    const firstFocusable = menu?.querySelector<HTMLElement>('a[href], button');
-    firstFocusable?.focus();
+    // Focus close button when menu opens
+    closeButtonRef.current?.focus();
 
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [mobileMenuOpen]);
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileMenuOpen, closeMobileMenu]);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    closeMobileMenu();
+  }, [pathname, closeMobileMenu]);
 
   return (
     <>
-      {/* Skip link is provided by ConditionalLayout - no duplicate needed here */}
-      <header className="fixed top-0 left-0 right-0 h-[70px] bg-white z-[9999] shadow-md">
+      {/* Live region for screen reader announcements */}
+      <div 
+        role="status" 
+        aria-live="polite" 
+        aria-atomic="true" 
+        className="sr-only"
+      >
+        {mobileMenuOpen ? 'Navigation menu opened' : ''}
+      </div>
+
+      <header 
+        className="fixed top-0 left-0 right-0 h-[70px] bg-white z-[9999] shadow-md"
+        role="banner"
+      >
         <div className="max-w-7xl mx-auto w-full h-full flex items-center justify-between px-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 no-underline">
+          <Link 
+            href="/" 
+            className="flex items-center gap-2 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-lg"
+            aria-label="Elevate for Humanity - Home"
+          >
             <Image
               src="/logo.png"
-              alt="Elevate for Humanity"
+              alt=""
               width={40}
               height={40}
               className="w-10 h-10"
               priority
               fetchPriority="high"
+              aria-hidden="true"
             />
             <span className="font-bold text-lg text-gray-900 hidden sm:inline">
               Elevate
             </span>
           </Link>
 
-          {/* Desktop Navigation - hidden on mobile */}
-          <nav className="hidden lg:flex items-center gap-6" role="navigation" aria-label="Main navigation">
-            <Link href="/programs" className="text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded">
-              Programs
-            </Link>
-            <Link href="/how-it-works" className="text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded">
-              How It Works
-            </Link>
-            <Link href="/wioa-eligibility" className="text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded">
-              WIOA Funding
-            </Link>
-            <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded">
-              About
-            </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded">
-              Contact
-            </Link>
+          {/* Desktop Navigation */}
+          <nav 
+            className="hidden lg:flex items-center gap-1" 
+            role="navigation" 
+            aria-label="Main navigation"
+          >
+            {DESKTOP_NAV_LINKS.map((link) => (
+              <Link 
+                key={link.href}
+                href={link.href} 
+                className={`
+                  px-3 py-2 text-sm font-medium rounded-md transition-colors
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                  ${isActive(link.href) 
+                    ? 'text-blue-600 bg-blue-50' 
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  }
+                `}
+                aria-current={isActive(link.href) ? 'page' : undefined}
+              >
+                {link.name}
+              </Link>
+            ))}
           </nav>
 
-          {/* Right side */}
-          <div className="flex items-center gap-3">
-            {/* Sign In - desktop only */}
+          {/* Right side actions */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Sign In / Dashboard - desktop only */}
             <Link
               href={user ? "/lms/dashboard" : "/login"}
-              className="hidden lg:inline-flex text-gray-700 hover:text-blue-600 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
+              className="hidden lg:inline-flex px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               {user ? 'Dashboard' : 'Sign In'}
             </Link>
 
-            {/* Apply Now button */}
+            {/* Apply Now CTA */}
             <Link
               href="/apply"
-              className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 min-h-[44px]"
             >
               Apply Now
             </Link>
 
-            {/* Menu button - visible on mobile/tablet, hidden on desktop */}
+            {/* Mobile menu button */}
             <button
-              onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-100 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-              aria-label="Open menu"
+              ref={menuButtonRef}
+              onClick={openMobileMenu}
+              className="lg:hidden flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-100 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-200 active:bg-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
+              aria-haspopup="dialog"
             >
-              <Menu className="w-6 h-6 text-gray-900" />
+              <Menu className="w-6 h-6 text-gray-900" aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -256,55 +325,82 @@ export default function SiteHeader() {
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div 
-          className="fixed inset-0 z-[9999] bg-black/50"
-          onClick={() => setMobileMenuOpen(false)}
+          className="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm transition-opacity"
+          onClick={closeMobileMenu}
+          aria-hidden="true"
         />
       )}
 
       {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
         <nav 
+          ref={mobileMenuRef}
           id="mobile-menu"
           className="fixed top-0 right-0 bottom-0 w-full max-w-[320px] bg-white z-[10000] overflow-y-auto shadow-xl"
-          role="navigation"
-          aria-label="Mobile navigation"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
         >
           {/* Menu Header */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white sticky top-0">
-            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 no-underline">
-              <Image src="/logo.png" alt="Elevate" width={32} height={32} />
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white sticky top-0 z-10">
+            <Link 
+              href="/" 
+              onClick={closeMobileMenu} 
+              className="flex items-center gap-2 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-lg"
+            >
+              <Image src="/logo.png" alt="" width={32} height={32} aria-hidden="true" />
               <span className="font-bold text-gray-900">Elevate</span>
             </Link>
             <button
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-transparent border-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-lg"
-              aria-label="Close menu"
+              ref={closeButtonRef}
+              onClick={closeMobileMenu}
+              className="flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-transparent border-none cursor-pointer hover:bg-gray-100 active:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-lg"
+              aria-label="Close navigation menu"
             >
-              <X className="w-6 h-6 text-gray-700" />
+              <X className="w-6 h-6 text-gray-700" aria-hidden="true" />
             </button>
           </div>
 
           {/* Menu Items */}
-          <div className="p-4">
+          <div className="p-4" role="menu">
             {NAV_ITEMS.map((item) => (
-              <div key={item.name} className="mb-1">
+              <div key={item.name} className="mb-1" role="none">
                 {item.subItems ? (
                   <>
                     <button
                       onClick={() => toggleDropdown(item.name)}
-                      className={`flex items-center justify-between w-full px-4 py-3 text-base font-semibold text-gray-900 rounded-lg cursor-pointer text-left border-none ${openDropdown === item.name ? 'bg-gray-100' : 'bg-transparent'}`}
+                      className={`
+                        flex items-center justify-between w-full px-4 py-3 text-base font-semibold rounded-lg cursor-pointer text-left border-none transition-colors
+                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                        ${openDropdown === item.name ? 'bg-gray-100 text-blue-600' : 'bg-transparent text-gray-900 hover:bg-gray-50'}
+                      `}
                       aria-expanded={openDropdown === item.name}
-                      aria-haspopup="true"
+                      aria-controls={`submenu-${item.name.replace(/\s+/g, '-').toLowerCase()}`}
+                      role="menuitem"
                     >
                       {item.name}
-                      <ChevronDown className={`w-5 h-5 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} aria-hidden="true" />
+                      <ChevronDown 
+                        className={`w-5 h-5 transition-transform duration-200 ${openDropdown === item.name ? 'rotate-180' : ''}`} 
+                        aria-hidden="true" 
+                      />
                     </button>
                     {openDropdown === item.name && (
-                      <div className="ml-4 border-l-2 border-gray-200 mt-1">
+                      <div 
+                        id={`submenu-${item.name.replace(/\s+/g, '-').toLowerCase()}`}
+                        className="ml-4 border-l-2 border-gray-200 mt-1"
+                        role="menu"
+                        aria-label={`${item.name} submenu`}
+                      >
                         <Link
                           href={item.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="block px-4 py-2 text-sm font-medium text-blue-600 no-underline hover:bg-gray-50"
+                          onClick={closeMobileMenu}
+                          className={`
+                            block px-4 py-2 text-sm font-medium no-underline transition-colors
+                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                            ${isActive(item.href) ? 'text-blue-600 bg-blue-50' : 'text-blue-600 hover:bg-gray-50'}
+                          `}
+                          role="menuitem"
+                          aria-current={isActive(item.href) ? 'page' : undefined}
                         >
                           View All {item.name}
                         </Link>
@@ -312,8 +408,14 @@ export default function SiteHeader() {
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block px-4 py-2 text-sm text-gray-600 no-underline hover:bg-gray-50 hover:text-blue-600"
+                            onClick={closeMobileMenu}
+                            className={`
+                              block px-4 py-2 text-sm no-underline transition-colors
+                              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                              ${isActive(subItem.href) ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'}
+                            `}
+                            role="menuitem"
+                            aria-current={isActive(subItem.href) ? 'page' : undefined}
                           >
                             {subItem.name}
                           </Link>
@@ -324,8 +426,14 @@ export default function SiteHeader() {
                 ) : (
                   <Link
                     href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3 text-base font-semibold text-gray-900 no-underline rounded-lg hover:bg-gray-50"
+                    onClick={closeMobileMenu}
+                    className={`
+                      block px-4 py-3 text-base font-semibold no-underline rounded-lg transition-colors
+                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                      ${isActive(item.href) ? 'text-blue-600 bg-blue-50' : 'text-gray-900 hover:bg-gray-50'}
+                    `}
+                    role="menuitem"
+                    aria-current={isActive(item.href) ? 'page' : undefined}
                   >
                     {item.name}
                   </Link>
@@ -334,18 +442,20 @@ export default function SiteHeader() {
             ))}
 
             {/* Bottom Actions */}
-            <div className="mt-6 pt-6 border-t border-gray-200">
+            <div className="mt-6 pt-6 border-t border-gray-200" role="none">
               <Link
                 href={user ? "/lms/dashboard" : "/login"}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block w-full p-3 text-center text-base font-medium text-gray-700 border border-gray-300 rounded-full no-underline mb-3 hover:bg-gray-50"
+                onClick={closeMobileMenu}
+                className="block w-full p-3 text-center text-base font-medium text-gray-700 border border-gray-300 rounded-full no-underline mb-3 hover:bg-gray-50 active:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                role="menuitem"
               >
                 {user ? 'Dashboard' : 'Sign In'}
               </Link>
               <Link
                 href="/apply"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block w-full p-3 text-center text-base font-semibold text-white bg-blue-600 rounded-full no-underline hover:bg-blue-700"
+                onClick={closeMobileMenu}
+                className="block w-full p-3 text-center text-base font-semibold text-white bg-blue-600 rounded-full no-underline hover:bg-blue-700 active:bg-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                role="menuitem"
               >
                 Apply Now
               </Link>
