@@ -29,20 +29,14 @@ export default async function BlogPage() {
 
   const { data: posts } = await supabase
     .from('blog_posts')
-    .select(`
-      *,
-      author:profiles(full_name, avatar_url)
-    `)
+    .select('*')
     .eq('published', true)
     .order('published_at', { ascending: false })
     .limit(12);
 
   const { data: featuredPost } = await supabase
     .from('blog_posts')
-    .select(`
-      *,
-      author:profiles(full_name, avatar_url)
-    `)
+    .select('*')
     .eq('published', true)
     .order('published_at', { ascending: false })
     .limit(1)
@@ -75,7 +69,7 @@ export default async function BlogPage() {
                 <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                   <div className="flex items-center gap-1">
                     <User className="w-4 h-4" />
-                    {featuredPost.author?.full_name || 'Elevate Team'}
+                    {featuredPost.author_name || 'Elevate Team'}
                   </div>
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
@@ -111,7 +105,7 @@ export default async function BlogPage() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 text-sm text-gray-500">
                     <User className="w-4 h-4" />
-                    {post.author?.full_name || 'Elevate Team'}
+                    {post.author_name || 'Elevate Team'}
                   </div>
                   <Link href={`/blog/${post.slug}`} className="text-emerald-600 font-medium hover:underline text-sm">
                     Read More
