@@ -22,6 +22,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
+import { NotificationBell } from '@/components/notifications/NotificationBell';
 
 // Main navigation - focused on workforce training mission
 const NAV_ITEMS = [
@@ -130,8 +132,8 @@ export default function SiteHeader() {
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="flex items-center h-full">
+            {/* Desktop Navigation - hidden on mobile/tablet */}
+            <nav className="hidden md:flex items-center h-full" aria-label="Main navigation">
               {NAV_ITEMS.map((item) => (
                 <div key={item.name} className="relative h-full group">
                   <Link
@@ -141,19 +143,21 @@ export default function SiteHeader() {
                       before:opacity-0 before:transition-opacity group-hover:before:opacity-100
                       text-gray-700 hover:text-gray-900
                     `}
+                    aria-haspopup={item.subItems ? "true" : undefined}
                   >
                     {item.name}
-                    {item.subItems && <ChevronDown className="w-3 h-3" />}
+                    {item.subItems && <ChevronDown className="w-3 h-3" aria-hidden="true" />}
                   </Link>
                   {/* Dropdown */}
                   {item.subItems && (
-                    <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200" role="menu">
                       <div className="bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-[200px]">
                         {item.subItems.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                            role="menuitem"
                           >
                             {subItem.name}
                           </Link>
@@ -167,6 +171,11 @@ export default function SiteHeader() {
 
             {/* Right side */}
             <div className="flex items-center gap-2 sm:gap-4">
+              {/* Language Switcher */}
+              <div className="hidden lg:block">
+                <LanguageSwitcher />
+              </div>
+              
               {/* Phone number - desktop only */}
               <a
                 href="tel:317-314-3757"
@@ -176,12 +185,17 @@ export default function SiteHeader() {
                 (317) 314-3757
               </a>
               {user ? (
-                <Link
-                  href="/lms/dashboard"
-                  className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
-                >
-                  Dashboard
-                </Link>
+                <>
+                  <div className="hidden md:block">
+                    <NotificationBell />
+                  </div>
+                  <Link
+                    href="/lms/dashboard"
+                    className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                  >
+                    Dashboard
+                  </Link>
+                </>
               ) : (
                 <Link
                   href="/login"

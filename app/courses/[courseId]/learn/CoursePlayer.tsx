@@ -1,10 +1,11 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 
 import { useState } from 'react';
 import LessonSidebar from './LessonSidebar';
 import LessonContent from './LessonContent';
+import { DownloadOfflineButton } from '@/components/courses/DownloadOfflineButton';
 
 interface Lesson {
   id: string;
@@ -60,6 +61,26 @@ export default function CoursePlayer({
     (completedCount / lessons.length) * 100
   );
 
+  // Keyboard navigation for accessibility
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+      return; // Don't interfere with form inputs
+    }
+    
+    if (e.key === 'ArrowRight' && hasNext) {
+      e.preventDefault();
+      handleNextLesson();
+    } else if (e.key === 'ArrowLeft' && hasPrevious) {
+      e.preventDefault();
+      handlePreviousLesson();
+    }
+  }, [hasNext, hasPrevious]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
+
   return (
     <div className="flex h-screen bg-slate-50">
       {/* Sidebar */}
@@ -106,10 +127,21 @@ export default function CoursePlayer({
               </div>
             </div>
             <div className="flex items-center gap-3">
+              <div className="hidden md:block">
+                <DownloadOfflineButton 
+                  courseId={courseId} 
+                  lessonUrls={lessons.map(l => `/courses/${courseId}/learn?lesson=${l.id}`)}
+                />
+              </div>
+              <div className="hidden lg:flex items-center gap-1 text-xs text-slate-500">
+                <kbd className="px-1.5 py-0.5 bg-slate-100 rounded text-[10px] font-mono">←</kbd>
+                <kbd className="px-1.5 py-0.5 bg-slate-100 rounded text-[10px] font-mono">→</kbd>
+                <span>to navigate</span>
+              </div>
               <div className="text-sm text-black">
                 {progressPercentage}% Complete
               </div>
-              <div className="w-32 h-2 bg-slate-200 rounded-full overflow-hidden">
+              <div className="w-32 h-2 bg-slate-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow={progressPercentage} aria-valuemin={0} aria-valuemax={100} aria-label="Course progress">
                 <div
                   className="h-full bg-brand-orange-600 transition-all duration-300"
                   style={{ width: `${progressPercentage}%` }}

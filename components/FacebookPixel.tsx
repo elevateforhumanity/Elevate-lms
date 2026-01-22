@@ -73,12 +73,15 @@ export default function FacebookPixel() {
         </Script>
 
         <noscript>
+          {/* Tracking pixel - empty alt is intentional for decorative/tracking images */}
           <img
             height="1"
             width="1"
             style={{ display: 'none' }}
             src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
             alt=""
+            aria-hidden="true"
+            role="presentation"
           />
         </noscript>
       </>

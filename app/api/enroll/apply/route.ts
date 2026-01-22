@@ -187,8 +187,9 @@ export async function POST(req: Request) {
       },
       { status: 200 }
     );
-  } catch (err: any) {
-    logger.error('[Enroll Apply] Error:', err as Error);
+  } catch (err: unknown) {
+    const error = err instanceof Error ? err : new Error(String(err));
+    logger.error('[Enroll Apply] Error:', error);
     return NextResponse.json(
       {
         message:

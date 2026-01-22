@@ -9,6 +9,9 @@ import {
   ArrowRight,
   PartyPopper,
 } from 'lucide-react';
+import dynamic from 'next/dynamic';
+
+const Confetti = dynamic(() => import('@/components/Confetti'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Enrollment Successful | Elevate for Humanity',
@@ -76,18 +79,19 @@ export default async function EnrollSuccessPage() {
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4 py-12">
+      <Confetti />
       <div className="max-w-2xl w-full">
         {/* Success Icon */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-green-600 rounded-full mb-6">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-green-600 rounded-full mb-6 animate-bounce">
             <CheckCircle className="w-12 h-12 text-white" />
           </div>
           <h1 className="text-4xl font-bold text-black mb-4">
-            <PartyPopper className="w-8 h-8 inline-block mr-2" />
+            <PartyPopper className="w-8 h-8 inline-block mr-2" aria-hidden="true" />
             Enrollment Successful!
           </h1>
           <p className="text-lg text-gray-600">
-            Welcome to Elevate for Humanity. We're excited to have you!
+            Welcome to Elevate for Humanity. We&apos;re excited to have you!
           </p>
         </div>
 

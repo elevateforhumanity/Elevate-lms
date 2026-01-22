@@ -1,6 +1,26 @@
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
 import { sendEmail } from '@/lib/email';
+import type { SupabaseClient } from '@supabase/supabase-js';
+
+// Type for Supabase client
+type SupabaseClientType = SupabaseClient | Awaited<ReturnType<typeof createClient>>;
+
+// Type for junction course data
+interface JunctionCourse {
+  course_id: string;
+  courses: {
+    id: string;
+    title: string;
+    is_published: boolean;
+  } | null;
+}
+
+// Type for course data
+interface CourseData {
+  id: string;
+  title: string;
+}
 
 export interface EnrollmentOrchestrationResult {
   success: boolean;
@@ -190,7 +210,7 @@ export async function orchestrateEnrollment(params: {
  * This gives the student access to course content in the LMS
  */
 async function createCourseEnrollmentsForProgram(
-  supabase: any,
+  supabase: SupabaseClientType,
   studentId: string,
   programId: string,
   fundingSource: string
@@ -214,9 +234,9 @@ async function createCourseEnrollmentsForProgram(
     .eq('program_id', programUuid);
 
   if (junctionCourses && junctionCourses.length > 0) {
-    const courses = junctionCourses
-      .filter((jc: any) => jc.courses?.is_published !== false)
-      .map((jc: any) => ({ id: jc.courses.id, title: jc.courses.title }));
+    const courses = (junctionCourses as JunctionCourse[])
+      .filter((jc) => jc.courses?.is_published !== false)
+      .map((jc) => ({ id: jc.courses!.id, title: jc.courses!.title }));
     
     if (courses.length > 0) {
       totalEnrolled += await enrollInCourses(supabase, studentId, courses, fundingSource);
@@ -262,7 +282,7 @@ async function createCourseEnrollmentsForProgram(
  * Enroll student in partner courses linked to a program
  */
 async function enrollInPartnerCourses(
-  supabase: any,
+  supabase: SupabaseClientType,
   studentId: string,
   programId: string,
   fundingSource: string
@@ -318,9 +338,9 @@ async function enrollInPartnerCourses(
 }
 
 async function enrollInCourses(
-  supabase: any,
+  supabase: SupabaseClientType,
   studentId: string,
-  courses: { id: string; title: string }[],
+  courses: CourseData[],
   fundingSource: string
 ): Promise<number> {
   let enrolled = 0;

@@ -3,6 +3,16 @@ import { test, expect } from '@playwright/test';
 /**
  * E2E Tests for Complete Enrollment Flow
  * Tests the full journey: Discovery → Apply → Upload → Review → Pay/Enroll → Learn
+ * 
+ * Coverage:
+ * - Program discovery and browsing
+ * - Application form submission
+ * - Authentication flows
+ * - LMS access and navigation
+ * - Payment flow
+ * - Accessibility compliance
+ * - Mobile responsiveness
+ * - Error handling
  */
 
 test.describe('Enrollment Flow - Complete Journey', () => {

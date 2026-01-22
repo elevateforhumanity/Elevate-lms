@@ -46,9 +46,9 @@ export default function LessonContent({
         // Refresh the page to update completion status
         window.location.reload();
       }
-    } catch (error) { /* Error handled silently */ 
-    // Error handled
-  } finally {
+    } catch (error) {
+      console.error('Failed to mark lesson complete:', error);
+    } finally {
       setIsCompleting(false);
     }
   };

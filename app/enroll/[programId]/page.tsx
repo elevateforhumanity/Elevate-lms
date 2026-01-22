@@ -55,8 +55,9 @@ export default function EnrollPage() {
       setProgram(data);
 
       await checkEligibility();
-    } catch (error) { /* Error handled silently */ 
-      setMessage(`Error: ${error.message}`);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
+      setMessage(`Error: ${errorMessage}`);
     } finally {
       setLoading(false);
     }
@@ -163,10 +164,11 @@ export default function EnrollPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center" role="status" aria-live="polite">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4" aria-hidden="true"></div>
           <p className="text-gray-600">Loading program details...</p>
+          <span className="sr-only">Loading program information, please wait</span>
         </div>
       </div>
     );

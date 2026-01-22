@@ -12,6 +12,8 @@ import CookieConsent from '@/components/CookieConsent';
 import DisableDevTools from '@/components/security/DisableDevTools';
 import { InvisibleWatermark } from '@/components/InvisibleWatermark';
 import { CopyrightProtection } from '@/components/CopyrightProtection';
+import { SkipToContent } from '@/components/ui/SkipToContent';
+import { WebVitals } from '@/components/analytics/WebVitals';
 
 import { Inter } from 'next/font/google';
 import { GoogleAnalytics } from '@/components/analytics/google-analytics';
@@ -215,14 +217,17 @@ export default function RootLayout({
           backgroundColor: '#ffffff',
         }}
       >
+        <SkipToContent />
+        <WebVitals />
         <GoogleAnalytics />
         <UnregisterSW />
         <VersionGuard />
         <DisableDevTools />
         <InvisibleWatermark />
         <CopyrightProtection />
-        <ConditionalLayout>{children}</ConditionalLayout>
-        <ClientProviders />
+        <ClientProviders>
+          <ConditionalLayout>{children}</ConditionalLayout>
+        </ClientProviders>
         <CookieConsent />
         <InstallPrompt />
 

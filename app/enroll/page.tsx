@@ -70,24 +70,24 @@ export default async function EnrollPage() {
                       )}
                     </div>
                     <div className="flex-shrink-0 ml-4 text-right">
-                      {(program as any).is_free === true ? (
+                      {program.is_free === true ? (
                         <span className="inline-block px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
                           Free
                         </span>
-                      ) : (program as any).funding_eligible === true ? (
+                      ) : program.funding_eligible === true ? (
                         <div>
                           <span className="inline-block px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
                             Free with WIOA/WRG
                           </span>
-                          {((program as any).price || (program as any).total_cost) ? (
+                          {(program.price || program.total_cost) ? (
                             <p className="text-xs text-gray-500 mt-1">
-                              or ${(((program as any).price || (program as any).total_cost || 0) as number).toLocaleString()} self-pay
+                              or ${((program.price || program.total_cost || 0) as number).toLocaleString()} self-pay
                             </p>
                           ) : null}
                         </div>
-                      ) : ((program as any).price || (program as any).total_cost) ? (
+                      ) : (program.price || program.total_cost) ? (
                         <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
-                          ${(((program as any).price || (program as any).total_cost || 0) as number).toLocaleString()}
+                          ${((program.price || program.total_cost || 0) as number).toLocaleString()}
                         </span>
                       ) : (
                         <span className="inline-block px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">

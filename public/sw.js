@@ -1,82 +1,227 @@
 // Service Worker for Elevate for Humanity PWA
-const CACHE_NAME = 'elevate-v1';
+// Version 2.0 - Enhanced offline support with course caching
+const CACHE_VERSION = 'v2';
+const STATIC_CACHE = `elevate-static-${CACHE_VERSION}`;
+const DYNAMIC_CACHE = `elevate-dynamic-${CACHE_VERSION}`;
+const COURSE_CACHE = `elevate-courses-${CACHE_VERSION}`;
 const OFFLINE_URL = '/offline.html';
 
-// Assets to cache on install
+// Assets to cache on install (critical path)
 const PRECACHE_ASSETS = [
   '/',
   '/offline.html',
   '/icon-192.png',
   '/icon-512.png',
+  '/logo.svg',
+  '/manifest.json',
 ];
+
+// Patterns for different caching strategies
+const CACHE_STRATEGIES = {
+  // Cache-first for static assets
+  static: [
+    /\.(js|css|woff2?|ttf|eot)$/,
+    /\/_next\/static\//,
+    /\/images\//,
+    /\/icons\//,
+  ],
+  // Network-first for dynamic content
+  networkFirst: [
+    /\/courses\//,
+    /\/programs\//,
+    /\/lms\//,
+  ],
+  // Stale-while-revalidate for API data
+  staleWhileRevalidate: [
+    /\/api\/public\//,
+  ],
+  // Never cache
+  noCache: [
+    /\/api\/auth\//,
+    /\/api\/enroll\//,
+    /\/api\/payment\//,
+    /supabase/,
+    /analytics/,
+    /gtag/,
+  ],
+};
 
 // Install event - cache essential assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(PRECACHE_ASSETS);
-    })
+    caches.open(STATIC_CACHE)
+      .then((cache) => cache.addAll(PRECACHE_ASSETS))
+      .then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
+    caches.keys()
+      .then((cacheNames) => {
+        return Promise.all(
+          cacheNames
+            .filter((name) => {
+              return name.startsWith('elevate-') && 
+                     !name.includes(CACHE_VERSION);
+            })
+            .map((name) => caches.delete(name))
+        );
+      })
+      .then(() => self.clients.claim())
+  );
+});
+
+// Helper: Check if URL matches any pattern
+function matchesPattern(url, patterns) {
+  return patterns.some((pattern) => pattern.test(url));
+}
+
+// Helper: Cache-first strategy
+async function cacheFirst(request, cacheName) {
+  const cached = await caches.match(request);
+  if (cached) return cached;
+  
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      const cache = await caches.open(cacheName);
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch {
+    return null;
+  }
+}
+
+// Helper: Network-first strategy
+async function networkFirst(request, cacheName) {
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      const cache = await caches.open(cacheName);
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch {
+    return caches.match(request);
+  }
+}
+
+// Helper: Stale-while-revalidate strategy
+async function staleWhileRevalidate(request, cacheName) {
+  const cache = await caches.open(cacheName);
+  const cached = await cache.match(request);
+  
+  const fetchPromise = fetch(request)
+    .then((response) => {
+      if (response.ok) {
+        cache.put(request, response.clone());
+      }
+      return response;
+    })
+    .catch(() => null);
+  
+  return cached || fetchPromise;
+}
+
+// Fetch event - Smart caching based on request type
+self.addEventListener('fetch', (event) => {
+  const { request } = event;
+  const url = request.url;
+  
+  // Skip non-GET requests
+  if (request.method !== 'GET') return;
+  
+  // Skip external URLs
+  if (!url.startsWith(self.location.origin)) return;
+  
+  // Skip no-cache patterns
+  if (matchesPattern(url, CACHE_STRATEGIES.noCache)) return;
+  
+  // Determine caching strategy
+  let responsePromise;
+  
+  if (matchesPattern(url, CACHE_STRATEGIES.static)) {
+    // Static assets: cache-first
+    responsePromise = cacheFirst(request, STATIC_CACHE);
+  } else if (matchesPattern(url, CACHE_STRATEGIES.staleWhileRevalidate)) {
+    // API data: stale-while-revalidate
+    responsePromise = staleWhileRevalidate(request, DYNAMIC_CACHE);
+  } else if (matchesPattern(url, CACHE_STRATEGIES.networkFirst)) {
+    // Course content: network-first with course cache
+    responsePromise = networkFirst(request, COURSE_CACHE);
+  } else {
+    // Default: network-first with dynamic cache
+    responsePromise = networkFirst(request, DYNAMIC_CACHE);
+  }
+  
+  event.respondWith(
+    responsePromise.then((response) => {
+      if (response) return response;
+      
+      // Fallback to offline page for navigation
+      if (request.mode === 'navigate') {
+        return caches.match(OFFLINE_URL);
+      }
+      
+      return new Response('Offline', { 
+        status: 503,
+        statusText: 'Service Unavailable',
+      });
     })
   );
-  return self.clients.claim();
 });
 
-// Fetch event - Network first, then cache
-self.addEventListener('fetch', (event) => {
-  // Skip non-GET requests
-  if (event.request.method !== 'GET') return;
+// Message event - Handle cache management from app
+self.addEventListener('message', (event) => {
+  const { type, payload } = event.data || {};
   
-  // Skip API requests and external URLs
-  const url = new URL(event.request.url);
-  if (url.pathname.startsWith('/api/') || url.origin !== self.location.origin) {
-    return;
+  switch (type) {
+    case 'CACHE_COURSE':
+      // Cache a specific course for offline access
+      if (payload?.urls) {
+        caches.open(COURSE_CACHE).then((cache) => {
+          cache.addAll(payload.urls);
+        });
+      }
+      break;
+      
+    case 'CLEAR_COURSE_CACHE':
+      // Clear course cache
+      caches.delete(COURSE_CACHE);
+      break;
+      
+    case 'GET_CACHE_SIZE':
+      // Report cache size back to app
+      Promise.all([
+        caches.open(STATIC_CACHE).then(c => c.keys()),
+        caches.open(DYNAMIC_CACHE).then(c => c.keys()),
+        caches.open(COURSE_CACHE).then(c => c.keys()),
+      ]).then(([staticKeys, dynamicKeys, courseKeys]) => {
+        event.source.postMessage({
+          type: 'CACHE_SIZE',
+          payload: {
+            static: staticKeys.length,
+            dynamic: dynamicKeys.length,
+            courses: courseKeys.length,
+          },
+        });
+      });
+      break;
   }
-
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        // Don't cache non-successful responses
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
-
-        // Clone the response
-        const responseToCache = response.clone();
-
-        // Cache the response for next time
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-
-        return response;
-      })
-      .catch(() => {
-        // If network fails, try cache
-        return caches.match(event.request).then((response) => {
-          if (response) {
-            return response;
-          }
-          // Return offline page for navigation requests
-          if (event.request.mode === 'navigate') {
-            return caches.match(OFFLINE_URL);
-          }
-          return new Response('Offline', { status: 503 });
-        });
-      })
-  );
 });
+
+// Background sync for offline form submissions
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'sync-enrollment') {
+    event.waitUntil(syncEnrollmentData());
+  }
+});
+
+async function syncEnrollmentData() {
+  // Get pending enrollments from IndexedDB and sync
+  // This would be implemented with actual IndexedDB logic
+  console.log('[SW] Syncing enrollment data...');
+}
