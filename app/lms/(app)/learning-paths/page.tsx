@@ -15,6 +15,8 @@ export const metadata: Metadata = {
     'Manage learning-paths settings and development.',
 };
 
+export const dynamic = 'force-dynamic';
+
 // Cache user data for 60 seconds to reduce DB load
 const getCachedUserData = unstable_cache(
   async (userId: string, supabase: any) => {

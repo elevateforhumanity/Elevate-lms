@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: 'Generate program catalogs for state submission and compliance.',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function ProgramCatalogPage() {
   const supabase = await createClient();
   

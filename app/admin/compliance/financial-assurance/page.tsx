@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: 'Track bonds, letters of credit, and financial assurance requirements.',
 };
 
+export const dynamic = 'force-dynamic';
+
 interface FinancialAssurance {
   id: string;
   type: 'surety_bond' | 'letter_of_credit' | 'escrow' | 'insurance';

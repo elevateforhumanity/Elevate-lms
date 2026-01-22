@@ -13,6 +13,8 @@ export const metadata: Metadata = {
     'Verify the authenticity of a certificate issued by Elevate For Humanity',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function VerifyCertificatePage({
   params,
 }: {

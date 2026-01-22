@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: 'Your operational command center - track progress, view automation, and manage your learning journey.',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function HubWelcomePage() {
   const supabase = await createClient();
   

@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   description: 'Access your partner course enrollment details and instructions.',
 };
 
+export const dynamic = 'force-dynamic';
+
 type Props = {
   params: Promise<{ enrollmentId: string }>;
 };
