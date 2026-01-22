@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Target, Users, Award, Heart, ArrowRight, CheckCircle, Shield, Building, GraduationCap } from 'lucide-react';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
@@ -38,6 +39,15 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/home-welcome.mp4"
+        avatarName="Welcome Guide"
+        position="bottom-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
+      
       {/* HERO - Full width image */}
       <section className="relative h-[50vh] min-h-[400px] flex items-end">
         <Image
@@ -95,7 +105,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[350px] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/pexels/classroom-training.jpg"
+                src="/images/pexels/training-team.jpg"
                 alt="Training in action"
                 fill
                 className="object-cover"

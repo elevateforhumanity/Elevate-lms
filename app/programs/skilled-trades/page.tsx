@@ -26,21 +26,21 @@ const programs = [
     duration: '8-16 Weeks',
     description: 'Join metal parts using MIG, TIG, and stick welding techniques. AWS certification prep.',
     href: '/programs/welding',
-    image: '/images/trades/hero-program-hvac.jpg',
+    image: '/images/trades/hero-program-welding.jpg',
   },
   {
     title: 'Electrical',
     duration: '12-24 Weeks',
     description: 'Install and maintain electrical systems in residential and commercial buildings.',
     href: '/programs/electrical',
-    image: '/images/trades/hero-program-hvac.jpg',
+    image: '/images/trades/hero-program-electrical.jpg',
   },
   {
     title: 'Plumbing',
     duration: '12-24 Weeks',
     description: 'Install and repair water supply, drainage, and gas systems.',
     href: '/programs/plumbing',
-    image: '/images/trades/hero-program-hvac.jpg',
+    image: '/images/trades/hero-program-plumbing.jpg',
   },
 ];
 
@@ -63,6 +63,8 @@ export default function SkilledTradesProgramsPage() {
       accentColor="orange"
       programs={programs}
       highlights={highlights}
+      avatarVideoSrc="/videos/avatars/trades-guide.mp4"
+      avatarName="Trades Guide"
     />
   );
 }

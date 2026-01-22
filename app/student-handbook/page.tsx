@@ -44,7 +44,7 @@ export default async function StudentHandbookPage() {
       <section className="relative min-h-[350px] flex items-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
+          style={{ backgroundImage: 'url(/images/pexels/digital-learning.jpg)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">

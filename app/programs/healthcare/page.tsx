@@ -63,6 +63,8 @@ export default function HealthcareProgramsPage() {
       accentColor="red"
       programs={programs}
       highlights={highlights}
+      avatarVideoSrc="/videos/avatars/healthcare-guide.mp4"
+      avatarName="Healthcare Guide"
     />
   );
 }

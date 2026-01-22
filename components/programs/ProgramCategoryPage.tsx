@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { Clock, ArrowRight, CheckCircle } from 'lucide-react';
 
 interface Program {
@@ -25,6 +26,8 @@ interface ProgramCategoryPageProps {
   accentColor: 'blue' | 'orange' | 'green' | 'purple' | 'red' | 'teal';
   programs: Program[];
   highlights?: string[];
+  avatarVideoSrc?: string;
+  avatarName?: string;
 }
 
 const colorClasses = {
@@ -76,6 +79,8 @@ export default function ProgramCategoryPage({
   accentColor,
   programs,
   highlights,
+  avatarVideoSrc,
+  avatarName,
 }: ProgramCategoryPageProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
@@ -95,6 +100,17 @@ export default function ProgramCategoryPage({
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Avatar Guide */}
+      {avatarVideoSrc && (
+        <AvatarVideoOverlay 
+          videoSrc={avatarVideoSrc}
+          avatarName={avatarName || `${categoryName} Guide`}
+          position="bottom-right"
+          autoPlay={true}
+          showOnLoad={true}
+        />
+      )}
+      
       {/* Hero Section - Compact */}
       <section className="relative w-full min-h-[45vh] sm:min-h-[50vh] flex items-center overflow-hidden bg-slate-900">
         <video

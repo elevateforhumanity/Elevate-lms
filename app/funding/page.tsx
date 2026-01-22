@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import {
   DollarSign,
   Users,
@@ -168,6 +169,15 @@ export default function FundingPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/financial-guide.mp4"
+        avatarName="Financial Guide"
+        position="bottom-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
+      
       {/* Hero with Image */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
         <Image
