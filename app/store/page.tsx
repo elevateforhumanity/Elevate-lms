@@ -210,10 +210,39 @@ export default function StorePage() {
         </div>
       </section>
 
-      {/* What This Replaces */}
+      {/* Automated Self-Service Operations Section */}
       <section className="py-16 bg-slate-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-center mb-10">What This Platform Replaces</h2>
+          <h2 className="text-2xl font-bold text-center mb-4">Automated, Self-Service Operations</h2>
+          <p className="text-lg text-slate-300 text-center mb-8 max-w-3xl mx-auto">
+            This platform operates as a self-service workforce system. Enrollment triggers automated workflows for eligibility, course assignment, progress tracking, compliance logging, credential issuance, and reporting. Staff intervention is required only for exceptions—not daily operations.
+          </p>
+          <div className="max-w-2xl mx-auto mb-12">
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
+                <Check className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200 text-lg">Automated enrollment orchestration</span>
+              </li>
+              <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
+                <Check className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200 text-lg">Rules-based progress and hour tracking</span>
+              </li>
+              <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
+                <Check className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200 text-lg">Automated nudges and interventions</span>
+              </li>
+              <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
+                <Check className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200 text-lg">Auto-generated compliance and outcome reports</span>
+              </li>
+              <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
+                <Check className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200 text-lg">Credential issuance with public verification</span>
+              </li>
+            </ul>
+          </div>
+
+          <h3 className="text-xl font-bold text-center mb-6">What This Platform Replaces</h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {whatThisReplaces.map((item, i) => {
               const Icon = item.icon;
