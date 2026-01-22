@@ -37,10 +37,10 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="relative bg-blue-900 text-white py-16">
         <Image
-          src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          src="/images/heroes/contact-hero.jpg"
           alt="Contact Us"
           fill
-          className="object-cover opacity-30"
+          className="object-cover opacity-40"
           priority
         />
         <div className="relative max-w-7xl mx-auto px-4 text-center">
