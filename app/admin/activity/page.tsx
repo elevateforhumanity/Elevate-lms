@@ -29,62 +29,44 @@ export default async function ActivityLogPage() {
     redirect('/login?redirect=/admin/activity');
   }
 
-  const activities = [
-    {
-      id: 1,
-      user: { name: 'Admin User', email: 'admin@elevate.org', avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg' },
-      action: 'Updated user role',
-      target: 'Sarah Johnson',
-      category: 'User Management',
-      timestamp: '2 minutes ago',
-      ip: '192.168.1.1',
-    },
-    {
-      id: 2,
-      user: { name: 'System', email: 'system@elevate.org', avatar: null },
-      action: 'Enrollment completed',
-      target: 'Barber Apprenticeship Program',
-      category: 'Enrollment',
-      timestamp: '15 minutes ago',
-      ip: 'System',
-    },
-    {
-      id: 3,
-      user: { name: 'Staff Member', email: 'staff@elevate.org', avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg' },
-      action: 'Created new course',
-      target: 'HVAC Fundamentals',
-      category: 'Course Management',
-      timestamp: '1 hour ago',
-      ip: '192.168.1.45',
-    },
-    {
-      id: 4,
-      user: { name: 'Admin User', email: 'admin@elevate.org', avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg' },
-      action: 'Approved WIOA application',
-      target: 'Marcus Williams',
-      category: 'WIOA',
-      timestamp: '2 hours ago',
-      ip: '192.168.1.1',
-    },
-    {
-      id: 5,
-      user: { name: 'System', email: 'system@elevate.org', avatar: null },
-      action: 'Certificate generated',
-      target: 'CNA Certification - Emily Chen',
-      category: 'Certificates',
-      timestamp: '3 hours ago',
-      ip: 'System',
-    },
-    {
-      id: 6,
-      user: { name: 'Staff Member', email: 'staff@elevate.org', avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg' },
-      action: 'Updated program settings',
-      target: 'CDL Training Program',
-      category: 'Program Management',
-      timestamp: '5 hours ago',
-      ip: '192.168.1.45',
-    },
-  ];
+  // Fetch real activity from audit log
+  const { data: activityData } = await supabase
+    .from('audit_logs')
+    .select(`
+      id,
+      action,
+      target_type,
+      target_id,
+      metadata,
+      created_at,
+      user_id,
+      profiles!audit_logs_user_id_fkey(full_name, email)
+    `)
+    .order('created_at', { ascending: false })
+    .limit(50);
+
+  const activities = (activityData || []).map((a: any) => {
+    const createdAt = new Date(a.created_at);
+    const now = new Date();
+    const diffMins = Math.floor((now.getTime() - createdAt.getTime()) / 60000);
+    const diffHours = Math.floor(diffMins / 60);
+    const diffDays = Math.floor(diffHours / 24);
+    let timestamp = diffMins < 60 ? `${diffMins} minutes ago` : diffHours < 24 ? `${diffHours} hours ago` : `${diffDays} days ago`;
+    
+    return {
+      id: a.id,
+      user: { 
+        name: a.profiles?.full_name || (a.user_id ? 'User' : 'System'), 
+        email: a.profiles?.email || 'system@elevate.org', 
+        avatar: null 
+      },
+      action: a.action || 'Action',
+      target: a.metadata?.target_name || a.target_type || '',
+      category: a.target_type || 'System',
+      timestamp,
+      ip: a.metadata?.ip || 'System',
+    };
+  });
 
   const categories = ['All Activity', 'User Management', 'Enrollment', 'Course Management', 'WIOA', 'Certificates', 'System'];
 

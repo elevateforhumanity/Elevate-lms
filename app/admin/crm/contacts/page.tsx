@@ -29,63 +29,31 @@ export default async function ContactsPage() {
     redirect('/login?redirect=/admin/crm/contacts');
   }
 
-  const contacts = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      email: 'sarah.johnson@email.com',
-      phone: '(317) 555-0123',
-      company: 'Healthcare Plus',
-      type: 'Lead',
-      status: 'Hot',
-      lastContact: '2 days ago',
-      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg',
-    },
-    {
-      id: 2,
-      name: 'Marcus Williams',
-      email: 'marcus.w@email.com',
-      phone: '(312) 555-0456',
-      company: 'Style Cuts Barbershop',
-      type: 'Customer',
-      status: 'Active',
-      lastContact: '1 week ago',
-      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg',
-    },
-    {
-      id: 3,
-      name: 'Emily Chen',
-      email: 'emily.chen@email.com',
-      phone: '(313) 555-0789',
-      company: 'Cool Air HVAC',
-      type: 'Partner',
-      status: 'Active',
-      lastContact: '3 days ago',
-      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg',
-    },
-    {
-      id: 4,
-      name: 'David Thompson',
-      email: 'david.t@email.com',
-      phone: '(614) 555-0321',
-      company: 'Swift Logistics',
-      type: 'Lead',
-      status: 'Warm',
-      lastContact: '5 days ago',
-      image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
-    },
-    {
-      id: 5,
-      name: 'Jessica Martinez',
-      email: 'jessica.m@email.com',
-      phone: '(502) 555-0654',
-      company: 'City Medical Center',
-      type: 'Customer',
-      status: 'Active',
-      lastContact: 'Today',
-      image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg',
-    },
-  ];
+  // Fetch real contacts from CRM
+  const { data: contactData } = await supabase
+    .from('crm_contacts')
+    .select('*')
+    .order('updated_at', { ascending: false })
+    .limit(20);
+
+  const contacts = (contactData || []).map((c: any) => {
+    const updatedAt = new Date(c.updated_at);
+    const now = new Date();
+    const diffDays = Math.floor((now.getTime() - updatedAt.getTime()) / 86400000);
+    const lastContact = diffDays === 0 ? 'Today' : diffDays === 1 ? 'Yesterday' : `${diffDays} days ago`;
+    
+    return {
+      id: c.id,
+      name: c.name || 'Contact',
+      email: c.email || '',
+      phone: c.phone || '',
+      company: c.company || '',
+      type: c.contact_type || 'Lead',
+      status: c.status || 'Active',
+      lastContact,
+      image: null,
+    };
+  });
 
   const getStatusColor = (status: string) => {
     switch (status) {

@@ -1,18 +1,58 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Search, MessageSquare, Calendar } from 'lucide-react';
+import { Search, MessageSquare, Calendar, Users } from 'lucide-react';
 
 export const metadata: Metadata = { 
   title: 'My Mentees | Mentor Portal',
   description: 'View and manage your mentees, track their progress, and schedule sessions.',
 };
 
-export default function MenteesPage() {
-  const mentees = [
-    { id: '1', name: 'John Smith', program: 'HVAC', startDate: 'Nov 2025', sessions: 8, status: 'active' },
-    { id: '2', name: 'Maria Garcia', program: 'Medical Assistant', startDate: 'Dec 2025', sessions: 4, status: 'active' },
-    { id: '3', name: 'James Wilson', program: 'Barber', startDate: 'Sep 2025', sessions: 12, status: 'completed' },
-  ];
+export const dynamic = 'force-dynamic';
+
+export default async function MenteesPage() {
+  const supabase = await createClient();
+  
+  if (!supabase) redirect('/login');
+
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login?redirect=/mentor/mentees');
+
+  let mentees: any[] = [];
+
+  // Get mentor's mentees
+  const { data: mentorships } = await supabase
+    .from('mentorships')
+    .select(`
+      id,
+      mentee_id,
+      status,
+      created_at,
+      profiles!mentorships_mentee_id_fkey(id, full_name),
+      enrollments!mentorships_mentee_id_fkey(program_id, programs(name))
+    `)
+    .eq('mentor_id', user.id);
+
+  if (mentorships) {
+    // Get session counts for each mentee
+    for (const m of mentorships) {
+      const { count } = await supabase
+        .from('mentor_sessions')
+        .select('*', { count: 'exact', head: true })
+        .eq('mentor_id', user.id)
+        .eq('mentee_id', m.mentee_id);
+
+      mentees.push({
+        id: m.mentee_id,
+        name: m.profiles?.full_name || 'Mentee',
+        program: m.enrollments?.[0]?.programs?.name || 'Program',
+        startDate: new Date(m.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+        sessions: count || 0,
+        status: m.status || 'active',
+      });
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -33,41 +73,50 @@ export default function MenteesPage() {
             <input type="text" placeholder="Search mentees..." className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg" />
           </div>
         </div>
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-          <table className="w-full">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Name</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Program</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Started</th>
-                <th className="px-6 py-3 text-center text-sm font-semibold text-gray-900">Sessions</th>
-                <th className="px-6 py-3 text-center text-sm font-semibold text-gray-900">Status</th>
-                <th className="px-6 py-3 text-center text-sm font-semibold text-gray-900">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200">
-              {mentees.map((mentee) => (
-                <tr key={mentee.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 font-medium text-gray-900">{mentee.name}</td>
-                  <td className="px-6 py-4 text-gray-600">{mentee.program}</td>
-                  <td className="px-6 py-4 text-gray-600">{mentee.startDate}</td>
-                  <td className="px-6 py-4 text-center text-gray-600">{mentee.sessions}</td>
-                  <td className="px-6 py-4 text-center">
-                    <span className={`px-2 py-1 rounded text-xs font-medium ${mentee.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'}`}>
-                      {mentee.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 text-center">
-                    <div className="flex items-center justify-center gap-2">
-                      <button className="p-2 text-blue-600 hover:bg-blue-50 rounded"><MessageSquare className="w-4 h-4" /></button>
-                      <button className="p-2 text-green-600 hover:bg-green-50 rounded"><Calendar className="w-4 h-4" /></button>
-                    </div>
-                  </td>
+        
+        {mentees.length > 0 ? (
+          <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+            <table className="w-full">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Name</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Program</th>
+                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Started</th>
+                  <th className="px-6 py-3 text-center text-sm font-semibold text-gray-900">Sessions</th>
+                  <th className="px-6 py-3 text-center text-sm font-semibold text-gray-900">Status</th>
+                  <th className="px-6 py-3 text-center text-sm font-semibold text-gray-900">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {mentees.map((mentee) => (
+                  <tr key={mentee.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">{mentee.name}</td>
+                    <td className="px-6 py-4 text-gray-600">{mentee.program}</td>
+                    <td className="px-6 py-4 text-gray-600">{mentee.startDate}</td>
+                    <td className="px-6 py-4 text-center text-gray-600">{mentee.sessions}</td>
+                    <td className="px-6 py-4 text-center">
+                      <span className={`px-2 py-1 rounded text-xs font-medium ${mentee.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'}`}>
+                        {mentee.status}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <div className="flex items-center justify-center gap-2">
+                        <button className="p-2 text-blue-600 hover:bg-blue-50 rounded"><MessageSquare className="w-4 h-4" /></button>
+                        <button className="p-2 text-green-600 hover:bg-green-50 rounded"><Calendar className="w-4 h-4" /></button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="bg-white rounded-xl shadow-sm p-12 text-center">
+            <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-gray-900 mb-2">No Mentees Yet</h3>
+            <p className="text-gray-600">You haven't been assigned any mentees yet.</p>
+          </div>
+        )}
       </div>
     </div>
   );

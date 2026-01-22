@@ -29,52 +29,54 @@ export default async function InterviewsPage() {
     redirect('/login?redirect=/employer-portal/interviews');
   }
 
-  const upcomingInterviews = [
-    {
-      id: 1,
-      candidate: { name: 'Sarah Johnson', image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg' },
-      position: 'Certified Nursing Assistant',
-      date: 'Today',
-      time: '2:00 PM',
-      type: 'Video Call',
-      status: 'Confirmed',
-    },
-    {
-      id: 2,
-      candidate: { name: 'Marcus Williams', image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg' },
-      position: 'Licensed Barber',
-      date: 'Tomorrow',
-      time: '10:00 AM',
-      type: 'In-Person',
-      status: 'Pending',
-    },
-    {
-      id: 3,
-      candidate: { name: 'Emily Chen', image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg' },
-      position: 'HVAC Technician',
-      date: 'Jan 22',
-      time: '3:30 PM',
-      type: 'Video Call',
-      status: 'Confirmed',
-    },
-  ];
+  // Fetch real interviews
+  const { data: interviewData } = await supabase
+    .from('interviews')
+    .select(`
+      id,
+      scheduled_at,
+      interview_type,
+      status,
+      outcome,
+      candidate_id,
+      job_id,
+      profiles!interviews_candidate_id_fkey(full_name),
+      jobs(title)
+    `)
+    .order('scheduled_at', { ascending: true })
+    .limit(20);
 
-  const pastInterviews = [
-    {
-      id: 4,
-      candidate: { name: 'David Thompson', image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg' },
-      position: 'CDL Driver',
-      date: 'Jan 15',
-      outcome: 'Offered',
-    },
-    {
-      id: 5,
-      candidate: { name: 'Jessica Martinez', image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg' },
-      position: 'Medical Assistant',
-      date: 'Jan 12',
-      outcome: 'Declined',
-    },
-  ];
+  const now = new Date();
+  
+  const upcomingInterviews = (interviewData || [])
+    .filter((i: any) => new Date(i.scheduled_at) >= now)
+    .map((i: any) => {
+      const date = new Date(i.scheduled_at);
+      const isToday = date.toDateString() === now.toDateString();
+      const isTomorrow = date.toDateString() === new Date(now.getTime() + 86400000).toDateString();
+      return {
+        id: i.id,
+        candidate: { name: i.profiles?.full_name || 'Candidate', image: null },
+        position: i.jobs?.title || 'Position',
+        date: isToday ? 'Today' : isTomorrow ? 'Tomorrow' : date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        time: date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }),
+        type: i.interview_type || 'Video Call',
+        status: i.status || 'Pending',
+      };
+    });
+
+  const pastInterviews = (interviewData || [])
+    .filter((i: any) => new Date(i.scheduled_at) < now)
+    .map((i: any) => {
+      const date = new Date(i.scheduled_at);
+      return {
+        id: i.id,
+        candidate: { name: i.profiles?.full_name || 'Candidate', image: null },
+        position: i.jobs?.title || 'Position',
+        date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        outcome: i.outcome || 'Completed',
+      };
+    });
 
   return (
     <div className="min-h-screen bg-gray-50">

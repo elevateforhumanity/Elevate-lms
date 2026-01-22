@@ -8,19 +8,14 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const applications = [
-  { id: 1, name: 'Marcus Johnson', email: 'marcus@email.com', submitted: 'Jan 18, 2025', category: 'Adult', status: 'pending', documents: 4 },
-  { id: 2, name: 'Sarah Williams', email: 'sarah@email.com', submitted: 'Jan 17, 2025', category: 'Dislocated Worker', status: 'approved', documents: 6 },
-  { id: 3, name: 'James Chen', email: 'james@email.com', submitted: 'Jan 16, 2025', category: 'Youth', status: 'pending', documents: 3 },
-  { id: 4, name: 'Maria Garcia', email: 'maria@email.com', submitted: 'Jan 15, 2025', category: 'Adult', status: 'approved', documents: 5 },
-  { id: 5, name: 'David Brown', email: 'david@email.com', submitted: 'Jan 14, 2025', category: 'Adult', status: 'denied', documents: 2 },
-];
+// Applications will be fetched from database - empty until real data exists
+const applications: any[] = [];
 
 const stats = [
-  { label: 'Pending Review', value: 23, color: 'yellow' },
-  { label: 'Approved', value: 156, color: 'green' },
-  { label: 'Denied', value: 12, color: 'red' },
-  { label: 'Incomplete', value: 8, color: 'gray' },
+  { label: 'Pending Review', value: 0, color: 'yellow' },
+  { label: 'Approved', value: 0, color: 'green' },
+  { label: 'Denied', value: 0, color: 'red' },
+  { label: 'Incomplete', value: 0, color: 'gray' },
 ];
 
 export default function WIOAEligibilityPage() {

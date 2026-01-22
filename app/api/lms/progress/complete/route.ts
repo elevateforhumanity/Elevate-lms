@@ -83,6 +83,32 @@ export async function POST(req: NextRequest) {
       .eq('id', courseId)
       .single();
 
+    // Award points for course completion (100 points per course)
+    try {
+      const { error: pointsError } = await supabase
+        .from('profiles')
+        .update({ 
+          points: supabase.rpc('coalesce_add', { current_val: 'points', add_val: 100 })
+        })
+        .eq('id', user.id);
+      
+      // Fallback: direct increment if RPC doesn't exist
+      if (pointsError) {
+        const { data: currentProfile } = await supabase
+          .from('profiles')
+          .select('points')
+          .eq('id', user.id)
+          .single();
+        
+        await supabase
+          .from('profiles')
+          .update({ points: (currentProfile?.points || 0) + 100 })
+          .eq('id', user.id);
+      }
+    } catch (pointsErr) {
+      // Points error handled silently - don't fail completion
+    }
+
     // Generate certificate
     try {
       const certificateNumber = `EFH-${Date.now()}-${courseId.substring(0, 8)}`;

@@ -29,56 +29,25 @@ export default async function LeadsPage() {
     redirect('/login?redirect=/admin/crm/leads');
   }
 
-  const leads = [
-    {
-      id: 1,
-      name: 'Workforce Development Board',
-      contact: 'John Smith',
-      email: 'jsmith@wdb.gov',
-      source: 'Referral',
-      value: '$50,000',
-      stage: 'Qualified',
-      probability: 75,
-      nextAction: 'Schedule demo',
-      dueDate: 'Tomorrow',
-    },
-    {
-      id: 2,
-      name: 'Metro Healthcare System',
-      contact: 'Lisa Anderson',
-      email: 'landerson@metro.health',
-      source: 'Website',
-      value: '$35,000',
-      stage: 'Proposal',
-      probability: 60,
-      nextAction: 'Send proposal',
-      dueDate: 'Jan 22',
-    },
-    {
-      id: 3,
-      name: 'City Community College',
-      contact: 'Robert Davis',
-      email: 'rdavis@citycollege.edu',
-      source: 'Conference',
-      value: '$75,000',
-      stage: 'Discovery',
-      probability: 40,
-      nextAction: 'Needs assessment call',
-      dueDate: 'Jan 25',
-    },
-    {
-      id: 4,
-      name: 'Regional Training Center',
-      contact: 'Maria Garcia',
-      email: 'mgarcia@rtc.org',
-      source: 'Cold Outreach',
-      value: '$25,000',
-      stage: 'Initial Contact',
-      probability: 20,
-      nextAction: 'Follow-up email',
-      dueDate: 'Jan 20',
-    },
-  ];
+  // Fetch real leads from CRM
+  const { data: leadData } = await supabase
+    .from('crm_leads')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(20);
+
+  const leads = (leadData || []).map((l: any) => ({
+    id: l.id,
+    name: l.company_name || 'Lead',
+    contact: l.contact_name || '',
+    email: l.email || '',
+    source: l.source || 'Website',
+    value: l.estimated_value ? `$${l.estimated_value.toLocaleString()}` : '--',
+    stage: l.stage || 'Initial Contact',
+    probability: l.probability || 0,
+    nextAction: l.next_action || 'Follow up',
+    dueDate: l.due_date ? new Date(l.due_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '--',
+  }));
 
   const stages = ['All Stages', 'Initial Contact', 'Discovery', 'Qualified', 'Proposal', 'Negotiation', 'Closed Won'];
 
@@ -94,10 +63,16 @@ export default async function LeadsPage() {
     }
   };
 
+  const totalValue = leads.reduce((sum, l) => {
+    const val = l.value.replace(/[$,]/g, '');
+    return sum + (parseInt(val) || 0);
+  }, 0);
+  const avgDeal = leads.length > 0 ? Math.round(totalValue / leads.length) : 0;
+
   const stats = [
-    { label: 'Total Leads', value: '24', change: '+5 this week' },
-    { label: 'Pipeline Value', value: '$185,000', change: '+12%' },
-    { label: 'Avg. Deal Size', value: '$46,250', change: '+8%' },
+    { label: 'Total Leads', value: String(leads.length), change: 'All time' },
+    { label: 'Pipeline Value', value: `$${totalValue.toLocaleString()}`, change: 'Total' },
+    { label: 'Avg. Deal Size', value: `$${avgDeal.toLocaleString()}`, change: 'Average' },
     { label: 'Win Rate', value: '32%', change: '+3%' },
   ];
 

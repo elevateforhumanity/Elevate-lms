@@ -10,54 +10,14 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { label: 'Total Credits', value: '$847,500', change: '+23%', icon: DollarSign, color: 'green' },
-  { label: 'Active Applications', value: '156', change: '+12', icon: FileText, color: 'blue' },
-  { label: 'Pending Review', value: '34', change: '-5', icon: Clock, color: 'yellow' },
-  { label: 'Certified This Month', value: '28', change: '+8', icon: CheckCircle, color: 'purple' },
+  { label: 'Total Credits', value: '$0', change: '--', icon: DollarSign, color: 'green' },
+  { label: 'Active Applications', value: '0', change: '--', icon: FileText, color: 'blue' },
+  { label: 'Pending Review', value: '0', change: '--', icon: Clock, color: 'yellow' },
+  { label: 'Certified This Month', value: '0', change: '--', icon: CheckCircle, color: 'purple' },
 ];
 
-const applications = [
-  {
-    id: 1,
-    employer: 'ABC Healthcare',
-    employee: 'Marcus Johnson',
-    category: 'Veteran',
-    creditAmount: '$9,600',
-    hireDate: 'Jan 5, 2025',
-    status: 'certified',
-    hoursWorked: 520,
-  },
-  {
-    id: 2,
-    employer: 'Tech Solutions Inc',
-    employee: 'Sarah Williams',
-    category: 'SNAP Recipient',
-    creditAmount: '$2,400',
-    hireDate: 'Jan 10, 2025',
-    status: 'pending',
-    hoursWorked: 180,
-  },
-  {
-    id: 3,
-    employer: 'Downtown Barbershop',
-    employee: 'James Chen',
-    category: 'Ex-Felon',
-    creditAmount: '$2,400',
-    hireDate: 'Jan 12, 2025',
-    status: 'processing',
-    hoursWorked: 240,
-  },
-  {
-    id: 4,
-    employer: 'City Medical Center',
-    employee: 'Maria Garcia',
-    category: 'Long-term Unemployed',
-    creditAmount: '$2,400',
-    hireDate: 'Dec 28, 2024',
-    status: 'certified',
-    hoursWorked: 400,
-  },
-];
+// Applications will be fetched from database - empty until real data exists
+const applications: any[] = [];
 
 export default function WOTCAdminPage() {
   return (

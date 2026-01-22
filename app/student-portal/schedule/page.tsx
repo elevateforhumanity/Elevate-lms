@@ -116,7 +116,7 @@ export default function StudentPortalSchedulePage() {
               <h3 className="font-medium">English Composition 101</h3>
             </div>
             <p className="text-sm text-gray-600">MWF 9:00 AM - 9:50 AM | Room 204</p>
-            <p className="text-sm text-gray-600">Prof. Sarah Johnson</p>
+            <p className="text-sm text-gray-600">Instructor</p>
           </div>
           <div className="border rounded-lg p-4">
             <div className="flex items-center gap-3 mb-2">
@@ -124,7 +124,7 @@ export default function StudentPortalSchedulePage() {
               <h3 className="font-medium">Calculus II</h3>
             </div>
             <p className="text-sm text-gray-600">MWF 2:00 PM - 2:50 PM | Room 115</p>
-            <p className="text-sm text-gray-600">Prof. Michael Chen</p>
+            <p className="text-sm text-gray-600">Instructor</p>
           </div>
           <div className="border rounded-lg p-4">
             <div className="flex items-center gap-3 mb-2">
@@ -132,7 +132,7 @@ export default function StudentPortalSchedulePage() {
               <h3 className="font-medium">Chemistry 201</h3>
             </div>
             <p className="text-sm text-gray-600">TTh 10:00 AM - 11:30 AM | Lab 302</p>
-            <p className="text-sm text-gray-600">Prof. Emily Davis</p>
+            <p className="text-sm text-gray-600">Instructor</p>
           </div>
           <div className="border rounded-lg p-4">
             <div className="flex items-center gap-3 mb-2">

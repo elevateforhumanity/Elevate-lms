@@ -10,24 +10,18 @@ export const metadata: Metadata = {
   description: 'Manage your shop, track orders, and view sales analytics.',
 };
 
-const fallbackStats = [
-  { label: 'Total Sales', value: '$12,456', change: '+15% this month', icon: DollarSign },
-  { label: 'Orders', value: '234', change: '+8% this month', icon: Package },
-  { label: 'Products', value: '48', change: '3 low stock', icon: ShoppingBag },
-  { label: 'Customers', value: '1,234', change: '+12% this month', icon: Users },
-];
-
-const fallbackOrders = [
-  { id: 'ORD-001', customer: 'John Smith', items: 3, total: 149.99, status: 'shipped', date: '2026-01-18' },
-  { id: 'ORD-002', customer: 'Maria Garcia', items: 1, total: 49.99, status: 'processing', date: '2026-01-18' },
-  { id: 'ORD-003', customer: 'James Wilson', items: 2, total: 89.99, status: 'delivered', date: '2026-01-17' },
-  { id: 'ORD-004', customer: 'Sarah Johnson', items: 5, total: 234.99, status: 'pending', date: '2026-01-17' },
+// Empty defaults - no fake data
+const emptyStats = [
+  { label: 'Total Sales', value: '$0', change: 'All time', icon: DollarSign },
+  { label: 'Orders', value: '0', change: 'Total orders', icon: Package },
+  { label: 'Products', value: '0', change: 'Active', icon: ShoppingBag },
+  { label: 'Customers', value: '0', change: 'Total', icon: Users },
 ];
 
 export default async function ShopDashboardPage() {
   const supabase = await createClient();
-  let stats = fallbackStats;
-  let orders = fallbackOrders;
+  let stats = emptyStats;
+  let orders: any[] = [];
 
   if (supabase) {
     try {
@@ -112,37 +106,44 @@ export default async function ShopDashboardPage() {
               <h2 className="text-xl font-bold text-gray-900">Recent Orders</h2>
               <Link href="/shop/orders" className="text-blue-600 hover:underline text-sm">View All</Link>
             </div>
-            <table className="w-full">
-              <thead>
-                <tr className="text-left text-sm text-gray-500 border-b">
-                  <th className="pb-3 font-medium">Order ID</th>
-                  <th className="pb-3 font-medium">Customer</th>
-                  <th className="pb-3 font-medium">Total</th>
-                  <th className="pb-3 font-medium">Status</th>
-                  <th className="pb-3 font-medium">Date</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y">
-                {orders.map((order) => (
-                  <tr key={order.id} className="hover:bg-gray-50">
-                    <td className="py-4 font-medium text-gray-900">{order.id}</td>
-                    <td className="py-4 text-gray-600">{order.customer}</td>
-                    <td className="py-4 text-gray-900">${order.total}</td>
-                    <td className="py-4">
-                      <span className={`px-2 py-1 rounded text-xs font-medium ${
-                        order.status === 'delivered' ? 'bg-green-100 text-green-700' :
-                        order.status === 'shipped' ? 'bg-blue-100 text-blue-700' :
-                        order.status === 'processing' ? 'bg-yellow-100 text-yellow-700' :
-                        'bg-gray-100 text-gray-700'
-                      }`}>
-                        {order.status}
-                      </span>
-                    </td>
-                    <td className="py-4 text-gray-600">{order.date}</td>
+            {orders.length > 0 ? (
+              <table className="w-full">
+                <thead>
+                  <tr className="text-left text-sm text-gray-500 border-b">
+                    <th className="pb-3 font-medium">Order ID</th>
+                    <th className="pb-3 font-medium">Customer</th>
+                    <th className="pb-3 font-medium">Total</th>
+                    <th className="pb-3 font-medium">Status</th>
+                    <th className="pb-3 font-medium">Date</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y">
+                  {orders.map((order) => (
+                    <tr key={order.id} className="hover:bg-gray-50">
+                      <td className="py-4 font-medium text-gray-900">{order.id}</td>
+                      <td className="py-4 text-gray-600">{order.customer}</td>
+                      <td className="py-4 text-gray-900">${order.total}</td>
+                      <td className="py-4">
+                        <span className={`px-2 py-1 rounded text-xs font-medium ${
+                          order.status === 'delivered' ? 'bg-green-100 text-green-700' :
+                          order.status === 'shipped' ? 'bg-blue-100 text-blue-700' :
+                          order.status === 'processing' ? 'bg-yellow-100 text-yellow-700' :
+                          'bg-gray-100 text-gray-700'
+                        }`}>
+                          {order.status}
+                        </span>
+                      </td>
+                      <td className="py-4 text-gray-600">{order.date}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <div className="text-center py-8">
+                <Package className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+                <p className="text-gray-500">No orders yet</p>
+              </div>
+            )}
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6">

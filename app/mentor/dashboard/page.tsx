@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Users, Calendar, MessageSquare, Award, ChevronRight } from 'lucide-react';
 
@@ -7,22 +9,93 @@ export const metadata: Metadata = {
   description: 'Manage your mentees, schedule sessions, and track your mentoring progress.',
 };
 
-export default function MentorDashboardPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function MentorDashboardPage() {
+  const supabase = await createClient();
+  
+  if (!supabase) redirect('/login');
+
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login?redirect=/mentor/dashboard');
+
+  let menteeCount = 0;
+  let sessionCount = 0;
+  let upcomingSessions: any[] = [];
+  let recentMentees: any[] = [];
+
+  // Get mentor's mentees
+  const { data: mentorships, count } = await supabase
+    .from('mentorships')
+    .select(`
+      id,
+      mentee_id,
+      status,
+      created_at,
+      profiles!mentorships_mentee_id_fkey(id, full_name),
+      enrollments!mentorships_mentee_id_fkey(program_id, progress, programs(name))
+    `, { count: 'exact' })
+    .eq('mentor_id', user.id)
+    .eq('status', 'active');
+
+  if (mentorships) {
+    menteeCount = count || 0;
+    recentMentees = mentorships.slice(0, 4).map((m: any) => ({
+      id: m.mentee_id,
+      name: m.profiles?.full_name || 'Mentee',
+      program: m.enrollments?.[0]?.programs?.name || 'Program',
+      progress: m.enrollments?.[0]?.progress || 0,
+    }));
+  }
+
+  // Get upcoming sessions
+  const { data: sessions } = await supabase
+    .from('mentor_sessions')
+    .select(`
+      id,
+      scheduled_at,
+      topic,
+      mentee_id,
+      profiles!mentor_sessions_mentee_id_fkey(full_name)
+    `)
+    .eq('mentor_id', user.id)
+    .gte('scheduled_at', new Date().toISOString())
+    .order('scheduled_at', { ascending: true })
+    .limit(5);
+
+  if (sessions) {
+    upcomingSessions = sessions.map((s: any) => {
+      const date = new Date(s.scheduled_at);
+      const isToday = date.toDateString() === new Date().toDateString();
+      const isTomorrow = date.toDateString() === new Date(Date.now() + 86400000).toDateString();
+      return {
+        id: s.id,
+        mentee: s.profiles?.full_name || 'Mentee',
+        date: isToday ? 'Today' : isTomorrow ? 'Tomorrow' : date.toLocaleDateString(),
+        time: date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }),
+        topic: s.topic || 'Mentoring Session',
+      };
+    });
+  }
+
+  // Get session count this month
+  const startOfMonth = new Date();
+  startOfMonth.setDate(1);
+  startOfMonth.setHours(0, 0, 0, 0);
+  
+  const { count: monthSessions } = await supabase
+    .from('mentor_sessions')
+    .select('*', { count: 'exact', head: true })
+    .eq('mentor_id', user.id)
+    .gte('scheduled_at', startOfMonth.toISOString());
+
+  sessionCount = monthSessions || 0;
+
   const stats = [
-    { label: 'Active Mentees', value: '8', icon: Users },
-    { label: 'Sessions This Month', value: '24', icon: Calendar },
-    { label: 'Messages', value: '12', icon: MessageSquare },
-    { label: 'Avg Rating', value: '4.9', icon: Award },
-  ];
-
-  const upcomingSessions = [
-    { id: '1', mentee: 'John Smith', date: 'Today', time: '2:00 PM', topic: 'Career Planning' },
-    { id: '2', mentee: 'Maria Garcia', date: 'Tomorrow', time: '10:00 AM', topic: 'Resume Review' },
-  ];
-
-  const recentMentees = [
-    { id: '1', name: 'John Smith', program: 'HVAC', progress: 75, lastSession: '2 days ago' },
-    { id: '2', name: 'Maria Garcia', program: 'Medical Assistant', progress: 45, lastSession: '1 week ago' },
+    { label: 'Active Mentees', value: String(menteeCount), icon: Users },
+    { label: 'Sessions This Month', value: String(sessionCount), icon: Calendar },
+    { label: 'Messages', value: '0', icon: MessageSquare },
+    { label: 'Avg Rating', value: '--', icon: Award },
   ];
 
   return (
@@ -54,49 +127,63 @@ export default function MentorDashboardPage() {
               <h2 className="text-xl font-bold text-gray-900">Upcoming Sessions</h2>
               <Link href="/mentor/sessions" className="text-teal-600 hover:underline text-sm">View All</Link>
             </div>
-            <div className="space-y-4">
-              {upcomingSessions.map((session) => (
-                <div key={session.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                  <div>
-                    <p className="font-medium text-gray-900">{session.mentee}</p>
-                    <p className="text-sm text-gray-500">{session.topic}</p>
+            {upcomingSessions.length > 0 ? (
+              <div className="space-y-4">
+                {upcomingSessions.map((session) => (
+                  <div key={session.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div>
+                      <p className="font-medium text-gray-900">{session.mentee}</p>
+                      <p className="text-sm text-gray-500">{session.topic}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-medium text-gray-900">{session.date}</p>
+                      <p className="text-sm text-gray-500">{session.time}</p>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="font-medium text-gray-900">{session.date}</p>
-                    <p className="text-sm text-gray-500">{session.time}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8">
+                <Calendar className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+                <p className="text-gray-500">No upcoming sessions</p>
+              </div>
+            )}
           </div>
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold text-gray-900">My Mentees</h2>
               <Link href="/mentor/mentees" className="text-teal-600 hover:underline text-sm">View All</Link>
             </div>
-            <div className="space-y-4">
-              {recentMentees.map((mentee) => (
-                <div key={mentee.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center">
-                      <span className="text-teal-600 font-medium">{mentee.name.charAt(0)}</span>
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">{mentee.name}</p>
-                      <p className="text-sm text-gray-500">{mentee.program}</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="flex items-center gap-2">
-                      <div className="w-16 h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div className="h-full bg-teal-500 rounded-full" style={{ width: `${mentee.progress}%` }}></div>
+            {recentMentees.length > 0 ? (
+              <div className="space-y-4">
+                {recentMentees.map((mentee) => (
+                  <div key={mentee.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center">
+                        <span className="text-teal-600 font-medium">{mentee.name.charAt(0)}</span>
                       </div>
-                      <span className="text-sm text-gray-600">{mentee.progress}%</span>
+                      <div>
+                        <p className="font-medium text-gray-900">{mentee.name}</p>
+                        <p className="text-sm text-gray-500">{mentee.program}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="flex items-center gap-2">
+                        <div className="w-16 h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-teal-500 rounded-full" style={{ width: `${mentee.progress}%` }}></div>
+                        </div>
+                        <span className="text-sm text-gray-600">{mentee.progress}%</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8">
+                <Users className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+                <p className="text-gray-500">No mentees assigned yet</p>
+              </div>
+            )}
           </div>
         </div>
         <div className="mt-8 grid md:grid-cols-3 gap-6">

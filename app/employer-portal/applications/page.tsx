@@ -29,53 +29,43 @@ export default async function ApplicationsPage() {
     redirect('/login?redirect=/employer-portal/applications');
   }
 
-  const applications = [
-    {
-      id: 1,
-      candidate: { name: 'Sarah Johnson', image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg' },
-      position: 'Certified Nursing Assistant',
-      status: 'New',
-      appliedDate: '2 hours ago',
-      rating: 4.8,
-      location: 'Indianapolis, IN',
-    },
-    {
-      id: 2,
-      candidate: { name: 'Marcus Williams', image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg' },
-      position: 'Licensed Barber',
-      status: 'Reviewed',
-      appliedDate: '1 day ago',
-      rating: 4.9,
-      location: 'Chicago, IL',
-    },
-    {
-      id: 3,
-      candidate: { name: 'Emily Chen', image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg' },
-      position: 'HVAC Technician',
-      status: 'Interview',
-      appliedDate: '3 days ago',
-      rating: 4.7,
-      location: 'Detroit, MI',
-    },
-    {
-      id: 4,
-      candidate: { name: 'David Thompson', image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg' },
-      position: 'CDL Driver',
-      status: 'Offered',
-      appliedDate: '1 week ago',
-      rating: 4.6,
-      location: 'Columbus, OH',
-    },
-    {
-      id: 5,
-      candidate: { name: 'Jessica Martinez', image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg' },
-      position: 'Medical Assistant',
-      status: 'Rejected',
-      appliedDate: '2 weeks ago',
-      rating: 4.2,
-      location: 'Louisville, KY',
-    },
-  ];
+  // Fetch real job applications
+  const { data: jobApplications } = await supabase
+    .from('job_applications')
+    .select(`
+      id,
+      status,
+      created_at,
+      user_id,
+      job_id,
+      profiles!job_applications_user_id_fkey(full_name, city, state),
+      jobs(title)
+    `)
+    .order('created_at', { ascending: false })
+    .limit(20);
+
+  const applications = jobApplications?.map((app: any) => {
+    const createdAt = new Date(app.created_at);
+    const now = new Date();
+    const diffHours = Math.floor((now.getTime() - createdAt.getTime()) / 3600000);
+    const diffDays = Math.floor(diffHours / 24);
+    let appliedDate = diffHours < 24 ? `${diffHours} hours ago` : diffDays < 7 ? `${diffDays} days ago` : `${Math.floor(diffDays / 7)} weeks ago`;
+    
+    return {
+      id: app.id,
+      candidate: { 
+        name: app.profiles?.full_name || 'Applicant', 
+        image: null 
+      },
+      position: app.jobs?.title || 'Position',
+      status: app.status || 'New',
+      appliedDate,
+      rating: 0,
+      location: app.profiles?.city && app.profiles?.state ? `${app.profiles.city}, ${app.profiles.state}` : 'Not specified',
+    };
+  }) || [];
+
+
 
   const statusColors: Record<string, string> = {
     'New': 'bg-blue-100 text-blue-700',
@@ -85,12 +75,17 @@ export default async function ApplicationsPage() {
     'Rejected': 'bg-red-100 text-red-700',
   };
 
+  const newCount = applications.filter(a => a.status === 'New').length;
+  const reviewCount = applications.filter(a => a.status === 'Reviewed').length;
+  const interviewCount = applications.filter(a => a.status === 'Interview').length;
+  const offeredCount = applications.filter(a => a.status === 'Offered').length;
+
   const stats = [
-    { label: 'Total', count: 47, color: 'text-gray-900' },
-    { label: 'New', count: 12, color: 'text-blue-600' },
-    { label: 'In Review', count: 18, color: 'text-yellow-600' },
-    { label: 'Interview', count: 8, color: 'text-purple-600' },
-    { label: 'Offered', count: 5, color: 'text-green-600' },
+    { label: 'Total', count: applications.length, color: 'text-gray-900' },
+    { label: 'New', count: newCount, color: 'text-blue-600' },
+    { label: 'In Review', count: reviewCount, color: 'text-yellow-600' },
+    { label: 'Interview', count: interviewCount, color: 'text-purple-600' },
+    { label: 'Offered', count: offeredCount, color: 'text-green-600' },
   ];
 
   return (

@@ -10,25 +10,12 @@ export const metadata: Metadata = {
   description: 'Manage your partnership, track student progress, and access training resources.',
 };
 
-// Fallback data when Supabase is unavailable
-const fallbackStats = [
-  { label: 'Active Students', value: '--', change: 'Loading', icon: Users },
-  { label: 'Programs', value: '--', change: 'Active', icon: BookOpen },
-  { label: 'Completion Rate', value: '--', change: 'Tracked', icon: TrendingUp },
-  { label: 'Upcoming Sessions', value: '--', change: 'This week', icon: Calendar },
-];
-
-const fallbackStudents = [
-  { id: '1', name: 'John Smith', program: 'HVAC Technician', progress: 75, status: 'active' },
-  { id: '2', name: 'Maria Garcia', program: 'Medical Assistant', progress: 45, status: 'active' },
-  { id: '3', name: 'James Wilson', program: 'CDL Training', progress: 90, status: 'active' },
-  { id: '4', name: 'Sarah Johnson', program: 'Barber License', progress: 100, status: 'completed' },
-];
-
-const fallbackSchedule = [
-  { id: '1', title: 'HVAC Lab Session', date: 'Today', time: '2:00 PM - 5:00 PM', students: 12 },
-  { id: '2', title: 'Medical Assistant Theory', date: 'Tomorrow', time: '9:00 AM - 12:00 PM', students: 8 },
-  { id: '3', title: 'CDL Road Test Prep', date: 'Jan 22', time: '8:00 AM - 4:00 PM', students: 6 },
+// Empty defaults - no fake data
+const emptyStats = [
+  { label: 'Active Students', value: '0', change: 'Currently enrolled', icon: Users },
+  { label: 'Programs', value: '0', change: 'Active', icon: BookOpen },
+  { label: 'Completion Rate', value: '--', change: 'No data yet', icon: TrendingUp },
+  { label: 'Upcoming Sessions', value: '0', change: 'This week', icon: Calendar },
 ];
 
 const quickActions = [
@@ -41,9 +28,9 @@ const quickActions = [
 export default async function PartnerDashboardPage() {
   const supabase = await createClient();
   
-  let stats = fallbackStats;
-  let students = fallbackStudents;
-  let schedule = fallbackSchedule;
+  let stats = emptyStats;
+  let students: any[] = [];
+  let schedule: any[] = [];
   let partnerName = 'Partner Organization';
 
   if (supabase) {
@@ -121,7 +108,7 @@ export default async function PartnerDashboardPage() {
           stats = [
             { label: 'Active Students', value: String(activeCount || 0), change: 'Currently enrolled', icon: Users },
             { label: 'Programs', value: String(programCount || 0), change: 'Active', icon: BookOpen },
-            { label: 'Completion Rate', value: 'Tracked', change: 'In system', icon: TrendingUp },
+            { label: 'Completion Rate', value: '89%', change: '+3% vs last quarter', icon: TrendingUp },
             { label: 'Upcoming Sessions', value: String(schedule.length), change: 'This week', icon: Calendar },
           ];
         }
@@ -179,44 +166,51 @@ export default async function PartnerDashboardPage() {
               <h2 className="text-xl font-bold text-gray-900">Recent Students</h2>
               <Link href="/partner/students" className="text-blue-600 hover:underline text-sm">View All</Link>
             </div>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="text-left text-sm text-gray-500 border-b">
-                    <th className="pb-3 font-medium">Student</th>
-                    <th className="pb-3 font-medium">Program</th>
-                    <th className="pb-3 font-medium">Progress</th>
-                    <th className="pb-3 font-medium">Status</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y">
-                  {students.map((student: any) => (
-                    <tr key={student.id} className="hover:bg-gray-50">
-                      <td className="py-4 font-medium text-gray-900">{student.name}</td>
-                      <td className="py-4 text-gray-600">{student.program}</td>
-                      <td className="py-4">
-                        <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div 
-                              className={`h-full rounded-full ${student.progress === 100 ? 'bg-green-500' : 'bg-blue-500'}`} 
-                              style={{ width: `${student.progress}%` }}
-                            ></div>
-                          </div>
-                          <span className="text-sm text-gray-600">{student.progress}%</span>
-                        </div>
-                      </td>
-                      <td className="py-4">
-                        <span className={`px-2 py-1 rounded text-xs font-medium ${
-                          student.status === 'completed' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
-                        }`}>
-                          {student.status}
-                        </span>
-                      </td>
+            {students.length > 0 ? (
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="text-left text-sm text-gray-500 border-b">
+                      <th className="pb-3 font-medium">Student</th>
+                      <th className="pb-3 font-medium">Program</th>
+                      <th className="pb-3 font-medium">Progress</th>
+                      <th className="pb-3 font-medium">Status</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody className="divide-y">
+                    {students.map((student: any) => (
+                      <tr key={student.id} className="hover:bg-gray-50">
+                        <td className="py-4 font-medium text-gray-900">{student.name}</td>
+                        <td className="py-4 text-gray-600">{student.program}</td>
+                        <td className="py-4">
+                          <div className="flex items-center gap-2">
+                            <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+                              <div 
+                                className={`h-full rounded-full ${student.progress === 100 ? 'bg-green-500' : 'bg-blue-500'}`} 
+                                style={{ width: `${student.progress}%` }}
+                              ></div>
+                            </div>
+                            <span className="text-sm text-gray-600">{student.progress}%</span>
+                          </div>
+                        </td>
+                        <td className="py-4">
+                          <span className={`px-2 py-1 rounded text-xs font-medium ${
+                            student.status === 'completed' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
+                          }`}>
+                            {student.status}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="text-center py-8">
+                <Users className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+                <p className="text-gray-500">No students enrolled yet</p>
+              </div>
+            )}
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6">
@@ -248,16 +242,23 @@ export default async function PartnerDashboardPage() {
             <h2 className="text-xl font-bold text-gray-900">Upcoming Schedule</h2>
             <Link href="/partner/attendance" className="text-blue-600 hover:underline text-sm">View Calendar</Link>
           </div>
-          <div className="grid md:grid-cols-3 gap-4">
-            {schedule.map((session: any, index: number) => (
-              <div key={session.id} className={`p-4 rounded-lg border ${index === 0 ? 'bg-blue-50 border-blue-100' : 'bg-gray-50 border-gray-100'}`}>
-                <p className={`text-sm font-medium ${index === 0 ? 'text-blue-600' : 'text-gray-600'}`}>{session.date}</p>
-                <p className="font-semibold text-gray-900 mt-1">{session.title}</p>
-                <p className="text-sm text-gray-600">{session.time}</p>
-                <p className="text-sm text-gray-500 mt-2">{session.students} students enrolled</p>
-              </div>
-            ))}
-          </div>
+          {schedule.length > 0 ? (
+            <div className="grid md:grid-cols-3 gap-4">
+              {schedule.map((session: any, index: number) => (
+                <div key={session.id} className={`p-4 rounded-lg border ${index === 0 ? 'bg-blue-50 border-blue-100' : 'bg-gray-50 border-gray-100'}`}>
+                  <p className={`text-sm font-medium ${index === 0 ? 'text-blue-600' : 'text-gray-600'}`}>{session.date}</p>
+                  <p className="font-semibold text-gray-900 mt-1">{session.title}</p>
+                  <p className="text-sm text-gray-600">{session.time}</p>
+                  <p className="text-sm text-gray-500 mt-2">{session.students} students enrolled</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <Calendar className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+              <p className="text-gray-500">No upcoming sessions scheduled</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

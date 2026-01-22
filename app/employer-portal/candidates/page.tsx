@@ -29,73 +29,34 @@ export default async function CandidatesPage() {
     redirect('/login?redirect=/employer-portal/candidates');
   }
 
-  const candidates = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      title: 'Certified Nursing Assistant',
-      location: 'Indianapolis, IN',
-      experience: '2 years',
-      skills: ['Patient Care', 'Vital Signs', 'CPR Certified'],
-      rating: 4.8,
-      available: true,
-      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg',
-      program: 'CNA Training Program',
-      graduated: 'Dec 2024',
-    },
-    {
-      id: 2,
-      name: 'Marcus Williams',
-      title: 'Licensed Barber',
-      location: 'Chicago, IL',
-      experience: '1 year',
-      skills: ['Fades', 'Beard Trimming', 'Customer Service'],
-      rating: 4.9,
-      available: true,
-      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg',
-      program: 'Barber Apprenticeship',
-      graduated: 'Nov 2024',
-    },
-    {
-      id: 3,
-      name: 'Emily Chen',
-      title: 'HVAC Technician',
-      location: 'Detroit, MI',
-      experience: '3 years',
-      skills: ['Installation', 'Repair', 'EPA Certified'],
-      rating: 4.7,
-      available: false,
-      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg',
-      program: 'HVAC Training Program',
-      graduated: 'Oct 2024',
-    },
-    {
-      id: 4,
-      name: 'David Thompson',
-      title: 'CDL Driver - Class A',
-      location: 'Columbus, OH',
-      experience: '5 years',
-      skills: ['Long Haul', 'Hazmat', 'Clean Record'],
-      rating: 4.6,
-      available: true,
-      image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
-      program: 'CDL Training Program',
-      graduated: 'Sep 2024',
-    },
-    {
-      id: 5,
-      name: 'Jessica Martinez',
-      title: 'Medical Assistant',
-      location: 'Louisville, KY',
-      experience: '1 year',
-      skills: ['Phlebotomy', 'EKG', 'Medical Records'],
-      rating: 4.8,
-      available: true,
-      image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg',
-      program: 'Medical Assistant Program',
-      graduated: 'Jan 2025',
-    },
-  ];
+  // Fetch real candidates from completed enrollments
+  const { data: completedEnrollments } = await supabase
+    .from('enrollments')
+    .select(`
+      id,
+      user_id,
+      progress,
+      created_at,
+      profiles!enrollments_user_id_fkey(id, full_name, bio, city, state),
+      programs(name)
+    `)
+    .eq('progress', 100)
+    .order('created_at', { ascending: false })
+    .limit(20);
+
+  const candidates = completedEnrollments?.map((e: any) => ({
+    id: e.user_id,
+    name: e.profiles?.full_name || 'Graduate',
+    title: e.programs?.name ? `${e.programs.name} Graduate` : 'Program Graduate',
+    location: e.profiles?.city && e.profiles?.state ? `${e.profiles.city}, ${e.profiles.state}` : 'Location not specified',
+    experience: 'Recent Graduate',
+    skills: [],
+    rating: 0,
+    available: true,
+    image: null,
+    program: e.programs?.name || 'Training Program',
+    graduated: new Date(e.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+  })) || [];
 
   const filters = ['All Candidates', 'Healthcare', 'Skilled Trades', 'Transportation', 'Business'];
 
@@ -176,18 +137,25 @@ export default async function CandidatesPage() {
             </select>
           </div>
 
+          {candidates.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {candidates.map((candidate) => (
               <div key={candidate.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="p-6">
                   <div className="flex items-start gap-4">
                     <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
-                      <Image
-                        src={candidate.image}
-                        alt={candidate.name}
-                        fill
-                        className="object-cover"
-                      />
+                      {candidate.image ? (
+                        <Image
+                          src={candidate.image}
+                          alt={candidate.name}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-xl font-bold">
+                          {candidate.name.charAt(0)}
+                        </div>
+                      )}
                       {candidate.available && (
                         <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-white" />
                       )}
@@ -195,10 +163,12 @@ export default async function CandidatesPage() {
                     <div className="flex-1 min-w-0">
                       <h3 className="font-bold text-gray-900 truncate">{candidate.name}</h3>
                       <p className="text-gray-600 text-sm">{candidate.title}</p>
-                      <div className="flex items-center gap-1 mt-1">
-                        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                        <span className="font-medium text-gray-900">{candidate.rating}</span>
-                      </div>
+                      {candidate.rating > 0 && (
+                        <div className="flex items-center gap-1 mt-1">
+                          <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                          <span className="font-medium text-gray-900">{candidate.rating}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -240,6 +210,13 @@ export default async function CandidatesPage() {
               </div>
             ))}
           </div>
+          ) : (
+            <div className="bg-white rounded-xl shadow-sm p-12 text-center">
+              <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">No Candidates Yet</h3>
+              <p className="text-gray-600">Candidates will appear here as students complete their programs.</p>
+            </div>
+          )}
         </div>
       </section>
     </div>

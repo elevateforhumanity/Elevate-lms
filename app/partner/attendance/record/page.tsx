@@ -1,42 +1,64 @@
-'use client';
-
-import { useState } from 'react';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { ArrowLeft, Users, CheckCircle, Save } from 'lucide-react';
+import { ArrowLeft, Users } from 'lucide-react';
+import AttendanceRecordForm from './AttendanceRecordForm';
 
-export default function RecordAttendancePage() {
-  const router = useRouter();
-  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
-  const [course, setCourse] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+export const metadata: Metadata = {
+  title: 'Record Attendance | Partner Portal',
+};
 
-  const students = [
-    { id: '1', name: 'John Smith', present: true },
-    { id: '2', name: 'Maria Garcia', present: true },
-    { id: '3', name: 'James Wilson', present: false },
-    { id: '4', name: 'Sarah Johnson', present: true },
-  ];
+export const dynamic = 'force-dynamic';
 
-  const [attendance, setAttendance] = useState(students.map(s => ({ ...s })));
+export default async function RecordAttendancePage() {
+  const supabase = await createClient();
+  
+  if (!supabase) redirect('/login');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await new Promise(r => setTimeout(r, 1000));
-    setSubmitted(true);
-    setTimeout(() => router.push('/partner/attendance'), 1500);
-  };
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login?redirect=/partner/attendance/record');
 
-  if (submitted) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-          <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Attendance Recorded!</h1>
-          <p className="text-gray-600">Redirecting...</p>
-        </div>
-      </div>
-    );
+  // Get partner info
+  const { data: partner } = await supabase
+    .from('partners')
+    .select('id')
+    .eq('user_id', user.id)
+    .single();
+
+  let students: any[] = [];
+  let courses: any[] = [];
+
+  if (partner) {
+    // Get students enrolled with this partner
+    const { data: enrollmentData } = await supabase
+      .from('enrollments')
+      .select(`
+        id,
+        user_id,
+        profiles!enrollments_user_id_fkey(id, full_name)
+      `)
+      .eq('partner_id', partner.id)
+      .eq('status', 'active');
+
+    if (enrollmentData) {
+      students = enrollmentData.map((e: any) => ({
+        id: e.profiles?.id || e.user_id,
+        name: e.profiles?.full_name || 'Student',
+        present: true,
+      }));
+    }
+
+    // Get courses for this partner
+    const { data: courseData } = await supabase
+      .from('courses')
+      .select('id, title')
+      .eq('partner_id', partner.id)
+      .eq('is_active', true);
+
+    if (courseData) {
+      courses = courseData;
+    }
   }
 
   return (
@@ -44,7 +66,7 @@ export default function RecordAttendancePage() {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <nav className="flex items-center text-sm text-gray-600">
-            <Link href="/partner-portal" className="hover:text-blue-600">Partner Portal</Link>
+            <Link href="/partner/dashboard" className="hover:text-blue-600">Partner Portal</Link>
             <span className="mx-2">/</span>
             <Link href="/partner/attendance" className="hover:text-blue-600">Attendance</Link>
             <span className="mx-2">/</span>
@@ -58,52 +80,16 @@ export default function RecordAttendancePage() {
         </Link>
         <div className="bg-white rounded-xl shadow-sm p-8">
           <h1 className="text-2xl font-bold text-gray-900 mb-6">Record Attendance</h1>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Date</label>
-                <input type="date" value={date} onChange={(e) => setDate(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Course</label>
-                <select value={course} onChange={(e) => setCourse(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg">
-                  <option value="">Select course</option>
-                  <option value="hvac">HVAC Fundamentals</option>
-                  <option value="medical">Medical Assistant Training</option>
-                  <option value="barber">Barber Apprenticeship</option>
-                </select>
-              </div>
+          
+          {students.length > 0 ? (
+            <AttendanceRecordForm students={students} courses={courses} />
+          ) : (
+            <div className="text-center py-12">
+              <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">No Students Found</h3>
+              <p className="text-gray-600">No active students are enrolled with your organization.</p>
             </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Students</h3>
-              <div className="space-y-2">
-                {attendance.map((student, i) => (
-                  <div key={student.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="font-medium text-gray-900">{student.name}</span>
-                    <div className="flex gap-4">
-                      <label className="flex items-center">
-                        <input type="radio" name={`student-${student.id}`} checked={student.present}
-                          onChange={() => { const newAtt = [...attendance]; newAtt[i].present = true; setAttendance(newAtt); }}
-                          className="w-4 h-4 text-green-600" />
-                        <span className="ml-2 text-green-600">Present</span>
-                      </label>
-                      <label className="flex items-center">
-                        <input type="radio" name={`student-${student.id}`} checked={!student.present}
-                          onChange={() => { const newAtt = [...attendance]; newAtt[i].present = false; setAttendance(newAtt); }}
-                          className="w-4 h-4 text-red-600" />
-                        <span className="ml-2 text-red-600">Absent</span>
-                      </label>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold flex items-center justify-center">
-              <Save className="w-5 h-5 mr-2" />Save Attendance
-            </button>
-          </form>
+          )}
         </div>
       </div>
     </div>

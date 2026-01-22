@@ -8,13 +8,8 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const documents = [
-  { id: 1, name: 'Eligibility Determination Form', type: 'PDF', size: '245 KB', participant: 'Marcus Johnson', date: 'Jan 15, 2025', status: 'verified' },
-  { id: 2, name: 'Income Verification', type: 'PDF', size: '180 KB', participant: 'Sarah Williams', date: 'Jan 14, 2025', status: 'pending' },
-  { id: 3, name: 'Training Agreement', type: 'DOCX', size: '95 KB', participant: 'James Chen', date: 'Jan 13, 2025', status: 'verified' },
-  { id: 4, name: 'IEP Documentation', type: 'PDF', size: '320 KB', participant: 'Maria Garcia', date: 'Jan 12, 2025', status: 'verified' },
-  { id: 5, name: 'Selective Service Registration', type: 'PDF', size: '85 KB', participant: 'David Brown', date: 'Jan 11, 2025', status: 'missing' },
-];
+// Documents will be fetched from database - empty until real data exists
+const documents: any[] = [];
 
 const folders = [
   { name: 'Eligibility Forms', count: 156 },
