@@ -7,7 +7,6 @@ import StructuredData from '@/components/StructuredData';
 import { ConditionalLayout } from '@/components/layout/ConditionalLayout';
 import { Toaster } from 'react-hot-toast';
 import { ClientProviders } from '@/components/ClientProviders';
-import { UnregisterServiceWorker } from '@/components/UnregisterServiceWorker';
 import { VersionGuard } from '@/components/VersionGuard';
 import CookieConsent from '@/components/CookieConsent';
 import DisableDevTools from '@/components/security/DisableDevTools';

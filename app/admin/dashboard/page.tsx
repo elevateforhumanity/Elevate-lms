@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Users,
   Briefcase,
@@ -12,6 +13,7 @@ import {
   CheckCircle,
   FileText,
   Shield,
+  ArrowRight,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -473,60 +475,106 @@ export default async function AdminDashboardOrchestrated() {
         </div>
       </section>
 
-      {/* Quick Actions */}
+      {/* Quick Actions with Images */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <h2 className="text-xl sm:text-2xl font-bold text-black mb-4 sm:mb-6">
           Quick Actions
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <Link
             href="/admin/students"
-            className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-blue-600 hover:shadow-lg transition"
+            className="group bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100"
           >
-            <Users className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 mb-2 sm:mb-3" />
-            <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
-              Manage Students
-            </h3>
-            <p className="text-xs sm:text-sm text-black">
-              View all enrollments
-            </p>
+            <div className="relative h-32 overflow-hidden">
+              <Image
+                src="/hero-images/healthcare-category.jpg"
+                alt="Manage Students"
+                fill
+                className="object-cover group-hover:scale-105 transition duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent" />
+              <h3 className="absolute bottom-3 left-3 font-bold text-white">
+                Manage Students
+              </h3>
+            </div>
+            <div className="p-3">
+              <p className="text-slate-600 text-sm">View all enrollments</p>
+              <span className="inline-flex items-center gap-1 text-blue-600 font-medium text-sm mt-1 group-hover:gap-2 transition-all">
+                Open <ArrowRight className="w-4 h-4" />
+              </span>
+            </div>
           </Link>
 
           <Link
             href="/admin/program-holders"
-            className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-purple-600 hover:shadow-lg transition"
+            className="group bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100"
           >
-            <Building2 className="h-6 w-6 sm:h-8 sm:w-8 text-purple-600 mb-2 sm:mb-3" />
-            <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
-              Program Holders
-            </h3>
-            <p className="text-xs sm:text-sm text-black">
-              Monitor compliance
-            </p>
+            <div className="relative h-32 overflow-hidden">
+              <Image
+                src="/hero-images/skilled-trades-category.jpg"
+                alt="Program Holders"
+                fill
+                className="object-cover group-hover:scale-105 transition duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent" />
+              <h3 className="absolute bottom-3 left-3 font-bold text-white">
+                Program Holders
+              </h3>
+            </div>
+            <div className="p-3">
+              <p className="text-slate-600 text-sm">Monitor compliance</p>
+              <span className="inline-flex items-center gap-1 text-purple-600 font-medium text-sm mt-1 group-hover:gap-2 transition-all">
+                Open <ArrowRight className="w-4 h-4" />
+              </span>
+            </div>
           </Link>
 
           <Link
             href="/admin/employers"
-            className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-green-600 hover:shadow-lg transition"
+            className="group bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100"
           >
-            <Briefcase className="h-6 w-6 sm:h-8 sm:w-8 text-green-600 mb-2 sm:mb-3" />
-            <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
-              Employers
-            </h3>
-            <p className="text-xs sm:text-sm text-black">
-              Track placements
-            </p>
+            <div className="relative h-32 overflow-hidden">
+              <Image
+                src="/hero-images/technology-category.jpg"
+                alt="Employers"
+                fill
+                className="object-cover group-hover:scale-105 transition duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent" />
+              <h3 className="absolute bottom-3 left-3 font-bold text-white">
+                Employers
+              </h3>
+            </div>
+            <div className="p-3">
+              <p className="text-slate-600 text-sm">Track placements</p>
+              <span className="inline-flex items-center gap-1 text-green-600 font-medium text-sm mt-1 group-hover:gap-2 transition-all">
+                Open <ArrowRight className="w-4 h-4" />
+              </span>
+            </div>
           </Link>
 
           <Link
             href="/admin/reports"
-            className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-orange-600 hover:shadow-lg transition"
+            className="group bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100"
           >
-            <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600 mb-2 sm:mb-3" />
-            <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
-              Generate Reports
-            </h3>
-            <p className="text-xs sm:text-sm text-black">Export data</p>
+            <div className="relative h-32 overflow-hidden">
+              <Image
+                src="/hero-images/business-category.jpg"
+                alt="Generate Reports"
+                fill
+                className="object-cover group-hover:scale-105 transition duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-orange-900/80 to-transparent" />
+              <h3 className="absolute bottom-3 left-3 font-bold text-white">
+                Generate Reports
+              </h3>
+            </div>
+            <div className="p-3">
+              <p className="text-slate-600 text-sm">Export data</p>
+              <span className="inline-flex items-center gap-1 text-orange-600 font-medium text-sm mt-1 group-hover:gap-2 transition-all">
+                Open <ArrowRight className="w-4 h-4" />
+              </span>
+            </div>
           </Link>
         </div>
       </section>
