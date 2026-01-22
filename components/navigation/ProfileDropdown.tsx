@@ -20,7 +20,7 @@ interface ProfileDropdownProps {
 }
 
 export function ProfileDropdown({
-  userName = 'John Doe',
+  userName = 'Student',
   userEmail = 'john@gmail.com',
   userInitial = 'J',
 }: ProfileDropdownProps) {

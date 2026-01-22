@@ -743,7 +743,7 @@ export default function HomePage() {
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {/* Testimonial 1 */}
+            {/* Testimonial 1 - Black woman, CNA */}
             <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
               <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
@@ -753,12 +753,14 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-slate-700 mb-4 text-sm leading-relaxed italic">
-                "This program got me CNA certified in 8 weeks. Now I'm making <span className="font-semibold text-green-600">$18/hour with benefits</span>. It changed my life."
+                &quot;This program got me CNA certified in 8 weeks. Now I&apos;m making <span className="font-semibold text-green-600">$18/hour with benefits</span>. It changed my life.&quot;
               </p>
               <div className="flex items-center gap-3 pt-3 border-t border-slate-200">
-                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">TJ</span>
-                </div>
+                <img 
+                  src="https://images.unsplash.com/photo-1589156280159-27698a70f29e?w=100&h=100&fit=crop&crop=face" 
+                  alt="Tanya J."
+                  className="w-10 h-10 rounded-full object-cover"
+                />
                 <div>
                   <p className="font-semibold text-slate-900 text-sm">Tanya J.</p>
                   <p className="text-xs text-slate-500">CNA Graduate • Indianapolis</p>
@@ -766,7 +768,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Testimonial 2 */}
+            {/* Testimonial 2 - Black man, Barber */}
             <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
               <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
@@ -776,12 +778,14 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-slate-700 mb-4 text-sm leading-relaxed italic">
-                "The barber apprenticeship let me <span className="font-semibold text-green-600">earn while I learned</span>. Now I'm licensed with my own chair."
+                &quot;The barber apprenticeship let me <span className="font-semibold text-green-600">earn while I learned</span>. Now I&apos;m licensed with my own chair.&quot;
               </p>
               <div className="flex items-center gap-3 pt-3 border-t border-slate-200">
-                <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">MR</span>
-                </div>
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" 
+                  alt="Marcus R."
+                  className="w-10 h-10 rounded-full object-cover"
+                />
                 <div>
                   <p className="font-semibold text-slate-900 text-sm">Marcus R.</p>
                   <p className="text-xs text-slate-500">Barber Graduate • Marion County</p>
@@ -789,7 +793,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Testimonial 3 */}
+            {/* Testimonial 3 - White woman, HVAC */}
             <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
               <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
@@ -799,14 +803,16 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-slate-700 mb-4 text-sm leading-relaxed italic">
-                "I thought I was too old at 42. <span className="font-semibold text-green-600">WIOA covered everything</span>. Now I'm an HVAC tech making real money."
+                &quot;I thought I was too old at 42. <span className="font-semibold text-green-600">WIOA covered everything</span>. Now I&apos;m an HVAC tech making real money.&quot;
               </p>
               <div className="flex items-center gap-3 pt-3 border-t border-slate-200">
-                <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">DW</span>
-                </div>
+                <img 
+                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face" 
+                  alt="Diana W."
+                  className="w-10 h-10 rounded-full object-cover"
+                />
                 <div>
-                  <p className="font-semibold text-slate-900 text-sm">David W.</p>
+                  <p className="font-semibold text-slate-900 text-sm">Diana W.</p>
                   <p className="text-xs text-slate-500">HVAC Graduate • Age 42</p>
                 </div>
               </div>

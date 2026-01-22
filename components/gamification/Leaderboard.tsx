@@ -29,7 +29,7 @@ const leaderboardData = [
   },
   {
     rank: 4,
-    name: 'You (John Doe)',
+    name: 'You',
     points: 2180,
     courses: 2,
     avatar: 'J',
