@@ -6,6 +6,8 @@ import { createAdminClient } from '@/lib/supabase/server';
 import { SocialShare } from '@/components/blog/SocialShare';
 import { ArrowLeft, Calendar, User, Clock, Tag } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 type Params = Promise<{ slug: string }>;
 
 async function getBlogPost(slug: string) {

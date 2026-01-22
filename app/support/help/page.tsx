@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = 'force-dynamic';
+
 const categories = [
   { name: 'Enrollment', slug: 'Enrollment', color: 'bg-blue-100 text-blue-600' },
   { name: 'Programs', slug: 'Programs', color: 'bg-green-100 text-green-600' },

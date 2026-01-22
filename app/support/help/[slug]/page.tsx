@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { createAdminClient } from '@/lib/supabase/server';
 import { ArrowLeft, ThumbsUp, ThumbsDown, Clock, Eye } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 type Params = Promise<{ slug: string }>;
 
 async function getArticle(slug: string) {
