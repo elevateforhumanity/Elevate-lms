@@ -20,6 +20,10 @@
 
 [functions]
   node_bundler = "esbuild"
+
+# Emails function config - suppress CommonJS warning
+[functions."emails"]
+  node_bundler = "esbuild"
   
 # Social Media Scheduler - Runs 3x daily (9 AM, 1 PM, 5 PM EST)
 # Cron: 0 14,18,22 * * * (UTC times for EST schedule)
