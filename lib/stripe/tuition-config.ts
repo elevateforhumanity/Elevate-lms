@@ -35,6 +35,18 @@ export interface ProgramTuition {
 
 export const PROGRAM_TUITION: ProgramTuition[] = [
   {
+    programId: 'prog-barber',
+    programName: 'Barber Apprenticeship',
+    tuitionAmount: 4980,
+    registrationFee: 150,
+    internalPlan: {
+      minDownPayment: 1000,
+      downPaymentPercent: 20,
+      maxTermMonths: 6,
+      monthlyPayment: 663, // ($4980 - $1000) / 6
+    },
+  },
+  {
     programId: 'prog-cna',
     programName: 'CNA Training Program',
     tuitionAmount: 2200,
