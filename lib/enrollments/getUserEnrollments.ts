@@ -5,21 +5,26 @@
  */
 
 import { createClient } from '@/lib/supabase/server';
+import { resolveDeliveryMode, getContinueLearningUrl, DeliveryMode, EnrollmentSource } from '@/lib/delivery/resolveDeliveryMode';
 
 export type NormalizedEnrollment = {
-  source: 'enrollments' | 'student_enrollments' | 'partner_enrollments' | 'partner_lms_enrollments';
+  source_table: EnrollmentSource;
   enrollment_id: string;
-  user_id: string;
-  course_id: string | null;
+  user_key: string;
   program_id: string | null;
-  pathway_slug: string | null;
+  program_slug: string | null;
+  program_title: string | null;
+  course_id: string | null;
+  course_title: string | null;
+  provider_id: string | null;
+  provider_name: string | null;
   status: string;
   progress: number;
+  delivery_mode: DeliveryMode;
+  inferred_delivery_mode: boolean;
+  continue_url: string;
   created_at: string;
   updated_at: string | null;
-  // Metadata for display
-  course_title?: string;
-  program_title?: string;
 };
 
 export type EnrollmentQueryResult = {
@@ -40,95 +45,117 @@ export async function getUserEnrollments(userId: string): Promise<EnrollmentQuer
 
   const results: NormalizedEnrollment[] = [];
 
-  // Query enrollments table
-  const { data: enrollments, error: e1 } = await supabase
+  // Query enrollments table (internal LMS)
+  const { data: enrollments } = await supabase
     .from('enrollments')
-    .select('id, user_id, course_id, program_id, status, progress, created_at, updated_at')
+    .select(`
+      id, user_id, course_id, program_id, status, progress, created_at, updated_at,
+      programs (id, title, slug, delivery_mode),
+      courses (id, title)
+    `)
     .eq('user_id', userId);
 
-  if (!e1 && enrollments) {
+  if (enrollments) {
     for (const e of enrollments) {
-      results.push({
-        source: 'enrollments',
+      const program = e.programs as any;
+      const course = e.courses as any;
+      const { mode, inferred } = resolveDeliveryMode('enrollments', program);
+      
+      const enrollment: NormalizedEnrollment = {
+        source_table: 'enrollments',
         enrollment_id: e.id,
-        user_id: e.user_id,
-        course_id: e.course_id,
+        user_key: e.user_id,
         program_id: e.program_id,
-        pathway_slug: null,
+        program_slug: program?.slug || null,
+        program_title: program?.title || null,
+        course_id: e.course_id,
+        course_title: course?.title || null,
+        provider_id: null,
+        provider_name: null,
         status: e.status || 'active',
         progress: e.progress || 0,
+        delivery_mode: mode,
+        inferred_delivery_mode: inferred,
+        continue_url: '',
         created_at: e.created_at,
         updated_at: e.updated_at,
-      });
+      };
+      enrollment.continue_url = getContinueLearningUrl(mode, enrollment);
+      results.push(enrollment);
     }
   }
 
-  // Query student_enrollments table
-  const { data: studentEnrollments, error: e2 } = await supabase
-    .from('student_enrollments')
-    .select('id, student_id, course_id, program_id, status, progress, created_at, updated_at')
+  // Query partner_lms_enrollments table (external providers)
+  const { data: partnerEnrollments } = await supabase
+    .from('partner_lms_enrollments')
+    .select(`
+      id, student_id, course_name, status, progress, created_at, updated_at,
+      partner_lms_courses (id, title, slug),
+      partner_lms_providers (id, name, portal_url)
+    `)
     .eq('student_id', userId);
 
-  if (!e2 && studentEnrollments) {
-    for (const e of studentEnrollments) {
-      results.push({
-        source: 'student_enrollments',
-        enrollment_id: e.id,
-        user_id: e.student_id,
-        course_id: e.course_id,
-        program_id: e.program_id,
-        pathway_slug: null,
-        status: e.status || 'active',
-        progress: e.progress || 0,
-        created_at: e.created_at,
-        updated_at: e.updated_at,
-      });
-    }
-  }
-
-  // Query partner_enrollments table
-  const { data: partnerEnrollments, error: e3 } = await supabase
-    .from('partner_enrollments')
-    .select('id, user_id, course_id, program_id, status, created_at, updated_at')
-    .eq('user_id', userId);
-
-  if (!e3 && partnerEnrollments) {
+  if (partnerEnrollments) {
     for (const e of partnerEnrollments) {
-      results.push({
-        source: 'partner_enrollments',
+      const course = e.partner_lms_courses as any;
+      const provider = e.partner_lms_providers as any;
+      const { mode, inferred } = resolveDeliveryMode('partner_lms_enrollments', null);
+      
+      const enrollment: NormalizedEnrollment = {
+        source_table: 'partner_lms_enrollments',
         enrollment_id: e.id,
-        user_id: e.user_id,
-        course_id: e.course_id,
-        program_id: e.program_id,
-        pathway_slug: null,
+        user_key: e.student_id,
+        program_id: null,
+        program_slug: course?.slug || null,
+        program_title: course?.title || e.course_name || null,
+        course_id: course?.id || null,
+        course_title: course?.title || e.course_name || null,
+        provider_id: provider?.id || null,
+        provider_name: provider?.name || null,
         status: e.status || 'active',
-        progress: 0,
+        progress: e.progress || 0,
+        delivery_mode: mode,
+        inferred_delivery_mode: inferred,
+        continue_url: '',
         created_at: e.created_at,
         updated_at: e.updated_at,
-      });
+      };
+      enrollment.continue_url = getContinueLearningUrl(mode, enrollment);
+      results.push(enrollment);
     }
   }
 
-  // Query partner_lms_enrollments table
-  const { data: partnerLmsEnrollments, error: e4 } = await supabase
-    .from('partner_lms_enrollments')
-    .select('id, user_id, course_id, program_id, status, progress, created_at, updated_at')
-    .eq('user_id', userId);
+  // Query student_enrollments table (barber apprenticeship / hybrid)
+  const { data: studentEnrollments } = await supabase
+    .from('student_enrollments')
+    .select('id, student_id, program_slug, status, progress, created_at, updated_at')
+    .eq('student_id', userId);
 
-  if (!e4 && partnerLmsEnrollments) {
-    for (const e of partnerLmsEnrollments) {
-      results.push({
-        source: 'partner_lms_enrollments',
+  if (studentEnrollments) {
+    for (const e of studentEnrollments) {
+      const { mode, inferred } = resolveDeliveryMode('student_enrollments', null);
+      
+      const enrollment: NormalizedEnrollment = {
+        source_table: 'student_enrollments',
         enrollment_id: e.id,
-        user_id: e.user_id,
-        course_id: e.course_id,
-        program_id: e.program_id,
-        pathway_slug: null,
+        user_key: e.student_id,
+        program_id: null,
+        program_slug: e.program_slug,
+        program_title: e.program_slug ? formatProgramSlug(e.program_slug) : null,
+        course_id: null,
+        course_title: null,
+        provider_id: null,
+        provider_name: null,
         status: e.status || 'active',
         progress: e.progress || 0,
+        delivery_mode: mode,
+        inferred_delivery_mode: inferred,
+        continue_url: '',
         created_at: e.created_at,
         updated_at: e.updated_at,
-      });
+      };
+      enrollment.continue_url = getContinueLearningUrl(mode, enrollment);
+      results.push(enrollment);
     }
   }
 
@@ -139,24 +166,13 @@ export async function getUserEnrollments(userId: string): Promise<EnrollmentQuer
 }
 
 /**
- * Build LMS handoff URL with proper context
- * Used by dashboards to create "Continue Learning" links
+ * Format program slug to title case
  */
-export function buildLmsHandoffUrl(
-  enrollment: NormalizedEnrollment,
-  returnUrl: string = '/student-portal'
-): string {
-  const params = new URLSearchParams();
-  params.set('enrollmentId', enrollment.enrollment_id);
-  params.set('return', returnUrl);
-
-  // If we have a course_id, link directly to the course
-  if (enrollment.course_id) {
-    return `/lms/courses/${enrollment.course_id}?${params.toString()}`;
-  }
-
-  // Otherwise, link to LMS dashboard with enrollment context
-  return `/lms/dashboard?${params.toString()}`;
+function formatProgramSlug(slug: string): string {
+  return slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 }
 
 /**
