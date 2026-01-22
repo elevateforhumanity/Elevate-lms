@@ -81,11 +81,15 @@ export default function SideAvatarGuide({
     setIsLoading(true);
 
     try {
+      // Pass route context for deterministic routing
+      const currentRoute = typeof window !== 'undefined' ? window.location.pathname : '/';
+      
       const response = await fetch('/api/chat/avatar-assistant', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: userMessage,
+          route: currentRoute,
           context,
           history: messages.slice(-10),
         }),
