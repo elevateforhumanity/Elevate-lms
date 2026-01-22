@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { LifeBuoy, MessageSquare, Phone, Mail, FileText, Clock, ArrowRight } from 'lucide-react';
+import { LifeBuoy, MessageSquare, Phone, Mail, FileText, Clock } from 'lucide-react';
+import SupportForm from '@/components/support/SupportForm';
 
 export const metadata: Metadata = {
   title: 'Support | Elevate For Humanity',
@@ -33,9 +34,9 @@ export default async function SupportPage() {
     .limit(5) : { data: null };
 
   const supportOptions = [
-    { icon: MessageSquare, title: 'Live Chat', desc: 'Chat with our support team', href: '/support/chat', available: 'Mon-Fri 9am-5pm' },
+    { icon: MessageSquare, title: 'Live Chat', desc: 'Chat with our support team', href: '/support/chat', available: 'Mon-Fri 9am-5pm EST' },
     { icon: Mail, title: 'Email Support', desc: 'Send us a message', href: '/contact', available: 'Response within 24 hours' },
-    { icon: Phone, title: 'Phone Support', desc: 'Call us directly', href: 'tel:+1234567890', available: 'Mon-Fri 9am-5pm' },
+    { icon: Phone, title: 'Phone Support', desc: 'Call (317) 314-3757', href: 'tel:+13173143757', available: 'Mon-Fri 9am-5pm EST' },
     { icon: FileText, title: 'Help Center', desc: 'Browse help articles', href: '/help', available: 'Available 24/7' },
   ];
 
@@ -66,32 +67,7 @@ export default async function SupportPage() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          <div className="bg-white rounded-xl shadow-sm border p-8">
-            <h2 className="text-xl font-bold mb-6">Submit a Support Request</h2>
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-                <input type="text" className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="Brief description of your issue" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                <select className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
-                  <option>Account Issues</option>
-                  <option>Program Questions</option>
-                  <option>Technical Support</option>
-                  <option>Billing</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                <textarea rows={4} className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="Please describe your issue in detail..." />
-              </div>
-              <button type="submit" className="w-full bg-sky-600 text-white py-3 rounded-lg font-semibold hover:bg-sky-700">
-                Submit Request
-              </button>
-            </form>
-          </div>
+          <SupportForm />
 
           <div>
             <h2 className="text-xl font-bold mb-6">Your Recent Tickets</h2>

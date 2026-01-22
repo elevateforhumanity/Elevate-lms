@@ -9,7 +9,7 @@ import {
   ArrowRight,
   PartyPopper,
 } from 'lucide-react';
-import ConfettiClient from '@/components/ConfettiClient';
+import ConfettiWrapper from '@/components/ConfettiWrapper';
 
 export const metadata: Metadata = {
   title: 'Enrollment Successful | Elevate for Humanity',
@@ -77,7 +77,7 @@ export default async function EnrollSuccessPage() {
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4 py-12">
-      <ConfettiClient />
+      <ConfettiWrapper />
       <div className="max-w-2xl w-full">
         {/* Success Icon */}
         <div className="text-center mb-8">
