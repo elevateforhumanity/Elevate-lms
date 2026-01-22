@@ -1,97 +1,96 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { BookOpen, Users, Calendar, BarChart, FileText, Settings } from 'lucide-react';
+import { GraduationCap, BookOpen, Users, BarChart3, FileText, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Instructor Dashboard | Elevate For Humanity',
-  description: 'Manage your courses, students, and teaching materials.',
+  title: 'Instructor Portal | Elevate For Humanity',
+  description: 'Manage courses, track student progress, and access teaching tools.',
 };
 
-export const dynamic = 'force-dynamic';
-
-export default async function InstructorPage() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-  const { data: { user } } = await supabase.auth.getUser();
-  
-  if (!user) redirect('/login?redirect=/instructor');
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
-
-  const { data: courses } = await supabase
-    .from('courses')
-    .select('id, title')
-    .eq('instructor_id', user.id)
-    .limit(5);
-
-  const { count: studentCount } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .in('course_id', courses?.map(c => c.id) || []);
-
-  const links = [
-    { href: '/instructor/courses', icon: BookOpen, label: 'My Courses', desc: 'Manage your course content' },
-    { href: '/instructor/students', icon: Users, label: 'Students', desc: 'View enrolled students' },
-    { href: '/instructor/schedule', icon: Calendar, label: 'Schedule', desc: 'Manage class schedules' },
-    { href: '/instructor/analytics', icon: BarChart, label: 'Analytics', desc: 'Track student progress' },
-    { href: '/instructor/materials', icon: FileText, label: 'Materials', desc: 'Upload teaching resources' },
-    { href: '/instructor/settings', icon: Settings, label: 'Settings', desc: 'Account preferences' },
-  ];
-
+export default function InstructorPortalLanding() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl font-bold">Instructor Dashboard</h1>
-          <p className="text-purple-100">Welcome back, {profile?.full_name || 'Instructor'}</p>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <BookOpen className="w-8 h-8 text-purple-600 mb-2" />
-            <div className="text-2xl font-bold">{courses?.length || 0}</div>
-            <div className="text-gray-600 text-sm">Active Courses</div>
+    <div className="min-h-screen bg-white">
+      <section className="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-center gap-3 mb-6">
+            <GraduationCap className="w-10 h-10" />
+            <span className="text-indigo-200 font-medium">Instructor Portal</span>
           </div>
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <Users className="w-8 h-8 text-blue-600 mb-2" />
-            <div className="text-2xl font-bold">{studentCount || 0}</div>
-            <div className="text-gray-600 text-sm">Total Students</div>
-          </div>
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <Calendar className="w-8 h-8 text-green-600 mb-2" />
-            <div className="text-2xl font-bold">0</div>
-            <div className="text-gray-600 text-sm">Upcoming Classes</div>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {links.map((link) => (
-            <Link key={link.href} href={link.href} className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition">
-              <link.icon className="w-8 h-8 text-purple-600 mb-3" />
-              <h3 className="font-semibold text-gray-900">{link.label}</h3>
-              <p className="text-sm text-gray-600">{link.desc}</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Instructor Portal</h1>
+          <p className="text-xl text-indigo-100 max-w-2xl mb-8">
+            Manage your courses, track student progress, grade assignments, and communicate with learners.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/login?redirect=/instructor/dashboard" className="px-8 py-4 bg-white text-indigo-600 font-bold rounded-lg hover:bg-indigo-50">
+              Sign In
             </Link>
-          ))}
+            <Link href="/apply?role=instructor" className="px-8 py-4 bg-indigo-500 text-white font-bold rounded-lg hover:bg-indigo-400">
+              Become an Instructor
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">Portal Features</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                <BookOpen className="w-6 h-6 text-indigo-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Course Management</h3>
+              <p className="text-slate-600">Create and manage your course content and materials.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-indigo-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Student Roster</h3>
+              <p className="text-slate-600">View enrolled students and their information.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                <BarChart3 className="w-6 h-6 text-indigo-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Progress Tracking</h3>
+              <p className="text-slate-600">Monitor student progress and completion rates.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                <FileText className="w-6 h-6 text-indigo-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Grading</h3>
+              <p className="text-slate-600">Grade assignments and provide feedback.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                <MessageSquare className="w-6 h-6 text-indigo-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Communication</h3>
+              <p className="text-slate-600">Message students and make announcements.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                <GraduationCap className="w-6 h-6 text-indigo-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Certifications</h3>
+              <p className="text-slate-600">Issue certificates to completing students.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Start Teaching</h2>
+          <p className="text-lg text-slate-600 mb-8">Already an instructor? Sign in. Want to teach? Apply today.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/login?redirect=/instructor/dashboard" className="px-8 py-4 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700">Sign In</Link>
+            <Link href="/apply?role=instructor" className="px-8 py-4 bg-slate-100 text-slate-900 font-bold rounded-lg hover:bg-slate-200">Become an Instructor</Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,93 +1,96 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Users, Calendar, FileText, MessageSquare, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import { Users, ClipboardList, BarChart3, Calendar, Settings, FileText } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Staff Portal | Elevate For Humanity',
-  description: 'Staff dashboard for managing students, schedules, and administrative tasks.',
+  description: 'Manage students, track enrollments, and access administrative tools.',
 };
 
-export const dynamic = 'force-dynamic';
-
-export default async function StaffPortalPage() {
-  const supabase = await createClient();
-  if (!supabase) { redirect("/login"); }
-  const { data: { user } } = await supabase.auth.getUser();
-  
-  if (!user) redirect('/login?redirect=/staff-portal');
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role, full_name')
-    .eq('id', user.id)
-    .single();
-
-  if (!profile || !['staff', 'instructor', 'admin', 'super_admin'].includes(profile.role)) {
-    redirect('/');
-  }
-
-  const { count: studentCount } = await supabase
-    .from('profiles')
-    .select('*', { count: 'exact', head: true })
-    .eq('role', 'student');
-
-  const { count: todayAttendance } = await supabase
-    .from('attendance')
-    .select('*', { count: 'exact', head: true })
-    .eq('date', new Date().toISOString().split('T')[0]);
-
-  const { count: pendingTasks } = await supabase
-    .from('tasks')
-    .select('*', { count: 'exact', head: true })
-    .eq('assigned_to', user.id)
-    .eq('status', 'pending');
-
-  const quickLinks = [
-    { href: '/staff-portal/students', icon: Users, label: 'Students', count: studentCount },
-    { href: '/staff-portal/attendance', icon: Calendar, label: 'Attendance', count: todayAttendance },
-    { href: '/staff-portal/documents', icon: FileText, label: 'Documents' },
-    { href: '/staff-portal/messages', icon: MessageSquare, label: 'Messages' },
-  ];
-
+export default function StaffPortalLanding() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-blue-900 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl font-bold">Welcome, {profile.full_name || 'Staff'}</h1>
-          <p className="text-blue-100">Staff Portal Dashboard</p>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          {quickLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition">
-              <link.icon className="w-8 h-8 text-blue-600 mb-3" />
-              <h3 className="font-semibold text-gray-900">{link.label}</h3>
-              {link.count !== undefined && <p className="text-2xl font-bold text-blue-600">{link.count || 0}</p>}
+    <div className="min-h-screen bg-white">
+      <section className="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-center gap-3 mb-6">
+            <Users className="w-10 h-10" />
+            <span className="text-purple-200 font-medium">Staff Portal</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Staff Management Portal</h1>
+          <p className="text-xl text-purple-100 max-w-2xl mb-8">
+            Manage students, track enrollments, monitor progress, and access administrative tools.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/login?redirect=/staff-portal/dashboard" className="px-8 py-4 bg-white text-purple-600 font-bold rounded-lg hover:bg-purple-50">
+              Sign In
             </Link>
-          ))}
+            <Link href="/onboarding/staff" className="px-8 py-4 bg-purple-500 text-white font-bold rounded-lg hover:bg-purple-400">
+              Staff Onboarding
+            </Link>
+          </div>
         </div>
+      </section>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <h2 className="text-lg font-semibold mb-4">Today's Tasks</h2>
-            <div className="text-center py-8 text-gray-500">
-              {pendingTasks ? `${pendingTasks} pending tasks` : 'No pending tasks'}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">Portal Features</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Student Management</h3>
+              <p className="text-slate-600">View and manage student records and enrollments.</p>
             </div>
-          </div>
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
-            <div className="space-y-2">
-              <Link href="/staff-portal/attendance/record" className="block p-3 bg-gray-50 rounded hover:bg-gray-100">Record Attendance</Link>
-              <Link href="/staff-portal/students/add" className="block p-3 bg-gray-50 rounded hover:bg-gray-100">Add Student</Link>
-              <Link href="/staff-portal/reports" className="block p-3 bg-gray-50 rounded hover:bg-gray-100">Generate Report</Link>
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <ClipboardList className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Attendance</h3>
+              <p className="text-slate-600">Track and record student attendance.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <BarChart3 className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Reports</h3>
+              <p className="text-slate-600">Generate and view performance reports.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <Calendar className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Scheduling</h3>
+              <p className="text-slate-600">Manage class schedules and appointments.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <FileText className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Documents</h3>
+              <p className="text-slate-600">Access and manage important documents.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <Settings className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Settings</h3>
+              <p className="text-slate-600">Configure portal preferences and settings.</p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Access Your Portal</h2>
+          <p className="text-lg text-slate-600 mb-8">Sign in to access staff tools or complete onboarding if you are new.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/login?redirect=/staff-portal/dashboard" className="px-8 py-4 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700">Sign In</Link>
+            <Link href="/onboarding/staff" className="px-8 py-4 bg-slate-100 text-slate-900 font-bold rounded-lg hover:bg-slate-200">Staff Onboarding</Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

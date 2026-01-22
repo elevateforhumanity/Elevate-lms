@@ -1,11 +1,10 @@
-export const dynamic = 'force-dynamic';
-
 import { Metadata } from 'next';
 
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Image from 'next/image';
+import { unstable_cache } from 'next/cache';
 
 export const metadata: Metadata = {
   alternates: {
@@ -15,6 +14,55 @@ export const metadata: Metadata = {
   description:
     'Manage learning-paths settings and development.',
 };
+
+// Cache user data for 60 seconds to reduce DB load
+const getCachedUserData = unstable_cache(
+  async (userId: string, supabase: any) => {
+    // Run queries in parallel instead of sequentially
+    const [profileResult, enrollmentsResult, activeResult, completedResult, progressResult] = await Promise.all([
+      supabase
+        .from('profiles')
+        .select('id, full_name, role, avatar_url')
+        .eq('id', userId)
+        .single(),
+      supabase
+        .from('enrollments')
+        .select(`
+          id, status, progress, created_at,
+          courses (id, title, description, thumbnail_url)
+        `)
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .limit(10),
+      supabase
+        .from('enrollments')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', userId)
+        .eq('status', 'active'),
+      supabase
+        .from('enrollments')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', userId)
+        .eq('status', 'completed'),
+      supabase
+        .from('student_progress')
+        .select(`id, updated_at, courses (title)`)
+        .eq('student_id', userId)
+        .order('updated_at', { ascending: false })
+        .limit(5),
+    ]);
+
+    return {
+      profile: profileResult.data,
+      enrollments: enrollmentsResult.data,
+      activeCourses: activeResult.count,
+      completedCourses: completedResult.count,
+      recentProgress: progressResult.data,
+    };
+  },
+  ['learning-paths-user-data'],
+  { revalidate: 60, tags: ['learning-paths'] }
+);
 
 export default async function LearningPathsPage() {
   const supabase = await createClient();
@@ -37,52 +85,9 @@ export default async function LearningPathsPage() {
     redirect('/login');
   }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
-
-  // Fetch student's courses
-  const { data: enrollments } = await supabase
-    .from('enrollments')
-    .select(
-      `
-      *,
-      courses (
-        id,
-        title,
-        description,
-        thumbnail_url
-      )
-    `
-    )
-    .eq('user_id', user.id)
-    .order('created_at', { ascending: false });
-
-  const { count: activeCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'active');
-
-  const { count: completedCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'completed');
-
-  const { data: recentProgress } = await supabase
-    .from('student_progress')
-    .select(
-      `
-      *,
-      courses (title)
-    `
-    )
-    .eq('student_id', user.id)
-    .order('updated_at', { ascending: false })
-    .limit(5);
+  // Use cached parallel queries instead of sequential
+  const { profile, enrollments, activeCourses, completedCourses, recentProgress } = 
+    await getCachedUserData(user.id, supabase);
 
   return (
     <div className="min-h-screen bg-gray-50">

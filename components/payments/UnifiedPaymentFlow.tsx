@@ -57,14 +57,6 @@ export default function UnifiedPaymentFlow({
       available: true
     },
     {
-      id: 'affirm',
-      name: 'Affirm',
-      description: 'Split into 3, 6, or 12 monthly payments',
-      icon: '📅',
-      available: price >= 50,
-      minAmount: 50
-    },
-    {
       id: 'klarna',
       name: 'Klarna',
       description: '4 interest-free payments',
@@ -72,6 +64,15 @@ export default function UnifiedPaymentFlow({
       available: price >= 35 && price <= 1000,
       minAmount: 35,
       maxAmount: 1000
+    },
+    {
+      id: 'zip',
+      name: 'Zip',
+      description: 'Pay in 4 interest-free installments',
+      icon: '💜',
+      available: price >= 35 && price <= 1500,
+      minAmount: 35,
+      maxAmount: 1500
     },
     {
       id: 'afterpay',

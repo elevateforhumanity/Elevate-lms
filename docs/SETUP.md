@@ -33,7 +33,7 @@
 - **Supabase:** Database and authentication
 - **Stripe:** Payment processing
 - **Resend:** Email delivery
-- **Vercel:** Deployment (optional for local dev)
+- **Netlify:** Deployment (optional for local dev)
 
 ### System Requirements
 
@@ -158,7 +158,7 @@ The project uses different environment files for different purposes:
 
 - `.env.example` - Template with all required variables
 - `.env.local` - Local development (not committed)
-- `.env.production` - Production (managed by Vercel)
+- `.env.production` - Production (managed by Netlify)
 
 ### Required Environment Variables
 
@@ -639,8 +639,8 @@ View logs:
 # Development logs
 pnpm dev
 
-# Production logs (Vercel)
-vercel logs
+# Production logs (Netlify)
+netlify logs
 ```
 
 ### Getting Help
@@ -675,7 +675,7 @@ After setup is complete:
 
 4. **Deploy to Production**
    - See `docs/DEPLOYMENT.md`
-   - Configure Vercel
+   - Configure Netlify
    - Set environment variables
    - Deploy
 

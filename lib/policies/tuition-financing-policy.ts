@@ -39,7 +39,7 @@ waiving fees, or making verbal promises about payment flexibility.
     thirdPartyFinancing: {
       name: 'Third-Party Tuition Financing',
       description: 'Finance your tuition through an approved education lender. Get approved in minutes, pay over 6-24 months.',
-      providers: ['Affirm', 'Klarna', 'Climb Credit'],
+      providers: ['Klarna/Afterpay/Zip', 'Klarna', 'Climb Credit'],
       terms: {
         minAmount: 500,
         maxAmount: 10000,
@@ -144,7 +144,7 @@ waiving fees, or making verbal promises about payment flexibility.
     {
       step: 3,
       question: 'Does the student have income or fair credit?',
-      ifYes: 'Direct to third-party financing (Affirm/Klarna). If approved, process enrollment. If declined, continue to Step 4.',
+      ifYes: 'Direct to third-party financing (Klarna/Afterpay/Zip/Klarna). If approved, process enrollment. If declined, continue to Step 4.',
       ifNo: 'Continue to Step 4.',
     },
     {
@@ -241,7 +241,7 @@ export const EXAMPLE_PAYMENT_STRUCTURES = {
     monthlyPayment: 278, // ~$5,000 over 18 months
     termMonths: 18,
     totalCost: 5004, // Slight variance due to provider fees
-    provider: 'Affirm/Klarna',
+    provider: 'Klarna/Afterpay/Zip/Klarna',
   },
   
   employerSponsored: {

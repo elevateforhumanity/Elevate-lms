@@ -5,6 +5,7 @@
 [build]
   command = "pnpm run build"
   publish = ".next"
+  functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "20"
@@ -12,6 +13,18 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# =============================================================================
+# SCHEDULED FUNCTIONS (Social Media Automation)
+# =============================================================================
+
+[functions]
+  node_bundler = "esbuild"
+  
+# Social Media Scheduler - Runs 3x daily (9 AM, 1 PM, 5 PM EST)
+# Cron: 0 14,18,22 * * * (UTC times for EST schedule)
+[functions."social-media-scheduler"]
+  schedule = "0 14,18,22 * * *"
 
 # ============================================
 # LMS DOMAIN (elevateforhumanityeducation.com)

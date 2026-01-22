@@ -95,22 +95,12 @@ export function InvisibleWatermark({
     }
   }, [owner, siteId, clientTimestamp]);
   try {
+    // All watermark content is now truly invisible - using display:none
+    // Meta tags provide ownership info without visible rendering
+    // The actual watermark text is injected via useEffect into hidden DOM elements
     return (
       <>
-        {/* Method 7: Invisible text elements scattered throughout */}
-        <span
-          style={{
-            position: 'absolute',
-            width: '1px',
-            height: '1px',
-            opacity: 0,
-            pointerEvents: 'none',
-            userSelect: 'none',
-          }}
-        >
-          ORIGINAL-SITE-{siteId}-OWNER-{owner}
-        </span>
-        {/* Method 8: Hidden meta tags */}
+        {/* Hidden meta tags for ownership - these don't render visibly */}
         <meta name="site-owner" content={owner} />
         <meta name="site-id" content={siteId} />
         {clientTimestamp && (
@@ -120,27 +110,6 @@ export function InvisibleWatermark({
           name="copyright"
           content={`© 2025 ${owner}. All Rights Reserved.`}
         />
-        {/* Method 9: Invisible watermark text - only render after mount */}
-        {clientTimestamp && (
-          <div
-            style={{
-              position: 'fixed',
-              bottom: '-100px',
-              right: '-100px',
-              fontSize: '1px',
-              color: 'transparent',
-              pointerEvents: 'none',
-              userSelect: 'none',
-              zIndex: -1,
-            }}
-            aria-hidden="true"
-          >
-            COPYRIGHT © 2025 ELEVATE FOR HUMANITY - ELIZABETH L. GREENE - ORIGINAL
-            SITE ID: {siteId} - TIMESTAMP: {clientTimestamp} - UNAUTHORIZED
-            COPYING PROHIBITED - LEGAL ACTION WILL BE TAKEN - CONTACT:
-            legal@www.elevateforhumanity.org
-          </div>
-        )}
       </>
     );
   } catch (error) { /* Error handled silently */ 

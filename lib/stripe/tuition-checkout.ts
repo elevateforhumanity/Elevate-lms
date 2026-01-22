@@ -4,7 +4,7 @@
  * 
  * Handles three payment paths:
  * 1. Pay in Full - Single Stripe Checkout session
- * 2. BNPL (Affirm/Klarna) - Stripe Checkout with BNPL methods enabled
+ * 2. BNPL (Klarna/Afterpay/Zip/Klarna) - Stripe Checkout with BNPL methods enabled
  * 3. School Installment Plan - Two-step: Deposit checkout + Subscription creation
  */
 
@@ -113,7 +113,7 @@ async function createPayInFullCheckout(
 }
 
 /**
- * BNPL - Checkout with Affirm/Klarna enabled (subject to approval)
+ * BNPL - Checkout with Klarna/Afterpay/Zip/Klarna enabled (subject to approval)
  */
 async function createBnplCheckout(
   config: typeof import('./tuition-config').TUITION_PRODUCTS[0],
@@ -122,9 +122,9 @@ async function createBnplCheckout(
   // Build payment method types based on what's enabled
   const paymentMethodTypes: Stripe.Checkout.SessionCreateParams.PaymentMethodType[] = ['card'];
   
-  if (PAYMENT_METHODS.affirm) paymentMethodTypes.push('affirm');
   if (PAYMENT_METHODS.klarna) paymentMethodTypes.push('klarna');
   if (PAYMENT_METHODS.afterpay_clearpay) paymentMethodTypes.push('afterpay_clearpay');
+  if (PAYMENT_METHODS.zip) paymentMethodTypes.push('zip');
   
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',

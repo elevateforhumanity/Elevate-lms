@@ -1,75 +1,125 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowRight, CheckCircle, Shield, MapPin, Award } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Career Training Programs in Illinois | Elevate for Humanity',
-  description: 'Free workforce development and career training programs in Illinois. Get certified in healthcare, IT, skilled trades, and more. Start your new career today.',
-  keywords: ['career training Illinois', 'workforce development Illinois', 'free job training Chicago', 'certification programs Illinois'],
-}
+  alternates: { canonical: 'https://www.elevateforhumanity.org/career-training-illinois' },
+  title: 'Career Training Illinois | Elevate for Humanity - Workforce Development Programs',
+  description:
+    'Workforce development and career training programs in Illinois. Structured learning platforms ensuring consistency and accountability across programs spanning multiple regions.',
+};
 
 export default function CareerTrainingIllinoisPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <section className="py-16 px-4 max-w-6xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
-          Career Training Programs in Illinois
-        </h1>
-        <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-12">
-          Transform your career with free workforce development programs across Illinois.
-          From Chicago to Springfield, we help Illinoisans gain in-demand skills.
-        </p>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {[
-            { title: 'Healthcare Careers', desc: 'CNA, Medical Assistant, Phlebotomy certifications' },
-            { title: 'Information Technology', desc: 'CompTIA A+, Network+, Security+ training' },
-            { title: 'Skilled Trades', desc: 'HVAC, Electrical, Plumbing apprenticeships' },
-            { title: 'Commercial Driving', desc: 'CDL Class A & B license preparation' },
-            { title: 'Business & Office', desc: 'Administrative, bookkeeping, customer service' },
-            { title: 'Manufacturing', desc: 'CNC machining, welding, quality control' },
-          ].map((program) => (
-            <div key={program.title} className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-2">{program.title}</h3>
-              <p className="text-gray-600">{program.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="bg-blue-600 text-white p-8 rounded-xl text-center">
-          <h2 className="text-2xl font-bold mb-4">Ready to Start Your Career Journey?</h2>
-          <p className="mb-6">Join thousands of Illinois residents who have transformed their careers.</p>
-          <Link href="/courses" className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100">
-            Browse Programs
-          </Link>
-        </div>
-
-        <div className="mt-12 grid md:grid-cols-2 gap-8">
-          <div className="bg-gray-50 p-6 rounded-lg">
-            <h3 className="font-semibold mb-3">Also in Illinois</h3>
-            <Link href="/community-services-illinois" className="text-green-600 hover:underline block">
-              Community Services & Support →
+    <div className="min-h-screen bg-gray-50">
+      <section className="bg-gradient-to-br from-green-900 via-green-800 to-green-700 py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-center gap-2 text-green-200 mb-4">
+            <MapPin className="w-5 h-5" />
+            <span className="text-sm font-medium uppercase tracking-wider">Serving All of Illinois</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
+            Career Training &amp; Workforce Programs in Illinois
+          </h1>
+          <p className="text-xl text-green-100 mb-8 max-w-3xl">
+            Illinois workforce initiatives often span multiple regions and partners. Structured
+            learning platforms help ensure consistency and accountability across programs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link href="/programs" className="inline-flex items-center justify-center px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-lg text-lg font-bold transition-colors">
+              Explore Programs <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
-          </div>
-          <div className="bg-gray-50 p-6 rounded-lg">
-            <h3 className="font-semibold mb-3">Other States</h3>
-            <div className="space-y-1">
-              <Link href="/career-training-indiana" className="text-blue-600 hover:underline block">Indiana</Link>
-              <Link href="/career-training-ohio" className="text-blue-600 hover:underline block">Ohio</Link>
-              <Link href="/career-training-tennessee" className="text-blue-600 hover:underline block">Tennessee</Link>
-              <Link href="/career-training-texas" className="text-blue-600 hover:underline block">Texas</Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-8 text-center text-sm text-gray-500">
-          <p>Serving: Chicago, Aurora, Naperville, Joliet, Rockford, Springfield, Peoria</p>
-          <div className="mt-4 space-x-4">
-            <Link href="/locations" className="text-blue-600 hover:underline">All Locations</Link>
-            <Link href="/programs" className="text-blue-600 hover:underline">All Programs</Link>
-            <Link href="/apply" className="text-blue-600 hover:underline">Apply Now</Link>
+            <Link href="/how-it-works" className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white border-2 border-white/30 rounded-lg text-lg font-bold transition-colors">
+              How It Works
+            </Link>
           </div>
         </div>
       </section>
-    </main>
-  )
+
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Training Programs</h2>
+          <p className="text-gray-600 mb-8">Programs emphasize structured learning paths, progress tracking, and oversight.</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {['Structured learning paths', 'Progress tracking', 'Clear completion criteria', 'Program oversight'].map((item) => (
+              <div key={item} className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-700">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gray-100">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Platform Capabilities</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {['Program administration', 'Learner progress visibility', 'Role separation', 'Documentation'].map((item) => (
+              <div key={item} className="flex items-start gap-3 bg-white p-4 rounded-lg">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-700">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Governance</h2>
+          <p className="text-gray-600 mb-8">Programs operate under documented governance standards.</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/governance" className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
+              <Shield className="w-6 h-6 text-blue-600" />
+              <span className="font-semibold text-gray-900">Governance</span>
+            </Link>
+            <Link href="/governance/operational-controls" className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
+              <Award className="w-6 h-6 text-green-600" />
+              <span className="font-semibold text-gray-900">Operational Controls</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gray-100">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Platform Resources</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link href="/lms" className="p-4 bg-white rounded-lg hover:bg-gray-50 border border-gray-200">
+              <span className="font-semibold text-gray-900">Learning Platform</span>
+              <p className="text-sm text-gray-600 mt-1">Access the learning management system</p>
+            </Link>
+            <Link href="/resources" className="p-4 bg-white rounded-lg hover:bg-gray-50 border border-gray-200">
+              <span className="font-semibold text-gray-900">Student Resources</span>
+              <p className="text-sm text-gray-600 mt-1">Support materials and guides</p>
+            </Link>
+            <Link href="/programs" className="p-4 bg-white rounded-lg hover:bg-gray-50 border border-gray-200">
+              <span className="font-semibold text-gray-900">All Programs</span>
+              <p className="text-sm text-gray-600 mt-1">Browse available training programs</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gradient-to-r from-orange-500 to-orange-600">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-black text-white mb-4">Explore Programs</h2>
+          <p className="text-xl text-white/90 mb-8">
+            Illinois-based partners and participants can explore structured training programs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/programs" className="inline-flex items-center justify-center px-8 py-4 bg-white text-orange-600 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors">
+              Browse Programs
+            </Link>
+            <Link href="/how-it-works" className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg text-lg font-bold hover:bg-white hover:text-orange-600 transition-colors">
+              How It Works
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <p className="text-center text-gray-500 text-sm py-8">Last reviewed: January 2026 | Service scope: Statewide digital programs</p>
+    </div>
+  );
 }

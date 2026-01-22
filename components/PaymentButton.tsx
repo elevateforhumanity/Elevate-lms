@@ -131,7 +131,7 @@ export default function PaymentButton({
         <div className="text-xs text-black text-center">
           <p>Secure checkout powered by Stripe</p>
           <p className="mt-1">
-            Pay with card, Affirm, Klarna, Afterpay, or bank account
+            Pay with card, Klarna, Afterpay, Zip, or bank account
           </p>
         </div>
       )}

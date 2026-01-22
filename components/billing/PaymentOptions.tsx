@@ -30,13 +30,13 @@ export default function PaymentOptions({ price, programName }: Props) {
         </div>
 
         <div className="rounded-xl border p-4">
-          <div className="font-semibold">Pay Over Time (If Available)</div>
+          <div className="font-semibold">Pay in 4 (If Available)</div>
           <div className="mt-1 text-sm text-black">
-            Affirm / Klarna / Afterpay (availability depends on Stripe settings,
+            Klarna / Afterpay / Zip (availability depends on Stripe settings,
             purchase amount, and eligibility).
           </div>
           <ul className="mt-2 list-disc pl-5 text-sm text-black">
-            <li>Monthly payments (Affirm) or Pay-in-4 (Klarna/Afterpay)</li>
+            <li>Pay in 4 interest-free installments</li>
             <li>Instant decision at checkout</li>
             <li>Some options may not appear for certain totals</li>
           </ul>

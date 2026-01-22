@@ -118,12 +118,12 @@ export default async function PaymentPage() {
                 </Link>
               </div>
 
-              {/* Affirm Financing */}
+              {/* Buy Now Pay Later */}
               <div className="bg-white rounded-lg shadow-sm border p-8">
-                <h2 className="text-2xl font-bold mb-4">Affirm Financing</h2>
+                <h2 className="text-2xl font-bold mb-4">Pay in 4</h2>
                 <p className="text-gray-600 mb-6">
-                  Split your payment into manageable monthly installments with
-                  Affirm.
+                  Split your payment into 4 interest-free installments with
+                  Klarna, Afterpay, or Zip.
                 </p>
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-center">
@@ -140,7 +140,7 @@ export default async function PaymentPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    Low monthly payments
+                    4 interest-free payments
                   </li>
                   <li className="flex items-center">
                     <svg
@@ -156,7 +156,7 @@ export default async function PaymentPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    Quick approval process
+                    Instant approval at checkout
                   </li>
                   <li className="flex items-center">
                     <svg
@@ -172,14 +172,14 @@ export default async function PaymentPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    Flexible terms available
+                    Klarna, Afterpay, or Zip
                   </li>
                 </ul>
                 <Link
-                  href="/payment/affirm"
+                  href="/programs"
                   className="block w-full bg-brand-orange-600 hover:bg-brand-orange-700 text-white text-center px-6 py-3 rounded-lg font-semibold transition-colors"
                 >
-                  Apply with Affirm
+                  View Programs & Pay in 4
                 </Link>
               </div>
             </div>

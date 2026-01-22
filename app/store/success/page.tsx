@@ -13,6 +13,7 @@ import {
 export const metadata: Metadata = {
   title: 'Order Successful | Elevate for Humanity',
   description: 'Your order has been completed successfully.',
+  robots: { index: false, follow: false },
 };
 
 export const dynamic = 'force-dynamic';

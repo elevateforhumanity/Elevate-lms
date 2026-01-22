@@ -12,10 +12,10 @@ export default function ProgramFAQ() {
     },
     {
       q: 'What funding options do you accept?',
-      a: 'Workforce funding (WIOA/WRG/JRI), employer-paid sponsorship, self-pay (card), and pay-over-time options (Affirm/Klarna/Afterpay) if available at checkout.',
+      a: 'Workforce funding (WIOA/WRG/JRI), employer-paid sponsorship, self-pay (card), and pay-in-4 options (Klarna/Afterpay/Zip) if available at checkout.',
     },
     {
-      q: "Why don't I always see Affirm/Klarna/Afterpay at checkout?",
+      q: "Why don't I always see Klarna/Afterpay/Zip at checkout?",
       a: "Those options appear automatically only when supported for your total, eligibility, and Stripe settings. If you don't see them, it usually means that option isn't available for that purchase.",
     },
     {

@@ -16,6 +16,7 @@ import {
 export const metadata: Metadata = {
   title: 'Shopping Cart | Elevate for Humanity',
   description: 'Review your cart and proceed to checkout.',
+  robots: { index: false, follow: false },
 };
 
 export const dynamic = 'force-dynamic';

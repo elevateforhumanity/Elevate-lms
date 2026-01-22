@@ -1,16 +1,9 @@
-
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { loadStripe } from '@stripe/stripe-js';
-import { Calendar, CheckCircle, CreditCard, Lightbulb } from 'lucide-react';
-
-// Initialize Stripe
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || ''
-);
+import { CheckCircle, CreditCard, Lightbulb } from 'lucide-react';
 
 interface ProgramPricing {
   name: string;
@@ -41,63 +34,16 @@ const programPricing: Record<string, ProgramPricing> = {
   },
 };
 
-
-
 export default function CheckoutPage() {
   const params = useParams();
   const searchParams = useSearchParams();
   const program = params.program as string;
-  const method = searchParams.get('method') || 'stripe';
   const applicationId = searchParams.get('applicationId');
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const programData = programPricing[program];
-
-  useEffect(() => {
-    if (method === 'affirm' && typeof window !== 'undefined') {
-      if (window.affirm) {
-        return;
-      }
-
-      const publicKey = process.env.NEXT_PUBLIC_AFFIRM_PUBLIC_KEY;
-      
-      const configScript = document.createElement('script');
-      configScript.innerHTML = `
-        _affirm_config = {
-          public_api_key: "${publicKey}",
-          script: "https://cdn1.affirm.com/js/v2/affirm.js"
-        };
-      `;
-      document.head.appendChild(configScript);
-      
-      const script = document.createElement('script');
-      script.src = 'https://cdn1.affirm.com/js/v2/affirm.js';
-      script.async = true;
-      
-      script.onload = () => {
-        if (window.affirm) {
-          window.affirm.ui.ready(() => {});
-        }
-      };
-      
-      script.onerror = () => {
-        setError('Failed to load Affirm. Please try Stripe instead.');
-      };
-      
-      document.body.appendChild(script);
-
-      return () => {
-        if (script.parentNode) {
-          script.parentNode.removeChild(script);
-        }
-        if (configScript.parentNode) {
-          configScript.parentNode.removeChild(configScript);
-        }
-      };
-    }
-  }, [method]);
 
   const handleStripeCheckout = async () => {
     setLoading(true);
@@ -138,84 +84,6 @@ export default function CheckoutPage() {
     }
   };
 
-  const handleAffirmCheckout = async () => {
-    setLoading(true);
-    setError(null);
-
-    if (typeof window === 'undefined' || !window.affirm) {
-      setError('Affirm is not available. Please try Stripe instead.');
-      setLoading(false);
-      return;
-    }
-
-    try {
-      window.affirm.checkout({
-        merchant: {
-          user_confirmation_url: `${window.location.origin}/checkout/success?program=${program}`,
-          user_cancel_url: `${window.location.origin}/checkout/${program}?method=affirm`,
-          user_confirmation_url_action: 'POST',
-        },
-        items: [
-          {
-            display_name: programData.name,
-            sku: program,
-            unit_price: programData.price * 100,
-            qty: 1,
-            item_image_url: `${window.location.origin}/images/programs/${program}.jpg`,
-            item_url: `${window.location.origin}/programs/${program}`,
-          },
-        ],
-        metadata: {
-          program_slug: program,
-          program_name: programData.name,
-        },
-        order_id: `${program}-${Date.now()}`,
-        shipping_amount: 0,
-        tax_amount: 0,
-        total: programData.price * 100,
-        currency: 'USD',
-      });
-      
-      window.affirm.checkout.open({
-        onFail: (error: any) => {
-          console.error('Affirm checkout failed:', error);
-          setError('Affirm checkout failed. Please try again or use Stripe.');
-          setLoading(false);
-        },
-        onSuccess: async (data: any) => {
-          try {
-            const response = await fetch('/api/affirm-charge', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                checkout_token: data.checkout_token,
-                program,
-              }),
-            });
-
-            const result = await response.json();
-
-            if (result.error) {
-              setError(result.error);
-              setLoading(false);
-            } else {
-              window.location.href = `/checkout/success?program=${program}`;
-            }
-          } catch (err) {
-            setError('Failed to process payment. Please contact support.');
-            setLoading(false);
-          }
-        },
-      });
-    } catch (err) {
-      console.error('Affirm error:', err);
-      setError('An error occurred with Affirm. Please try Stripe instead.');
-      setLoading(false);
-    }
-  };
-
   if (!programData) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
@@ -224,7 +92,7 @@ export default function CheckoutPage() {
             Program Not Found
           </h1>
           <p className="text-black mb-6">
-            The program you're trying to purchase doesn't exist.
+            The program you&apos;re trying to purchase doesn&apos;t exist.
           </p>
           <Link
             href="/programs"
@@ -312,7 +180,7 @@ export default function CheckoutPage() {
                       <Lightbulb className="w-5 h-5 inline-block" /> Fee-Based Program
                     </p>
                     <p>
-                      This is a self-pay program. Payment plans and Affirm financing available.
+                      This is a self-pay program. Pay-in-4 options available with Klarna, Afterpay, or Zip at checkout.
                     </p>
                   </div>
                   <details className="bg-slate-50 border border-slate-200 rounded-lg overflow-hidden text-sm">
@@ -343,106 +211,73 @@ export default function CheckoutPage() {
                 </div>
               )}
 
-              {method === 'stripe' ? (
-                <div>
-                  <div className="flex items-center gap-3 mb-6">
-                    <CreditCard className="w-6 h-6 text-blue-600" />
-                    <h3 className="text-xl font-bold text-black">
-                      Pay with Stripe
-                    </h3>
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <CreditCard className="w-6 h-6 text-blue-600" />
+                  <h3 className="text-xl font-bold text-black">
+                    Secure Checkout
+                  </h3>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-black">
+                      All major credit and debit cards accepted
+                    </span>
                   </div>
-
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-black">
-                        Secure one-time payment
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-black">
-                        All major credit and debit cards accepted
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-black">
-                        Instant enrollment confirmation
-                      </span>
-                    </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-black">
+                      Pay-in-4 with Klarna, Afterpay, or Zip
+                    </span>
                   </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-black">
+                      Bank transfer (ACH) for lower fees
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-black">
+                      Cash App, PayPal, Venmo accepted
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-black">
+                      Instant enrollment confirmation
+                    </span>
+                  </div>
+                </div>
 
-                  <button
-                    onClick={handleStripeCheckout}
-                    disabled={loading}
-                    className="w-full px-8 py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-bold rounded-lg transition-all text-lg"
-                  >
-                    {loading
-                      ? 'Processing...'
-                      : `Pay $${programData.price.toLocaleString()} with Stripe`}
-                  </button>
-
-                  <p className="text-center text-sm text-black mt-4">
-                    Or{' '}
-                    <Link
-                      href={`/checkout/${program}?method=affirm`}
-                      className="text-blue-600 underline"
-                    >
-                      pay with Affirm
-                    </Link>{' '}
-                    for monthly payments
+                {/* BNPL Info */}
+                <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg p-4 mb-6">
+                  <p className="font-semibold text-black mb-2">Buy Now, Pay Later Options</p>
+                  <p className="text-sm text-slate-700">
+                    Split your payment into 4 interest-free installments with Klarna, Afterpay, or Zip. 
+                    Select your preferred option at checkout.
+                  </p>
+                  <p className="text-xs text-slate-500 mt-2">
+                    As low as ${Math.ceil(programData.price / 4).toLocaleString()}/payment
                   </p>
                 </div>
-              ) : (
-                <div>
-                  <div className="flex items-center gap-3 mb-6">
-                    <Calendar className="w-6 h-6 text-cyan-600" />
-                    <h3 className="text-xl font-bold text-black">
-                      Pay with Affirm
-                    </h3>
-                  </div>
 
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-black">
-                        Monthly payment plans available
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-black">
-                        0% APR options for qualified buyers
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-black">
-                        As low as ${Math.ceil(programData.price / 24)}/month
-                      </span>
-                    </div>
-                  </div>
+                <button
+                  onClick={handleStripeCheckout}
+                  disabled={loading}
+                  className="w-full px-8 py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-bold rounded-lg transition-all text-lg"
+                >
+                  {loading
+                    ? 'Processing...'
+                    : `Continue to Payment - $${programData.price.toLocaleString()}`}
+                </button>
 
-                  <button
-                    onClick={handleAffirmCheckout}
-                    disabled={loading}
-                    className="w-full px-8 py-4 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-bold rounded-lg transition-all text-lg"
-                  >
-                    {loading ? 'Processing...' : 'Continue with Affirm'}
-                  </button>
-
-                  <p className="text-center text-sm text-black mt-4">
-                    Or{' '}
-                    <Link
-                      href={`/checkout/${program}?method=stripe`}
-                      className="text-blue-600 underline"
-                    >
-                      pay in full with Stripe
-                    </Link>
-                  </p>
-                </div>
-              )}
+                <p className="text-center text-xs text-slate-500 mt-4">
+                  You&apos;ll choose your payment method on the next screen
+                </p>
+              </div>
 
               <div className="mt-8 pt-6 border-t">
                 <p className="text-xs text-black text-center">
@@ -454,6 +289,7 @@ export default function CheckoutPage() {
                   <Link href="/privacy" className="underline">
                     Privacy Policy
                   </Link>
+                  .
                 </p>
               </div>
             </div>

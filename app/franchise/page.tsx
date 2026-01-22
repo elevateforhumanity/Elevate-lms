@@ -393,7 +393,7 @@ export default function FranchisePage() {
               </div>
               <div>
                 <p className="font-bold mb-2">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Affirm
+                  Klarna/Afterpay/Zip
                   Financing
                 </p>
                 <p className="text-sm text-black">

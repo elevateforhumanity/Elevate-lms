@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Note: Remaining balance ($4,595) automatically goes to Stripe account
-    // No additional action needed - Affirm pays full amount to Stripe
+    // No additional action needed - BNPL provider pays full amount to Stripe
 
     // Log to audit trail
     await supabase.from('ai_audit_log').insert({
