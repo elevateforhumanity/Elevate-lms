@@ -6,13 +6,13 @@ export const maxDuration = 60;
 // app/api/tenants/provision/route.ts
 import { NextResponse } from 'next/server';
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
-import { requireAuth } from '@/lib/auth/getSession';
+import { requireApiAuth, APIAuthError } from '@/lib/auth';
 import { createSupabaseClient } from '@/lib/supabase-api';
 import { sendSlackMessage } from '@/lib/notifications/slack';
 
 export async function POST(request: Request) {
   const supabase = createSupabaseClient();
-  const session = await requireAuth();
+  const session = await requireApiAuth();
   if (!(session as string).isAdmin) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }

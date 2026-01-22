@@ -1,6 +1,6 @@
 // app/api/account/delete/route.ts
 import { NextResponse } from 'next/server';
-import { requireAuth } from '@/lib/auth/getSession';
+import { requireApiAuth, APIAuthError } from '@/lib/auth';
 import { createSupabaseClient } from '@/lib/supabase-api';
 
 export const runtime = 'edge';
@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 10;
 
 export async function POST() {
-  const session = await requireAuth();
+  const session = await requireApiAuth();
   const email = session.user?.email;
 
   if (!email) {

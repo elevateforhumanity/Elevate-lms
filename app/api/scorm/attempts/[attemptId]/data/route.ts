@@ -6,7 +6,7 @@ export const maxDuration = 60;
 // app/api/scorm/attempts/[attemptId]/data/route.ts
 import { NextResponse } from 'next/server';
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
-import { requireAuth } from '@/lib/auth/getSession';
+import { requireApiAuth, APIAuthError } from '@/lib/auth';
 import { createSupabaseClient } from '@/lib/supabase-api';
 
 export async function GET(
@@ -15,7 +15,7 @@ export async function GET(
 ) {
   const supabase = createSupabaseClient();
   const { attemptId } = await params;
-  const session = await requireAuth();
+  const session = await requireApiAuth();
 
   const { data: attempt } = await supabase
     .from('scorm_attempts')
@@ -47,7 +47,7 @@ export async function POST(
 ) {
   const supabase = createSupabaseClient();
   const { attemptId } = await params;
-  const session = await requireAuth();
+  const session = await requireApiAuth();
   const { data } = await request.json();
 
   const { data: attempt } = await supabase

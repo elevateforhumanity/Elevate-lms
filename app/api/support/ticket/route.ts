@@ -4,13 +4,13 @@ export const maxDuration = 60;
 
 // app/api/support/ticket/route.ts
 import { NextResponse } from 'next/server';
-import { requireAuth } from '@/lib/auth/getSession';
+import { requireApiAuth, APIAuthError } from '@/lib/auth';
 import { createZendeskTicket } from '@/lib/support/zendesk';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/logger';
 
 export async function POST(request: Request) {
-  const session = await requireAuth();
+  const session = await requireApiAuth();
   const { subject, message } = await request.json();
 
   if (!subject || !message) {

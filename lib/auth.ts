@@ -59,17 +59,27 @@ export async function createRouteHandlerClient(_options?: Record<string, any>) {
 
 export async function getSession() {
   const supabase = await createServerSupabaseClient();
-  const {
-    data: { session },
-    error,
-  } = await supabase.auth.getSession();
-
-  if (error) {
-    logger.error('Error getting session', error as Error);
+  
+  if (!supabase) {
     return null;
   }
+  
+  try {
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.getSession();
 
-  return session;
+    if (error) {
+      logger.error('Error getting session', error as Error);
+      return null;
+    }
+
+    return session;
+  } catch (error) {
+    logger.error('Exception getting session', error as Error);
+    return null;
+  }
 }
 
 export async function getCurrentUser() {
@@ -77,6 +87,8 @@ export async function getCurrentUser() {
   if (!session?.user) return null;
 
   const supabase = await createServerSupabaseClient();
+  if (!supabase) return null;
+  
   const { data: profile, error } = await supabase
     .from('profiles')
     .select('*')
@@ -162,6 +174,36 @@ const DEMO_SESSION = {
 // ROLE CHECKING
 // =====================================================
 
+/**
+ * Custom error class for API authentication failures
+ */
+export class APIAuthError extends Error {
+  constructor(message: string = 'Auth session missing!') {
+    super(message);
+    this.name = 'APIError';
+  }
+}
+
+/**
+ * Require auth for API routes - throws APIAuthError instead of redirecting
+ * Use this in API routes instead of requireAuth()
+ */
+export async function requireApiAuth() {
+  // DEMO MODE: Return mock session
+  if (isDemoMode()) {
+    return DEMO_SESSION;
+  }
+  
+  const session = await getSession();
+  if (!session) {
+    throw new APIAuthError('Auth session missing!');
+  }
+  return session;
+}
+
+/**
+ * Require auth for pages - redirects to login if not authenticated
+ */
 export async function requireAuth() {
   // DEMO MODE: Return mock session
   if (isDemoMode()) {

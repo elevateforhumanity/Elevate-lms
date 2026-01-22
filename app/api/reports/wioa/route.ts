@@ -5,12 +5,12 @@ export const maxDuration = 60;
 
 // app/api/reports/wioa/route.ts
 import { NextResponse } from 'next/server';
-import { requireAuth } from '@/lib/auth/getSession';
+import { requireApiAuth, APIAuthError } from '@/lib/auth';
 import { createSupabaseClient } from '@/lib/supabase-api';
 
 export async function GET(request: Request) {
   const supabase = createSupabaseClient();
-  const session = await requireAuth();
+  const session = await requireApiAuth();
   if (!(session as string).isAdmin) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }

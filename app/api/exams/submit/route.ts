@@ -6,12 +6,12 @@ export const maxDuration = 60;
 // app/api/exams/submit/route.ts
 import { NextResponse } from 'next/server';
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
-import { requireAuth } from '@/lib/auth/getSession';
+import { requireApiAuth, APIAuthError } from '@/lib/auth';
 import { createSupabaseClient } from '@/lib/supabase-api';
 
 export async function POST(request: Request) {
   const supabase = createSupabaseClient();
-  const session = await requireAuth();
+  const session = await requireApiAuth();
   const { attemptId, answers } = await request.json();
 
   if (!attemptId || !Array.isArray(answers)) {

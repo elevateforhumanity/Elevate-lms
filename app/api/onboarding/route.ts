@@ -3,7 +3,7 @@ export const runtime = 'edge';
 export const maxDuration = 60;
 
 import { NextRequest, NextResponse } from 'next/server';
-import { requireAuth } from '@/lib/auth';
+import { requireApiAuth, APIAuthError } from '@/lib/auth';
 import { logger } from '@/lib/logger';
 import { toError, toErrorMessage } from '@/lib/safe';
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
@@ -23,7 +23,7 @@ interface User {
 
 export async function GET(request: NextRequest) {
   try {
-    const user = await requireAuth() as User;
+    const user = await requireApiAuth() as User;
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
     const flowId = searchParams.get('flowId');
@@ -46,7 +46,10 @@ export async function GET(request: NextRequest) {
       { error: 'Invalid action or missing parameters' },
       { status: 400 }
     );
-  } catch (error) { /* Error handled silently */ 
+  } catch (error) {
+    if (error instanceof APIAuthError) {
+      return NextResponse.json({ error: error.message }, { status: 401 });
+    }
     logger.error('Onboarding GET error:', error);
     return NextResponse.json(
       { error: getErrorMessage(error) },
@@ -57,7 +60,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const user = await requireAuth() as User;
+    const user = await requireApiAuth() as User;
     const body = await parseBody<{ action?: string; flowId?: string }>(request);
     const { action, flowId } = body;
 
@@ -100,7 +103,10 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error) { /* Error handled silently */ 
+  } catch (error) {
+    if (error instanceof APIAuthError) {
+      return NextResponse.json({ error: error.message }, { status: 401 });
+    }
     logger.error('Onboarding POST error:', error);
     return NextResponse.json(
       { error: getErrorMessage(error) },
