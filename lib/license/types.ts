@@ -1,10 +1,10 @@
 /**
  * License Types and Pricing Tiers
  * 
- * Three categories:
- * 1. Self-Serve (Stripe checkout, auto-activation)
- * 2. Professional (Stripe checkout, higher limits)
- * 3. Enterprise (Contact sales, contracts, invoicing)
+ * Three infrastructure tiers:
+ * 1. Core ($750/month) - Solo operators, pilots
+ * 2. Institutional ($2,500/month) - Schools, nonprofits, training providers
+ * 3. Enterprise ($8,500/month) - Workforce boards, agencies, regional systems
  */
 
 export type LicenseStatus = 
@@ -15,17 +15,12 @@ export type LicenseStatus =
   | 'suspended'; // Payment failed after grace, locked out
 
 export type PlanId = 
-  // Self-Serve Tiers (Stripe checkout)
-  | 'starter_monthly'    // $99/month
-  | 'starter_annual'     // $899/year
-  | 'professional_monthly' // $299/month
-  | 'professional_annual'  // $2,499/year
-  // Enterprise Tiers (Contact sales)
-  | 'implementation'     // $35,000 - $50,000 one-time
-  | 'implementation_plus_annual' // $60,000 - $90,000 Year 1
-  | 'annual_renewal';    // $15,000 - $30,000/year
+  // Infrastructure Tiers (Monthly)
+  | 'core'           // $750/month
+  | 'institutional'  // $2,500/month
+  | 'enterprise';    // $8,500/month
 
-export type PlanCategory = 'self_serve' | 'professional' | 'enterprise';
+export type PlanCategory = 'infrastructure';
 
 export interface License {
   id: string;
@@ -37,7 +32,7 @@ export interface License {
   trialStartedAt: Date | null;
   trialEndsAt: Date | null;
   
-  // Stripe integration (for self-serve/professional)
+  // Stripe integration
   stripeCustomerId: string | null;
   stripeSubscriptionId: string | null;
   
@@ -74,6 +69,8 @@ export type OrganizationType =
   | 'training_provider'
   | 'apprenticeship_sponsor'
   | 'government'
+  | 'school'
+  | 'employer'
   | 'other';
 
 /**
@@ -95,234 +92,174 @@ export interface PlanDefinition {
   category: PlanCategory;
   price: number;
   priceDisplay: string;
-  interval: 'month' | 'year' | 'one_time';
+  interval: 'month';
   stripePriceId?: string;
   trialDays: number;
   features: string[];
   limits: {
-    students: number | 'unlimited';
+    learners: number;
     admins: number | 'unlimited';
     programs: number | 'unlimited';
+    organizations: number | 'unlimited';
   };
-  bestFor: string[];
+  replaces: string;
+  audience: string[];
   highlighted?: boolean;
-  savings?: string;
   requiresContact?: boolean;
 }
 
 export const PLANS: Record<PlanId, PlanDefinition> = {
   // ============================================
-  // SELF-SERVE TIERS (Small orgs, instant access)
+  // CORE WORKFORCE INFRASTRUCTURE - $750/month
   // ============================================
-  starter_monthly: {
-    id: 'starter_monthly',
-    name: 'Starter',
-    category: 'self_serve',
-    price: 99,
-    priceDisplay: '$99',
+  core: {
+    id: 'core',
+    name: 'Core Workforce Infrastructure',
+    category: 'infrastructure',
+    price: 750,
+    priceDisplay: '$750',
     interval: 'month',
-    stripePriceId: process.env.STRIPE_PRICE_STARTER_MONTHLY || 'price_1Ss3ZWIRNf5vPH3AuVbnrr9f',
+    stripePriceId: process.env.STRIPE_PRICE_CORE || '',
     trialDays: TRIAL_DAYS,
     features: [
-      'Up to 100 active students',
-      '1 admin user',
-      '3 programs',
-      'Core LMS features',
-      'Email support',
-      'Basic reporting',
+      'Automated learner intake and eligibility screening',
+      'Funded (WIOA / WRG / JRI) and self-pay enrollment paths',
+      'Deterministic status tracking and notifications',
+      'Course delivery and progress tracking',
+      'Credential issuance and public verification',
+      'Secure records and audit trail',
+      'Role-based dashboards (learner + admin)',
     ],
     limits: {
-      students: 100,
-      admins: 1,
+      learners: 100,
+      admins: 3,
       programs: 3,
+      organizations: 1,
     },
-    bestFor: ['Small training providers', 'Pilot programs', 'Individual instructors'],
-  },
-  starter_annual: {
-    id: 'starter_annual',
-    name: 'Starter',
-    category: 'self_serve',
-    price: 899,
-    priceDisplay: '$899',
-    interval: 'year',
-    stripePriceId: process.env.STRIPE_PRICE_STARTER_ANNUAL || 'price_1Ss3ZbIRNf5vPH3A3uBdM51z',
-    trialDays: TRIAL_DAYS,
-    savings: 'Save $289',
-    features: [
-      'Up to 100 active students',
-      '1 admin user',
-      '3 programs',
-      'Core LMS features',
-      'Email support',
-      'Basic reporting',
-    ],
-    limits: {
-      students: 100,
-      admins: 1,
-      programs: 3,
-    },
-    bestFor: ['Small training providers', 'Pilot programs', 'Individual instructors'],
+    replaces: 'Admissions intake, eligibility screening, manual tracking, certificate handling.',
+    audience: ['Solo operators', 'Small nonprofits', 'Pilot programs'],
   },
 
   // ============================================
-  // PROFESSIONAL TIERS (Growing orgs)
+  // INSTITUTIONAL OPERATOR - $2,500/month
   // ============================================
-  professional_monthly: {
-    id: 'professional_monthly',
-    name: 'Professional',
-    category: 'professional',
-    price: 299,
-    priceDisplay: '$299',
+  institutional: {
+    id: 'institutional',
+    name: 'Institutional Operator',
+    category: 'infrastructure',
+    price: 2500,
+    priceDisplay: '$2,500',
     interval: 'month',
-    stripePriceId: process.env.STRIPE_PRICE_PROFESSIONAL_MONTHLY || 'price_1Ss3ZnIRNf5vPH3AO9AOYaqR',
+    stripePriceId: process.env.STRIPE_PRICE_INSTITUTIONAL || '',
     trialDays: TRIAL_DAYS,
     highlighted: true,
     features: [
-      'Up to 500 active students',
-      '5 admin users',
-      'Unlimited programs',
-      'All platform features',
-      'Priority support',
-      'Advanced reporting',
-      'API access',
-      'Custom branding',
+      'Everything in Core, plus:',
+      'Multi-program and cohort management',
+      'Compliance-ready enrollment workflows',
+      'Program holder and partner dashboards',
+      'White-label branding',
+      'Funding pathway governance',
+      'Oversight-ready reporting views',
     ],
     limits: {
-      students: 500,
-      admins: 5,
-      programs: 'unlimited',
+      learners: 1000,
+      admins: 25,
+      programs: 25,
+      organizations: 1,
     },
-    bestFor: ['Growing training providers', 'Nonprofits', 'Regional programs'],
-  },
-  professional_annual: {
-    id: 'professional_annual',
-    name: 'Professional',
-    category: 'professional',
-    price: 2499,
-    priceDisplay: '$2,499',
-    interval: 'year',
-    stripePriceId: process.env.STRIPE_PRICE_PROFESSIONAL_ANNUAL || 'price_1Ss3ZxIRNf5vPH3AG1bn8tRu',
-    trialDays: TRIAL_DAYS,
-    highlighted: true,
-    savings: 'Save $1,089',
-    features: [
-      'Up to 500 active students',
-      '5 admin users',
-      'Unlimited programs',
-      'All platform features',
-      'Priority support',
-      'Advanced reporting',
-      'API access',
-      'Custom branding',
-    ],
-    limits: {
-      students: 500,
-      admins: 5,
-      programs: 'unlimited',
-    },
-    bestFor: ['Growing training providers', 'Nonprofits', 'Regional programs'],
+    replaces: 'Admissions staff, registrar coordination, compliance tracking, reporting prep.',
+    audience: ['Training providers', 'Schools', 'Credentialing bodies', 'Multi-program nonprofits'],
   },
 
   // ============================================
-  // ENTERPRISE TIERS (Large orgs, contact sales)
+  // ENTERPRISE WORKFORCE INFRASTRUCTURE - $8,500/month
   // ============================================
-  implementation: {
-    id: 'implementation',
-    name: 'Implementation License',
-    category: 'enterprise',
-    price: 35000,
-    priceDisplay: '$35,000 – $50,000',
-    interval: 'one_time',
+  enterprise: {
+    id: 'enterprise',
+    name: 'Enterprise Workforce Infrastructure',
+    category: 'infrastructure',
+    price: 8500,
+    priceDisplay: '$8,500',
+    interval: 'month',
+    stripePriceId: process.env.STRIPE_PRICE_ENTERPRISE || '',
     trialDays: 0,
     requiresContact: true,
     features: [
-      'Licensed deployment of the platform',
-      'Source code access for your instance',
-      'Configuration documentation',
-      'Environment setup guidance',
-      '30–60 day warranty support',
-      'Unlimited students',
-      'Unlimited admins',
-      'Single-tenant deployment',
+      'Everything above, plus:',
+      'Employer and workforce board portals',
+      'Multi-tenant and multi-region governance',
+      'Advanced outcome and compliance reporting',
+      'AI-guided avatars (staff replacement)',
+      'API access and integrations',
+      'Priority support and escalation',
     ],
     limits: {
-      students: 'unlimited',
+      learners: 10000,
       admins: 'unlimited',
       programs: 'unlimited',
+      organizations: 'unlimited',
     },
-    bestFor: ['Workforce boards', 'Training providers', 'Nonprofits'],
-  },
-  implementation_plus_annual: {
-    id: 'implementation_plus_annual',
-    name: 'Implementation + Annual Support',
-    category: 'enterprise',
-    price: 60000,
-    priceDisplay: '$60,000 – $90,000',
-    interval: 'year',
-    trialDays: 0,
-    requiresContact: true,
-    highlighted: true,
-    features: [
-      'Everything in Implementation License',
-      'Platform updates',
-      'Security patches',
-      'Compatibility upgrades',
-      'Standard support (email/ticket)',
-      'Dedicated onboarding',
-      'Quarterly check-ins',
-    ],
-    limits: {
-      students: 'unlimited',
-      admins: 'unlimited',
-      programs: 'unlimited',
-    },
-    bestFor: ['Organizations needing ongoing support', 'Multi-year initiatives', 'Government contracts'],
-  },
-  annual_renewal: {
-    id: 'annual_renewal',
-    name: 'Annual License Renewal',
-    category: 'enterprise',
-    price: 15000,
-    priceDisplay: '$15,000 – $30,000',
-    interval: 'year',
-    trialDays: 0,
-    requiresContact: true,
-    features: [
-      'Continued platform updates',
-      'Security maintenance',
-      'Limited support',
-      'Access to new features',
-    ],
-    limits: {
-      students: 'unlimited',
-      admins: 'unlimited',
-      programs: 'unlimited',
-    },
-    bestFor: ['Existing licensees'],
+    replaces: 'Entire workforce operations teams, compliance units, reporting analysts.',
+    audience: ['Workforce boards', 'Government agencies', 'Regional operators', 'Large employers'],
   },
 };
 
 /**
- * Get plans by category
+ * Add-on definitions
  */
-export function getPlansByCategory(category: PlanCategory): PlanDefinition[] {
-  return Object.values(PLANS).filter(plan => plan.category === category);
+export interface AddOnDefinition {
+  id: string;
+  name: string;
+  price: number;
+  priceDisplay: string;
+  interval: 'one_time' | 'month';
+  description: string;
+  features: string[];
+}
+
+export const ADD_ONS: Record<string, AddOnDefinition> = {
+  onboarding: {
+    id: 'onboarding',
+    name: 'Institutional Onboarding & Configuration',
+    price: 15000,
+    priceDisplay: '$15,000',
+    interval: 'one_time',
+    description: 'Full setup and configuration for institutional deployment',
+    features: [
+      'Program and credential setup',
+      'Compliance mapping',
+      'Reporting alignment',
+      'Funding workflow configuration',
+    ],
+  },
+  high_volume: {
+    id: 'high_volume',
+    name: 'High-Volume Learner Expansion',
+    price: 1000,
+    priceDisplay: '$1,000',
+    interval: 'month',
+    description: 'Per additional 1,000 learners beyond tier capacity',
+    features: [
+      'Scale beyond tier capacity',
+      'Same compliance coverage',
+      'No performance limits',
+    ],
+  },
+};
+
+/**
+ * Get all plans
+ */
+export function getAllPlans(): PlanDefinition[] {
+  return Object.values(PLANS);
 }
 
 /**
- * Get self-serve plans (can checkout via Stripe)
+ * Get plan by ID
  */
-export function getSelfServePlans(): PlanDefinition[] {
-  return Object.values(PLANS).filter(
-    plan => plan.category === 'self_serve' || plan.category === 'professional'
-  );
-}
-
-/**
- * Get enterprise plans (require contact)
- */
-export function getEnterprisePlans(): PlanDefinition[] {
-  return Object.values(PLANS).filter(plan => plan.category === 'enterprise');
+export function getPlan(planId: PlanId): PlanDefinition | undefined {
+  return PLANS[planId];
 }
 
 /**
