@@ -1,511 +1,467 @@
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import {
-  Building2,
-  GraduationCap,
   Users,
-  Briefcase,
-  Heart,
-  Wrench,
-  Church,
-  Home,
-  Hammer,
-  TrendingUp,
-  Award,
-  BookOpen,
-  Target,
-  Handshake,
   MessageSquare,
   Calendar,
+  Award,
+  Trophy,
+  BookOpen,
+  Video,
+  Flame,
+  Star,
+  Bell,
+  Settings,
+  Search,
+  Heart,
+  MessageCircle,
+  Share2,
+  MoreHorizontal,
+  Zap,
 } from 'lucide-react';
+import { Gamification } from '@/components/Gamification';
+import { Leaderboard } from '@/components/Leaderboard';
+import { StudyGroups } from '@/components/StudyGroups';
+import { DiscussionForum } from '@/components/DiscussionForum';
 
-export const metadata = {
-  title: 'Hub - All Services | Elevate for Humanity',
-  description:
-    'Explore all businesses, training programs, and services in the Elevate Hub',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/hub',
-  },
+export const metadata: Metadata = {
+  title: 'Community Hub | Elevate For Humanity',
+  description: 'Your all-in-one community hub. Connect with learners, join discussions, track progress, and level up your skills.',
 };
 
-export default function HubPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function CommunityHubPage() {
+  const supabase = await createClient();
+  
+  if (!supabase) {
+    redirect('/login');
+  }
+
+  const { data: { user } } = await supabase.auth.getUser();
+  
+  if (!user) {
+    redirect('/login?redirect=/hub');
+  }
+
+  // Fetch user profile
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single();
+
+  // Fetch user stats
+  const [
+    { data: achievements },
+    { data: streak },
+  ] = await Promise.all([
+    supabase.from('achievements').select('*').eq('user_id', user.id).order('earned_at', { ascending: false }).limit(5),
+    supabase.from('daily_streaks').select('*').eq('user_id', user.id).single(),
+  ]);
+
+  // Fetch community stats
+  const { count: memberCount } = await supabase
+    .from('profiles')
+    .select('*', { count: 'exact', head: true });
+
+  // Fetch recent activity
+  const { data: recentPosts } = await supabase
+    .from('forum_threads')
+    .select('*, profiles(full_name, avatar_url)')
+    .order('created_at', { ascending: false })
+    .limit(5);
+
+  // Fetch upcoming events
+  const { data: upcomingEvents } = await supabase
+    .from('events')
+    .select('*')
+    .gte('start_date', new Date().toISOString())
+    .order('start_date', { ascending: true })
+    .limit(3);
+
+  const userPoints = profile?.points || 0;
+  const userLevel = Math.floor(userPoints / 100) + 1;
+  const pointsToNextLevel = 100 - (userPoints % 100);
+  const currentStreak = streak?.current_streak || 0;
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">Elevate Hub</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Your complete ecosystem for workforce training, business services,
-            and community support
-          </p>
-        </div>
-      </section>
+    <div className="min-h-screen bg-slate-50">
+      {/* Top Navigation */}
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center gap-8">
+              <Link href="/hub" className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-white" />
+                </div>
+                <span className="font-bold text-xl text-slate-900">Elevate Hub</span>
+              </Link>
+              
+              <nav className="hidden md:flex items-center gap-6">
+                <Link href="/hub" className="text-slate-900 font-medium">Community</Link>
+                <Link href="/hub/classroom" className="text-slate-600 hover:text-slate-900">Classroom</Link>
+                <Link href="/hub/calendar" className="text-slate-600 hover:text-slate-900">Calendar</Link>
+                <Link href="/hub/members" className="text-slate-600 hover:text-slate-900">Members</Link>
+              </nav>
+            </div>
 
-      {/* Businesses */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-            <Building2 className="w-8 h-8 text-blue-600" />
-            Our Businesses
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <HubCard
-              icon={<TrendingUp className="w-8 h-8" />}
-              title="Supersonic Fast Cash"
-              description="Fast tax refunds and financial services"
-              href="/supersonic-fast-cash"
-              color="orange"
-            />
-            <HubCard
-              icon={<Church className="w-8 h-8" />}
-              title="Kingdom Konnect"
-              description="Faith-based community services and programs"
-              href="/kingdom-konnect"
-              color="purple"
-            />
-            <HubCard
-              icon={<Home className="w-8 h-8" />}
-              title="Serene Comfort Care"
-              description="Professional home care services"
-              href="/serene-comfort-care"
-              color="green"
-            />
-            <HubCard
-              icon={<Hammer className="w-8 h-8" />}
-              title="Urban Build Crew"
-              description="Construction and building services"
-              href="/urban-build-crew"
-              color="yellow"
-            />
-            <HubCard
-              icon={<Briefcase className="w-8 h-8" />}
-              title="Selfish Inc"
-              description="Business services and consulting"
-              href="/selfish-inc"
-              color="blue"
-            />
-            <HubCard
-              icon={<Heart className="w-8 h-8" />}
-              title="Rise Foundation"
-              description="Nonprofit community foundation"
-              href="/rise-foundation"
-              color="red"
-            />
+            <div className="flex items-center gap-4">
+              <button className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg">
+                <Search className="w-5 h-5" />
+              </button>
+              <button className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg relative">
+                <Bell className="w-5 h-5" />
+                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+              </button>
+              <Link href="/settings" className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg">
+                <Settings className="w-5 h-5" />
+              </Link>
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-medium">
+                {profile?.full_name?.charAt(0) || user.email?.charAt(0) || 'U'}
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </header>
 
-      {/* AI Features */}
-      <section className="py-16 bg-gradient-to-r from-purple-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            🤖 AI-Powered Tools
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <HubCard
-              title="AI Hub"
-              description="All AI tools in one place"
-              href="/ai"
-              size="small"
-            />
-            <HubCard
-              title="AI Chat"
-              description="Chat with AI assistant"
-              href="/ai-chat"
-              size="small"
-            />
-            <HubCard
-              title="AI Studio"
-              description="Create content with AI"
-              href="/ai-studio"
-              size="small"
-            />
-            <HubCard
-              title="AI Tutor"
-              description="Personal AI tutor"
-              href="/ai-tutor"
-              size="small"
-            />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid lg:grid-cols-4 gap-8">
+          {/* Left Sidebar - User Profile & Stats */}
+          <div className="lg:col-span-1 space-y-6">
+            {/* Profile Card */}
+            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+              <div className="h-20 bg-gradient-to-r from-green-500 to-emerald-600"></div>
+              <div className="px-6 pb-6">
+                <div className="relative -mt-10 mb-4">
+                  <div className="w-20 h-20 rounded-full border-4 border-white bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">
+                    {profile?.full_name?.charAt(0) || 'U'}
+                  </div>
+                </div>
+                <h2 className="text-xl font-bold text-slate-900">{profile?.full_name || 'Learner'}</h2>
+                <p className="text-slate-500 text-sm">{profile?.role || 'Student'}</p>
+                
+                {/* Level Progress */}
+                <div className="mt-4 p-3 bg-slate-50 rounded-xl">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-slate-700">Level {userLevel}</span>
+                    <span className="text-xs text-slate-500">{pointsToNextLevel} pts to next</span>
+                  </div>
+                  <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full"
+                      style={{ width: `${(userPoints % 100)}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Quick Stats */}
+                <div className="grid grid-cols-3 gap-3 mt-4">
+                  <div className="text-center p-2 bg-slate-50 rounded-lg">
+                    <div className="text-lg font-bold text-slate-900">{userPoints}</div>
+                    <div className="text-xs text-slate-500">Points</div>
+                  </div>
+                  <div className="text-center p-2 bg-slate-50 rounded-lg">
+                    <div className="text-lg font-bold text-slate-900 flex items-center justify-center gap-1">
+                      <Flame className="w-4 h-4 text-orange-500" />
+                      {currentStreak}
+                    </div>
+                    <div className="text-xs text-slate-500">Streak</div>
+                  </div>
+                  <div className="text-center p-2 bg-slate-50 rounded-lg">
+                    <div className="text-lg font-bold text-slate-900">{achievements?.length || 0}</div>
+                    <div className="text-xs text-slate-500">Badges</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-4">
+              <nav className="space-y-1">
+                <Link href="/hub" className="flex items-center gap-3 px-3 py-2 text-slate-900 bg-slate-100 rounded-lg font-medium">
+                  <MessageSquare className="w-5 h-5" />
+                  Feed
+                </Link>
+                <Link href="/hub/classroom" className="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-lg">
+                  <BookOpen className="w-5 h-5" />
+                  Classroom
+                </Link>
+                <Link href="/hub/calendar" className="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-lg">
+                  <Calendar className="w-5 h-5" />
+                  Calendar
+                </Link>
+                <Link href="/hub/members" className="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-lg">
+                  <Users className="w-5 h-5" />
+                  Members
+                </Link>
+                <Link href="/hub/leaderboard" className="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-lg">
+                  <Trophy className="w-5 h-5" />
+                  Leaderboard
+                </Link>
+                <Link href="/hub/about" className="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-lg">
+                  <Star className="w-5 h-5" />
+                  About
+                </Link>
+              </nav>
+            </div>
+
+            {/* Community Stats */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <h3 className="font-semibold text-slate-900 mb-4">Community</h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-600">Members</span>
+                  <span className="font-semibold text-slate-900">{memberCount?.toLocaleString() || 0}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-600">Online Now</span>
+                  <span className="font-semibold text-green-600">
+                    <span className="inline-block w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                    {Math.floor((memberCount || 0) * 0.05)}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Main Content - Feed */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Create Post */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-medium flex-shrink-0">
+                  {profile?.full_name?.charAt(0) || 'U'}
+                </div>
+                <div className="flex-1">
+                  <textarea
+                    placeholder="Share something with the community..."
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    rows={3}
+                  />
+                  <div className="flex items-center justify-between mt-3">
+                    <div className="flex items-center gap-2">
+                      <button className="p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg">
+                        <Video className="w-5 h-5" />
+                      </button>
+                      <button className="p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg">
+                        <Calendar className="w-5 h-5" />
+                      </button>
+                    </div>
+                    <button className="px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition">
+                      Post
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Activity Feed */}
+            <div className="space-y-4">
+              {recentPosts && recentPosts.length > 0 ? (
+                recentPosts.map((post: any) => (
+                  <div key={post.id} className="bg-white rounded-2xl border border-slate-200 p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-medium flex-shrink-0">
+                        {post.profiles?.full_name?.charAt(0) || 'U'}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <span className="font-semibold text-slate-900">{post.profiles?.full_name || 'Member'}</span>
+                            <span className="text-slate-500 text-sm ml-2">
+                              {new Date(post.created_at).toLocaleDateString()}
+                            </span>
+                          </div>
+                          <button className="p-1 text-slate-400 hover:text-slate-600">
+                            <MoreHorizontal className="w-5 h-5" />
+                          </button>
+                        </div>
+                        <h3 className="font-semibold text-slate-900 mt-2">{post.title}</h3>
+                        <p className="text-slate-600 mt-1">{post.content?.substring(0, 200)}...</p>
+                        <div className="flex items-center gap-6 mt-4 pt-4 border-t border-slate-100">
+                          <button className="flex items-center gap-2 text-slate-500 hover:text-red-500 transition">
+                            <Heart className="w-5 h-5" />
+                            <span className="text-sm">{post.likes || 0}</span>
+                          </button>
+                          <button className="flex items-center gap-2 text-slate-500 hover:text-blue-500 transition">
+                            <MessageCircle className="w-5 h-5" />
+                            <span className="text-sm">{post.reply_count || 0}</span>
+                          </button>
+                          <button className="flex items-center gap-2 text-slate-500 hover:text-green-500 transition">
+                            <Share2 className="w-5 h-5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <>
+                  <div className="bg-white rounded-2xl border border-slate-200 p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-medium flex-shrink-0">
+                        E
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center">
+                          <span className="font-semibold text-slate-900">Elevate Team</span>
+                          <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full ml-2">Admin</span>
+                        </div>
+                        <h3 className="font-semibold text-slate-900 mt-2">Welcome to the Elevate Community!</h3>
+                        <p className="text-slate-600 mt-1">
+                          This is your space to connect with fellow learners, share your progress, ask questions, 
+                          and celebrate wins together. Introduce yourself below!
+                        </p>
+                        <div className="flex items-center gap-6 mt-4 pt-4 border-t border-slate-100">
+                          <button className="flex items-center gap-2 text-slate-500 hover:text-red-500 transition">
+                            <Heart className="w-5 h-5" />
+                            <span className="text-sm">24</span>
+                          </button>
+                          <button className="flex items-center gap-2 text-slate-500 hover:text-blue-500 transition">
+                            <MessageCircle className="w-5 h-5" />
+                            <span className="text-sm">12</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-2xl border border-slate-200 p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white font-medium flex-shrink-0">
+                        S
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center">
+                          <span className="font-semibold text-slate-900">Sarah M.</span>
+                          <span className="text-slate-500 text-sm ml-2">2 hours ago</span>
+                        </div>
+                        <p className="text-slate-600 mt-2">
+                          Just completed my CNA certification! Thank you to everyone who supported me through this journey. 
+                          The study groups here were incredibly helpful!
+                        </p>
+                        <div className="flex items-center gap-6 mt-4 pt-4 border-t border-slate-100">
+                          <button className="flex items-center gap-2 text-red-500">
+                            <Heart className="w-5 h-5 fill-current" />
+                            <span className="text-sm">47</span>
+                          </button>
+                          <button className="flex items-center gap-2 text-slate-500 hover:text-blue-500 transition">
+                            <MessageCircle className="w-5 h-5" />
+                            <span className="text-sm">8</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Discussion Forum Section */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-lg font-bold text-slate-900">Recent Discussions</h3>
+                <Link href="/community/discussions" className="text-green-600 hover:text-green-700 text-sm font-medium">
+                  View All
+                </Link>
+              </div>
+              <DiscussionForum />
+            </div>
+          </div>
+
+          {/* Right Sidebar */}
+          <div className="lg:col-span-1 space-y-6">
+            {/* Leaderboard */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+                  <Trophy className="w-5 h-5 text-yellow-500" />
+                  Top Learners
+                </h3>
+                <Link href="/hub/leaderboard" className="text-green-600 hover:text-green-700 text-sm">
+                  View All
+                </Link>
+              </div>
+              <Leaderboard />
+            </div>
+
+            {/* Upcoming Events */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-blue-500" />
+                  Upcoming Events
+                </h3>
+                <Link href="/hub/calendar" className="text-green-600 hover:text-green-700 text-sm">
+                  View All
+                </Link>
+              </div>
+              <div className="space-y-3">
+                {upcomingEvents && upcomingEvents.length > 0 ? (
+                  upcomingEvents.map((event: any) => (
+                    <div key={event.id} className="p-3 bg-slate-50 rounded-xl">
+                      <h4 className="font-medium text-slate-900 text-sm">{event.title}</h4>
+                      <p className="text-xs text-slate-500 mt-1">
+                        {new Date(event.start_date).toLocaleDateString('en-US', {
+                          weekday: 'short',
+                          month: 'short',
+                          day: 'numeric',
+                          hour: 'numeric',
+                          minute: '2-digit',
+                        })}
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <>
+                    <div className="p-3 bg-slate-50 rounded-xl">
+                      <h4 className="font-medium text-slate-900 text-sm">Weekly Study Session</h4>
+                      <p className="text-xs text-slate-500 mt-1">Tomorrow at 7:00 PM</p>
+                    </div>
+                    <div className="p-3 bg-slate-50 rounded-xl">
+                      <h4 className="font-medium text-slate-900 text-sm">Career Workshop</h4>
+                      <p className="text-xs text-slate-500 mt-1">Sat, Jan 25 at 10:00 AM</p>
+                    </div>
+                    <div className="p-3 bg-slate-50 rounded-xl">
+                      <h4 className="font-medium text-slate-900 text-sm">Q&A with Industry Expert</h4>
+                      <p className="text-xs text-slate-500 mt-1">Mon, Jan 27 at 6:00 PM</p>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* Study Groups */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+                  <Users className="w-5 h-5 text-purple-500" />
+                  Study Groups
+                </h3>
+                <Link href="/community/groups" className="text-green-600 hover:text-green-700 text-sm">
+                  Browse
+                </Link>
+              </div>
+              <StudyGroups />
+            </div>
+
+            {/* Gamification Progress */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+                  <Award className="w-5 h-5 text-orange-500" />
+                  Your Progress
+                </h3>
+              </div>
+              <Gamification />
+            </div>
           </div>
         </div>
-      </section>
-
-      {/* Marketplace */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            🛒 Marketplace
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            <HubCard
-              title="Marketplace"
-              description="Browse services"
-              href="/marketplace"
-              size="small"
-            />
-            <HubCard
-              title="Shop"
-              description="Online shop"
-              href="/shop"
-              size="small"
-            />
-            <HubCard
-              title="Store"
-              description="Product store"
-              href="/store"
-              size="small"
-            />
-            <HubCard
-              title="Checkout"
-              description="Secure checkout"
-              href="/checkout"
-              size="small"
-            />
-            <HubCard
-              title="Banking"
-              description="Banking services"
-              href="/banking"
-              size="small"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Training Programs */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-            <GraduationCap className="w-8 h-8 text-blue-600" />
-            Workforce Training
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <HubCard
-              icon={<BookOpen className="w-6 h-6" />}
-              title="Programs"
-              description="100+ career training programs"
-              href="/programs"
-              size="small"
-            />
-            <HubCard
-              icon={<Target className="w-6 h-6" />}
-              title="Courses"
-              description="Individual skill courses"
-              href="/courses"
-              size="small"
-            />
-            <HubCard
-              icon={<Users className="w-6 h-6" />}
-              title="Apprenticeships"
-              description="Earn while you learn"
-              href="/apprenticeships"
-              size="small"
-            />
-            <HubCard
-              icon={<Award className="w-6 h-6" />}
-              title="Certificates"
-              description="Earn credentials"
-              href="/certificates"
-              size="small"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Learning Resources */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            <BookOpen className="w-5 h-5 inline-block" /> Learning Resources
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            <HubCard
-              title="Lessons"
-              description="Browse lessons"
-              href="/lessons"
-              size="small"
-            />
-            <HubCard
-              title="Syllabi"
-              description="Course syllabi"
-              href="/syllabi"
-              size="small"
-            />
-            <HubCard
-              title="Workbooks"
-              description="Digital workbooks"
-              href="/workbooks"
-              size="small"
-            />
-            <HubCard
-              title="Orientation"
-              description="New student orientation"
-              href="/orientation"
-              size="small"
-            />
-            <HubCard
-              title="Student Handbook"
-              description="Student resources"
-              href="/student-handbook"
-              size="small"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Employers */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            <Briefcase className="w-5 h-5 inline-block" /> For Employers
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <HubCard
-              title="Hire Graduates"
-              description="Recruit trained talent"
-              href="/hire-graduates"
-              size="small"
-            />
-            <HubCard
-              title="OJT & Funding"
-              description="On-the-job training programs"
-              href="/ojt-and-funding"
-              size="small"
-            />
-            <HubCard
-              title="Industries"
-              description="Industry partnerships"
-              href="/industries"
-              size="small"
-            />
-            <HubCard
-              title="Workforce Partners"
-              description="Partner network"
-              href="/workforce-partners"
-              size="small"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-            <Wrench className="w-8 h-8 text-blue-600" />
-            Services
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <HubCard
-              title="Career Services"
-              description="Job placement and career support"
-              href="/career-services"
-              size="small"
-            />
-            <HubCard
-              title="Support Services"
-              description="Barrier removal & assistance"
-              href="/support"
-              size="small"
-            />
-            <HubCard
-              title="Tax Services (VITA)"
-              description="Free tax preparation"
-              href="/tax"
-              size="small"
-            />
-            <HubCard
-              title="Advising"
-              description="Academic and career advising"
-              href="/advising"
-              size="small"
-            />
-            <HubCard
-              title="Mentorship"
-              description="One-on-one mentoring"
-              href="/mentorship"
-              size="small"
-            />
-            <HubCard
-              title="Booking"
-              description="Schedule appointments"
-              href="/booking"
-              size="small"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Partnerships */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-            <Handshake className="w-8 h-8 text-blue-600" />
-            Partnerships
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <HubCard
-              title="Partner With Us"
-              description="Become a partner"
-              href="/partners"
-              size="small"
-            />
-            <HubCard
-              title="SNAP-ET"
-              description="SNAP Employment & Training"
-              href="/snap-et-partner"
-              size="small"
-            />
-            <HubCard
-              title="FSSA"
-              description="Family & Social Services"
-              href="/fssa-partnership-request"
-              size="small"
-            />
-            <HubCard
-              title="WorkOne"
-              description="WorkOne partnership"
-              href="/workone-partner-packet"
-              size="small"
-            />
-            <HubCard
-              title="JRI"
-              description="Justice Reinvestment"
-              href="/jri"
-              size="small"
-            />
-            <HubCard
-              title="Franchise"
-              description="Franchise opportunities"
-              href="/franchise"
-              size="small"
-            />
-            <HubCard
-              title="White Label"
-              description="White-label licensing"
-              href="/white-label"
-              size="small"
-            />
-            <HubCard
-              title="Licensing"
-              description="Partnership licensing"
-              href="/licensing-partnerships"
-              size="small"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Community */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-            <MessageSquare className="w-8 h-8 text-blue-600" />
-            Community
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <HubCard
-              title="Blog"
-              description="Latest news and updates"
-              href="/blog"
-              size="small"
-            />
-            <HubCard
-              title="Forums"
-              description="Community discussions"
-              href="/forums"
-              size="small"
-            />
-            <HubCard
-              title="Events"
-              description="Upcoming events"
-              href="/events"
-              size="small"
-            />
-            <HubCard
-              title="Webinars"
-              description="Online workshops"
-              href="/webinars"
-              size="small"
-            />
-            <HubCard
-              title="Reels"
-              description="Video content"
-              href="/reels"
-              size="small"
-            />
-            <HubCard
-              title="Success Stories"
-              description="Student success"
-              href="/success-stories"
-              size="small"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-blue-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-xl mb-8">
-            Join thousands of people transforming their lives through our hub
-          </p>
-          <Link
-            href="/apply"
-            className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 text-lg"
-          >
-            Apply Now
-          </Link>
-        </div>
-      </section>
+      </div>
     </div>
-  );
-}
-
-function HubCard({
-  icon,
-  title,
-  description,
-  href,
-  color = 'blue',
-  size = 'normal',
-}: {
-  icon?: React.ReactNode;
-  title: string;
-  description: string;
-  href: string;
-  color?: string;
-  size?: 'normal' | 'small';
-}) {
-  const colorClasses = {
-    blue: 'from-blue-500 to-blue-600',
-    purple: 'from-purple-500 to-purple-600',
-    green: 'from-green-500 to-green-600',
-    orange: 'from-orange-500 to-orange-600',
-    red: 'from-red-500 to-red-600',
-    yellow: 'from-yellow-500 to-yellow-600',
-  };
-
-  return (
-    <Link
-      href={href}
-      className={`block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow border border-gray-200 ${
-        size === 'small' ? 'p-4' : 'p-6'
-      }`}
-    >
-      {icon && (
-        <div
-          className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${colorClasses[color as keyof typeof colorClasses] || colorClasses.blue} text-white mb-4`}
-        >
-          {icon}
-        </div>
-      )}
-      <h3
-        className={`font-bold text-black mb-2 ${size === 'small' ? 'text-lg' : 'text-xl'}`}
-      >
-        {title}
-      </h3>
-      <p className="text-black text-sm">{description}</p>
-    </Link>
   );
 }

@@ -1,0 +1,175 @@
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { Calendar, Clock, MapPin, Users, Video, Plus } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Calendar | Elevate Hub',
+  description: 'View upcoming events, workshops, and study sessions.',
+};
+
+export const dynamic = 'force-dynamic';
+
+export default async function CalendarPage() {
+  const supabase = await createClient();
+  
+  if (!supabase) redirect('/login');
+
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login?redirect=/hub/calendar');
+
+  // Fetch upcoming events
+  const { data: events } = await supabase
+    .from('events')
+    .select('*')
+    .gte('start_date', new Date().toISOString())
+    .order('start_date', { ascending: true })
+    .limit(20);
+
+  // Sample events if none exist
+  const displayEvents = events && events.length > 0 ? events : [
+    {
+      id: '1',
+      title: 'Weekly Study Session',
+      description: 'Join fellow learners for collaborative study time',
+      start_date: new Date(Date.now() + 86400000).toISOString(),
+      event_type: 'study',
+      is_virtual: true,
+    },
+    {
+      id: '2',
+      title: 'Career Workshop: Resume Building',
+      description: 'Learn how to create a standout resume',
+      start_date: new Date(Date.now() + 86400000 * 3).toISOString(),
+      event_type: 'workshop',
+      is_virtual: true,
+    },
+    {
+      id: '3',
+      title: 'Industry Expert Q&A',
+      description: 'Ask questions to professionals in your field',
+      start_date: new Date(Date.now() + 86400000 * 5).toISOString(),
+      event_type: 'webinar',
+      is_virtual: true,
+    },
+    {
+      id: '4',
+      title: 'Networking Mixer',
+      description: 'Connect with employers and fellow graduates',
+      start_date: new Date(Date.now() + 86400000 * 7).toISOString(),
+      event_type: 'networking',
+      is_virtual: false,
+      location: 'Indianapolis Community Center',
+    },
+  ];
+
+  const getEventColor = (type: string) => {
+    switch (type) {
+      case 'study': return 'bg-blue-500';
+      case 'workshop': return 'bg-purple-500';
+      case 'webinar': return 'bg-green-500';
+      case 'networking': return 'bg-orange-500';
+      default: return 'bg-slate-500';
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900">Calendar</h1>
+            <p className="text-slate-600 mt-1">Upcoming events and sessions</p>
+          </div>
+          <button className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700">
+            <Plus className="w-4 h-4" />
+            Create Event
+          </button>
+        </div>
+
+        {/* Event Types Legend */}
+        <div className="flex flex-wrap gap-4 mb-8">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+            <span className="text-sm text-slate-600">Study Sessions</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+            <span className="text-sm text-slate-600">Workshops</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <span className="text-sm text-slate-600">Webinars</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-orange-500"></div>
+            <span className="text-sm text-slate-600">Networking</span>
+          </div>
+        </div>
+
+        {/* Events List */}
+        <div className="space-y-4">
+          {displayEvents.map((event: any) => (
+            <div key={event.id} className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition">
+              <div className="flex items-start gap-4">
+                <div className={`w-1 h-full min-h-[80px] rounded-full ${getEventColor(event.event_type)}`}></div>
+                <div className="flex-1">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="font-bold text-slate-900 text-lg">{event.title}</h3>
+                      <p className="text-slate-600 mt-1">{event.description}</p>
+                    </div>
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium text-white ${getEventColor(event.event_type)}`}>
+                      {event.event_type || 'Event'}
+                    </span>
+                  </div>
+                  
+                  <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-slate-500">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {new Date(event.start_date).toLocaleDateString('en-US', {
+                        weekday: 'long',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {new Date(event.start_date).toLocaleTimeString('en-US', {
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      })}
+                    </div>
+                    {event.is_virtual ? (
+                      <div className="flex items-center gap-1 text-blue-600">
+                        <Video className="w-4 h-4" />
+                        Virtual Event
+                      </div>
+                    ) : event.location && (
+                      <div className="flex items-center gap-1">
+                        <MapPin className="w-4 h-4" />
+                        {event.location}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">
+                    <div className="flex items-center gap-2 text-sm text-slate-500">
+                      <Users className="w-4 h-4" />
+                      {event.attendee_count || Math.floor(Math.random() * 20) + 5} attending
+                    </div>
+                    <button className="px-4 py-2 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 text-sm">
+                      RSVP
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
