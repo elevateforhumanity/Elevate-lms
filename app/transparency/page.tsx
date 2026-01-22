@@ -54,15 +54,15 @@ export default async function TransparencyPage() {
   // Calculate placement rate
   const placementRate = totalGraduates && totalPlacements 
     ? Math.round((totalPlacements / totalGraduates) * 100) 
-    : 85;
+    : null;
 
   const outcomes = [
-    { label: 'Students Enrolled', value: totalEnrollments || 500, icon: Users },
-    { label: 'Graduates', value: totalGraduates || 400, icon: Award },
-    { label: 'Job Placements', value: totalPlacements || 340, icon: TrendingUp },
-    { label: 'Placement Rate', value: `${placementRate}%`, icon: BarChart3 },
-    { label: 'Employer Partners', value: employerPartners || 50, icon: Users },
-    { label: 'Avg. Starting Salary', value: '$42,000', icon: DollarSign },
+    { label: 'Students Enrolled', value: totalEnrollments || 'Active', icon: Users },
+    { label: 'Graduates', value: totalGraduates || 'Growing', icon: Award },
+    { label: 'Job Placements', value: totalPlacements || 'Ongoing', icon: TrendingUp },
+    { label: 'Placement Rate', value: placementRate ? `${placementRate}%` : 'Tracked', icon: BarChart3 },
+    { label: 'Employer Partners', value: employerPartners || 'Active', icon: Users },
+    { label: 'Programs', value: '20+', icon: DollarSign },
   ];
 
   const financials = [
@@ -135,7 +135,7 @@ export default async function TransparencyPage() {
             </div>
             <div className="mt-8 pt-8 border-t">
               <p className="text-gray-600 text-center">
-                <strong>90%</strong> of every dollar goes directly to program delivery and student services.
+                The majority of funds go directly to program delivery and student services.
               </p>
             </div>
           </div>

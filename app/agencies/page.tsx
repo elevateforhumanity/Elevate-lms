@@ -170,18 +170,18 @@ export default async function AgenciesPage() {
                 </div>
                 <div className="bg-white rounded-lg p-6 text-center">
                   <Users className="w-10 h-10 text-blue-600 mx-auto mb-3" />
-                  <div className="text-2xl font-bold">10,000+</div>
-                  <div className="text-gray-600 text-sm">Participants Served</div>
+                  <div className="text-2xl font-bold">WIOA</div>
+                  <div className="text-gray-600 text-sm">Compliant</div>
                 </div>
                 <div className="bg-white rounded-lg p-6 text-center">
                   <DollarSign className="w-10 h-10 text-blue-600 mx-auto mb-3" />
-                  <div className="text-2xl font-bold">$5M+</div>
-                  <div className="text-gray-600 text-sm">Funding Managed</div>
+                  <div className="text-2xl font-bold">ETPL</div>
+                  <div className="text-gray-600 text-sm">Listed</div>
                 </div>
                 <div className="bg-white rounded-lg p-6 text-center">
                   <TrendingUp className="w-10 h-10 text-blue-600 mx-auto mb-3" />
-                  <div className="text-2xl font-bold">85%</div>
-                  <div className="text-gray-600 text-sm">Placement Rate</div>
+                  <div className="text-2xl font-bold">Full</div>
+                  <div className="text-gray-600 text-sm">Reporting</div>
                 </div>
               </div>
             </div>

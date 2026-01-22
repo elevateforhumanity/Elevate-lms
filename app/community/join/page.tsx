@@ -181,20 +181,20 @@ export default function JoinCommunityPage() {
               </h3>
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <p className="text-4xl font-bold text-blue-600">5,000+</p>
-                  <p className="text-gray-600">Active Members</p>
+                  <p className="text-4xl font-bold text-blue-600">Active</p>
+                  <p className="text-gray-600">Community</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-4xl font-bold text-blue-600">150+</p>
-                  <p className="text-gray-600">Discussion Topics</p>
+                  <p className="text-4xl font-bold text-blue-600">Open</p>
+                  <p className="text-gray-600">Discussions</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-4xl font-bold text-blue-600">24</p>
-                  <p className="text-gray-600">Active Groups</p>
+                  <p className="text-4xl font-bold text-blue-600">Study</p>
+                  <p className="text-gray-600">Groups</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-4xl font-bold text-blue-600">92%</p>
-                  <p className="text-gray-600">Satisfaction Rate</p>
+                  <p className="text-4xl font-bold text-blue-600">24/7</p>
+                  <p className="text-gray-600">Access</p>
                 </div>
               </div>
             </div>

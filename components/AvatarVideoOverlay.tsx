@@ -75,17 +75,19 @@ export default function AvatarVideoOverlay({
     setIsVisible(true);
   };
 
+  // Position classes - moved up on mobile to avoid chat widget overlap
   const positionClasses = {
-    'bottom-right': 'bottom-4 right-4',
-    'bottom-left': 'bottom-4 left-4',
+    'bottom-right': 'bottom-24 sm:bottom-4 right-4',
+    'bottom-left': 'bottom-24 sm:bottom-4 left-4',
     'top-right': 'top-20 right-4',
     'top-left': 'top-20 left-4',
   };
 
+  // Responsive sizes - smaller on mobile
   const sizeClasses = {
-    small: isExpanded ? 'w-64 h-36' : 'w-48 h-28',
-    medium: isExpanded ? 'w-80 h-48' : 'w-64 h-36',
-    large: isExpanded ? 'w-96 h-56' : 'w-80 h-44',
+    small: isExpanded ? 'w-48 sm:w-64 h-28 sm:h-36' : 'w-36 sm:w-48 h-20 sm:h-28',
+    medium: isExpanded ? 'w-56 sm:w-80 h-32 sm:h-48' : 'w-44 sm:w-64 h-24 sm:h-36',
+    large: isExpanded ? 'w-64 sm:w-96 h-36 sm:h-56' : 'w-56 sm:w-80 h-32 sm:h-44',
   };
 
   // Minimized button when closed
@@ -93,11 +95,11 @@ export default function AvatarVideoOverlay({
     return (
       <button
         onClick={handleOpen}
-        className={`fixed ${positionClasses[position]} z-40 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-full shadow-lg transition-all hover:scale-105`}
+        className={`fixed ${positionClasses[position]} z-40 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-full shadow-lg transition-all hover:scale-105`}
         aria-label="Open AI Guide"
       >
-        <User className="w-5 h-5" />
-        <span className="text-sm font-medium">AI Guide</span>
+        <User className="w-4 h-4 sm:w-5 sm:h-5" />
+        <span className="text-xs sm:text-sm font-medium hidden sm:inline">AI Guide</span>
       </button>
     );
   }

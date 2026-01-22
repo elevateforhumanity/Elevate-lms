@@ -187,18 +187,6 @@ export default function ProgramsPage() {
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
           <div className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
-              WIOA-Approved Training Programs
-            </h1>
-            <p className="text-xl text-white/90 mb-4 max-w-2xl">
-              Industry-recognized certifications with integrated funding verification, 
-              enrollment management, and employer placement pipelines.
-            </p>
-            <div className="flex flex-wrap gap-4 mb-6 text-sm text-white/80">
-              <span className="bg-white/20 px-3 py-1 rounded-full">ETPL Listed</span>
-              <span className="bg-white/20 px-3 py-1 rounded-full">DOL Registered</span>
-              <span className="bg-white/20 px-3 py-1 rounded-full">State Approved</span>
-            </div>
             <div className="flex flex-wrap gap-4">
               <Link 
                 href="/apply"

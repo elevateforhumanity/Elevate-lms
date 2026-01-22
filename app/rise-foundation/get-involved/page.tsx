@@ -100,8 +100,8 @@ export default async function GetInvolvedPage() {
               <div className="text-gray-600">Active Volunteers</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-purple-600">500+</div>
-              <div className="text-gray-600">Lives Impacted</div>
+              <div className="text-3xl font-bold text-purple-600">Growing</div>
+              <div className="text-gray-600">Community</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-purple-600">10+</div>

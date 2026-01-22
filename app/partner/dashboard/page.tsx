@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 
 // Fallback data when Supabase is unavailable
 const fallbackStats = [
-  { label: 'Active Students', value: '47', change: '+5 this month', icon: Users },
-  { label: 'Programs', value: '3', change: 'Active', icon: BookOpen },
-  { label: 'Completion Rate', value: '89%', change: '+3% vs last quarter', icon: TrendingUp },
-  { label: 'Upcoming Sessions', value: '12', change: 'This week', icon: Calendar },
+  { label: 'Active Students', value: '--', change: 'Loading', icon: Users },
+  { label: 'Programs', value: '--', change: 'Active', icon: BookOpen },
+  { label: 'Completion Rate', value: '--', change: 'Tracked', icon: TrendingUp },
+  { label: 'Upcoming Sessions', value: '--', change: 'This week', icon: Calendar },
 ];
 
 const fallbackStudents = [
@@ -121,7 +121,7 @@ export default async function PartnerDashboardPage() {
           stats = [
             { label: 'Active Students', value: String(activeCount || 0), change: 'Currently enrolled', icon: Users },
             { label: 'Programs', value: String(programCount || 0), change: 'Active', icon: BookOpen },
-            { label: 'Completion Rate', value: '89%', change: '+3% vs last quarter', icon: TrendingUp },
+            { label: 'Completion Rate', value: 'Tracked', change: 'In system', icon: TrendingUp },
             { label: 'Upcoming Sessions', value: String(schedule.length), change: 'This week', icon: Calendar },
           ];
         }

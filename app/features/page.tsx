@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   title: 'Platform Features | Elevate For Humanity',
   description:
-    'Discover the features that make Elevate For Humanity the leading workforce development platform. From AI-powered learning to career placement support.',
+    'Discover the features that make Elevate For Humanity the leading workforce development platform. Automated workflows with guided support and career placement.',
 };
 
 export default async function FeaturesPage() {

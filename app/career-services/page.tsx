@@ -40,7 +40,7 @@ const SERVICES = [
   {
     icon: Briefcase,
     title: 'Job Placement',
-    description: 'Direct connections to 50+ hiring employers actively seeking our graduates.',
+    description: 'Direct connections to hiring employers actively seeking our graduates.',
     href: '/career-services/job-placement',
     color: 'bg-green-500',
   },

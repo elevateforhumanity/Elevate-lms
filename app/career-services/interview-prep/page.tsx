@@ -276,16 +276,16 @@ export default function InterviewPrepPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-4xl font-bold mb-2">92%</p>
-              <p className="text-blue-200">Interview Success Rate</p>
+              <p className="text-4xl font-bold mb-2">Full</p>
+              <p className="text-blue-200">Interview Prep</p>
             </div>
             <div>
-              <p className="text-4xl font-bold mb-2">500+</p>
-              <p className="text-blue-200">Mock Interviews Conducted</p>
+              <p className="text-4xl font-bold mb-2">1-on-1</p>
+              <p className="text-blue-200">Mock Interviews</p>
             </div>
             <div>
-              <p className="text-4xl font-bold mb-2">4.9</p>
-              <p className="text-blue-200">Average Rating</p>
+              <p className="text-4xl font-bold mb-2">Expert</p>
+              <p className="text-blue-200">Coaching</p>
             </div>
             <div>
               <p className="text-4xl font-bold mb-2">Free</p>

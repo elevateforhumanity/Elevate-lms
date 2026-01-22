@@ -24,23 +24,22 @@ export default function JobPlacementPage() {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-4 gap-8 text-center">
           <div>
-            <div className="text-4xl font-black text-brand-orange-600 mb-2">500+</div>
-            <div className="text-gray-600">Employer Partners*</div>
+            <div className="text-4xl font-black text-brand-orange-600 mb-2">Active</div>
+            <div className="text-gray-600">Employer Network</div>
           </div>
           <div>
-            <div className="text-4xl font-black text-brand-orange-600 mb-2">85%</div>
-            <div className="text-gray-600">Placement Rate*</div>
+            <div className="text-4xl font-black text-brand-orange-600 mb-2">Included</div>
+            <div className="text-gray-600">Job Placement</div>
           </div>
           <div>
-            <div className="text-4xl font-black text-brand-orange-600 mb-2">90 Days</div>
-            <div className="text-gray-600">Average Time to Hire*</div>
+            <div className="text-4xl font-black text-brand-orange-600 mb-2">Full</div>
+            <div className="text-gray-600">Support Services</div>
           </div>
           <div>
             <div className="text-4xl font-black text-brand-orange-600 mb-2">Free</div>
             <div className="text-gray-600">For All Graduates</div>
           </div>
         </div>
-        <p className="text-xs text-gray-500 text-center mt-6">*Based on internal outcomes tracking. Individual results may vary.</p>
       </section>
 
       <section className="max-w-6xl mx-auto px-6 py-16">
@@ -58,7 +57,7 @@ export default function JobPlacementPage() {
             </div>
             <h3 className="text-xl font-bold text-black mb-3">Direct Employer Connections</h3>
             <p className="text-gray-600 mb-4">
-              Access our network of 500+ employers actively seeking qualified candidates.
+              Access our employer network actively seeking qualified candidates.
             </p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-start gap-2">
@@ -495,9 +494,8 @@ export default function JobPlacementPage() {
           <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
             <h3 className="text-xl font-bold text-black mb-3">Is job placement guaranteed?</h3>
             <p className="text-gray-600">
-              While we cannot guarantee employment (as hiring decisions are made by employers), we have an 85% 
-              placement rate and provide unlimited support until you find the right position. We're committed 
-              to your success.
+              While we cannot guarantee employment (as hiring decisions are made by employers), we provide 
+              ongoing support until you find the right position. We're committed to your success.
             </p>
           </div>
         </div>

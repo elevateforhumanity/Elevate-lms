@@ -38,14 +38,26 @@ export default async function FeaturesPage() {
 
   const featureCategories = [
     {
+      name: 'Self-Operating Automation',
+      icon: Zap,
+      features: [
+        'Auto-enrollment workflows — applications route to programs automatically',
+        'Automated status transitions — no manual updates needed',
+        'Progress tracking with automated nudges for inactive learners',
+        'Credential generation and verification links — instant, not manual',
+        'Compliance reporting with audit trails — always export-ready',
+        'Employer dashboards with real-time graduate pipelines',
+      ],
+    },
+    {
       name: 'Learning Management',
       icon: BookOpen,
       features: [
         'Course creation and management',
         'Video hosting and streaming',
-        'Quizzes and assessments',
-        'Progress tracking',
-        'Certificates and badges',
+        'Quizzes and assessments with auto-grading',
+        'Progress tracking with automated alerts',
+        'Certificates and badges — auto-generated on completion',
         'SCORM/xAPI support',
       ],
     },
@@ -53,11 +65,11 @@ export default async function FeaturesPage() {
       name: 'Student Management',
       icon: Users,
       features: [
-        'Enrollment management',
-        'Attendance tracking',
-        'Document management',
-        'Communication tools',
-        'Student portal',
+        'Auto-routing enrollment management',
+        'Attendance tracking with automated reminders',
+        'Document management with auto-verification',
+        'Automated communication workflows',
+        'Self-service student portal',
         'Mobile access',
       ],
     },
@@ -65,12 +77,12 @@ export default async function FeaturesPage() {
       name: 'Reporting & Analytics',
       icon: BarChart,
       features: [
-        'Real-time dashboards',
-        'WIOA compliance reports',
-        'Outcome tracking',
-        'Custom report builder',
-        'Data export',
-        'API access',
+        'Real-time dashboards — no manual refresh',
+        'WIOA compliance reports — auto-generated',
+        'Outcome tracking with automated alerts',
+        'Custom report builder with scheduled delivery',
+        'Data export — always audit-ready',
+        'API access for integrations',
       ],
     },
     {
@@ -80,9 +92,9 @@ export default async function FeaturesPage() {
         'Multi-tenant architecture',
         'Role-based access control',
         'White-label branding',
-        'Custom workflows',
+        'Automated workflow builder',
         'Integration options',
-        'Audit logging',
+        'Audit logging — automatic, always on',
       ],
     },
   ];
@@ -94,7 +106,7 @@ export default async function FeaturesPage() {
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Platform Features</h1>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Everything you need to run a modern workforce training program
+            Self-operating workforce infrastructure that runs the entire learner lifecycle — from application to credential — without staff intervention.
           </p>
         </div>
       </section>
@@ -122,6 +134,40 @@ export default async function FeaturesPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Automated Self-Service Operations */}
+      <section className="py-16 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4 text-white">Automated, Self-Service Operations</h2>
+          <p className="text-lg text-slate-300 text-center mb-8 max-w-3xl mx-auto">
+            This platform operates as a self-service workforce system. Enrollment triggers automated workflows for eligibility, course assignment, progress tracking, compliance logging, credential issuance, and reporting. Staff intervention is required only for exceptions—not daily operations.
+          </p>
+          <div className="max-w-2xl mx-auto">
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
+                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200 text-lg">Automated enrollment orchestration</span>
+              </li>
+              <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
+                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200 text-lg">Rules-based progress and hour tracking</span>
+              </li>
+              <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
+                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200 text-lg">Automated nudges and interventions</span>
+              </li>
+              <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
+                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200 text-lg">Auto-generated compliance and outcome reports</span>
+              </li>
+              <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
+                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200 text-lg">Credential issuance with public verification</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>

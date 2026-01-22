@@ -61,7 +61,7 @@ const LICENSE_DATA = {
     { name: 'Case Management', icon: Building2, description: 'Track barriers and interventions' },
     { name: 'Employer Portal', icon: Briefcase, description: 'Job postings and hiring' },
     { name: 'Compliance & Reporting', icon: BarChart3, description: 'WIOA and grant reporting' },
-    { name: 'AI Tutor', icon: Bot, description: 'AI-powered learning assistance' },
+    { name: 'Automated Tutor', icon: Bot, description: 'Rules-based learning assistance' },
     { name: 'Mobile PWA', icon: Smartphone, description: 'iOS and Android support' },
   ],
 };

@@ -33,7 +33,7 @@ export function HubNavigation() {
       { name: 'Support', href: '/support', description: 'Get help & support' },
     ],
     ai: [
-      { name: 'AI Hub', href: '/ai', description: 'AI-powered tools & services' },
+      { name: 'Tools', href: '/ai', description: 'Automated tools & services' },
       { name: 'AI Chat', href: '/ai-chat', description: 'Chat with AI assistant' },
       { name: 'AI Studio', href: '/ai-studio', description: 'Create content with AI' },
       { name: 'AI Tutor', href: '/ai-tutor', description: 'Personal AI tutor' },

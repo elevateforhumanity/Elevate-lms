@@ -24,7 +24,7 @@ export default function FeatureTour() {
     {
       emoji: '🤖',
       title: 'Meet Your AI Tutor',
-      description: 'Get instant help 24/7 with our AI-powered tutor',
+      description: 'Get instant help 24/7 with automated tutoring support',
       link: '/ai-tutor',
       cta: 'Try AI Tutor',
     },

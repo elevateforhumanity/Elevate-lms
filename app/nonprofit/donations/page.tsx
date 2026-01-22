@@ -76,9 +76,9 @@ export default async function DonationsPage() {
   const displayTiers = donationTiers && donationTiers.length > 0 ? donationTiers : defaultTiers;
 
   const defaultStats = [
-    { label: 'People Helped', value: '500+' },
-    { label: 'Workshops Held', value: '100+' },
-    { label: 'Counseling Sessions', value: '2,000+' },
+    { label: 'Programs', value: '20+' },
+    { label: 'Services', value: 'Free' },
+    { label: 'Support', value: 'Full' },
   ];
 
   const displayStats = impactStats && impactStats.length > 0 ? impactStats : defaultStats;

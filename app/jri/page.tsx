@@ -71,10 +71,10 @@ export default async function JRIPage() {
   }
 
   const defaultStats = [
-    { label: 'Graduates', value: '500+', icon: GraduationCap },
-    { label: 'Job Placement Rate', value: '85%', icon: Briefcase },
-    { label: 'Partner Employers', value: '100+', icon: Users },
-    { label: 'Recidivism Reduction', value: '60%', icon: TrendingUp },
+    { label: 'Programs', value: '20+', icon: GraduationCap },
+    { label: 'Job Placement', value: 'Included', icon: Briefcase },
+    { label: 'Employer Network', value: 'Active', icon: Users },
+    { label: 'Support Services', value: 'Full', icon: TrendingUp },
   ];
 
   const displayStats = stats && stats.length > 0 ? stats : defaultStats;

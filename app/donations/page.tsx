@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 export default function DonationsPage() {
   const impactStats = [
-    { number: '500+', label: 'Students Served' },
     { number: '20+', label: 'Training Programs' },
     { number: '100%', label: 'Free with WIOA' },
-    { number: '50+', label: 'Employer Partners' },
+    { number: 'ETPL', label: 'Listed Provider' },
+    { number: 'DOL', label: 'Registered' },
   ];
 
   const donationLevels = [

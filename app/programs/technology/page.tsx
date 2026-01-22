@@ -1,158 +1,47 @@
-'use client';
+import ProgramCategoryPage from '@/components/programs/ProgramCategoryPage';
+import { Metadata } from 'next';
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { useEffect, useState, useRef } from 'react';
-
-import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import PathwayDisclosure from '@/components/PathwayDisclosure';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
-
-
+export const metadata: Metadata = {
+  title: 'Technology Training Programs | Elevate for Humanity',
+  description: 'Start your tech career with free WIOA-funded training. IT Support, Cybersecurity, and more. No experience required.',
+};
 
 const programs = [
   {
-    title: 'IT Support',
+    title: 'IT Support Specialist',
     duration: '8-12 Weeks',
-    description: 'CompTIA A+ certification and help desk skills.',
-    href: '/programs/technology/it-support',
+    description: 'CompTIA A+ certification prep. Help desk, troubleshooting, and technical support skills.',
+    href: '/programs/it-support',
     image: '/images/technology/hero-program-it-support.jpg',
   },
   {
-    title: 'Cybersecurity',
+    title: 'Cybersecurity Fundamentals',
     duration: '12-16 Weeks',
-    description: 'Protect networks and systems from cyber threats.',
-    href: '/programs/technology/cybersecurity',
+    description: 'Protect organizations from cyber threats. Security+, network defense, and incident response.',
+    href: '/programs/cybersecurity',
     image: '/images/technology/hero-program-cybersecurity.jpg',
-  },
-  {
-    title: 'Web Development',
-    duration: '16-20 Weeks',
-    description: 'Build websites and web applications.',
-    href: '/programs/technology/web-development',
-    image: '/images/technology/hero-program-web-dev.jpg',
   },
 ];
 
-
+const highlights = [
+  'Remote Work Options',
+  'High Salaries',
+  'Growing Industry',
+  'No Experience Required',
+];
 
 export default function TechnologyProgramsPage() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [showContent, setShowContent] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowContent(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = true;
-    video.play().catch(() => {});
-  }, []);
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* AI Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/hero-technology-avatar.mp4"
-        avatarName="Adrian"
-        position="bottom-right"
-        size="medium"
-        showOnLoad={true}
-        autoPlay={false}
-      />
-
-      {/* Hero */}
-      <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
-        <video
-          ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover brightness-110"
-          loop
-          muted
-          playsInline
-          autoPlay
-          preload="auto"
-          poster="/images/pathways/cna.jpg"
-        >
-          <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
-        </video>
-        
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
-        
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
-          <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <Link 
-              href="/apply?program=technology"
-              className="inline-flex items-center justify-center bg-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-purple-700 transition-colors text-lg"
-            >
-              Apply Now
-            </Link>
-            <Link 
-              href="/wioa-eligibility"
-              className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-purple-400 hover:text-purple-400 transition-all duration-300"
-            >
-              Check Eligibility
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Breadcrumbs */}
-      <Breadcrumbs />
-
-      {/* Pathway Disclosure */}
-      <PathwayDisclosure programName="Technology" programSlug="technology" />
-
-      {/* Programs Grid */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {programs.map((program) => (
-              <Link
-                key={program.title}
-                href={program.href}
-                className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
-              >
-                <div className="relative h-48">
-                  <Image
-                    src={program.image}
-                    alt={program.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    quality={85}
-                  />
-                  <div className="absolute top-3 right-3 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    {program.duration}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-2">
-                    {program.title}
-                  </h2>
-                  <p className="text-gray-600 mb-4">{program.description}</p>
-                  <span className="text-purple-600 font-semibold group-hover:underline">
-                    Learn More →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-10 bg-purple-600">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <Link
-            href="/apply?program=technology"
-            className="inline-block bg-white text-purple-600 px-8 py-3 font-semibold rounded-full hover:bg-purple-50 transition-colors"
-          >
-            Start Your Tech Career
-          </Link>
-        </div>
-      </section>
-    </div>
+    <ProgramCategoryPage
+      categoryName="Technology"
+      categorySlug="technology"
+      tagline="Future-Proof Careers"
+      description="Enter the growing tech industry with no prior experience required. Technology careers offer remote work opportunities, high salaries, and continuous growth."
+      heroVideoSrc="/videos/hero-home-fast.mp4"
+      heroPosterImage="/images/technology/hero-programs-technology.jpg"
+      accentColor="blue"
+      programs={programs}
+      highlights={highlights}
+    />
   );
 }

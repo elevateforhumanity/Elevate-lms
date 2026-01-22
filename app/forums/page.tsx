@@ -96,20 +96,20 @@ export default function ForumsPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-2xl font-bold text-blue-600">2,500+</div>
-              <div className="text-gray-600 text-sm">Members</div>
+              <div className="text-2xl font-bold text-blue-600">Active</div>
+              <div className="text-gray-600 text-sm">Community</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-blue-600">717</div>
-              <div className="text-gray-600 text-sm">Topics</div>
+              <div className="text-2xl font-bold text-blue-600">Open</div>
+              <div className="text-gray-600 text-sm">Discussions</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-blue-600">5,048</div>
-              <div className="text-gray-600 text-sm">Posts</div>
+              <div className="text-2xl font-bold text-blue-600">Peer</div>
+              <div className="text-gray-600 text-sm">Support</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-blue-600">89%</div>
-              <div className="text-gray-600 text-sm">Questions Answered</div>
+              <div className="text-2xl font-bold text-blue-600">Free</div>
+              <div className="text-gray-600 text-sm">For Students</div>
             </div>
           </div>
         </div>

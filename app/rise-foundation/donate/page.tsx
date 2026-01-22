@@ -49,8 +49,8 @@ export default async function DonatePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 text-center">
             <Users className="h-12 w-12 text-purple-600 mx-auto mb-3" />
-            <p className="text-3xl font-bold text-black mb-1">5,000+</p>
-            <p className="text-black">Lives Impacted</p>
+            <p className="text-3xl font-bold text-black mb-1">Community</p>
+            <p className="text-black">Impact</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 text-center">
@@ -61,8 +61,8 @@ export default async function DonatePage() {
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 text-center">
             <TrendingUp className="h-12 w-12 text-purple-600 mx-auto mb-3" />
-            <p className="text-3xl font-bold text-black mb-1">85%</p>
-            <p className="text-black">Success Rate</p>
+            <p className="text-3xl font-bold text-black mb-1">Growing</p>
+            <p className="text-black">Network</p>
           </div>
         </div>
 
