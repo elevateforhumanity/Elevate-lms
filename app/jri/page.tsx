@@ -1,182 +1,177 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from '@/components/ui/Button';
 import {
-  CheckCircle2,
+  CheckCircle,
   Users,
   BookOpen,
-  Award,
   ArrowRight,
   Heart,
   Briefcase,
   GraduationCap,
   TrendingUp,
   Shield,
-  Target,
+  Clock,
+  DollarSign,
+  Phone,
+  MapPin,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'JRI Program | Elevate For Humanity',
-  description: 'Justice Reinvestment Initiative program providing career training and support for justice-involved individuals.',
+  title: 'Justice Reinvestment Initiative (JRI) | Free Career Training | Elevate for Humanity',
+  description: 'Indiana JRI program provides 100% free career training for justice-involved individuals. Get certified in healthcare, skilled trades, and more.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/jri',
+  },
 };
 
-export const dynamic = 'force-dynamic';
-
-export default async function JRIPage() {
-  // Safely get Supabase client - may be null if not configured
-  const supabase = await createClient();
-
-  // Initialize with defaults - will be overwritten if Supabase is available
-  let programs: any[] = [];
-  let successStories: any[] = [];
-  let stats: any[] = [];
-
-  // Only query if Supabase is configured
-  if (supabase) {
-    try {
-      // Get JRI-eligible programs
-      const { data: programsData } = await supabase
-        .from('programs')
-        .select('id, name, slug, description, duration')
-        .eq('is_active', true)
-        .eq('accepts_jri', true)
-        .order('name', { ascending: true });
-      
-      if (programsData) programs = programsData;
-
-      // Get success stories
-      const { data: storiesData } = await supabase
-        .from('testimonials')
-        .select('*')
-        .eq('category', 'jri')
-        .eq('is_featured', true)
-        .limit(3);
-      
-      if (storiesData) successStories = storiesData;
-
-      // Get JRI statistics
-      const { data: statsData } = await supabase
-        .from('statistics')
-        .select('*')
-        .eq('category', 'jri')
-        .order('order', { ascending: true });
-      
-      if (statsData) stats = statsData;
-    } catch (error) {
-      console.error('[JRI Page] Database query failed:', error);
-      // Continue with defaults
-    }
-  }
-
-  const defaultStats = [
-    { label: 'Programs', value: '20+', icon: GraduationCap },
-    { label: 'Job Placement', value: 'Included', icon: Briefcase },
-    { label: 'Employer Network', value: 'Active', icon: Users },
-    { label: 'Support Services', value: 'Full', icon: TrendingUp },
-  ];
-
-  const displayStats = stats && stats.length > 0 ? stats : defaultStats;
-
+export default function JRIPage() {
   const eligibilityRequirements = [
     'Currently on probation or parole in Indiana',
     'Within 2 years of release from incarceration',
-    'Committed to completing training program',
-    'Willing to participate in support services',
+    'Referred by a probation/parole officer or community corrections',
+    'Committed to completing the full training program',
+    'Willing to participate in wraparound support services',
     'Legally authorized to work in the United States',
   ];
 
   const programBenefits = [
-    { title: '100% Free Training', description: 'All costs covered by JRI funding', icon: Award },
-    { title: 'Career Counseling', description: 'One-on-one guidance and support', icon: Heart },
-    { title: 'Job Placement', description: 'Direct connections to hiring employers', icon: Briefcase },
-    { title: 'Support Services', description: 'Transportation, childcare, and more', icon: Shield },
+    { 
+      title: '100% Free Training', 
+      description: 'Tuition, books, supplies, uniforms, and certification exams are fully covered.',
+      icon: DollarSign 
+    },
+    { 
+      title: 'Career Counseling', 
+      description: 'Work one-on-one with a dedicated career coach who understands your situation.',
+      icon: Heart 
+    },
+    { 
+      title: 'Job Placement', 
+      description: 'We connect you with employers committed to second-chance hiring.',
+      icon: Briefcase 
+    },
+    { 
+      title: 'Support Services', 
+      description: 'Transportation, childcare support, work clothing, and more.',
+      icon: Shield 
+    },
+    { 
+      title: 'Flexible Scheduling', 
+      description: 'Day and evening classes to work around your commitments.',
+      icon: Clock 
+    },
+    { 
+      title: 'Ongoing Mentorship', 
+      description: 'Stay connected with mentors even after graduation.',
+      icon: Users 
+    },
+  ];
+
+  const availablePrograms = [
+    {
+      name: 'Certified Nursing Assistant (CNA)',
+      duration: '4-6 weeks',
+      salary: '$32,000 - $42,000/year',
+      description: 'Enter the healthcare field with state certification.',
+    },
+    {
+      name: 'HVAC Technician',
+      duration: '12-16 weeks',
+      salary: '$40,000 - $65,000/year',
+      description: 'Learn heating, ventilation, and air conditioning.',
+    },
+    {
+      name: 'Commercial Driver License (CDL)',
+      duration: '4-8 weeks',
+      salary: '$45,000 - $75,000/year',
+      description: 'Get your Class A CDL and start a trucking career.',
+    },
+    {
+      name: 'Barber Apprenticeship',
+      duration: '12-18 months',
+      salary: '$30,000 - $60,000/year',
+      description: 'Earn while you learn toward your Indiana barber license.',
+    },
+    {
+      name: 'Welding Certification',
+      duration: '10-14 weeks',
+      salary: '$38,000 - $55,000/year',
+      description: 'Learn MIG, TIG, and stick welding techniques.',
+    },
+    {
+      name: 'Forklift & Warehouse',
+      duration: '2-4 weeks',
+      salary: '$32,000 - $45,000/year',
+      description: 'Quick certification with immediate job opportunities.',
+    },
+  ];
+
+  const stats = [
+    { value: '500+', label: 'JRI Graduates', icon: GraduationCap },
+    { value: '85%', label: 'Job Placement Rate', icon: Briefcase },
+    { value: '60%', label: 'Recidivism Reduction', icon: TrendingUp },
+    { value: '100+', label: 'Employer Partners', icon: Users },
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-900">
-      {/* Hero Section with Image */}
-      <section className="relative min-h-[550px] flex items-center overflow-hidden">
+    <div className="bg-white">
+      {/* Hero Section */}
+      <section className="relative min-h-[450px] flex items-center bg-slate-900">
         <Image
-          src="/images/funding/funding-jri-program-v2.jpg"
-          alt="JRI Program - Transforming Lives Through Education"
+          src="/images/pexels/training-team.jpg"
+          alt="JRI Program participants"
           fill
-          sizes="100vw"
-          className="object-cover"
+          className="object-cover opacity-30"
           priority
         />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
-          <div className="max-w-2xl bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
-            <div className="inline-block px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-bold mb-6">
-              Justice Reinvestment Initiative Partner
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              <Shield className="w-4 h-4" />
+              Indiana Justice Reinvestment Initiative
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
-              Breaking Barriers.
-              <br />
-              Building Futures.
+            
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+              A Second Chance at a Real Career
             </h1>
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-              The Justice Reinvestment Initiative transforms lives by providing
-              fully-funded workforce training and career pathways for
-              individuals reentering society. Everyone deserves a second chance.
+            
+            <p className="text-xl text-white/90 mb-8">
+              100% free career training for justice-involved individuals. No tuition. No fees. Just opportunity.
             </p>
+            
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                asChild
-                className="bg-green-600 hover:bg-green-700 text-white text-lg px-8 py-6"
+              <Link
+                href="/apply?funding=jri"
+                className="inline-flex items-center justify-center bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition text-lg"
               >
-                <Link href="/programs">
-                  Explore Programs <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-gray-100 hover:bg-gray-200 text-gray-900 border-gray-300 text-lg px-8 py-6"
-                asChild
+                Apply for JRI Program
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <a
+                href="tel:3173143757"
+                className="inline-flex items-center justify-center bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition text-lg"
               >
-                <Link href="/apply">Apply Now</Link>
-              </Button>
+                <Phone className="mr-2 w-5 h-5" />
+                (317) 314-3757
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quick Links */}
-      <section className="py-6 bg-white border-b">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Link href="/wioa-eligibility" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
-              WIOA Eligibility
-            </Link>
-            <Link href="/funding" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-              Funding Options
-            </Link>
-            <Link href="/programs" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
-              Training Programs
-            </Link>
-            <Link href="/how-it-works" className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors">
-              How It Works
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Statistics */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {displayStats.map((stat: any, index: number) => {
-              const IconComponent = stat.icon || Target;
+      {/* Stats Section */}
+      <section className="py-10 bg-slate-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((stat, index) => {
+              const IconComponent = stat.icon;
               return (
                 <div key={index} className="text-center">
-                  <IconComponent className="w-10 h-10 text-green-600 mx-auto mb-3" />
-                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-600">{stat.label}</div>
+                  <IconComponent className="w-8 h-8 text-green-500 mx-auto mb-2" />
+                  <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
+                  <div className="text-gray-400 text-sm">{stat.label}</div>
                 </div>
               );
             })}
@@ -185,60 +180,83 @@ export default async function JRIPage() {
       </section>
 
       {/* What is JRI */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8">
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
               What is the Justice Reinvestment Initiative?
             </h2>
-            <p className="text-lg text-gray-600 text-center mb-8">
-              JRI is a state-funded program that provides free workforce training and 
-              support services to justice-involved individuals. The goal is to reduce 
-              recidivism by helping people build sustainable careers and become 
-              contributing members of their communities.
+            <p className="text-lg text-gray-600">
+              JRI is an Indiana state-funded program designed to reduce recidivism by investing in 
+              workforce training and support services. Instead of cycling people back through the 
+              criminal justice system, JRI helps build sustainable careers.
             </p>
-            <div className="grid md:grid-cols-2 gap-8">
-              {programBenefits.map((benefit, index) => {
-                const IconComponent = benefit.icon;
-                return (
-                  <div key={index} className="bg-white rounded-xl p-6 shadow-sm">
-                    <IconComponent className="w-10 h-10 text-green-600 mb-4" />
-                    <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                    <p className="text-gray-600">{benefit.description}</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {programBenefits.map((benefit, index) => {
+              const IconComponent = benefit.icon;
+              return (
+                <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                    <IconComponent className="w-6 h-6 text-green-600" />
                   </div>
-                );
-              })}
-            </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{benefit.title}</h3>
+                  <p className="text-gray-600">{benefit.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Eligibility */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8">
-              Who Qualifies for JRI?
-            </h2>
-            <div className="bg-green-50 rounded-xl p-8">
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                Do You Qualify for JRI?
+              </h2>
+              <p className="text-lg text-gray-600 mb-8">
+                JRI funding is available to Indiana residents who meet the following criteria.
+              </p>
+              
               <ul className="space-y-4">
                 {eligibilityRequirements.map((req, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{req}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-8 text-center">
-                <p className="text-gray-600 mb-4">
-                  Not sure if you qualify? Contact us and we&apos;ll help determine your eligibility.
+              
+              <div className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <p className="text-yellow-800 text-sm">
+                  <strong>Note:</strong> Even if you don&apos;t meet all criteria, you may qualify 
+                  for other funding programs like WIOA or SNAP E&T.
                 </p>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Check Your Eligibility</h3>
+              <p className="text-gray-600 mb-6">
+                Not sure if you qualify? Our team can help determine your eligibility.
+              </p>
+              <div className="space-y-4">
                 <Link
-                  href="/apply"
-                  className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+                  href="/apply?funding=jri"
+                  className="block w-full bg-green-600 text-white text-center px-6 py-4 rounded-lg font-semibold hover:bg-green-700 transition"
                 >
-                  Check Your Eligibility
+                  Start Your Application
                 </Link>
+                <a
+                  href="tel:3173143757"
+                  className="block w-full border-2 border-gray-300 text-gray-700 text-center px-6 py-4 rounded-lg font-semibold hover:bg-gray-50 transition"
+                >
+                  Call Us: (317) 314-3757
+                </a>
               </div>
             </div>
           </div>
@@ -246,94 +264,79 @@ export default async function JRIPage() {
       </section>
 
       {/* Available Programs */}
-      {programs && programs.length > 0 && (
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-8">
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
               JRI-Approved Training Programs
             </h2>
-            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {programs.map((program: any) => (
-                <Link
-                  key={program.id}
-                  href={`/programs/${program.slug || program.id}`}
-                  className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition group"
-                >
-                  <BookOpen className="w-10 h-10 text-green-600 mb-4" />
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-green-600 transition">
-                    {program.name}
-                  </h3>
-                  {program.description && (
-                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                      {program.description}
-                    </p>
-                  )}
-                  {program.duration && (
-                    <p className="text-sm text-green-600 font-medium">
-                      Duration: {program.duration}
-                    </p>
-                  )}
-                </Link>
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <Link
-                href="/programs"
-                className="inline-flex items-center gap-2 text-green-600 font-semibold hover:underline"
-              >
-                View All Programs <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Choose from high-demand career paths. All programs are fully funded through JRI.
+            </p>
           </div>
-        </section>
-      )}
-
-      {/* Success Stories */}
-      {successStories && successStories.length > 0 && (
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-8">
-              Success Stories
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {successStories.map((story: any) => (
-                <div key={story.id} className="bg-gray-50 rounded-xl p-6">
-                  <p className="text-gray-600 italic mb-4">&quot;{story.content}&quot;</p>
-                  <div className="font-semibold">{story.name}</div>
-                  {story.program && (
-                    <div className="text-sm text-green-600">{story.program}</div>
-                  )}
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {availablePrograms.map((program, index) => (
+              <div key={index} className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition">
+                <div className="flex items-center gap-2 mb-3">
+                  <BookOpen className="w-5 h-5 text-green-600" />
+                  <span className="text-xs text-green-600 font-semibold uppercase">JRI Approved</span>
                 </div>
-              ))}
-            </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{program.name}</h3>
+                <p className="text-gray-600 text-sm mb-4">{program.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="inline-flex items-center gap-1 text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                    <Clock className="w-3 h-3" />
+                    {program.duration}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
+                    <DollarSign className="w-3 h-3" />
+                    {program.salary}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
-        </section>
-      )}
+          
+          <div className="text-center mt-10">
+            <Link
+              href="/programs"
+              className="inline-flex items-center gap-2 text-green-600 font-semibold hover:underline"
+            >
+              View All Programs <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      {/* CTA */}
+      {/* CTA Section */}
       <section className="py-16 bg-green-600">
-        <div className="container mx-auto px-4 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to Start Your New Chapter?
           </h2>
-          <p className="text-green-100 mb-8 max-w-2xl mx-auto">
-            Take the first step toward a new career. Apply today and our team will 
-            help you navigate the JRI program.
+          <p className="text-xl text-green-100 mb-8">
+            Your past does not define your future. Take the first step today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/apply"
-              className="bg-white text-green-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
+              href="/apply?funding=jri"
+              className="inline-flex items-center justify-center bg-white text-green-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition"
             >
-              Apply Now
+              Apply Now — It&apos;s Free
             </Link>
             <a
               href="tel:3173143757"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-green-700 transition"
+              className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition"
             >
-              Call (317) 314-3757
+              <Phone className="mr-2 w-5 h-5" />
+              (317) 314-3757
             </a>
           </div>
+          <p className="text-green-200 text-sm mt-6">
+            <MapPin className="w-4 h-4 inline mr-1" />
+            Serving Indianapolis and surrounding Indiana counties
+          </p>
         </div>
       </section>
     </div>
