@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Check, ArrowRight, Shield, Play, Building2, Users, Briefcase, Code, Zap, Globe, BookOpen, GraduationCap, ShoppingBag, Heart, Wrench, FileText, DollarSign } from 'lucide-react';
 import { STORE_PRODUCTS, CLONE_LICENSES, COMMUNITY_ADDONS } from '@/app/data/store-products';
 import { DIGITAL_PRODUCTS } from '@/lib/pricing';
+import { DIGITAL_PRODUCTS as ALL_DIGITAL_PRODUCTS } from '@/lib/store/digital-products';
 
 export const metadata: Metadata = {
   title: 'Store | Elevate for Humanity',
@@ -103,6 +104,41 @@ const wellnessProducts = [
   { name: 'Wellness Tea Collection', price: 19.99 },
 ];
 
+// AI & Compliance Tools
+const aiComplianceTools = [
+  { id: 'ai-studio-starter', name: 'AI Studio - Starter', price: '$99/mo', description: 'AI-powered content creation for training programs' },
+  { id: 'ai-studio-pro', name: 'AI Studio - Professional', price: '$299/mo', description: 'Advanced AI tools with custom model training' },
+  { id: 'ai-instructor-pack', name: 'AI Instructor Pack', price: '$499', description: 'AI teaching assistant for your courses' },
+  { id: 'ai-tutor-license', name: 'AI Tutor License', price: '$999', description: 'Personalized AI tutoring for learners' },
+  { id: 'workforce-compliance', name: 'Workforce Compliance Checklist', price: '$39', description: 'WIOA, FERPA, and accreditation requirements' },
+];
+
+// Hub Licenses (Credential & CRM Access)
+const hubLicenses = [
+  { id: 'community-hub-license', name: 'Community Hub License', price: '$1,999', description: 'Full community platform with forums, groups, and events' },
+  { id: 'crm-hub-license', name: 'CRM Hub License', price: '$1,499', description: 'Student and employer relationship management' },
+];
+
+// Grant & Government Tools
+const grantTools = [
+  { id: 'sam-gov-assistant', name: 'SAM.gov Registration Assistant', price: 'Free', description: 'Step-by-step SAM.gov registration guide' },
+  { id: 'grants-gov-navigator', name: 'Grants.gov Navigator', price: '$49', description: 'Find and apply for federal grants' },
+];
+
+// Platform Apps/Modules (included with licenses or available as add-ons)
+const platformApps = [
+  { name: 'Admin Dashboard', description: 'User management, reporting, analytics, system configuration', included: 'All licenses', icon: '⚙️' },
+  { name: 'Learning Management System', description: 'Courses, SCORM, certifications, progress tracking', included: 'All licenses', icon: '📚' },
+  { name: 'Enrollment & Intake', description: 'Applications, approvals, cohort management', included: 'All licenses', icon: '📝' },
+  { name: 'Payments & Billing', description: 'Stripe integration, invoices, funding sources', included: 'All licenses', icon: '💳' },
+  { name: 'Partner Dashboard', description: 'Tools for schools, employers, workforce partners', included: 'School+', icon: '🤝' },
+  { name: 'Case Management', description: 'Track barriers, interventions, wraparound services', included: 'School+', icon: '📋' },
+  { name: 'Compliance & Reporting', description: 'WIOA, FERPA, grant reporting with automated data', included: 'School+', icon: '📊' },
+  { name: 'Employer Portal', description: 'Job postings, candidate matching, hiring pipeline', included: 'Enterprise', icon: '💼' },
+  { name: 'AI Tutor', description: 'AI-powered tutoring and personalized learning', included: 'Enterprise', icon: '🤖' },
+  { name: 'Mobile PWA', description: 'Progressive web app for iOS and Android', included: 'All licenses', icon: '📱' },
+];
+
 export default function StorePage() {
   return (
     <div className="bg-white">
@@ -122,13 +158,15 @@ export default function StorePage() {
           <div className="flex gap-2 text-sm min-w-max">
             <a href="#infrastructure" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Infrastructure</a>
             <a href="#platform" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Platform Licenses</a>
+            <a href="#platform-apps" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Apps & Modules</a>
             <a href="#certifications" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Certifications</a>
-            <a href="#tax-training" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Tax Training</a>
+            <a href="#ai-tools" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">AI & Compliance</a>
+            <a href="#hub-licenses" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Hub Licenses</a>
+            <a href="#grant-tools" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Grant Tools</a>
             <a href="#developer" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Developer</a>
             <a href="#community" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Community</a>
             <a href="#shop" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Shop</a>
             <a href="#workbooks" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Workbooks</a>
-            <a href="#wellness" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Wellness</a>
             <a href="#resources" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Resources</a>
           </div>
         </div>
@@ -374,8 +412,103 @@ export default function StorePage() {
         </div>
       </section>
 
+      {/* Platform Apps/Modules */}
+      <section id="platform-apps" className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-2">
+            <Wrench className="w-6 h-6 text-slate-600" />
+            <h2 className="text-2xl font-black">Platform Apps & Modules</h2>
+          </div>
+          <p className="text-gray-600 mb-8">What's included with each license tier</p>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {platformApps.map((app, i) => (
+              <div key={i} className="bg-white rounded-lg p-4 border border-gray-200">
+                <span className="text-2xl mb-2 block">{app.icon}</span>
+                <h3 className="font-semibold text-sm mb-1">{app.name}</h3>
+                <p className="text-xs text-gray-500 mb-2">{app.description}</p>
+                <span className={`text-xs font-medium px-2 py-1 rounded-full ${
+                  app.included === 'All licenses' ? 'bg-green-100 text-green-700' :
+                  app.included === 'School+' ? 'bg-orange-100 text-orange-700' :
+                  'bg-purple-100 text-purple-700'
+                }`}>{app.included}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI & Compliance Tools */}
+      <section id="ai-tools" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-2">
+            <Zap className="w-6 h-6 text-violet-600" />
+            <h2 className="text-2xl font-black">AI & Compliance Tools</h2>
+          </div>
+          <p className="text-gray-600 mb-8">AI-powered tools and compliance resources</p>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {aiComplianceTools.map((tool) => (
+              <div key={tool.id} className="bg-white rounded-lg p-4 border border-gray-200">
+                <h3 className="font-semibold text-sm mb-1">{tool.name}</h3>
+                <p className="text-xs text-gray-500 mb-2">{tool.description}</p>
+                <p className="font-bold text-violet-600">{tool.price}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Hub Licenses (Credentials & CRM) */}
+      <section id="hub-licenses" className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-2">
+            <Building2 className="w-6 h-6 text-teal-600" />
+            <h2 className="text-2xl font-black">Hub Licenses</h2>
+          </div>
+          <p className="text-gray-600 mb-8">Credential management and CRM access</p>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            {hubLicenses.map((hub) => (
+              <div key={hub.id} className="bg-white rounded-xl p-6 border-2 border-gray-200">
+                <h3 className="font-bold text-lg mb-2">{hub.name}</h3>
+                <p className="text-sm text-gray-600 mb-4">{hub.description}</p>
+                <p className="text-2xl font-black text-teal-600 mb-4">{hub.price}</p>
+                <Link href={`/store/products/${hub.id}`} className="block text-center py-2 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-700">
+                  Get License
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Grant & Government Tools */}
+      <section id="grant-tools" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-2">
+            <FileText className="w-6 h-6 text-blue-600" />
+            <h2 className="text-2xl font-black">Grant & Government Tools</h2>
+          </div>
+          <p className="text-gray-600 mb-8">Federal funding and registration assistance</p>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            {grantTools.map((tool) => (
+              <div key={tool.id} className="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 className="font-bold text-lg mb-2">{tool.name}</h3>
+                <p className="text-sm text-gray-600 mb-4">{tool.description}</p>
+                <p className="text-2xl font-black text-blue-600 mb-4">{tool.price}</p>
+                <Link href={`/store/products/${tool.id}`} className="block text-center py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">
+                  {tool.price === 'Free' ? 'Start Free' : 'Get Tool'}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Digital Resources */}
-      <section id="resources" className="py-16 bg-gray-50">
+      <section id="resources" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-2">
             <BookOpen className="w-6 h-6 text-indigo-600" />
