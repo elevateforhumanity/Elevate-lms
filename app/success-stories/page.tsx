@@ -50,7 +50,7 @@ const defaultStories = [
   },
   {
     id: 3,
-    name: 'James Wilson',
+    name: 'Program Graduate',
     age: 42,
     program: 'HVAC Technician',
     image: '/images/learners/hvac-student.jpg',

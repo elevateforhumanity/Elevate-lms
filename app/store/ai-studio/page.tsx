@@ -158,7 +158,7 @@ export default function AIStudioPage() {
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-violet-500 rounded-full" />
                   <div>
-                    <p className="text-white font-semibold">Dr. Sarah Chen</p>
+                    <p className="text-white font-semibold">Instructor</p>
                     <p className="text-purple-300 text-sm">AI Healthcare Instructor</p>
                   </div>
                 </div>

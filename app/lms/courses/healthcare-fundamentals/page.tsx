@@ -129,7 +129,7 @@ export default function HealthcareFundamentalsCoursePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Users className="w-5 h-5" />
-                  <span>Dr. Sarah Johnson</span>
+                  <span>Instructor</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
@@ -343,7 +343,7 @@ export default function HealthcareFundamentalsCoursePage() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-black mb-2">
-                  Dr. Sarah Johnson, RN, BSN
+                  Instructor, RN, BSN
                 </h3>
                 <p className="text-black mb-4">
                   Dr. Johnson has over 15 years of experience in healthcare

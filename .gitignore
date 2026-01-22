@@ -121,3 +121,4 @@ nextjs-site-backup-*.tar.gz
 .env.local
 .env.local.backup
 public/build.json
+core

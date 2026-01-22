@@ -140,7 +140,7 @@ export default function StudentPortalSchedulePage() {
               <h3 className="font-medium">History 150</h3>
             </div>
             <p className="text-sm text-gray-600">Th 1:00 PM - 2:30 PM | Room 410</p>
-            <p className="text-sm text-gray-600">Prof. Robert Williams</p>
+            <p className="text-sm text-gray-600">Instructor</p>
           </div>
         </div>
       </section>

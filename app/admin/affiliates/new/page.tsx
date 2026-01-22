@@ -37,7 +37,7 @@ export default function NewAffiliatePage() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
                   <input
                     type="text"
-                    placeholder="John"
+                    placeholder="First name"
                     className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                   />
                 </div>

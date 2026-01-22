@@ -36,12 +36,12 @@ const programs = [
 
 const testimonials = [
   {
-    name: 'Sarah Johnson',
+    name: 'Program Graduate',
     quote: 'This program showed me exactly what to do. Now I\'m certified and working full-time at a hospital. Amazing staff and support throughout.',
     link: '#',
   },
   {
-    name: 'Marcus Williams',
+    name: 'Program Graduate',
     quote: 'The training was real and practical. I got hired two weeks after finishing. Best decision I ever made for my career.',
     link: '#',
   },

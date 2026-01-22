@@ -328,7 +328,7 @@ export default function ProgramPage() {
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-slate-200 rounded-full"></div>
                 <div>
-                  <div className="font-bold text-black">Sarah Johnson</div>
+                  <div className="font-bold text-black">Graduate</div>
                   <div className="text-sm text-black">
                     CNA Graduate 2024
                   </div>
@@ -378,7 +378,7 @@ export default function ProgramPage() {
                 <div className="w-12 h-12 bg-slate-200 rounded-full"></div>
                 <div>
                   <div className="font-bold text-black">
-                    Jessica Martinez
+                    Graduate
                   </div>
                   <div className="text-sm text-black">
                     Phlebotomist 2024

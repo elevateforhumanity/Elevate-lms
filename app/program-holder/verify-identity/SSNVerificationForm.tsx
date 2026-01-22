@@ -186,7 +186,7 @@ export default function SSNVerificationForm({
               onChange={(e) =>
                 setFormData({ ...formData, firstName: e.target.value })
               }
-              placeholder="John"
+              placeholder="First name"
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />

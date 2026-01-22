@@ -72,7 +72,7 @@ export default async function NewUserPage() {
                 <input
                   type="text"
                   required
-                  placeholder="John"
+                  placeholder="First name"
                   className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>

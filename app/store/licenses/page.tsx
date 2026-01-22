@@ -380,7 +380,7 @@ export default async function LicensesPage() {
           <div className="flex items-center justify-center gap-4">
             <div className="w-12 h-12 bg-gray-300 rounded-full" />
             <div className="text-left">
-              <div className="font-bold text-gray-900">Sarah Johnson</div>
+              <div className="font-bold text-gray-900">Graduate</div>
               <div className="text-gray-600 text-sm">
                 Director, Midwest Workforce Solutions
               </div>

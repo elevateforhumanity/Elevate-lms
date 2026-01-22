@@ -170,7 +170,7 @@ function SignupFormContent() {
               ) => setFormData({ ...formData, firstName: e.target.value })}
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="John"
+              placeholder="First name"
             />
           </div>
 
