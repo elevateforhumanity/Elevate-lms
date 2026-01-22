@@ -554,8 +554,6 @@ export const programCurriculums: ProgramCurriculum[] = [
       },
     ],
   },
-];
-
   {
     programSlug: 'building-maintenance-tech',
     totalHours: 400,
