@@ -54,24 +54,7 @@ export default function StudentsPage() {
     'Flexible Schedules',
   ];
 
-  // Removed static programs array - now fetched from database
-      duration: '6-12 months',
-      pay: 'Varies',
-      href: '/programs/hvac-technician',
-    },
-    {
-      title: 'CNA Healthcare',
-      duration: '4-6 weeks',
-      pay: 'Varies',
-      href: '/programs/cna',
-    },
-    {
-      title: 'CDL Training',
-      duration: '3-4 weeks',
-      pay: 'Varies',
-      href: '/programs/cdl',
-    },
-  ];
+  // Programs are now fetched from database via useEffect above
 
   return (
     <div className="bg-white">
