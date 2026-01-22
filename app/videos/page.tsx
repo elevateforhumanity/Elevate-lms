@@ -34,7 +34,7 @@ export default async function VideosPage() {
   const { data: dbVideos } = await supabase
     .from('videos')
     .select('*')
-    .eq('status', 'published')
+    .eq('published', true)
     .order('created_at', { ascending: false });
   
   // Get videos from canonical registry

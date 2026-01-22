@@ -244,7 +244,7 @@ export default async function TutorialsPage() {
   const { data: dbTutorials } = await supabase
     .from('tutorials')
     .select('*')
-    .eq('status', 'published')
+    .eq('published', true)
     .order('order_index');
 
   const featuredTutorials = tutorials.filter((t) => t.featured);

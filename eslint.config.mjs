@@ -3,6 +3,7 @@ import tseslint from 'typescript-eslint';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import globals from 'globals';
+import elevateLmsRules from './eslint-rules/index.js';
 
 export default tseslint.config(
   eslint.configs.recommended,

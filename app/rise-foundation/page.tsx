@@ -58,8 +58,7 @@ export default async function RiseFoundationPage() {
   const { data: testimonials } = await supabase
     .from('testimonials')
     .select('*')
-    .eq('organization', 'rise-foundation')
-    .eq('is_published', true)
+    .eq('is_featured', true)
     .limit(3);
 
   const defaultPrograms = [

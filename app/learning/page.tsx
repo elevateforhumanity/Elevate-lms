@@ -30,7 +30,7 @@ export default async function LearningHubPage() {
   const { data: resources } = await supabase
     .from('learning_resources')
     .select('*')
-    .eq('status', 'published')
+    .eq('published', true)
     .order('category');
   return (
     <div className="min-h-screen bg-gray-50">

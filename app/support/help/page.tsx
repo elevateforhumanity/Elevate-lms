@@ -29,7 +29,7 @@ async function getArticles(category?: string, search?: string) {
   let query = supabase
     .from('support_articles')
     .select('id, title, slug, excerpt, category, views')
-    .eq('status', 'published')
+    .eq('published', true)
     .order('views', { ascending: false });
   
   if (category) {

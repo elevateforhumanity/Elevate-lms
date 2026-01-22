@@ -16,7 +16,7 @@ async function getArticle(slug: string) {
     .from('support_articles')
     .select('*')
     .eq('slug', slug)
-    .eq('status', 'published')
+    .eq('published', true)
     .single();
   
   if (error || !article) return null;
@@ -37,7 +37,7 @@ async function getRelatedArticles(category: string, currentSlug: string) {
   const { data: articles } = await supabase
     .from('support_articles')
     .select('title, slug, excerpt')
-    .eq('status', 'published')
+    .eq('published', true)
     .eq('category', category)
     .neq('slug', currentSlug)
     .limit(3);

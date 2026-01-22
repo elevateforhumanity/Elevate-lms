@@ -105,7 +105,7 @@ export default async function CommunityMarketplacePage() {
         *,
         creator_profiles!inner(display_name, bio, verified)
       `, { count: 'exact' })
-      .eq('status', 'published')
+      .eq('published', true)
       .order('total_enrollments', { ascending: false })
       .limit(6);
     

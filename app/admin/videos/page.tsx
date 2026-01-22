@@ -63,7 +63,7 @@ export default async function VideosPage() {
   const { count: publishedVideos } = await supabase
     .from('videos')
     .select('*', { count: 'exact', head: true })
-    .eq('status', 'published');
+    .eq('published', true);
 
   return (
     <div className="min-h-screen bg-gray-50">

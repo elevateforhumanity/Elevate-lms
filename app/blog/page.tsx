@@ -33,7 +33,7 @@ export default async function BlogPage() {
       *,
       author:profiles(full_name, avatar_url)
     `)
-    .eq('status', 'published')
+    .eq('published', true)
     .order('published_at', { ascending: false })
     .limit(12);
 
@@ -43,8 +43,7 @@ export default async function BlogPage() {
       *,
       author:profiles(full_name, avatar_url)
     `)
-    .eq('status', 'published')
-    .order('views', { ascending: false })
+    .eq('published', true)
     .order('published_at', { ascending: false })
     .limit(1)
     .single();

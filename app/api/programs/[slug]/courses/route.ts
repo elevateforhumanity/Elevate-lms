@@ -40,7 +40,7 @@ export async function GET(
     const { data: courses, error } = await supabase
       .from('courses')
       .select('*')
-      .eq('status', 'published')
+      .eq('published', true)
       .ilike('category', `%${category}%`)
       .order('created_at', { ascending: false });
 
