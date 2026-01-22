@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
@@ -35,6 +36,15 @@ const contactInfo = [
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/home-welcome.mp4"
+        avatarName="Support Guide"
+        position="bottom-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
+      
       <div className="relative bg-blue-900 text-white py-16">
         <Image
           src="/images/heroes/contact-hero.jpg"

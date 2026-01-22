@@ -52,6 +52,8 @@ const programData: ProgramData = {
     { title: 'Phlebotomy', href: '/programs/healthcare', description: 'Blood draw certification' },
     { title: 'Patient Care Tech', href: '/programs/healthcare', description: 'Advanced patient care' },
   ],
+  avatarVideo: '/videos/avatars/healthcare-guide.mp4',
+  avatarName: 'CNA Guide',
 };
 
 export default function CNAPage() {
