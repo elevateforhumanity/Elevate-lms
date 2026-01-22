@@ -299,6 +299,31 @@ export default function StorePage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            <div className="border-b border-gray-200 pb-6">
+              <h3 className="font-bold text-gray-900 mb-2">Is this just an LMS?</h3>
+              <p className="text-gray-600">No. This is workforce operations infrastructure with built-in automation, compliance tracking, credentialing, and reporting. It replaces staff functions, not just course delivery.</p>
+            </div>
+            <div className="border-b border-gray-200 pb-6">
+              <h3 className="font-bold text-gray-900 mb-2">Does this require internal staff to operate?</h3>
+              <p className="text-gray-600">Core workflows are automated. Staff involvement is limited to oversight and exception handling. Standard program operations do not require day-to-day administrative staff.</p>
+            </div>
+            <div className="border-b border-gray-200 pb-6">
+              <h3 className="font-bold text-gray-900 mb-2">Can I cancel anytime?</h3>
+              <p className="text-gray-600">Yes. Monthly licenses can be canceled anytime. You retain access until the end of your current billing period.</p>
+            </div>
+            <div className="border-b border-gray-200 pb-6">
+              <h3 className="font-bold text-gray-900 mb-2">What happens to my data if I cancel?</h3>
+              <p className="text-gray-600">Your data remains accessible for export for 30 days after cancellation. Compliance records are retained per regulatory requirements.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
