@@ -72,10 +72,10 @@ export default function StorePage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           planId,
-          organizationName: 'TBD',
+          organizationName: 'Pending',
           organizationType: 'other',
-          contactName: 'TBD',
-          contactEmail: 'TBD',
+          contactName: 'Pending',
+          contactEmail: 'pending@checkout.com',
         }),
       });
 
