@@ -1,9 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Check, ArrowRight, Shield, Play, Building2, Users, Briefcase, Code, Zap, Globe, BookOpen, GraduationCap, ShoppingBag, Heart, Wrench, FileText, DollarSign } from 'lucide-react';
-import { STORE_PRODUCTS, CLONE_LICENSES, COMMUNITY_ADDONS } from '@/app/data/store-products';
-import { DIGITAL_PRODUCTS } from '@/lib/pricing';
-import { DIGITAL_PRODUCTS as ALL_DIGITAL_PRODUCTS } from '@/lib/store/digital-products';
+import Image from 'next/image';
+import { ArrowRight, Play, Zap, Globe, GraduationCap, Code, Users, ShoppingBag, FileText, Shield, Building2, Heart, Wrench, DollarSign, BookOpen } from 'lucide-react';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 export const metadata: Metadata = {
   title: 'Store | Elevate for Humanity',
@@ -13,187 +12,257 @@ export const metadata: Metadata = {
   },
 };
 
-// Monthly Infrastructure Licenses
-const infrastructureLicenses = [
+// Store Categories with images and links to subpages
+const storeCategories = [
   {
-    id: 'core',
-    name: 'Core Workforce Infrastructure',
-    price: 750,
-    description: 'For solo operators, pilots, and small institutions.',
-    capacity: ['Up to 100 learners', '3 programs', '1 organization'],
-    cta: 'Activate Core',
-    href: '/store/checkout?license=core',
-    demoHref: '/demo/learner',
+    id: 'licenses',
+    name: 'Platform Licenses',
+    description: 'Full workforce platform deployment with LMS, admin dashboard, enrollment, and compliance tools.',
+    image: '/images/store/platform-hero.jpg',
+    href: '/store/licenses',
+    icon: Globe,
+    color: 'bg-orange-600',
+    featured: true,
+    products: ['Core Platform $4,999', 'School License $15,000', 'Enterprise $50,000'],
   },
   {
-    id: 'institutional',
-    name: 'Institutional Operator',
-    price: 2500,
-    popular: true,
-    description: 'For schools, nonprofits, and training providers.',
-    capacity: ['Up to 1,000 learners', '25 programs', '1 institution'],
-    cta: 'Activate Institutional',
-    href: '/store/checkout?license=institutional',
+    id: 'infrastructure',
+    name: 'Monthly Infrastructure',
+    description: 'Self-operating workforce infrastructure with automated intake, compliance, and credentialing.',
+    image: '/images/store/ai-studio.jpg',
+    href: '/store/licenses#monthly',
+    icon: Zap,
+    color: 'bg-blue-600',
+    featured: true,
+    products: ['Core $750/mo', 'Institutional $2,500/mo', 'Enterprise $8,500/mo'],
+  },
+  {
+    id: 'certifications',
+    name: 'Professional Certifications',
+    description: 'Industry-recognized credentials from Certiport, HSI, and CareerSafe.',
+    image: '/images/healthcare-highlight.jpg',
+    href: '/store/courses',
+    icon: GraduationCap,
+    color: 'bg-green-600',
+    products: ['Microsoft Office', 'Adobe Creative', 'Healthcare', 'OSHA Safety'],
+  },
+  {
+    id: 'programs',
+    name: 'Training Programs',
+    description: 'Complete career training programs with hands-on instruction and job placement.',
+    image: '/images/barber-hero.jpg',
+    href: '/programs',
+    icon: Users,
+    color: 'bg-purple-600',
+    products: ['Barber Apprenticeship', 'CNA Training', 'HVAC Certification', 'CDL Training'],
+  },
+  {
+    id: 'compliance',
+    name: 'Compliance Tools',
+    description: 'WIOA, FERPA, WCAG compliance checklists, templates, and reporting tools.',
+    image: '/images/store/crm-hub.jpg',
+    href: '/store/compliance',
+    icon: Shield,
+    color: 'bg-teal-600',
+    products: ['WIOA Compliance', 'FERPA Templates', 'Grant Reporting', 'Audit Prep'],
+  },
+  {
+    id: 'ai-tools',
+    name: 'AI & Automation',
+    description: 'AI-powered tutoring, content creation, and automated workflows.',
+    image: '/images/store/ai-tutor.jpg',
+    href: '/store/ai-studio',
+    icon: Wrench,
+    color: 'bg-violet-600',
+    products: ['AI Studio', 'AI Tutor', 'AI Instructor Pack'],
+  },
+  {
+    id: 'apps',
+    name: 'Apps & Integrations',
+    description: 'SAM.gov registration, Grants.gov navigator, website builder, and more.',
+    image: '/images/store/community-hub.jpg',
+    href: '/store/apps',
+    icon: Building2,
+    color: 'bg-sky-600',
+    products: ['SAM.gov Assistant', 'Grants Navigator', 'Website Builder'],
+  },
+  {
+    id: 'developer',
+    name: 'Developer Licenses',
+    description: 'Full codebase access for self-hosting and custom deployments.',
+    image: '/images/store/ai-instructors.jpg',
+    href: '/store/licenses#developer',
+    icon: Code,
+    color: 'bg-slate-700',
+    products: ['Starter $299', 'Pro $999', 'Enterprise $5,000'],
+  },
+  {
+    id: 'digital',
+    name: 'Digital Resources',
+    description: 'Toolkits, guides, templates, and educational materials.',
+    image: '/images/tax-business-highlight.jpg',
+    href: '/store/digital',
+    icon: FileText,
+    color: 'bg-indigo-600',
+    products: ['Tax Business Toolkit', 'Grant Guide', 'Fund-Ready Course'],
+  },
+  {
+    id: 'shop',
+    name: 'Shop & Supplies',
+    description: 'Tools, apparel, workbooks, and supplies for your training.',
+    image: '/images/hvac-highlight.jpg',
+    href: '/shop',
+    icon: ShoppingBag,
+    color: 'bg-pink-600',
+    products: ['Tool Kits', 'Scrubs', 'Workbooks', 'Safety Gear'],
+  },
+];
+
+// Featured Products with demos
+const featuredProducts = [
+  {
+    id: 'school-license',
+    name: 'School / Training Provider License',
+    description: 'White-label platform with compliance tools, partner dashboard, and case management.',
+    price: '$15,000',
+    image: '/images/store/platform-hero.jpg',
+    href: '/store/licenses/school-license',
     demoHref: '/demo/admin',
+    badge: 'Most Popular',
   },
   {
-    id: 'enterprise',
-    name: 'Enterprise Infrastructure',
-    price: 8500,
-    description: 'For workforce boards and regional systems.',
-    capacity: ['Up to 10,000 learners', 'Unlimited programs', 'Multi-org'],
-    cta: 'Request Access',
-    href: '/contact?subject=Enterprise',
-    demoHref: '/demo/employer',
+    id: 'barber-program',
+    name: 'Barber Apprenticeship Program',
+    description: '1,500-hour state-approved apprenticeship with master barber instruction.',
+    price: 'Funded Available',
+    image: '/images/barber-professional.jpg',
+    href: '/programs/barber-apprenticeship',
+    demoHref: '/programs/barber-apprenticeship#curriculum',
+    badge: 'WIOA Eligible',
+  },
+  {
+    id: 'ai-tutor',
+    name: 'AI Tutor License',
+    description: 'Personalized AI tutoring for learners with 24/7 support and progress tracking.',
+    price: '$999',
+    image: '/images/store/ai-tutor.jpg',
+    href: '/store/ai-studio',
+    demoHref: '/demo/learner',
+    badge: 'New',
   },
 ];
 
-// Certification Courses
-const certificationCourses = [
-  { name: 'Microsoft Word Certification', price: 164, category: 'Microsoft Office', provider: 'Certiport' },
-  { name: 'Microsoft Excel Certification', price: 164, category: 'Microsoft Office', provider: 'Certiport' },
-  { name: 'Microsoft PowerPoint Certification', price: 164, category: 'Microsoft Office', provider: 'Certiport' },
-  { name: 'Adobe Photoshop Certification', price: 210, category: 'Adobe Creative', provider: 'Certiport' },
-  { name: 'Adobe Illustrator Certification', price: 210, category: 'Adobe Creative', provider: 'Certiport' },
-  { name: 'Cybersecurity Fundamentals', price: 164, category: 'IT & Security', provider: 'Certiport' },
-  { name: 'Python Programming', price: 164, category: 'IT & Security', provider: 'Certiport' },
-  { name: 'QuickBooks Certification', price: 210, category: 'Business', provider: 'Certiport' },
-  { name: 'IC3 Digital Literacy', price: 164, category: 'Digital Skills', provider: 'Certiport' },
-  { name: 'CPR & AED Certification', price: 135, category: 'Healthcare', provider: 'HSI' },
-  { name: 'First Aid Certification', price: 135, category: 'Healthcare', provider: 'HSI' },
-  { name: 'BLS for Healthcare Providers', price: 159, category: 'Healthcare', provider: 'HSI' },
-  { name: 'Food Handler Certification', price: 64, category: 'Food Safety', provider: 'HSI' },
-  { name: 'OSHA 10-Hour General Industry', price: 89, category: 'Workplace Safety', provider: 'CareerSafe' },
-  { name: 'OSHA 30-Hour General Industry', price: 189, category: 'Workplace Safety', provider: 'CareerSafe' },
-];
-
-// Tax Preparer Training
-const taxTrainingCourses = [
-  { name: 'Tax Preparation Fundamentals', price: 199, hours: 12, description: 'Complete beginner course' },
-  { name: 'IRS Ethics & Professional Standards', price: 149, hours: 6, description: 'Circular 230, PTIN requirements' },
-  { name: 'Advanced Tax Strategies', price: 199, hours: 16, description: 'Complex returns, investments' },
-];
-
-// Shop Products
-const shopProducts = [
-  { name: 'HVAC Tool Kit', price: 149.99, category: 'Tools' },
-  { name: 'Medical Scrubs Set', price: 49.99, category: 'Apparel' },
-  { name: 'Barber Shears Pro', price: 89.99, category: 'Tools' },
-  { name: 'Study Guide Bundle', price: 29.99, category: 'Books' },
-  { name: 'Safety Glasses', price: 24.99, category: 'Safety' },
-  { name: 'Elevate Hoodie', price: 59.99, category: 'Apparel' },
-];
-
-// Workbooks & Templates
-const workbooksTemplates = [
-  { name: 'HVAC Certification Study Flashcards', price: 9.99, type: 'Digital' },
-  { name: 'Medical Assistant Resume Template Pack', price: 0, type: 'Free' },
-  { name: 'Barber Client Consultation Forms', price: 4.99, type: 'Template' },
-  { name: 'Interview Preparation Workbook', price: 0, type: 'Free' },
-  { name: 'Electrical Code Quick Reference', price: 14.99, type: 'Digital' },
-  { name: 'Healthcare Terminology Cheat Sheet', price: 2.99, type: 'Digital' },
-];
-
-// Healing/Wellness Products
-const wellnessProducts = [
-  { name: 'Mindfulness Journal', price: 24.99 },
-  { name: 'Aromatherapy Set', price: 34.99 },
-  { name: 'Meditation Cushion', price: 49.99 },
-  { name: 'Self-Care Kit', price: 59.99 },
-  { name: 'Healing Crystals Set', price: 29.99 },
-  { name: 'Wellness Tea Collection', price: 19.99 },
-];
-
-// AI & Compliance Tools
-const aiComplianceTools = [
-  { id: 'ai-studio-starter', name: 'AI Studio - Starter', price: '$99/mo', description: 'AI-powered content creation for training programs' },
-  { id: 'ai-studio-pro', name: 'AI Studio - Professional', price: '$299/mo', description: 'Advanced AI tools with custom model training' },
-  { id: 'ai-instructor-pack', name: 'AI Instructor Pack', price: '$499', description: 'AI teaching assistant for your courses' },
-  { id: 'ai-tutor-license', name: 'AI Tutor License', price: '$999', description: 'Personalized AI tutoring for learners' },
-  { id: 'workforce-compliance', name: 'Workforce Compliance Checklist', price: '$39', description: 'WIOA, FERPA, and accreditation requirements' },
-];
-
-// Hub Licenses (Credential & CRM Access)
-const hubLicenses = [
-  { id: 'community-hub-license', name: 'Community Hub License', price: '$1,999', description: 'Full community platform with forums, groups, and events' },
-  { id: 'crm-hub-license', name: 'CRM Hub License', price: '$1,499', description: 'Student and employer relationship management' },
-];
-
-// Grant & Government Tools
-const grantTools = [
-  { id: 'sam-gov-assistant', name: 'SAM.gov Registration Assistant', price: 'Free', description: 'Step-by-step SAM.gov registration guide' },
-  { id: 'grants-gov-navigator', name: 'Grants.gov Navigator', price: '$49', description: 'Find and apply for federal grants' },
-];
-
-// Platform Apps/Modules (included with licenses or available as add-ons)
-const platformApps = [
-  { name: 'Admin Dashboard', description: 'User management, reporting, analytics, system configuration', included: 'All licenses', icon: '⚙️' },
-  { name: 'Learning Management System', description: 'Courses, SCORM, certifications, progress tracking', included: 'All licenses', icon: '📚' },
-  { name: 'Enrollment & Intake', description: 'Applications, approvals, cohort management', included: 'All licenses', icon: '📝' },
-  { name: 'Payments & Billing', description: 'Stripe integration, invoices, funding sources', included: 'All licenses', icon: '💳' },
-  { name: 'Partner Dashboard', description: 'Tools for schools, employers, workforce partners', included: 'School+', icon: '🤝' },
-  { name: 'Case Management', description: 'Track barriers, interventions, wraparound services', included: 'School+', icon: '📋' },
-  { name: 'Compliance & Reporting', description: 'WIOA, FERPA, grant reporting with automated data', included: 'School+', icon: '📊' },
-  { name: 'Employer Portal', description: 'Job postings, candidate matching, hiring pipeline', included: 'Enterprise', icon: '💼' },
-  { name: 'AI Tutor', description: 'AI-powered tutoring and personalized learning', included: 'Enterprise', icon: '🤖' },
-  { name: 'Mobile PWA', description: 'Progressive web app for iOS and Android', included: 'All licenses', icon: '📱' },
+// Quick Stats
+const stats = [
+  { label: 'Platform Licenses Sold', value: '150+' },
+  { label: 'Certifications Offered', value: '25+' },
+  { label: 'Training Programs', value: '12' },
+  { label: 'Students Trained', value: '5,000+' },
 ];
 
 export default function StorePage() {
   return (
     <div className="bg-white">
-      {/* Hero */}
-      <section className="bg-slate-900 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-black mb-4">Store</h1>
-          <p className="text-xl text-slate-300">
-            Platform licenses, certifications, courses, tools, and resources
-          </p>
+      {/* Hero with Avatar */}
+      <section className="relative bg-slate-900 text-white py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl sm:text-5xl font-black mb-6">
+                Workforce Infrastructure Store
+              </h1>
+              <p className="text-xl text-slate-300 mb-8">
+                Platform licenses, professional certifications, training programs, 
+                compliance tools, and everything you need to run workforce development.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/store/licenses" className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition">
+                  Browse Licenses
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <Link href="/demo" className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-lg font-bold hover:bg-white/20 transition">
+                  <Play className="w-5 h-5" />
+                  Watch Demo
+                </Link>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-video bg-slate-800 rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/store/platform-hero.jpg"
+                  alt="Elevate Platform"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-sm text-slate-300">Complete workforce platform</p>
+                  <p className="text-lg font-bold">LMS • Admin • Enrollment • Compliance</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        
+        {/* Avatar Guide */}
+        <AvatarVideoOverlay
+          videoSrc="/videos/avatars/store-assistant.mp4"
+          position="bottom-right"
+          title="Store Guide"
+          subtitle="Let me help you find what you need"
+        />
       </section>
 
-      {/* Quick Nav */}
-      <section className="py-4 bg-gray-50 border-b sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 overflow-x-auto">
-          <div className="flex gap-2 text-sm min-w-max">
-            <a href="#infrastructure" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Infrastructure</a>
-            <a href="#platform" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Platform Licenses</a>
-            <a href="#platform-apps" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Apps & Modules</a>
-            <a href="#certifications" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Certifications</a>
-            <a href="#ai-tools" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">AI & Compliance</a>
-            <a href="#hub-licenses" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Hub Licenses</a>
-            <a href="#grant-tools" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Grant Tools</a>
-            <a href="#developer" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Developer</a>
-            <a href="#community" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Community</a>
-            <a href="#shop" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Shop</a>
-            <a href="#workbooks" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Workbooks</a>
-            <a href="#resources" className="px-3 py-1.5 bg-white rounded-full border hover:bg-gray-50 whitespace-nowrap">Resources</a>
+      {/* Stats Strip */}
+      <section className="bg-orange-600 py-6">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <p className="text-3xl font-black">{stat.value}</p>
+                <p className="text-sm text-orange-100">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Monthly Infrastructure Licenses */}
-      <section id="infrastructure" className="py-16">
+      {/* Featured Products */}
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Zap className="w-6 h-6 text-blue-600" />
-            <h2 className="text-2xl font-black">Monthly Infrastructure Licenses</h2>
-          </div>
-          <p className="text-gray-600 mb-8">Self-operating workforce infrastructure • Cancel anytime</p>
+          <h2 className="text-3xl font-black mb-2">Featured Products</h2>
+          <p className="text-gray-600 mb-8">Most popular licenses and programs</p>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {infrastructureLicenses.map((license) => (
-              <div key={license.id} className={`bg-white rounded-xl p-6 border-2 ${license.popular ? 'border-blue-600 shadow-lg' : 'border-gray-200'}`}>
-                {license.popular && <span className="text-xs font-bold text-blue-600 mb-2 block">MOST POPULAR</span>}
-                <h3 className="font-bold text-lg mb-1">{license.name}</h3>
-                <p className="text-sm text-gray-600 mb-3">{license.description}</p>
-                <p className="text-3xl font-black mb-3">${license.price.toLocaleString()}<span className="text-sm text-gray-500 font-normal">/mo</span></p>
-                <ul className="text-sm text-gray-600 mb-4 space-y-1">
-                  {license.capacity.map((c, i) => <li key={i}>• {c}</li>)}
-                </ul>
-                <div className="flex gap-2">
-                  <Link href={license.demoHref} className="flex-1 text-center py-2 border rounded-lg text-sm font-medium hover:bg-gray-50">Demo</Link>
-                  <Link href={license.href} className={`flex-1 text-center py-2 rounded-lg text-sm font-medium text-white ${license.popular ? 'bg-blue-600 hover:bg-blue-700' : 'bg-slate-900 hover:bg-slate-800'}`}>{license.cta}</Link>
+          <div className="grid md:grid-cols-3 gap-8">
+            {featuredProducts.map((product) => (
+              <div key={product.id} className="bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-orange-500 hover:shadow-xl transition-all group">
+                <div className="relative h-48">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  {product.badge && (
+                    <span className="absolute top-4 left-4 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                      {product.badge}
+                    </span>
+                  )}
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-xl mb-2">{product.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4">{product.description}</p>
+                  <p className="text-2xl font-black text-orange-600 mb-4">{product.price}</p>
+                  <div className="flex gap-2">
+                    <Link href={product.demoHref} className="flex-1 text-center py-2 border-2 border-gray-200 rounded-lg font-medium hover:bg-gray-50 transition flex items-center justify-center gap-2">
+                      <Play className="w-4 h-4" />
+                      Demo
+                    </Link>
+                    <Link href={product.href} className="flex-1 text-center py-2 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition">
+                      View Details
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
@@ -201,356 +270,127 @@ export default function StorePage() {
         </div>
       </section>
 
-      {/* Platform Licenses (One-Time) */}
-      <section id="platform" className="py-16 bg-gray-50">
+      {/* Category Cards */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Globe className="w-6 h-6 text-orange-600" />
-            <h2 className="text-2xl font-black">Platform Licenses (One-Time)</h2>
-          </div>
-          <p className="text-gray-600 mb-8">Full platform deployment • Lifetime ownership</p>
+          <h2 className="text-3xl font-black mb-2">Browse by Category</h2>
+          <p className="text-gray-600 mb-8">Find exactly what you need</p>
 
-          <div className="grid md:grid-cols-4 gap-6">
-            {STORE_PRODUCTS.map((product) => (
-              <div key={product.id} className={`bg-white rounded-xl p-6 border-2 ${product.licenseType === 'school' ? 'border-orange-500' : 'border-gray-200'}`}>
-                {product.licenseType === 'school' && <span className="text-xs font-bold text-orange-600 mb-2 block">POPULAR</span>}
-                <h3 className="font-bold mb-1">{product.name}</h3>
-                <p className="text-sm text-gray-600 mb-3 line-clamp-2">{product.description}</p>
-                <p className="text-2xl font-black mb-3">
-                  ${product.price.toLocaleString()}
-                  {product.billingType === 'subscription' && <span className="text-sm text-gray-500 font-normal">/mo</span>}
-                </p>
-                <Link href={`/store/products/${product.slug}`} className="block text-center py-2 bg-slate-900 text-white rounded-lg text-sm font-medium hover:bg-slate-800">
-                  View Details
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {storeCategories.map((category) => {
+              const Icon = category.icon;
+              return (
+                <Link
+                  key={category.id}
+                  href={category.href}
+                  className={`group relative bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all ${category.featured ? 'lg:col-span-2 lg:row-span-2' : ''}`}
+                >
+                  <div className={`relative ${category.featured ? 'h-64 lg:h-full' : 'h-40'}`}>
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <div className={`inline-flex items-center gap-2 ${category.color} px-3 py-1 rounded-full text-xs font-bold mb-2`}>
+                      <Icon className="w-3 h-3" />
+                      {category.name}
+                    </div>
+                    <p className={`text-sm text-gray-200 mb-2 ${category.featured ? '' : 'line-clamp-2'}`}>
+                      {category.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1">
+                      {category.products.slice(0, category.featured ? 4 : 2).map((product, i) => (
+                        <span key={i} className="text-xs bg-white/20 px-2 py-0.5 rounded">
+                          {product}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ArrowRight className="w-4 h-4 text-white" />
+                  </div>
                 </Link>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Certification Courses */}
-      <section id="certifications" className="py-16">
+      {/* Programs Section with Images */}
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <GraduationCap className="w-6 h-6 text-green-600" />
-            <h2 className="text-2xl font-black">Professional Certifications</h2>
-          </div>
-          <p className="text-gray-600 mb-8">Industry-recognized credentials from Certiport, HSI, and CareerSafe</p>
+          <h2 className="text-3xl font-black mb-2">Training Programs</h2>
+          <p className="text-gray-600 mb-8">Career-ready training with job placement support</p>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {certificationCourses.map((course, i) => (
-              <div key={i} className="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-md transition-shadow">
-                <span className="text-xs text-gray-500 mb-1 block">{course.category}</span>
-                <h3 className="font-semibold text-sm mb-2 line-clamp-2">{course.name}</h3>
-                <p className="text-lg font-bold text-green-600">${course.price}</p>
-                <p className="text-xs text-gray-400">{course.provider}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-6">
-            <Link href="/courses" className="text-green-600 font-medium hover:underline">View all courses →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Tax Preparer Training */}
-      <section id="tax-training" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <DollarSign className="w-6 h-6 text-emerald-600" />
-            <h2 className="text-2xl font-black">Tax Preparer Training</h2>
-          </div>
-          <p className="text-gray-600 mb-8">Become a certified tax professional</p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {taxTrainingCourses.map((course, i) => (
-              <div key={i} className="bg-white rounded-xl p-6 border border-gray-200">
-                <h3 className="font-bold text-lg mb-2">{course.name}</h3>
-                <p className="text-sm text-gray-600 mb-3">{course.description}</p>
-                <p className="text-sm text-gray-500 mb-3">{course.hours} hours</p>
-                <p className="text-2xl font-black text-emerald-600 mb-4">${course.price}</p>
-                <Link href="/supersonic-fast-cash/careers/training" className="block text-center py-2 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700">
-                  Enroll Now
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Developer Licenses */}
-      <section id="developer" className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Code className="w-6 h-6 text-purple-600" />
-            <h2 className="text-2xl font-black">Developer Licenses</h2>
-          </div>
-          <p className="text-gray-600 mb-8">Full codebase access • Self-host anywhere</p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {CLONE_LICENSES.map((license) => (
-              <div key={license.id} className="bg-white rounded-xl p-6 border-2 border-gray-200">
-                <h3 className="font-bold text-lg mb-2">{license.name}</h3>
-                <p className="text-sm text-gray-600 mb-3">{license.description}</p>
-                <p className="text-2xl font-black mb-4">${license.price.toLocaleString()}</p>
-                <ul className="text-sm text-gray-600 mb-4 space-y-1">
-                  {license.features.slice(0, 3).map((f, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link href={`/store/products/${license.slug}`} className="block text-center py-2 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700">
-                  Get License
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Community Add-ons */}
-      <section id="community" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Users className="w-6 h-6 text-sky-600" />
-            <h2 className="text-2xl font-black">Community Add-ons</h2>
-          </div>
-          <p className="text-gray-600 mb-8">For existing license holders • Monthly subscription</p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {COMMUNITY_ADDONS.map((addon) => (
-              <div key={addon.id} className="bg-white rounded-xl p-6 border-2 border-gray-200">
-                <h3 className="font-bold text-lg mb-2">{addon.name}</h3>
-                <p className="text-sm text-gray-600 mb-3">{addon.description}</p>
-                <p className="text-2xl font-black mb-4">${(addon.price / 100).toLocaleString()}<span className="text-sm text-gray-500 font-normal">/mo</span></p>
-                <Link href={`/store/products/${addon.slug}`} className="block text-center py-2 bg-sky-600 text-white rounded-lg font-medium hover:bg-sky-700">
-                  Add to License
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Shop Products */}
-      <section id="shop" className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <ShoppingBag className="w-6 h-6 text-pink-600" />
-            <h2 className="text-2xl font-black">Shop</h2>
-          </div>
-          <p className="text-gray-600 mb-8">Tools, apparel, and supplies for your training</p>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {shopProducts.map((product, i) => (
-              <div key={i} className="bg-white rounded-lg p-4 border border-gray-200 text-center">
-                <div className="w-full h-24 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                  <Wrench className="w-8 h-8 text-gray-400" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: 'Barber Apprenticeship', image: '/images/barber-hero.jpg', href: '/programs/barber-apprenticeship', duration: '12 months', funding: 'WIOA Eligible' },
+              { name: 'CNA Training', image: '/images/healthcare-highlight.jpg', href: '/programs/cna', duration: '6 weeks', funding: 'WIOA Eligible' },
+              { name: 'HVAC Certification', image: '/images/hvac-hero.jpg', href: '/programs/hvac', duration: '8 weeks', funding: 'WRG Available' },
+              { name: 'CDL Training', image: '/images/cdl-hero.jpg', href: '/programs/cdl', duration: '4 weeks', funding: 'WIOA Eligible' },
+            ].map((program) => (
+              <Link key={program.name} href={program.href} className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition">
+                <div className="relative h-40">
+                  <Image src={program.image} alt={program.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <span className="absolute top-3 right-3 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">{program.funding}</span>
                 </div>
-                <h3 className="font-semibold text-sm mb-1">{product.name}</h3>
-                <p className="text-xs text-gray-500 mb-2">{product.category}</p>
-                <p className="font-bold text-pink-600">${product.price}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-6">
-            <Link href="/shop" className="text-pink-600 font-medium hover:underline">View full shop →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Workbooks & Templates */}
-      <section id="workbooks" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <FileText className="w-6 h-6 text-amber-600" />
-            <h2 className="text-2xl font-black">Workbooks & Templates</h2>
-          </div>
-          <p className="text-gray-600 mb-8">Study guides, templates, and digital downloads</p>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {workbooksTemplates.map((item, i) => (
-              <div key={i} className="bg-white rounded-lg p-4 border border-gray-200">
-                <span className="text-xs text-amber-600 font-medium">{item.type}</span>
-                <h3 className="font-semibold text-sm mt-1 mb-2 line-clamp-2">{item.name}</h3>
-                <p className="font-bold">{item.price === 0 ? 'Free' : `$${item.price}`}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-6">
-            <Link href="/workbooks" className="text-amber-600 font-medium hover:underline">View all workbooks →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Wellness Products */}
-      <section id="wellness" className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Heart className="w-6 h-6 text-rose-600" />
-            <h2 className="text-2xl font-black">Wellness & Healing</h2>
-          </div>
-          <p className="text-gray-600 mb-8">Self-care products supporting our nonprofit mission</p>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {wellnessProducts.map((product, i) => (
-              <div key={i} className="bg-white rounded-lg p-4 border border-gray-200 text-center">
-                <div className="w-full h-20 bg-rose-50 rounded-lg mb-3 flex items-center justify-center">
-                  <Heart className="w-6 h-6 text-rose-300" />
+                <div className="p-4">
+                  <h3 className="font-bold mb-1">{program.name}</h3>
+                  <p className="text-sm text-gray-500">{program.duration}</p>
                 </div>
-                <h3 className="font-semibold text-sm mb-2">{product.name}</h3>
-                <p className="font-bold text-rose-600">${product.price}</p>
-              </div>
+              </Link>
             ))}
           </div>
-          <div className="text-center mt-6">
-            <Link href="/nonprofit/healing-products" className="text-rose-600 font-medium hover:underline">View all wellness products →</Link>
+
+          <div className="text-center mt-8">
+            <Link href="/programs" className="inline-flex items-center gap-2 text-orange-600 font-bold hover:underline">
+              View All Programs
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Platform Apps/Modules */}
-      <section id="platform-apps" className="py-16">
+      {/* How It Works */}
+      <section className="py-16 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Wrench className="w-6 h-6 text-slate-600" />
-            <h2 className="text-2xl font-black">Platform Apps & Modules</h2>
-          </div>
-          <p className="text-gray-600 mb-8">What's included with each license tier</p>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {platformApps.map((app, i) => (
-              <div key={i} className="bg-white rounded-lg p-4 border border-gray-200">
-                <span className="text-2xl mb-2 block">{app.icon}</span>
-                <h3 className="font-semibold text-sm mb-1">{app.name}</h3>
-                <p className="text-xs text-gray-500 mb-2">{app.description}</p>
-                <span className={`text-xs font-medium px-2 py-1 rounded-full ${
-                  app.included === 'All licenses' ? 'bg-green-100 text-green-700' :
-                  app.included === 'School+' ? 'bg-orange-100 text-orange-700' :
-                  'bg-purple-100 text-purple-700'
-                }`}>{app.included}</span>
+          <h2 className="text-3xl font-black mb-8 text-center">How It Works</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { step: '1', title: 'Browse', desc: 'Explore licenses, programs, and tools' },
+              { step: '2', title: 'Demo', desc: 'Try interactive demos before you buy' },
+              { step: '3', title: 'Purchase', desc: 'Secure checkout with Stripe' },
+              { step: '4', title: 'Deploy', desc: 'Get instant access or scheduled onboarding' },
+            ].map((item) => (
+              <div key={item.step} className="text-center">
+                <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-xl font-black mx-auto mb-4">
+                  {item.step}
+                </div>
+                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                <p className="text-slate-400 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* AI & Compliance Tools */}
-      <section id="ai-tools" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Zap className="w-6 h-6 text-violet-600" />
-            <h2 className="text-2xl font-black">AI & Compliance Tools</h2>
-          </div>
-          <p className="text-gray-600 mb-8">AI-powered tools and compliance resources</p>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {aiComplianceTools.map((tool) => (
-              <div key={tool.id} className="bg-white rounded-lg p-4 border border-gray-200">
-                <h3 className="font-semibold text-sm mb-1">{tool.name}</h3>
-                <p className="text-xs text-gray-500 mb-2">{tool.description}</p>
-                <p className="font-bold text-violet-600">{tool.price}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Hub Licenses (Credentials & CRM) */}
-      <section id="hub-licenses" className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Building2 className="w-6 h-6 text-teal-600" />
-            <h2 className="text-2xl font-black">Hub Licenses</h2>
-          </div>
-          <p className="text-gray-600 mb-8">Credential management and CRM access</p>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            {hubLicenses.map((hub) => (
-              <div key={hub.id} className="bg-white rounded-xl p-6 border-2 border-gray-200">
-                <h3 className="font-bold text-lg mb-2">{hub.name}</h3>
-                <p className="text-sm text-gray-600 mb-4">{hub.description}</p>
-                <p className="text-2xl font-black text-teal-600 mb-4">{hub.price}</p>
-                <Link href={`/store/products/${hub.id}`} className="block text-center py-2 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-700">
-                  Get License
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Grant & Government Tools */}
-      <section id="grant-tools" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <FileText className="w-6 h-6 text-blue-600" />
-            <h2 className="text-2xl font-black">Grant & Government Tools</h2>
-          </div>
-          <p className="text-gray-600 mb-8">Federal funding and registration assistance</p>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            {grantTools.map((tool) => (
-              <div key={tool.id} className="bg-white rounded-xl p-6 border border-gray-200">
-                <h3 className="font-bold text-lg mb-2">{tool.name}</h3>
-                <p className="text-sm text-gray-600 mb-4">{tool.description}</p>
-                <p className="text-2xl font-black text-blue-600 mb-4">{tool.price}</p>
-                <Link href={`/store/products/${tool.id}`} className="block text-center py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">
-                  {tool.price === 'Free' ? 'Start Free' : 'Get Tool'}
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Digital Resources */}
-      <section id="resources" className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <BookOpen className="w-6 h-6 text-indigo-600" />
-            <h2 className="text-2xl font-black">Digital Resources</h2>
-          </div>
-          <p className="text-gray-600 mb-8">Guides, toolkits, and educational materials</p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {DIGITAL_PRODUCTS.map((resource) => (
-              <div key={resource.id} className="bg-white rounded-xl p-6 border border-gray-200">
-                <h3 className="font-bold text-lg mb-2">{resource.name}</h3>
-                <p className="text-sm text-gray-600 mb-4">{resource.benefit}</p>
-                <p className="text-2xl font-black text-indigo-600 mb-4">{resource.price}</p>
-                <Link href={`/store/resources/${resource.id}`} className="block text-center py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700">
-                  Get Resource
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Disclaimer */}
-      <section className="py-8 border-t">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <p className="text-sm text-gray-500">
-            <Shield className="w-4 h-4 inline mr-1" />
-            Licenses grant access to platform functionality. Funding eligibility and compliance remain subject to applicable rules.
-          </p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-12 bg-slate-900 text-white">
+      <section className="py-16 bg-orange-600 text-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold mb-4">Need Help Choosing?</h2>
-          <p className="text-slate-300 mb-6">Schedule a consultation or try our live demo.</p>
+          <h2 className="text-3xl font-black mb-4">Ready to Get Started?</h2>
+          <p className="text-orange-100 mb-8">
+            Schedule a demo or contact our team to find the right solution for your organization.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/demo" className="px-6 py-3 bg-white text-slate-900 rounded-lg font-bold hover:bg-gray-100">
+            <Link href="/demo" className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-orange-50 transition">
+              <Play className="w-5 h-5" />
               Try Live Demo
             </Link>
-            <Link href="/contact" className="px-6 py-3 border-2 border-white rounded-lg font-bold hover:bg-white/10">
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition">
               Contact Sales
             </Link>
           </div>
