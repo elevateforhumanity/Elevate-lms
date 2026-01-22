@@ -165,6 +165,11 @@
   },
   "scripts": {
     "preinstall": "corepack enable || true",
+    "integrity:links": "node scripts/integrity/links.mjs",
+    "integrity:media": "node scripts/integrity/media.mjs",
+    "integrity:lms": "node scripts/integrity/lms.mjs",
+    "integrity:store": "node scripts/integrity/store.mjs",
+    "integrity:all": "npm run integrity:links && npm run integrity:media && npm run integrity:lms && npm run integrity:store",
     "approve-builds": "bash scripts/pnpm-approve-builds.sh",
     "archetype:check": "node scripts/archetype-mapper.mjs",
     "spot-check": "node scripts/spot-check.mjs",

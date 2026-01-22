@@ -42,7 +42,7 @@ export const programPaymentConfigs: ProgramPaymentConfig[] = [
         amountUsd: 2200,
         description:
           "Best for learners who are paying out-of-pocket or have employer sponsorship.",
-        stripePaymentLink: "https://buy.stripe.com/your-cna-full-link-here",
+        stripePaymentLink: undefined, // Configure in Stripe Dashboard
       },
       {
         id: "cna-plan",
@@ -56,7 +56,7 @@ export const programPaymentConfigs: ProgramPaymentConfig[] = [
         },
         description:
           "Spread tuition over 6 monthly payments. Ideal when combined with part-time work.",
-        stripePaymentLink: "https://buy.stripe.com/your-cna-plan-link-here",
+        stripePaymentLink: undefined, // Configure in Stripe Dashboard
       },
     ],
   },
@@ -111,7 +111,7 @@ export const programPaymentConfigs: ProgramPaymentConfig[] = [
         amountUsd: 4800,
         description:
           "Ideal when a contractor, employer, or partner pays tuition on behalf of the learner.",
-        stripePaymentLink: "https://buy.stripe.com/your-hvac-full-link-here",
+        stripePaymentLink: undefined, // Configure in Stripe Dashboard
       },
       {
         id: "hvac-plan",
@@ -125,7 +125,7 @@ export const programPaymentConfigs: ProgramPaymentConfig[] = [
         },
         description:
           "Payment plan that can be layered with WEX/OJT wages to keep out-of-pocket affordable.",
-        stripePaymentLink: "https://buy.stripe.com/your-hvac-plan-link-here",
+        stripePaymentLink: undefined, // Configure in Stripe Dashboard
       },
     ],
   },
@@ -144,7 +144,7 @@ export const programPaymentConfigs: ProgramPaymentConfig[] = [
         amountUsd: 5200,
         description:
           "Preferred when a carrier or employer sponsor covers tuition as part of a hire-on pathway.",
-        stripePaymentLink: "https://buy.stripe.com/your-cdl-full-link-here",
+        stripePaymentLink: undefined, // Configure in Stripe Dashboard
       },
       {
         id: "cdl-plan",
@@ -158,7 +158,7 @@ export const programPaymentConfigs: ProgramPaymentConfig[] = [
         },
         description:
           "Payment plan structure that can be paired with WEX/OJT stipends so learners can earn while they train.",
-        stripePaymentLink: "https://buy.stripe.com/your-cdl-plan-link-here",
+        stripePaymentLink: undefined, // Configure in Stripe Dashboard
       },
     ],
   },
@@ -177,7 +177,7 @@ export const programPaymentConfigs: ProgramPaymentConfig[] = [
         amountUsd: 3500,
         description:
           "Designed for employers who want to upskill new or current staff into business support roles.",
-        stripePaymentLink: "https://buy.stripe.com/your-biz-full-link-here",
+        stripePaymentLink: undefined, // Configure in Stripe Dashboard
       },
       {
         id: "biz-plan",
@@ -191,7 +191,7 @@ export const programPaymentConfigs: ProgramPaymentConfig[] = [
         },
         description:
           "Can be combined with part-time WEX placements so learners earn while they study.",
-        stripePaymentLink: "https://buy.stripe.com/your-biz-plan-link-here",
+        stripePaymentLink: undefined, // Configure in Stripe Dashboard
       },
     ],
   },
@@ -210,7 +210,7 @@ export const programPaymentConfigs: ProgramPaymentConfig[] = [
         amountUsd: 4200,
         description:
           "Ideal when a salon, spa, or wellness center sponsors an apprentice and recoups costs through service hours.",
-        stripePaymentLink: "https://buy.stripe.com/your-esthetics-full-link-here",
+        stripePaymentLink: undefined, // Configure in Stripe Dashboard
       },
       {
         id: "esthetics-plan",
@@ -224,7 +224,7 @@ export const programPaymentConfigs: ProgramPaymentConfig[] = [
         },
         description:
           "Can be layered with apprenticeship wages so out-of-pocket costs stay manageable.",
-        stripePaymentLink: "https://buy.stripe.com/your-esthetics-plan-link-here",
+        stripePaymentLink: undefined, // Configure in Stripe Dashboard
       },
     ],
   },

@@ -1,88 +1,110 @@
 import Link from 'next/link';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
+/**
+ * Professional Tax Brand Footer
+ * Includes required global disclosure
+ */
 export function SupersonicFooter() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 text-white pb-20 lg:pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* About */}
+        <div className="grid md:grid-cols-4 gap-8">
+          {/* Brand */}
           <div>
-            <h3 className="text-xl font-bold mb-4">About Us</h3>
-            <p className="text-gray-400 mb-4">
-              Professional tax preparation and financial services. Licensed Enrolled Agent with full IRS representation rights.
-            </p>
-            <div className="flex gap-4">
-              <a href="#" className="text-gray-400 hover:text-white">Facebook</a>
-              <a href="#" className="text-gray-400 hover:text-white">YouTube</a>
-              <a href="#" className="text-gray-400 hover:text-white">LinkedIn</a>
+            <div className="text-xl font-bold mb-4">
+              <span className="text-white">Supersonic</span>
+              <span className="text-red-500"> Fast Cash</span>
+              <span className="text-white text-sm font-normal ml-1">LLC</span>
             </div>
+            <p className="text-gray-400 text-sm">
+              Professional tax preparation services with optional refund advance access.
+            </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/supersonic-fast-cash" className="text-gray-400 hover:text-white">
-                  Home
+                <Link href="/supersonic-fast-cash/pricing" className="text-gray-400 hover:text-white text-sm">
+                  Pricing
                 </Link>
               </li>
               <li>
-                <Link href="/supersonic-fast-cash/services" className="text-gray-400 hover:text-white">
-                  Services
+                <Link href="/supersonic-fast-cash/how-it-works" className="text-gray-400 hover:text-white text-sm">
+                  How It Works
                 </Link>
               </li>
               <li>
-                <Link href="/supersonic-fast-cash/tax-information" className="text-gray-400 hover:text-white">
-                  Tax Information
+                <Link href="/supersonic-fast-cash/cash-advance" className="text-gray-400 hover:text-white text-sm">
+                  Refund Advance
                 </Link>
               </li>
               <li>
-                <Link href="/supersonic-fast-cash/tax-tools" className="text-gray-400 hover:text-white">
-                  Tax Tools
-                </Link>
-              </li>
-              <li>
-                <Link href="/supersonic-fast-cash/contact" className="text-gray-400 hover:text-white">
-                  Contact
+                <Link href="/supersonic-fast-cash/support" className="text-gray-400 hover:text-white text-sm">
+                  Support
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Legal */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                <div>
-                  <a href="tel:+13173143757" className="text-gray-400 hover:text-white">
-                    (317) 314-3757
-                  </a>
-                </div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/supersonic-fast-cash/legal/privacy" className="text-gray-400 hover:text-white text-sm">
+                  Privacy Policy
+                </Link>
               </li>
-              <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                <a href="mailto:supersonicfastcashllc@gmail.com" className="text-gray-400 hover:text-white">
+              <li>
+                <Link href="/supersonic-fast-cash/legal/terms" className="text-gray-400 hover:text-white text-sm">
+                  Terms of Service
+                </Link>
+              </li>
+
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">Contact</h3>
+            <ul className="space-y-3">
+              <li className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-gray-500" />
+                <a href="tel:+13173143757" className="text-gray-400 hover:text-white text-sm">
+                  (317) 314-3757
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-gray-500" />
+                <a href="mailto:supersonicfastcashllc@gmail.com" className="text-gray-400 hover:text-white text-sm">
                   supersonicfastcashllc@gmail.com
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                <div className="text-gray-400">
-                  Indianapolis, IN
-                </div>
+              <li className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-gray-500" />
+                <span className="text-gray-400 text-sm">Indianapolis, IN</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Supersonic Fast Cash. All rights reserved.
+        {/* Global Disclosure - REQUIRED */}
+        <div className="border-t border-gray-800 mt-10 pt-6">
+          <p className="text-gray-500 text-xs leading-relaxed max-w-4xl">
+            Supersonic Fast Cash LLC provides tax preparation services. Refund advance options, when available, 
+            are based on an individual's expected tax refund and eligibility requirements. Refund advances are 
+            optional and are repaid from the taxpayer's refund. Supersonic Fast Cash LLC does not provide loans 
+            or guarantee refund amounts.
+          </p>
+        </div>
+
+        {/* Copyright */}
+        <div className="border-t border-gray-800 mt-6 pt-6 text-center">
+          <p className="text-gray-500 text-sm">
+            © {new Date().getFullYear()} Supersonic Fast Cash LLC. All rights reserved.
           </p>
         </div>
       </div>
