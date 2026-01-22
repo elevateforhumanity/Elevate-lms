@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { DollarSign, GraduationCap, Home, CheckCircle, Users, Briefcase, ArrowRight } from 'lucide-react';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
@@ -114,6 +115,13 @@ export default async function WIOAEligibilityPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/financial-guide.mp4"
+        avatarName="Eligibility Guide"
+        position="bottom-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
       <ModernLandingHero
         badge="⚡ Most People Qualify"
         headline="Check Your"

@@ -58,6 +58,8 @@ const programData: ProgramData = {
       description: 'Plumbing apprenticeship',
     },
   ],
+  avatarVideo: '/videos/avatars/trades-guide.mp4',
+  avatarName: 'Electrical Guide',
 };
 
 export default function ElectricalPage() {

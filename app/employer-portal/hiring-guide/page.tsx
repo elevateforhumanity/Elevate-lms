@@ -14,42 +14,42 @@ const steps = [
     number: 1,
     title: 'Post Your Job',
     description: 'Create a job listing with requirements, pay rate, and benefits. Our team reviews and optimizes for WOTC-eligible candidates.',
-    image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/community/event-5.jpg',
     tips: ['Include clear job requirements', 'Specify training provided', 'Highlight growth opportunities'],
   },
   {
     number: 2,
     title: 'Review Candidates',
     description: 'Browse pre-screened candidates with verified WOTC eligibility. Each profile shows certifications, skills, and potential tax credits.',
-    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/community/community-hero.jpg',
     tips: ['Check WOTC eligibility status', 'Review completed certifications', 'Look at work history'],
   },
   {
     number: 3,
     title: 'Interview & Select',
     description: 'Schedule interviews through our platform. We provide interview guides and help coordinate schedules.',
-    image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/community/event-4.jpg',
     tips: ['Use structured interviews', 'Assess cultural fit', 'Discuss growth path'],
   },
   {
     number: 4,
     title: 'Complete WOTC Forms',
     description: 'We handle IRS Form 8850 and state forms. Just verify hire date and we submit within the 28-day deadline.',
-    image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/community/event-2.jpg',
     tips: ['Sign forms within 28 days', 'Verify start date accuracy', 'Keep copies for records'],
   },
   {
     number: 5,
     title: 'Onboard & Train',
     description: 'Use our onboarding checklists and training resources. Track progress and certifications in one place.',
-    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/community/event-1.jpg',
     tips: ['Complete I-9 and W-4', 'Assign training modules', 'Set 90-day goals'],
   },
   {
     number: 6,
     title: 'Claim Tax Credits',
     description: 'After 120+ hours worked, we process your WOTC certification. Credits appear on your next tax filing.',
-    image: 'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/community/event-3.jpg',
     tips: ['Track hours worked', 'Maintain employment records', 'File with annual taxes'],
   },
 ];
@@ -66,7 +66,7 @@ export default function HiringGuidePage() {
     <div className="min-h-screen bg-gray-50">
       <div className="relative h-80 bg-gradient-to-r from-purple-900 to-indigo-900">
         <Image
-          src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          src="/images/community/event-5.jpg"
           alt="Hiring guide"
           fill
           className="object-cover opacity-20"

@@ -98,7 +98,7 @@ const recentPosts = [
     icon: Facebook,
     time: '2 hours ago',
     content: 'Congratulations to our latest graduates! 🎓 Another cohort of skilled professionals ready to make their mark.',
-    image: 'https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/social/social-post-1.jpg',
     likes: 45,
     comments: 12,
   },
@@ -115,7 +115,7 @@ const recentPosts = [
     icon: Instagram,
     time: '1 day ago',
     content: 'Behind the scenes at our training facility! Our students are working hard to build their futures. 💪',
-    image: 'https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/social/social-post-2.jpg',
     likes: 156,
     comments: 34,
   },
@@ -126,7 +126,7 @@ const defaultVideos = [
   {
     id: 'video1',
     title: 'Welcome to Elevate for Humanity',
-    thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800',
+    thumbnail: '/images/social/social-hero.jpg',
     duration: '2:45',
     views: '1.2K',
     youtubeId: 'dQw4w9WgXcQ',
@@ -134,7 +134,7 @@ const defaultVideos = [
   {
     id: 'video2',
     title: 'Student Success Story: From Unemployed to Certified',
-    thumbnail: 'https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800',
+    thumbnail: '/images/social/social-post-2.jpg',
     duration: '4:30',
     views: '856',
     youtubeId: 'dQw4w9WgXcQ',
@@ -142,7 +142,7 @@ const defaultVideos = [
   {
     id: 'video3',
     title: 'How WIOA Funding Works',
-    thumbnail: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
+    thumbnail: '/images/social/social-video-3.jpg',
     duration: '3:15',
     views: '2.1K',
     youtubeId: 'dQw4w9WgXcQ',
@@ -244,7 +244,7 @@ export default function SocialMediaPage() {
       <section className="relative min-h-[500px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src="/images/social/social-hero.jpg"
             alt="Connect with Elevate for Humanity"
             fill
             className="object-cover"

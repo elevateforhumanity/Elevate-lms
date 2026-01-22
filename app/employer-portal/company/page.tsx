@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 const companyData = {
   name: 'ABC Healthcare Services',
-  logo: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',
-  cover: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  logo: '/images/community/community-hero.jpg',
+  cover: '/images/community/event-1.jpg',
   industry: 'Healthcare',
   size: '50-200 employees',
   founded: '2015',

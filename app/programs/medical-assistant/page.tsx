@@ -56,6 +56,8 @@ const programData: ProgramData = {
       description: 'Blood draw certification',
     },
   ],
+  avatarVideo: '/videos/avatars/healthcare-guide.mp4',
+  avatarName: 'Medical Assistant Guide',
 };
 
 export default function MedicalAssistantPage() {

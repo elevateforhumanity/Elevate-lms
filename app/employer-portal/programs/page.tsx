@@ -14,7 +14,7 @@ const programs = [
     id: 'wotc',
     name: 'Work Opportunity Tax Credit',
     description: 'Earn up to $9,600 per eligible hire through federal tax credits for hiring from target groups.',
-    image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/community/event-5.jpg',
     savings: 'Up to $9,600/hire',
     eligibility: ['Veterans', 'SNAP Recipients', 'Ex-Felons', 'Long-term Unemployed'],
     status: 'Active',
@@ -23,7 +23,7 @@ const programs = [
     id: 'apprenticeship',
     name: 'Registered Apprenticeship',
     description: 'Build your talent pipeline with earn-and-learn programs. We handle compliance and curriculum.',
-    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/community/community-hero.jpg',
     savings: 'Reduce training costs 50%',
     eligibility: ['All Industries', 'DOL Registered', 'State Approved'],
     status: 'Active',
@@ -32,7 +32,7 @@ const programs = [
     id: 'ojt',
     name: 'On-the-Job Training',
     description: 'Get reimbursed up to 75% of wages during training period for eligible WIOA participants.',
-    image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/community/event-4.jpg',
     savings: '50-75% wage reimbursement',
     eligibility: ['WIOA Eligible', 'New Hires', 'Skill Development'],
     status: 'Active',
@@ -41,7 +41,7 @@ const programs = [
     id: 'fidelity-bond',
     name: 'Federal Bonding Program',
     description: 'Free fidelity bonds for at-risk hires, protecting your business from employee dishonesty.',
-    image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/community/event-2.jpg',
     savings: 'Free $5,000-$25,000 bonds',
     eligibility: ['Ex-Offenders', 'Recovering Addicts', 'Welfare Recipients'],
     status: 'Active',
@@ -53,7 +53,7 @@ export default function EmployerProgramsPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="relative h-64 bg-gradient-to-r from-purple-900 to-indigo-900">
         <Image
-          src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          src="/images/community/event-1.jpg"
           alt="Employer programs"
           fill
           className="object-cover opacity-20"

@@ -48,7 +48,7 @@ export default function StudentSupportPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="relative bg-green-800 text-white py-16">
         <Image
-          src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          src="/images/community/event-4.jpg"
           alt="Student Support"
           fill
           className="object-cover opacity-30"

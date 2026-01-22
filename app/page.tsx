@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import { useEffect, useState, useRef } from 'react';
@@ -216,29 +216,30 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      
+      {/* AI Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/home-welcome.mp4"
+        avatarName="Elevate Guide"
+        position="bottom-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
 
-
-      {/* Hero Section - Optimized for all screen sizes: mobile, tablet, laptop, desktop */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-800">
-        {/* Background video - autoplay on ALL devices */}
-        {/* Required for autoplay: muted, playsinline, autoplay attributes */}
-        <video
-          ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectFit: 'cover' }}
-          loop
-          muted
-          playsInline
-          autoPlay
-          preload="auto"
-          disablePictureInPicture
-          disableRemotePlayback
-        >
-          <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
-        </video>
+      {/* Hero Section - Full width image with minimal text */}
+      <section className="relative w-full min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-end overflow-hidden">
+        {/* Hero Background Image */}
+        <Image
+          src="/images/heroes/hero-homepage.jpg"
+          alt="Career training students"
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+        />
         
-        {/* Light overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent pointer-events-none" />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
         
         {/* Hero Content - Million dollar value proposition */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 lg:pb-20">

@@ -115,7 +115,7 @@ export default async function CommunityPage() {
       <section className="relative bg-gradient-to-br from-violet-900 via-purple-800 to-indigo-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
+            src="/images/community/community-hero.jpg"
             alt="Community members collaborating"
             fill
             className="object-cover opacity-20"
@@ -264,7 +264,7 @@ export default async function CommunityPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
               <div className="relative h-48">
                 <Image
-                  src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg"
+                  src="/images/community/event-1.jpg"
                   alt="Career Workshop"
                   fill
                   className="object-cover"
@@ -282,7 +282,7 @@ export default async function CommunityPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
               <div className="relative h-48">
                 <Image
-                  src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg"
+                  src="/images/community/event-2.jpg"
                   alt="Networking Event"
                   fill
                   className="object-cover"
@@ -300,7 +300,7 @@ export default async function CommunityPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
               <div className="relative h-48">
                 <Image
-                  src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg"
+                  src="/images/community/event-3.jpg"
                   alt="Q&A Session"
                   fill
                   className="object-cover"
@@ -351,7 +351,7 @@ export default async function CommunityPage() {
 
             <div className="relative">
               <Image
-                src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg"
+                src="/images/community/event-4.jpg"
                 alt="Community members learning together"
                 width={600}
                 height={500}

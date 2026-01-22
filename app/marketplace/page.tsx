@@ -38,12 +38,12 @@ export const metadata: Metadata = {
 };
 
 const fallbackCourses = [
-  { id: '1', title: 'Advanced Welding Techniques', creator_name: 'John Masters', price: 199, rating: 4.9, student_count: 1234, duration_hours: 8, image_url: 'https://images.pexels.com/photos/2381463/pexels-photo-2381463.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'advanced-welding-techniques', category: 'Trades' },
-  { id: '2', title: 'Medical Coding Essentials', creator_name: 'Sarah Health', price: 149, rating: 4.8, student_count: 2345, duration_hours: 12, image_url: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'medical-coding-essentials', category: 'Healthcare' },
-  { id: '3', title: 'Cybersecurity Fundamentals', creator_name: 'Tech Academy', price: 249, rating: 4.7, student_count: 3456, duration_hours: 20, image_url: 'https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'cybersecurity-fundamentals', category: 'Technology' },
-  { id: '4', title: 'Project Management Pro', creator_name: 'Business School', price: 179, rating: 4.8, student_count: 1567, duration_hours: 15, image_url: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'project-management-pro', category: 'Business' },
-  { id: '5', title: 'Graphic Design Mastery', creator_name: 'Creative Hub', price: 129, rating: 4.6, student_count: 987, duration_hours: 10, image_url: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'graphic-design-mastery', category: 'Creative' },
-  { id: '6', title: 'Plumbing Basics', creator_name: 'Trade Skills', price: 99, rating: 4.9, student_count: 2134, duration_hours: 6, image_url: 'https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=400', slug: 'plumbing-basics', category: 'Trades' },
+  { id: '1', title: 'Advanced Welding Techniques', creator_name: 'John Masters', price: 199, rating: 4.9, student_count: 1234, duration_hours: 8, image_url: '/images/marketplace/welding.jpg', slug: 'advanced-welding-techniques', category: 'Trades' },
+  { id: '2', title: 'Medical Coding Essentials', creator_name: 'Sarah Health', price: 149, rating: 4.8, student_count: 2345, duration_hours: 12, image_url: '/images/marketplace/medical.jpg', slug: 'medical-coding-essentials', category: 'Healthcare' },
+  { id: '3', title: 'Cybersecurity Fundamentals', creator_name: 'Tech Academy', price: 249, rating: 4.7, student_count: 3456, duration_hours: 20, image_url: '/images/marketplace/cybersecurity.jpg', slug: 'cybersecurity-fundamentals', category: 'Technology' },
+  { id: '4', title: 'Project Management Pro', creator_name: 'Business School', price: 179, rating: 4.8, student_count: 1567, duration_hours: 15, image_url: '/images/marketplace/project-mgmt.jpg', slug: 'project-management-pro', category: 'Business' },
+  { id: '5', title: 'Graphic Design Mastery', creator_name: 'Creative Hub', price: 129, rating: 4.6, student_count: 987, duration_hours: 10, image_url: '/images/marketplace/design.jpg', slug: 'graphic-design-mastery', category: 'Creative' },
+  { id: '6', title: 'Plumbing Basics', creator_name: 'Trade Skills', price: 99, rating: 4.9, student_count: 2134, duration_hours: 6, image_url: '/images/marketplace/plumbing.jpg', slug: 'plumbing-basics', category: 'Trades' },
 ];
 
 const categories = ['All', 'Trades', 'Healthcare', 'Technology', 'Business', 'Creative'];
@@ -75,7 +75,7 @@ export default async function MarketplacePage() {
     <div className="min-h-screen bg-gray-50">
       <div className="relative bg-indigo-900 text-white py-16">
         <Image
-          src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          src="/images/community/community-hero.jpg"
           alt="Marketplace"
           fill
           className="object-cover opacity-30"
@@ -126,7 +126,7 @@ export default async function MarketplacePage() {
             >
               <div className="relative h-48">
                 <Image
-                  src={course.image_url || 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400'}
+                  src={course.image_url || '/images/community/community-hero.jpg'}
                   alt={course.title}
                   fill
                   className="object-cover"

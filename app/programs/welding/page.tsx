@@ -57,6 +57,8 @@ const programData: ProgramData = {
       description: 'Commercial driving license',
     },
   ],
+  avatarVideo: '/videos/avatars/trades-guide.mp4',
+  avatarName: 'Welding Guide',
 };
 
 export default function WeldingPage() {

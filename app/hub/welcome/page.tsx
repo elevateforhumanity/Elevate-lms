@@ -28,25 +28,25 @@ export default async function HubWelcomePage() {
     {
       title: 'Classroom',
       description: 'Access your courses, track progress, and continue your learning journey.',
-      image: 'https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg',
+      image: '/images/hub/dashboard.jpg',
       href: '/hub/classroom',
     },
     {
       title: 'Leaderboard',
       description: 'See how you rank among peers and earn recognition for your achievements.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
+      image: '/images/community/community-hero.jpg',
       href: '/hub/leaderboard',
     },
     {
       title: 'Members',
       description: 'Connect with fellow learners, mentors, and industry professionals.',
-      image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg',
+      image: '/images/community/event-2.jpg',
       href: '/hub/members',
     },
     {
       title: 'Calendar',
       description: 'View upcoming events, workshops, and live sessions.',
-      image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
+      image: '/images/community/event-1.jpg',
       href: '/hub/calendar',
     },
   ];
@@ -56,17 +56,17 @@ export default async function HubWelcomePage() {
     {
       title: 'Real-Time Progress Tracking',
       description: 'See exactly where you are in your program. No guessing - the system shows your status, completion percentage, and what comes next.',
-      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg',
+      image: '/images/hub/analytics.jpg',
     },
     {
       title: 'Automated Guidance',
       description: 'The platform tells you what to do next. Receive smart nudges, reminders, and step-by-step guidance to stay on track.',
-      image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg',
+      image: '/images/hub/team.jpg',
     },
     {
       title: 'Compliance Documentation',
       description: 'All your hours, credentials, and progress are documented automatically. Ready for audits, certifications, and employer verification.',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
+      image: '/images/community/event-5.jpg',
     },
   ];
 
@@ -76,19 +76,19 @@ export default async function HubWelcomePage() {
       name: 'Healthcare Graduate',
       program: 'CNA Certification',
       quote: 'The Hub made it easy to track my clinical hours and know exactly what I needed to complete.',
-      image: 'https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg',
+      image: '/images/hub/student.jpg',
     },
     {
       name: 'Trades Apprentice',
       program: 'HVAC Technician',
       quote: 'I could see my progress every day. The system kept me accountable and on schedule.',
-      image: 'https://images.pexels.com/photos/8961065/pexels-photo-8961065.jpeg',
+      image: '/images/hub/instructor.jpg',
     },
     {
       name: 'Tech Graduate',
       program: 'IT Support',
       quote: 'Having everything in one place - courses, certifications, job prep - made all the difference.',
-      image: 'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg',
+      image: '/images/hub/employer.jpg',
     },
   ];
 
@@ -98,7 +98,7 @@ export default async function HubWelcomePage() {
       <section className="relative min-h-[70vh] flex items-center">
         <div className="absolute inset-0">
           <Image
-            src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg"
+            src="/images/community/event-3.jpg"
             alt="Students collaborating and learning together"
             fill
             className="object-cover"
@@ -278,7 +278,7 @@ export default async function HubWelcomePage() {
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 h-full">
                 <div className="relative h-40 rounded-xl overflow-hidden mb-6">
                   <Image
-                    src="https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg"
+                    src="/images/hub/feature-1.jpg"
                     alt="Apply for a program"
                     fill
                     className="object-cover"
@@ -294,7 +294,7 @@ export default async function HubWelcomePage() {
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 h-full">
                 <div className="relative h-40 rounded-xl overflow-hidden mb-6">
                   <Image
-                    src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg"
+                    src="/images/community/event-4.jpg"
                     alt="Get enrolled"
                     fill
                     className="object-cover"
@@ -310,7 +310,7 @@ export default async function HubWelcomePage() {
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 h-full">
                 <div className="relative h-40 rounded-xl overflow-hidden mb-6">
                   <Image
-                    src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg"
+                    src="/images/hub/feature-2.jpg"
                     alt="Complete and succeed"
                     fill
                     className="object-cover"
@@ -328,7 +328,7 @@ export default async function HubWelcomePage() {
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0">
           <Image
-            src="https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg"
+            src="/images/hub/cta.jpg"
             alt="Team celebrating success"
             fill
             className="object-cover"

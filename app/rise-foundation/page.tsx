@@ -68,7 +68,7 @@ export default async function RiseFoundationPage() {
       description: 'Comprehensive support for individuals healing from traumatic experiences. Individual and group therapy options available.',
       icon: 'heart',
       href: '/rise-foundation/trauma-recovery',
-      image_url: 'https://images.pexels.com/photos/3958379/pexels-photo-3958379.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image_url: '/images/rise-foundation/emergency-fund.jpg',
     },
     {
       id: '2',
@@ -76,7 +76,7 @@ export default async function RiseFoundationPage() {
       description: 'Navigate the challenges of divorce with professional guidance. Support groups, counseling, and practical resources.',
       icon: 'users',
       href: '/rise-foundation/divorce-support',
-      image_url: 'https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image_url: '/images/rise-foundation/childcare.jpg',
     },
     {
       id: '3',
@@ -84,7 +84,7 @@ export default async function RiseFoundationPage() {
       description: 'Evidence-based recovery programs for substance abuse. Outpatient services, support groups, and aftercare planning.',
       icon: 'sparkles',
       href: '/rise-foundation/addiction-rehabilitation',
-      image_url: 'https://images.pexels.com/photos/4506105/pexels-photo-4506105.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image_url: '/images/rise-foundation/transportation.jpg',
     },
     {
       id: '4',
@@ -92,7 +92,7 @@ export default async function RiseFoundationPage() {
       description: 'Holistic mental health support including counseling, workshops, and wellness programs for lasting wellbeing.',
       icon: 'shield',
       href: '/rise-foundation/mental-wellness',
-      image_url: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image_url: '/images/rise-foundation/housing.jpg',
     },
   ];
 
@@ -104,7 +104,7 @@ export default async function RiseFoundationPage() {
       <section className="relative min-h-[500px] flex items-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
+          style={{ backgroundImage: 'url(/images/rise-foundation/hero.jpg)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-purple-800/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-white">

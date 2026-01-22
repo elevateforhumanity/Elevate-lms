@@ -40,7 +40,7 @@ export default function SupersonicMarketingPage() {
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1920&q=80')",
+              "url('/images/supersonic/hero.jpg')",
             backgroundBlendMode: 'overlay',
           }}
         ></div>
@@ -177,7 +177,7 @@ export default function SupersonicMarketingPage() {
             <div className="group bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-red-600 hover:border-red-700 transform hover:scale-105 transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&q=80"
+                  src="/images/supersonic/money.jpg"
                   alt="Cash money"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -250,7 +250,7 @@ export default function SupersonicMarketingPage() {
             <div className="group bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-blue-900 hover:border-blue-950 transform hover:scale-105 transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
+                  src="/images/supersonic/business.jpg"
                   alt="Professional tax preparation"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -323,7 +323,7 @@ export default function SupersonicMarketingPage() {
             <div className="group bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-green-600 hover:border-green-700 transform hover:scale-105 transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                  src="/images/supersonic/analytics.jpg"
                   alt="DIY online tax filing"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -589,7 +589,7 @@ export default function SupersonicMarketingPage() {
                 <div className="flex-shrink-0">
                   <div className="w-48 h-48 rounded-2xl overflow-hidden border-4 border-white shadow-lg">
                     <Image
-                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
+                      src="/images/supersonic/professional.jpg"
                       alt="Tax Professional"
                       width={192}
                       height={192}

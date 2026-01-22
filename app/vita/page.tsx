@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import {
   Heart,
   DollarSign,
@@ -58,6 +59,13 @@ export default async function VITAPage() {
 
   return (
     <div className="bg-white">
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/financial-guide.mp4"
+        avatarName="VITA Guide"
+        position="bottom-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
       {/* Hero Section */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
         {/* Video Background */}

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import {
   BadgeCheck,
   Calculator,
@@ -24,6 +25,13 @@ import {
 export default function SupersonicFastCashPage() {
   return (
     <div className="min-h-screen bg-white">
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/financial-guide.mp4"
+        avatarName="Tax Guide"
+        position="bottom-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
       {/* Hero */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
         {/* Background Image - Tax/Money themed */}

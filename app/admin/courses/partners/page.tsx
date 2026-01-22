@@ -13,7 +13,7 @@ const partners = [
   {
     id: 1,
     name: 'Certiport',
-    logo: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=200',
+    logo: '/images/community/community-hero.jpg',
     type: 'Certification Provider',
     courses: 12,
     activeStudents: 245,
@@ -23,7 +23,7 @@ const partners = [
   {
     id: 2,
     name: 'CompTIA',
-    logo: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=200',
+    logo: '/images/community/event-5.jpg',
     type: 'IT Certification',
     courses: 8,
     activeStudents: 189,
@@ -33,7 +33,7 @@ const partners = [
   {
     id: 3,
     name: 'Adobe',
-    logo: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=200',
+    logo: '/images/community/event-4.jpg',
     type: 'Creative Software',
     courses: 6,
     activeStudents: 156,
@@ -43,7 +43,7 @@ const partners = [
   {
     id: 4,
     name: 'OSHA Training Institute',
-    logo: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=200',
+    logo: '/images/community/event-2.jpg',
     type: 'Safety Training',
     courses: 4,
     activeStudents: 312,

@@ -115,7 +115,7 @@ export default function ContactPage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Visit Our Campus</h2>
             <div className="relative rounded-xl h-80 overflow-hidden mb-6">
               <Image
-                src="https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="/images/misc/contact-map.jpg"
                 alt="Campus"
                 fill
                 className="object-cover"

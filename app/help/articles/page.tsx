@@ -82,7 +82,7 @@ export default async function HelpArticlesPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="relative bg-blue-800 text-white py-16">
         <Image
-          src="https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          src="/images/misc/help-hero.jpg"
           alt="Help Center"
           fill
           className="object-cover opacity-30"

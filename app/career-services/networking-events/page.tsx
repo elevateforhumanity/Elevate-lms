@@ -59,17 +59,17 @@ export default async function NetworkingEventsPage() {
     {
       title: 'Career Fairs',
       description: 'Meet multiple employers in one day. Bring your resume and dress professionally.',
-      image: 'https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/images/career-services/job-fair.jpg',
     },
     {
       title: 'Industry Meetups',
       description: 'Connect with professionals in your field. Learn about industry trends and opportunities.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/images/career-services/industry-mixer.jpg',
     },
     {
       title: 'Employer Panels',
       description: 'Hear directly from hiring managers about what they look for in candidates.',
-      image: 'https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/images/career-services/workshop.jpg',
     },
   ];
 
@@ -79,7 +79,7 @@ export default async function NetworkingEventsPage() {
       <section className="relative min-h-[400px] flex items-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
+          style={{ backgroundImage: 'url(/images/career-services/networking-hero.jpg)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 to-teal-800/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">

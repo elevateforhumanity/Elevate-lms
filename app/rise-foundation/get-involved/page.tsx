@@ -43,7 +43,7 @@ export default async function GetInvolvedPage() {
       description: 'Share your time and skills to support individuals on their healing journey.',
       href: '/rise-foundation/volunteer',
       color: 'pink',
-      image: 'https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/images/rise-foundation/volunteer.jpg',
     },
     {
       icon: Heart,
@@ -51,7 +51,7 @@ export default async function GetInvolvedPage() {
       description: 'Your financial support enables us to provide free services to those in need.',
       href: '/donate',
       color: 'purple',
-      image: 'https://images.pexels.com/photos/6994982/pexels-photo-6994982.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/images/rise-foundation/donate.jpg',
     },
     {
       icon: Briefcase,
@@ -59,7 +59,7 @@ export default async function GetInvolvedPage() {
       description: 'Organizations can partner with us to expand our reach and impact.',
       href: '/rise-foundation/partner',
       color: 'blue',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/images/rise-foundation/partner.jpg',
     },
     {
       icon: Users,
@@ -67,7 +67,7 @@ export default async function GetInvolvedPage() {
       description: 'Know someone who could benefit from our services? Help connect them.',
       href: '/rise-foundation/refer',
       color: 'green',
-      image: 'https://images.pexels.com/photos/7176026/pexels-photo-7176026.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/images/rise-foundation/advocate.jpg',
     },
   ];
 
@@ -77,7 +77,7 @@ export default async function GetInvolvedPage() {
       <section className="relative min-h-[400px] flex items-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
+          style={{ backgroundImage: 'url(/images/rise-foundation/get-involved-hero.jpg)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-pink-800/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">

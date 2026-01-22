@@ -40,7 +40,7 @@ export default async function JobPostingsPage() {
       views: 245,
       status: 'Active',
       posted: '5 days ago',
-      image: 'https://images.pexels.com/photos/3259629/pexels-photo-3259629.jpeg',
+      image: '/images/marketplace/medical.jpg',
     },
     {
       id: 2,
@@ -52,7 +52,7 @@ export default async function JobPostingsPage() {
       views: 189,
       status: 'Active',
       posted: '1 week ago',
-      image: 'https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg',
+      image: '/images/misc/barber-hero.jpg',
     },
     {
       id: 3,
@@ -64,7 +64,7 @@ export default async function JobPostingsPage() {
       views: 156,
       status: 'Active',
       posted: '2 weeks ago',
-      image: 'https://images.pexels.com/photos/5691659/pexels-photo-5691659.jpeg',
+      image: '/images/shop/safety-glasses.jpg',
     },
     {
       id: 4,
@@ -76,7 +76,7 @@ export default async function JobPostingsPage() {
       views: 312,
       status: 'Paused',
       posted: '3 weeks ago',
-      image: 'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg',
+      image: '/images/misc/cdl-course.jpg',
     },
   ];
 

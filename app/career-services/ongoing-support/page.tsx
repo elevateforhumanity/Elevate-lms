@@ -84,7 +84,7 @@ export default async function OngoingSupportPage() {
       <section className="relative min-h-[400px] flex items-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
+          style={{ backgroundImage: 'url(/images/community/event-2.jpg)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-pink-900/90 to-pink-800/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">

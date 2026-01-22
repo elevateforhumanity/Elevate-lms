@@ -33,7 +33,7 @@ export default async function ClassroomPage() {
     {
       title: 'Career Success Fundamentals',
       description: 'Master the essential skills for career advancement',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
+      image: '/images/community/event-5.jpg',
       lessons: 12,
       duration: '4 hours',
       students: 1250,
@@ -43,7 +43,7 @@ export default async function ClassroomPage() {
     {
       title: 'Professional Communication',
       description: 'Improve your workplace communication skills',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
+      image: '/images/community/community-hero.jpg',
       lessons: 8,
       duration: '2.5 hours',
       students: 890,
@@ -53,7 +53,7 @@ export default async function ClassroomPage() {
     {
       title: 'Interview Mastery',
       description: 'Ace your next job interview with confidence',
-      image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
+      image: '/images/community/event-1.jpg',
       lessons: 10,
       duration: '3 hours',
       students: 2100,
@@ -63,7 +63,7 @@ export default async function ClassroomPage() {
     {
       title: 'Resume Building Workshop',
       description: 'Create a resume that gets you noticed',
-      image: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg',
+      image: '/images/community/event-3.jpg',
       lessons: 6,
       duration: '1.5 hours',
       students: 1800,
@@ -73,7 +73,7 @@ export default async function ClassroomPage() {
     {
       title: 'Networking Strategies',
       description: 'Build meaningful professional connections',
-      image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
+      image: '/images/community/event-4.jpg',
       lessons: 8,
       duration: '2 hours',
       students: 750,
@@ -83,7 +83,7 @@ export default async function ClassroomPage() {
     {
       title: 'Time Management Essentials',
       description: 'Boost your productivity and work-life balance',
-      image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg',
+      image: '/images/community/event-2.jpg',
       lessons: 7,
       duration: '2 hours',
       students: 1100,
@@ -98,7 +98,7 @@ export default async function ClassroomPage() {
       <section className="relative bg-gradient-to-br from-green-800 to-emerald-900 text-white py-20">
         <div className="absolute inset-0">
           <Image
-            src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+            src="/images/community/event-5.jpg"
             alt="Online learning"
             fill
             className="object-cover opacity-20"

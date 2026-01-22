@@ -57,6 +57,8 @@ const programData: ProgramData = {
       description: 'All tech training options',
     },
   ],
+  avatarVideo: '/videos/avatars/ai-tutor.mp4',
+  avatarName: 'Cybersecurity Guide',
 };
 
 export default function CybersecurityPage() {

@@ -55,6 +55,7 @@ const NAV_ITEMS = [
     name: 'Portals', 
     href: '/dashboards',
     subItems: [
+      { name: 'Hub (Command Center)', href: '/hub/welcome' },
       { name: 'Student Portal', href: '/student-portal' },
       { name: 'LMS Dashboard', href: '/lms' },
       { name: 'Employer Portal', href: '/employer-portal' },

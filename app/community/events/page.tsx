@@ -19,7 +19,7 @@ export default async function EventsPage() {
       date: 'Every Wednesday',
       time: '6:00 PM EST',
       type: 'Workshop',
-      image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
+      image: '/images/community/event-1.jpg',
       attendees: 45,
       isLive: false,
     },
@@ -29,7 +29,7 @@ export default async function EventsPage() {
       date: 'First Friday of Month',
       time: '7:00 PM EST',
       type: 'Networking',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
+      image: '/images/community/community-hero.jpg',
       attendees: 120,
       isLive: false,
     },
@@ -39,7 +39,7 @@ export default async function EventsPage() {
       date: 'Every Tuesday',
       time: '5:00 PM EST',
       type: 'Workshop',
-      image: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg',
+      image: '/images/community/event-3.jpg',
       attendees: 30,
       isLive: false,
     },
@@ -49,7 +49,7 @@ export default async function EventsPage() {
       date: 'Bi-Weekly Thursday',
       time: '7:00 PM EST',
       type: 'Q&A',
-      image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
+      image: '/images/community/event-4.jpg',
       attendees: 85,
       isLive: false,
     },
@@ -59,7 +59,7 @@ export default async function EventsPage() {
       date: 'Every Monday',
       time: '6:30 PM EST',
       type: 'Webinar',
-      image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg',
+      image: '/images/community/event-2.jpg',
       attendees: 60,
       isLive: false,
     },
@@ -69,7 +69,7 @@ export default async function EventsPage() {
       date: 'Last Saturday of Month',
       time: '2:00 PM EST',
       type: 'Panel',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
+      image: '/images/community/event-5.jpg',
       attendees: 150,
       isLive: false,
     },
@@ -83,7 +83,7 @@ export default async function EventsPage() {
       <section className="relative bg-gradient-to-br from-purple-700 to-indigo-800 text-white py-20">
         <div className="absolute inset-0">
           <Image
-            src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
+            src="/images/community/community-hero.jpg"
             alt="Community events"
             fill
             className="object-cover opacity-20"

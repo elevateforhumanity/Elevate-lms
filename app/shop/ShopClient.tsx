@@ -94,7 +94,7 @@ export function ShopClient({ products, categories }: ShopClientProps) {
           >
             <div className="relative aspect-square">
               <Image
-                src={product.image_url || 'https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=400'}
+                src={product.image_url || '/images/shop/shop-hero.jpg'}
                 alt={product.name}
                 fill
                 className="object-cover"

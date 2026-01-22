@@ -57,6 +57,8 @@ const programData: ProgramData = {
       description: 'Certified Nursing Assistant',
     },
   ],
+  avatarVideo: '/videos/avatars/healthcare-guide.mp4',
+  avatarName: 'Phlebotomy Guide',
 };
 
 export default function PhlebotomyPage() {
