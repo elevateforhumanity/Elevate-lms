@@ -2,9 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { TEMPLATE_DESIGNS, getRecommendedTemplate, TemplateDesign } from '@/lib/templates/designs';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Lazy-load OpenAI client to prevent build-time errors
+function getOpenAI() {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error('OPENAI_API_KEY not configured');
+  }
+  return new OpenAI({ apiKey });
+}
 
 /**
  * POST /api/ai/generate-site
@@ -61,6 +66,7 @@ Generate a JSON configuration with COMPELLING, SPECIFIC content:
 Be specific to ${industry || 'their'} industry. Use real-sounding program names.
 Return ONLY valid JSON, no markdown.`;
 
+    const openai = getOpenAI();
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o',
       messages: [

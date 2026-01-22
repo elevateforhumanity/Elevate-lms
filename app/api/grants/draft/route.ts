@@ -9,9 +9,14 @@ import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { logger } from '@/lib/logger';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Lazy-load OpenAI client to prevent build-time errors
+function getOpenAI() {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey || apiKey === 'Content-key') {
+    throw new Error('OPENAI_API_KEY not configured');
+  }
+  return new OpenAI({ apiKey });
+}
 
 export async function POST(req: NextRequest) {
   if (
@@ -96,6 +101,7 @@ Write a full draft grant narrative tailored to this opportunity and organization
 Focus on workforce, community impact, and elevation if applicable.
 `;
 
+    const openai = getOpenAI();
     const completion = await openai.chat.completions.create({
       model: 'gpt-4-turbo-preview',
       messages: [

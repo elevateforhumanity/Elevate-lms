@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import { PathwayBlock } from '@/components/PathwayBlock';
@@ -43,7 +43,7 @@ const PATHWAY_TO_PROGRAM: Record<string, string> = {
 
 
 
-export default function ApplyPage() {
+function ApplyPageContent() {
   const searchParams = useSearchParams();
   const [selectedProgram, setSelectedProgram] = useState('');
   const [pathwaySlug, setPathwaySlug] = useState<string | null>(null);
@@ -427,5 +427,21 @@ export default function ApplyPage() {
       {/* Pathway Block */}
       <PathwayBlock variant="light" />
     </>
+  );
+}
+
+// Wrap in Suspense for useSearchParams
+export default function ApplyPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-[60vh] bg-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-10 h-10 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-gray-500 text-sm">Loading application form...</p>
+        </div>
+      </div>
+    }>
+      <ApplyPageContent />
+    </Suspense>
   );
 }

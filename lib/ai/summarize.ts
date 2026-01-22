@@ -1,10 +1,18 @@
 import OpenAI from "openai";
 import { logger } from "@/lib/logger";
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+// Lazy-load OpenAI client to prevent build-time errors
+function getClient() {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    return null;
+  }
+  return new OpenAI({ apiKey });
+}
 
 export async function summarizeText(text: string, maxLength = 200) {
-  if (!process.env.OPENAI_API_KEY) {
+  const client = getClient();
+  if (!client) {
     logger.warn("OpenAI API key not configured");
     return text.slice(0, maxLength) + "...";
   }

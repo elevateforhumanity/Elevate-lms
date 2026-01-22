@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, CreditCard, Lightbulb } from 'lucide-react';
@@ -34,7 +34,7 @@ const programPricing: Record<string, ProgramPricing> = {
   },
 };
 
-export default function CheckoutPage() {
+function CheckoutPageContent() {
   const params = useParams();
   const searchParams = useSearchParams();
   const program = params.program as string;
@@ -297,5 +297,20 @@ export default function CheckoutPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-10 h-10 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-gray-500 text-sm">Loading checkout...</p>
+        </div>
+      </div>
+    }>
+      <CheckoutPageContent />
+    </Suspense>
   );
 }
