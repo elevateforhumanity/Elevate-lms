@@ -8,10 +8,6 @@ import { createClient } from '@/lib/supabase/client';
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 
-export const dynamic = 'force-dynamic';
-
-
-
 export default function VerifyEmailPage() {
   const [email, setEmail] = useState('');
   const [resending, setResending] = useState(false);

@@ -3,8 +3,6 @@
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
-export const dynamic = 'force-dynamic';
-
 interface License {
   id: string;
   tenant_id: string;
@@ -22,8 +20,6 @@ interface Tenant {
   slug: string;
   active: boolean;
 }
-
-
 
 export default function LicensingPage() {
   const [licenses, setLicenses] = useState<License[]>([]);

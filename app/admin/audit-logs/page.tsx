@@ -6,8 +6,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Shield, Filter, Download, Search } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
-
 type AuditLog = {
   id: string;
   user_id: string;
@@ -21,8 +19,6 @@ type AuditLog = {
     email: string;
   };
 };
-
-
 
 export default function AuditLogsPage() {
   const [logs, setLogs] = useState<AuditLog[]>([]);

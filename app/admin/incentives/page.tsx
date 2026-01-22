@@ -6,8 +6,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { DollarSign, TrendingUp, Users, Award, Download } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
-
 type Incentive = {
   id: string;
   employer_name: string;
@@ -21,8 +19,6 @@ type Incentive = {
   hours_required: number;
   created_at: string;
 };
-
-
 
 export default function IncentivesPage() {
   const [incentives, setIncentives] = useState<Incentive[]>([]);

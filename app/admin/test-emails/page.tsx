@@ -6,10 +6,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
-
-
-
 export default function TestEmailsPage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<{

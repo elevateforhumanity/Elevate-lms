@@ -5,8 +5,6 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { FileText, Upload, CheckCircle, AlertCircle } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
-
 interface UserProfile {
   id: string;
   email: string;
@@ -21,8 +19,6 @@ interface Application {
   program_id: string;
   submitted_at: string;
 }
-
-
 
 export default function StudentApplicationPage() {
   const router = useRouter();

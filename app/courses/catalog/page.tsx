@@ -4,8 +4,6 @@
 
 import React from 'react';
 
-export const dynamic = 'force-dynamic';
-
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 
@@ -351,8 +349,6 @@ const ALL_COURSES = Object.entries(PARTNER_COURSES).flatMap(
           : Math.round(course.price * provider.markup * 100) / 100,
     }))
 );
-
-
 
 export default function CoursesCatalogPage() {
   const [search, setSearch] = useState('');

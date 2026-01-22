@@ -7,10 +7,6 @@ import { createClient } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 
-export const dynamic = 'force-dynamic';
-
-
-
 export default function DocumentUploadPage() {
   const [uploading, setUploading] = useState(false);
   const [uploaded, setUploaded] = useState(false);

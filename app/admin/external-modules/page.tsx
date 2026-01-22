@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import Image from 'next/image';
-export const dynamic = 'force-dynamic';
 
 import {
   ExternalLink,
@@ -15,8 +14,6 @@ import {
   XCircle,
   AlertCircle,
 } from 'lucide-react';
-
-
 
 export default function ExternalModulesPage() {
   const supabase = createClient();

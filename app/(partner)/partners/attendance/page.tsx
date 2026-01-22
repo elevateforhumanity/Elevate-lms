@@ -4,8 +4,6 @@ import React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
-export const dynamic = 'force-dynamic';
-
 function startOfWeek(d: Date) {
   const date = new Date(d);
   const day = date.getDay(); // 0 Sun .. 6 Sat
@@ -14,8 +12,6 @@ function startOfWeek(d: Date) {
   date.setHours(0, 0, 0, 0);
   return date.toISOString().slice(0, 10);
 }
-
-
 
 export default function PartnerAttendancePage() {
   const supabase = createClient();

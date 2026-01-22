@@ -14,8 +14,6 @@ import {
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
-export const dynamic = 'force-dynamic';
-
 interface Document {
   id: string;
   user_id: string;
@@ -38,8 +36,6 @@ interface Document {
     name: string;
   };
 }
-
-
 
 export default function AdminProgramHolderDocuments() {
   const [documents, setDocuments] = useState<Document[]>([]);

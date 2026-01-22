@@ -4,8 +4,6 @@
 
 import React from 'react';
 
-export const dynamic = 'force-dynamic';
-
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FileText, Download, Calendar, Users, Clock } from 'lucide-react';
@@ -19,8 +17,6 @@ type Report = {
   status: string;
   created_at: string;
 };
-
-
 
 export default function ShopReportsPage() {
   const [reports, setReports] = useState<Report[]>([]);

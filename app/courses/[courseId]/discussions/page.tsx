@@ -4,15 +4,11 @@
 
 import React from 'react';
 
-export const dynamic = 'force-dynamic';
-
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-
-
 
 export default function CourseDiscussionsPage() {
   const params = useParams();

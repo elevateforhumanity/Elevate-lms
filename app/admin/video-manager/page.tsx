@@ -6,10 +6,6 @@ import { useState } from 'react';
 import VideoUploader from '@/components/admin/VideoUploader';
 import { Check, Copy, FileText, Sparkles, Video } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
-
-
-
 export default function VideoManagerPage() {
   const [uploadedVideos, setUploadedVideos] = useState<string[]>([]);
   const [copiedUrl, setCopiedUrl] = useState<string | null>(null);

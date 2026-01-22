@@ -8,10 +8,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Plug, CheckCircle, XCircle, RefreshCw, Settings } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
-
-
-
 export default function IntegrationsPage() {
   const supabase = createClient();
   const [integrations, setIntegrations] = useState<any[]>([]);

@@ -16,10 +16,6 @@ import {
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-export const dynamic = 'force-dynamic';
-
-
-
 export default function StoreBuilderPage() {
   const router = useRouter();
   const [product, setProduct] = useState({

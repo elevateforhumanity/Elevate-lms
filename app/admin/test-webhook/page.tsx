@@ -5,10 +5,6 @@ import React from 'react';
 import { useState } from 'react';
 import { CheckCircle, XCircle } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
-
-
-
 export default function TestWebhookPage() {
   const [studentId, setStudentId] = useState('');
   const [programId, setProgramId] = useState(

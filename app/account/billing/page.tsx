@@ -14,8 +14,6 @@ import {
 } from 'lucide-react';
 import { PLANS, LicenseStatus, PlanId } from '@/lib/license/types';
 
-export const dynamic = 'force-dynamic';
-
 interface LicenseData {
   status: LicenseStatus;
   planId: PlanId;

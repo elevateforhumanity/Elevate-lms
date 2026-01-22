@@ -8,10 +8,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Users, Award, BookOpen, TrendingUp, Star } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
-
-
-
 export default function InstructorsPage() {
   const supabase = createClient();
   const [instructors, setInstructors] = useState<any[]>([]);

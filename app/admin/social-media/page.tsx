@@ -8,8 +8,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-export const dynamic = 'force-dynamic';
-
 import {
   Plus,
   Calendar,
@@ -37,8 +35,6 @@ interface Campaign {
   lastPost: string | null;
   nextPost: string | null;
 }
-
-
 
 export default function SocialMediaPage() {
   const router = useRouter();

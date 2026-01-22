@@ -5,8 +5,6 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
-export const dynamic = 'force-dynamic';
-
 const TYPES = [
   'mou',
   'w9',
@@ -16,8 +14,6 @@ const TYPES = [
   'payroll',
   'other',
 ] as const;
-
-
 
 export default function PartnerDocumentsPage() {
   const supabase = createClient();

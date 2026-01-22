@@ -6,8 +6,6 @@ import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import { ArrowLeft, Plus, MessageSquare, ThumbsUp, Clock, User, AlertCircle } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
-
 interface Thread {
   id: string;
   title: string;
@@ -18,8 +16,6 @@ interface Thread {
   likes: number;
   pinned: boolean;
 }
-
-
 
 export default function ProgramDiscussionsPage() {
   const params = useParams();

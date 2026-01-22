@@ -5,7 +5,6 @@ import { createClient } from '@/lib/supabase/client';
 import { useParams, useRouter } from 'next/navigation';
 import {
 
-export const dynamic = 'force-dynamic';
   BookOpen,
   Key,
   CheckCircle,
@@ -24,8 +23,6 @@ interface Program {
   total_cost: number | null;
   funding_eligible: boolean;
 }
-
-
 
 export default function EnrollPage() {
   const params = useParams();

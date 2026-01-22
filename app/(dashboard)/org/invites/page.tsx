@@ -7,8 +7,6 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
-export const dynamic = 'force-dynamic';
-
 interface Invite {
   id: string;
   email: string;
@@ -19,8 +17,6 @@ interface Invite {
   acceptedAt?: string;
   inviterName?: string;
 }
-
-
 
 export default function OrgInvitesPage() {
   const [invites, setInvites] = useState<Invite[]>([]);

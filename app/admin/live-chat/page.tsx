@@ -7,8 +7,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-export const dynamic = 'force-dynamic';
-
 import {
   MessageCircle,
   Users,
@@ -17,8 +15,6 @@ import {
   TrendingUp,
   ExternalLink,
 } from 'lucide-react';
-
-
 
 export default function LiveChatPage() {
   const router = useRouter();

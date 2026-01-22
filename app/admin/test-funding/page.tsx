@@ -4,10 +4,6 @@ import React from 'react';
 
 import { useState } from 'react';
 
-export const dynamic = 'force-dynamic';
-
-
-
 export default function TestFundingPage() {
   const [studentId, setStudentId] = useState('');
   const [programId, setProgramId] = useState('');

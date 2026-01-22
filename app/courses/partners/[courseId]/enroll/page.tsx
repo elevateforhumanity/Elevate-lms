@@ -8,7 +8,6 @@ import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import {
 
-export const dynamic = 'force-dynamic';
   AlertTriangle,
   BookOpen,
   CheckCircle,
@@ -30,8 +29,6 @@ interface PartnerCourse {
     provider_type: string;
   };
 }
-
-
 
 export default function EnrollPage({
   params,

@@ -7,8 +7,6 @@ import { useState } from 'react';
 import { Upload, FileText, CheckCircle, AlertCircle, X } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
-export const dynamic = 'force-dynamic';
-
 interface UploadedFile {
   name: string;
   size: number;
@@ -17,8 +15,6 @@ interface UploadedFile {
   url?: string;
   error?: string;
 }
-
-
 
 export default function UploadDocumentsPage() {
   const [files, setFiles] = useState<UploadedFile[]>([]);
