@@ -368,8 +368,8 @@ async function logResults(results: PostResult[], timeSlot: string) {
   console.log('Social Media Post Results:', JSON.stringify(results, null, 2));
 }
 
-// Main handler
-const handler = async () => {
+// Schedule: 9 AM, 1 PM, 5 PM EST (14:00, 18:00, 22:00 UTC)
+export const handler = schedule('0 14,18,22 * * *', async () => {
   console.log('🚀 Social Media Automation Started');
   
   // Determine time slot based on current hour (EST)
@@ -453,10 +453,4 @@ const handler = async () => {
       results,
     }),
   };
-};
-
-// Schedule: 9 AM, 1 PM, 5 PM EST (14:00, 18:00, 22:00 UTC)
-export const scheduledHandler = schedule('0 14,18,22 * * *', handler);
-
-// Also export for manual triggering
-export { handler };
+});
