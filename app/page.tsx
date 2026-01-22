@@ -105,7 +105,7 @@ const programs = [
     duration: '8-12 Weeks',
     items: ['CNA Certification', 'Medical Assistant', 'Phlebotomy'],
     href: '/programs/healthcare',
-    image: '/images/healthcare/program-cna-training.jpg',
+    image: '/images/healthcare/hero-program-medical-assistant.jpg',
     alt: 'Healthcare Training',
   },
   {
