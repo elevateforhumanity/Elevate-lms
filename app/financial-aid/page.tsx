@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { DollarSign, CheckCircle, FileText, Phone, ArrowRight, Shield, Clock, Users } from 'lucide-react';
+import { DollarSign, CheckCircle, FileText, Phone, ArrowRight, Shield, Clock, Users, Calculator } from 'lucide-react';
+import { FinancialAidCalculator } from '@/components/FinancialAidCalculator';
 
 export const metadata: Metadata = {
   title: 'Financial Aid & Funding | Elevate For Humanity',
@@ -174,6 +175,23 @@ export default function FinancialAidPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Financial Aid Calculator */}
+      <section className="py-16 lg:py-24 bg-white border-t">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              <Calculator className="w-4 h-4" />
+              Estimate Your Costs
+            </div>
+            <h2 className="text-3xl font-bold mb-4">Financial Aid Calculator</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Get an estimate of your potential financial aid package based on your income and program costs.
+            </p>
+          </div>
+          <FinancialAidCalculator />
         </div>
       </section>
 
