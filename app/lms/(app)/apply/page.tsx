@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { FileText, Upload, CheckCircle, AlertCircle } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 interface UserProfile {
   id: string;
   email: string;

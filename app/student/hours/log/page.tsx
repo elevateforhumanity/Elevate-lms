@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft, Clock, Save, AlertCircle, CheckCircle } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
+export const dynamic = 'force-dynamic';
+
 export default function LogHoursPage() {
   const router = useRouter();
   const supabase = createClient();

@@ -16,6 +16,8 @@ import {
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
+export const dynamic = 'force-dynamic';
+
 export default function DataSettingsPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);

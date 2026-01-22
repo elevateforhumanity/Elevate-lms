@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 import { CheckCircle, Clock, XCircle, FileText, ArrowRight } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 interface Application {
   id: string;
   status: string;

@@ -12,6 +12,8 @@ import {
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
+export const dynamic = 'force-dynamic';
+
 const REQUEST_TYPES = [
   { value: 'student_access', label: 'Student Access Request', description: 'Student requesting their own records' },
   { value: 'parent_access', label: 'Parent/Guardian Access', description: 'Parent or guardian requesting student records' },

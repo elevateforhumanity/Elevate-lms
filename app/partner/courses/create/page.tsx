@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { BookOpen, Upload, CheckCircle, AlertCircle } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 interface License {
   license_key: string;
   license_type: string;

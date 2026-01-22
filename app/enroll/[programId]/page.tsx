@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useParams, useRouter } from 'next/navigation';
 import {
+
+export const dynamic = 'force-dynamic';
   BookOpen,
   Key,
   CheckCircle,

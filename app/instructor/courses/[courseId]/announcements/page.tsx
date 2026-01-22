@@ -6,6 +6,8 @@ import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import { ArrowLeft, Plus, Send, Trash2, Bell, Users } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 interface Announcement {
   id: string;
   title: string;

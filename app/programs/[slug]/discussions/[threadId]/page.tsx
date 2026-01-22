@@ -7,6 +7,8 @@ import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import { ArrowLeft, Send, ThumbsUp, User, Clock, MessageSquare } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 interface Reply {
   id: string;
   content: string;

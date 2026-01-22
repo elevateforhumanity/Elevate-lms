@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import {
+
+export const dynamic = 'force-dynamic';
   AlertTriangle,
   BookOpen,
   CheckCircle,

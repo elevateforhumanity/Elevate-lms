@@ -7,6 +7,8 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
+export const dynamic = 'force-dynamic';
+
 interface Invite {
   id: string;
   email: string;

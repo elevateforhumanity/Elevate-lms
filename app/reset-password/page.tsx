@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { createClient } from '@/lib/supabase/client';
 import { Mail, ArrowLeft, CheckCircle, AlertCircle } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 
 
 export default function ResetPasswordPage() {
