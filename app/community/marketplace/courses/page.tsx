@@ -10,6 +10,7 @@ import {
   Filter,
   Play,
 } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = {
   title: 'Community Courses | Elevate for Humanity',
@@ -20,81 +21,41 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CommunityCoursesPage() {
-  const courses = [
-    {
-      id: '1',
-      title: 'HVAC Fundamentals Study Guide',
-      instructor: 'Marcus Johnson',
-      rating: 4.8,
-      reviews: 124,
-      students: 456,
-      duration: '4 hours',
-      price: 'Free',
-      image: '/images/trades/program-hvac-training.jpg',
-      category: 'Skilled Trades',
-    },
-    {
-      id: '2',
-      title: 'Medical Terminology Made Easy',
-      instructor: 'Dr. Sarah Chen',
-      rating: 4.9,
-      reviews: 89,
-      students: 312,
-      duration: '6 hours',
-      price: '$29',
-      image: '/images/healthcare/healthcare-professional-portrait-1.jpg',
-      category: 'Healthcare',
-    },
-    {
-      id: '3',
-      title: 'Barber State Board Exam Prep',
-      instructor: 'James Williams',
-      rating: 4.7,
-      reviews: 67,
-      students: 234,
-      duration: '8 hours',
-      price: '$49',
-      image: '/images/programs/barber-hero.jpg',
-      category: 'Beauty',
-    },
-    {
-      id: '4',
-      title: 'Resume Writing Workshop',
-      instructor: 'Career Services Team',
-      rating: 4.6,
-      reviews: 156,
-      students: 789,
-      duration: '2 hours',
-      price: 'Free',
-      image: '/images/hero/hero-career-services.jpg',
-      category: 'Career Development',
-    },
-    {
-      id: '5',
-      title: 'Interview Skills Masterclass',
-      instructor: 'Angela Roberts',
-      rating: 4.8,
-      reviews: 98,
-      students: 445,
-      duration: '3 hours',
-      price: 'Free',
-      image: '/images/business/professional-1.jpg',
-      category: 'Career Development',
-    },
-    {
-      id: '6',
-      title: 'Electrical Safety Certification Prep',
-      instructor: 'Mike Thompson',
-      rating: 4.5,
-      reviews: 45,
-      students: 178,
-      duration: '5 hours',
-      price: '$39',
-      image: '/images/trades/program-electrical-training.jpg',
-      category: 'Skilled Trades',
-    },
-  ];
+export const dynamic = 'force-dynamic';
+
+export default async function CommunityCoursesPage() {
+  const supabase = await createClient();
+  
+  let courses: any[] = [];
+  
+  if (supabase) {
+    const { data } = await supabase
+      .from('courses')
+      .select('id, title, description, thumbnail_url, duration_hours, price, category, instructor_id, profiles:instructor_id(full_name)')
+      .eq('is_published', true)
+      .order('created_at', { ascending: false })
+      .limit(12);
+    
+    if (data && data.length > 0) {
+      courses = data.map((course: any) => ({
+        id: course.id,
+        title: course.title,
+        instructor: course.profiles?.full_name || 'Elevate Team',
+        rating: 4.5,
+        reviews: 0,
+        students: 0,
+        duration: course.duration_hours ? `${course.duration_hours} hours` : 'Self-paced',
+        price: course.price ? `$${course.price}` : 'Free',
+        image: course.thumbnail_url || '/images/courses/default-course.jpg',
+        category: course.category || 'General',
+      }));
+    }
+  }
+  
+  // Show empty state if no courses
+  if (courses.length === 0) {
+    courses = []; // Empty array - will show "No courses available" message
+  }
 
   const categories = [
     'All Courses',
@@ -162,6 +123,16 @@ export default function CommunityCoursesPage() {
 
         {/* Course Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {courses.length === 0 ? (
+            <div className="col-span-full text-center py-12">
+              <BookOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">No Courses Available Yet</h3>
+              <p className="text-gray-500 mb-6">Community courses will appear here as they are published.</p>
+              <Link href="/programs" className="text-blue-600 font-medium hover:underline">
+                Browse Official Programs →
+              </Link>
+            </div>
+          ) : null}
           {courses.map((course) => (
             <Link
               key={course.id}
