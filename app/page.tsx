@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import VoiceoverWithMusic from '@/components/VoiceoverWithMusic';
+
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import { useEffect, useState, useRef } from 'react';
@@ -216,8 +216,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Professional voiceover - starts immediately after page loads */}
-      <VoiceoverWithMusic audioSrc="/audio/welcome-voiceover.mp3" delay={100} />
+
 
       {/* Hero Section - Optimized for all screen sizes: mobile, tablet, laptop, desktop */}
       <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-800">
