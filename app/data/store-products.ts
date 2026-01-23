@@ -130,6 +130,15 @@ export const PLATFORM_APPS: PlatformApp[] = [
     enabledByDefault: false,
     icon: '🤖',
   },
+  {
+    id: 'community-hub',
+    key: 'community-hub',
+    name: 'Community Hub',
+    description:
+      'Full community platform with discussions, groups, leaderboards, events, and member networking.',
+    enabledByDefault: false,
+    icon: '👥',
+  },
 ];
 
 // Store Products (What We Sell)
@@ -295,6 +304,37 @@ export const STORE_PRODUCTS: StoreProduct[] = [
 
 // Community Edition Add-Ons (Monthly subscriptions for license holders)
 export const COMMUNITY_ADDONS: StoreProduct[] = [
+  {
+    id: 'community-hub',
+    slug: 'community-hub',
+    name: 'Community Hub Add-On',
+    description: 'Complete community platform with discussions, groups, leaderboards, and events.',
+    longDescription:
+      'Add a full-featured community hub to your platform. Includes discussion forums, member groups, leaderboards, gamification, events calendar, member directory, and real-time activity feeds. Build engagement and retention with social learning features.',
+    price: 2499,
+    billingType: 'one_time',
+    licenseType: 'single',
+    appsIncluded: ['community-hub'],
+    features: [
+      'Discussion forums with categories',
+      'Member groups and networking',
+      'Leaderboards and gamification',
+      'Points, badges, and achievements',
+      'Events calendar and RSVPs',
+      'Member directory and profiles',
+      'Real-time activity feed',
+      'Classroom integration',
+      'Mobile-responsive design',
+      'Moderation tools',
+    ],
+    idealFor: [
+      'Training providers wanting student engagement',
+      'Membership communities',
+      'Alumni networks',
+      'Professional associations',
+    ],
+    requiresApproval: false,
+  },
   {
     id: 'community-basic',
     slug: 'community-basic',

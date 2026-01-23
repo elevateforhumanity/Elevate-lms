@@ -51,10 +51,36 @@ export default function LicenseAgreementPage() {
               <li><strong>Subscription-based</strong> – Valid for the paid subscription period</li>
               <li><strong>Tier-limited</strong> – Subject to the limits of your subscription tier (users, programs, etc.)</li>
               <li><strong>Organization-specific</strong> – For use by your organization only</li>
-              <li><strong>Non-transferable</strong> – Cannot be sold, assigned, or transferred</li>
+              <li><strong>Commercial use permitted</strong> – You may charge fees for courses, training, and services you deliver through the platform</li>
+              <li><strong>Non-transferable</strong> – The license itself cannot be sold, assigned, or transferred to another organization</li>
             </ul>
 
-            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">3. Your Responsibilities</h2>
+            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">3. Commercial Use Rights</h2>
+            <p className="text-gray-700 mb-4">
+              <strong>You CAN:</strong>
+            </p>
+            <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+              <li>Charge students tuition or enrollment fees for courses delivered through the platform</li>
+              <li>Offer paid training programs, certifications, and workforce development services</li>
+              <li>Generate revenue from your educational and training operations</li>
+              <li>Build a business using the platform as your technology infrastructure</li>
+              <li>Set your own pricing for your services</li>
+            </ul>
+            <p className="text-gray-700 mb-4">
+              <strong>You CANNOT:</strong>
+            </p>
+            <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+              <li>Resell, sublicense, or redistribute the platform software itself</li>
+              <li>Claim ownership of the platform or its technology</li>
+              <li>Sell access to the platform as if it were your own product</li>
+              <li>White-label or rebrand the platform as your own software</li>
+              <li>Transfer your license to another organization</li>
+            </ul>
+            <p className="text-gray-700 mb-4">
+              <strong>In plain terms:</strong> You can make money using the platform to deliver services. You cannot make money selling the platform itself.
+            </p>
+
+            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">4. Your Responsibilities</h2>
             <p className="text-gray-700 mb-4">
               As a licensee, YOU are responsible for:
             </p>
@@ -68,7 +94,7 @@ export default function LicenseAgreementPage() {
               <li><strong>Outcomes</strong> – Your results depend on how you implement and use the platform</li>
             </ul>
 
-            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">4. What We Provide</h2>
+            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">5. What We Provide</h2>
             <p className="text-gray-700 mb-4">
               We provide:
             </p>
@@ -89,7 +115,7 @@ export default function LicenseAgreementPage() {
               <li>Guaranteed outcomes or results</li>
             </ul>
 
-            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">5. No Partnership</h2>
+            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">6. No Partnership</h2>
             <p className="text-gray-700 mb-4">
               This Agreement explicitly does NOT create:
             </p>
@@ -104,7 +130,7 @@ export default function LicenseAgreementPage() {
               You may not represent yourself as a partner, affiliate, or representative of Elevate For Humanity. You may state that you use or are licensed to use the platform.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">6. Intellectual Property</h2>
+            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">7. Intellectual Property</h2>
             <p className="text-gray-700 mb-4">
               <strong>Our IP:</strong> We retain all ownership of the platform, software, code, design, and all intellectual property. Your license grants usage rights only, not ownership.
             </p>
@@ -112,7 +138,7 @@ export default function LicenseAgreementPage() {
               <strong>Your IP:</strong> You retain ownership of content you create and upload. You grant us a license to host and display that content as necessary to provide the service.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">7. Fees and Payment</h2>
+            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">8. Fees and Payment</h2>
             <p className="text-gray-700 mb-4">
               License fees are due according to your subscription terms (monthly or annual). Failure to pay may result in suspension or termination of your license.
             </p>
@@ -120,7 +146,7 @@ export default function LicenseAgreementPage() {
               Fees are non-refundable except as required by law or as specified in our refund policy.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">8. Term and Termination</h2>
+            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">9. Term and Termination</h2>
             <p className="text-gray-700 mb-4">
               This Agreement continues for the duration of your paid subscription. Either party may terminate:
             </p>
@@ -133,7 +159,7 @@ export default function LicenseAgreementPage() {
               Upon termination, your access ends immediately. You should export your data before termination. We may delete your data after 30 days.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">9. Limitation of Liability</h2>
+            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">10. Limitation of Liability</h2>
             <p className="text-gray-700 mb-4">
               TO THE MAXIMUM EXTENT PERMITTED BY LAW:
             </p>
@@ -143,7 +169,7 @@ export default function LicenseAgreementPage() {
               <li>We are not responsible for your outcomes, compliance, or operational results</li>
             </ul>
 
-            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">10. Governing Law</h2>
+            <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">11. Governing Law</h2>
             <p className="text-gray-700 mb-4">
               This Agreement is governed by the laws of the State of Indiana, United States. Any disputes shall be resolved in the courts of Marion County, Indiana.
             </p>

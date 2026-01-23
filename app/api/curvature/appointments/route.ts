@@ -1,0 +1,119 @@
+export const runtime = 'nodejs';
+
+import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
+
+export async function POST(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const body = await request.json();
+
+    const {
+      service_id,
+      first_name,
+      last_name,
+      email,
+      phone,
+      appointment_date,
+      appointment_time,
+      notes,
+    } = body;
+
+    // Validate required fields
+    if (!service_id || !first_name || !last_name || !email || !phone || !appointment_date || !appointment_time) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    // Get current user if logged in
+    const { data: { user } } = await supabase.auth.getUser();
+
+    // Create appointment
+    const { data: appointment, error } = await supabase
+      .from('curvature_appointments')
+      .insert({
+        user_id: user?.id || null,
+        service_id,
+        first_name,
+        last_name,
+        email,
+        phone,
+        appointment_date,
+        appointment_time,
+        notes: notes || null,
+        status: 'pending',
+      })
+      .select(`
+        *,
+        service:curvature_services(name, duration_minutes, price)
+      `)
+      .single();
+
+    if (error) {
+      console.error('Appointment creation error:', error);
+      return NextResponse.json(
+        { error: 'Failed to create appointment' },
+        { status: 500 }
+      );
+    }
+
+    // TODO: Send confirmation email
+    // await sendAppointmentConfirmation(appointment);
+
+    return NextResponse.json({
+      success: true,
+      appointment,
+      message: 'Appointment request submitted successfully',
+    });
+  } catch (error) {
+    console.error('Appointment error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const { searchParams } = new URL(request.url);
+    const date = searchParams.get('date');
+
+    // Get services
+    const { data: services, error: servicesError } = await supabase
+      .from('curvature_services')
+      .select('*')
+      .eq('is_active', true)
+      .order('price', { ascending: true });
+
+    if (servicesError) {
+      return NextResponse.json({ error: 'Failed to fetch services' }, { status: 500 });
+    }
+
+    // If date provided, get booked times for that date
+    let bookedTimes: string[] = [];
+    if (date) {
+      const { data: appointments } = await supabase
+        .from('curvature_appointments')
+        .select('appointment_time')
+        .eq('appointment_date', date)
+        .in('status', ['pending', 'confirmed']);
+
+      bookedTimes = appointments?.map(a => a.appointment_time) || [];
+    }
+
+    return NextResponse.json({
+      services,
+      bookedTimes,
+    });
+  } catch (error) {
+    console.error('Services fetch error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}

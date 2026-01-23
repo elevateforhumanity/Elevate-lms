@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { BookOpen, Play, Clock, Users, Star, Lock, CheckCircle, ArrowRight } from 'lucide-react';
+import { BookOpen, Play, Clock, Users, Star, Lock, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Classroom | Community | Elevate For Humanity',
@@ -14,96 +14,44 @@ export const dynamic = 'force-dynamic';
 export default async function ClassroomPage() {
   const supabase = await createClient();
 
-  let courses: any[] = [];
+  // Fetch courses from database
+  const { data: courses, error } = await supabase
+    .from('courses')
+    .select('id, course_name, description, duration_hours, image_url, is_active, price')
+    .eq('is_active', true)
+    .order('created_at', { ascending: false })
+    .limit(12);
 
-  if (supabase) {
-    try {
-      const { data } = await supabase
-        .from('courses')
-        .select('id, course_name, description, duration_hours, is_active')
-        .eq('is_active', true)
-        .limit(6);
-      if (data) courses = data;
-    } catch (error) {
-      console.error('[Classroom] Error:', error);
+  if (error) {
+    console.error('Error fetching courses:', error.message);
+  }
+
+  // Get enrollment counts
+  const courseIds = courses?.map(c => c.id) || [];
+  let enrollmentCounts: Record<string, number> = {};
+
+  if (courseIds.length > 0) {
+    const { data: enrollments } = await supabase
+      .from('enrollments')
+      .select('course_id')
+      .in('course_id', courseIds);
+
+    if (enrollments) {
+      enrollments.forEach((e: any) => {
+        enrollmentCounts[e.course_id] = (enrollmentCounts[e.course_id] || 0) + 1;
+      });
     }
   }
 
-  const featuredCourses = [
-    {
-      title: 'Career Success Fundamentals',
-      description: 'Master the essential skills for career advancement',
-      image: '/images/community/event-5.jpg',
-      lessons: 12,
-      duration: '4 hours',
-      students: 1250,
-      rating: 4.8,
-      free: true,
-    },
-    {
-      title: 'Professional Communication',
-      description: 'Improve your workplace communication skills',
-      image: '/images/community/community-hero.jpg',
-      lessons: 8,
-      duration: '2.5 hours',
-      students: 890,
-      rating: 4.9,
-      free: true,
-    },
-    {
-      title: 'Interview Mastery',
-      description: 'Ace your next job interview with confidence',
-      image: '/images/community/event-1.jpg',
-      lessons: 10,
-      duration: '3 hours',
-      students: 2100,
-      rating: 4.7,
-      free: false,
-    },
-    {
-      title: 'Resume Building Workshop',
-      description: 'Create a resume that gets you noticed',
-      image: '/images/community/event-3.jpg',
-      lessons: 6,
-      duration: '1.5 hours',
-      students: 1800,
-      rating: 4.8,
-      free: true,
-    },
-    {
-      title: 'Networking Strategies',
-      description: 'Build meaningful professional connections',
-      image: '/images/community/event-4.jpg',
-      lessons: 8,
-      duration: '2 hours',
-      students: 750,
-      rating: 4.6,
-      free: false,
-    },
-    {
-      title: 'Time Management Essentials',
-      description: 'Boost your productivity and work-life balance',
-      image: '/images/community/event-2.jpg',
-      lessons: 7,
-      duration: '2 hours',
-      students: 1100,
-      rating: 4.7,
-      free: true,
-    },
-  ];
+  const courseList = courses || [];
+  const totalCourses = courseList.length;
+  const totalStudents = Object.values(enrollmentCounts).reduce((a, b) => a + b, 0);
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-green-800 to-emerald-900 text-white py-20">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/community/event-5.jpg"
-            alt="Online learning"
-            fill
-            className="object-cover opacity-20"
-          />
-        </div>
+        <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4">
@@ -140,15 +88,15 @@ export default async function ClassroomPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-3xl font-bold text-gray-900">50+</p>
+              <p className="text-3xl font-bold text-gray-900">{totalCourses}</p>
               <p className="text-gray-600">Courses</p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-gray-900">200+</p>
+              <p className="text-3xl font-bold text-gray-900">{totalCourses * 8}+</p>
               <p className="text-gray-600">Video Lessons</p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-gray-900">10K+</p>
+              <p className="text-3xl font-bold text-gray-900">{totalStudents || 0}</p>
               <p className="text-gray-600">Students</p>
             </div>
             <div>
@@ -164,72 +112,93 @@ export default async function ClassroomPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Featured Courses</h2>
-              <p className="text-gray-600">Start learning with our most popular courses</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Available Courses</h2>
+              <p className="text-gray-600">Start learning with our courses</p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredCourses.map((course, index) => (
-              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="relative h-48">
-                  <Image
-                    src={course.image}
-                    alt={course.title}
-                    fill
-                    className="object-cover"
-                  />
-                  {course.free ? (
-                    <span className="absolute top-4 left-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                      FREE
-                    </span>
-                  ) : (
-                    <span className="absolute top-4 left-4 bg-violet-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-                      <Lock className="w-3 h-3" /> PREMIUM
-                    </span>
-                  )}
-                  <button className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                      <Play className="w-8 h-8 text-green-600 ml-1" />
-                    </div>
-                  </button>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-gray-900 mb-2">{course.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{course.description}</p>
-                  
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                    <span className="flex items-center gap-1">
-                      <BookOpen className="w-4 h-4" />
-                      {course.lessons} lessons
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      {course.duration}
-                    </span>
-                  </div>
+          {courseList.length === 0 ? (
+            <div className="text-center py-16 bg-white rounded-2xl border">
+              <BookOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">No Courses Available</h3>
+              <p className="text-gray-600 mb-6">Check back soon for new courses!</p>
+              <Link
+                href="/community"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700"
+              >
+                Back to Community
+              </Link>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {courseList.map((course: any) => {
+                const studentCount = enrollmentCounts[course.id] || 0;
+                const isFree = !course.price || course.price === 0;
 
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="flex items-center gap-1">
-                        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                        <span className="font-medium text-gray-900">{course.rating}</span>
+                return (
+                  <div key={course.id} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
+                    <div className="relative h-48">
+                      {course.image_url ? (
+                        <Image
+                          src={course.image_url}
+                          alt={course.course_name}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
+                          <BookOpen className="w-16 h-16 text-white/50" />
+                        </div>
+                      )}
+                      {isFree ? (
+                        <span className="absolute top-4 left-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                          FREE
+                        </span>
+                      ) : (
+                        <span className="absolute top-4 left-4 bg-violet-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                          <Lock className="w-3 h-3" /> PREMIUM
+                        </span>
+                      )}
+                      <button className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity">
+                        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                          <Play className="w-8 h-8 text-green-600 ml-1" />
+                        </div>
+                      </button>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-bold text-gray-900 mb-2">{course.course_name}</h3>
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">{course.description}</p>
+
+                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-4 h-4" />
+                          {course.duration_hours || 2} hours
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Users className="w-4 h-4" />
+                          {studentCount} students
+                        </span>
                       </div>
-                      <span className="text-gray-400">•</span>
-                      <span className="text-gray-500 text-sm">{course.students.toLocaleString()} students</span>
+
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="flex items-center gap-1">
+                          <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                          <span className="font-medium text-gray-900">4.8</span>
+                        </div>
+                      </div>
+
+                      <Link
+                        href={`/courses/${course.id}`}
+                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
+                      >
+                        {isFree ? 'Start Learning' : 'View Course'}
+                      </Link>
                     </div>
                   </div>
-
-                  <Link
-                    href={`/community/classroom/${index + 1}`}
-                    className="mt-4 w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
-                  >
-                    {course.free ? 'Start Learning' : 'Unlock Course'}
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 

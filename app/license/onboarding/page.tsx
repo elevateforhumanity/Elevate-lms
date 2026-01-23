@@ -169,6 +169,8 @@ export default async function LicenseeOnboardingPage() {
 
             <LicenseeOnboardingForm 
               userId={user.id}
+              userEmail={user.email}
+              userName={user.user_metadata?.full_name || user.user_metadata?.name}
               organizationId={org?.id}
               requiredAgreements={requiredAgreements}
               acceptedAgreements={acceptedTypes}

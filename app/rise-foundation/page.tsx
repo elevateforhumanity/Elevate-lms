@@ -13,8 +13,11 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Rise Forward Foundation | Healing & Recovery Support',
-  description: 'Supporting individuals through trauma recovery, divorce support, addiction rehabilitation, and mental wellness programs.',
+  title: 'The Rise Foundation | A DBA of Selfish Inc. 501(c)(3) | Free VITA Tax Services & Mental Wellness',
+  description: 'The Rise Foundation, a DBA of Selfish Inc. 501(c)(3), provides free VITA tax preparation, mental wellness support, trauma recovery, and community services in Indiana.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/rise-foundation',
+  },
 };
 
 export const dynamic = 'force-dynamic';
@@ -110,14 +113,14 @@ export default async function RiseFoundationPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-white">
           <div className="flex items-center gap-2 mb-4">
             <Heart className="w-8 h-8 text-pink-400" />
-            <span className="text-pink-200 font-medium">Rise Forward Foundation</span>
+            <span className="text-pink-200 font-medium">The Rise Foundation — A DBA of Selfish Inc. 501(c)(3)</span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Healing Starts Here
+            Community Support Starts Here
           </h1>
           <p className="text-xl text-purple-100 max-w-2xl mb-8">
-            Supporting individuals and families through life's most challenging moments. 
-            Trauma recovery, divorce support, addiction rehabilitation, and mental wellness programs.
+            Free VITA tax preparation, mental wellness support, trauma recovery, and community education. 
+            Serving Indiana families with compassion and dignity.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link

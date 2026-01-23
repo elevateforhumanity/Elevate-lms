@@ -87,6 +87,18 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
         { name: 'Marketplace', href: '/marketplace' },
       ],
     },
+    {
+      name: 'Community',
+      href: '/community',
+      dropdown: [
+        { name: 'Community Hub', href: '/community' },
+        { name: 'Events', href: '/community/events' },
+        { name: 'Groups', href: '/community/groups' },
+        { name: 'Discussions', href: '/community/discussions' },
+        { name: 'Leaderboard', href: '/community/leaderboard' },
+        { name: 'Meri-Gold-Round Shop', href: '/curvature-body-sculpting/shop' },
+      ],
+    },
     // ABOUT (secondary)
     {
       name: 'About',
@@ -191,7 +203,8 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
                     className="fixed inset-0 z-10"
                     onClick={() => setIsUserMenuOpen(false)}
                   />
-                  <div className="absolute right-0 mt-2 w-56 bg-white border border-slate-200 rounded-xl shadow-xl py-2 z-20">
+                  <div className="absolute right-0 mt-2 w-64 bg-white border border-slate-200 rounded-xl shadow-xl py-2 z-20">
+                    <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase">Portals</div>
                     <Link
                       href="/student/dashboard"
                       className="block px-4 py-2.5 text-sm font-medium text-black hover:text-orange-600 hover:bg-orange-50 transition-colors"
@@ -200,11 +213,48 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
                       Student Portal
                     </Link>
                     <Link
-                      href="/employer/dashboard"
+                      href="/employer-portal"
                       className="block px-4 py-2.5 text-sm font-medium text-black hover:text-orange-600 hover:bg-orange-50 transition-colors"
                       onClick={() => setIsUserMenuOpen(false)}
                     >
                       Employer Portal
+                    </Link>
+                    <Link
+                      href="/partner/dashboard"
+                      className="block px-4 py-2.5 text-sm font-medium text-black hover:text-orange-600 hover:bg-orange-50 transition-colors"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      Partner Portal
+                    </Link>
+                    <Link
+                      href="/mentor/dashboard"
+                      className="block px-4 py-2.5 text-sm font-medium text-black hover:text-orange-600 hover:bg-orange-50 transition-colors"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      Mentor Portal
+                    </Link>
+                    <Link
+                      href="/shop/dashboard"
+                      className="block px-4 py-2.5 text-sm font-medium text-black hover:text-orange-600 hover:bg-orange-50 transition-colors"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      Shop Dashboard
+                    </Link>
+                    <div className="border-t border-slate-200 my-2" />
+                    <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase">Staff</div>
+                    <Link
+                      href="/admin"
+                      className="block px-4 py-2.5 text-sm font-medium text-black hover:text-orange-600 hover:bg-orange-50 transition-colors"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      Admin Dashboard
+                    </Link>
+                    <Link
+                      href="/staff-portal/dashboard"
+                      className="block px-4 py-2.5 text-sm font-medium text-black hover:text-orange-600 hover:bg-orange-50 transition-colors"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      Staff Portal
                     </Link>
                     <div className="border-t border-slate-200 my-2" />
                     <Link
@@ -321,7 +371,8 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
                 ))}
 
                 <div className="border-t border-slate-200 my-4" />
-
+                
+                <p className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase">Portals</p>
                 <Link
                   href="/student/dashboard"
                   className="block px-4 py-3 text-base font-semibold text-black hover:bg-orange-50 rounded-lg transition-all"
@@ -330,11 +381,49 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
                   Student Portal
                 </Link>
                 <Link
-                  href="/employer/dashboard"
+                  href="/employer-portal"
                   className="block px-4 py-3 text-base font-semibold text-black hover:bg-orange-50 rounded-lg transition-all"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Employer Portal
+                </Link>
+                <Link
+                  href="/partner/dashboard"
+                  className="block px-4 py-3 text-base font-semibold text-black hover:bg-orange-50 rounded-lg transition-all"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Partner Portal
+                </Link>
+                <Link
+                  href="/mentor/dashboard"
+                  className="block px-4 py-3 text-base font-semibold text-black hover:bg-orange-50 rounded-lg transition-all"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Mentor Portal
+                </Link>
+                <Link
+                  href="/shop/dashboard"
+                  className="block px-4 py-3 text-base font-semibold text-black hover:bg-orange-50 rounded-lg transition-all"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Shop Dashboard
+                </Link>
+                
+                <div className="border-t border-slate-200 my-4" />
+                <p className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase">Staff</p>
+                <Link
+                  href="/admin"
+                  className="block px-4 py-3 text-base font-semibold text-black hover:bg-orange-50 rounded-lg transition-all"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Admin Dashboard
+                </Link>
+                <Link
+                  href="/staff-portal/dashboard"
+                  className="block px-4 py-3 text-base font-semibold text-black hover:bg-orange-50 rounded-lg transition-all"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Staff Portal
                 </Link>
                 <Link
                   href="/login"

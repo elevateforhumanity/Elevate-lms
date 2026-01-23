@@ -2,7 +2,8 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, Clock, MapPin, Users, Video, ArrowRight, Filter } from 'lucide-react';
+import { Calendar, Clock, MapPin, Users, Video, ArrowRight, Plus } from 'lucide-react';
+import RSVPButton from './RSVPButton';
 
 export const metadata: Metadata = {
   title: 'Events | Community | Elevate For Humanity',
@@ -12,207 +13,260 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function EventsPage() {
-  const upcomingEvents = [
-    {
-      title: 'Career Development Workshop',
-      description: 'Learn strategies for advancing your career in healthcare, skilled trades, and more.',
-      date: 'Every Wednesday',
-      time: '6:00 PM EST',
-      type: 'Workshop',
-      image: '/images/community/event-1.jpg',
-      attendees: 45,
-      isLive: false,
-    },
-    {
-      title: 'Monthly Networking Mixer',
-      description: 'Connect with fellow members, mentors, and industry professionals in a casual setting.',
-      date: 'First Friday of Month',
-      time: '7:00 PM EST',
-      type: 'Networking',
-      image: '/images/community/community-hero.jpg',
-      attendees: 120,
-      isLive: false,
-    },
-    {
-      title: 'Resume Review Session',
-      description: 'Get personalized feedback on your resume from career coaches and HR professionals.',
-      date: 'Every Tuesday',
-      time: '5:00 PM EST',
-      type: 'Workshop',
-      image: '/images/community/event-3.jpg',
-      attendees: 30,
-      isLive: false,
-    },
-    {
-      title: 'Industry Expert Q&A: Healthcare',
-      description: 'Ask questions and get advice from experienced healthcare professionals.',
-      date: 'Bi-Weekly Thursday',
-      time: '7:00 PM EST',
-      type: 'Q&A',
-      image: '/images/community/event-4.jpg',
-      attendees: 85,
-      isLive: false,
-    },
-    {
-      title: 'Job Search Strategies',
-      description: 'Learn effective techniques for finding and landing your dream job.',
-      date: 'Every Monday',
-      time: '6:30 PM EST',
-      type: 'Webinar',
-      image: '/images/community/event-2.jpg',
-      attendees: 60,
-      isLive: false,
-    },
-    {
-      title: 'Success Stories: Graduate Panel',
-      description: 'Hear from program graduates about their journey and career success.',
-      date: 'Last Saturday of Month',
-      time: '2:00 PM EST',
-      type: 'Panel',
-      image: '/images/community/event-5.jpg',
-      attendees: 150,
-      isLive: false,
-    },
-  ];
+  const supabase = await createClient();
 
-  const eventTypes = ['All Events', 'Workshops', 'Webinars', 'Networking', 'Q&A Sessions', 'Panels'];
+  // Fetch events from database
+  const { data: events, error } = await supabase
+    .from('community_events')
+    .select(`
+      id,
+      title,
+      description,
+      event_type,
+      start_date,
+      end_date,
+      location_type,
+      location_url,
+      location_address,
+      image_url,
+      max_attendees,
+      status,
+      is_featured,
+      organizer_id
+    `)
+    .in('status', ['upcoming', 'live'])
+    .eq('is_public', true)
+    .gte('start_date', new Date().toISOString())
+    .order('start_date', { ascending: true })
+    .limit(20);
+
+  if (error) {
+    console.error('Error fetching events:', error.message);
+  }
+
+  // Get RSVP counts for each event
+  const eventIds = events?.map(e => e.id) || [];
+  let rsvpCounts: Record<string, number> = {};
+  
+  if (eventIds.length > 0) {
+    const { data: rsvps } = await supabase
+      .from('community_event_rsvps')
+      .select('event_id')
+      .in('event_id', eventIds)
+      .eq('status', 'registered');
+    
+    if (rsvps) {
+      rsvps.forEach((r: any) => {
+        rsvpCounts[r.event_id] = (rsvpCounts[r.event_id] || 0) + 1;
+      });
+    }
+  }
+
+  // Get current user's RSVPs
+  const { data: { user } } = await supabase.auth.getUser();
+  let userRsvps: string[] = [];
+  
+  if (user && eventIds.length > 0) {
+    const { data: myRsvps } = await supabase
+      .from('community_event_rsvps')
+      .select('event_id')
+      .eq('user_id', user.id)
+      .in('event_id', eventIds)
+      .eq('status', 'registered');
+    
+    userRsvps = myRsvps?.map((r: any) => r.event_id) || [];
+  }
+
+  const eventList = events || [];
+
+  const eventTypeLabels: Record<string, string> = {
+    'workshop': 'Workshop',
+    'webinar': 'Webinar',
+    'networking': 'Networking',
+    'qa': 'Q&A Session',
+    'panel': 'Panel',
+    'meetup': 'Meetup',
+  };
+
+  const getEventTypeColor = (type: string) => {
+    switch (type) {
+      case 'workshop': return 'bg-blue-500';
+      case 'networking': return 'bg-green-500';
+      case 'qa': return 'bg-orange-500';
+      case 'webinar': return 'bg-purple-500';
+      case 'panel': return 'bg-pink-500';
+      case 'meetup': return 'bg-teal-500';
+      default: return 'bg-gray-500';
+    }
+  };
+
+  const formatEventDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { 
+      weekday: 'short', 
+      month: 'short', 
+      day: 'numeric',
+      year: 'numeric'
+    });
+  };
+
+  const formatEventTime = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return date.toLocaleTimeString('en-US', { 
+      hour: 'numeric', 
+      minute: '2-digit',
+      timeZoneName: 'short'
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-purple-700 to-indigo-800 text-white py-20">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/community/community-hero.jpg"
-            alt="Community events"
-            fill
-            className="object-cover opacity-20"
-          />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-br from-purple-700 to-indigo-800 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4">
               <Calendar className="w-6 h-6 text-purple-200" />
               <span className="text-purple-200 font-medium">Community Events</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-              Learn, Connect,<br />and Grow Together
+            <h1 className="text-4xl font-bold mb-4">
+              Learn, Connect, and Grow Together
             </h1>
-            <p className="text-xl text-purple-100 mb-8">
+            <p className="text-xl text-purple-100 mb-6">
               Join live workshops, webinars, networking events, and Q&A sessions with industry experts and fellow community members.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 href="#upcoming"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-purple-700 font-semibold rounded-full hover:bg-purple-50 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-purple-700 font-semibold rounded-lg hover:bg-purple-50 transition"
               >
                 View Upcoming Events
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link
-                href="/community"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white font-semibold rounded-full hover:bg-purple-500 transition-colors"
-              >
-                Back to Community
-              </Link>
+              {user && (
+                <Link
+                  href="/community/events/create"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-500 transition border border-purple-400"
+                >
+                  <Plus className="w-5 h-5" />
+                  Create Event
+                </Link>
+              )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Event Types Filter */}
-      <section className="py-8 bg-white border-b sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-3">
-            {eventTypes.map((type, index) => (
-              <button
-                key={index}
-                className={`px-5 py-2 rounded-full font-medium transition-colors ${
-                  index === 0
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {type}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Upcoming Events */}
-      <section id="upcoming" className="py-16">
+      <section id="upcoming" className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Upcoming Events</h2>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold text-gray-900">Upcoming Events</h2>
+            <span className="text-gray-500">{eventList.length} events</span>
+          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {upcomingEvents.map((event, index) => (
-              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="relative h-48">
-                  <Image
-                    src={event.image}
-                    alt={event.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <span className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold ${
-                    event.type === 'Workshop' ? 'bg-blue-500 text-white' :
-                    event.type === 'Networking' ? 'bg-green-500 text-white' :
-                    event.type === 'Q&A' ? 'bg-orange-500 text-white' :
-                    event.type === 'Webinar' ? 'bg-purple-500 text-white' :
-                    'bg-pink-500 text-white'
-                  }`}>
-                    {event.type}
-                  </span>
-                  {event.isLive && (
-                    <span className="absolute top-4 right-4 px-3 py-1 bg-red-500 text-white rounded-full text-xs font-bold flex items-center gap-1">
-                      <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                      LIVE NOW
-                    </span>
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-gray-900 mb-2">{event.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{event.description}</p>
-                  
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Calendar className="w-4 h-4" />
-                      {event.date}
+          {eventList.length === 0 ? (
+            <div className="text-center py-16 bg-white rounded-2xl border">
+              <Calendar className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">No Upcoming Events</h3>
+              <p className="text-gray-600 mb-6">Check back soon for new events!</p>
+              {user && (
+                <Link
+                  href="/community/events/create"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700"
+                >
+                  <Plus className="w-5 h-5" />
+                  Create the First Event
+                </Link>
+              )}
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {eventList.map((event: any) => {
+                const attendeeCount = rsvpCounts[event.id] || 0;
+                const isRegistered = userRsvps.includes(event.id);
+                const isLive = event.status === 'live';
+                
+                return (
+                  <div key={event.id} className="bg-white rounded-xl overflow-hidden shadow-sm border hover:shadow-lg transition">
+                    <div className="relative h-40">
+                      {event.image_url ? (
+                        <Image
+                          src={event.image_url}
+                          alt={event.title}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-indigo-500 flex items-center justify-center">
+                          <Calendar className="w-12 h-12 text-white/50" />
+                        </div>
+                      )}
+                      <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold text-white ${getEventTypeColor(event.event_type)}`}>
+                        {eventTypeLabels[event.event_type] || event.event_type}
+                      </span>
+                      {isLive && (
+                        <span className="absolute top-3 right-3 px-3 py-1 bg-red-500 text-white rounded-full text-xs font-bold flex items-center gap-1">
+                          <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                          LIVE
+                        </span>
+                      )}
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Clock className="w-4 h-4" />
-                      {event.time}
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Users className="w-4 h-4" />
-                      {event.attendees} attending
+                    <div className="p-5">
+                      <h3 className="font-bold text-gray-900 mb-2">{event.title}</h3>
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">{event.description}</p>
+                      
+                      <div className="space-y-2 mb-4 text-sm text-gray-500">
+                        <div className="flex items-center gap-2">
+                          <Calendar className="w-4 h-4" />
+                          {formatEventDate(event.start_date)}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Clock className="w-4 h-4" />
+                          {formatEventTime(event.start_date)}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          {event.location_type === 'online' ? (
+                            <Video className="w-4 h-4" />
+                          ) : (
+                            <MapPin className="w-4 h-4" />
+                          )}
+                          {event.location_type === 'online' ? 'Online Event' : event.location_address || 'In Person'}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Users className="w-4 h-4" />
+                          {attendeeCount} attending
+                          {event.max_attendees && ` / ${event.max_attendees} max`}
+                        </div>
+                      </div>
+
+                      <RSVPButton 
+                        eventId={event.id} 
+                        isRegistered={isRegistered}
+                        isLoggedIn={!!user}
+                        isFull={event.max_attendees ? attendeeCount >= event.max_attendees : false}
+                      />
                     </div>
                   </div>
-
-                  <button className="w-full px-4 py-2 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center gap-2">
-                    <Video className="w-4 h-4" />
-                    Register Now
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-purple-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Want to Host an Event?</h2>
-          <p className="text-purple-100 mb-8 max-w-2xl mx-auto">
+      <section className="py-12 bg-purple-600">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-2xl font-bold text-white mb-4">Want to Host an Event?</h2>
+          <p className="text-purple-100 mb-6">
             Share your expertise with the community by hosting a workshop, webinar, or Q&A session.
           </p>
           <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-purple-600 font-semibold rounded-full hover:bg-purple-50 transition-colors"
+            href={user ? "/community/events/create" : "/login?redirect=/community/events/create"}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-purple-600 font-semibold rounded-lg hover:bg-purple-50 transition"
           >
-            Contact Us
+            {user ? 'Create Event' : 'Sign In to Create Event'}
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

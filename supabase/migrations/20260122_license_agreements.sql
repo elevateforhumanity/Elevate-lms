@@ -23,6 +23,14 @@ CREATE TABLE IF NOT EXISTS license_agreement_acceptances (
   document_version TEXT NOT NULL,
   document_url TEXT, -- Link to the specific version
   
+  -- Digital signature fields
+  signer_name TEXT NOT NULL,              -- Full legal name
+  signer_title TEXT,                       -- Job title (for org representatives)
+  signer_email TEXT NOT NULL,              -- Email at time of signing
+  signature_data TEXT,                     -- Base64 encoded signature image (if drawn)
+  signature_typed TEXT,                    -- Typed signature (if typed)
+  signature_method TEXT DEFAULT 'checkbox', -- 'checkbox', 'typed', 'drawn'
+  
   -- Acceptance metadata
   accepted_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   ip_address INET,
@@ -31,6 +39,9 @@ CREATE TABLE IF NOT EXISTS license_agreement_acceptances (
   -- Context
   acceptance_context TEXT, -- 'checkout', 'first_login', 'upgrade', 'renewal'
   stripe_session_id TEXT, -- If accepted during checkout
+  
+  -- Legal acknowledgment
+  legal_acknowledgment BOOLEAN DEFAULT TRUE, -- Confirms they read and understood
   
   -- Ensure one acceptance per user per document version
   UNIQUE(user_id, agreement_type, document_version)

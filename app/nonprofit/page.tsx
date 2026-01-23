@@ -61,6 +61,18 @@ export default async function NonprofitPage() {
       icon: Heart,
     },
     {
+      title: 'Free Tax Services (VITA)',
+      description: 'Free IRS-certified tax preparation for individuals earning under $64,000.',
+      href: '/vita',
+      icon: Gift,
+    },
+    {
+      title: 'Free Job Training',
+      description: '100% free career training through WIOA. Healthcare, trades, technology.',
+      href: '/programs',
+      icon: BookOpen,
+    },
+    {
       title: 'Divorce Counseling',
       description: 'Supportive guidance through the challenges of divorce and separation.',
       href: '/nonprofit/divorce-counseling',
@@ -77,12 +89,6 @@ export default async function NonprofitPage() {
       description: 'Interactive workshops on mindfulness, healing, and personal growth.',
       href: '/nonprofit/workshops',
       icon: BookOpen,
-    },
-    {
-      title: 'Healing Products',
-      description: 'Curated products to support your wellness journey.',
-      href: '/nonprofit/healing-products',
-      icon: Gift,
     },
   ];
 

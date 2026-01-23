@@ -9,17 +9,33 @@
 
 ## Overview
 
-Elevate for Humanity is a multi-sided workforce marketplace platform connecting job seekers with free/funded training programs, training providers, employers, and workforce development boards.
+Elevate for Humanity is a vertically integrated workforce development ecosystem connecting community services, job training, and employment opportunities.
+
+### Ecosystem Entities
+
+| Entity | Type | Purpose |
+|--------|------|---------|
+| **Elevate for Humanity** | Training Provider | DOL-registered apprenticeship sponsor (RAPIDS: 2025-IN-132301), DWD approved (INTraining: 10004621) |
+| **Selfish Inc.** | 501(c)(3) Nonprofit | Mental wellness services and community support |
+| **The Rise Foundation** | DBA of Selfish Inc. | VITA site - free tax preparation and community education |
+| **Supersonic Fast Cash LLC** | Employer | Tax preparation services, hires tax prep graduates |
+| **Curvature Body Sculpting** | Employer | Body sculpting services + Meri-Go-Round wellness products, hires esthetician graduates |
+
+### Community Flywheel
+```
+VITA (Free Tax Services) → Selfish Inc. (Mental Wellness) → Elevate (Training) → Employment → Community
+```
 
 ### Platform Type
 **Workforce Development Marketplace** serving:
 - **Students** - Access to free/funded training (WIOA, WRG, JRI)
 - **Program Holders** - Training providers with 50/50 revenue share
-- **Employers** - Hiring trained graduates
+- **Employers** - Hiring trained graduates (Supersonic, Curvature, partners)
 - **Workforce Boards** - Compliance oversight and reporting
 - **Partners** - EmployIndy, JRI, Certiport, Milady, NRF
 - **Staff** - Operations and support
 - **Delegates** - Sub-office management
+- **Community** - VITA, mental wellness, education access
 
 ---
 
@@ -29,6 +45,10 @@ Elevate for Humanity is a multi-sided workforce marketplace platform connecting 
 1. **Government Funding (Primary)** - WIOA, WRG, JRI, EmployIndy contracts
 2. **Program Holder Revenue Share** - 50/50 split on funded participants
 3. **Stripe Payments (Secondary)** - Self-pay and employer-sponsored training
+4. **Platform Licensing** - $4,999 - $50,000 for other training providers
+5. **Supersonic Fast Cash** - Tax preparation and refund advance services
+6. **Curvature Body Sculpting** - Body sculpting services
+7. **Meri-Go-Round Products** - Wellness products (teas, butters, oils, soaps)
 
 ### Compliance Requirements
 - ✅ WIOA reporting (automated)
@@ -36,6 +56,28 @@ Elevate for Humanity is a multi-sided workforce marketplace platform connecting 
 - ✅ State workforce reporting
 - ✅ Attendance tracking
 - ✅ Outcome reporting
+
+### Employer Businesses
+
+**Supersonic Fast Cash LLC** (`/supersonic-fast-cash`)
+- Tax preparation services
+- Refund advance products
+- Hires graduates from Tax Preparation program
+- Multi-state operations (IN, IL, OH, TN, TX)
+
+**Curvature Body Sculpting** (`/curvature-body-sculpting`)
+- Body contouring and sculpting services
+- Meri-Go-Round wellness products (e-commerce)
+- Hires graduates from Esthetician/Beauty programs
+- Indianapolis, IN
+
+### Nonprofit Services
+
+**Selfish Inc. / The Rise Foundation** (`/nonprofit`, `/rise-foundation`, `/vita`)
+- VITA free tax preparation (income < $64,000)
+- Mental wellness counseling
+- Trauma recovery programs
+- Community education
 
 ---
 

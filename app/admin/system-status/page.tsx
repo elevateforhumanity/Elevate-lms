@@ -421,7 +421,7 @@ export default async function SystemStatusPage() {
           <div className="p-5 border-b border-gray-200">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="font-bold text-gray-900">Creator Platform Status (Skool-Level)</h2>
+                <h2 className="font-bold text-gray-900">Creator Platform Status</h2>
                 <p className="text-sm text-gray-500 mt-1">Community learning system capabilities</p>
               </div>
               <div className="flex items-center gap-2">

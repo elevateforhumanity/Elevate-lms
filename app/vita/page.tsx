@@ -874,6 +874,110 @@ export default async function VITAPage() {
         </div>
       </section>
 
+      {/* Community Services - Connected Support */}
+      <section className="py-20 bg-purple-900">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-black text-white mb-4">
+              More Than Just Taxes
+            </h2>
+            <p className="text-xl text-purple-200 max-w-2xl mx-auto">
+              VITA is your gateway to a full ecosystem of free community support services
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Mental Wellness - Selfish Inc. */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-purple-400/30">
+              <div className="w-14 h-14 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Heart className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Mental Wellness</h3>
+              <p className="text-purple-200 text-sm mb-4">
+                Free counseling and holistic healing through Selfish Inc.
+              </p>
+              <Link
+                href="/nonprofit/mental-wellness"
+                className="inline-flex items-center gap-2 text-purple-300 font-semibold hover:text-white transition text-sm"
+              >
+                Get Support <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Curvature Body Sculpting - Wellness Products */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-pink-400/30">
+              <div className="w-14 h-14 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Wellness Products</h3>
+              <p className="text-purple-200 text-sm mb-4">
+                Mental health wellness products from our partner Curvature Body Sculpting.
+              </p>
+              <Link
+                href="/curvature-body-sculpting/shop"
+                className="inline-flex items-center gap-2 text-pink-300 font-semibold hover:text-white transition text-sm"
+              >
+                Shop Wellness <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Free Education */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-blue-400/30">
+              <div className="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Free Job Training</h3>
+              <p className="text-purple-200 text-sm mb-4">
+                100% free career training through WIOA funding.
+              </p>
+              <Link
+                href="/programs"
+                className="inline-flex items-center gap-2 text-blue-300 font-semibold hover:text-white transition text-sm"
+              >
+                Explore Programs <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Financial Literacy */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-green-400/30">
+              <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <DollarSign className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Financial Education</h3>
+              <p className="text-purple-200 text-sm mb-4">
+                Budgeting, credit building, and financial planning.
+              </p>
+              <Link
+                href="/programs/tax-preparation"
+                className="inline-flex items-center gap-2 text-green-300 font-semibold hover:text-white transition text-sm"
+              >
+                Learn More <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-purple-300 mb-6">
+              All services are free or low-cost for qualifying community members
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/nonprofit"
+                className="inline-flex items-center gap-2 bg-white text-purple-900 px-6 py-3 rounded-lg font-bold hover:bg-purple-100 transition"
+              >
+                Visit Selfish Inc. <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                href="/curvature-body-sculpting"
+                className="inline-flex items-center gap-2 bg-pink-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-600 transition"
+              >
+                Curvature Wellness <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-20 bg-green-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
