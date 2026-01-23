@@ -18,7 +18,7 @@ const storeCategories = [
     id: 'licenses',
     name: 'Platform Licenses',
     description: 'Full workforce platform deployment with LMS, admin dashboard, enrollment, and compliance tools.',
-    image: '/images/store/platform-hero.jpg',
+    image: '/images/programs-hq/technology-hero.jpg',
     href: '/store/licenses',
     icon: Globe,
     color: 'bg-orange-600',
@@ -29,7 +29,7 @@ const storeCategories = [
     id: 'infrastructure',
     name: 'Monthly Infrastructure',
     description: 'Self-operating workforce infrastructure with automated intake, compliance, and credentialing.',
-    image: '/images/store/ai-studio.jpg',
+    image: '/images/programs-hq/it-support.jpg',
     href: '/store/licenses#monthly',
     icon: Zap,
     color: 'bg-blue-600',
@@ -40,7 +40,7 @@ const storeCategories = [
     id: 'certifications',
     name: 'Professional Certifications',
     description: 'Industry-recognized credentials from Certiport, HSI, and CareerSafe.',
-    image: '/images/healthcare-highlight.jpg',
+    image: '/images/programs-hq/healthcare-hero.jpg',
     href: '/store/courses',
     icon: GraduationCap,
     color: 'bg-green-600',
@@ -50,7 +50,7 @@ const storeCategories = [
     id: 'programs',
     name: 'Training Programs',
     description: 'Complete career training programs with hands-on instruction and job placement.',
-    image: '/images/barber-hero.jpg',
+    image: '/images/programs-hq/barber-hero.jpg',
     href: '/programs',
     icon: Users,
     color: 'bg-purple-600',
@@ -60,7 +60,7 @@ const storeCategories = [
     id: 'compliance',
     name: 'Compliance Tools',
     description: 'WIOA, FERPA, WCAG compliance checklists, templates, and reporting tools.',
-    image: '/images/store/crm-hub.jpg',
+    image: '/images/heroes-hq/funding-hero.jpg',
     href: '/store/compliance',
     icon: Shield,
     color: 'bg-teal-600',
@@ -70,7 +70,7 @@ const storeCategories = [
     id: 'ai-tools',
     name: 'AI & Automation',
     description: 'AI-powered tutoring, content creation, and automated workflows.',
-    image: '/images/store/ai-tutor.jpg',
+    image: '/images/programs-hq/cybersecurity.jpg',
     href: '/store/ai-studio',
     icon: Wrench,
     color: 'bg-violet-600',
@@ -80,7 +80,7 @@ const storeCategories = [
     id: 'apps',
     name: 'Apps & Integrations',
     description: 'SAM.gov registration, Grants.gov navigator, website builder, and more.',
-    image: '/images/store/community-hub.jpg',
+    image: '/images/team-hq/team-meeting.jpg',
     href: '/store/apps',
     icon: Building2,
     color: 'bg-sky-600',
@@ -90,7 +90,7 @@ const storeCategories = [
     id: 'developer',
     name: 'Developer Licenses',
     description: 'Full codebase access for self-hosting and custom deployments.',
-    image: '/images/store/ai-instructors.jpg',
+    image: '/images/programs-hq/technology-hero.jpg',
     href: '/store/licenses#developer',
     icon: Code,
     color: 'bg-slate-700',
@@ -100,7 +100,7 @@ const storeCategories = [
     id: 'digital',
     name: 'Digital Resources',
     description: 'Toolkits, guides, templates, and educational materials.',
-    image: '/images/tax-business-highlight.jpg',
+    image: '/images/programs-hq/tax-preparation.jpg',
     href: '/store/digital',
     icon: FileText,
     color: 'bg-indigo-600',
@@ -110,7 +110,7 @@ const storeCategories = [
     id: 'shop',
     name: 'Shop & Supplies',
     description: 'Tools, apparel, workbooks, and supplies for your training.',
-    image: '/images/hvac-highlight.jpg',
+    image: '/images/programs-hq/hvac-technician.jpg',
     href: '/shop',
     icon: ShoppingBag,
     color: 'bg-pink-600',
@@ -125,7 +125,7 @@ const featuredProducts = [
     name: 'School / Training Provider License',
     description: 'White-label platform with compliance tools, partner dashboard, and case management.',
     price: '$15,000',
-    image: '/images/store/platform-hero.jpg',
+    image: '/images/programs-hq/technology-hero.jpg',
     href: '/store/licenses/school-license',
     demoHref: '/demo/admin',
     badge: 'Most Popular',
@@ -135,7 +135,7 @@ const featuredProducts = [
     name: 'Barber Apprenticeship Program',
     description: '1,500-hour state-approved apprenticeship with master barber instruction.',
     price: 'Funded Available',
-    image: '/images/barber-professional.jpg',
+    image: '/images/programs-hq/barber-training.jpg',
     href: '/programs/barber-apprenticeship',
     demoHref: '/programs/barber-apprenticeship#curriculum',
     badge: 'WIOA Eligible',
@@ -145,7 +145,7 @@ const featuredProducts = [
     name: 'AI Tutor License',
     description: 'Personalized AI tutoring for learners with 24/7 support and progress tracking.',
     price: '$999',
-    image: '/images/store/ai-tutor.jpg',
+    image: '/images/programs-hq/it-support.jpg',
     href: '/store/ai-studio',
     demoHref: '/demo/learner',
     badge: 'New',
@@ -190,7 +190,7 @@ export default function StorePage() {
             <div className="relative">
               <div className="aspect-video bg-slate-800 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/store/platform-hero.jpg"
+                  src="/images/programs-hq/technology-hero.jpg"
                   alt="Elevate Platform"
                   fill
                   className="object-cover"
@@ -328,10 +328,10 @@ export default function StorePage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'Barber Apprenticeship', image: '/images/barber-hero.jpg', href: '/programs/barber-apprenticeship', duration: '12 months', funding: 'WIOA Eligible' },
-              { name: 'CNA Training', image: '/images/healthcare-highlight.jpg', href: '/programs/cna', duration: '6 weeks', funding: 'WIOA Eligible' },
-              { name: 'HVAC Certification', image: '/images/hvac-hero.jpg', href: '/programs/hvac', duration: '8 weeks', funding: 'WRG Available' },
-              { name: 'CDL Training', image: '/images/cdl-hero.jpg', href: '/programs/cdl', duration: '4 weeks', funding: 'WIOA Eligible' },
+              { name: 'Barber Apprenticeship', image: '/images/programs-hq/barber-hero.jpg', href: '/programs/barber-apprenticeship', duration: '12 months', funding: 'WIOA Eligible' },
+              { name: 'CNA Training', image: '/images/programs-hq/cna-training.jpg', href: '/programs/cna', duration: '6 weeks', funding: 'WIOA Eligible' },
+              { name: 'HVAC Certification', image: '/images/programs-hq/hvac-technician.jpg', href: '/programs/hvac', duration: '8 weeks', funding: 'WRG Available' },
+              { name: 'CDL Training', image: '/images/programs-hq/cdl-trucking.jpg', href: '/programs/cdl', duration: '4 weeks', funding: 'WIOA Eligible' },
             ].map((program) => (
               <Link key={program.name} href={program.href} className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition">
                 <div className="relative h-40">

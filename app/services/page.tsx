@@ -49,7 +49,7 @@ export default function ServicesPage() {
         'Professional tax preparation, refund advances, IRS representation, and maximum refund guarantee',
       href: '/tax-services',
       icon: DollarSign,
-      image: '/images/heroes/cash-bills.jpg',
+      image: '/images/heroes-hq/tax-refund-hero.jpg',
     },
     {
       title: 'VITA Tax Prep',
@@ -57,56 +57,56 @@ export default function ServicesPage() {
         'Free IRS-certified tax preparation for qualifying individuals',
       href: '/vita',
       icon: Heart,
-      image: '/images/heroes/cash-bills.jpg',
+      image: '/images/programs-hq/tax-preparation.jpg',
     },
     {
       title: 'Career Services',
       description: 'Resume building, interview prep, and job search support',
       href: '/career-services',
       icon: Briefcase,
-      image: '/images/og-default.jpg',
+      image: '/images/heroes-hq/career-services-hero.jpg',
     },
     {
       title: 'Career Center',
       description: 'Job boards, employer connections, and placement assistance',
       href: '/career-center',
       icon: TrendingUp,
-      image: '/images/business/collaboration-1.jpg',
+      image: '/images/heroes-hq/employer-hero.jpg',
     },
     {
       title: 'Career Fairs',
       description: 'Meet employers hiring our graduates at regular events',
       href: '/career-fair',
       icon: Users,
-      image: '/images/pathways/business-hero.jpg',
+      image: '/images/team-hq/team-meeting.jpg',
     },
     {
       title: 'Academic Advising',
       description: 'One-on-one guidance to help you succeed in your program',
       href: '/advising',
       icon: GraduationCap,
-      image: '/images/business/professional-1.jpg',
+      image: '/images/testimonials-hq/person-4.jpg',
     },
     {
       title: 'Mentorship Program',
       description: 'Connect with industry professionals for guidance',
       href: '/mentorship',
       icon: Lightbulb,
-      image: '/images/business/team-1.jpg',
+      image: '/images/team-hq/instructor-1.jpg',
     },
     {
       title: 'Support Services',
       description: 'Transportation, childcare, and barrier removal services',
       href: '/support',
       icon: Shield,
-      image: '/images/business/team-2.jpg',
+      image: '/images/heroes-hq/about-hero.jpg',
     },
     {
       title: 'Help Center',
       description: 'FAQs, guides, and support resources',
       href: '/help',
       icon: Phone,
-      image: '/images/business/team-3.jpg',
+      image: '/images/heroes-hq/contact-hero.jpg',
     },
   ];
 
@@ -131,7 +131,7 @@ export default function ServicesPage() {
 
       {/* Hero Banner - LEFT ALIGNED, ASYMMETRIC */}
       <section className="relative min-h-[70vh] w-full overflow-hidden bg-black">
-        <Image src="/images/pathways/business-hero.jpg" alt="Our Services" width={800} height={600} className="absolute inset-0 w-full h-full object-cover opacity-40" quality={85} loading="lazy" />
+        <Image src="/images/heroes-hq/homepage-hero.jpg" alt="Our Services" width={800} height={600} className="absolute inset-0 w-full h-full object-cover opacity-40" quality={85} loading="lazy" />
         <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
           <div className="max-w-2xl">
             {/* Administrative Header */}
