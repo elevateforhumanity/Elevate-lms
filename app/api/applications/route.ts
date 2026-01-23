@@ -29,19 +29,24 @@ export async function POST(req: Request) {
 
     const body = await req.json();
 
-    // Basic required fields
-    const required = [
+    // Basic required fields - core fields that all forms must have
+    const coreRequired = [
       'firstName',
       'lastName',
       'phone',
       'email',
-      'city',
-      'zip',
-      'program',
-      'preferredContact',
     ];
 
-    for (const field of required) {
+    // Program is required but can come from different field names
+    const program = body.program || body.programSlug;
+    if (!program) {
+      return NextResponse.json(
+        { error: 'Missing required field: program' },
+        { status: 400 }
+      );
+    }
+
+    for (const field of coreRequired) {
       if (!body[field] || String(body[field]).trim() === '') {
         return NextResponse.json(
           { error: `Missing required field: ${field}` },
@@ -58,14 +63,18 @@ export async function POST(req: Request) {
     // Build notes field with all the extra data
     const notes = [
       `Reference: ${referenceNumber}`,
-      `City: ${body.city}`,
-      `ZIP: ${body.zip}`,
-      `Program Interest: ${body.program}`,
-      `Preferred Contact: ${body.preferredContact}`,
+      body.city ? `City: ${body.city}` : '',
+      body.state ? `State: ${body.state}` : '',
+      body.zip ? `ZIP: ${body.zip}` : '',
+      `Program Interest: ${program}`,
+      body.preferredContact ? `Preferred Contact: ${body.preferredContact}` : '',
+      body.fundingType ? `Funding Type: ${body.fundingType}` : '',
+      body.source ? `Source: ${body.source}` : '',
+      body.hasHostShop ? `Has Host Shop: ${body.hasHostShop}` : '',
+      body.hostShopName ? `Host Shop Name: ${body.hostShopName}` : '',
+      body.howDidYouHear ? `How Did You Hear: ${body.howDidYouHear}` : '',
       body.hasCaseManager ? `Has Case Manager: ${body.hasCaseManager}` : '',
-      body.caseManagerAgency
-        ? `Case Manager Agency: ${body.caseManagerAgency}`
-        : '',
+      body.caseManagerAgency ? `Case Manager Agency: ${body.caseManagerAgency}` : '',
       body.supportNeeds ? `Support Needs: ${body.supportNeeds}` : '',
     ]
       .filter(Boolean)
@@ -79,7 +88,7 @@ export async function POST(req: Request) {
         last_name: body.lastName,
         phone: body.phone,
         email: body.email,
-        program_id: body.program, // TEXT field, stores slug/name
+        program_id: program, // TEXT field, stores slug/name
         notes: notes,
         status: 'pending',
       })
