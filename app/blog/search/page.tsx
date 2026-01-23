@@ -33,7 +33,7 @@ async function searchBlogPosts(query: string) {
     const { data: posts } = await supabase
       .from('blog_posts')
       .select('*')
-      .eq('published', true)
+      .eq('status', 'published')
       .or(
         `title.ilike.%${query}%,content.ilike.%${query}%,excerpt.ilike.%${query}%`
       )

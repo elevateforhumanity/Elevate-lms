@@ -39,7 +39,7 @@ async function getCategoryPosts(category: string) {
     const { data: posts } = await supabase
       .from('blog_posts')
       .select('*')
-      .eq('published', true)
+      .eq('status', 'published')
       .ilike('category', categoryName)
       .order('published_at', { ascending: false });
 
@@ -55,7 +55,7 @@ async function getAllCategories() {
     const { data: posts } = await supabase
       .from('blog_posts')
       .select('category')
-      .eq('published', true)
+      .eq('status', 'published')
       .not('category', 'is', null);
 
     const categories = [

@@ -28,7 +28,7 @@ export async function GET(request: Request) {
         .from('blog_posts')
         .select('*')
         .eq('slug', slug)
-        .eq('published', true)
+        .eq('status', 'published')
         .single();
 
       if (error || !post) {
@@ -45,7 +45,7 @@ export async function GET(request: Request) {
     let query = supabase
       .from('blog_posts')
       .select('*', { count: 'exact' })
-      .eq('published', true)
+      .eq('status', 'published')
       .order('created_at', { ascending: false })
       .range(offset, offset + limit - 1);
 

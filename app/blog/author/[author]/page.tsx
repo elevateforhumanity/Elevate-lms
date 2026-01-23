@@ -36,7 +36,7 @@ async function getAuthorPosts(author: string) {
     const { data: posts } = await supabase
       .from('blog_posts')
       .select('*')
-      .eq('published', true)
+      .eq('status', 'published')
       .ilike('author', authorName)
       .order('published_at', { ascending: false });
 

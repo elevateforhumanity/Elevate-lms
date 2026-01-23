@@ -146,22 +146,8 @@ CREATE TABLE IF NOT EXISTS partners (
 -- ============================================================================
 -- 8. BLOG POSTS TABLE
 -- ============================================================================
-CREATE TABLE IF NOT EXISTS blog_posts (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  title TEXT NOT NULL,
-  slug TEXT NOT NULL UNIQUE,
-  excerpt TEXT,
-  content TEXT NOT NULL,
-  featured_image TEXT,
-  author_id UUID REFERENCES team_members(id),
-  category TEXT DEFAULT 'news',
-  tags TEXT[],
-  published_at TIMESTAMPTZ,
-  is_published BOOLEAN DEFAULT false,
-  view_count INTEGER DEFAULT 0,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
+-- blog_posts table already exists from 20260113_blog_and_social.sql
+-- Using status column ('draft', 'published', 'archived') instead of is_published boolean
 
 -- ============================================================================
 -- 9. EVENTS TABLE
@@ -234,7 +220,7 @@ CREATE POLICY "Public can view active partners" ON partners
 ALTER TABLE blog_posts ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Public can view published blog posts" ON blog_posts;
 CREATE POLICY "Public can view published blog posts" ON blog_posts
-  FOR SELECT USING (is_published = true);
+  FOR SELECT USING (status = 'published');
 
 -- Events
 ALTER TABLE events ENABLE ROW LEVEL SECURITY;

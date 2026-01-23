@@ -48,7 +48,7 @@ export async function POST(req: Request) {
         const { data: blogPosts } = await supabase
           .from('blog_posts')
           .select('title, excerpt, slug')
-          .eq('published', true)
+          .eq('status', 'published')
           .order('published_at', { ascending: false })
           .limit(count);
 
