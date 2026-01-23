@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import { useEffect, useState, useRef } from 'react';
@@ -914,6 +914,16 @@ export default function HomePage() {
       {/* Spacer for sticky CTA on mobile */}
       {/* Spacer for sticky CTA - accounts for button height + safe area */}
       <div className="h-24 md:hidden"></div>
+
+      {/* AI Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/hero-homepage-avatar.mp4"
+        avatarName="Sarah"
+        position="bottom-right"
+        autoPlay={false}
+        showOnLoad={true}
+        size="medium"
+      />
 
     </div>
   );
