@@ -29,7 +29,7 @@ const defaultStories = [
     name: 'Marcus Thompson',
     age: 34,
     program: 'Public Safety & Reentry Specialist',
-    image: '/images/learners/reentry-coaching.jpg',
+    image: '/images/testimonials-hq/person-1.jpg',
     beforeJob: 'Unemployed after 8 years incarceration',
     afterJob: 'Reentry Specialist at Marion County Corrections',
     salary: '$45,000/year',
@@ -41,7 +41,7 @@ const defaultStories = [
     name: 'Sarah Martinez',
     age: 28,
     program: 'CNA Training',
-    image: '/images/learners/cna-student.jpg',
+    image: '/images/testimonials-hq/person-4.jpg',
     beforeJob: 'Single mom working retail',
     afterJob: 'Certified Nursing Assistant at IU Health',
     salary: '$38,000/year',
@@ -50,10 +50,10 @@ const defaultStories = [
   },
   {
     id: 3,
-    name: 'Program Graduate',
+    name: 'James Wilson',
     age: 42,
     program: 'HVAC Technician',
-    image: '/images/learners/hvac-student.jpg',
+    image: '/images/testimonials-hq/person-7.jpg',
     beforeJob: 'Laid off factory worker',
     afterJob: 'HVAC Technician at Service Experts',
     salary: '$52,000/year',
@@ -110,7 +110,7 @@ export default async function SuccessStoriesPage() {
         accentText="Stories"
         subheadline="Lives Transformed Through Training"
         description="Meet the graduates who changed their lives through our workforce training programs. Their stories prove that with the right support, anyone can build a better future."
-        imageSrc="/images/heroes/success-stories-hero.jpg"
+        imageSrc="/images/heroes-hq/success-stories-hero.jpg"
         imageAlt="Success Stories"
         primaryCTA={{ text: 'Start Your Story', href: '/apply' }}
         secondaryCTA={{ text: 'View Programs', href: '/programs' }}

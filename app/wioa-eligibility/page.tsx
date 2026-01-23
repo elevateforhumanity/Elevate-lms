@@ -74,25 +74,25 @@ export default async function WIOAEligibilityPage() {
       title: 'Adults (18+)',
       description: 'You must be 18 years or older and legally authorized to work in the United States.',
       icon: Users,
-      image: '/images/business/professional-1.jpg',
+      image: '/images/testimonials-hq/person-5.jpg',
     },
     {
       title: 'Indiana Resident',
       description: 'You must be a resident of Indiana to qualify for state WIOA funding.',
       icon: Home,
-      image: '/images/heroes/community.jpg',
+      image: '/images/heroes-hq/about-hero.jpg',
     },
     {
       title: 'Employment Status',
       description: 'Unemployed, underemployed, or seeking better employment opportunities.',
       icon: Briefcase,
-      image: '/images/business/collaboration-1.jpg',
+      image: '/images/heroes-hq/career-services-hero.jpg',
     },
     {
       title: 'Income Guidelines',
       description: 'Meet income requirements based on household size (most working families qualify).',
       icon: DollarSign,
-      image: '/images/heroes/hero-state-funding.jpg',
+      image: '/images/heroes-hq/funding-hero.jpg',
     },
   ];
 
@@ -128,7 +128,7 @@ export default async function WIOAEligibilityPage() {
         accentText="WIOA Eligibility"
         subheadline="Find out if you qualify for 100% free career training"
         description="WIOA (Workforce Innovation and Opportunity Act) provides funding for job training programs. Most Indiana residents qualify if they're unemployed, underemployed, or seeking better employment."
-        imageSrc="/images/heroes/hero-state-funding.jpg"
+        imageSrc="/images/heroes-hq/funding-hero.jpg"
         imageAlt="WIOA Eligibility"
         primaryCTA={{ text: "Check Eligibility", href: "#form" }}
         secondaryCTA={{ text: "Apply Now", href: "/apply" }}
@@ -189,7 +189,7 @@ export default async function WIOAEligibilityPage() {
                 >
                   <div className="relative h-40">
                     <Image
-                      src={criteria.image || '/images/business/professional-1.jpg'}
+                      src={criteria.image || '/images/testimonials-hq/person-5.jpg'}
                       alt={criteria.title}
                       fill
                       className="object-cover"

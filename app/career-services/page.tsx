@@ -76,7 +76,7 @@ export default async function CareerServicesPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80 z-10" />
         <div className="relative h-[400px] bg-gray-900">
           <Image
-            src="/images/artlist/office-meeting.jpg"
+            src="/images/heroes-hq/career-services-hero.jpg"
             alt="Career Services"
             fill
             className="object-cover"

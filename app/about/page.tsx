@@ -51,7 +51,7 @@ export default function AboutPage() {
       {/* HERO - Full width image */}
       <section className="relative h-[50vh] min-h-[400px] flex items-end">
         <Image
-          src="/images/pexels/success-team.jpg"
+          src="/images/heroes-hq/about-hero.jpg"
           alt="Elevate for Humanity Team"
           fill
           className="object-cover"

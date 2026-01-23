@@ -192,7 +192,7 @@ export default async function VITAPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/tax-office-1.jpg"
+                src="/images/heroes-hq/tax-refund-hero.jpg"
                 alt="VITA volunteer helping with taxes"
                 fill
                 className="object-cover"
@@ -242,7 +242,7 @@ export default async function VITAPage() {
             <div className="bg-white rounded-2xl p-8 text-center">
               <div className="relative h-32 mb-6 rounded-xl overflow-hidden">
                 <Image
-                  src="/images/business/professional-1.jpg"
+                  src="/images/testimonials-hq/person-4.jpg"
                   alt="Individual taxpayer"
                   fill
                   className="object-cover"
@@ -256,7 +256,7 @@ export default async function VITAPage() {
             <div className="bg-white rounded-2xl p-8 text-center">
               <div className="relative h-32 mb-6 rounded-xl overflow-hidden">
                 <Image
-                  src="/images/business/team-1.jpg"
+                  src="/images/testimonials-hq/person-5.jpg"
                   alt="Seniors"
                   fill
                   className="object-cover"
@@ -270,7 +270,7 @@ export default async function VITAPage() {
             <div className="bg-white rounded-2xl p-8 text-center">
               <div className="relative h-32 mb-6 rounded-xl overflow-hidden">
                 <Image
-                  src="/images/business/collaboration-1.jpg"
+                  src="/images/testimonials-hq/person-2.jpg"
                   alt="Limited English speakers"
                   fill
                   className="object-cover"
@@ -311,7 +311,7 @@ export default async function VITAPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="relative h-40">
                 <Image
-                  src="/images/business/program-tax-preparation.jpg"
+                  src="/images/programs-hq/tax-preparation.jpg"
                   alt="Free tax preparation"
                   fill
                   className="object-cover"
@@ -335,7 +335,7 @@ export default async function VITAPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="relative h-40">
                 <Image
-                  src="/images/business/tax-prep-certification.jpg"
+                  src="/images/programs-hq/business-training.jpg"
                   alt="IRS certified volunteers"
                   fill
                   className="object-cover"
@@ -361,7 +361,7 @@ export default async function VITAPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="relative h-40">
                 <Image
-                  src="/images/tax-office-1.jpg"
+                  src="/images/heroes-hq/tax-refund-hero.jpg"
                   alt="Electronic filing"
                   fill
                   className="object-cover"
@@ -386,7 +386,7 @@ export default async function VITAPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="relative h-40">
                 <Image
-                  src="/images/tax-office-2.jpg"
+                  src="/images/programs-hq/tax-preparation.jpg"
                   alt="Expert tax help"
                   fill
                   className="object-cover"
@@ -428,7 +428,7 @@ export default async function VITAPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
               <div className="relative h-48">
                 <Image
-                  src="/images/business/professional-1.jpg"
+                  src="/images/testimonials-hq/person-6.jpg"
                   alt="Check eligibility"
                   fill
                   className="object-cover"
@@ -458,7 +458,7 @@ export default async function VITAPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
               <div className="relative h-48">
                 <Image
-                  src="/images/calendar-card.jpg"
+                  src="/images/heroes-hq/contact-hero.jpg"
                   alt="Book appointment"
                   fill
                   className="object-cover"
@@ -488,7 +488,7 @@ export default async function VITAPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
               <div className="relative h-48">
                 <Image
-                  src="/images/business/success-1.jpg"
+                  src="/images/heroes-hq/success-stories-hero.jpg"
                   alt="Get your refund"
                   fill
                   className="object-cover"
@@ -580,7 +580,7 @@ export default async function VITAPage() {
               </div>
               <div className="relative h-64 rounded-xl overflow-hidden">
                 <Image
-                  src="/images/business/success-1.jpg"
+                  src="/images/heroes-hq/success-stories-hero.jpg"
                   alt="Happy taxpayer with refund"
                   fill
                   className="object-cover"
@@ -663,7 +663,7 @@ export default async function VITAPage() {
 
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/artlist/office-meeting.jpg"
+                src="/images/heroes-hq/career-services-hero.jpg"
                 alt="VITA Tax Preparation Center"
                 fill
                 className="object-cover"
@@ -689,7 +689,7 @@ export default async function VITAPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/business/professional-1.jpg"
+                  src="/images/testimonials-hq/person-1.jpg"
                   alt="Check if you qualify for free tax preparation"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -714,7 +714,7 @@ export default async function VITAPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/business/professional-2.jpg"
+                  src="/images/programs-hq/tax-preparation.jpg"
                   alt="Documents needed for tax appointment"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -739,7 +739,7 @@ export default async function VITAPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/business/collaboration-1.jpg"
+                  src="/images/heroes-hq/contact-hero.jpg"
                   alt="Schedule your free tax appointment"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -764,7 +764,7 @@ export default async function VITAPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/business/team-1.jpg"
+                  src="/images/team-hq/team-meeting.jpg"
                   alt="Volunteer as a tax preparer"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -792,7 +792,7 @@ export default async function VITAPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl order-2 lg:order-1">
               <Image
-                src="/images/business/team-1.jpg"
+                src="/images/team-hq/team-meeting.jpg"
                 alt="Free career training programs"
                 fill
                 className="object-cover"

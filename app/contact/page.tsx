@@ -47,7 +47,7 @@ export default function ContactPage() {
       
       <div className="relative bg-blue-900 text-white py-16">
         <Image
-          src="/images/heroes/contact-hero.jpg"
+          src="/images/heroes-hq/contact-hero.jpg"
           alt="Contact Us"
           fill
           className="object-cover opacity-40"

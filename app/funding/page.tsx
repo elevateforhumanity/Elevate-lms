@@ -30,7 +30,7 @@ export default function FundingPage() {
       icon: CheckCircle,
       color: 'green',
       category: 'Eligibility',
-      image: '/images/heroes/hero-state-funding.jpg',
+      image: '/images/heroes-hq/funding-hero.jpg',
     },
 
     {
@@ -42,7 +42,7 @@ export default function FundingPage() {
       icon: DollarSign,
       color: 'emerald',
       category: 'Funding',
-      image: '/images/funding/funding-dol-program-v2.jpg',
+      image: '/images/heroes-hq/funding-hero.jpg',
     },
     {
       title: 'JRI Funding',
@@ -53,7 +53,7 @@ export default function FundingPage() {
       icon: Shield,
       color: 'purple',
       category: 'Funding',
-      image: '/images/apprenticeships-card.jpg',
+      image: '/images/heroes-hq/funding-hero.jpg',
     },
     {
       title: 'SNAP E&T',
@@ -64,7 +64,7 @@ export default function FundingPage() {
       icon: Users,
       color: 'orange',
       category: 'Funding',
-      image: '/images/heroes/hero-state-funding.jpg',
+      image: '/images/heroes-hq/funding-hero.jpg',
     },
     {
       title: 'FSSA Partnership',
@@ -75,7 +75,7 @@ export default function FundingPage() {
       icon: Handshake,
       color: 'pink',
       category: 'Partnerships',
-      image: '/images/apprenticeships-card.jpg',
+      image: '/images/heroes-hq/employer-hero.jpg',
     },
     {
       title: 'OJT & Funding',
@@ -86,7 +86,7 @@ export default function FundingPage() {
       icon: Briefcase,
       color: 'indigo',
       category: 'Programs',
-      image: '/images/apprenticeships-card.jpg',
+      image: '/images/heroes-hq/employer-hero.jpg',
     },
     {
       title: 'Funding Impact',
@@ -97,7 +97,7 @@ export default function FundingPage() {
       icon: TrendingUp,
       color: 'cyan',
       category: 'Impact',
-      image: '/images/funding/funding-dol-program-v2.jpg',
+      image: '/images/heroes-hq/success-stories-hero.jpg',
     },
     {
       title: 'Workforce Partners',
@@ -108,7 +108,7 @@ export default function FundingPage() {
       icon: Users,
       color: 'violet',
       category: 'Partnerships',
-      image: '/images/apprenticeships-card.jpg',
+      image: '/images/heroes-hq/employer-hero.jpg',
     },
     {
       title: 'WorkOne Partner Packet',
@@ -119,7 +119,7 @@ export default function FundingPage() {
       icon: FileText,
       color: 'rose',
       category: 'Resources',
-      image: '/images/heroes/hero-state-funding.jpg',
+      image: '/images/heroes-hq/funding-hero.jpg',
     },
     {
       title: 'Partner Agencies',
@@ -130,7 +130,7 @@ export default function FundingPage() {
       icon: Building2,
       color: 'amber',
       category: 'Partnerships',
-      image: '/images/apprenticeships-card.jpg',
+      image: '/images/heroes-hq/employer-hero.jpg',
     },
     {
       title: 'Government Programs',
@@ -141,7 +141,7 @@ export default function FundingPage() {
       icon: Shield,
       color: 'lime',
       category: 'Programs',
-      image: '/images/funding/funding-dol-program-v2.jpg',
+      image: '/images/heroes-hq/funding-hero.jpg',
     },
     {
       title: 'Federal Compliance',

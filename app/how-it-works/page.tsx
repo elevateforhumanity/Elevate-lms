@@ -41,7 +41,7 @@ export default function HowItWorksPage() {
       {/* Hero with Image */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden">
         <Image
-          src="/images/success-new/success-10.jpg"
+          src="/images/heroes-hq/homepage-hero.jpg"
           alt="Career training in action"
           fill
           className="object-cover"
@@ -280,7 +280,7 @@ export default function HowItWorksPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/healthcare/program-cna-training.jpg"
+                  src="/images/programs-hq/healthcare-hero.jpg"
                   alt="Healthcare training"
                   fill
                   className="object-cover"
@@ -308,7 +308,7 @@ export default function HowItWorksPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/trades/hero-program-hvac.jpg"
+                  src="/images/programs-hq/skilled-trades-hero.jpg"
                   alt="Skilled trades training"
                   fill
                   className="object-cover"
@@ -336,7 +336,7 @@ export default function HowItWorksPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/technology/hero-programs-technology.jpg"
+                  src="/images/programs-hq/technology-hero.jpg"
                   alt="Technology training"
                   fill
                   className="object-cover"
@@ -364,7 +364,7 @@ export default function HowItWorksPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/trades/hero-program-cdl.jpg"
+                  src="/images/programs-hq/cdl-trucking.jpg"
                   alt="CDL training"
                   fill
                   className="object-cover"
@@ -392,7 +392,7 @@ export default function HowItWorksPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/barber-hero.jpg"
+                  src="/images/programs-hq/barber-hero.jpg"
                   alt="Barber apprenticeship"
                   fill
                   className="object-cover"
