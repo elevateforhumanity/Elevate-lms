@@ -1,28 +1,65 @@
 -- ============================================================================
--- CONTENT MANAGEMENT TABLES
--- All site content stored in database, no hardcoded fake data
+-- CONTENT MANAGEMENT TABLES - V2 (handles existing tables)
 -- ============================================================================
 
 -- ============================================================================
--- 1. TESTIMONIALS TABLE (if not exists, enhance it)
+-- 1. TESTIMONIALS TABLE - Add missing columns if table exists
 -- ============================================================================
-CREATE TABLE IF NOT EXISTS testimonials (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  name TEXT NOT NULL,
-  role TEXT, -- e.g., "CNA Graduate", "Tax Customer"
-  location TEXT, -- e.g., "Indianapolis, IN"
-  quote TEXT NOT NULL,
-  rating INTEGER DEFAULT 5 CHECK (rating >= 1 AND rating <= 5),
-  image_url TEXT,
-  video_url TEXT,
-  program_slug TEXT, -- links to specific program
-  service_type TEXT, -- 'tax', 'training', 'career_services'
-  featured BOOLEAN DEFAULT false,
-  approved BOOLEAN DEFAULT true,
-  display_order INTEGER DEFAULT 0,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
+DO $$ 
+BEGIN
+  -- Create table if not exists
+  CREATE TABLE IF NOT EXISTS testimonials (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name TEXT NOT NULL,
+    quote TEXT NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+  );
+  
+  -- Add columns if they don't exist
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'testimonials' AND column_name = 'role') THEN
+    ALTER TABLE testimonials ADD COLUMN role TEXT;
+  END IF;
+  
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'testimonials' AND column_name = 'location') THEN
+    ALTER TABLE testimonials ADD COLUMN location TEXT;
+  END IF;
+  
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'testimonials' AND column_name = 'rating') THEN
+    ALTER TABLE testimonials ADD COLUMN rating INTEGER DEFAULT 5;
+  END IF;
+  
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'testimonials' AND column_name = 'image_url') THEN
+    ALTER TABLE testimonials ADD COLUMN image_url TEXT;
+  END IF;
+  
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'testimonials' AND column_name = 'video_url') THEN
+    ALTER TABLE testimonials ADD COLUMN video_url TEXT;
+  END IF;
+  
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'testimonials' AND column_name = 'program_slug') THEN
+    ALTER TABLE testimonials ADD COLUMN program_slug TEXT;
+  END IF;
+  
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'testimonials' AND column_name = 'service_type') THEN
+    ALTER TABLE testimonials ADD COLUMN service_type TEXT;
+  END IF;
+  
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'testimonials' AND column_name = 'featured') THEN
+    ALTER TABLE testimonials ADD COLUMN featured BOOLEAN DEFAULT false;
+  END IF;
+  
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'testimonials' AND column_name = 'approved') THEN
+    ALTER TABLE testimonials ADD COLUMN approved BOOLEAN DEFAULT true;
+  END IF;
+  
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'testimonials' AND column_name = 'display_order') THEN
+    ALTER TABLE testimonials ADD COLUMN display_order INTEGER DEFAULT 0;
+  END IF;
+  
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'testimonials' AND column_name = 'updated_at') THEN
+    ALTER TABLE testimonials ADD COLUMN updated_at TIMESTAMPTZ DEFAULT NOW();
+  END IF;
+END $$;
 
 -- ============================================================================
 -- 2. TEAM MEMBERS TABLE
@@ -31,7 +68,7 @@ CREATE TABLE IF NOT EXISTS team_members (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name TEXT NOT NULL,
   title TEXT NOT NULL,
-  department TEXT, -- 'leadership', 'instructors', 'staff', 'advisors'
+  department TEXT,
   bio TEXT,
   image_url TEXT,
   email TEXT,
@@ -73,8 +110,8 @@ CREATE TABLE IF NOT EXISTS faqs (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   question TEXT NOT NULL,
   answer TEXT NOT NULL,
-  category TEXT DEFAULT 'general', -- 'general', 'programs', 'funding', 'enrollment'
-  program_slug TEXT, -- for program-specific FAQs
+  category TEXT DEFAULT 'general',
+  program_slug TEXT,
   display_order INTEGER DEFAULT 0,
   is_active BOOLEAN DEFAULT true,
   created_at TIMESTAMPTZ DEFAULT NOW(),
@@ -82,7 +119,7 @@ CREATE TABLE IF NOT EXISTS faqs (
 );
 
 -- ============================================================================
--- 5. SITE CONTENT TABLE (for misc content blocks)
+-- 5. SITE CONTENT TABLE
 -- ============================================================================
 CREATE TABLE IF NOT EXISTS site_content (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -114,7 +151,7 @@ CREATE TABLE IF NOT EXISTS locations (
   zip_code TEXT NOT NULL,
   phone TEXT,
   email TEXT,
-  hours JSONB, -- {"mon": "9am-5pm", "tue": "9am-5pm", ...}
+  hours JSONB,
   is_main_office BOOLEAN DEFAULT false,
   latitude DECIMAL(10,8),
   longitude DECIMAL(11,8),
@@ -124,12 +161,12 @@ CREATE TABLE IF NOT EXISTS locations (
 );
 
 -- ============================================================================
--- 7. PARTNERS TABLE (employer partners, workforce partners)
+-- 7. PARTNERS TABLE
 -- ============================================================================
 CREATE TABLE IF NOT EXISTS partners (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name TEXT NOT NULL,
-  partner_type TEXT NOT NULL, -- 'employer', 'workforce', 'training', 'government'
+  partner_type TEXT NOT NULL,
   logo_url TEXT,
   website_url TEXT,
   description TEXT,
@@ -146,8 +183,22 @@ CREATE TABLE IF NOT EXISTS partners (
 -- ============================================================================
 -- 8. BLOG POSTS TABLE
 -- ============================================================================
--- blog_posts table already exists from 20260113_blog_and_social.sql
--- Using status column ('draft', 'published', 'archived') instead of is_published boolean
+CREATE TABLE IF NOT EXISTS blog_posts (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  slug TEXT NOT NULL UNIQUE,
+  excerpt TEXT,
+  content TEXT NOT NULL,
+  featured_image TEXT,
+  author_id UUID,
+  category TEXT DEFAULT 'news',
+  tags TEXT[],
+  published_at TIMESTAMPTZ,
+  is_published BOOLEAN DEFAULT false,
+  view_count INTEGER DEFAULT 0,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 
 -- ============================================================================
 -- 9. EVENTS TABLE
@@ -156,10 +207,10 @@ CREATE TABLE IF NOT EXISTS events (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   title TEXT NOT NULL,
   description TEXT,
-  event_type TEXT DEFAULT 'info_session', -- 'info_session', 'workshop', 'career_fair', 'graduation'
+  event_type TEXT DEFAULT 'info_session',
   start_date TIMESTAMPTZ NOT NULL,
   end_date TIMESTAMPTZ,
-  location_id UUID REFERENCES locations(id),
+  location_id UUID,
   virtual_url TEXT,
   is_virtual BOOLEAN DEFAULT false,
   registration_url TEXT,
@@ -171,14 +222,14 @@ CREATE TABLE IF NOT EXISTS events (
 );
 
 -- ============================================================================
--- RLS POLICIES - Public read access for content
+-- RLS POLICIES
 -- ============================================================================
 
 -- Testimonials
 ALTER TABLE testimonials ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Public can view approved testimonials" ON testimonials;
 CREATE POLICY "Public can view approved testimonials" ON testimonials
-  FOR SELECT USING (approved = true);
+  FOR SELECT USING (approved = true OR approved IS NULL);
 
 -- Team Members
 ALTER TABLE team_members ENABLE ROW LEVEL SECURITY;
@@ -216,7 +267,7 @@ DROP POLICY IF EXISTS "Public can view active partners" ON partners;
 CREATE POLICY "Public can view active partners" ON partners
   FOR SELECT USING (is_active = true);
 
--- Blog Posts
+-- Blog Posts (uses 'published' boolean column)
 ALTER TABLE blog_posts ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Public can view published blog posts" ON blog_posts;
 CREATE POLICY "Public can view published blog posts" ON blog_posts
@@ -229,7 +280,7 @@ CREATE POLICY "Public can view active events" ON events
   FOR SELECT USING (is_active = true);
 
 -- ============================================================================
--- GRANTS for anonymous access
+-- GRANTS
 -- ============================================================================
 GRANT SELECT ON testimonials TO anon;
 GRANT SELECT ON team_members TO anon;
@@ -242,7 +293,7 @@ GRANT SELECT ON blog_posts TO anon;
 GRANT SELECT ON events TO anon;
 
 -- ============================================================================
--- INDEXES for performance
+-- INDEXES
 -- ============================================================================
 CREATE INDEX IF NOT EXISTS idx_testimonials_service ON testimonials(service_type);
 CREATE INDEX IF NOT EXISTS idx_testimonials_program ON testimonials(program_slug);
