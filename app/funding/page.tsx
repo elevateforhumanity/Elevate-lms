@@ -23,76 +23,68 @@ export default function FundingPage() {
   const fundingResources = [
     {
       title: 'WIOA Eligibility',
-      description:
-        'Check if you qualify for Workforce Innovation and Opportunity Act funding. Most adults qualify for free training.',
-      fullDescription: 'The Workforce Innovation and Opportunity Act (WIOA) is the primary federal workforce development program. WIOA provides funding for job training, education, and employment services to help individuals gain skills and find good jobs. Most adults qualify based on income, public assistance receipt, veteran status, or displacement from previous employment.',
+      description: 'Check if you qualify for free training.',
+      fullDescription: 'Most adults qualify based on income, public assistance, veteran status, or job displacement.',
       href: '/wioa-eligibility',
       icon: CheckCircle,
       color: 'green',
       category: 'Eligibility',
-      image: '/images/heroes-hq/funding-hero.jpg',
+      image: '/images/programs-hq/healthcare-hero.jpg',
     },
-
     {
       title: 'Grants',
-      description:
-        'Federal and state grant programs that cover 100% of training costs with no repayment required.',
-      fullDescription: 'Federal and state workforce grants provide 100% funding for career training programs. Unlike loans, grants never need to be repaid. These include WIOA, Workforce Ready Grant (WRG), and other state-administered programs that cover tuition, books, supplies, and support services.',
+      description: '100% funding with no repayment.',
+      fullDescription: 'Federal and state grants cover tuition, books, and supplies.',
       href: '/grants',
       icon: DollarSign,
       color: 'emerald',
       category: 'Funding',
-      image: '/images/heroes-hq/funding-hero.jpg',
+      image: '/images/programs-hq/skilled-trades-hero.jpg',
     },
     {
       title: 'JRI Funding',
-      description:
-        'Justice Reinvestment Initiative funding for individuals with criminal justice involvement.',
-      fullDescription: 'The Justice Reinvestment Initiative (JRI) provides funding for workforce training and support services for individuals with criminal justice involvement. JRI helps justice-impacted individuals gain skills, find employment, and successfully reintegrate into their communities.',
+      description: 'For justice-involved individuals.',
+      fullDescription: 'Training and support for successful reintegration.',
       href: '/jri',
       icon: Shield,
       color: 'purple',
       category: 'Funding',
-      image: '/images/heroes-hq/funding-hero.jpg',
+      image: '/images/programs-hq/technology-hero.jpg',
     },
     {
       title: 'SNAP E&T',
-      description:
-        'Supplemental Nutrition Assistance Program Employment & Training funding for SNAP recipients.',
-      fullDescription: 'SNAP Employment & Training (SNAP E&T) provides job training and support services for individuals receiving SNAP benefits (food stamps). The program helps SNAP recipients gain skills and find employment to achieve self-sufficiency.',
+      description: 'Training for SNAP recipients.',
+      fullDescription: 'Job training and support services for food stamp recipients.',
       href: '/snap-et-partner',
       icon: Users,
       color: 'orange',
       category: 'Funding',
-      image: '/images/heroes-hq/funding-hero.jpg',
+      image: '/images/programs-hq/cna-training.jpg',
     },
     {
       title: 'FSSA Partnership',
-      description:
-        'Family and Social Services Administration partnership programs and funding opportunities.',
-      fullDescription: 'The Indiana Family and Social Services Administration (FSSA) partners with workforce providers to deliver training and support services to vulnerable populations. FSSA programs help individuals receiving public assistance gain skills and achieve self-sufficiency.',
+      description: 'Programs for vulnerable populations.',
+      fullDescription: 'Training and support through FSSA partnerships.',
       href: '/fssa-partnership-request',
       icon: Handshake,
       color: 'pink',
       category: 'Partnerships',
-      image: '/images/heroes-hq/employer-hero.jpg',
+      image: '/images/programs-hq/medical-assistant.jpg',
     },
     {
       title: 'OJT & Funding',
-      description:
-        'On-the-Job Training programs with employer wage reimbursement and participant support.',
-      fullDescription: 'On-the-Job Training (OJT) programs provide wage reimbursement to employers who hire and train new workers. Participants earn a paycheck while learning job skills, and employers receive funding to offset training costs. OJT programs are available through WIOA and other workforce initiatives.',
+      description: 'Earn while you learn.',
+      fullDescription: 'Get hired and trained with employer wage reimbursement.',
       href: '/ojt-and-funding',
       icon: Briefcase,
       color: 'indigo',
       category: 'Programs',
-      image: '/images/heroes-hq/employer-hero.jpg',
+      image: '/images/programs-hq/hvac-technician.jpg',
     },
     {
       title: 'Funding Impact',
-      description:
-        'See how federal funding transforms lives and communities through workforce development.',
-      fullDescription: 'Federal workforce funding has helped thousands of Hoosiers gain skills, find good jobs, and achieve economic stability. See real stories of how WIOA, JRI, and other programs have transformed lives and strengthened communities across Indiana.',
+      description: 'See real success stories.',
+      fullDescription: 'How funding transforms lives across Indiana.',
       href: '/fundingimpact',
       icon: TrendingUp,
       color: 'cyan',
@@ -101,64 +93,58 @@ export default function FundingPage() {
     },
     {
       title: 'Workforce Partners',
-      description:
-        'Our network of workforce development boards, agencies, and community partners.',
-      fullDescription: 'We partner with WorkOne centers, workforce development boards, community organizations, and government agencies across Indiana to connect students with funding and support services. Our collaborative approach ensures students receive comprehensive assistance.',
+      description: 'Our partner network.',
+      fullDescription: 'WorkOne centers and community organizations.',
       href: '/workforce-partners',
       icon: Users,
       color: 'violet',
       category: 'Partnerships',
-      image: '/images/heroes-hq/employer-hero.jpg',
+      image: '/images/programs-hq/business-training.jpg',
     },
     {
       title: 'WorkOne Partner Packet',
-      description:
-        'Information for WorkOne centers and workforce board partners.',
-      fullDescription: 'Resources and information for WorkOne career advisors and workforce board staff. Learn about our programs, enrollment process, and how to refer clients for training services.',
+      description: 'For WorkOne staff.',
+      fullDescription: 'Resources for career advisors and workforce staff.',
       href: '/workone-partner-packet',
       icon: FileText,
       color: 'rose',
       category: 'Resources',
-      image: '/images/heroes-hq/funding-hero.jpg',
+      image: '/images/programs-hq/welding.jpg',
     },
     {
       title: 'Partner Agencies',
-      description:
-        'Government agencies and community organizations we work with to serve students.',
-      fullDescription: 'We collaborate with federal, state, and local agencies including DWD, FSSA, DOC, and community-based organizations to provide training and support services to diverse populations across Indiana.',
+      description: 'Government and community partners.',
+      fullDescription: 'DWD, FSSA, DOC, and community organizations.',
       href: '/agencies',
       icon: Building2,
       color: 'amber',
       category: 'Partnerships',
-      image: '/images/heroes-hq/employer-hero.jpg',
+      image: '/images/programs-hq/electrical.jpg',
     },
     {
       title: 'Government Programs',
-      description:
-        'Federal and state workforce programs that fund training at no cost to students.',
-      fullDescription: 'Learn about federal programs like WIOA, SNAP E&T, and state initiatives like Workforce Ready Grant that provide 100% funding for career training. These programs are administered through WorkOne centers and local workforce boards.',
+      description: 'Federal and state programs.',
+      fullDescription: 'WIOA, SNAP E&T, Workforce Ready Grant.',
       href: '/government',
       icon: Shield,
       color: 'lime',
       category: 'Programs',
-      image: '/images/heroes-hq/funding-hero.jpg',
+      image: '/images/programs-hq/cdl-trucking.jpg',
     },
     {
       title: 'Federal Compliance',
-      description:
-        'Our compliance with federal workforce development regulations and reporting requirements.',
-      fullDescription: 'We maintain full compliance with federal workforce development regulations including WIOA, Equal Opportunity, and data privacy requirements. Our programs meet all federal standards for quality, accountability, and student outcomes.',
+      description: 'Our compliance standards.',
+      fullDescription: 'Meeting all federal workforce regulations.',
       href: '/federal-compliance',
       icon: CheckCircle,
       color: 'teal',
       category: 'Compliance',
-      image: '/images/heroes/hero-state-funding.jpg',
+      image: '/images/programs-hq/cybersecurity.jpg',
     },
     {
       title: 'Equal Opportunity',
-      description:
-        'Our commitment to equal opportunity and non-discrimination in all programs and services.',
-      fullDescription: 'Elevate for Humanity is an equal opportunity provider. We do not discriminate based on race, color, religion, sex, national origin, age, disability, or political affiliation. All programs and services are available to all eligible individuals.',
+      description: 'Non-discrimination commitment.',
+      fullDescription: 'All programs available to eligible individuals.',
       href: '/equal-opportunity',
       icon: Users,
       color: 'sky',
@@ -169,17 +155,17 @@ export default function FundingPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Avatar Guide */}
+      {/* Avatar Guide - Top of page, auto-plays */}
       <AvatarVideoOverlay 
         videoSrc="/videos/avatars/financial-guide.mp4"
         avatarName="Financial Guide"
-        position="bottom-right"
+        position="top-right"
         autoPlay={true}
         showOnLoad={true}
       />
       
-      {/* Hero with Image */}
-      <section className="relative min-h-[600px] flex items-center overflow-hidden">
+      {/* Hero - Clean image, no text overlay */}
+      <section className="relative h-[50vh] overflow-hidden">
         <Image
           src="/images/heroes/hero-state-funding.jpg"
           alt="Free career training funding"
@@ -187,46 +173,6 @@ export default function FundingPage() {
           className="object-cover"
           priority
         />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 py-20 text-center">
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
-            {/* Success Icon */}
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-12 h-12 text-green-600" />
-            </div>
-
-            {/* Headline */}
-            <h1 className="text-4xl md:text-5xl font-black mb-6 text-gray-900">
-              100% Free Training
-            </h1>
-
-            {/* Subheadline */}
-            <p className="text-2xl md:text-3xl font-bold mb-6 text-green-600">
-              No Tuition. No Student Debt. Ever.
-            </p>
-
-            {/* Description */}
-            <p className="text-xl text-gray-700 mb-6 max-w-2xl mx-auto leading-relaxed">
-              All training is funded through federal workforce programs like WIOA,
-              SNAP E&T, and JRI. You pay nothing. We handle all the paperwork.
-            </p>
-
-            {/* Quick Links */}
-            <div className="flex flex-wrap gap-3 justify-center mb-6">
-              <Link href="/wioa-eligibility" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
-                WIOA Eligibility
-              </Link>
-              <Link href="/financial-aid" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-                Financial Aid
-              </Link>
-              <Link href="/jri" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
-                JRI Programs
-              </Link>
-              <Link href="/how-it-works" className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors">
-                How It Works
-              </Link>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* Indiana Career Connect Instructions */}
@@ -467,7 +413,7 @@ export default function FundingPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-orange-700 transition-all"
             >
-              <span>Check Eligibility on Indiana Career Connect</span>
+              <span>Schedule Your Appointment on Indiana Career Connect</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>

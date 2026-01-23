@@ -95,7 +95,7 @@ export default function AvatarVideoOverlay({
     return (
       <button
         onClick={handleOpen}
-        className={`fixed ${positionClasses[position]} z-40 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-full shadow-lg transition-all hover:scale-105`}
+        className={`fixed ${positionClasses[position]} z-[60] flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-full shadow-lg transition-all hover:scale-105`}
         aria-label="Open AI Guide"
       >
         <User className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -106,7 +106,7 @@ export default function AvatarVideoOverlay({
 
   return (
     <div
-      className={`fixed ${positionClasses[position]} z-40 ${sizeClasses[size]} transition-all duration-300 ease-out`}
+      className={`fixed ${positionClasses[position]} z-[60] ${sizeClasses[size]} transition-all duration-300 ease-out`}
     >
       {/* Video Container */}
       <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900">

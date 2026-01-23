@@ -226,10 +226,9 @@ export default function HomePage() {
         showOnLoad={true}
       />
 
-      {/* Hero Section - Optimized for all screen sizes: mobile, tablet, laptop, desktop */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-gradient-to-br from-blue-600 to-blue-900">
+      {/* Hero Section - Clean video, no text overlay */}
+      <section className="relative w-full h-[60vh] sm:h-[65vh] md:h-[70vh] overflow-hidden bg-slate-900">
         {/* Background video - autoplay on ALL devices */}
-        {/* Required for autoplay: muted, playsinline, autoplay attributes */}
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
@@ -245,111 +244,35 @@ export default function HomePage() {
           <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>
         
-        {/* Light overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent pointer-events-none" />
+        {/* Minimal bottom gradient for CTAs */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
         
-        {/* Hero Content - Million dollar value proposition */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
-          <div 
-            className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            {/* Personalized Welcome for Logged-in Users */}
-            {user && !isLoading && (
-              <div className="mb-4 inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                <span className="text-white text-sm">
-                  Welcome back{user.firstName ? `, ${user.firstName}` : ''}!
-                </span>
-                {activeEnrollment && (
-                  <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">
-                    {activeEnrollment.progress || 0}% complete
-                  </span>
-                )}
-              </div>
-            )}
-
-            {/* Headline */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 max-w-3xl leading-tight">
-              {user && activeEnrollment 
-                ? 'Continue Your Training Journey'
-                : 'Launch Your New Career in 8-16 Weeks — '
-              }
-              {!user || !activeEnrollment ? <span className="text-blue-400">100% Free</span> : null}
-            </h1>
-            <p className="text-base sm:text-lg text-white/90 mb-4 max-w-2xl">
-              {user && activeEnrollment
-                ? `You're making progress in ${activeEnrollment.courses?.title || 'your program'}. Keep going!`
-                : "Indiana's workforce programs pay for your training. No loans. No debt. Just real skills and a real job."
-              }
-            </p>
-            
-            {/* Auth-Aware CTAs */}
-            <div className="flex flex-wrap gap-3 items-center">
+        {/* Minimal CTAs at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 pb-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className={`flex flex-wrap gap-4 justify-center transition-all duration-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               {!isLoading && (
                 <>
                   {user && activeEnrollment ? (
-                    // Logged in with active enrollment - show Continue Learning
-                    <>
-                      <Link 
-                        href="/lms/dashboard"
-                        className="inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition-all hover:scale-105 text-base shadow-lg shadow-green-600/30"
-                      >
-                        Continue Learning
-                      </Link>
-                      <Link 
-                        href="/student/progress"
-                        className="inline-flex items-center gap-2 text-white text-base hover:text-green-400 transition-colors"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                        View Progress
-                      </Link>
-                    </>
-                  ) : user && hasApplication ? (
-                    // Logged in with application but no active enrollment
-                    <>
-                      <Link 
-                        href="/lms/dashboard"
-                        className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
-                      >
-                        Go to Dashboard
-                      </Link>
-                      <Link 
-                        href="/apply"
-                        className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
-                      >
-                        Continue Application
-                      </Link>
-                    </>
-                  ) : user ? (
-                    // Logged in but no enrollments
+                    <Link 
+                      href="/lms/dashboard"
+                      className="inline-flex items-center justify-center bg-green-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-700 transition-all text-lg"
+                    >
+                      Continue Learning
+                    </Link>
+                  ) : (
                     <>
                       <Link 
                         href="/apply"
-                        className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
+                        className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-all text-lg"
                       >
-                        Start Your Application
+                        Apply Now
                       </Link>
                       <Link 
                         href="/programs"
-                        className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
+                        className="inline-flex items-center justify-center bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold hover:bg-white/30 transition-all text-lg border border-white/30"
                       >
-                        Browse Programs
-                      </Link>
-                    </>
-                  ) : (
-                    // Not logged in - default CTAs
-                    <>
-                      <Link 
-                        href="/apply"
-                        className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
-                      >
-                        Apply Now — It's Free
-                      </Link>
-                      <Link 
-                        href="tel:317-314-3757"
-                        className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                        (317) 314-3757
+                        View Programs
                       </Link>
                     </>
                   )}

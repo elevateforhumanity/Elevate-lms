@@ -30,50 +30,23 @@ export const metadata: Metadata = {
 export default function HowItWorksPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Avatar Guide */}
+      {/* Avatar Guide - Top of page, auto-plays */}
       <AvatarVideoOverlay 
         videoSrc="/videos/avatars/home-welcome.mp4"
         avatarName="Process Guide"
-        position="bottom-right"
+        position="top-right"
         autoPlay={true}
         showOnLoad={true}
       />
-      {/* Hero with Image */}
-      <section className="relative min-h-[500px] flex items-center overflow-hidden">
+      {/* Hero - Clean image, no text overlay */}
+      <section className="relative h-[50vh] overflow-hidden">
         <Image
-          src="/images/heroes-hq/homepage-hero.jpg"
+          src="/images/heroes-hq/how-it-works-hero.jpg"
           alt="Career training in action"
           fill
           className="object-cover"
           priority
         />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6">
-              How It Works
-            </h1>
-            <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-              From application to career, we guide you through every step. Our process is designed 
-              to be simple, supportive, and focused on getting you into a rewarding career as quickly as possible.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/apply"
-                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-colors"
-              >
-                Start Your Application
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="/wioa-eligibility"
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-bold text-lg border-2 border-white/30 hover:bg-white/20 transition-colors"
-              >
-                Check Eligibility
-              </Link>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* Steps */}
