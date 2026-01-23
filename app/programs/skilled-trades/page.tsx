@@ -12,35 +12,35 @@ const programs = [
     duration: '12-24 Weeks',
     description: 'Install and repair heating, cooling, and ventilation systems. EPA certification included.',
     href: '/programs/hvac',
-    image: '/images/trades/hero-program-hvac.jpg',
+    image: '/images/programs-hq/hvac-technician.jpg',
   },
   {
     title: 'CDL Class A Training',
     duration: '3-6 Weeks',
     description: 'Get your Commercial Driver License and start earning $50,000-$80,000+ annually.',
     href: '/programs/cdl',
-    image: '/images/trades/hero-program-cdl.jpg',
+    image: '/images/programs-hq/cdl-trucking.jpg',
   },
   {
     title: 'Welding',
     duration: '8-16 Weeks',
     description: 'Join metal parts using MIG, TIG, and stick welding techniques. AWS certification prep.',
     href: '/programs/welding',
-    image: '/images/trades/hero-program-welding.jpg',
+    image: '/images/programs-hq/welding.jpg',
   },
   {
     title: 'Electrical',
     duration: '12-24 Weeks',
     description: 'Install and maintain electrical systems in residential and commercial buildings.',
     href: '/programs/electrical',
-    image: '/images/trades/hero-program-electrical.jpg',
+    image: '/images/programs-hq/electrical.jpg',
   },
   {
     title: 'Plumbing',
     duration: '12-24 Weeks',
     description: 'Install and repair water supply, drainage, and gas systems.',
     href: '/programs/plumbing',
-    image: '/images/trades/hero-program-plumbing.jpg',
+    image: '/images/programs-hq/skilled-trades-hero.jpg',
   },
 ];
 
@@ -59,7 +59,7 @@ export default function SkilledTradesProgramsPage() {
       tagline="Build Your Future"
       description="Learn hands-on skills for well-paying trade careers that cannot be outsourced. Many graduates start earning $40,000-$60,000+ within their first year."
       heroVideoSrc="/videos/hvac-hero-final.mp4"
-      heroPosterImage="/images/trades/hero-program-hvac.jpg"
+      heroPosterImage="/images/programs-hq/skilled-trades-hero.jpg"
       accentColor="orange"
       programs={programs}
       highlights={highlights}

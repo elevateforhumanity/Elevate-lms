@@ -98,14 +98,14 @@ const CheckIcon = () => (
   </svg>
 );
 
-// Program card data
+// Program card data - using high-quality images
 const programs = [
   {
     title: 'Healthcare',
     duration: '8-12 Weeks',
     items: ['CNA Certification', 'Medical Assistant', 'Phlebotomy'],
     href: '/programs/healthcare',
-    image: '/images/healthcare/program-cna-training.jpg',
+    image: '/images/programs-hq/healthcare-hero.jpg',
     alt: 'Healthcare Training',
   },
   {
@@ -113,7 +113,7 @@ const programs = [
     duration: '10-16 Weeks',
     items: ['HVAC Technician', 'Electrical', 'Welding'],
     href: '/programs/skilled-trades',
-    image: '/images/trades/hero-program-hvac.jpg',
+    image: '/images/programs-hq/skilled-trades-hero.jpg',
     alt: 'Skilled Trades Training',
   },
   {
@@ -121,7 +121,7 @@ const programs = [
     duration: '12-20 Weeks',
     items: ['IT Support', 'Cybersecurity', 'Cloud Computing'],
     href: '/programs/technology',
-    image: '/images/technology/hero-programs-technology.jpg',
+    image: '/images/programs-hq/technology-hero.jpg',
     alt: 'Technology Training',
   },
 ];
@@ -568,7 +568,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="relative h-56 sm:h-64 lg:h-80 rounded-xl overflow-hidden">
               <Image
-                src="/images/beauty/program-barber-training.jpg"
+                src="/images/programs-hq/barber-hero.jpg"
                 alt="Barber Apprenticeship Program"
                 fill
                 className="object-cover"

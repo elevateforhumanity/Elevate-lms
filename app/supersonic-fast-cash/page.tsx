@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
+import TestimonialsSection from '@/components/content/TestimonialsSection';
 import {
   BadgeCheck,
   Calculator,
@@ -19,7 +20,6 @@ import {
   Users,
   Zap,
   ArrowRight,
-  Star,
 } from 'lucide-react';
 
 export default function SupersonicFastCashPage() {
@@ -36,7 +36,7 @@ export default function SupersonicFastCashPage() {
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
         {/* Background Image - Tax/Money themed */}
         <Image
-          src="/images/business/tax-prep-certification.jpg"
+          src="/images/heroes-hq/tax-refund-hero.jpg"
           alt="Supersonic Fast Cash Tax Preparation"
           fill
           className="object-cover"
@@ -308,46 +308,13 @@ export default function SupersonicFastCashPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-gray-900 mb-4">
-              What Our Customers Say
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'Marcus T.',
-                text: 'Got my $3,500 advance in less than an hour. The staff was super helpful and made everything easy.',
-                rating: 5,
-              },
-              {
-                name: 'Keisha W.',
-                text: 'Best tax experience ever! No waiting, no hassle. I tell everyone about Supersonic Fast Cash.',
-                rating: 5,
-              },
-              {
-                name: 'David R.',
-                text: 'They found deductions I didn\'t even know about. Got way more back than I expected!',
-                rating: 5,
-              },
-            ].map((testimonial, idx) => (
-              <div key={idx} className="bg-white rounded-2xl p-8 shadow-sm">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-4">&ldquo;{testimonial.text}&rdquo;</p>
-                <p className="font-bold text-gray-900">— {testimonial.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Testimonials - fetched from database */}
+      <TestimonialsSection 
+        serviceType="tax"
+        title="What Our Customers Say"
+        bgColor="bg-gray-50"
+        limit={3}
+      />
 
       {/* Quick Links */}
       <section className="py-16 bg-white">

@@ -12,14 +12,14 @@ const programs = [
     duration: '8-12 Weeks',
     description: 'CompTIA A+ certification prep. Help desk, troubleshooting, and technical support skills.',
     href: '/programs/it-support',
-    image: '/images/technology/hero-program-it-support.jpg',
+    image: '/images/programs-hq/it-support.jpg',
   },
   {
     title: 'Cybersecurity Fundamentals',
     duration: '12-16 Weeks',
     description: 'Protect organizations from cyber threats. Security+, network defense, and incident response.',
     href: '/programs/cybersecurity',
-    image: '/images/technology/hero-program-cybersecurity.jpg',
+    image: '/images/programs-hq/cybersecurity.jpg',
   },
 ];
 
@@ -38,7 +38,7 @@ export default function TechnologyProgramsPage() {
       tagline="Future-Proof Careers"
       description="Enter the growing tech industry with no prior experience required. Technology careers offer remote work opportunities, high salaries, and continuous growth."
       heroVideoSrc="/videos/hero-home-fast.mp4"
-      heroPosterImage="/images/technology/hero-programs-technology.jpg"
+      heroPosterImage="/images/programs-hq/technology-hero.jpg"
       accentColor="blue"
       programs={programs}
       highlights={highlights}
