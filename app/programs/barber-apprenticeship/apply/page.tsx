@@ -97,7 +97,7 @@ export default function BarberApprenticeshipApplyPage() {
               </p>
               <p className="text-sm text-amber-800">
                 <strong>Looking for funded training?</strong>{' '}
-                <a href="/apply?pathway=barber-apprenticeship" className="text-blue-600 hover:underline font-medium">
+                <a href="/programs/barber-apprenticeship/eligibility" className="text-blue-600 hover:underline font-medium">
                   Check your eligibility for WIOA/WRG funding first →
                 </a>
               </p>

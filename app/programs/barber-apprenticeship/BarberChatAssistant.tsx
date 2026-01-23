@@ -1,0 +1,340 @@
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+import { MessageCircle, X, Send, Minimize2, Maximize2, Scissors } from 'lucide-react';
+
+interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+const BARBER_WELCOME = `Hi! I'm here to answer your questions about the Barber Apprenticeship program. 
+
+I can help you with:
+• Program requirements (2,000 hours)
+• Pricing & payment plans
+• WIOA/WRG funding eligibility
+• How to get started
+
+What would you like to know?`;
+
+const BARBER_FAQ: Record<string, string> = {
+  // Program basics
+  'hours': `The Barber Apprenticeship requires **2,000 hours** of training:
+• On-the-job training (OJT) at a licensed barbershop
+• Related instruction (Milady theory curriculum)
+
+At 40 hours/week, this takes about 50 weeks (12-15 months).
+At 30 hours/week, it takes about 67 weeks (15-18 months).`,
+
+  'cost|price|tuition|fee': `**Program Cost: $4,980**
+
+• Setup Fee (35%): $1,743 - due at enrollment
+• Remaining Balance: $3,237 - paid weekly
+
+Weekly payment examples:
+• 40 hrs/week: ~$64.74/week for 50 weeks
+• 30 hrs/week: ~$48.31/week for 67 weeks
+
+Payment plans are available. Looking for free training? Check your WIOA/WRG eligibility!`,
+
+  'wioa|wrg|funding|free|financial aid': `You may qualify for **FREE training** through:
+
+**WIOA (Workforce Innovation & Opportunity Act)**
+• Must be 18+
+• Meet income guidelines OR be unemployed/underemployed
+• Authorized to work in the U.S.
+
+**Workforce Ready Grant (WRG)**
+• Indiana resident
+• No bachelor's degree
+• Enrolled in eligible program
+
+To check eligibility:
+1. Visit indianacareerconnect.com
+2. Schedule an intake appointment at WorkOne
+3. Request "Elevate for Humanity - Barber Apprenticeship"
+
+Or visit our eligibility page: /programs/barber-apprenticeship/eligibility`,
+
+  'requirements|qualify|eligible': `**Basic Requirements:**
+• 18+ years old
+• High school diploma or GED
+• Valid government ID
+• Pass background check
+• Professional attitude
+
+**No prior experience needed!** We train you from the basics.
+
+You'll also need a host barbershop for your OJT hours. We can help match you with a partner shop.`,
+
+  'license|state board|certification': `After completing 2,000 hours, you'll be eligible to take the **Indiana State Board Barber Exam**.
+
+Upon passing, you receive your **Indiana Barber License**, allowing you to work as a licensed barber anywhere in Indiana.
+
+We provide state board prep as part of the program.`,
+
+  'shop|barbershop|where|location': `Training takes place at **licensed partner barbershops** in the Indianapolis area.
+
+We'll help match you with a shop based on:
+• Your location
+• Your schedule
+• Shop availability
+
+Already have a shop in mind? They can apply to become a partner training site.`,
+
+  'start|begin|enroll|apply': `**Ready to start?** Here's how:
+
+**Option 1: Self-Pay**
+1. Apply at /programs/barber-apprenticeship/apply
+2. Complete enrollment paperwork
+3. Pay setup fee ($1,743)
+4. Get matched with a partner shop
+5. Start training!
+
+**Option 2: Funded Training**
+1. Check eligibility at /programs/barber-apprenticeship/eligibility
+2. Visit WorkOne for intake appointment
+3. Get approved for WIOA/WRG
+4. We'll contact you to complete enrollment
+
+Questions? Call us: (317) 314-3757`,
+
+  'schedule|hours per week|part time|full time': `You choose your schedule with your host shop:
+
+• **Full-time (40 hrs/week)**: ~12-15 months to complete
+• **Part-time (25-30 hrs/week)**: ~18-24 months to complete
+
+Most apprentices work during regular shop hours. Your weekly payment amount is based on your schedule.`,
+
+  'pay|earn|wage|salary': `Yes, you **earn while you learn**!
+
+As an apprentice, you'll earn:
+• Starting: $10-12/hour + tips
+• As you progress: $12-18/hour + tips
+
+After licensure, barbers typically earn $35,000-$65,000+/year depending on location, clientele, and whether you rent a chair or own a shop.`,
+};
+
+export default function BarberChatAssistant() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([
+    { role: 'assistant', content: BARBER_WELCOME },
+  ]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  const findAnswer = (question: string): string | null => {
+    const q = question.toLowerCase();
+    
+    for (const [keywords, answer] of Object.entries(BARBER_FAQ)) {
+      const keywordList = keywords.split('|');
+      if (keywordList.some(kw => q.includes(kw))) {
+        return answer;
+      }
+    }
+    return null;
+  };
+
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
+
+    const userMessage = input.trim();
+    setInput('');
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setIsLoading(true);
+
+    // Check FAQ first
+    const faqAnswer = findAnswer(userMessage);
+    
+    if (faqAnswer) {
+      setTimeout(() => {
+        setMessages(prev => [...prev, { role: 'assistant', content: faqAnswer }]);
+        setIsLoading(false);
+      }, 500);
+      return;
+    }
+
+    // Fall back to AI
+    try {
+      const response = await fetch('/api/chat/avatar-assistant', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userMessage,
+          context: 'barber',
+          history: messages.slice(-6),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          content: "I'm not sure about that. For specific questions, please call us at (317) 314-3757 or email elevate4humanityedu@gmail.com.",
+        }]);
+      } else {
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          content: data.message,
+        }]);
+      }
+    } catch {
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: "I'm having trouble connecting. Please try again or call us at (317) 314-3757.",
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Quick action buttons
+  const quickActions = [
+    { label: 'Program Cost', query: 'How much does it cost?' },
+    { label: 'Free Training?', query: 'Can I get free training through WIOA?' },
+    { label: 'Requirements', query: 'What are the requirements?' },
+    { label: 'How to Start', query: 'How do I get started?' },
+  ];
+
+  if (!isOpen) {
+    return (
+      <button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-purple-600 hover:bg-purple-700 text-white px-5 py-3 rounded-full shadow-lg transition-all hover:scale-105"
+      >
+        <div className="relative">
+          <Scissors className="w-6 h-6" />
+          <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+        </div>
+        <span className="font-medium">Questions?</span>
+      </button>
+    );
+  }
+
+  return (
+    <div
+      className={`fixed bottom-6 right-6 z-50 w-[calc(100%-3rem)] sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden transition-all ${
+        isMinimized ? 'h-14' : 'h-[500px]'
+      }`}
+    >
+      {/* Header */}
+      <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white p-3 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+            <Scissors className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="font-semibold text-sm">Barber Program Assistant</div>
+            <div className="text-xs text-purple-200">Ask me anything</div>
+          </div>
+        </div>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setIsMinimized(!isMinimized)}
+            className="p-1.5 hover:bg-purple-500 rounded-full transition-colors"
+          >
+            {isMinimized ? <Maximize2 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
+          </button>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="p-1.5 hover:bg-purple-500 rounded-full transition-colors"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {!isMinimized && (
+        <>
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto p-3 space-y-3 h-[340px] bg-gray-50">
+            {messages.map((msg, i) => (
+              <div
+                key={i}
+                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+              >
+                <div
+                  className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm whitespace-pre-wrap ${
+                    msg.role === 'user'
+                      ? 'bg-purple-600 text-white rounded-br-md'
+                      : 'bg-white text-gray-800 border border-gray-200 rounded-bl-md shadow-sm'
+                  }`}
+                >
+                  {msg.content}
+                </div>
+              </div>
+            ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-white text-gray-500 px-4 py-2 rounded-2xl rounded-bl-md border border-gray-200 shadow-sm">
+                  <div className="flex gap-1">
+                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Quick Actions */}
+          {messages.length <= 2 && (
+            <div className="px-3 py-2 border-t border-gray-100 bg-white">
+              <div className="flex flex-wrap gap-2">
+                {quickActions.map((action, i) => (
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setInput(action.query);
+                      setTimeout(() => handleSend(), 100);
+                    }}
+                    className="text-xs px-3 py-1.5 bg-purple-50 text-purple-700 rounded-full hover:bg-purple-100 transition"
+                  >
+                    {action.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Input */}
+          <div className="p-3 border-t border-gray-200 bg-white">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSend();
+              }}
+              className="flex gap-2"
+            >
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Ask about the program..."
+                className="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                disabled={isLoading}
+              />
+              <button
+                type="submit"
+                disabled={isLoading || !input.trim()}
+                className="p-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </form>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}

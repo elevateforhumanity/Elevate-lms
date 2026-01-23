@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import HeroAvatarGuide from '@/components/HeroAvatarGuide';
+import BarberChatAssistant from './BarberChatAssistant';
 import {
   CheckCircle,
   XCircle,
@@ -97,12 +97,8 @@ export default async function BarberApprenticeshipPage() {
         </div>
       </section>
 
-      {/* Avatar Guide - Below Hero */}
-      <HeroAvatarGuide 
-        videoSrc="/videos/avatars/barber-guide.mp4"
-        avatarName="Barber Guide"
-        message="Learn about our USDOL Registered Barber Apprenticeship program."
-      />
+      {/* Chat Assistant - Floating */}
+      <BarberChatAssistant />
 
       {/* Program Description */}
       <section className="bg-white py-16">
