@@ -27,7 +27,7 @@ const programCategories = [
     title: 'Healthcare',
     description: 'Start a rewarding career helping others. Healthcare is one of the fastest-growing industries with strong job security, competitive wages, and opportunities for advancement. Our programs prepare you for in-demand roles in hospitals, clinics, nursing homes, and home health settings.',
     href: '/programs/healthcare',
-    image: '/images/healthcare/program-cna-training.jpg',
+    image: '/images/programs-hq/healthcare-hero.jpg',
     icon: Heart,
     color: 'red',
     programs: [
@@ -42,7 +42,7 @@ const programCategories = [
     title: 'Skilled Trades',
     description: 'Learn hands-on skills for well-paying trade careers that cannot be outsourced. Skilled trades offer excellent earning potential, job stability, and the satisfaction of building and fixing things. Many of our graduates start earning $40,000-$60,000+ within their first year.',
     href: '/programs/skilled-trades',
-    image: '/images/trades/hero-program-hvac.jpg',
+    image: '/images/programs-hq/skilled-trades-hero.jpg',
     icon: Wrench,
     color: 'orange',
     programs: [
@@ -56,7 +56,7 @@ const programCategories = [
     title: 'Technology',
     description: 'Enter the growing tech industry with no prior experience required. Technology careers offer remote work opportunities, high salaries, and continuous growth. We teach you practical skills that employers need, from troubleshooting computers to protecting networks from cyber threats.',
     href: '/programs/technology',
-    image: '/images/technology/hero-programs-technology.jpg',
+    image: '/images/programs-hq/technology-hero.jpg',
     icon: Monitor,
     color: 'blue',
     programs: [
@@ -68,7 +68,7 @@ const programCategories = [
     title: 'CDL & Transportation',
     description: 'Get your Commercial Driver\'s License and start earning quickly. CDL drivers are in high demand nationwide with starting salaries of $50,000-$80,000+. Our program includes classroom instruction, behind-the-wheel training, and job placement assistance with local and national carriers.',
     href: '/programs/cdl-transportation',
-    image: '/images/trades/program-cdl-commercial-driving.jpg',
+    image: '/images/programs-hq/cdl-trucking.jpg',
     icon: Truck,
     color: 'green',
     programs: [
@@ -79,7 +79,7 @@ const programCategories = [
     title: 'Barber & Cosmetology Apprenticeships',
     description: 'Turn your creativity into a career through our registered apprenticeship programs. Earn money while you learn under the guidance of experienced professionals. Upon completion, you\'ll have the hours needed for state licensure and real-world experience.',
     href: '/programs/barber-apprenticeship',
-    image: '/images/barber-hero.jpg',
+    image: '/images/programs-hq/barber-hero.jpg',
     icon: Scissors,
     color: 'red',
     programs: [
@@ -93,7 +93,7 @@ const programCategories = [
     title: 'Business & Financial Services',
     description: 'Start your own business or work in financial services. Learn tax preparation to help others while earning good income during tax season, or build the skills to launch your own tax business. These programs can lead to self-employment or positions at accounting firms.',
     href: '/programs/business-financial',
-    image: '/images/business/tax-prep-certification.jpg',
+    image: '/images/programs-hq/tax-preparation.jpg',
     icon: DollarSign,
     color: 'teal',
     programs: [
@@ -177,7 +177,7 @@ export default function ProgramsPage() {
           playsInline
           autoPlay
           preload="auto"
-          poster="/images/learners/reentry-coaching.jpg"
+          poster="/images/heroes-hq/homepage-hero.jpg"
         >
           <source src="/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
         </video>
@@ -258,7 +258,7 @@ export default function ProgramsPage() {
             </div>
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/programs/cpr-group-training-hd.jpg"
+                src="/images/programs-hq/healthcare-hero.jpg"
                 alt="Students in training program"
                 fill
                 className="object-cover"
@@ -283,7 +283,7 @@ export default function ProgramsPage() {
             <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
               <div className="relative h-32 rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/images/business/professional-1.jpg"
+                  src="/images/testimonials-hq/person-4.jpg"
                   alt="Free training"
                   fill
                   className="object-cover"
@@ -297,7 +297,7 @@ export default function ProgramsPage() {
             <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
               <div className="relative h-32 rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/images/business/collaboration-1.jpg"
+                  src="/images/heroes-hq/career-services-hero.jpg"
                   alt="Fast track training"
                   fill
                   className="object-cover"
@@ -311,7 +311,7 @@ export default function ProgramsPage() {
             <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
               <div className="relative h-32 rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/images/business/success-1.jpg"
+                  src="/images/heroes-hq/success-stories-hero.jpg"
                   alt="Industry credentials"
                   fill
                   className="object-cover"
@@ -325,7 +325,7 @@ export default function ProgramsPage() {
             <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
               <div className="relative h-32 rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/images/business/team-1.jpg"
+                  src="/images/team-hq/team-meeting.jpg"
                   alt="Job placement"
                   fill
                   className="object-cover"
@@ -444,7 +444,7 @@ export default function ProgramsPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/business/handshake-1.jpg"
+                  src="/images/heroes-hq/employer-hero.jpg"
                   alt="Apprenticeships"
                   fill
                   className="object-cover"
@@ -470,7 +470,7 @@ export default function ProgramsPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/business/team-2.jpg"
+                  src="/images/testimonials-hq/person-7.jpg"
                   alt="Second chance programs"
                   fill
                   className="object-cover"
@@ -496,7 +496,7 @@ export default function ProgramsPage() {
             >
               <div className="relative h-48">
                 <Image
-                  src="/images/business/professional-2.jpg"
+                  src="/images/heroes-hq/funding-hero.jpg"
                   alt="WIOA funding"
                   fill
                   className="object-cover"

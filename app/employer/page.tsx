@@ -14,7 +14,7 @@ export default function EmployerPage() {
       {/* Hero with Image */}
       <section className="relative min-h-[550px] flex items-center overflow-hidden">
         <Image
-          src="/images/business/handshake-1.jpg"
+          src="/images/heroes-hq/employer-hero.jpg"
           alt="Employer partnership"
           fill
           className="object-cover"

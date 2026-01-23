@@ -23,10 +23,10 @@ export const metadata: Metadata = {
 };
 
 const fallbackCourses = [
-  { id: '1', title: 'HVAC Fundamentals', category: 'Trades', slug: 'hvac-fundamentals', image_url: '/images/trades/hero-program-hvac.jpg' },
-  { id: '2', title: 'Medical Assistant Certification', category: 'Healthcare', slug: 'medical-assistant', image_url: '/images/healthcare/program-cna-training.jpg' },
-  { id: '3', title: 'Professional Barber License', category: 'Beauty', slug: 'barber-license', image_url: '/images/barber-hero.jpg' },
-  { id: '4', title: 'CDL Class A Training', category: 'Transportation', slug: 'cdl-class-a', image_url: '/images/misc/cdl-course.jpg' },
+  { id: '1', title: 'HVAC Fundamentals', category: 'Trades', slug: 'hvac-fundamentals', image_url: '/images/programs-hq/hvac-technician.jpg' },
+  { id: '2', title: 'Medical Assistant Certification', category: 'Healthcare', slug: 'medical-assistant', image_url: '/images/programs-hq/medical-assistant.jpg' },
+  { id: '3', title: 'Professional Barber License', category: 'Beauty', slug: 'barber-license', image_url: '/images/programs-hq/barber-hero.jpg' },
+  { id: '4', title: 'CDL Class A Training', category: 'Transportation', slug: 'cdl-class-a', image_url: '/images/programs-hq/cdl-trucking.jpg' },
 ];
 
 const categories = ['All', 'Healthcare', 'Trades', 'Beauty', 'Transportation', 'Technology'];
@@ -51,7 +51,7 @@ export default async function CoursesPage() {
           title: p.title,
           category: p.category ? p.category.charAt(0).toUpperCase() + p.category.slice(1) : 'General',
           slug: p.slug,
-          image_url: p.image_url || '/images/hero/hero-hands-on-training.jpg',
+          image_url: p.image_url || '/images/heroes-hq/homepage-hero.jpg',
           description: p.description,
         }));
       }
@@ -64,7 +64,7 @@ export default async function CoursesPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="relative bg-slate-900 text-white py-16">
         <Image
-          src="/images/hero/hero-hands-on-training.jpg"
+          src="/images/heroes-hq/homepage-hero.jpg"
           alt="Courses"
           fill
           className="object-cover opacity-40"
