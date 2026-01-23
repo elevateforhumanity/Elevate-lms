@@ -18,7 +18,7 @@ async function getBlogPost(slug: string) {
     .from('blog_posts')
     .select('*')
     .eq('slug', slug)
-    .eq('status', 'published')
+    .eq('published', true)
     .single();
   
   if (error || !post) {
@@ -41,7 +41,7 @@ async function getRelatedPosts(category: string, currentSlug: string) {
   const { data: posts } = await supabase
     .from('blog_posts')
     .select('title, slug, excerpt, image, published_at')
-    .eq('status', 'published')
+    .eq('published', true)
     .eq('category', category)
     .neq('slug', currentSlug)
     .order('published_at', { ascending: false })

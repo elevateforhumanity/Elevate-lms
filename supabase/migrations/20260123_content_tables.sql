@@ -220,7 +220,7 @@ CREATE POLICY "Public can view active partners" ON partners
 ALTER TABLE blog_posts ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Public can view published blog posts" ON blog_posts;
 CREATE POLICY "Public can view published blog posts" ON blog_posts
-  FOR SELECT USING (status = 'published');
+  FOR SELECT USING (published = true);
 
 -- Events
 ALTER TABLE events ENABLE ROW LEVEL SECURITY;

@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     let query = supabase
       .from('blog_posts')
       .select('*', { count: 'exact' })
-      .eq('status', 'published')
+      .eq('published', true)
       .order('published_at', { ascending: false })
       .range(offset, offset + limit - 1);
     
