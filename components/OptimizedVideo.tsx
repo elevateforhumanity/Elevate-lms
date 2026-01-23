@@ -5,11 +5,25 @@ import { useEffect, useRef, useState } from 'react';
 
 interface OptimizedVideoProps {
   src: string;
+  poster?: string;
   className?: string;
-  audioTrack?: string; // Optional voiceover/TTS audio track
+  audioTrack?: string;
+  autoPlay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  playsInline?: boolean;
 }
 
-export function OptimizedVideo({ src, className = '', audioTrack }: OptimizedVideoProps) {
+export function OptimizedVideo({ 
+  src, 
+  poster,
+  className = '', 
+  audioTrack,
+  autoPlay = true,
+  loop = true,
+  muted = true,
+  playsInline = true,
+}: OptimizedVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -17,49 +31,45 @@ export function OptimizedVideo({ src, className = '', audioTrack }: OptimizedVid
   useEffect(() => {
     const video = videoRef.current;
     const audio = audioRef.current;
-    if (!video) return;
+    if (!video || !autoPlay) return;
 
-    // Auto-play video and audio when component mounts
     const playMedia = async () => {
       try {
-        if (audioTrack && audio) {
+        if (audioTrack && audio && !muted) {
           // Play video muted with separate audio track
           video.muted = true;
           await Promise.all([video.play(), audio.play()]);
         } else {
-          // Play video with its own audio
-          video.muted = false;
+          // Play video - respect muted prop
+          video.muted = muted;
           await video.play();
         }
         setIsPlaying(true);
-      } catch (error) { /* Error handled silently */ 
-        // Autoplay blocked by browser, that's fine
-        // Silently handle - this is expected behavior
+      } catch (error) {
+        // Autoplay blocked by browser - expected behavior
       }
     };
 
-    // Small delay to ensure media is loaded
     const timer = setTimeout(playMedia, 100);
-
     return () => clearTimeout(timer);
-  }, [audioTrack]);
+  }, [audioTrack, autoPlay, muted]);
 
   return (
     <div className={className}>
       <video
         ref={videoRef}
         src={src}
-        className="w-full h-full"
-        loop
-        muted
-        playsInline
-        controls={isPlaying}
+        poster={poster}
+        className="w-full h-full object-cover"
+        loop={loop}
+        muted={muted}
+        playsInline={playsInline}
       />
-      {audioTrack && (
+      {audioTrack && !muted && (
         <audio
           ref={audioRef}
           src={audioTrack}
-          loop
+          loop={loop}
           className="hidden"
         />
       )}
