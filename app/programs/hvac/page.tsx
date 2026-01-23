@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Skilled Trades Programs',
   categoryHref: '/programs/skilled-trades',
   description: 'Learn heating, ventilation, and air conditioning installation and repair. Includes EPA 608 certification.',
-  image: '/images/trades/hero-program-hvac.jpg',
+  image: '/images/programs-hq/hvac-technician.jpg',
   avatarVideo: '/videos/hero-hvac-avatar.mp4',
   avatarName: 'Amanda',
   duration: '12-16 weeks',

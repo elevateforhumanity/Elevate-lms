@@ -91,7 +91,7 @@ export default async function Page() {
             </div>
             <div className="relative h-[250px] rounded-xl overflow-hidden mt-6">
               <Image
-                src="/images/healthcare/healthcare-professional-portrait-1.jpg"
+                src="/images/programs-hq/phlebotomy.jpg"
                 alt="Healthcare professional"
                 fill
                 className="object-cover"

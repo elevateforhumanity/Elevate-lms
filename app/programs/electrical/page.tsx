@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Skilled Trades Programs',
   categoryHref: '/programs/skilled-trades',
   description: 'Start your career as an electrician through our registered apprenticeship. Learn residential, commercial, and industrial electrical work while earning a paycheck.',
-  image: '/images/trades/hero-program-electrical.jpg',
+  image: '/images/programs-hq/electrical.jpg',
   duration: '4 years',
   tuition: 'Employer Sponsored',
   fundingType: 'funded',
