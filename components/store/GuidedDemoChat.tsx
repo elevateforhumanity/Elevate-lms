@@ -213,7 +213,7 @@ export function GuidedDemoChat() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-full shadow-2xl hover:shadow-purple-500/25 hover:scale-105 transition-all"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-600 text-white px-6 py-4 rounded-full shadow-2xl hover:shadow-purple-500/25 hover:scale-105 transition-all"
       >
         <Play className="w-5 h-5" />
         <span className="font-semibold">Start Guided Demo</span>
@@ -224,7 +224,7 @@ export function GuidedDemoChat() {
   return (
     <div className="fixed bottom-6 right-6 z-50 w-96 max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 flex items-center justify-between">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-600 text-white p-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <MessageCircle className="w-5 h-5" />
           <span className="font-semibold">Platform Demo</span>
@@ -272,7 +272,7 @@ export function GuidedDemoChat() {
         {showStartPrompt ? (
           <div className="text-center py-8">
             <div className="w-16 h-16 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Play className="w-8 h-8 text-purple-600" />
+              <Play className="w-8 h-8 text-blue-600" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Welcome to the Platform Demo
@@ -282,7 +282,7 @@ export function GuidedDemoChat() {
             </p>
             <button
               onClick={startDemo}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition"
+              className="bg-gradient-to-r from-blue-600 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition"
             >
               Start Demo Tour
             </button>
@@ -323,7 +323,7 @@ export function GuidedDemoChat() {
             />
             <button
               type="submit"
-              className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -332,14 +332,14 @@ export function GuidedDemoChat() {
             <button
               type="button"
               onClick={() => router.push('/schedule')}
-              className="flex-1 text-xs text-purple-600 hover:text-purple-700 font-medium"
+              className="flex-1 text-xs text-blue-600 hover:text-blue-700 font-medium"
             >
               Schedule a Call
             </button>
             <button
               type="button"
               onClick={() => router.push('/store/licenses')}
-              className="flex-1 text-xs text-purple-600 hover:text-purple-700 font-medium"
+              className="flex-1 text-xs text-blue-600 hover:text-blue-700 font-medium"
             >
               View Pricing
             </button>

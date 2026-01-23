@@ -1,0 +1,105 @@
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { SamGovApp } from './SamGovApp';
+
+export const metadata: Metadata = {
+  title: 'SAM.gov Assistant | Elevate Apps',
+  description: 'Federal contractor registration and compliance management.',
+};
+
+export default async function SamGovPage() {
+  const supabase = await createClient();
+  
+  // Must have database connection
+  if (!supabase) {
+    redirect('/error?message=service-unavailable');
+  }
+
+  // Must be logged in
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    redirect('/login?redirect=/apps/sam-gov&message=login-required');
+  }
+
+  // Check subscription status
+  const { data: subscription } = await supabase
+    .from('user_app_subscriptions')
+    .select('*')
+    .eq('user_id', user.id)
+    .eq('app_slug', 'sam-gov')
+    .maybeSingle();
+
+  // No subscription - redirect to start trial
+  if (!subscription) {
+    redirect('/apps/sam-gov/start-trial');
+  }
+
+  // Check trial expiration
+  if (subscription.status === 'trial' && subscription.trial_ends_at) {
+    const trialEnd = new Date(subscription.trial_ends_at);
+    if (trialEnd < new Date()) {
+      redirect('/store/apps/sam-gov?expired=true&message=trial-expired');
+    }
+  }
+
+  // Check if subscription is active
+  if (subscription.status !== 'trial' && subscription.status !== 'active') {
+    redirect(`/store/apps/sam-gov?status=${subscription.status}&message=subscription-inactive`);
+  }
+
+  // Calculate trial days remaining
+  let trialDaysRemaining = 0;
+  if (subscription.status === 'trial' && subscription.trial_ends_at) {
+    const trialEnd = new Date(subscription.trial_ends_at);
+    trialDaysRemaining = Math.ceil((trialEnd.getTime() - Date.now()) / (1000 * 60 * 60 * 24));
+  }
+
+  // Fetch user's SAM entities from database
+  const { data: entities, error: entitiesError } = await supabase
+    .from('sam_entities')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('updated_at', { ascending: false });
+
+  if (entitiesError) {
+    console.error('Error fetching entities:', entitiesError);
+  }
+
+  // Fetch documents for all entities
+  const entityIds = entities?.map(e => e.id) || [];
+  let documents: any[] = [];
+  if (entityIds.length > 0) {
+    const { data: docs } = await supabase
+      .from('sam_documents')
+      .select('*')
+      .in('entity_id', entityIds)
+      .order('uploaded_at', { ascending: false });
+    documents = docs || [];
+  }
+
+  // Fetch alerts
+  let alerts: any[] = [];
+  if (entityIds.length > 0) {
+    const { data: alertData } = await supabase
+      .from('sam_alerts')
+      .select('*')
+      .in('entity_id', entityIds)
+      .eq('is_read', false)
+      .order('created_at', { ascending: false })
+      .limit(20);
+    alerts = alertData || [];
+  }
+
+  return (
+    <SamGovApp
+      user={user}
+      subscription={subscription}
+      entities={entities || []}
+      documents={documents}
+      alerts={alerts}
+      trialDaysRemaining={trialDaysRemaining}
+    />
+  );
+}
