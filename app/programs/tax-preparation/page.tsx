@@ -57,7 +57,7 @@ export default async function Page() {
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[70vh] w-full overflow-hidden">
           <Image
-            src="/images/programs/efh-tax-office-startup-hero.jpg"
+            src="/images/programs-hq/tax-preparation.jpg"
             alt="VITA Tax Preparation Training"
             fill
             className="object-cover"

@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Technology Programs',
   categoryHref: '/programs/technology',
   description: 'Launch your tech career with foundational IT skills. Earn your CompTIA A+ certification and learn to support computer systems, networks, and end users.',
-  image: '/images/technology/hero-program-it-support.jpg',
+  image: '/images/programs-hq/it-support.jpg',
   avatarVideo: '/videos/avatars/ai-tutor.mp4',
   avatarName: 'IT Support Guide',
   duration: '8-12 weeks',

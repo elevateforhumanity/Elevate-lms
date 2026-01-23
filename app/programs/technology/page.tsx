@@ -42,7 +42,7 @@ export default function TechnologyProgramsPage() {
       accentColor="blue"
       programs={programs}
       highlights={highlights}
-      avatarVideoSrc="/videos/avatars/ai-tutor.mp4"
+      avatarVideoSrc="/videos/hero-technology-avatar.mp4"
       avatarName="Tech Guide"
     />
   );

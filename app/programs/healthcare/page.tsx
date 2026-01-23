@@ -1,5 +1,4 @@
 import ProgramCategoryPage from '@/components/programs/ProgramCategoryPage';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

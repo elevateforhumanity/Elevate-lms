@@ -93,7 +93,7 @@ export default async function BarberProgramPage() {
       <section className="relative min-h-[500px] flex items-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/misc/barber-hero.jpg)' }}
+          style={{ backgroundImage: 'url(/images/programs-hq/barber-hero.jpg)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-800/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-white">

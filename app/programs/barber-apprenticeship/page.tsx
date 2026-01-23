@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
+import HeroAvatarGuide from '@/components/HeroAvatarGuide';
 import {
   CheckCircle,
   XCircle,
@@ -38,15 +38,6 @@ export default async function BarberApprenticeshipPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/barber-guide.mp4"
-        avatarName="Barber Guide"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
-      
       {/* Hero Section */}
       <section className="relative w-full -mt-[72px] min-h-screen flex items-center">
         <div className="absolute inset-0 z-0">
@@ -98,7 +89,12 @@ export default async function BarberApprenticeshipPage() {
         </div>
       </section>
 
-
+      {/* Avatar Guide - Below Hero */}
+      <HeroAvatarGuide 
+        videoSrc="/videos/avatars/barber-guide.mp4"
+        avatarName="Barber Guide"
+        message="Learn about our USDOL Registered Barber Apprenticeship program."
+      />
 
       {/* Program Description */}
       <section className="bg-white py-16">

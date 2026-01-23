@@ -63,7 +63,7 @@ export default function SkilledTradesProgramsPage() {
       accentColor="orange"
       programs={programs}
       highlights={highlights}
-      avatarVideoSrc="/videos/avatars/trades-guide.mp4"
+      avatarVideoSrc="/videos/hero-hvac-avatar.mp4"
       avatarName="Trades Guide"
     />
   );

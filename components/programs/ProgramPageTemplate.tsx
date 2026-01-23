@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FundingBadge } from './FundingBadge';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
+import HeroAvatarGuide from '@/components/HeroAvatarGuide';
 
 export type OutcomeItem = string | { title: string; description: string };
 
@@ -35,18 +35,6 @@ interface ProgramPageTemplateProps {
 export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
   return (
     <>
-      {/* AI Avatar Guide */}
-      {program.avatarVideo && (
-        <AvatarVideoOverlay 
-          videoSrc={program.avatarVideo}
-          avatarName={program.avatarName || 'AI Guide'}
-          position="bottom-right"
-          size="medium"
-          showOnLoad={true}
-          autoPlay={false}
-        />
-      )}
-      
       {/* Hero Image - Compact */}
       <section className="relative h-[35vh] min-h-[250px] lg:h-[40vh] lg:min-h-[300px] bg-gray-100">
         <Image
@@ -60,6 +48,15 @@ export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
       </section>
+
+      {/* Avatar Guide - Below Hero */}
+      {program.avatarVideo && (
+        <HeroAvatarGuide 
+          videoSrc={program.avatarVideo}
+          avatarName={program.avatarName || 'Program Guide'}
+          message={`Learn about our ${program.title} program and career opportunities.`}
+        />
+      )}
 
       {/* Funding Badge */}
       {program.fundingType && (

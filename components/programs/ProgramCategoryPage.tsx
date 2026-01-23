@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
+import HeroAvatarGuide from '@/components/HeroAvatarGuide';
 import { Clock, ArrowRight, CheckCircle } from 'lucide-react';
 
 interface Program {
@@ -100,17 +100,6 @@ export default function ProgramCategoryPage({
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Avatar Guide */}
-      {avatarVideoSrc && (
-        <AvatarVideoOverlay 
-          videoSrc={avatarVideoSrc}
-          avatarName={avatarName || `${categoryName} Guide`}
-          position="bottom-right"
-          autoPlay={true}
-          showOnLoad={true}
-        />
-      )}
-      
       {/* Hero Section - Compact */}
       <section className="relative w-full min-h-[45vh] sm:min-h-[50vh] flex items-center overflow-hidden bg-slate-900">
         <video
@@ -157,6 +146,15 @@ export default function ProgramCategoryPage({
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide - Below Hero */}
+      {avatarVideoSrc && (
+        <HeroAvatarGuide 
+          videoSrc={avatarVideoSrc}
+          avatarName={avatarName || `${categoryName} Guide`}
+          message={`Learn about our ${categoryName} training programs and career opportunities.`}
+        />
+      )}
 
       {/* Breadcrumbs */}
       <Breadcrumbs />

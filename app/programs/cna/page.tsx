@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Healthcare Programs',
   categoryHref: '/programs/healthcare',
   description: 'Become a Certified Nursing Assistant in 4-6 weeks. Work in hospitals, nursing homes, and home health settings.',
-  image: '/images/healthcare/hero-programs-healthcare.jpg',
+  image: '/images/programs-hq/cna-training.jpg',
   duration: '4-6 weeks',
   tuition: '$0*',
   fundingType: 'funded',
