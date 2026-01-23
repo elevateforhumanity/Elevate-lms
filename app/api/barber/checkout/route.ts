@@ -8,9 +8,14 @@ import {
   formatFirstBillingDate,
 } from '@/lib/programs/pricing';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-12-18.acacia',
-});
+// Initialize Stripe lazily to avoid errors when key is not set
+function getStripe() {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  return new Stripe(key);
+}
 
 /**
  * POST /api/barber/checkout
@@ -64,6 +69,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Get Stripe instance
+    const stripe = getStripe();
+
     // Get or create Stripe customer
     let stripeCustomerId: string;
     
@@ -98,13 +106,24 @@ export async function POST(request: NextRequest) {
     const firstBillingDateFormatted = formatFirstBillingDate();
 
     // Create Checkout Session with subscription mode
-    // Setup fee is added as invoice item on first invoice
-    // Weekly payments use 1-cent price with quantity = weekly_payment_cents
+    // Setup fee collected as one-time item, weekly payments as subscription
     const session = await stripe.checkout.sessions.create({
       customer: stripeCustomerId,
       mode: 'subscription',
       payment_method_types: ['card'],
       line_items: [
+        // Setup fee (one-time) - collected immediately
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: 'Barber Apprenticeship - Setup Fee (35%)',
+              description: 'Enrollment setup fee - covers onboarding, registration support, employer coordination, and program setup. Non-refundable.',
+            },
+            unit_amount: BARBER_PRICING.setupFee * 100, // $1,743 in cents = 174300
+          },
+          quantity: 1,
+        },
         // Weekly payment (recurring) - using quantity for variable amount
         // Price is $0.01, quantity = weekly_payment_cents
         {
@@ -125,20 +144,6 @@ export async function POST(request: NextRequest) {
       ],
       subscription_data: {
         billing_cycle_anchor: billingCycleAnchor,
-        // Add setup fee as invoice item on first invoice
-        add_invoice_items: [
-          {
-            price_data: {
-              currency: 'usd',
-              product_data: {
-                name: 'Barber Apprenticeship - Setup Fee (35%)',
-                description: 'Enrollment setup fee - covers onboarding, registration support, employer coordination, and program setup. Non-refundable.',
-              },
-              unit_amount: BARBER_PRICING.setupFee * 100, // $1,743 in cents = 174300
-            },
-            quantity: 1,
-          },
-        ],
         metadata: {
           user_id: user.id,
           enrollment_id: enrollment_id || '',
@@ -218,20 +223,21 @@ export async function POST(request: NextRequest) {
  * Use this to show estimated payments before checkout
  */
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const hoursPerWeek = parseInt(searchParams.get('hours_per_week') || '40');
-  const transferredHours = parseInt(searchParams.get('transferred_hours') || '0');
+  try {
+    const { searchParams } = new URL(request.url);
+    const hoursPerWeek = parseInt(searchParams.get('hours_per_week') || '40');
+    const transferredHours = parseInt(searchParams.get('transferred_hours') || '0');
 
-  if (hoursPerWeek < 20 || hoursPerWeek > 50) {
-    return NextResponse.json(
-      { error: 'Hours per week must be between 20 and 50' },
-      { status: 400 }
-    );
-  }
+    if (hoursPerWeek < 20 || hoursPerWeek > 50) {
+      return NextResponse.json(
+        { error: 'Hours per week must be between 20 and 50' },
+        { status: 400 }
+      );
+    }
 
-  const calculation = calculateWeeklyPayment(hoursPerWeek, transferredHours);
-  const billingCycleAnchor = getBillingCycleAnchor();
-  const firstBillingDateFormatted = formatFirstBillingDate();
+    const calculation = calculateWeeklyPayment(hoursPerWeek, transferredHours);
+    const billingCycleAnchor = getBillingCycleAnchor();
+    const firstBillingDateFormatted = formatFirstBillingDate();
 
   return NextResponse.json({
     pricing: {
@@ -264,4 +270,11 @@ export async function GET(request: NextRequest) {
       firstCharge: firstBillingDateFormatted,
     },
   });
+  } catch (error) {
+    console.error('Barber checkout GET error:', error);
+    return NextResponse.json(
+      { error: 'Failed to calculate payment plan', details: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
+  }
 }

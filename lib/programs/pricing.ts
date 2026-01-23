@@ -72,25 +72,27 @@ export function calculateWeeklyPayment(
 }
 
 /**
- * Pre-calculated examples for display on pricing page
+ * Get pre-calculated examples for display on pricing page
  */
-export const WEEKLY_PAYMENT_EXAMPLES = [
-  {
-    hoursPerWeek: 40,
-    ...calculateWeeklyPayment(40, 0),
-    label: 'Full-time (40 hrs/week)',
-  },
-  {
-    hoursPerWeek: 30,
-    ...calculateWeeklyPayment(30, 0),
-    label: 'Standard (30 hrs/week)',
-  },
-  {
-    hoursPerWeek: 25,
-    ...calculateWeeklyPayment(25, 0),
-    label: 'Part-time (25 hrs/week)',
-  },
-] as const;
+export function getWeeklyPaymentExamples() {
+  return [
+    {
+      hoursPerWeek: 40,
+      ...calculateWeeklyPayment(40, 0),
+      label: 'Full-time (40 hrs/week)',
+    },
+    {
+      hoursPerWeek: 30,
+      ...calculateWeeklyPayment(30, 0),
+      label: 'Standard (30 hrs/week)',
+    },
+    {
+      hoursPerWeek: 25,
+      ...calculateWeeklyPayment(25, 0),
+      label: 'Part-time (25 hrs/week)',
+    },
+  ];
+}
 
 /**
  * Format currency for display
