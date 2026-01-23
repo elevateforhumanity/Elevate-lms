@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
+
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import { useEffect, useState, useRef } from 'react';
@@ -103,7 +103,7 @@ const programs = [
   {
     title: 'Healthcare',
     duration: '8-12 Weeks',
-    items: ['CNA', 'Medical Assistant', 'Phlebotomy'],
+    items: ['CNA Certification', 'Medical Assistant', 'Phlebotomy'],
     href: '/programs/healthcare',
     image: '/images/healthcare/program-cna-training.jpg',
     alt: 'Healthcare Training',
@@ -111,31 +111,15 @@ const programs = [
   {
     title: 'Skilled Trades',
     duration: '10-16 Weeks',
-    items: ['HVAC', 'Electrical', 'Welding'],
+    items: ['HVAC Technician', 'Electrical', 'Welding'],
     href: '/programs/skilled-trades',
     image: '/images/trades/hero-program-hvac.jpg',
     alt: 'Skilled Trades Training',
   },
   {
-    title: 'CDL & Transportation',
-    duration: '4-8 Weeks',
-    items: ['CDL Class A', 'Commercial Driving'],
-    href: '/programs/cdl-transportation',
-    image: '/images/trades/program-cdl-commercial-driving.jpg',
-    alt: 'CDL Training',
-  },
-  {
-    title: 'Barber Apprenticeship',
-    duration: '18-24 Months',
-    items: ['Licensed Barber', 'Earn While Learning'],
-    href: '/programs/barber-apprenticeship',
-    image: '/images/beauty/program-barber-training.jpg',
-    alt: 'Barber Training',
-  },
-  {
     title: 'Technology',
     duration: '12-20 Weeks',
-    items: ['IT Support', 'Cybersecurity'],
+    items: ['IT Support', 'Cybersecurity', 'Cloud Computing'],
     href: '/programs/technology',
     image: '/images/technology/hero-programs-technology.jpg',
     alt: 'Technology Training',
@@ -232,30 +216,29 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      
-      {/* AI Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/home-welcome.mp4"
-        avatarName="Elevate Guide"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
 
-      {/* Hero Section - Full width image with minimal text */}
-      <section className="relative w-full min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-end overflow-hidden">
-        {/* Hero Background Image */}
-        <Image
-          src="/images/heroes/hero-homepage.jpg"
-          alt="Career training students"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-        />
+
+      {/* Hero Section - Optimized for all screen sizes: mobile, tablet, laptop, desktop */}
+      <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-800">
+        {/* Background video - autoplay on ALL devices */}
+        {/* Required for autoplay: muted, playsinline, autoplay attributes */}
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectFit: 'cover' }}
+          loop
+          muted
+          playsInline
+          autoPlay
+          preload="auto"
+          disablePictureInPicture
+          disableRemotePlayback
+        >
+          <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
+        </video>
         
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
+        {/* Light overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent pointer-events-none" />
         
         {/* Hero Content - Million dollar value proposition */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
@@ -406,11 +389,11 @@ export default function HomePage() {
       <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8 md:mb-10">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-              Funding That Pays For Your Training
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-3">
+              How Can Training Be No Cost?
             </h2>
-            <p className="text-base text-slate-600">
-              Government programs cover the cost - not you.
+            <p className="text-base text-slate-600 max-w-3xl mx-auto">
+              Federal and state workforce programs pay for your training - not you. These programs exist to help people get jobs in high-demand fields. We help you access them.
             </p>
           </div>
           
@@ -433,9 +416,12 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">WIOA Funding</h3>
-                <p className="text-slate-600">
-                  Federal program covers tuition, books, and supplies. For unemployed, underemployed, veterans, and more.
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Workforce Innovation & Opportunity Act</h3>
+                <p className="text-slate-600 mb-4">
+                  Federal program that pays for job training for adults, dislocated workers, and youth. Covers tuition, books, supplies, and even transportation or childcare.
+                </p>
+                <p className="text-sm text-slate-500">
+                  <strong className="text-slate-700">Who qualifies:</strong> Unemployed, underemployed, low-income, veterans, single parents, individuals with disabilities, or those receiving public assistance.
                 </p>
               </div>
             </div>
@@ -458,9 +444,12 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Earn While You Learn</h3>
-                <p className="text-slate-600">
-                  Get paid while training. Barber, HVAC, Electrical, Plumbing apprenticeships available.
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Earn While You Learn</h3>
+                <p className="text-slate-600 mb-4">
+                  USDOL-registered apprenticeships let you work and get paid while training. Your employer sponsors your education. Graduate with experience and a job.
+                </p>
+                <p className="text-sm text-slate-500">
+                  <strong className="text-slate-700">Programs:</strong> Barber, HVAC, Electrical, Plumbing, and more. Start earning from day one while building your career.
                 </p>
               </div>
             </div>
@@ -478,14 +467,17 @@ export default function HomePage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
-                  MORE OPTIONS
+                <div className="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
+                  JRI & MORE
                 </div>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Additional Support Programs</h3>
-                <p className="text-slate-600">
-                  SNAP E&T, TAA, JRI, and employer-sponsored training. Most students qualify for at least one program.
+                <p className="text-slate-600 mb-4">
+                  SNAP Employment & Training, Trade Adjustment Assistance (TAA), Justice Reinvestment Initiative (JRI), and employer-sponsored training can cover costs.
+                </p>
+                <p className="text-sm text-slate-500">
+                  <strong className="text-slate-700">We help you find:</strong> The right funding source for your situation. Most students qualify for at least one program.
                 </p>
               </div>
             </div>
@@ -686,7 +678,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4">
-              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <svg className="w-5 h-5 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -770,7 +762,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
-              <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+              <div className="w-8 h-8 bg-purple-600 rounded flex items-center justify-center">
                 <span className="text-white font-bold text-xs">US</span>
               </div>
               <div className="text-left">
