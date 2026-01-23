@@ -54,36 +54,44 @@ export default async function BarberApprenticeshipPage() {
         </div>
 
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-32 md:py-40">
+          {/* Badges */}
           <div className="flex flex-wrap items-center gap-2 mb-4">
-            <span className="px-3 py-2 bg-blue-600 text-white text-sm font-bold rounded-full shadow-lg">
-              USDOL Registered
+            <span className="px-4 py-2 bg-purple-600 text-white text-sm font-bold rounded-full shadow-lg">
+              2,000 Hours
             </span>
-            <span className="px-3 py-2 bg-purple-600 text-white text-sm font-bold rounded-full shadow-lg">
-              Sponsor of Record
+            <span className="px-4 py-2 bg-green-600 text-white text-sm font-bold rounded-full shadow-lg">
+              Paid OJT
+            </span>
+            <span className="px-4 py-2 bg-blue-600 text-white text-sm font-bold rounded-full shadow-lg">
+              Licensure Pathway
             </span>
           </div>
 
           <h1 className="max-w-3xl text-4xl font-black leading-tight md:text-6xl text-white drop-shadow-2xl">
-            USDOL Registered Barber Apprenticeship
+            Barber Apprenticeship
+            <span className="block text-2xl md:text-3xl font-bold text-purple-300 mt-2">(2,000 Hours)</span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg md:text-xl text-white leading-relaxed drop-shadow-lg">
-            Fee-based barber training delivered within a USDOL Registered Apprenticeship framework.
-            Elevate for Humanity is the Sponsor of Record for this program, which combines structured practical training with required related instruction.
+            Earn while you learn. Structured pathway toward Indiana barber licensure through a USDOL Registered Apprenticeship framework.
+          </p>
+          
+          <p className="mt-3 max-w-2xl text-sm text-white/80">
+            Elevate for Humanity serves as the Program Administrator, coordinating training, employer participation, and funding access.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
               href="/apply?program=barber-apprenticeship"
-              className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white hover:bg-blue-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
+              className="inline-flex items-center justify-center rounded-xl bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-purple-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
-              Apply for Barber Program
+              Start Eligibility & Payment Plan
             </Link>
             <Link
-              href="#pricing"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-bold text-white hover:bg-white/20 transition-all shadow-xl"
+              href="/employer/apply"
+              className="inline-flex items-center justify-center rounded-xl border-2 border-white bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-bold text-white hover:bg-white/20 transition-all shadow-xl"
             >
-              View Tuition & Fees
+              Partner Shop Sign-Up
             </Link>
           </div>
         </div>
@@ -167,79 +175,130 @@ export default async function BarberApprenticeshipPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="bg-gray-50 py-16">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-6">Program Cost & Payment</h2>
+      {/* Pricing Snapshot Section */}
+      <section id="pricing" className="bg-slate-900 py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">Pricing & Payment Plan</h2>
+            <p className="text-slate-300 text-lg">Transparent pricing with flexible weekly payments</p>
+          </div>
           
-          <div className="bg-white border-2 border-slate-200 rounded-xl p-8 shadow-lg">
-            <div className="text-center mb-6">
-              <div className="text-5xl font-black text-purple-600">$4,980</div>
-              <div className="text-xl text-slate-600 mt-2">Program Tuition</div>
+          {/* 3-Column Pricing Cards */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {/* Card 1: Full Program Price */}
+            <div className="bg-white rounded-2xl p-6 shadow-xl border-4 border-purple-500">
+              <div className="text-center">
+                <div className="text-sm font-bold text-purple-600 uppercase tracking-wide mb-2">Full Program Price</div>
+                <div className="text-5xl font-black text-slate-900">$4,980</div>
+                <div className="text-slate-500 mt-2 text-sm">(non-negotiable)</div>
+              </div>
             </div>
 
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
-              <p className="text-purple-900">
-                This Barber Program is a fee-based USDOL Registered Apprenticeship training pathway. Tuition is paid by the student and is not funded by the State of Indiana.
-              </p>
-              <p className="text-purple-900 mt-3">
-                Tuition covers structured training, related instruction, program administration, compliance tracking, and completion documentation delivered by Elevate for Humanity as the Sponsor of Record.
-              </p>
-              <p className="text-purple-800 mt-3 text-sm">
-                Tuition does not include personal tools, uniforms, or state licensing and examination fees.
-              </p>
-            </div>
-
-            {/* Payment Options */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-bold text-black">Payment Options (after enrollment approval)</h3>
-              
-              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
-                <div>
-                  <div className="font-bold text-lg">Pay in Full</div>
-                  <div className="text-sm text-gray-500">One-time payment</div>
-                </div>
-                <span className="text-2xl font-bold">$4,980</span>
+            {/* Card 2: Setup Fee */}
+            <div className="bg-gradient-to-br from-purple-600 to-purple-800 rounded-2xl p-6 shadow-xl text-white">
+              <div className="text-center">
+                <div className="text-sm font-bold text-purple-200 uppercase tracking-wide mb-2">Enrollment Setup Fee (35%)</div>
+                <div className="text-5xl font-black">$1,743</div>
+                <div className="text-purple-200 mt-2 text-sm">Due at enrollment</div>
               </div>
-
-              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
-                <div>
-                  <div className="font-bold text-lg">4-Month Plan</div>
-                  <div className="text-sm text-gray-500">4 payments of $1,245</div>
-                </div>
-                <span className="text-xl font-bold">$1,245/mo</span>
-              </div>
-
-              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
-                <div>
-                  <div className="font-bold text-lg">6-Month Plan</div>
-                  <div className="text-sm text-gray-500">6 payments of $830</div>
-                </div>
-                <span className="text-xl font-bold">$830/mo</span>
-              </div>
-
-              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
-                <div>
-                  <div className="font-bold text-lg">12-Month Plan</div>
-                  <div className="text-sm text-gray-500">12 payments of $415</div>
-                </div>
-                <span className="text-xl font-bold">$415/mo</span>
-              </div>
-
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
-                <p className="text-blue-800 text-sm">
-                  <strong>How to Enroll:</strong> Submit an application and speak with an enrollment advisor. 
-                  Payment is collected after your enrollment is approved and you've signed your enrollment agreement.
+              <div className="mt-4 pt-4 border-t border-purple-400/30">
+                <p className="text-purple-100 text-xs leading-relaxed">
+                  Covers onboarding, registration support, employer coordination, and program setup.
                 </p>
               </div>
-
-              <Link
-                href="/apply?program=barber-apprenticeship"
-                className="w-full flex items-center justify-center px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-all text-lg"
-              >
-                Apply Now
-              </Link>
             </div>
+
+            {/* Card 3: Weekly Payments */}
+            <div className="bg-white rounded-2xl p-6 shadow-xl">
+              <div className="text-center">
+                <div className="text-sm font-bold text-green-600 uppercase tracking-wide mb-2">Weekly Payments</div>
+                <div className="text-4xl font-black text-slate-900">From $40<span className="text-2xl">/week</span></div>
+                <div className="text-slate-500 mt-2 text-sm">(estimate)</div>
+              </div>
+              <div className="mt-4 pt-4 border-t border-slate-200">
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  Final weekly amount depends on your remaining hours and schedule.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Billing Info */}
+          <div className="bg-slate-800 rounded-xl p-4 text-center mb-8 space-y-2">
+            <p className="text-slate-300 text-sm">
+              <span className="text-white font-semibold">Setup fee</span> is due at enrollment. <span className="text-white font-semibold">Weekly payments</span> are billed every <span className="text-green-400 font-bold">Friday</span>.
+            </p>
+            <p className="text-slate-400 text-xs">
+              Transferred hours may change weekly payments, but setup fee remains <span className="text-purple-400 font-bold">$1,743</span>.
+            </p>
+          </div>
+
+          {/* Weekly Payment Examples */}
+          <div className="bg-white rounded-2xl p-6 shadow-xl">
+            <h3 className="text-lg font-bold text-slate-900 mb-4 text-center">Estimated Weekly Payments</h3>
+            <p className="text-slate-500 text-sm text-center mb-6">Based on remaining balance of $3,237 (no transferred hours)</p>
+            
+            <div className="grid sm:grid-cols-3 gap-4">
+              <div className="bg-slate-50 rounded-xl p-4 text-center">
+                <div className="text-sm text-slate-500 mb-1">40 hrs/week</div>
+                <div className="text-2xl font-black text-slate-900">$64.74</div>
+                <div className="text-xs text-slate-400">~50 weeks</div>
+              </div>
+              <div className="bg-slate-50 rounded-xl p-4 text-center">
+                <div className="text-sm text-slate-500 mb-1">30 hrs/week</div>
+                <div className="text-2xl font-black text-slate-900">$48.31</div>
+                <div className="text-xs text-slate-400">~67 weeks</div>
+              </div>
+              <div className="bg-slate-50 rounded-xl p-4 text-center">
+                <div className="text-sm text-slate-500 mb-1">25 hrs/week</div>
+                <div className="text-2xl font-black text-slate-900">$40.46</div>
+                <div className="text-xs text-slate-400">~80 weeks</div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/apply?program=barber-apprenticeship"
+              className="inline-flex items-center justify-center rounded-xl bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-purple-700 transition-all shadow-xl"
+            >
+              Start Eligibility & Payment Plan
+            </Link>
+            <Link
+              href="/employer/apply"
+              className="inline-flex items-center justify-center rounded-xl border-2 border-white bg-transparent px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all"
+            >
+              Partner Shop Sign-Up
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* What's Covered Section */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-6 mb-6">
+            <h3 className="text-xl font-bold text-purple-900 mb-3">What Your Program Fee Covers</h3>
+            <p className="text-purple-800 leading-relaxed">
+              This Barber Program is a fee-based USDOL Registered Apprenticeship training pathway. 
+              Your tuition covers structured training, related instruction (Milady theory curriculum), 
+              program administration, compliance tracking, training site coordination, hour verification, 
+              and completion documentation delivered by Elevate for Humanity as the Sponsor of Record.
+            </p>
+            <p className="text-purple-700 mt-3 text-sm">
+              Tuition does not include personal tools, uniforms, or state licensing and examination fees.
+            </p>
+          </div>
+
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <p className="text-blue-800 text-sm">
+              <strong>How to Enroll:</strong> Submit an application and speak with an enrollment advisor. 
+              The setup fee ($1,743) is collected after your enrollment is approved and you've signed your enrollment agreement.
+            </p>
+            <p className="text-blue-700 text-sm mt-2">
+              <strong>Billing Schedule:</strong> Weekly payments begin on the Friday following your enrollment and occur every Friday thereafter until your balance is paid.
+            </p>
           </div>
         </div>
       </section>
