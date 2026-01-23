@@ -3,6 +3,8 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { WebsiteBuilderApp } from './WebsiteBuilderApp';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Website Builder | Elevate Apps',
   description: 'Build professional training provider websites.',

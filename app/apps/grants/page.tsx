@@ -3,6 +3,8 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { GrantsApp } from './GrantsApp';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Grants Discovery | Elevate Apps',
   description: 'Find and manage federal, state, and foundation grants.',

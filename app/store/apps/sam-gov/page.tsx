@@ -1,17 +1,5 @@
 import { Metadata } from 'next';
 import { ProductPage } from '@/components/store/ProductPage';
-import { 
-  FileText, 
-  Shield, 
-  Building2, 
-  Zap, 
-  Bell, 
-  Users, 
-  RefreshCw, 
-  Search,
-  Clock,
-  CheckCircle
-} from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'SAM.gov Assistant - Federal Contractor Registration Tool | Elevate Store',
@@ -55,42 +43,42 @@ const productData = {
   ],
   features: [
     {
-      icon: FileText,
+      icon: 'FileText',
       title: 'Step-by-Step Registration Wizard',
       description: 'Guided walkthrough of all 7 SAM.gov registration sections with real-time validation. Never miss a required field or make a formatting error.',
     },
     {
-      icon: Shield,
+      icon: 'Shield',
       title: 'Compliance Monitoring Dashboard',
       description: 'Track your registration status, expiration dates, and compliance requirements in one place. Get alerts for any issues that need attention.',
     },
     {
-      icon: Bell,
+      icon: 'Bell',
       title: 'Automatic Renewal Reminders',
       description: 'Receive email and in-app notifications at 90, 60, and 30 days before expiration. Never let your registration lapse.',
     },
     {
-      icon: Building2,
+      icon: 'Building2',
       title: 'Multi-Entity Management',
       description: 'Manage multiple business entities from a single dashboard. Perfect for holding companies, franchises, and organizations with subsidiaries.',
     },
     {
-      icon: Search,
+      icon: 'Search',
       title: 'UEI Lookup & Validation',
       description: 'Search for existing UEI numbers, validate your entity information, and ensure accuracy before submission.',
     },
     {
-      icon: RefreshCw,
+      icon: 'RefreshCw',
       title: 'Data Import & Sync',
       description: 'Import existing data from SAM.gov, CSV files, or legacy DUNS records. Keep everything synchronized automatically.',
     },
     {
-      icon: Users,
+      icon: 'Users',
       title: 'Team Collaboration',
       description: 'Invite team members with role-based permissions. Control who can view, edit, or submit registrations.',
     },
     {
-      icon: Zap,
+      icon: 'Zap',
       title: 'NAICS Code Management',
       description: 'Search and select the right NAICS codes for your business. Get suggestions based on your industry and services.',
     },

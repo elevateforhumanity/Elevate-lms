@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Building2, Check, Clock, Shield, Zap } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Start Free Trial - SAM.gov Assistant | Elevate Apps',
   description: 'Start your 14-day free trial of SAM.gov Assistant.',

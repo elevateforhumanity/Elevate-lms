@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { DollarSign, Check, Clock, Shield, Zap } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Start Free Trial - Grants Discovery | Elevate Apps',
   description: 'Start your 14-day free trial of Grants Discovery.',

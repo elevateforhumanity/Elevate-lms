@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { SamGovApp } from './SamGovApp';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'SAM.gov Assistant | Elevate Apps',
   description: 'Federal contractor registration and compliance management.',

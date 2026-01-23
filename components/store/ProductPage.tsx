@@ -25,8 +25,47 @@ import {
   Smartphone,
   Globe,
   HelpCircle,
-  X
+  X,
+  FileText,
+  Building2,
+  Bell,
+  Search,
+  DollarSign,
+  Layout,
+  Target,
+  BarChart3,
+  Calendar,
+  Award,
+  BookOpen,
+  Briefcase,
+  type LucideIcon
 } from 'lucide-react';
+
+// Icon map for serialization from server components
+const iconMap: Record<string, LucideIcon> = {
+  FileText,
+  Shield,
+  Building2,
+  Zap,
+  Bell,
+  Users,
+  RefreshCw,
+  Search,
+  Clock,
+  Check,
+  DollarSign,
+  Layout,
+  Target,
+  BarChart3,
+  Calendar,
+  Award,
+  BookOpen,
+  Briefcase,
+  Monitor,
+  Globe,
+  Download,
+  Star,
+};
 
 interface ProductImage {
   src: string;
@@ -35,7 +74,7 @@ interface ProductImage {
 }
 
 interface Feature {
-  icon: any;
+  icon: string;
   title: string;
   description: string;
 }
@@ -342,15 +381,18 @@ export function ProductPage({ product }: ProductPageProps) {
             <section id="features">
               <h2 className="text-2xl font-black text-gray-900 mb-6">Features</h2>
               <div className="grid md:grid-cols-2 gap-6">
-                {product.features.map((feature, i) => (
-                  <div key={i} className="bg-gray-50 rounded-xl p-6">
-                    <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-                      <feature.icon className="w-6 h-6 text-blue-600" />
+                {product.features.map((feature, i) => {
+                  const IconComponent = iconMap[feature.icon] || Zap;
+                  return (
+                    <div key={i} className="bg-gray-50 rounded-xl p-6">
+                      <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                        <IconComponent className="w-6 h-6 text-blue-600" />
+                      </div>
+                      <h3 className="font-bold text-gray-900 mb-2">{feature.title}</h3>
+                      <p className="text-gray-600 text-sm">{feature.description}</p>
                     </div>
-                    <h3 className="font-bold text-gray-900 mb-2">{feature.title}</h3>
-                    <p className="text-gray-600 text-sm">{feature.description}</p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </section>
 
