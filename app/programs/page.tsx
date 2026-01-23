@@ -258,7 +258,7 @@ export default function ProgramsPage() {
             </div>
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/programs-hq/healthcare-hero.jpg"
+                src="/images/programs-hq/students-learning.jpg"
                 alt="Students in training program"
                 fill
                 className="object-cover"
@@ -281,9 +281,9 @@ export default function ProgramsPage() {
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
-              <div className="relative h-32 rounded-xl overflow-hidden mb-4">
+              <div className="relative h-40 rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/images/testimonials-hq/person-4.jpg"
+                  src="/images/heroes-hq/funding-hero.jpg"
                   alt="Free training"
                   fill
                   className="object-cover"
@@ -295,9 +295,9 @@ export default function ProgramsPage() {
               </p>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
-              <div className="relative h-32 rounded-xl overflow-hidden mb-4">
+              <div className="relative h-40 rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/images/heroes-hq/career-services-hero.jpg"
+                  src="/images/programs-hq/training-classroom.jpg"
                   alt="Fast track training"
                   fill
                   className="object-cover"
@@ -309,9 +309,9 @@ export default function ProgramsPage() {
               </p>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
-              <div className="relative h-32 rounded-xl overflow-hidden mb-4">
+              <div className="relative h-40 rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/images/heroes-hq/success-stories-hero.jpg"
+                  src="/images/programs-hq/career-success.jpg"
                   alt="Industry credentials"
                   fill
                   className="object-cover"
@@ -323,9 +323,9 @@ export default function ProgramsPage() {
               </p>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
-              <div className="relative h-32 rounded-xl overflow-hidden mb-4">
+              <div className="relative h-40 rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/images/team-hq/team-meeting.jpg"
+                  src="/images/heroes-hq/employer-hero.jpg"
                   alt="Job placement"
                   fill
                   className="object-cover"
