@@ -216,10 +216,18 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-
+      
+      {/* AI Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/home-welcome.mp4"
+        avatarName="Elevate Guide"
+        position="bottom-right"
+        autoPlay={false}
+        showOnLoad={true}
+      />
 
       {/* Hero Section - Optimized for all screen sizes: mobile, tablet, laptop, desktop */}
-      <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-800">
+      <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-gradient-to-br from-blue-600 to-blue-900">
         {/* Background video - autoplay on ALL devices */}
         {/* Required for autoplay: muted, playsinline, autoplay attributes */}
         <video
@@ -467,7 +475,7 @@ export default function HomePage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
+                <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
                   JRI & MORE
                 </div>
               </div>
@@ -678,7 +686,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4">
-              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <svg className="w-5 h-5 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -762,7 +770,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
-              <div className="w-8 h-8 bg-purple-600 rounded flex items-center justify-center">
+              <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
                 <span className="text-white font-bold text-xs">US</span>
               </div>
               <div className="text-left">

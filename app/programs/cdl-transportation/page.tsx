@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -40,6 +41,15 @@ export default async function CdlTransportationPage() {
     .single();
   return (
     <div className="min-h-screen bg-white">
+      {/* AI Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/trades-guide.mp4"
+        avatarName="CDL Guide"
+        position="bottom-right"
+        autoPlay={false}
+        showOnLoad={true}
+      />
+      
       <VideoHeroBanner
         videoSrc="/videos/cdl-hero.mp4"
         headline="CDL & Transportation"

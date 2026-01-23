@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { MapPin, Phone, Mail, Clock, Navigation } from 'lucide-react';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 export const metadata: Metadata = {
   title: 'Locations | Elevate for Humanity',
@@ -14,8 +15,17 @@ export const metadata: Metadata = {
 export default function LocationsPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* AI Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/home-welcome.mp4"
+        avatarName="Locations Guide"
+        position="bottom-right"
+        autoPlay={false}
+        showOnLoad={true}
+      />
+      
       {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-20">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <MapPin className="h-20 w-20 text-white mx-auto mb-6" />
