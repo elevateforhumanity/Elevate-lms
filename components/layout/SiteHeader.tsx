@@ -25,7 +25,7 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
 import { NotificationBell } from '@/components/notifications/NotificationBell';
 
-// Main navigation - focused on workforce training mission
+// Main navigation - clean, focused, professional
 const NAV_ITEMS = [
   { 
     name: 'Programs', 
@@ -34,45 +34,27 @@ const NAV_ITEMS = [
       { name: 'Healthcare', href: '/programs/healthcare' },
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
-      { name: 'CDL & Transportation', href: '/programs/cdl-transportation' },
-      { name: 'Tax Preparation', href: '/programs/tax-preparation' },
       { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
-      { name: 'All Courses', href: '/courses' },
+      { name: 'View All Programs', href: '/programs' },
     ]
   },
   { 
     name: 'How It Works', 
     href: '/how-it-works',
     subItems: [
-      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
+      { name: 'Check Eligibility', href: '/wioa-eligibility' },
       { name: 'Funding Options', href: '/funding' },
-      { name: 'Financial Aid', href: '/financial-aid' },
       { name: 'Career Services', href: '/career-services' },
       { name: 'FAQ', href: '/faq' },
     ]
   },
   { 
-    name: 'Portals', 
-    href: '/dashboards',
+    name: 'For Employers', 
+    href: '/employer',
     subItems: [
-      { name: 'Hub (Command Center)', href: '/hub/welcome' },
-      { name: 'Student Portal', href: '/student-portal' },
-      { name: 'LMS Dashboard', href: '/lms' },
-      { name: 'Employer Portal', href: '/employer-portal' },
-      { name: 'Partner Portal', href: '/partner' },
-      { name: 'Staff Portal', href: '/staff-portal' },
       { name: 'Hire Graduates', href: '/hire-graduates' },
       { name: 'Partner With Us', href: '/partners' },
-    ]
-  },
-  { 
-    name: 'Services', 
-    href: '/services',
-    subItems: [
-      { name: 'Free Tax Help (VITA)', href: '/vita' },
-      { name: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
-      { name: 'Career Services', href: '/career-services' },
-      { name: 'Store', href: '/store' },
+      { name: 'Employer Portal', href: '/employer-portal' },
     ]
   },
   { 
@@ -80,10 +62,7 @@ const NAV_ITEMS = [
     href: '/about',
     subItems: [
       { name: 'Our Mission', href: '/about/mission' },
-      { name: 'Our Team', href: '/about/team' },
-      { name: 'Join Our Team', href: '/careers' },
       { name: 'Success Stories', href: '/success-stories' },
-      { name: 'Locations', href: '/locations' },
       { name: 'Contact', href: '/contact' },
     ]
   },
