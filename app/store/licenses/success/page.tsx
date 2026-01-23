@@ -30,16 +30,38 @@ export default function LicenseSuccessPage() {
 
   const productSlug = searchParams.get('product');
   const paymentIntent = searchParams.get('payment_intent');
+  const sessionId = searchParams.get('session_id');
 
   useEffect(() => {
     // Fetch license details after successful payment
     async function fetchLicense() {
-      if (paymentIntent) {
+      // Try session_id first (new flow), then payment_intent (legacy)
+      const identifier = sessionId || paymentIntent;
+      const param = sessionId ? 'session_id' : 'payment_intent';
+      
+      if (identifier) {
         try {
-          const res = await fetch(`/api/store/licenses/get-by-payment?payment_intent=${paymentIntent}`);
-          if (res.ok) {
-            const data = await res.json();
-            setLicenseData(data);
+          // First check checkout session status
+          if (sessionId) {
+            const statusRes = await fetch(`/api/licenses/checkout?session_id=${sessionId}`);
+            if (statusRes.ok) {
+              const statusData = await statusRes.json();
+              if (statusData.payment_status === 'paid') {
+                // Payment confirmed, fetch license
+                const licenseRes = await fetch(`/api/store/licenses/get-by-payment?${param}=${identifier}`);
+                if (licenseRes.ok) {
+                  const data = await licenseRes.json();
+                  setLicenseData(data);
+                }
+              }
+            }
+          } else {
+            // Legacy flow
+            const res = await fetch(`/api/store/licenses/get-by-payment?${param}=${identifier}`);
+            if (res.ok) {
+              const data = await res.json();
+              setLicenseData(data);
+            }
           }
         } catch (error) {
           console.error('Failed to fetch license:', error);
@@ -48,7 +70,7 @@ export default function LicenseSuccessPage() {
       setLoading(false);
     }
     fetchLicense();
-  }, [paymentIntent]);
+  }, [paymentIntent, sessionId]);
 
   const copyLicenseKey = () => {
     if (licenseData?.licenseKey) {

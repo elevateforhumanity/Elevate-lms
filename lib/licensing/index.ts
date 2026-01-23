@@ -8,6 +8,19 @@
  * - lib/license.ts (EFH domain license only)
  */
 
+// Re-export new validation utilities
+export * from './validate';
+export * from './middleware';
+export {
+  TenantProvider,
+  useTenant,
+  withTenant,
+  RequireLicense,
+  RequireFeature,
+  TrialBanner,
+  UsageLimits,
+} from './tenant-context';
+
 import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/logger';
