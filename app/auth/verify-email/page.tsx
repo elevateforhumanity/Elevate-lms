@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
 
@@ -10,27 +10,39 @@ export default function VerifyEmailPage() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>(
     'idle'
   );
-  const supabase = createClient();
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [supabaseReady, setSupabaseReady] = useState(false);
+
+  useEffect(() => {
+    const supabase = createClient();
+    if (supabase) {
+      setSupabaseReady(true);
+      supabase.auth.getUser().then(({ data: { user } }) => {
+        if (user?.email) {
+          setUserEmail(user.email);
+        }
+      });
+    }
+  }, []);
 
   const resendVerification = async () => {
+    const supabase = createClient();
+    if (!supabase || !userEmail) {
+      setStatus('error');
+      return;
+    }
+    
     setStatus('sending');
     try {
-      const {
-        data: { user },
-      } = await supabase?.auth.getUser();
-      if (!user?.email) {
-        setStatus('error');
-        return;
-      }
-
-      const { error } = await supabase?.auth.resend({
+      const { error } = await supabase.auth.resend({
         type: 'signup',
-        email: user.email,
+        email: userEmail,
       });
 
       if (error) throw error;
       setStatus('sent');
-    } catch (error) { /* Error handled silently */ 
+    } catch (error) {
+      console.error('Resend verification error:', error);
       setStatus('error');
     }
   };
