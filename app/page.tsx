@@ -370,7 +370,7 @@ export default function HomePage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
+                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
                   APPRENTICESHIPS
                 </div>
               </div>
@@ -398,7 +398,7 @@ export default function HomePage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
+                <div className="absolute top-4 left-4 bg-blue-700 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
                   JRI & MORE
                 </div>
               </div>

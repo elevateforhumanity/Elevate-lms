@@ -29,7 +29,7 @@ const programCategories = [
     href: '/programs/healthcare',
     image: '/images/programs-hq/healthcare-hero.jpg',
     icon: Heart,
-    color: 'red',
+    color: 'blue',
     programs: [
       { name: 'Certified Nursing Assistant (CNA)', href: '/programs/cna', duration: '4-8 weeks', description: 'Provide direct patient care in healthcare facilities' },
       { name: 'Medical Assistant', href: '/programs/medical-assistant', duration: '12-16 weeks', description: 'Clinical and administrative duties in medical offices' },
@@ -44,7 +44,7 @@ const programCategories = [
     href: '/programs/skilled-trades',
     image: '/images/programs-hq/skilled-trades-hero.jpg',
     icon: Wrench,
-    color: 'orange',
+    color: 'blue',
     programs: [
       { name: 'HVAC Technician', href: '/programs/hvac', duration: '12-24 weeks', description: 'Install and repair heating, cooling, and ventilation systems' },
       { name: 'Welding', href: '/programs/welding', duration: '8-16 weeks', description: 'Join metal parts using various welding techniques' },
@@ -70,7 +70,7 @@ const programCategories = [
     href: '/programs/cdl-transportation',
     image: '/images/programs-hq/cdl-trucking.jpg',
     icon: Truck,
-    color: 'green',
+    color: 'blue',
     programs: [
       { name: 'CDL Class A Training', href: '/programs/cdl', duration: '3-6 weeks', description: 'Drive tractor-trailers and combination vehicles' },
     ],
@@ -81,7 +81,7 @@ const programCategories = [
     href: '/programs/barber-apprenticeship',
     image: '/images/programs-hq/barber-hero.jpg',
     icon: Scissors,
-    color: 'red',
+    color: 'blue',
     programs: [
       { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship', duration: '18-24 months', description: 'Cut, style, and groom hair for men and boys' },
       { name: 'Cosmetology Apprenticeship', href: '/programs/cosmetology-apprenticeship', duration: '18-24 months', description: 'Hair styling, coloring, and beauty treatments' },
@@ -95,7 +95,7 @@ const programCategories = [
     href: '/programs/business-financial',
     image: '/images/programs-hq/tax-preparation.jpg',
     icon: DollarSign,
-    color: 'teal',
+    color: 'blue',
     programs: [
       { name: 'Tax Preparation Certification', href: '/programs/tax-preparation', duration: '4-8 weeks', description: 'Prepare individual and business tax returns' },
       { name: 'Tax Business Entrepreneurship', href: '/programs/tax-entrepreneurship', duration: '8-12 weeks', description: 'Start and run your own tax preparation business' },
@@ -203,25 +203,25 @@ export default function ProgramsPage() {
       />
 
       {/* How Training Can Be Free */}
-      <section className="py-16 bg-green-600">
+      <section className="py-16 bg-blue-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-black text-white mb-6">
                 How Can Training Be Free?
               </h2>
-              <p className="text-xl text-green-100 mb-6">
+              <p className="text-xl text-blue-100 mb-6">
                 Through federal and state workforce programs, eligible participants can receive 
                 100% funded training at no cost. We help you navigate the funding process.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                    <DollarSign className="w-6 h-6 text-green-600" />
+                    <DollarSign className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-lg">WIOA Funding</h3>
-                    <p className="text-green-100">
+                    <p className="text-blue-100">
                       The Workforce Innovation and Opportunity Act provides funding for job training 
                       to unemployed, underemployed, and low-income individuals.
                     </p>
@@ -229,11 +229,11 @@ export default function ProgramsPage() {
                 </div>
                 <div className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                    <Briefcase className="w-6 h-6 text-green-600" />
+                    <Briefcase className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-lg">On-the-Job Training (OJT)</h3>
-                    <p className="text-green-100">
+                    <p className="text-blue-100">
                       Get hired by an employer who trains you on the job. The employer receives 
                       wage reimbursement while you earn a paycheck and learn skills.
                     </p>
@@ -241,11 +241,11 @@ export default function ProgramsPage() {
                 </div>
                 <div className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                    <GraduationCap className="w-6 h-6 text-green-600" />
+                    <GraduationCap className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-lg">Earn While You Learn</h3>
-                    <p className="text-green-100">
+                    <p className="text-blue-100">
                       Registered apprenticeships let you earn a wage while receiving training. 
                       You graduate with experience, credentials, and no student debt.
                     </p>
@@ -448,14 +448,14 @@ export default function ProgramsPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                   Registered Apprenticeships
                 </h3>
                 <p className="text-gray-600 mb-4">
                   Earn while you learn with Department of Labor registered apprenticeship programs. 
                   Get paid training, mentorship, and a nationally recognized credential.
                 </p>
-                <span className="inline-flex items-center gap-2 text-indigo-600 font-semibold">
+                <span className="inline-flex items-center gap-2 text-blue-600 font-semibold">
                   Explore Apprenticeships <ArrowRight className="w-4 h-4" />
                 </span>
               </div>
@@ -474,14 +474,14 @@ export default function ProgramsPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                   Justice-Involved Programs
                 </h3>
                 <p className="text-gray-600 mb-4">
                   Second chance programs for individuals with criminal backgrounds. 
                   We believe everyone deserves an opportunity to build a better future.
                 </p>
-                <span className="inline-flex items-center gap-2 text-green-600 font-semibold">
+                <span className="inline-flex items-center gap-2 text-blue-600 font-semibold">
                   Learn More <ArrowRight className="w-4 h-4" />
                 </span>
               </div>

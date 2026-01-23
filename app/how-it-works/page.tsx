@@ -258,18 +258,18 @@ export default function HowItWorksPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
                   <Heart className="w-4 h-4" /> Healthcare
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                   Healthcare Programs
                 </h3>
                 <p className="text-gray-600 mb-4">
                   CNA, Medical Assistant, Phlebotomy, Direct Support Professional, and more.
                 </p>
-                <span className="inline-flex items-center gap-1 text-red-600 font-semibold">
+                <span className="inline-flex items-center gap-1 text-blue-600 font-semibold">
                   Explore Healthcare <ArrowRight className="w-4 h-4" />
                 </span>
               </div>
@@ -286,18 +286,18 @@ export default function HowItWorksPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-4 left-4 bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
                   <Wrench className="w-4 h-4" /> Trades
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                   Skilled Trades
                 </h3>
                 <p className="text-gray-600 mb-4">
                   HVAC, Welding, Electrical, Plumbing - hands-on careers that pay well.
                 </p>
-                <span className="inline-flex items-center gap-1 text-orange-600 font-semibold">
+                <span className="inline-flex items-center gap-1 text-blue-600 font-semibold">
                   Explore Trades <ArrowRight className="w-4 h-4" />
                 </span>
               </div>
@@ -342,18 +342,18 @@ export default function HowItWorksPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
                   <Truck className="w-4 h-4" /> CDL
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                   CDL & Transportation
                 </h3>
                 <p className="text-gray-600 mb-4">
                   Get your Commercial Driver&apos;s License in 3-6 weeks.
                 </p>
-                <span className="inline-flex items-center gap-1 text-green-600 font-semibold">
+                <span className="inline-flex items-center gap-1 text-blue-600 font-semibold">
                   Explore CDL <ArrowRight className="w-4 h-4" />
                 </span>
               </div>
@@ -370,18 +370,18 @@ export default function HowItWorksPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
                   <Award className="w-4 h-4" /> Apprenticeship
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                   Apprenticeships
                 </h3>
                 <p className="text-gray-600 mb-4">
                   Barber, Cosmetology, Esthetician - earn while you learn.
                 </p>
-                <span className="inline-flex items-center gap-1 text-purple-600 font-semibold">
+                <span className="inline-flex items-center gap-1 text-blue-600 font-semibold">
                   Explore Apprenticeships <ArrowRight className="w-4 h-4" />
                 </span>
               </div>

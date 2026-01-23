@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
+import HeroAvatarGuide from '@/components/HeroAvatarGuide';
 import TestimonialsSection from '@/components/content/TestimonialsSection';
 import {
   BadgeCheck,
@@ -25,13 +25,6 @@ import {
 export default function SupersonicFastCashPage() {
   return (
     <div className="min-h-screen bg-white">
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/financial-guide.mp4"
-        avatarName="Tax Guide"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
       {/* Hero */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
         {/* Background Image - Tax/Money themed */}
@@ -68,7 +61,7 @@ export default function SupersonicFastCashPage() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
               <Link
                 href="/supersonic-fast-cash/apply"
-                className="group px-12 py-6 bg-gradient-to-r from-red-600 to-red-700 text-white text-xl sm:text-2xl font-black rounded-2xl hover:from-red-700 hover:to-red-800 shadow-2xl hover:shadow-red-500/50 uppercase transform hover:scale-105 transition-all duration-300"
+                className="group px-12 py-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-xl sm:text-2xl font-black rounded-2xl hover:from-blue-700 hover:to-blue-800 shadow-2xl hover:shadow-blue-500/50 uppercase transform hover:scale-105 transition-all duration-300"
               >
                 <span className="flex items-center justify-center gap-3">
                   💵 Get Cash Now
@@ -114,6 +107,13 @@ export default function SupersonicFastCashPage() {
         </div>
       </section>
 
+      {/* Avatar Guide - Below Hero */}
+      <HeroAvatarGuide 
+        videoSrc="/videos/avatars/financial-guide.mp4"
+        avatarName="Tax Guide"
+        message="Let me help you get your tax refund fast. Click to learn more."
+      />
+
       {/* How It Works */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -128,7 +128,7 @@ export default function SupersonicFastCashPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="relative text-center">
-              <div className="w-20 h-20 bg-red-600 text-white rounded-full flex items-center justify-center font-black text-3xl mx-auto mb-6">
+              <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center font-black text-3xl mx-auto mb-6">
                 1
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Apply Online</h3>
@@ -138,7 +138,7 @@ export default function SupersonicFastCashPage() {
             </div>
 
             <div className="relative text-center">
-              <div className="w-20 h-20 bg-red-600 text-white rounded-full flex items-center justify-center font-black text-3xl mx-auto mb-6">
+              <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center font-black text-3xl mx-auto mb-6">
                 2
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Get Approved</h3>
@@ -148,7 +148,7 @@ export default function SupersonicFastCashPage() {
             </div>
 
             <div className="relative text-center">
-              <div className="w-20 h-20 bg-red-600 text-white rounded-full flex items-center justify-center font-black text-3xl mx-auto mb-6">
+              <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center font-black text-3xl mx-auto mb-6">
                 3
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Get Your Cash</h3>
@@ -161,7 +161,7 @@ export default function SupersonicFastCashPage() {
           <div className="text-center mt-12">
             <Link
               href="/supersonic-fast-cash/apply"
-              className="inline-flex items-center gap-2 bg-red-600 text-white px-10 py-5 rounded-xl font-bold text-xl hover:bg-red-700 transition-colors shadow-lg"
+              className="inline-flex items-center gap-2 bg-blue-600 text-white px-10 py-5 rounded-xl font-bold text-xl hover:bg-blue-700 transition-colors shadow-lg"
             >
               Start Your Application
               <ArrowRight className="w-5 h-5" />
@@ -288,7 +288,7 @@ export default function SupersonicFastCashPage() {
                 </Link>
                 <Link
                   href="/supersonic-fast-cash/book-appointment"
-                  className="inline-flex items-center justify-center gap-2 bg-red-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-red-700 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition-colors"
                 >
                   <Calendar className="w-5 h-5" />
                   Book Appointment
