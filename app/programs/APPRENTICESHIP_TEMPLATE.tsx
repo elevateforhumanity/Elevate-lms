@@ -98,7 +98,7 @@ export default function ApprenticeshipPage() {
             </div>
             <div className="flex flex-col items-center">
               <Clock className="w-12 h-12 text-brand-orange-500 mb-3" />
-              <div className="text-2xl font-bold mb-1">1,500 Hours</div>
+              <div className="text-2xl font-bold mb-1">2,000 Hours</div>
               <div className="text-slate-300">Hands-On Experience</div>
             </div>
             <div className="flex flex-col items-center">
@@ -177,7 +177,7 @@ export default function ApprenticeshipPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-3">Get Licensed</h3>
                 <p className="text-white/90 leading-relaxed">
-                  Complete 1,500 hours, pass your exam, and earn your Indiana
+                  Complete 2,000 hours, pass your exam, and earn your Indiana
                   barber license.
                 </p>
               </div>
@@ -251,7 +251,7 @@ export default function ApprenticeshipPage() {
                       Job Ready
                     </h3>
                     <p className="text-black text-lg leading-relaxed">
-                      Graduate with 1,500 hours of real experience, a client
+                      Graduate with 2,000 hours of real experience, a client
                       base, and connections in the industry.
                     </p>
                   </div>
@@ -266,14 +266,14 @@ export default function ApprenticeshipPage() {
                 <div className="space-y-6">
                   <div className="border-b border-white/10 pb-6">
                     <div className="text-slate-400 text-sm mb-2">Duration</div>
-                    <div className="text-2xl font-bold">12-18 Months</div>
+                    <div className="text-2xl font-bold">15-24 Months</div>
                   </div>
 
                   <div className="border-b border-white/10 pb-6">
                     <div className="text-slate-400 text-sm mb-2">
                       Training Hours
                     </div>
-                    <div className="text-2xl font-bold">1,500 Hours</div>
+                    <div className="text-2xl font-bold">2,000 Hours</div>
                   </div>
 
                   <div className="border-b border-white/10 pb-6">

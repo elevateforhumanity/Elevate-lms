@@ -51,7 +51,7 @@ export default async function StateBoardExamPage() {
   const approvedHours = approvedMinutes / 60;
   const transferHours = enrollment?.transfer_hours || 0;
   const totalHours = approvedHours + transferHours;
-  const requiredHours = enrollment?.required_hours || 1500;
+  const requiredHours = enrollment?.required_hours || 2000;
 
   // Check readiness
   const hoursComplete = totalHours >= requiredHours;

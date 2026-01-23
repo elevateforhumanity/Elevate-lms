@@ -25,9 +25,9 @@ const beautyPrograms = [
     description: 'Complete 2,000-hour apprenticeship to become a licensed barber in Indiana. Learn cutting, styling, shaving, and business skills.',
     href: '/programs/barber-apprenticeship',
     image: '/hero-images/barber-hero.jpg',
-    hours: 1500,
+    hours: 2000,
     price: 4980,
-    duration: '12-18 months',
+    duration: '15-24 months',
     highlights: ['Indiana IPLA compliant', 'Milady Theory included', 'Hour logging system'],
   },
   {

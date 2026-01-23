@@ -46,15 +46,15 @@ export async function GET(req: Request) {
 
     const { data: enrollment, error: enrollmentError } = await enrollmentQuery.maybeSingle();
 
-    // Default required hours (Indiana barber = 1500)
-    let requiredHours = 1500;
+    // Default required hours (Indiana barber = 2000)
+    let requiredHours = 2000;
     let transferHours = 0;
 
     if (enrollment) {
       // Use enrollment-specific required hours if set, otherwise use program default
       requiredHours = enrollment.required_hours 
         || (enrollment.programs as any)?.total_hours 
-        || 1500;
+        || 2000;
       transferHours = enrollment.transfer_hours || 0;
     }
 

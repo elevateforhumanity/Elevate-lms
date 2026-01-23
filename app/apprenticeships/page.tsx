@@ -42,7 +42,7 @@ export default function ApprenticeshipsPage() {
     {
       title: 'Barber Apprenticeship',
       slug: 'barber-apprenticeship',
-      duration: '1,500 hours (12-18 months)',
+      duration: '2,000 hours (15-24 months)',
       wage: 'Earn while you learn',
       image: '/hero-images/barber-hero.jpg',
       description:
@@ -319,10 +319,13 @@ export default function ApprenticeshipsPage() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
               Earn While You Learn
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-blue-100 mb-8 leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-blue-100 mb-4 leading-relaxed">
               Start your career with hands-on training, industry credentials,
               and a paycheck. Our registered apprenticeship programs combine
               on-the-job experience with classroom instruction.
+            </p>
+            <p className="text-sm text-blue-200 mb-8">
+              Elevate for Humanity serves as the Program Administrator for registered apprenticeship pathways, coordinating training, employer participation, and funding access.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link

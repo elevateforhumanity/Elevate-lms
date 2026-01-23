@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const programs = [
   {
     name: 'Barber Apprenticeship',
-    duration: '12 months (1,500 hours)',
+    duration: '15-24 months (2,000 hours)',
     tuition: 4980,
     examFees: 75,
     examFeesNote: 'Indiana State Board of Barber Examiners licensing exam',

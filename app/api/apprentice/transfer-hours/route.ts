@@ -66,9 +66,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Enrollment ID required' }, { status: 400 });
   }
 
-  if (!hours_requested || hours_requested <= 0 || hours_requested > 1500) {
+  if (!hours_requested || hours_requested <= 0 || hours_requested > 2000) {
     return NextResponse.json(
-      { error: 'Hours must be between 1 and 1500' },
+      { error: 'Hours must be between 1 and 2000' },
       { status: 400 }
     );
   }

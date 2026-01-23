@@ -86,7 +86,7 @@ export async function GET(request: NextRequest) {
                 programName: program?.name,
                 todayHours: todayLog.total_hours || 0,
                 totalHours: apprenticeship.hours_completed || 0,
-                requiredHours: apprenticeship.hours_required || 1500,
+                requiredHours: apprenticeship.hours_required || 2000,
                 checkInTime: todayLog.check_in_time,
                 checkOutTime: todayLog.check_out_time,
                 approved: todayLog.approved,

@@ -58,7 +58,7 @@ const faqCategories = [
       },
       {
         q: 'How long are the programs?',
-        a: 'Program lengths vary: CNA (4-8 weeks), CDL (4-6 weeks), Medical Assistant (8-12 weeks), HVAC (12-16 weeks), Barber Apprenticeship (12-18 months), Building Maintenance (8-12 weeks), Workforce Readiness (1-4 weeks). All programs are designed to get you working as quickly as possible.',
+        a: 'Program lengths vary: CNA (4-8 weeks), CDL (4-6 weeks), Medical Assistant (8-12 weeks), HVAC (12-16 weeks), Barber Apprenticeship (15-24 months, 2,000 hours), Building Maintenance (8-12 weeks), Workforce Readiness (1-4 weeks). All programs are designed to get you working as quickly as possible.',
       },
       {
         q: 'Are classes online or in-person?',

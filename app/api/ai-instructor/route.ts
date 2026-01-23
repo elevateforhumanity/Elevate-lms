@@ -25,7 +25,7 @@ const SYSTEM_PROMPT = `You are an AI instructor assistant for Elevate for Humani
 5. **Resource Direction**: Point students to handbooks, workbooks, and support services
 
 ## Available Programs:
-1. **Barbering/Cosmetology** (1,500 hours, 12-18 months)
+1. **Barbering** (2,000 hours, 15-24 months) / **Cosmetology** (1,500 hours, 12-18 months)
    - State licensure preparation
    - Theory + practical skills
    - Milady CIMA integration for theory

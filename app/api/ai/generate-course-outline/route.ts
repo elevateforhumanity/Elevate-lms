@@ -60,7 +60,7 @@ async function generateCourseOutline(prompt: string) {
   } else if (promptLower.includes('barber')) {
     courseType = 'barber';
     title = 'Professional Barber Apprenticeship';
-    duration = '1500 hours';
+    duration = '2000 hours';
   } else if (
     promptLower.includes('medical assistant') ||
     promptLower.includes('direct support professional') ||

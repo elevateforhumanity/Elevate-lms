@@ -271,7 +271,7 @@ export default async function JRIProgramsPage() {
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <p className="font-bold text-lg mb-2">Barber Apprenticeship</p>
                 <p className="text-sm text-black mb-2">
-                  1,500 hours | $12-15/hr starting
+                  2,000 hours | $10-15/hr starting
                 </p>
                 <p className="text-xs text-black">State Board approved</p>
               </div>

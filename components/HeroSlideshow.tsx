@@ -27,7 +27,7 @@ const slides: Slide[] = [
   {
     image: "/images/hero/hero-barber.jpg",
     title: "DOL Registered Barber Apprenticeship",
-    text: "2,000-hour apprenticeship or 1,500-hour program with financial aid. Earn while you learn. WIOA, WRG, and JRI fundable.",
+    text: "2,000-hour barber apprenticeship. Earn while you learn. WIOA, WRG, and JRI fundable. Indiana state licensure.",
     cta: {
       text: "Learn More",
       href: "/programs/barber-apprenticeship"
