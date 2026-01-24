@@ -29,6 +29,11 @@ const PROTECTED_ROUTES: Record<string, string[]> = {
 // Routes restricted to specific admin emails only
 const ADMIN_ONLY_ROUTES = ['/admin'];
 
+// Partner routes that require active partner status
+const PARTNER_ROUTES = ['/partner/dashboard', '/partner/programs'];
+// Partner routes allowed even without active status (for document upload)
+const PARTNER_ONBOARDING_ROUTES = ['/partner/documents', '/partner/onboarding'];
+
 // Routes that require authentication (any role)
 const AUTH_REQUIRED_ROUTES = ['/student', '/my-courses', '/my-progress', '/settings'];
 
@@ -328,6 +333,39 @@ export async function middleware(request: NextRequest) {
     if (!profile?.onboarding_completed) {
       return NextResponse.redirect(new URL('/onboarding', request.url), { status: 307 });
     }
+  }
+
+  // ============================================
+  // PARTNER STATUS CHECK
+  // ============================================
+  // Partners must have active status to access main partner routes
+  const isPartnerRoute = PARTNER_ROUTES.some((route) => pathname.startsWith(route));
+  const isPartnerOnboardingRoute = PARTNER_ONBOARDING_ROUTES.some((route) => pathname.startsWith(route));
+
+  if (isPartnerRoute || isPartnerOnboardingRoute) {
+    const { data: partnerApp } = await supabase
+      .from('partner_applications')
+      .select('status')
+      .eq('user_id', user.id)
+      .single();
+
+    if (!partnerApp) {
+      // No partner application - redirect to apply
+      return NextResponse.redirect(new URL('/partners/apply', request.url), { status: 307 });
+    }
+
+    // For main partner routes, require active status
+    if (isPartnerRoute && partnerApp.status !== 'active') {
+      // Partner not yet active - redirect to document upload page
+      if (partnerApp.status === 'pending_documents' || partnerApp.status === 'documents_submitted') {
+        return NextResponse.redirect(new URL('/partner/documents', request.url), { status: 307 });
+      }
+      // Rejected or other status
+      return NextResponse.redirect(new URL('/partners/status', request.url), { status: 307 });
+    }
+
+    // Inject partner status for downstream handlers
+    response.headers.set('x-partner-status', partnerApp.status);
   }
 
   // ============================================
