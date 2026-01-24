@@ -210,7 +210,7 @@ export default function HireGraduatesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Link href="/programs/healthcare" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+            <Link href="/employer-portal/candidates?category=healthcare" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
               <div className="relative h-40">
                 <Image
                   src="/images/healthcare/program-cna-training.jpg"
@@ -235,7 +235,7 @@ export default function HireGraduatesPage() {
               </div>
             </Link>
 
-            <Link href="/programs/skilled-trades" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+            <Link href="/employer-portal/candidates?category=skilled-trades" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
               <div className="relative h-40">
                 <Image
                   src="/images/trades/hero-program-hvac.jpg"
@@ -260,7 +260,7 @@ export default function HireGraduatesPage() {
               </div>
             </Link>
 
-            <Link href="/programs/technology" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+            <Link href="/employer-portal/candidates?category=technology" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
               <div className="relative h-40">
                 <Image
                   src="/images/technology/hero-programs-technology.jpg"
@@ -285,7 +285,7 @@ export default function HireGraduatesPage() {
               </div>
             </Link>
 
-            <Link href="/programs/cdl" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+            <Link href="/employer-portal/candidates?category=cdl" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
               <div className="relative h-40">
                 <Image
                   src="/images/trades/hero-program-cdl.jpg"
@@ -310,7 +310,7 @@ export default function HireGraduatesPage() {
               </div>
             </Link>
 
-            <Link href="/programs/barber-apprenticeship" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+            <Link href="/employer-portal/candidates?category=cosmetology" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
               <div className="relative h-40">
                 <Image
                   src="/images/barber-hero.jpg"
@@ -335,7 +335,7 @@ export default function HireGraduatesPage() {
               </div>
             </Link>
 
-            <Link href="/programs/business-financial" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+            <Link href="/employer-portal/candidates?category=business" className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
               <div className="relative h-40">
                 <Image
                   src="/images/business/tax-prep-certification.jpg"
