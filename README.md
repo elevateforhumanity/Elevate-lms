@@ -789,6 +789,26 @@ Upon course completion:
 
 ---
 
+## Roadmap & Future Improvements
+
+### Code Organization
+- **State-specific page consolidation** - Pages like `/community-services-indiana`, `/community-services-ohio`, etc. could be consolidated into a single dynamic route `/community-services/[state]` to reduce duplication
+- **Component library standardization** - Some UI patterns are duplicated across components; could benefit from a shared component library
+
+### Testing
+- **Expand unit test coverage** - Current coverage focuses on core business logic; expand to cover more edge cases
+- **Add integration tests** - API endpoint testing with mock database
+- **E2E test suite** - Automated browser testing for critical user flows (enrollment, payment, course completion)
+- **Performance testing** - Load testing for concurrent users
+
+### Documentation
+- **Internal developer docs** - Architecture decisions, coding standards, and onboarding guide for future developers
+- **API documentation** - OpenAPI/Swagger spec for all 200+ endpoints
+- **Database schema docs** - ERD diagrams and table relationship documentation
+- **Deployment runbook** - Step-by-step production deployment and rollback procedures
+
+---
+
 ## Changelog
 
 See `docs/CHANGELOG.md` for version history and updates.
