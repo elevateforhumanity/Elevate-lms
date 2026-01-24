@@ -76,6 +76,63 @@ const stats = [
   { value: '24/7', label: 'Online Access' },
 ];
 
+const microClasses = [
+  {
+    id: 1,
+    title: 'CPR & First Aid',
+    duration: '4 hours',
+    description: 'Learn life-saving CPR and first aid techniques',
+    price: 'Free',
+    category: 'Healthcare',
+    image: '/images/healthcare/cpr-training.jpg',
+  },
+  {
+    id: 2,
+    title: 'OSHA 10-Hour Safety',
+    duration: '10 hours',
+    description: 'Workplace safety training for construction and general industry',
+    price: 'Free',
+    category: 'Safety',
+    image: '/images/trades/safety-training.jpg',
+  },
+  {
+    id: 3,
+    title: 'Forklift Certification',
+    duration: '8 hours',
+    description: 'Get certified to operate forklifts and material handling equipment',
+    price: 'Free',
+    category: 'Skilled Trades',
+    image: '/images/trades/forklift-training.jpg',
+  },
+  {
+    id: 4,
+    title: 'Food Handler Certification',
+    duration: '3 hours',
+    description: 'Required certification for food service workers',
+    price: 'Free',
+    category: 'Hospitality',
+    image: '/images/business/food-handler.jpg',
+  },
+  {
+    id: 5,
+    title: 'Microsoft Office Basics',
+    duration: '6 hours',
+    description: 'Essential Word, Excel, and PowerPoint skills',
+    price: 'Free',
+    category: 'Technology',
+    image: '/images/technology/microsoft-office.jpg',
+  },
+  {
+    id: 6,
+    title: 'Customer Service Excellence',
+    duration: '4 hours',
+    description: 'Professional communication and service skills',
+    price: 'Free',
+    category: 'Business',
+    image: '/images/business/customer-service.jpg',
+  },
+];
+
 export default async function CoursesPage() {
   const supabase = await createClient();
   let featuredCourses: any[] = [];
@@ -280,6 +337,63 @@ export default async function CoursesPage() {
           </div>
         </section>
       )}
+
+      {/* Micro Classes Section */}
+      <section id="micro-classes" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-bold mb-4">
+              <Clock className="w-4 h-4" />
+              Quick Certifications
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">
+              Micro Classes
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Short, focused courses to boost your skills and earn certifications quickly
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {microClasses.map((course) => (
+              <div
+                key={course.id}
+                className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border border-slate-100"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full">
+                    {course.category}
+                  </span>
+                  <span className="text-green-600 font-bold">{course.price}</span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{course.title}</h3>
+                <p className="text-slate-600 text-sm mb-4">{course.description}</p>
+                <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+                  <div className="flex items-center gap-2 text-slate-500 text-sm">
+                    <Clock className="w-4 h-4" />
+                    {course.duration}
+                  </div>
+                  <Link
+                    href="/apply"
+                    className="text-purple-600 font-semibold text-sm hover:text-purple-700"
+                  >
+                    Enroll Now →
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              href="/apply"
+              className="inline-flex items-center gap-2 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-700 transition-all"
+            >
+              Apply for Free Training <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-20 bg-green-600">
