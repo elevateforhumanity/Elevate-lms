@@ -1,57 +1,60 @@
-import { Metadata } from 'next';
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
-
-const SITE_URL = 'https://www.elevateforhumanity.org';
-
-export const metadata: Metadata = {
-  title: 'Contact Us | Elevate for Humanity',
-  description: 'Get in touch with Elevate for Humanity. Contact us for enrollment questions, financial aid, technical support, or career services. We are here to help.',
-  keywords: ['contact', 'support', 'phone', 'email', 'address', 'help', 'enrollment questions'],
-  alternates: {
-    canonical: `${SITE_URL}/contact`,
-  },
-  openGraph: {
-    title: 'Contact Us | Elevate for Humanity',
-    description: 'Get in touch with Elevate for Humanity for enrollment questions, financial aid, or support.',
-    url: `${SITE_URL}/contact`,
-    siteName: 'Elevate for Humanity',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Contact Us | Elevate for Humanity',
-    description: 'Get in touch with Elevate for Humanity for enrollment questions or support.',
-  },
-};
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 const contactInfo = [
-  { icon: Phone, title: 'Phone', value: '(317) 314-3757', subtitle: 'Mon-Fri 8am-6pm EST' },
-  { icon: Mail, title: 'Email', value: 'info@elevateforhumanity.org', subtitle: 'Response within 1 business day' },
-  { icon: MapPin, title: 'Address', value: 'Indianapolis, IN', subtitle: 'Central Indiana' },
-  { icon: Clock, title: 'Hours', value: 'Mon-Fri 8am-6pm', subtitle: 'Sat 9am-1pm EST' },
-];
-
-const responseTargets = [
-  { type: 'General Inquiries', time: 'Within 1 business day' },
-  { type: 'Access Issues', time: 'Same business day' },
-  { type: 'Critical Platform Issues', time: 'Prioritized response' },
-  { type: 'Enrollment Questions', time: 'Within 1 business day' },
+  { icon: Phone, title: 'Phone', value: '(317) 314-3757', subtitle: 'Mon-Fri 8am-6pm EST', href: 'tel:317-314-3757' },
+  { icon: Mail, title: 'Email', value: 'info@elevateforhumanity.org', subtitle: 'We respond within 24 hours', href: 'mailto:info@elevateforhumanity.org' },
+  { icon: MapPin, title: 'Address', value: 'Indianapolis, IN', subtitle: 'Central Indiana', href: null },
+  { icon: Clock, title: 'Hours', value: 'Mon-Fri 8am-6pm', subtitle: 'Sat 9am-1pm EST', href: null },
 ];
 
 export default function ContactPage() {
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setFormState('submitting');
+    setErrorMessage('');
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    const data = {
+      name: `${formData.get('firstName')} ${formData.get('lastName')}`.trim(),
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string || '',
+      message: formData.get('message') as string,
+      role: formData.get('subject') as string,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.ok) {
+        setFormState('success');
+        form.reset();
+      } else {
+        setFormState('error');
+        setErrorMessage(result.error || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setFormState('error');
+      setErrorMessage('Network error. Please check your connection and try again.');
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/home-welcome.mp4"
-        avatarName="Support Guide"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
-      
       <div className="relative bg-blue-900 text-white py-16">
         <Image
           src="/images/heroes-hq/contact-hero.jpg"
@@ -74,67 +77,160 @@ export default function ContactPage() {
                 <info.icon className="w-6 h-6 text-blue-600" />
               </div>
               <h2 className="font-semibold text-gray-900">{info.title}</h2>
-              <p className="text-gray-900 mt-1">{info.value}</p>
+              {info.href ? (
+                <a href={info.href} className="text-blue-600 hover:underline mt-1 block">{info.value}</a>
+              ) : (
+                <p className="text-gray-900 mt-1">{info.value}</p>
+              )}
               <p className="text-sm text-gray-500">{info.subtitle}</p>
             </div>
           ))}
         </div>
 
-        {/* Response Time Commitments */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-12">
-          <h2 className="text-xl font-bold text-blue-900 mb-4">Response Time Commitments</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {responseTargets.map((target, index) => (
-              <div key={index} className="bg-white rounded-lg p-4">
-                <p className="font-medium text-gray-900">{target.type}</p>
-                <p className="text-sm text-blue-600">{target.time}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-sm text-blue-700 mt-4">
-            Support hours: Monday–Friday, 8am–6pm EST. For platform status, visit our{' '}
-            <a href="/status" className="underline">status page</a>.
-          </p>
-        </div>
-
         <div className="grid lg:grid-cols-2 gap-12">
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                  <input type="text" id="firstName" name="firstName" className="w-full px-4 py-3 border border-gray-300 rounded-lg" required />
+            
+            {formState === 'success' ? (
+              <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
+                <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Message Sent!</h3>
+                <p className="text-gray-600 mb-4">
+                  Thank you for contacting us. We&apos;ll get back to you within 24 hours.
+                </p>
+                <button
+                  onClick={() => setFormState('idle')}
+                  className="text-blue-600 font-medium hover:underline"
+                >
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {formState === 'error' && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
+                    <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                    <p className="text-red-700 text-sm">{errorMessage}</p>
+                  </div>
+                )}
+                
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                      First Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      required
+                      disabled={formState === 'submitting'}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                      Last Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      required
+                      disabled={formState === 'submitting'}
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                  <input type="text" id="lastName" name="lastName" className="w-full px-4 py-3 border border-gray-300 rounded-lg" required />
+                
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      required
+                      disabled={formState === 'submitting'}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone (optional)
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      disabled={formState === 'submitting'}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input type="email" id="email" name="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg" required />
-              </div>
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-                <select id="subject" name="subject" className="w-full px-4 py-3 border border-gray-300 rounded-lg" required>
-                  <option value="">Select a topic...</option>
-                  <option value="enrollment">Enrollment Questions</option>
-                  <option value="financial">Financial Aid</option>
-                  <option value="technical">Technical Support</option>
-                  <option value="career">Career Services</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                <textarea id="message" name="message" rows={5} className="w-full px-4 py-3 border border-gray-300 rounded-lg" placeholder="How can we help you?" required></textarea>
-              </div>
-              <button type="submit" className="flex items-center justify-center gap-2 w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700">
-                <Send className="w-5 h-5" /> Send Message
-              </button>
-            </form>
+                
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                    Subject <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="subject"
+                    name="subject"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    required
+                    disabled={formState === 'submitting'}
+                  >
+                    <option value="">Select a topic...</option>
+                    <option value="enrollment">Enrollment Questions</option>
+                    <option value="financial">Financial Aid</option>
+                    <option value="programs">Program Information</option>
+                    <option value="employer">Employer Partnership</option>
+                    <option value="career">Career Services</option>
+                    <option value="technical">Technical Support</option>
+                    <option value="donation">Donation/Philanthropy</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Message <span className="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="How can we help you?"
+                    required
+                    minLength={10}
+                    disabled={formState === 'submitting'}
+                  />
+                </div>
+                
+                <button
+                  type="submit"
+                  disabled={formState === 'submitting'}
+                  className="flex items-center justify-center gap-2 w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors"
+                >
+                  {formState === 'submitting' ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
+          
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Visit Our Campus</h2>
             <div className="relative rounded-xl h-80 overflow-hidden mb-6">
@@ -150,6 +246,15 @@ export default function ContactPage() {
               <p className="text-gray-600">Indianapolis, Indiana</p>
               <p className="text-gray-600">Central Indiana Region</p>
               <p className="text-gray-600 mt-4">Multiple training locations available</p>
+              <div className="mt-4 pt-4 border-t">
+                <a
+                  href="tel:317-314-3757"
+                  className="inline-flex items-center gap-2 text-blue-600 font-medium hover:underline"
+                >
+                  <Phone className="w-4 h-4" />
+                  Call (317) 314-3757
+                </a>
+              </div>
             </div>
           </div>
         </div>

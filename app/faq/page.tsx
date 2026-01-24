@@ -2,17 +2,25 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { HelpCircle, ChevronDown, Search, MessageSquare, ArrowRight } from 'lucide-react';
+import { HelpCircle, ChevronDown, Search, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'FAQ | Elevate For Humanity',
-  description: 'Frequently asked questions about our programs and services.',
+  description: 'Frequently asked questions about our free career training programs, eligibility, funding, and services.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/faq',
   },
 };
 
 export const dynamic = 'force-dynamic';
+
+interface FAQ {
+  id: string;
+  question: string;
+  answer: string;
+  category: string;
+  display_order: number;
+}
 
 export default async function FAQPage() {
   const supabase = await createClient();
@@ -28,31 +36,33 @@ export default async function FAQPage() {
     );
   }
 
-  const { data: faqs } = await supabase
+  const { data: faqs, error } = await supabase
     .from('faqs')
-    .select('*')
-    .eq('is_published', true)
-    .order('order', { ascending: true });
+    .select('id, question, answer, category, display_order')
+    .eq('is_active', true)
+    .order('display_order', { ascending: true });
 
-  const { data: categories } = await supabase
-    .from('faq_categories')
-    .select('*')
-    .order('order', { ascending: true });
+  if (error || !faqs || faqs.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <HelpCircle className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">FAQs Coming Soon</h1>
+          <p className="text-gray-600 mb-6">We are updating our FAQ section.</p>
+          <Link href="/contact" className="text-blue-600 hover:underline">
+            Contact us with your questions
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
-  const defaultFaqs = [
-    { id: 1, question: 'What programs does Elevate offer?', answer: 'We offer workforce development programs in healthcare, technology, skilled trades, and professional services. Each program includes hands-on training, certification preparation, and job placement support.', category: 'Programs' },
-    { id: 2, question: 'How much do programs cost?', answer: 'Many of our programs are offered at no cost to eligible participants through grants and partnerships. Financial assistance is available for those who qualify.', category: 'Costs' },
-    { id: 3, question: 'How long are the training programs?', answer: 'Program length varies from 4 weeks to 6 months depending on the field and certification requirements. Most programs offer flexible scheduling options.', category: 'Programs' },
-    { id: 4, question: 'Do you help with job placement?', answer: 'Yes! We have dedicated career services staff and partnerships with employers across Indiana. We provide resume assistance, interview preparation, and job placement support to help you find employment after completing your program.', category: 'Career Services' },
-    { id: 5, question: 'What are the eligibility requirements?', answer: 'Requirements vary by program. Generally, applicants must be 18+, have a high school diploma or GED, and be authorized to work in the US. Some programs have additional prerequisites.', category: 'Eligibility' },
-    { id: 6, question: 'Can I attend while working?', answer: 'Yes, we offer evening and weekend classes for many programs. We also have online and hybrid options to accommodate working schedules.', category: 'Schedule' },
-  ];
-
-  const displayFaqs = faqs && faqs.length > 0 ? faqs : defaultFaqs;
+  // Group FAQs by category
+  const categories = [...new Set(faqs.map((faq: FAQ) => faq.category))];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero with Image */}
+      {/* Hero */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image
           src="/images/business/collaboration-1.jpg"
@@ -61,6 +71,7 @@ export default async function FAQPage() {
           className="object-cover"
           priority
         />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
           <div className="max-w-2xl bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
             <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
@@ -106,33 +117,40 @@ export default async function FAQPage() {
       </section>
 
       <div className="max-w-4xl mx-auto px-4 py-16">
-        {categories && categories.length > 0 && (
+        {/* Category filters */}
+        {categories.length > 1 && (
           <div className="flex flex-wrap gap-2 mb-8">
-            {categories.map((cat: any) => (
-              <a key={cat.id} href={`#${cat.slug}`} className="px-4 py-2 bg-white border rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50">
-                {cat.name}
+            {categories.map((cat) => (
+              <a 
+                key={cat} 
+                href={`#${cat}`} 
+                className="px-4 py-2 bg-white border rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 capitalize"
+              >
+                {cat}
               </a>
             ))}
           </div>
         )}
 
+        {/* FAQ List */}
         <div className="space-y-4">
-          {displayFaqs.map((faq: any) => (
+          {faqs.map((faq: FAQ) => (
             <details key={faq.id} className="bg-white rounded-lg shadow-sm border group">
               <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
                 <div className="flex items-start gap-4">
                   <HelpCircle className="w-6 h-6 text-orange-500 flex-shrink-0 mt-0.5" />
                   <span className="font-medium text-gray-900">{faq.question}</span>
                 </div>
-                <ChevronDown className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" />
+                <ChevronDown className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" />
               </summary>
               <div className="px-6 pb-6 pl-16">
-                <p className="text-gray-600">{faq.answer}</p>
+                <p className="text-gray-600 whitespace-pre-line">{faq.answer}</p>
               </div>
             </details>
           ))}
         </div>
 
+        {/* Contact CTA */}
         <div className="mt-12 bg-orange-50 rounded-xl p-8 text-center">
           <MessageSquare className="w-12 h-12 text-orange-500 mx-auto mb-4" />
           <h2 className="text-xl font-bold mb-2">Still have questions?</h2>

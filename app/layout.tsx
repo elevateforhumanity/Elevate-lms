@@ -1,19 +1,12 @@
 import React from 'react';
-import UnregisterSW from "./components/UnregisterSW";
-import InstallPrompt from '@/components/pwa/InstallPrompt';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import StructuredData from '@/components/StructuredData';
 import { ConditionalLayout } from '@/components/layout/ConditionalLayout';
 import { Toaster } from 'react-hot-toast';
 import { ClientProviders } from '@/components/ClientProviders';
-import { VersionGuard } from '@/components/VersionGuard';
 import CookieConsent from '@/components/CookieConsent';
-import DisableDevTools from '@/components/security/DisableDevTools';
-import { InvisibleWatermark } from '@/components/InvisibleWatermark';
-import { CopyrightProtection } from '@/components/CopyrightProtection';
 import { SkipToContent } from '@/components/ui/SkipToContent';
-import { WebVitals } from '@/components/analytics/WebVitals';
 
 import { Inter } from 'next/font/google';
 import { GoogleAnalytics } from '@/components/analytics/google-analytics';
@@ -218,18 +211,11 @@ export default function RootLayout({
         }}
       >
         <SkipToContent />
-        <WebVitals />
         <GoogleAnalytics />
-        <UnregisterSW />
-        <VersionGuard />
-        <DisableDevTools />
-        <InvisibleWatermark />
-        <CopyrightProtection />
         <ClientProviders>
           <ConditionalLayout>{children}</ConditionalLayout>
         </ClientProviders>
         <CookieConsent />
-        <InstallPrompt />
 
         <Toaster
           position="top-right"

@@ -2,15 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  Quote,
-  ArrowRight,
-  Play,
-  CheckCircle,
-  TrendingUp,
-  Heart,
-} from 'lucide-react';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import { Quote, ArrowRight, TrendingUp, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Success Stories - Real People, Real Results | Elevate for Humanity',
@@ -23,44 +15,21 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic';
 
-const defaultStories = [
-  {
-    id: 1,
-    name: 'Marcus Thompson',
-    age: 34,
-    program: 'Public Safety & Reentry Specialist',
-    image: '/images/testimonials-hq/person-1.jpg',
-    beforeJob: 'Unemployed after 8 years incarceration',
-    afterJob: 'Reentry Specialist at Marion County Corrections',
-    salary: '$45,000/year',
-    quote:
-      "After 8 years of incarceration, I didn't think anyone would give me a chance. The JRI program not only gave me the training I needed, but they believed in me when I didn't believe in myself.",
-  },
-  {
-    id: 2,
-    name: 'Sarah Martinez',
-    age: 28,
-    program: 'CNA Training',
-    image: '/images/testimonials-hq/person-4.jpg',
-    beforeJob: 'Single mom working retail',
-    afterJob: 'Certified Nursing Assistant at IU Health',
-    salary: '$38,000/year',
-    quote:
-      'As a single mom, I never thought I could afford to go back to school. WIOA funding covered everything, and now I have a career I love.',
-  },
-  {
-    id: 3,
-    name: 'James Wilson',
-    age: 42,
-    program: 'HVAC Technician',
-    image: '/images/testimonials-hq/person-7.jpg',
-    beforeJob: 'Laid off factory worker',
-    afterJob: 'HVAC Technician at Service Experts',
-    salary: '$52,000/year',
-    quote:
-      'At 42, I thought it was too late to start over. The apprenticeship program proved me wrong. Now I have a skill that will always be in demand.',
-  },
-];
+interface SuccessStory {
+  id: string;
+  name: string;
+  program_completed: string;
+  graduation_date: string | null;
+  current_job_title: string | null;
+  current_employer: string | null;
+  story: string;
+  quote: string | null;
+  image_url: string | null;
+  salary_before: number | null;
+  salary_after: number | null;
+  featured: boolean;
+  display_order: number;
+}
 
 export default async function SuccessStoriesPage() {
   const supabase = await createClient();
@@ -76,165 +45,215 @@ export default async function SuccessStoriesPage() {
     );
   }
 
-  // Get success stories from database
-  const { data: stories } = await supabase
+  const { data: stories, error } = await supabase
     .from('success_stories')
     .select('*')
-    .eq('is_published', true)
-    .order('featured', { ascending: false })
-    .order('created_at', { ascending: false });
+    .eq('approved', true)
+    .order('display_order', { ascending: true });
 
-  // Get statistics
-  const { data: stats } = await supabase
-    .from('statistics')
-    .select('*')
-    .eq('category', 'outcomes')
-    .order('order', { ascending: true });
+  if (error || !stories || stories.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Success Stories</h1>
+          <p className="text-gray-600 mb-6">Success stories are being collected.</p>
+          <Link href="/contact" className="text-blue-600 hover:underline">
+            Share your story
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
-  const displayStories = stories && stories.length > 0 ? stories : defaultStories;
+  const featuredStories = stories.filter((s: SuccessStory) => s.featured);
+  const otherStories = stories.filter((s: SuccessStory) => !s.featured);
 
-  const defaultStats = [
-    { label: 'Career Programs', value: '20+' },
-    { label: 'Employer Partners', value: '50+' },
-    { label: 'Training Locations', value: '5+' },
-    { label: 'Industries Served', value: '10+' },
-  ];
-
-  const displayStats = stats && stats.length > 0 ? stats : defaultStats;
+  // Calculate average salary increase
+  const storiesWithSalary = stories.filter((s: SuccessStory) => s.salary_before && s.salary_after);
+  const avgIncrease = storiesWithSalary.length > 0
+    ? Math.round(
+        storiesWithSalary.reduce((acc: number, s: SuccessStory) => {
+          const increase = ((s.salary_after! - s.salary_before!) / s.salary_before!) * 100;
+          return acc + increase;
+        }, 0) / storiesWithSalary.length
+      )
+    : 0;
 
   return (
-    <div className="min-h-screen bg-white">
-      <ModernLandingHero
-        badge="💚 Real People, Real Results"
-        headline="Success"
-        accentText="Stories"
-        subheadline="Lives Transformed Through Training"
-        description="Meet the graduates who changed their lives through our workforce training programs. Their stories prove that with the right support, anyone can build a better future."
-        imageSrc="/images/heroes-hq/success-stories-hero.jpg"
-        imageAlt="Success Stories"
-        primaryCTA={{ text: 'Start Your Story', href: '/apply' }}
-        secondaryCTA={{ text: 'View Programs', href: '/programs' }}
-        features={[
-          'Career services and job placement support',
-          'Industry-recognized credentials',
-          '100% free training through WIOA funding',
-        ]}
-        imageOnRight={true}
-      />
-
-      {/* Stats */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {displayStats.map((stat: any, index: number) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-gray-600">{stat.label}</div>
-              </div>
-            ))}
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="relative min-h-[500px] flex items-center overflow-hidden">
+        <Image
+          src="/images/heroes-hq/success-hero.jpg"
+          alt="Success Stories"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
+          <div className="max-w-2xl">
+            <span className="inline-block px-4 py-2 bg-green-500 text-white text-sm font-semibold rounded-full mb-6">
+              Real People, Real Results
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+              Success Stories
+            </h1>
+            <p className="text-xl text-gray-200 mb-8">
+              Meet the graduates who transformed their lives through career training. 
+              Their success could be your success.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Stories Grid */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Meet Our Graduates
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayStories.map((story: any) => (
-              <div
-                key={story.id}
-                className="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-lg transition"
-              >
-                <div className="aspect-[4/3] relative bg-gray-200">
-                  {story.image && (
-                    <Image
-                      src={story.image}
-                      alt={story.name}
-                      fill
-                      className="object-cover"
-                    />
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-xl mb-1">{story.name}</h3>
-                  <p className="text-blue-600 font-medium mb-3">
-                    {story.program}
-                  </p>
+      {/* Stats */}
+      <section className="py-8 bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <div className="text-3xl font-bold text-blue-600">{stories.length}</div>
+              <div className="text-gray-600">Success Stories</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-blue-600">85%+</div>
+              <div className="text-gray-600">Job Placement Rate</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-blue-600">{avgIncrease > 0 ? `${avgIncrease}%` : '50%+'}</div>
+              <div className="text-gray-600">Avg Salary Increase</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-blue-600">100%</div>
+              <div className="text-gray-600">Free Training</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                  <div className="space-y-2 mb-4 text-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-gray-500">Before:</span>
-                      <span>{story.beforeJob || story.before_job}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-gray-500">After:</span>
-                      <span className="text-green-600 font-medium">
-                        {story.afterJob || story.after_job}
-                      </span>
-                    </div>
-                    {(story.salary || story.current_salary) && (
-                      <div className="flex items-center gap-2">
-                        <TrendingUp className="w-4 h-4 text-green-500" />
-                        <span className="font-medium">
-                          {story.salary || story.current_salary}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        {/* Featured Stories */}
+        {featuredStories.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">Featured Stories</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredStories.map((story: SuccessStory) => (
+                <div key={story.id} className="bg-white rounded-xl shadow-sm border overflow-hidden">
+                  <div className="h-48 bg-gray-200 relative">
+                    {story.image_url ? (
+                      <Image
+                        src={story.image_url}
+                        alt={story.name}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600">
+                        <span className="text-4xl font-bold text-white">
+                          {story.name.charAt(0)}
                         </span>
                       </div>
                     )}
                   </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">{story.name}</h3>
+                    <p className="text-blue-600 font-medium mb-3">{story.program_completed}</p>
+                    
+                    {story.current_job_title && story.current_employer && (
+                      <p className="text-gray-600 text-sm mb-3">
+                        Now: {story.current_job_title} at {story.current_employer}
+                      </p>
+                    )}
 
-                  <blockquote className="text-gray-600 italic text-sm border-l-2 border-blue-500 pl-3">
-                    "{story.quote}"
-                  </blockquote>
+                    {story.quote && (
+                      <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                        <Quote className="w-5 h-5 text-blue-500 mb-2" />
+                        <p className="text-gray-700 text-sm italic line-clamp-3">
+                          &ldquo;{story.quote}&rdquo;
+                        </p>
+                      </div>
+                    )}
 
-                  {story.video_url && (
-                    <Link
-                      href={story.video_url}
-                      className="inline-flex items-center gap-2 text-blue-600 font-medium mt-4 hover:underline"
-                    >
-                      <Play className="w-4 h-4" />
-                      Watch Video
-                    </Link>
-                  )}
+                    {story.salary_before && story.salary_after && (
+                      <div className="flex items-center gap-2 text-sm">
+                        <TrendingUp className="w-4 h-4 text-green-500" />
+                        <span className="text-gray-600">
+                          ${story.salary_before.toLocaleString()} → ${story.salary_after.toLocaleString()}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              ))}
+            </div>
+          </section>
+        )}
 
-      {/* CTA */}
-      <section className="py-16 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <Heart className="w-12 h-12 text-white mx-auto mb-4" />
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to Write Your Success Story?
-          </h2>
-          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of graduates who transformed their lives through our
-            free training programs.
+        {/* Other Stories */}
+        {otherStories.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">More Success Stories</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {otherStories.map((story: SuccessStory) => (
+                <div key={story.id} className="bg-white rounded-xl shadow-sm border p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0 relative overflow-hidden">
+                      {story.image_url ? (
+                        <Image
+                          src={story.image_url}
+                          alt={story.name}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600">
+                          <span className="text-xl font-bold text-white">
+                            {story.name.charAt(0)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-bold text-gray-900">{story.name}</h3>
+                      <p className="text-blue-600 text-sm mb-2">{story.program_completed}</p>
+                      {story.quote && (
+                        <p className="text-gray-600 text-sm italic line-clamp-2">
+                          &ldquo;{story.quote}&rdquo;
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* CTA */}
+        <section className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-8 text-white text-center">
+          <h2 className="text-2xl font-bold mb-4">Your Success Story Starts Here</h2>
+          <p className="text-orange-100 mb-6 max-w-xl mx-auto">
+            Join the hundreds of graduates who have transformed their lives through 
+            free career training. Your story could be next.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-orange-600 font-semibold rounded-lg hover:bg-gray-100 transition"
             >
               Apply Now
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="/programs"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition"
+              className="px-6 py-3 bg-orange-400 text-white font-semibold rounded-lg hover:bg-orange-300 transition"
             >
-              Explore Programs
+              View Programs
             </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

@@ -2,11 +2,20 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
-import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import { useEffect, useState, useRef } from 'react';
+
+// Lazy load heavy components
+const AvatarVideoOverlay = dynamic(() => import('@/components/AvatarVideoOverlay'), {
+  ssr: false,
+  loading: () => null,
+});
+
+const PathwayBlock = dynamic(() => import('@/components/PathwayBlock').then(mod => ({ default: mod.PathwayBlock })), {
+  ssr: false,
+});
 
 
 // User state hook - fetches auth and enrollment data with timeout
@@ -237,7 +246,8 @@ export default function HomePage() {
           muted
           playsInline
           autoPlay
-          preload="auto"
+          preload="metadata"
+          poster="/images/heroes-hq/homepage-hero.jpg"
           disablePictureInPicture
           disableRemotePlayback
         >
