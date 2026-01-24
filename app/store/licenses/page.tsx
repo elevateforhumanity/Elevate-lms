@@ -220,8 +220,9 @@ export default async function LicensesPage() {
                         : 'Get License'}
                     </Link>
                   </div>
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
