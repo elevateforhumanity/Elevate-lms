@@ -9,9 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/admin/settings',
   },
-  title: 'Programs Admin Settings | Elevate For Humanity',
-  description:
-    'Manage settings settings and development.',
+  title: 'Program Settings | Administration | Elevate For Humanity',
+  description: 'Configure program settings, enrollment options, and administrative preferences.',
 };
 
 export default async function SettingsPage() {
@@ -71,7 +70,7 @@ export default async function SettingsPage() {
             Settings
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage settings settings and
+            >Program Settings< and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

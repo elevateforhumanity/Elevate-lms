@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/employer/post-job',
   },
-  title: 'Post Job | Elevate For Humanity',
+  title: 'Post a Job | Employer Portal | Elevate For Humanity',
   description:
-    'Manage post-job settings and development.',
+    'Post a job opportunity for program graduates.',
 };
 
 export default async function PostJobPage() {

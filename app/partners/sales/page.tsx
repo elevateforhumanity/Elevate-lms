@@ -9,9 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/partners/sales',
   },
-  title: 'Sales | Elevate For Humanity',
-  description:
-    'Manage sales settings and development.',
+  title: 'Sales Training Partnership | Elevate For Humanity',
+  description: 'Partner with Elevate to provide sales training and career development programs for your team.',
 };
 
 export default async function SalesPage() {
@@ -30,9 +29,7 @@ export default async function SalesPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Sales
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Sales Training Partnership</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
             Manage sales settings and
             development.
@@ -61,7 +58,7 @@ export default async function SalesPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">Sales</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Sales Training Partnership</h2>
                 <p className="text-black mb-6">
                   Manage sales settings and
                   development.

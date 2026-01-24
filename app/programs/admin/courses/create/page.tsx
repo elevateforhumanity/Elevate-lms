@@ -11,9 +11,8 @@ export const metadata: Metadata = {
     canonical:
       'https://www.elevateforhumanity.org/programs/admin/courses/create',
   },
-  title: 'Create Programs Admin Course | Elevate For Humanity',
-  description:
-    'Manage create settings and development.',
+  title: 'Create Course | Program Administration | Elevate For Humanity',
+  description: 'Create and configure new courses for your training programs.',
 };
 
 export default async function CreatePage() {
@@ -73,7 +72,7 @@ export default async function CreatePage() {
             Create
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage create settings and
+            >Create New Course< and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

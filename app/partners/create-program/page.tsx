@@ -9,9 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/partners/create-program',
   },
-  title: 'Create Program | Elevate For Humanity',
-  description:
-    'Manage create-program settings and development.',
+  title: 'Create Partner Program | Elevate For Humanity',
+  description: 'Create and customize training programs for your organization. Partner with Elevate to deliver workforce development solutions.',
 };
 
 export default async function CreateProgramPage() {
@@ -30,11 +29,9 @@ export default async function CreateProgramPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Create Program
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Create a Partner Program</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage create-program for career growth
+            Create custom training programs for your organization
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,12 +58,9 @@ export default async function CreateProgramPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Create Program
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Create a Partner Program</h2>
                 <p className="text-black mb-6">
-                  Manage create-program for career
-                  growth and development.
+                  Design custom training programs tailored to your organization's workforce needs. We'll help you develop curriculum, recruit participants, and measure outcomes.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

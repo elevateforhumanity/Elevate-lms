@@ -10,9 +10,8 @@ export const metadata: Metadata = {
     canonical:
       'https://www.elevateforhumanity.org/programs/admin/portal/messages',
   },
-  title: 'Programs Admin Messages | Elevate For Humanity',
-  description:
-    'Manage messages settings and development.',
+  title: 'Messages | Program Administration | Elevate For Humanity',
+  description: 'Communicate with students, instructors, and partners.',
 };
 
 export default async function MessagesPage() {
@@ -72,7 +71,7 @@ export default async function MessagesPage() {
             Messages
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage messages settings and
+            >Messages< and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/admin/how-',
   },
-  title: 'How To Use | Elevate For Humanity',
+  title: 'Admin Guide | Program Administration | Elevate For Humanity',
   description:
-    'Manage how-to-use settings and development.',
+    'Guide for using program administration features.',
 };
 
 export default async function HowToUsePage() {

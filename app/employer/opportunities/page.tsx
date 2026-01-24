@@ -9,9 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/employer/opportunities',
   },
-  title: 'Opportunities | Elevate For Humanity',
-  description:
-    'Manage opportunities settings and development.',
+  title: 'Job Opportunities | Employer Portal | Elevate For Humanity',
+  description: 'Post job opportunities and connect with trained candidates ready for employment.',
 };
 
 export default async function OpportunitiesPage() {
@@ -63,11 +62,9 @@ export default async function OpportunitiesPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Opportunities
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Job Opportunities</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage opportunities for career growth
+            Browse and manage your job postings
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     canonical:
       'https://www.elevateforhumanity.org/programs/admin/portal/live-qa',
   },
-  title: 'Live Qa | Elevate For Humanity',
+  title: 'Live Q&A | Program Administration | Elevate For Humanity',
   description:
-    'Manage live-qa settings and development.',
+    'Manage live Q&A sessions for your programs.',
 };
 
 export default async function LiveQaPage() {

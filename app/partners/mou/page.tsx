@@ -9,9 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/partners/mou',
   },
-  title: 'Partner MOU | Elevate For Humanity',
-  description:
-    'Manage mou settings and development.',
+  title: 'Memorandum of Understanding | Partner Agreement | Elevate For Humanity',
+  description: 'Review and sign the Memorandum of Understanding to formalize your partnership with Elevate for Humanity.',
 };
 
 export default async function MouPage() {
@@ -30,9 +29,7 @@ export default async function MouPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Mou
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Partnership Agreement</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
             Manage mou settings and
             development.
@@ -61,7 +58,7 @@ export default async function MouPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">Mou</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Partnership Agreement</h2>
                 <p className="text-black mb-6">
                   Manage mou settings and
                   development.

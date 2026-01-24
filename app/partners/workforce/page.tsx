@@ -9,9 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/partners/workforce',
   },
-  title: 'Workforce | Elevate For Humanity',
-  description:
-    'Manage workforce settings and development.',
+  title: 'Workforce Development Partnership | Elevate For Humanity',
+  description: 'Join our workforce development network to connect job seekers with training and employment opportunities.',
 };
 
 export default async function WorkforcePage() {
@@ -30,9 +29,7 @@ export default async function WorkforcePage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Workforce
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Workforce Development Partnership</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
             Manage workforce settings and
             development.
@@ -61,11 +58,9 @@ export default async function WorkforcePage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Workforce
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Workforce Development Partnership</h2>
                 <p className="text-black mb-6">
-                  Manage workforce for career growth
+                  Join our workforce development network
                   and development.
                 </p>
                 <ul className="space-y-3">

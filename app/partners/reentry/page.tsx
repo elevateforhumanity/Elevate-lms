@@ -9,9 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/partners/reentry',
   },
-  title: 'Reentry | Elevate For Humanity',
-  description:
-    'Manage reentry settings and development.',
+  title: 'Reentry Partnership Programs | Elevate For Humanity',
+  description: 'Partner with us to provide career training and employment opportunities for justice-involved individuals.',
 };
 
 export default async function ReentryPage() {
@@ -30,11 +29,9 @@ export default async function ReentryPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Reentry
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Reentry Partnership Programs</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage reentry settings and
+            Support justice-involved individuals through employment.
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,9 +58,9 @@ export default async function ReentryPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">Reentry</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Reentry Partnership Programs</h2>
                 <p className="text-black mb-6">
-                  Manage reentry for career growth
+                  Reentry partnership programs for workforce development
                   and development.
                 </p>
                 <ul className="space-y-3">

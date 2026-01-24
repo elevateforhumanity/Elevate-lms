@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Portal | Elevate For Humanity',
   description:
-    'Manage portal settings and development.',
+    'Program administration portal for managing training programs.',
 };
 
 export default async function PortalPage() {
