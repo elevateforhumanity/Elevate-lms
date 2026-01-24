@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server';
+import { createSupabaseClient } from '@/lib/supabase-api';
+import { toErrorMessage } from '@/lib/safe';
+import { getAppVersion } from '@/lib/version/getAppVersion';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
-import { createSupabaseClient } from '@/lib/supabase-api';
-import { toError, toErrorMessage } from '@/lib/safe';
-import { getAppVersion } from '@/lib/version/getAppVersion';
-import { logger } from '@/lib/logging/logger';
 
 export async function GET() {
   const checks: Record<string, any> = {
