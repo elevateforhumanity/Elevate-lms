@@ -133,6 +133,23 @@ export default function DisasterRecoveryPage() {
               This plan is updated as our infrastructure evolves.
             </p>
 
+            <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+              <div className="flex items-center gap-3 mb-2">
+                <Shield className="w-6 h-6 text-green-600" />
+                <h3 className="font-bold text-green-900 m-0">Latest DR Test: PASSED</h3>
+              </div>
+              <p className="text-green-800 mb-3">
+                Our most recent disaster recovery drill was completed successfully on January 24, 2026.
+                All RTO/RPO targets were met.
+              </p>
+              <Link 
+                href="/policies/dr-test-report" 
+                className="inline-flex items-center text-green-700 font-medium hover:text-green-800"
+              >
+                View Full Test Report →
+              </Link>
+            </div>
+
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
               <h3 className="font-bold text-yellow-900 mb-2">Data Protection</h3>
               <p className="text-yellow-800 m-0">

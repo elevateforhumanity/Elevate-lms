@@ -58,12 +58,50 @@ export default function SLAPage() {
               <li>User-side connectivity or device issues</li>
             </ul>
 
+            <h2 className="text-2xl font-bold text-black mt-8 mb-4">Service Credits</h2>
+            <p className="text-black mb-4">
+              If monthly platform availability falls below the uptime targets stated above, 
+              customers may be eligible for a service credit applied to a future billing cycle.
+            </p>
+            
+            <p className="text-black mb-4">Credits are calculated as follows:</p>
+            
+            <div className="overflow-x-auto mb-6">
+              <table className="min-w-full border border-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left font-bold text-black border-b">Monthly Availability</th>
+                    <th className="px-4 py-3 text-left font-bold text-black border-b">Service Credit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="px-4 py-3 border-b text-black">Below 99.5%</td>
+                    <td className="px-4 py-3 border-b text-black">5% service credit</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 border-b text-black">Below 99.0%</td>
+                    <td className="px-4 py-3 border-b text-black">10% service credit (maximum)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-lg font-bold text-black mt-6 mb-3">Credit Terms</h3>
+            <ul className="list-disc pl-6 mb-6 text-black space-y-2">
+              <li>Credits apply only to future invoices</li>
+              <li>Credits are non-cumulative and capped at 10% per billing cycle</li>
+              <li>Credits must be requested within 30 days of the affected period</li>
+              <li>Credits do not apply to one-time fees or third-party services</li>
+            </ul>
+
             <div className="bg-gray-100 rounded-lg p-6 mt-8">
-              <h3 className="text-lg font-bold text-black mb-2">Note</h3>
+              <h3 className="text-lg font-bold text-black mb-2">Important Notice</h3>
               <p className="text-gray-700 mb-0">
-                This SLA is informational and does not include financial penalties or service credits 
-                at this time. We are committed to maintaining high availability and will continue to 
-                invest in platform reliability.
+                This SLA does not provide refunds or cash compensation. Service credits are the 
+                sole remedy for availability issues. This SLA excludes events outside reasonable 
+                control including but not limited to natural disasters, third-party service failures, 
+                and scheduled maintenance windows.
               </p>
             </div>
 
