@@ -123,10 +123,19 @@ Program Holder agrees to:
 
 ### C. Revenue Sharing (if applicable)
 
-- [ ] Not applicable
-- [ ] Elevate retains ____% for administrative services
-- [ ] Program Holder receives ____% of tuition
+**Standard Model:** Program Holder receives 1/3 (33.33%) of Net Program Revenue per student.
+
+- [ ] Not applicable (flat fee arrangement)
+- [x] Standard 1/3 revenue share model
+- [ ] Elevate retains 2/3 for administrative services, funding coordination, and support
+- [ ] Program Holder receives 1/3 of tuition
 - [ ] Other arrangement: _______________________
+
+**Payment Schedule:**
+- Payment 1 (50% of Partner Share): When student reaches 50% completion
+- Payment 2 (50% of Partner Share): Upon student completion
+
+**Note:** 50/50 markup split applies only to credential course add-ons, not base program revenue.
 
 ---
 
