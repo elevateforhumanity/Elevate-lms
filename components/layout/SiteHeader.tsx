@@ -66,13 +66,13 @@ const NAV_ITEMS = [
     ]
   },
   { 
-    name: 'Services', 
-    href: '/services',
+    name: 'Store', 
+    href: '/store',
     subItems: [
-      { name: 'Free Tax Help (VITA)', href: '/vita' },
-      { name: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
-      { name: 'Career Services', href: '/career-services' },
-      { name: 'Store', href: '/store' },
+      { name: 'Platform Licenses', href: '/store/licenses' },
+      { name: 'AI Tools & Apps', href: '/store/apps' },
+      { name: 'Digital Resources', href: '/store/digital' },
+      { name: 'Courses', href: '/store/courses' },
     ]
   },
   { 

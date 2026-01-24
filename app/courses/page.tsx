@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Clock, Users, Star, Filter, Search, ChevronRight } from 'lucide-react';
+import { 
+  Clock, Users, Star, ArrowRight, CheckCircle, Play, 
+  GraduationCap, Briefcase, Award, BookOpen, Sparkles 
+} from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
@@ -9,51 +12,86 @@ export const dynamic = 'force-dynamic';
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
 export const metadata: Metadata = {
-  title: 'Course Catalog | Elevate for Humanity',
-  description: 'Explore career-focused training programs in healthcare, skilled trades, technology, and more. Find the right course to launch your new career.',
-  keywords: ['courses', 'training programs', 'career education', 'HVAC training', 'medical assistant', 'CDL training', 'barber school'],
+  title: 'Career Training Courses | Elevate for Humanity',
+  description: 'Explore career-focused training programs in healthcare, skilled trades, technology, and more. WIOA-funded, job-ready certifications.',
+  keywords: ['courses', 'training programs', 'career education', 'HVAC training', 'medical assistant', 'CDL training', 'barber school', 'WIOA'],
   alternates: { canonical: `${SITE_URL}/courses` },
-  openGraph: {
-    title: 'Course Catalog | Elevate for Humanity',
-    description: 'Explore career-focused training programs in healthcare, skilled trades, technology, and more.',
-    url: `${SITE_URL}/courses`,
-    siteName: 'Elevate for Humanity',
-    type: 'website',
-  },
 };
 
-const fallbackCourses = [
-  { id: '1', title: 'HVAC Fundamentals', category: 'Trades', slug: 'hvac-fundamentals', image_url: '/images/programs-hq/hvac-technician.jpg' },
-  { id: '2', title: 'Medical Assistant Certification', category: 'Healthcare', slug: 'medical-assistant', image_url: '/images/programs-hq/medical-assistant.jpg' },
-  { id: '3', title: 'Professional Barber License', category: 'Beauty', slug: 'barber-license', image_url: '/images/programs-hq/barber-hero.jpg' },
-  { id: '4', title: 'CDL Class A Training', category: 'Transportation', slug: 'cdl-class-a', image_url: '/images/programs-hq/cdl-trucking.jpg' },
+const featuredCategories = [
+  {
+    name: 'Healthcare',
+    slug: 'healthcare',
+    image: '/images/healthcare/program-cna-training.jpg',
+    description: 'CNA, Medical Assistant, Phlebotomy, and more',
+    courses: 12,
+    color: 'red',
+  },
+  {
+    name: 'Skilled Trades',
+    slug: 'skilled-trades',
+    image: '/images/trades/hero-program-hvac.jpg',
+    description: 'HVAC, Electrical, Welding, Plumbing',
+    courses: 8,
+    color: 'orange',
+  },
+  {
+    name: 'Technology',
+    slug: 'technology',
+    image: '/images/technology/hero-programs-technology.jpg',
+    description: 'IT Support, Cybersecurity, CompTIA',
+    courses: 6,
+    color: 'blue',
+  },
+  {
+    name: 'Transportation',
+    slug: 'transportation',
+    image: '/images/trades/hero-program-cdl.jpg',
+    description: 'CDL Class A, Logistics, Fleet Management',
+    courses: 4,
+    color: 'green',
+  },
+  {
+    name: 'Beauty & Cosmetology',
+    slug: 'beauty',
+    image: '/images/barber-hero.jpg',
+    description: 'Barber, Cosmetology, Esthetics, Nails',
+    courses: 5,
+    color: 'purple',
+  },
+  {
+    name: 'Business',
+    slug: 'business',
+    image: '/images/business/tax-prep-certification.jpg',
+    description: 'Tax Prep, Bookkeeping, Office Admin',
+    courses: 4,
+    color: 'teal',
+  },
 ];
 
-const categories = ['All', 'Healthcare', 'Trades', 'Beauty', 'Transportation', 'Technology'];
+const stats = [
+  { value: '50+', label: 'Training Programs' },
+  { value: '95%', label: 'Job Placement Rate' },
+  { value: '100%', label: 'WIOA Funded' },
+  { value: '24/7', label: 'Online Access' },
+];
 
 export default async function CoursesPage() {
   const supabase = await createClient();
-  let courses = fallbackCourses;
+  let featuredCourses: any[] = [];
 
   if (supabase) {
     try {
       const { data } = await supabase
         .from('programs')
-        .select('id, title, slug, category, image_url, description')
+        .select('id, title, slug, category, image_url, description, duration, price')
         .eq('is_active', true)
-        .order('featured', { ascending: false })
+        .eq('featured', true)
         .order('title', { ascending: true })
-        .limit(12);
+        .limit(6);
 
       if (data && data.length > 0) {
-        courses = data.map((p: any) => ({
-          id: p.id,
-          title: p.title,
-          category: p.category ? p.category.charAt(0).toUpperCase() + p.category.slice(1) : 'General',
-          slug: p.slug,
-          image_url: p.image_url || '/images/heroes-hq/homepage-hero.jpg',
-          description: p.description,
-        }));
+        featuredCourses = data;
       }
     } catch (error) {
       console.error('[Courses] Error:', error);
@@ -61,79 +99,213 @@ export default async function CoursesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="relative bg-slate-900 text-white py-16">
-        <Image
-          src="/images/heroes-hq/homepage-hero.jpg"
-          alt="Courses"
-          fill
-          className="object-cover opacity-40"
-          priority
-        />
-        <div className="relative max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-2">Course Catalog</h1>
-          <p className="text-xl text-gray-200">Explore our career-focused training programs</p>
+    <div className="bg-white">
+      {/* Hero Section */}
+      <section className="relative min-h-[600px] flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/heroes-hq/homepage-hero.jpg"
+            alt="Career Training Courses"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/60" />
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-          <div className="flex items-center gap-4">
-            <Filter className="w-5 h-5 text-gray-500" />
-            <div className="flex flex-wrap gap-2">
-              {categories.map((cat) => (
-                <Link
-                  key={cat}
-                  href={cat === 'All' ? '/courses' : `/courses?category=${cat.toLowerCase()}`}
-                  className={`px-4 py-2 rounded-lg text-sm ${cat === 'All' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
-                >
-                  {cat}
-                </Link>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-600/20 border border-green-500/30 rounded-full mb-6">
+              <Sparkles className="w-5 h-5 text-green-400" />
+              <span className="text-green-400 font-semibold text-sm">100% WIOA Funded Training</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+              Launch Your New Career
+              <span className="block text-green-400">In Weeks, Not Years</span>
+            </h1>
+
+            <p className="text-xl text-slate-300 mb-8 leading-relaxed">
+              Industry-recognized certifications in healthcare, skilled trades, technology, and more. 
+              Free for eligible Indiana residents through WIOA funding.
+            </p>
+
+            <div className="flex flex-wrap gap-4 mb-10">
+              <Link
+                href="/apply"
+                className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition-all shadow-lg"
+              >
+                Apply Now - It&apos;s Free
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                href="#categories"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all border border-white/20"
+              >
+                <Play className="w-5 h-5" />
+                Browse Programs
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-3xl font-black text-white">{stat.value}</div>
+                  <div className="text-sm text-slate-400">{stat.label}</div>
+                </div>
               ))}
             </div>
           </div>
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search courses..."
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full md:w-64"
-              aria-label="Search courses"
-            />
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { icon: GraduationCap, title: 'Industry Certifications', desc: 'Earn credentials employers recognize' },
+              { icon: Briefcase, title: 'Job Placement', desc: 'Career services and employer connections' },
+              { icon: Award, title: 'WIOA Approved', desc: 'Free training for eligible residents' },
+              { icon: BookOpen, title: 'Flexible Learning', desc: 'Online, in-person, and hybrid options' },
+            ].map((item) => (
+              <div key={item.title} className="text-center">
+                <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="w-7 h-7 text-green-600" />
+                </div>
+                <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-slate-600">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
+      </section>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {courses.map((course: any) => (
-            <Link
-              key={course.id}
-              href={`/programs/${course.slug || course.id}`}
-              className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
-            >
-              <div className="relative h-48">
-                <Image
-                  src={course.image_url}
-                  alt={course.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">{course.category}</span>
-                <h2 className="font-semibold text-gray-900 text-lg mt-2 mb-2">{course.title}</h2>
-                {course.description && (
-                  <p className="text-sm text-gray-600 line-clamp-2 mb-4">{course.description}</p>
-                )}
-                <div className="flex items-center justify-between">
-                  <span className="text-blue-600 flex items-center gap-1 text-sm font-medium">
-                    View Details <ChevronRight className="w-4 h-4" />
-                  </span>
+      {/* Categories */}
+      <section id="categories" className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">
+              Explore Training Programs
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Choose from high-demand career fields with excellent job prospects
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredCategories.map((category) => (
+              <Link
+                key={category.slug}
+                href={`/programs/${category.slug}`}
+                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-slate-100"
+              >
+                <div className="relative h-48">
+                  <Image
+                    src={category.image}
+                    alt={category.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-xl font-bold text-white mb-1">{category.name}</h3>
+                    <p className="text-sm text-white/80">{category.courses} programs available</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+                <div className="p-6">
+                  <p className="text-slate-600 mb-4">{category.description}</p>
+                  <div className="flex items-center gap-2 text-green-600 font-semibold">
+                    View Programs <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Featured Courses */}
+      {featuredCourses.length > 0 && (
+        <section className="py-20 bg-slate-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+                Featured Programs
+              </h2>
+              <p className="text-xl text-slate-400">Our most popular training programs</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredCourses.map((course) => (
+                <Link
+                  key={course.id}
+                  href={`/programs/${course.slug}`}
+                  className="bg-slate-800 rounded-2xl overflow-hidden hover:bg-slate-700 transition-all group"
+                >
+                  <div className="relative h-40">
+                    <Image
+                      src={course.image_url || '/images/heroes-hq/homepage-hero.jpg'}
+                      alt={course.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <span className="text-xs font-bold text-green-400 uppercase tracking-wide">
+                      {course.category}
+                    </span>
+                    <h3 className="text-lg font-bold text-white mt-2 mb-2 group-hover:text-green-400 transition-colors">
+                      {course.title}
+                    </h3>
+                    {course.duration && (
+                      <div className="flex items-center gap-2 text-slate-400 text-sm">
+                        <Clock className="w-4 h-4" />
+                        {course.duration}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Link
+                href="/programs"
+                className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-700 transition-all"
+              >
+                View All Programs <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA */}
+      <section className="py-20 bg-green-600">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-6">
+            Ready to Start Your New Career?
+          </h2>
+          <p className="text-xl text-green-100 mb-8">
+            Apply today and find out if you qualify for free WIOA-funded training.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/apply"
+              className="inline-flex items-center gap-2 bg-white text-green-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-50 transition-all"
+            >
+              Apply Now <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/wioa-eligibility"
+              className="inline-flex items-center gap-2 bg-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-800 transition-all"
+            >
+              Check Eligibility
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
