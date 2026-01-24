@@ -3,11 +3,18 @@ import { createClient } from '@/lib/supabase/server';
 import Stripe from 'stripe';
 import { BARBER_PRICING, calculateWeeklyPayment } from '@/lib/programs/pricing';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-12-18.acacia',
-});
+function getStripe() {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: '2024-12-18.acacia',
+  });
+}
 
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET_BARBER || process.env.STRIPE_WEBHOOK_SECRET!;
+function getWebhookSecret() {
+  return process.env.STRIPE_WEBHOOK_SECRET_BARBER || process.env.STRIPE_WEBHOOK_SECRET || '';
+}
 
 /**
  * POST /api/barber/webhook
@@ -27,6 +34,8 @@ export async function POST(request: NextRequest) {
   }
 
   let event: Stripe.Event;
+  const stripe = getStripe();
+  const webhookSecret = getWebhookSecret();
 
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);

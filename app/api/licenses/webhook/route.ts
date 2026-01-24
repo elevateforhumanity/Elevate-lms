@@ -2,8 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '');
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET_LICENSES || process.env.STRIPE_WEBHOOK_SECRET || '';
+function getStripe() {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY);
+}
+
+function getWebhookSecret() {
+  return process.env.STRIPE_WEBHOOK_SECRET_LICENSES || process.env.STRIPE_WEBHOOK_SECRET || '';
+}
 
 /**
  * POST /api/licenses/webhook
@@ -23,6 +31,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Missing signature' }, { status: 400 });
   }
 
+  const stripe = getStripe();
+  const webhookSecret = getWebhookSecret();
   let event: Stripe.Event;
 
   try {

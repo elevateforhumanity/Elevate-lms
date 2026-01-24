@@ -5,11 +5,18 @@ import Stripe from 'stripe';
 
 export const dynamic = 'force-dynamic';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-12-18.acacia',
-});
+function getStripe() {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: '2024-12-18.acacia',
+  });
+}
 
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET_CAREER_COURSES || process.env.STRIPE_WEBHOOK_SECRET!;
+function getWebhookSecret() {
+  return process.env.STRIPE_WEBHOOK_SECRET_CAREER_COURSES || process.env.STRIPE_WEBHOOK_SECRET || '';
+}
 
 export async function POST(req: Request) {
   const body = await req.text();
@@ -20,6 +27,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'No signature' }, { status: 400 });
   }
 
+  const stripe = getStripe();
+  const webhookSecret = getWebhookSecret();
   let event: Stripe.Event;
 
   try {
