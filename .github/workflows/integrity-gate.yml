@@ -24,35 +24,39 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
 
       # Integrity checks - each fails the build if issues found
       - name: Link integrity check
-        run: npm run integrity:links
+        run: pnpm run integrity:links
         continue-on-error: false
 
       - name: Media integrity check
-        run: npm run integrity:media
+        run: pnpm run integrity:media
         continue-on-error: false
 
       - name: LMS course integrity check
-        run: npm run integrity:lms
+        run: pnpm run integrity:lms
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         continue-on-error: false
 
       - name: Store product integrity check
-        run: npm run integrity:store
+        run: pnpm run integrity:store
         env:
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
