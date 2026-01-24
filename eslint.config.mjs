@@ -73,6 +73,10 @@ export default tseslint.config(
       'server/download-*.ts',
       'server/generate-*.ts',
       'server/test-*.ts',
+      'eslint-rules/**',
+      'tests/**',
+      'lib/dynamic-imports.ts',
+      'lib/ocr/**',
     ],
   }
 );
