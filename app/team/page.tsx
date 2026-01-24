@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Users, Mail, ArrowRight } from 'lucide-react';
+import { Users, Mail, ArrowRight, Linkedin } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
@@ -13,60 +12,88 @@ export const metadata: Metadata = {
     'Meet the dedicated professionals leading Elevate For Humanity\'s mission to transform lives through education and career training.',
 };
 
-export const dynamic = 'force-dynamic';
+// Team data
+const leadership = [
+  {
+    id: '1',
+    name: 'Elizabeth Greene',
+    title: 'Founder & Executive Director',
+    image: '/images/team/elizabeth-greene.jpg',
+    bio: 'Elizabeth founded Elevate for Humanity with a vision to create pathways out of poverty through workforce development. With over 15 years of experience in education and community development, she leads our mission to transform lives through career training and support services.',
+    email: 'elizabeth@elevateforhumanity.org',
+  },
+];
 
-interface TeamMember {
-  id: string;
-  name: string;
-  title: string;
-  department: string;
-  bio: string | null;
-  image_url: string | null;
-  email: string | null;
-  linkedin_url: string | null;
-  display_order: number;
-}
+const staff = [
+  {
+    id: '2',
+    name: 'Program Director',
+    title: 'Director of Programs',
+    image: '/images/team/instructors/instructor-business.jpg',
+    bio: 'Oversees all training programs and ensures quality delivery of workforce development services.',
+  },
+  {
+    id: '3',
+    name: 'Career Services Manager',
+    title: 'Career Services',
+    image: '/images/team/instructors/instructor-retail.jpg',
+    bio: 'Connects graduates with employment opportunities and provides job placement support.',
+  },
+  {
+    id: '4',
+    name: 'Student Success Coordinator',
+    title: 'Student Services',
+    image: '/images/team/instructors/instructor-reentry.jpg',
+    bio: 'Provides wraparound support services to help students overcome barriers to success.',
+  },
+];
 
-export default async function TeamPage() {
-  const supabase = await createClient();
+const instructors = [
+  {
+    id: '10',
+    name: 'Healthcare Instructor',
+    title: 'CNA & Healthcare Programs',
+    image: '/images/team/instructors/instructor-health.jpg',
+    bio: 'Certified nursing professional with clinical experience training the next generation of healthcare workers.',
+  },
+  {
+    id: '11',
+    name: 'Recovery Coach Instructor',
+    title: 'Peer Recovery Programs',
+    image: '/images/team/instructors/instructor-recovery.jpg',
+    bio: 'Certified peer recovery specialist training students to support others in recovery.',
+  },
+  {
+    id: '12',
+    name: 'Trades Instructor',
+    title: 'Construction & Skilled Trades',
+    image: '/images/team/instructors/instructor-trades.jpg',
+    bio: 'Master tradesperson with decades of experience in construction and building trades.',
+  },
+  {
+    id: '13',
+    name: 'Technology Instructor',
+    title: 'IT & Digital Skills',
+    image: '/images/team/instructors/instructor-tech.jpg',
+    bio: 'Technology professional teaching digital literacy and IT fundamentals.',
+  },
+  {
+    id: '14',
+    name: 'Safety Instructor',
+    title: 'OSHA & Workplace Safety',
+    image: '/images/team/instructors/instructor-safety.jpg',
+    bio: 'Certified safety professional teaching OSHA compliance and workplace safety.',
+  },
+  {
+    id: '15',
+    name: 'Cosmetology Instructor',
+    title: 'Beauty & Barbering',
+    image: '/images/team/instructors/instructor-beauty.jpg',
+    bio: 'Licensed cosmetologist training students in beauty services and salon management.',
+  },
+];
 
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-
-  const { data: teamMembers, error } = await supabase
-    .from('team_members')
-    .select('*')
-    .eq('is_active', true)
-    .order('display_order', { ascending: true });
-
-  if (error || !teamMembers || teamMembers.length === 0) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Our Team</h1>
-          <p className="text-gray-600 mb-6">Team information is being updated.</p>
-          <Link href="/contact" className="text-blue-600 hover:underline">
-            Contact us
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  // Group by department
-  const leadership = teamMembers.filter((m: TeamMember) => m.department === 'leadership');
-  const staff = teamMembers.filter((m: TeamMember) => m.department === 'staff');
-  const instructors = teamMembers.filter((m: TeamMember) => m.department === 'instructors');
-
+export default function TeamPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -94,32 +121,24 @@ export default async function TeamPage() {
 
       <div className="max-w-7xl mx-auto px-4 py-16">
         {/* Leadership */}
-        {leadership.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Leadership</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {leadership.map((member: TeamMember) => (
-                <div key={member.id} className="bg-white rounded-xl shadow-sm border overflow-hidden">
-                  <div className="h-64 bg-gray-200 relative">
-                    {member.image_url ? (
-                      <Image
-                        src={member.image_url}
-                        alt={member.name}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <Users className="w-16 h-16 text-gray-400" />
-                      </div>
-                    )}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Leadership</h2>
+          <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-8 max-w-2xl">
+            {leadership.map((member) => (
+              <div key={member.id} className="bg-white rounded-xl shadow-sm border overflow-hidden">
+                <div className="md:flex">
+                  <div className="md:w-64 h-64 md:h-auto bg-gray-200 relative flex-shrink-0">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                    <p className="text-blue-600 font-medium mb-3">{member.title}</p>
-                    {member.bio && (
-                      <p className="text-gray-600 text-sm line-clamp-3 mb-4">{member.bio}</p>
-                    )}
+                  <div className="p-6 flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900">{member.name}</h3>
+                    <p className="text-blue-600 font-medium mb-4">{member.title}</p>
+                    <p className="text-gray-600 mb-4">{member.bio}</p>
                     {member.email && (
                       <a
                         href={`mailto:${member.email}`}
@@ -131,79 +150,58 @@ export default async function TeamPage() {
                     )}
                   </div>
                 </div>
-              ))}
-            </div>
-          </section>
-        )}
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Staff */}
-        {staff.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Staff</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {staff.map((member: TeamMember) => (
-                <div key={member.id} className="bg-white rounded-xl shadow-sm border p-6 text-center">
-                  <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 relative overflow-hidden">
-                    {member.image_url ? (
-                      <Image
-                        src={member.image_url}
-                        alt={member.name}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <Users className="w-8 h-8 text-gray-400" />
-                      </div>
-                    )}
-                  </div>
-                  <h3 className="font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-blue-600 text-sm mb-2">{member.title}</p>
-                  {member.email && (
-                    <a
-                      href={`mailto:${member.email}`}
-                      className="text-xs text-gray-500 hover:text-blue-600"
-                    >
-                      {member.email}
-                    </a>
-                  )}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Staff</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {staff.map((member) => (
+              <div key={member.id} className="bg-white rounded-xl shadow-sm border overflow-hidden">
+                <div className="h-48 bg-gray-200 relative">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-              ))}
-            </div>
-          </section>
-        )}
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900">{member.name}</h3>
+                  <p className="text-blue-600 text-sm font-medium mb-3">{member.title}</p>
+                  <p className="text-gray-600 text-sm">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Instructors */}
-        {instructors.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Instructors</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {instructors.map((member: TeamMember) => (
-                <div key={member.id} className="bg-white rounded-xl shadow-sm border p-6 text-center">
-                  <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 relative overflow-hidden">
-                    {member.image_url ? (
-                      <Image
-                        src={member.image_url}
-                        alt={member.name}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <Users className="w-8 h-8 text-gray-400" />
-                      </div>
-                    )}
-                  </div>
-                  <h3 className="font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-blue-600 text-sm mb-2">{member.title}</p>
-                  {member.bio && (
-                    <p className="text-gray-600 text-xs line-clamp-2">{member.bio}</p>
-                  )}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Instructors</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {instructors.map((member) => (
+              <div key={member.id} className="bg-white rounded-xl shadow-sm border overflow-hidden">
+                <div className="h-48 bg-gray-200 relative">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-              ))}
-            </div>
-          </section>
-        )}
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900">{member.name}</h3>
+                  <p className="text-blue-600 text-sm font-medium mb-3">{member.title}</p>
+                  <p className="text-gray-600 text-sm">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* CTA */}
         <section className="bg-gradient-to-br from-blue-700 to-blue-800 rounded-2xl p-8 text-white text-center">
