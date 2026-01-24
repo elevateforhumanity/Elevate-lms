@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Calendar, Clock, MapPin, User, Video, Phone, Building, ArrowRight, CheckCircle } from 'lucide-react';
+import Image from 'next/image';
+import { Clock, ArrowRight, CheckCircle } from 'lucide-react';
 
 const appointmentTypes = [
   {
@@ -10,7 +11,7 @@ const appointmentTypes = [
     name: 'Enrollment Consultation',
     description: 'Learn about our programs, eligibility, and enrollment process',
     duration: 60,
-    icon: User,
+    image: '/images/programs-hq/students-learning.jpg',
     color: 'blue',
   },
   {
@@ -18,7 +19,7 @@ const appointmentTypes = [
     name: 'Financial Aid & WIOA',
     description: 'Discuss funding options, WIOA eligibility, and payment plans',
     duration: 60,
-    icon: Calendar,
+    image: '/images/programs-hq/business-training.jpg',
     color: 'green',
   },
   {
@@ -26,7 +27,7 @@ const appointmentTypes = [
     name: 'Virtual Meeting',
     description: 'Meet via Google Meet video call from anywhere',
     duration: 60,
-    icon: Video,
+    image: '/images/programs-hq/technology-hero.jpg',
     color: 'purple',
   },
   {
@@ -34,7 +35,7 @@ const appointmentTypes = [
     name: 'Phone Consultation',
     description: 'We\'ll call you at your preferred time',
     duration: 60,
-    icon: Phone,
+    image: '/images/programs-hq/career-success.jpg',
     color: 'orange',
   },
 ];
@@ -115,12 +116,21 @@ export default function BookingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <Calendar className="w-12 h-12 mx-auto mb-4" />
-          <h1 className="text-4xl font-bold mb-4">Book an Appointment</h1>
-          <p className="text-xl text-slate-300">Schedule a 1-hour consultation with our team</p>
+      {/* Hero with image */}
+      <section className="relative h-64 overflow-hidden">
+        <Image
+          src="/images/team-hq/team-meeting.jpg"
+          alt="Book an Appointment"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="text-center text-white">
+            <h1 className="text-4xl font-bold mb-4">Book an Appointment</h1>
+            <p className="text-xl text-slate-300">Schedule a 1-hour consultation with our team</p>
+          </div>
         </div>
       </section>
 
@@ -146,13 +156,17 @@ export default function BookingPage() {
                 <button
                   key={type.id}
                   onClick={() => { setSelectedType(type.id); setStep(2); }}
-                  className="bg-white p-6 rounded-xl border-2 hover:border-blue-500 hover:shadow-lg transition text-left"
+                  className="bg-white rounded-xl border-2 hover:border-blue-500 hover:shadow-lg transition text-left overflow-hidden"
                 >
-                  <type.icon className="w-10 h-10 text-blue-600 mb-3" />
-                  <h3 className="text-lg font-bold mb-2">{type.name}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{type.description}</p>
-                  <div className="flex items-center text-sm text-gray-500">
-                    <Clock className="w-4 h-4 mr-1" /> {type.duration} minutes
+                  <div className="relative h-32">
+                    <Image src={type.image} alt={type.name} fill className="object-cover" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold mb-2">{type.name}</h3>
+                    <p className="text-gray-600 text-sm mb-3">{type.description}</p>
+                    <div className="flex items-center text-sm text-gray-500">
+                      <Clock className="w-4 h-4 mr-1" /> {type.duration} minutes
+                    </div>
                   </div>
                 </button>
               ))}
