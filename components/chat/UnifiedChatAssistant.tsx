@@ -142,26 +142,24 @@ export default function UnifiedChatAssistant({
         return;
       }
 
-      // Call AI API
-      const response = await fetch('/api/ai-tutor/chat', {
+      // Build conversation history for API
+      const conversationHistory = messages.slice(-10).map(m => ({
+        role: m.role === 'assistant' ? 'assistant' : 'user',
+        content: m.content,
+      }));
+
+      // Add the new user message
+      conversationHistory.push({
+        role: 'user',
+        content: content,
+      });
+
+      // Call public AI chat API (no auth required)
+      const response = await fetch('/api/ai-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          message: content,
-          sessionId,
-          assistantId: script.id,
-          scriptVersion: script.version,
-          context: {
-            role: script.role,
-            purpose: script.purpose,
-            toneGuidelines: script.tone_guidelines,
-            knowledgeBoundary: script.knowledge_boundary,
-            disclaimers: script.disclaimers,
-          },
-          history: messages.slice(-10).map(m => ({
-            role: m.role,
-            content: m.content,
-          })),
+          messages: conversationHistory,
         }),
       });
 
@@ -174,7 +172,7 @@ export default function UnifiedChatAssistant({
       const assistantMessage: Message = {
         id: `assistant_${Date.now()}`,
         role: 'assistant',
-        content: data.response || data.message || "I'm sorry, I couldn't process that request. Please try again.",
+        content: data.reply || data.response || data.message || "I'm sorry, I couldn't process that request. Please try again.",
         timestamp: new Date(),
       };
 

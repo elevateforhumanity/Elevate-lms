@@ -21,7 +21,7 @@ const openai = process.env.OPENAI_API_KEY
 
 export async function POST(request: NextRequest) {
   try {
-    const { conversation_id, message, user_id } = await request.json();
+    const { conversation_id, message, user_id, context } = await request.json();
 
     if (!message) {
       return NextResponse.json(
@@ -31,69 +31,81 @@ export async function POST(request: NextRequest) {
     }
 
     if (!openai) {
-      return NextResponse.json(
-        {
-          error: 'AI chat not configured',
-          response: 'AI chat is currently unavailable. Please contact support.',
-          needs_human: true,
-        },
-        { status: 503 }
-      );
+      // Fallback response when OpenAI is not configured
+      return NextResponse.json({
+        response: `Thanks for your message! I'm here to help you learn about our programs.
+
+**Quick Info:**
+• Training is 100% FREE for eligible Indiana residents through WIOA funding
+• Programs: Healthcare (CNA), Skilled Trades (HVAC, CDL), Barbering, and more
+• Call us: (317) 314-3757
+• Apply online: elevateforhumanity.org/apply
+
+What would you like to know more about?`,
+        needs_human: false,
+      });
     }
 
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
-
-    // Get conversation history
-    const { data: messages } = await supabase
-      .from('chat_messages')
-      .select('content, is_ai_generated')
-      .eq('conversation_id', conversation_id)
-      .order('created_at', { ascending: true })
-      .limit(10);
-
-    // Build context for OpenAI
-    const conversationHistory =
-      messages?.map((msg) => ({
-        role: msg.is_ai_generated ? 'assistant' : 'user',
-        content: msg.content,
-      })) || [];
+    // Build context from previous messages if provided
+    const conversationHistory = context?.previousMessages?.map((msg: any) => ({
+      role: msg.sender === 'user' ? 'user' : 'assistant',
+      content: msg.content,
+    })) || [];
 
     // System prompt for the AI
-    const systemPrompt = `You are a helpful AI assistant for Elevate for Humanity, a workforce development platform.
-Your role is to help students with:
-- Course enrollment and registration
-- Payment options and financial aid
-- Technical support
-- General questions about programs
+    const systemPrompt = `You are the Elevate for Humanity AI Assistant - a helpful, friendly guide for prospective students and visitors.
 
-Be friendly, professional, and concise. If you cannot help with something, offer to connect them with a human agent.
+**About Elevate for Humanity:**
+- Nonprofit workforce development organization in Indianapolis, Indiana
+- DOL Registered Apprenticeship Sponsor
+- WIOA-approved training provider
+- JRI-approved for justice-involved individuals
+- Training is 100% FREE for eligible participants
 
-Available programs:
-- Healthcare (CNA, Medical Assistant, Phlebotomy)
-- Skilled Trades (HVAC, Electrical, Plumbing)
-- Business (Accounting, Management, Marketing)
-- Technology (IT Support, Cybersecurity, Web Development)
-- Beauty & Cosmetology
-- CDL Training
+**Programs We Offer:**
+- Healthcare: CNA, Phlebotomy, Medical Assistant, Peer Recovery Specialist
+- Skilled Trades: HVAC, Electrical, Plumbing, Construction
+- Transportation: CDL Truck Driving
+- Professional: Barbering, Cosmetology, Business Administration
+- Technology: IT Fundamentals, Microsoft Office Certification
 
-Payment options:
-- Full payment (10% discount)
-- Monthly payment plans
-- Financial aid and scholarships
-- Pay in 4 with Klarna, Afterpay, or Zip
+**Funding Options:**
+- WIOA (Workforce Innovation and Opportunity Act) - Free for eligible low-income individuals
+- WRG (Workforce Ready Grant) - Indiana state funding
+- JRI (Justice Reinvestment Initiative) - For justice-involved individuals
+- Self-pay options with payment plans available
 
-If the user asks about:
-- Specific pricing → Provide general ranges and suggest speaking with admissions
-- Technical issues → Gather details and offer to escalate
-- Enrollment → Guide them through the process
-- Complex questions → Offer human agent assistance`;
+**Eligibility (General):**
+- Indiana resident
+- 18 years or older (some programs 17+)
+- US citizen or authorized to work
+- Meet income guidelines for WIOA (varies by family size)
+
+**How to Apply:**
+1. Visit elevateforhumanity.org/apply
+2. Complete the eligibility questionnaire
+3. Upload required documents
+4. Schedule orientation
+
+**Contact:**
+- Phone: (317) 314-3757
+- Email: info@elevateforhumanity.org
+- Address: Indianapolis, Indiana
+
+**Your Role:**
+- Be friendly, encouraging, and supportive
+- Answer questions about programs, eligibility, and the application process
+- Help visitors find the right program for their goals
+- Provide clear next steps
+- If you don't know something specific, direct them to contact us or visit the website
+- Never make guarantees about job placement or specific outcomes
+- For complaints, refunds, or complex issues, direct to phone support
+
+Keep responses concise but helpful. Use bullet points for clarity when listing information.`;
 
     // Call OpenAI
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4-turbo-preview',
+      model: 'gpt-4o-mini',
       messages: [
         { role: 'system', content: systemPrompt },
         ...conversationHistory,
@@ -105,27 +117,38 @@ If the user asks about:
 
     const aiResponse =
       completion.choices[0]?.message?.content ||
-      'I apologize, but I encountered an error. Let me connect you with a human agent.';
+      'I apologize, but I encountered an error. Please call us at (317) 314-3757 for assistance.';
 
     // Check if human handoff is needed
     const needsHuman =
       message.toLowerCase().includes('speak to human') ||
       message.toLowerCase().includes('talk to agent') ||
       message.toLowerCase().includes('real person') ||
-      aiResponse.toLowerCase().includes('human agent') ||
-      aiResponse.toLowerCase().includes('connect you with');
+      message.toLowerCase().includes('complaint') ||
+      message.toLowerCase().includes('refund');
 
-    // Save AI context
-    await supabase.from('ai_chat_context').insert({
-      conversation_id,
-      context_data: {
-        messages: conversationHistory,
-        last_prompt: message,
-        last_response: aiResponse,
-      },
-      tokens_used: completion.usage?.total_tokens || 0,
-      model: 'gpt-4-turbo-preview',
-    });
+    // Try to save context to database (non-blocking)
+    if (conversation_id) {
+      try {
+        const supabase = createClient(
+          process.env.NEXT_PUBLIC_SUPABASE_URL!,
+          process.env.SUPABASE_SERVICE_ROLE_KEY!
+        );
+        
+        await supabase.from('ai_chat_context').insert({
+          conversation_id,
+          context_data: {
+            messages: conversationHistory,
+            last_prompt: message,
+            last_response: aiResponse,
+          },
+          tokens_used: completion.usage?.total_tokens || 0,
+          model: 'gpt-4o-mini',
+        });
+      } catch {
+        // Silently fail - don't block the response
+      }
+    }
 
     return NextResponse.json({
       response: aiResponse,
@@ -133,14 +156,10 @@ If the user asks about:
       tokens_used: completion.usage?.total_tokens || 0,
     });
   } catch (err: any) {
-    return NextResponse.json(
-      {
-        error: 'Failed to get AI response',
-        response:
-          "I apologize, but I'm having trouble right now. Let me connect you with a human agent who can help.",
-        needs_human: true,
-      },
-      { status: 500 }
-    );
+    console.error('AI Chat error:', err);
+    return NextResponse.json({
+      response: "I'm having a bit of trouble right now. Please call us at (317) 314-3757 or visit elevateforhumanity.org/apply to get started!",
+      needs_human: true,
+    });
   }
 }
