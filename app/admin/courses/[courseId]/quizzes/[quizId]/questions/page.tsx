@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Questions | Elevate For Humanity',
   description:
-    'Manage questions settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function QuestionsPage() {
@@ -78,7 +78,7 @@ export default async function QuestionsPage() {
             Questions
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage questions settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

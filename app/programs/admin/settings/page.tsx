@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Programs Admin Settings | Elevate For Humanity',
   description:
-    'Manage settings settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function SettingsPage() {
@@ -71,7 +71,7 @@ export default async function SettingsPage() {
             Settings
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage settings settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

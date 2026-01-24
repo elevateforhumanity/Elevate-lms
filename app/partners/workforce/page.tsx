@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Workforce | Elevate For Humanity',
   description:
-    'Manage workforce settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function WorkforcePage() {
@@ -34,7 +34,7 @@ export default async function WorkforcePage() {
             Workforce
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage workforce settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -65,7 +65,7 @@ export default async function WorkforcePage() {
                   Workforce
                 </h2>
                 <p className="text-black mb-6">
-                  Manage workforce for career growth
+                  Tools and resources for career advancement
                   and development.
                 </p>
                 <ul className="space-y-3">

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Ecosystem | Elevate For Humanity',
   description:
-    'Manage ecosystem settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function EcosystemPage() {
@@ -53,7 +53,7 @@ export default async function EcosystemPage() {
             Ecosystem
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage ecosystem settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -84,7 +84,7 @@ export default async function EcosystemPage() {
                   Ecosystem
                 </h2>
                 <p className="text-black mb-6">
-                  Manage ecosystem for career growth
+                  Tools and resources for career advancement
                   and development.
                 </p>
                 <ul className="space-y-3">

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Manage | Elevate For Humanity',
   description:
-    'Manage manage settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function ManagePage() {
@@ -77,7 +77,7 @@ export default async function ManagePage() {
             Manage
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage manage settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

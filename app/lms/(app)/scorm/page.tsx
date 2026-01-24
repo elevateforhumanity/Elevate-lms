@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Scorm | Elevate For Humanity',
   description:
-    'Manage scorm settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function ScormPage() {
@@ -68,7 +68,7 @@ export default async function ScormPage() {
             Scorm
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage scorm settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

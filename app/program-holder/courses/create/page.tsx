@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Create Program Holder Course | Elevate For Humanity',
   description:
-    'Manage create settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function CreatePage() {
@@ -68,7 +68,7 @@ export default async function CreatePage() {
             Create
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage create settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

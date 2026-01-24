@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Adaptive | Elevate For Humanity',
   description:
-    'Manage adaptive settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function AdaptivePage() {
@@ -103,7 +103,7 @@ export default async function AdaptivePage() {
             Adaptive
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage adaptive settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -134,7 +134,7 @@ export default async function AdaptivePage() {
                   Adaptive
                 </h2>
                 <p className="text-black mb-6">
-                  Manage adaptive for career growth
+                  Tools and resources for career advancement
                   and development.
                 </p>
                 <ul className="space-y-3">

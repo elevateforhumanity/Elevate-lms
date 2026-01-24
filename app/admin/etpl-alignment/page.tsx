@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Etpl Alignment | Elevate For Humanity',
   description:
-    'Manage etpl-alignment settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function EtplAlignmentPage() {
@@ -79,7 +79,7 @@ export default async function EtplAlignmentPage() {
             Etpl Alignment
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage etpl-alignment for career growth
+            Tools and resources for career advancement
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

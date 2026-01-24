@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'K12 | Elevate For Humanity',
   description:
-    'Manage k12 settings and development.',
+    'K-12 workforce development solutions and career pathway programs.',
 };
 
 export default async function K12Page() {

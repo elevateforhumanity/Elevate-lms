@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Distance Learning | Elevate For Humanity',
   description:
-    'Manage distance-learning settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function DistanceLearningPage() {
@@ -54,8 +54,8 @@ export default async function DistanceLearningPage() {
             Distance Learning
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage distance-learning for career
-            growth and development.
+            Tools and resources for career advancement
+            workforce training and career success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -85,8 +85,8 @@ export default async function DistanceLearningPage() {
                   Distance Learning
                 </h2>
                 <p className="text-black mb-6">
-                  Manage distance-learning for
-                  career growth and development.
+                  Tools and resources for
+                  career workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

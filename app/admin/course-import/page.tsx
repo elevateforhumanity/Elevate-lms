@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Course Import | Elevate For Humanity',
   description:
-    'Manage course-import settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function CourseImportPage() {
@@ -79,7 +79,7 @@ export default async function CourseImportPage() {
             Course Import
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage course-import for career growth
+            Tools and resources for career advancement
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

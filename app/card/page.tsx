@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Card | Elevate For Humanity',
   description:
-    'Manage card settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function CardPage() {
@@ -54,7 +54,7 @@ export default async function CardPage() {
             Card
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage card settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -83,7 +83,7 @@ export default async function CardPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Card</h2>
                 <p className="text-black mb-6">
-                  Manage card settings and
+                  Access tools and resources for
                   development.
                 </p>
                 <ul className="space-y-3">

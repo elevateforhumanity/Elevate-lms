@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Performance | Elevate For Humanity',
   description:
-    'Manage performance settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function PerformancePage() {
@@ -56,7 +56,7 @@ export default async function PerformancePage() {
             Performance
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage performance settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -87,8 +87,8 @@ export default async function PerformancePage() {
                   Performance
                 </h2>
                 <p className="text-black mb-6">
-                  Manage performance for career
-                  growth and development.
+                  Tools and resources for career advancement
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

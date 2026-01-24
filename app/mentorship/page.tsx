@@ -389,8 +389,8 @@ export default async function MentorshipPage() {
                   Mentorship
                 </h2>
                 <p className="text-black mb-6">
-                  Manage mentorship for career
-                  growth and development.
+                  Tools and resources for career advancement
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

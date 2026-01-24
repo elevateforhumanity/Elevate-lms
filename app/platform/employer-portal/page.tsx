@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Employer Portal | Elevate For Humanity',
   description:
-    'Manage employer-portal settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function EmployerPortalPage() {
@@ -53,7 +53,7 @@ export default async function EmployerPortalPage() {
             Employer Portal
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage employer-portal for career growth
+            Tools and resources for career advancement
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -84,8 +84,8 @@ export default async function EmployerPortalPage() {
                   Employer Portal
                 </h2>
                 <p className="text-black mb-6">
-                  Manage employer-portal for career
-                  growth and development.
+                  Tools and resources for career advancement
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

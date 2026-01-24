@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Call Now | Elevate For Humanity',
   description:
-    'Manage call-now settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function CallNowPage() {
@@ -54,7 +54,7 @@ export default async function CallNowPage() {
             Call Now
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage call-now settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -85,7 +85,7 @@ export default async function CallNowPage() {
                   Call Now
                 </h2>
                 <p className="text-black mb-6">
-                  Manage call-now for career growth
+                  Tools and resources for career advancement
                   and development.
                 </p>
                 <ul className="space-y-3">

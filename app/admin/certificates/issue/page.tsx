@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Issue | Elevate For Humanity',
   description:
-    'Manage issue settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function IssuePage() {
@@ -76,7 +76,7 @@ export default async function IssuePage() {
             Issue
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage issue settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

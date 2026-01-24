@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Partner Portal | Elevate For Humanity',
   description:
-    'Manage partner-portal settings and development.',
+    'Access your partner dashboard to track referrals, manage apprentices, and collaborate with Elevate for Humanity.',
 };
 
 export default async function PartnerPortalPage() {
@@ -53,8 +53,8 @@ export default async function PartnerPortalPage() {
             Partner Portal
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage partner-portal for career growth
-            and development.
+            Track referrals, manage apprentices, and access resources
+            to grow your partnership with Elevate.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -84,8 +84,8 @@ export default async function PartnerPortalPage() {
                   Partner Portal
                 </h2>
                 <p className="text-black mb-6">
-                  Manage partner-portal for career
-                  growth and development.
+                  Your central hub for tracking apprentice progress, 
+                  submitting hours, and accessing partnership resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

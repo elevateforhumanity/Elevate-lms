@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Payroll Cards | Elevate For Humanity',
   description:
-    'Manage payroll-cards settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function PayrollCardsPage() {
@@ -80,7 +80,7 @@ export default async function PayrollCardsPage() {
             Payroll Cards
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage payroll-cards for career growth
+            Tools and resources for career advancement
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

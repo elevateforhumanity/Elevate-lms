@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Grants | Elevate For Humanity',
   description:
-    'Manage grants settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function GrantsPage() {
@@ -55,7 +55,7 @@ export default async function GrantsPage() {
             Grants
           </h1>
           <p className="text-base md:text-lg mb-4 text-gray-100">
-            Manage grants settings and
+            Access tools and resources for
             development.
           </p>
           <div className="mb-8">
@@ -93,7 +93,7 @@ export default async function GrantsPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Grants</h2>
                 <p className="text-black mb-6">
-                  Manage grants for career growth
+                  Tools and resources for career advancement
                   and development.
                 </p>
                 <ul className="space-y-3">

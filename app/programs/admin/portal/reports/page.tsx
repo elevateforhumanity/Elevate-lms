@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Admin Reports | Elevate For Humanity',
   description:
-    'Manage reports settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function ReportsPage() {
@@ -72,7 +72,7 @@ export default async function ReportsPage() {
             Reports
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage reports settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

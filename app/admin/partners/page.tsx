@@ -74,7 +74,7 @@ export default async function PartnersPage() {
             Partners
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage partners settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

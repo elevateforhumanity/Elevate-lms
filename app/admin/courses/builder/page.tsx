@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Builder | Elevate For Humanity',
   description:
-    'Manage builder settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function BuilderPage() {
@@ -77,7 +77,7 @@ export default async function BuilderPage() {
             Builder
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage builder settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

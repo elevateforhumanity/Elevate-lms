@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Admins | Elevate For Humanity',
   description:
-    'Manage admins settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function AdminsPage() {
@@ -32,7 +32,7 @@ export default async function AdminsPage() {
             Admins
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage admins settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,7 +61,7 @@ export default async function AdminsPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Admins</h2>
                 <p className="text-black mb-6">
-                  Manage admins for career growth
+                  Tools and resources for career advancement
                   and development.
                 </p>
                 <ul className="space-y-3">

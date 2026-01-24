@@ -97,7 +97,7 @@ export default async function CertificatesPage() {
             Certificates
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage certificates for career growth
+            Tools and resources for career advancement
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Applicants Live | Elevate For Humanity',
   description:
-    'Manage applicants-live settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function ApplicantsLivePage() {
@@ -80,7 +80,7 @@ export default async function ApplicantsLivePage() {
             Applicants Live
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage applicants-live for career growth
+            Tools and resources for career advancement
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

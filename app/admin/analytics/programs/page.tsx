@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Programs | Elevate For Humanity',
   description:
-    'Manage programs settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function ProgramsPage() {
@@ -76,7 +76,7 @@ export default async function ProgramsPage() {
             Programs
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage programs settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

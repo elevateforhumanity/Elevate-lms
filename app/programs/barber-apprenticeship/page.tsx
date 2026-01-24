@@ -10,6 +10,7 @@ import {
   XCircle,
 } from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
+import { BARBER_PROGRAM } from '@/lib/program-constants';
 
 export const dynamic = 'force-dynamic';
 
@@ -168,7 +169,7 @@ export default async function BarberApprenticeshipPage() {
           
           <div className="bg-white border-2 border-slate-200 rounded-xl p-8 shadow-lg">
             <div className="text-center mb-6">
-              <div className="text-5xl font-black text-purple-600">$4,980</div>
+              <div className="text-5xl font-black text-purple-600">{BARBER_PROGRAM.tuitionFormatted}</div>
               <div className="text-xl text-slate-600 mt-2">Program Tuition</div>
             </div>
 
@@ -193,7 +194,7 @@ export default async function BarberApprenticeshipPage() {
                   <div className="font-bold text-lg">Pay in Full</div>
                   <div className="text-sm text-gray-500">One-time payment</div>
                 </div>
-                <span className="text-2xl font-bold">$4,980</span>
+                <span className="text-2xl font-bold">{BARBER_PROGRAM.tuitionFormatted}</span>
               </div>
 
               <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">

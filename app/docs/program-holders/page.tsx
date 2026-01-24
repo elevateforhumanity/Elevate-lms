@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Program Holders | Elevate For Humanity',
   description:
-    'Manage program-holders settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function ProgramHoldersPage() {
@@ -32,7 +32,7 @@ export default async function ProgramHoldersPage() {
             Program Holders
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage program-holders for career growth
+            Tools and resources for career advancement
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,8 +63,8 @@ export default async function ProgramHoldersPage() {
                   Program Holders
                 </h2>
                 <p className="text-black mb-6">
-                  Manage program-holders for career
-                  growth and development.
+                  Tools and resources for career advancement
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

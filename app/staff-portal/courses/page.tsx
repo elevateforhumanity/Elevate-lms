@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Staff Portal Courses | Elevate For Humanity',
   description:
-    'Manage courses settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function CoursesPage() {
@@ -67,7 +67,7 @@ export default async function CoursesPage() {
             Courses
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage courses settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

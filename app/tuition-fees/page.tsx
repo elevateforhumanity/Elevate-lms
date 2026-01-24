@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { BARBER_PROGRAM, TUITION_EFFECTIVE_DATE } from '@/lib/program-constants';
 
 export const metadata: Metadata = {
   title: 'Tuition & Fees | Elevate for Humanity',
@@ -11,14 +12,14 @@ export const metadata: Metadata = {
 
 const programs = [
   {
-    name: 'Barber Apprenticeship',
-    duration: '12 months (1,500 hours)',
-    tuition: 4980,
-    examFees: 75,
+    name: BARBER_PROGRAM.name,
+    duration: `${BARBER_PROGRAM.durationFormatted} (${BARBER_PROGRAM.totalHoursFormatted} hours)`,
+    tuition: BARBER_PROGRAM.tuitionDollars,
+    examFees: BARBER_PROGRAM.examFeeDollars,
     examFeesNote: 'Indiana State Board of Barber Examiners licensing exam',
-    materials: 0,
+    materials: BARBER_PROGRAM.materialsDollars,
     materialsNote: 'Included in tuition',
-    total: 5055,
+    total: BARBER_PROGRAM.totalCostDollars,
     fundingType: 'Self-Pay / WIOA Eligible',
   },
   {

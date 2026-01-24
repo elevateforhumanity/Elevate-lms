@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Educatorhub | Elevate For Humanity',
   description:
-    'Manage educatorhub settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function EducatorhubPage() {
@@ -53,7 +53,7 @@ export default async function EducatorhubPage() {
             Educatorhub
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage educatorhub settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -84,8 +84,8 @@ export default async function EducatorhubPage() {
                   Educatorhub
                 </h2>
                 <p className="text-black mb-6">
-                  Manage educatorhub for career
-                  growth and development.
+                  Tools and resources for career advancement
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

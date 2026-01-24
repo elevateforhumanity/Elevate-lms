@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Workforce Boards | Elevate For Humanity',
   description:
-    'Manage workforce-boards settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function WorkforceBoardsPage() {
@@ -53,8 +53,8 @@ export default async function WorkforceBoardsPage() {
             Workforce Boards
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage workforce-boards for career
-            growth and development.
+            Tools and resources for career advancement
+            workforce training and career success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -84,8 +84,8 @@ export default async function WorkforceBoardsPage() {
                   Workforce Boards
                 </h2>
                 <p className="text-black mb-6">
-                  Manage workforce-boards for career
-                  growth and development.
+                  Tools and resources for career advancement
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Programs Admin Training | Elevate For Humanity',
   description:
-    'Manage training settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function TrainingPage() {
@@ -72,7 +72,7 @@ export default async function TrainingPage() {
             Training
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage training settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

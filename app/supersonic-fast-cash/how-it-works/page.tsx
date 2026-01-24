@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'How It Works | Elevate For Humanity',
   description:
-    'Manage how-it-works settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function HowItWorksPage() {
@@ -55,7 +55,7 @@ export default async function HowItWorksPage() {
             How It Works
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage how-it-works for career growth
+            Tools and resources for career advancement
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,8 +86,8 @@ export default async function HowItWorksPage() {
                   How It Works
                 </h2>
                 <p className="text-gray-700 mb-6">
-                  Manage how-it-works for career
-                  growth and development.
+                  Tools and resources for career advancement
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

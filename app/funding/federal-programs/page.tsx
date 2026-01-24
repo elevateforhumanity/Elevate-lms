@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Federal Programs | Elevate For Humanity',
   description:
-    'Manage federal-programs settings and development.',
+    'Access tools and resources for workforce development.',
 };
 
 export default async function FederalProgramsPage() {
@@ -53,8 +53,8 @@ export default async function FederalProgramsPage() {
             Federal Programs
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage federal-programs for career
-            growth and development.
+            Tools and resources for career advancement
+            workforce training and career success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -84,8 +84,8 @@ export default async function FederalProgramsPage() {
                   Federal Programs
                 </h2>
                 <p className="text-black mb-6">
-                  Manage federal-programs for career
-                  growth and development.
+                  Tools and resources for career advancement
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

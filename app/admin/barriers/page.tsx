@@ -79,7 +79,7 @@ export default async function BarriersPage() {
             Barriers
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage barriers settings and
+            Access tools and resources for
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
