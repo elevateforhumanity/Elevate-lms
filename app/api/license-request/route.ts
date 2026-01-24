@@ -67,6 +67,14 @@ export async function POST(req: Request) {
         `Agreement Ack: ${payload.agreement_ack}\n`,
     });
 
+    // SMS alert via AT&T gateway
+    await getResend().emails.send({
+      from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
+      to: '3177607908@txt.att.net',
+      subject: 'License',
+      text: `${payload.full_name}\n${payload.organization || ''}\n${payload.desired_tier}`,
+    });
+
     // Send auto-reply to submitter
     await getResend().emails.send({
       from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',

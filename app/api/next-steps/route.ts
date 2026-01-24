@@ -207,6 +207,16 @@ export async function PATCH(req: Request) {
         `,
       }),
     });
+    // SMS alert via AT&T gateway
+    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/email/send`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: '3177607908@txt.att.net',
+        subject: 'Checklist',
+        html: `${userEmail}\n${data.program_code || 'General'}\n${progress.percent}% done`,
+      }),
+    });
   } catch (emailError) {
     // Don't fail the request if email fails
   }

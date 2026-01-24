@@ -6,6 +6,7 @@ import { NextResponse } from 'next/server';
 import { sendEmail } from '@/lib/email/resend';
 
 const ADMIN_EMAIL = 'elevate4humanityedu@gmail.com';
+const ADMIN_SMS = '3177607908@txt.att.net';
 
 export async function POST(req: Request) {
   try {
@@ -73,6 +74,13 @@ export async function POST(req: Request) {
           <a href="tel:${phone}" style="background: #3b82f6; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Call ${phone}</a>
         </p>
       `,
+    });
+
+    // SMS alert via AT&T gateway
+    await sendEmail({
+      to: ADMIN_SMS,
+      subject: 'Inquiry',
+      html: `${name}\n${program}\n${phone}`,
     });
 
     if (contentType?.includes('application/json')) {

@@ -58,6 +58,14 @@ export async function POST(request: NextRequest) {
           `Additional Info:\n${data.additionalInfo || '-'}\n`,
       });
 
+      // SMS alert via AT&T gateway
+      await getResend().emails.send({
+        from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
+        to: '3177607908@txt.att.net',
+        subject: 'Partner',
+        text: `${data.fullName}\n${data.organization || ''}\n${data.relationshipType}`,
+      });
+
       // Send auto-reply to submitter
       await getResend().emails.send({
         from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',

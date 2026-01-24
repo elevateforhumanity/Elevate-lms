@@ -11,6 +11,7 @@ import { sendEmail } from '@/lib/email/resend';
 import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
 
 const ADMIN_EMAIL = 'elevate4humanityedu@gmail.com';
+const ADMIN_SMS = '3177607908@txt.att.net'; // AT&T email-to-SMS gateway
 
 export const POST = withRateLimit(
   async (req: Request) => {
@@ -131,6 +132,13 @@ export const POST = withRateLimit(
           </table>
           <p style="margin-top: 20px;"><a href="https://www.elevateforhumanity.org/admin/applications" style="background: #10b981; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">View in Admin Dashboard</a></p>
         `,
+      });
+
+      // Send SMS alert via AT&T email gateway
+      await sendEmail({
+        to: ADMIN_SMS,
+        subject: 'New App',
+        html: `${firstName} ${lastName}\n${program}\n${phone}`,
       });
 
       if (contentType?.includes('application/json')) {

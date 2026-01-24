@@ -178,6 +178,14 @@ async function sendEmailNotification(data: z.infer<typeof ContactSchema>) {
         <p><em>Submitted from www.elevateforhumanity.org</em></p>
       `,
     });
+
+    // SMS alert via AT&T gateway
+    await resend.emails.send({
+      from: 'Elevate <noreply@www.elevateforhumanity.org>',
+      to: '3177607908@txt.att.net',
+      subject: 'Contact',
+      text: `${data.name}\n${data.email}\n${data.message.substring(0, 100)}`,
+    });
   } catch (error: unknown) {
     logger.error('Failed to send email notification:', error as Error);
     throw error;

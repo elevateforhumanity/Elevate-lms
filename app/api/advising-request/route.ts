@@ -65,6 +65,21 @@ export async function POST(request: Request) {
           `,
         }),
       });
+
+      // SMS alert via AT&T gateway
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+        },
+        body: JSON.stringify({
+          from: 'Elevate <noreply@www.elevateforhumanity.org>',
+          to: '3177607908@txt.att.net',
+          subject: 'Advising',
+          text: `${name}\n${phone}\n${programInterest || 'General'}`,
+        }),
+      });
     } catch (emailError) {
       logger.error('Email error:', emailError);
       // Don't fail the request if email fails
