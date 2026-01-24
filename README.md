@@ -792,8 +792,8 @@ Upon course completion:
 ## Roadmap & Future Improvements
 
 ### Code Organization
-- **State-specific page consolidation** - Pages like `/community-services-indiana`, `/community-services-ohio`, etc. could be consolidated into a single dynamic route `/community-services/[state]` to reduce duplication
-- **Component library standardization** - Some UI patterns are duplicated across components; could benefit from a shared component library
+- **State-specific pages** - Pages like `/career-training-indiana`, `/community-services-ohio` are intentionally separate for SEO (local search rankings). They use shared template components (`StateCareerTrainingPage`, `StateCommunityServicesPage`) with state-specific config from `/config/states.ts`. This is the correct architecture.
+- **Component library standardization** - Some UI patterns could benefit from a shared component library for consistency
 
 ### Testing
 - **Expand unit test coverage** - Current coverage focuses on core business logic; expand to cover more edge cases
