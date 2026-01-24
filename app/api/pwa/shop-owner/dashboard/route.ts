@@ -88,7 +88,7 @@ export async function GET() {
       .from('progress_entries')
       .select('id')
       .eq('partner_id', partnerUser.partner_id)
-      .eq('status', 'submitted');
+      .in('status', ['submitted', 'pending']);
 
     // Calculate total hours this week across all apprentices
     const totalHoursThisWeek = apprentices.reduce((sum, a) => sum + a.weeklyHours, 0);

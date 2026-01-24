@@ -83,7 +83,7 @@ function LandingPage() {
         </Link>
         
         <Link
-          href="/programs/barber-apprenticeship"
+          href="/pwa/barber/enroll"
           className="w-full flex items-center justify-center gap-2 bg-slate-800 text-white font-medium py-4 rounded-xl border border-slate-700 hover:bg-slate-700"
         >
           <UserPlus className="w-5 h-5" />

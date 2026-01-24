@@ -185,6 +185,17 @@ function Dashboard({
         <div className="space-y-3">
           <h2 className="text-white font-bold text-lg">Quick Actions</h2>
           
+          <Link href="/pwa/shop-owner/approve-hours" className="flex items-center gap-4 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-xl p-4 active:opacity-80">
+            <div className="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center">
+              <CheckCircle className="w-6 h-6 text-white" />
+            </div>
+            <div className="flex-1">
+              <p className="text-white font-medium">Approve Hours</p>
+              <p className="text-amber-300 text-sm">Review pending submissions</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-amber-400" />
+          </Link>
+
           <Link href="/pwa/shop-owner/log-hours" className="flex items-center gap-4 bg-slate-800 rounded-xl p-4 active:bg-slate-700">
             <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
               <Plus className="w-6 h-6 text-green-400" />
