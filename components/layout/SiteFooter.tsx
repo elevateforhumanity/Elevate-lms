@@ -210,8 +210,8 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        {/* Desktop Grid - responsive columns for 9 sections + social */}
-        <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-8">
+        {/* Desktop Grid - responsive columns for all sections */}
+        <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-x-6 gap-y-8">
           {footerSections.map((section) => (
             <div key={section.title}>
               <h3 className="text-xs font-medium uppercase tracking-wider text-gray-400 mb-3">

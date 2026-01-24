@@ -40,9 +40,14 @@ export default async function HubPage() {
   // Get user profile
   const { data: profile } = await supabase
     .from('profiles')
-    .select('full_name, role, points')
+    .select('full_name, role, points, onboarding_completed')
     .eq('id', user.id)
     .single();
+
+  // Redirect to onboarding if not completed
+  if (!profile?.onboarding_completed) {
+    redirect('/onboarding');
+  }
 
   // Check if user is admin/staff for cohort view
   const isAdmin = profile?.role === 'admin' || profile?.role === 'staff' || profile?.role === 'program_holder';

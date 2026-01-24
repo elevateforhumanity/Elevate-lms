@@ -87,13 +87,34 @@ export default function AvatarChatAssistant({
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Play intro video when chat opens
+  // Play intro video when chat opens - with retry for mobile
   useEffect(() => {
-    if (isOpen && !hasPlayedIntro && videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {});
-      setHasPlayedIntro(true);
-    }
+    if (!isOpen || hasPlayedIntro || !videoRef.current) return;
+    
+    const video = videoRef.current;
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.currentTime = 0;
+    
+    const playVideo = async () => {
+      try {
+        await video.play();
+        setHasPlayedIntro(true);
+      } catch {
+        setTimeout(async () => {
+          try {
+            await video.play();
+            setHasPlayedIntro(true);
+          } catch {
+            // Silent fail
+          }
+        }, 500);
+      }
+    };
+    
+    playVideo();
   }, [isOpen, hasPlayedIntro]);
 
   const handleSend = async () => {
@@ -178,7 +199,6 @@ export default function AvatarChatAssistant({
               ref={videoRef}
               src={avatarVideoUrl}
               muted={isMuted}
-              loop
               playsInline
               autoPlay={autoPlayVideo}
               className="w-full h-full object-cover"
@@ -221,7 +241,6 @@ export default function AvatarChatAssistant({
             <video
               src={avatarVideoUrl}
               muted={isMuted}
-              loop
               playsInline
               autoPlay={autoPlayVideo}
               className="w-full h-32 object-contain rounded-lg"

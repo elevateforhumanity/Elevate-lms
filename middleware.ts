@@ -26,8 +26,20 @@ const PROTECTED_ROUTES: Record<string, string[]> = {
   '/employer/settings': ['employer', 'admin', 'super_admin'],
 };
 
+// Routes restricted to specific admin emails only
+const ADMIN_ONLY_ROUTES = ['/admin'];
+
 // Routes that require authentication (any role)
 const AUTH_REQUIRED_ROUTES = ['/student', '/my-courses', '/my-progress', '/settings'];
+
+// Routes that require onboarding completion
+const ONBOARDING_REQUIRED_ROUTES = ['/hub', '/lms', '/student-portal', '/my-courses', '/my-progress'];
+
+// Super admin emails - full platform access (platform owner)
+const SUPER_ADMIN_EMAILS = ['elizabethpowell6262@gmail.com'];
+
+// Admin emails that bypass onboarding requirement (includes super admins)
+const ADMIN_EMAILS = ['elizabethpowell6262@gmail.com'];
 
 // Webhook paths that bypass auth entirely (Stripe signature verification handles security)
 // CANONICAL WEBHOOK PATHS (bypass auth)
@@ -221,8 +233,58 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl, { status: 307 });
   }
 
+  // Check if route is admin-only
+  const isAdminOnlyRoute = ADMIN_ONLY_ROUTES.some((route) =>
+    pathname.startsWith(route)
+  );
+
+  if (isAdminOnlyRoute) {
+    // Super admins (platform owner) have full access
+    if (SUPER_ADMIN_EMAILS.includes(user.email || '')) {
+      return response;
+    }
+
+    // For license holders - check if they are admin of their own tenant
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role, tenant_id')
+      .eq('id', user.id)
+      .single();
+
+    // License holders with admin/super_admin role can access their tenant's admin
+    if (profile?.role === 'admin' || profile?.role === 'super_admin') {
+      // They can only access admin for their own tenant
+      // Inject tenant context for downstream handlers
+      if (profile.tenant_id) {
+        response.headers.set('x-tenant-id', profile.tenant_id);
+      }
+      return response;
+    }
+
+    // Staff with admin permissions granted by license holder
+    if (profile?.role === 'staff') {
+      // Check if staff has admin permissions for their tenant
+      const { data: permissions } = await supabase
+        .from('staff_permissions')
+        .select('can_access_admin')
+        .eq('user_id', user.id)
+        .eq('tenant_id', profile.tenant_id)
+        .single();
+
+      if (permissions?.can_access_admin) {
+        if (profile.tenant_id) {
+          response.headers.set('x-tenant-id', profile.tenant_id);
+        }
+        return response;
+      }
+    }
+
+    // No access
+    return NextResponse.redirect(new URL('/unauthorized', request.url), { status: 307 });
+  }
+
   // Check role for protected routes
-  if (protectedRoute) {
+  if (protectedRoute && !isAdminOnlyRoute) {
     const allowedRoles = PROTECTED_ROUTES[protectedRoute];
     const { data: profile } = await supabase
       .from('profiles')
@@ -232,6 +294,39 @@ export async function middleware(request: NextRequest) {
 
     if (!profile || !allowedRoles.includes(profile.role)) {
       return NextResponse.redirect(new URL('/unauthorized', request.url), { status: 307 });
+    }
+  }
+
+  // Check onboarding completion for restricted routes
+  const requiresOnboarding = ONBOARDING_REQUIRED_ROUTES.some((route) =>
+    pathname.startsWith(route)
+  );
+
+  if (requiresOnboarding) {
+    // Skip onboarding check for the welcome page itself
+    if (pathname === '/hub/welcome') {
+      return response;
+    }
+
+    // Admin emails bypass onboarding requirement
+    if (ADMIN_EMAILS.includes(user.email || '')) {
+      return response;
+    }
+
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('onboarding_completed, role')
+      .eq('id', user.id)
+      .single();
+
+    // Admins and super_admins bypass onboarding
+    if (profile?.role === 'admin' || profile?.role === 'super_admin') {
+      return response;
+    }
+
+    // If onboarding not completed, redirect to onboarding
+    if (!profile?.onboarding_completed) {
+      return NextResponse.redirect(new URL('/onboarding', request.url), { status: 307 });
     }
   }
 

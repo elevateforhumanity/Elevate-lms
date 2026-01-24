@@ -113,7 +113,6 @@ export default function AvatarVideoOverlay({
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          loop
           muted={isMuted}
           playsInline
           onPlay={() => setIsPlaying(true)}

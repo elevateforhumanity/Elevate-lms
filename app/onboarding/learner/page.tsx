@@ -74,7 +74,7 @@ export default async function LearnerOnboardingPage() {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('*')
+    .select('*, onboarding_completed')
     .eq('id', user.id)
     .single();
 
@@ -118,6 +118,17 @@ export default async function LearnerOnboardingPage() {
 
   const progress = Math.round((completedSteps.length / ONBOARDING_STEPS.length) * 100);
   const allComplete = completedSteps.length === ONBOARDING_STEPS.length;
+
+  // If all steps complete, mark onboarding as done in profile
+  if (allComplete && profile && !profile.onboarding_completed) {
+    await supabase
+      .from('profiles')
+      .update({ 
+        onboarding_completed: true,
+        onboarding_completed_at: new Date().toISOString()
+      })
+      .eq('id', user.id);
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">

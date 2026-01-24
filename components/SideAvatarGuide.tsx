@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Send, ChevronLeft, ChevronRight, MessageCircle, X } from 'lucide-react';
+import { Send, ChevronLeft, ChevronRight, MessageCircle, Volume2, VolumeX, Play, Pause, X } from 'lucide-react';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -32,6 +32,8 @@ export default function SideAvatarGuide({
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   
   const videoRef = useRef<HTMLVideoElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -44,29 +46,64 @@ export default function SideAvatarGuide({
     return () => clearTimeout(timer);
   }, []);
 
-  // Auto-play video with sound when visible
+  // Play video when visible - with retry for mobile
   useEffect(() => {
-    if (isVisible && videoRef.current) {
-      videoRef.current.muted = false;
-      videoRef.current.play().catch(() => {
-        // If autoplay with sound fails (browser policy), try muted
-        if (videoRef.current) {
-          videoRef.current.muted = true;
-          videoRef.current.play().catch(() => {});
-        }
-      });
-    }
+    if (!isVisible || !videoRef.current) return;
+    
+    const video = videoRef.current;
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    
+    const playVideo = async () => {
+      try {
+        await video.play();
+        setIsPlaying(true);
+      } catch {
+        setTimeout(async () => {
+          try {
+            await video.play();
+            setIsPlaying(true);
+          } catch {
+            // Silent fail
+          }
+        }, 500);
+      }
+    };
+    
+    playVideo();
   }, [isVisible]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Play video when assistant responds
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isPlaying) {
+      video.pause();
+      setIsPlaying(false);
+    } else {
+      video.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+    }
+  };
+
   const playVideo = () => {
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
       videoRef.current.play().catch(() => {});
+      setIsPlaying(true);
     }
   };
 
@@ -81,7 +118,6 @@ export default function SideAvatarGuide({
     setIsLoading(true);
 
     try {
-      // Pass route context for deterministic routing
       const currentRoute = typeof window !== 'undefined' ? window.location.pathname : '/';
       
       const response = await fetch('/api/chat/avatar-assistant', {
@@ -124,27 +160,25 @@ export default function SideAvatarGuide({
     : 'left-0 rounded-r-2xl';
 
   const toggleClasses = side === 'right'
-    ? '-left-10 rounded-l-lg'
-    : '-right-10 rounded-r-lg';
+    ? '-left-12 rounded-l-xl'
+    : '-right-12 rounded-r-xl';
 
   return (
     <div 
       className={`fixed top-1/4 ${sideClasses} z-40 transition-all duration-300 ${
-        isExpanded ? 'w-80' : 'w-0'
+        isExpanded ? 'w-96' : 'w-0'
       }`}
     >
       {/* Toggle Button */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className={`absolute ${toggleClasses} top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white p-2 shadow-lg transition-colors`}
+        className={`absolute ${toggleClasses} top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white p-3 shadow-lg transition-colors`}
         title={isExpanded ? 'Hide Guide' : 'Show Guide'}
       >
         {isExpanded ? (
-          side === 'right' ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />
+          side === 'right' ? <ChevronRight className="w-6 h-6" /> : <ChevronLeft className="w-6 h-6" />
         ) : (
-          <>
-            {side === 'right' ? <ChevronLeft className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
-          </>
+          side === 'right' ? <ChevronLeft className="w-6 h-6" /> : <ChevronRight className="w-6 h-6" />
         )}
       </button>
 
@@ -152,75 +186,71 @@ export default function SideAvatarGuide({
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
-          className={`absolute ${side === 'right' ? '-left-16' : '-right-16'} top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors`}
+          className={`absolute ${side === 'right' ? '-left-20' : '-right-20'} top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 transition-colors`}
         >
-          <MessageCircle className="w-5 h-5" />
-          <span className="text-sm font-medium whitespace-nowrap">Ask {avatarName}</span>
+          <MessageCircle className="w-6 h-6" />
+          <span className="font-medium whitespace-nowrap">Ask {avatarName}</span>
         </button>
       )}
 
       {/* Main Panel */}
       {isExpanded && (
-        <div className="bg-white shadow-2xl border border-gray-200 h-[500px] flex flex-col overflow-hidden rounded-l-2xl">
-          {/* Avatar Video Section */}
-          <div className="bg-gradient-to-b from-slate-900 to-slate-800 p-3">
+        <div className={`bg-white shadow-2xl border border-gray-200 h-[600px] flex flex-col overflow-hidden ${side === 'right' ? 'rounded-l-2xl' : 'rounded-r-2xl'}`}>
+          {/* Avatar Video Section - Larger */}
+          <div className="bg-gradient-to-b from-slate-900 to-slate-800 p-4">
             <div className="relative">
               <video
                 ref={videoRef}
                 src={avatarVideoUrl}
-                muted={isMuted}
-                loop
+                muted
                 playsInline
                 autoPlay
-                className="w-full h-40 object-contain rounded-lg bg-slate-900"
+                className="w-full h-52 object-contain rounded-xl bg-slate-900"
+                onEnded={() => setIsPlaying(false)}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
               />
               
-              {/* Unmute hint overlay */}
-              {isMuted && showUnmuteHint && (
+              {/* Play/Pause overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
                 <button
-                  onClick={handleUnmute}
-                  className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg transition-opacity hover:bg-black/50"
+                  onClick={togglePlay}
+                  className="p-3 bg-black/40 hover:bg-black/60 rounded-full text-white transition-all transform hover:scale-110"
                 >
-                  <div className="bg-blue-600 text-white px-4 py-2 rounded-full flex items-center gap-2 animate-pulse">
-                    <Volume2 className="w-5 h-5" />
-                    <span className="text-sm font-medium">Click to hear me</span>
-                  </div>
+                  {isPlaying ? (
+                    <Pause className="w-8 h-8" />
+                  ) : (
+                    <Play className="w-8 h-8" fill="white" />
+                  )}
                 </button>
-              )}
+              </div>
               
               {/* Mute/unmute button */}
               <button
-                onClick={() => {
-                  if (isMuted) {
-                    handleUnmute();
-                  } else {
-                    setIsMuted(true);
-                    if (videoRef.current) videoRef.current.muted = true;
-                  }
-                }}
-                className="absolute bottom-2 right-2 p-1.5 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+                onClick={toggleMute}
+                className="absolute bottom-3 right-3 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
               >
-                {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
               </button>
             </div>
-            <div className="mt-2 text-center">
-              <div className="text-white font-semibold">{avatarName}</div>
-              <div className="text-blue-300 text-sm">{avatarRole}</div>
+            <div className="mt-3 text-center">
+              <div className="text-white font-semibold text-lg">{avatarName}</div>
+              <div className="text-blue-300">{avatarRole}</div>
             </div>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-gray-50">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50">
             {messages.map((msg, i) => (
               <div
                 key={i}
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-[90%] px-3 py-2 rounded-xl text-sm ${
+                  className={`max-w-[85%] px-4 py-2 rounded-2xl ${
                     msg.role === 'user'
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-white text-gray-800 border border-gray-200 shadow-sm'
+                      ? 'bg-blue-600 text-white rounded-br-md'
+                      : 'bg-white text-gray-800 border border-gray-200 shadow-sm rounded-bl-md'
                   }`}
                 >
                   {msg.content}
@@ -229,7 +259,7 @@ export default function SideAvatarGuide({
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-white px-4 py-2 rounded-xl border border-gray-200">
+                <div className="bg-white px-4 py-3 rounded-2xl rounded-bl-md border border-gray-200 shadow-sm">
                   <div className="flex gap-1">
                     <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
                     <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -242,28 +272,28 @@ export default function SideAvatarGuide({
           </div>
 
           {/* Input */}
-          <div className="p-3 border-t border-gray-200 bg-white">
+          <div className="p-4 border-t border-gray-200 bg-white">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
                 handleSend();
               }}
-              className="flex gap-2"
+              className="flex gap-3"
             >
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask a question..."
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
                 disabled={isLoading}
               />
               <button
                 type="submit"
                 disabled={isLoading || !input.trim()}
-                className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors"
+                className="px-4 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 disabled:opacity-50 transition-colors"
               >
-                <Send className="w-4 h-4" />
+                <Send className="w-5 h-5" />
               </button>
             </form>
           </div>

@@ -37,21 +37,22 @@ export async function POST(request: NextRequest) {
       <p><strong>Congratulations!</strong> You've completed onboarding and your LMS access is now active.</p>
 
       <div class="info-box">
-        <h3>📚 Your LMS Access:</h3>
-        <p><strong>Login URL:</strong> <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/login">${process.env.NEXT_PUBLIC_SITE_URL?.replace('https://', '').replace('http://', '') || 'www.www.elevateforhumanity.org'}/login</a></p>
+        <h3>📚 Your Access Links:</h3>
+        <p><strong>Hub (Command Center):</strong> <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/hub">${process.env.NEXT_PUBLIC_SITE_URL?.replace('https://', '').replace('http://', '') || 'www.elevateforhumanity.org'}/hub</a></p>
+        <p><strong>LMS Dashboard:</strong> <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/lms/dashboard">${process.env.NEXT_PUBLIC_SITE_URL?.replace('https://', '').replace('http://', '') || 'www.elevateforhumanity.org'}/lms/dashboard</a></p>
         <p><strong>Email:</strong> ${to}</p>
         <p><strong>Password:</strong> The password you created during registration</p>
       </div>
 
-      <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/login" class="button">Access Your LMS Dashboard →</a>
+      <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/hub" class="button">Go to Your Hub →</a>
 
       <h3>What's Next?</h3>
       <ul>
-        <li>✅ Log in to your student dashboard</li>
-        <li>✅ Review your course schedule</li>
-        <li>✅ Complete your student profile</li>
-        <li>✅ Download course materials</li>
-        <li>✅ Connect with your instructor</li>
+        <li>✅ Log in to your Hub (Command Center)</li>
+        <li>✅ Access your courses in the Classroom</li>
+        <li>✅ Track your progress on the Leaderboard</li>
+        <li>✅ Connect with other members</li>
+        <li>✅ Check the Calendar for upcoming events</li>
       </ul>
 
       <div class="info-box">

@@ -98,7 +98,6 @@ export default function AvatarCourseGuide({
           ref={videoRef}
           src={step.videoUrl || defaultVideoUrl}
           autoPlay
-          loop
           playsInline
           className="w-full h-48 object-contain"
         />

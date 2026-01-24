@@ -133,13 +133,13 @@ export default function SiteHeader() {
               </span>
             </Link>
 
-            {/* Desktop Navigation - hidden on mobile/tablet */}
-            <nav className="hidden md:flex items-center h-full" aria-label="Main navigation">
+            {/* Desktop Navigation - visible on tablet and up */}
+            <nav className="hidden md:flex items-center h-full flex-1 justify-center" aria-label="Main navigation">
               {NAV_ITEMS.map((item) => (
                 <div key={item.name} className="relative h-full group">
                   <Link
                     href={item.href}
-                    className={`relative h-full flex items-center gap-1 px-3 lg:px-4 text-sm font-medium transition-colors
+                    className={`relative h-full flex items-center gap-1 px-2 lg:px-3 xl:px-4 text-xs lg:text-sm font-medium transition-colors whitespace-nowrap
                       before:absolute before:bottom-0 before:left-2 before:right-2 before:h-[3px] before:bg-blue-600 
                       before:opacity-0 before:transition-opacity group-hover:before:opacity-100
                       text-gray-700 hover:text-gray-900
@@ -212,7 +212,7 @@ export default function SiteHeader() {
                 Apply Now
               </Link>
 
-              {/* Mobile menu button - show on smaller screens (below lg/1024px) */}
+              {/* Mobile menu button - show on mobile only */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
                 className="md:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
@@ -225,7 +225,7 @@ export default function SiteHeader() {
         </div>
       </header>
 
-      {/* Mobile Menu - shows on screens below lg (1024px) */}
+      {/* Mobile Menu - shows on mobile only */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-[100] md:hidden">
           <div 
