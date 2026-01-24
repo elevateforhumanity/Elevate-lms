@@ -4,60 +4,45 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { 
-  Building2, 
-  User, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Globe,
-  FileText,
-  Users,
-  CheckCircle,
-  ArrowRight,
-  ArrowLeft,
-  Loader2,
-  AlertCircle
+  Building2, User, Mail, Phone, MapPin, 
+  FileText, Users, CheckCircle, ArrowRight, 
+  ArrowLeft, Loader2, AlertCircle, Upload, X
 } from 'lucide-react';
+import { 
+  DOCUMENT_TYPE_LABELS, 
+  getRequiredDocuments,
+  type DocumentType 
+} from '@/lib/partner/types';
 
 const AVAILABLE_PROGRAMS = [
-  { id: 'barber', name: 'Barber Apprenticeship', description: 'Host barber apprentices for hands-on training' },
-  { id: 'cosmetology', name: 'Cosmetology', description: 'Beauty and cosmetology training placement' },
-  { id: 'cna', name: 'CNA/Healthcare', description: 'Certified Nursing Assistant clinical placement' },
-  { id: 'hvac', name: 'HVAC', description: 'Heating, ventilation, and air conditioning apprenticeship' },
-  { id: 'cdl', name: 'CDL/Transportation', description: 'Commercial driving training partnership' },
+  { id: 'BARBER', name: 'Barber Apprenticeship', description: 'Host barber apprentices for hands-on training' },
+  { id: 'COSMETOLOGY', name: 'Cosmetology', description: 'Beauty and cosmetology training placement' },
+  { id: 'CNA', name: 'CNA/Healthcare', description: 'Certified Nursing Assistant clinical placement' },
+  { id: 'HVAC', name: 'HVAC', description: 'Heating, ventilation, and air conditioning apprenticeship' },
 ];
 
 const US_STATES = [
-  'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 
-  'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 
-  'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 
-  'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 
-  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 
-  'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 
-  'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 
-  'Wisconsin', 'Wyoming', 'District of Columbia'
+  'Indiana', 'Illinois', 'Ohio', 'Michigan', 'Kentucky'
 ];
+
+interface UploadedFile {
+  docType: DocumentType;
+  file: File;
+  name: string;
+}
 
 interface FormData {
   shopName: string;
   dba: string;
-  ein: string;
+  fein: string;
   ownerName: string;
   email: string;
   phone: string;
   addressLine1: string;
-  addressLine2: string;
   city: string;
   state: string;
   zip: string;
-  website: string;
   programsRequested: string[];
-  apprenticeCapacity: number;
-  scheduleNotes: string;
-  licenseNumber: string;
-  licenseState: string;
-  licenseExpiry: string;
-  additionalNotes: string;
   agreedToTerms: boolean;
 }
 
@@ -66,30 +51,24 @@ export default function PartnerOnboardingPage() {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
+  
   const [formData, setFormData] = useState<FormData>({
     shopName: '',
     dba: '',
-    ein: '',
+    fein: '',
     ownerName: '',
     email: '',
     phone: '',
     addressLine1: '',
-    addressLine2: '',
     city: '',
     state: 'Indiana',
     zip: '',
-    website: '',
-    programsRequested: [],
-    apprenticeCapacity: 1,
-    scheduleNotes: '',
-    licenseNumber: '',
-    licenseState: 'Indiana',
-    licenseExpiry: '',
-    additionalNotes: '',
+    programsRequested: ['BARBER'],
     agreedToTerms: false,
   });
 
-  const updateField = (field: keyof FormData, value: string | number | boolean | string[]) => {
+  const updateField = (field: keyof FormData, value: string | boolean | string[]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -102,6 +81,26 @@ export default function PartnerOnboardingPage() {
     }));
   };
 
+  // Get required documents based on selected programs and state
+  const getRequiredDocs = (): DocumentType[] => {
+    const docs = new Set<DocumentType>();
+    formData.programsRequested.forEach(programId => {
+      getRequiredDocuments(programId, formData.state).forEach(d => docs.add(d));
+    });
+    return Array.from(docs);
+  };
+
+  const handleFileUpload = (docType: DocumentType, file: File) => {
+    setUploadedFiles(prev => {
+      const filtered = prev.filter(f => f.docType !== docType);
+      return [...filtered, { docType, file, name: file.name }];
+    });
+  };
+
+  const removeFile = (docType: DocumentType) => {
+    setUploadedFiles(prev => prev.filter(f => f.docType !== docType));
+  };
+
   const validateStep = (stepNum: number): boolean => {
     switch (stepNum) {
       case 1:
@@ -111,6 +110,10 @@ export default function PartnerOnboardingPage() {
       case 3:
         return formData.programsRequested.length > 0;
       case 4:
+        const required = getRequiredDocs();
+        const uploaded = uploadedFiles.map(f => f.docType);
+        return required.every(d => uploaded.includes(d));
+      case 5:
         return formData.agreedToTerms;
       default:
         return true;
@@ -118,7 +121,7 @@ export default function PartnerOnboardingPage() {
   };
 
   const handleSubmit = async () => {
-    if (!validateStep(4)) {
+    if (!validateStep(5)) {
       setError('Please agree to the terms to continue.');
       return;
     }
@@ -130,65 +133,67 @@ export default function PartnerOnboardingPage() {
       const response = await fetch('/api/partner/applications', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          shopName: formData.shopName,
+          dba: formData.dba,
+          ein: formData.fein,
+          ownerName: formData.ownerName,
+          email: formData.email,
+          phone: formData.phone,
+          addressLine1: formData.addressLine1,
+          city: formData.city,
+          state: formData.state,
+          zip: formData.zip,
+          programsRequested: formData.programsRequested,
+          agreedToTerms: formData.agreedToTerms,
+        }),
       });
 
       const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit application');
-      }
+      if (!response.ok) throw new Error(data.error || 'Failed to submit');
 
       router.push('/partner/onboarding/success');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+      setError(err instanceof Error ? err.message : 'Something went wrong.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const requiredDocs = getRequiredDocs();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 py-12 px-4">
       <div className="max-w-3xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 bg-purple-600/20 text-purple-300 px-4 py-2 rounded-full text-sm font-medium mb-4">
             <Building2 className="w-4 h-4" />
-            Partner Shop Application
+            Partner Shop Onboarding
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">Become a Partner Shop</h1>
           <p className="text-slate-400">
-            Host apprentices and help build the next generation of skilled professionals.
+            Complete onboarding and upload required documents to get started.
           </p>
         </div>
 
-        {/* Progress Steps */}
+        {/* Progress */}
         <div className="flex items-center justify-center gap-2 mb-8">
-          {[1, 2, 3, 4].map((s) => (
+          {[1, 2, 3, 4, 5].map((s) => (
             <div key={s} className="flex items-center">
-              <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-colors ${
-                  s < step
-                    ? 'bg-green-500 text-white'
-                    : s === step
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-slate-700 text-slate-400'
-                }`}
-              >
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                s < step ? 'bg-green-500 text-white' : s === step ? 'bg-purple-600 text-white' : 'bg-slate-700 text-slate-400'
+              }`}>
                 {s < step ? <CheckCircle className="w-5 h-5" /> : s}
               </div>
-              {s < 4 && (
-                <div className={`w-12 h-1 ${s < step ? 'bg-green-500' : 'bg-slate-700'}`} />
-              )}
+              {s < 5 && <div className={`w-8 h-1 ${s < step ? 'bg-green-500' : 'bg-slate-700'}`} />}
             </div>
           ))}
         </div>
 
-        {/* Form Card */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
           {error && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3 text-red-700">
-              <AlertCircle className="w-5 h-5 flex-shrink-0" />
+              <AlertCircle className="w-5 h-5" />
               {error}
             </div>
           )}
@@ -200,114 +205,47 @@ export default function PartnerOnboardingPage() {
                 <Building2 className="w-5 h-5 text-purple-600" />
                 Business Information
               </h2>
-
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Shop Legal Name *
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.shopName}
-                    onChange={(e) => updateField('shopName', e.target.value)}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="ABC Barbershop LLC"
-                    required
-                  />
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Legal Business Name *</label>
+                  <input type="text" value={formData.shopName} onChange={(e) => updateField('shopName', e.target.value)}
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500" placeholder="ABC Barbershop LLC" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    DBA (if different)
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.dba}
-                    onChange={(e) => updateField('dba', e.target.value)}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="ABC Cuts"
-                  />
+                  <label className="block text-sm font-medium text-slate-700 mb-1">DBA (if different)</label>
+                  <input type="text" value={formData.dba} onChange={(e) => updateField('dba', e.target.value)}
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500" placeholder="ABC Cuts" />
                 </div>
               </div>
-
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  EIN (optional)
-                </label>
-                <input
-                  type="text"
-                  value={formData.ein}
-                  onChange={(e) => updateField('ein', e.target.value)}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  placeholder="XX-XXXXXXX"
-                />
+                <label className="block text-sm font-medium text-slate-700 mb-1">FEIN</label>
+                <input type="text" value={formData.fein} onChange={(e) => updateField('fein', e.target.value)}
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500" placeholder="XX-XXXXXXX" />
               </div>
-
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Owner/Primary Contact Name *
-                  </label>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Primary Contact Name *</label>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                    <input
-                      type="text"
-                      value={formData.ownerName}
-                      onChange={(e) => updateField('ownerName', e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                      placeholder="John Smith"
-                      required
-                    />
+                    <input type="text" value={formData.ownerName} onChange={(e) => updateField('ownerName', e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500" placeholder="John Smith" />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Email Address *
-                  </label>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Email *</label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => updateField('email', e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                      placeholder="owner@barbershop.com"
-                      required
-                    />
+                    <input type="email" value={formData.email} onChange={(e) => updateField('email', e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500" placeholder="owner@shop.com" />
                   </div>
                 </div>
               </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Phone Number *
-                  </label>
-                  <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => updateField('phone', e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                      placeholder="(317) 555-0123"
-                      required
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Website / Social Media
-                  </label>
-                  <div className="relative">
-                    <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                    <input
-                      type="url"
-                      value={formData.website}
-                      onChange={(e) => updateField('website', e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                      placeholder="https://..."
-                    />
-                  </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Phone *</label>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                  <input type="tel" value={formData.phone} onChange={(e) => updateField('phone', e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500" placeholder="(317) 555-0123" />
                 </div>
               </div>
             </div>
@@ -320,308 +258,159 @@ export default function PartnerOnboardingPage() {
                 <MapPin className="w-5 h-5 text-purple-600" />
                 Shop Location
               </h2>
-
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Street Address *
-                </label>
-                <input
-                  type="text"
-                  value={formData.addressLine1}
-                  onChange={(e) => updateField('addressLine1', e.target.value)}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  placeholder="123 Main Street"
-                  required
-                />
+                <label className="block text-sm font-medium text-slate-700 mb-1">Street Address *</label>
+                <input type="text" value={formData.addressLine1} onChange={(e) => updateField('addressLine1', e.target.value)}
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500" placeholder="123 Main Street" />
               </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Suite/Unit (optional)
-                </label>
-                <input
-                  type="text"
-                  value={formData.addressLine2}
-                  onChange={(e) => updateField('addressLine2', e.target.value)}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  placeholder="Suite 100"
-                />
-              </div>
-
               <div className="grid md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    City *
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.city}
-                    onChange={(e) => updateField('city', e.target.value)}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="Indianapolis"
-                    required
-                  />
+                  <label className="block text-sm font-medium text-slate-700 mb-1">City *</label>
+                  <input type="text" value={formData.city} onChange={(e) => updateField('city', e.target.value)}
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500" placeholder="Indianapolis" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    State *
-                  </label>
-                  <select
-                    value={formData.state}
-                    onChange={(e) => updateField('state', e.target.value)}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    required
-                  >
-                    {US_STATES.map(state => (
-                      <option key={state} value={state}>{state}</option>
-                    ))}
+                  <label className="block text-sm font-medium text-slate-700 mb-1">State *</label>
+                  <select value={formData.state} onChange={(e) => updateField('state', e.target.value)}
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                    {US_STATES.map(s => <option key={s} value={s}>{s}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    ZIP Code *
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.zip}
-                    onChange={(e) => updateField('zip', e.target.value)}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="46204"
-                    required
-                  />
+                  <label className="block text-sm font-medium text-slate-700 mb-1">ZIP *</label>
+                  <input type="text" value={formData.zip} onChange={(e) => updateField('zip', e.target.value)}
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500" placeholder="46204" />
                 </div>
               </div>
             </div>
           )}
 
-          {/* Step 3: Programs & Capacity */}
+          {/* Step 3: Programs */}
           {step === 3 && (
             <div className="space-y-6">
               <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
                 <Users className="w-5 h-5 text-purple-600" />
-                Programs & Capacity
+                Program Selection
               </h2>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-3">
-                  Which programs do you want to host apprentices for? *
-                </label>
-                <div className="space-y-3">
-                  {AVAILABLE_PROGRAMS.map(program => (
-                    <label
-                      key={program.id}
-                      className={`flex items-start gap-4 p-4 border-2 rounded-lg cursor-pointer transition-colors ${
-                        formData.programsRequested.includes(program.id)
-                          ? 'border-purple-500 bg-purple-50'
-                          : 'border-slate-200 hover:border-slate-300'
-                      }`}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={formData.programsRequested.includes(program.id)}
-                        onChange={() => toggleProgram(program.id)}
-                        className="mt-1 w-5 h-5 text-purple-600 rounded focus:ring-purple-500"
-                      />
-                      <div>
-                        <p className="font-medium text-slate-900">{program.name}</p>
-                        <p className="text-sm text-slate-500">{program.description}</p>
-                      </div>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    How many apprentices can you host at once?
+              <p className="text-slate-600 text-sm">Select the programs you want to host apprentices for.</p>
+              <div className="space-y-3">
+                {AVAILABLE_PROGRAMS.map(program => (
+                  <label key={program.id} className={`flex items-start gap-4 p-4 border-2 rounded-lg cursor-pointer ${
+                    formData.programsRequested.includes(program.id) ? 'border-purple-500 bg-purple-50' : 'border-slate-200 hover:border-slate-300'
+                  }`}>
+                    <input type="checkbox" checked={formData.programsRequested.includes(program.id)}
+                      onChange={() => toggleProgram(program.id)} className="mt-1 w-5 h-5 text-purple-600 rounded" />
+                    <div>
+                      <p className="font-medium text-slate-900">{program.name}</p>
+                      <p className="text-sm text-slate-500">{program.description}</p>
+                    </div>
                   </label>
-                  <select
-                    value={formData.apprenticeCapacity}
-                    onChange={(e) => updateField('apprenticeCapacity', parseInt(e.target.value))}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
-                      <option key={n} value={n}>{n} apprentice{n > 1 ? 's' : ''}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    License Number (if applicable)
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.licenseNumber}
-                    onChange={(e) => updateField('licenseNumber', e.target.value)}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="Shop license #"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Typical Schedule / Availability
-                </label>
-                <textarea
-                  value={formData.scheduleNotes}
-                  onChange={(e) => updateField('scheduleNotes', e.target.value)}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  rows={3}
-                  placeholder="e.g., Tuesday-Saturday 9am-6pm, closed Sundays and Mondays"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Additional Notes
-                </label>
-                <textarea
-                  value={formData.additionalNotes}
-                  onChange={(e) => updateField('additionalNotes', e.target.value)}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  rows={3}
-                  placeholder="Anything else we should know about your shop?"
-                />
+                ))}
               </div>
             </div>
           )}
 
-          {/* Step 4: Review & Submit */}
+          {/* Step 4: Document Upload */}
           {step === 4 && (
+            <div className="space-y-6">
+              <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                <Upload className="w-5 h-5 text-purple-600" />
+                Required Documents
+              </h2>
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                <p className="text-amber-800 text-sm">
+                  <strong>All documents are required.</strong> Your account will be activated automatically once documents are verified.
+                </p>
+              </div>
+              <div className="space-y-4">
+                {requiredDocs.map(docType => {
+                  const uploaded = uploadedFiles.find(f => f.docType === docType);
+                  return (
+                    <div key={docType} className={`p-4 border-2 rounded-lg ${uploaded ? 'border-green-500 bg-green-50' : 'border-slate-200'}`}>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="font-medium text-slate-900">{DOCUMENT_TYPE_LABELS[docType]}</p>
+                          {uploaded && <p className="text-sm text-green-600">{uploaded.name}</p>}
+                        </div>
+                        {uploaded ? (
+                          <button onClick={() => removeFile(docType)} className="text-red-500 hover:text-red-700">
+                            <X className="w-5 h-5" />
+                          </button>
+                        ) : (
+                          <label className="cursor-pointer bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-700">
+                            Upload
+                            <input type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png"
+                              onChange={(e) => e.target.files?.[0] && handleFileUpload(docType, e.target.files[0])} />
+                          </label>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Step 5: Review */}
+          {step === 5 && (
             <div className="space-y-6">
               <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
                 <FileText className="w-5 h-5 text-purple-600" />
                 Review & Submit
               </h2>
-
               <div className="bg-slate-50 rounded-lg p-6 space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-sm text-slate-500">Shop Name</p>
-                    <p className="font-medium text-slate-900">{formData.shopName}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-500">Owner</p>
-                    <p className="font-medium text-slate-900">{formData.ownerName}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-500">Email</p>
-                    <p className="font-medium text-slate-900">{formData.email}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-500">Phone</p>
-                    <p className="font-medium text-slate-900">{formData.phone}</p>
-                  </div>
+                  <div><p className="text-sm text-slate-500">Shop Name</p><p className="font-medium">{formData.shopName}</p></div>
+                  <div><p className="text-sm text-slate-500">Contact</p><p className="font-medium">{formData.ownerName}</p></div>
+                  <div><p className="text-sm text-slate-500">Email</p><p className="font-medium">{formData.email}</p></div>
+                  <div><p className="text-sm text-slate-500">Phone</p><p className="font-medium">{formData.phone}</p></div>
                 </div>
-                <div>
-                  <p className="text-sm text-slate-500">Address</p>
-                  <p className="font-medium text-slate-900">
-                    {formData.addressLine1}{formData.addressLine2 && `, ${formData.addressLine2}`}<br />
-                    {formData.city}, {formData.state} {formData.zip}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm text-slate-500">Programs Requested</p>
+                <div><p className="text-sm text-slate-500">Address</p><p className="font-medium">{formData.addressLine1}, {formData.city}, {formData.state} {formData.zip}</p></div>
+                <div><p className="text-sm text-slate-500">Programs</p>
                   <div className="flex flex-wrap gap-2 mt-1">
                     {formData.programsRequested.map(p => (
-                      <span key={p} className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium">
-                        {AVAILABLE_PROGRAMS.find(prog => prog.id === p)?.name}
-                      </span>
+                      <span key={p} className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">{AVAILABLE_PROGRAMS.find(prog => prog.id === p)?.name}</span>
                     ))}
                   </div>
                 </div>
-                <div>
-                  <p className="text-sm text-slate-500">Apprentice Capacity</p>
-                  <p className="font-medium text-slate-900">{formData.apprenticeCapacity} apprentice(s)</p>
-                </div>
+                <div><p className="text-sm text-slate-500">Documents Uploaded</p><p className="font-medium text-green-600">{uploadedFiles.length} of {requiredDocs.length}</p></div>
               </div>
-
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h3 className="font-semibold text-blue-900 mb-2">What happens next?</h3>
-                <ol className="text-sm text-blue-800 space-y-1 list-decimal list-inside">
-                  <li>We review your application (typically 1-3 business days)</li>
-                  <li>You'll receive an email with your approval status</li>
-                  <li>Once approved, you'll get a magic link to access your Partner Dashboard</li>
-                  <li>Start hosting apprentices and tracking their progress!</li>
-                </ol>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <p className="text-green-800 text-sm"><strong>No admin approval required.</strong> Your account will be activated automatically once documents are verified (typically within 24-48 hours).</p>
               </div>
-
               <label className="flex items-start gap-3 p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-purple-300">
-                <input
-                  type="checkbox"
-                  checked={formData.agreedToTerms}
-                  onChange={(e) => updateField('agreedToTerms', e.target.checked)}
-                  className="mt-1 w-5 h-5 text-purple-600 rounded focus:ring-purple-500"
-                />
+                <input type="checkbox" checked={formData.agreedToTerms} onChange={(e) => updateField('agreedToTerms', e.target.checked)}
+                  className="mt-1 w-5 h-5 text-purple-600 rounded" />
                 <div className="text-sm text-slate-600">
-                  I agree to the{' '}
-                  <Link href="/terms-of-service" className="text-purple-600 hover:underline">
-                    Terms of Service
-                  </Link>{' '}
-                  and{' '}
-                  <Link href="/privacy-policy" className="text-purple-600 hover:underline">
-                    Privacy Policy
-                  </Link>
-                  . I understand that my application will be reviewed and I will be notified of the decision via email.
+                  I agree to the <Link href="/terms-of-service" className="text-purple-600 hover:underline">Terms of Service</Link> and <Link href="/privacy-policy" className="text-purple-600 hover:underline">Privacy Policy</Link>.
                 </div>
               </label>
             </div>
           )}
 
-          {/* Navigation Buttons */}
+          {/* Navigation */}
           <div className="flex justify-between mt-8 pt-6 border-t border-slate-200">
             {step > 1 ? (
-              <button
-                onClick={() => setStep(step - 1)}
-                className="flex items-center gap-2 px-6 py-3 text-slate-600 hover:text-slate-900 font-medium"
-              >
-                <ArrowLeft className="w-5 h-5" />
-                Back
+              <button onClick={() => setStep(step - 1)} className="flex items-center gap-2 px-6 py-3 text-slate-600 hover:text-slate-900 font-medium">
+                <ArrowLeft className="w-5 h-5" /> Back
               </button>
             ) : (
-              <Link
-                href="/programs/barber-apprenticeship"
-                className="flex items-center gap-2 px-6 py-3 text-slate-600 hover:text-slate-900 font-medium"
-              >
-                <ArrowLeft className="w-5 h-5" />
-                Back to Program
+              <Link href="/programs/barber-apprenticeship" className="flex items-center gap-2 px-6 py-3 text-slate-600 hover:text-slate-900 font-medium">
+                <ArrowLeft className="w-5 h-5" /> Back to Program
               </Link>
             )}
 
-            {step < 4 ? (
-              <button
-                onClick={() => {
-                  if (validateStep(step)) {
-                    setStep(step + 1);
-                    setError('');
-                  } else {
-                    setError('Please fill in all required fields.');
-                  }
-                }}
-                className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors"
-              >
-                Continue
-                <ArrowRight className="w-5 h-5" />
+            {step < 5 ? (
+              <button onClick={() => {
+                if (validateStep(step)) { setStep(step + 1); setError(''); }
+                else { setError('Please complete all required fields.'); }
+              }} className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700">
+                Continue <ArrowRight className="w-5 h-5" />
               </button>
             ) : (
-              <button
-                onClick={handleSubmit}
-                disabled={isSubmitting || !formData.agreedToTerms}
-                className="flex items-center gap-2 px-8 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Submitting...
-                  </>
-                ) : (
-                  <>
-                    Submit Application
-                    <CheckCircle className="w-5 h-5" />
-                  </>
-                )}
+              <button onClick={handleSubmit} disabled={isSubmitting || !formData.agreedToTerms}
+                className="flex items-center gap-2 px-8 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 disabled:opacity-50">
+                {isSubmitting ? <><Loader2 className="w-5 h-5 animate-spin" /> Submitting...</> : <>Submit Application <CheckCircle className="w-5 h-5" /></>}
               </button>
             )}
           </div>

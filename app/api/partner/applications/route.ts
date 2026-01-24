@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
     const { data: existingApp } = await supabase
       .from('partner_applications')
       .select('id, status')
-      .eq('email', email.toLowerCase())
+      .eq('contact_email', email.toLowerCase())
       .in('status', ['pending', 'approved'])
       .single();
 
@@ -75,25 +75,15 @@ export async function POST(request: NextRequest) {
       .insert({
         shop_name: shopName,
         dba: dba || null,
-        ein: ein || null,
         owner_name: ownerName,
-        email: email.toLowerCase(),
+        contact_email: email.toLowerCase(),
         phone,
         address_line1: addressLine1,
-        address_line2: addressLine2 || null,
         city,
         state,
         zip,
-        website: website || null,
         programs_requested: programsRequested,
-        apprentice_capacity: apprenticeCapacity || 1,
-        schedule_notes: scheduleNotes || null,
-        license_number: licenseNumber || null,
-        license_state: licenseState || null,
-        license_expiry: licenseExpiry || null,
-        additional_notes: additionalNotes || null,
         agreed_to_terms: true,
-        agreed_at: new Date().toISOString(),
         status: 'pending',
       })
       .select()

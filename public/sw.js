@@ -235,10 +235,127 @@ self.addEventListener('sync', (event) => {
   if (event.tag === 'sync-enrollment') {
     event.waitUntil(syncEnrollmentData());
   }
+  if (event.tag === 'sync-hours') {
+    event.waitUntil(syncHoursData());
+  }
 });
 
 async function syncEnrollmentData() {
   // Get pending enrollments from IndexedDB and sync
-  // This would be implemented with actual IndexedDB logic
   console.log('[SW] Syncing enrollment data...');
 }
+
+async function syncHoursData() {
+  // Sync queued hour logs when back online
+  const db = await openOfflineDB();
+  const tx = db.transaction('pending-hours', 'readwrite');
+  const store = tx.objectStore('pending-hours');
+  const requests = await getAllFromStore(store);
+  
+  for (const req of requests) {
+    try {
+      await fetch(req.url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(req.data),
+      });
+      store.delete(req.id);
+      console.log('[SW] Synced hours log:', req.id);
+    } catch (error) {
+      console.log('[SW] Failed to sync hours:', error);
+    }
+  }
+}
+
+// IndexedDB helpers for offline queue
+function openOfflineDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open('elevate-offline-queue', 1);
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => resolve(request.result);
+    request.onupgradeneeded = (event) => {
+      const db = event.target.result;
+      if (!db.objectStoreNames.contains('pending-hours')) {
+        db.createObjectStore('pending-hours', { keyPath: 'id', autoIncrement: true });
+      }
+    };
+  });
+}
+
+function getAllFromStore(store) {
+  return new Promise((resolve, reject) => {
+    const request = store.getAll();
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => resolve(request.result);
+  });
+}
+
+// Push notification handling
+self.addEventListener('push', (event) => {
+  if (!event.data) return;
+  
+  let data;
+  try {
+    data = event.data.json();
+  } catch {
+    data = { title: 'Elevate LMS', body: event.data.text() };
+  }
+  
+  const options = {
+    body: data.body || 'You have a new notification',
+    icon: data.icon || '/icon-192.png',
+    badge: '/icon-192.png',
+    vibrate: [100, 50, 100],
+    tag: data.tag || 'default',
+    renotify: true,
+    data: {
+      url: data.url || '/',
+      type: data.type,
+    },
+    actions: data.actions || [],
+  };
+  
+  event.waitUntil(
+    self.registration.showNotification(data.title || 'Elevate LMS', options)
+  );
+});
+
+// Notification click handling
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  
+  const url = event.notification.data?.url || '/';
+  
+  // Handle action buttons
+  if (event.action === 'view') {
+    event.waitUntil(clients.openWindow(url));
+    return;
+  }
+  
+  if (event.action === 'dismiss') {
+    return;
+  }
+  
+  // Default click - open or focus window
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true })
+      .then((clientList) => {
+        // Try to focus existing window
+        for (const client of clientList) {
+          if (client.url.includes(self.location.origin) && 'focus' in client) {
+            client.navigate(url);
+            return client.focus();
+          }
+        }
+        // Open new window
+        return clients.openWindow(url);
+      })
+  );
+});
+
+// Notification close handling
+self.addEventListener('notificationclose', (event) => {
+  console.log('[SW] Notification closed:', event.notification.tag);
+});
+
+console.log('[SW] Service Worker v2 loaded');

@@ -1,55 +1,58 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { X, Download, Smartphone } from 'lucide-react';
+import { Download, X, Smartphone } from 'lucide-react';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 }
 
-export default function InstallPrompt() {
+interface InstallPromptProps {
+  appName: string;
+  appDescription: string;
+  themeColor?: string;
+}
+
+function InstallPrompt({ appName, appDescription, themeColor = '#7c3aed' }: InstallPromptProps) {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
+  const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
-    // Check if already dismissed
-    const dismissed = localStorage.getItem('pwa-install-dismissed');
-    if (dismissed) {
-      const dismissedTime = parseInt(dismissed, 10);
-      // Show again after 7 days
-      if (Date.now() - dismissedTime < 7 * 24 * 60 * 60 * 1000) {
-        return undefined;
-      }
-    }
-
     // Check if already installed
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      return undefined;
+    const standalone = window.matchMedia('(display-mode: standalone)').matches;
+    setIsStandalone(standalone);
+
+    // Check if iOS
+    const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    setIsIOS(iOS);
+
+    // Check if dismissed recently
+    const dismissed = localStorage.getItem('pwa_install_dismissed');
+    if (dismissed) {
+      const dismissedTime = parseInt(dismissed);
+      const daysSinceDismissed = (Date.now() - dismissedTime) / (1000 * 60 * 60 * 24);
+      if (daysSinceDismissed < 7) return; // Don't show for 7 days after dismissal
     }
 
-    // Detect iOS
-    const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    setIsIOS(isIOSDevice);
-
-    if (isIOSDevice) {
-      // Show iOS-specific prompt after delay
-      setTimeout(() => setShowPrompt(true), 3000);
-      return undefined;
-    }
-
-    // Listen for beforeinstallprompt event (Chrome, Edge, etc.)
-    const handler = (e: Event) => {
+    // Listen for install prompt
+    const handleBeforeInstall = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      setTimeout(() => setShowPrompt(true), 3000);
+      setShowPrompt(true);
     };
 
-    window.addEventListener('beforeinstallprompt', handler);
+    window.addEventListener('beforeinstallprompt', handleBeforeInstall);
+
+    // Show iOS prompt after delay
+    if (iOS && !standalone) {
+      setTimeout(() => setShowPrompt(true), 3000);
+    }
 
     return () => {
-      window.removeEventListener('beforeinstallprompt', handler);
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstall);
     };
   }, []);
 
@@ -67,70 +70,52 @@ export default function InstallPrompt() {
 
   const handleDismiss = () => {
     setShowPrompt(false);
-    localStorage.setItem('pwa-install-dismissed', Date.now().toString());
+    localStorage.setItem('pwa_install_dismissed', Date.now().toString());
   };
 
-  if (!showPrompt) return null;
+  if (isStandalone || !showPrompt) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-96 bg-white rounded-xl shadow-2xl border border-gray-200 p-4 z-50 animate-slide-up">
-      <button
-        onClick={handleDismiss}
-        className="absolute top-2 right-2 p-1 text-gray-400 hover:text-gray-600 transition-colors"
-        aria-label="Dismiss"
+    <div className="fixed bottom-20 left-4 right-4 z-50 animate-slide-up">
+      <div 
+        className="rounded-2xl p-4 shadow-2xl"
+        style={{ backgroundColor: themeColor }}
       >
-        <X className="w-5 h-5" />
-      </button>
-
-      <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
-          <Smartphone className="w-6 h-6 text-orange-600" />
+        <div className="flex items-start gap-4">
+          <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+            <Smartphone className="w-6 h-6 text-white" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-white font-bold text-lg">{appName}</h3>
+            <p className="text-white/80 text-sm mt-1">{appDescription}</p>
+          </div>
+          <button
+            onClick={handleDismiss}
+            className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0"
+          >
+            <X className="w-4 h-4 text-white" />
+          </button>
         </div>
 
-        <div className="flex-1 pr-6">
-          <h3 className="font-semibold text-gray-900 mb-1">
-            Install Elevate App
-          </h3>
-          <p className="text-sm text-gray-600 mb-3">
-            Get quick access to courses, track progress, and learn offline.
-          </p>
-
-          {isIOS ? (
-            <div className="text-sm text-gray-600">
-              <p className="mb-2">To install:</p>
-              <ol className="list-decimal list-inside space-y-1 text-xs">
-                <li>Tap the Share button <span className="inline-block w-4 h-4 align-middle">⬆️</span></li>
-                <li>Scroll and tap "Add to Home Screen"</li>
-                <li>Tap "Add" to confirm</li>
-              </ol>
-            </div>
-          ) : (
-            <button
-              onClick={handleInstall}
-              className="flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-orange-700 transition-colors"
-            >
-              <Download className="w-4 h-4" />
-              Install Now
-            </button>
-          )}
-        </div>
+        {isIOS ? (
+          <div className="mt-4 bg-white/10 rounded-xl p-3">
+            <p className="text-white/90 text-sm">
+              To install: tap <span className="font-bold">Share</span> then <span className="font-bold">"Add to Home Screen"</span>
+            </p>
+          </div>
+        ) : (
+          <button
+            onClick={handleInstall}
+            className="mt-4 w-full bg-white text-slate-900 font-bold py-3 rounded-xl flex items-center justify-center gap-2 active:scale-98"
+          >
+            <Download className="w-5 h-5" />
+            Install App
+          </button>
+        )}
       </div>
-
-      <style jsx>{`
-        @keyframes slide-up {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-slide-up {
-          animation: slide-up 0.3s ease-out;
-        }
-      `}</style>
     </div>
   );
 }
+
+export { InstallPrompt };
+export default InstallPrompt;

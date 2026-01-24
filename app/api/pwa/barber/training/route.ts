@@ -1,0 +1,160 @@
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+import { NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
+import { getCourseBySlug } from '@/lib/courses/definitions';
+
+export async function GET() {
+  try {
+    const supabase = await createClient();
+    
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
+
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Get barber apprenticeship course definition
+    const course = getCourseBySlug('barber-apprenticeship');
+    
+    if (!course) {
+      return NextResponse.json({ error: 'Course not found' }, { status: 404 });
+    }
+
+    // Get user's lesson progress from database
+    const { data: lessonProgress } = await supabase
+      .from('lesson_progress')
+      .select('lesson_id, completed, completed_at')
+      .eq('user_id', user.id)
+      .eq('course_slug', 'barber-apprenticeship');
+
+    const completedLessons = new Set(
+      lessonProgress?.filter(p => p.completed).map(p => p.lesson_id) || []
+    );
+
+    // Get user's total hours to determine unlocked modules
+    const { data: progressEntries } = await supabase
+      .from('progress_entries')
+      .select('hours_worked')
+      .eq('apprentice_id', user.id)
+      .eq('program_id', 'BARBER');
+
+    const totalHours = progressEntries?.reduce(
+      (sum, entry) => sum + parseFloat(entry.hours_worked || 0), 0
+    ) || 0;
+
+    // Module unlock thresholds based on hours
+    const moduleUnlockThresholds: Record<string, number> = {
+      'ba-01': 0,      // Orientation - always unlocked
+      'ba-02': 0,      // Sanitation - always unlocked
+      'ba-03': 100,    // Cutting & Fades I - after 100 hours
+      'ba-04': 250,    // Cutting & Fades II - after 250 hours
+      'ba-05': 500,    // Shaving - after 500 hours
+      'ba-06': 750,    // Chemical Services - after 750 hours
+      'ba-07': 1000,   // Business & Client Relations - after 1000 hours
+      'ba-08': 1500,   // State Board Prep - after 1500 hours
+    };
+
+    // Transform modules with progress data
+    const modules = course.modules.map(module => {
+      const unlockThreshold = moduleUnlockThresholds[module.id] ?? 0;
+      const isLocked = totalHours < unlockThreshold;
+      
+      const lessonsWithProgress = module.lessons.map(lesson => ({
+        id: lesson.id,
+        title: lesson.title,
+        type: lesson.type,
+        duration: lesson.durationMinutes ? `${lesson.durationMinutes} min` : undefined,
+        description: lesson.description,
+        completed: completedLessons.has(lesson.id),
+        contentUrl: lesson.contentUrl,
+      }));
+
+      const completedCount = lessonsWithProgress.filter(l => l.completed).length;
+
+      return {
+        id: module.id,
+        title: module.title,
+        description: module.description,
+        lessons: lessonsWithProgress.length,
+        completed: completedCount,
+        locked: isLocked,
+        unlockAt: unlockThreshold,
+        chapters: lessonsWithProgress,
+      };
+    });
+
+    // Calculate overall progress
+    const totalLessons = modules.reduce((sum, m) => sum + m.lessons, 0);
+    const totalCompleted = modules.reduce((sum, m) => sum + m.completed, 0);
+
+    return NextResponse.json({
+      course: {
+        title: course.title,
+        subtitle: course.subtitle,
+        partner: course.partner,
+        estimatedWeeks: course.estimatedDurationWeeks,
+      },
+      modules,
+      progress: {
+        totalLessons,
+        completedLessons: totalCompleted,
+        percentComplete: totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0,
+      },
+      apprenticeHours: totalHours,
+    });
+  } catch (error) {
+    console.error('Error fetching training data:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+// Mark a lesson as complete
+export async function POST(request: Request) {
+  try {
+    const supabase = await createClient();
+    
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
+
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { lessonId, completed } = await request.json();
+
+    if (!lessonId) {
+      return NextResponse.json({ error: 'Lesson ID required' }, { status: 400 });
+    }
+
+    const { error } = await supabase
+      .from('lesson_progress')
+      .upsert({
+        user_id: user.id,
+        course_slug: 'barber-apprenticeship',
+        lesson_id: lessonId,
+        completed: completed ?? true,
+        completed_at: completed ? new Date().toISOString() : null,
+      }, {
+        onConflict: 'user_id,course_slug,lesson_id',
+      });
+
+    if (error) {
+      console.error('Error updating lesson progress:', error);
+      return NextResponse.json({ error: 'Failed to update progress' }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Error updating lesson progress:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
