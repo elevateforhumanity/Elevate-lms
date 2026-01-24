@@ -134,11 +134,70 @@ export async function POST(req: Request) {
       const firstName = session.metadata?.first_name;
       const lastName = session.metadata?.last_name;
 
-      if (!studentId || !programId) {
+      if (!programId) {
         logger.info(
-          '[Webhook] Missing student/program metadata, skipping auto-enrollment'
+          '[Webhook] Missing program metadata, skipping auto-enrollment'
         );
       } else {
+        // Import Supabase admin client for user creation
+        const { createAdminClient } = await import('@/lib/supabase/admin');
+        const supabaseAdmin = createAdminClient();
+
+        // If no studentId, create a new user account
+        let finalStudentId = studentId;
+        let isNewUser = false;
+        let tempPassword = '';
+
+        if (!studentId && email) {
+          // Check if user already exists
+          const { data: existingUser } = await supabaseAdmin.auth.admin.listUsers();
+          const userExists = existingUser?.users?.find(u => u.email?.toLowerCase() === email.toLowerCase());
+
+          if (userExists) {
+            finalStudentId = userExists.id;
+            logger.info('[Webhook] Found existing user', { email, userId: finalStudentId });
+          } else {
+            // Generate temporary password
+            tempPassword = `Elevate${Math.random().toString(36).slice(-8)}!`;
+            
+            // Create new user account
+            const { data: newUser, error: createError } = await supabaseAdmin.auth.admin.createUser({
+              email: email.toLowerCase(),
+              password: tempPassword,
+              email_confirm: true,
+              user_metadata: {
+                first_name: firstName || '',
+                last_name: lastName || '',
+              },
+            });
+
+            if (createError) {
+              logger.error('[Webhook] Failed to create user account', createError);
+            } else if (newUser?.user) {
+              finalStudentId = newUser.user.id;
+              isNewUser = true;
+              logger.info('[Webhook] ✅ Created new user account', { email, userId: finalStudentId });
+
+              // Create profile
+              await supabaseAdmin.from('profiles').upsert({
+                id: finalStudentId,
+                email: email.toLowerCase(),
+                full_name: `${firstName || ''} ${lastName || ''}`.trim(),
+                first_name: firstName || '',
+                last_name: lastName || '',
+                role: 'student',
+                onboarding_completed: true,
+                created_at: new Date().toISOString(),
+              });
+            }
+          }
+        }
+
+        if (!finalStudentId) {
+          logger.warn('[Webhook] Could not determine student ID, skipping enrollment');
+        } else {
+          // Update studentId for rest of the flow
+          const studentId = finalStudentId;
         logger.info('[Webhook] Processing funding payment - AUTO-ENROLLMENT', {
           sessionId: session.id,
           studentId,
@@ -282,31 +341,64 @@ export async function POST(req: Request) {
             .eq('id', programId)
             .single();
 
+          const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
+          
+          // Different email content for new users vs existing users
+          const loginSection = isNewUser && tempPassword
+            ? `
+              <div style="background: #f0fdf4; border: 2px solid #22c55e; border-radius: 8px; padding: 20px; margin: 20px 0;">
+                <h3 style="margin-top: 0; color: #166534;">🎉 Your Account Has Been Created!</h3>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Temporary Password:</strong> ${tempPassword}</p>
+                <p style="color: #dc2626; font-weight: bold;">Please change your password after your first login.</p>
+              </div>
+              <div style="text-align: center; margin: 24px 0;">
+                <a href="${siteUrl}/login" style="display: inline-block; background: #2563eb; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">Login to Student Portal →</a>
+              </div>
+            `
+            : `
+              <div style="text-align: center; margin: 24px 0;">
+                <a href="${siteUrl}/login" style="display: inline-block; background: #2563eb; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">Login to Student Portal →</a>
+              </div>
+            `;
+
           await fetch(
-            `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/api/email/send`,
+            `${siteUrl}/api/email/send`,
             {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 to: email,
-                subject: `Welcome to ${programDetails?.name || 'Your Program'}!`,
+                subject: `🎓 Welcome to ${programDetails?.name || 'Your Program'} - Your Access is Ready!`,
                 html: `
-                <h2>Welcome to Elevate for Humanity!</h2>
-                <p>Hi ${firstName || 'there'},</p>
-                <p>Congratulations! Your enrollment in <strong>${programDetails?.name || 'your program'}</strong> is now active.</p>
-                <h3>Next Steps:</h3>
-                <ol>
-                  <li>Log in to your student portal: <a href="https://elevateforhumanity.institute/login">Login Here</a></li>
-                  <li>Complete your student profile</li>
-                  <li>Access your course materials</li>
-                  <li>Meet your instructor</li>
-                </ol>
-                <p>Questions? Call us at <a href="tel:3173143757">317-314-3757</a></p>
-                <p>Best regards,<br>Elevate for Humanity Team</p>
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                  <h2 style="color: #1e3a8a;">Welcome to Elevate for Humanity!</h2>
+                  <p>Hi ${firstName || 'there'},</p>
+                  <p>Congratulations! Your enrollment in <strong>${programDetails?.name || 'your program'}</strong> is now <span style="color: #22c55e; font-weight: bold;">ACTIVE</span>.</p>
+                  
+                  ${loginSection}
+                  
+                  <h3>What You Can Do Now:</h3>
+                  <ol style="line-height: 1.8;">
+                    <li>✅ Access your course materials in the Student Portal</li>
+                    <li>✅ View your learning dashboard</li>
+                    <li>✅ Track your progress</li>
+                    <li>✅ Connect with instructors</li>
+                  </ol>
+                  
+                  <div style="background: #eff6ff; border-radius: 8px; padding: 16px; margin: 20px 0;">
+                    <p style="margin: 0;"><strong>Need Help?</strong></p>
+                    <p style="margin: 8px 0 0 0;">Call us at <a href="tel:3173143757" style="color: #2563eb; font-weight: bold;">(317) 314-3757</a></p>
+                  </div>
+                  
+                  <p>Best regards,<br><strong>Elevate for Humanity Team</strong></p>
+                </div>
               `,
               }),
             }
           );
+          
+          logger.info('[Webhook] ✅ Welcome email sent', { email, isNewUser });
         } catch (emailError) {
           logger.warn('[Webhook] Failed to send welcome email', emailError);
         }
@@ -366,7 +458,8 @@ export async function POST(req: Request) {
           // Don't fail the whole webhook - enrollment is still active
         }
       }
-      } // Close else block for studentId/programId check
+      } // Close else block for finalStudentId check
+      } // Close else block for programId check
     }
 
     // Handle subscription lifecycle (created/updated/deleted)

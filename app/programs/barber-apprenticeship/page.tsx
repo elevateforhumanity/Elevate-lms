@@ -82,10 +82,16 @@ export default async function BarberApprenticeshipPage() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
-              href="/apply?program=barber-apprenticeship"
-              className="inline-flex items-center justify-center rounded-xl bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-purple-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
+              href="/enroll/barber-apprenticeship"
+              className="inline-flex items-center justify-center rounded-xl bg-green-600 px-8 py-4 text-lg font-bold text-white hover:bg-green-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
-              Start Eligibility & Payment Plan
+              Start Enrollment & Pay →
+            </Link>
+            <Link
+              href="/apply?program=barber-apprenticeship"
+              className="inline-flex items-center justify-center rounded-xl bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-purple-700 transition-all shadow-xl"
+            >
+              Inquiry / Check Eligibility
             </Link>
             <Link
               href="/employer/apply"
@@ -256,16 +262,16 @@ export default async function BarberApprenticeshipPage() {
           {/* CTA Buttons */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
+              href="/enroll/barber-apprenticeship"
+              className="inline-flex items-center justify-center rounded-xl bg-green-600 px-8 py-4 text-lg font-bold text-white hover:bg-green-700 transition-all shadow-xl"
+            >
+              Start Enrollment & Pay →
+            </Link>
+            <Link
               href="/apply?program=barber-apprenticeship"
               className="inline-flex items-center justify-center rounded-xl bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-purple-700 transition-all shadow-xl"
             >
-              Start Eligibility & Payment Plan
-            </Link>
-            <Link
-              href="/employer/apply"
-              className="inline-flex items-center justify-center rounded-xl border-2 border-white bg-transparent px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all"
-            >
-              Partner Shop Sign-Up
+              Inquiry / Check Eligibility
             </Link>
           </div>
         </div>
@@ -526,10 +532,16 @@ export default async function BarberApprenticeshipPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
+              href="/enroll/barber-apprenticeship"
+              className="inline-flex items-center justify-center rounded-lg bg-green-500 px-8 py-4 text-lg font-bold text-white hover:bg-green-600 transition-all shadow-xl"
+            >
+              Start Enrollment & Pay →
+            </Link>
+            <Link
               href="/apply?program=barber-apprenticeship"
               className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-purple-600 hover:bg-purple-50 transition-all shadow-xl"
             >
-              Enroll in Barber Program
+              Inquiry / Check Eligibility
             </Link>
             <a
               href="#pricing"

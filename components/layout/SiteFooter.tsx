@@ -133,19 +133,10 @@ const footerSections = [
       { name: 'Accessibility', href: '/accessibility' },
       { name: 'Disclosures', href: '/disclosures' },
       { name: 'All Policies', href: '/policies' },
-      { name: 'FERPA', href: '/ferpa' },
       { name: 'Equal Opportunity', href: '/equal-opportunity' },
       { name: 'Site Map', href: '/site-map' },
     ],
   },
-];
-
-const socialLinks = [
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/elevate-for-humanity' },
-  { name: 'YouTube', href: 'https://www.youtube.com/@elevateforhumanity' },
-  { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61571046346179' },
-  { name: 'Instagram', href: 'https://www.instagram.com/elevateforhumanity' },
-  { name: 'Google', href: 'https://g.page/r/elevateforhumanity' },
 ];
 
 export default function SiteFooter() {
@@ -191,23 +182,6 @@ export default function SiteFooter() {
             </div>
           ))}
           
-          {/* Social Links - Mobile */}
-          <div className="py-4">
-            <p className="text-sm font-medium text-gray-300 mb-3">Connect</p>
-            <div className="flex gap-4">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-gray-400 hover:text-white"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Desktop Grid - responsive columns for all sections */}
@@ -233,26 +207,6 @@ export default function SiteFooter() {
             </div>
           ))}
           
-          {/* Social Links - Desktop */}
-          <div>
-            <h3 className="text-xs font-medium uppercase tracking-wider text-gray-400 mb-3">
-              Connect
-            </h3>
-            <ul className="space-y-2">
-              {socialLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-gray-300 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
 
