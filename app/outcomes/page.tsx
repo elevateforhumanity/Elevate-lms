@@ -306,7 +306,7 @@ export default function OutcomesPage() {
               <strong>Phone:</strong> (317) 314-3757
             </p>
             <p className="text-gray-700">
-              <strong>Address:</strong> 7009 East 56th Street, Suite EE1, Indianapolis, IN 46226
+              <strong>Address:</strong> 8888 Keystone Crossing, Suite 1300, Indianapolis, IN 46240
             </p>
           </div>
         </section>

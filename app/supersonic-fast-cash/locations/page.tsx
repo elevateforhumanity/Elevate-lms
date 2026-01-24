@@ -62,9 +62,9 @@ export default async function LocationsPage() {
                       Address
                     </div>
                     <div className="text-black">
-                      7009 E 56th St
+                      8888 Keystone Crossing, Suite 1300
                       <br />
-                      Indianapolis, IN 46226
+                      Indianapolis, IN 46240
                     </div>
                   </div>
                 </div>
@@ -143,7 +143,7 @@ export default async function LocationsPage() {
                   Book In-Person Visit
                 </Link>
                 <a
-                  href="https://www.google.com/maps/place/7009+E+56th+St,+Indianapolis,+IN+46226"
+                  href="https://www.google.com/maps/place/8888+Keystone+Crossing,+Indianapolis,+IN+46240"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-6 py-3 bg-gray-100 text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors"

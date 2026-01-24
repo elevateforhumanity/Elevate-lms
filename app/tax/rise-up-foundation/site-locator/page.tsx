@@ -80,9 +80,9 @@ export default function SiteLocatorPage() {
               Rise Up Foundation - VITA Site
             </h3>
             <p className="text-black mt-2">
-              7009 East 56th Street, Suite EE1
+              8888 Keystone Crossing, Suite 1300
               <br />
-              Indianapolis, IN 46226
+              Indianapolis, IN 46240
             </p>
           </div>
 

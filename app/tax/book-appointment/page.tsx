@@ -167,7 +167,7 @@ export default function BookAppointmentPage() {
                       <span className="font-semibold">In-Person</span>
                     </div>
                     <p className="text-sm text-black">
-                      Visit our office at 7009 E 56th St, Indianapolis
+                      Visit our office at 8888 Keystone Crossing, Suite 1300, Indianapolis
                     </p>
                   </button>
 
@@ -369,9 +369,9 @@ export default function BookAppointmentPage() {
                 <div>
                   <div className="font-semibold text-sm">Address</div>
                   <p className="text-sm text-black">
-                    7009 East 56th Street, Suite EE1
+                    8888 Keystone Crossing, Suite 1300
                     <br />
-                    Indianapolis, IN 46226
+                    Indianapolis, IN 46240
                   </p>
                 </div>
               </div>

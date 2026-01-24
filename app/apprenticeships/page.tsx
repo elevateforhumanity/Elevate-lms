@@ -44,7 +44,7 @@ export default function ApprenticeshipsPage() {
       slug: 'barber-apprenticeship',
       duration: '2,000 hours (15-24 months)',
       wage: 'Earn while you learn',
-      image: '/hero-images/barber-hero.jpg',
+      image: '/images/programs-hq/barber-training.jpg',
       description:
         'Learn professional barbering skills in a licensed shop environment with experienced mentors. Master cutting, styling, shaving, and client relations while earning income.',
       requirements: [
@@ -66,7 +66,7 @@ export default function ApprenticeshipsPage() {
       slug: 'hvac-apprenticeship',
       duration: '3-4 years',
       wage: '$15-$25/hour',
-      image: '/hero-images/skilled-trades-category.jpg',
+      image: '/images/programs-hq/hvac-technician.jpg',
       description:
         'Hands-on training in heating, ventilation, air conditioning, and refrigeration systems. Work alongside certified technicians on real installations and repairs.',
       requirements: [
@@ -316,15 +316,15 @@ export default function ApprenticeshipsPage() {
                 Registered Apprenticeship Programs
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight text-white">
               Earn While You Learn
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-blue-100 mb-4 leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-white mb-4 leading-relaxed">
               Start your career with hands-on training, industry credentials,
               and a paycheck. Our registered apprenticeship programs combine
               on-the-job experience with classroom instruction.
             </p>
-            <p className="text-sm text-blue-200 mb-8">
+            <p className="text-sm text-white/80 mb-8">
               Elevate for Humanity serves as the Program Administrator for registered apprenticeship pathways, coordinating training, employer participation, and funding access.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -430,12 +430,13 @@ export default function ApprenticeshipsPage() {
                 className="bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-blue-500 hover:shadow-lg transition-all"
               >
                 {/* Program Image */}
-                <div className="relative h-48 w-full">
+                <div className="relative h-48 w-full overflow-hidden">
                   <Image
                     src={program.image}
                     alt={program.title}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-black/40" />
                   <div className="absolute bottom-4 left-4 right-4">
@@ -666,9 +667,9 @@ export default function ApprenticeshipsPage() {
                 Visit Us
               </h3>
               <p className="text-sm md:text-base text-black">
-                7009 East 56th Street, Suite EE1
+                8888 Keystone Crossing, Suite 1300
                 <br />
-                Indianapolis, IN 46226
+                Indianapolis, IN 46240
               </p>
             </div>
           </div>

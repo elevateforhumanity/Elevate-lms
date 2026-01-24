@@ -23,7 +23,7 @@ export function VITAHeader() {
         <div className="flex items-center justify-between h-16">
           <Link href="/vita" className="flex items-center gap-2">
             <Heart className="w-8 h-8 text-green-600" />
-            <span className="text-xl font-bold text-black">VITA Tax Prep</span>
+            <span className="text-xl font-bold text-black">Free Tax Preparation</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">

@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'VITA Free Tax Preparation | File Your Taxes for $0 | Elevate for Humanity',
+  title: 'Free Tax Preparation | File Your Taxes for $0 | Elevate for Humanity',
   description:
     'Free IRS-certified tax preparation for individuals earning under $64,000. Save $200+ in tax prep fees. Average refund $2,847. Book your free appointment today.',
   alternates: {
@@ -61,7 +61,7 @@ export default async function VITAPage() {
     <div className="bg-white">
       <AvatarVideoOverlay 
         videoSrc="/videos/avatars/financial-guide.mp4"
-        avatarName="VITA Guide"
+        avatarName="Tax Prep Guide"
         position="bottom-right"
         autoPlay={true}
         showOnLoad={true}
@@ -100,7 +100,7 @@ export default async function VITAPage() {
 
               {/* Subheadline */}
               <p className="text-xl text-green-700 font-semibold mb-4">
-                Free VITA Tax Preparation - Income Under $64K
+                Free Tax Preparation - Income Under $64K
               </p>
 
               {/* Description */}
@@ -185,25 +185,24 @@ export default async function VITAPage() {
         </div>
       </section>
 
-      {/* Why Choose VITA */}
-      {/* What is VITA Section */}
+      {/* About Free Tax Preparation */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/heroes-hq/tax-refund-hero.jpg"
-                alt="VITA volunteer helping with taxes"
+                alt="Tax preparation volunteer helping client"
                 fill
                 className="object-cover"
               />
             </div>
             <div>
               <h2 className="text-4xl font-black text-gray-900 mb-6">
-                What is VITA?
+                Free Tax Preparation
               </h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                <strong>VITA (Volunteer Income Tax Assistance)</strong> is an IRS program that offers 
+                Through the IRS <strong>Volunteer Income Tax Assistance (VITA)</strong> program, we offer 
                 free tax preparation to individuals and families who earn $64,000 or less, 
                 persons with disabilities, and limited English-speaking taxpayers.
               </p>
@@ -294,16 +293,16 @@ export default async function VITAPage() {
         </div>
       </section>
 
-      {/* Why Choose VITA */}
+      {/* Why Choose Free Tax Prep */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-gray-900 mb-4">
-              Why Choose VITA?
+              Why Choose Our Free Tax Preparation?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              The IRS Volunteer Income Tax Assistance program provides free tax
-              help to people who qualify.
+              IRS-certified volunteers provide free, accurate tax preparation
+              for qualifying individuals and families.
             </p>
           </div>
 

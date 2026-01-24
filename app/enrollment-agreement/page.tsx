@@ -38,8 +38,8 @@ export default function EnrollmentAgreementPage() {
           <div className="bg-gray-50 rounded-lg p-6">
             <p className="text-gray-700 mb-4"><strong>School:</strong></p>
             <p className="text-gray-700 mb-1">2EXCLUSIVE LLC-S dba Elevate for Humanity</p>
-            <p className="text-gray-700 mb-1">7009 East 56th Street, Suite EE1</p>
-            <p className="text-gray-700 mb-1">Indianapolis, IN 46226</p>
+            <p className="text-gray-700 mb-1">8888 Keystone Crossing, Suite 1300</p>
+            <p className="text-gray-700 mb-1">Indianapolis, IN 46240</p>
             <p className="text-gray-700 mb-4">(317) 314-3757</p>
             <p className="text-gray-700"><strong>Student:</strong> As identified in the enrollment application</p>
           </div>

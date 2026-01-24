@@ -164,10 +164,10 @@ export default function BookAppointment() {
           </p>
         </div>
 
-        {/* Office Locations */}
+        {/* Office Location */}
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-white mb-6 text-center">Our Locations</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <h2 className="text-2xl font-bold text-white mb-6 text-center">Our Location</h2>
+          <div className="max-w-md mx-auto">
             <div className="bg-white rounded-xl p-6">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -179,26 +179,6 @@ export default function BookAppointment() {
                   <p className="text-gray-600">Indianapolis, IN 46240</p>
                   <a 
                     href="https://maps.google.com/?q=8888+Keystone+Xing+Indianapolis+IN" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 text-sm mt-2 inline-block hover:underline"
-                  >
-                    Get Directions →
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-purple-600" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">East 56th Street</h3>
-                  <p className="text-gray-600">7009 E 56th St, Suite EE1</p>
-                  <p className="text-gray-600">Indianapolis, IN 46226</p>
-                  <a 
-                    href="https://maps.google.com/?q=7009+E+56th+St+Indianapolis+IN" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 text-sm mt-2 inline-block hover:underline"

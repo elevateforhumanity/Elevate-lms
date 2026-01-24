@@ -74,16 +74,19 @@ export default function ResumeBuildingPage() {
       {/* Hero */}
       <section className="relative h-[350px] md:h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/hero/hero-career-services.jpg"
-          alt="Resume Building"
+          src="/images/programs-hq/business-training.jpg"
+          alt="Resume Building Services"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-700/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900/85 to-green-700/85" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <span className="inline-block bg-white/20 backdrop-blur-sm text-white text-sm font-semibold px-4 py-2 rounded-full mb-4">
+            Free for Program Participants
+          </span>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Resume Building
           </h1>
@@ -91,10 +94,10 @@ export default function ResumeBuildingPage() {
             Your resume is your first impression. Make it count.
           </p>
           <Link
-            href="/apply"
+            href="/career-services/contact"
             className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-bold transition-all inline-flex items-center"
           >
-            Get Resume Help <ArrowRight className="ml-2 w-5 h-5" />
+            Schedule Resume Review <ArrowRight className="ml-2 w-5 h-5" />
           </Link>
         </div>
       </section>

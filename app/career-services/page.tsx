@@ -98,28 +98,40 @@ export default async function CareerServicesPage() {
       />
       {/* Hero */}
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80 z-10" />
-        <div className="relative h-[400px] bg-gray-900">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-green-800/80 z-10" />
+        <div className="relative h-[450px] bg-gray-900">
           <Image
-            src="/images/heroes-hq/career-services-hero.jpg"
-            alt="Career Services"
+            src="/images/programs-hq/career-success.jpg"
+            alt="Career Services - Job Placement and Career Support"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
+            sizes="100vw"
           />
         </div>
         <div className="absolute inset-0 z-20 flex items-center">
           <div className="max-w-6xl mx-auto px-4 text-white">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Career Services</h1>
-            <p className="text-xl text-blue-100 max-w-2xl mb-8">
-              From resume building to job placement, we're here to help you succeed in your career journey.
+            <span className="inline-block bg-white/20 backdrop-blur-sm text-white text-sm font-semibold px-4 py-2 rounded-full mb-4">
+              Free for Program Participants
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Career Services</h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mb-8">
+              Resume building, interview prep, and job placement support to launch your new career.
             </p>
-            <Link
-              href="/career-services/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 font-semibold"
-            >
-              Get Started <ArrowRight className="w-5 h-5" />
-            </Link>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/apply"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 font-bold text-lg transition-colors"
+              >
+                Get Started <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                href="/career-services/job-placement"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg hover:bg-white/20 font-semibold text-lg border border-white/30 transition-colors"
+              >
+                View Job Openings
+              </Link>
+            </div>
           </div>
         </div>
       </section>
