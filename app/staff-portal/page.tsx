@@ -1,22 +1,37 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Users, ClipboardList, BarChart3, Calendar, Settings, FileText } from 'lucide-react';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Staff Portal | Elevate For Humanity',
   description: 'Manage students, track enrollments, and access administrative tools.',
 };
 
+const features = [
+  { title: 'Student Management', desc: 'View and manage student records and enrollments.', image: '/images/programs-hq/students-learning.jpg' },
+  { title: 'Attendance', desc: 'Track and record student attendance.', image: '/images/programs-hq/training-classroom.jpg' },
+  { title: 'Reports', desc: 'Generate and view performance reports.', image: '/images/programs-hq/business-training.jpg' },
+  { title: 'Scheduling', desc: 'Manage class schedules and appointments.', image: '/images/programs-hq/career-success.jpg' },
+  { title: 'Documents', desc: 'Access and manage important documents.', image: '/images/programs-hq/technology-hero.jpg' },
+  { title: 'Settings', desc: 'Configure portal preferences and settings.', image: '/images/programs-hq/healthcare-hero.jpg' },
+];
+
 export default function StaffPortalLanding() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center gap-3 mb-6">
-            <Users className="w-10 h-10" />
-            <span className="text-purple-200 font-medium">Staff Portal</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Staff Management Portal</h1>
+      {/* Hero with image */}
+      <section className="relative min-h-[400px] flex items-center overflow-hidden">
+        <Image
+          src="/images/team-hq/team-meeting.jpg"
+          alt="Staff Portal"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-purple-900/60" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 w-full">
+          <span className="text-purple-200 font-medium">Staff Portal</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Staff Management Portal</h1>
           <p className="text-xl text-purple-100 max-w-2xl mb-8">
             Manage students, track enrollments, monitor progress, and access administrative tools.
           </p>
@@ -35,48 +50,17 @@ export default function StaffPortalLanding() {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">Portal Features</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <Users className="w-6 h-6 text-purple-600" />
+            {features.map((feature, idx) => (
+              <div key={idx} className="bg-white rounded-xl overflow-hidden shadow-sm border">
+                <div className="relative h-32">
+                  <Image src={feature.image} alt={feature.title} fill className="object-cover" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h3>
+                  <p className="text-slate-600">{feature.desc}</p>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Student Management</h3>
-              <p className="text-slate-600">View and manage student records and enrollments.</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <ClipboardList className="w-6 h-6 text-purple-600" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Attendance</h3>
-              <p className="text-slate-600">Track and record student attendance.</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <BarChart3 className="w-6 h-6 text-purple-600" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Reports</h3>
-              <p className="text-slate-600">Generate and view performance reports.</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <Calendar className="w-6 h-6 text-purple-600" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Scheduling</h3>
-              <p className="text-slate-600">Manage class schedules and appointments.</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <FileText className="w-6 h-6 text-purple-600" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Documents</h3>
-              <p className="text-slate-600">Access and manage important documents.</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <Settings className="w-6 h-6 text-purple-600" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Settings</h3>
-              <p className="text-slate-600">Configure portal preferences and settings.</p>
-            </div>
+            ))}
           </div>
         </div>
       </section>

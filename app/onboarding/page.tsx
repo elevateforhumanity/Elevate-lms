@@ -96,11 +96,12 @@ export default async function OnboardingPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <Link
               href="/onboarding/learner"
-              className="bg-white rounded-lg shadow-sm border p-8 hover:shadow-lg transition-all"
+              className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-lg transition-all"
             >
-              <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 mx-auto">
-                <GraduationCap className="text-blue-700" size={32} />
+              <div className="relative h-40">
+                <Image src="/images/programs-hq/students-learning.jpg" alt="Student" fill className="object-cover" />
               </div>
+              <div className="p-8">
               <h3 className="text-lg md:text-lg font-bold text-black mb-3 text-center">
                 I'm a Student
               </h3>
@@ -136,14 +137,16 @@ export default async function OnboardingPage() {
                   Get Started <ArrowRight className="ml-2" size={20} />
                 </span>
               </div>
+              </div>
             </Link>
             <Link
               href="/program-holder/onboarding"
-              className="bg-white rounded-lg shadow-sm border p-8 hover:shadow-lg transition-all"
+              className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-lg transition-all"
             >
-              <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6 mx-auto">
-                <Building2 className="text-purple-700" size={32} />
+              <div className="relative h-40">
+                <Image src="/images/programs-hq/business-training.jpg" alt="Program Holder" fill className="object-cover" />
               </div>
+              <div className="p-8">
               <h3 className="text-lg md:text-lg font-bold text-black mb-3 text-center">
                 I'm a Program Holder
               </h3>
@@ -178,14 +181,16 @@ export default async function OnboardingPage() {
                   Learn More <ArrowRight className="ml-2" size={20} />
                 </span>
               </div>
+              </div>
             </Link>
             <Link
               href="/onboarding/partner"
-              className="bg-white rounded-lg shadow-sm border p-8 hover:shadow-lg transition-all"
+              className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-lg transition-all"
             >
-              <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6 mx-auto">
-                <Users className="text-orange-700" size={32} />
+              <div className="relative h-40">
+                <Image src="/images/programs-hq/career-success.jpg" alt="Partner/Employer" fill className="object-cover" />
               </div>
+              <div className="p-8">
               <h3 className="text-lg md:text-lg font-bold text-black mb-3 text-center">
                 I'm a Partner/Employer
               </h3>
@@ -219,6 +224,7 @@ export default async function OnboardingPage() {
                 <span className="inline-flex items-center text-orange-700 font-semibold">
                   Partner With Us <ArrowRight className="ml-2" size={20} />
                 </span>
+              </div>
               </div>
             </Link>
           </div>

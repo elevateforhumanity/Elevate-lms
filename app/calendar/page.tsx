@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Calendar as CalendarIcon, Clock, BookOpen, Bell } from 'lucide-react';
+import Image from 'next/image';
+import { Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'My Calendar | Elevate For Humanity',
@@ -50,22 +52,37 @@ export default async function CalendarPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-2">My Calendar</h1>
-          <p className="text-purple-100">Your personal schedule and important dates</p>
+      {/* Hero with image */}
+      <section className="relative h-64 overflow-hidden">
+        <Image
+          src="/images/programs-hq/training-classroom.jpg"
+          alt="Calendar and Schedule"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-purple-900/60" />
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-7xl mx-auto px-4 w-full">
+            <h1 className="text-4xl font-bold text-white mb-2">My Calendar</h1>
+            <p className="text-purple-100">Your personal schedule and important dates</p>
+          </div>
         </div>
-      </div>
+      </section>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
         {!user && (
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-8 text-center">
-            <CalendarIcon className="w-12 h-12 text-purple-400 mx-auto mb-3" />
-            <h2 className="text-lg font-semibold text-purple-900 mb-2">Sign in to see your schedule</h2>
-            <p className="text-purple-700 mb-4">View your enrolled classes, assignments, and deadlines.</p>
-            <Link href="/login?redirect=/calendar" className="inline-block bg-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-purple-700">
-              Sign In
-            </Link>
+          <div className="bg-white rounded-xl overflow-hidden shadow-lg mb-8">
+            <div className="relative h-32">
+              <Image src="/images/programs-hq/students-learning.jpg" alt="Sign in" fill className="object-cover" />
+            </div>
+            <div className="p-6 text-center">
+              <h2 className="text-lg font-semibold text-purple-900 mb-2">Sign in to see your schedule</h2>
+              <p className="text-purple-700 mb-4">View your enrolled classes, assignments, and deadlines.</p>
+              <Link href="/login?redirect=/calendar" className="inline-block bg-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-purple-700">
+                Sign In
+              </Link>
+            </div>
           </div>
         )}
 
@@ -74,18 +91,15 @@ export default async function CalendarPage() {
             {user && (
               <>
                 <div>
-                  <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                    <BookOpen className="w-5 h-5 text-purple-600" />
-                    My Classes
-                  </h2>
+                  <h2 className="text-xl font-semibold mb-4">My Classes</h2>
                   <div className="space-y-3">
                     {enrollments && enrollments.length > 0 ? enrollments.map((enrollment: any) => (
-                      <div key={enrollment.id} className="bg-white rounded-lg shadow-sm border p-4">
-                        <div className="flex items-start gap-4">
-                          <div className="bg-purple-100 rounded-lg p-3">
-                            <BookOpen className="w-5 h-5 text-purple-600" />
+                      <div key={enrollment.id} className="bg-white rounded-lg shadow-sm border overflow-hidden">
+                        <div className="flex items-stretch">
+                          <div className="relative w-24 flex-shrink-0">
+                            <Image src="/images/programs-hq/training-classroom.jpg" alt={enrollment.course?.title || 'Course'} fill className="object-cover" />
                           </div>
-                          <div className="flex-1">
+                          <div className="flex-1 p-4">
                             <h3 className="font-semibold">{enrollment.course?.title}</h3>
                             <div className="flex gap-4 mt-2 text-sm text-gray-500">
                               <span className="flex items-center gap-1">
@@ -94,26 +108,29 @@ export default async function CalendarPage() {
                               </span>
                             </div>
                           </div>
-                          <Link href={`/courses/${enrollment.course?.id}`} className="text-purple-600 text-sm font-medium hover:underline">
-                            View
-                          </Link>
+                          <div className="p-4 flex items-center">
+                            <Link href={`/courses/${enrollment.course?.id}`} className="text-purple-600 text-sm font-medium hover:underline">
+                              View
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     )) : (
-                      <div className="bg-white rounded-lg shadow-sm border p-6 text-center text-gray-500">
-                        <BookOpen className="w-10 h-10 mx-auto mb-3 text-gray-300" />
-                        <p>No enrolled classes</p>
-                        <Link href="/programs" className="text-purple-600 font-medium hover:underline">Browse Programs</Link>
+                      <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
+                        <div className="relative h-32">
+                          <Image src="/images/programs-hq/students-learning.jpg" alt="Browse programs" fill className="object-cover" />
+                        </div>
+                        <div className="p-6 text-center text-gray-500">
+                          <p>No enrolled classes</p>
+                          <Link href="/programs" className="text-purple-600 font-medium hover:underline">Browse Programs</Link>
+                        </div>
                       </div>
                     )}
                   </div>
                 </div>
 
                 <div>
-                  <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                    <Bell className="w-5 h-5 text-orange-500" />
-                    Upcoming Deadlines
-                  </h2>
+                  <h2 className="text-xl font-semibold mb-4">Upcoming Deadlines</h2>
                   <div className="space-y-3">
                     {assignments && assignments.length > 0 ? assignments.map((assignment: any) => (
                       <div key={assignment.id} className="bg-white rounded-lg shadow-sm border p-4">
@@ -162,9 +179,13 @@ export default async function CalendarPage() {
             </div>
 
             <div className="mt-6">
-              <Link href="/events" className="block bg-purple-50 border border-purple-200 rounded-lg p-4 text-center hover:bg-purple-100 transition">
-                <CalendarIcon className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-                <span className="font-medium text-purple-700">View Public Events</span>
+              <Link href="/events" className="block bg-white rounded-lg overflow-hidden shadow-sm border hover:shadow-md transition">
+                <div className="relative h-24">
+                  <Image src="/images/programs-hq/career-success.jpg" alt="Events" fill className="object-cover" />
+                </div>
+                <div className="p-4 text-center">
+                  <span className="font-medium text-purple-700">View Public Events</span>
+                </div>
               </Link>
             </div>
           </div>
