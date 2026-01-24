@@ -5,7 +5,7 @@ import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const elevateLmsRules = require('./eslint-rules/index.js');
+const elevateLmsRules = require('./eslint-rules/index.cjs');
 
 export default tseslint.config(
   eslint.configs.recommended,
