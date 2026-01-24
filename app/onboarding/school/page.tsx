@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/onboarding/school',
   },
   title: 'School | Elevate For Humanity',
-  description:
-    'Manage school settings and development.',
+  description: 'Access school features and tools.',
 };
 
 export default async function SchoolPage() {
@@ -30,12 +29,9 @@ export default async function SchoolPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            School
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">School</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage school settings and
-            development.
+            Access school features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -63,8 +59,7 @@ export default async function SchoolPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">School</h2>
                 <p className="text-black mb-6">
-                  Manage school for career growth
-                  and development.
+                  Explore school opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

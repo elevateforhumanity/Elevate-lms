@@ -12,8 +12,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/workforce-board/follow-ups',
   },
   title: 'Follow Ups | Elevate For Humanity',
-  description:
-    'Manage follow-ups settings and development.',
+  description: 'Access follow ups features and tools.',
 };
 
 export default async function FollowUpsPage() {
@@ -51,12 +50,9 @@ export default async function FollowUpsPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Follow Ups
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Follow Ups</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage follow-ups settings and
-            development.
+            Access follow ups features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -82,12 +78,9 @@ export default async function FollowUpsPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Follow Ups
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Follow Ups</h2>
                 <p className="text-black mb-6">
-                  Manage follow-ups for career
-                  growth and development.
+                  Explore follow ups opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

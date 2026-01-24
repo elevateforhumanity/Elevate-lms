@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/program-holder/training',
   },
   title: 'Program Holder Training | Elevate For Humanity',
-  description:
-    'Manage training settings and development.',
+  description: 'Access training features and tools.',
 };
 
 export default async function TrainingPage() {

@@ -12,8 +12,7 @@ export const metadata: Metadata = {
       'https://elevateforhumanity.org/supersonic-fast-cash/how-it-works',
   },
   title: 'How It Works | Elevate For Humanity',
-  description:
-    'Manage how-it-works settings and development.',
+  description: 'Access how it works features and tools.',
 };
 
 export default async function HowItWorksPage() {
@@ -51,12 +50,9 @@ export default async function HowItWorksPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            How It Works
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">How It Works</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage how-it-works for career growth
-            and development.
+            Explore how it works opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -82,12 +78,9 @@ export default async function HowItWorksPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  How It Works
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">How It Works</h2>
                 <p className="text-gray-700 mb-6">
-                  Manage how-it-works for career
-                  growth and development.
+                  Explore how it works opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

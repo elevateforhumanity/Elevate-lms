@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/courses/builder',
   },
   title: 'Builder | Elevate For Humanity',
-  description:
-    'Manage builder settings and development.',
+  description: 'Access builder features and tools.',
 };
 
 export default async function BuilderPage() {
@@ -73,12 +72,9 @@ export default async function BuilderPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Builder
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Builder</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage builder settings and
-            development.
+            Access builder features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

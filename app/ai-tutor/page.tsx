@@ -13,8 +13,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/ai-tutor',
   },
   title: 'Ai Tutor | Elevate For Humanity',
-  description:
-    'Manage ai-tutor settings and development.',
+  description: 'Access ai tutor features and tools.',
 };
 
 export default async function AiTutorPage() {

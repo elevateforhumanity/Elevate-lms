@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/instructor/analytics',
   },
   title: 'Instructor Analytics | Elevate For Humanity',
-  description:
-    'Manage analytics settings and development.',
+  description: 'Access analytics features and tools.',
 };
 
 export default async function AnalyticsPage() {
@@ -63,12 +62,9 @@ export default async function AnalyticsPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Analytics
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Analytics</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage analytics settings and
-            development.
+            Access analytics features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

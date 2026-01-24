@@ -8,8 +8,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/groups',
   },
   title: 'Groups | Elevate For Humanity',
-  description:
-    'Manage groups settings and development.',
+  description: 'Access groups features and tools.',
 };
 
 export default async function GroupsPage() {
@@ -28,12 +27,9 @@ export default async function GroupsPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Groups
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Groups</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage groups settings and
-            development.
+            Access groups features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -61,8 +57,7 @@ export default async function GroupsPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Groups</h2>
                 <p className="text-black mb-6">
-                  Manage groups for career growth
-                  and development.
+                  Explore groups opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

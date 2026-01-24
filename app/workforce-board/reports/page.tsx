@@ -12,8 +12,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/workforce-board/reports',
   },
   title: 'Workforce Board Reports | Elevate For Humanity',
-  description:
-    'Manage reports settings and development.',
+  description: 'Access reports features and tools.',
 };
 
 export default async function ReportsPage() {
@@ -51,12 +50,9 @@ export default async function ReportsPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Reports
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Reports</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage reports settings and
-            development.
+            Access reports features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -84,8 +80,7 @@ export default async function ReportsPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Reports</h2>
                 <p className="text-black mb-6">
-                  Manage reports for career growth
-                  and development.
+                  Explore reports opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/hr/time',
   },
   title: 'Time | Elevate For Humanity',
-  description:
-    'Manage time settings and development.',
+  description: 'Access time features and tools.',
 };
 
 export default async function TimePage() {
@@ -72,12 +71,9 @@ export default async function TimePage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Time
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Time</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage time settings and
-            development.
+            Access time features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

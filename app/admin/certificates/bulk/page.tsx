@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/certificates/bulk',
   },
   title: 'Bulk | Elevate For Humanity',
-  description:
-    'Manage bulk settings and development.',
+  description: 'Access bulk features and tools.',
 };
 
 export default async function BulkPage() {
@@ -72,12 +71,9 @@ export default async function BulkPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Bulk
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Bulk</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage bulk settings and
-            development.
+            Access bulk features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

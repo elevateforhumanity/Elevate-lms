@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/mobile-sync',
   },
   title: 'Mobile Sync | Elevate For Humanity',
-  description:
-    'Manage mobile-sync settings and development.',
+  description: 'Access mobile sync features and tools.',
 };
 
 export default async function MobileSyncPage() {
@@ -75,12 +74,9 @@ export default async function MobileSyncPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Mobile Sync
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Mobile Sync</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage mobile-sync settings and
-            development.
+            Access mobile sync features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

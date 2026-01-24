@@ -12,8 +12,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/lms/integrations',
   },
   title: 'Integrations | Elevate For Humanity',
-  description:
-    'Manage integrations settings and development.',
+  description: 'Access integrations features and tools.',
 };
 
 export default async function IntegrationsPage() {
@@ -99,12 +98,9 @@ export default async function IntegrationsPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Integrations
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Integrations</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage integrations for career growth
-            and development.
+            Explore integrations opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -130,12 +126,9 @@ export default async function IntegrationsPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Integrations
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Integrations</h2>
                 <p className="text-black mb-6">
-                  Manage integrations for career
-                  growth and development.
+                  Explore integrations opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

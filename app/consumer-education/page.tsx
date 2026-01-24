@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/consumer-education',
   },
   title: 'Consumer Education | Elevate For Humanity',
-  description:
-    'Manage consumer-education settings and development.',
+  description: 'Access consumer education features and tools.',
 };
 
 export default async function ConsumerEducationPage() {
@@ -49,12 +48,9 @@ export default async function ConsumerEducationPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Consumer Education
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Consumer Education</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage consumer-education for career
-            growth and development.
+            Explore consumer education opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -80,9 +76,7 @@ export default async function ConsumerEducationPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Consumer Education
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Consumer Education</h2>
                 <p className="text-black mb-6">
                   Manage consumer-education for
                   career growth and development.

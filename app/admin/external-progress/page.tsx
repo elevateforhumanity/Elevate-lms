@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/external-progress',
   },
   title: 'External Progress | Elevate For Humanity',
-  description:
-    'Manage external-progress settings and development.',
+  description: 'Access external progress features and tools.',
 };
 
 export default async function ExternalProgressPage() {
@@ -75,12 +74,9 @@ export default async function ExternalProgressPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            External Progress
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">External Progress</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage external-progress for career
-            growth and development.
+            Explore external progress opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

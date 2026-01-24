@@ -385,12 +385,9 @@ export default async function MentorshipPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Mentorship
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Mentorship</h2>
                 <p className="text-black mb-6">
-                  Manage mentorship for career
-                  growth and development.
+                  Explore mentorship opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

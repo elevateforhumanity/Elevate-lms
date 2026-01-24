@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/system-health',
   },
   title: 'System Health | Elevate For Humanity',
-  description:
-    'Manage system-health settings and development.',
+  description: 'Access system health features and tools.',
 };
 
 export default async function SystemHealthPage() {
@@ -75,12 +74,9 @@ export default async function SystemHealthPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            System Health
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">System Health</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage system-health for career growth
-            and development.
+            Explore system health opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

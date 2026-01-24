@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/educatorhub',
   },
   title: 'Educatorhub | Elevate For Humanity',
-  description:
-    'Manage educatorhub settings and development.',
+  description: 'Access educatorhub features and tools.',
 };
 
 export default async function EducatorhubPage() {
@@ -49,12 +48,9 @@ export default async function EducatorhubPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Educatorhub
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Educatorhub</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage educatorhub settings and
-            development.
+            Access educatorhub features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -80,12 +76,9 @@ export default async function EducatorhubPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Educatorhub
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Educatorhub</h2>
                 <p className="text-black mb-6">
-                  Manage educatorhub for career
-                  growth and development.
+                  Explore educatorhub opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

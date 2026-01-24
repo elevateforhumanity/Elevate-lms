@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/solutions/distance-learning',
   },
   title: 'Distance Learning | Elevate For Humanity',
-  description:
-    'Manage distance-learning settings and development.',
+  description: 'Access distance learning features and tools.',
 };
 
 export default async function DistanceLearningPage() {
@@ -50,12 +49,9 @@ export default async function DistanceLearningPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Distance Learning
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Distance Learning</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage distance-learning for career
-            growth and development.
+            Explore distance learning opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -81,9 +77,7 @@ export default async function DistanceLearningPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Distance Learning
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Distance Learning</h2>
                 <p className="text-black mb-6">
                   Manage distance-learning for
                   career growth and development.

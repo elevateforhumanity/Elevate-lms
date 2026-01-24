@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/docs/mou',
   },
   title: 'MOU Documentation | Elevate For Humanity',
-  description:
-    'Manage mou settings and development.',
+  description: 'Access mou features and tools.',
 };
 
 export default async function MouPage() {
@@ -72,12 +71,9 @@ export default async function MouPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Mou
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Mou</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage mou settings and
-            development.
+            Access mou features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/courses/coursedetail',
   },
   title: 'Coursedetail | Elevate For Humanity',
-  description:
-    'Manage coursedetail settings and development.',
+  description: 'Access coursedetail features and tools.',
 };
 
 export default async function CoursedetailPage() {
@@ -50,12 +49,9 @@ export default async function CoursedetailPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Coursedetail
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Coursedetail</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage coursedetail for career growth
-            and development.
+            Explore coursedetail opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -81,12 +77,9 @@ export default async function CoursedetailPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Coursedetail
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Coursedetail</h2>
                 <p className="text-black mb-6">
-                  Manage coursedetail for career
-                  growth and development.
+                  Explore coursedetail opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

@@ -12,8 +12,7 @@ export const metadata: Metadata = {
       'https://www.elevateforhumanity.org/platform/workforce-analytics',
   },
   title: 'Workforce Analytics | Elevate For Humanity',
-  description:
-    'Manage workforce-analytics settings and development.',
+  description: 'Access workforce analytics features and tools.',
 };
 
 export default async function WorkforceAnalyticsPage() {
@@ -51,12 +50,9 @@ export default async function WorkforceAnalyticsPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Workforce Analytics
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Workforce Analytics</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage workforce-analytics for career
-            growth and development.
+            Explore workforce analytics opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -82,9 +78,7 @@ export default async function WorkforceAnalyticsPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Workforce Analytics
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Workforce Analytics</h2>
                 <p className="text-black mb-6">
                   Manage workforce-analytics for
                   career growth and development.

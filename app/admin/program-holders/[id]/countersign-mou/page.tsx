@@ -11,8 +11,7 @@ export const metadata: Metadata = {
       'https://www.elevateforhumanity.org/admin/program-holders/[id]/countersign-mou',
   },
   title: 'Countersign Mou | Elevate For Humanity',
-  description:
-    'Manage countersign-mou settings and development.',
+  description: 'Access countersign mou features and tools.',
 };
 
 export default async function CountersignMouPage() {
@@ -73,12 +72,9 @@ export default async function CountersignMouPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Countersign Mou
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Countersign Mou</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage countersign-mou for career growth
-            and development.
+            Explore countersign mou opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

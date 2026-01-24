@@ -12,8 +12,7 @@ export const metadata: Metadata = {
       'https://www.elevateforhumanity.org/admin/external-modules/approvals',
   },
   title: 'Approvals | Elevate For Humanity',
-  description:
-    'Manage approvals settings and development.',
+  description: 'Access approvals features and tools.',
 };
 
 export default async function ApprovalsPage() {
@@ -74,12 +73,9 @@ export default async function ApprovalsPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Approvals
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Approvals</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage approvals settings and
-            development.
+            Access approvals features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

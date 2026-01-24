@@ -12,8 +12,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/workforce-board/eligibility',
   },
   title: 'Eligibility | Elevate For Humanity',
-  description:
-    'Manage eligibility settings and development.',
+  description: 'Access eligibility features and tools.',
 };
 
 export default async function EligibilityPage() {
@@ -51,12 +50,9 @@ export default async function EligibilityPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Eligibility
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Eligibility</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage eligibility settings and
-            development.
+            Access eligibility features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -82,12 +78,9 @@ export default async function EligibilityPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Eligibility
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Eligibility</h2>
                 <p className="text-black mb-6">
-                  Manage eligibility for career
-                  growth and development.
+                  Explore eligibility opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

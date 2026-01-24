@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/copilot/deploy',
   },
   title: 'Deploy | Elevate For Humanity',
-  description:
-    'Manage deploy settings and development.',
+  description: 'Access deploy features and tools.',
 };
 
 export default async function DeployPage() {
@@ -73,12 +72,9 @@ export default async function DeployPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Deploy
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Deploy</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage deploy settings and
-            development.
+            Access deploy features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

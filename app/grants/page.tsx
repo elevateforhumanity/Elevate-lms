@@ -13,8 +13,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/grants',
   },
   title: 'Grants | Elevate For Humanity',
-  description:
-    'Manage grants settings and development.',
+  description: 'Access grants features and tools.',
 };
 
 export default async function GrantsPage() {
@@ -51,12 +50,9 @@ export default async function GrantsPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Grants
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Grants</h1>
           <p className="text-base md:text-lg mb-4 text-gray-100">
-            Manage grants settings and
-            development.
+            Access grants features and resources.
           </p>
           <div className="mb-8">
             <PolicyReference
@@ -93,8 +89,7 @@ export default async function GrantsPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Grants</h2>
                 <p className="text-black mb-6">
-                  Manage grants for career growth
-                  and development.
+                  Explore grants opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

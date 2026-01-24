@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/mobile',
   },
   title: 'Mobile | Elevate For Humanity',
-  description:
-    'Manage mobile settings and development.',
+  description: 'Access mobile features and tools.',
 };
 
 export default async function MobilePage() {
@@ -50,12 +49,9 @@ export default async function MobilePage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Mobile
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Mobile</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage mobile settings and
-            development.
+            Access mobile features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -83,8 +79,7 @@ export default async function MobilePage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Mobile</h2>
                 <p className="text-black mb-6">
-                  Manage mobile for career growth
-                  and development.
+                  Explore mobile opportunities and resources.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

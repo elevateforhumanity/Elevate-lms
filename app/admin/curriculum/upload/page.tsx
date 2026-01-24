@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/curriculum/upload',
   },
   title: 'Upload Curriculum | Elevate For Humanity',
-  description:
-    'Manage upload settings and development.',
+  description: 'Access upload features and tools.',
 };
 
 export default async function UploadPage() {
@@ -73,12 +72,9 @@ export default async function UploadPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Upload
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Upload</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage upload settings and
-            development.
+            Access upload features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

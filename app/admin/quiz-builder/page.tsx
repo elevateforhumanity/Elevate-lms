@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/quiz-builder',
   },
   title: 'Quiz Builder | Elevate For Humanity',
-  description:
-    'Manage quiz-builder settings and development.',
+  description: 'Access quiz builder features and tools.',
 };
 
 export default async function QuizBuilderPage() {
@@ -75,12 +74,9 @@ export default async function QuizBuilderPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Quiz Builder
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Quiz Builder</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage quiz-builder for career growth
-            and development.
+            Explore quiz builder opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

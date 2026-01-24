@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/portal/student/scorm',
   },
   title: 'Scorm | Elevate For Humanity',
-  description:
-    'Manage scorm settings and development.',
+  description: 'Access scorm features and tools.',
 };
 
 export default async function ScormPage() {
@@ -64,12 +63,9 @@ export default async function ScormPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Scorm
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Scorm</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage scorm settings and
-            development.
+            Access scorm features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

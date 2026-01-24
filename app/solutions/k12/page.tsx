@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'K12 | Elevate For Humanity',
   description:
-    'Manage k12 settings and development.',
+    'K-12 education partnership programs and resources.',
 };
 
 export default async function K12Page() {
@@ -50,11 +50,9 @@ export default async function K12Page() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            K12
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">K12</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage k12 settings and
+            K-12 education solutions for schools and districts.
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -83,7 +81,7 @@ export default async function K12Page() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">K12</h2>
                 <p className="text-black mb-6">
-                  Manage k12 settings and
+                  K-12 education solutions for schools and districts.
                   development.
                 </p>
                 <ul className="space-y-3">

@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/staff-portal/courses',
   },
   title: 'Staff Portal Courses | Elevate For Humanity',
-  description:
-    'Manage courses settings and development.',
+  description: 'Access courses features and tools.',
 };
 
 export default async function CoursesPage() {
@@ -63,12 +62,9 @@ export default async function CoursesPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Courses
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Courses</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage courses settings and
-            development.
+            Access courses features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

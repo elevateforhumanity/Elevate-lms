@@ -13,8 +13,7 @@ export const metadata: Metadata = {
       'https://www.elevateforhumanity.org/onboarding/employer/orientation',
   },
   title: 'Employer Orientation | Elevate For Humanity',
-  description:
-    'Manage orientation settings and development.',
+  description: 'Access orientation features and tools.',
 };
 
 export default async function OrientationPage() {
@@ -66,12 +65,9 @@ export default async function OrientationPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Orientation
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Orientation</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage orientation settings and
-            development.
+            Access orientation features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/course-import',
   },
   title: 'Course Import | Elevate For Humanity',
-  description:
-    'Manage course-import settings and development.',
+  description: 'Access course import features and tools.',
 };
 
 export default async function CourseImportPage() {
@@ -75,12 +74,9 @@ export default async function CourseImportPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Course Import
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Course Import</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage course-import for career growth
-            and development.
+            Explore course import opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

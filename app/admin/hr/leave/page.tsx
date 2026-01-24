@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/hr/leave',
   },
   title: 'Leave | Elevate For Humanity',
-  description:
-    'Manage leave settings and development.',
+  description: 'Access leave features and tools.',
 };
 
 export default async function LeavePage() {
@@ -72,12 +71,9 @@ export default async function LeavePage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Leave
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Leave</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage leave settings and
-            development.
+            Access leave features and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

@@ -12,8 +12,7 @@ export const metadata: Metadata = {
       'https://www.elevateforhumanity.org/admin/courses/bulk-operations',
   },
   title: 'Bulk Operations | Elevate For Humanity',
-  description:
-    'Manage bulk-operations settings and development.',
+  description: 'Access bulk operations features and tools.',
 };
 
 export default async function BulkOperationsPage() {
@@ -74,12 +73,9 @@ export default async function BulkOperationsPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Bulk Operations
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Bulk Operations</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage bulk-operations for career growth
-            and development.
+            Explore bulk operations opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

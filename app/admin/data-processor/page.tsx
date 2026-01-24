@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/data-processor',
   },
   title: 'Data Processor | Elevate For Humanity',
-  description:
-    'Manage data-processor settings and development.',
+  description: 'Access data processor features and tools.',
 };
 
 export default async function DataProcessorPage() {
@@ -76,12 +75,9 @@ export default async function DataProcessorPage() {
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Data Processor
-          </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Data Processor</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage data-processor for career growth
-            and development.
+            Explore data processor opportunities and resources.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
