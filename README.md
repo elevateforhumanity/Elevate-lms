@@ -3,7 +3,7 @@
 **Production URL:** https://www.elevateforhumanity.org  
 **Status:** ✅ Live and Operational  
 **Version:** 2.0.0  
-**Last Updated:** January 13, 2026
+**Last Updated:** January 24, 2026
 
 ---
 
@@ -43,12 +43,22 @@ VITA (Free Tax Services) → Selfish Inc. (Mental Wellness) → Elevate (Trainin
 
 ### Revenue Streams
 1. **Government Funding (Primary)** - WIOA, WRG, JRI, EmployIndy contracts
-2. **Program Holder Revenue Share** - Partners receive 1/3 on funded participants
-3. **Stripe Payments (Secondary)** - Self-pay and employer-sponsored training
-4. **Platform Licensing** - $4,999 - $50,000 for other training providers
-5. **Supersonic Fast Cash** - Tax preparation and refund advance services
-6. **Curvature Body Sculpting** - Body sculpting services
-7. **Meri-Go-Round Products** - Wellness products (teas, butters, oils, soaps)
+2. **Program Holder Revenue Share** - Partners receive 1/3 (33.33%) of Net Program Revenue per student
+3. **Credential Course Markup** - 50/50 split on add-on certification courses
+4. **Stripe Payments (Secondary)** - Self-pay and employer-sponsored training
+5. **Platform Licensing** - $4,999 - $50,000 for other training providers
+6. **Supersonic Fast Cash** - Tax preparation and refund advance services
+7. **Curvature Body Sculpting** - Body sculpting services
+8. **Meri-Gold-Round™ Products** - Wellness products (teas, butters, oils, soaps, kids line)
+
+### Partner Revenue Share Model
+| Type | Partner Share | Elevate Share | Notes |
+|------|---------------|---------------|-------|
+| Program Revenue | 1/3 (33.33%) | 2/3 (66.67%) | Base training programs |
+| Credential Markup | 50% | 50% | Add-on certification courses |
+| Suboffice (Tax Prep) | 40% | 60% | Supersonic Fast Cash partners |
+
+**Payment Schedule:** Partner share paid in two installments - 50% at student midpoint, 50% at completion.
 
 ### Compliance Requirements
 - ✅ WIOA reporting (automated)
@@ -67,7 +77,8 @@ VITA (Free Tax Services) → Selfish Inc. (Mental Wellness) → Elevate (Trainin
 
 **Curvature Body Sculpting** (`/curvature-body-sculpting`)
 - Body contouring and sculpting services
-- Meri-Go-Round wellness products (e-commerce)
+- Meri-Gold-Round™ wellness products (e-commerce) - Trademark Serial #99420837
+- Product lines: Teas (Vitality Cleanse, Mint Glow), Butters, Oils, Soaps, King Greene Kids Line
 - Hires graduates from Esthetician/Beauty programs
 - Indianapolis, IN
 
