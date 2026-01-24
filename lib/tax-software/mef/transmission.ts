@@ -1,10 +1,15 @@
 /**
  * IRS MeF Transmission Module
  * Handles direct transmission to IRS e-file system
+ * 
+ * Supports both simulated (test) and real (SOAP) transmission modes.
  */
 
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { MeFAcknowledgment, MeFError } from './acknowledgment';
+import { MeFSOAPClient, createSOAPClient, SOAPTransmitResponse } from './soap-client';
+import { IRSSchemaValidator, validateXMLOrThrow } from '../schemas/schema-validator';
+import { createCertificateHandler } from './certificate-handler';
 
 const EFIN = process.env.IRS_EFIN || '000000';
 

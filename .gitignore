@@ -122,3 +122,12 @@ nextjs-site-backup-*.tar.gz
 .env.local.backup
 public/build.json
 core
+-e 
+# IRS Certificates (never commit)
+certs/
+*.crt
+*.key
+*.pem
+
+# ATS Evidence (large files)
+reports/ats-evidence/
