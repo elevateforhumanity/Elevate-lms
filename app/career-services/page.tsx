@@ -13,6 +13,9 @@ import {
   MapPin,
   DollarSign,
   Building,
+  Clock,
+  Calendar,
+  Handshake,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -24,24 +27,46 @@ export const dynamic = 'force-dynamic';
 
 const SERVICES = [
   {
-    icon: FileText,
     title: 'Resume Building',
-    description: 'Professional resume writing and optimization to highlight your skills and experience.',
+    description: 'Professional resume writing and optimization to highlight your skills and experience. Get ATS-optimized resumes that get noticed.',
+    image: '/images/programs-hq/business-training.jpg',
+    href: '/career-services/resume-building',
+    features: ['Professional formatting', 'ATS optimization', 'Cover letter help'],
   },
   {
-    icon: Users,
-    title: 'Interview Prep',
-    description: 'Mock interviews, coaching, and strategies to help you ace any interview.',
+    title: 'Interview Preparation',
+    description: 'Mock interviews, coaching, and strategies to help you ace any interview. Practice with real scenarios.',
+    image: '/images/programs-hq/medical-assistant.jpg',
+    href: '/career-services/interview-prep',
+    features: ['Mock interviews', 'Feedback sessions', 'Industry-specific prep'],
   },
   {
-    icon: Briefcase,
     title: 'Job Placement',
-    description: 'Direct connections to employers actively hiring in your field.',
+    description: 'Direct connections to employers actively hiring in your field. We match you with opportunities.',
+    image: '/images/heroes-hq/career-services-hero.jpg',
+    href: '/career-services/job-placement',
+    features: ['Employer network', 'Job matching', '90-day support'],
   },
   {
-    icon: Target,
-    title: 'Career Coaching',
-    description: 'One-on-one guidance to help you navigate your career path.',
+    title: 'Career Counseling',
+    description: 'One-on-one guidance to help you navigate your career path and make informed decisions.',
+    image: '/images/testimonials-hq/person-5.jpg',
+    href: '/career-services/career-counseling',
+    features: ['Career assessment', 'Goal setting', 'Action planning'],
+  },
+  {
+    title: 'Networking Events',
+    description: 'Connect with employers, industry professionals, and fellow job seekers at our career events.',
+    image: '/images/heroes-hq/about-hero.jpg',
+    href: '/career-services/networking-events',
+    features: ['Job fairs', 'Industry meetups', 'Alumni network'],
+  },
+  {
+    title: 'Ongoing Support',
+    description: 'We don\'t stop when you get hired. Get continued support for career growth and advancement.',
+    image: '/images/programs-hq/healthcare-hero.jpg',
+    href: '/career-services/ongoing-support',
+    features: ['90-day check-ins', 'Career advancement', 'Skill development'],
   },
 ];
 
@@ -101,21 +126,112 @@ export default async function CareerServicesPage() {
 
       {/* Services */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Our Services</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {SERVICES.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <div key={index} className="bg-white rounded-xl p-6 border hover:shadow-lg transition">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-blue-600" />
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1 rounded-full mb-4">
+              Our Services
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Comprehensive Career Support
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              From resume building to job placement, we provide everything you need to launch your career.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {SERVICES.map((service, index) => (
+              <Link
+                key={index}
+                href={service.href}
+                className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <span className="inline-flex items-center gap-1 bg-white/90 text-gray-900 text-xs font-semibold px-3 py-1 rounded-full">
+                      <Briefcase className="w-3 h-3" />
+                      Career Service
+                    </span>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{service.title}</h3>
-                  <p className="text-gray-600">{service.description}</p>
                 </div>
-              );
-            })}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 line-clamp-2">{service.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {service.features.map((feature, i) => (
+                      <span key={i} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="inline-flex items-center text-blue-600 font-semibold group-hover:gap-2 transition-all">
+                    Learn More
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Self-Paced Courses CTA */}
+      <section className="py-16 bg-gradient-to-r from-purple-600 to-blue-600">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="text-white">
+              <span className="inline-block bg-white/20 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
+                Self-Paced Learning
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Career Success Video Courses
+              </h2>
+              <p className="text-purple-100 text-lg mb-6">
+                Learn resume writing, interview skills, and job search strategies at your own pace with our professional video courses.
+              </p>
+              <ul className="space-y-2 mb-8">
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Resume Mastery - $197</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Interview Domination - $297</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Job Search Accelerator - $397</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-yellow-400" />
+                  <span>Bundle All 3 & Save - $597</span>
+                </li>
+              </ul>
+              <Link
+                href="/career-services/courses"
+                className="inline-flex items-center bg-white text-purple-600 px-8 py-4 rounded-lg font-bold hover:bg-purple-50 transition"
+              >
+                Browse Courses
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </div>
+            <div className="relative h-64 md:h-80 rounded-xl overflow-hidden">
+              <Image
+                src="/images/programs-hq/business-training.jpg"
+                alt="Career Courses"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>

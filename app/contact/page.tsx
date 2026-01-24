@@ -28,9 +28,16 @@ export const metadata: Metadata = {
 
 const contactInfo = [
   { icon: Phone, title: 'Phone', value: '(317) 314-3757', subtitle: 'Mon-Fri 8am-6pm EST' },
-  { icon: Mail, title: 'Email', value: 'info@elevateforhumanity.org', subtitle: 'We respond within 24 hours' },
+  { icon: Mail, title: 'Email', value: 'info@elevateforhumanity.org', subtitle: 'Response within 1 business day' },
   { icon: MapPin, title: 'Address', value: 'Indianapolis, IN', subtitle: 'Central Indiana' },
   { icon: Clock, title: 'Hours', value: 'Mon-Fri 8am-6pm', subtitle: 'Sat 9am-1pm EST' },
+];
+
+const responseTargets = [
+  { type: 'General Inquiries', time: 'Within 1 business day' },
+  { type: 'Access Issues', time: 'Same business day' },
+  { type: 'Critical Platform Issues', time: 'Prioritized response' },
+  { type: 'Enrollment Questions', time: 'Within 1 business day' },
 ];
 
 export default function ContactPage() {
@@ -71,6 +78,23 @@ export default function ContactPage() {
               <p className="text-sm text-gray-500">{info.subtitle}</p>
             </div>
           ))}
+        </div>
+
+        {/* Response Time Commitments */}
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-12">
+          <h2 className="text-xl font-bold text-blue-900 mb-4">Response Time Commitments</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {responseTargets.map((target, index) => (
+              <div key={index} className="bg-white rounded-lg p-4">
+                <p className="font-medium text-gray-900">{target.type}</p>
+                <p className="text-sm text-blue-600">{target.time}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-blue-700 mt-4">
+            Support hours: Monday–Friday, 8am–6pm EST. For platform status, visit our{' '}
+            <a href="/status" className="underline">status page</a>.
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">

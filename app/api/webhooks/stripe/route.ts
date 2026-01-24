@@ -186,6 +186,106 @@ export async function POST(request: NextRequest) {
         break;
       }
 
+      // LANE C: Handle CAREER COURSE purchase
+      if (session.metadata?.type === 'career_course') {
+        try {
+          const courseIds = session.metadata.course_ids?.split(',') || [];
+          const customerEmail = session.customer_email || session.customer_details?.email;
+          const promoCode = session.metadata.promo_code;
+
+          // Get user by email
+          let userId: string | null = null;
+          if (customerEmail) {
+            const { data: profile } = await supabase
+              .from('profiles')
+              .select('id')
+              .eq('email', customerEmail)
+              .single();
+            userId = profile?.id || null;
+          }
+
+          // Record purchases for each course
+          for (const courseId of courseIds) {
+            const { error } = await supabase
+              .from('career_course_purchases')
+              .upsert({
+                user_id: userId,
+                course_id: courseId,
+                email: customerEmail || '',
+                amount_paid: (session.amount_total || 0) / 100 / courseIds.length,
+                stripe_payment_id: session.payment_intent as string,
+                stripe_session_id: session.id,
+                status: 'completed',
+                purchased_at: new Date().toISOString(),
+              }, {
+                onConflict: 'user_id,course_id',
+              });
+
+            if (error) {
+              logger.error('Error recording career course purchase:', error);
+            }
+          }
+
+          // Record promo code use if applicable
+          if (promoCode) {
+            const { data: promo } = await supabase
+              .from('promo_codes')
+              .select('id')
+              .eq('code', promoCode)
+              .single();
+
+            if (promo) {
+              await supabase.from('promo_code_uses').insert({
+                promo_code_id: promo.id,
+                user_id: userId,
+                email: customerEmail,
+                order_id: session.id,
+                discount_amount: ((session.amount_subtotal || 0) - (session.amount_total || 0)) / 100,
+              });
+            }
+          }
+
+          // Send welcome email
+          if (customerEmail) {
+            try {
+              const { getWelcomeEmail } = await import('@/lib/email/career-course-sequences');
+              const { data: courseData } = await supabase
+                .from('career_courses')
+                .select('title, slug')
+                .in('id', courseIds)
+                .limit(1)
+                .single();
+
+              if (courseData) {
+                const emailContent = getWelcomeEmail({
+                  email: customerEmail,
+                  courseName: courseData.title,
+                  courseSlug: courseData.slug,
+                  purchaseDate: new Date().toISOString(),
+                });
+
+                await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/email/send`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    to: customerEmail,
+                    subject: emailContent.subject,
+                    html: emailContent.html,
+                  }),
+                });
+              }
+            } catch (emailErr) {
+              logger.error('Error sending career course welcome email:', emailErr);
+            }
+          }
+
+          logger.info(`✅ Career course purchase completed: ${courseIds.join(', ')}`);
+        } catch (err: any) {
+          logger.error('Error processing career course purchase:', err);
+        }
+        break;
+      }
+
       // Handle drug testing products and training courses
       if (
         session.metadata?.type === 'service' ||

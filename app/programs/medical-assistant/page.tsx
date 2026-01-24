@@ -33,10 +33,26 @@ const programData: ProgramData = {
     'Patient scheduling',
   ],
   outcomes: [
-    'Certified Medical Assistant (CMA)',
-    'Clinical Medical Assistant',
-    'Administrative Medical Assistant',
-    'Medical Office Specialist',
+    {
+      title: 'Certified Medical Assistant (CMA)',
+      description: 'Work in physician offices, clinics, and outpatient facilities performing both clinical and administrative duties. Average salary $38,000-$45,000 with excellent benefits.',
+      image: '/images/programs-hq/medical-assistant.jpg',
+    },
+    {
+      title: 'Clinical Medical Assistant',
+      description: 'Focus on patient care tasks like taking vitals, administering injections, performing EKGs, and assisting physicians during examinations.',
+      image: '/images/programs-hq/healthcare-hero.jpg',
+    },
+    {
+      title: 'Administrative Medical Assistant',
+      description: 'Manage front office operations including patient scheduling, medical records, insurance verification, and billing. Great for those who prefer office work.',
+      image: '/images/programs-hq/medical-assistant.jpg',
+    },
+    {
+      title: 'Medical Office Specialist',
+      description: 'Combine clinical knowledge with office management skills. Oversee daily operations, manage staff schedules, and ensure smooth patient flow.',
+      image: '/images/programs-hq/healthcare-hero.jpg',
+    },
   ],
   requirements: [
     'High school diploma or GED',

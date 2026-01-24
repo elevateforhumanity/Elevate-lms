@@ -1,235 +1,269 @@
-import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Calendar, Clock, MapPin, User, Video, Building } from 'lucide-react';
+import { Calendar, Clock, MapPin, User, Video, Phone, Building, ArrowRight, CheckCircle } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Book an Appointment | Elevate For Humanity',
-  description: 'Schedule a consultation, campus tour, or advising session with our team.',
-};
+const appointmentTypes = [
+  {
+    id: 'enrollment',
+    name: 'Enrollment Consultation',
+    description: 'Learn about our programs, eligibility, and enrollment process',
+    duration: 60,
+    icon: User,
+    color: 'blue',
+  },
+  {
+    id: 'financial',
+    name: 'Financial Aid & WIOA',
+    description: 'Discuss funding options, WIOA eligibility, and payment plans',
+    duration: 60,
+    icon: Calendar,
+    color: 'green',
+  },
+  {
+    id: 'virtual',
+    name: 'Virtual Meeting',
+    description: 'Meet via Google Meet video call from anywhere',
+    duration: 60,
+    icon: Video,
+    color: 'purple',
+  },
+  {
+    id: 'phone',
+    name: 'Phone Consultation',
+    description: 'We\'ll call you at your preferred time',
+    duration: 60,
+    icon: Phone,
+    color: 'orange',
+  },
+];
 
-export const dynamic = 'force-dynamic';
+const timeSlots = [
+  '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM',
+  '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM'
+];
 
-export default async function BookingPage() {
-  const supabase = await createClient();
+function getNextTwoWeeks(): Date[] {
+  const dates: Date[] = [];
+  const today = new Date();
+  for (let i = 1; i <= 14; i++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() + i);
+    if (date.getDay() !== 0 && date.getDay() !== 6) {
+      dates.push(date);
+    }
+  }
+  return dates;
+}
 
-  if (!supabase) {
+export default function BookingPage() {
+  const [step, setStep] = useState(1);
+  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', notes: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const availableDates = getNextTwoWeeks();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      await fetch('/api/booking/schedule', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          appointmentType: selectedType,
+          date: selectedDate?.toISOString(),
+          time: selectedTime,
+          duration: 60,
+        }),
+      });
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Booking error:', error);
+    }
+    setIsSubmitting(false);
+  };
+
+  if (submitted) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle className="w-8 h-8 text-green-600" />
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Appointment Scheduled!</h1>
+          <div className="bg-gray-50 rounded-xl p-4 mb-6 text-left">
+            <p className="font-semibold">{selectedDate?.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
+            <p className="text-gray-600">{selectedTime} (1 hour)</p>
+            <p className="text-sm text-gray-500 mt-2">{appointmentTypes.find(t => t.id === selectedType)?.name}</p>
+          </div>
+          <p className="text-sm text-gray-600 mb-6">Confirmation sent to <strong>{formData.email}</strong></p>
+          <Link href="/" className="block w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700">
+            Return Home
+          </Link>
         </div>
       </div>
     );
   }
 
-  // Get available appointment types
-  const { data: appointmentTypes } = await supabase
-    .from('appointment_types')
-    .select('*')
-    .eq('is_active', true)
-    .order('name', { ascending: true });
-
-  // Get staff available for appointments
-  const { data: staff } = await supabase
-    .from('staff')
-    .select('id, name, title, department, avatar_url')
-    .eq('accepts_appointments', true)
-    .order('name', { ascending: true });
-
-  // Get locations
-  const { data: locations } = await supabase
-    .from('locations')
-    .select('id, name, address, city, state')
-    .eq('is_active', true);
-
-  const defaultAppointmentTypes = [
-    {
-      id: 'enrollment',
-      name: 'Enrollment Consultation',
-      description: 'Learn about our programs and enrollment process',
-      duration: 30,
-      icon: User,
-    },
-    {
-      id: 'tour',
-      name: 'Campus Tour',
-      description: 'Visit our facilities and meet our team',
-      duration: 60,
-      icon: Building,
-    },
-    {
-      id: 'advising',
-      name: 'Academic Advising',
-      description: 'Get guidance on program selection and career paths',
-      duration: 45,
-      icon: Calendar,
-    },
-    {
-      id: 'financial',
-      name: 'Financial Aid Consultation',
-      description: 'Discuss funding options and WIOA eligibility',
-      duration: 30,
-      icon: Clock,
-    },
-    {
-      id: 'virtual',
-      name: 'Virtual Information Session',
-      description: 'Join an online session to learn about Elevate',
-      duration: 45,
-      icon: Video,
-    },
-  ];
-
-  const displayTypes = appointmentTypes && appointmentTypes.length > 0 
-    ? appointmentTypes 
-    : defaultAppointmentTypes;
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="relative min-h-[350px] flex items-center">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/pexels/office-work.jpg)' }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/80" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
-          <div className="flex items-center gap-3 mb-4">
-            <Calendar className="w-10 h-10" />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Book an Appointment</h1>
-          <p className="text-xl text-slate-200 max-w-2xl">
-            Schedule a consultation, campus tour, or advising session with our team.
-          </p>
+      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Calendar className="w-12 h-12 mx-auto mb-4" />
+          <h1 className="text-4xl font-bold mb-4">Book an Appointment</h1>
+          <p className="text-xl text-slate-300">Schedule a 1-hour consultation with our team</p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        {/* Appointment Types */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Select Appointment Type</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {displayTypes.map((type: any) => {
-              const IconComponent = type.icon || Calendar;
-              return (
-                <Link
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        {/* Progress */}
+        <div className="flex items-center justify-center mb-12">
+          {[1, 2, 3].map((s) => (
+            <div key={s} className="flex items-center">
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= s ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'}`}>
+                {s}
+              </div>
+              {s < 3 && <div className={`w-16 h-1 ${step > s ? 'bg-blue-600' : 'bg-gray-200'}`} />}
+            </div>
+          ))}
+        </div>
+
+        {/* Step 1: Type */}
+        {step === 1 && (
+          <div>
+            <h2 className="text-2xl font-bold text-center mb-8">Select Appointment Type</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {appointmentTypes.map((type) => (
+                <button
                   key={type.id}
-                  href={`/booking/${type.id}`}
-                  className="bg-white rounded-xl shadow-sm border p-6 hover:shadow-md transition group"
+                  onClick={() => { setSelectedType(type.id); setStep(2); }}
+                  className="bg-white p-6 rounded-xl border-2 hover:border-blue-500 hover:shadow-lg transition text-left"
                 >
-                  <IconComponent className="w-10 h-10 text-slate-700 mb-4 group-hover:text-slate-900" />
-                  <h3 className="font-semibold text-xl mb-2">{type.name}</h3>
-                  <p className="text-gray-600 mb-4">{type.description}</p>
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <Clock className="w-4 h-4" />
-                    <span>{type.duration} minutes</span>
+                  <type.icon className="w-10 h-10 text-blue-600 mb-3" />
+                  <h3 className="text-lg font-bold mb-2">{type.name}</h3>
+                  <p className="text-gray-600 text-sm mb-3">{type.description}</p>
+                  <div className="flex items-center text-sm text-gray-500">
+                    <Clock className="w-4 h-4 mr-1" /> {type.duration} minutes
                   </div>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Locations */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Our Locations</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {locations && locations.length > 0 ? (
-              locations.map((location: any) => (
-                <div key={location.id} className="bg-white rounded-xl shadow-sm border p-6">
-                  <div className="flex items-start gap-4">
-                    <MapPin className="w-6 h-6 text-slate-700 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-lg">{location.name}</h3>
-                      <p className="text-gray-600">
-                        {location.address}<br />
-                        {location.city}, {location.state}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <>
-                <div className="bg-white rounded-xl shadow-sm border p-6">
-                  <div className="flex items-start gap-4">
-                    <MapPin className="w-6 h-6 text-slate-700 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-lg">Main Campus</h3>
-                      <p className="text-gray-600">
-                        3737 N Meridian St, Suite 200<br />
-                        Indianapolis, IN 46208
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="bg-white rounded-xl shadow-sm border p-6">
-                  <div className="flex items-start gap-4">
-                    <Video className="w-6 h-6 text-slate-700 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-lg">Virtual Appointments</h3>
-                      <p className="text-gray-600">
-                        Available via Zoom or Google Meet<br />
-                        Flexible scheduling options
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-        </section>
-
-        {/* Staff */}
-        {staff && staff.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Meet Our Team</h2>
-            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {staff.map((member: any) => (
-                <div key={member.id} className="bg-white rounded-xl shadow-sm border p-6 text-center">
-                  <div className="w-20 h-20 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden relative">
-                    {member.avatar_url ? (
-                      <Image src={member.avatar_url} alt={member.name} fill className="object-cover" sizes="80px" />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <User className="w-10 h-10 text-slate-400" />
-                      </div>
-                    )}
-                  </div>
-                  <h3 className="font-semibold">{member.name}</h3>
-                  <p className="text-sm text-gray-600">{member.title}</p>
-                </div>
+                </button>
               ))}
             </div>
-          </section>
+          </div>
         )}
 
-        {/* Contact Alternative */}
-        <section>
-          <div className="bg-slate-100 rounded-xl p-8 text-center">
-            <h3 className="font-semibold text-xl mb-2">Need Immediate Assistance?</h3>
-            <p className="text-gray-600 mb-4">
-              Our team is available Monday-Friday, 9am-5pm EST.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+13175551234"
-                className="inline-flex items-center justify-center bg-slate-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-slate-900"
+        {/* Step 2: Date/Time */}
+        {step === 2 && (
+          <div>
+            <h2 className="text-2xl font-bold text-center mb-8">Select Date & Time</h2>
+            <div className="bg-white rounded-xl border p-6 mb-6">
+              <h3 className="font-semibold mb-4">Select a Date</h3>
+              <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mb-6">
+                {availableDates.map((date) => (
+                  <button
+                    key={date.toISOString()}
+                    onClick={() => setSelectedDate(date)}
+                    className={`p-3 rounded-lg text-center ${selectedDate?.toDateString() === date.toDateString() ? 'bg-blue-600 text-white' : 'bg-gray-50 hover:bg-gray-100'}`}
+                  >
+                    <div className="text-xs">{date.toLocaleDateString('en-US', { weekday: 'short' })}</div>
+                    <div className="text-lg font-bold">{date.getDate()}</div>
+                  </button>
+                ))}
+              </div>
+              {selectedDate && (
+                <>
+                  <h3 className="font-semibold mb-4">Select a Time (1 Hour Slots)</h3>
+                  <div className="grid grid-cols-4 gap-2">
+                    {timeSlots.map((time) => (
+                      <button
+                        key={time}
+                        onClick={() => setSelectedTime(time)}
+                        className={`p-3 rounded-lg font-medium ${selectedTime === time ? 'bg-blue-600 text-white' : 'bg-gray-50 hover:bg-gray-100'}`}
+                      >
+                        {time}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+            <div className="flex justify-between">
+              <button onClick={() => setStep(1)} className="text-gray-600 hover:text-gray-900">← Back</button>
+              <button
+                onClick={() => setStep(3)}
+                disabled={!selectedDate || !selectedTime}
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold disabled:bg-gray-300"
               >
-                Call (317) 555-1234
-              </a>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center border border-slate-800 text-slate-800 px-6 py-3 rounded-lg font-medium hover:bg-slate-200"
-              >
-                Contact Form
-              </Link>
+                Continue →
+              </button>
             </div>
           </div>
-        </section>
+        )}
+
+        {/* Step 3: Info */}
+        {step === 3 && (
+          <div>
+            <h2 className="text-2xl font-bold text-center mb-8">Your Information</h2>
+            <form onSubmit={handleSubmit} className="bg-white rounded-xl border p-6">
+              <div className="space-y-4 mb-6">
+                <div>
+                  <label className="block text-sm font-medium mb-1">Full Name *</label>
+                  <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    className="w-full px-4 py-3 border rounded-lg" placeholder="Your name" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Email *</label>
+                  <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-full px-4 py-3 border rounded-lg" placeholder="you@example.com" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Phone *</label>
+                  <input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    className="w-full px-4 py-3 border rounded-lg" placeholder="(317) 314-3757" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Notes (Optional)</label>
+                  <textarea rows={3} value={formData.notes} onChange={(e) => setFormData({...formData, notes: e.target.value})}
+                    className="w-full px-4 py-3 border rounded-lg" placeholder="What would you like to discuss?" />
+                </div>
+              </div>
+              <div className="flex justify-between">
+                <button type="button" onClick={() => setStep(2)} className="text-gray-600">← Back</button>
+                <button type="submit" disabled={isSubmitting} className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold disabled:bg-gray-400">
+                  {isSubmitting ? 'Scheduling...' : 'Confirm Appointment'}
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+
+        {/* Contact Info */}
+        <div className="mt-12 bg-blue-50 rounded-xl p-6 text-center">
+          <h3 className="font-semibold mb-2">Need Immediate Help?</h3>
+          <p className="text-gray-600 mb-4">Call us Monday-Friday, 9am-5pm EST</p>
+          <a href="tel:3173143757" className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700">
+            <Phone className="w-5 h-5 mr-2" /> (317) 314-3757
+          </a>
+        </div>
+
+        {/* Location */}
+        <div className="mt-8 bg-white rounded-xl border p-6">
+          <div className="flex items-start gap-4">
+            <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0" />
+            <div>
+              <h3 className="font-semibold">Main Office</h3>
+              <p className="text-gray-600">3737 N Meridian St, Suite 200<br />Indianapolis, IN 46208</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

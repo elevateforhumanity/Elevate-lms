@@ -33,12 +33,36 @@ const programData: ProgramData = {
     'Indiana CNA state exam preparation',
   ],
   outcomes: [
-    'Certified Nursing Assistant',
-    'Hospital CNA',
-    'Nursing Home Aide',
-    'Home Health Aide',
-    'Rehabilitation Aide',
-    'Hospice Aide',
+    {
+      title: 'Certified Nursing Assistant',
+      description: 'Work in hospitals, nursing homes, or clinics providing direct patient care. Starting salary $16-$20/hour with benefits. High demand across all healthcare settings.',
+      image: '/images/programs-hq/cna-training.jpg',
+    },
+    {
+      title: 'Hospital CNA',
+      description: 'Assist nurses in acute care settings with patient monitoring, mobility, and daily care. Fast-paced environment with opportunities for advancement to Patient Care Tech.',
+      image: '/images/programs-hq/healthcare-hero.jpg',
+    },
+    {
+      title: 'Nursing Home Aide',
+      description: 'Provide compassionate long-term care to elderly residents. Build meaningful relationships while helping with daily activities, meals, and comfort.',
+      image: '/images/programs-hq/cna-training.jpg',
+    },
+    {
+      title: 'Home Health Aide',
+      description: 'Deliver personalized care in patients\' homes. Flexible scheduling, independence, and one-on-one patient relationships. Growing demand as population ages.',
+      image: '/images/programs-hq/healthcare-hero.jpg',
+    },
+    {
+      title: 'Rehabilitation Aide',
+      description: 'Support physical and occupational therapists in helping patients recover from injuries or surgeries. Work in rehab centers, hospitals, or outpatient clinics.',
+      image: '/images/programs-hq/cna-training.jpg',
+    },
+    {
+      title: 'Hospice Aide',
+      description: 'Provide comfort and dignity to patients in end-of-life care. Meaningful work supporting patients and families during difficult times. Specialized training provided.',
+      image: '/images/programs-hq/healthcare-hero.jpg',
+    },
   ],
   requirements: [
     'High school diploma or GED',

@@ -25,7 +25,7 @@ export default function HeroAvatarGuide({
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [input, setInput] = useState('');
@@ -34,30 +34,40 @@ export default function HeroAvatarGuide({
     { role: 'assistant', content: message },
   ]);
 
-  // Auto-play video on mount - with retry for mobile browsers
+  // Auto-play video on mount WITH SOUND - with fallback to muted for browsers that block unmuted autoplay
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     const playVideo = async () => {
-      video.muted = true;
       video.playsInline = true;
       video.setAttribute('playsinline', '');
       video.setAttribute('webkit-playsinline', '');
       
+      // First try unmuted autoplay
+      video.muted = false;
       try {
         await video.play();
         setIsPlaying(true);
+        setIsMuted(false);
       } catch {
-        // Retry after a short delay
-        setTimeout(async () => {
-          try {
-            await video.play();
-            setIsPlaying(true);
-          } catch {
-            // Silent fail - user can click play
-          }
-        }, 500);
+        // Browser blocked unmuted autoplay - fall back to muted
+        video.muted = true;
+        setIsMuted(true);
+        try {
+          await video.play();
+          setIsPlaying(true);
+        } catch {
+          // Retry after a short delay
+          setTimeout(async () => {
+            try {
+              await video.play();
+              setIsPlaying(true);
+            } catch {
+              // Silent fail - user can click play
+            }
+          }, 500);
+        }
       }
     };
 
@@ -171,7 +181,6 @@ export default function HeroAvatarGuide({
                 className="w-full h-full object-cover"
                 playsInline
                 autoPlay
-                muted
                 onEnded={() => setIsPlaying(false)}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}

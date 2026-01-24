@@ -33,11 +33,31 @@ const programData: ProgramData = {
     'Medical terminology',
   ],
   outcomes: [
-    'Certified Phlebotomy Technician (CPT)',
-    'Hospital Phlebotomist',
-    'Lab Technician',
-    'Blood Bank Technician',
-    'Mobile Phlebotomist',
+    {
+      title: 'Certified Phlebotomy Technician (CPT)',
+      description: 'Draw blood in hospitals, clinics, and diagnostic labs. One of the fastest-growing healthcare careers with starting pay of $16-$20/hour and full benefits.',
+      image: '/images/programs-hq/phlebotomy.jpg',
+    },
+    {
+      title: 'Hospital Phlebotomist',
+      description: 'Work in hospital settings collecting blood samples from patients for diagnostic testing. Fast-paced environment with opportunities for overtime and shift differentials.',
+      image: '/images/programs-hq/healthcare-hero.jpg',
+    },
+    {
+      title: 'Lab Technician',
+      description: 'Combine phlebotomy skills with laboratory work. Process specimens, perform basic lab tests, and maintain equipment in clinical laboratories.',
+      image: '/images/programs-hq/phlebotomy.jpg',
+    },
+    {
+      title: 'Blood Bank Technician',
+      description: 'Work at blood donation centers collecting and processing blood donations. Help save lives while enjoying regular hours and meaningful work.',
+      image: '/images/programs-hq/healthcare-hero.jpg',
+    },
+    {
+      title: 'Mobile Phlebotomist',
+      description: 'Travel to patients\' homes, nursing facilities, and businesses to collect blood samples. Enjoy independence, flexible scheduling, and mileage reimbursement.',
+      image: '/images/programs-hq/phlebotomy.jpg',
+    },
   ],
   requirements: [
     'High school diploma or GED',

@@ -838,6 +838,57 @@ export default async function AdminDashboardOrchestrated() {
           </div>
         </div>
 
+        {/* Sales & Marketing */}
+        <div className="mb-8">
+          <h3 className="text-lg font-semibold text-black mb-4">
+            Sales & Marketing
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            <Link
+              href="/admin/promo-codes"
+              aria-label="Promo Codes"
+              className="p-3 bg-purple-50 border border-purple-200 rounded-lg hover:border-purple-500 hover:shadow text-sm font-medium text-purple-900"
+            >
+              Promo Codes
+            </Link>
+            <Link
+              href="/admin/career-courses/create"
+              aria-label="Course Creator"
+              className="p-3 bg-purple-50 border border-purple-200 rounded-lg hover:border-purple-500 hover:shadow text-sm font-medium text-purple-900"
+            >
+              Course Creator (AI)
+            </Link>
+            <Link
+              href="/career-services/courses"
+              aria-label="Career Courses"
+              className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm"
+            >
+              Career Courses Shop
+            </Link>
+            <Link
+              href="/admin/marketing"
+              aria-label="Marketing"
+              className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm"
+            >
+              Marketing
+            </Link>
+            <Link
+              href="/admin/campaigns"
+              aria-label="Campaigns"
+              className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm"
+            >
+              Campaigns
+            </Link>
+            <Link
+              href="/admin/leads"
+              aria-label="Leads"
+              className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm"
+            >
+              Leads
+            </Link>
+          </div>
+        </div>
+
         {/* Development & Integration */}
         <div className="mb-8">
           <h3 className="text-lg font-semibold text-black mb-4">

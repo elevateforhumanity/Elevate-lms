@@ -25,6 +25,7 @@ export function HubNavigation() {
     ],
     services: [
       { name: 'Career Services', href: '/career-services', description: 'Job placement & career support' },
+      { name: 'Career Courses', href: '/career-services/courses', description: 'Resume, interview & job search courses' },
       { name: 'Marketplace', href: '/marketplace', description: 'Service marketplace' },
       { name: 'Booking & Scheduling', href: '/booking', description: 'Book appointments & services' },
       { name: 'Advising', href: '/advising', description: 'Academic advising' },
