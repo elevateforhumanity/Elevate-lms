@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Target, Users, Award, Heart, ArrowRight, CheckCircle, Shield, Building, GraduationCap } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
@@ -16,10 +16,10 @@ export const metadata: Metadata = {
 };
 
 const credentials = [
-  { title: 'DOL Registered', desc: 'Apprenticeship Sponsor', icon: Shield },
-  { title: 'WIOA Approved', desc: 'Training Provider', icon: CheckCircle },
-  { title: 'State Certified', desc: 'Indiana DWD & DOE', icon: Building },
-  { title: 'JRI Approved', desc: 'Justice Programs', icon: Heart },
+  { title: 'DOL Registered', desc: 'Apprenticeship Sponsor', image: '/images/programs-hq/skilled-trades-hero.jpg' },
+  { title: 'WIOA Approved', desc: 'Training Provider', image: '/images/programs-hq/training-classroom.jpg' },
+  { title: 'State Certified', desc: 'Indiana DWD & DOE', image: '/images/programs-hq/business-training.jpg' },
+  { title: 'JRI Approved', desc: 'Justice Programs', image: '/images/programs-hq/career-success.jpg' },
 ];
 
 const stats = [
@@ -30,10 +30,10 @@ const stats = [
 ];
 
 const values = [
-  { icon: Target, title: 'Mission-Driven', desc: 'Pathways out of poverty' },
-  { icon: Users, title: 'Student-First', desc: 'Your success is our goal' },
-  { icon: Award, title: 'Excellence', desc: 'Industry-recognized training' },
-  { icon: Heart, title: 'Community', desc: 'Support at every step' },
+  { title: 'Mission-Driven', desc: 'Pathways out of poverty', image: '/images/programs-hq/students-learning.jpg' },
+  { title: 'Student-First', desc: 'Your success is our goal', image: '/images/programs-hq/healthcare-hero.jpg' },
+  { title: 'Excellence', desc: 'Industry-recognized training', image: '/images/programs-hq/technology-hero.jpg' },
+  { title: 'Community', desc: 'Support at every step', image: '/images/programs-hq/cna-training.jpg' },
 ];
 
 export default function AboutPage() {
@@ -84,15 +84,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CREDENTIALS - Visual badges */}
+      {/* CREDENTIALS - Visual badges with images */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {credentials.map((cred, i) => (
-              <div key={i} className="bg-blue-50 rounded-xl p-4 text-center">
-                <cred.icon className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                <div className="font-bold text-slate-900 text-sm">{cred.title}</div>
-                <div className="text-slate-600 text-xs">{cred.desc}</div>
+              <div key={i} className="bg-white rounded-xl overflow-hidden shadow-md border border-slate-100">
+                <div className="relative h-24">
+                  <Image src={cred.image} alt={cred.title} fill className="object-cover" />
+                </div>
+                <div className="p-3 text-center">
+                  <div className="font-bold text-slate-900 text-sm">{cred.title}</div>
+                  <div className="text-slate-600 text-xs">{cred.desc}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -129,18 +133,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* VALUES - Icon grid */}
+      {/* VALUES - Image grid */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">Our Values</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {values.map((value, i) => (
-              <div key={i} className="text-center">
-                <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-8 h-8 text-white" />
+              <div key={i} className="group bg-white rounded-xl overflow-hidden shadow-md border border-slate-100 hover:shadow-lg transition-shadow">
+                <div className="relative h-32">
+                  <Image src={value.image} alt={value.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-1">{value.title}</h3>
-                <p className="text-slate-600 text-sm">{value.desc}</p>
+                <div className="p-4 text-center">
+                  <h3 className="font-bold text-slate-900 mb-1">{value.title}</h3>
+                  <p className="text-slate-600 text-sm">{value.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -178,31 +184,46 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* HOW IT WORKS - Visual steps */}
+      {/* HOW IT WORKS - Visual steps with images */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl font-black text-white">1</span>
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100">
+              <div className="relative h-40">
+                <Image src="/images/programs-hq/students-learning.jpg" alt="Apply" fill className="object-cover" />
+                <div className="absolute top-3 left-3 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                  <span className="text-lg font-black text-white">1</span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Apply</h3>
-              <p className="text-slate-600">Quick online application. Check your eligibility for free training.</p>
+              <div className="p-5 text-center">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Apply</h3>
+                <p className="text-slate-600">Quick online application. Check your eligibility for free training.</p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl font-black text-white">2</span>
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100">
+              <div className="relative h-40">
+                <Image src="/images/programs-hq/training-classroom.jpg" alt="Train" fill className="object-cover" />
+                <div className="absolute top-3 left-3 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                  <span className="text-lg font-black text-white">2</span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Train</h3>
-              <p className="text-slate-600">Hands-on learning with industry certifications in 8-16 weeks.</p>
+              <div className="p-5 text-center">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Train</h3>
+                <p className="text-slate-600">Hands-on learning with industry certifications in 8-16 weeks.</p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl font-black text-white">3</span>
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100">
+              <div className="relative h-40">
+                <Image src="/images/programs-hq/career-success.jpg" alt="Get Hired" fill className="object-cover" />
+                <div className="absolute top-3 left-3 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                  <span className="text-lg font-black text-white">3</span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Get Hired</h3>
-              <p className="text-slate-600">Job placement assistance and career support included.</p>
+              <div className="p-5 text-center">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Get Hired</h3>
+                <p className="text-slate-600">Job placement assistance and career support included.</p>
+              </div>
             </div>
           </div>
         </div>

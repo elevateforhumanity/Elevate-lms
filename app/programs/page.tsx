@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { 
   Heart, 
   Wrench, 
@@ -126,6 +127,15 @@ export default async function ProgramsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/home-welcome.mp4"
+        avatarName="Programs Guide"
+        position="bottom-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
+      
       {/* Hero */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden">
         <Image
