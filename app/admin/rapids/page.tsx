@@ -1,9 +1,8 @@
 'use client';
 
 import { RAPIDS_CONFIG } from '@/lib/compliance/rapids-config';
-import { CheckCircle, XCircle, Copy, Shield, FileText } from 'lucide-react';
-
-
+import { CheckCircle, XCircle, Copy, Shield, FileText, Users, Download, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 
 export default function RapidsAdminPage() {
   const programs = Object.entries(RAPIDS_CONFIG.programs).map(([key, program]) => ({
@@ -18,15 +17,76 @@ export default function RapidsAdminPage() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Shield className="w-8 h-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">
-              RAPIDS / USDOL Registration Status
-            </h1>
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <Shield className="w-8 h-8 text-blue-600" />
+                <h1 className="text-2xl font-bold text-gray-900">
+                  RAPIDS / USDOL Registration Status
+                </h1>
+              </div>
+              <p className="text-sm text-gray-600">
+                Internal view. Do not share screenshots publicly. Registration documentation is provided upon request.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <Link
+                href="/admin/rapids/apprentices"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                <Users className="w-4 h-4" />
+                Manage Apprentices
+              </Link>
+              <a
+                href="https://entbpmp.dol.gov/suite/sites/oa/page/home"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                <ExternalLink className="w-4 h-4" />
+                RAPIDS Portal
+              </a>
+            </div>
           </div>
-          <p className="text-sm text-gray-600">
-            Internal view. Do not share screenshots publicly. Registration documentation is provided upon request.
-          </p>
+        </div>
+
+        {/* Quick Actions */}
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-6 mb-6 text-white">
+          <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            <Link
+              href="/admin/rapids/apprentices"
+              className="flex items-center gap-3 bg-white/10 rounded-lg p-4 hover:bg-white/20 transition-colors"
+            >
+              <Download className="w-6 h-6" />
+              <div>
+                <p className="font-medium">Export for RAPIDS</p>
+                <p className="text-sm text-blue-100">Download CSV for portal upload</p>
+              </div>
+            </Link>
+            <Link
+              href="/admin/rapids/apprentices"
+              className="flex items-center gap-3 bg-white/10 rounded-lg p-4 hover:bg-white/20 transition-colors"
+            >
+              <Users className="w-6 h-6" />
+              <div>
+                <p className="font-medium">View Apprentices</p>
+                <p className="text-sm text-blue-100">Manage RAPIDS registrations</p>
+              </div>
+            </Link>
+            <a
+              href="https://entbpmp.dol.gov/suite/sites/oa/page/home"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-white/10 rounded-lg p-4 hover:bg-white/20 transition-colors"
+            >
+              <ExternalLink className="w-6 h-6" />
+              <div>
+                <p className="font-medium">Open RAPIDS Portal</p>
+                <p className="text-sm text-blue-100">Submit data to DOL</p>
+              </div>
+            </a>
+          </div>
         </div>
 
         {/* Sponsor Information */}
