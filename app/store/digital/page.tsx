@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 export default function StoreDigitalPage() {
   const downloadProducts = DIGITAL_PRODUCTS.filter((p) => p.deliveryType === 'download');
   const accessProducts = DIGITAL_PRODUCTS.filter((p) => p.deliveryType === 'access');
-  const freeTools = DIGITAL_PRODUCTS.filter((p) => p.price === 0 && p.id !== 'donation');
 
   return (
     <div className="bg-white">
@@ -68,12 +67,12 @@ export default function StoreDigitalPage() {
         </div>
       </section>
 
-      {/* Free Tools Section */}
+      {/* Premium Tools Section */}
       <section className="py-16 bg-blue-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
-            <Shield className="w-8 h-8 text-blue-300" />
-            <h2 className="text-3xl font-black text-white">Free Tools</h2>
+            <Zap className="w-8 h-8 text-blue-300" />
+            <h2 className="text-3xl font-black text-white">Premium Tools</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {/* SAM.gov Assistant Card */}
@@ -86,8 +85,8 @@ export default function StoreDigitalPage() {
                   <MessageCircle className="w-8 h-8 text-blue-600" />
                 </div>
                 <div className="flex-1">
-                  <div className="inline-block px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full mb-3">
-                    100% Free
+                  <div className="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full mb-3">
+                    $149/month
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                     SAM.gov Registration Assistant
@@ -106,11 +105,11 @@ export default function StoreDigitalPage() {
                     </li>
                     <li className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-green-600" />
-                      No login required
+                      Compliance monitoring
                     </li>
                   </ul>
                   <div className="mt-4 flex items-center gap-2 text-blue-600 font-semibold">
-                    Start Now <ArrowRight className="w-4 h-4" />
+                    Learn More <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
               </div>
@@ -124,10 +123,10 @@ export default function StoreDigitalPage() {
                 </div>
                 <div className="flex-1">
                   <div className="inline-block px-3 py-1 bg-amber-500 text-white text-xs font-bold rounded-full mb-3">
-                    $49
+                    $199/month
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">
-                    Grants.gov Navigator
+                    Grants Discovery & Management
                   </h3>
                   <p className="text-blue-200 mb-4">
                     AI assistant to help you search, filter, and apply for federal grants. Includes application tips and deadline tracking.
@@ -147,7 +146,7 @@ export default function StoreDigitalPage() {
                     </li>
                   </ul>
                   <Link
-                    href="/store/digital/grants-gov-navigator"
+                    href="/store/apps/grants"
                     className="mt-4 inline-flex items-center gap-2 text-white font-semibold hover:text-amber-300 transition-colors"
                   >
                     Learn More <ArrowRight className="w-4 h-4" />

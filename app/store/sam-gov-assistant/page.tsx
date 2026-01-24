@@ -235,7 +235,7 @@ Come back anytime if you need help!`,
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-bold mb-4 border border-white/20">
               <Shield className="w-4 h-4" />
-              Free Tool - No Login Required
+              Premium Tool - $149/month
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
               SAM.gov Registration
