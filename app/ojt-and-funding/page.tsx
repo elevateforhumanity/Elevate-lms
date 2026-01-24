@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/ojt-and-funding',
   },
-  title: 'Ojt And Funding | Elevate For Humanity',
+  title: 'On-the-Job Training (OJT) & Employer Funding | Elevate For Humanity',
   description:
-    'Manage ojt-and-funding settings and development.',
+    'Get paid while you learn through On-the-Job Training programs. Employers receive wage reimbursement while you gain skills and experience. WIOA-funded opportunities in Indianapolis.',
 };
 
 export default async function OjtAndFundingPage() {
@@ -62,7 +62,7 @@ export default async function OjtAndFundingPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/apply"
+                href="/apply?program=ojt&funding=wioa"
                 className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
               >
                 Apply for OJT
@@ -86,11 +86,12 @@ export default async function OjtAndFundingPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Ojt And Funding
+                  What is On-the-Job Training?
                 </h2>
                 <p className="text-black mb-6">
-                  Manage ojt-and-funding for career
-                  growth and development.
+                  On-the-Job Training (OJT) is a federally-funded program that helps you earn money 
+                  while learning new skills. Employers receive up to 50% wage reimbursement for training you, 
+                  making it easier for them to invest in your development.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">
@@ -146,7 +147,7 @@ export default async function OjtAndFundingPage() {
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/learners/reentry-coaching.jpg"
-                  alt="Ojt And Funding"
+                  alt="On-the-Job Training participant learning new skills"
                   fill
                   className="object-cover"
                   quality={100}

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   },
   title: 'Training Programs | Elevate For Humanity',
   description:
-    'Manage training settings and development.',
+    'Explore career training programs in healthcare, skilled trades, and technology. WIOA-funded options available.',
 };
 
 export default async function TrainingPage() {

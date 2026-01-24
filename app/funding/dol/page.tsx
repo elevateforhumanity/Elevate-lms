@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/funding/dol',
   },
-  title: 'Dol | Elevate For Humanity',
+  title: 'Department of Labor Funding | WIOA Programs | Elevate For Humanity',
   description:
-    'Manage dol settings and development.',
+    'Access Department of Labor funded training programs through WIOA. Get free career training in healthcare, skilled trades, and technology.',
 };
 
 export default async function DolPage() {
@@ -41,7 +41,7 @@ export default async function DolPage() {
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
           src="/images/trades/program-welding-training.jpg"
-          alt="Dol"
+          alt="DOL Programs"
           fill
           className="object-cover"
           quality={100}
@@ -51,7 +51,7 @@ export default async function DolPage() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Dol
+            DOL Programs
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
             Manage dol settings and
@@ -81,7 +81,7 @@ export default async function DolPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">Dol</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">DOL Programs</h2>
                 <p className="text-black mb-6">
                   Manage dol settings and
                   development.
@@ -140,7 +140,7 @@ export default async function DolPage() {
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/courses/esthetician-client-services-10002415-cover.jpg"
-                  alt="Dol"
+                  alt="DOL Programs"
                   fill
                   className="object-cover"
                   quality={100}

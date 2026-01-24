@@ -166,7 +166,7 @@ function ApplyPageContent() {
     <>
       {/* Avatar Guide */}
       <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/orientation-guide.mp4"
+        videoSrc="/videos/avatars/home-welcome.mp4"
         avatarName="Application Guide"
         position="bottom-right"
         autoPlay={true}

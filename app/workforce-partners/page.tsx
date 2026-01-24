@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/workforce-partners',
   },
-  title: 'Workforce Partners | Elevate For Humanity',
+  title: 'Workforce Development Partners | Elevate For Humanity',
   description:
-    'Manage workforce-partners settings and development.',
+    'Partner with Elevate for Humanity for workforce development. Connect job seekers with training and employment opportunities.',
 };
 
 export default async function WorkforcePartnersPage() {

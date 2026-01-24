@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/funding/state-programs',
   },
-  title: 'State Programs | Elevate For Humanity',
+  title: 'Indiana State Training Programs | Workforce Development | Elevate For Humanity',
   description:
-    'Manage state-programs settings and development.',
+    'Indiana state-funded workforce development programs. Access free career training through Next Level Jobs and other state initiatives.',
 };
 
 export default async function StateProgramsPage() {
@@ -53,7 +53,7 @@ export default async function StateProgramsPage() {
             State Programs
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage state-programs for career growth
+            Indiana State Programs
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -84,8 +84,7 @@ export default async function StateProgramsPage() {
                   State Programs
                 </h2>
                 <p className="text-black mb-6">
-                  Manage state-programs for career
-                  growth and development.
+                  Indiana offers workforce development programs including Next Level Jobs, Workforce Ready Grants, and employer training grants.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

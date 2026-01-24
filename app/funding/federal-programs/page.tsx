@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/funding/federal-programs',
   },
-  title: 'Federal Programs | Elevate For Humanity',
+  title: 'Federal Training Programs | WIOA & Pell Grants | Elevate For Humanity',
   description:
-    'Manage federal-programs settings and development.',
+    'Explore federal funding options for career training including WIOA, Pell Grants, and workforce development programs.',
 };
 
 export default async function FederalProgramsPage() {
@@ -84,8 +84,7 @@ export default async function FederalProgramsPage() {
                   Federal Programs
                 </h2>
                 <p className="text-black mb-6">
-                  Manage federal-programs for career
-                  growth and development.
+                  Federal programs like WIOA, Pell Grants, and Trade Adjustment Assistance provide funding for career training and education.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

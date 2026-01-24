@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
   title: 'Certifications | Elevate For Humanity',
   description:
-    'Manage certifications settings and development.',
+    'Explore certification programs.',
 };
 
 export default async function CertificationsPage() {
@@ -33,7 +33,7 @@ export default async function CertificationsPage() {
             Certifications
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage certifications for career growth
+            Industry Certifications
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -64,8 +64,7 @@ export default async function CertificationsPage() {
                   Certifications
                 </h2>
                 <p className="text-black mb-6">
-                  Manage certifications for career
-                  growth and development.
+                  Earn industry-recognized certifications that employers value. Our programs prepare you for certification exams in healthcare, IT, skilled trades, and more.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

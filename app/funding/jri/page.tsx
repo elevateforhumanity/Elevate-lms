@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/funding/jri',
   },
-  title: 'Jri | Elevate For Humanity',
+  title: 'Justice Reinvestment Initiative (JRI) | Reentry Training | Elevate For Humanity',
   description:
-    'Manage jri settings and development.',
+    'JRI-funded career training for justice-involved individuals. Get free job training and support services for successful reentry.',
 };
 
 export default async function JriPage() {
@@ -41,7 +41,7 @@ export default async function JriPage() {
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
           src="/images/heroes/success-story-3.jpg"
-          alt="Jri"
+          alt="JRI"
           fill
           className="object-cover"
           quality={100}
@@ -51,7 +51,7 @@ export default async function JriPage() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Jri
+            JRI
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
             Manage jri settings and
@@ -81,7 +81,7 @@ export default async function JriPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">Jri</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">JRI</h2>
                 <p className="text-black mb-6">
                   Manage jri settings and
                   development.
@@ -140,7 +140,7 @@ export default async function JriPage() {
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/trades/program-construction-training.jpg"
-                  alt="Jri"
+                  alt="JRI"
                   fill
                   className="object-cover"
                   quality={100}
