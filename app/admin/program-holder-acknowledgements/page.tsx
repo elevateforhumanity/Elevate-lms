@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Program Holder Acknowledgements | Elevate For Humanity',
   description:
-    'Access tools and resources for workforce development.',
+    'Resources and tools for your success.',
 };
 
 export default async function ProgramHolderAcknowledgementsPage() {

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Cm | Elevate For Humanity',
   description:
-    'Access tools and resources for workforce development.',
+    'Resources and tools for your success.',
 };
 
 export default async function CmPage() {
@@ -32,7 +32,7 @@ export default async function CmPage() {
             Cm
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access tools and resources for
+            Access your dashboard and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,7 +61,7 @@ export default async function CmPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Cm</h2>
                 <p className="text-black mb-6">
-                  Access tools and resources for
+                  Access your dashboard and
                   development.
                 </p>
                 <ul className="space-y-3">

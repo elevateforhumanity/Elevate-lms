@@ -134,7 +134,7 @@ export default function BookAppointment() {
 
   const locations = [
     {
-      id: 'meridian',
+      id: 'keystone',
       name: '8888 Keystone Xing, Suite 1300, Indianapolis, IN 46240',
       available: appointmentData.appointmentType === 'in-person',
     },

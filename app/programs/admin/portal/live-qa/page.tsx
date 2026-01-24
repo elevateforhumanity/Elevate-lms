@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Live Qa | Elevate For Humanity',
   description:
-    'Host live QAccess tools and resources for workforce development.A sessions with students.',
+    'Host live QResources and tools for your success.A sessions with students.',
 };
 
 export default async function LiveQaPage() {

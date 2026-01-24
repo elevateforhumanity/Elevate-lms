@@ -118,7 +118,7 @@ export default function CareerServicesContactPage() {
                     <h3 className="font-bold text-gray-900 mb-1">Career Services Center</h3>
                     <p className="text-gray-600">
                       8888 Keystone Xing Suite 1300<br />
-                      Indianapolis, IN 46208
+                      Indianapolis, IN 46240
                     </p>
                   </div>
                 </div>

@@ -389,7 +389,7 @@ export default async function MentorshipPage() {
                   Mentorship
                 </h2>
                 <p className="text-black mb-6">
-                  Tools and resources for career advancement
+                  Your hub for training and career growth.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

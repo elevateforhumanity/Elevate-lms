@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Ai Tutor | Elevate For Humanity',
   description:
-    'Access tools and resources for workforce development.',
+    'Resources and tools for your success.',
 };
 
 export default async function AiTutorPage() {

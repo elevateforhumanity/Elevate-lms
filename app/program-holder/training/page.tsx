@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Program Holder Training | Elevate For Humanity',
   description:
-    'Access tools and resources for workforce development.',
+    'Resources and tools for your success.',
 };
 
 export default async function TrainingPage() {

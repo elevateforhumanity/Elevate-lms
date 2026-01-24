@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Document Center | Elevate For Humanity',
   description:
-    'Access tools and resources for workforce development.',
+    'Resources and tools for your success.',
 };
 
 export default async function DocumentCenterPage() {
@@ -80,7 +80,7 @@ export default async function DocumentCenterPage() {
             Document Center
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Tools and resources for career advancement
+            Your hub for training and career growth.
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

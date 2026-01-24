@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Learn | Elevate For Humanity',
   description:
-    'Access tools and resources for workforce development.',
+    'Resources and tools for your success.',
 };
 
 export default async function LearnPage({ params }: { params: { courseType: string } }) {
@@ -56,7 +56,7 @@ export default async function LearnPage({ params }: { params: { courseType: stri
             Learn
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access tools and resources for
+            Access your dashboard and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -85,7 +85,7 @@ export default async function LearnPage({ params }: { params: { courseType: stri
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Learn</h2>
                 <p className="text-black mb-6">
-                  Access tools and resources for
+                  Access your dashboard and
                   development.
                 </p>
                 <ul className="space-y-3">

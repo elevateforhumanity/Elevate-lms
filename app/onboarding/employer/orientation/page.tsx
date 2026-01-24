@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Employer Orientation | Elevate For Humanity',
   description:
-    'Access tools and resources for workforce development.',
+    'Resources and tools for your success.',
 };
 
 export default async function OrientationPage() {
@@ -70,7 +70,7 @@ export default async function OrientationPage() {
             Orientation
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access tools and resources for
+            Access your dashboard and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
