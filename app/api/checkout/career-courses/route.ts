@@ -4,9 +4,14 @@ import Stripe from 'stripe';
 
 export const dynamic = 'force-dynamic';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-12-18.acacia',
-});
+function getStripe() {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: '2024-12-18.acacia',
+  });
+}
 
 export async function POST(req: Request) {
   try {
@@ -16,6 +21,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'No courses selected' }, { status: 400 });
     }
 
+    const stripe = getStripe();
     const supabase = createAdminClient();
 
     // Fetch courses with Stripe price IDs
