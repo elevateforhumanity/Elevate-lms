@@ -285,14 +285,14 @@ export default function HomePage() {
       </section>
 
       {/* AI Avatar Guide - Inline under hero, left side */}
-      <div className="relative -mt-12 ml-4 mb-4 z-20 w-fit">
+      <div className="relative -mt-16 sm:-mt-20 ml-4 mb-4 z-20 w-fit">
         <AvatarVideoOverlay 
           videoSrc="/videos/avatars/home-welcome.mp4"
           avatarName="Elevate Guide"
           position="inline"
           autoPlay={true}
           showOnLoad={true}
-          size="small"
+          size="medium"
         />
       </div>
 

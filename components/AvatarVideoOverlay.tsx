@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, X, Volume2, VolumeX, User } from 'lucide-react';
+import { Play, Pause, X, User } from 'lucide-react';
 
 interface AvatarVideoOverlayProps {
   videoSrc: string;
@@ -23,25 +23,17 @@ export default function AvatarVideoOverlay({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(showOnLoad);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
-  const [isMuted, setIsMuted] = useState(false);
+
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
-    video.muted = isMuted;
     
     if (autoPlay && isVisible) {
-      // Try to play with sound first
-      video.muted = false;
       video.play().catch(() => {
-        // Autoplay with sound blocked - try muted, then unmute on interaction
-        video.muted = true;
-        video.play().catch(() => {
-          // Even muted autoplay blocked
-        });
+        // Autoplay blocked by browser
       });
     }
   }, [autoPlay, isVisible]);
@@ -60,13 +52,7 @@ export default function AvatarVideoOverlay({
     setIsPlaying(!isPlaying);
   };
 
-  const toggleMute = () => {
-    const video = videoRef.current;
-    if (!video) return;
 
-    video.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
 
   const handleClose = () => {
     const video = videoRef.current;
@@ -92,11 +78,11 @@ export default function AvatarVideoOverlay({
   
   const isInline = position === 'inline';
 
-  // Responsive sizes - smaller on mobile
+  // Responsive sizes - larger for better visibility
   const sizeClasses = {
-    small: isExpanded ? 'w-48 sm:w-64 h-28 sm:h-36' : 'w-36 sm:w-48 h-20 sm:h-28',
-    medium: isExpanded ? 'w-56 sm:w-80 h-32 sm:h-48' : 'w-44 sm:w-64 h-24 sm:h-36',
-    large: isExpanded ? 'w-64 sm:w-96 h-36 sm:h-56' : 'w-56 sm:w-80 h-32 sm:h-44',
+    small: isExpanded ? 'w-64 sm:w-80 h-36 sm:h-48' : 'w-52 sm:w-64 h-32 sm:h-40',
+    medium: isExpanded ? 'w-72 sm:w-96 h-44 sm:h-56' : 'w-60 sm:w-80 h-36 sm:h-48',
+    large: isExpanded ? 'w-80 sm:w-[28rem] h-48 sm:h-64' : 'w-72 sm:w-96 h-44 sm:h-56',
   };
 
   // Minimized button when closed
@@ -122,7 +108,6 @@ export default function AvatarVideoOverlay({
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          muted={isMuted}
           playsInline
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
@@ -150,18 +135,7 @@ export default function AvatarVideoOverlay({
               )}
             </button>
 
-            {/* Mute/Unmute */}
-            <button
-              onClick={toggleMute}
-              className="p-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full text-white transition-all"
-              aria-label={isMuted ? 'Unmute' : 'Mute'}
-            >
-              {isMuted ? (
-                <VolumeX className="w-4 h-4" />
-              ) : (
-                <Volume2 className="w-4 h-4" />
-              )}
-            </button>
+
           </div>
 
           {/* Avatar name */}
