@@ -290,7 +290,7 @@ export default function HomePage() {
           videoSrc="/videos/avatars/home-welcome.mp4"
           avatarName="Elevate Guide"
           position="inline"
-          autoPlay={false}
+          autoPlay={true}
           showOnLoad={true}
           size="small"
         />

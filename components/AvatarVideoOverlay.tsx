@@ -23,7 +23,7 @@ export default function AvatarVideoOverlay({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(showOnLoad);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
 
@@ -34,11 +34,17 @@ export default function AvatarVideoOverlay({
     video.muted = isMuted;
     
     if (autoPlay && isVisible) {
+      // Try to play with sound first
+      video.muted = false;
       video.play().catch(() => {
-        // Autoplay blocked
+        // Autoplay with sound blocked - try muted, then unmute on interaction
+        video.muted = true;
+        video.play().catch(() => {
+          // Even muted autoplay blocked
+        });
       });
     }
-  }, [autoPlay, isMuted, isVisible]);
+  }, [autoPlay, isVisible]);
 
   const togglePlay = () => {
     const video = videoRef.current;
