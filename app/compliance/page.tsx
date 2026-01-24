@@ -1,8 +1,12 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Shield, FileText, CheckCircle, AlertTriangle, Clock, Download } from 'lucide-react';
+import Image from 'next/image';
+import { Download } from 'lucide-react';
 
-export const metadata: Metadata = { title: 'Compliance Center | Elevate LMS' };
+export const metadata: Metadata = { 
+  title: 'Compliance Center | Elevate LMS',
+  description: 'Access our policies, certifications, and compliance documentation.',
+};
 
 export default function CompliancePage() {
   const documents = [
@@ -21,17 +25,25 @@ export default function CompliancePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-blue-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center gap-3 mb-4">
-            <Shield className="w-10 h-10" />
-            <h1 className="text-4xl font-bold">Compliance Center</h1>
+      {/* Hero with image */}
+      <section className="relative h-64 overflow-hidden">
+        <Image
+          src="/images/programs-hq/business-training.jpg"
+          alt="Compliance Center"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-blue-900/70" />
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-7xl mx-auto px-4 w-full">
+            <h1 className="text-4xl font-bold text-white mb-4">Compliance Center</h1>
+            <p className="text-xl text-blue-200 max-w-2xl">
+              Access our policies, certifications, and compliance documentation.
+            </p>
           </div>
-          <p className="text-xl text-blue-200 max-w-2xl">
-            Access our policies, certifications, and compliance documentation.
-          </p>
         </div>
-      </div>
+      </section>
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
@@ -51,10 +63,7 @@ export default function CompliancePage() {
                   {documents.map((doc) => (
                     <tr key={doc.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4">
-                        <div className="flex items-center gap-3">
-                          <FileText className="w-5 h-5 text-gray-400" />
-                          <span className="font-medium text-gray-900">{doc.title}</span>
-                        </div>
+                        <span className="font-medium text-gray-900">{doc.title}</span>
                       </td>
                       <td className="px-6 py-4 text-gray-600">{doc.version}</td>
                       <td className="px-6 py-4 text-gray-600">{doc.updated}</td>
@@ -78,14 +87,14 @@ export default function CompliancePage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Certifications</h2>
             <div className="space-y-4">
               {certifications.map((cert, index) => (
-                <div key={index} className="bg-white rounded-xl shadow-sm p-6">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-gray-900">{cert.name}</h3>
-                      <p className="text-sm text-gray-600 mt-1">{cert.description}</p>
-                      <p className="text-xs text-gray-500 mt-2">{cert.valid}</p>
-                    </div>
+                <div key={index} className="bg-white rounded-xl shadow-sm overflow-hidden">
+                  <div className="relative h-24">
+                    <Image src="/images/programs-hq/skilled-trades-hero.jpg" alt={cert.name} fill className="object-cover" />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-semibold text-gray-900">{cert.name}</h3>
+                    <p className="text-sm text-gray-600 mt-1">{cert.description}</p>
+                    <p className="text-xs text-green-600 font-medium mt-2">{cert.valid}</p>
                   </div>
                 </div>
               ))}

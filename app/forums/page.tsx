@@ -37,52 +37,6 @@ export default async function ForumsPage() {
     }
   }
 
-  // If no categories from DB, show coming soon state
-  if (categories.length === 0) {
-    return (
-      <div className="min-h-screen bg-white">
-        {/* Hero */}
-        <section className="relative min-h-[400px] flex items-center overflow-hidden">
-          <Image
-            src="/images/success-new/success-8.jpg"
-            alt="Community Forums"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/90 to-purple-900/80" />
-          <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 w-full">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500 text-white text-sm font-semibold rounded-full mb-6">
-                <MessageSquare className="w-4 h-4" />
-                Community
-              </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Community Forums</h1>
-              <p className="text-xl text-indigo-100">
-                Connect with fellow students, alumni, and instructors. Ask questions, share experiences, and support each other on your career journey.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <div className="max-w-4xl mx-auto px-4 py-16 text-center">
-          <MessageSquare className="w-16 h-16 text-gray-300 mx-auto mb-6" />
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Forums Coming Soon</h2>
-          <p className="text-gray-600 mb-8 max-w-lg mx-auto">
-            We are building a community space where students can connect, ask questions, and support each other. Check back soon!
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition"
-          >
-            Contact Us With Questions
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
   const categoryIcons: Record<string, string> = {
     'General Discussion': '💬',
     'Healthcare Programs': '🏥',

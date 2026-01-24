@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Clock, ArrowRight, CheckCircle } from 'lucide-react';
+import { Clock, ArrowRight, CheckCircle, Phone, MapPin } from 'lucide-react';
 
 const appointmentTypes = [
   {

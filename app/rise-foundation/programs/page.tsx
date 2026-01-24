@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { ChevronRight, GraduationCap, Users, Calendar, ArrowRight, CheckCircle, Heart } from 'lucide-react';
+import Image from 'next/image';
+import { ChevronRight, Users, Calendar, ArrowRight, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Foundation Programs | RISE Foundation | Elevate For Humanity',
@@ -37,22 +38,35 @@ export default async function RiseFoundationProgramsPage() {
   const programs = scholarships || [];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4">
-        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-          <Link href="/" className="hover:text-orange-600">Home</Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link href="/rise-foundation" className="hover:text-orange-600">RISE Foundation</Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900">Programs</span>
-        </nav>
-
-        <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Foundation Programs</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            The RISE Foundation provides scholarships, grants, and fellowships to support students on their educational journey.
-          </p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="relative h-64 overflow-hidden">
+        <Image
+          src="/images/programs-hq/students-learning.jpg"
+          alt="RISE Foundation Programs"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-orange-900/60" />
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-6xl mx-auto px-4 w-full">
+            <nav className="flex items-center gap-2 text-sm text-orange-100 mb-4">
+              <Link href="/" className="hover:text-white">Home</Link>
+              <ChevronRight className="w-4 h-4" />
+              <Link href="/rise-foundation" className="hover:text-white">RISE Foundation</Link>
+              <ChevronRight className="w-4 h-4" />
+              <span className="text-white">Programs</span>
+            </nav>
+            <h1 className="text-4xl font-bold text-white mb-2">Foundation Programs</h1>
+            <p className="text-xl text-orange-100">
+              Scholarships, grants, and fellowships to support your educational journey
+            </p>
+          </div>
         </div>
+      </section>
+
+      <div className="max-w-6xl mx-auto px-4 py-8">
 
         {programs.length > 0 ? (
           <div className="grid md:grid-cols-2 gap-6">
@@ -63,16 +77,26 @@ export default async function RiseFoundationProgramsPage() {
                 : 0;
 
               return (
-                <div key={program.id} className="bg-white rounded-xl border p-6 hover:shadow-lg transition">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                      <GraduationCap className="w-6 h-6 text-orange-600" />
-                    </div>
-                    <span className="text-2xl font-bold text-orange-600">
+                <div key={program.id} className="bg-white rounded-xl border overflow-hidden hover:shadow-lg transition">
+                  <div className="relative h-40">
+                    <Image 
+                      src={[
+                        '/images/programs-hq/healthcare-hero.jpg',
+                        '/images/programs-hq/skilled-trades-hero.jpg',
+                        '/images/programs-hq/technology-hero.jpg',
+                        '/images/programs-hq/career-success.jpg',
+                        '/images/programs-hq/students-learning.jpg',
+                        '/images/programs-hq/training-classroom.jpg',
+                      ][idx % 6]} 
+                      alt={program.name} 
+                      fill 
+                      className="object-cover" 
+                    />
+                    <div className="absolute top-3 right-3 bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold">
                       ${(program.amount || 0).toLocaleString()}
-                    </span>
+                    </div>
                   </div>
-                  
+                  <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{program.name}</h3>
                   <p className="text-gray-600 mb-4">{program.description}</p>
                   
@@ -121,27 +145,31 @@ export default async function RiseFoundationProgramsPage() {
                     className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
                     Apply Now <ArrowRight className="w-4 h-4" />
                   </Link>
+                  </div>
                 </div>
               );
             })}
           </div>
         ) : (
-          <div className="bg-white rounded-xl border p-12 text-center">
-            <Heart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Scholarship Programs Coming Soon</h2>
-            <p className="text-gray-600 max-w-md mx-auto mb-6">
-              The RISE Foundation is preparing new scholarship and grant opportunities. 
-              Sign up to be notified when applications open.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/rise-foundation/notify" 
-                className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
-                Get Notified
-              </Link>
-              <Link href="/rise-foundation" 
-                className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
-                Learn About RISE
-              </Link>
+          <div className="bg-white rounded-xl border overflow-hidden">
+            <div className="relative h-48">
+              <Image src="/images/programs-hq/students-learning.jpg" alt="Scholarships" fill className="object-cover" />
+            </div>
+            <div className="p-8 text-center">
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">No Scholarships Available</h2>
+              <p className="text-gray-600 max-w-md mx-auto mb-6">
+                Check back soon for new scholarship and grant opportunities.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/apply" 
+                  className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+                  Apply for Training
+                </Link>
+                <Link href="/rise-foundation" 
+                  className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                  Learn About RISE
+                </Link>
+              </div>
             </div>
           </div>
         )}

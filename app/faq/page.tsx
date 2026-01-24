@@ -44,13 +44,25 @@ export default async function FAQPage() {
 
   if (error || !faqs || faqs.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <HelpCircle className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">FAQs Coming Soon</h1>
-          <p className="text-gray-600 mb-6">We are updating our FAQ section.</p>
-          <Link href="/contact" className="text-blue-600 hover:underline">
-            Contact us with your questions
+      <div className="min-h-screen bg-gray-50">
+        <section className="relative h-64 overflow-hidden">
+          <Image
+            src="/images/programs-hq/students-learning.jpg"
+            alt="FAQ"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-blue-900/60" />
+          <div className="relative z-10 h-full flex items-center justify-center">
+            <h1 className="text-4xl font-bold text-white">Frequently Asked Questions</h1>
+          </div>
+        </section>
+        <div className="max-w-4xl mx-auto px-4 py-12 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">No FAQs Available</h2>
+          <p className="text-gray-600 mb-6">Have a question? Contact us directly.</p>
+          <Link href="/contact" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+            Contact Us
           </Link>
         </div>
       </div>

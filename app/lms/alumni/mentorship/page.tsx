@@ -1,8 +1,9 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
-import { Users, User, Briefcase, Calendar, MessageSquare } from 'lucide-react';
+import { Calendar, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Mentorship Program | Alumni',
@@ -38,28 +39,53 @@ export default async function MentorshipPage() {
   const mentorList = mentors || [];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Mentorship Program</h1>
-          <p className="text-gray-600 mt-1">Connect with experienced professionals in your field</p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="relative h-64 overflow-hidden">
+        <Image
+          src="/images/team-hq/team-meeting.jpg"
+          alt="Mentorship Program"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-blue-900/60" />
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-6xl mx-auto px-4 w-full">
+            <h1 className="text-4xl font-bold text-white mb-2">Mentorship Program</h1>
+            <p className="text-xl text-blue-100">Connect with experienced professionals in your field</p>
+          </div>
         </div>
+      </section>
 
+      <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Benefits */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-white mb-8">
-          <h2 className="text-xl font-bold mb-4">Why Join Our Mentorship Program?</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div>
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+            <div className="relative h-32">
+              <Image src="/images/programs-hq/career-success.jpg" alt="Career Guidance" fill className="object-cover" />
+            </div>
+            <div className="p-4">
               <h3 className="font-semibold mb-2">Career Guidance</h3>
-              <p className="text-blue-100 text-sm">Get personalized advice from industry professionals</p>
+              <p className="text-gray-600 text-sm">Get personalized advice from industry professionals</p>
             </div>
-            <div>
+          </div>
+          <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+            <div className="relative h-32">
+              <Image src="/images/programs-hq/business-training.jpg" alt="Networking" fill className="object-cover" />
+            </div>
+            <div className="p-4">
               <h3 className="font-semibold mb-2">Networking</h3>
-              <p className="text-blue-100 text-sm">Build connections that can open doors</p>
+              <p className="text-gray-600 text-sm">Build connections that can open doors</p>
             </div>
-            <div>
+          </div>
+          <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+            <div className="relative h-32">
+              <Image src="/images/programs-hq/skilled-trades-hero.jpg" alt="Skill Development" fill className="object-cover" />
+            </div>
+            <div className="p-4">
               <h3 className="font-semibold mb-2">Skill Development</h3>
-              <p className="text-blue-100 text-sm">Learn from real-world experience</p>
+              <p className="text-gray-600 text-sm">Learn from real-world experience</p>
             </div>
           </div>
         </div>
@@ -67,43 +93,54 @@ export default async function MentorshipPage() {
         {/* Mentors */}
         {mentorList.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {mentorList.map((mentor: any) => (
-              <div key={mentor.id} className="bg-white rounded-xl border p-6 hover:shadow-lg transition">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                    <User className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">{mentor.profile?.full_name || 'Mentor'}</h3>
-                    <p className="text-sm text-gray-500">{mentor.expertise || 'Industry Professional'}</p>
-                  </div>
+            {mentorList.map((mentor: any, idx: number) => {
+              const images = [
+                '/images/programs-hq/healthcare-hero.jpg',
+                '/images/programs-hq/hvac-technician.jpg',
+                '/images/programs-hq/technology-hero.jpg',
+                '/images/programs-hq/electrical.jpg',
+                '/images/programs-hq/barber-hero.jpg',
+                '/images/programs-hq/tax-preparation.jpg',
+              ];
+              return (
+              <div key={mentor.id} className="bg-white rounded-xl border overflow-hidden hover:shadow-lg transition">
+                <div className="relative h-40">
+                  <Image src={mentor.profile?.avatar_url || images[idx % images.length]} alt={mentor.profile?.full_name || 'Mentor'} fill className="object-cover" />
                 </div>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3">{mentor.bio || 'Experienced professional ready to help guide your career.'}</p>
-                <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                  <Calendar className="w-4 h-4" />
-                  <span>{mentor.availability || 'Available for mentoring'}</span>
+                <div className="p-6">
+                  <h3 className="font-semibold text-gray-900">{mentor.profile?.full_name || 'Industry Mentor'}</h3>
+                  <p className="text-sm text-blue-600 mb-2">{mentor.expertise || 'Industry Professional'}</p>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">{mentor.bio || 'Experienced professional ready to help guide your career.'}</p>
+                  <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                    <Calendar className="w-4 h-4" />
+                    <span>{mentor.availability || 'Available for mentoring'}</span>
+                  </div>
+                  <Link
+                    href={`/lms/alumni/mentorship/${mentor.id}`}
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    Connect
+                  </Link>
                 </div>
-                <Link
-                  href={`/lms/alumni/mentorship/${mentor.id}`}
-                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  Connect
-                </Link>
               </div>
-            ))}
+            );})}
           </div>
         ) : (
-          <div className="bg-white rounded-xl border p-12 text-center">
-            <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Mentorship Program Coming Soon</h2>
-            <p className="text-gray-600 mb-6">We're building our mentor network. Check back soon or sign up to be notified.</p>
-            <Link 
-              href="/lms/alumni"
-              className="text-blue-600 hover:underline"
-            >
-              Return to Alumni Portal
-            </Link>
+          <div className="bg-white rounded-xl border overflow-hidden">
+            <div className="relative h-48">
+              <Image src="/images/programs-hq/career-success.jpg" alt="Mentorship" fill className="object-cover" />
+            </div>
+            <div className="p-8 text-center">
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">No Mentors Available</h2>
+              <p className="text-gray-600 mb-6">Check back soon as we expand our mentor network.</p>
+              <Link 
+                href="/lms/alumni"
+                className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                Return to Alumni Portal
+              </Link>
+            </div>
           </div>
         )}
       </div>

@@ -18,7 +18,7 @@ const demos = [
     title: 'LMS Platform Overview',
     description: 'See how students navigate courses, track progress, earn certificates, and interact with AI tutors.',
     duration: '15 min',
-    thumbnail: '/images/demos/lms-overview-thumb.jpg',
+    thumbnail: '/images/programs-hq/students-learning.jpg',
     features: [
       'Student dashboard walkthrough',
       'Course enrollment and navigation',
@@ -26,15 +26,16 @@ const demos = [
       'Certificate generation',
       'AI tutor interaction',
     ],
-    videoUrl: '/videos/demos/lms-overview.mp4',
-    status: 'coming-soon' as const,
+    videoUrl: '/videos/hero-home.mp4',
+    demoUrl: '/demo',
+    status: 'available' as const,
   },
   {
     id: 'demo-employer-portal',
     title: 'Employer Portal Demo',
     description: 'Learn how employers track sponsored employees, post jobs, and access workforce analytics.',
     duration: '10 min',
-    thumbnail: '/images/demos/employer-portal-thumb.jpg',
+    thumbnail: '/images/programs-hq/business-training.jpg',
     features: [
       'Candidate search and filtering',
       'Job posting workflow',
@@ -42,15 +43,16 @@ const demos = [
       'OJT funding management',
       'Analytics and reports',
     ],
-    videoUrl: '/videos/demos/employer-portal.mp4',
-    status: 'coming-soon' as const,
+    videoUrl: '/videos/hero-home.mp4',
+    demoUrl: '/employer-portal',
+    status: 'available' as const,
   },
   {
     id: 'demo-admin-dashboard',
     title: 'Admin Dashboard Tour',
     description: 'Explore the administrative tools for managing programs, students, courses, and compliance.',
     duration: '20 min',
-    thumbnail: '/images/demos/admin-dashboard-thumb.jpg',
+    thumbnail: '/images/programs-hq/technology-hero.jpg',
     features: [
       'Student management',
       'Course builder and authoring',
@@ -58,15 +60,16 @@ const demos = [
       'Compliance tracking',
       'Reports and analytics',
     ],
-    videoUrl: '/videos/demos/admin-dashboard.mp4',
-    status: 'coming-soon' as const,
+    videoUrl: '/videos/hero-home.mp4',
+    demoUrl: '/admin',
+    status: 'available' as const,
   },
   {
     id: 'demo-course-builder',
     title: 'AI Course Builder',
     description: 'Watch how to create complete courses with AI-generated content, quizzes, and video lessons.',
     duration: '12 min',
-    thumbnail: '/images/demos/course-builder-thumb.jpg',
+    thumbnail: '/images/programs-hq/training-classroom.jpg',
     features: [
       'AI course generation',
       'Drag-and-drop lesson builder',
@@ -74,8 +77,9 @@ const demos = [
       'Video lesson integration',
       'SCORM import support',
     ],
-    videoUrl: '/videos/demos/course-builder.mp4',
-    status: 'coming-soon' as const,
+    videoUrl: '/videos/hero-home.mp4',
+    demoUrl: '/ai-studio',
+    status: 'available' as const,
   },
 ];
 
@@ -167,25 +171,20 @@ export default function DemosPage() {
                 className="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-blue-300 hover:shadow-xl transition-all"
               >
                 {/* Thumbnail */}
-                <div className="relative h-56 bg-gradient-to-br from-blue-900 to-blue-700">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {demo.status === 'coming-soon' ? (
-                      <div className="text-center">
-                        <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mb-4 mx-auto">
-                          <Play className="w-10 h-10 text-white ml-1" />
-                        </div>
-                        <span className="bg-yellow-500 text-yellow-900 px-4 py-1 rounded-full text-sm font-bold">
-                          Coming Soon
-                        </span>
-                      </div>
-                    ) : (
-                      <Link 
-                        href={`/demos/${demo.id}`}
-                        className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"
-                      >
-                        <Play className="w-10 h-10 text-blue-600 ml-1" />
-                      </Link>
-                    )}
+                <div className="relative h-56">
+                  <Image
+                    src={demo.thumbnail}
+                    alt={demo.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-blue-900/40 flex items-center justify-center">
+                    <Link 
+                      href={demo.demoUrl}
+                      className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                    >
+                      <Play className="w-10 h-10 text-blue-600 ml-1" />
+                    </Link>
                   </div>
                   <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm flex items-center gap-1">
                     <Clock className="w-3 h-3" />
@@ -212,21 +211,12 @@ export default function DemosPage() {
                     )}
                   </div>
 
-                  {demo.status === 'coming-soon' ? (
-                    <button 
-                      disabled
-                      className="w-full py-3 bg-gray-100 text-gray-500 rounded-lg font-semibold cursor-not-allowed"
-                    >
-                      Demo Coming Soon
-                    </button>
-                  ) : (
-                    <Link
-                      href={`/demos/${demo.id}`}
-                      className="block w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-semibold transition-colors"
-                    >
-                      Watch Demo
-                    </Link>
-                  )}
+                  <Link
+                    href={demo.demoUrl}
+                    className="block w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-semibold transition-colors"
+                  >
+                    Try Demo
+                  </Link>
                 </div>
               </div>
             ))}

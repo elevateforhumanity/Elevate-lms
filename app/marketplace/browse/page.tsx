@@ -1,7 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
-import { Package, Star, User, ShoppingCart } from 'lucide-react';
+import { Star, ShoppingCart } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Browse Marketplace | Elevate For Humanity',
@@ -39,12 +40,26 @@ export default async function MarketplaceBrowsePage() {
   const categories = ['All', ...new Set(itemList.map((i: any) => i.category).filter(Boolean))];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Marketplace</h1>
-          <p className="text-gray-600 mt-1">Digital products, courses, and resources from creators</p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="relative h-64 overflow-hidden">
+        <Image
+          src="/images/programs-hq/technology-hero.jpg"
+          alt="Marketplace"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-blue-900/60" />
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-7xl mx-auto px-4 w-full">
+            <h1 className="text-4xl font-bold text-white mb-2">Marketplace</h1>
+            <p className="text-xl text-blue-100">Digital products, courses, and resources from creators</p>
+          </div>
         </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 py-8">
 
         {/* Categories */}
         {categories.length > 1 && (
@@ -68,16 +83,20 @@ export default async function MarketplaceBrowsePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {itemList.map((item: any) => (
               <div key={item.id} className="bg-white rounded-xl border overflow-hidden hover:shadow-lg transition">
-                <div className="h-40 bg-gray-100 flex items-center justify-center">
-                  <Package className="w-12 h-12 text-gray-300" />
+                <div className="relative h-40">
+                  <Image 
+                    src={item.image_url || '/images/programs-hq/business-training.jpg'} 
+                    alt={item.title} 
+                    fill 
+                    className="object-cover" 
+                  />
                 </div>
                 <div className="p-4">
                   <span className="text-xs text-gray-500">{item.category || 'General'}</span>
                   <h3 className="font-semibold text-gray-900 mt-1 line-clamp-1">{item.title}</h3>
                   <p className="text-sm text-gray-500 mt-1 line-clamp-2">{item.description}</p>
                   <div className="flex items-center gap-2 mt-2">
-                    <User className="w-4 h-4 text-gray-400" />
-                    <span className="text-sm text-gray-500">{item.seller?.full_name || 'Creator'}</span>
+                    <span className="text-sm text-gray-500">{item.seller?.full_name || 'Elevate for Humanity'}</span>
                   </div>
                   {item.rating > 0 && (
                     <div className="flex items-center gap-1 mt-2">
@@ -100,13 +119,17 @@ export default async function MarketplaceBrowsePage() {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-xl border p-12 text-center">
-            <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Marketplace Coming Soon</h2>
-            <p className="text-gray-600 mb-6">We're building our creator marketplace. Check back soon for digital products and resources.</p>
-            <Link href="/" className="text-blue-600 hover:underline">
-              Return to Home
-            </Link>
+          <div className="bg-white rounded-xl border overflow-hidden">
+            <div className="relative h-48">
+              <Image src="/images/programs-hq/students-learning.jpg" alt="Browse marketplace" fill className="object-cover" />
+            </div>
+            <div className="p-8 text-center">
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">No Items Available</h2>
+              <p className="text-gray-600 mb-6">Check back soon for digital products and resources.</p>
+              <Link href="/store" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                Visit Store
+              </Link>
+            </div>
           </div>
         )}
       </div>
