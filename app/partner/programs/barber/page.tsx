@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { 
   Scissors, 
   Users, 
@@ -13,7 +14,8 @@ import {
   Loader2,
   AlertCircle,
   FileText,
-  Download
+  Download,
+  ClipboardList
 } from 'lucide-react';
 
 interface Apprentice {
@@ -36,7 +38,14 @@ interface ProgressEntry {
   apprentice_name?: string;
 }
 
+interface OnboardingStatus {
+  completed: boolean;
+  step?: string;
+  shopName?: string;
+}
+
 export default function BarberPartnerPage() {
+  const router = useRouter();
   const [apprentices, setApprentices] = useState<Apprentice[]>([]);
   const [progressEntries, setProgressEntries] = useState<ProgressEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -44,6 +53,7 @@ export default function BarberPartnerPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [onboardingStatus, setOnboardingStatus] = useState<OnboardingStatus | null>(null);
   
   const [entryForm, setEntryForm] = useState({
     apprenticeId: '',
@@ -68,6 +78,17 @@ export default function BarberPartnerPage() {
   async function fetchData() {
     setLoading(true);
     try {
+      // First check onboarding status
+      const onboardingRes = await fetch('/api/partner/onboarding-status');
+      const onboardingData = await onboardingRes.json();
+      setOnboardingStatus(onboardingData);
+      
+      // If not onboarded, don't fetch other data
+      if (!onboardingData.completed) {
+        setLoading(false);
+        return;
+      }
+      
       const [apprenticesRes, progressRes] = await Promise.all([
         fetch('/api/partner/apprentices?program=barber'),
         fetch('/api/partner/progress?program=barber'),
@@ -130,6 +151,52 @@ export default function BarberPartnerPage() {
     return (
       <div className="min-h-screen bg-slate-100 flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
+      </div>
+    );
+  }
+
+  // Show onboarding required screen if not completed
+  if (onboardingStatus && !onboardingStatus.completed) {
+    return (
+      <div className="min-h-screen bg-slate-100">
+        <div className="max-w-2xl mx-auto px-4 py-16">
+          <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+            <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <ClipboardList className="w-10 h-10 text-amber-600" />
+            </div>
+            <h1 className="text-2xl font-bold text-slate-900 mb-4">
+              Complete Onboarding First
+            </h1>
+            <p className="text-slate-600 mb-8 max-w-md mx-auto">
+              Before you can manage apprentices and submit progress reports, you need to complete the partner onboarding process. This includes providing your business information, license details, and signing the partnership agreement.
+            </p>
+            <div className="space-y-4">
+              <Link
+                href="/partner/onboarding"
+                className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 bg-purple-600 text-white font-semibold rounded-xl hover:bg-purple-700 transition-colors"
+              >
+                <ClipboardList className="w-5 h-5" />
+                Start Onboarding
+              </Link>
+              <Link
+                href="/partner/dashboard"
+                className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 bg-slate-100 text-slate-700 font-semibold rounded-xl hover:bg-slate-200 transition-colors"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                Back to Dashboard
+              </Link>
+            </div>
+            <div className="mt-8 p-4 bg-blue-50 rounded-xl">
+              <h3 className="font-semibold text-blue-900 mb-2">What you&apos;ll need:</h3>
+              <ul className="text-sm text-blue-800 text-left space-y-1">
+                <li>• Business name and EIN</li>
+                <li>• Barber/Cosmetology license number</li>
+                <li>• Business address and contact info</li>
+                <li>• Capacity for apprentices</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

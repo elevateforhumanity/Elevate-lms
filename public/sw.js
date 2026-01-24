@@ -1,6 +1,6 @@
 // Service Worker for Elevate for Humanity PWA
-// Version 2.0 - Enhanced offline support with course caching
-const CACHE_VERSION = 'v2';
+// Version 3.0 - Fixed routing for SPA navigation
+const CACHE_VERSION = 'v3';
 const STATIC_CACHE = `elevate-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `elevate-dynamic-${CACHE_VERSION}`;
 const COURSE_CACHE = `elevate-courses-${CACHE_VERSION}`;
@@ -10,9 +10,8 @@ const OFFLINE_URL = '/offline.html';
 const PRECACHE_ASSETS = [
   '/',
   '/offline.html',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/logo.svg',
+  '/icons/icon-192x192.png',
+  '/icons/icon-512x512.png',
   '/manifest.json',
 ];
 
@@ -129,27 +128,50 @@ async function staleWhileRevalidate(request, cacheName) {
 // Fetch event - Smart caching based on request type
 self.addEventListener('fetch', (event) => {
   const { request } = event;
-  const url = request.url;
+  const url = new URL(request.url);
   
   // Skip non-GET requests
   if (request.method !== 'GET') return;
   
   // Skip external URLs
-  if (!url.startsWith(self.location.origin)) return;
+  if (url.origin !== self.location.origin) return;
   
   // Skip no-cache patterns
-  if (matchesPattern(url, CACHE_STRATEGIES.noCache)) return;
+  if (matchesPattern(request.url, CACHE_STRATEGIES.noCache)) return;
   
-  // Determine caching strategy
+  // Handle navigation requests (SPA routing)
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          // Cache successful navigation responses
+          if (response.ok) {
+            const responseClone = response.clone();
+            caches.open(DYNAMIC_CACHE).then((cache) => {
+              cache.put(request, responseClone);
+            });
+          }
+          return response;
+        })
+        .catch(() => {
+          // Try to return cached version first
+          return caches.match(request)
+            .then((cached) => cached || caches.match(OFFLINE_URL));
+        })
+    );
+    return;
+  }
+  
+  // Determine caching strategy for non-navigation requests
   let responsePromise;
   
-  if (matchesPattern(url, CACHE_STRATEGIES.static)) {
+  if (matchesPattern(request.url, CACHE_STRATEGIES.static)) {
     // Static assets: cache-first
     responsePromise = cacheFirst(request, STATIC_CACHE);
-  } else if (matchesPattern(url, CACHE_STRATEGIES.staleWhileRevalidate)) {
+  } else if (matchesPattern(request.url, CACHE_STRATEGIES.staleWhileRevalidate)) {
     // API data: stale-while-revalidate
     responsePromise = staleWhileRevalidate(request, DYNAMIC_CACHE);
-  } else if (matchesPattern(url, CACHE_STRATEGIES.networkFirst)) {
+  } else if (matchesPattern(request.url, CACHE_STRATEGIES.networkFirst)) {
     // Course content: network-first with course cache
     responsePromise = networkFirst(request, COURSE_CACHE);
   } else {
@@ -160,11 +182,6 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     responsePromise.then((response) => {
       if (response) return response;
-      
-      // Fallback to offline page for navigation
-      if (request.mode === 'navigate') {
-        return caches.match(OFFLINE_URL);
-      }
       
       return new Response('Offline', { 
         status: 503,
