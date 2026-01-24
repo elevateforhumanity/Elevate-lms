@@ -133,8 +133,8 @@ export default function SiteHeader() {
               </span>
             </Link>
 
-            {/* Desktop Navigation - visible on tablet and up */}
-            <nav className="hidden md:flex items-center h-full flex-1 justify-center" aria-label="Main navigation">
+            {/* Desktop Navigation - always visible */}
+            <nav className="flex items-center h-full flex-1 justify-center" aria-label="Main navigation">
               {NAV_ITEMS.map((item) => (
                 <div key={item.name} className="relative h-full group">
                   <Link

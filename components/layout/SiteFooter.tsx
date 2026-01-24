@@ -160,8 +160,8 @@ export default function SiteFooter() {
       {/* Mobile: Accordion | Desktop: Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         
-        {/* Mobile Accordion */}
-        <div className="sm:hidden space-y-0 divide-y divide-gray-800">
+        {/* Mobile Accordion - hidden, using grid on all sizes */}
+        <div className="hidden space-y-0 divide-y divide-gray-800">
           {footerSections.map((section) => (
             <div key={section.title}>
               <button
@@ -211,7 +211,8 @@ export default function SiteFooter() {
         </div>
 
         {/* Desktop Grid - responsive columns for all sections */}
-        <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-x-6 gap-y-8">
+        {/* Desktop Grid - always visible */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-6 gap-y-8">
           {footerSections.map((section) => (
             <div key={section.title}>
               <h3 className="text-xs font-medium uppercase tracking-wider text-gray-400 mb-3">
