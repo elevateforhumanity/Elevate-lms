@@ -2,9 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2023-10-16',
-});
+// Initialize Stripe lazily to avoid build errors when env vars are missing
+function getStripe() {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: '2023-10-16',
+  });
+}
 
 // App pricing (monthly in cents)
 const APP_PRICES: Record<string, Record<string, number>> = {
@@ -59,6 +65,8 @@ export async function POST(request: NextRequest) {
       .eq('id', user.id)
       .single();
 
+    const stripe = getStripe();
+    
     if (profile?.stripe_customer_id) {
       customerId = profile.stripe_customer_id;
     } else {
