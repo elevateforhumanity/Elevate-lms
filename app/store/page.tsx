@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Play, Zap, Globe, GraduationCap, Code, Users, ShoppingBag, FileText, Shield, Building2, Heart, Wrench, DollarSign, BookOpen } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 export const metadata: Metadata = {
@@ -17,10 +17,9 @@ const storeCategories = [
   {
     id: 'licenses',
     name: 'Platform Licenses',
-    description: 'Full workforce platform deployment with LMS, admin dashboard, enrollment, and compliance tools.',
+    description: 'Full workforce platform with LMS, admin, enrollment, and compliance.',
     image: '/images/programs-hq/technology-hero.jpg',
     href: '/store/licenses',
-    icon: Globe,
     color: 'bg-orange-600',
     featured: true,
     products: ['Core Platform $4,999', 'School License $15,000', 'Enterprise $50,000'],
@@ -28,10 +27,9 @@ const storeCategories = [
   {
     id: 'infrastructure',
     name: 'Monthly Infrastructure',
-    description: 'Self-operating workforce infrastructure with automated intake, compliance, and credentialing.',
+    description: 'Self-operating workforce infrastructure with automated workflows.',
     image: '/images/programs-hq/it-support.jpg',
     href: '/store/licenses#monthly',
-    icon: Zap,
     color: 'bg-blue-600',
     featured: true,
     products: ['Core $750/mo', 'Institutional $2,500/mo', 'Enterprise $8,500/mo'],
@@ -42,79 +40,71 @@ const storeCategories = [
     description: 'Industry-recognized credentials from Certiport, HSI, and CareerSafe.',
     image: '/images/programs-hq/healthcare-hero.jpg',
     href: '/store/courses',
-    icon: GraduationCap,
     color: 'bg-green-600',
-    products: ['Microsoft Office', 'Adobe Creative', 'Healthcare', 'OSHA Safety'],
+    products: ['Microsoft Office', 'Adobe Creative'],
   },
   {
     id: 'programs',
     name: 'Training Programs',
-    description: 'Complete career training programs with hands-on instruction and job placement.',
+    description: 'Career training with hands-on instruction and job placement.',
     image: '/images/programs-hq/barber-hero.jpg',
     href: '/programs',
-    icon: Users,
     color: 'bg-purple-600',
-    products: ['Barber Apprenticeship', 'CNA Training', 'HVAC Certification', 'CDL Training'],
+    products: ['Barber Apprenticeship', 'CNA Training'],
   },
   {
     id: 'compliance',
     name: 'Compliance Tools',
-    description: 'WIOA, FERPA, WCAG compliance checklists, templates, and reporting tools.',
+    description: 'WIOA, FERPA, WCAG compliance checklists and templates.',
     image: '/images/heroes-hq/funding-hero.jpg',
     href: '/store/compliance',
-    icon: Shield,
     color: 'bg-teal-600',
-    products: ['WIOA Compliance', 'FERPA Templates', 'Grant Reporting', 'Audit Prep'],
+    products: ['WIOA Compliance', 'FERPA Templates'],
   },
   {
     id: 'ai-tools',
     name: 'AI & Automation',
-    description: 'AI-powered tutoring, content creation, and automated workflows.',
+    description: 'AI-powered tutoring and automated workflows.',
     image: '/images/programs-hq/cybersecurity.jpg',
     href: '/store/ai-studio',
-    icon: Wrench,
     color: 'bg-violet-600',
-    products: ['AI Studio', 'AI Tutor', 'AI Instructor Pack'],
+    products: ['AI Studio', 'AI Tutor'],
   },
   {
     id: 'apps',
     name: 'Apps & Integrations',
-    description: 'SAM.gov registration, Grants.gov navigator, website builder, and more.',
+    description: 'SAM.gov, Grants.gov, website builder, and more.',
     image: '/images/team-hq/team-meeting.jpg',
     href: '/store/apps',
-    icon: Building2,
     color: 'bg-sky-600',
-    products: ['SAM.gov Assistant', 'Grants Navigator', 'Website Builder'],
+    products: ['SAM.gov Assistant', 'Grants Navigator'],
   },
   {
     id: 'developer',
     name: 'Developer Licenses',
-    description: 'Full codebase access for self-hosting and custom deployments.',
+    description: 'Full codebase access for self-hosting.',
     image: '/images/programs-hq/technology-hero.jpg',
     href: '/store/licenses#developer',
-    icon: Code,
     color: 'bg-slate-700',
-    products: ['Starter $299', 'Pro $999', 'Enterprise $5,000'],
+    products: ['Starter $299', 'Pro $999'],
   },
   {
     id: 'digital',
     name: 'Digital Resources',
-    description: 'Toolkits, guides, templates, and educational materials.',
+    description: 'Toolkits, guides, and templates.',
     image: '/images/programs-hq/tax-preparation.jpg',
     href: '/store/digital',
-    icon: FileText,
     color: 'bg-indigo-600',
-    products: ['Tax Business Toolkit', 'Grant Guide', 'Fund-Ready Course'],
+    products: ['Tax Business Toolkit', 'Grant Guide'],
   },
   {
     id: 'shop',
     name: 'Shop & Supplies',
-    description: 'Tools, apparel, workbooks, and supplies for your training.',
+    description: 'Tools, apparel, and workbooks.',
     image: '/images/programs-hq/hvac-technician.jpg',
     href: '/shop',
-    icon: ShoppingBag,
     color: 'bg-pink-600',
-    products: ['Tool Kits', 'Scrubs', 'Workbooks', 'Safety Gear'],
+    products: ['Tool Kits', 'Scrubs'],
   },
 ];
 
@@ -277,45 +267,41 @@ export default function StorePage() {
           <p className="text-gray-600 mb-8">Find exactly what you need</p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {storeCategories.map((category) => {
-              const Icon = category.icon;
-              return (
-                <Link
-                  key={category.id}
-                  href={category.href}
-                  className={`group relative bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all ${category.featured ? 'lg:col-span-2 lg:row-span-2' : ''}`}
-                >
-                  <div className={`relative ${category.featured ? 'h-64 lg:h-full' : 'h-40'}`}>
-                    <Image
-                      src={category.image}
-                      alt={category.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            {storeCategories.map((category) => (
+              <Link
+                key={category.id}
+                href={category.href}
+                className={`group relative bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all ${category.featured ? 'lg:col-span-2 lg:row-span-2' : ''}`}
+              >
+                <div className={`relative ${category.featured ? 'h-64 lg:h-full' : 'h-40'}`}>
+                  <Image
+                    src={category.image}
+                    alt={category.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                  <div className={`inline-flex items-center gap-2 ${category.color} px-3 py-1 rounded-full text-xs font-bold mb-2`}>
+                    {category.name}
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <div className={`inline-flex items-center gap-2 ${category.color} px-3 py-1 rounded-full text-xs font-bold mb-2`}>
-                      <Icon className="w-3 h-3" />
-                      {category.name}
-                    </div>
-                    <p className={`text-sm text-gray-200 mb-2 ${category.featured ? '' : 'line-clamp-2'}`}>
-                      {category.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1">
-                      {category.products.slice(0, category.featured ? 4 : 2).map((product, i) => (
-                        <span key={i} className="text-xs bg-white/20 px-2 py-0.5 rounded">
-                          {product}
-                        </span>
-                      ))}
-                    </div>
+                  <p className={`text-sm text-gray-200 mb-2 ${category.featured ? '' : 'line-clamp-2'}`}>
+                    {category.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1">
+                    {category.products.slice(0, category.featured ? 4 : 2).map((product, i) => (
+                      <span key={i} className="text-xs bg-white/20 px-2 py-0.5 rounded">
+                        {product}
+                      </span>
+                    ))}
                   </div>
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowRight className="w-4 h-4 text-white" />
-                  </div>
-                </Link>
-              );
-            })}
+                </div>
+                <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ArrowRight className="w-4 h-4 text-white" />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

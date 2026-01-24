@@ -292,77 +292,58 @@ export default async function LicensesPage() {
               Everything You Need to Succeed
             </h2>
             <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-              Every license includes the complete platform, documentation, and
-              support to get you running fast.
+              Every license includes the complete platform and support.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700">
-              <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
-                <Code className="w-7 h-7 text-blue-400" />
+            <Link href="/store/licenses/source-code" className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700 hover:border-blue-500 transition-colors group">
+              <div className="w-14 h-14 rounded-xl overflow-hidden mb-6">
+                <Image src="/images/programs-hq/technology-hero.jpg" alt="Source Code" width={56} height={56} className="object-cover w-full h-full" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Full Source Code</h3>
-              <p className="text-zinc-400">
-                Complete Next.js codebase with TypeScript. Modify anything,
-                add features, make it yours.
-              </p>
-            </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-blue-400">Full Source Code</h3>
+              <p className="text-zinc-400">Complete Next.js codebase with TypeScript.</p>
+            </Link>
 
-            <div className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700">
-              <div className="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
-                <Palette className="w-7 h-7 text-green-400" />
+            <Link href="/store/licenses/white-label" className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700 hover:border-green-500 transition-colors group">
+              <div className="w-14 h-14 rounded-xl overflow-hidden mb-6">
+                <Image src="/images/programs-hq/business-training.jpg" alt="White Label" width={56} height={56} className="object-cover w-full h-full" />
               </div>
-              <h3 className="text-xl font-bold mb-3">White-Label Ready</h3>
-              <p className="text-zinc-400">
-                Your logo, your colors, your domain. Complete branding
-                customization included.
-              </p>
-            </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-green-400">White-Label Ready</h3>
+              <p className="text-zinc-400">Your logo, colors, and domain.</p>
+            </Link>
 
-            <div className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700">
-              <div className="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
-                <Server className="w-7 h-7 text-purple-400" />
+            <Link href="/store/licenses/deployment" className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700 hover:border-purple-500 transition-colors group">
+              <div className="w-14 h-14 rounded-xl overflow-hidden mb-6">
+                <Image src="/images/programs-hq/cybersecurity.jpg" alt="Deploy Anywhere" width={56} height={56} className="object-cover w-full h-full" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Deploy Anywhere</h3>
-              <p className="text-zinc-400">
-                Vercel, AWS, Azure, GCP, or self-hosted. One-click deployment
-                templates included.
-              </p>
-            </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-purple-400">Deploy Anywhere</h3>
+              <p className="text-zinc-400">Vercel, AWS, Azure, or self-hosted.</p>
+            </Link>
 
-            <div className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700">
-              <div className="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center mb-6">
-                <Shield className="w-7 h-7 text-amber-400" />
+            <Link href="/store/licenses/compliance" className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700 hover:border-amber-500 transition-colors group">
+              <div className="w-14 h-14 rounded-xl overflow-hidden mb-6">
+                <Image src="/images/heroes-hq/funding-hero.jpg" alt="Compliance" width={56} height={56} className="object-cover w-full h-full" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Compliance Built-In</h3>
-              <p className="text-zinc-400">
-                WIOA reporting, FERPA compliance, ETPL tracking. Meet funding
-                requirements out of the box.
-              </p>
-            </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-amber-400">Compliance Built-In</h3>
+              <p className="text-zinc-400">WIOA, FERPA, ETPL tracking included.</p>
+            </Link>
 
-            <div className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700">
-              <div className="w-14 h-14 bg-rose-500/20 rounded-xl flex items-center justify-center mb-6">
-                <Headphones className="w-7 h-7 text-rose-400" />
+            <Link href="/store/licenses/support" className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700 hover:border-rose-500 transition-colors group">
+              <div className="w-14 h-14 rounded-xl overflow-hidden mb-6">
+                <Image src="/images/team-hq/team-meeting.jpg" alt="Support" width={56} height={56} className="object-cover w-full h-full" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Priority Support</h3>
-              <p className="text-zinc-400">
-                Direct access to our engineering team. Get help with setup,
-                customization, and scaling.
-              </p>
-            </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-rose-400">Priority Support</h3>
+              <p className="text-zinc-400">Direct access to our engineering team.</p>
+            </Link>
 
-            <div className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700">
-              <div className="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-6">
-                <Clock className="w-7 h-7 text-cyan-400" />
+            <Link href="/store/licenses/updates" className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700 hover:border-cyan-500 transition-colors group">
+              <div className="w-14 h-14 rounded-xl overflow-hidden mb-6">
+                <Image src="/images/programs-hq/it-support.jpg" alt="Updates" width={56} height={56} className="object-cover w-full h-full" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Lifetime Updates</h3>
-              <p className="text-zinc-400">
-                Get all future updates and new features. Your license never
-                expires.
-              </p>
-            </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-cyan-400">Lifetime Updates</h3>
+              <p className="text-zinc-400">All future updates and features included.</p>
+            </Link>
           </div>
         </div>
       </section>

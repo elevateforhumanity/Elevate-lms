@@ -3,328 +3,371 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  Check,
-  ArrowRight,
-  Play,
-  Monitor,
-  Smartphone,
-  Users,
-  BookOpen,
-  Settings,
-  CreditCard,
-  Shield,
-  BarChart3,
-  Building2,
-  FileText,
-  Briefcase,
-} from 'lucide-react';
+import { Check, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
-const LICENSE_DATA = {
-  name: 'School / Training Provider License',
-  price: 15000,
-  description: 'Complete workforce platform for schools, nonprofits, and training providers.',
-  longDescription:
-    'The most popular license for workforce training organizations. Includes white-label branding, compliance tools, partner dashboards, case management, and everything you need to run professional training programs at scale.',
-  features: [
-    'Complete Next.js codebase',
-    'White-label branding',
-    'Up to 5 site deployments',
-    '2 years of updates',
-    'Priority email & chat support',
-    'LMS with SCORM support',
-    'Student enrollment & intake',
-    'Admin dashboard with analytics',
-    'Partner & employer dashboards',
-    'Case management system',
-    'WIOA compliance tools',
-    'Grant reporting templates',
-    'Mobile PWA',
-    'API access',
-  ],
-  idealFor: [
-    'Workforce training providers',
-    'Community colleges',
-    'Nonprofit organizations',
-    'Apprenticeship sponsors',
-    'Career centers',
-  ],
-  appsIncluded: [
-    { name: 'Learning Management System', icon: BookOpen, description: 'Courses, SCORM, certifications, progress tracking' },
-    { name: 'Enrollment & Intake', icon: Users, description: 'Applications, eligibility screening, cohort management' },
-    { name: 'Admin Dashboard', icon: Settings, description: 'User management, analytics, system configuration' },
-    { name: 'Partner Dashboard', icon: Building2, description: 'Employer and partner access with limited views' },
-    { name: 'Case Management', icon: FileText, description: 'Track barriers, interventions, wraparound services' },
-    { name: 'Compliance & Reporting', icon: Shield, description: 'WIOA, FERPA, grant reporting with automated data' },
-    { name: 'Payments & Billing', icon: CreditCard, description: 'Stripe integration, invoices, funding sources' },
-    { name: 'Mobile PWA', icon: Smartphone, description: 'iOS and Android progressive web app' },
-  ],
-  whatItReplaces: [
-    'Admissions and intake staff',
-    'Compliance tracking spreadsheets',
-    'Manual reporting processes',
-    'Separate LMS subscriptions',
-    'Paper-based case management',
-    'Multiple disconnected systems',
-  ],
-};
-
-const DEMO_PAGES = [
-  { name: 'Admin Dashboard', path: '/demo/admin', description: 'Full admin experience' },
-  { name: 'Student Portal', path: '/demo/learner', description: 'Learner experience' },
-  { name: 'Partner View', path: '/demo/employer', description: 'Employer/partner access' },
-  { name: 'Programs', path: '/programs', description: 'Training programs catalog' },
-  { name: 'Apply', path: '/apply', description: 'Student application flow' },
-  { name: 'Compliance', path: '/compliance', description: 'Compliance dashboard' },
-];
-
 export default function SchoolLicensePage() {
-  const [activeDemo, setActiveDemo] = useState('/demo/admin');
-  const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>('desktop');
+  const [activeSection, setActiveSection] = useState<string | null>('maria');
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Hero */}
-      <section className="bg-orange-600 text-white py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-600 via-orange-500 to-orange-700" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white text-orange-600 rounded-full text-sm font-bold mb-4">
-                Most Popular
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-black mb-4">
-                {LICENSE_DATA.name}
-              </h1>
-              <p className="text-xl text-orange-100 max-w-2xl mb-6">
-                {LICENSE_DATA.longDescription}
-              </p>
-              <div className="flex items-baseline gap-2 mb-6">
-                <span className="text-5xl font-black">${LICENSE_DATA.price.toLocaleString()}</span>
-                <span className="text-orange-200">one-time</span>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/store/licenses/checkout?license=school"
-                  className="inline-flex items-center gap-2 bg-white text-orange-600 px-6 py-3 rounded-lg font-bold hover:bg-orange-50 transition"
-                >
-                  Purchase License
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-                <Link
-                  href="/demo/admin"
-                  className="inline-flex items-center gap-2 bg-orange-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-800 transition"
-                >
-                  <Play className="w-5 h-5" />
-                  Try Live Demo
-                </Link>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-video w-full max-w-lg bg-orange-700 rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/store/platform-hero.jpg"
-                  alt="School License Platform"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Avatar Guide */}
-        <AvatarVideoOverlay
-          videoSrc="/videos/avatars/store-assistant.mp4"
-          position="bottom-right"
-          title="License Guide"
-          subtitle="Let me explain what's included"
+      {/* Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/store-assistant.mp4"
+        avatarName="Sales Guide"
+        position="top-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
+
+      {/* Hero - Clean */}
+      <section className="relative h-[50vh] overflow-hidden">
+        <Image
+          src="/images/programs-hq/technology-hero.jpg"
+          alt="School License Platform"
+          fill
+          className="object-cover"
+          priority
         />
       </section>
 
-      {/* What's Included */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black mb-2">What's Included</h2>
-          <p className="text-gray-600 mb-8">Complete platform with all the tools you need</p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {LICENSE_DATA.appsIncluded.map((app) => {
-              const Icon = app.icon;
-              return (
-                <div key={app.name} className="bg-gray-50 rounded-xl p-6">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-orange-600" />
-                  </div>
-                  <h3 className="font-bold mb-2">{app.name}</h3>
-                  <p className="text-sm text-gray-600">{app.description}</p>
-                </div>
-              );
-            })}
+      {/* Price Bar */}
+      <section className="bg-slate-900 text-white py-6 sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span className="text-3xl font-black">$15,000</span>
+            <span className="text-slate-400 ml-2">one-time</span>
+          </div>
+          <div className="flex gap-4">
+            <Link href="/contact?subject=School%20License" className="bg-white text-slate-900 px-6 py-3 rounded-lg font-bold hover:bg-slate-100">
+              Schedule Demo
+            </Link>
+            <Link href="/store/checkout?license=school" className="bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700">
+              Purchase Now
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Interactive Demo */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black mb-2">Interactive Demo</h2>
-          <p className="text-gray-600 mb-8">Explore the platform before you buy</p>
+      {/* The Story: Meet Maria */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-black mb-8 text-center">Meet Maria</h2>
+          
+          <div className="prose prose-lg max-w-none">
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Maria runs a workforce training center in Indianapolis. She has 8 programs, 
+              400 students a year, and a team of 5. Her days used to look like this:
+            </p>
+          </div>
 
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Demo Navigation */}
-            <div className="lg:w-64 flex-shrink-0">
-              <div className="bg-white rounded-xl p-4 shadow-sm">
-                <p className="text-sm font-bold text-gray-500 mb-3">DEMO PAGES</p>
-                <div className="space-y-2">
-                  {DEMO_PAGES.map((page) => (
-                    <button
-                      key={page.path}
-                      onClick={() => setActiveDemo(page.path)}
-                      className={`w-full text-left px-3 py-2 rounded-lg text-sm transition ${
-                        activeDemo === page.path
-                          ? 'bg-orange-100 text-orange-700 font-medium'
-                          : 'hover:bg-gray-100'
-                      }`}
-                    >
-                      <span className="font-medium">{page.name}</span>
-                      <span className="block text-xs text-gray-500">{page.description}</span>
-                    </button>
-                  ))}
+          {/* Before - The Pain */}
+          <div className="mt-12 bg-red-50 rounded-2xl p-8 border-2 border-red-100">
+            <h3 className="text-2xl font-black text-red-800 mb-6">Before: The Daily Chaos</h3>
+            
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">📋</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg">7:30 AM - Paper Applications</h4>
+                  <p className="text-gray-600">
+                    Maria arrives to find 12 paper applications in her inbox. She spends 2 hours 
+                    entering data into three different spreadsheets—one for enrollment, one for 
+                    WIOA tracking, one for her funder reports.
+                  </p>
                 </div>
               </div>
 
-              {/* View Mode Toggle */}
-              <div className="mt-4 bg-white rounded-xl p-4 shadow-sm">
-                <p className="text-sm font-bold text-gray-500 mb-3">VIEW MODE</p>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setViewMode('desktop')}
-                    className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm ${
-                      viewMode === 'desktop' ? 'bg-orange-100 text-orange-700' : 'bg-gray-100'
-                    }`}
-                  >
-                    <Monitor className="w-4 h-4" />
-                    Desktop
-                  </button>
-                  <button
-                    onClick={() => setViewMode('mobile')}
-                    className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm ${
-                      viewMode === 'mobile' ? 'bg-orange-100 text-orange-700' : 'bg-gray-100'
-                    }`}
-                  >
-                    <Smartphone className="w-4 h-4" />
-                    Mobile
-                  </button>
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">📞</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg">10:00 AM - Phone Tag</h4>
+                  <p className="text-gray-600">
+                    A WorkOne advisor calls asking about a student's eligibility status. Maria 
+                    digs through folders, finds the file, realizes the income verification is 
+                    missing. She calls the student. Voicemail. She'll try again tomorrow.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">😰</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg">2:00 PM - The Compliance Scramble</h4>
+                  <p className="text-gray-600">
+                    Quarterly report is due Friday. Maria's compliance officer is out sick. 
+                    She spends 4 hours pulling data from the LMS, cross-referencing with 
+                    attendance sheets, and manually calculating completion rates. She finds 
+                    3 students who completed but were never marked as "exited" in the system.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">🌙</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg">6:30 PM - Still There</h4>
+                  <p className="text-gray-600">
+                    Maria finally leaves. She didn't get to the curriculum updates she planned. 
+                    Or the employer outreach. Or the grant application due next month. She spent 
+                    the entire day on data entry and putting out fires.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Demo Frame */}
-            <div className="flex-1">
-              <div className={`bg-white rounded-xl shadow-lg overflow-hidden mx-auto ${
-                viewMode === 'mobile' ? 'max-w-sm' : 'w-full'
-              }`}>
-                <div className="bg-gray-100 px-4 py-2 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-400" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                    <div className="w-3 h-3 rounded-full bg-green-400" />
-                  </div>
-                  <div className="flex-1 bg-white rounded px-3 py-1 text-xs text-gray-500">
-                    elevateforhumanity.org{activeDemo}
-                  </div>
+            <div className="mt-8 p-4 bg-red-100 rounded-lg">
+              <p className="text-red-800 font-medium text-center">
+                Sound familiar? Maria was drowning. Her team was burning out. 
+                Something had to change.
+              </p>
+            </div>
+          </div>
+
+          {/* The Turning Point */}
+          <div className="mt-12 text-center">
+            <div className="inline-block bg-orange-100 text-orange-800 px-6 py-3 rounded-full font-bold">
+              Then Maria found Elevate
+            </div>
+          </div>
+
+          {/* After - The Transformation */}
+          <div className="mt-12 bg-green-50 rounded-2xl p-8 border-2 border-green-100">
+            <h3 className="text-2xl font-black text-green-800 mb-6">After: The New Reality</h3>
+            
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">☀️</span>
                 </div>
-                <div className={`relative ${viewMode === 'mobile' ? 'h-[600px]' : 'h-[500px]'}`}>
-                  <iframe
-                    src={activeDemo}
-                    className="w-full h-full border-0"
-                    title="Platform Demo"
-                  />
+                <div>
+                  <h4 className="font-bold text-lg">7:30 AM - Coffee First</h4>
+                  <p className="text-gray-600">
+                    Maria checks her dashboard. 8 new applications came in overnight—already 
+                    processed. 6 were auto-approved (eligibility verified). 2 are waiting on 
+                    documents (students got automatic reminders). She sips her coffee.
+                  </p>
                 </div>
               </div>
-              <p className="text-center text-sm text-gray-500 mt-4">
-                <Link href={activeDemo} target="_blank" className="text-orange-600 hover:underline">
-                  Open in new tab →
-                </Link>
+
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">✅</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg">10:00 AM - Instant Answers</h4>
+                  <p className="text-gray-600">
+                    WorkOne advisor calls about a student. Maria types the name, sees the 
+                    complete record: application date, eligibility status, enrolled program, 
+                    current progress, attendance rate. "She's at 78% completion, on track to 
+                    finish next month." Call takes 2 minutes.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">📊</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg">2:00 PM - One-Click Reports</h4>
+                  <p className="text-gray-600">
+                    Quarterly report? Maria clicks "Generate WIOA Report." The system pulls 
+                    enrollment, completion, credential attainment, and employment outcomes. 
+                    Formatted exactly how the state wants it. Done in 30 seconds.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">🚀</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg">4:00 PM - Actually Growing</h4>
+                  <p className="text-gray-600">
+                    Maria spends the afternoon on what matters: meeting with a new employer 
+                    partner, reviewing curriculum with her lead instructor, and drafting that 
+                    grant application. She leaves at 5:00.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 p-4 bg-green-100 rounded-lg">
+              <p className="text-green-800 font-medium text-center">
+                Maria didn't hire more staff. She didn't work more hours. 
+                She just stopped doing work the system should do.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What It Replaces */}
-      <section className="py-16">
+      {/* The Numbers */}
+      <section className="py-16 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black mb-2">What This Replaces</h2>
-          <p className="text-gray-600 mb-8">Consolidate your tech stack and reduce overhead</p>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {LICENSE_DATA.whatItReplaces.map((item, i) => (
-              <div key={i} className="flex items-center gap-3 bg-red-50 p-4 rounded-lg">
-                <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-red-600 font-bold">✕</span>
-                </div>
-                <span className="text-gray-700">{item}</span>
-              </div>
-            ))}
+          <h2 className="text-3xl font-black mb-12 text-center">Maria's Results After 6 Months</h2>
+          
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-5xl font-black text-orange-400">73%</div>
+              <div className="text-slate-400 mt-2">Less time on admin</div>
+            </div>
+            <div>
+              <div className="text-5xl font-black text-orange-400">2→5</div>
+              <div className="text-slate-400 mt-2">Days to enroll → Hours</div>
+            </div>
+            <div>
+              <div className="text-5xl font-black text-orange-400">100%</div>
+              <div className="text-slate-400 mt-2">Compliance accuracy</div>
+            </div>
+            <div>
+              <div className="text-5xl font-black text-orange-400">+40%</div>
+              <div className="text-slate-400 mt-2">More students served</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Features List */}
-      <section className="py-16 bg-gray-50">
+      {/* What You Get */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black mb-8">All Features</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {LICENSE_DATA.features.map((feature, i) => (
-              <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-lg">
-                <Check className="w-5 h-5 text-green-600 flex-shrink-0" />
-                <span>{feature}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ideal For */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black mb-8">Ideal For</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {LICENSE_DATA.idealFor.map((item, i) => (
-              <div key={i} className="bg-orange-50 p-4 rounded-lg text-center">
-                <Building2 className="w-8 h-8 text-orange-600 mx-auto mb-2" />
-                <span className="font-medium">{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-orange-600 text-white">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-black mb-4">Ready to Get Started?</h2>
-          <p className="text-orange-100 mb-8">
-            One-time purchase. Lifetime ownership. 2 years of updates included.
+          <h2 className="text-3xl font-black mb-4 text-center">What Maria Got (What You'll Get)</h2>
+          <p className="text-xl text-gray-600 mb-12 text-center max-w-2xl mx-auto">
+            Everything needed to run a training organization without the chaos.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/store/licenses/checkout?license=school"
-              className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-orange-50 transition"
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Self-Service Enrollment',
+                desc: 'Students apply online, upload documents, and get instant eligibility decisions. No staff time required.',
+                img: '/images/programs-hq/healthcare-hero.jpg'
+              },
+              {
+                title: 'Complete LMS',
+                desc: 'Courses, quizzes, certificates, progress tracking. Students learn on any device. Instructors see everything.',
+                img: '/images/programs-hq/technology-hero.jpg'
+              },
+              {
+                title: 'Automated Compliance',
+                desc: 'WIOA fields enforced at enrollment. Reports generate automatically. Audit trail for everything.',
+                img: '/images/heroes-hq/funding-hero.jpg'
+              },
+              {
+                title: 'Case Management',
+                desc: 'Track barriers, interventions, and outcomes. Flag at-risk students. Coordinate services.',
+                img: '/images/programs-hq/cna-training.jpg'
+              },
+              {
+                title: 'Employer Portal',
+                desc: 'Employers post jobs, view candidates, verify credentials. Placement tracking built in.',
+                img: '/images/programs-hq/skilled-trades-hero.jpg'
+              },
+              {
+                title: 'Your Brand',
+                desc: 'Your logo, your colors, your domain. Students see your organization, not ours.',
+                img: '/images/programs-hq/business-training.jpg'
+              },
+            ].map((item, i) => (
+              <div key={i} className="bg-gray-50 rounded-xl overflow-hidden">
+                <div className="relative h-40">
+                  <Image src={item.img} alt={item.title} fill className="object-cover" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The Process */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-black mb-12 text-center">From Purchase to Live in 2 Weeks</h2>
+          
+          <div className="space-y-8">
+            {[
+              { day: 'Day 1', title: 'Purchase & Kickoff Call', desc: 'We set up your account, configure your branding, and walk through the admin dashboard together.' },
+              { day: 'Days 2-5', title: 'Add Your Programs', desc: 'Upload your courses, set up enrollment forms, configure eligibility rules. We provide templates.' },
+              { day: 'Days 6-10', title: 'Staff Training', desc: 'Your team learns the system. Video tutorials + live Q&A. Most staff are comfortable in 2-3 hours.' },
+              { day: 'Days 11-14', title: 'Soft Launch', desc: 'Enroll a small cohort. Work out any kinks. Get feedback. Make adjustments.' },
+              { day: 'Day 15+', title: 'Full Launch', desc: 'Open enrollment to everyone. We monitor for the first month. You focus on growing.' },
+            ].map((step, i) => (
+              <div key={i} className="flex gap-6">
+                <div className="w-24 flex-shrink-0">
+                  <span className="inline-block bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    {step.day}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg">{step.title}</h3>
+                  <p className="text-gray-600">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-black mb-12 text-center">Questions Maria Asked</h2>
+          
+          <div className="space-y-6">
+            {[
+              { q: '"What if my team isn\'t technical?"', a: 'Neither is Maria\'s. The platform is designed for program staff, not IT. If you can use email, you can use this.' },
+              { q: '"What about our existing students?"', a: 'We migrate your data. Student records, completions, everything. No one starts over.' },
+              { q: '"What if we need something custom?"', a: 'We do custom development at $150/hour. Most requests take 5-20 hours. Or suggest it—we might build it for everyone.' },
+              { q: '"What happens if something breaks?"', a: '2 years of priority support included. Email, chat, screen sharing. We respond within 24 hours, usually faster.' },
+              { q: '"Is $15,000 really worth it?"', a: 'Maria calculated she was spending $4,000/month on her old systems plus 60+ hours of staff time. The platform paid for itself in 4 months.' },
+            ].map((faq, i) => (
+              <div key={i} className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-lg mb-2">{faq.q}</h3>
+                <p className="text-gray-600">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 bg-orange-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-black mb-4">Ready to Be Like Maria?</h2>
+          <p className="text-xl text-orange-100 mb-8">
+            Stop drowning in admin. Start growing your programs.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link 
+              href="/contact?subject=School%20License%20Demo"
+              className="bg-white text-orange-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-50"
             >
-              Purchase for ${LICENSE_DATA.price.toLocaleString()}
-              <ArrowRight className="w-5 h-5" />
+              Schedule a Demo
             </Link>
-            <Link
-              href="/contact?subject=School%20License"
-              className="inline-flex items-center justify-center gap-2 border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition"
+            <Link 
+              href="/store/checkout?license=school"
+              className="bg-orange-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-800 border-2 border-orange-500"
             >
-              Contact Sales
+              Get Started — $15,000
             </Link>
           </div>
+          <p className="mt-8 text-orange-200">
+            Questions? Call (317) 314-3757
+          </p>
         </div>
       </section>
     </div>
