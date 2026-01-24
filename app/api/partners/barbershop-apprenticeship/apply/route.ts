@@ -58,7 +58,7 @@ function validateEmail(email: string): boolean {
 }
 
 function validatePhone(phone: string): boolean {
-  return /^[\d\s\-\(\)\+]{10,}$/.test(phone);
+  return /^[\d\s\-()\\+]{10,}$/.test(phone);
 }
 
 function hashIP(ip: string): string {

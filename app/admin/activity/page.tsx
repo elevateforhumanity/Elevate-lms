@@ -51,7 +51,7 @@ export default async function ActivityLogPage() {
     const diffMins = Math.floor((now.getTime() - createdAt.getTime()) / 60000);
     const diffHours = Math.floor(diffMins / 60);
     const diffDays = Math.floor(diffHours / 24);
-    let timestamp = diffMins < 60 ? `${diffMins} minutes ago` : diffHours < 24 ? `${diffHours} hours ago` : `${diffDays} days ago`;
+    const timestamp = diffMins < 60 ? `${diffMins} minutes ago` : diffHours < 24 ? `${diffHours} hours ago` : `${diffDays} days ago`;
     
     return {
       id: a.id,
