@@ -225,15 +225,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      
-      {/* AI Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/home-welcome.mp4"
-        avatarName="Elevate Guide"
-        position="bottom-right"
-        autoPlay={false}
-        showOnLoad={true}
-      />
 
       {/* Hero Section - Clean video, no text overlay */}
       <section className="relative w-full h-[60vh] sm:h-[65vh] md:h-[70vh] overflow-hidden bg-slate-900">
@@ -292,6 +283,18 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* AI Avatar Guide - Inline under hero, left side */}
+      <div className="relative -mt-12 ml-4 mb-4 z-20 w-fit">
+        <AvatarVideoOverlay 
+          videoSrc="/videos/avatars/home-welcome.mp4"
+          avatarName="Elevate Guide"
+          position="inline"
+          autoPlay={false}
+          showOnLoad={true}
+          size="small"
+        />
+      </div>
 
       {/* Personalized Progress Section - Only for logged-in users with enrollments */}
       {user && activeEnrollment && !isLoading && (
@@ -855,16 +858,6 @@ export default function HomePage() {
       {/* Spacer for sticky CTA on mobile */}
       {/* Spacer for sticky CTA - accounts for button height + safe area */}
       <div className="h-24 md:hidden"></div>
-
-      {/* AI Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/hero-homepage-avatar.mp4"
-        avatarName="Sarah"
-        position="bottom-right"
-        autoPlay={false}
-        showOnLoad={true}
-        size="medium"
-      />
 
     </div>
   );

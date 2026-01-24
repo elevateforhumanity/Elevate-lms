@@ -6,7 +6,7 @@ import { Play, Pause, X, Volume2, VolumeX, User } from 'lucide-react';
 interface AvatarVideoOverlayProps {
   videoSrc: string;
   avatarName?: string;
-  position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
+  position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left' | 'inline';
   autoPlay?: boolean;
   showOnLoad?: boolean;
   size?: 'small' | 'medium' | 'large';
@@ -75,13 +75,16 @@ export default function AvatarVideoOverlay({
     setIsVisible(true);
   };
 
-  // Position classes - same position on mobile and desktop
+  // Position classes - fixed position options or inline
   const positionClasses = {
-    'bottom-right': 'bottom-4 right-4',
-    'bottom-left': 'bottom-4 left-4',
-    'top-right': 'top-20 right-4',
-    'top-left': 'top-20 left-4',
+    'bottom-right': 'fixed bottom-4 right-4',
+    'bottom-left': 'fixed bottom-4 left-4',
+    'top-right': 'fixed top-20 right-4',
+    'top-left': 'fixed top-20 left-4',
+    'inline': 'relative',
   };
+  
+  const isInline = position === 'inline';
 
   // Responsive sizes - smaller on mobile
   const sizeClasses = {
@@ -95,7 +98,7 @@ export default function AvatarVideoOverlay({
     return (
       <button
         onClick={handleOpen}
-        className={`fixed ${positionClasses[position]} z-[60] flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-full shadow-lg transition-all hover:scale-105`}
+        className={`${positionClasses[position]} z-[60] flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-full shadow-lg transition-all hover:scale-105`}
         aria-label="Open AI Guide"
       >
         <User className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -106,7 +109,7 @@ export default function AvatarVideoOverlay({
 
   return (
     <div
-      className={`fixed ${positionClasses[position]} z-[60] ${sizeClasses[size]} transition-all duration-300 ease-out`}
+      className={`${positionClasses[position]} z-[60] ${sizeClasses[size]} transition-all duration-300 ease-out`}
     >
       {/* Video Container */}
       <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900">
