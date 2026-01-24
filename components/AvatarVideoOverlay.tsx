@@ -75,10 +75,10 @@ export default function AvatarVideoOverlay({
     setIsVisible(true);
   };
 
-  // Position classes - moved up on mobile to avoid chat widget overlap
+  // Position classes - same position on mobile and desktop
   const positionClasses = {
-    'bottom-right': 'bottom-24 sm:bottom-4 right-4',
-    'bottom-left': 'bottom-24 sm:bottom-4 left-4',
+    'bottom-right': 'bottom-4 right-4',
+    'bottom-left': 'bottom-4 left-4',
     'top-right': 'top-20 right-4',
     'top-left': 'top-20 left-4',
   };
