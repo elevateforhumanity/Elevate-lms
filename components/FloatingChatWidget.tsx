@@ -88,7 +88,7 @@ export default function FloatingChatWidget() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="hidden md:flex fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-blue-600 text-white shadow-2xl hover:bg-blue-700 transition-all hover:scale-110"
+          className="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-40 flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full bg-blue-600 text-white shadow-2xl hover:bg-blue-700 transition-all hover:scale-110"
           aria-label="Open chat"
         >
           <svg className="h-6 w-6 sm:h-8 sm:w-8" fill="none" stroke="currentColor"
@@ -105,7 +105,7 @@ d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="hidden md:flex fixed bottom-6 right-6 z-50 h-[600px] w-[400px] flex-col rounded-2xl border border-slate-200 bg-white shadow-2xl">
+        <div className="fixed bottom-0 right-0 md:bottom-6 md:right-6 z-50 flex h-[80vh] md:h-[600px] w-full md:w-[400px] flex-col md:rounded-2xl border border-slate-200 bg-white shadow-2xl">
           {/* Header */}
           <div className="flex items-center justify-between rounded-t-2xl bg-blue-600 px-4 py-3 text-white">
             <div className="flex items-center gap-3">

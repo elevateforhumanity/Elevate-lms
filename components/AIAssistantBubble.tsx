@@ -105,7 +105,7 @@ export function AIAssistantBubble() {
       {!isOpen && (
         <button
           onClick={handleOpen}
-          className="hidden md:flex fixed bottom-6 right-6 z-50 bg-brand-orange-600 text-white rounded-full p-4 shadow-2xl hover:bg-brand-orange-700 transition-all hover:scale-110 focus:outline-none focus:ring-4 focus:ring-brand-orange-300"
+          className="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-40 flex bg-brand-orange-600 text-white rounded-full p-4 shadow-2xl hover:bg-brand-orange-700 transition-all hover:scale-110 focus:outline-none focus:ring-4 focus:ring-brand-orange-300"
           aria-label="Open AI assistant"
         >
           <MessageCircle className="h-10 w-10" />
@@ -114,7 +114,7 @@ export function AIAssistantBubble() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="hidden md:flex fixed bottom-6 right-6 z-50 w-96 h-[600px] bg-white rounded-2xl shadow-2xl flex-col border border-gray-200 transition-all duration-300 ease-out opacity-100 translate-y-0">
+        <div className="fixed bottom-0 right-0 md:bottom-6 md:right-6 z-50 w-full md:w-96 h-[80vh] md:h-[600px] bg-white md:rounded-2xl shadow-2xl flex flex-col border border-gray-200 transition-all duration-300 ease-out opacity-100 translate-y-0">
           {/* Header */}
           <div className="bg-brand-orange-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center gap-3">

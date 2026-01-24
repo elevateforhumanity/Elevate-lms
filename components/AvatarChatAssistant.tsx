@@ -173,7 +173,7 @@ export default function AvatarChatAssistant({
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className={`hidden md:flex fixed bottom-4 sm:bottom-6 ${positionClasses} z-50 items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-full shadow-lg transition-all hover:scale-105`}
+        className={`fixed bottom-20 md:bottom-6 ${positionClasses} z-40 flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-full shadow-lg transition-all hover:scale-105`}
       >
         <div className="relative">
           <MessageCircle className="w-6 h-6" />
@@ -186,7 +186,7 @@ export default function AvatarChatAssistant({
 
   return (
     <div
-      className={`hidden md:flex fixed bottom-4 sm:bottom-6 ${positionClasses} z-50 w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden transition-all flex-col ${
+      className={`fixed bottom-20 md:bottom-6 ${positionClasses} z-40 w-[calc(100%-2rem)] md:w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden transition-all flex flex-col ${
         isMinimized ? 'h-16' : 'h-[500px] sm:h-[550px]'
       }`}
     >
