@@ -108,7 +108,7 @@ export async function POST(req: Request) {
     try {
       await resend.emails.send({
         from: 'SupersonicFastCash <noreply@www.elevateforhumanity.org>',
-        to: 'admin@www.elevateforhumanity.org',
+        to: 'elevate4humanityedu@gmail.com',
         subject: 'New Tax Appointment Booked',
         html: `
           <h2>New Appointment Booked</h2>

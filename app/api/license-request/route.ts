@@ -54,7 +54,7 @@ export async function POST(req: Request) {
   try {
     await getResend().emails.send({
       from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
-      to: process.env.NOTIFY_EMAIL_TO || 'admin@www.elevateforhumanity.org',
+      to: process.env.NOTIFY_EMAIL_TO || 'elevate4humanityedu@gmail.com',
       subject: `New License Request: ${payload.full_name} (${payload.desired_tier})`,
       text:
         `New License Request\n\n` +
