@@ -2,6 +2,13 @@
 
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
+import dynamic from 'next/dynamic';
+
+// Lazy load chat widget to avoid blocking initial render
+const LiveChatWidget = dynamic(
+  () => import('@/components/support/LiveChatWidget').then(mod => ({ default: mod.ConditionalLiveChatWidget })),
+  { ssr: false }
+);
 
 /**
  * ConditionalLayout - Main layout wrapper
@@ -19,6 +26,7 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <SiteFooter />
+      <LiveChatWidget />
     </div>
   );
 }

@@ -12,10 +12,65 @@ export async function POST(req: NextRequest) {
     const apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
-      return NextResponse.json(
-        { error: "OPENAI_API_KEY is not set on the server" },
-        { status: 500 }
-      );
+      // Fallback response when API key is not configured
+      const userMessage = body?.messages?.slice(-1)?.[0]?.content?.toLowerCase() || '';
+      
+      let fallbackReply = `Thanks for reaching out! I'm here to help you learn about Elevate for Humanity's free career training programs.
+
+**Quick Info:**
+• Training is 100% FREE for eligible Indiana residents through WIOA funding
+• Programs: Healthcare (CNA), Skilled Trades (HVAC, CDL), Barbering, and more
+• Call us: (317) 314-3757
+• Apply online: elevateforhumanity.org/apply
+
+What would you like to know more about?`;
+
+      if (userMessage.includes('apply') || userMessage.includes('start') || userMessage.includes('enroll')) {
+        fallbackReply = `Great! Here's how to apply:
+
+1. Visit **elevateforhumanity.org/apply**
+2. Complete the eligibility questionnaire (10-15 min)
+3. Upload required documents (ID, proof of income)
+4. Schedule your orientation
+
+Training is 100% FREE for eligible participants! Call (317) 314-3757 if you need help.`;
+      } else if (userMessage.includes('program') || userMessage.includes('course') || userMessage.includes('training')) {
+        fallbackReply = `We offer FREE training in:
+
+**Healthcare:** CNA, Phlebotomy, Medical Assistant
+**Skilled Trades:** HVAC, Electrical, CDL Truck Driving
+**Professional:** Barbering, Cosmetology
+**Technology:** IT Fundamentals, Microsoft Office
+
+All programs include job placement assistance! Visit elevateforhumanity.org/programs for details.`;
+      } else if (userMessage.includes('free') || userMessage.includes('cost') || userMessage.includes('pay') || userMessage.includes('money')) {
+        fallbackReply = `Yes! Training is **100% FREE** for eligible participants through:
+
+• **WIOA** - For low-income individuals
+• **JRI** - For justice-involved individuals  
+• **WRG** - Indiana Workforce Ready Grant
+
+Check your eligibility at elevateforhumanity.org/wioa-eligibility or call (317) 314-3757.`;
+      } else if (userMessage.includes('eligib') || userMessage.includes('qualify')) {
+        fallbackReply = `To qualify for FREE training, you generally need to be:
+
+✓ Indiana resident
+✓ 18+ years old
+✓ US citizen or authorized to work
+✓ Meet income guidelines (varies by family size)
+
+Check your eligibility at elevateforhumanity.org/wioa-eligibility or call (317) 314-3757 for help!`;
+      } else if (userMessage.includes('contact') || userMessage.includes('call') || userMessage.includes('phone') || userMessage.includes('person') || userMessage.includes('human')) {
+        fallbackReply = `You can reach our team at:
+
+📞 **Phone:** (317) 314-3757
+📧 **Email:** info@elevateforhumanity.org
+🌐 **Website:** elevateforhumanity.org
+
+We're here to help you start your career journey!`;
+      }
+
+      return NextResponse.json({ reply: fallbackReply });
     }
 
     const body = await req.json().catch(() => null);

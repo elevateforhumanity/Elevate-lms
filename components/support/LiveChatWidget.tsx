@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Minimize2, Bot } from 'lucide-react';
+import { MessageCircle, X, Send, Minimize2, Bot, Loader2 } from 'lucide-react';
 import { TidioChatWidget } from './TidioChatWidget';
 
 interface Message {
@@ -18,35 +18,28 @@ const quickReplies = [
   'Talk to a person',
 ];
 
-const botResponses: Record<string, string> = {
-  'how do i apply': 'You can apply online at www.elevateforhumanity.org/apply. The application takes about 10-15 minutes. Would you like me to guide you through the process?',
-  'what programs': 'We offer training in Healthcare (CNA, Phlebotomy), Skilled Trades (HVAC, Welding), Technology (IT Support, Web Dev), CDL Trucking, and more. Visit /programs to see all options.',
-  'is training free': 'Yes! Through WIOA funding, eligible students pay $0 for tuition, books, and certification exams. Visit /wioa-eligibility to check if you qualify.',
-  'talk to a person': 'I\'ll connect you with our support team. You can also call (317) 314-3757 or submit a ticket at /support/ticket for a response within 24 hours.',
-  'default': 'I\'m here to help! You can ask about our programs, enrollment, funding, or career services. For complex questions, our team is available at (317) 314-3757.',
-};
-
 function FallbackChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hi! I\'m the Elevate assistant. How can I help you today?',
+      text: 'Hi! 👋 I\'m the Elevate AI assistant. I can help you learn about our free career training programs, check eligibility, or answer questions. How can I help you today?',
       sender: 'bot',
       timestamp: new Date(),
     },
   ]);
   const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const handleSend = (text?: string) => {
+  const handleSend = async (text?: string) => {
     const messageText = text || input.trim();
-    if (!messageText) return;
+    if (!messageText || isLoading) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -57,28 +50,43 @@ function FallbackChatWidget() {
 
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
+    setIsLoading(true);
 
-    // Simulate bot response
-    setTimeout(() => {
-      const lowerText = messageText.toLowerCase();
-      let response = botResponses.default;
+    try {
+      // Build conversation history for context
+      const conversationHistory = messages.slice(-6).map(m => ({
+        role: m.sender === 'user' ? 'user' : 'assistant',
+        content: m.text,
+      }));
+      conversationHistory.push({ role: 'user', content: messageText });
 
-      for (const [key, value] of Object.entries(botResponses)) {
-        if (lowerText.includes(key)) {
-          response = value;
-          break;
-        }
-      }
+      const response = await fetch('/api/ai-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: conversationHistory }),
+      });
 
+      const data = await response.json();
+      
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: response,
+        text: data.reply || data.response || "I'm having trouble right now. Please call us at (317) 314-3757 for assistance.",
         sender: 'bot',
         timestamp: new Date(),
       };
 
       setMessages((prev) => [...prev, botMessage]);
-    }, 1000);
+    } catch (error) {
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: "I'm having trouble connecting. Please call us at (317) 314-3757 or visit elevateforhumanity.org/apply to get started!",
+        sender: 'bot',
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (!isOpen) {
@@ -188,13 +196,14 @@ function FallbackChatWidget() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type a message..."
                 className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-black text-sm"
+                disabled={isLoading}
               />
               <button
                 type="submit"
-                disabled={!input.trim()}
+                disabled={!input.trim() || isLoading}
                 className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send className="w-5 h-5" />
+                {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
               </button>
             </form>
           </div>
