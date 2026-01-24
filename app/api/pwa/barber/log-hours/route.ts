@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { checkNewMilestone, BARBER_MILESTONES } from '@/lib/pwa/milestones';
 
 export async function POST(request: NextRequest) {
   try {
@@ -92,7 +93,44 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    return NextResponse.json({ success: true });
+    // Check for milestone achievement
+    const { data: totalProgress } = await supabase
+      .from('progress_entries')
+      .select('hours_worked')
+      .eq('apprentice_id', user.id)
+      .eq('program_id', 'BARBER');
+
+    const totalHours = totalProgress?.reduce(
+      (sum, entry) => sum + parseFloat(entry.hours_worked || 0), 0
+    ) || 0;
+    
+    const previousHours = totalHours - parseFloat(hours);
+    const newMilestone = checkNewMilestone(previousHours, totalHours);
+
+    // Send milestone notification if achieved
+    if (newMilestone) {
+      try {
+        await fetch(`${process.env.NEXT_PUBLIC_APP_URL || ''}/api/push/send`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userId: user.id,
+            title: `${newMilestone.badge} ${newMilestone.title}!`,
+            body: newMilestone.description,
+            url: '/pwa/barber/progress',
+            tag: 'milestone_achieved',
+          }),
+        });
+      } catch (notifError) {
+        console.error('Milestone notification error:', notifError);
+      }
+    }
+
+    return NextResponse.json({ 
+      success: true,
+      totalHours,
+      milestone: newMilestone,
+    });
   } catch (error) {
     console.error('Error logging hours:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

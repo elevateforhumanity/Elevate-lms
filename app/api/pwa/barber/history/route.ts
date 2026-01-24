@@ -1,0 +1,49 @@
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+import { NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
+
+export async function GET() {
+  try {
+    const supabase = await createClient();
+    
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
+
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Get all progress entries for this user
+    const { data: progressEntries, error } = await supabase
+      .from('progress_entries')
+      .select('*')
+      .eq('apprentice_id', user.id)
+      .eq('program_id', 'BARBER')
+      .order('week_ending', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching history:', error);
+      return NextResponse.json({ error: 'Failed to fetch history' }, { status: 500 });
+    }
+
+    const entries = (progressEntries || []).map(entry => ({
+      id: entry.id,
+      weekEnding: entry.week_ending,
+      hours: parseFloat(entry.hours_worked || 0),
+      status: entry.status || 'submitted',
+      notes: entry.notes,
+      submittedAt: entry.created_at,
+      approvedAt: entry.approved_at,
+    }));
+
+    return NextResponse.json({ entries });
+  } catch (error) {
+    console.error('Error fetching history:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
