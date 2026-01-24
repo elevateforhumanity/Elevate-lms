@@ -29,7 +29,7 @@ VITA (Free Tax Services) → Selfish Inc. (Mental Wellness) → Elevate (Trainin
 ### Platform Type
 **Workforce Development Marketplace** serving:
 - **Students** - Access to free/funded training (WIOA, WRG, JRI)
-- **Program Holders** - Training providers with 50/50 revenue share
+- **Program Holders** - Training providers with 1/3 revenue share
 - **Employers** - Hiring trained graduates (Supersonic, Curvature, partners)
 - **Workforce Boards** - Compliance oversight and reporting
 - **Partners** - EmployIndy, JRI, Certiport, Milady, NRF
@@ -43,7 +43,7 @@ VITA (Free Tax Services) → Selfish Inc. (Mental Wellness) → Elevate (Trainin
 
 ### Revenue Streams
 1. **Government Funding (Primary)** - WIOA, WRG, JRI, EmployIndy contracts
-2. **Program Holder Revenue Share** - 50/50 split on funded participants
+2. **Program Holder Revenue Share** - Partners receive 1/3 on funded participants
 3. **Stripe Payments (Secondary)** - Self-pay and employer-sponsored training
 4. **Platform Licensing** - $4,999 - $50,000 for other training providers
 5. **Supersonic Fast Cash** - Tax preparation and refund advance services
@@ -247,7 +247,7 @@ elevate-lms/
 - Course/program management
 - Student roster view
 - Progress reporting
-- Revenue sharing (50/50 split)
+- Revenue sharing (1/3 for partners, 50/50 on credential course markup)
 - Analytics and insights
 
 ### ✅ Communication
