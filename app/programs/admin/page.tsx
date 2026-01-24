@@ -88,7 +88,7 @@ export default async function AdminPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Admin</h2>
                 <p className="text-black mb-6">
-                  Access tools and resources for
+                  Manage your program administration
                   development.
                 </p>
                 <ul className="space-y-3">

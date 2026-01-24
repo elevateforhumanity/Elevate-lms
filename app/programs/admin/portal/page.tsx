@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Portal | Elevate For Humanity',
   description:
-    'Access tools and resources for workforce development.',
+    'Access the program administration portal.',
 };
 
 export default async function PortalPage() {
@@ -71,7 +71,7 @@ export default async function PortalPage() {
             Portal
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Access tools and resources for
+            Manage your program administration
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
