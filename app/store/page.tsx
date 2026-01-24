@@ -1,387 +1,247 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Play } from 'lucide-react';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
+import { ArrowRight, Home, ChevronRight, Play, ShoppingBag, GraduationCap, BookOpen, Server, CreditCard, FileText, Settings, Users } from 'lucide-react';
+import { primaryCards, secondaryCards } from '@/lib/store/cards';
+import StoreClientWrapper from './StoreClientWrapper';
+import UniversalSearch from '@/components/search/UniversalSearch';
 
 export const metadata: Metadata = {
   title: 'Store | Elevate for Humanity',
-  description: 'Platform licenses, certification courses, toolkits, workbooks, and workforce development resources.',
+  description: 'Shop gear, browse courses, download workbooks, and license our workforce platform.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/store',
   },
 };
 
-// Store Categories with images and links to subpages
-const storeCategories = [
-  {
-    id: 'licenses',
-    name: 'Platform Licenses',
-    description: 'Full workforce platform with LMS, admin, enrollment, and compliance.',
-    image: '/images/programs-hq/technology-hero.jpg',
-    href: '/store/licenses',
-    color: 'bg-orange-600',
-    featured: true,
-    products: ['Core Platform $4,999', 'School License $15,000', 'Enterprise $50,000'],
-  },
-  {
-    id: 'infrastructure',
-    name: 'Monthly Infrastructure',
-    description: 'Self-operating workforce infrastructure with automated workflows.',
-    image: '/images/programs-hq/it-support.jpg',
-    href: '/store/licenses#monthly',
-    color: 'bg-blue-600',
-    featured: true,
-    products: ['Core $750/mo', 'Institutional $2,500/mo', 'Enterprise $8,500/mo'],
-  },
-  {
-    id: 'certifications',
-    name: 'Professional Certifications',
-    description: 'Industry-recognized credentials from Certiport, HSI, and CareerSafe.',
-    image: '/images/programs-hq/healthcare-hero.jpg',
-    href: '/store/courses',
-    color: 'bg-green-600',
-    products: ['Microsoft Office', 'Adobe Creative'],
-  },
-  {
-    id: 'programs',
-    name: 'Training Programs',
-    description: 'Career training with hands-on instruction and job placement.',
-    image: '/images/programs-hq/barber-hero.jpg',
-    href: '/programs',
-    color: 'bg-purple-600',
-    products: ['Barber Apprenticeship', 'CNA Training'],
-  },
-  {
-    id: 'compliance',
-    name: 'Compliance Tools',
-    description: 'WIOA, FERPA, WCAG compliance checklists and templates.',
-    image: '/images/heroes-hq/funding-hero.jpg',
-    href: '/store/compliance',
-    color: 'bg-teal-600',
-    products: ['WIOA Compliance', 'FERPA Templates'],
-  },
-  {
-    id: 'ai-tools',
-    name: 'AI & Automation',
-    description: 'AI-powered tutoring and automated workflows.',
-    image: '/images/programs-hq/cybersecurity.jpg',
-    href: '/store/ai-studio',
-    color: 'bg-violet-600',
-    products: ['AI Studio', 'AI Tutor'],
-  },
-  {
-    id: 'apps',
-    name: 'Apps & Integrations',
-    description: 'SAM.gov, Grants.gov, website builder, and more.',
-    image: '/images/team-hq/team-meeting.jpg',
-    href: '/store/apps',
-    color: 'bg-sky-600',
-    products: ['SAM.gov Assistant', 'Grants Navigator'],
-  },
-  {
-    id: 'developer',
-    name: 'Developer Licenses',
-    description: 'Full codebase access for self-hosting.',
-    image: '/images/programs-hq/technology-hero.jpg',
-    href: '/store/licenses#developer',
-    color: 'bg-slate-700',
-    products: ['Starter $299', 'Pro $999'],
-  },
-  {
-    id: 'digital',
-    name: 'Digital Resources',
-    description: 'Toolkits, guides, and templates.',
-    image: '/images/programs-hq/tax-preparation.jpg',
-    href: '/store/digital',
-    color: 'bg-indigo-600',
-    products: ['Tax Business Toolkit', 'Grant Guide'],
-  },
-  {
-    id: 'shop',
-    name: 'Shop & Supplies',
-    description: 'Tools, apparel, and workbooks.',
-    image: '/images/programs-hq/hvac-technician.jpg',
-    href: '/shop',
-    color: 'bg-pink-600',
-    products: ['Tool Kits', 'Scrubs'],
-  },
-];
-
-// Featured Products with demos
-const featuredProducts = [
-  {
-    id: 'school-license',
-    name: 'School / Training Provider License',
-    description: 'White-label platform with compliance tools, partner dashboard, and case management.',
-    price: '$15,000',
-    image: '/images/programs-hq/technology-hero.jpg',
-    href: '/store/licenses/school-license',
-    demoHref: '/demo/admin',
-    badge: 'Most Popular',
-  },
-  {
-    id: 'barber-program',
-    name: 'Barber Apprenticeship Program',
-    description: '2,000-hour state-approved apprenticeship with master barber instruction.',
-    price: 'Funded Available',
-    image: '/images/programs-hq/barber-training.jpg',
-    href: '/programs/barber-apprenticeship',
-    demoHref: '/programs/barber-apprenticeship#curriculum',
-    badge: 'WIOA Eligible',
-  },
-  {
-    id: 'ai-tutor',
-    name: 'AI Tutor License',
-    description: 'Personalized AI tutoring for learners with 24/7 support and progress tracking.',
-    price: '$999',
-    image: '/images/programs-hq/it-support.jpg',
-    href: '/store/ai-studio',
-    demoHref: '/demo/learner',
-    badge: 'New',
-  },
-];
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  'shopping-bag': ShoppingBag,
+  'graduation-cap': GraduationCap,
+  'book-open': BookOpen,
+  'server': Server,
+  'credit-card': CreditCard,
+  'file-text': FileText,
+  'settings': Settings,
+  'users': Users,
+};
 
 // Quick Stats
 const stats = [
-  { label: 'Platform Licenses Sold', value: '150+' },
-  { label: 'Certifications Offered', value: '25+' },
-  { label: 'Training Programs', value: '12' },
-  { label: 'Students Trained', value: '5,000+' },
+  { label: 'Products Available', value: '500+' },
+  { label: 'Courses', value: '50+' },
+  { label: 'Downloads', value: '200+' },
+  { label: 'Organizations', value: '150+' },
 ];
 
 export default function StorePage() {
   return (
-    <div className="bg-white">
-      {/* Hero with Avatar */}
-      <section className="relative bg-slate-900 text-white py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl sm:text-5xl font-black mb-6">
-                Workforce Infrastructure Store
+    <StoreClientWrapper>
+      <div className="bg-white min-h-screen">
+        {/* Breadcrumb Navigation */}
+        <nav className="bg-gray-100 border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-12">
+              <div className="flex items-center text-sm">
+                <Link href="/" className="text-gray-600 hover:text-black flex items-center gap-1">
+                  <Home className="w-4 h-4" />
+                  Home
+                </Link>
+                <ChevronRight className="w-4 h-4 text-gray-400 mx-2" />
+                <span className="text-black font-semibold">Store</span>
+              </div>
+              {/* Tour trigger button */}
+              <button
+                data-tour-trigger="store-tour"
+                className="text-sm text-orange-600 hover:text-orange-700 font-medium flex items-center gap-1"
+              >
+                <Play className="w-4 h-4" />
+                Start Guided Tour
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        {/* Hero Section with Search */}
+        <section className="relative bg-slate-900 text-white py-16 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+          <div className="absolute inset-0">
+            <Image
+              src="/images/programs-hq/technology-hero.jpg"
+              alt="Store"
+              fill
+              className="object-cover opacity-20"
+              priority
+            />
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl sm:text-5xl font-black mb-4">
+                Elevate Store
               </h1>
               <p className="text-xl text-slate-300 mb-8">
-                Platform licenses, professional certifications, training programs, 
-                compliance tools, and everything you need to run workforce development.
+                Everything you need for workforce development - gear, courses, workbooks, and platform licenses.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/store/licenses" className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition">
-                  Browse Licenses
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-                <Link href="/demo" className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-lg font-bold hover:bg-white/20 transition">
-                  <Play className="w-5 h-5" />
-                  Watch Demo
-                </Link>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-video bg-slate-800 rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/programs-hq/technology-hero.jpg"
-                  alt="Elevate Platform"
-                  fill
-                  className="object-cover"
+              
+              {/* Universal Search with Quick Filters */}
+              <div className="max-w-2xl mx-auto">
+                <UniversalSearch 
+                  placeholder="Search programs, courses, licenses, tools..."
+                  showFilters={true}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-sm text-slate-300">Complete workforce platform</p>
-                  <p className="text-lg font-bold">LMS • Admin • Enrollment • Compliance</p>
-                </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        {/* Avatar Guide */}
-        <AvatarVideoOverlay
-          videoSrc="/videos/avatars/store-assistant.mp4"
-          position="bottom-right"
-          title="Store Guide"
-          subtitle="Let me help you find what you need"
-        />
-      </section>
+        </section>
 
-      {/* Stats Strip */}
-      <section className="bg-orange-600 py-6">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
-            {stats.map((stat) => (
-              <div key={stat.label}>
-                <p className="text-3xl font-black">{stat.value}</p>
-                <p className="text-sm text-orange-100">{stat.label}</p>
-              </div>
-            ))}
+        {/* Stats Strip */}
+        <section className="bg-orange-600 py-4">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-white">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-2xl font-black">{stat.value}</p>
+                  <p className="text-sm text-orange-100">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Featured Products */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black mb-2">Featured Products</h2>
-          <p className="text-gray-600 mb-8">Most popular licenses and programs</p>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {featuredProducts.map((product) => (
-              <div key={product.id} className="bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-orange-500 hover:shadow-xl transition-all group">
-                <div className="relative h-48">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  {product.badge && (
-                    <span className="absolute top-4 left-4 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                      {product.badge}
-                    </span>
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-xl mb-2">{product.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{product.description}</p>
-                  <p className="text-2xl font-black text-orange-600 mb-4">{product.price}</p>
-                  <div className="flex gap-2">
-                    <Link href={product.demoHref} className="flex-1 text-center py-2 border-2 border-gray-200 rounded-lg font-medium hover:bg-gray-50 transition flex items-center justify-center gap-2">
-                      <Play className="w-4 h-4" />
-                      Demo
-                    </Link>
-                    <Link href={product.href} className="flex-1 text-center py-2 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition">
-                      View Details
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Category Cards */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black mb-2">Browse by Category</h2>
-          <p className="text-gray-600 mb-8">Find exactly what you need</p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {storeCategories.map((category) => (
-              <Link
-                key={category.id}
-                href={category.href}
-                className={`group relative bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all ${category.featured ? 'lg:col-span-2 lg:row-span-2' : ''}`}
-              >
-                <div className={`relative ${category.featured ? 'h-64 lg:h-full' : 'h-40'}`}>
-                  <Image
-                    src={category.image}
-                    alt={category.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <div className={`inline-flex items-center gap-2 ${category.color} px-3 py-1 rounded-full text-xs font-bold mb-2`}>
-                    {category.name}
-                  </div>
-                  <p className={`text-sm text-gray-200 mb-2 ${category.featured ? '' : 'line-clamp-2'}`}>
-                    {category.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1">
-                    {category.products.slice(0, category.featured ? 4 : 2).map((product, i) => (
-                      <span key={i} className="text-xs bg-white/20 px-2 py-0.5 rounded">
-                        {product}
+        {/* Primary Cards - Tier 1 (Above the fold) */}
+        <section className="py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+              {primaryCards.map((card) => {
+                const Icon = iconMap[card.icon];
+                return (
+                  <Link
+                    key={card.id}
+                    href={card.href}
+                    data-tour={card.tourId}
+                    className="group bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-orange-500 hover:shadow-xl transition-all flex flex-col"
+                  >
+                    {/* Card Image */}
+                    <div className="relative h-36 overflow-hidden">
+                      <Image
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute bottom-3 left-3">
+                        <div className="w-10 h-10 bg-white/90 rounded-xl flex items-center justify-center">
+                          <Icon className="w-5 h-5 text-orange-600" />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Card Content */}
+                    <div className="p-4 flex-1 flex flex-col">
+                      <h3 className="font-bold text-black text-lg mb-1">{card.title}</h3>
+                      <p className="text-sm text-gray-500 mb-3">{card.subtitle}</p>
+                      <p className="text-sm text-gray-600 mb-4 flex-1 line-clamp-2">{card.description}</p>
+                      <span className="inline-flex items-center gap-1 text-orange-600 font-semibold text-sm group-hover:gap-2 transition-all">
+                        Explore
+                        <ArrowRight className="w-4 h-4" />
                       </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ArrowRight className="w-4 h-4 text-white" />
-                </div>
-              </Link>
-            ))}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Programs Section with Images */}
-      <section className="py-16">
+        {/* Divider */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black mb-2">Training Programs</h2>
-          <p className="text-gray-600 mb-8">Career-ready training with job placement support</p>
+          <div className="border-t border-gray-200 relative">
+            <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-gray-500 font-medium">
+              More
+            </span>
+          </div>
+        </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: 'Barber Apprenticeship', image: '/images/programs-hq/barber-hero.jpg', href: '/programs/barber-apprenticeship', duration: '15-24 months', funding: 'WIOA Eligible' },
-              { name: 'CNA Training', image: '/images/programs-hq/cna-training.jpg', href: '/programs/cna', duration: '6 weeks', funding: 'WIOA Eligible' },
-              { name: 'HVAC Certification', image: '/images/programs-hq/hvac-technician.jpg', href: '/programs/hvac', duration: '8 weeks', funding: 'WRG Available' },
-              { name: 'CDL Training', image: '/images/programs-hq/cdl-trucking.jpg', href: '/programs/cdl', duration: '4 weeks', funding: 'WIOA Eligible' },
-            ].map((program) => (
-              <Link key={program.name} href={program.href} className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition">
-                <div className="relative h-40">
-                  <Image src={program.image} alt={program.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-                  <span className="absolute top-3 right-3 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">{program.funding}</span>
-                </div>
-                <div className="p-4">
-                  <h3 className="font-bold mb-1">{program.name}</h3>
-                  <p className="text-sm text-gray-500">{program.duration}</p>
-                </div>
+        {/* Secondary Cards - Tier 2 */}
+        <section className="py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {secondaryCards.map((card) => {
+                const Icon = iconMap[card.icon];
+                return (
+                  <Link
+                    key={card.id}
+                    href={card.href}
+                    data-tour={card.tourId}
+                    className="group bg-gray-50 rounded-xl overflow-hidden border border-gray-200 hover:border-orange-500 hover:shadow-lg hover:bg-white transition-all flex items-start gap-4 p-4"
+                  >
+                    <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-orange-200 transition">
+                      <Icon className="w-6 h-6 text-orange-600" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-black mb-1">{card.title}</h3>
+                      <p className="text-sm text-gray-500 mb-2">{card.subtitle}</p>
+                      <span className="inline-flex items-center gap-1 text-orange-600 font-medium text-sm">
+                        Explore
+                        <ArrowRight className="w-3 h-3" />
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Quick Links */}
+        <section className="py-12 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-black text-black mb-6 text-center">Quick Links</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { label: 'View Cart', href: '/shop/cart', icon: ShoppingBag },
+                { label: 'My Orders', href: '/shop/orders', icon: FileText },
+                { label: 'My Courses', href: '/lms/dashboard', icon: GraduationCap },
+                { label: 'Contact Sales', href: '/contact', icon: Users },
+              ].map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="flex items-center gap-3 bg-white p-4 rounded-lg border border-gray-200 hover:border-orange-500 hover:shadow transition"
+                >
+                  <link.icon className="w-5 h-5 text-gray-400" />
+                  <span className="font-medium text-black">{link.label}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-12 bg-slate-900 text-white">
+          <div className="max-w-3xl mx-auto px-4 text-center">
+            <h2 className="text-3xl font-black mb-4">Need Help Finding Something?</h2>
+            <p className="text-slate-300 mb-6">
+              Our team is here to help you find the right products, courses, or platform solutions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/contact" 
+                className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-orange-700 transition"
+              >
+                Contact Us
               </Link>
-            ))}
+              <Link 
+                href="/demo" 
+                className="inline-flex items-center justify-center gap-2 border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition"
+              >
+                <Play className="w-5 h-5" />
+                Watch Demo
+              </Link>
+            </div>
           </div>
-
-          <div className="text-center mt-8">
-            <Link href="/programs" className="inline-flex items-center gap-2 text-orange-600 font-bold hover:underline">
-              View All Programs
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="py-16 bg-slate-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black mb-8 text-center">How It Works</h2>
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { step: '1', title: 'Browse', desc: 'Explore licenses, programs, and tools' },
-              { step: '2', title: 'Demo', desc: 'Try interactive demos before you buy' },
-              { step: '3', title: 'Purchase', desc: 'Secure checkout with Stripe' },
-              { step: '4', title: 'Deploy', desc: 'Get instant access or scheduled onboarding' },
-            ].map((item) => (
-              <div key={item.step} className="text-center">
-                <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-xl font-black mx-auto mb-4">
-                  {item.step}
-                </div>
-                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                <p className="text-slate-400 text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-orange-600 text-white">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-black mb-4">Ready to Get Started?</h2>
-          <p className="text-orange-100 mb-8">
-            Schedule a demo or contact our team to find the right solution for your organization.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/demo" className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-orange-50 transition">
-              <Play className="w-5 h-5" />
-              Try Live Demo
-            </Link>
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition">
-              Contact Sales
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </StoreClientWrapper>
   );
 }

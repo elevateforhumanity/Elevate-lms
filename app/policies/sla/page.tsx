@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { Clock, Shield, CheckCircle, AlertTriangle, CreditCard } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Service Level Agreement (SLA) | Elevate for Humanity',
-  description: 'Platform availability targets, maintenance windows, and incident notification procedures.',
+  title: 'Service Level Agreement | Elevate for Humanity',
+  description: 'Platform availability targets, service commitments, and service credit policy.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/policies/sla',
   },
@@ -11,110 +12,209 @@ export const metadata: Metadata = {
 
 export default function SLAPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
-        <article className="bg-white rounded-xl shadow-sm p-8 md:p-12">
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-black mb-4">Service Level Agreement (SLA)</h1>
-            <p className="text-sm text-gray-600">Effective Date: January 24, 2026</p>
-          </div>
-
-          <div className="prose prose-lg max-w-none">
-            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
-              <h2 className="text-xl font-bold text-black mt-0 mb-4">Platform Availability Target</h2>
-              <p className="text-3xl font-bold text-blue-700 mb-2">99.5% Monthly Uptime</p>
-              <p className="text-gray-700 mb-0">
-                We target 99.5% availability for the Elevate for Humanity platform each calendar month.
-              </p>
-            </div>
-
-            <h2 className="text-2xl font-bold text-black mt-8 mb-4">Scheduled Maintenance</h2>
-            <p className="text-black mb-6">
-              Scheduled maintenance windows are communicated in advance when possible. We aim to perform 
-              maintenance during low-usage periods to minimize impact on users.
-            </p>
-
-            <h2 className="text-2xl font-bold text-black mt-8 mb-4">Monitoring</h2>
-            <p className="text-black mb-6">
-              Automated error tracking and performance monitoring are enabled across the platform. 
-              Our systems continuously monitor for issues and alert our team when problems are detected.
-            </p>
-
-            <h2 className="text-2xl font-bold text-black mt-8 mb-4">Incident Notification</h2>
-            <p className="text-black mb-6">
-              During incidents affecting platform availability, status updates are posted to our{' '}
-              <Link href="/status" className="text-blue-600 hover:underline">status page</Link>.
-              Users can check this page at any time for current system status.
-            </p>
-
-            <h2 className="text-2xl font-bold text-black mt-8 mb-4">Exclusions</h2>
-            <p className="text-black mb-4">
-              The availability target excludes:
-            </p>
-            <ul className="list-disc pl-6 mb-6 text-black space-y-2">
-              <li>Scheduled maintenance windows</li>
-              <li>Events outside our reasonable control (force majeure)</li>
-              <li>Issues caused by third-party services or infrastructure</li>
-              <li>User-side connectivity or device issues</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold text-black mt-8 mb-4">Service Credits</h2>
-            <p className="text-black mb-4">
-              If monthly platform availability falls below the uptime targets stated above, 
-              customers may be eligible for a service credit applied to a future billing cycle.
-            </p>
-            
-            <p className="text-black mb-4">Credits are calculated as follows:</p>
-            
-            <div className="overflow-x-auto mb-6">
-              <table className="min-w-full border border-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-4 py-3 text-left font-bold text-black border-b">Monthly Availability</th>
-                    <th className="px-4 py-3 text-left font-bold text-black border-b">Service Credit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="px-4 py-3 border-b text-black">Below 99.5%</td>
-                    <td className="px-4 py-3 border-b text-black">5% service credit</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-3 border-b text-black">Below 99.0%</td>
-                    <td className="px-4 py-3 border-b text-black">10% service credit (maximum)</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <h3 className="text-lg font-bold text-black mt-6 mb-3">Credit Terms</h3>
-            <ul className="list-disc pl-6 mb-6 text-black space-y-2">
-              <li>Credits apply only to future invoices</li>
-              <li>Credits are non-cumulative and capped at 10% per billing cycle</li>
-              <li>Credits must be requested within 30 days of the affected period</li>
-              <li>Credits do not apply to one-time fees or third-party services</li>
-            </ul>
-
-            <div className="bg-gray-100 rounded-lg p-6 mt-8">
-              <h3 className="text-lg font-bold text-black mb-2">Important Notice</h3>
-              <p className="text-gray-700 mb-0">
-                This SLA does not provide refunds or cash compensation. Service credits are the 
-                sole remedy for availability issues. This SLA excludes events outside reasonable 
-                control including but not limited to natural disasters, third-party service failures, 
-                and scheduled maintenance windows.
-              </p>
-            </div>
-
-            <h2 className="text-2xl font-bold text-black mt-8 mb-4">Related Policies</h2>
-            <ul className="list-disc pl-6 mb-6 text-black space-y-2">
-              <li><Link href="/status" className="text-blue-600 hover:underline">Platform Status</Link></li>
-              <li><Link href="/policies/incident-response" className="text-blue-600 hover:underline">Incident Response Policy</Link></li>
-              <li><Link href="/policies/disaster-recovery" className="text-blue-600 hover:underline">Disaster Recovery Plan</Link></li>
-              <li><Link href="/contact" className="text-blue-600 hover:underline">Contact Support</Link></li>
-            </ul>
-          </div>
-        </article>
+    <article className="bg-white rounded-xl shadow-sm p-8 md:p-12">
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <Shield className="w-8 h-8 text-orange-600" />
+          <h1 className="text-4xl font-bold text-black">Service Level Agreement</h1>
+        </div>
+        <p className="text-sm text-gray-600">Last Updated: January 24, 2026</p>
       </div>
-    </div>
+
+      <div className="prose prose-lg max-w-none">
+        <h2 className="text-2xl font-bold text-black mt-8 mb-4">Purpose</h2>
+        <p className="text-black mb-6">
+          This Service Level Agreement (SLA) defines the availability targets, service 
+          commitments, and remedies for the Elevate for Humanity platform. It applies to 
+          all paying customers and institutional partners.
+        </p>
+
+        <h2 className="text-2xl font-bold text-black mt-8 mb-4">Platform Availability</h2>
+        <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-200 mb-6">
+          <div className="flex items-center gap-3 mb-3">
+            <Clock className="w-6 h-6 text-blue-600" />
+            <h3 className="text-2xl font-bold text-blue-800 m-0">99.5% Monthly Uptime Target</h3>
+          </div>
+          <p className="text-black m-0">
+            We target 99.5% availability for the Elevate platform during each calendar month, 
+            measured as the percentage of time the platform is operational and accessible.
+          </p>
+        </div>
+
+        <h3 className="text-xl font-bold text-black mt-6 mb-3">What Counts as Downtime</h3>
+        <ul className="list-disc pl-6 mb-6 text-black space-y-2">
+          <li>Platform is completely inaccessible to users</li>
+          <li>Core functionality (login, course access, enrollment) is unavailable</li>
+          <li>Database is unreachable causing application errors</li>
+        </ul>
+
+        <h3 className="text-xl font-bold text-black mt-6 mb-3">What Does Not Count as Downtime</h3>
+        <ul className="list-disc pl-6 mb-6 text-black space-y-2">
+          <li>Scheduled maintenance (announced 48+ hours in advance)</li>
+          <li>Issues caused by user's internet connection or device</li>
+          <li>Third-party service outages (payment processors, email providers)</li>
+          <li>Force majeure events (natural disasters, government actions, etc.)</li>
+          <li>Features in beta or preview status</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-black mt-8 mb-4">Service Credits</h2>
+        <div className="bg-green-50 rounded-lg p-6 border-2 border-green-200 mb-6">
+          <div className="flex items-center gap-3 mb-3">
+            <CreditCard className="w-6 h-6 text-green-600" />
+            <h3 className="text-xl font-bold text-green-800 m-0">Financially Backed SLA</h3>
+          </div>
+          <p className="text-black mb-4">
+            If monthly platform availability falls below the uptime targets stated above, 
+            customers may be eligible for a service credit applied to a future billing cycle.
+          </p>
+          
+          <h4 className="font-bold text-black mb-3">Credit Schedule</h4>
+          <div className="bg-white rounded-lg overflow-hidden border border-green-200 mb-4">
+            <table className="w-full text-left">
+              <thead className="bg-green-100">
+                <tr>
+                  <th className="px-4 py-3 font-semibold text-black">Monthly Availability</th>
+                  <th className="px-4 py-3 font-semibold text-black">Service Credit</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-green-100">
+                <tr>
+                  <td className="px-4 py-3 text-black">Below 99.5%</td>
+                  <td className="px-4 py-3 text-black font-semibold">5% credit</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 text-black">Below 99.0%</td>
+                  <td className="px-4 py-3 text-black font-semibold">10% credit (maximum)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold text-black mt-6 mb-3">Service Credit Terms</h3>
+        <div className="bg-gray-50 rounded-lg p-6 mb-6">
+          <ul className="space-y-3 text-black m-0 list-none p-0">
+            <li className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+              <span>Credits apply <strong>only to future invoices</strong></span>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+              <span>Credits are <strong>non-cumulative</strong> and capped at 10% per billing cycle</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+              <span>Credits must be <strong>requested within 30 days</strong> of the affected period</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+              <span>Credits do <strong>not apply to one-time fees</strong> or third-party services</span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="bg-amber-50 border-l-4 border-amber-400 p-6 mb-6">
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+            <p className="text-black m-0">
+              <strong>Important:</strong> This SLA does not provide refunds or cash compensation 
+              and excludes events outside reasonable control (force majeure).
+            </p>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-black mt-8 mb-4">Support Response Times</h2>
+        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden mb-6">
+          <table className="w-full text-left">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-4 py-3 font-semibold text-black">Priority</th>
+                <th className="px-4 py-3 font-semibold text-black">Description</th>
+                <th className="px-4 py-3 font-semibold text-black">Response Time</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              <tr>
+                <td className="px-4 py-3 text-black font-semibold text-red-600">Critical</td>
+                <td className="px-4 py-3 text-black">Platform down, data breach, security incident</td>
+                <td className="px-4 py-3 text-black">4 hours</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 text-black font-semibold text-orange-600">High</td>
+                <td className="px-4 py-3 text-black">Major feature unavailable, payment issues</td>
+                <td className="px-4 py-3 text-black">8 hours</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 text-black font-semibold text-yellow-600">Medium</td>
+                <td className="px-4 py-3 text-black">Feature degradation, non-blocking bugs</td>
+                <td className="px-4 py-3 text-black">24 hours</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 text-black font-semibold text-green-600">Low</td>
+                <td className="px-4 py-3 text-black">General questions, feature requests</td>
+                <td className="px-4 py-3 text-black">48 hours</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="text-black mb-6">
+          Response times are measured during business hours: Monday–Friday, 8:00 AM – 6:00 PM EST.
+        </p>
+
+        <h2 className="text-2xl font-bold text-black mt-8 mb-4">Scheduled Maintenance</h2>
+        <p className="text-black mb-4">
+          We perform regular maintenance to ensure platform security and performance:
+        </p>
+        <ul className="list-disc pl-6 mb-6 text-black space-y-2">
+          <li><strong>Maintenance Window:</strong> Sundays, 2:00 AM – 6:00 AM EST</li>
+          <li><strong>Advance Notice:</strong> 48 hours minimum for planned maintenance</li>
+          <li><strong>Emergency Maintenance:</strong> May occur without notice for critical security updates</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-black mt-8 mb-4">How to Request a Service Credit</h2>
+        <ol className="list-decimal pl-6 mb-6 text-black space-y-2">
+          <li>Email <strong>billing@elevateforhumanity.org</strong> within 30 days of the incident</li>
+          <li>Include your organization name and account details</li>
+          <li>Describe the downtime period (dates and times)</li>
+          <li>We will verify the incident and apply credits within 30 days if eligible</li>
+        </ol>
+
+        <h2 className="text-2xl font-bold text-black mt-8 mb-4">Contact</h2>
+        <ul className="list-none mb-6 text-black space-y-2 p-0">
+          <li><strong>General Support:</strong> support@elevateforhumanity.org</li>
+          <li><strong>Billing Questions:</strong> billing@elevateforhumanity.org</li>
+          <li><strong>Phone:</strong> (317) 314-3757</li>
+        </ul>
+
+        <div className="bg-blue-50 border-l-4 border-blue-400 p-6 mt-8">
+          <p className="text-black mb-2">
+            <strong>Related Policies:</strong>
+          </p>
+          <ul className="list-disc pl-6 text-black space-y-1 m-0">
+            <li>
+              <Link href="/policies/response-sla" className="text-blue-600 hover:underline">
+                Response Time SLA
+              </Link>
+            </li>
+            <li>
+              <Link href="/policies/disaster-recovery" className="text-blue-600 hover:underline">
+                Disaster Recovery Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="/policies/incident-response" className="text-blue-600 hover:underline">
+                Incident Response Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="/policies/terms" className="text-blue-600 hover:underline">
+                Terms of Service
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </article>
   );
 }

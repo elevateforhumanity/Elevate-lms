@@ -1,0 +1,32 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { getProduct, getRecommendations, getAvatarSalesMessage } from '@/lib/store/db';
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await params;
+
+  try {
+    const product = await getProduct(slug);
+    
+    if (!product) {
+      return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+    }
+
+    // Also fetch recommendations and sales message
+    const [recommendations, salesMessage] = await Promise.all([
+      getRecommendations(product.id),
+      getAvatarSalesMessage(product.id),
+    ]);
+
+    return NextResponse.json({ 
+      product,
+      recommendations,
+      salesMessage,
+    });
+  } catch (error) {
+    console.error('Product API error:', error);
+    return NextResponse.json({ error: 'Failed to fetch product' }, { status: 500 });
+  }
+}

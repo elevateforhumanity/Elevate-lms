@@ -89,7 +89,7 @@ export default async function MarketplacePage() {
           <p className="text-xl text-indigo-100 max-w-2xl mb-8">
             Discover courses from expert creators and expand your skills
           </p>
-          <div className="relative max-w-xl">
+          <div className="relative max-w-xl" data-tour="marketplace-search">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input 
               type="text" 
@@ -102,7 +102,7 @@ export default async function MarketplacePage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex items-center gap-4 mb-8" data-tour="marketplace-filters">
           <Filter className="w-5 h-5 text-gray-500" />
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
@@ -118,11 +118,12 @@ export default async function MarketplacePage() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {courses.map((course) => (
+          {courses.map((course, index) => (
             <Link 
               key={course.id} 
               href={`/marketplace/course/${course.slug || course.id}`} 
               className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+              data-tour={index === 0 ? "marketplace-course" : undefined}
             >
               <div className="relative h-48">
                 <Image

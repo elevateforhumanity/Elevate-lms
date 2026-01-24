@@ -1,62 +1,91 @@
 # Staging Environment
 
-This document describes the staging environment setup for Elevate-LMS.
+Internal documentation for the dedicated staging environment.
 
 ## Overview
 
-The staging environment mirrors production configuration and is used for:
-- Pre-deployment testing
-- Feature validation before release
+A separate Supabase project exists for staging/testing purposes. This environment is isolated from production and should be used for:
+
+- Testing database migrations before production deployment
+- QA testing of new features
 - Integration testing with third-party services
-- DR drill rehearsals
+- Load testing (with synthetic data only)
 
-## Infrastructure
-
-### Supabase Project
-
-Create a separate Supabase project for staging:
-
-1. Create project at https://supabase.com/dashboard
-2. Name: `elevate-lms-staging`
-3. Region: Match production region
-4. Apply same database migrations as production
+## Configuration
 
 ### Environment Variables
 
-```env
-# Staging Supabase credentials
-NEXT_PUBLIC_SUPABASE_URL=https://[staging-ref].supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=[staging-anon-key]
-SUPABASE_SERVICE_ROLE_KEY=[staging-service-key]
+The following environment variables are used for staging:
 
-# Environment identifier
-NEXT_PUBLIC_ENV=staging
+```
+NEXT_PUBLIC_SUPABASE_URL_STAGING=<staging-project-url>
+SUPABASE_SERVICE_ROLE_KEY_STAGING=<staging-service-key>
 ```
 
-### Deployment
+These should be set in:
+- Local `.env.local` for development
+- Vercel environment variables for staging deployments
+- CI/CD pipeline secrets
 
-Staging deploys automatically on PR creation via Netlify deploy previews.
+### Switching Environments
 
-For dedicated staging branch:
-1. Create `staging` branch from `main`
-2. Configure Netlify to deploy `staging` branch to staging subdomain
-3. Set staging environment variables in Netlify dashboard
+To run the application against staging:
 
-## Data Management
+```bash
+# Option 1: Use staging env file
+cp .env.staging .env.local
+pnpm dev
 
-- Staging uses anonymized copies of production data
-- Never copy real user credentials to staging
-- Reset staging data monthly or as needed
+# Option 2: Override at runtime
+NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL_STAGING \
+SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY_STAGING \
+pnpm dev
+```
+
+## What's Included
+
+The staging environment has:
+
+- Separate PostgreSQL database
+- Separate Supabase Auth instance
+- Separate Storage buckets
+- Separate Edge Functions
+
+## What's NOT Included
+
+- Production data (never copy production data to staging)
+- Real user accounts
+- Production API keys for third-party services
+
+## Data Policy
+
+**Never copy production data to staging.**
+
+Use synthetic/seed data only:
+```bash
+pnpm run seed:staging
+```
+
+## Deployment
+
+Staging deployments are triggered:
+- Automatically on PR creation (preview deployments)
+- Manually via Vercel dashboard
+- Via CI/CD on `staging` branch pushes
 
 ## Access
 
-Staging environment access is limited to the development team. Do not share staging URLs publicly.
+Staging environment access is limited to:
+- Development team
+- QA team
+- Authorized contractors
 
-## Verification Checklist
+Contact the platform team for access credentials.
 
-Before promoting to production:
-- [ ] All automated tests pass
-- [ ] Manual smoke test completed
-- [ ] No console errors
-- [ ] Performance acceptable
-- [ ] Auth flows working
+## Maintenance
+
+The staging database is reset weekly (Sundays at midnight UTC) to ensure a clean testing environment. Notify the team if you need data preserved longer.
+
+---
+
+*Last updated: January 24, 2026*

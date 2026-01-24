@@ -83,6 +83,15 @@ export default async function LicensePage() {
     { icon: Handshake, title: 'Partner Network', description: 'Access to employer and training provider network with automated matching' },
   ];
 
+  const governanceFeatures = [
+    'Role-based access control with server-side enforcement',
+    'Auditable system activity and event logging',
+    'Published service level targets',
+    'Documented incident response procedures',
+    'Tested disaster recovery processes',
+    'Secure document handling with defined data retention standards',
+  ];
+
 
 
   return (
@@ -243,6 +252,32 @@ export default async function LicensePage() {
                 </Link>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Governance & Operational Readiness */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">Platform Governance & Operational Readiness</h2>
+          <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            Partner and agency access is role-based, auditable, and governed by published operational policies to support compliance and oversight.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {governanceFeatures.map((feature, index) => (
+              <div key={index} className="flex items-start gap-3 bg-gray-50 rounded-lg p-5 border">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-700">{feature}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/policies"
+              className="text-orange-600 hover:text-orange-800 font-medium"
+            >
+              View All Policies →
+            </Link>
           </div>
         </div>
       </section>

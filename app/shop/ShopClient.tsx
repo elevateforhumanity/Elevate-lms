@@ -51,7 +51,7 @@ export function ShopClient({ products, categories }: ShopClientProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4" data-tour="shop-categories">
           <Filter className="w-5 h-5 text-gray-500" />
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
@@ -77,7 +77,7 @@ export function ShopClient({ products, categories }: ShopClientProps) {
               aria-label="Search products"
             />
           </form>
-          <Link href="/shop/cart" className="relative p-2 text-gray-600 hover:text-blue-600" aria-label="Shopping cart">
+          <Link href="/shop/cart" className="relative p-2 text-gray-600 hover:text-blue-600" aria-label="Shopping cart" data-tour="shop-cart">
             <ShoppingCart className="w-6 h-6" />
             <span className="absolute -top-1 -right-1 w-5 h-5 bg-blue-600 text-white text-xs rounded-full flex items-center justify-center">0</span>
           </Link>
@@ -85,12 +85,13 @@ export function ShopClient({ products, categories }: ShopClientProps) {
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProducts.map((product) => (
+        {filteredProducts.map((product, index) => (
           <Link 
             key={product.id} 
             href={`/shop/product/${product.slug || product.id}`} 
             className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
             onClick={() => handleProductClick(product)}
+            data-tour={index === 0 ? "shop-product" : undefined}
           >
             <div className="relative aspect-square">
               <Image

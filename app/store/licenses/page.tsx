@@ -115,7 +115,7 @@ export default async function LicensesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8" data-tour="license-tiers">
             {licenseProducts.map((product) => (
               <div
                 key={product.id}
@@ -169,7 +169,7 @@ export default async function LicensesPage() {
                     : 'Get License'}
                 </Link>
 
-                <div className="space-y-3">
+                <div className="space-y-3" data-tour="license-features">
                   <p className="text-sm font-semibold text-gray-900">
                     What&apos;s included:
                   </p>
@@ -389,7 +389,7 @@ export default async function LicensesPage() {
             deliver workforce training programs.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center" data-tour="license-cta">
             <Link
               href="/store/licenses/checkout/school-license"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-zinc-900 bg-white rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
