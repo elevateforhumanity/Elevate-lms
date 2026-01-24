@@ -124,7 +124,7 @@ export default function IPLAExamSignup() {
                   <strong>Format:</strong> Computer-based
                 </li>
                 <li>
-                  <strong>Location:</strong> 3737 N Meridian St, Indianapolis
+                  <strong>Location:</strong> 8888 Keystone Xing Suite 1300, Indianapolis
                 </li>
                 <li>
                   <strong>Cost:</strong> $150 (paid via Stripe)

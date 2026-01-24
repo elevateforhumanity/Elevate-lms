@@ -1,6 +1,12 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { BARBER_PROGRAM, TUITION_EFFECTIVE_DATE } from '@/lib/program-constants';
+import { 
+  BARBER_PROGRAM, 
+  COSMETOLOGY_PROGRAM, 
+  ESTHETICIAN_PROGRAM, 
+  NAIL_TECH_PROGRAM,
+  TUITION_EFFECTIVE_DATE 
+} from '@/lib/program-constants';
 
 export const metadata: Metadata = {
   title: 'Tuition & Fees | Elevate for Humanity',
