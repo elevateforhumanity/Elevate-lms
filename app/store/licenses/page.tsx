@@ -34,45 +34,64 @@ export default async function LicensesPage() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section with Video - No Overlay */}
-      <section className="relative bg-black">
-        {/* Full Video */}
-        <video
-          autoPlay
-          loop
-          playsInline
-          controls
-          className="w-full h-auto max-h-[70vh] object-contain mx-auto"
-        >
-          <source src="/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
-        </video>
-
-      </section>
-
-      {/* Header Section */}
-      <section className="bg-zinc-900 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">
-              License Our Platform
-            </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-              Get the complete Elevate LMS with your branding. Full source code, lifetime updates.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="#pricing"
-                className="inline-flex items-center px-6 py-3 bg-white text-zinc-900 rounded-lg font-bold hover:bg-gray-100 transition-colors"
-              >
-                View Pricing
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-              <Link
-                href="/store/demo"
-                className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 transition-colors"
-              >
-                Try Free Demo
-              </Link>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/store/platform-hero.jpg"
+            alt="Elevate LMS Platform"
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-900/90 to-zinc-900/70" />
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-green-600/20 border border-green-500/30 px-4 py-2 rounded-full mb-6">
+                <Award className="w-5 h-5 text-green-400" />
+                <span className="text-green-400 font-semibold text-sm">White-Label LMS Platform</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                License Our
+                <span className="text-green-400"> Complete Platform</span>
+              </h1>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                Get the complete Elevate LMS with your branding. Full source code, 
+                lifetime updates, and dedicated support. Launch your workforce training 
+                platform in weeks, not months.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="#pricing"
+                  className="inline-flex items-center px-8 py-4 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 transition-all shadow-lg hover:shadow-xl"
+                >
+                  View Pricing
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+                <Link
+                  href="/store/demo"
+                  className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-bold hover:bg-white/20 transition-all border border-white/20"
+                >
+                  Try Free Demo
+                </Link>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src="/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </div>
             </div>
           </div>
         </div>
@@ -115,89 +134,92 @@ export default async function LicensesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8" data-tour="license-tiers">
-            {licenseProducts.map((product) => (
-              <div
-                key={product.id}
-                className={`relative bg-white rounded-2xl border-2 p-8 ${
-                  product.licenseType === 'school'
-                    ? 'border-green-600 shadow-2xl scale-105 z-10'
-                    : 'border-gray-200 hover:border-gray-300 hover:shadow-lg'
-                } transition-all duration-300`}
-              >
-                {product.licenseType === 'school' && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-green-600 text-white text-sm font-bold rounded-full whitespace-nowrap">
-                    Most Popular
-                  </div>
-                )}
-
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {product.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {product.description}
-                  </p>
-                </div>
-
-                <div className="mb-6">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-black text-gray-900">
-                      ${product.price.toLocaleString()}
-                    </span>
-                    {product.billingType === 'subscription' && (
-                      <span className="text-gray-500 text-lg">/mo</span>
-                    )}
-                  </div>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {product.billingType === 'one_time'
-                      ? 'One-time payment'
-                      : 'Billed monthly'}
-                  </p>
-                </div>
-
-                <Link
-                  href={`/store/licenses/checkout/${product.slug}`}
-                  className={`block w-full text-center px-6 py-3 rounded-lg font-bold transition-all duration-200 mb-6 ${
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch" data-tour="license-tiers">
+            {licenseProducts.map((product, index) => {
+              const cardImages = [
+                '/images/store/ai-studio.jpg',
+                '/images/store/platform-hero.jpg',
+                '/images/store/community-hub.jpg',
+                '/images/store/crm-hub.jpg',
+              ];
+              return (
+                <div
+                  key={product.id}
+                  className={`relative bg-white rounded-2xl border-2 overflow-hidden flex flex-col ${
                     product.licenseType === 'school'
-                      ? 'bg-green-600 text-white hover:bg-green-700 shadow-lg hover:shadow-xl'
-                      : 'bg-zinc-900 text-white hover:bg-zinc-800'
-                  }`}
+                      ? 'border-green-600 shadow-2xl lg:scale-105 z-10'
+                      : 'border-gray-200 hover:border-gray-300 hover:shadow-lg'
+                  } transition-all duration-300`}
                 >
-                  {product.billingType === 'subscription'
-                    ? 'Start Free Trial'
-                    : 'Get License'}
-                </Link>
-
-                <div className="space-y-3" data-tour="license-features">
-                  <p className="text-sm font-semibold text-gray-900">
-                    What&apos;s included:
-                  </p>
-                  {product.features.slice(0, 5).map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-700">{feature}</span>
+                  {/* Card Image */}
+                  <div className="relative h-40 w-full">
+                    <Image
+                      src={cardImages[index % cardImages.length]}
+                      alt={product.name}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    {product.licenseType === 'school' && (
+                      <div className="absolute top-3 right-3 px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full">
+                        Most Popular
+                      </div>
+                    )}
+                    <div className="absolute bottom-3 left-4">
+                      <h3 className="text-lg font-bold text-white">
+                        {product.name}
+                      </h3>
                     </div>
-                  ))}
-                  {product.features.length > 5 && (
-                    <p className="text-sm text-green-600 font-medium">
-                      + {product.features.length - 5} more features
-                    </p>
-                  )}
-                </div>
+                  </div>
 
-                <div className="mt-6 pt-6 border-t border-gray-100">
-                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
-                    Ideal for:
-                  </p>
-                  <ul className="space-y-1">
-                    {product.idealFor.slice(0, 3).map((use, idx) => (
-                      <li key={idx} className="text-xs text-gray-600">
-                        • {use}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      {product.description}
+                    </p>
+
+                    <div className="mb-4">
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-3xl font-black text-gray-900">
+                          ${product.price.toLocaleString()}
+                        </span>
+                        {product.billingType === 'subscription' && (
+                          <span className="text-gray-500 text-sm">/mo</span>
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {product.billingType === 'one_time'
+                          ? 'One-time payment'
+                          : 'Billed monthly'}
+                      </p>
+                    </div>
+
+                    <div className="space-y-2 mb-6 flex-1" data-tour="license-features">
+                      {product.features.slice(0, 4).map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-xs text-gray-700">{feature}</span>
+                        </div>
+                      ))}
+                      {product.features.length > 4 && (
+                        <p className="text-xs text-green-600 font-medium">
+                          + {product.features.length - 4} more features
+                        </p>
+                      )}
+                    </div>
+
+                    <Link
+                      href={`/store/licenses/checkout/${product.slug}`}
+                      className={`block w-full text-center px-6 py-3 rounded-lg font-bold transition-all duration-200 ${
+                        product.licenseType === 'school'
+                          ? 'bg-green-600 text-white hover:bg-green-700 shadow-lg hover:shadow-xl'
+                          : 'bg-zinc-900 text-white hover:bg-zinc-800'
+                      }`}
+                    >
+                      {product.billingType === 'subscription'
+                        ? 'Start Free Trial'
+                        : 'Get License'}
+                    </Link>
+                  </div>
               </div>
             ))}
           </div>
