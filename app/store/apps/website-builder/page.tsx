@@ -80,11 +80,16 @@ export default function WebsiteBuilderAppPage() {
             </div>
             <div className="relative">
               <div className="bg-white rounded-2xl shadow-2xl p-4">
-                <div className="aspect-video bg-gray-100 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <Play className="w-16 h-16 text-purple-600 mx-auto mb-2" />
-                    <p className="text-gray-600 font-medium">Product Demo Video</p>
-                  </div>
+                <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover"
+                  >
+                    <source src="/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
+                  </video>
                 </div>
               </div>
             </div>
@@ -129,12 +134,16 @@ export default function WebsiteBuilderAppPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Build Your Site in Minutes</h2>
           <p className="text-gray-600 mb-8">Watch how easy it is to create a professional training provider website</p>
-          <div className="aspect-video bg-gray-900 rounded-2xl flex items-center justify-center">
-            <div className="text-center text-white">
-              <Play className="w-20 h-20 mx-auto mb-4 opacity-80" />
-              <p className="text-lg">Website Builder Tutorial</p>
-              <p className="text-sm text-gray-400">8 minutes</p>
-            </div>
+          <div className="aspect-video bg-gray-900 rounded-2xl overflow-hidden">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </section>
