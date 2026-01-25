@@ -1,0 +1,24 @@
+# Elevate for Humanity - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.elevateforhumanity.org/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /staff-portal/
+Disallow: /employer-portal/
+Disallow: /partner-portal/
+Disallow: /hub/
+Disallow: /lms/dashboard/
+Disallow: /student/dashboard/
+
+# Allow public LMS pages
+Allow: /lms/$
+Allow: /lms/courses/
+
+# Crawl delay for politeness
+Crawl-delay: 1
