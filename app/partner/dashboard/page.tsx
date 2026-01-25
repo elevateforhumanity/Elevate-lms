@@ -4,8 +4,6 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Building2, Users, Clock, FileText, Settings, ChevronRight, Scissors, Heart, Wrench, Truck } from 'lucide-react';
 
-export const metadata: Metadata = { title: 'Partner Dashboard | Elevate for Humanity' };
-
 export const metadata: Metadata = {
   title: 'Partner Dashboard | Elevate for Humanity',
   description: 'Manage your partnership, track student progress, and access training resources.',
