@@ -301,7 +301,8 @@ export default function SiteHeader() {
             {/* Apply Now CTA */}
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 min-h-[44px]"
+              className="inline-flex items-center justify-center bg-blue-600 !text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 min-h-[44px]"
+              style={{ color: 'white' }}
             >
               Apply Now
             </Link>
@@ -454,7 +455,8 @@ export default function SiteHeader() {
               <Link
                 href="/apply"
                 onClick={closeMobileMenu}
-                className="block w-full p-3 text-center text-base font-semibold text-white bg-blue-600 rounded-full no-underline hover:bg-blue-700 active:bg-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                className="block w-full p-3 text-center text-base font-semibold !text-white bg-blue-600 rounded-full no-underline hover:bg-blue-700 active:bg-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                style={{ color: 'white' }}
                 role="menuitem"
               >
                 Apply Now

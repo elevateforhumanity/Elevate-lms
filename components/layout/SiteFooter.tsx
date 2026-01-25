@@ -185,12 +185,12 @@ export default function SiteFooter() {
               <h3 className="text-xs font-medium uppercase tracking-wider text-gray-400 mb-3">
                 {section.title}
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-1">
                 {section.links.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-gray-300 hover:text-white transition-colors"
+                      className="block py-1 text-sm text-gray-300 hover:text-white transition-colors min-h-[24px]"
                     >
                       {link.name}
                     </Link>
@@ -220,8 +220,8 @@ export default function SiteFooter() {
               </span>
             </div>
             <div className="flex justify-center gap-4 text-xs text-gray-500">
-              <Link href="/privacy-policy" className="hover:text-white">Privacy</Link>
-              <Link href="/terms-of-service" className="hover:text-white">Terms</Link>
+              <Link href="/privacy-policy" className="py-1 min-h-[24px] hover:text-white">Privacy</Link>
+              <Link href="/terms-of-service" className="py-1 min-h-[24px] hover:text-white">Terms</Link>
             </div>
           </div>
         </div>

@@ -1576,10 +1576,19 @@ header[role="banner"] * {
   background-clip: unset !important;
 }
 
+/* Header text colors - allow white text on colored backgrounds */
 header[role="banner"] span,
 header[role="banner"] button,
-header[role="banner"] a,
 header[role="banner"] nav {
-  color: #000000 !important;
+  color: #000000;
+}
+
+header[role="banner"] a {
+  color: inherit;
+}
+
+header[role="banner"] a.bg-blue-600,
+header[role="banner"] a.\!text-white {
+  color: #ffffff !important;
 }
 
