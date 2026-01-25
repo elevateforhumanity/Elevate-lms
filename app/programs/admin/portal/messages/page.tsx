@@ -71,7 +71,8 @@ export default async function MessagesPage() {
             Messages
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Send and manage communications with students and staff.
+            Manage program communications.
+            
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
