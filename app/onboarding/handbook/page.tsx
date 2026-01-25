@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/onboarding/handbook',
   },
   title: 'Handbook | Elevate For Humanity',
-  description: 'Access handbook features and tools.',
+  description: 'Employee handbook covering policies, procedures, and guidelines for staff and program participants.',
 };
 
 export default async function HandbookPage() {

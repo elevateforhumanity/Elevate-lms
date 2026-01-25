@@ -11,7 +11,7 @@ export const metadata: Metadata = {
       'https://www.elevateforhumanity.org/onboarding/staff/orientation',
   },
   title: 'Staff Orientation | Elevate For Humanity',
-  description: 'Access orientation features and tools.',
+  description: 'New staff orientation introducing training programs, certification paths, and career placement services.',
 };
 
 export default async function OrientationPage() {

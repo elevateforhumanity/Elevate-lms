@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/onboarding/school',
   },
   title: 'School | Elevate For Humanity',
-  description: 'Access school features and tools.',
+  description: 'School partner onboarding to refer students to free training programs and career placement services.',
 };
 
 export default async function SchoolPage() {

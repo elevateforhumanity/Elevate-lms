@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/consumer-education',
   },
   title: 'Consumer Education | Elevate For Humanity',
-  description: 'Access consumer education features and tools.',
+  description: 'Learn about your rights as a training program participant, financial literacy, and career planning resources.',
 };
 
 export default async function ConsumerEducationPage() {

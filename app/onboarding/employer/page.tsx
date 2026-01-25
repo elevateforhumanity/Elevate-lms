@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/onboarding/employer',
   },
   title: 'Employer | Elevate For Humanity',
-  description: 'Access employer features and tools.',
+  description: 'Employer onboarding to connect with trained, certified candidates ready for hire.',
 };
 
 export default async function EmployerPage() {

@@ -72,8 +72,7 @@ export default async function CreatePage() {
             Create
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            >Create New Course< and
-            development.
+            Create and configure new courses for your training programs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

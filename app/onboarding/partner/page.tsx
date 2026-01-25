@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/onboarding/partner',
   },
   title: 'Partner | Elevate For Humanity',
-  description: 'Access partner features and tools.',
+  description: 'Partner onboarding portal. Learn about training programs, certification opportunities, and placement services.',
 };
 
 export default async function PartnerPage() {

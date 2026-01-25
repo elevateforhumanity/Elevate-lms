@@ -13,7 +13,7 @@ export const metadata: Metadata = {
       'https://www.elevateforhumanity.org/onboarding/employer/orientation',
   },
   title: 'Employer Orientation | Elevate For Humanity',
-  description: 'Access orientation features and tools.',
+  description: 'Employer orientation to learn how to post jobs, review candidates, and hire program graduates.',
 };
 
 export default async function OrientationPage() {

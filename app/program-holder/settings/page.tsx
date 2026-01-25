@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/program-holder/settings',
   },
   title: 'Program Holder Settings | Elevate For Humanity',
-  description: 'Access settings features and tools.',
+  description: 'Configure your program settings, notification preferences, and organization profile.',
 };
 
 export default async function SettingsPage() {

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
       'https://www.elevateforhumanity.org/program-holder/courses/create',
   },
   title: 'Create Program Holder Course | Elevate For Humanity',
-  description: 'Access create features and tools.',
+  description: 'Create a new course for your training program with curriculum, schedule, and enrollment settings.',
 };
 
 export default async function CreatePage() {

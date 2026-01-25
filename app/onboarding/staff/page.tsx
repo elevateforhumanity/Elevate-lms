@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/onboarding/staff',
   },
   title: 'Staff | Elevate For Humanity',
-  description: 'Access staff features and tools.',
+  description: 'Staff onboarding portal with free training programs, industry certifications, and job placement support.',
 };
 
 export default async function StaffPage() {

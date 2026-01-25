@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/video',
   },
   title: 'Video | Elevate For Humanity',
-  description: 'Access video features and tools.',
+  description: 'Watch training videos, tutorials, and educational content to support your learning journey.',
 };
 
 export default async function VideoPage() {

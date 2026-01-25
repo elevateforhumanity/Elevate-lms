@@ -71,8 +71,7 @@ export default async function ReportsPage() {
             Reports
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            >Program Reports< and
-            development.
+            View and generate program performance reports.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

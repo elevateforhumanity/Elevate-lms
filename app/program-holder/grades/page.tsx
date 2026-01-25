@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/program-holder/grades',
   },
   title: 'Program Holder Grades | Elevate For Humanity',
-  description: 'Access grades features and tools.',
+  description: 'Review and manage student grades, assessments, and academic progress across your programs.',
 };
 
 export default async function GradesPage() {

@@ -71,8 +71,7 @@ export default async function TrainingPage() {
             Training
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            >Training Management< and
-            development.
+            Manage training sessions, schedules, and instructor assignments.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

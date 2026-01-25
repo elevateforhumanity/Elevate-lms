@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/staff-portal/courses',
   },
   title: 'Staff Portal Courses | Elevate For Humanity',
-  description: 'Access courses features and tools.',
+  description: 'View and manage your assigned training courses, track completion status, and access course materials.',
 };
 
 export default async function CoursesPage() {

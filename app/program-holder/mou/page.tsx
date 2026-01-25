@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/program-holder/mou',
   },
   title: 'Program Holder MOU | Elevate For Humanity',
-  description: 'Access mou features and tools.',
+  description: 'View and manage Memorandums of Understanding with employers and partner organizations.',
 };
 
 export default async function MouPage() {

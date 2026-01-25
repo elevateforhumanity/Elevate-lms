@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/platform/workforce-boards',
   },
   title: 'Workforce Boards | Elevate For Humanity',
-  description: 'Access workforce boards features and tools.',
+  description: 'Partner with Elevate to connect job seekers in your region with free training and employment opportunities.',
 };
 
 export default async function WorkforceBoardsPage() {

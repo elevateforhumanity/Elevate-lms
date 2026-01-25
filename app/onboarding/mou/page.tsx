@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/onboarding/mou',
   },
   title: 'Onboarding MOU | Elevate For Humanity',
-  description: 'Access mou features and tools.',
+  description: 'Review and sign the Memorandum of Understanding to complete your program enrollment.',
 };
 
 export default async function MouPage() {

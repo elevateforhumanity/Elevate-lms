@@ -70,8 +70,7 @@ export default async function MouPage() {
             Mou
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            >MOU Management< and
-            development.
+            Manage Memorandums of Understanding with partners and employers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
