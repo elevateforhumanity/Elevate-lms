@@ -8,9 +8,12 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
+// Lazy initialization to avoid build-time errors
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
-  if (!key) throw new Error('STRIPE_SECRET_KEY not configured');
+  if (!key) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
   return new Stripe(key, {
     apiVersion: '2025-10-29.clover' as Stripe.LatestApiVersion,
   });
@@ -227,6 +230,7 @@ export async function POST(request: NextRequest) {
         );
     }
 
+    const stripe = getStripe();
     const session = await stripe.checkout.sessions.create(sessionConfig);
 
     logger.info('Learner checkout session created', {

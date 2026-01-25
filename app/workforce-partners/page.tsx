@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Workforce Development Partners | Elevate For Humanity',
   description:
-    'Partner with Elevate for Humanity for workforce development. Connect job seekers with training and employment opportunities.',
+    'Resources and tools for your success.',
 };
 
 export default async function WorkforcePartnersPage() {
@@ -49,33 +49,27 @@ export default async function WorkforcePartnersPage() {
           sizes="100vw"
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
-          <div className="max-w-2xl bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
-            <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-              Partnership Opportunities
-            </div>
-            <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
-              Workforce Development Partners
-            </h1>
-            <p className="text-xl text-gray-700 mb-8">
-              Partner with Elevate for Humanity to build workforce pipelines, access funding, 
-              and connect with trained candidates. We work with WorkOne, community organizations, 
-              and employers to create pathways to employment.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/contact?type=partner"
-                className="inline-flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-              >
-                Become a Partner
-              </Link>
-              <Link
-                href="/employers"
-                className="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-              >
-                View Programs
-              </Link>
-            </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Workforce Partners
+          </h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100">
+            Your hub for training and career growth.
+            workforce training and career success.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/programs"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              View Programs
+            </Link>
           </div>
         </div>
       </section>
@@ -91,8 +85,8 @@ export default async function WorkforcePartnersPage() {
                   Workforce Partners
                 </h2>
                 <p className="text-black mb-6">
-                  Manage workforce-partners for
-                  career growth and development.
+                  Your hub for
+                  career workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

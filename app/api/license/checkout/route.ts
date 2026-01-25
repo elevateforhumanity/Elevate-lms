@@ -2,11 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { PLANS, PlanId, TRIAL_DAYS } from '@/lib/license/types';
 
-// Initialize Stripe only if key is available
-const stripeKey = process.env.STRIPE_SECRET_KEY;
-const stripe = stripeKey 
-  ? new Stripe(stripeKey, { apiVersion: '2025-10-29.clover' as Stripe.LatestApiVersion })
-  : null;
+// Lazy initialization to avoid build-time errors
+function getStripe() {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  return new Stripe(key, {
+    apiVersion: '2025-10-29.clover' as Stripe.LatestApiVersion,
+  });
+}
 
 /**
  * POST /api/license/checkout
@@ -99,6 +104,8 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    const stripe = getStripe();
 
     // Create or retrieve Stripe customer
     const customers = await stripe.customers.list({

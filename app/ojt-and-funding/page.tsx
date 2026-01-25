@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'On-the-Job Training (OJT) & Employer Funding | Elevate For Humanity',
   description:
-    'Get paid while you learn through On-the-Job Training programs. Employers receive wage reimbursement while you gain skills and experience. WIOA-funded opportunities in Indianapolis.',
+    'Resources and tools for your success.',
 };
 
 export default async function OjtAndFundingPage() {
@@ -48,32 +48,27 @@ export default async function OjtAndFundingPage() {
           sizes="100vw"
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
-          <div className="max-w-2xl bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-              Earn While You Learn
-            </div>
-            <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
-              On-the-Job Training & Employer Funding
-            </h1>
-            <p className="text-xl text-gray-700 mb-8">
-              Get paid while you learn new skills. OJT programs let employers hire and train you 
-              while receiving wage reimbursement - a win-win for everyone.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/apply?program=ojt&funding=wioa"
-                className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-              >
-                Apply for OJT
-              </Link>
-              <Link
-                href="/for-employers"
-                className="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-              >
-                For Employers
-              </Link>
-            </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Ojt And Funding
+          </h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100">
+            Your hub for training and career growth.
+            and development.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/programs"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              View Programs
+            </Link>
           </div>
         </div>
       </section>
@@ -89,9 +84,8 @@ export default async function OjtAndFundingPage() {
                   What is On-the-Job Training?
                 </h2>
                 <p className="text-black mb-6">
-                  On-the-Job Training (OJT) is a federally-funded program that helps you earn money 
-                  while learning new skills. Employers receive up to 50% wage reimbursement for training you, 
-                  making it easier for them to invest in your development.
+                  Your hub for training and career growth.
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

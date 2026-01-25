@@ -5,8 +5,13 @@ import Link from 'next/link';
 import { BookOpen, Plus, Edit, Trash2, GripVertical, Video, FileText, CheckSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Course Builder | Admin | Elevate For Humanity',
-  description: 'Build and manage course content.',
+  robots: { index: false, follow: false },
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/admin/course-builder',
+  },
+  title: 'Course Builder | Elevate For Humanity',
+  description:
+    'Resources and tools for your success.',
 };
 
 const statusColors: Record<string, string> = {
@@ -63,12 +68,33 @@ export default async function AdminCourseBuilderPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">Course Builder</h1>
-            <p className="text-gray-600 mt-1">Create and manage course content</p>
+      {/* Hero Section */}
+      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/hero/admin-hero.jpg"
+          alt="Course Builder"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Course Builder
+          </h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100">
+            Your hub for training and career growth.
+            and development.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/admin/dashboard"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Back to Dashboard
+            </Link>
           </div>
           <Link 
             href="/admin/course-builder/new"

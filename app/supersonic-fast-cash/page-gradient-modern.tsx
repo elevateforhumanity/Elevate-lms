@@ -52,7 +52,7 @@ export default function SupersonicMarketingPage() {
         </div>
 
         {/* Gradient overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-950/80 via-blue-900/70 to-red-900/80"></div>
+        
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
@@ -182,7 +182,7 @@ export default function SupersonicMarketingPage() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-red-600/90 to-transparent"></div>
+                
                 <h3 className="absolute bottom-4 left-4 right-4 text-3xl font-black uppercase text-white z-10">
                   Tax Refund Advance
                 </h3>
@@ -255,7 +255,7 @@ export default function SupersonicMarketingPage() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 to-transparent"></div>
+                
                 <h3 className="absolute bottom-4 left-4 right-4 text-3xl font-black uppercase text-white z-10">
                   Professional Tax Prep
                 </h3>
@@ -328,7 +328,7 @@ export default function SupersonicMarketingPage() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-green-600/90 to-transparent"></div>
+                
                 <h3 className="absolute bottom-4 left-4 right-4 text-3xl font-black uppercase text-white z-10">
                   DIY Self-Prep
                 </h3>

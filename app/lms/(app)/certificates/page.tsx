@@ -10,7 +10,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/lms/certificates',
   },
   title: 'Certificates | Elevate For Humanity',
-  description: 'Access certificates features and tools.',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function CertificatesPage() {

@@ -95,7 +95,7 @@ export default async function BarberProgramPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/images/programs-hq/barber-hero.jpg)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-800/80" />
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-white">
           <Link href="/programs" className="text-gray-300 hover:text-white mb-4 inline-block">
             ← All Programs

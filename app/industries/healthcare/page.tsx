@@ -32,7 +32,7 @@ export default function HealthcarePage() {
       {/* Hero Section */}
       <section className="relative h-[450px] md:h-[500px] w-full overflow-hidden">
         <Image src="/og-default.jpg" alt="Healthcare Programs" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} loading="lazy" />
-        <div className="absolute inset-0 bg-black/50" />
+        
 
         <div className="absolute inset-0 flex items-center justify-center text-center px-4">
           <div className="max-w-4xl w-full">
@@ -90,7 +90,7 @@ export default function HealthcarePage() {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     )}
-                    <div className="absolute inset-0 bg-black/40"></div>
+                    
                     <div className="absolute bottom-4 left-4 right-4">
                       <h3 className="text-xl font-bold text-white mb-1">
                         {program.name}

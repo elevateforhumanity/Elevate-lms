@@ -10,7 +10,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/program-holder/how-',
   },
   title: 'How To Use | Elevate For Humanity',
-  description: 'Step-by-step guide for program holders to manage courses, students, reports, and platform features.',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function HowToUsePage() {
@@ -64,7 +65,8 @@ export default async function HowToUsePage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">How To Use</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Access how to use features and resources.
+            Access your dashboard and
+            development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

@@ -33,7 +33,8 @@ export default async function TaxPreparationPage() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
-        <Image src="/images/business/tax-prep-certification.jpg" alt="Tax Preparation" fill className="object-cover" quality={85} priority />
+        <Image src="/images/business/professional-1.jpg" alt="Tax Preparation" fill className="object-cover" quality={85} priority />
+        
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">

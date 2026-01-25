@@ -387,7 +387,8 @@ export default async function MentorshipPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Mentorship</h2>
                 <p className="text-black mb-6">
-                  Explore mentorship opportunities and resources.
+                  Your hub for training and career growth.
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   title: 'Submissions | Elevate For Humanity',
   description:
-    'Review and manage grant submissions.',
+    'Review and process grant application submissions.',
 };
 
 async function getSubmissionsData() {

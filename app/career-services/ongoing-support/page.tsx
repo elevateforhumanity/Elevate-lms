@@ -86,7 +86,7 @@ export default async function OngoingSupportPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/images/community/event-2.jpg)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-pink-900/90 to-pink-800/80" />
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
           <Link href="/career-services" className="text-pink-200 hover:text-white mb-4 inline-block">
             ← Career Services

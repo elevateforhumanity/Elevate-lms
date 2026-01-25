@@ -81,7 +81,7 @@ export default async function NetworkingEventsPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/images/career-services/networking-hero.jpg)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 to-teal-800/80" />
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
           <Link href="/career-services" className="text-teal-200 hover:text-white mb-4 inline-block">
             ← Career Services

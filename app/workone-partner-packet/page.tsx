@@ -43,7 +43,7 @@ export default function WorkOnePartnerPacketPage() {
         >
           <source src="https://cms-artifacts.artlist.io/content/generated-video-v1/video__2/generated-video-acfed647-8bb1-44ed-8505-876b1d573896.mp4?Expires=2083808563&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=BO~IkvikD0UAyMYmWQoBNskXM7I8fMAXUJW3T-zgJh1jg78q3LhNDpFOLhVcCpTBW1Rscp0c0YXEi-CQ29NDjSUKoclWTKq4q-bPLNxXgOpKLYxr5B5X3LzzDQQYnq5ilkgAvEZ~VzT3P8HEixv9WPRLFnAd5V3f~829SadfMPddUPxQZDZc29hrBn-Kxv-EKfugudcZ3depV1X-T1F5UxzvRMqFCXxjfT658RlSt0IupI0LxtywFYkChqJQmH6A~2JBncMUPerBqqt0Gdyp4ettIltCFvBX70ai6784jneJJrWcBJ0l7GyJPx1WBPAqjAdnCeJwyPC2Spp3~u93pQ__" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/90 via-teal-800/85 to-cyan-900/80" />
+        
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -80,13 +80,13 @@ export default function WorkOnePartnerPacketPage() {
                   <Phone className="w-5 h-5 mr-2" />
                   Contact Us
                 </Link>
-                <a
-                  href="/docs/workone-partner-packet.pdf"
+                <button
+                  onClick={() => window.print()}
                   className="inline-flex items-center justify-center px-8 py-4 bg-teal-700 text-white rounded-lg font-bold hover:bg-teal-600 transition-colors border-2 border-white/30"
                 >
                   <Download className="w-5 h-5 mr-2" />
-                  Download PDF Packet
-                </a>
+                  Print This Page
+                </button>
               </div>
             </div>
 

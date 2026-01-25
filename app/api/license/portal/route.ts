@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
+// Lazy initialization to avoid build-time errors
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
-  if (!key) throw new Error('STRIPE_SECRET_KEY not configured');
+  if (!key) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
   return new Stripe(key, {
     apiVersion: '2025-10-29.clover' as Stripe.LatestApiVersion,
   });
@@ -32,6 +35,7 @@ export async function POST(request: NextRequest) {
     }
 
     const origin = request.nextUrl.origin;
+    const stripe = getStripe();
 
     // Create portal session
     const session = await stripe.billingPortal.sessions.create({

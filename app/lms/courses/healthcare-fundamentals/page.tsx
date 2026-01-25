@@ -155,9 +155,12 @@ export default function HealthcareFundamentalsCoursePage() {
             </div>
 
             <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center">
-                <BookOpen className="w-32 h-32 text-white opacity-50" />
-              </div>
+              <Image
+                src="/images/healthcare/hero-programs-healthcare.jpg"
+                alt="Healthcare Fundamentals Course"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </div>

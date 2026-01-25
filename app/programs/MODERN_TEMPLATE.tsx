@@ -33,7 +33,7 @@ export default function ProgramPage() {
             preload="none"
             className="absolute inset-0 h-full w-full object-cover"
           >
-            <source src="/videos/program-hero.mp4" type="video/mp4" />
+            <source src="/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
           </video>
         </div>
       </section>

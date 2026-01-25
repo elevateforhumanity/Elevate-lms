@@ -117,8 +117,8 @@ export default function CareerServicesContactPage() {
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">Career Services Center</h3>
                     <p className="text-gray-600">
-                      3737 N Meridian St<br />
-                      Indianapolis, IN 46208
+                      8888 Keystone Xing Suite 1300<br />
+                      Indianapolis, IN 46240
                     </p>
                   </div>
                 </div>
@@ -151,7 +151,7 @@ export default function CareerServicesContactPage() {
                   <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-600">
                     <a
-                      href="https://maps.google.com/?q=3737+N+Meridian+St+Indianapolis+IN+46208"
+                      href="https://maps.google.com/?q=8888+Keystone+Xing+Suite+1300+Indianapolis+IN+46240"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:underline font-medium"

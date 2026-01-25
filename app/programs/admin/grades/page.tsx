@@ -9,8 +9,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/admin/grades',
   },
-  title: 'Grade Management | Program Administration | Elevate For Humanity',
-  description: 'Manage student grades, assessments, and academic progress.',
+  title: 'Programs Admin Grades | Elevate For Humanity',
+  description:
+    'View and manage student grades and assessments.',
 };
 
 export default async function GradesPage() {
@@ -70,8 +71,8 @@ export default async function GradesPage() {
             Grades
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage student grades.
-            
+            Manage your program administration
+            development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

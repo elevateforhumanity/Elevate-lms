@@ -1,4 +1,6 @@
-import { Metadata } from 'next';
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -10,16 +12,39 @@ import {
   Award,
 } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Free Career Training | Elevate For Humanity',
-  description:
-    '100% free training programs. No student debt. Get certified and hired.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/for/students',
-  },
-};
+interface Program {
+  title: string;
+  duration: string;
+  pay: string;
+  href: string;
+}
 
 export default function StudentsPage() {
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs) {
+          setPrograms(data.programs.slice(0, 6).map((p: any) => ({
+            title: p.name || p.title,
+            duration: p.estimated_weeks ? `${p.estimated_weeks} weeks` : 'Flexible',
+            pay: p.is_free ? 'Free' : 'Funded',
+            href: `/programs/${p.slug}`,
+          })));
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
+
   const benefits = [
     '100% Free Training',
     'No Student Debt',
@@ -29,32 +54,7 @@ export default function StudentsPage() {
     'Flexible Schedules',
   ];
 
-  const programs = [
-    {
-      title: 'Barber Apprenticeship',
-      duration: '15-17 months',
-      pay: '$10/hr + tips',
-      href: '/programs/barber-apprenticeship',
-    },
-    {
-      title: 'HVAC Technician',
-      duration: '6-12 months',
-      pay: 'Varies',
-      href: '/programs/hvac-technician',
-    },
-    {
-      title: 'CNA Healthcare',
-      duration: '4-6 weeks',
-      pay: 'Varies',
-      href: '/programs/cna',
-    },
-    {
-      title: 'CDL Training',
-      duration: '3-4 weeks',
-      pay: 'Varies',
-      href: '/programs/cdl',
-    },
-  ];
+  // Programs are now fetched from database via useEffect above
 
   return (
     <div className="bg-white">

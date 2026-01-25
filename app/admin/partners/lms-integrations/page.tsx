@@ -11,7 +11,8 @@ export const metadata: Metadata = {
       'https://www.elevateforhumanity.org/admin/partners/lms-integrations',
   },
   title: 'Lms Integrations | Elevate For Humanity',
-  description: 'Access lms integrations features and tools.',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function LmsIntegrationsPage() {
@@ -74,7 +75,8 @@ export default async function LmsIntegrationsPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Lms Integrations</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore lms integrations opportunities and resources.
+            Your hub for training and career growth.
+            workforce training and career success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

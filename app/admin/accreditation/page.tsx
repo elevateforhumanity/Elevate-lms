@@ -395,7 +395,7 @@ export default async function AccreditationPage() {
                 </ul>
                 <div className="mt-4">
                   <Link
-                    href="/ACCREDITATION_READINESS_AUDIT.md"
+                    href="/admin/accreditation/report"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-brand-orange-600 text-white rounded-lg hover:bg-brand-orange-700 transition-colors"
                   >
                     <FileText className="w-4 h-4" />
@@ -410,7 +410,7 @@ export default async function AccreditationPage() {
         {/* Resources */}
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           <Link
-            href="/ACCREDITATION_COMPLIANCE.md"
+            href="/compliance"
             className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow"
           >
             <Shield className="w-8 h-8 text-brand-blue-600 mb-3" />

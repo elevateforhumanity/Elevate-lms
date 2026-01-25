@@ -48,7 +48,7 @@ export default async function PathwayDetailPage({ params }: { params: Promise<{ 
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80" />
+        
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-14 text-white">
           <p className="text-white/80">
             <Link href="/pathways" className="underline hover:text-white">Workforce Pathways</Link> / {pathway.title}

@@ -22,10 +22,17 @@ import {
   GraduationCap
 } from 'lucide-react';
 
-const programCategories = [
-  {
+interface ProgramCategory {
+  title: string;
+  description: string;
+  href: string;
+  image: string;
+  count: number;
+}
+
+const categoryConfig = {
+  healthcare: {
     title: 'Healthcare',
-    description: 'Start a rewarding career helping others. Healthcare is one of the fastest-growing industries with strong job security, competitive wages, and opportunities for advancement. Our programs prepare you for in-demand roles in hospitals, clinics, nursing homes, and home health settings.',
     href: '/programs/healthcare',
     image: '/images/programs-hq/healthcare-hero.jpg',
     icon: Heart,
@@ -38,9 +45,8 @@ const programCategories = [
       { name: 'Drug Collector', href: '/programs/drug-collector', duration: '1-2 weeks', description: 'Collect specimens for drug testing' },
     ],
   },
-  {
+  trades: {
     title: 'Skilled Trades',
-    description: 'Learn hands-on skills for well-paying trade careers that cannot be outsourced. Skilled trades offer excellent earning potential, job stability, and the satisfaction of building and fixing things. Many of our graduates start earning $40,000-$60,000+ within their first year.',
     href: '/programs/skilled-trades',
     image: '/images/programs-hq/skilled-trades-hero.jpg',
     icon: Wrench,
@@ -52,9 +58,8 @@ const programCategories = [
       { name: 'Plumbing', href: '/programs/plumbing', duration: '12-24 weeks', description: 'Install and repair water and drainage systems' },
     ],
   },
-  {
+  technology: {
     title: 'Technology',
-    description: 'Enter the growing tech industry with no prior experience required. Technology careers offer remote work opportunities, high salaries, and continuous growth. We teach you practical skills that employers need, from troubleshooting computers to protecting networks from cyber threats.',
     href: '/programs/technology',
     image: '/images/programs-hq/technology-hero.jpg',
     icon: Monitor,
@@ -101,7 +106,7 @@ const programCategories = [
       { name: 'Tax Business Entrepreneurship', href: '/programs/tax-entrepreneurship', duration: '8-12 weeks', description: 'Start and run your own tax preparation business' },
     ],
   },
-];
+};
 
 const colorClasses: Record<string, { bg: string; text: string; light: string; border: string }> = {
   red: { bg: 'bg-red-600', text: 'text-red-600', light: 'bg-red-50', border: 'border-red-200' },
@@ -114,6 +119,58 @@ const colorClasses: Record<string, { bg: string; text: string; light: string; bo
 export default function ProgramsPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
+  const [categories, setCategories] = useState<ProgramCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch program categories from database
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const res = await fetch('/api/programs');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs) {
+          // Group programs by category and count
+          const categoryMap: Record<string, { programs: any[], names: string[] }> = {};
+          
+          data.programs.forEach((p: any) => {
+            const cat = p.category?.toLowerCase() || 'other';
+            let normalizedCat = cat;
+            if (cat.includes('health')) normalizedCat = 'healthcare';
+            else if (cat.includes('trade') || cat.includes('barber') || cat.includes('beauty')) normalizedCat = 'trades';
+            else if (cat.includes('tech')) normalizedCat = 'technology';
+            
+            if (!categoryMap[normalizedCat]) {
+              categoryMap[normalizedCat] = { programs: [], names: [] };
+            }
+            categoryMap[normalizedCat].programs.push(p);
+            if (categoryMap[normalizedCat].names.length < 3) {
+              categoryMap[normalizedCat].names.push(p.name);
+            }
+          });
+
+          const cats: ProgramCategory[] = [];
+          ['healthcare', 'trades', 'technology'].forEach(key => {
+            const config = categoryConfig[key as keyof typeof categoryConfig];
+            const catData = categoryMap[key];
+            if (config && catData) {
+              cats.push({
+                ...config,
+                description: catData.names.join(', '),
+                count: catData.programs.length,
+              });
+            }
+          });
+          
+          setCategories(cats);
+        }
+      } catch (error) {
+        console.error('Failed to fetch categories:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchCategories();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowContent(true), 100);
@@ -172,7 +229,7 @@ export default function ProgramsPage() {
           <source src="/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
         </video>
         
-        <div className="absolute inset-0 bg-black/50 pointer-events-none" />
+        
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
           <div className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -274,254 +331,50 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* Why Choose Our Programs */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-black text-gray-900 mb-4">
-              Why Train With Elevate?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We connect you with funding, training, and employers to help you succeed
-            </p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
-              <div className="relative h-40 rounded-xl overflow-hidden mb-4">
-                <Image
-                  src="/images/heroes-hq/funding-hero.jpg"
-                  alt="Free training"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">Free or Funded</h3>
-              <p className="text-gray-600 text-sm">
-                Many programs are 100% free through WIOA and other funding sources for eligible participants
-              </p>
+      {/* Programs Grid */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {loading ? (
+            <div className="grid md:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-100 rounded-xl h-80 animate-pulse" />
+              ))}
             </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
-              <div className="relative h-40 rounded-xl overflow-hidden mb-4">
-                <Image
-                  src="/images/programs-hq/training-classroom.jpg"
-                  alt="Fast track training"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">Fast Track</h3>
-              <p className="text-gray-600 text-sm">
-                Most programs complete in weeks, not years. Start your new career quickly
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
-              <div className="relative h-40 rounded-xl overflow-hidden mb-4">
-                <Image
-                  src="/images/programs-hq/career-success.jpg"
-                  alt="Industry credentials"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">Industry Credentials</h3>
-              <p className="text-gray-600 text-sm">
-                Earn recognized certifications that employers are looking for
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
-              <div className="relative h-40 rounded-xl overflow-hidden mb-4">
-                <Image
-                  src="/images/heroes-hq/employer-hero.jpg"
-                  alt="Job placement"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">Job Placement</h3>
-              <p className="text-gray-600 text-sm">
-                Career coaching and job placement assistance to help you find employment
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Program Categories */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-black text-gray-900 mb-4">
-              Explore Training Programs
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Choose a career path that matches your interests and goals
-            </p>
-          </div>
-
-          <div className="space-y-12">
-            {programCategories.map((category) => {
-              const colors = colorClasses[category.color];
-              const IconComponent = category.icon;
-              
-              return (
-                <div 
+          ) : (
+            <div className="grid md:grid-cols-3 gap-6">
+              {categories.map((category) => (
+                <Link
                   key={category.title}
-                  className={`rounded-2xl overflow-hidden border ${colors.border} ${colors.light}`}
+                  href={category.href}
+                  className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
                 >
-                  <div className="grid lg:grid-cols-3 gap-0">
-                    {/* Image */}
-                    <div className="relative h-64 lg:h-auto min-h-[300px]">
-                      <Image
-                        src={category.image}
-                        alt={category.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className={`absolute top-4 left-4 ${colors.bg} text-white px-4 py-2 rounded-full font-bold flex items-center gap-2`}>
-                        <IconComponent className="w-5 h-5" />
-                        {category.title}
+                  <div className="relative h-48">
+                    <Image
+                      src={category.image}
+                      alt={category.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      quality={85}
+                    />
+                    {category.count > 0 && (
+                      <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        {category.count} Programs
                       </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="lg:col-span-2 p-8">
-                      <p className="text-lg text-gray-700 mb-6">
-                        {category.description}
-                      </p>
-
-                      {/* Programs List */}
-                      <h4 className="font-bold text-gray-900 mb-4">Programs Available:</h4>
-                      <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                        {category.programs.map((program) => (
-                          <Link
-                            key={program.name}
-                            href={program.href}
-                            className="flex items-start gap-3 p-4 bg-white rounded-xl hover:shadow-md transition-shadow group border border-gray-100"
-                          >
-                            <CheckCircle className={`w-5 h-5 ${colors.text} flex-shrink-0 mt-0.5`} />
-                            <div>
-                              <div className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                                {program.name}
-                              </div>
-                              <div className="text-sm text-gray-600 mb-1">
-                                {program.description}
-                              </div>
-                              <div className="text-xs text-gray-500 flex items-center gap-1">
-                                <Clock className="w-3 h-3" />
-                                {program.duration}
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-
-                      <Link
-                        href={category.href}
-                        className={`inline-flex items-center gap-2 ${colors.bg} text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity`}
-                      >
-                        View All {category.title} Programs
-                        <ArrowRight className="w-5 h-5" />
-                      </Link>
-                    </div>
+                    )}
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Special Programs */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-black text-gray-900 mb-4">
-              Special Programs & Funding
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Additional pathways and funding opportunities
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Link
-              href="/programs/apprenticeships"
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
-            >
-              <div className="relative h-48">
-                <Image
-                  src="/images/heroes-hq/employer-hero.jpg"
-                  alt="Apprenticeships"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                  Registered Apprenticeships
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Earn while you learn with Department of Labor registered apprenticeship programs. 
-                  Get paid training, mentorship, and a nationally recognized credential.
-                </p>
-                <span className="inline-flex items-center gap-2 text-blue-600 font-semibold">
-                  Explore Apprenticeships <ArrowRight className="w-4 h-4" />
-                </span>
-              </div>
-            </Link>
-
-            <Link
-              href="/programs/jri"
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
-            >
-              <div className="relative h-48">
-                <Image
-                  src="/images/testimonials-hq/person-7.jpg"
-                  alt="Second chance programs"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                  Justice-Involved Programs
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Second chance programs for individuals with criminal backgrounds. 
-                  We believe everyone deserves an opportunity to build a better future.
-                </p>
-                <span className="inline-flex items-center gap-2 text-blue-600 font-semibold">
-                  Learn More <ArrowRight className="w-4 h-4" />
-                </span>
-              </div>
-            </Link>
-
-            <Link
-              href="/wioa-eligibility"
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
-            >
-              <div className="relative h-48">
-                <Image
-                  src="/images/heroes-hq/funding-hero.jpg"
-                  alt="WIOA funding"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                  WIOA Funded Programs
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Free training through Workforce Innovation and Opportunity Act funding. 
-                  Check if you qualify for 100% funded training with support services.
-                </p>
-                <span className="inline-flex items-center gap-2 text-blue-600 font-semibold">
-                  Check Eligibility <ArrowRight className="w-4 h-4" />
-                </span>
-              </div>
-            </Link>
-          </div>
+                  <div className="p-6">
+                    <h2 className="text-xl font-bold text-gray-900 mb-2">
+                      {category.title}
+                    </h2>
+                    <p className="text-gray-600 mb-4">{category.description}</p>
+                    <span className="text-blue-600 font-semibold group-hover:underline">
+                      View Programs →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

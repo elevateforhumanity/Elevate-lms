@@ -90,14 +90,12 @@ export default async function TransparencyPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-blue-900/60" />
-        <div className="relative z-10 h-full flex items-center">
-          <div className="max-w-7xl mx-auto px-4 w-full">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Transparency</h1>
-            <p className="text-xl text-blue-100 max-w-2xl">
-              We believe in complete transparency. Here's how we measure our impact and use our resources.
-            </p>
-          </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Transparency</h1>
+          <p className="text-xl text-blue-100 max-w-2xl">
+            We believe in complete transparency. Here's how we measure our impact and use our resources.
+          </p>
         </div>
       </section>
 

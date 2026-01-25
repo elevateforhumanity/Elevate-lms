@@ -20,6 +20,7 @@ const services = [
     name: 'Individual Tax Preparation',
     price: 'Contact for Pricing',
     description: 'Personal tax returns filed accurately and on time',
+    href: '/supersonic-fast-cash/services/tax-preparation',
     features: [
       'W-2 and 1099 income',
       'Itemized deductions',
@@ -34,6 +35,7 @@ const services = [
     name: 'Tax Refund Advance',
     price: 'Up to $7,500',
     description: 'Get your refund faster with our advance program',
+    href: '/supersonic-fast-cash/services/refund-advance',
     features: [
       'Same-day funding',
       'No credit check',
@@ -48,6 +50,7 @@ const services = [
     name: 'Business Tax Returns',
     price: 'Contact for Pricing',
     description: 'Complete business tax solutions for all entity types',
+    href: '/supersonic-fast-cash/book-appointment',
     features: [
       'LLC, S-Corp, C-Corp',
       'Partnership returns',
@@ -62,6 +65,7 @@ const services = [
     name: 'Bookkeeping Services',
     price: 'Starting at $199/month',
     description: 'Professional bookkeeping to keep your business organized',
+    href: '/supersonic-fast-cash/services/bookkeeping',
     features: [
       'Monthly reconciliation',
       'Financial statements',
@@ -76,6 +80,7 @@ const services = [
     name: 'IRS Audit Protection',
     price: '$49/year',
     description: 'Licensed Enrolled Agent representation before the IRS',
+    href: '/supersonic-fast-cash/services/audit-protection',
     features: [
       'Licensed EA representation',
       'IRS audit defense',
@@ -133,6 +138,7 @@ export default async function ServicesPage() {
           quality={85}
           priority
         />
+        
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-7xl mx-auto px-6 w-full">
             <div className="max-w-3xl">
@@ -195,10 +201,10 @@ export default async function ServicesPage() {
                   ))}
                 </ul>
                 <Link
-                  href="/supersonic-fast-cash/book-appointment"
+                  href={service.href || '/supersonic-fast-cash/book-appointment'}
                   className="block w-full text-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  Get Started
+                  {service.href ? 'Learn More' : 'Get Started'}
                 </Link>
               </div>
             ))}

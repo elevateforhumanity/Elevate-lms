@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'ENV_CONFIG.md | Elevate For Humanity',
   description:
-    'Environment configuration documentation.',
+    'Environment configuration documentation for developers.',
 };
 
 export default async function ENVCONFIGmdPage() {
@@ -59,8 +59,8 @@ export default async function ENVCONFIGmdPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">ENV_CONFIG.md</h2>
                 <p className="text-black mb-6">
-                  Configuration documentation and setup
-                  growth and development.
+                  Manage ENV_CONFIG.md for career
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

@@ -1,70 +1,185 @@
-import ProgramCategoryPage from '@/components/programs/ProgramCategoryPage';
-import { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Skilled Trades Training Programs | Elevate for Humanity',
-  description: 'Learn hands-on trade skills with free WIOA-funded training. HVAC, Welding, Electrical, Plumbing, and CDL programs.',
+import Link from 'next/link';
+import Image from 'next/image';
+import { useEffect, useState, useRef } from 'react';
+
+import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import PathwayDisclosure from '@/components/PathwayDisclosure';
+
+interface Program {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  category: string;
+  duration_weeks: number;
+  price: number;
+  certification: string;
+  is_active: boolean;
+}
+
+const programImages: Record<string, string> = {
+  'hvac': '/images/trades/hero-program-hvac.jpg',
+  'hvac-tech': '/images/trades/hero-program-hvac.jpg',
+  'hvac-technician-wrg': '/images/trades/hero-program-hvac.jpg',
+  'cdl': '/images/trades/hero-program-cdl.jpg',
+  'cdl-training': '/images/trades/hero-program-cdl.jpg',
+  'cdl-training-wrg': '/images/trades/hero-program-cdl.jpg',
+  'barber-apprenticeship': '/images/beauty/program-barber-training.jpg',
+  'barber-apprenticeship-wrg': '/images/beauty/program-barber-training.jpg',
+  'barber-apprentice': '/images/beauty/program-barber-training.jpg',
+  'barber': '/images/beauty/program-barber-training.jpg',
+  'solar-panel-installation': '/images/trades/hero-program-hvac.jpg',
+  'forklift-operator': '/images/trades/hero-program-hvac.jpg',
+  'manufacturing-technician': '/images/trades/hero-program-hvac.jpg',
+  'automotive-technician': '/images/trades/hero-program-hvac.jpg',
+  'diesel-mechanic': '/images/trades/hero-program-cdl.jpg',
+  'building-maintenance-wrg': '/images/trades/hero-program-hvac.jpg',
+  'default': '/images/trades/hero-program-hvac.jpg',
 };
 
-const programs = [
-  {
-    title: 'HVAC Technician',
-    duration: '12-24 Weeks',
-    description: 'Install and repair heating, cooling, and ventilation systems. EPA certification included.',
-    href: '/programs/hvac',
-    image: '/images/programs-hq/hvac-technician.jpg',
-  },
-  {
-    title: 'CDL Class A Training',
-    duration: '3-6 Weeks',
-    description: 'Get your Commercial Driver License and start earning $50,000-$80,000+ annually.',
-    href: '/programs/cdl',
-    image: '/images/programs-hq/cdl-trucking.jpg',
-  },
-  {
-    title: 'Welding',
-    duration: '8-16 Weeks',
-    description: 'Join metal parts using MIG, TIG, and stick welding techniques. AWS certification prep.',
-    href: '/programs/welding',
-    image: '/images/programs-hq/welding.jpg',
-  },
-  {
-    title: 'Electrical',
-    duration: '12-24 Weeks',
-    description: 'Install and maintain electrical systems in residential and commercial buildings.',
-    href: '/programs/electrical',
-    image: '/images/programs-hq/electrical.jpg',
-  },
-  {
-    title: 'Plumbing',
-    duration: '12-24 Weeks',
-    description: 'Install and repair water supply, drainage, and gas systems.',
-    href: '/programs/plumbing',
-    image: '/images/programs-hq/skilled-trades-hero.jpg',
-  },
-];
-
-const highlights = [
-  'High Earning Potential',
-  'Job Security',
-  'Hands-On Work',
-  'Cannot Be Outsourced',
-];
-
 export default function SkilledTradesProgramsPage() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [showContent, setShowContent] = useState(false);
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs?category=trades');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs?.length > 0) {
+          setPrograms(data.programs);
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowContent(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.play().catch(() => {});
+  }, []);
+
   return (
-    <ProgramCategoryPage
-      categoryName="Skilled Trades"
-      categorySlug="skilled-trades"
-      tagline="Build Your Future"
-      description="Learn hands-on skills for well-paying trade careers that cannot be outsourced. Many graduates start earning $40,000-$60,000+ within their first year."
-      heroVideoSrc="/videos/hvac-hero-final.mp4"
-      heroPosterImage="/images/programs-hq/skilled-trades-hero.jpg"
-      accentColor="orange"
-      programs={programs}
-      highlights={highlights}
-      avatarVideoSrc="/videos/hero-hvac-avatar.mp4"
-      avatarName="Trades Guide"
-    />
+    <div className="min-h-screen bg-white">
+
+
+      {/* Hero */}
+      <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover brightness-110"
+          loop
+          muted
+          playsInline
+          autoPlay
+          preload="auto"
+          poster="/images/artlist/hero-training-2.jpg"
+        >
+          <source src="/videos/hvac-hero-final.mp4" type="video/mp4" />
+        </video>
+        
+        
+        
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
+          <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <Link 
+              href="/apply?program=skilled-trades"
+              className="inline-flex items-center justify-center bg-orange-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-orange-600 transition-colors text-lg"
+            >
+              Apply Now
+            </Link>
+            <Link 
+              href="/wioa-eligibility"
+              className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-orange-400 hover:text-orange-400 transition-all duration-300"
+            >
+              Check Eligibility
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs />
+
+      {/* Pathway Disclosure */}
+      <PathwayDisclosure programName="Skilled Trades" programSlug="skilled-trades" />
+
+      {/* Programs Grid */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {loading ? (
+            <div className="grid md:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-100 rounded-xl h-80 animate-pulse" />
+              ))}
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-6">
+              {programs.map((program) => (
+                <Link
+                  key={program.id || program.slug}
+                  href={`/programs/${program.slug}`}
+                  className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={programImages[program.slug] || programImages['default']}
+                      alt={program.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      quality={85}
+                    />
+                    <div className="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      {program.duration_weeks ? (program.duration_weeks > 20 ? `${Math.round(program.duration_weeks / 4)} Months` : `${program.duration_weeks} Weeks`) : 'Flexible'}
+                    </div>
+                    {program.price === 0 && (
+                      <div className="absolute top-3 left-3 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        Free
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-6">
+                    <h2 className="text-xl font-bold text-gray-900 mb-2">
+                      {program.name}
+                    </h2>
+                    <p className="text-gray-600 mb-4 line-clamp-2">{program.description}</p>
+                    <span className="text-orange-600 font-semibold group-hover:underline">
+                      Learn More →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-10 bg-orange-500">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+          <Link
+            href="/apply?program=skilled-trades"
+            className="inline-block bg-white text-orange-600 px-8 py-3 font-semibold rounded-full hover:bg-orange-50 transition-colors"
+          >
+            Start Your Trades Career
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }

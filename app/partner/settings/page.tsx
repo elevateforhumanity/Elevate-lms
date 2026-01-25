@@ -5,11 +5,20 @@ import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import PartnerSettingsForm from './PartnerSettingsForm';
 
-export const metadata: Metadata = {
-  title: 'Settings | Partner Portal | Elevate For Humanity',
-  description: 'Manage your partner organization settings.',
-  robots: { index: false, follow: false },
-};
+export default function PartnerSettingsPage() {
+  const [saved, setSaved] = useState(false);
+  // Settings loaded from user profile/organization
+  const [settings, setSettings] = useState({
+    orgName: '',
+    contactName: '',
+    contactEmail: '',
+    contactPhone: '',
+    address: '',
+    emailNotifications: true,
+    weeklyDigest: true,
+    outcomeAlerts: true,
+    referralConfirmations: true,
+  });
 
 export const dynamic = 'force-dynamic';
 

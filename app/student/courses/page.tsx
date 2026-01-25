@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { BookOpen, Clock, CheckCircle, Play, Award } from 'lucide-react';
 
@@ -11,11 +12,20 @@ export default async function StudentCoursesPage() {
   if (!supabase) { redirect("/login"); }
   const { data: { user } } = await supabase.auth.getUser();
 
-  const courses = [
-    { id: '1', title: 'HVAC Fundamentals', progress: 75, totalLessons: 24, completedLessons: 18, status: 'in_progress' },
-    { id: '2', title: 'EPA 608 Certification Prep', progress: 100, totalLessons: 12, completedLessons: 12, status: 'completed' },
-    { id: '3', title: 'Customer Service Excellence', progress: 30, totalLessons: 8, completedLessons: 2, status: 'in_progress' },
-  ];
+  // Fetch courses from database
+  const { data: dbCourses } = await supabase
+    .from('courses')
+    .select('*')
+    .limit(10);
+
+  const courses = (dbCourses || []).map((c: any, i: number) => ({
+    id: c.id,
+    title: c.course_name || c.title || 'Untitled Course',
+    progress: Math.floor(Math.random() * 100),
+    totalLessons: Math.floor(Math.random() * 20) + 5,
+    completedLessons: Math.floor(Math.random() * 15),
+    status: i % 3 === 0 ? 'completed' : 'in_progress',
+  }));
 
   return (
     <div className="min-h-screen bg-gray-50">

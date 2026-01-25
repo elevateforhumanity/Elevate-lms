@@ -9,8 +9,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/partners/technology',
   },
-  title: 'Technology Training Partnership | Elevate For Humanity',
-  description: 'Partner with us to deliver technology and IT training programs for workforce development.',
+  title: 'Technology | Elevate For Humanity',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function TechnologyPage() {
@@ -31,7 +32,7 @@ export default async function TechnologyPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Technology Training Partnership</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage technology settings and
+            Access your dashboard and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -60,7 +61,8 @@ export default async function TechnologyPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Technology Training Partnership</h2>
                 <p className="text-black mb-6">
-                  Prepare your workforce for the digital economy. Our technology programs cover IT support, cybersecurity, software development, and data analytics.
+                  Your hub for training and career growth.
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Admin Guide | Program Administration | Elevate For Humanity',
   description:
-    'Guide for using program administration features.',
+    'Learn how to use the program administration tools.',
 };
 
 export default async function HowToUsePage() {
@@ -71,7 +71,7 @@ export default async function HowToUsePage() {
             How To Use
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage how-to-use settings and
+            Manage your program administration
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

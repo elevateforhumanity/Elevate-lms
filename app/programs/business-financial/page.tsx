@@ -52,9 +52,9 @@ export default async function BusinessFinancialPage() {
             quality={85}
           />
           
-          {/* Overlay Content */}
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          {/* Hero Content */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <div className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full mb-6">
                 <Briefcase className="w-5 h-5" />
                 <span className="text-sm font-bold uppercase tracking-wide">
@@ -62,11 +62,11 @@ export default async function BusinessFinancialPage() {
                 </span>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6 text-gray-900 drop-shadow-lg">
                 Launch your business career with professional training
               </h1>
               
-              <p className="text-lg md:text-xl mb-8">
+              <p className="text-lg md:text-xl mb-8 text-gray-800 drop-shadow">
                 Business administration, financial services, and professional skills programs. 100% funded options available through WIOA and state grants.
               </p>
               

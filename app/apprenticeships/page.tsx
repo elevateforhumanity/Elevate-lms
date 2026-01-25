@@ -438,7 +438,7 @@ export default function ApprenticeshipsPage() {
                     className="object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                  <div className="absolute inset-0 bg-black/40" />
+                  
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
                       {program.title}

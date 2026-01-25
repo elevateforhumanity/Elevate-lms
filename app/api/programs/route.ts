@@ -1,46 +1,57 @@
 export const runtime = 'edge';
 export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
-import { COMPLETE_PROGRAMS } from '@/lib/programs-data-complete';
+import { createClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/logger';
 
-export const dynamic = 'force-dynamic';
+// Create Supabase client for edge runtime
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 export async function GET(request: Request) {
   try {
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
     const search = searchParams.get('search');
-    const funding = searchParams.get('funding');
+    const isActive = searchParams.get('active') !== 'false';
 
-    let filteredPrograms = COMPLETE_PROGRAMS;
+    let query = supabase
+      .from('programs')
+      .select('*')
+      .eq('is_active', isActive)
+      .order('name');
 
-    // Filter by funding type
-    if (funding) {
-      filteredPrograms = filteredPrograms.filter((p) =>
-        p.funding.some((f) => f.toLowerCase() === funding.toLowerCase())
-      );
+    // Filter by category
+    if (category) {
+      query = query.ilike('category', `%${category}%`);
     }
 
     // Filter by search term
     if (search) {
-      const searchLower = search.toLowerCase();
-      filteredPrograms = filteredPrograms.filter(
-        (p) =>
-          p.name.toLowerCase().includes(searchLower) ||
-          p.tagline.toLowerCase().includes(searchLower) ||
-          p.description.toLowerCase().includes(searchLower)
+      query = query.or(`name.ilike.%${search}%,description.ilike.%${search}%,slug.ilike.%${search}%`);
+    }
+
+    const { data: programs, error } = await query;
+
+    if (error) {
+      logger.error('Error fetching programs from database:', error);
+      return NextResponse.json(
+        { status: 'error', error: 'Failed to fetch programs' },
+        { status: 500 }
       );
     }
 
     return NextResponse.json({
       status: 'success',
-      count: filteredPrograms.length,
-      programs: filteredPrograms,
+      count: programs?.length || 0,
+      programs: programs || [],
     });
-  } catch (error) { /* Error handled silently */ 
-    logger.error('Error fetching programs:', error);
+  } catch (error) {
+    logger.error('Error in programs API:', error);
     return NextResponse.json(
       { status: 'error', error: 'Failed to fetch programs' },
       { status: 500 }

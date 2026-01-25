@@ -26,18 +26,18 @@ export default function StoreDigitalPage() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
-      <section className="relative min-h-[500px] flex items-center overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/store/platform-hero.jpg"
-            alt="Digital Resources"
-            fill
-            className="object-cover opacity-20"
-            priority
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/95 via-purple-900/90 to-indigo-800/80" />
+      {/* Hero */}
+      <section className="relative min-h-[400px] flex items-center overflow-hidden bg-amber-900">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+        >
+          <source src="/videos/hero-home.mp4" type="video/mp4" />
+        </video>
+        
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

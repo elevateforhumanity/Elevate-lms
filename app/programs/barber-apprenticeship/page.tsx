@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, Clock, DollarSign, Calendar, FileText, ChevronDown } from 'lucide-react';
-import { OptimizedVideo } from '@/components/OptimizedVideo';
-import { BARBER_PROGRAM, formatCurrency, formatHours, getWeeklyPaymentExamples } from '@/lib/programs/catalog';
-import { BarberPageTour } from './BarberPageTour';
-import { TransferHoursCalculator } from './TransferHoursCalculator';
-import BarberChatAssistant from './BarberChatAssistant';
+import Image from 'next/image';
+import {
+  CheckCircle,
+  XCircle,
+} from 'lucide-react';
+import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
+import { BARBER_PROGRAM } from '@/lib/program-constants';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'USDOL Registered Barber Apprenticeship | Elevate for Humanity | Indiana',
@@ -38,7 +41,7 @@ export default function BarberApprenticeshipPage() {
             muted
             playsInline
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+          
         </div>
 
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-32 md:py-40">
@@ -141,15 +144,26 @@ export default function BarberApprenticeshipPage() {
         </div>
       </section>
 
-      {/* SECTION C: PROGRAM OVERVIEW */}
-      <section className="py-16 bg-slate-50">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8">Program Overview</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-xl p-6 border border-slate-200">
-              <h3 className="font-bold text-lg text-slate-900 mb-3">Who It's For</h3>
-              <p className="text-slate-600">
-                Adults seeking a career in barbering. Career changers, re-entry participants, and anyone ready to earn while learning a skilled trade.
+      {/* Pricing Section */}
+      <section id="pricing" className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-3xl font-bold text-black mb-6">Program Cost & Payment</h2>
+          
+          <div className="bg-white border-2 border-slate-200 rounded-xl p-8 shadow-lg">
+            <div className="text-center mb-6">
+              <div className="text-5xl font-black text-purple-600">{BARBER_PROGRAM.tuitionFormatted}</div>
+              <div className="text-xl text-slate-600 mt-2">Program Tuition</div>
+            </div>
+
+            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
+              <p className="text-purple-900">
+                This Barber Program is a fee-based USDOL Registered Apprenticeship training pathway. Tuition is paid by the student and is not funded by the State of Indiana.
+              </p>
+              <p className="text-purple-900 mt-3">
+                Tuition covers structured training, related instruction, program administration, compliance tracking, and completion documentation delivered by Elevate for Humanity as the Sponsor of Record.
+              </p>
+              <p className="text-purple-800 mt-3 text-sm">
+                Tuition does not include personal tools, uniforms, or state licensing and examination fees.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-slate-200">
@@ -168,14 +182,16 @@ export default function BarberApprenticeshipPage() {
         </div>
       </section>
 
-      {/* SECTION D: HOW THE APPRENTICESHIP WORKS */}
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8">How the Apprenticeship Works</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="flex gap-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-purple-600 font-bold text-lg">1</span>
+            {/* Payment Options */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-black">Payment Options (after enrollment approval)</h3>
+              
+              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
+                <div>
+                  <div className="font-bold text-lg">Pay in Full</div>
+                  <div className="text-sm text-gray-500">One-time payment</div>
+                </div>
+                <span className="text-2xl font-bold">{BARBER_PROGRAM.tuitionFormatted}</span>
               </div>
               <div>
                 <h3 className="font-bold text-lg text-slate-900 mb-2">On-the-Job Training</h3>

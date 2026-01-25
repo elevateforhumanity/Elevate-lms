@@ -8,7 +8,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/search',
   },
   title: 'Search | Elevate For Humanity',
-  description: 'Access search features and tools.',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function SearchPage() {
@@ -29,7 +30,8 @@ export default async function SearchPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Search</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access search features and resources.
+            Access your dashboard and
+            development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -57,7 +59,8 @@ export default async function SearchPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Search</h2>
                 <p className="text-black mb-6">
-                  Explore search opportunities and resources.
+                  Your hub for training and career growth.
+                  and development.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

@@ -82,7 +82,7 @@ export default function InterviewPrepPage() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 to-blue-700/85" />
+        
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <span className="inline-block bg-white/20 backdrop-blur-sm text-white text-sm font-semibold px-4 py-2 rounded-full mb-4">

@@ -23,7 +23,7 @@ export default function WebDevelopmentPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/40" />
+        {/* overlay removed */}
         <div className="absolute bottom-0 left-0 right-0 p-8">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">Web Development</h1>

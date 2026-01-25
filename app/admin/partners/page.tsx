@@ -135,18 +135,14 @@ export default function AdminPartnersPage() {
             <Building2 className="w-8 h-8 text-purple-600" />
             Partner Shop Applications
           </h1>
-        </div>
-
-        <div className="flex gap-2 mb-6">
-          {(['pending', 'approved', 'denied'] as const).map((status) => (
-            <button
-              key={status}
-              onClick={() => setFilter(status)}
-              className={`px-4 py-2 rounded-lg font-medium capitalize transition-colors ${
-                filter === status
-                  ? 'bg-purple-600 text-white'
-                  : 'bg-white text-slate-600 hover:bg-slate-50'
-              }`}
+          <p className="text-base md:text-lg mb-8 text-gray-100">
+            Access your dashboard and
+            development.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/admin/dashboard"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
             >
               {status === 'pending' && <Clock className="w-4 h-4 inline mr-2" />}
               {status === 'approved' && <CheckCircle className="w-4 h-4 inline mr-2" />}

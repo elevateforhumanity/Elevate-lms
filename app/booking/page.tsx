@@ -125,11 +125,10 @@ export default function BookingPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-slate-900/60" />
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1 className="text-4xl font-bold mb-4">Book an Appointment</h1>
-            <p className="text-xl text-slate-300">Schedule a 1-hour consultation with our team</p>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
+          <div className="flex items-center gap-3 mb-4">
+            <Calendar className="w-10 h-10" />
           </div>
         </div>
       </section>

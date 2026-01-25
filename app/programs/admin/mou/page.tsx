@@ -9,8 +9,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/admin/mou',
   },
-  title: 'MOU Management | Program Administration | Elevate For Humanity',
-  description: 'Manage Memorandums of Understanding with partners and employers.',
+  title: 'Programs Admin MOU | Elevate For Humanity',
+  description:
+    'Review and sign program memorandums of understanding.',
 };
 
 export default async function MouPage() {
@@ -70,8 +71,8 @@ export default async function MouPage() {
             Mou
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage memorandums of understanding.
-            
+            Manage your program administration
+            development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

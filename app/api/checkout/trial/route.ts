@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
+// Lazy initialization to avoid build-time errors when env vars are not set
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) {
-    throw new Error('STRIPE_SECRET_KEY not configured');
+    throw new Error('STRIPE_SECRET_KEY is not configured');
   }
   return new Stripe(key, {
     apiVersion: '2025-10-29.clover' as Stripe.LatestApiVersion,

@@ -11,8 +11,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/partners/portal',
   },
-  title: 'Partner Portal | Elevate For Humanity',
-  description: 'Access your partner dashboard to manage programs, track participants, and view reports.',
+  title: 'Portal | Elevate For Humanity',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function PortalPage() {
@@ -57,7 +58,7 @@ export default async function PortalPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Partner Portal</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage portal settings and
+            Access your dashboard and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,7 +87,7 @@ export default async function PortalPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Partner Portal</h2>
                 <p className="text-black mb-6">
-                  Access your partner dashboard
+                  Your hub for training and career growth.
                   and development.
                 </p>
                 <ul className="space-y-3">

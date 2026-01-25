@@ -37,19 +37,10 @@ export const metadata: Metadata = {
   },
 };
 
-const fallbackCourses = [
-  { id: '1', title: 'Advanced Welding Techniques', creator_name: 'John Masters', price: 199, rating: 4.9, student_count: 1234, duration_hours: 8, image_url: '/images/marketplace/welding.jpg', slug: 'advanced-welding-techniques', category: 'Trades' },
-  { id: '2', title: 'Medical Coding Essentials', creator_name: 'Sarah Health', price: 149, rating: 4.8, student_count: 2345, duration_hours: 12, image_url: '/images/marketplace/medical.jpg', slug: 'medical-coding-essentials', category: 'Healthcare' },
-  { id: '3', title: 'Cybersecurity Fundamentals', creator_name: 'Tech Academy', price: 249, rating: 4.7, student_count: 3456, duration_hours: 20, image_url: '/images/marketplace/cybersecurity.jpg', slug: 'cybersecurity-fundamentals', category: 'Technology' },
-  { id: '4', title: 'Project Management Pro', creator_name: 'Business School', price: 179, rating: 4.8, student_count: 1567, duration_hours: 15, image_url: '/images/marketplace/project-mgmt.jpg', slug: 'project-management-pro', category: 'Business' },
-  { id: '5', title: 'Graphic Design Mastery', creator_name: 'Creative Hub', price: 129, rating: 4.6, student_count: 987, duration_hours: 10, image_url: '/images/marketplace/design.jpg', slug: 'graphic-design-mastery', category: 'Creative' },
-  { id: '6', title: 'Plumbing Basics', creator_name: 'Trade Skills', price: 99, rating: 4.9, student_count: 2134, duration_hours: 6, image_url: '/images/marketplace/plumbing.jpg', slug: 'plumbing-basics', category: 'Trades' },
-];
-
 const categories = ['All', 'Trades', 'Healthcare', 'Technology', 'Business', 'Creative'];
 
 export default async function MarketplacePage() {
-  let courses = fallbackCourses;
+  let courses: any[] = [];
   
   try {
     const supabase = await createClient();

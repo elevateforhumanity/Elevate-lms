@@ -28,7 +28,7 @@ export default function IndustryInsightsPage() {
 
       <section className="relative h-[350px] flex items-center justify-center text-white overflow-hidden">
         <Image src="/images/business/collaboration-1.jpg" alt="Industry Insights" fill className="object-cover" priority sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/80 to-indigo-700/80" />
+        
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <Lightbulb className="w-16 h-16 mx-auto mb-4 text-white/80" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Industry Insights</h1>

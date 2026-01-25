@@ -20,12 +20,11 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
-import { NotificationBell } from '@/components/notifications/NotificationBell';
+import { usePathname } from 'next/navigation';
 
-// Main navigation - focused on workforce training mission
+// Navigation structure for mobile menu
 const NAV_ITEMS = [
   { 
     name: 'Programs', 
@@ -34,10 +33,32 @@ const NAV_ITEMS = [
       { name: 'Healthcare', href: '/programs/healthcare' },
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
-      { name: 'CDL & Transportation', href: '/programs/cdl-transportation' },
-      { name: 'Tax Preparation', href: '/programs/tax-preparation' },
-      { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
-      { name: 'All Courses', href: '/courses' },
+      { name: 'Business', href: '/programs/business' },
+      { name: 'Apprenticeships', href: '/apprenticeships' },
+      { name: 'JRI Programs', href: '/jri' },
+      { name: 'Micro Classes', href: '/micro-classes' },
+    ]
+  },
+  { 
+    name: 'Services', 
+    href: '/services',
+    subItems: [
+      { name: 'Career Services', href: '/career-services' },
+      { name: 'Drug Testing', href: '/drug-testing' },
+      { name: 'Certifications', href: '/certifications' },
+      { name: 'Training Providers', href: '/training-providers' },
+      { name: 'VITA Tax Prep', href: '/vita' },
+      { name: 'Mentorship', href: '/mentorship' },
+    ]
+  },
+  { 
+    name: 'Shop', 
+    href: '/shop',
+    subItems: [
+      { name: 'Tools & Equipment', href: '/shop' },
+      { name: 'Online Courses', href: '/courses' },
+      { name: 'Workbooks & Guides', href: '/workbooks' },
+      { name: 'Platform Licensing', href: '/store' },
     ]
   },
   { 
@@ -49,6 +70,29 @@ const NAV_ITEMS = [
       { name: 'Financial Aid', href: '/financial-aid' },
       { name: 'Career Services', href: '/career-services' },
       { name: 'FAQ', href: '/faq' },
+      { name: 'Outcomes', href: '/outcomes' },
+    ]
+  },
+  { 
+    name: 'For Employers', 
+    href: '/employer',
+    subItems: [
+      { name: 'Hire Graduates', href: '/hire-graduates' },
+      { name: 'Partner With Us', href: '/partners' },
+      { name: 'Workforce Solutions', href: '/solutions' },
+      { name: 'OJT & Funding', href: '/ojt-and-funding' },
+      { name: 'Workforce Board', href: '/workforce-board' },
+    ]
+  },
+  { 
+    name: 'LMS', 
+    href: '/lms',
+    subItems: [
+      { name: 'Student Dashboard', href: '/lms' },
+      { name: 'My Courses', href: '/lms/courses' },
+      { name: 'Certificates', href: '/certificates' },
+      { name: 'Leaderboard', href: '/leaderboard' },
+      { name: 'Community', href: '/community' },
     ]
   },
   { 
@@ -84,9 +128,30 @@ const NAV_ITEMS = [
       { name: 'Join Our Team', href: '/careers' },
       { name: 'Success Stories', href: '/success-stories' },
       { name: 'Locations', href: '/locations' },
-      { name: 'Contact', href: '/contact' },
+      { name: 'Impact', href: '/impact' },
     ]
   },
+  { 
+    name: 'Resources', 
+    href: '/resources',
+    subItems: [
+      { name: 'Blog', href: '/blog' },
+      { name: 'News', href: '/news' },
+      { name: 'Events', href: '/events' },
+      { name: 'Webinars', href: '/webinars' },
+      { name: 'Support', href: '/support' },
+      { name: 'Help Center', href: '/help' },
+    ]
+  },
+];
+
+// Desktop navigation links
+const DESKTOP_NAV_LINKS = [
+  { name: 'Programs', href: '/programs' },
+  { name: 'How It Works', href: '/how-it-works' },
+  { name: 'WIOA Funding', href: '/wioa-eligibility' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 // Safe user hook that never throws
@@ -94,13 +159,16 @@ function useSafeUser() {
   const [user, setUser] = useState<{ email?: string } | null>(null);
   
   useEffect(() => {
-    // Only fetch if we're in browser
     if (typeof window === 'undefined') return;
     
-    fetch('/api/auth/me')
+    const controller = new AbortController();
+    
+    fetch('/api/auth/me', { signal: controller.signal })
       .then(res => res.ok ? res.json() : null)
       .then(data => setUser(data?.user ?? null))
       .catch(() => setUser(null));
+    
+    return () => controller.abort();
   }, []);
   
   return user;
@@ -110,77 +178,307 @@ export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const user = useSafeUser();
+  const pathname = usePathname();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLElement>(null);
+
+  // Check if a link is active
+  const isActive = useCallback((href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  }, [pathname]);
+
+  const toggleDropdown = useCallback((name: string) => {
+    setOpenDropdown(prev => prev === name ? null : name);
+  }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    setMobileMenuOpen(false);
+    setOpenDropdown(null);
+    // Return focus to menu button when closing
+    menuButtonRef.current?.focus();
+  }, []);
+
+  const openMobileMenu = useCallback(() => {
+    setMobileMenuOpen(true);
+  }, []);
+
+  // Handle escape key and focus trap
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeMobileMenu();
+        return;
+      }
+
+      // Focus trap
+      if (e.key === 'Tab') {
+        const menu = mobileMenuRef.current;
+        if (!menu) return;
+
+        const focusableElements = menu.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        
+        if (focusableElements.length === 0) return;
+        
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement?.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement?.focus();
+        }
+      }
+    };
+
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleKeyDown);
+    
+    // Focus close button when menu opens
+    closeButtonRef.current?.focus();
+
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileMenuOpen, closeMobileMenu]);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    closeMobileMenu();
+  }, [pathname, closeMobileMenu]);
 
   return (
     <>
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 h-[56px] sm:h-[70px] transition-all duration-300 bg-white shadow-sm`}
+      {/* Live region for screen reader announcements */}
+      <div 
+        role="status" 
+        aria-live="polite" 
+        aria-atomic="true" 
+        className="sr-only"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-          <div className="flex items-center justify-between h-full">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-              <Image
-                src="/logo.png"
-                alt="Elevate for Humanity"
-                width={44}
-                height={44}
-                className="w-10 h-10 sm:w-11 sm:h-11"
-                priority
-              />
-              <span className="hidden sm:inline font-bold text-xl text-gray-900">
-                Elevate
-              </span>
+        {mobileMenuOpen ? 'Navigation menu opened' : ''}
+      </div>
+
+      <header 
+        className="fixed top-0 left-0 right-0 h-[70px] bg-white z-[9999] shadow-md"
+        role="banner"
+      >
+        <div className="max-w-7xl mx-auto w-full h-full flex items-center justify-between px-4">
+          {/* Logo */}
+          <Link 
+            href="/" 
+            className="flex items-center gap-2 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-lg"
+            aria-label="Elevate for Humanity - Home"
+          >
+            <Image
+              src="/logo.png"
+              alt=""
+              width={40}
+              height={40}
+              className="w-10 h-10"
+              priority
+              fetchPriority="high"
+              aria-hidden="true"
+            />
+            <span className="font-bold text-lg text-gray-900 hidden sm:inline">
+              Elevate
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav 
+            className="hidden lg:flex items-center gap-1" 
+            role="navigation" 
+            aria-label="Main navigation"
+          >
+            {DESKTOP_NAV_LINKS.map((link) => (
+              <Link 
+                key={link.href}
+                href={link.href} 
+                className={`
+                  px-3 py-2 text-sm font-medium rounded-md transition-colors
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                  ${isActive(link.href) 
+                    ? 'text-blue-600 bg-blue-50' 
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  }
+                `}
+                aria-current={isActive(link.href) ? 'page' : undefined}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right side actions */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Sign In / Dashboard - desktop only */}
+            <Link
+              href={user ? "/lms/dashboard" : "/login"}
+              className="hidden lg:inline-flex px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+            >
+              {user ? 'Dashboard' : 'Sign In'}
             </Link>
 
-            {/* Desktop Navigation - always visible */}
-            <nav className="flex items-center h-full flex-1 justify-center" aria-label="Main navigation">
-              {NAV_ITEMS.map((item) => (
-                <div key={item.name} className="relative h-full group">
-                  <Link
-                    href={item.href}
-                    className={`relative h-full flex items-center gap-1 px-2 lg:px-3 xl:px-4 text-xs lg:text-sm font-medium transition-colors whitespace-nowrap
-                      before:absolute before:bottom-0 before:left-2 before:right-2 before:h-[3px] before:bg-blue-600 
-                      before:opacity-0 before:transition-opacity group-hover:before:opacity-100
-                      text-gray-700 hover:text-gray-900
-                    `}
-                    aria-haspopup={item.subItems ? "true" : undefined}
-                  >
-                    {item.name}
-                    {item.subItems && <ChevronDown className="w-3 h-3" aria-hidden="true" />}
-                  </Link>
-                  {/* Dropdown */}
-                  {item.subItems && (
-                    <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200" role="menu">
-                      <div className="bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-[200px]">
+            {/* Apply Now CTA */}
+            <Link
+              href="/apply"
+              className="inline-flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 min-h-[44px]"
+            >
+              Apply Now
+            </Link>
+
+            {/* Mobile menu button */}
+            <button
+              ref={menuButtonRef}
+              onClick={openMobileMenu}
+              className="lg:hidden flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-100 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-200 active:bg-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              aria-label="Open navigation menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+              aria-haspopup="dialog"
+            >
+              <Menu className="w-6 h-6 text-gray-900" aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div 
+          className="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm transition-opacity"
+          onClick={closeMobileMenu}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Menu Panel */}
+      {mobileMenuOpen && (
+        <nav 
+          ref={mobileMenuRef}
+          id="mobile-menu"
+          className="fixed top-0 right-0 bottom-0 w-full max-w-[320px] bg-white z-[10000] overflow-y-auto shadow-xl"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
+        >
+          {/* Menu Header */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white sticky top-0 z-10">
+            <Link 
+              href="/" 
+              onClick={closeMobileMenu} 
+              className="flex items-center gap-2 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-lg"
+            >
+              <Image src="/logo.png" alt="" width={32} height={32} aria-hidden="true" />
+              <span className="font-bold text-gray-900">Elevate</span>
+            </Link>
+            <button
+              ref={closeButtonRef}
+              onClick={closeMobileMenu}
+              className="flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-transparent border-none cursor-pointer hover:bg-gray-100 active:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-lg"
+              aria-label="Close navigation menu"
+            >
+              <X className="w-6 h-6 text-gray-700" aria-hidden="true" />
+            </button>
+          </div>
+
+          {/* Menu Items */}
+          <div className="p-4" role="menu">
+            {NAV_ITEMS.map((item) => (
+              <div key={item.name} className="mb-1" role="none">
+                {item.subItems ? (
+                  <>
+                    <button
+                      onClick={() => toggleDropdown(item.name)}
+                      className={`
+                        flex items-center justify-between w-full px-4 py-3 text-base font-semibold rounded-lg cursor-pointer text-left border-none transition-colors
+                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                        ${openDropdown === item.name ? 'bg-gray-100 text-blue-600' : 'bg-transparent text-gray-900 hover:bg-gray-50'}
+                      `}
+                      aria-expanded={openDropdown === item.name}
+                      aria-controls={`submenu-${item.name.replace(/\s+/g, '-').toLowerCase()}`}
+                      role="menuitem"
+                    >
+                      {item.name}
+                      <ChevronDown 
+                        className={`w-5 h-5 transition-transform duration-200 ${openDropdown === item.name ? 'rotate-180' : ''}`} 
+                        aria-hidden="true" 
+                      />
+                    </button>
+                    {openDropdown === item.name && (
+                      <div 
+                        id={`submenu-${item.name.replace(/\s+/g, '-').toLowerCase()}`}
+                        className="ml-4 border-l-2 border-gray-200 mt-1"
+                        role="menu"
+                        aria-label={`${item.name} submenu`}
+                      >
+                        <Link
+                          href={item.href}
+                          onClick={closeMobileMenu}
+                          className={`
+                            block px-4 py-2 text-sm font-medium no-underline transition-colors
+                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                            ${isActive(item.href) ? 'text-blue-600 bg-blue-50' : 'text-blue-600 hover:bg-gray-50'}
+                          `}
+                          role="menuitem"
+                          aria-current={isActive(item.href) ? 'page' : undefined}
+                        >
+                          View All {item.name}
+                        </Link>
                         {item.subItems.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                            onClick={closeMobileMenu}
+                            className={`
+                              block px-4 py-2 text-sm no-underline transition-colors
+                              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                              ${isActive(subItem.href) ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'}
+                            `}
                             role="menuitem"
+                            aria-current={isActive(subItem.href) ? 'page' : undefined}
                           >
                             {subItem.name}
                           </Link>
                         ))}
                       </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </nav>
-
-            {/* Right side */}
-            <div className="flex items-center gap-2 sm:gap-4">
-              {/* Language Switcher */}
-              <div className="hidden lg:block">
-                <LanguageSwitcher />
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={closeMobileMenu}
+                    className={`
+                      block px-4 py-3 text-base font-semibold no-underline rounded-lg transition-colors
+                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                      ${isActive(item.href) ? 'text-blue-600 bg-blue-50' : 'text-gray-900 hover:bg-gray-50'}
+                    `}
+                    role="menuitem"
+                    aria-current={isActive(item.href) ? 'page' : undefined}
+                  >
+                    {item.name}
+                  </Link>
+                )}
               </div>
-              
-              {/* Phone number - desktop only */}
-              <a
-                href="tel:317-314-3757"
-                className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            ))}
+
+            {/* Bottom Actions */}
+            <div className="mt-6 pt-6 border-t border-gray-200" role="none">
+              <Link
+                href={user ? "/lms/dashboard" : "/login"}
+                onClick={closeMobileMenu}
+                className="block w-full p-3 text-center text-base font-medium text-gray-700 border border-gray-300 rounded-full no-underline mb-3 hover:bg-gray-50 active:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                role="menuitem"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 (317) 314-3757
@@ -207,7 +505,9 @@ export default function SiteHeader() {
               )}
               <Link
                 href="/apply"
-                className="hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                onClick={closeMobileMenu}
+                className="block w-full p-3 text-center text-base font-semibold text-white bg-blue-600 rounded-full no-underline hover:bg-blue-700 active:bg-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                role="menuitem"
               >
                 Apply Now
               </Link>

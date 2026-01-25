@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Sign MOU | Partnership Agreement | Elevate For Humanity',
   description:
-    'Sign the MOU to complete your partnership agreement.',
+    'Sign memorandums of understanding for program partnerships.',
 };
 
 export default async function SignMouPage() {
@@ -71,7 +71,7 @@ export default async function SignMouPage() {
             Sign Mou
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage sign-mou settings and
+            Manage your program administration
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

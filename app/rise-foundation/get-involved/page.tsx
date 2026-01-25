@@ -79,7 +79,7 @@ export default async function GetInvolvedPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/images/rise-foundation/get-involved-hero.jpg)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-pink-800/80" />
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
           <Link href="/rise-foundation" className="text-pink-200 hover:text-white mb-4 inline-block">
             ← Rise Forward Foundation
@@ -128,7 +128,7 @@ export default async function GetInvolvedPage() {
                     alt={way.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                   />
-                  <div className="absolute inset-0 bg-black/40" />
+                  
                   <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white">
                     <way.icon className="w-6 h-6" />
                     <h3 className="text-xl font-bold">{way.title}</h3>

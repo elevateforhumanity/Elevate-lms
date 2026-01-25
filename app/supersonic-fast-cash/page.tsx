@@ -27,16 +27,17 @@ export default function SupersonicFastCashPage() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
-        {/* Background Image - Tax/Money themed */}
-        <Image
-          src="/images/heroes-hq/tax-refund-hero.jpg"
-          alt="Supersonic Fast Cash Tax Preparation"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/95 via-blue-900/90 to-red-900/85" />
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/hero-home.mp4" type="video/mp4" />
+        </video>
+        
 
         {/* Animated background accents */}
         <div className="absolute inset-0 overflow-hidden">

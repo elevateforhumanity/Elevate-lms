@@ -1,47 +1,54 @@
-import { Metadata } from 'next';
+'use client';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Info, Home, Users, GraduationCap, FileText, Building2, Bell, CheckCircle, AlertCircle } from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
 import AdminDemoClient from './AdminDemoClient';
 
-export const metadata: Metadata = {
-  title: 'Admin Demo | Elevate for Humanity',
-  description: 'Interactive demo of the admin dashboard for workforce training management.',
-};
+interface Program {
+  name: string;
+  cat: string;
+  enrolled: number;
+  done: number;
+}
 
-export default async function AdminDemoPage() {
-  const supabase = await createClient();
-
-  // Fetch real data from database
-  const [
-    { data: students, count: studentCount },
-    { data: programs },
-    { data: enrollments },
-    { data: partners },
-  ] = await Promise.all([
-    supabase.from('students').select('*', { count: 'exact' }).limit(10),
-    supabase.from('programs').select('*').eq('is_active', true).limit(10),
-    supabase.from('enrollments').select('*, students(*), programs(*)').limit(20),
-    supabase.from('partners').select('*').limit(10),
+export default function AdminDemo() {
+  const [tab, setTab] = useState('home');
+  const [search, setSearch] = useState('');
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loadingPrograms, setLoadingPrograms] = useState(true);
+  const [students, setStudents] = useState([
+    { id: 1, name: 'Darius Williams', email: 'd.williams@email.com', program: 'Barber', progress: 42, status: 'active', avatar: '/images/testimonials/student-marcus.jpg' },
+    { id: 2, name: 'Sarah Mitchell', email: 's.mitchell@email.com', program: 'CNA', progress: 95, status: 'active', avatar: '/images/gallery/image9.jpg' },
+    { id: 3, name: 'Marcus Johnson', email: 'm.johnson@email.com', program: 'HVAC', progress: 28, status: 'active', avatar: '/images/testimonials/student-david.jpg' },
+    { id: 4, name: 'Lisa Rodriguez', email: 'l.rodriguez@email.com', program: 'MA', progress: 67, status: 'active', avatar: '/images/testimonials/testimonial-medical-assistant.jpg' },
+    { id: 5, name: 'James Thompson', email: 'j.thompson@email.com', program: 'CDL', progress: 85, status: 'active', avatar: '/images/testimonials/student-graduate-testimonial.jpg' },
   ]);
 
-  // Calculate stats
-  const totalStudents = studentCount || 0;
-  const totalPrograms = programs?.length || 0;
-  const activeEnrollments = enrollments?.filter(e => e.status === 'active')?.length || 0;
-  const totalPartners = partners?.length || 0;
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs) {
+          setPrograms(data.programs.slice(0, 6).map((p: any) => ({
+            name: p.name || p.title,
+            cat: p.category || 'General',
+            enrolled: Math.floor(Math.random() * 100) + 20,
+            done: Math.floor(Math.random() * 50) + 10,
+          })));
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoadingPrograms(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
 
-  // Format students for display
-  const formattedStudents = students?.map(s => ({
-    id: s.id,
-    name: `${s.first_name || ''} ${s.last_name || ''}`.trim() || 'Unknown',
-    email: s.email || '',
-    program: enrollments?.find(e => e.student_id === s.id)?.programs?.title || 'Not enrolled',
-    progress: Math.floor(Math.random() * 100), // Would come from progress tracking
-    status: 'active',
-    avatar: s.avatar_url || '/images/testimonials/student-marcus.jpg',
-  })) || [];
+  const filtered = students.filter(s => s.name.toLowerCase().includes(search.toLowerCase()) || s.program.toLowerCase().includes(search.toLowerCase()));
 
   // Format programs for display
   const formattedPrograms = programs?.map(p => ({

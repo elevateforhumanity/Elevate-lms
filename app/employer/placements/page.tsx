@@ -9,8 +9,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/employer/placements',
   },
-  title: 'Candidate Placements | Employer Portal | Elevate For Humanity',
-  description: 'Track candidate placements and manage your hiring pipeline.',
+  title: 'Placements | Elevate For Humanity',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function PlacementsPage() {
@@ -64,7 +65,7 @@ export default async function PlacementsPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Candidate Placements</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage placements settings and
+            Access your dashboard and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -121,7 +121,7 @@ export function ApplicationForm() {
                   type="email"
                   value={formData.email}
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData({...formData, email: e.target.value})}
-                  placeholder="you@example.com"
+                  placeholder="your.email@gmail.com"
                 />
               </div>
               <div>

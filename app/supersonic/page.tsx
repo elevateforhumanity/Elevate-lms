@@ -1,23 +1,51 @@
-import { Metadata } from 'next';
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Zap, Rocket, Target, TrendingUp, Clock, Award, ArrowRight, CheckCircle } from 'lucide-react';
 
-export const metadata: Metadata = { title: 'Supersonic Program | Elevate LMS' };
+interface Program {
+  name: string;
+  duration: string;
+  regular: string;
+  price: string;
+}
 
 export default function SupersonicPage() {
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs) {
+          setPrograms(data.programs.slice(0, 4).map((p: any) => {
+            const weeks = p.estimated_weeks || 12;
+            return {
+              name: p.name || p.title,
+              duration: `${Math.ceil(weeks / 2)} weeks`,
+              regular: `${weeks} weeks`,
+              price: p.total_cost ? `$${p.total_cost.toLocaleString()}` : 'Contact Us',
+            };
+          }));
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
+
   const features = [
     { icon: Rocket, title: 'Accelerated Learning', description: 'Complete programs 50% faster with intensive study tracks' },
     { icon: Target, title: 'Focused Curriculum', description: 'Streamlined content targeting essential skills' },
     { icon: Clock, title: 'Flexible Scheduling', description: 'Evening and weekend options for working professionals' },
     { icon: Award, title: 'Priority Certification', description: 'Fast-track certification exam scheduling' },
-  ];
-
-  const programs = [
-    { name: 'HVAC Technician', duration: '8 weeks', regular: '16 weeks', price: '$2,499' },
-    { name: 'Medical Assistant', duration: '10 weeks', regular: '20 weeks', price: '$2,999' },
-    { name: 'Barber License', duration: '6 weeks', regular: '12 weeks', price: '$1,999' },
-    { name: 'CDL Training', duration: '4 weeks', regular: '8 weeks', price: '$3,499' },
   ];
 
   return (

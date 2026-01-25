@@ -12,7 +12,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/workforce-board/employment',
   },
   title: 'Employment | Elevate For Humanity',
-  description: 'Access employment features and tools.',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function EmploymentPage() {
@@ -52,7 +53,8 @@ export default async function EmploymentPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Employment</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access employment features and resources.
+            Access your dashboard and
+            development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -80,7 +82,8 @@ export default async function EmploymentPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Employment</h2>
                 <p className="text-black mb-6">
-                  Explore employment opportunities and resources.
+                  Your hub for training and career growth.
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

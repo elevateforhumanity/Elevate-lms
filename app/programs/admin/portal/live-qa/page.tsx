@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Live Q&A | Program Administration | Elevate For Humanity',
   description:
-    'Manage live Q&A sessions for your programs.',
+    'Host live QResources and tools for your success.A sessions with students.',
 };
 
 export default async function LiveQaPage() {
@@ -72,7 +72,7 @@ export default async function LiveQaPage() {
             Live Qa
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage live-qa settings and
+            Manage your program administration
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

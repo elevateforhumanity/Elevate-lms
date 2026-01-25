@@ -42,7 +42,7 @@ export default async function SuccessStoriesPage() {
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[70vh] w-full overflow-hidden">
           <Image src="/og-default.jpg" alt="Success Stories" width={800} height={600} className="absolute inset-0 h-full w-full object-cover" quality={85} loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/90 to-orange-700/90" />
+          
           
           <div className="relative z-10 flex items-center justify-center min-h-[70vh]">
             <div className="container mx-auto px-4 text-center text-white">

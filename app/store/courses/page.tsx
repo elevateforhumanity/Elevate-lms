@@ -37,7 +37,7 @@ export default function StoreCoursesPage() {
         >
           <source src="/videos/hero-home.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/95 via-purple-900/90 to-purple-800/80" />
+        
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-3xl">

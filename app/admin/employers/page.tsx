@@ -74,7 +74,7 @@ export default async function EmployersPage() {
             Employers
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage employers settings and
+            Access your dashboard and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

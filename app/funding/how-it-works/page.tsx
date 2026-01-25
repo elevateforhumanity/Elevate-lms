@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'How Funding Works | Free Career Training | Elevate For Humanity',
   description:
-    'Learn how WIOA funding covers 100% of your career training costs. Understand eligibility, the application process, and available programs in Indianapolis.',
+    'Resources and tools for your success.',
 };
 
 export default async function HowItWorksPage() {
@@ -54,7 +54,7 @@ export default async function HowItWorksPage() {
             How It Works
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Understanding WIOA Funding
+            Your hub for training and career growth.
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -85,7 +85,8 @@ export default async function HowItWorksPage() {
                   How It Works
                 </h2>
                 <p className="text-black mb-6">
-                  WIOA (Workforce Innovation and Opportunity Act) provides funding for eligible individuals to receive free career training. Here's how the process works from application to employment.
+                  Your hub for training and career growth.
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

@@ -8,7 +8,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/docs/program-holders',
   },
   title: 'Program Holders | Elevate For Humanity',
-  description: 'Access program holders features and tools.',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function ProgramHoldersPage() {
@@ -29,7 +30,8 @@ export default async function ProgramHoldersPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Program Holders</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore program holders opportunities and resources.
+            Your hub for training and career growth.
+            and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -57,7 +59,8 @@ export default async function ProgramHoldersPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Program Holders</h2>
                 <p className="text-black mb-6">
-                  Explore program holders opportunities and resources.
+                  Your hub for training and career growth.
+                  workforce training and career success.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">

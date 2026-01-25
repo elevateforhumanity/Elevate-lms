@@ -107,45 +107,90 @@ const CheckIcon = () => (
   </svg>
 );
 
-// Program card data - using high-quality images
-const programs = [
-  {
+interface ProgramCategory {
+  title: string;
+  duration: string;
+  items: string[];
+  href: string;
+  image: string;
+  alt: string;
+}
+
+const categoryConfig: Record<string, Omit<ProgramCategory, 'items'>> = {
+  healthcare: {
     title: 'Healthcare',
     duration: '8-12 Weeks',
-    items: ['CNA Certification', 'Medical Assistant', 'Phlebotomy'],
     href: '/programs/healthcare',
     image: '/images/programs-hq/healthcare-hero.jpg',
     alt: 'Healthcare Training',
   },
-  {
+  trades: {
     title: 'Skilled Trades',
     duration: '10-16 Weeks',
-    items: ['HVAC Technician', 'Electrical', 'Welding'],
     href: '/programs/skilled-trades',
     image: '/images/programs-hq/skilled-trades-hero.jpg',
     alt: 'Skilled Trades Training',
   },
-  {
+  technology: {
     title: 'Technology',
     duration: '12-20 Weeks',
-    items: ['IT Support', 'Cybersecurity', 'Cloud Computing'],
     href: '/programs/technology',
     image: '/images/programs-hq/technology-hero.jpg',
     alt: 'Technology Training',
   },
-];
+};
 
 export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(false);
-  
-  // AUTH STATE DETECTION: Fetches user auth status and enrollment data
-  // - user: Current authenticated user or null
-  // - activeEnrollment: User's active course enrollment with progress
-  // - hasApplication: Whether user has any enrollments/applications
-  // - isLoading: True while fetching auth state
-  // - authChecked: True after auth check completes (success or failure)
-  const { user, activeEnrollment, hasApplication, isLoading, authChecked } = useUserState();
+  const [programs, setPrograms] = useState<ProgramCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch programs from database
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const res = await fetch('/api/programs');
+        const data = await res.json();
+        if (data.status === 'success' && data.programs) {
+          const categoryMap: Record<string, string[]> = {};
+          
+          data.programs.forEach((p: any) => {
+            const cat = p.category?.toLowerCase() || 'other';
+            let normalizedCat = cat;
+            if (cat.includes('health')) normalizedCat = 'healthcare';
+            else if (cat.includes('trade') || cat.includes('barber') || cat.includes('beauty')) normalizedCat = 'trades';
+            else if (cat.includes('tech')) normalizedCat = 'technology';
+            
+            if (!categoryMap[normalizedCat]) {
+              categoryMap[normalizedCat] = [];
+            }
+            if (categoryMap[normalizedCat].length < 3) {
+              categoryMap[normalizedCat].push(p.name);
+            }
+          });
+
+          const cats: ProgramCategory[] = [];
+          ['healthcare', 'trades', 'technology'].forEach(key => {
+            const config = categoryConfig[key];
+            if (config && categoryMap[key]) {
+              cats.push({
+                ...config,
+                items: categoryMap[key],
+              });
+            }
+          });
+          
+          setPrograms(cats);
+        }
+      } catch (error) {
+        console.error('Failed to fetch programs:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPrograms();
+  }, []);
 
   // Animate content on mount
   useEffect(() => {
@@ -245,8 +290,8 @@ export default function HomePage() {
           <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>
         
-        {/* Minimal bottom gradient for CTAs */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+        {/* Overlay for text readability */}
+        
         
         {/* Minimal CTAs at bottom */}
         <div className="absolute bottom-0 left-0 right-0 z-10 pb-8">
@@ -455,51 +500,56 @@ export default function HomePage() {
             Explore All Programs
           </Link>
 
-          {/* Program Cards - Full width on mobile, 3 columns on desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {programs.map((program) => (
-              <article 
-                key={program.title}
-                className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-100 flex flex-col h-full"
-              >
-                {/* Image container - fixed height */}
-                <div className="relative h-52 flex-shrink-0">
-                  <Image
-                    src={program.image}
-                    alt={program.alt}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300 brightness-105"
-                    quality={85}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                  <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap shadow-md">
-                    {program.duration}
+          {/* Program Cards - 3 columns with compact images */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            {loading ? (
+              [1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-100 rounded-xl h-72 animate-pulse" />
+              ))
+            ) : (
+              programs.map((program) => (
+                <article 
+                  key={program.title}
+                  className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-100 max-w-sm mx-auto sm:max-w-none"
+                >
+                  {/* Compact image container */}
+                  <div className="relative h-36 md:h-32 lg:h-40">
+                    <Image
+                      src={program.image}
+                      alt={program.alt}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      quality={85}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 left-3 bg-blue-600 text-white px-2 py-0.5 rounded-full text-xs font-semibold">
+                      {program.duration}
+                    </div>
                   </div>
-                </div>
-                {/* Content below - flex grow to fill space */}
-                <div className="p-5 sm:p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">
-                    {program.title}
-                  </h3>
-                  <ul className="space-y-2 mb-5 flex-grow">
-                    {program.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2.5 text-sm text-slate-600">
-                        <CheckIcon />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link 
-                    href={program.href} 
-                    className="inline-flex items-center justify-center w-full bg-blue-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors mt-auto"
-                  >
-                    Learn More
-                  </Link>
-                </div>
-              </article>
-            ))}
+                  {/* Content below */}
+                  <div className="p-4">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">
+                      {program.title}
+                    </h3>
+                    <ul className="space-y-1.5 mb-4">
+                      {program.items.map((item) => (
+                        <li key={item} className="flex items-center gap-2 text-sm text-slate-600">
+                          <CheckIcon />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link 
+                      href={program.href} 
+                      className="inline-flex items-center justify-center w-full bg-blue-600 text-white px-4 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-sm"
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+                </article>
+              ))
+            )}
           </div>
         </div>
       </section>

@@ -122,9 +122,48 @@ export default async function GroupsPage() {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Main Content */}
           <div className="lg:w-2/3">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">
-              {groupList.length > 0 ? `All Groups (${groupList.length})` : 'No Groups Yet'}
-            </h2>
+            {/* Featured Groups */}
+            <h2 className="text-xl font-bold text-gray-900 mb-6">Featured Groups</h2>
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              {featuredGroups.map((group) => (
+                <Link
+                  key={group.id}
+                  href={`/community/groups/${group.id}`}
+                  className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition"
+                >
+                  <div className="relative h-32">
+                    <Image
+                      src={group.image}
+                      alt={group.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <span className="bg-white/90 text-gray-800 text-xs font-medium px-2 py-1 rounded">
+                        {group.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="font-bold text-gray-900">{group.name}</h3>
+                      {group.isPublic ? (
+                        <Globe className="w-4 h-4 text-green-600" title="Public Group" />
+                      ) : (
+                        <Lock className="w-4 h-4 text-gray-400" title="Private Group" />
+                      )}
+                    </div>
+                    <p className="text-sm text-gray-600 mb-3 line-clamp-2">{group.description}</p>
+                    <div className="flex items-center text-sm text-gray-500">
+                      <Users className="w-4 h-4 mr-1" />
+                      {group.members} members
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
 
             {groupList.length === 0 ? (
               <div className="text-center py-16 bg-white rounded-2xl border">

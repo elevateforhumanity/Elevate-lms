@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Department of Labor Funding | WIOA Programs | Elevate For Humanity',
   description:
-    'Access Department of Labor funded training programs through WIOA. Get free career training in healthcare, skilled trades, and technology.',
+    'Resources and tools for your success.',
 };
 
 export default async function DolPage() {
@@ -54,7 +54,7 @@ export default async function DolPage() {
             DOL Programs
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage dol settings and
+            Access your dashboard and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -83,7 +83,7 @@ export default async function DolPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">DOL Programs</h2>
                 <p className="text-black mb-6">
-                  Manage dol settings and
+                  Access your dashboard and
                   development.
                 </p>
                 <ul className="space-y-3">

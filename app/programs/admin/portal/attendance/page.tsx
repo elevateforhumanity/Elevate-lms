@@ -10,8 +10,9 @@ export const metadata: Metadata = {
     canonical:
       'https://www.elevateforhumanity.org/programs/admin/portal/attendance',
   },
-  title: 'Attendance Tracking | Program Administration | Elevate For Humanity',
-  description: 'Track and manage student attendance for training programs.',
+  title: 'Attendance | Elevate For Humanity',
+  description:
+    'Track and manage student attendance records.',
 };
 
 export default async function AttendancePage() {
@@ -71,8 +72,8 @@ export default async function AttendancePage() {
             Attendance
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Track student attendance.
-            
+            Manage your program administration
+            development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

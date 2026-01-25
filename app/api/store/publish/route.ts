@@ -74,7 +74,11 @@ export async function POST(req: NextRequest) {
 
 async function createStripeProduct(product: ProductInput) {
   // Create Stripe product with pricing tiers
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  const stripe = new Stripe(key, {
     apiVersion: '2024-12-18.acacia' as Stripe.LatestApiVersion,
   });
 

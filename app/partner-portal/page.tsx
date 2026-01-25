@@ -20,14 +20,7 @@ export const metadata: Metadata = {
   },
   title: 'Partner Portal | Elevate For Humanity',
   description:
-    'Access partnership resources, track referrals, collaborate on programs, and view impact reports. Your dedicated partner dashboard.',
-  keywords: [
-    'partner portal',
-    'partnership dashboard',
-    'referral tracking',
-    'program collaboration',
-    'impact reports',
-  ],
+    'Access your partner dashboard to track referrals, manage apprentices, and collaborate with Elevate for Humanity.',
 };
 
 const features = [
@@ -86,99 +79,116 @@ export default function PartnerPortalPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-purple-700 to-purple-900 text-white py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
-              <Handshake className="w-5 h-5" />
-              <span className="text-sm font-semibold">Partner Portal</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Partner Portal
-              <br />
-              <span className="text-purple-300">Collaborate & Impact</span>
-            </h1>
-            <p className="text-xl text-purple-100 mb-8 leading-relaxed">
-              Access your partnership dashboard to track referrals, view impact reports,
-              and collaborate on workforce development programs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/login?redirect=/partner-portal/dashboard"
-                className="inline-flex items-center justify-center gap-2 bg-white text-purple-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition shadow-xl"
-              >
-                Sign In
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="/partners"
-                className="inline-flex items-center justify-center gap-2 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-500 transition border-2 border-purple-400"
-              >
-                Become a Partner
-              </Link>
-            </div>
+      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/artlist/hero-training-6.jpg"
+          alt="Partner Portal"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Partner Portal
+          </h1>
+          <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
+            Track referrals, manage apprentices, and access resources
+            to grow your partnership with Elevate.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/programs"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              View Programs
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Portal Features
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Everything you need to manage your partnership and track the impact of your referrals.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature) => {
-              const Icon = feature.icon;
-              return (
-                <div
-                  key={feature.title}
-                  className="bg-white border-2 border-slate-100 rounded-xl p-6 hover:border-purple-200 hover:shadow-lg transition-all"
-                >
-                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-purple-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-slate-600">{feature.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Partner Types Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Who We Partner With
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              We collaborate with organizations committed to workforce development and community impact.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {partnerTypes.map((type) => (
-              <div
-                key={type.title}
-                className="bg-white rounded-xl p-6 border border-slate-200 flex items-start gap-4"
-              >
-                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Building2 className="w-5 h-5 text-purple-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-1">{type.title}</h3>
-                  <p className="text-slate-600 text-sm">{type.description}</p>
-                </div>
+      {/* Content Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Feature Grid */}
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                  Partner Portal
+                </h2>
+                <p className="text-black mb-6">
+                  Your central hub for tracking apprentice progress, 
+                  submitting hours, and accessing partnership resources.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>100% free training programs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Industry-standard certifications</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Career support and job placement</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/artlist/hero-training-4.jpg"
+                  alt="Partner Portal"
+                  fill
+                  className="object-cover"
+                  quality={100}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
             ))}
           </div>

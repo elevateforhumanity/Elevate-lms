@@ -10,8 +10,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/admin/training',
   },
-  title: 'Training Management | Program Administration | Elevate For Humanity',
-  description: 'Manage training schedules, instructors, and curriculum.',
+  title: 'Programs Admin Training | Elevate For Humanity',
+  description:
+    'Access staff training materials and resources.',
 };
 
 export default async function TrainingPage() {
@@ -71,8 +72,8 @@ export default async function TrainingPage() {
             Training
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage training programs.
-            
+            Manage your program administration
+            development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

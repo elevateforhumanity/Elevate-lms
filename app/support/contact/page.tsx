@@ -8,8 +8,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/support/contact',
   },
-  title: 'Contact Support | Elevate For Humanity',
-  description: 'Get help with your questions about programs, enrollment, or technical issues.',
+  title: 'Contact | Elevate For Humanity',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function ContactPage() {
@@ -30,7 +31,7 @@ export default async function ContactPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Contact Support</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Get help with programs, enrollment, or technical issues.
+            Access your dashboard and
             development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -59,7 +60,7 @@ export default async function ContactPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Contact Support</h2>
                 <p className="text-black mb-6">
-                  Contact our support team for assistance
+                  Your hub for training and career growth.
                   and development.
                 </p>
                 <ul className="space-y-3">

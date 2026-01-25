@@ -10,8 +10,9 @@ export const metadata: Metadata = {
     canonical:
       'https://www.elevateforhumanity.org/programs/admin/portal/reports',
   },
-  title: 'Reports | Program Administration | Elevate For Humanity',
-  description: 'Generate and view reports on program performance, enrollment, and outcomes.',
+  title: 'Admin Reports | Elevate For Humanity',
+  description:
+    'Generate and view program reports.',
 };
 
 export default async function ReportsPage() {
@@ -71,8 +72,8 @@ export default async function ReportsPage() {
             Reports
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            View program analytics and reports.
-            
+            Manage your program administration
+            development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

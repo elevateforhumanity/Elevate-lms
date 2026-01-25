@@ -4,8 +4,12 @@ import Image from 'next/image';
 import { ArrowRight, CheckCircle, Users, Award, Briefcase, DollarSign, Clock, Building2 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Hire Graduates | Elevate for Humanity',
-  description: 'Access trained, certified candidates ready to work. No recruiting fees. Build your workforce with job-ready graduates.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/hire-graduates',
+  },
+  title: 'Hire Graduates | Elevate For Humanity',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default function HireGraduatesPage() {
@@ -53,12 +57,20 @@ export default function HireGraduatesPage() {
         </div>
       </section>
 
-      {/* Quick Links */}
-      <section className="py-6 bg-gray-50 border-b">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Link href="/employers" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-              For Employers
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Hire Graduates
+          </h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100">
+            Your hub for training and career growth.
+            and development.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Get Started
             </Link>
             <Link href="/ojt-and-funding" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
               OJT & Funding
@@ -73,21 +85,72 @@ export default function HireGraduatesPage() {
         </div>
       </section>
 
-      {/* Why Hire Our Graduates */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-              Why Hire Our Graduates?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Our graduates come to you trained, certified, and ready to work
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-              <div className="relative h-48">
+      {/* Content Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Feature Grid */}
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                  Hire Graduates
+                </h2>
+                <p className="text-black mb-6">
+                  Your hub for training and career growth.
+                  workforce training and career success.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>100% free training programs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Industry-standard certifications</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Career support and job placement</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/business/professional-1.jpg"
                   alt="Industry certified candidates"

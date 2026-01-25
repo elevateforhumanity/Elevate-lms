@@ -108,6 +108,39 @@ export default async function CareerServicesPage() {
             priority
             sizes="100vw"
           />
+          
+          
+          <div className="absolute inset-0 flex items-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                  <TrendingUp className="w-4 h-4" />
+                  Career Services Included
+                </div>
+                <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                  Your Career<br />Starts Here
+                </h1>
+                <p className="text-xl text-white/90 mb-8">
+                  From resume building to job placement, we're with you every step. 
+                  We don't just train you—we help you get hired.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/career-services/job-placement"
+                    className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition"
+                  >
+                    Browse Jobs <ArrowRight className="w-5 h-5" />
+                  </Link>
+                  <Link
+                    href="/apply"
+                    className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition"
+                  >
+                    Start Training
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="absolute inset-0 z-20 flex items-center">
           <div className="max-w-6xl mx-auto px-4 text-white">

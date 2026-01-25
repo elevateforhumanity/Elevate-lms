@@ -12,7 +12,8 @@ export const metadata: Metadata = {
       'https://www.elevateforhumanity.org/admin/courses/[id]/quizzes/[quizId]/questions',
   },
   title: 'Questions | Elevate For Humanity',
-  description: 'Access questions features and tools.',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function QuestionsPage() {
@@ -75,7 +76,8 @@ export default async function QuestionsPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Questions</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access questions features and resources.
+            Access your dashboard and
+            development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

@@ -11,7 +11,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/payroll-cards',
   },
   title: 'Payroll Cards | Elevate For Humanity',
-  description: 'Access payroll cards features and tools.',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function PayrollCardsPage() {
@@ -77,7 +78,8 @@ export default async function PayrollCardsPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Payroll Cards</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore payroll cards opportunities and resources.
+            Your hub for training and career growth.
+            and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

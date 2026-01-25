@@ -10,7 +10,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/admin/signatures/new',
   },
   title: 'New Signature Request | Elevate For Humanity',
-  description: 'Access new features and tools.',
+  description:
+    'Resources and tools for your success.',
 };
 
 export default async function NewPage() {
@@ -73,7 +74,8 @@ export default async function NewPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">New</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Access new features and resources.
+            Access your dashboard and
+            development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

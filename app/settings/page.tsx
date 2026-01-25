@@ -45,11 +45,120 @@ export default async function SettingsPage() {
 
         <h1 className="text-3xl font-bold text-gray-900 mb-6">Settings</h1>
 
-        <SettingsForm 
-          profile={profile}
-          preferences={preferences}
-          userEmail={user.email || ''}
-        />
+        <div className="grid md:grid-cols-4 gap-6">
+          <div className="md:col-span-1">
+            <nav className="bg-white rounded-xl border p-2">
+              {settingsSections.map(section => (
+                <button key={section.id} onClick={() => setActiveSection(section.id)}
+                  className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left ${
+                    activeSection === section.id ? 'bg-orange-50 text-orange-600' : 'hover:bg-gray-50'
+                  }`}>
+                  <section.icon className="w-5 h-5" />
+                  <span className="text-sm font-medium">{section.name}</span>
+                </button>
+              ))}
+              <hr className="my-2" />
+              <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left text-red-600 hover:bg-red-50">
+                <LogOut className="w-5 h-5" />
+                <span className="text-sm font-medium">Sign Out</span>
+              </button>
+            </nav>
+          </div>
+
+          <div className="md:col-span-3">
+            <div className="bg-white rounded-xl border p-6">
+              {activeSection === 'profile' && (
+                <div className="space-y-6">
+                  <h2 className="text-xl font-semibold">Profile Settings</h2>
+                  <div className="flex items-center gap-4">
+                    <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center">
+                      <User className="w-10 h-10 text-orange-600" />
+                    </div>
+                    <button className="px-4 py-2 border rounded-lg hover:bg-gray-50">Change Photo</button>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                      <input type="text" defaultValue="John" className="w-full px-3 py-2 border rounded-lg" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                      <input type="text" defaultValue="Doe" className="w-full px-3 py-2 border rounded-lg" />
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                      <input type="email" defaultValue="" className="w-full px-3 py-2 border rounded-lg" />
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Bio</label>
+                      <textarea rows={3} className="w-full px-3 py-2 border rounded-lg" placeholder="Tell us about yourself..." />
+                    </div>
+                  </div>
+                  <button className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Save Changes</button>
+                </div>
+              )}
+
+              {activeSection === 'notifications' && (
+                <div className="space-y-6">
+                  <h2 className="text-xl font-semibold">Notification Preferences</h2>
+                  {['Email notifications', 'Push notifications', 'Course updates', 'Marketing emails', 'Weekly digest'].map(item => (
+                    <label key={item} className="flex items-center justify-between py-3 border-b">
+                      <span>{item}</span>
+                      <input type="checkbox" defaultChecked className="w-5 h-5 rounded text-orange-500" />
+                    </label>
+                  ))}
+                </div>
+              )}
+
+              {activeSection === 'security' && (
+                <div className="space-y-6">
+                  <h2 className="text-xl font-semibold">Security Settings</h2>
+                  <div>
+                    <h3 className="font-medium mb-2">Change Password</h3>
+                    <div className="space-y-3">
+                      <input type="password" placeholder="Current password" className="w-full px-3 py-2 border rounded-lg" />
+                      <input type="password" placeholder="New password" className="w-full px-3 py-2 border rounded-lg" />
+                      <input type="password" placeholder="Confirm new password" className="w-full px-3 py-2 border rounded-lg" />
+                    </div>
+                  </div>
+                  <div className="pt-4 border-t">
+                    <h3 className="font-medium mb-2">Two-Factor Authentication</h3>
+                    <p className="text-sm text-gray-600 mb-3">Add an extra layer of security to your account</p>
+                    <button className="px-4 py-2 border rounded-lg hover:bg-gray-50">Enable 2FA</button>
+                  </div>
+                </div>
+              )}
+
+              {activeSection === 'billing' && (
+                <div className="space-y-6">
+                  <h2 className="text-xl font-semibold">Billing & Payments</h2>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <p className="font-medium">Current Plan: <span className="text-orange-600">Pro</span></p>
+                    <p className="text-sm text-gray-600">$29/month, renews on Feb 15, 2024</p>
+                  </div>
+                  <div>
+                    <h3 className="font-medium mb-2">Payment Method</h3>
+                    <div className="flex items-center gap-3 p-3 border rounded-lg">
+                      <CreditCard className="w-6 h-6 text-gray-400" />
+                      <span>•••• •••• •••• 4242</span>
+                      <span className="text-sm text-gray-500">Expires 12/25</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {(activeSection === 'language' || activeSection === 'appearance' || activeSection === 'privacy') && (
+                <div className="space-y-6">
+                  <h2 className="text-xl font-semibold">{settingsSections.find(s => s.id === activeSection)?.name}</h2>
+                  <p className="text-gray-600">{settingsSections.find(s => s.id === activeSection)?.description}</p>
+                  <div className="bg-gray-50 rounded-lg p-8 text-center">
+                    <p className="text-gray-500">Settings options coming soon</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -68,17 +68,17 @@ export default async function VITAPage() {
       />
       {/* Hero Section */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
-        {/* Video Background */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/career-services-hero.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 via-green-800/85 to-emerald-900/80" />
+        {/* Background Image */}
+        <Image
+          src="/images/business/tax-prep-certification.jpg"
+          alt="Free VITA Tax Preparation"
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+        />
+        {/* Overlay */}
+        
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
