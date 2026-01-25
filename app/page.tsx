@@ -249,7 +249,7 @@ export default function HomePage() {
             <Link href="/wioa-eligibility" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
               <div className="relative h-48">
                 <Image
-                  src="/images/artlist/hero-training-6.jpg"
+                  src="/images/funding/funding-dol-program-v2.jpg"
                   alt="WIOA funded career training"
                   fill
                   className="object-cover"
@@ -276,7 +276,7 @@ export default function HomePage() {
             <Link href="/apprenticeships" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
               <div className="relative h-48">
                 <Image
-                  src="/images/artlist/hero-training-7.jpg"
+                  src="/images/funding/funding-dol-program.jpg"
                   alt="Apprenticeship training"
                   fill
                   className="object-cover"
@@ -303,7 +303,7 @@ export default function HomePage() {
             <Link href="/jri" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
               <div className="relative h-48">
                 <Image
-                  src="/images/artlist/hero-training-8.jpg"
+                  src="/images/funding/funding-jri-program-v2.jpg"
                   alt="JRI funding programs"
                   fill
                   className="object-cover"

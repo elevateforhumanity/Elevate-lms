@@ -21,7 +21,7 @@ const footerSections = [
     title: 'Services',
     links: [
       { name: 'Career Services', href: '/career-services' },
-      { name: 'VITA Tax Prep', href: '/vita' },
+      { name: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
       { name: 'Drug Testing', href: '/drug-testing' },
       { name: 'Certifications', href: '/certifications' },
       { name: 'Mentorship', href: '/mentorship' },

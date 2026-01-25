@@ -69,16 +69,8 @@ const portals = [
     public: false
   },
   { 
-    name: 'VITA Tax Services', 
-    description: 'Free tax preparation for eligible individuals',
-    href: '/vita', 
-    icon: DollarSign, 
-    color: 'bg-emerald-500',
-    public: true
-  },
-  { 
     name: 'Supersonic Fast Cash', 
-    description: 'Paid tax services and refund advances',
+    description: 'Tax services and refund advances',
     href: '/supersonic-fast-cash', 
     icon: Zap, 
     color: 'bg-yellow-500',

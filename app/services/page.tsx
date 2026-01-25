@@ -32,7 +32,7 @@ export default function ServicesPage() {
   // Internal navigation for Services subpages
   const navLinks = [
     { label: 'Tax Services', href: '/tax-services' },
-    { label: 'VITA Tax Prep', href: '/vita' },
+    { label: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
     { label: 'Career Services', href: '/career-services' },
     { label: 'Career Center', href: '/career-center' },
     { label: 'Career Fairs', href: '/career-fair' },
@@ -52,10 +52,10 @@ export default function ServicesPage() {
       image: '/images/heroes-hq/tax-refund-hero.jpg',
     },
     {
-      title: 'VITA Tax Prep',
+      title: 'Supersonic Fast Cash',
       description:
-        'Free IRS-certified tax preparation for qualifying individuals',
-      href: '/vita',
+        'Quick refund advances and fast cash services for tax filers',
+      href: '/supersonic-fast-cash',
       icon: Heart,
       image: '/images/programs-hq/tax-preparation.jpg',
     },

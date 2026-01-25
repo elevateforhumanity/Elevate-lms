@@ -35,11 +35,6 @@ const sitemapSections = [
       { name: 'SupersonicFastCash Services', href: '/supersonic-fast-cash/services' },
       { name: 'SupersonicFastCash Locations', href: '/supersonic-fast-cash/locations' },
       { name: 'SupersonicFastCash Careers', href: '/supersonic-fast-cash/careers' },
-      { name: 'VITA Free Tax Help', href: '/vita' },
-      { name: 'VITA Locations', href: '/vita/locations' },
-      { name: 'VITA Eligibility', href: '/vita/eligibility' },
-      { name: 'VITA Volunteer', href: '/vita/volunteer' },
-      { name: 'Rise Up Foundation', href: '/tax/rise-up-foundation' },
     ],
   },
   {

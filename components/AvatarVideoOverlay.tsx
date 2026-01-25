@@ -35,8 +35,14 @@ export default function AvatarVideoOverlay({
     if (!video) return;
     
     if (autoPlay && isVisible) {
+      // Try to play with sound first
+      video.muted = false;
       video.play().catch(() => {
-        // Autoplay blocked by browser
+        // Autoplay with sound blocked, try muted
+        video.muted = true;
+        video.play().catch(() => {
+          // Even muted autoplay blocked
+        });
       });
     }
   }, [autoPlay, isVisible]);

@@ -61,9 +61,9 @@ export default async function NonprofitPage() {
       icon: Heart,
     },
     {
-      title: 'Free Tax Services (VITA)',
-      description: 'Free IRS-certified tax preparation for individuals earning under $64,000.',
-      href: '/vita',
+      title: 'Supersonic Fast Cash',
+      description: 'Quick financial assistance and emergency support services.',
+      href: '/supersonic-fast-cash',
       icon: Gift,
     },
     {

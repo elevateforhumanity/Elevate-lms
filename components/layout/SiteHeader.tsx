@@ -29,20 +29,10 @@ const NAV_ITEMS = [
       { name: 'Drug Testing', href: '/drug-testing' },
       { name: 'Certifications', href: '/certifications' },
       { name: 'Training Providers', href: '/training-providers' },
-      { name: 'VITA Tax Prep', href: '/vita' },
       { name: 'Mentorship', href: '/mentorship' },
     ]
   },
-  { 
-    name: 'Store', 
-    href: '/store',
-    subItems: [
-      { name: 'Shop All', href: '/shop' },
-      { name: 'Courses', href: '/courses' },
-      { name: 'Workbooks', href: '/workbooks' },
-      { name: 'Marketplace', href: '/marketplace' },
-    ]
-  },
+
   { 
     name: 'How It Works', 
     href: '/how-it-works',
@@ -74,6 +64,16 @@ const NAV_ITEMS = [
       { name: 'Certificates', href: '/certificates' },
       { name: 'Leaderboard', href: '/leaderboard' },
       { name: 'Community', href: '/community' },
+    ]
+  },
+  { 
+    name: 'Store', 
+    href: '/store',
+    subItems: [
+      { name: 'Platform Licenses', href: '/store/licenses' },
+      { name: 'AI Tools & Apps', href: '/store/apps' },
+      { name: 'Digital Resources', href: '/store/digital' },
+      { name: 'Courses', href: '/store/courses' },
     ]
   },
   { 
