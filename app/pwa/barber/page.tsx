@@ -263,6 +263,28 @@ function Dashboard({ apprentice, onLogout }: { apprentice: ApprenticeData; onLog
             <ChevronRight className="w-5 h-5 text-slate-500" />
           </Link>
 
+          <Link href="/pwa/barber/milestones" className="flex items-center gap-4 bg-slate-800 rounded-xl p-4 active:bg-slate-700">
+            <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
+              <Award className="w-6 h-6 text-amber-400" />
+            </div>
+            <div className="flex-1">
+              <p className="text-white font-medium">Milestones</p>
+              <p className="text-slate-400 text-sm">Track achievements & rewards</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-slate-500" />
+          </Link>
+
+          <Link href="/pwa/barber/reports" className="flex items-center gap-4 bg-slate-800 rounded-xl p-4 active:bg-slate-700">
+            <div className="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center">
+              <Star className="w-6 h-6 text-slate-400" />
+            </div>
+            <div className="flex-1">
+              <p className="text-white font-medium">Reports</p>
+              <p className="text-slate-400 text-sm">Export & view summaries</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-slate-500" />
+          </Link>
+
           <Link href="/pwa/barber/profile" className="flex items-center gap-4 bg-slate-800 rounded-xl p-4 active:bg-slate-700">
             <div className="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center">
               <User className="w-6 h-6 text-slate-400" />
