@@ -34,13 +34,13 @@ const NAV_ITEMS = [
     ]
   },
   { 
-    name: 'Shop', 
-    href: '/shop',
+    name: 'Store', 
+    href: '/store',
     subItems: [
-      { name: 'Tools & Equipment', href: '/shop' },
-      { name: 'Online Courses', href: '/courses' },
-      { name: 'Workbooks & Guides', href: '/workbooks' },
-      { name: 'Platform Licensing', href: '/store' },
+      { name: 'Shop All', href: '/shop' },
+      { name: 'Courses', href: '/courses' },
+      { name: 'Workbooks', href: '/workbooks' },
+      { name: 'Marketplace', href: '/marketplace' },
     ]
   },
   { 
