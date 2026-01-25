@@ -287,7 +287,7 @@ export default async function ProgramHolderOnboarding() {
               </div>
               <p className="text-black mb-4">
                 Browse available training programs, view curriculum details, and
-                enroll students in approved programs.
+                enroll students in approved programs or need assistance.
               </p>
               <ul className="space-y-2 text-sm text-black">
                 <li>• View all available programs</li>
@@ -501,11 +501,11 @@ export default async function ProgramHolderOnboarding() {
       <section className="py-16 bg-brand-blue-700 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Ready to Get Started?
+            Need Help?
           </h2>
           <p className="text-base md:text-lg text-blue-100 mb-8">
             Apply now to become a program holder and start enrolling students in
-            life-changing training programs.
+            life-changing training programs or need assistance.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
@@ -515,7 +515,7 @@ export default async function ProgramHolderOnboarding() {
               Apply Now
             </Link>
             <Link
-              href="/contact"
+              href="/support"
               className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg transition-all"
             >
               Contact Us

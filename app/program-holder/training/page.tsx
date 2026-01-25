@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.elevateforhumanity.org/program-holder/training',
   },
   title: 'Program Holder Training | Elevate For Humanity',
-  description:
-    'Resources and tools for your success.',
+  description: 'Manage training sessions, instructor assignments, and curriculum delivery for your programs or need assistance.',
 };
 
 export default async function TrainingPage() {
@@ -225,21 +224,21 @@ export default async function TrainingPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
+              Need Help?
             </h2>
             <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
+              Contact support if you have questions about managing your
+              programs or need assistance.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
-                href="/contact"
+                href="/support"
                 className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
               >
                 Apply Now
               </Link>
               <Link
-                href="/programs"
+                href="/program-holder/dashboard"
                 className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
               >
                 Browse Programs
