@@ -16,7 +16,7 @@ export const heroMap: Record<string, string | null> = {
   '/contact': null, // No hero - form-focused
 
   // Tax site
-  '/supersonic-fast-cash': '/videos/tax-hero.mp4', // Video hero
+  '/supersonic-fast-cash': '/videos/hero-tax-avatar.mp4', // Video hero
 
   // LMS
   '/lms': 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1920',

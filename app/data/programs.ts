@@ -366,7 +366,7 @@ export const programs: Program[] = [
     heroImage: '/images/programs/building-maintenance-hero.jpg',
     heroImageAlt:
       'Sanitation technician in protective equipment working in healthcare facility',
-    heroVideo: '/videos/building-technician-hero.mp4',
+    heroVideo: '/videos/hvac-hero-final.mp4',
     duration: 'Varies by apprenticeship track',
     schedule: 'Quarterly cohorts (January, April, July, October)',
     delivery: 'Hands-on apprenticeship with classroom instruction',
@@ -1039,7 +1039,7 @@ export const programs: Program[] = [
       "The CPR, AED & First Aid Certification program provides essential emergency response training in a single day. Students learn adult, child, and infant CPR, automated external defibrillator (AED) operation, choking relief, and basic first aid. This certification is required for many healthcare, childcare, fitness, and public safety positions.\n\nWhat You'll Learn:\n- Adult, child, and infant CPR\n- AED operation and safety\n- Choking relief techniques\n- Basic first aid and wound care\n- Emergency response protocols\n- Hands-on practice with manikins and AED trainers\n\nWho This Program Is For:\n- Healthcare workers and students\n- Childcare providers and teachers\n- Fitness instructors and coaches\n- Anyone needing CPR certification for employment\n\nProgram Format:\n- In-person, hands-on training\n- Length: 1 day (4-8 hours)\n- Schedule: Multiple dates available\n\nFunding & Approvals:\n- ETPL Program ID: #10004674\n- WIOA Eligible\n- Workforce Ready Grant Eligible\n\nCareer Outcomes:\n- Required certification for healthcare positions\n- Childcare and education requirements\n- Fitness and recreation industry standard",
     heroImage: '/images/programs/cpr-hero.jpg',
     heroImageAlt: 'CPR training with instructor and manikin',
-    heroVideo: '/videos/cpr-hero.mp4',
+    heroVideo: '/videos/cna-hero.mp4',
     duration: '1 day',
     schedule: 'Multiple dates available',
     delivery: 'In-person hands-on training',

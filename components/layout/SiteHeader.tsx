@@ -114,13 +114,60 @@ const NAV_ITEMS = [
   },
 ];
 
-// Desktop navigation links
+// Desktop navigation links with dropdowns
 const DESKTOP_NAV_LINKS = [
-  { name: 'Programs', href: '/programs' },
-  { name: 'How It Works', href: '/how-it-works' },
-  { name: 'WIOA Funding', href: '/wioa-eligibility' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { 
+    name: 'Programs', 
+    href: '/programs',
+    subItems: [
+      { name: 'All Programs', href: '/programs' },
+      { name: 'Healthcare', href: '/programs/healthcare' },
+      { name: 'Skilled Trades', href: '/programs/skilled-trades' },
+      { name: 'Technology', href: '/programs/technology' },
+      { name: 'Business', href: '/programs/business' },
+    ]
+  },
+  { 
+    name: 'Store', 
+    href: '/store',
+    subItems: [
+      { name: 'Store Home', href: '/store' },
+      { name: 'Platform Licenses', href: '/store/licenses' },
+      { name: 'Courses', href: '/store/courses' },
+      { name: 'Digital Downloads', href: '/store/digital' },
+      { name: 'Try Demo', href: '/store/demo' },
+    ]
+  },
+  { 
+    name: 'How It Works', 
+    href: '/how-it-works',
+    subItems: [
+      { name: 'Overview', href: '/how-it-works' },
+      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
+      { name: 'Financial Aid', href: '/financial-aid' },
+      { name: 'FAQ', href: '/faq' },
+    ]
+  },
+  { 
+    name: 'For Employers', 
+    href: '/employer',
+    subItems: [
+      { name: 'Employer Overview', href: '/employer' },
+      { name: 'Hire Graduates', href: '/hire-graduates' },
+      { name: 'Partner With Us', href: '/partners' },
+      { name: 'Workforce Board', href: '/workforce-board' },
+    ]
+  },
+  { 
+    name: 'About', 
+    href: '/about',
+    subItems: [
+      { name: 'About Us', href: '/about' },
+      { name: 'Our Team', href: '/team' },
+      { name: 'Success Stories', href: '/success-stories' },
+      { name: 'Contact', href: '/contact' },
+    ]
+  },
 ];
 
 // Safe user hook that never throws
@@ -270,21 +317,40 @@ export default function SiteHeader() {
             aria-label="Main navigation"
           >
             {DESKTOP_NAV_LINKS.map((link) => (
-              <Link 
-                key={link.href}
-                href={link.href} 
-                className={`
-                  px-3 py-2 text-sm font-medium rounded-md transition-colors
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
-                  ${isActive(link.href) 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                  }
-                `}
-                aria-current={isActive(link.href) ? 'page' : undefined}
-              >
-                {link.name}
-              </Link>
+              <div key={link.href} className="relative group">
+                <Link 
+                  href={link.href} 
+                  className={`
+                    px-3 py-2 text-sm font-medium rounded-md transition-colors inline-flex items-center gap-1
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                    ${isActive(link.href) 
+                      ? 'text-blue-600 bg-blue-50' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    }
+                  `}
+                  aria-current={isActive(link.href) ? 'page' : undefined}
+                >
+                  {link.name}
+                  {link.subItems && <ChevronDown className="w-3 h-3" />}
+                </Link>
+                {link.subItems && (
+                  <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                    {link.subItems.map((subItem) => (
+                      <Link
+                        key={subItem.href}
+                        href={subItem.href}
+                        className={`block px-4 py-2 text-sm ${
+                          isActive(subItem.href)
+                            ? 'text-blue-600 bg-blue-50'
+                            : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                        }`}
+                      >
+                        {subItem.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
