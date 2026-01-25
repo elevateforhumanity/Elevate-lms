@@ -292,10 +292,15 @@ export function GuidedDemoChat() {
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
+                {msg.role === 'bot' && (
+                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-xs font-bold">E</span>
+                  </div>
+                )}
                 <div
-                  className={`max-w-[85%] p-3 rounded-2xl ${
+                  className={`max-w-[80%] p-3 rounded-2xl ${
                     msg.role === 'user'
                       ? 'bg-blue-600 text-white rounded-br-md'
                       : 'bg-gray-100 text-gray-800 rounded-bl-md'

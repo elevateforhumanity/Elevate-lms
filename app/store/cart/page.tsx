@@ -36,8 +36,39 @@ export default async function CartPage() {
   }
   const { data: { user } } = await supabase.auth.getUser();
 
+  // Show empty cart for guests instead of redirecting
   if (!user) {
-    redirect('/login?redirect=/store/cart');
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          <div className="flex items-center gap-4 mb-8">
+            <Link href="/store" className="text-gray-500 hover:text-gray-700">
+              <ArrowLeft className="w-5 h-5" />
+            </Link>
+            <h1 className="text-2xl font-bold">Shopping Cart</h1>
+          </div>
+          <div className="bg-white rounded-xl shadow-sm border p-12 text-center">
+            <ShoppingCart className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+            <h2 className="text-xl font-semibold mb-2">Your cart is empty</h2>
+            <p className="text-gray-600 mb-6">Sign in to view your cart or browse our store.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/login?redirect=/store/cart"
+                className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-700"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/store"
+                className="inline-flex items-center gap-2 border border-gray-300 px-6 py-3 rounded-lg font-medium hover:bg-gray-50"
+              >
+                Continue Shopping
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   // Get cart items with product details

@@ -265,7 +265,7 @@ export default function SiteHeader() {
 
           {/* Desktop Navigation */}
           <nav 
-            className="hidden lg:flex items-center gap-1" 
+            className="hidden md:flex items-center gap-1" 
             role="navigation" 
             aria-label="Main navigation"
           >
@@ -293,7 +293,7 @@ export default function SiteHeader() {
             {/* Sign In / Dashboard - desktop only */}
             <Link
               href={user ? "/lms/dashboard" : "/login"}
-              className="hidden lg:inline-flex px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              className="hidden md:inline-flex px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               {user ? 'Dashboard' : 'Sign In'}
             </Link>
@@ -311,7 +311,7 @@ export default function SiteHeader() {
             <button
               ref={menuButtonRef}
               onClick={openMobileMenu}
-              className="lg:hidden flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-100 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-200 active:bg-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              className="md:hidden flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-100 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-200 active:bg-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
               aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"

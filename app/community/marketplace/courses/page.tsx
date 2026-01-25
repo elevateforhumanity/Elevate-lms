@@ -67,7 +67,7 @@ export default function CommunityCoursesPage() {
       students: 456,
       duration: '4 hours',
       price: 'Free',
-      image: '/images/trades/program-hvac-training.jpg',
+      image: '/images/trades/program-hvac-technician.jpg',
       category: 'Skilled Trades',
     },
     {

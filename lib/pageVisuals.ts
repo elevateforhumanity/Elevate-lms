@@ -42,7 +42,7 @@ export const homepageVisuals: PageVisualConfig = {
     },
     {
       id: "hero-earn",
-      imageSrc: "/images/hero-new/hero-2.jpg",
+      imageSrc: "/images/heroes-hq/homepage-hero.jpg",
       imageAlt: "Student working while studying on a laptop.",
       eyebrow: "Earn While You Learn",
       title: "Work experience, stipends, and employer connections while you train.",
@@ -152,7 +152,7 @@ export const barberVisuals: PageVisualConfig = {
   heroes: [
     {
       id: "barber-hero-main",
-      imageSrc: "/images/efh-barber-hero.jpg",
+      imageSrc: "/images/programs/efh-barber-hero.jpg",
       imageAlt: "Barber apprentice cutting hair in a modern barbershop.",
       eyebrow: "Barber Apprenticeship",
       title: "Train in the Shop, Build Your Skills, and Get Paid While You Learn.",
@@ -163,7 +163,7 @@ export const barberVisuals: PageVisualConfig = {
     },
     {
       id: "barber-hero-earn",
-      imageSrc: "/images/efh-barber-card.jpg",
+      imageSrc: "/images/programs/efh-barber-card.jpg",
       imageAlt: "Barber apprentice laughing with a client in the chair.",
       eyebrow: "Earn While You Learn",
       title: "Real clients, real hours, real income.",
@@ -182,7 +182,7 @@ export const barberVisuals: PageVisualConfig = {
         "In-shop apprenticeship experience with licensed barbers supervising your hours.",
         "Drug-free workplace and professionalism training tailored to barber/beauty environments."
       ],
-      imageSrc: "/images/hero-new/hero-3.jpg",
+      imageSrc: "/images/heroes-hq/programs-hero.jpg",
       imageAlt: "Instructor demonstrating a haircut technique to apprentices.",
     },
     {
@@ -193,7 +193,7 @@ export const barberVisuals: PageVisualConfig = {
         "Paths into chair rental, commission-based work, or eventually shop ownership.",
         "A portable licensed trade that lets you work, travel, and build your own brand."
       ],
-      imageSrc: "/images/hero-new/hero-4.jpg",
+      imageSrc: "/images/heroes-hq/career-services-hero.jpg",
       imageAlt: "Barber proudly standing by their station with tools organized.",
     },
   ],
@@ -218,7 +218,7 @@ export const hvacVisuals: PageVisualConfig = {
     },
     {
       id: "hvac-hero-earn",
-      imageSrc: "/images/Content_PATHWAY_TRADES.jpg",
+      imageSrc: "/images/trades/hero-program-hvac.jpg",
       imageAlt: "Technician using tools while working on a building system.",
       eyebrow: "Earn While You Learn",
       title: "Earn experience while you build trade skills.",
@@ -262,7 +262,7 @@ export const cdlVisuals: PageVisualConfig = {
   heroes: [
     {
       id: "cdl-hero-main",
-      imageSrc: "/images/Content_PATHWAY_CDL.jpg",
+      imageSrc: "/images/trades/hero-program-cdl.jpg",
       imageAlt: "CDL student standing in front of a commercial truck.",
       eyebrow: "CDL & Transportation",
       title: "Prepare for Transportation Careers with Safety and DOT Readiness.",
@@ -273,7 +273,7 @@ export const cdlVisuals: PageVisualConfig = {
     },
     {
       id: "cdl-hero-earn",
-      imageSrc: "/images/hero-new/hero-6.jpg",
+      imageSrc: "/images/heroes-hq/employer-hero.jpg",
       imageAlt: "Truck driver stepping out of a semi truck cab.",
       eyebrow: "Earn While You Learn",
       title: "Work-based learning while you prepare for CDL opportunities.",
@@ -292,7 +292,7 @@ export const cdlVisuals: PageVisualConfig = {
         "Transportation and roadway safety concepts via partner content.",
         "Job readiness and professionalism modules focused on transportation work.",
       ],
-      imageSrc: "/images/hero-new/hero-7.jpg",
+      imageSrc: "/images/heroes-hq/success-hero.jpg",
       imageAlt: "Instructor explaining a transportation safety diagram.",
     },
     {
@@ -303,7 +303,7 @@ export const cdlVisuals: PageVisualConfig = {
         "Connections to employer partners seeking reliable transportation staff.",
         "A pathway into higher-paying CDL roles once licensure steps are complete.",
       ],
-      imageSrc: "/images/hero-new/hero-8.jpg",
+      imageSrc: "/images/heroes-hq/about-hero.jpg",
       imageAlt: "Truck fleet parked in a lot with a driver walking by.",
     },
   ],
@@ -317,7 +317,7 @@ export const customerServiceVisuals: PageVisualConfig = {
   heroes: [
     {
       id: "cs-hero-main",
-      imageSrc: "/images/Content_PATHWAY_BUSINESS.jpg",
+      imageSrc: "/images/programs-hq/business-office.jpg",
       imageAlt: "Customer service representative speaking with a client over a headset.",
       eyebrow: "Customer Service Pro",
       title: "Turn Your People Skills Into Professional Office and Call Center Roles.",
@@ -372,7 +372,7 @@ export const itSupportVisuals: PageVisualConfig = {
   heroes: [
     {
       id: "it-hero-main",
-      imageSrc: "/images/hero-new/hero-9.jpg",
+      imageSrc: "/images/heroes-hq/contact-hero.jpg",
       imageAlt: "IT support technician helping a coworker at a computer.",
       eyebrow: "IT Support Helpdesk",
       title: "Step Into Tech with IT Support and Helpdesk Skills.",
@@ -383,7 +383,7 @@ export const itSupportVisuals: PageVisualConfig = {
     },
     {
       id: "it-hero-earn",
-      imageSrc: "/images/hero-new/hero-10.jpg",
+      imageSrc: "/images/heroes-hq/team-hero.jpg",
       imageAlt: "Person working in a modern IT operations center.",
       eyebrow: "Earn While You Learn",
       title: "Build your portfolio while gaining IT experience.",
@@ -627,7 +627,7 @@ export const nailsVisuals: PageVisualConfig = {
   heroes: [
     {
       id: "nails-hero-main",
-      imageSrc: "/images/Content_PATHWAY_BEAUTY.jpg",
+      imageSrc: "/images/beauty/program-barber-training.jpg",
       imageAlt: "Nail technician apprentice doing a manicure.",
       eyebrow: "Beauty & Wellness",
       title: "Nail Technician Apprenticeship",
@@ -646,7 +646,7 @@ export const nailsVisuals: PageVisualConfig = {
         "Sanitation, disinfection, and safety standards.",
         "Client experience, consultation, and rebooking.",
       ],
-      imageSrc: "/images/hero-new/hero-3.jpg",
+      imageSrc: "/images/heroes-hq/programs-hero.jpg",
       imageAlt: "Close-up of apprentice painting a client's nails.",
     },
   ],
