@@ -180,7 +180,7 @@ export default function NonCompetePage() {
               <p className="text-black">
                 <strong>Elevate for Humanity</strong>
                 <br />
-                Email: legal@www.elevateforhumanity.org
+                Email: elevate4humanityedu@gmail.com
                 <br />
                 Phone: (317) 314-3757
               </p>

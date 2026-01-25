@@ -7,7 +7,7 @@ import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2 } f
 
 const contactInfo = [
   { icon: Phone, title: 'Phone', value: '(317) 314-3757', subtitle: 'Mon-Fri 8am-6pm EST', href: 'tel:317-314-3757' },
-  { icon: Mail, title: 'Email', value: 'info@elevateforhumanity.org', subtitle: 'We respond within 24 hours', href: 'mailto:info@elevateforhumanity.org' },
+  { icon: Mail, title: 'Email', value: 'elevate4humanityedu@gmail.com', subtitle: 'We respond within 24 hours', href: 'mailto:elevate4humanityedu@gmail.com' },
   { icon: MapPin, title: 'Address', value: 'Indianapolis, IN', subtitle: 'Central Indiana', href: null },
   { icon: Clock, title: 'Hours', value: 'Mon-Fri 8am-6pm', subtitle: 'Sat 9am-1pm EST', href: null },
 ];

@@ -193,7 +193,7 @@ export function OrganizationStructuredData() {
       addressCountry: 'US',
     },
     telephone: '+1-317-314-3757',
-    email: 'info@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
     sameAs: [
       'https://www.linkedin.com/company/elevate-for-humanity',
       'https://www.facebook.com/profile.php?id=61571046346179',

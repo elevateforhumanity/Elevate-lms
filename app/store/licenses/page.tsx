@@ -382,9 +382,15 @@ export default async function LicensesPage() {
             ourselves.&rdquo;
           </blockquote>
           <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-12 bg-gray-300 rounded-full" />
+            <Image
+              src="/images/success-new/success-2.jpg"
+              alt="Sarah Mitchell"
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-full object-cover"
+            />
             <div className="text-left">
-              <div className="font-bold text-gray-900">Graduate</div>
+              <div className="font-bold text-gray-900">Sarah Mitchell</div>
               <div className="text-gray-600 text-sm">
                 Director, Midwest Workforce Solutions
               </div>
@@ -431,10 +437,10 @@ export default async function LicensesPage() {
           <p className="mt-8 text-sm text-zinc-400">
             Questions? Email{' '}
             <a
-              href="mailto:licensing@elevateforhumanity.org"
+              href="mailto:elevate4humanityedu@gmail.com"
               className="underline text-white font-medium hover:text-green-400"
             >
-              licensing@elevateforhumanity.org
+              elevate4humanityedu@gmail.com
             </a>
           </p>
         </div>

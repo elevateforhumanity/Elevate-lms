@@ -165,7 +165,7 @@ export default function GovernanceIndexPage() {
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-500">
-          <p>For questions about these documents, contact: governance@elevateforhumanity.org</p>
+          <p>For questions about these documents, contact: elevate4humanityedu@gmail.com</p>
           <p className="mt-1">© 2025 Elevate For Humanity. All rights reserved.</p>
         </div>
       </div>

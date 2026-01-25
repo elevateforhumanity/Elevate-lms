@@ -288,9 +288,9 @@ export default function ProgressPage() {
               For questions about academic progress:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> registrar@www.elevateforhumanity.org</li>
+              <li><strong>Email:</strong> elevate4humanityedu@gmail.com</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
-              <li><strong>SAP Appeals:</strong> appeals@www.elevateforhumanity.org</li>
+              <li><strong>SAP Appeals:</strong> elevate4humanityedu@gmail.com</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</li>
             </ul>
 

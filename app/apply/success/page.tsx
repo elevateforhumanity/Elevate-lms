@@ -145,11 +145,11 @@ export default async function ApplicationSuccessPage({
               (317) 314-3757
             </a>
             <a
-              href="mailto:info@elevateforhumanity.org"
+              href="mailto:elevate4humanityedu@gmail.com"
               className="flex items-center gap-2 text-blue-600 hover:underline"
             >
               <Mail className="w-5 h-5" />
-              info@elevateforhumanity.org
+              elevate4humanityedu@gmail.com
             </a>
           </div>
         </div>

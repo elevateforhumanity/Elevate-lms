@@ -235,7 +235,7 @@ export default function TuitionFeesPage() {
         {/* Footer Links */}
         <div className="mt-12 pt-8 border-t text-center">
           <p className="text-gray-600 mb-4">
-            Questions about tuition or payment options? Contact us at (317) 314-3757 or info@elevateforhumanity.org
+            Questions about tuition or payment options? Contact us at (317) 314-3757 or elevate4humanityedu@gmail.com
           </p>
           <div className="flex justify-center gap-6 text-sm">
             <Link href="/disclosures" className="text-orange-600 hover:underline">Student Disclosures</Link>

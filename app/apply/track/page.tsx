@@ -373,10 +373,10 @@ export default function TrackApplicationPage() {
               We respond within 24 hours
             </p>
             <a
-              href="mailto:info@elevateforhumanity.org"
+              href="mailto:elevate4humanityedu@gmail.com"
               className="inline-block text-brand-orange-600 hover:text-brand-orange-700 font-semibold text-sm"
             >
-              info@elevateforhumanity.org
+              elevate4humanityedu@gmail.com
             </a>
           </div>
         </div>

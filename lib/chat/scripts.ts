@@ -163,7 +163,7 @@ Need help with any of these steps?`,
       {
         trigger: 'refund',
         action: 'show_contact',
-        message: "For refund inquiries, please contact our finance team at finance@elevateforhumanity.org or call (317) 314-3757.",
+        message: "For refund inquiries, please contact our finance team at elevate4humanityedu@gmail.com or call (317) 314-3757.",
       },
       {
         trigger: 'emergency',
@@ -277,7 +277,7 @@ Try answering them, and I can check your work!`,
       {
         trigger: 'technical_issue',
         action: 'redirect_to_page',
-        message: "For technical issues, please visit our support page or contact support@elevateforhumanity.org",
+        message: "For technical issues, please visit our support page or contact elevate4humanityedu@gmail.com",
         target: '/support',
       },
     ],
@@ -367,7 +367,7 @@ Would you like to learn more about eligibility?`,
       {
         trigger: 'contract',
         action: 'transfer_to_human',
-        message: "For contract discussions, let me connect you with our partnerships team. You can also reach them at partnerships@elevateforhumanity.org",
+        message: "For contract discussions, let me connect you with our partnerships team. You can also reach them at elevate4humanityedu@gmail.com",
       },
     ],
     

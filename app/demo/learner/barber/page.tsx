@@ -105,7 +105,7 @@ export default function BarberApprenticeshipDemoPage() {
     suppliesCovered: '$650',
     transportationStipend: '$200/month',
     caseManager: 'Sarah Thompson',
-    caseManagerPhone: '(317) 555-0123',
+    caseManagerPhone: '(317) 314-3757',
   };
 
   const careerServices = [

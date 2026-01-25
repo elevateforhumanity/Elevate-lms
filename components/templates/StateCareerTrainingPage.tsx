@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, CheckCircle, MapPin } from 'lucide-react';
 import { StateConfig, getOtherStates } from '@/config/states';
 
@@ -14,8 +15,16 @@ export default function StateCareerTrainingPage({ state }: StateCareerTrainingPa
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-900 via-green-800 to-green-700 py-20">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="relative min-h-[400px] flex items-center overflow-hidden">
+        <Image
+          src="/images/programs-hq/career-success.jpg"
+          alt={`Career Training in ${state.name}`}
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-green-900/70" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 w-full">
           <div className="flex items-center gap-2 text-green-200 mb-4">
             <MapPin className="w-5 h-5" />
             <span className="text-sm font-medium uppercase tracking-wider">

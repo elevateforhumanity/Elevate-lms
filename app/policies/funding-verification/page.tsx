@@ -30,7 +30,7 @@ export default function FundingVerificationPage() {
         <li>Enrollment confirmation</li>
       </ol>
       <h2>Contact</h2>
-      <p>Email: financialaid@www.elevateforhumanity.org | Phone: (317) 314-3757</p>
+      <p>Email: elevate4humanityedu@gmail.com | Phone: (317) 314-3757</p>
     </article>
   );
 }

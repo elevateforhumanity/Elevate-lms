@@ -199,7 +199,7 @@ export default function CopyrightPage() {
             <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-200 mb-6">
               <h4 className="text-lg font-bold text-black mb-3">DMCA Agent Contact</h4>
               <ul className="list-none text-black space-y-2">
-                <li><strong>Email:</strong> dmca@www.elevateforhumanity.org</li>
+                <li><strong>Email:</strong> elevate4humanityedu@gmail.com</li>
                 <li><strong>Mail:</strong> DMCA Agent, Elevate for Humanity</li>
                 <li className="ml-6">3737 N Meridian St, Suite 200</li>
                 <li className="ml-6">Indianapolis, IN 46208</li>
@@ -246,7 +246,7 @@ export default function CopyrightPage() {
               <li>Service marks</li>
             </ul>
             <p className="text-black mb-6">
-              Use of our trademarks requires written permission. Contact legal@www.elevateforhumanity.org 
+              Use of our trademarks requires written permission. Contact elevate4humanityedu@gmail.com 
               for trademark licensing inquiries.
             </p>
 
@@ -279,10 +279,10 @@ export default function CopyrightPage() {
               For copyright questions or permission requests:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>General Questions:</strong> copyright@www.elevateforhumanity.org</li>
-              <li><strong>DMCA Notices:</strong> dmca@www.elevateforhumanity.org</li>
-              <li><strong>Permission Requests:</strong> permissions@www.elevateforhumanity.org</li>
-              <li><strong>Trademark Licensing:</strong> legal@www.elevateforhumanity.org</li>
+              <li><strong>General Questions:</strong> elevate4humanityedu@gmail.com</li>
+              <li><strong>DMCA Notices:</strong> elevate4humanityedu@gmail.com</li>
+              <li><strong>Permission Requests:</strong> elevate4humanityedu@gmail.com</li>
+              <li><strong>Trademark Licensing:</strong> elevate4humanityedu@gmail.com</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
             </ul>
 

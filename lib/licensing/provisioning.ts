@@ -209,7 +209,7 @@ export async function provisionLicense(ctx: ProvisioningContext): Promise<Provis
             loginUrl: magicLink?.properties?.action_link || `${process.env.NEXT_PUBLIC_SITE_URL}/login`,
             adminUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/admin`,
             temporaryPassword,
-            supportEmail: 'support@elevateforhumanity.org',
+            supportEmail: 'elevate4humanityedu@gmail.com',
           },
         }),
       });

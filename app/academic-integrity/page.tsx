@@ -44,6 +44,8 @@ export default async function AcademicIntegrityPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      {/* Avatar Guide - handled by GlobalAvatar in layout */}
+      
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white overflow-hidden">
         <Image
@@ -407,7 +409,7 @@ export default async function AcademicIntegrityPage() {
               <li>• Speak directly with the course instructor</li>
               <li>• Contact the Dean of Students</li>
               <li>• Submit an anonymous report through the student portal</li>
-              <li>• Email: academicintegrity@www.elevateforhumanity.org</li>
+              <li>• Email: elevate4humanityedu@gmail.com</li>
               <li>• Phone: 317-314-3757</li>
             </ul>
             <p className="text-blue-900 text-sm mt-4">
@@ -478,7 +480,7 @@ export default async function AcademicIntegrityPage() {
                 Contact Student Services
               </p>
               <a
-                href="mailto:support@www.elevateforhumanity.org"
+                href="mailto:elevate4humanityedu@gmail.com"
                 className="text-brand-blue-600 hover:text-brand-blue-700 text-sm font-semibold"
               >
                 Email Support →

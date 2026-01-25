@@ -410,9 +410,9 @@ export default function WorkOnePartnerPacketPage() {
               <Phone className="w-5 h-5 mr-2" />
               (317) 314-3757
             </a>
-            <a href="mailto:workone@elevateforhumanity.org" className="inline-flex items-center justify-center px-8 py-4 bg-teal-700 text-white rounded-lg font-bold hover:bg-teal-800 transition-colors border-2 border-white/30">
+            <a href="mailto:elevate4humanityedu@gmail.com" className="inline-flex items-center justify-center px-8 py-4 bg-teal-700 text-white rounded-lg font-bold hover:bg-teal-800 transition-colors border-2 border-white/30">
               <Mail className="w-5 h-5 mr-2" />
-              workone@elevateforhumanity.org
+              elevate4humanityedu@gmail.com
             </a>
           </div>
           <p className="text-white/70 text-sm mt-8">

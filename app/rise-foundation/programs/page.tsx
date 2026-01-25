@@ -187,7 +187,7 @@ export default async function RiseFoundationProgramsPage() {
             </div>
             <div>
               <h3 className="font-medium text-gray-900 mb-2">Questions?</h3>
-              <p>Contact our scholarship team at <a href="mailto:scholarships@elevateforhumanity.org" className="text-orange-600 hover:underline">scholarships@elevateforhumanity.org</a> or call 317-314-3757.</p>
+              <p>Contact our scholarship team at <a href="mailto:elevate4humanityedu@gmail.com" className="text-orange-600 hover:underline">elevate4humanityedu@gmail.com</a> or call 317-314-3757.</p>
             </div>
           </div>
         </div>

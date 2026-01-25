@@ -134,7 +134,7 @@ export default async function NonprofitPage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="relative h-[400px] rounded-lg overflow-hidden border-4 border-gray-200">
               <Image
-                src="https://static.wixstatic.com/media/a9980c_542c794668484ecc911de7f139dad437~mv2.jpg"
+                src="/images/nonprofit/mind-body-spirit.jpg"
                 alt="Mind, Body and spirit words engraved on zen stones"
                 fill
                 className="object-cover"
@@ -144,7 +144,7 @@ export default async function NonprofitPage() {
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden border-4 border-gray-200">
               <Image
-                src="https://static.wixstatic.com/media/a9980c_50880ae14adb46c09fb5244b2fa65c84~mv2.webp"
+                src="/images/nonprofit/rocks-resilience.webp"
                 alt="Rocks of strength and resilience"
                 fill
                 className="object-cover"

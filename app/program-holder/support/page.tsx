@@ -45,9 +45,9 @@ export default async function SupportPage() {
     {
       type: 'Email',
       icon: Mail,
-      value: 'program-holders@www.elevateforhumanity.org',
+      value: 'elevate4humanityedu@gmail.com',
       description: 'Response within 24 hours',
-      href: 'mailto:program-holders@www.elevateforhumanity.org',
+      href: 'mailto:elevate4humanityedu@gmail.com',
       color: 'blue',
     },
     {

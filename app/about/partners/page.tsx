@@ -82,6 +82,8 @@ const employerPartners = [
 export default function PartnersPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Avatar Guide - handled by GlobalAvatar in layout */}
+      
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-800 to-slate-900 text-white py-20 md:py-28">
         <div className="absolute inset-0 opacity-20">

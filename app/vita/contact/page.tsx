@@ -33,7 +33,7 @@ export default async function VITAContactPage() {
 
   const defaultContact = {
     phone: '(317) 314-3757',
-    email: 'vita@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
     address: '3737 N Meridian St, Suite 200, Indianapolis, IN 46208',
     hours: 'Monday-Friday: 9am-5pm, Saturday: 10am-2pm (during tax season)',
   };

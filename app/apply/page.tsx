@@ -425,7 +425,7 @@ function ApplyPageContent() {
               Call 317-314-3757
             </a>
             <a
-              href="mailto:info@elevateforhumanity.org"
+              href="mailto:elevate4humanityedu@gmail.com"
               className="inline-flex items-center justify-center px-6 py-3 bg-white border-2 border-gray-300 text-gray-900 font-semibold rounded-lg hover:border-gray-400 transition-colors"
             >
               Email Us

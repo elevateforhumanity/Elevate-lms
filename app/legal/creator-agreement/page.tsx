@@ -235,10 +235,10 @@ export default function CreatorAgreementPage() {
             <p>
               For questions about this Creator Agreement, contact us at{' '}
               <a
-                href="mailto:creators@www.elevateforhumanity.org"
+                href="mailto:elevate4humanityedu@gmail.com"
                 className="text-brand-blue-600 hover:underline"
               >
-                creators@www.elevateforhumanity.org
+                elevate4humanityedu@gmail.com
               </a>
             </p>
           </section>

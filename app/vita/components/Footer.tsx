@@ -41,11 +41,11 @@ export function VITAFooter() {
             <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <span>(317) 555-0200</span>
+                <span>(317) 314-3757</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <span>vita@elevateforhumanity.org</span>
+                <span>elevate4humanityedu@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />

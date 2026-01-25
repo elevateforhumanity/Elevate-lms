@@ -232,10 +232,10 @@ export default async function TermsOfServicePage() {
               <p className="text-black">
                 Email:{' '}
                 <a
-                  href="mailto:legal@www.elevateforhumanity.org"
+                  href="mailto:elevate4humanityedu@gmail.com"
                   className="text-brand-blue-600 hover:underline"
                 >
-                  legal@www.elevateforhumanity.org
+                  elevate4humanityedu@gmail.com
                 </a>
               </p>
             </div>

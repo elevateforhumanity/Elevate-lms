@@ -253,7 +253,7 @@ export default function FederalCompliancePage() {
               If you have questions about our compliance policies or wish to file a complaint, please contact us:
             </p>
             <div className="space-y-2 text-blue-900">
-              <p><strong>Email:</strong> compliance@www.elevateforhumanity.org</p>
+              <p><strong>Email:</strong> elevate4humanityedu@gmail.com</p>
               <p><strong>Phone:</strong> (317) 314-3757</p>
               <p><strong>Address:</strong> Indianapolis, IN</p>
             </div>

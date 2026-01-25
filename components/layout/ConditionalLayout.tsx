@@ -3,6 +3,7 @@
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
 import dynamic from 'next/dynamic';
+import AvatarChatBar from '@/components/AvatarChatBar';
 
 // Lazy load chat widget to avoid blocking initial render
 const LiveChatWidget = dynamic(
@@ -25,6 +26,7 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
       <main id="main-content" className="flex-1 pt-[56px] sm:pt-[70px]" role="main">
         {children}
       </main>
+      <AvatarChatBar />
       <SiteFooter />
       <LiveChatWidget />
     </div>

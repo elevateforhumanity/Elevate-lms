@@ -471,10 +471,10 @@ export default async function SNAPETPartnerPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:partnerships@www.elevateforhumanity.org"
+              href="mailto:elevate4humanityedu@gmail.com"
               className="inline-block px-10 py-5 bg-yellow-400 text-blue-900 font-bold rounded-lg hover:bg-yellow-300 transition text-lg"
             >
-              Email: partnerships@www.elevateforhumanity.org
+              Email: elevate4humanityedu@gmail.com
             </a>
             <a
               href="tel:3173143757"

@@ -15,6 +15,8 @@ export const metadata: Metadata = {
 export default function AccessibilityPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Avatar Guide - handled by GlobalAvatar in layout */}
+      
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white overflow-hidden">
         <Image

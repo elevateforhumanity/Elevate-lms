@@ -208,7 +208,7 @@ export default function EnrollmentAgreementPage() {
             <strong>Effective Date:</strong> January 2026
           </p>
           <p className="text-gray-600 text-sm mb-6">
-            Questions about this agreement? Contact us at (317) 314-3757 or info@elevateforhumanity.org
+            Questions about this agreement? Contact us at (317) 314-3757 or elevate4humanityedu@gmail.com
           </p>
           <div className="flex flex-wrap gap-4 text-sm">
             <Link href="/disclosures" className="text-orange-600 hover:underline">Student Disclosures</Link>

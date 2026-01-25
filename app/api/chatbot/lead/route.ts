@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 // Internal notification email address
-const INTERNAL_EMAIL = process.env.LEAD_NOTIFICATION_EMAIL || 'ona@elevateforhumanity.org';
+const INTERNAL_EMAIL = process.env.LEAD_NOTIFICATION_EMAIL || 'elevate4humanityedu@gmail.com';
 
 interface LeadData {
   // Contact info
@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
     if (resend) {
       try {
         await resend.emails.send({
-          from: 'Elevate AI Assistant <noreply@elevateforhumanity.org>',
+          from: 'Elevate AI Assistant <elevate4humanityedu@gmail.com>',
           to: INTERNAL_EMAIL,
           subject: `AI Buyer Summary — ${data.organization || data.name || 'Unknown'}`,
           text: summary,

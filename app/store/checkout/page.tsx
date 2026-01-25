@@ -131,9 +131,9 @@ export default async function CheckoutPage() {
 
               <p className="text-xs text-gray-500 text-center mt-4">
                 By completing this purchase, you agree to our{' '}
-                <Link href="/terms" className="text-orange-600 hover:underline">Terms of Service</Link>
+                <Link href="/terms-of-service" className="text-orange-600 hover:underline">Terms of Service</Link>
                 {' '}and{' '}
-                <Link href="/privacy" className="text-orange-600 hover:underline">Privacy Policy</Link>.
+                <Link href="/privacy-policy" className="text-orange-600 hover:underline">Privacy Policy</Link>.
               </p>
             </div>
 

@@ -734,7 +734,7 @@ export default function HomePage() {
           {!user || !activeEnrollment ? (
             <div className="inline-flex items-center gap-2 bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-full text-xs font-bold mb-4">
               <span className="w-2 h-2 bg-yellow-900 rounded-full animate-pulse"></span>
-              Next Class Starts February 3rd — Limited Seats Available
+              Classes Enrolling Now — Limited Seats Available
             </div>
           ) : null}
           

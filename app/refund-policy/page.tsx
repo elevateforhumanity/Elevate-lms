@@ -202,10 +202,10 @@ export default async function RefundPolicyPage() {
               <p className="text-black">
                 Email:{' '}
                 <a
-                  href="mailto:refunds@www.elevateforhumanity.org"
+                  href="mailto:elevate4humanityedu@gmail.com"
                   className="text-brand-blue-600 hover:underline"
                 >
-                  refunds@www.elevateforhumanity.org
+                  elevate4humanityedu@gmail.com
                 </a>
               </p>
             </div>

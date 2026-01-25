@@ -187,11 +187,11 @@ export default async function SecurityPage() {
               concerns about data protection, please contact us immediately:
             </p>
             <a
-              href="mailto:security@elevateforhumanity.org"
+              href="mailto:elevate4humanityedu@gmail.com"
               className="inline-flex items-center gap-2 text-blue-600 font-medium hover:underline"
             >
               <Mail className="w-5 h-5" />
-              security@elevateforhumanity.org
+              elevate4humanityedu@gmail.com
             </a>
           </div>
         </section>

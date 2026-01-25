@@ -417,10 +417,10 @@ export default async function WhiteLabelPage() {
             <p className="text-sm opacity-75">
               Questions? Email us at{' '}
               <a
-                href="mailto:licensing@www.elevateforhumanity.org"
+                href="mailto:elevate4humanityedu@gmail.com"
                 className="underline font-bold"
               >
-                licensing@www.elevateforhumanity.org
+                elevate4humanityedu@gmail.com
               </a>
             </p>
           </div>

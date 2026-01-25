@@ -14,6 +14,8 @@ export const metadata: Metadata = {
 export default function MissionPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Avatar Guide - handled by GlobalAvatar in layout */}
+      
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-orange-600 to-orange-700 text-white py-20 md:py-28">
         <div className="absolute inset-0 opacity-20">

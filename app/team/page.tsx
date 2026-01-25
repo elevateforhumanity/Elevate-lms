@@ -96,6 +96,8 @@ const instructors = [
 export default function TeamPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Avatar Guide - handled by GlobalAvatar in layout */}
+      
       {/* Hero */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image

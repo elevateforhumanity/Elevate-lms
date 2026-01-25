@@ -104,7 +104,7 @@ export default function WIOAPage() {
       </p>
       <p>
         <strong>WorkOne Career Center</strong><br />
-        Email: wioa@www.elevateforhumanity.org<br />
+        Email: elevate4humanityedu@gmail.com<br />
         Phone: (317) 314-3757
       </p>
     </article>

@@ -480,10 +480,10 @@ export default function FranchisePage() {
           <p className="mt-6 text-black">
             Email:{' '}
             <a
-              href="mailto:franchise@www.elevateforhumanity.org"
+              href="mailto:elevate4humanityedu@gmail.com"
               className="text-orange-600 font-bold underline"
             >
-              franchise@www.elevateforhumanity.org
+              elevate4humanityedu@gmail.com
             </a>
           </p>
         </div>

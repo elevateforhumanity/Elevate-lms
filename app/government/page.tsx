@@ -573,11 +573,11 @@ export default async function GovernmentPage() {
               (317) 314-3757
             </a>
             <a
-              href="mailto:partners@elevateforhumanity.org"
+              href="mailto:elevate4humanityedu@gmail.com"
               className="inline-flex items-center justify-center px-8 py-4 bg-blue-700 text-white rounded-lg font-bold hover:bg-blue-800 transition-colors border-2 border-white/30"
             >
               <Mail className="w-5 h-5 mr-2" />
-              partners@elevateforhumanity.org
+              elevate4humanityedu@gmail.com
             </a>
           </div>
         </div>

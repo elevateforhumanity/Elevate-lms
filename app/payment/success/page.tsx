@@ -94,10 +94,10 @@ export default async function PaymentSuccessPage() {
               </a>{' '}
               or{' '}
               <a
-                href="mailto:info@elevateforhumanity.org"
+                href="mailto:elevate4humanityedu@gmail.com"
                 className="text-brand-orange-600 hover:underline"
               >
-                info@elevateforhumanity.org
+                elevate4humanityedu@gmail.com
               </a>
             </p>
           </div>

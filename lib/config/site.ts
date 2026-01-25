@@ -21,10 +21,10 @@ export const siteConfig = {
     e164: '+13173143757',
   },
   email: {
-    general: 'info@elevateforhumanity.org',
-    enrollment: 'enrollment@elevateforhumanity.org',
-    support: 'support@elevateforhumanity.org',
-    careers: 'careers@elevateforhumanity.org',
+    general: 'elevate4humanityedu@gmail.com',
+    enrollment: 'elevate4humanityedu@gmail.com',
+    support: 'elevate4humanityedu@gmail.com',
+    careers: 'elevate4humanityedu@gmail.com',
   },
   
   // Location

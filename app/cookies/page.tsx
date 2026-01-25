@@ -191,10 +191,10 @@ export default async function CookiesPage() {
               <p className="text-black">
                 Email:{' '}
                 <a
-                  href="mailto:info@elevateforhumanity.org"
+                  href="mailto:elevate4humanityedu@gmail.com"
                   className="text-brand-blue-600 hover:underline"
                 >
-                  info@elevateforhumanity.org
+                  elevate4humanityedu@gmail.com
                 </a>
               </p>
             </div>

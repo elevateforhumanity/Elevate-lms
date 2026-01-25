@@ -214,7 +214,7 @@ export default function EqualOpportunityPage() {
                 Contact our Equal Opportunity Officer:
               </p>
               <p className="text-gray-900">
-                Email: <a href="mailto:eeo@elevateforhumanity.org" className="text-blue-600 hover:underline">eeo@elevateforhumanity.org</a>
+                Email: <a href="mailto:elevate4humanityedu@gmail.com" className="text-blue-600 hover:underline">elevate4humanityedu@gmail.com</a>
               </p>
               <p className="text-gray-900">
                 Phone: <a href="tel:317-314-3757" className="text-blue-600 hover:underline">(317) 314-3757</a>

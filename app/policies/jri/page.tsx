@@ -21,7 +21,7 @@ export default function JRIPage() {
         <li>Committed to program completion</li>
       </ul>
       <h2>Contact</h2>
-      <p>Email: jri@www.elevateforhumanity.org | Phone: (317) 314-3757</p>
+      <p>Email: elevate4humanityedu@gmail.com | Phone: (317) 314-3757</p>
     </article>
   );
 }

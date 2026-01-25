@@ -47,7 +47,7 @@ A master strategist and systems builder, Elizabeth has navigated complex federal
 Elizabeth holds expertise in federal workforce policy, apprenticeship development, nonprofit management, compliance and accreditation, trauma-informed care, and social entrepreneurship. Her ability to envision what a community needs—and then build it with precision, integrity, and compassion—has made her a respected leader in workforce development and social impact.
 
 Her impact is measured not just in credentials earned or jobs secured, but in lives transformed, families stabilized, and communities strengthened.`,
-    email: 'elizabeth@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
     linkedin: 'https://www.linkedin.com/in/elizabethgreene',
   },
   {
@@ -68,7 +68,7 @@ Jozanna brings hands-on industry experience combined with a passion for teaching
 As Site Coordinator for the beauty industry programs, Jozanna oversees daily operations, student progress tracking, state board exam preparation, and compliance with Indiana licensing requirements. She works closely with students to ensure they develop the technical skills and professional habits needed for successful careers in the beauty industry.
 
 Her dedication to student success and her deep knowledge of cosmetology licensing requirements make her an invaluable asset to both Elevate for Humanity and Textures Institute of Cosmetology.`,
-    email: 'jozanna@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
   },
   {
     name: 'Leslie Wafford',
@@ -79,7 +79,7 @@ Her dedication to student success and her deep knowledge of cosmetology licensin
 Leslie believes in the power of education and advocacy. She is dedicated to helping individuals understand their rights and responsibilities as renters, giving them the tools they need to navigate housing challenges with confidence. Guided by her personal philosophy of "reach one, teach one," Leslie approaches her work with compassion, fairness, and a genuine desire to uplift the people and communities she serves.
 
 Her passion, experience, and community-first leadership make her a powerful asset within Elevate for Humanity's mission to support, educate, and strengthen individuals and families across Indiana.`,
-    email: 'leslie@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
   },
   {
     name: 'Dr. Carlina Annette Wilkes',
@@ -92,7 +92,7 @@ Dr. Wilkes holds the Department of Defense Financial Management Certification, L
 Her educational background reflects a deep commitment to leadership and lifelong learning. She holds a Doctorate in Ministry, a Master of Arts in Ministry, and a Bachelor of Applied Management, supported by specialized credentials in Accounting and Paralegal Studies. This diverse expertise allows her to navigate complex organizational systems, lead and develop teams, design effective operational frameworks, and improve efficiency across government, nonprofit, and community-serving environments.
 
 Dr. Wilkes is known for her integrity, strategic insight, and results-driven leadership. She brings a powerful blend of federal experience, organizational acumen, and executive-level training to every role she undertakes. At Elevate for Humanity, she serves as a trusted leader and advisor, helping strengthen financial operations, compliance, and long-term institutional stability.`,
-    email: 'carlina@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
   },
   {
     name: 'Alina Smith, PMHNP',
@@ -103,7 +103,7 @@ Dr. Wilkes is known for her integrity, strategic insight, and results-driven lea
 Alina provides comprehensive psychiatric care for individuals aged five and older, offering evidence-based mental health assessments, behavioral health interventions, and medication management for a wide range of mental health and substance use disorders. Her clinical approach combines psychopharmacology and therapeutic support, helping clients achieve balance, stability, and emotional growth.
 
 At Elevate for Humanity, Alina plays a key role in integrating mental health awareness and wellness strategies into workforce and community programs. She believes that access to compassionate, judgment-free mental health care is the foundation of empowerment, self-sufficiency, and lasting transformation.`,
-    email: 'alina@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
   },
   {
     name: 'Sharon Douglass',
@@ -120,7 +120,7 @@ She has also served as an Area Supervisor, overseeing staff performance, complia
 At Elevate for Humanity, Sharon brings her decades of clinical experience and informatics expertise to support healthcare training, workforce readiness, and patient-centered educational programs. Her passion lies in helping individuals and healthcare organizations improve safety, streamline processes, and deliver high-quality care.
 
 Known for her professionalism, clinical precision, and commitment to excellence, Sharon Douglass is a trusted leader and educator dedicated to elevating patient outcomes and supporting the next generation of healthcare professionals.`,
-    email: 'sharon@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
   },
   {
     name: 'Ameco Martin',
@@ -131,7 +131,7 @@ Known for her professionalism, clinical precision, and commitment to excellence,
 Ameco brings extensive experience in human resources, talent acquisition, and workforce development. He works closely with employer partners to understand their hiring needs and match them with qualified candidates from Elevate's training programs.
 
 His commitment to helping individuals find meaningful employment aligns perfectly with Elevate for Humanity's mission to create pathways to economic mobility and self-sufficiency.`,
-    email: 'ameco@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
   },
   {
     name: 'Clystjah Woodley',
@@ -142,7 +142,7 @@ His commitment to helping individuals find meaningful employment aligns perfectl
 Clystjah's approach combines motivational coaching with practical life skills training, helping individuals build confidence, develop healthy habits, and create actionable plans for success. She specializes in working with justice-involved individuals and those facing significant life challenges.
 
 Her dedication to personal transformation and her ability to connect with people from all backgrounds make her an invaluable member of the Elevate for Humanity team.`,
-    email: 'clystjah@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
   },
   {
     name: 'Delores Reynolds',
@@ -151,13 +151,15 @@ Her dedication to personal transformation and her ability to connect with people
     bio: `Delores Reynolds manages social media presence and digital engagement for Elevate for Humanity. She creates compelling content that shares student success stories, promotes program offerings, and builds community awareness of workforce development opportunities.
 
 Delores brings creativity and strategic thinking to digital communications, helping Elevate for Humanity reach individuals who can benefit from free training programs. Her work amplifies the organization's mission and connects people with life-changing opportunities.`,
-    email: 'delores@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
   },
 ];
 
 export default function TeamPage() {
   return (
     <div className="bg-white">
+      {/* Avatar Guide - handled by GlobalAvatar in layout */}
+      
       {/* Hero Section */}
       <section className="relative h-[400px] bg-brand-blue-700">
         <div className="relative h-full flex items-center">

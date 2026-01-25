@@ -214,7 +214,7 @@ export default function PlatformLicensingPage() {
             <ArrowRight className="w-5 h-5" />
           </Link>
           <p className="mt-6 text-sm text-slate-400">
-            Or email directly: <a href="mailto:licensing@elevateforhumanity.org" className="underline">licensing@elevateforhumanity.org</a>
+            Or email directly: <a href="mailto:elevate4humanityedu@gmail.com" className="underline">elevate4humanityedu@gmail.com</a>
           </p>
         </div>
       </section>

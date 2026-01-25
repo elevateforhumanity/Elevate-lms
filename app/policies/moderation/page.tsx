@@ -251,7 +251,7 @@ export default function ModerationPage() {
             <h3 className="text-xl font-bold text-black mt-6 mb-3">Moderator Accountability</h3>
             <p className="text-black mb-6">
               Moderators are subject to oversight and quality review. Users can report moderator misconduct 
-              to moderation@www.elevateforhumanity.org.
+              to elevate4humanityedu@gmail.com.
             </p>
 
             <h2 className="text-2xl font-bold text-black mt-8 mb-4">Transparency</h2>
@@ -287,7 +287,7 @@ export default function ModerationPage() {
               For moderation questions, reports, or appeals:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> moderation@www.elevateforhumanity.org</li>
+              <li><strong>Email:</strong> elevate4humanityedu@gmail.com</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Report Button:</strong> Available on all content</li>
               <li><strong>Response Time:</strong> 24-48 hours for most reports</li>

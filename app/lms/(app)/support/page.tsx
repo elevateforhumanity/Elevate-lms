@@ -199,22 +199,22 @@ export default async function SupportPage() {
             <div className="bg-white rounded-2xl border border-slate-200 p-6">
               <h3 className="font-bold text-slate-900 mb-4">Other Ways to Reach Us</h3>
               <div className="space-y-4">
-                <a href="tel:1-800-555-0123" className="flex items-center gap-3 text-slate-600 hover:text-blue-600">
+                <a href="tel:317-314-3757" className="flex items-center gap-3 text-slate-600 hover:text-blue-600">
                   <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="font-medium text-slate-900">Phone Support</div>
-                    <div className="text-sm">1-800-555-0123</div>
+                    <div className="text-sm">(317) 314-3757</div>
                   </div>
                 </a>
-                <a href="mailto:support@elevateforhumanity.org" className="flex items-center gap-3 text-slate-600 hover:text-blue-600">
+                <a href="mailto:elevate4humanityedu@gmail.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600">
                   <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="font-medium text-slate-900">Email Support</div>
-                    <div className="text-sm">support@elevateforhumanity.org</div>
+                    <div className="text-sm">elevate4humanityedu@gmail.com</div>
                   </div>
                 </a>
               </div>

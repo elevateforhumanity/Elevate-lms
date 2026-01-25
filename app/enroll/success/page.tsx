@@ -126,11 +126,11 @@ export default async function EnrollSuccessPage() {
               <span>(317) 314-3757</span>
             </a>
             <a 
-              href="mailto:enrollment@elevateforhumanity.org" 
+              href="mailto:elevate4humanityedu@gmail.com" 
               className="flex items-center gap-3 text-gray-700 hover:text-blue-600"
             >
               <Mail className="w-5 h-5" />
-              <span>enrollment@elevateforhumanity.org</span>
+              <span>elevate4humanityedu@gmail.com</span>
             </a>
           </div>
         </div>

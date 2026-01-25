@@ -75,15 +75,30 @@ function buildSystemPrompt(req: ChatRequest): string {
   return prompt;
 }
 
+// Fallback responses when OpenAI is not configured
+const FALLBACK_RESPONSES: Record<string, string> = {
+  programs: "We offer career training in Healthcare (CNA, Medical Assistant), Skilled Trades (HVAC, Electrical, Welding), Technology, CDL Transportation, Barber/Cosmetology, and Tax Preparation. Most programs are FREE through WIOA funding! Call (317) 314-3757 to learn more.",
+  funding: "Most of our programs are FREE through WIOA (Workforce Innovation and Opportunity Act) funding. We also offer Workforce Ready Grants and other financial assistance. Call (317) 314-3757 to check your eligibility!",
+  apply: "Ready to apply? Visit elevateforhumanity.org/apply or call (317) 314-3757. You'll need a valid ID and proof of income. The process takes about 15 minutes!",
+  default: "I'm here to help! We offer FREE career training in healthcare, skilled trades, technology, and more. Call (317) 314-3757 or visit /apply to get started. What would you like to know?",
+};
+
+function getFallbackResponse(message: string): string {
+  const lowerMsg = message.toLowerCase();
+  if (lowerMsg.includes('program') || lowerMsg.includes('course') || lowerMsg.includes('training') || lowerMsg.includes('offer')) {
+    return FALLBACK_RESPONSES.programs;
+  }
+  if (lowerMsg.includes('free') || lowerMsg.includes('cost') || lowerMsg.includes('pay') || lowerMsg.includes('fund') || lowerMsg.includes('wioa')) {
+    return FALLBACK_RESPONSES.funding;
+  }
+  if (lowerMsg.includes('apply') || lowerMsg.includes('start') || lowerMsg.includes('enroll') || lowerMsg.includes('sign up')) {
+    return FALLBACK_RESPONSES.apply;
+  }
+  return FALLBACK_RESPONSES.default;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    if (!isOpenAIConfigured()) {
-      return NextResponse.json(
-        { error: 'AI service not configured' },
-        { status: 503 }
-      );
-    }
-
     const body: ChatRequest = await request.json();
     const { message, history = [] } = body;
 
@@ -92,6 +107,13 @@ export async function POST(request: NextRequest) {
         { error: 'Message is required' },
         { status: 400 }
       );
+    }
+
+    // If OpenAI is not configured, use fallback responses
+    if (!isOpenAIConfigured()) {
+      return NextResponse.json({ 
+        message: getFallbackResponse(message) 
+      });
     }
 
     // Build deterministic system prompt based on context
@@ -110,8 +132,8 @@ export async function POST(request: NextRequest) {
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages,
-      max_tokens: 150, // Shorter for spoken avatar
-      temperature: 0.3, // Lower temperature for more deterministic responses
+      max_tokens: 150,
+      temperature: 0.3,
     });
 
     const reply = completion.choices[0]?.message?.content || 
@@ -120,10 +142,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: reply });
   } catch (error) {
     console.error('Avatar chat error:', error);
-    return NextResponse.json(
-      { error: 'Failed to process message' },
-      { status: 500 }
-    );
+    // Fall back to static responses on any error (including quota exceeded)
+    try {
+      const body: ChatRequest = await request.clone().json();
+      return NextResponse.json({ 
+        message: getFallbackResponse(body.message || '') 
+      });
+    } catch {
+      return NextResponse.json({ 
+        message: FALLBACK_RESPONSES.default 
+      });
+    }
   }
 }
 

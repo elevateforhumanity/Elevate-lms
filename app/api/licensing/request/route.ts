@@ -60,8 +60,8 @@ export async function POST(request: NextRequest) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            from: 'Elevate Platform <noreply@elevateforhumanity.org>',
-            to: ['licensing@elevateforhumanity.org', 'info@elevateforhumanity.org'],
+            from: 'Elevate Platform <elevate4humanityedu@gmail.com>',
+            to: ['elevate4humanityedu@gmail.com', 'elevate4humanityedu@gmail.com'],
             subject: `New Platform Licensing Request: ${organization}`,
             html: `
               <h2>New Licensing Request</h2>

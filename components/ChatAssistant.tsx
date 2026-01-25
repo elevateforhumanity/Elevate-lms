@@ -155,7 +155,7 @@ export default function ChatAssistant({
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: data.response,
+        content: data.response || data.message,
         timestamp: new Date(),
       };
 

@@ -22,7 +22,7 @@ const SAMPLE_ENROLLMENT = {
   student: {
     name: 'Maria Rodriguez',
     email: 'maria.r@example.com',
-    phone: '(317) 555-0142',
+    phone: '(317) 314-3757',
     dob: '1995-03-15',
     ssn_last4: '4521',
   },

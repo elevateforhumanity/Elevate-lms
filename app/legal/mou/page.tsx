@@ -175,7 +175,7 @@ export default function MOUPage() {
               <p className="text-black">
                 <strong>Elevate for Humanity</strong>
                 <br />
-                Email: partnerships@www.elevateforhumanity.org
+                Email: elevate4humanityedu@gmail.com
                 <br />
                 Phone: (317) 314-3757
               </p>

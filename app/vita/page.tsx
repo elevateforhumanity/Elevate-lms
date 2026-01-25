@@ -632,7 +632,7 @@ export default async function VITAPage() {
                   <div>
                     <h3 className="font-bold text-lg text-gray-900">Contact</h3>
                     <p className="text-gray-600">(317) 314-3757</p>
-                    <p className="text-gray-600">vita@elevateforhumanity.org</p>
+                    <p className="text-gray-600">elevate4humanityedu@gmail.com</p>
                   </div>
                 </div>
 

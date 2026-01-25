@@ -157,10 +157,10 @@ export default function GrievancePage() {
                 <p className="font-semibold text-black mb-2">Email:</p>
                 <p className="text-black">
                   <a
-                    href="mailto:grievance@www.elevateforhumanity.org"
+                    href="mailto:elevate4humanityedu@gmail.com"
                     className="text-brand-blue-600 hover:underline"
                   >
-                    grievance@www.elevateforhumanity.org
+                    elevate4humanityedu@gmail.com
                   </a>
                 </p>
               </div>
@@ -219,10 +219,10 @@ export default function GrievancePage() {
               <br />
               Email:{' '}
               <a
-                href="mailto:support@www.elevateforhumanity.org"
+                href="mailto:elevate4humanityedu@gmail.com"
                 className="text-brand-blue-600 hover:underline"
               >
-                support@www.elevateforhumanity.org
+                elevate4humanityedu@gmail.com
               </a>
             </p>
           </div>

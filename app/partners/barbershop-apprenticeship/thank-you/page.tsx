@@ -90,8 +90,8 @@ export default function ThankYouPage() {
               <a href="tel:+13173143757" className="inline-flex items-center justify-center gap-2 text-gray-700 hover:text-blue-600">
                 <Phone className="w-4 h-4" /> (317) 314-3757
               </a>
-              <a href="mailto:apprenticeships@elevateforhumanity.org" className="inline-flex items-center justify-center gap-2 text-gray-700 hover:text-blue-600">
-                <Mail className="w-4 h-4" /> apprenticeships@elevateforhumanity.org
+              <a href="mailto:elevate4humanityedu@gmail.com" className="inline-flex items-center justify-center gap-2 text-gray-700 hover:text-blue-600">
+                <Mail className="w-4 h-4" /> elevate4humanityedu@gmail.com
               </a>
             </div>
           </div>

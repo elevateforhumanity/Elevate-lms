@@ -298,8 +298,8 @@ export default function OutcomesPage() {
           <div className="bg-gray-50 rounded-xl p-6">
             <p className="text-gray-700 mb-2">
               <strong>Email:</strong>{' '}
-              <a href="mailto:outcomes@elevateforhumanity.org" className="text-blue-600 hover:underline">
-                outcomes@elevateforhumanity.org
+              <a href="mailto:elevate4humanityedu@gmail.com" className="text-blue-600 hover:underline">
+                elevate4humanityedu@gmail.com
               </a>
             </p>
             <p className="text-gray-700 mb-2">

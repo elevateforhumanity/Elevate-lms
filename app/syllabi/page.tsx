@@ -683,10 +683,10 @@ export default function SyllabiPage() {
           </p>
           <div className="flex flex-wrap gap-4">
             <a
-              href="mailto:advising@www.elevateforhumanity.org"
+              href="mailto:elevate4humanityedu@gmail.com"
               className="text-brand-blue-600 hover:text-brand-blue-700 font-medium"
             >
-              advising@www.elevateforhumanity.org
+              elevate4humanityedu@gmail.com
             </a>
             <span className="text-slate-400">|</span>
             <a

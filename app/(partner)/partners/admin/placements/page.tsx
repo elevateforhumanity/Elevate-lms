@@ -27,7 +27,11 @@ export default async function AdminPlacementsPage() {
   }
     const result = await supabase
       .from('apprentice_placements')
-      .select('*')
+      .select(`
+        *,
+        shop:partner_shops(name),
+        student:profiles(full_name)
+      `)
       .order('created_at', { ascending: false });
     
     data = result.data || [];
@@ -63,8 +67,8 @@ export default async function AdminPlacementsPage() {
             ) : (
               data.map((p: any) => (
                 <tr key={p.id} className="border-b">
-                  <td className="py-2">{p.shop_id}</td>
-                  <td className="py-2">{p.student_id}</td>
+                  <td className="py-2">{p.shop?.name || p.shop_id}</td>
+                  <td className="py-2">{p.student?.full_name || p.student_id}</td>
                   <td className="py-2">{p.program_slug}</td>
                   <td className="py-2">{p.status}</td>
                   <td className="py-2">

@@ -54,7 +54,7 @@ export default function CareerApplicationPage({ params }: { params: { id: string
                 View More Positions
               </Link>
               <p className="text-sm text-gray-500">
-                Questions? Email us at <a href="mailto:careers@elevateforhumanity.org" className="text-blue-600">careers@elevateforhumanity.org</a>
+                Questions? Email us at <a href="mailto:elevate4humanityedu@gmail.com" className="text-blue-600">elevate4humanityedu@gmail.com</a>
               </p>
             </div>
           </div>
@@ -280,8 +280,8 @@ export default function CareerApplicationPage({ params }: { params: { id: string
         {/* Contact Info */}
         <div className="mt-8 text-center text-gray-600">
           <p>Questions about this position? Contact us at{' '}
-            <a href="mailto:careers@elevateforhumanity.org" className="text-blue-600 hover:underline">
-              careers@elevateforhumanity.org
+            <a href="mailto:elevate4humanityedu@gmail.com" className="text-blue-600 hover:underline">
+              elevate4humanityedu@gmail.com
             </a>
           </p>
         </div>

@@ -189,7 +189,7 @@ export default function CommunityGuidelinesPage() {
                   <div>
                     <h4 className="text-lg font-bold text-black mb-2">Use Reporting Channels</h4>
                     <p className="text-black">
-                      Submit a report through the student portal, email community@www.elevateforhumanity.org, 
+                      Submit a report through the student portal, email elevate4humanityedu@gmail.com, 
                       or call (317) 314-3757.
                     </p>
                   </div>
@@ -297,7 +297,7 @@ export default function CommunityGuidelinesPage() {
               For questions, concerns, or to report violations:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> community@www.elevateforhumanity.org</li>
+              <li><strong>Email:</strong> elevate4humanityedu@gmail.com</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</li>
               <li><strong>Anonymous Reporting:</strong> Available through student portal</li>

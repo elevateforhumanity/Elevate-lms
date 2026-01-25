@@ -99,7 +99,7 @@ export default async function ConfirmationPage() {
                   317-314-3757
                 </a>
                 <a
-                  href="mailto:info@elevateforhumanity.org"
+                  href="mailto:elevate4humanityedu@gmail.com"
                   className="inline-flex items-center justify-center px-6 py-3 bg-white border-2 border-slate-300 text-black font-semibold rounded-lg hover:border-slate-400 transition-colors"
                 >
                   <Mail className="w-4 h-4 mr-2" />

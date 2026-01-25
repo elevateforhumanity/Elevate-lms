@@ -23,7 +23,7 @@ export default function LmsAppLayout({ children }: { children: ReactNode }) {
   useEffect(() => {
     // Demo mode - skip auth and use sample data
     if (isDemoMode) {
-      setUser({ id: 'demo-user', email: 'demo@elevateforhumanity.org' });
+      setUser({ id: 'demo-user', email: 'elevate4humanityedu@gmail.com' });
       setProfile({
         id: 'demo-user',
         full_name: 'Demo Student',

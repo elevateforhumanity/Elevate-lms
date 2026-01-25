@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { BarChart3, Users, DollarSign, Award, TrendingUp, FileText, Download, CheckCircle } from 'lucide-react';
+import Image from 'next/image';
+import { Download, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Transparency | Elevate For Humanity',
@@ -57,12 +58,12 @@ export default async function TransparencyPage() {
     : null;
 
   const outcomes = [
-    { label: 'Students Enrolled', value: totalEnrollments || 'Active', icon: Users },
-    { label: 'Graduates', value: totalGraduates || 'Growing', icon: Award },
-    { label: 'Job Placements', value: totalPlacements || 'Ongoing', icon: TrendingUp },
-    { label: 'Placement Rate', value: placementRate ? `${placementRate}%` : 'Tracked', icon: BarChart3 },
-    { label: 'Employer Partners', value: employerPartners || 'Active', icon: Users },
-    { label: 'Programs', value: '20+', icon: DollarSign },
+    { label: 'Students Enrolled', value: totalEnrollments || 'Active', image: '/images/programs-hq/students-learning.jpg' },
+    { label: 'Graduates', value: totalGraduates || 'Growing', image: '/images/programs-hq/career-success.jpg' },
+    { label: 'Job Placements', value: totalPlacements || 'Ongoing', image: '/images/programs-hq/business-training.jpg' },
+    { label: 'Placement Rate', value: placementRate ? `${placementRate}%` : 'Tracked', image: '/images/programs-hq/training-classroom.jpg' },
+    { label: 'Employer Partners', value: employerPartners || 'Active', image: '/images/programs-hq/skilled-trades-hero.jpg' },
+    { label: 'Programs', value: '20+', image: '/images/programs-hq/healthcare-hero.jpg' },
   ];
 
   const financials = [
@@ -81,17 +82,22 @@ export default async function TransparencyPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="relative min-h-[400px] flex items-center">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/pexels/office-work.jpg)' }}
+      <section className="relative h-72 overflow-hidden">
+        <Image
+          src="/images/pexels/office-work.jpg"
+          alt="Transparency"
+          fill
+          className="object-cover"
+          priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Transparency</h1>
-          <p className="text-xl text-blue-100 max-w-2xl">
-            We believe in complete transparency. Here's how we measure our impact and use our resources.
-          </p>
+        <div className="absolute inset-0 bg-blue-900/60" />
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-7xl mx-auto px-4 w-full">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Transparency</h1>
+            <p className="text-xl text-blue-100 max-w-2xl">
+              We believe in complete transparency. Here's how we measure our impact and use our resources.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -101,12 +107,16 @@ export default async function TransparencyPage() {
           <h2 className="text-3xl font-bold mb-8">Our Outcomes</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {outcomes.map((outcome) => (
-              <div key={outcome.label} className="bg-white rounded-xl shadow-sm border p-5 text-center">
-                <outcome.icon className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold">
-                  {typeof outcome.value === 'number' ? `${outcome.value}+` : outcome.value}
+              <div key={outcome.label} className="bg-white rounded-xl shadow-sm border overflow-hidden">
+                <div className="relative h-20">
+                  <Image src={outcome.image} alt={outcome.label} fill className="object-cover" />
                 </div>
-                <div className="text-gray-600 text-sm">{outcome.label}</div>
+                <div className="p-4 text-center">
+                  <div className="text-2xl font-bold">
+                    {typeof outcome.value === 'number' ? `${outcome.value}+` : outcome.value}
+                  </div>
+                  <div className="text-gray-600 text-sm">{outcome.label}</div>
+                </div>
               </div>
             ))}
           </div>

@@ -17,8 +17,8 @@ export function getEmailConfig(): EmailConfig {
   
   return {
     provider,
-    from: process.env.EMAIL_FROM || 'Elevate for Humanity <noreply@elevateforhumanity.org>',
-    replyTo: process.env.EMAIL_REPLY_TO || 'support@elevateforhumanity.org',
+    from: process.env.EMAIL_FROM || 'Elevate for Humanity <elevate4humanityedu@gmail.com>',
+    replyTo: process.env.EMAIL_REPLY_TO || 'elevate4humanityedu@gmail.com',
   };
 }
 

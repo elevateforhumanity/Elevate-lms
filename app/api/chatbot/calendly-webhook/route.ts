@@ -130,7 +130,7 @@ Ona`;
 
   if (resend) {
     await resend.emails.send({
-      from: 'Ona <ona@elevateforhumanity.org>',
+      from: 'Ona <elevate4humanityedu@gmail.com>',
       to: invitee.email,
       subject: 'Scope confirmation call',
       text: emailContent,
@@ -173,7 +173,7 @@ Ona`;
 
 // Internal notification
 async function notifyInternal(payload: CalendlyEvent['payload']) {
-  const internalEmail = process.env.LEAD_NOTIFICATION_EMAIL || 'ona@elevateforhumanity.org';
+  const internalEmail = process.env.LEAD_NOTIFICATION_EMAIL || 'elevate4humanityedu@gmail.com';
   
   const meetingTime = new Date(payload.scheduled_event.start_time);
   const formattedTime = meetingTime.toLocaleString('en-US', {
@@ -222,7 +222,7 @@ Timestamp: ${new Date().toISOString()}
 
   if (resend) {
     await resend.emails.send({
-      from: 'Elevate Calendly <noreply@elevateforhumanity.org>',
+      from: 'Elevate Calendly <elevate4humanityedu@gmail.com>',
       to: internalEmail,
       subject: `Scope Call Booked — ${payload.invitee.name}`,
       text: emailContent,

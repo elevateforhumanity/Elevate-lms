@@ -162,7 +162,7 @@ function isDemoMode(): boolean {
 const DEMO_SESSION = {
   user: {
     id: 'demo-admin-user',
-    email: 'demo@elevateforhumanity.org',
+    email: 'elevate4humanityedu@gmail.com',
     role: 'admin' as UserRole,
   },
   access_token: 'demo-token',

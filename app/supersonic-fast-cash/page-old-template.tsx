@@ -52,11 +52,11 @@ export default function SupersonicFastCashPage() {
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center text-sm">
           <div className="flex items-center gap-6">
             <a
-              href="tel:317-555-0100"
+              href="tel:317-314-3757"
               className="flex items-center gap-2 hover:text-brand-orange-500 transition"
             >
               <Phone className="w-4 h-4" />
-              (317) 555-0100
+              (317) 314-3757
             </a>
             <a
               href="mailto:info@supersonicfastcash.com"
@@ -448,7 +448,7 @@ export default function SupersonicFastCashPage() {
               <ArrowRight className="w-6 h-6" />
             </Link>
             <a
-              href="tel:317-555-0100"
+              href="tel:317-314-3757"
               className="inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm text-white px-12 py-6 rounded-xl text-xl font-bold hover:bg-white/20 transition border-2 border-white/30"
             >
               <Phone className="w-6 h-6" />
@@ -473,7 +473,7 @@ export default function SupersonicFastCashPage() {
             <div>
               <h3 className="font-bold text-lg mb-3">Contact</h3>
               <p className="text-slate-300">
-                Phone: (317) 555-0100
+                Phone: (317) 314-3757
                 <br />
                 Email: info@supersonicfastcash.com
               </p>

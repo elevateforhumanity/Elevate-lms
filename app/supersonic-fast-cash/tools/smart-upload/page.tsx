@@ -140,7 +140,7 @@ export default function SmartUploadPage() {
         detectDocumentType(uploadedFile.file.name)
       );
       formData.append('email', 'user@example.com'); // Get from auth or form
-      formData.append('phone', '555-0123'); // Get from auth or form
+      formData.append('phone', '314-3757'); // Get from auth or form
 
       // Call OCR extraction API
       const response = await fetch('/api/supersonic-fast-cash/ocr-extract', {
