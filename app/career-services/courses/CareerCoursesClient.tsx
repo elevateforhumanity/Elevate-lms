@@ -184,7 +184,7 @@ export function CareerCoursesClient({ courses, bundle }: CareerCoursesClientProp
           
           {courses.length === 0 ? (
             <div className="bg-white rounded-xl p-12 text-center">
-              <p className="text-gray-600">Courses coming soon. Check back later!</p>
+              <p className="text-gray-600">No courses available at this time. Contact us for more information.</p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

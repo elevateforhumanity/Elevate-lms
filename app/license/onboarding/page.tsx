@@ -184,8 +184,7 @@ export default async function LicenseeOnboardingPage() {
             <p className="text-gray-600 mb-6">
               Complete your organization details to finish setup.
             </p>
-            {/* Organization form would go here */}
-            <p className="text-gray-500">Organization profile form coming soon...</p>
+            <p className="text-gray-500">Please contact support to complete your organization profile setup.</p>
           </div>
         )}
       </div>

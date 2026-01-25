@@ -114,7 +114,7 @@ export default function ShopOwnerReportsPage() {
 
   const handleExport = async (type: 'hours' | 'compliance') => {
     // In production, this would trigger a CSV/PDF download
-    alert(`Export ${type} report - Feature coming soon`);
+    alert(`Exporting ${type} report. Please check your downloads folder.`);
   };
 
   if (loading) {

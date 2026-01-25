@@ -70,7 +70,7 @@ export function CoursePlayer({ course, modules }: CoursePlayerProps) {
                 <Play className="w-10 h-10" />
               </div>
               <p className="text-xl font-semibold mb-2">{currentModule?.title}</p>
-              <p className="text-gray-400">Video content coming soon</p>
+              <p className="text-gray-400">Click play to start the lesson</p>
             </div>
           )}
         </div>

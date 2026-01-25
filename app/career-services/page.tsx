@@ -298,8 +298,8 @@ export default async function CareerServicesPage() {
           ) : (
             <div className="bg-gray-50 rounded-xl p-12 text-center">
               <Briefcase className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Job listings coming soon</h3>
-              <p className="text-gray-600">Check back for new opportunities from our employer partners.</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">No current job listings</h3>
+              <p className="text-gray-600">Contact our career services team for current opportunities from our employer partners.</p>
             </div>
           )}
         </div>
