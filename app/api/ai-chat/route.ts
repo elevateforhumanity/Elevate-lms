@@ -9,6 +9,7 @@ const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 
 export async function POST(req: NextRequest) {
   try {
+    const body = await req.json().catch(() => null);
     const apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
@@ -72,8 +73,6 @@ We're here to help you start your career journey!`;
 
       return NextResponse.json({ reply: fallbackReply });
     }
-
-    const body = await req.json().catch(() => null);
 
     if (!body || !Array.isArray(body.messages)) {
       return NextResponse.json(
