@@ -38,7 +38,7 @@ export default async function MessagesPage() {
     if (c.participant_2_id !== user.id) participantIds.add(c.participant_2_id);
   });
 
-  let participants: Record<string, any> = {};
+  const participants: Record<string, any> = {};
   if (participantIds.size > 0) {
     const { data: users } = await supabase
       .from('users')

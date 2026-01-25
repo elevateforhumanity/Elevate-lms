@@ -3,7 +3,8 @@
  * Handles return creation with preparer assignment and ERO signature
  */
 
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import * as crypto from 'crypto';
 import { TaxReturn } from '../tax-software/types';
 import { createMeFSubmission, generateMeFXML } from '../tax-software/mef/xml-generator';
 import { validateTaxReturn } from '../tax-software/validation/irs-rules';
@@ -11,10 +12,14 @@ import { preparerService } from './preparer-service';
 import { clientService } from './client-service';
 import { officeService } from './office-service';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-
-function getServiceClient() {
+function getServiceClient(): SupabaseClient {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  
+  if (!supabaseUrl || !supabaseServiceKey) {
+    throw new Error('Missing Supabase environment variables');
+  }
+  
   return createClient(supabaseUrl, supabaseServiceKey);
 }
 
@@ -43,7 +48,9 @@ export interface ReturnWithAssignment {
 }
 
 export class ReturnService {
-  private supabase = getServiceClient();
+  private get supabase() {
+    return getServiceClient();
+  }
 
   /**
    * Create and submit a tax return with full preparer/office tracking
@@ -240,7 +247,6 @@ export class ReturnService {
    * Hash SSN for lookup (not encryption)
    */
   private hashSSN(ssn: string): string {
-    const crypto = require('crypto');
     return crypto.createHash('sha256').update(ssn.replace(/\D/g, '')).digest('hex');
   }
 

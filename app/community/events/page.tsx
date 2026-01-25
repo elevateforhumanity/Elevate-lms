@@ -46,7 +46,7 @@ export default async function EventsPage() {
 
   // Get RSVP counts for each event
   const eventIds = events?.map(e => e.id) || [];
-  let rsvpCounts: Record<string, number> = {};
+  const rsvpCounts: Record<string, number> = {};
   
   if (eventIds.length > 0) {
     const { data: rsvps } = await supabase

@@ -24,7 +24,7 @@ export default async function CommunityPage() {
   const supabase = await createClient();
 
   let memberCount = 2500;
-  let activeDiscussions = 150;
+  const activeDiscussions = 150;
   let upcomingEvents: any[] = [];
 
   if (supabase) {

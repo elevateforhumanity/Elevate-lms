@@ -3,13 +3,19 @@
  * Manages preparer commission payouts
  */
 
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { PreparerPayout } from './types';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+function getSupabase(): SupabaseClient {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  
+  if (!supabaseUrl || !supabaseServiceKey) {
+    throw new Error('Missing Supabase environment variables');
+  }
+  
+  return createClient(supabaseUrl, supabaseServiceKey);
+}
 
 export interface CreatePayoutInput {
   preparer_id: string;
@@ -28,12 +34,16 @@ export interface PayoutSummary {
 }
 
 class PayoutService {
+  private get supabase() {
+    return getSupabase();
+  }
+
   /**
    * Generate payout for a preparer for a given period
    */
   async generatePayout(input: CreatePayoutInput): Promise<PreparerPayout> {
     // Get returns for the period
-    const { data: returns, error: returnsError } = await supabase
+    const { data: returns, error: returnsError } = await this.supabase
       .from('franchise_return_submissions')
       .select('preparer_commission')
       .eq('preparer_id', input.preparer_id)
@@ -49,7 +59,7 @@ class PayoutService {
     const grossEarnings = returns?.reduce((sum, r) => sum + (r.preparer_commission || 0), 0) || 0;
 
     // Check for existing payout in this period
-    const { data: existing } = await supabase
+    const { data: existing } = await this.supabase
       .from('franchise_preparer_payouts')
       .select('id')
       .eq('preparer_id', input.preparer_id)
@@ -62,7 +72,7 @@ class PayoutService {
     }
 
     // Create payout record
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_preparer_payouts')
       .insert({
         preparer_id: input.preparer_id,
@@ -91,7 +101,7 @@ class PayoutService {
    * Get payout by ID
    */
   async getPayout(payoutId: string): Promise<PreparerPayout | null> {
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_preparer_payouts')
       .select('*')
       .eq('id', payoutId)
@@ -113,7 +123,7 @@ class PayoutService {
     limit?: number;
     offset?: number;
   }): Promise<{ payouts: PreparerPayout[]; total: number }> {
-    let query = supabase
+    let query = this.supabase
       .from('franchise_preparer_payouts')
       .select('*, preparer:franchise_preparers(first_name, last_name)', { count: 'exact' })
       .eq('office_id', officeId);
@@ -154,7 +164,7 @@ class PayoutService {
     limit?: number;
     offset?: number;
   }): Promise<{ payouts: PreparerPayout[]; total: number }> {
-    let query = supabase
+    let query = this.supabase
       .from('franchise_preparer_payouts')
       .select('*', { count: 'exact' })
       .eq('preparer_id', preparerId);
@@ -188,7 +198,7 @@ class PayoutService {
    * Approve a payout
    */
   async approvePayout(payoutId: string, approverId: string): Promise<PreparerPayout> {
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_preparer_payouts')
       .update({
         status: 'approved',
@@ -215,7 +225,7 @@ class PayoutService {
     payoutId: string, 
     paymentDetails: { method: string; reference: string }
   ): Promise<PreparerPayout> {
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_preparer_payouts')
       .update({
         status: 'paid',
@@ -241,7 +251,7 @@ class PayoutService {
    */
   async getOfficeSummary(officeId: string): Promise<PayoutSummary[]> {
     // Get all preparers
-    const { data: preparers } = await supabase
+    const { data: preparers } = await this.supabase
       .from('franchise_preparers')
       .select('id, first_name, last_name')
       .eq('office_id', officeId);
@@ -252,7 +262,7 @@ class PayoutService {
 
     for (const preparer of preparers) {
       // Get returns count and earnings
-      const { data: returns } = await supabase
+      const { data: returns } = await this.supabase
         .from('franchise_return_submissions')
         .select('preparer_commission')
         .eq('preparer_id', preparer.id)
@@ -262,7 +272,7 @@ class PayoutService {
       const grossEarnings = returns?.reduce((sum, r) => sum + (r.preparer_commission || 0), 0) || 0;
 
       // Get paid amount
-      const { data: paidPayouts } = await supabase
+      const { data: paidPayouts } = await this.supabase
         .from('franchise_preparer_payouts')
         .select('net_earnings')
         .eq('preparer_id', preparer.id)
@@ -271,7 +281,7 @@ class PayoutService {
       const paidToDate = paidPayouts?.reduce((sum, p) => sum + (p.net_earnings || 0), 0) || 0;
 
       // Get pending amount
-      const { data: pendingPayouts } = await supabase
+      const { data: pendingPayouts } = await this.supabase
         .from('franchise_preparer_payouts')
         .select('net_earnings')
         .eq('preparer_id', preparer.id)
@@ -300,7 +310,7 @@ class PayoutService {
     periodStart: string, 
     periodEnd: string
   ): Promise<{ generated: PreparerPayout[]; errors: { preparerId: string; error: string }[] }> {
-    const { data: preparers } = await supabase
+    const { data: preparers } = await this.supabase
       .from('franchise_preparers')
       .select('id')
       .eq('office_id', officeId)

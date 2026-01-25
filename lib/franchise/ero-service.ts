@@ -3,12 +3,18 @@
  * Handles ERO signature flow where franchise owner signs all returns
  */
 
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+function getSupabase(): SupabaseClient {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  
+  if (!supabaseUrl || !supabaseServiceKey) {
+    throw new Error('Missing Supabase environment variables');
+  }
+  
+  return createClient(supabaseUrl, supabaseServiceKey);
+}
 
 export interface EROSignature {
   ero_id: string;
@@ -55,11 +61,15 @@ export interface CreateEROConfigInput {
 }
 
 class EROService {
+  private get supabase() {
+    return getSupabase();
+  }
+
   /**
    * Get ERO configuration for an office
    */
   async getEROConfig(officeId: string): Promise<EROConfig | null> {
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_ero_configs')
       .select('*')
       .eq('office_id', officeId)
@@ -78,7 +88,7 @@ class EROService {
    */
   async setEROConfig(input: CreateEROConfigInput, actorId: string): Promise<EROConfig> {
     // Verify the ERO preparer exists and has ERO authorization
-    const { data: preparer, error: preparerError } = await supabase
+    const { data: preparer, error: preparerError } = await this.supabase
       .from('franchise_preparers')
       .select('*')
       .eq('id', input.ero_preparer_id)
@@ -93,14 +103,14 @@ class EROService {
     }
 
     // Deactivate existing config
-    await supabase
+    await this.supabase
       .from('franchise_ero_configs')
       .update({ is_active: false, updated_at: new Date().toISOString() })
       .eq('office_id', input.office_id)
       .eq('is_active', true);
 
     // Create new config
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_ero_configs')
       .insert({
         ...input,
@@ -133,7 +143,7 @@ class EROService {
     
     if (!config) {
       // Fall back to office owner as ERO
-      const { data: office, error: officeError } = await supabase
+      const { data: office, error: officeError } = await this.supabase
         .from('franchise_offices')
         .select(`
           *,
@@ -164,7 +174,7 @@ class EROService {
     }
 
     // Get ERO preparer details
-    const { data: eroPreparer, error: eroError } = await supabase
+    const { data: eroPreparer, error: eroError } = await this.supabase
       .from('franchise_preparers')
       .select('*')
       .eq('id', config.ero_preparer_id)
@@ -195,7 +205,7 @@ class EROService {
 
     if (!config) {
       // Check office owner as fallback
-      const { data: office } = await supabase
+      const { data: office } = await this.supabase
         .from('franchise_offices')
         .select('owner_id, efin')
         .eq('id', officeId)
@@ -206,7 +216,7 @@ class EROService {
         return { valid: false, errors };
       }
 
-      const { data: owner } = await supabase
+      const { data: owner } = await this.supabase
         .from('franchise_preparers')
         .select('*')
         .eq('id', office.owner_id)
@@ -224,7 +234,7 @@ class EROService {
     }
 
     // Validate ERO preparer
-    const { data: eroPreparer } = await supabase
+    const { data: eroPreparer } = await this.supabase
       .from('franchise_preparers')
       .select('*')
       .eq('id', config.ero_preparer_id)
@@ -263,7 +273,7 @@ class EROService {
     signature: EROSignature,
     actorId: string
   ): Promise<void> {
-    const { error } = await supabase
+    const { error } = await this.supabase
       .from('franchise_return_submissions')
       .update({
         ero_signature: signature,
@@ -286,7 +296,7 @@ class EROService {
    * Get all returns pending ERO signature for an office
    */
   async getPendingSignatures(officeId: string): Promise<any[]> {
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_return_submissions')
       .select(`
         *,
@@ -323,7 +333,7 @@ class EROService {
         await this.recordSignature(id, signature, actorId);
         
         // Update status to ready for submission
-        await supabase
+        await this.supabase
           .from('franchise_return_submissions')
           .update({
             status: 'ready_to_submit',
@@ -360,7 +370,7 @@ class EROService {
     actorId: string,
     details: Record<string, unknown>
   ): Promise<void> {
-    await supabase.from('franchise_audit_log').insert({
+    await this.supabase.from('franchise_audit_log').insert({
       action,
       entity_type: 'ero',
       entity_id: entityId,

@@ -53,7 +53,7 @@ export async function GET() {
     const apprenticeIds = apprenticeUsers?.map(a => a.user_id) || [];
 
     // Get apprentice profiles
-    let apprentices: any[] = [];
+    const apprentices: any[] = [];
     if (apprenticeIds.length > 0) {
       const { data: profiles } = await supabase
         .from('profiles')

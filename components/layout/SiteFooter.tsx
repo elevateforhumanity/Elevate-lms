@@ -10,11 +10,11 @@ const footerSections = [
     title: 'Programs',
     links: [
       { name: 'All Programs', href: '/programs' },
-      { name: 'Healthcare', href: '/programs#healthcare' },
-      { name: 'Skilled Trades', href: '/programs#skilled-trades' },
-      { name: 'Technology', href: '/programs#technology' },
-      { name: 'Business', href: '/programs#business' },
-      { name: 'Apprenticeships', href: '/programs#apprenticeships' },
+      { name: 'Healthcare', href: '/programs/healthcare' },
+      { name: 'Skilled Trades', href: '/programs/skilled-trades' },
+      { name: 'Technology', href: '/programs/technology' },
+      { name: 'Business', href: '/programs/business' },
+      { name: 'Apprenticeships', href: '/apprenticeships' },
     ],
   },
   {

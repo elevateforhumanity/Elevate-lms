@@ -3,20 +3,28 @@
  * Database operations for client management with SSN encryption
  */
 
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import * as crypto from 'crypto';
 import { TaxClient, CreateClientInput } from './types';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-const encryptionKey = process.env.SSN_ENCRYPTION_KEY || crypto.randomBytes(32).toString('hex');
-
-function getServiceClient() {
+function getServiceClient(): SupabaseClient {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  
+  if (!supabaseUrl || !supabaseServiceKey) {
+    throw new Error('Missing Supabase environment variables');
+  }
+  
   return createClient(supabaseUrl, supabaseServiceKey);
+}
+
+function getEncryptionKey(): string {
+  return process.env.SSN_ENCRYPTION_KEY || crypto.randomBytes(32).toString('hex');
 }
 
 // SSN Encryption utilities
 function encryptSSN(ssn: string): string {
+  const encryptionKey = getEncryptionKey();
   const iv = crypto.randomBytes(16);
   const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(encryptionKey, 'hex'), iv);
   let encrypted = cipher.update(ssn.replace(/\D/g, ''), 'utf8', 'hex');
@@ -25,6 +33,7 @@ function encryptSSN(ssn: string): string {
 }
 
 function decryptSSN(encrypted: string): string {
+  const encryptionKey = getEncryptionKey();
   const parts = encrypted.split(':');
   const iv = Buffer.from(parts[0], 'hex');
   const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(encryptionKey, 'hex'), iv);
@@ -39,7 +48,9 @@ function getLastFour(ssn: string): string {
 }
 
 export class ClientService {
-  private supabase = getServiceClient();
+  private get supabase() {
+    return getServiceClient();
+  }
 
   /**
    * Create a new tax client

@@ -3,13 +3,19 @@
  * Manages fee schedules for franchise offices
  */
 
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { TaxFeeSchedule } from './types';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+function getSupabase(): SupabaseClient {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  
+  if (!supabaseUrl || !supabaseServiceKey) {
+    throw new Error('Missing Supabase environment variables');
+  }
+  
+  return createClient(supabaseUrl, supabaseServiceKey);
+}
 
 export interface CreateFeeScheduleInput {
   office_id: string;
@@ -53,19 +59,23 @@ export interface FeeCalculation {
 }
 
 class FeeService {
+  private get supabase() {
+    return getSupabase();
+  }
+
   /**
    * Create a new fee schedule
    */
   async createFeeSchedule(input: CreateFeeScheduleInput): Promise<TaxFeeSchedule> {
     // If setting as default, unset other defaults
     if (input.is_default) {
-      await supabase
+      await this.supabase
         .from('franchise_fee_schedules')
         .update({ is_default: false })
         .eq('office_id', input.office_id);
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_fee_schedules')
       .insert({
         ...input,
@@ -86,7 +96,7 @@ class FeeService {
    * Get fee schedule by ID
    */
   async getFeeSchedule(scheduleId: string): Promise<TaxFeeSchedule | null> {
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_fee_schedules')
       .select('*')
       .eq('id', scheduleId)
@@ -103,7 +113,7 @@ class FeeService {
    * Get default fee schedule for an office
    */
   async getDefaultFeeSchedule(officeId: string): Promise<TaxFeeSchedule | null> {
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_fee_schedules')
       .select('*')
       .eq('office_id', officeId)
@@ -121,7 +131,7 @@ class FeeService {
    * List fee schedules for an office
    */
   async listFeeSchedules(officeId: string): Promise<TaxFeeSchedule[]> {
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_fee_schedules')
       .select('*')
       .eq('office_id', officeId)
@@ -146,7 +156,7 @@ class FeeService {
     if (updates.is_default) {
       const schedule = await this.getFeeSchedule(scheduleId);
       if (schedule) {
-        await supabase
+        await this.supabase
           .from('franchise_fee_schedules')
           .update({ is_default: false })
           .eq('office_id', schedule.office_id)
@@ -154,7 +164,7 @@ class FeeService {
       }
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await this.supabase
       .from('franchise_fee_schedules')
       .update({
         ...updates,
@@ -175,7 +185,7 @@ class FeeService {
    * Delete fee schedule
    */
   async deleteFeeSchedule(scheduleId: string): Promise<void> {
-    const { error } = await supabase
+    const { error } = await this.supabase
       .from('franchise_fee_schedules')
       .delete()
       .eq('id', scheduleId);

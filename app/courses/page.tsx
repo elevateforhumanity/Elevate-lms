@@ -22,7 +22,7 @@ const categories = ['All', 'Healthcare', 'Trades', 'Beauty', 'Transportation', '
 
 export default async function CoursesPage() {
   const supabase = await createClient();
-  let courses: any[] = [];
+  const courses: any[] = [];
 
   if (supabase) {
     try {

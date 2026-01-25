@@ -49,7 +49,7 @@ export default async function ApplicationsPage() {
     const now = new Date();
     const diffHours = Math.floor((now.getTime() - createdAt.getTime()) / 3600000);
     const diffDays = Math.floor(diffHours / 24);
-    let appliedDate = diffHours < 24 ? `${diffHours} hours ago` : diffDays < 7 ? `${diffDays} days ago` : `${Math.floor(diffDays / 7)} weeks ago`;
+    const appliedDate = diffHours < 24 ? `${diffHours} hours ago` : diffDays < 7 ? `${diffDays} days ago` : `${Math.floor(diffDays / 7)} weeks ago`;
     
     return {
       id: app.id,

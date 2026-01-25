@@ -104,7 +104,7 @@ export function GuidedTour({
   const position = step.position || 'bottom';
 
   // Calculate tooltip position
-  let tooltipStyle: React.CSSProperties = {
+  const tooltipStyle: React.CSSProperties = {
     position: 'fixed',
     zIndex: 9999,
   };

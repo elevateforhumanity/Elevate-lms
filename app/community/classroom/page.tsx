@@ -28,7 +28,7 @@ export default async function ClassroomPage() {
 
   // Get enrollment counts
   const courseIds = courses?.map(c => c.id) || [];
-  let enrollmentCounts: Record<string, number> = {};
+  const enrollmentCounts: Record<string, number> = {};
 
   if (courseIds.length > 0) {
     const { data: enrollments } = await supabase

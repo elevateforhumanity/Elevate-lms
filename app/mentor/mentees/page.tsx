@@ -19,7 +19,7 @@ export default async function MenteesPage() {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/login?redirect=/mentor/mentees');
 
-  let mentees: any[] = [];
+  const mentees: any[] = [];
 
   // Get mentor's mentees
   const { data: mentorships } = await supabase
