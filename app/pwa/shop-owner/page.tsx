@@ -130,14 +130,14 @@ function Dashboard({
             </div>
           </div>
           <div className="flex gap-2">
-            <button className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center relative">
+            <Link href="/pwa/shop-owner/notifications" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center relative">
               <Bell className="w-5 h-5 text-white" />
               {pendingEntries > 0 && (
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">
                   {pendingEntries}
                 </span>
               )}
-            </button>
+            </Link>
             <Link href="/pwa/shop-owner/settings" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
               <Settings className="w-5 h-5 text-white" />
             </Link>

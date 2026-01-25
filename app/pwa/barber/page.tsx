@@ -125,9 +125,9 @@ function Dashboard({ apprentice, onLogout }: { apprentice: ApprenticeData; onLog
             </div>
           </div>
           <div className="flex gap-2">
-            <button className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+            <Link href="/pwa/barber/notifications" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
               <Bell className="w-5 h-5 text-white" />
-            </button>
+            </Link>
             <Link href="/pwa/barber/settings" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
               <Settings className="w-5 h-5 text-white" />
             </Link>
@@ -197,12 +197,34 @@ function Dashboard({ apprentice, onLogout }: { apprentice: ApprenticeData; onLog
         <div className="space-y-3">
           <h2 className="text-white font-bold text-lg">Quick Actions</h2>
           
+          <Link href="/pwa/barber/checkin" className="flex items-center gap-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-4 active:opacity-80">
+            <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+              <CheckCircle className="w-6 h-6 text-white" />
+            </div>
+            <div className="flex-1">
+              <p className="text-white font-medium">Check In</p>
+              <p className="text-green-300 text-sm">Start tracking your hours</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-green-400" />
+          </Link>
+
+          <Link href="/pwa/barber/hours/submit" className="flex items-center gap-4 bg-slate-800 rounded-xl p-4 active:bg-slate-700">
+            <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+              <Plus className="w-6 h-6 text-blue-400" />
+            </div>
+            <div className="flex-1">
+              <p className="text-white font-medium">Submit Hours</p>
+              <p className="text-slate-400 text-sm">Log hours with photo proof</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-slate-500" />
+          </Link>
+
           <Link href="/pwa/barber/log-hours" className="flex items-center gap-4 bg-slate-800 rounded-xl p-4 active:bg-slate-700">
             <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
               <Plus className="w-6 h-6 text-green-400" />
             </div>
             <div className="flex-1">
-              <p className="text-white font-medium">Log Hours</p>
+              <p className="text-white font-medium">Quick Log</p>
               <p className="text-slate-400 text-sm">Record today's training</p>
             </div>
             <ChevronRight className="w-5 h-5 text-slate-500" />
