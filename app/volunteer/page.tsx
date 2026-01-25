@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import { Heart, Users, Clock, MapPin, Calendar, ArrowRight } from 'lucide-react';
 
@@ -38,8 +39,16 @@ export default async function VolunteerPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
+      <div className="relative h-[40vh] min-h-[300px] flex items-center">
+        <Image
+          src="/images/efh/sections/coaching.jpg"
+          alt="Volunteer with Elevate"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-600/90 to-orange-500/80" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 text-center text-white">
           <Heart className="w-16 h-16 mx-auto mb-4 opacity-90" />
           <h1 className="text-4xl font-bold mb-4">Volunteer With Us</h1>
           <p className="text-xl text-orange-100 max-w-2xl mx-auto">
