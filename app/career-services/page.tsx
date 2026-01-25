@@ -16,6 +16,7 @@ import {
   Clock,
   Calendar,
   Handshake,
+  TrendingUp,
 } from 'lucide-react';
 
 export const metadata: Metadata = {

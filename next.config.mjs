@@ -245,8 +245,7 @@ const nextConfig = {
       { source: '/delegate/:path*', destination: '/admin/:path*', permanent: true },
       { source: '/study-groups/:path*', destination: '/lms', permanent: true },
       { source: '/forum/:path*', destination: '/blog', permanent: true },
-      { source: '/volunteer/:path*', destination: '/about', permanent: true },
-      { source: '/volunteer', destination: '/about', permanent: true },
+      // Volunteer page now has its own content
       { source: '/news/:path*', destination: '/blog/:path*', permanent: true },
       
       // Old 404 URLs from Google - redirect to relevant pages
