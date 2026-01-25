@@ -86,64 +86,10 @@ export default function ProgramsPage() {
   const [categories, setCategories] = useState<ProgramCategory[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch program categories from database, fallback to static
+  // Always use static categories for consistent display
   useEffect(() => {
-    async function fetchCategories() {
-      try {
-        const res = await fetch('/api/programs');
-        const data = await res.json();
-        if (data.status === 'success' && data.programs && data.programs.length > 0) {
-          // Group programs by category and count
-          const categoryMap: Record<string, { programs: any[], names: string[] }> = {};
-          
-          data.programs.forEach((p: any) => {
-            const cat = p.category?.toLowerCase() || 'other';
-            let normalizedCat = cat;
-            if (cat.includes('health')) normalizedCat = 'healthcare';
-            else if (cat.includes('trade') || cat.includes('barber') || cat.includes('beauty')) normalizedCat = 'trades';
-            else if (cat.includes('tech')) normalizedCat = 'technology';
-            
-            if (!categoryMap[normalizedCat]) {
-              categoryMap[normalizedCat] = { programs: [], names: [] };
-            }
-            categoryMap[normalizedCat].programs.push(p);
-            if (categoryMap[normalizedCat].names.length < 3) {
-              categoryMap[normalizedCat].names.push(p.name);
-            }
-          });
-
-          const cats: ProgramCategory[] = [];
-          ['healthcare', 'trades', 'technology'].forEach(key => {
-            const config = categoryConfig[key as keyof typeof categoryConfig];
-            const catData = categoryMap[key];
-            if (config && catData) {
-              cats.push({
-                ...config,
-                description: catData.names.join(', '),
-                count: catData.programs.length,
-              });
-            }
-          });
-          
-          if (cats.length > 0) {
-            setCategories(cats);
-          } else {
-            // Use static fallback if no categories from API
-            setCategories(staticCategories);
-          }
-        } else {
-          // Use static fallback when API fails or returns no data
-          setCategories(staticCategories);
-        }
-      } catch (error) {
-        console.error('Failed to fetch categories:', error);
-        // Use static fallback on error
-        setCategories(staticCategories);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchCategories();
+    setCategories(staticCategories);
+    setLoading(false);
   }, []);
 
   useEffect(() => {

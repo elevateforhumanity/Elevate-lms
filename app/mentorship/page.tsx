@@ -266,36 +266,64 @@ export default async function MentorshipPage() {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white border-2 border-gray-200 rounded-xl p-6 text-center">
-              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-10 w-10 text-blue-600" />
+            <div className="bg-white border-2 border-gray-200 rounded-xl overflow-hidden">
+              <div className="relative h-40">
+                <Image
+                  src="/images/healthcare/program-cna-training.jpg"
+                  alt="Healthcare Mentors"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="font-bold text-black mb-1">Healthcare</h3>
-              <p className="text-sm text-black">25+ Mentors</p>
+              <div className="p-4 text-center">
+                <h3 className="font-bold text-black mb-1">Healthcare</h3>
+                <p className="text-sm text-black">25+ Mentors</p>
+              </div>
             </div>
 
-            <div className="bg-white border-2 border-gray-200 rounded-xl p-6 text-center">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-10 w-10 text-green-600" />
+            <div className="bg-white border-2 border-gray-200 rounded-xl overflow-hidden">
+              <div className="relative h-40">
+                <Image
+                  src="/images/trades/hero-program-hvac.jpg"
+                  alt="Skilled Trades Mentors"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="font-bold text-black mb-1">Skilled Trades</h3>
-              <p className="text-sm text-black">30+ Mentors</p>
+              <div className="p-4 text-center">
+                <h3 className="font-bold text-black mb-1">Skilled Trades</h3>
+                <p className="text-sm text-black">30+ Mentors</p>
+              </div>
             </div>
 
-            <div className="bg-white border-2 border-gray-200 rounded-xl p-6 text-center">
-              <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-10 w-10 text-purple-600" />
+            <div className="bg-white border-2 border-gray-200 rounded-xl overflow-hidden">
+              <div className="relative h-40">
+                <Image
+                  src="/images/technology/hero-programs-technology.jpg"
+                  alt="Technology Mentors"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="font-bold text-black mb-1">Technology</h3>
-              <p className="text-sm text-black">20+ Mentors</p>
+              <div className="p-4 text-center">
+                <h3 className="font-bold text-black mb-1">Technology</h3>
+                <p className="text-sm text-black">20+ Mentors</p>
+              </div>
             </div>
 
-            <div className="bg-white border-2 border-gray-200 rounded-xl p-6 text-center">
-              <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-10 w-10 text-orange-600" />
+            <div className="bg-white border-2 border-gray-200 rounded-xl overflow-hidden">
+              <div className="relative h-40">
+                <Image
+                  src="/images/business/tax-prep-certification.jpg"
+                  alt="Business Mentors"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="font-bold text-black mb-1">Business</h3>
-              <p className="text-sm text-black">15+ Mentors</p>
+              <div className="p-4 text-center">
+                <h3 className="font-bold text-black mb-1">Business</h3>
+                <p className="text-sm text-black">15+ Mentors</p>
+              </div>
             </div>
           </div>
         </div>

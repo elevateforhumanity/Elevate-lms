@@ -254,7 +254,7 @@ const nextConfig = {
       { source: '/intake', destination: '/apply', permanent: true },
       { source: '/scholarships', destination: '/funding', permanent: true },
       { source: '/health-services', destination: '/programs/healthcare', permanent: true },
-      { source: '/donate', destination: '/rise-foundation', permanent: true },
+      // Donate page has its own content now
       { source: '/resources/:path*', destination: '/blog', permanent: true },
       { source: '/career-uplift-services/:path*', destination: '/career-services', permanent: true },
       { source: '/community', destination: '/blog', permanent: true },
