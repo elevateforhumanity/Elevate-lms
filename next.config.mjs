@@ -237,8 +237,7 @@ const nextConfig = {
       { source: '/urban-build-crew/:path*', destination: '/programs', permanent: true },
       { source: '/selfish-inc/:path*', destination: '/rise-foundation/:path*', permanent: true },
 
-      // Removed routes
-      { source: '/financial-aid/:path*', destination: '/funding/:path*', permanent: true },
+      // Removed routes - financial-aid has its own page now
       { source: '/forums/:path*', destination: '/blog', permanent: true },
       { source: '/alumni/:path*', destination: '/about', permanent: true },
       { source: '/board/:path*', destination: '/admin/:path*', permanent: true },

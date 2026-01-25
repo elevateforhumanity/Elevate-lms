@@ -23,8 +23,13 @@ const getAvatarConfig = (pathname: string) => {
   if (pathname.includes('/store') || pathname.includes('/shop')) {
     return { video: '/videos/avatars/store-assistant.mp4', name: 'Store Assistant', message: 'Looking for courses, licenses, or tools? I can help you find what you need!' };
   }
-  if (pathname.includes('/vita') || pathname.includes('/tax') || pathname.includes('/financial')) {
-    return { video: '/videos/avatars/financial-guide.mp4', name: 'Financial Guide', message: 'Need help with taxes or financial services? I\'m here to assist!' };
+  // Tax preparation pages - separate from financial aid
+  if (pathname.includes('/tax') || pathname.includes('/supersonic-fast-cash')) {
+    return { video: '/videos/avatars/financial-guide.mp4', name: 'Tax Guide', message: 'Need help with tax preparation? I can guide you through free VITA services or Supersonic Fast Cash options!' };
+  }
+  // Financial aid and funding pages
+  if (pathname.includes('/financial-aid') || pathname.includes('/funding') || pathname.includes('/wioa') || pathname.includes('/grants')) {
+    return { video: '/videos/avatars/financial-guide.mp4', name: 'Funding Guide', message: 'Looking for free training? I can help you understand WIOA funding, grants, and financial aid options!' };
   }
   if (pathname.includes('/onboarding') || pathname.includes('/orientation')) {
     return { video: '/videos/avatars/orientation-guide.mp4', name: 'Orientation Guide', message: 'Welcome! Let me help you get started with your training journey.' };
