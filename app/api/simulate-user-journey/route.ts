@@ -46,7 +46,7 @@ export async function POST(request: Request) {
           first_name: 'Simulated',
           last_name: 'Student',
           email: `sim-student-${Date.now()}@test.com`,
-          phone: '555-0100',
+          phone: '(317) 314-3757',
           date_of_birth: '1995-01-01',
           status: 'pending',
           tenant_id: '00000000-0000-0000-0000-000000000001',

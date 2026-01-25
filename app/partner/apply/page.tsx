@@ -63,7 +63,7 @@ export default function PartnerApplyPage() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
                 <input type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="(555) 555-5555" />
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="(317) 314-3757" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Partnership Type *</label>

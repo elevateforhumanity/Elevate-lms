@@ -228,7 +228,7 @@ export function ApprenticeshipShopFields({
             type="tel"
             value={formData.shopPhone}
             onChange={(e) => onChange({ shopPhone: e.target.value })}
-            placeholder="(555) 555-5555"
+            placeholder="(317) 314-3757"
             className={`w-full pl-10 pr-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-purple-500 ${
               errors.shopPhone ? 'border-red-500' : 'border-slate-300'
             }`}
