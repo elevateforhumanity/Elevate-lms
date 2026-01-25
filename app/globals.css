@@ -1576,17 +1576,41 @@ header[role="banner"] * {
   background-clip: unset !important;
 }
 
-/* Header text colors - allow white text on colored backgrounds */
+/* Header text colors - explicit colors for all elements */
 header[role="banner"] span,
-header[role="banner"] button,
+header[role="banner"] button {
+  color: #111827 !important; /* gray-900 */
+}
+
 header[role="banner"] nav {
-  color: #000000;
+  color: #111827 !important;
 }
 
-header[role="banner"] a {
-  color: inherit;
+/* Desktop nav links - must be visible */
+header[role="banner"] nav a {
+  color: #374151 !important; /* gray-700 */
 }
 
+header[role="banner"] nav a:hover {
+  color: #2563eb !important; /* blue-600 */
+}
+
+/* Active nav link */
+header[role="banner"] nav a[aria-current="page"] {
+  color: #2563eb !important; /* blue-600 */
+}
+
+/* Logo link */
+header[role="banner"] > div > a:first-child {
+  color: #111827 !important;
+}
+
+/* Sign in link */
+header[role="banner"] a.text-gray-700 {
+  color: #374151 !important;
+}
+
+/* Apply Now button - white text on blue background */
 header[role="banner"] a.bg-blue-600,
 header[role="banner"] a.\!text-white {
   color: #ffffff !important;
