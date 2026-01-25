@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { 
   ArrowLeft, Bell, BellOff, Moon, Sun, LogOut, 
   User, Shield, HelpCircle, ChevronRight, Loader2,
-  Building2, Clock, Users, FileText
+  Building2, Clock, Users, FileText, QrCode, 
+  MapPin, Phone, Mail, Edit2
 } from 'lucide-react';
 import { usePushNotifications } from '@/components/pwa/PushNotifications';
 
@@ -13,6 +14,13 @@ export default function ShopOwnerSettingsPage() {
   const { supported, permission, subscribed, loading, subscribe, unsubscribe } = usePushNotifications();
   const [darkMode, setDarkMode] = useState(true);
   const [user, setUser] = useState<{ name: string; email: string; shopName?: string } | null>(null);
+  const [shop, setShop] = useState<{
+    name: string;
+    address?: string;
+    phone?: string;
+    email?: string;
+    licenseNumber?: string;
+  } | null>(null);
 
   useEffect(() => {
     // Fetch user and shop info
@@ -26,6 +34,9 @@ export default function ShopOwnerSettingsPage() {
           email: authData.user.email || '',
           shopName: dashboardData?.shop?.name,
         });
+      }
+      if (dashboardData?.shop) {
+        setShop(dashboardData.shop);
       }
     }).catch(() => {});
   }, []);
@@ -77,6 +88,33 @@ export default function ShopOwnerSettingsPage() {
             </div>
           </div>
         )}
+
+        {/* Shop Management */}
+        <div>
+          <h2 className="text-slate-400 text-sm font-medium mb-3 px-1">SHOP MANAGEMENT</h2>
+          <div className="bg-slate-800 rounded-xl overflow-hidden divide-y divide-slate-700">
+            <Link href="/pwa/shop-owner/checkin" className="flex items-center justify-between p-4 active:bg-slate-700">
+              <div className="flex items-center gap-4">
+                <QrCode className="w-5 h-5 text-blue-400" />
+                <div className="text-left">
+                  <p className="text-white font-medium">Check-In QR Code</p>
+                  <p className="text-slate-400 text-sm">Display for apprentice check-ins</p>
+                </div>
+              </div>
+              <ChevronRight className="w-5 h-5 text-slate-500" />
+            </Link>
+            <Link href="/pwa/shop-owner/settings/shop" className="flex items-center justify-between p-4 active:bg-slate-700">
+              <div className="flex items-center gap-4">
+                <Building2 className="w-5 h-5 text-slate-400" />
+                <div className="text-left">
+                  <p className="text-white font-medium">Shop Details</p>
+                  <p className="text-slate-400 text-sm">{shop?.name || 'Edit shop information'}</p>
+                </div>
+              </div>
+              <ChevronRight className="w-5 h-5 text-slate-500" />
+            </Link>
+          </div>
+        </div>
 
         {/* Notifications */}
         <div>

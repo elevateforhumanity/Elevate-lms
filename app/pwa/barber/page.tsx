@@ -229,6 +229,28 @@ function Dashboard({ apprentice, onLogout }: { apprentice: ApprenticeData; onLog
             </div>
             <ChevronRight className="w-5 h-5 text-slate-500" />
           </Link>
+
+          <Link href="/pwa/barber/history" className="flex items-center gap-4 bg-slate-800 rounded-xl p-4 active:bg-slate-700">
+            <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
+              <Calendar className="w-6 h-6 text-amber-400" />
+            </div>
+            <div className="flex-1">
+              <p className="text-white font-medium">Hour History</p>
+              <p className="text-slate-400 text-sm">View all logged hours</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-slate-500" />
+          </Link>
+
+          <Link href="/pwa/barber/profile" className="flex items-center gap-4 bg-slate-800 rounded-xl p-4 active:bg-slate-700">
+            <div className="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center">
+              <User className="w-6 h-6 text-slate-400" />
+            </div>
+            <div className="flex-1">
+              <p className="text-white font-medium">My Profile</p>
+              <p className="text-slate-400 text-sm">View your apprentice profile</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-slate-500" />
+          </Link>
         </div>
 
         {/* Shop Info */}
