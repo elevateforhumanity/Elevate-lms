@@ -14,6 +14,52 @@ interface ProgramCategory {
   count: number;
 }
 
+// Static fallback categories when API is unavailable
+const staticCategories: ProgramCategory[] = [
+  {
+    title: 'Healthcare',
+    description: 'CNA, Medical Assistant, Phlebotomy',
+    href: '/programs/healthcare',
+    image: '/images/healthcare/program-cna-training.jpg',
+    count: 5,
+  },
+  {
+    title: 'Skilled Trades',
+    description: 'HVAC, Electrical, Welding, CDL',
+    href: '/programs/skilled-trades',
+    image: '/images/trades/hero-program-hvac.jpg',
+    count: 8,
+  },
+  {
+    title: 'Technology',
+    description: 'IT Support, Cybersecurity, Web Development',
+    href: '/programs/technology',
+    image: '/images/technology/hero-programs-technology.jpg',
+    count: 4,
+  },
+  {
+    title: 'Business & Finance',
+    description: 'Tax Preparation, Entrepreneurship',
+    href: '/programs/business',
+    image: '/images/business/tax-prep-certification.jpg',
+    count: 3,
+  },
+  {
+    title: 'Beauty & Barbering',
+    description: 'Barber Apprenticeship, Cosmetology',
+    href: '/programs/barber-apprenticeship',
+    image: '/images/beauty/program-barber-training.jpg',
+    count: 4,
+  },
+  {
+    title: 'Apprenticeships',
+    description: 'USDOL Registered Programs',
+    href: '/apprenticeships',
+    image: '/images/beauty/program-barber-training.jpg',
+    count: 5,
+  },
+];
+
 const categoryConfig = {
   healthcare: {
     title: 'Healthcare',
@@ -40,13 +86,13 @@ export default function ProgramsPage() {
   const [categories, setCategories] = useState<ProgramCategory[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch program categories from database
+  // Fetch program categories from database, fallback to static
   useEffect(() => {
     async function fetchCategories() {
       try {
         const res = await fetch('/api/programs');
         const data = await res.json();
-        if (data.status === 'success' && data.programs) {
+        if (data.status === 'success' && data.programs && data.programs.length > 0) {
           // Group programs by category and count
           const categoryMap: Record<string, { programs: any[], names: string[] }> = {};
           
@@ -79,10 +125,20 @@ export default function ProgramsPage() {
             }
           });
           
-          setCategories(cats);
+          if (cats.length > 0) {
+            setCategories(cats);
+          } else {
+            // Use static fallback if no categories from API
+            setCategories(staticCategories);
+          }
+        } else {
+          // Use static fallback when API fails or returns no data
+          setCategories(staticCategories);
         }
       } catch (error) {
         console.error('Failed to fetch categories:', error);
+        // Use static fallback on error
+        setCategories(staticCategories);
       } finally {
         setLoading(false);
       }
