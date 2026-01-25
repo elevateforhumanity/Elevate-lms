@@ -144,11 +144,11 @@ export default function LicenseSuccessPage() {
     {
       step: 5,
       title: 'Deploy to Production',
-      description: 'Deploy your platform to Vercel, AWS, or your preferred hosting.',
+      description: 'Deploy your platform to Netlify, AWS, or your preferred hosting.',
       icon: Server,
       action: {
-        label: 'Deploy to Vercel',
-        href: 'https://vercel.com/new',
+        label: 'Deploy to Netlify',
+        href: 'https://app.netlify.com/start',
       },
       details: [
         'Connect your GitHub repository',
