@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, X, User } from 'lucide-react';
+import { Play, Pause, X, User, RotateCcw } from 'lucide-react';
 
 interface AvatarVideoOverlayProps {
   videoSrc: string;
@@ -10,6 +10,7 @@ interface AvatarVideoOverlayProps {
   autoPlay?: boolean;
   showOnLoad?: boolean;
   size?: 'small' | 'medium' | 'large';
+  loop?: boolean;
 }
 
 export default function AvatarVideoOverlay({
@@ -19,10 +20,12 @@ export default function AvatarVideoOverlay({
   autoPlay = false,
   showOnLoad = true,
   size = 'medium',
+  loop = false,
 }: AvatarVideoOverlayProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(showOnLoad);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const [hasEnded, setHasEnded] = useState(false);
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
@@ -43,6 +46,7 @@ export default function AvatarVideoOverlay({
     if (!video) return;
 
     setHasInteracted(true);
+    setHasEnded(false);
     
     if (isPlaying) {
       video.pause();
@@ -50,6 +54,21 @@ export default function AvatarVideoOverlay({
       video.play();
     }
     setIsPlaying(!isPlaying);
+  };
+
+  const handleReplay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    
+    video.currentTime = 0;
+    video.play();
+    setHasEnded(false);
+    setIsPlaying(true);
+  };
+
+  const handleVideoEnd = () => {
+    setIsPlaying(false);
+    setHasEnded(true);
   };
 
 
@@ -109,9 +128,10 @@ export default function AvatarVideoOverlay({
           ref={videoRef}
           className="w-full h-full object-cover"
           playsInline
+          loop={loop}
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
-          onEnded={() => setIsPlaying(false)}
+          onEnded={handleVideoEnd}
         >
           <source src={videoSrc} type="video/mp4" />
         </video>
@@ -170,6 +190,21 @@ export default function AvatarVideoOverlay({
           >
             <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
               <Play className="w-8 h-8 text-blue-600 ml-1" />
+            </div>
+          </div>
+        )}
+
+        {/* Replay overlay when video ended */}
+        {hasEnded && !loop && (
+          <div
+            className="absolute inset-0 flex items-center justify-center bg-black/50 cursor-pointer"
+            onClick={handleReplay}
+          >
+            <div className="text-center">
+              <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform mx-auto mb-2">
+                <RotateCcw className="w-6 h-6 text-blue-600" />
+              </div>
+              <span className="text-white text-sm font-medium">Watch Again</span>
             </div>
           </div>
         )}
