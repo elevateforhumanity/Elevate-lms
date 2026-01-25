@@ -1,135 +1,50 @@
 import { Metadata } from 'next';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { Heart, Users, GraduationCap, DollarSign, CheckCircle, ArrowRight, Mail, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/philanthropy',
   },
-  title: 'Support Our Mission | Elevate For Humanity',
+  title: 'Philanthropy | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Access tools and resources for workforce development.',
 };
 
-const impactStats = [
-  { value: '500+', label: 'Lives Transformed' },
-  { value: '85%', label: 'Job Placement Rate' },
-  { value: '100%', label: 'Free for Eligible Students' },
-  { value: '$0', label: 'Cost to Qualifying Students' },
-];
-
-const givingOptions = [
-  {
-    title: 'Sponsor a Student',
-    amount: '$2,500',
-    description: 'Cover the full cost of training and certification for one student.',
-    impact: 'Provides complete career training, certification fees, and job placement support.',
-  },
-  {
-    title: 'Equipment Fund',
-    amount: '$500',
-    description: 'Help purchase professional tools and equipment for training programs.',
-    impact: 'Equips students with industry-standard tools they need to succeed.',
-  },
-  {
-    title: 'Scholarship Fund',
-    amount: '$1,000',
-    description: 'Support students who need additional assistance with training costs.',
-    impact: 'Removes financial barriers for students pursuing career training.',
-  },
-  {
-    title: 'General Support',
-    amount: 'Any Amount',
-    description: 'Flexible funding to support our greatest needs.',
-    impact: 'Helps expand programs, improve facilities, and serve more students.',
-  },
-];
-
-const partnershipTypes = [
-  {
-    title: 'Corporate Partnerships',
-    description: 'Partner with us to develop talent pipelines and support workforce development in your industry.',
-    benefits: ['Tax-deductible contributions', 'Brand visibility', 'Access to trained candidates', 'Community impact'],
-  },
-  {
-    title: 'Foundation Grants',
-    description: 'We welcome grant funding to expand our programs and reach more underserved communities.',
-    benefits: ['Measurable outcomes', 'Transparent reporting', 'Aligned missions', 'Scalable impact'],
-  },
-  {
-    title: 'In-Kind Donations',
-    description: 'Donate equipment, supplies, or professional services to support our training programs.',
-    benefits: ['Direct program support', 'Tax benefits', 'Inventory management', 'Community connection'],
-  },
-];
-
-export default function PhilanthropyPage() {
+export default async function PhilanthropyPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative min-h-[500px] flex items-center overflow-hidden">
+      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/success-new/success-8.jpg"
-          alt="Supporting career development"
+          src="/images/artlist/hero-training-5.jpg"
+          alt="Philanthropy"
           fill
           className="object-cover"
           quality={100}
           priority
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-rose-500/20 text-rose-200 px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-              <Heart className="w-4 h-4" />
-              Support Our Mission
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Invest in Futures
-            </h1>
-            <p className="text-xl text-gray-200 mb-8">
-              Your support provides free career training, industry certifications, and 
-              job placement for individuals seeking pathways out of poverty.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/contact?type=donate"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-rose-500 hover:bg-rose-600 text-white font-semibold rounded-lg transition-colors"
-              >
-                <Heart className="w-5 h-5" />
-                Make a Gift
-              </Link>
-              <Link
-                href="#partnerships"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg backdrop-blur-sm transition-colors"
-              >
-                Partner With Us
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Philanthropy
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Tools and resources for career advancement
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact?type=donate"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-rose-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
             >
-              <Mail className="w-5 h-5" />
-              Contact Us
+              Get Started
             </Link>
-            <a
-              href="tel:317-314-3757"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-rose-800 text-white font-semibold rounded-lg hover:bg-rose-900 transition-colors"
+            <Link
+              href="/programs"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
             >
               View Programs
             </Link>
@@ -148,7 +63,7 @@ export default function PhilanthropyPage() {
                   Philanthropy
                 </h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Tools and resources for career advancement
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

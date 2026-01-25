@@ -5,22 +5,6 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
-import HeroAvatarGuide from '@/components/HeroAvatarGuide';
-import { 
-  Heart, 
-  Wrench, 
-  Monitor, 
-  Truck, 
-  Scissors, 
-  DollarSign,
-  ArrowRight,
-  CheckCircle,
-  Clock,
-  Award,
-  Users,
-  Briefcase,
-  GraduationCap
-} from 'lucide-react';
 
 interface ProgramCategory {
   title: string;
@@ -34,87 +18,21 @@ const categoryConfig = {
   healthcare: {
     title: 'Healthcare',
     href: '/programs/healthcare',
-    image: '/images/programs-hq/healthcare-hero.jpg',
-    icon: Heart,
-    color: 'blue',
-    programs: [
-      { name: 'Certified Nursing Assistant (CNA)', href: '/programs/cna', duration: '4-8 weeks', description: 'Provide direct patient care in healthcare facilities' },
-      { name: 'Medical Assistant', href: '/programs/medical-assistant', duration: '12-16 weeks', description: 'Clinical and administrative duties in medical offices' },
-      { name: 'Phlebotomy Technician', href: '/programs/phlebotomy', duration: '4-6 weeks', description: 'Draw blood for tests, transfusions, and donations' },
-      { name: 'Direct Support Professional', href: '/programs/direct-support-professional', duration: '2-4 weeks', description: 'Support individuals with disabilities' },
-      { name: 'Drug Collector', href: '/programs/drug-collector', duration: '1-2 weeks', description: 'Collect specimens for drug testing' },
-    ],
+    image: '/images/healthcare/program-cna-training.jpg',
   },
   trades: {
     title: 'Skilled Trades',
     href: '/programs/skilled-trades',
-    image: '/images/programs-hq/skilled-trades-hero.jpg',
-    icon: Wrench,
-    color: 'blue',
-    programs: [
-      { name: 'HVAC Technician', href: '/programs/hvac', duration: '12-24 weeks', description: 'Install and repair heating, cooling, and ventilation systems' },
-      { name: 'Welding', href: '/programs/welding', duration: '8-16 weeks', description: 'Join metal parts using various welding techniques' },
-      { name: 'Electrical', href: '/programs/electrical', duration: '12-24 weeks', description: 'Install and maintain electrical systems' },
-      { name: 'Plumbing', href: '/programs/plumbing', duration: '12-24 weeks', description: 'Install and repair water and drainage systems' },
-    ],
+    image: '/images/trades/hero-program-hvac.jpg',
   },
   technology: {
     title: 'Technology',
     href: '/programs/technology',
-    image: '/images/programs-hq/technology-hero.jpg',
-    icon: Monitor,
-    color: 'blue',
-    programs: [
-      { name: 'IT Support Specialist', href: '/programs/it-support', duration: '8-12 weeks', description: 'Help desk, troubleshooting, and technical support' },
-      { name: 'Cybersecurity Fundamentals', href: '/programs/cybersecurity', duration: '12-16 weeks', description: 'Protect organizations from cyber threats' },
-    ],
-  },
-  {
-    title: 'CDL & Transportation',
-    description: 'Get your Commercial Driver\'s License and start earning quickly. CDL drivers are in high demand nationwide with starting salaries of $50,000-$80,000+. Our program includes classroom instruction, behind-the-wheel training, and job placement assistance with local and national carriers.',
-    href: '/programs/cdl-transportation',
-    image: '/images/programs-hq/cdl-trucking.jpg',
-    icon: Truck,
-    color: 'blue',
-    programs: [
-      { name: 'CDL Class A Training', href: '/programs/cdl', duration: '3-6 weeks', description: 'Drive tractor-trailers and combination vehicles' },
-    ],
-  },
-  {
-    title: 'Barber & Cosmetology Apprenticeships',
-    description: 'Turn your creativity into a career through our registered apprenticeship programs. Earn money while you learn under the guidance of experienced professionals. Upon completion, you\'ll have the hours needed for state licensure and real-world experience.',
-    href: '/programs/barber-apprenticeship',
-    image: '/images/programs-hq/barber-training.jpg',
-    icon: Scissors,
-    color: 'blue',
-    programs: [
-      { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship', duration: '18-24 months', description: 'Cut, style, and groom hair for men and boys' },
-      { name: 'Cosmetology Apprenticeship', href: '/programs/cosmetology-apprenticeship', duration: '18-24 months', description: 'Hair styling, coloring, and beauty treatments' },
-      { name: 'Esthetician Apprenticeship', href: '/programs/esthetician-apprenticeship', duration: '12-18 months', description: 'Skincare treatments and facial services' },
-      { name: 'Nail Technician Apprenticeship', href: '/programs/nail-technician-apprenticeship', duration: '6-12 months', description: 'Manicures, pedicures, and nail art' },
-    ],
-  },
-  {
-    title: 'Business & Financial Services',
-    description: 'Start your own business or work in financial services. Learn tax preparation to help others while earning good income during tax season, or build the skills to launch your own tax business. These programs can lead to self-employment or positions at accounting firms.',
-    href: '/programs/business-financial',
-    image: '/images/programs-hq/tax-preparation.jpg',
-    icon: DollarSign,
-    color: 'blue',
-    programs: [
-      { name: 'Tax Preparation Certification', href: '/programs/tax-preparation', duration: '4-8 weeks', description: 'Prepare individual and business tax returns' },
-      { name: 'Tax Business Entrepreneurship', href: '/programs/tax-entrepreneurship', duration: '8-12 weeks', description: 'Start and run your own tax preparation business' },
-    ],
+    image: '/images/technology/hero-programs-technology.jpg',
   },
 };
 
-const colorClasses: Record<string, { bg: string; text: string; light: string; border: string }> = {
-  red: { bg: 'bg-red-600', text: 'text-red-600', light: 'bg-red-50', border: 'border-red-200' },
-  orange: { bg: 'bg-orange-600', text: 'text-orange-600', light: 'bg-orange-50', border: 'border-orange-200' },
-  blue: { bg: 'bg-blue-600', text: 'text-blue-600', light: 'bg-blue-50', border: 'border-blue-200' },
-  green: { bg: 'bg-green-600', text: 'text-green-600', light: 'bg-green-50', border: 'border-green-200' },
-  teal: { bg: 'bg-blue-600', text: 'text-blue-600', light: 'bg-blue-50', border: 'border-blue-200' },
-};
+
 
 export default function ProgramsPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -177,6 +95,7 @@ export default function ProgramsPage() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Play video immediately - works on all devices including iPad/laptop
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return undefined;
@@ -214,7 +133,9 @@ export default function ProgramsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+
+
+      {/* Hero - Clean video with just CTAs */}
       <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
         <video
           ref={videoRef}
@@ -224,7 +145,7 @@ export default function ProgramsPage() {
           playsInline
           autoPlay
           preload="auto"
-          poster="/images/heroes-hq/homepage-hero.jpg"
+          poster="/images/artlist/hero-training-3.jpg"
         >
           <source src="/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
         </video>
@@ -232,104 +153,27 @@ export default function ProgramsPage() {
         
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
-          <div className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            {/* Hero Text */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4 max-w-3xl">
-              Free Career Training Programs
-            </h1>
-            <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-2xl">
-              Get job-ready in weeks, not years. 100% funded training for eligible participants.
-            </p>
-            
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4">
-              <Link 
-                href="/apply"
-                className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors text-lg"
-              >
-                Check Your Eligibility
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-              <Link 
-                href="/wioa-eligibility"
-                className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
-              >
-                Learn About Funding
-              </Link>
-            </div>
+          <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <Link 
+              href="/apply"
+              className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors text-lg"
+            >
+              Start Eligibility & Choose a Career Path
+            </Link>
+            <Link 
+              href="/wioa-eligibility"
+              className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
+            >
+              Learn About Eligibility
+            </Link>
           </div>
+          <p className="text-blue-200 text-sm mt-4 max-w-xl">
+            All programs require eligibility screening before enrollment.
+          </p>
         </div>
       </section>
 
-      {/* Avatar Guide - Below Hero */}
-      <HeroAvatarGuide 
-        videoSrc="/videos/hero-programs-avatar.mp4"
-        avatarName="Albert"
-        message="Let me help you find the right training program for your career goals."
-      />
 
-      {/* How Training Can Be Free */}
-      <section className="py-16 bg-blue-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-black text-white mb-6">
-                How Can Training Be Free?
-              </h2>
-              <p className="text-xl text-blue-100 mb-6">
-                Through federal and state workforce programs, eligible participants can receive 
-                100% funded training at no cost. We help you navigate the funding process.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                    <DollarSign className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white text-lg">WIOA Funding</h3>
-                    <p className="text-blue-100">
-                      The Workforce Innovation and Opportunity Act provides funding for job training 
-                      to unemployed, underemployed, and low-income individuals.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                    <Briefcase className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white text-lg">On-the-Job Training (OJT)</h3>
-                    <p className="text-blue-100">
-                      Get hired by an employer who trains you on the job. The employer receives 
-                      wage reimbursement while you earn a paycheck and learn skills.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                    <GraduationCap className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white text-lg">Earn While You Learn</h3>
-                    <p className="text-blue-100">
-                      Registered apprenticeships let you earn a wage while receiving training. 
-                      You graduate with experience, credentials, and no student debt.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/programs-hq/students-learning.jpg"
-                alt="Students in training program"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Programs Grid */}
       <section className="py-12 bg-white">
@@ -389,30 +233,14 @@ export default function ProgramsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-black text-white mb-4">
-            Ready to Start Your New Career?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Check your eligibility for free or funded training programs today. 
-            Our team will help you find the right program and funding.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply"
-              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 font-bold rounded-full hover:bg-blue-50 transition-colors text-lg"
-            >
-              Start Your Application
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 font-bold rounded-full border-2 border-white hover:bg-white/10 transition-colors text-lg"
-            >
-              Talk to an Advisor
-            </Link>
-          </div>
+      <section className="py-10 bg-blue-600">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+          <Link
+            href="/apply"
+            className="inline-block bg-white text-blue-600 px-8 py-3 font-semibold rounded-full hover:bg-blue-50 transition-colors"
+          >
+            Start Eligibility & Choose This Program
+          </Link>
         </div>
       </section>
     </div>

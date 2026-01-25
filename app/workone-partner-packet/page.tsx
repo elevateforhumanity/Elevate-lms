@@ -10,7 +10,6 @@ import {
   TrendingUp, 
   Phone, 
   Mail, 
-  Download,
   Building2,
   GraduationCap,
   Shield,
@@ -18,6 +17,7 @@ import {
   DollarSign,
   Target
 } from 'lucide-react';
+import { PrintButton } from './PrintButton';
 
 export const metadata: Metadata = {
   title: 'WorkOne Partner Packet | Elevate for Humanity',
@@ -80,13 +80,7 @@ export default function WorkOnePartnerPacketPage() {
                   <Phone className="w-5 h-5 mr-2" />
                   Contact Us
                 </Link>
-                <button
-                  onClick={() => window.print()}
-                  className="inline-flex items-center justify-center px-8 py-4 bg-teal-700 text-white rounded-lg font-bold hover:bg-teal-600 transition-colors border-2 border-white/30"
-                >
-                  <Download className="w-5 h-5 mr-2" />
-                  Print This Page
-                </button>
+                <PrintButton />
               </div>
             </div>
 

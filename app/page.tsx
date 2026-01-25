@@ -2,103 +2,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 
-import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
+import VoiceoverWithMusic from '@/components/VoiceoverWithMusic';
 import { useEffect, useState, useRef } from 'react';
-
-// Lazy load heavy components
-const AvatarVideoOverlay = dynamic(() => import('@/components/AvatarVideoOverlay'), {
-  ssr: false,
-  loading: () => null,
-});
-
-const PathwayBlock = dynamic(() => import('@/components/PathwayBlock').then(mod => ({ default: mod.PathwayBlock })), {
-  ssr: false,
-});
-
-
-// User state hook - fetches auth and enrollment data with timeout
-function useUserState() {
-  const [user, setUser] = useState<{ 
-    id?: string; 
-    email?: string; 
-    firstName?: string;
-    lastName?: string;
-  } | null>(null);
-  const [enrollments, setEnrollments] = useState<Array<{
-    id: string;
-    status: string;
-    progress: number;
-    courses?: { title: string; slug: string };
-  }>>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [authChecked, setAuthChecked] = useState(true);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
-
-    const checkAuth = async () => {
-      setIsLoading(true);
-      try {
-        const authRes = await fetch('/api/auth/me', {
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          signal: controller.signal,
-        });
-        
-        if (authRes.ok) {
-          const data = await authRes.json();
-          if (data?.user) {
-            setUser(data.user);
-            
-            // If logged in, fetch enrollments with separate timeout
-            try {
-              const enrollController = new AbortController();
-              const enrollTimeout = setTimeout(() => enrollController.abort(), 2000);
-              const enrollRes = await fetch('/api/student/enrollments', {
-                credentials: 'include',
-                signal: enrollController.signal,
-              });
-              clearTimeout(enrollTimeout);
-              if (enrollRes.ok) {
-                const enrollData = await enrollRes.json();
-                setEnrollments(enrollData?.enrollments || []);
-              }
-            } catch {
-              // Enrollment fetch failed, continue without enrollments
-            }
-          }
-        }
-      } catch {
-        // Auth check failed or timed out, user is not logged in
-        setUser(null);
-      } finally {
-        clearTimeout(timeoutId);
-        setIsLoading(false);
-        setAuthChecked(true);
-      }
-    };
-
-    checkAuth();
-
-    return () => {
-      clearTimeout(timeoutId);
-      controller.abort();
-    };
-  }, []);
-
-  const activeEnrollment = enrollments.find(e => e.status === 'active');
-  const hasApplication = enrollments.length > 0;
-
-  return { user, enrollments, activeEnrollment, hasApplication, isLoading, authChecked };
-}
-
-// Welcome message for TTS - natural, conversational tone
-const WELCOME_MESSAGE = "Hey, welcome! We help people get into careers like healthcare, skilled trades, and tech. The best part? If you qualify, training is completely free through state and federal programs. No loans, no debt. Just real skills and a real job at the end. Ready to get started?";
 
 // Reusable checkmark icon
 const CheckIcon = () => (
@@ -121,21 +27,21 @@ const categoryConfig: Record<string, Omit<ProgramCategory, 'items'>> = {
     title: 'Healthcare',
     duration: '8-12 Weeks',
     href: '/programs/healthcare',
-    image: '/images/programs-hq/healthcare-hero.jpg',
+    image: '/images/healthcare/program-cna-training.jpg',
     alt: 'Healthcare Training',
   },
   trades: {
     title: 'Skilled Trades',
     duration: '10-16 Weeks',
     href: '/programs/skilled-trades',
-    image: '/images/programs-hq/skilled-trades-hero.jpg',
+    image: '/images/trades/hero-program-hvac.jpg',
     alt: 'Skilled Trades Training',
   },
   technology: {
     title: 'Technology',
     duration: '12-20 Weeks',
     href: '/programs/technology',
-    image: '/images/programs-hq/technology-hero.jpg',
+    image: '/images/technology/hero-programs-technology.jpg',
     alt: 'Technology Training',
   },
 };
@@ -270,10 +176,13 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Voiceover disabled - replace /audio/welcome-voiceover.mp3 with professional recording */}
+      {/* <VoiceoverWithMusic audioSrc="/audio/welcome-voiceover.mp3" delay={500} /> */}
 
-      {/* Hero Section - Clean video, no text overlay */}
-      <section className="relative w-full h-[60vh] sm:h-[65vh] md:h-[70vh] overflow-hidden bg-slate-900">
+      {/* Hero Section - Optimized for all screen sizes: mobile, tablet, laptop, desktop */}
+      <section className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-end overflow-hidden bg-slate-900">
         {/* Background video - autoplay on ALL devices */}
+        {/* Required for autoplay: muted, playsinline, autoplay attributes */}
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
@@ -282,8 +191,7 @@ export default function HomePage() {
           muted
           playsInline
           autoPlay
-          preload="metadata"
-          poster="/images/heroes-hq/homepage-hero.jpg"
+          preload="auto"
           disablePictureInPicture
           disableRemotePlayback
         >
@@ -293,86 +201,36 @@ export default function HomePage() {
         {/* Overlay for text readability */}
         
         
-        {/* Minimal CTAs at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 pb-8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`flex flex-wrap gap-4 justify-center transition-all duration-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              {!isLoading && (
-                <>
-                  {user && activeEnrollment ? (
-                    <Link 
-                      href="/lms/dashboard"
-                      className="inline-flex items-center justify-center bg-green-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-700 transition-all text-lg"
-                    >
-                      Continue Learning
-                    </Link>
-                  ) : (
-                    <>
-                      <Link 
-                        href="/apply"
-                        className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-all text-lg"
-                      >
-                        Apply Now
-                      </Link>
-                      <Link 
-                        href="/programs"
-                        className="inline-flex items-center justify-center bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold hover:bg-white/30 transition-all text-lg border border-white/30"
-                      >
-                        View Programs
-                      </Link>
-                    </>
-                  )}
-                </>
-              )}
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
+          <div 
+            className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 max-w-3xl leading-tight">
+              Launch Your New Career in 8-16 Weeks — <span className="text-blue-400">100% Free</span>
+            </h1>
+            <p className="text-base sm:text-lg text-white/90 mb-4 max-w-2xl">
+              Indiana&apos;s workforce programs pay for your training. No loans. No debt. Just real skills and a real job.
+            </p>
+            
+            <div className="flex flex-wrap gap-3 items-center">
+              <Link 
+                href="/apply"
+                className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
+              >
+                Apply Now — It&apos;s Free
+              </Link>
+              <Link 
+                href="tel:317-314-3757"
+                className="inline-flex items-center gap-2 text-white text-base hover:text-blue-400 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                (317) 314-3757
+              </Link>
             </div>
           </div>
         </div>
       </section>
-
-      {/* AI Avatar Guide - Inline under hero, left side */}
-      <div className="relative -mt-16 sm:-mt-20 ml-4 mb-4 z-20 w-fit">
-        <AvatarVideoOverlay 
-          videoSrc="/videos/avatars/home-welcome.mp4"
-          avatarName="Elevate Guide"
-          position="inline"
-          autoPlay={true}
-          showOnLoad={true}
-          size="medium"
-        />
-      </div>
-
-      {/* Personalized Progress Section - Only for logged-in users with enrollments */}
-      {user && activeEnrollment && !isLoading && (
-        <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-50 to-blue-50 border-b border-green-100">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-1">
-                  Your Learning Progress
-                </h2>
-                <p className="text-sm text-slate-600">
-                  {activeEnrollment.courses?.title || 'Current Program'} • {activeEnrollment.progress || 0}% complete
-                </p>
-              </div>
-              <div className="flex items-center gap-4">
-                {/* Progress Bar */}
-                <div className="w-48 h-3 bg-slate-200 rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-green-500 rounded-full transition-all duration-500"
-                    style={{ width: `${activeEnrollment.progress || 0}%` }}
-                  />
-                </div>
-                <Link
-                  href="/lms/dashboard"
-                  className="inline-flex items-center justify-center bg-green-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-green-700 transition-colors text-sm"
-                >
-                  Continue Learning
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* How No-Cost Training Works */}
       <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
@@ -386,90 +244,87 @@ export default function HomePage() {
             </p>
           </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
             {/* WIOA Card */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
-              <div className="relative h-52">
+            <Link href="/wioa-eligibility" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
+              <div className="relative h-48">
                 <Image
-                  src="/images/funding/funding-dol-program-v2.jpg"
+                  src="/images/artlist/hero-training-6.jpg"
                   alt="WIOA funded career training"
                   fill
-                  className="object-cover brightness-105"
-                  quality={85}
+                  className="object-cover"
+                  quality={80}
                   sizes="(max-width: 768px) 100vw, 33vw"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
+                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   WIOA FUNDING
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Workforce Innovation & Opportunity Act</h3>
-                <p className="text-slate-600 mb-4">
-                  Federal program that pays for job training for adults, dislocated workers, and youth. Covers tuition, books, supplies, and even transportation or childcare.
+              <div className="p-6 flex-1 flex flex-col">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Workforce Innovation &amp; Opportunity Act</h3>
+                <p className="text-slate-600 mb-4 flex-1">
+                  Federal program that pays for job training. Covers tuition, books, supplies, and even transportation or childcare.
                 </p>
-                <p className="text-sm text-slate-500">
-                  <strong className="text-slate-700">Who qualifies:</strong> Unemployed, underemployed, low-income, veterans, single parents, individuals with disabilities, or those receiving public assistance.
+                <p className="text-sm text-blue-600 font-medium">
+                  Learn more about WIOA →
                 </p>
               </div>
-            </div>
+            </Link>
             
             {/* Apprenticeships Card */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
-              <div className="relative h-52">
+            <Link href="/apprenticeships" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
+              <div className="relative h-48">
                 <Image
-                  src="/images/funding/funding-dol-program.jpg"
-                  alt="Apprenticeship training - earn while you learn"
+                  src="/images/artlist/hero-training-7.jpg"
+                  alt="Apprenticeship training"
                   fill
-                  className="object-cover brightness-105"
-                  quality={85}
+                  className="object-cover"
+                  quality={80}
                   sizes="(max-width: 768px) 100vw, 33vw"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
+                <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   APPRENTICESHIPS
                 </div>
               </div>
-              <div className="p-6">
+              <div className="p-6 flex-1 flex flex-col">
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Earn While You Learn</h3>
-                <p className="text-slate-600 mb-4">
-                  USDOL-registered apprenticeships let you work and get paid while training. Your employer sponsors your education. Graduate with experience and a job.
+                <p className="text-slate-600 mb-4 flex-1">
+                  USDOL-registered apprenticeships let you work and get paid while training. Graduate with experience and a job.
                 </p>
-                <p className="text-sm text-slate-500">
-                  <strong className="text-slate-700">Programs:</strong> Barber, HVAC, Electrical, Plumbing, and more. Start earning from day one while building your career.
+                <p className="text-sm text-green-600 font-medium">
+                  View apprenticeship programs →
                 </p>
               </div>
-            </div>
+            </Link>
             
-            {/* JRI/Other Funding Card */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
-              <div className="relative h-52">
+            {/* JRI Card */}
+            <Link href="/jri" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
+              <div className="relative h-48">
                 <Image
-                  src="/images/funding/funding-jri-program-v2.jpg"
-                  alt="JRI and additional funding programs"
+                  src="/images/artlist/hero-training-8.jpg"
+                  alt="JRI funding programs"
                   fill
-                  className="object-cover brightness-105"
-                  quality={85}
+                  className="object-cover"
+                  quality={80}
                   sizes="(max-width: 768px) 100vw, 33vw"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 bg-blue-700 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
-                  JRI & MORE
+                <div className="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                  JRI FUNDING
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Additional Support Programs</h3>
-                <p className="text-slate-600 mb-4">
-                  SNAP Employment & Training, Trade Adjustment Assistance (TAA), Justice Reinvestment Initiative (JRI), and employer-sponsored training can cover costs.
+              <div className="p-6 flex-1 flex flex-col">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Justice Reinvestment Initiative</h3>
+                <p className="text-slate-600 mb-4 flex-1">
+                  100% free training for justice-involved individuals. Second chance employment support and career services.
                 </p>
-                <p className="text-sm text-slate-500">
-                  <strong className="text-slate-700">We help you find:</strong> The right funding source for your situation. Most students qualify for at least one program.
+                <p className="text-sm text-purple-600 font-medium">
+                  Learn about JRI programs →
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* CTA */}
@@ -481,9 +336,6 @@ export default function HomePage() {
               Check If You Qualify
             </Link>
           </div>
-          
-          {/* Formal Pathway Disclosure */}
-          <PathwayDisclosure variant="compact" className="mt-8" />
         </div>
       </section>
 
@@ -562,7 +414,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="relative h-56 sm:h-64 lg:h-80 rounded-xl overflow-hidden">
               <Image
-                src="/images/programs-hq/barber-hero.jpg"
+                src="/images/beauty/program-barber-training.jpg"
                 alt="Barber Apprenticeship Program"
                 fill
                 className="object-cover"
@@ -570,7 +422,7 @@ export default function HomePage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 loading="lazy"
               />
-              <div className="absolute top-3 left-3 bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 whitespace-nowrap">
+              <div className="absolute top-3 left-3 bg-yellow-500 text-black px-2 py-0.5 rounded-full text-xs font-semibold flex items-center gap-1">
                 <span>⭐</span> USDOL Registered
               </div>
             </div>
@@ -640,95 +492,58 @@ export default function HomePage() {
       <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 bg-slate-100">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            <div className="flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4">
-              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-sm sm:text-xs">$0</span>
+            <div className="flex items-center gap-2 bg-white rounded-lg p-3">
+              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-bold text-xs">$0</span>
               </div>
-              <div className="min-w-0">
-                <p className="font-semibold text-slate-900 text-sm truncate">Free Training</p>
-                <p className="text-xs text-slate-500 truncate">WIOA funded</p>
+              <div>
+                <p className="font-semibold text-slate-900 text-sm">Free Training</p>
+                <p className="text-xs text-slate-500">WIOA funded</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4">
-              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-2 bg-white rounded-lg p-3">
+              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <div className="min-w-0">
-                <p className="font-semibold text-slate-900 text-sm truncate">Job Placement</p>
-                <p className="text-xs text-slate-500 truncate">Career support</p>
+              <div>
+                <p className="font-semibold text-slate-900 text-xs">Job Placement</p>
+                <p className="text-xs text-slate-500">Career support</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4">
-              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-2 bg-white rounded-lg p-3">
+              <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <div className="min-w-0">
-                <p className="font-semibold text-slate-900 text-sm truncate">Fast-Track</p>
-                <p className="text-xs text-slate-500 truncate">8-16 weeks</p>
+              <div>
+                <p className="font-semibold text-slate-900 text-xs">Fast-Track</p>
+                <p className="text-xs text-slate-500">8-16 weeks</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4">
-              <div className="w-10 h-10 sm:w-8 sm:h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-2 bg-white rounded-lg p-3">
+              <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <div className="min-w-0">
-                <p className="font-semibold text-slate-900 text-sm truncate">Credentials</p>
-                <p className="text-xs text-slate-500 truncate">Certifications</p>
+              <div>
+                <p className="font-semibold text-slate-900 text-xs">Credentials</p>
+                <p className="text-xs text-slate-500">Certifications</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Three Industries - Compact */}
-      <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-4 text-center">
-            Training in 3 High-Demand Industries
-          </h2>
-          
-          {/* 3 Industries - always horizontal */}
-          <div className="grid grid-cols-3 gap-3 mb-4">
-            <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl mb-1">🏥</div>
-              <p className="font-bold text-slate-900 text-xs">Healthcare</p>
-              <p className="text-xs text-slate-500">CNA, MA</p>
-            </div>
-            <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl mb-1">🔧</div>
-              <p className="font-bold text-slate-900 text-xs">Skilled Trades</p>
-              <p className="text-xs text-slate-500">HVAC, CDL</p>
-            </div>
-            <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl mb-1">💻</div>
-              <p className="font-bold text-slate-900 text-xs">Technology</p>
-              <p className="text-xs text-slate-500">IT, Cyber</p>
-            </div>
-          </div>
-          
-          {/* Partners Row - Compact */}
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs text-slate-400">
-            <span>WorkOne Indiana</span>
-            <span>•</span>
-            <span>WIOA Approved</span>
-            <span>•</span>
-            <span>ETPL Listed</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Badges / Partners Section */}
+      {/* Trust Badges - Compact with Links */}
       <section className="py-8 px-4 sm:px-6 lg:px-8 bg-slate-50 border-y border-slate-200">
         <div className="max-w-5xl mx-auto">
-          <p className="text-center text-xs uppercase tracking-wider text-slate-400 font-medium mb-6">Approved & Recognized By</p>
-          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
-            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
+          <p className="text-center text-xs uppercase tracking-wider text-slate-400 font-medium mb-6">Approved &amp; Recognized By</p>
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
+            <Link href="/wioa-eligibility" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
               <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
                 <span className="text-white font-bold text-xs">W</span>
               </div>
@@ -736,8 +551,8 @@ export default function HomePage() {
                 <span className="text-xs font-semibold text-slate-800 block">WIOA</span>
                 <span className="text-[10px] text-slate-500">Approved Provider</span>
               </div>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
+            </Link>
+            <Link href="/funding" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
               <div className="w-8 h-8 bg-green-600 rounded flex items-center justify-center">
                 <span className="text-white font-bold text-xs">E</span>
               </div>
@@ -745,8 +560,8 @@ export default function HomePage() {
                 <span className="text-xs font-semibold text-slate-800 block">ETPL</span>
                 <span className="text-[10px] text-slate-500">Listed Provider</span>
               </div>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
+            </Link>
+            <Link href="/how-it-works" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
               <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
                 <span className="text-white font-bold text-xs">W1</span>
               </div>
@@ -754,17 +569,17 @@ export default function HomePage() {
                 <span className="text-xs font-semibold text-slate-800 block">WorkOne</span>
                 <span className="text-[10px] text-slate-500">Indiana Partner</span>
               </div>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
-              <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
+            </Link>
+            <Link href="/apprenticeships" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+              <div className="w-8 h-8 bg-purple-600 rounded flex items-center justify-center">
                 <span className="text-white font-bold text-xs">US</span>
               </div>
               <div className="text-left">
                 <span className="text-xs font-semibold text-slate-800 block">USDOL</span>
                 <span className="text-[10px] text-slate-500">Registered</span>
               </div>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100">
+            </Link>
+            <Link href="/certifications" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
               <div className="w-8 h-8 bg-slate-700 rounded flex items-center justify-center">
                 <span className="text-white font-bold text-xs">IN</span>
               </div>
@@ -772,67 +587,39 @@ export default function HomePage() {
                 <span className="text-xs font-semibold text-slate-800 block">Indiana</span>
                 <span className="text-[10px] text-slate-500">State Licensed</span>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA Section - Auth-Aware */}
-      <section className={`py-10 sm:py-12 px-4 sm:px-6 lg:px-8 ${user && activeEnrollment ? 'bg-green-600' : 'bg-blue-600'}`}>
+      {/* CTA Section */}
+      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-blue-600">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Urgency banner - only for non-enrolled users */}
-          {!user || !activeEnrollment ? (
-            <div className="inline-flex items-center gap-2 bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-full text-xs font-bold mb-4">
-              <span className="w-2 h-2 bg-yellow-900 rounded-full animate-pulse"></span>
-              Classes Enrolling Now — Limited Seats Available
-            </div>
-          ) : null}
+          <div className="inline-flex items-center gap-2 bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+            <span className="w-2 h-2 bg-yellow-900 rounded-full animate-pulse"></span>
+            Next Class Starts February 3rd — Limited Seats Available
+          </div>
           
           <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
-            {user && activeEnrollment 
-              ? "Keep Up the Great Work!"
-              : "Your New Career Starts Here"
-            }
+            Your New Career Starts Here
           </h2>
           <p className="text-sm sm:text-base text-white/90 mb-5">
-            {user && activeEnrollment
-              ? "You're making progress. Every lesson brings you closer to your new career."
-              : "Apply in 2 minutes. Get approved in 48 hours. Start training within weeks."
-            }
+            Apply in 2 minutes. Get approved in 48 hours. Start training within weeks.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {user && activeEnrollment ? (
-              <>
-                <Link 
-                  href="/lms/dashboard"
-                  className="inline-flex items-center justify-center bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-green-50 transition-all hover:scale-105 text-sm shadow-lg"
-                >
-                  Continue Learning
-                </Link>
-                <Link 
-                  href="/student/progress"
-                  className="inline-flex items-center justify-center border-2 border-white text-white px-5 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors text-sm gap-2"
-                >
-                  View Full Progress
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link 
-                  href="/apply"
-                  className="inline-flex items-center justify-center bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all hover:scale-105 text-sm shadow-lg"
-                >
-                  Apply Now — It's Free
-                </Link>
-                <Link 
-                  href="tel:317-314-3757"
-                  className="inline-flex items-center justify-center border-2 border-white text-white px-5 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors text-sm gap-2"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                  (317) 314-3757
-                </Link>
-              </>
-            )}
+            <Link 
+              href="/apply"
+              className="inline-flex items-center justify-center bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all hover:scale-105 text-sm shadow-lg"
+            >
+              Apply Now — It&apos;s Free
+            </Link>
+            <Link 
+              href="tel:317-314-3757"
+              className="inline-flex items-center justify-center border-2 border-white text-white px-5 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors text-sm gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              (317) 314-3757
+            </Link>
           </div>
           
           {/* Trust indicators */}
@@ -853,61 +640,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Sticky Mobile CTA - Auth-Aware */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 p-3 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
+      {/* Sticky Mobile CTA */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 p-3 shadow-lg">
         <div className="flex gap-2">
-          {user && activeEnrollment ? (
-            <>
-              <Link 
-                href="/lms/dashboard"
-                className="flex-1 inline-flex items-center justify-center bg-green-600 text-white py-3 rounded-lg font-semibold text-sm"
-              >
-                Continue Learning
-              </Link>
-              <Link 
-                href="/student/progress"
-                className="inline-flex items-center justify-center bg-gray-100 text-gray-700 px-4 py-3 rounded-lg"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-              </Link>
-            </>
-          ) : user ? (
-            <>
-              <Link 
-                href="/lms/dashboard"
-                className="flex-1 inline-flex items-center justify-center bg-blue-600 text-white py-3 rounded-lg font-semibold text-sm"
-              >
-                Go to Dashboard
-              </Link>
-              <Link 
-                href="/apply"
-                className="inline-flex items-center justify-center bg-gray-100 text-gray-700 px-4 py-3 rounded-lg text-sm font-medium"
-              >
-                Apply
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link 
-                href="/apply"
-                className="flex-1 inline-flex items-center justify-center bg-blue-600 text-white py-3 rounded-lg font-semibold text-sm"
-              >
-                Apply Now — Free
-              </Link>
-              <Link 
-                href="tel:317-314-3757"
-                className="inline-flex items-center justify-center bg-gray-100 text-gray-700 px-4 py-3 rounded-lg"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-              </Link>
-            </>
-          )}
+          <Link 
+            href="/apply"
+            className="flex-1 inline-flex items-center justify-center bg-blue-600 text-white py-3 rounded-lg font-semibold text-sm"
+          >
+            Apply Now — Free
+          </Link>
+          <Link 
+            href="tel:317-314-3757"
+            className="inline-flex items-center justify-center bg-gray-100 text-gray-700 px-4 py-3 rounded-lg"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </Link>
         </div>
       </div>
 
       {/* Spacer for sticky CTA on mobile */}
-      {/* Spacer for sticky CTA - accounts for button height + safe area */}
-      <div className="h-24 md:hidden"></div>
+      <div className="h-16 md:hidden"></div>
 
     </div>
   );

@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { BookOpen, Plus, Edit, Trash2, GripVertical, Video, FileText, CheckSquare } from 'lucide-react';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -11,59 +12,53 @@ export const metadata: Metadata = {
   },
   title: 'Course Builder | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Access tools and resources for workforce development.',
 };
 
-const statusColors: Record<string, string> = {
-  true: 'bg-green-100 text-green-800',
-  false: 'bg-gray-100 text-gray-800',
-};
-
-const categoryColors: Record<string, string> = {
-  Healthcare: 'from-blue-500 to-cyan-500',
-  'Skilled Trades': 'from-orange-500 to-amber-500',
-  Technology: 'from-purple-500 to-indigo-500',
-  Business: 'from-green-500 to-emerald-500',
-};
-
-export default async function AdminCourseBuilderPage() {
+export default async function CourseBuilderPage() {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!supabase) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
+          <p className="text-gray-600">Please try again later.</p>
+        </div>
+      </div>
+    );
+  }
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
-    redirect('/login?redirect=/admin/course-builder');
+    redirect('/login');
   }
 
-  // Fetch courses from database
-  let courses: any[] | null = null;
-  let error: any = null;
-  let totalCourses = 0;
-  let publishedCourses = 0;
-  let totalModules = 0;
-  let totalLessons = 0;
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
 
-  try {
-    const result = await supabase
-      .from('courses')
-      .select('*')
-      .order('created_at', { ascending: false });
-    courses = result.data;
-    error = result.error;
+  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
+    redirect('/unauthorized');
+  }
 
-    if (!error) {
-      const { count: total } = await supabase
-        .from('courses')
-        .select('*', { count: 'exact', head: true });
-      totalCourses = total || 0;
+  const { data: items, count: totalItems } = await supabase
+    .from('profiles')
+    .select('*', { count: 'exact' })
+    .order('created_at', { ascending: false })
+    .limit(50);
 
-      const { count: published } = await supabase
-        .from('courses')
-        .select('*', { count: 'exact', head: true })
-        .eq('is_active', true);
-      publishedCourses = published || 0;
-    }
-  } catch (e) {
-    error = { message: 'Table not found. Please run the migration.' };
+  const { count: activeItems } = await supabase
+    .from('profiles')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'active');
+
+  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
+    redirect('/unauthorized');
   }
 
   return (
@@ -85,7 +80,7 @@ export default async function AdminCourseBuilderPage() {
             Course Builder
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Tools and resources for career advancement
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -96,160 +91,101 @@ export default async function AdminCourseBuilderPage() {
               Back to Dashboard
             </Link>
           </div>
-          <Link 
-            href="/admin/course-builder/new"
-            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            <Plus className="w-5 h-5" />
-            Create Course
-          </Link>
         </div>
+      </section>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-blue-600" />
+      {/* Content Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <h3 className="text-sm font-medium text-black mb-2">
+                  Total Items
+                </h3>
+                <p className="text-3xl font-bold text-brand-blue-600">
+                  {totalItems || 0}
+                </p>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-900">{totalCourses || 0}</p>
-                <p className="text-sm text-gray-500">Total Courses</p>
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <h3 className="text-sm font-medium text-black mb-2">
+                  Active
+                </h3>
+                <p className="text-3xl font-bold text-brand-green-600">
+                  {activeItems || 0}
+                </p>
               </div>
-            </div>
-          </div>
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <CheckSquare className="w-6 h-6 text-green-600" />
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-900">{publishedCourses || 0}</p>
-                <p className="text-sm text-gray-500">Published</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <FileText className="w-6 h-6 text-purple-600" />
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-900">{totalModules || 0}</p>
-                <p className="text-sm text-gray-500">Modules</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                <Video className="w-6 h-6 text-orange-600" />
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-900">{totalLessons || 0}</p>
-                <p className="text-sm text-gray-500">Lessons</p>
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <h3 className="text-sm font-medium text-black mb-2">
+                  Recent
+                </h3>
+                <p className="text-3xl font-bold text-purple-600">
+                  {items?.filter((i) => {
+                    const created = new Date(i.created_at);
+                    const weekAgo = new Date();
+                    weekAgo.setDate(weekAgo.getDate() - 7);
+                    return created > weekAgo;
+                  }).length || 0}
+                </p>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Course List */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">All Courses</h2>
-          </div>
-          
-          {error ? (
-            <div className="p-8 text-center">
-              <div className="text-red-600 mb-4">Database table not found</div>
-              <p className="text-gray-600 mb-4">
-                Run the migration in Supabase Dashboard SQL Editor:
-              </p>
-              <code className="text-sm bg-gray-100 px-2 py-1 rounded">
-                supabase/migrations/20260125_admin_tables.sql
-              </code>
-            </div>
-          ) : !courses || courses.length === 0 ? (
-            <div className="p-8 text-center">
-              <BookOpen className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No courses yet</h3>
-              <p className="text-gray-500 mb-4">Create your first course to get started</p>
-              <Link
-                href="/admin/course-builder/new"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-              >
-                <Plus className="w-5 h-5" />
-                Create Course
-              </Link>
-            </div>
-          ) : (
-            <div className="divide-y divide-gray-200">
-              {courses.map((course) => {
-                return (
-                  <div key={course.id} className="px-6 py-4 hover:bg-gray-50 flex items-center gap-4">
-                    <button className="cursor-grab hover:bg-gray-100 p-1 rounded">
-                      <GripVertical className="w-5 h-5 text-gray-400" />
-                    </button>
-                    <div className="w-16 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                      <BookOpen className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <Link href={`/admin/course-builder/${course.id}`} className="font-medium text-gray-900 hover:text-blue-600">
-                        {course.course_name}
-                      </Link>
-                      <p className="text-sm text-gray-500">
-                        {course.course_code}
-                        {course.duration_hours && ` • ${course.duration_hours} hours`}
-                        {course.price && ` • $${course.price}`}
+            {/* Data Display */}
+            <div className="bg-white rounded-lg shadow-sm border p-6">
+              <h2 className="text-2xl font-bold mb-4">Items</h2>
+              {items && items.length > 0 ? (
+                <div className="space-y-4">
+                  {items.map((item: any) => (
+                    <div
+                      key={item.id}
+                      className="p-4 border rounded-lg hover:bg-gray-50"
+                    >
+                      <p className="font-semibold">
+                        {item.title || item.name || item.id}
+                      </p>
+                      <p className="text-sm text-black">
+                        {new Date(item.created_at).toLocaleDateString()}
                       </p>
                     </div>
-                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${course.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
-                      {course.is_active ? 'Active' : 'Inactive'}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <Link 
-                        href={`/admin/course-builder/${course.id}`}
-                        className="p-2 hover:bg-gray-100 rounded-lg"
-                        title="Edit"
-                      >
-                        <Edit className="w-4 h-4 text-gray-500" />
-                      </Link>
-                      <button className="p-2 hover:bg-red-50 rounded-lg" title="Delete">
-                        <Trash2 className="w-4 h-4 text-red-500" />
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
+                  ))}
+                </div>
+              ) : (
+                <p className="text-black text-center py-8">No items found</p>
+              )}
             </div>
-          )}
+          </div>
         </div>
+      </section>
 
-        {/* Quick Actions */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Link 
-            href="/admin/course-builder/templates"
-            className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:border-blue-300 transition-colors"
-          >
-            <h3 className="font-semibold text-gray-900">Course Templates</h3>
-            <p className="text-sm text-gray-500 mt-1">Start from pre-built templates</p>
-          </Link>
-          <Link 
-            href="/admin/course-builder/media"
-            className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:border-blue-300 transition-colors"
-          >
-            <h3 className="font-semibold text-gray-900">Media Library</h3>
-            <p className="text-sm text-gray-500 mt-1">Manage videos and images</p>
-          </Link>
-          <Link 
-            href="/admin/course-builder/assessments"
-            className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:border-blue-300 transition-colors"
-          >
-            <h3 className="font-semibold text-gray-900">Assessment Bank</h3>
-            <p className="text-sm text-gray-500 mt-1">Create and manage quizzes</p>
-          </Link>
+      {/* CTA Section */}
+      <section className="py-16 bg-brand-blue-700 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Ready to Get Started?
+            </h2>
+            <p className="text-base md:text-lg text-blue-100 mb-8">
+              Join thousands who have launched successful careers through our
+              programs.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
+              >
+                Apply Now
+              </Link>
+              <Link
+                href="/programs"
+                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
+              >
+                Browse Programs
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

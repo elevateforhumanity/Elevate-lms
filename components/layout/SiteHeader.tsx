@@ -1,23 +1,5 @@
 'use client';
 
-/**
- * ============================================================================
- * LOCKED COMPONENT - DO NOT MODIFY WITHOUT CAREFUL TESTING
- * ============================================================================
- * 
- * This header is working correctly on all screen sizes (mobile, tablet, laptop, desktop).
- * 
- * RULES:
- * 1. DO NOT add "hidden" classes to the nav element
- * 2. DO NOT change breakpoints (sm, md, lg, xl) without testing all devices
- * 3. Keep NAV_ITEMS to 5 or fewer items to prevent overflow
- * 4. Test on laptop (1024px-1366px) after ANY changes
- * 
- * Backup: SiteHeader.backup.tsx
- * Last working commit: 9867f917
- * ============================================================================
- */
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useCallback, useRef } from 'react';
@@ -66,9 +48,8 @@ const NAV_ITEMS = [
     href: '/how-it-works',
     subItems: [
       { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
-      { name: 'Funding Options', href: '/funding' },
-      { name: 'Financial Aid', href: '/financial-aid' },
-      { name: 'Career Services', href: '/career-services' },
+      { name: 'Funding & Grants', href: '/funding' },
+      { name: 'Tuition & Fees', href: '/tuition-fees' },
       { name: 'FAQ', href: '/faq' },
       { name: 'Outcomes', href: '/outcomes' },
     ]
@@ -97,36 +78,24 @@ const NAV_ITEMS = [
   },
   { 
     name: 'Portals', 
-    href: '/dashboards',
+    href: '/dashboard',
     subItems: [
-      { name: 'Hub (Command Center)', href: '/hub/welcome' },
-      { name: 'Student Portal', href: '/student-portal' },
-      { name: 'LMS Dashboard', href: '/lms' },
-      { name: 'Employer Portal', href: '/employer-portal' },
-      { name: 'Partner Portal', href: '/partner' },
+      { name: 'Admin Dashboard', href: '/admin' },
       { name: 'Staff Portal', href: '/staff-portal' },
-      { name: 'Hire Graduates', href: '/hire-graduates' },
-      { name: 'Partner With Us', href: '/partners' },
-    ]
-  },
-  { 
-    name: 'Store', 
-    href: '/store',
-    subItems: [
-      { name: 'Platform Licenses', href: '/store/licenses' },
-      { name: 'AI Tools & Apps', href: '/store/apps' },
-      { name: 'Digital Resources', href: '/store/digital' },
-      { name: 'Courses', href: '/store/courses' },
+      { name: 'Partner Portal', href: '/partner-portal' },
+      { name: 'Employer Portal', href: '/employer-portal' },
+      { name: 'Student Portal', href: '/student-portal' },
+      { name: 'Instructor Portal', href: '/instructor' },
     ]
   },
   { 
     name: 'About', 
     href: '/about',
     subItems: [
-      { name: 'Our Mission', href: '/about/mission' },
-      { name: 'Our Team', href: '/about/team' },
-      { name: 'Join Our Team', href: '/careers' },
+      { name: 'Our Team', href: '/team' },
       { name: 'Success Stories', href: '/success-stories' },
+      { name: 'Contact', href: '/contact' },
+      { name: 'Careers', href: '/careers' },
       { name: 'Locations', href: '/locations' },
       { name: 'Impact', href: '/impact' },
     ]
@@ -176,7 +145,7 @@ function useSafeUser() {
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const user = useSafeUser();
   const pathname = usePathname();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -480,29 +449,8 @@ export default function SiteHeader() {
                 className="block w-full p-3 text-center text-base font-medium text-gray-700 border border-gray-300 rounded-full no-underline mb-3 hover:bg-gray-50 active:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                 role="menuitem"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                (317) 314-3757
-              </a>
-              {user ? (
-                <>
-                  <div className="hidden md:block">
-                    <NotificationBell />
-                  </div>
-                  <Link
-                    href="/lms/dashboard"
-                    className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
-                  >
-                    Dashboard
-                  </Link>
-                </>
-              ) : (
-                <Link
-                  href="/login"
-                  className="hidden md:inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
-                >
-                  Sign In
-                </Link>
-              )}
+                {user ? 'Dashboard' : 'Sign In'}
+              </Link>
               <Link
                 href="/apply"
                 onClick={closeMobileMenu}
@@ -511,111 +459,9 @@ export default function SiteHeader() {
               >
                 Apply Now
               </Link>
-
-              {/* Mobile menu button - show on mobile only */}
-              <button
-                onClick={() => setMobileMenuOpen(true)}
-                className="md:hidden flex items-center justify-center w-10 h-10 text-gray-900 transition-colors"
-                aria-label="Open menu"
-              >
-                <Menu className="w-6 h-6" />
-              </button>
             </div>
           </div>
-        </div>
-      </header>
-
-      {/* Mobile Menu - shows on mobile only */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] md:hidden">
-          <div 
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-          <nav className="absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-xl overflow-y-auto">
-            <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white">
-              <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-                <Image src="/logo.png" alt="Elevate" width={32} height={32} className="w-8 h-8" />
-                <span className="text-gray-900 font-bold">Elevate</span>
-              </Link>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center w-10 h-10 text-gray-700"
-                aria-label="Close menu"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="p-4">
-              <ul className="space-y-1">
-                {NAV_ITEMS.map((item) => (
-                  <li key={item.name}>
-                    {item.subItems ? (
-                      <>
-                        <button
-                          onClick={() => setExpandedSection(expandedSection === item.name ? null : item.name)}
-                          className="w-full flex items-center justify-between px-4 py-3 text-base font-semibold text-gray-900 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
-                        >
-                          {item.name}
-                          <ChevronDown className={`w-4 h-4 transition-transform ${expandedSection === item.name ? 'rotate-180' : ''}`} />
-                        </button>
-                        {/* Collapsible Sub-items */}
-                        {expandedSection === item.name && (
-                          <ul className="ml-4 mt-1 space-y-1 border-l-2 border-blue-100 pl-2">
-                            <li>
-                              <Link
-                                href={item.href}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:bg-slate-50 rounded-lg"
-                              >
-                                View All {item.name}
-                              </Link>
-                            </li>
-                            {item.subItems.map((subItem) => (
-                              <li key={subItem.name}>
-                                <Link
-                                  href={subItem.href}
-                                  onClick={() => setMobileMenuOpen(false)}
-                                  className="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
-                                >
-                                  {subItem.name}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </>
-                    ) : (
-                      <Link
-                        href={item.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="flex items-center px-4 py-3 text-base font-semibold text-gray-900 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
-                      >
-                        {item.name}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 pt-6 border-t space-y-3">
-                <Link
-                  href={user ? "/lms/dashboard" : "/login"}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center w-full px-4 py-3 text-base font-medium text-gray-700 border border-gray-300 rounded-full"
-                >
-                  {user ? 'Dashboard' : 'Sign In'}
-                </Link>
-                <Link
-                  href="/apply"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center w-full px-4 py-3 bg-blue-600 text-white text-base font-semibold rounded-full hover:bg-blue-700"
-                >
-                  Apply Now
-                </Link>
-              </div>
-            </div>
-          </nav>
-        </div>
+        </nav>
       )}
     </>
   );
