@@ -1152,13 +1152,13 @@ html {
   }
   
   /* Ensure images don't overflow on mobile */
-  img {
+  img:not(.absolute) {
     max-width: 100%;
   }
   
-  /* Fix any absolute/fixed elements that might overflow */
-  [class*="fixed"],
-  [class*="absolute"] {
+  /* Fix any absolute/fixed elements that might overflow - exclude images */
+  [class*="fixed"]:not(img),
+  [class*="absolute"]:not(img) {
     max-width: 100vw;
   }
   
