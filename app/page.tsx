@@ -5,7 +5,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import HomeHeroVideo from './HomeHeroVideo';
-import HeroAvatarGuide from '@/components/HeroAvatarGuide';
 
 export const metadata: Metadata = {
   title: 'Free Career Training | Elevate for Humanity',
@@ -88,12 +87,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Avatar Guide - Client component */}
-      <HeroAvatarGuide 
-        videoSrc="/videos/avatars/home-welcome.mp4"
-        avatarName="Welcome Guide"
-        message="Welcome to Elevate! I can help you find free career training programs. Click to chat."
-      />
+
 
       {/* How No-Cost Training Works */}
       <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">

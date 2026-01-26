@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import HeroAvatarGuide from '@/components/HeroAvatarGuide';
 import TestimonialsSection from '@/components/content/TestimonialsSection';
 import {
   BadgeCheck,
@@ -108,12 +107,7 @@ export default function SupersonicFastCashPage() {
         </div>
       </section>
 
-      {/* Avatar Guide - Below Hero */}
-      <HeroAvatarGuide 
-        videoSrc="/videos/avatars/financial-guide.mp4"
-        avatarName="Tax Guide"
-        message="Let me help you get your tax refund fast. Click to learn more."
-      />
+
 
       {/* How It Works */}
       <section className="py-20 bg-gray-50">
