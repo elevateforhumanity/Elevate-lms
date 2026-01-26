@@ -2,7 +2,7 @@ import React from 'react';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import StructuredData from '@/components/StructuredData';
-import { ConditionalLayout } from '@/components/layout/ConditionalLayout';
+import PublicLayout from '@/components/layout/PublicLayout';
 import { Toaster } from 'react-hot-toast';
 import { ClientProviders } from '@/components/ClientProviders';
 import CookieConsent from '@/components/CookieConsent';
@@ -212,9 +212,7 @@ export default function RootLayout({
       >
         <SkipToContent />
         <GoogleAnalytics />
-        <ClientProviders>
-          <ConditionalLayout>{children}</ConditionalLayout>
-        </ClientProviders>
+        <PublicLayout>{children}</PublicLayout>
         <CookieConsent />
 
         <Toaster
