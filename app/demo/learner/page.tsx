@@ -64,7 +64,7 @@ export default function LearnerDemo() {
             <span className="font-bold text-sm hidden sm:inline">Student Portal</span>
           </Link>
           <div className="flex items-center gap-2">
-            <Image src="/images/testimonials/student-marcus.jpg" alt="User" width={28} height={28} className="rounded-full" />
+            <Image src="/images/testimonials/student-marcus.jpg" alt="Darius W. profile photo" width={28} height={28} className="rounded-full" />
             <span className="text-sm font-medium hidden sm:inline">Darius W.</span>
           </div>
         </div>
