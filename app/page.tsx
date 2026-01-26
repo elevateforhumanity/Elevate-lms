@@ -3,7 +3,6 @@
 
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import HomeHeroVideo from './HomeHeroVideo';
 
 export const metadata: Metadata = {
@@ -105,13 +104,10 @@ export default function HomePage() {
             {/* WIOA Card */}
             <Link href="/wioa-eligibility" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
               <div className="relative" style={{ height: '192px' }}>
-                <Image
+                <img
                   src="/images/funding/funding-dol-program-v2.jpg"
                   alt="WIOA funded career training"
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   WIOA FUNDING
@@ -131,13 +127,10 @@ export default function HomePage() {
             {/* Apprenticeships Card */}
             <Link href="/apprenticeships" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
               <div className="relative" style={{ height: '192px' }}>
-                <Image
+                <img
                   src="/images/funding/funding-dol-program.jpg"
                   alt="Apprenticeship training"
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   APPRENTICESHIPS
@@ -157,13 +150,10 @@ export default function HomePage() {
             {/* JRI Card */}
             <Link href="/jri" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
               <div className="relative" style={{ height: '192px' }}>
-                <Image
+                <img
                   src="/images/funding/funding-jri-program-v2.jpg"
                   alt="JRI funding programs"
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   JRI FUNDING
@@ -214,12 +204,10 @@ export default function HomePage() {
                 className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-100 max-w-sm mx-auto sm:max-w-none"
               >
                 <div className="relative" style={{ height: '144px' }}>
-                  <Image
+                  <img
                     src={program.image}
                     alt={program.alt}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-3 left-3 bg-blue-600 text-white px-2 py-0.5 rounded-full text-xs font-semibold">
                     {program.duration}
@@ -255,12 +243,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="relative rounded-xl overflow-hidden" style={{ height: '320px' }}>
-              <Image
+              <img
                 src="/images/beauty/program-barber-training.jpg"
                 alt="Barber Apprenticeship Program"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute top-3 left-3 bg-yellow-500 text-black px-2 py-0.5 rounded-full text-xs font-semibold flex items-center gap-1">
                 <span>⭐</span> USDOL Registered
