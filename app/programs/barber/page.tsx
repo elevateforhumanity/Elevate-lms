@@ -335,6 +335,104 @@ export default async function BarberProgramPage() {
         </div>
       </section>
 
+      {/* Shop Owner Section */}
+      <section className="py-16 bg-orange-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block bg-orange-100 text-orange-700 px-4 py-1 rounded-full text-sm font-semibold mb-4">
+                For Shop Owners
+              </span>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                Host an Apprentice at Your Shop
+              </h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Partner with Elevate to train the next generation of barbers. As a registered apprenticeship sponsor, you'll receive support while developing skilled talent for your shop.
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900">No Cost to You</h4>
+                    <p className="text-gray-600 text-sm">Training costs are covered through WIOA funding and apprenticeship grants.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Develop Your Team</h4>
+                    <p className="text-gray-600 text-sm">Train apprentices in your shop's style and culture from day one.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900">USDOL Registered</h4>
+                    <p className="text-gray-600 text-sm">Our program is officially registered with the U.S. Department of Labor.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Ongoing Support</h4>
+                    <p className="text-gray-600 text-sm">We handle paperwork, compliance, and provide mentorship resources.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/partners/barber-shop"
+                  className="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600"
+                >
+                  Become a Partner Shop <ArrowRight className="w-5 h-5" />
+                </Link>
+                <Link
+                  href="/contact?type=barber-shop"
+                  className="inline-flex items-center gap-2 border-2 border-orange-500 text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-orange-50"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Shop Owner Requirements</h3>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3 text-gray-700">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                  Licensed barbershop in Indiana
+                </li>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                  At least one licensed barber on staff
+                </li>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                  Willingness to mentor apprentices
+                </li>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                  Commitment to 2,000 training hours
+                </li>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                  Safe, professional work environment
+                </li>
+              </ul>
+              
+              <div className="bg-orange-50 rounded-lg p-4">
+                <p className="text-sm text-gray-600">
+                  <strong className="text-gray-900">Questions?</strong> Call us at{' '}
+                  <a href="tel:+13173143757" className="text-orange-600 font-semibold">(317) 314-3757</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -342,12 +440,20 @@ export default async function BarberProgramPage() {
           <p className="text-xl text-gray-300 mb-8">
             Join our apprenticeship program and start your career in barbering.
           </p>
-          <Link
-            href="/apply?program=barber"
-            className="inline-flex items-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-600"
-          >
-            Apply Now <ArrowRight className="w-5 h-5" />
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/apply?program=barber"
+              className="inline-flex items-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-600"
+            >
+              Apply as Apprentice <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/partners/barber-shop"
+              className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-xl font-bold hover:bg-gray-100"
+            >
+              Partner as Shop Owner
+            </Link>
+          </div>
         </div>
       </section>
     </div>

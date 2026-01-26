@@ -44,21 +44,51 @@ export default function ApprenticeshipsPage() {
       slug: 'barber-apprenticeship',
       duration: '2,000 hours (15-24 months)',
       wage: 'Earn while you learn',
-      image: '/images/programs-hq/barber-training.jpg',
+      image: '/images/beauty/program-barber-training.jpg',
+      wioa: true,
       description:
         'Learn professional barbering skills in a licensed shop environment with experienced mentors. Master cutting, styling, shaving, and client relations while earning income.',
-      requirements: [
-        '18+ years old',
-        'High school diploma or GED',
-        'Valid ID',
-        'Professional attitude',
-      ],
-      benefits: [
-        'Paid training from day one',
-        'State licensure pathway',
-        'One-on-one mentorship',
-        'Build your client portfolio',
-      ],
+      requirements: ['18+ years old', 'High school diploma or GED', 'Valid ID', 'Professional attitude'],
+      benefits: ['Paid training from day one', 'State licensure pathway', 'One-on-one mentorship', 'Build your client portfolio'],
+      locations: ['Indianapolis, IN'],
+    },
+    {
+      title: 'Cosmetology Apprenticeship',
+      slug: 'cosmetology-apprenticeship',
+      duration: '1,500 hours (12-18 months)',
+      wage: 'Earn while you learn',
+      image: '/images/beauty/cosmetology-training.jpg',
+      wioa: true,
+      description:
+        'Full cosmetology training covering hair cutting, coloring, styling, and salon management. Work in a licensed salon while earning your state license.',
+      requirements: ['18+ years old', 'High school diploma or GED', 'Valid ID', 'Creative mindset'],
+      benefits: ['State cosmetology license', 'Salon experience', 'Build clientele', 'Flexible career options'],
+      locations: ['Indianapolis, IN'],
+    },
+    {
+      title: 'Esthetician Apprenticeship',
+      slug: 'esthetician-apprenticeship',
+      duration: '700 hours (6-9 months)',
+      wage: 'Earn while you learn',
+      image: '/images/beauty/esthetician-training.jpg',
+      wioa: true,
+      description:
+        'Specialize in skincare, facials, and beauty treatments. Learn advanced techniques in a spa or salon environment with hands-on client experience.',
+      requirements: ['18+ years old', 'High school diploma or GED', 'Valid ID', 'Attention to detail'],
+      benefits: ['State esthetician license', 'Spa/salon experience', 'Skincare expertise', 'Growing industry'],
+      locations: ['Indianapolis, IN'],
+    },
+    {
+      title: 'Nail Technician Apprenticeship',
+      slug: 'nail-tech-apprenticeship',
+      duration: '450 hours (4-6 months)',
+      wage: 'Earn while you learn',
+      image: '/images/beauty/nail-tech-training.jpg',
+      wioa: true,
+      description:
+        'Master manicures, pedicures, nail art, and gel/acrylic applications. Train in a licensed salon with real clients.',
+      requirements: ['18+ years old', 'High school diploma or GED', 'Valid ID', 'Artistic ability'],
+      benefits: ['State nail tech license', 'Salon experience', 'Flexible schedule', 'Low startup costs'],
       locations: ['Indianapolis, IN'],
     },
     {
@@ -66,21 +96,12 @@ export default function ApprenticeshipsPage() {
       slug: 'hvac-apprenticeship',
       duration: '3-4 years',
       wage: '$15-$25/hour',
-      image: '/images/programs-hq/hvac-technician.jpg',
+      image: '/images/trades/hero-program-hvac.jpg',
+      wioa: true,
       description:
         'Hands-on training in heating, ventilation, air conditioning, and refrigeration systems. Work alongside certified technicians on real installations and repairs.',
-      requirements: [
-        '18+ years old',
-        'High school diploma or GED',
-        "Valid driver's license",
-        'Physical fitness',
-      ],
-      benefits: [
-        'EPA certification included',
-        'Industry credentials',
-        'Tool allowance provided',
-        'Health benefits available',
-      ],
+      requirements: ['18+ years old', 'High school diploma or GED', "Valid driver's license", 'Physical fitness'],
+      benefits: ['EPA certification included', 'Industry credentials', 'Tool allowance provided', 'Health benefits available'],
       locations: ['Indianapolis, IN', 'Surrounding counties'],
     },
     {
@@ -88,65 +109,38 @@ export default function ApprenticeshipsPage() {
       slug: 'building-maintenance-apprenticeship',
       duration: '2-3 years',
       wage: '$14-$22/hour',
-      image: '/hero-images/skilled-trades-cat-new.jpg',
+      image: '/images/trades/building-maintenance.jpg',
+      wioa: true,
       description:
         'Learn facility maintenance including basic electrical, plumbing, HVAC, and building systems. Become a versatile technician in high demand.',
-      requirements: [
-        '18+ years old',
-        'High school diploma or GED',
-        'Basic tool knowledge',
-        'Reliable transportation',
-      ],
-      benefits: [
-        'Multi-trade skills training',
-        'Safety certifications',
-        'Clear career advancement',
-        'Stable year-round employment',
-      ],
+      requirements: ['18+ years old', 'High school diploma or GED', 'Basic tool knowledge', 'Reliable transportation'],
+      benefits: ['Multi-trade skills training', 'Safety certifications', 'Clear career advancement', 'Stable year-round employment'],
       locations: ['Indianapolis, IN'],
     },
     {
-      title: 'Healthcare Support Apprenticeship',
-      slug: 'healthcare-apprenticeship',
-      duration: '1-2 years',
-      wage: '$13-$18/hour',
-      image: '/hero-images/healthcare-category.jpg',
+      title: 'EMS / EMT Training',
+      slug: 'ems-emt-training',
+      duration: '8-16 weeks',
+      wage: '$35,000-$50,000/year after completion',
+      image: '/images/healthcare/ems-training.jpg',
+      wioa: true,
       description:
-        'Entry into healthcare through CNA, medical assistant, or patient care roles. Gain clinical experience while earning certifications.',
-      requirements: [
-        '18+ years old',
-        'High school diploma or GED',
-        'Background check clearance',
-        'Current immunizations',
-      ],
-      benefits: [
-        'CNA certification included',
-        'Real clinical experience',
-        'Healthcare career pathway',
-        'Job placement support',
-      ],
-      locations: ['Indianapolis, IN', 'Partner facilities'],
+        'Become a certified Emergency Medical Technician. Learn life-saving skills, patient assessment, and emergency response procedures.',
+      requirements: ['18+ years old', 'High school diploma or GED', 'CPR certification', 'Clean background'],
+      benefits: ['State EMT certification', 'Clinical rotations', 'Job placement support', 'Career advancement to Paramedic'],
+      locations: ['Indianapolis, IN'],
     },
     {
       title: 'Culinary Arts Apprenticeship',
       slug: 'culinary-apprenticeship',
       duration: '1-2 years',
       wage: '$12-$18/hour',
-      image: '/hero-images/culinary-hero.jpg',
+      image: '/images/culinary/culinary-training.jpg',
+      wioa: true,
       description:
         'Train in professional kitchens learning culinary techniques, food safety, and kitchen management. Work with experienced chefs in real restaurant environments.',
-      requirements: [
-        '18+ years old',
-        'High school diploma or GED',
-        'Food handler certification',
-        'Ability to stand for long periods',
-      ],
-      benefits: [
-        'ServSafe certification',
-        'Professional kitchen experience',
-        'Culinary credentials',
-        'Restaurant industry connections',
-      ],
+      requirements: ['18+ years old', 'High school diploma or GED', 'Food handler certification', 'Ability to stand for long periods'],
+      benefits: ['ServSafe certification', 'Professional kitchen experience', 'Culinary credentials', 'Restaurant industry connections'],
       locations: ['Indianapolis, IN'],
     },
     {
@@ -154,22 +148,26 @@ export default function ApprenticeshipsPage() {
       slug: 'cdl-transportation',
       duration: '3-6 weeks',
       wage: '$50,000-$80,000/year after completion',
-      image: '/hero-images/cdl-transportation-category.jpg',
+      image: '/images/trades/cdl-training.jpg',
+      wioa: true,
       description:
         'Earn your Commercial Driver\'s License with classroom and behind-the-wheel training. High-demand career with immediate job opportunities.',
-      requirements: [
-        '21+ years old',
-        'Valid driver\'s license',
-        'Clean driving record',
-        'DOT physical clearance',
-      ],
-      benefits: [
-        'CDL-A license',
-        'Job placement assistance',
-        'Sign-on bonuses available',
-        'Flexible schedules',
-      ],
+      requirements: ['21+ years old', 'Valid driver\'s license', 'Clean driving record', 'DOT physical clearance'],
+      benefits: ['CDL-A license', 'Job placement assistance', 'Sign-on bonuses available', 'Flexible schedules'],
       locations: ['Indianapolis, IN'],
+    },
+    {
+      title: 'Healthcare Support (CNA/MA)',
+      slug: 'healthcare-apprenticeship',
+      duration: '8-12 weeks',
+      wage: '$13-$18/hour',
+      image: '/images/healthcare/program-cna-training.jpg',
+      wioa: true,
+      description:
+        'Entry into healthcare through CNA, medical assistant, or patient care roles. Gain clinical experience while earning certifications.',
+      requirements: ['18+ years old', 'High school diploma or GED', 'Background check clearance', 'Current immunizations'],
+      benefits: ['CNA certification included', 'Real clinical experience', 'Healthcare career pathway', 'Job placement support'],
+      locations: ['Indianapolis, IN', 'Partner facilities'],
     },
   ];
 
@@ -430,14 +428,12 @@ export default function ApprenticeshipsPage() {
                 className="bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-blue-500 hover:shadow-lg transition-all"
               >
                 {/* Program Image */}
-                <div className="relative h-48 w-full overflow-hidden">
-                  <Image
-                    src={program.image}
-                    alt={program.title}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
+                <div 
+                  className="relative h-48 w-full overflow-hidden bg-cover bg-center"
+                  style={{ backgroundImage: `url(${program.image})` }}
+                  role="img"
+                  aria-label={program.title}
+                >
                   
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
