@@ -106,6 +106,8 @@ export default function HomePage() {
               <div 
                 className="h-48 bg-cover bg-center relative"
                 style={{ backgroundImage: 'url(/images/funding/funding-dol-program-v2.jpg)' }}
+                role="img"
+                aria-label="WIOA funded career training"
               >
                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   WIOA FUNDING
@@ -127,6 +129,8 @@ export default function HomePage() {
               <div 
                 className="h-48 bg-cover bg-center relative"
                 style={{ backgroundImage: 'url(/images/funding/funding-dol-program.jpg)' }}
+                role="img"
+                aria-label="Apprenticeship training"
               >
                 <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   APPRENTICESHIPS
@@ -148,6 +152,8 @@ export default function HomePage() {
               <div 
                 className="h-48 bg-cover bg-center relative"
                 style={{ backgroundImage: 'url(/images/funding/funding-jri-program-v2.jpg)' }}
+                role="img"
+                aria-label="JRI funding programs"
               >
                 <div className="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   JRI FUNDING
