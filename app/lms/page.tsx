@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import {
   BookOpen,
   Play,
@@ -203,63 +204,72 @@ export default async function LMSPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/ai-tutor.mp4"
+        avatarName="AI Tutor"
+        position="bottom-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
+      
       {/* Header */}
-      <div className="bg-blue-900 text-white py-6">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold">Welcome back, {typedProfile?.full_name || 'Learner'}</h1>
-              <p className="text-blue-200">Continue your learning journey</p>
+      <div className="bg-blue-900 text-white py-4 sm:py-6">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          <div className="flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <h1 className="text-lg sm:text-2xl font-bold truncate">Welcome back, {typedProfile?.full_name || 'Learner'}</h1>
+              <p className="text-blue-200 text-sm sm:text-base">Continue your learning journey</p>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <Link href="/lms/notifications" className="relative p-2 bg-blue-800 rounded-lg hover:bg-blue-700">
-                <Bell className="w-5 h-5" />
+                <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
                 {notificationCount && notificationCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] sm:text-xs w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center">
                     {notificationCount > 9 ? '9+' : notificationCount}
                   </span>
                 )}
               </Link>
               <Link href="/lms/settings" className="p-2 bg-blue-800 rounded-lg hover:bg-blue-700">
-                <Settings className="w-5 h-5" />
+                <Settings className="w-4 h-4 sm:w-5 sm:h-5" />
               </Link>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Continue Learning Banner */}
         {continueCourse && (
-          <div className="bg-white rounded-xl shadow-sm border p-6 mb-8">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="w-20 h-14 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0 relative">
+          <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6 mb-4 sm:mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="w-14 h-10 sm:w-20 sm:h-14 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0 relative">
                   {continueCourse.course?.thumbnail_url ? (
                     <Image src={continueCourse.course.thumbnail_url} alt="" fill className="object-cover" sizes="80px" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <BookOpen className="w-6 h-6 text-gray-400" />
+                      <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" />
                     </div>
                   )}
                 </div>
-                <div>
-                  <p className="text-sm text-gray-500">Continue where you left off</p>
-                  <h2 className="font-semibold text-lg">{continueCourse.course?.title}</h2>
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs sm:text-sm text-gray-500">Continue where you left off</p>
+                  <h2 className="font-semibold text-sm sm:text-lg truncate">{continueCourse.course?.title}</h2>
                   <div className="flex items-center gap-2 mt-1">
-                    <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="w-20 sm:w-32 h-1.5 sm:h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div 
                         className="h-full bg-blue-900 rounded-full" 
                         style={{ width: `${continueCourse.progress}%` }} 
                       />
                     </div>
-                    <span className="text-sm text-gray-500">{continueCourse.progress}% complete</span>
+                    <span className="text-xs sm:text-sm text-gray-500">{continueCourse.progress}%</span>
                   </div>
                 </div>
               </div>
               <Link 
                 href={`/lms/courses/${continueCourse.course?.id}`}
-                className="flex items-center gap-2 bg-red-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-red-700"
+                className="flex items-center justify-center gap-2 bg-red-600 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium hover:bg-red-700 text-sm sm:text-base"
               >
                 <Play className="w-4 h-4" /> Continue
               </Link>
@@ -268,98 +278,70 @@ export default async function LMSPage() {
         )}
 
         {/* Stats Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
-            <div className="relative h-20">
-              <Image src="/images/programs-hq/training-classroom.jpg" alt="Courses" fill className="object-cover" />
-              <div className="absolute inset-0 bg-blue-900/60" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-2xl font-bold text-white">{typedEnrollments.length}</div>
-              </div>
-            </div>
-            <div className="p-3 text-center">
-              <div className="text-gray-900 text-sm font-medium">Enrolled Courses</div>
-            </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 mb-4 sm:mb-8">
+          <div className="bg-white rounded-xl shadow-sm border p-3 sm:p-5">
+            <BookOpen className="w-5 h-5 sm:w-7 sm:h-7 text-blue-900 mb-1 sm:mb-2" />
+            <div className="text-xl sm:text-2xl font-bold">{typedEnrollments.length}</div>
+            <div className="text-gray-600 text-xs sm:text-sm">Enrolled</div>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
-            <div className="relative h-20">
-              <Image src="/images/programs-hq/career-success.jpg" alt="Completed" fill className="object-cover" />
-              <div className="absolute inset-0 bg-green-600/60" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-2xl font-bold text-white">{completedCourses}</div>
-              </div>
-            </div>
-            <div className="p-3 text-center">
-              <div className="text-gray-900 text-sm font-medium">Completed</div>
-            </div>
+          <div className="bg-white rounded-xl shadow-sm border p-3 sm:p-5">
+            <CheckCircle className="w-5 h-5 sm:w-7 sm:h-7 text-green-600 mb-1 sm:mb-2" />
+            <div className="text-xl sm:text-2xl font-bold">{completedCourses}</div>
+            <div className="text-gray-600 text-xs sm:text-sm">Completed</div>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
-            <div className="relative h-20">
-              <Image src="/images/programs-hq/students-learning.jpg" alt="Certificates" fill className="object-cover" />
-              <div className="absolute inset-0 bg-yellow-500/60" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-2xl font-bold text-white">{typedCertificates.length}</div>
-              </div>
-            </div>
-            <div className="p-3 text-center">
-              <div className="text-gray-900 text-sm font-medium">Certificates</div>
-            </div>
+          <div className="bg-white rounded-xl shadow-sm border p-3 sm:p-5">
+            <Award className="w-5 h-5 sm:w-7 sm:h-7 text-yellow-500 mb-1 sm:mb-2" />
+            <div className="text-xl sm:text-2xl font-bold">{typedCertificates.length}</div>
+            <div className="text-gray-600 text-xs sm:text-sm">Certificates</div>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
-            <div className="relative h-20">
-              <Image src="/images/programs-hq/business-office.jpg" alt="Progress" fill className="object-cover" />
-              <div className="absolute inset-0 bg-red-600/60" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-2xl font-bold text-white">{totalProgress}%</div>
-              </div>
-            </div>
-            <div className="p-3 text-center">
-              <div className="text-gray-900 text-sm font-medium">Overall Progress</div>
-            </div>
+          <div className="bg-white rounded-xl shadow-sm border p-3 sm:p-5">
+            <Target className="w-5 h-5 sm:w-7 sm:h-7 text-red-600 mb-1 sm:mb-2" />
+            <div className="text-xl sm:text-2xl font-bold">{totalProgress}%</div>
+            <div className="text-gray-600 text-xs sm:text-sm">Progress</div>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-4 sm:gap-8">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {/* My Courses */}
-            <div className="bg-white rounded-xl shadow-sm border p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold">My Courses</h2>
-                <Link href="/lms/courses" className="text-blue-900 text-sm font-medium hover:underline">
+            <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6">
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <h2 className="text-base sm:text-lg font-semibold">My Courses</h2>
+                <Link href="/lms/courses" className="text-blue-900 text-xs sm:text-sm font-medium hover:underline">
                   View All
                 </Link>
               </div>
               {typedEnrollments.length > 0 ? (
-                <div className="space-y-4">
+                <div className="space-y-2 sm:space-y-4">
                   {typedEnrollments.slice(0, 4).map((enrollment) => (
                     <Link 
                       key={enrollment.id} 
                       href={`/lms/courses/${enrollment.course?.id}`}
-                      className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
+                      className="flex items-center gap-3 sm:gap-4 p-2.5 sm:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
                     >
-                      <div className="w-16 h-12 bg-gray-200 rounded overflow-hidden flex-shrink-0 relative">
+                      <div className="w-12 h-9 sm:w-16 sm:h-12 bg-gray-200 rounded overflow-hidden flex-shrink-0 relative">
                         {enrollment.course?.thumbnail_url ? (
                           <Image src={enrollment.course.thumbnail_url} alt="" fill className="object-cover" sizes="64px" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
-                            <BookOpen className="w-5 h-5 text-gray-400" />
+                            <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
                           </div>
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-medium truncate">{enrollment.course?.title}</h3>
-                        <div className="flex items-center gap-3 mt-1">
-                          <div className="flex-1 max-w-[120px] h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                        <h3 className="font-medium truncate text-sm sm:text-base">{enrollment.course?.title}</h3>
+                        <div className="flex items-center gap-2 sm:gap-3 mt-1">
+                          <div className="flex-1 max-w-[80px] sm:max-w-[120px] h-1 sm:h-1.5 bg-gray-200 rounded-full overflow-hidden">
                             <div 
                               className="h-full bg-blue-900 rounded-full" 
                               style={{ width: `${enrollment.progress || 0}%` }} 
                             />
                           </div>
-                          <span className="text-xs text-gray-500">{enrollment.progress || 0}%</span>
+                          <span className="text-[10px] sm:text-xs text-gray-500">{enrollment.progress || 0}%</span>
                         </div>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-gray-400" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 flex-shrink-0" />
                     </Link>
                   ))}
                 </div>
