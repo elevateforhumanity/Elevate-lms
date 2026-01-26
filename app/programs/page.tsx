@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import ProgramsHeroVideo from './ProgramsHeroVideo';
@@ -86,8 +87,7 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-
-
+      {/* Avatar Guide - Below Hero */}
       {/* Programs Grid */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -98,12 +98,14 @@ export default function ProgramsPage() {
                 href={category.href}
                 className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
               >
-                <div 
-                  className="relative h-48 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${category.image})` }}
-                  role="img"
-                  aria-label={category.title}
-                >
+                <div className="relative h-48">
+                  <Image
+                    src={category.image}
+                    alt={category.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    quality={85}
+                  />
                   {category.count > 0 && (
                     <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                       {category.count} Programs

@@ -136,12 +136,14 @@ export default function SkilledTradesProgramsPage() {
                   href={`/programs/${program.slug}`}
                   className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
                 >
-                  <div 
-                    className="relative h-48 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${programImages[program.slug] || programImages['default']})` }}
-                    role="img"
-                    aria-label={program.name}
-                  >
+                  <div className="relative h-48">
+                    <Image
+                      src={programImages[program.slug] || programImages['default']}
+                      alt={program.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      quality={85}
+                    />
                     <div className="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
                       {program.duration_weeks ? (program.duration_weeks > 20 ? `${Math.round(program.duration_weeks / 4)} Months` : `${program.duration_weeks} Weeks`) : 'Flexible'}
                     </div>
