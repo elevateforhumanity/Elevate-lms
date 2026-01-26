@@ -75,67 +75,69 @@ export default function BarberProgramPage() {
         </div>
       </section>
 
-      {/* Video Explainer Section */}
+      {/* How It Works Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Video */}
-            <div className="relative">
-              <div 
-                className="aspect-video bg-gray-900 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center"
-                style={{ 
-                  backgroundImage: 'url(/images/beauty/program-barber-training.jpg)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              >
-                <div className="absolute inset-0 bg-black/40" />
-                <a 
-                  href="https://www.youtube.com/watch?v=barber-program-video"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative z-10 w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors shadow-lg"
-                >
-                  <Play className="w-8 h-8 text-white ml-1" />
-                </a>
-              </div>
-              <p className="text-center text-gray-500 mt-4 text-sm">Watch: How the Barber Apprenticeship Works</p>
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
+            How It Works
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Our apprenticeship program is simple. Here's your path to becoming a licensed barber.
+          </p>
+          
+          {/* 4 Step Process - Visual Cards */}
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="bg-white rounded-2xl p-6 shadow-lg text-center relative">
+              <div className="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-4">1</div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Apply Online</h3>
+              <p className="text-gray-600 text-sm">Fill out a quick form. Takes 5 minutes.</p>
+              <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 text-orange-300 text-4xl">→</div>
             </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg text-center relative">
+              <div className="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-4">2</div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Get Matched</h3>
+              <p className="text-gray-600 text-sm">We pair you with a licensed barbershop near you.</p>
+              <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 text-orange-300 text-4xl">→</div>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg text-center relative">
+              <div className="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-4">3</div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Train & Earn</h3>
+              <p className="text-gray-600 text-sm">Learn from master barbers. Get paid from day one.</p>
+              <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 text-orange-300 text-4xl">→</div>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
+              <div className="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-4">
+                <Award className="w-8 h-8" />
+              </div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Get Licensed!</h3>
+              <p className="text-gray-600 text-sm">Complete 2,000 hours. Pass the exam. You're a barber!</p>
+            </div>
+          </div>
 
-            {/* Process Steps */}
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                How It Works
-              </h2>
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 text-lg">Apply Online</h3>
-                    <p className="text-gray-600">Fill out a quick application. We'll contact you within 1-2 days.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 text-lg">Get Matched with a Shop</h3>
-                    <p className="text-gray-600">We pair you with a licensed barbershop that fits your goals and location.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 text-lg">Train & Earn</h3>
-                    <p className="text-gray-600">Work alongside master barbers. Learn real skills. Get paid from day one.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">4</div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 text-lg">Get Licensed</h3>
-                    <p className="text-gray-600">Complete 2,000 hours and pass the state exam. You're a licensed barber!</p>
-                  </div>
-                </div>
+          {/* Timeline Info */}
+          <div className="mt-12 bg-orange-100 rounded-2xl p-8 text-center">
+            <div className="flex flex-wrap justify-center gap-8">
+              <div>
+                <p className="text-3xl font-bold text-orange-600">2,000</p>
+                <p className="text-gray-700">Training Hours</p>
+              </div>
+              <div className="hidden sm:block w-px bg-orange-300"></div>
+              <div>
+                <p className="text-3xl font-bold text-orange-600">15-24</p>
+                <p className="text-gray-700">Months to Complete</p>
+              </div>
+              <div className="hidden sm:block w-px bg-orange-300"></div>
+              <div>
+                <p className="text-3xl font-bold text-orange-600">$45K+</p>
+                <p className="text-gray-700">Avg. Salary After</p>
+              </div>
+              <div className="hidden sm:block w-px bg-orange-300"></div>
+              <div>
+                <p className="text-3xl font-bold text-green-600">Paid</p>
+                <p className="text-gray-700">While You Learn</p>
               </div>
             </div>
           </div>
