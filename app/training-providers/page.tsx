@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { CheckCircle, Users, Award, Building2, TrendingUp, Shield, Phone, ArrowRight } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -92,15 +91,6 @@ const programTypes = [
 export default function TrainingProvidersPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/hero-employers-avatar.mp4"
-        avatarName="Partner Guide"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
-      
       {/* Hero Section */}
       <section className="relative min-h-[500px] flex items-center">
         <div className="absolute inset-0">

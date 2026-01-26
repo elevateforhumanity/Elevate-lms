@@ -5,7 +5,6 @@ import {
   Building2, Calendar, CheckCircle, 
   ArrowRight, Users, Briefcase, CreditCard, Phone
 } from 'lucide-react';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 export const dynamic = 'force-dynamic';
 
@@ -35,15 +34,6 @@ export default async function TuitionPage() {
     .order('order_index');
   return (
     <div className="min-h-screen bg-white">
-      {/* AI Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/financial-guide.mp4"
-        avatarName="Tuition Guide"
-        position="bottom-right"
-        autoPlay={false}
-        showOnLoad={true}
-      />
-      
       {/* Hero */}
       <section className="bg-slate-900 text-white py-12 sm:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

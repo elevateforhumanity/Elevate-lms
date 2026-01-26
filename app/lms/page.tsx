@@ -3,7 +3,6 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import {
   BookOpen,
   Play,
@@ -204,15 +203,6 @@ export default async function LMSPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/ai-tutor.mp4"
-        avatarName="AI Tutor"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
-      
       {/* Header */}
       <div className="bg-blue-900 text-white py-6">
         <div className="max-w-7xl mx-auto px-4">

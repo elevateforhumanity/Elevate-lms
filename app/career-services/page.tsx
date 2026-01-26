@@ -2,7 +2,6 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import {
   Briefcase,
   FileText,
@@ -90,13 +89,6 @@ export default async function CareerServicesPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/home-welcome.mp4"
-        avatarName="Career Guide"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
       {/* Hero */}
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-green-800/80 z-10" />

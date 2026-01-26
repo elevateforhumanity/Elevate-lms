@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 export const metadata: Metadata = {
   title: 'Staff Portal | Elevate For Humanity',
@@ -20,15 +19,6 @@ const features = [
 export default function StaffPortalLanding() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/orientation-guide.mp4"
-        avatarName="Staff Guide"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
-      
       {/* Hero with image */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image

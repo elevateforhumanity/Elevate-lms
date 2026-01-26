@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { Building2, Users, FileText, BarChart3, DollarSign, Briefcase } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -12,15 +11,6 @@ export const metadata: Metadata = {
 export default function EmployerPortalLanding() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/hero-employers-avatar.mp4"
-        avatarName="Employer Guide"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
-      
       {/* Hero with Image */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image

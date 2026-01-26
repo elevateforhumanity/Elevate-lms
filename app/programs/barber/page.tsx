@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Scissors, Clock, DollarSign, Award, MapPin, Calendar, ArrowRight, CheckCircle, Users } from 'lucide-react';
@@ -67,15 +66,6 @@ export default async function BarberProgramPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* AI Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/barber-guide.mp4"
-        avatarName="Barber Guide"
-        position="bottom-right"
-        autoPlay={false}
-        showOnLoad={true}
-      />
-      
       {/* Breadcrumbs */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">

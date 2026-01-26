@@ -5,7 +5,6 @@ import { useSearchParams } from 'next/navigation';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { Phone, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 // Pathway slug to program name mapping
@@ -164,15 +163,6 @@ function ApplyPageContent() {
 
   return (
     <>
-      {/* Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/home-welcome.mp4"
-        avatarName="Application Guide"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
-      
       <ModernLandingHero
         badge="⚡ Eligibility & Career Alignment"
         headline="Start Your Career Pathway"

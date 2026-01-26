@@ -5,7 +5,6 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 import {
   Users,
@@ -57,15 +56,6 @@ export default async function OnboardingPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/orientation-guide.mp4"
-        avatarName="Orientation Guide"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
-      
       <section className="relative h-[400px] sm:h-[500px] w-full overflow-hidden bg-white">
         <Image
           src="/og-default.jpg"

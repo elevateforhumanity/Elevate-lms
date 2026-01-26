@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import {
   FileText,
   Users,
@@ -30,14 +29,6 @@ export const metadata: Metadata = {
 export default function HowItWorksPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Avatar Guide - Top of page, auto-plays */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/home-welcome.mp4"
-        avatarName="Process Guide"
-        position="top-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
       {/* Hero - Clean image, no text overlay */}
       <section className="relative h-[50vh] overflow-hidden">
         <Image

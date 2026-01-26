@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import {
   BookOpen,
   Calendar,
@@ -227,15 +226,6 @@ export default async function StudentPortalPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/ai-tutor.mp4"
-        avatarName="Student Guide"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
-      
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image

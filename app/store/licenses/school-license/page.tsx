@@ -4,22 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Check, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 export default function SchoolLicensePage() {
   const [activeSection, setActiveSection] = useState<string | null>('maria');
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/store-assistant.mp4"
-        avatarName="Sales Guide"
-        position="top-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
-
       {/* Hero - Clean */}
       <section className="relative h-[50vh] overflow-hidden">
         <Image

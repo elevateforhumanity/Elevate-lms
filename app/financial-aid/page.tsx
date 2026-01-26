@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { DollarSign, CheckCircle, FileText, Phone, ArrowRight, Shield, Clock, Users, Calculator } from 'lucide-react';
 import { FinancialAidCalculator } from '@/components/FinancialAidCalculator';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 export const metadata: Metadata = {
   title: 'Financial Aid & Funding | Elevate For Humanity',
@@ -51,15 +50,6 @@ const steps = [
 export default function FinancialAidPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* AI Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/financial-guide.mp4"
-        avatarName="Financial Aid Guide"
-        position="bottom-right"
-        autoPlay={false}
-        showOnLoad={true}
-      />
-      
       {/* Hero with Image */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden">
         <Image

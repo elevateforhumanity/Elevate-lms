@@ -13,7 +13,6 @@ import {
   ArrowRight,
   Star
 } from 'lucide-react';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 
 export const metadata: Metadata = {
   alternates: {
@@ -69,14 +68,6 @@ export default function FounderPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Avatar Video Overlay */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/home-welcome.mp4"
-        avatarName="Welcome"
-        position="bottom-right"
-        autoPlay={true}
-        showOnLoad={true}
-      />
-
       {/* Hero Section */}
       <section className="relative min-h-[500px] flex items-end overflow-hidden">
         <Image
