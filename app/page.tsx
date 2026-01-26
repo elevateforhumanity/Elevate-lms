@@ -103,14 +103,10 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-6 mb-10">
             {/* WIOA Card */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full">
-              <div className="relative" style={{ height: '192px' }}>
-                <img
-                  src="/images/funding/funding-dol-program-v2.jpg"
-                  alt="WIOA funded career training"
-                  width={400}
-                  height={192}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
+              <div 
+                className="h-48 bg-cover bg-center relative"
+                style={{ backgroundImage: 'url(/images/funding/funding-dol-program-v2.jpg)' }}
+              >
                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   WIOA FUNDING
                 </div>
@@ -128,14 +124,10 @@ export default function HomePage() {
             
             {/* Apprenticeships Card */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full">
-              <div className="relative" style={{ height: '192px' }}>
-                <img
-                  src="/images/funding/funding-dol-program.jpg"
-                  alt="Apprenticeship training"
-                  width={400}
-                  height={192}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
+              <div 
+                className="h-48 bg-cover bg-center relative"
+                style={{ backgroundImage: 'url(/images/funding/funding-dol-program.jpg)' }}
+              >
                 <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   APPRENTICESHIPS
                 </div>
@@ -153,14 +145,10 @@ export default function HomePage() {
             
             {/* JRI Card */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full">
-              <div className="relative" style={{ height: '192px' }}>
-                <img
-                  src="/images/funding/funding-jri-program-v2.jpg"
-                  alt="JRI funding programs"
-                  width={400}
-                  height={192}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
+              <div 
+                className="h-48 bg-cover bg-center relative"
+                style={{ backgroundImage: 'url(/images/funding/funding-jri-program-v2.jpg)' }}
+              >
                 <div className="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   JRI FUNDING
                 </div>
