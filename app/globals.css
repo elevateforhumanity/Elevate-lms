@@ -198,22 +198,10 @@ html, body {
     font-family: inherit;
   }
 
+  /* Only apply to non-Next.js images */
   img:not([data-nimg]) {
     max-width: 100%;
     height: auto;
-    background-color: #f1f5f9;
-  }
-  
-  /* Next.js Image with fill needs absolute positioning */
-  img[data-nimg="fill"] {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    object-fit: cover;
   }
 
   /* Focus visible styles for accessibility */
