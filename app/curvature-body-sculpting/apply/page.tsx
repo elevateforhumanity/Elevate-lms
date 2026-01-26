@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -12,6 +12,7 @@ import {
   CheckCircle,
   ArrowLeft,
   Upload,
+  Loader2,
 } from 'lucide-react';
 
 const positions = [
@@ -21,7 +22,7 @@ const positions = [
   { id: 'apprentice', name: 'Esthetician Apprentice' },
 ];
 
-export default function ApplyPage() {
+function ApplyPageContent() {
   const searchParams = useSearchParams();
   const positionParam = searchParams.get('position') || '';
   
@@ -292,5 +293,21 @@ export default function ApplyPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center">
+      <Loader2 className="w-10 h-10 text-purple-500 animate-spin" />
+    </div>
+  );
+}
+
+export default function ApplyPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <ApplyPageContent />
+    </Suspense>
   );
 }

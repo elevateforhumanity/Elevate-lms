@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { 
@@ -17,7 +17,7 @@ interface ActiveSession {
   duration: number;
 }
 
-export default function ApprenticeCheckInPage() {
+function CheckInContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const codeFromUrl = searchParams.get('code');
@@ -352,5 +352,21 @@ export default function ApprenticeCheckInPage() {
         )}
       </main>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <Loader2 className="w-10 h-10 text-blue-500 animate-spin" />
+    </div>
+  );
+}
+
+export default function ApprenticeCheckInPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <CheckInContent />
+    </Suspense>
   );
 }

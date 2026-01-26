@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, Loader2 } from 'lucide-react';
 
 const organizationTypes = [
   { value: 'workforce_board', label: 'Workforce Development Board' },
@@ -62,7 +62,7 @@ const licenseTiers: Record<string, string> = {
   renewal: 'Annual License Renewal ($15,000 – $30,000)',
 };
 
-export default function RequestLicensePage() {
+function RequestLicenseContent() {
   const searchParams = useSearchParams();
   const tier = searchParams.get('tier') || '';
 
@@ -429,5 +429,21 @@ export default function RequestLicensePage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <Loader2 className="w-10 h-10 text-slate-500 animate-spin" />
+    </div>
+  );
+}
+
+export default function RequestLicensePage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <RequestLicenseContent />
+    </Suspense>
   );
 }

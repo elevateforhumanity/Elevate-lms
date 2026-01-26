@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 const categories = [
   { value: 'enrollment', label: 'Enrollment & Admissions' },
@@ -23,7 +23,7 @@ const priorities = [
 
 
 
-export default function SubmitTicketPage() {
+function SubmitTicketContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || 'general';
   
@@ -270,5 +270,21 @@ export default function SubmitTicketPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <Loader2 className="w-10 h-10 text-blue-500 animate-spin" />
+    </div>
+  );
+}
+
+export default function SubmitTicketPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <SubmitTicketContent />
+    </Suspense>
   );
 }

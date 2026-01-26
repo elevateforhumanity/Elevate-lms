@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -9,6 +10,7 @@ import {
   MessageCircle,
   Calendar,
   ArrowRight,
+  Loader2,
 } from 'lucide-react';
 
 const LICENSES: Record<string, { name: string; price: number }> = {
@@ -17,7 +19,7 @@ const LICENSES: Record<string, { name: string; price: number }> = {
   'enterprise-clone-license': { name: 'Elevate LMS Enterprise License', price: 5000 },
 };
 
-export default function TrialSuccessPage() {
+function TrialSuccessContent() {
   const searchParams = useSearchParams();
   const licenseSlug = searchParams.get('license') || 'starter-license';
   const license = LICENSES[licenseSlug] || LICENSES['starter-license'];
@@ -131,5 +133,21 @@ export default function TrialSuccessPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <Loader2 className="w-10 h-10 text-blue-500 animate-spin" />
+    </div>
+  );
+}
+
+export default function TrialSuccessPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <TrialSuccessContent />
+    </Suspense>
   );
 }
