@@ -238,7 +238,7 @@ export default async function StudentPortalPage() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/80" />
+
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -279,6 +279,12 @@ export default async function StudentPortalPage() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/ai-tutor.mp4" 
+        title="Student Welcome" 
+      />
 
       {/* My Enrollments - Shows for logged-in users */}
       <section className="py-8 bg-gray-50">

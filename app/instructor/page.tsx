@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GraduationCap, BookOpen, Users, BarChart3, FileText, MessageSquare } from 'lucide-react';
+import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
   title: 'Instructor Portal | Elevate For Humanity',
@@ -40,6 +41,12 @@ export default function InstructorPortalLanding() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/ai-tutor.mp4" 
+        title="Instructor Welcome" 
+      />
 
       <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">

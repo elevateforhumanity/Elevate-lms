@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Building2, Users, FileText, BarChart3, DollarSign, Briefcase } from 'lucide-react';
+import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
   title: 'Employer Portal | Elevate For Humanity',
@@ -40,6 +41,12 @@ export default function EmployerPortalLanding() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/orientation-guide.mp4" 
+        title="Employer Welcome" 
+      />
 
       <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
