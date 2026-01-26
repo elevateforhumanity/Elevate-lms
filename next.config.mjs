@@ -375,11 +375,11 @@ const nextConfig = {
         ],
       },
 
-      // 3) Next image optimizer should not be cached forever
+      // 3) Next image optimizer - cache for 1 year (images are versioned by URL params)
       {
         source: '/_next/image',
         headers: [
-          { key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' },
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
 
