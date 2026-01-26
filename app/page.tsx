@@ -107,7 +107,7 @@ export default function HomePage() {
                 <img
                   src="/images/funding/funding-dol-program-v2.jpg"
                   alt="WIOA funded career training"
-                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   WIOA FUNDING
@@ -130,7 +130,7 @@ export default function HomePage() {
                 <img
                   src="/images/funding/funding-dol-program.jpg"
                   alt="Apprenticeship training"
-                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   APPRENTICESHIPS
@@ -153,7 +153,7 @@ export default function HomePage() {
                 <img
                   src="/images/funding/funding-jri-program-v2.jpg"
                   alt="JRI funding programs"
-                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div className="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   JRI FUNDING
