@@ -102,12 +102,14 @@ export default function HomePage() {
           
           <div className="grid md:grid-cols-3 gap-6 mb-10">
             {/* WIOA Card */}
-            <Link href="/wioa-eligibility" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full">
               <div className="relative" style={{ height: '192px' }}>
                 <img
                   src="/images/funding/funding-dol-program-v2.jpg"
                   alt="WIOA funded career training"
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                  width={400}
+                  height={192}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   WIOA FUNDING
@@ -118,19 +120,21 @@ export default function HomePage() {
                 <p className="text-slate-600 mb-4 flex-1">
                   Federal program that pays for job training. Covers tuition, books, supplies, and even transportation or childcare.
                 </p>
-                <p className="text-sm text-blue-600 font-medium">
+                <Link href="/wioa-eligibility" className="text-sm text-blue-600 font-medium hover:underline">
                   Learn more about WIOA →
-                </p>
+                </Link>
               </div>
-            </Link>
+            </div>
             
             {/* Apprenticeships Card */}
-            <Link href="/apprenticeships" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full">
               <div className="relative" style={{ height: '192px' }}>
                 <img
                   src="/images/funding/funding-dol-program.jpg"
                   alt="Apprenticeship training"
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                  width={400}
+                  height={192}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   APPRENTICESHIPS
@@ -141,19 +145,21 @@ export default function HomePage() {
                 <p className="text-slate-600 mb-4 flex-1">
                   USDOL-registered apprenticeships let you work and get paid while training. Graduate with experience and a job.
                 </p>
-                <p className="text-sm text-green-600 font-medium">
+                <Link href="/apprenticeships" className="text-sm text-green-600 font-medium hover:underline">
                   View apprenticeship programs →
-                </p>
+                </Link>
               </div>
-            </Link>
+            </div>
             
             {/* JRI Card */}
-            <Link href="/jri" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full">
               <div className="relative" style={{ height: '192px' }}>
                 <img
                   src="/images/funding/funding-jri-program-v2.jpg"
                   alt="JRI funding programs"
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                  width={400}
+                  height={192}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div className="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   JRI FUNDING
@@ -164,11 +170,11 @@ export default function HomePage() {
                 <p className="text-slate-600 mb-4 flex-1">
                   100% free training for justice-involved individuals. Second chance employment support and career services.
                 </p>
-                <p className="text-sm text-purple-600 font-medium">
+                <Link href="/jri" className="text-sm text-purple-600 font-medium hover:underline">
                   Learn about JRI programs →
-                </p>
+                </Link>
               </div>
-            </Link>
+            </div>
           </div>
 
           {/* CTA */}
