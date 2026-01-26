@@ -177,7 +177,7 @@ export default function SupersonicFastCashPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             <Link
               href="/supersonic-fast-cash/services/tax-preparation"
               className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
@@ -242,6 +242,23 @@ export default function SupersonicFastCashPage() {
                 </h3>
                 <p className="text-gray-600 text-sm">
                   Peace of mind with full audit representation.
+                </p>
+              </div>
+            </Link>
+
+            <Link
+              href="/supersonic-fast-cash/training"
+              className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
+            >
+              <div className="relative h-36">
+                <Image src="/images/business/tax-prep-certification-optimized.jpg" alt="Tax Preparer Training" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">
+                  Become a Tax Pro
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Get trained and certified as a tax preparer.
                 </p>
               </div>
             </Link>
@@ -330,7 +347,7 @@ export default function SupersonicFastCashPage() {
       {/* Quick Links */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             <Link
               href="/supersonic-fast-cash/calculator"
               className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition-colors"
@@ -351,6 +368,13 @@ export default function SupersonicFastCashPage() {
             >
               <Upload className="w-8 h-8 text-purple-600" />
               <span className="font-semibold text-gray-900">Upload Documents</span>
+            </Link>
+            <Link
+              href="/supersonic-fast-cash/training"
+              className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition-colors"
+            >
+              <BadgeCheck className="w-8 h-8 text-orange-600" />
+              <span className="font-semibold text-gray-900">Tax Training</span>
             </Link>
             <Link
               href="/supersonic-fast-cash/careers"
