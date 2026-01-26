@@ -12,6 +12,7 @@ const NAV_ITEMS = [
     name: 'Programs', 
     href: '/programs',
     subItems: [
+      { name: 'Barber Apprenticeship', href: '/programs/barber' },
       { name: 'Healthcare', href: '/programs/healthcare' },
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
@@ -80,12 +81,13 @@ const NAV_ITEMS = [
     name: 'Portals', 
     href: '/dashboard',
     subItems: [
-      { name: 'Admin Dashboard', href: '/admin' },
-      { name: 'Staff Portal', href: '/staff-portal' },
-      { name: 'Partner Portal', href: '/partner-portal' },
-      { name: 'Employer Portal', href: '/employer-portal' },
+      { name: 'Sign In', href: '/login' },
+      { name: 'Create Account', href: '/signup' },
       { name: 'Student Portal', href: '/student-portal' },
+      { name: 'Employer Portal', href: '/employer-portal' },
+      { name: 'Partner Portal', href: '/partner-portal' },
       { name: 'Instructor Portal', href: '/instructor' },
+      { name: 'Admin Dashboard', href: '/admin' },
     ]
   },
   { 
@@ -121,10 +123,12 @@ const DESKTOP_NAV_LINKS = [
     href: '/programs',
     subItems: [
       { name: 'All Programs', href: '/programs' },
+      { name: 'Barber Apprenticeship', href: '/programs/barber' },
       { name: 'Healthcare', href: '/programs/healthcare' },
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
       { name: 'Business', href: '/programs/business' },
+      { name: 'Apprenticeships', href: '/apprenticeships' },
     ]
   },
   { 
@@ -312,7 +316,7 @@ export default function SiteHeader() {
 
           {/* Desktop Navigation */}
           <nav 
-            className="hidden md:flex items-center gap-1" 
+            className="hidden lg:flex items-center gap-1" 
             role="navigation" 
             aria-label="Main navigation"
           >
@@ -359,7 +363,7 @@ export default function SiteHeader() {
             {/* Sign In / Dashboard - desktop only */}
             <Link
               href={user ? "/lms/dashboard" : "/login"}
-              className="hidden md:inline-flex px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              className="hidden lg:inline-flex px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               {user ? 'Dashboard' : 'Sign In'}
             </Link>
@@ -377,7 +381,7 @@ export default function SiteHeader() {
             <button
               ref={menuButtonRef}
               onClick={openMobileMenu}
-              className="md:hidden flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-100 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-200 active:bg-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              className="lg:hidden flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-100 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-200 active:bg-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
               aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"

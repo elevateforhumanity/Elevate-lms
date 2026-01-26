@@ -10,6 +10,7 @@ const footerSections = [
     title: 'Programs',
     links: [
       { name: 'All Programs', href: '/programs' },
+      { name: 'Barber Apprenticeship', href: '/programs/barber' },
       { name: 'Healthcare', href: '/programs/healthcare' },
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
@@ -98,11 +99,12 @@ const footerSections = [
   {
     title: 'Portals',
     links: [
+      { name: 'Sign In', href: '/login' },
+      { name: 'Create Account', href: '/signup' },
       { name: 'Student LMS', href: '/lms' },
       { name: 'Student Portal', href: '/student-portal' },
       { name: 'Employer Portal', href: '/employer-portal' },
       { name: 'Partner Portal', href: '/partner-portal' },
-      { name: 'Staff Portal', href: '/staff-portal' },
       { name: 'Instructor Portal', href: '/instructor' },
     ],
   },
