@@ -1,58 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Image Diagnostic</title>
+  <title>Diagnostic</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; max-width: 1200px; margin: 0 auto; }
+    body { font-family: sans-serif; padding: 20px; }
     .test { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
     .pass { background: #d4edda; }
     .fail { background: #f8d7da; }
-    img { max-width: 300px; height: 200px; object-fit: cover; }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    img { max-width: 300px; height: auto; }
   </style>
 </head>
 <body>
   <h1>Image Loading Diagnostic</h1>
   
-  <h2>Funding Images (should work)</h2>
-  <div class="grid">
-    <div class="test" id="t1">
-      <h4>WIOA</h4>
-      <img src="/images/funding/funding-dol-program-v2.jpg" onload="this.parentElement.classList.add('pass')" onerror="this.parentElement.classList.add('fail')">
-    </div>
-    <div class="test" id="t2">
-      <h4>Apprenticeships</h4>
-      <img src="/images/funding/funding-dol-program.jpg" onload="this.parentElement.classList.add('pass')" onerror="this.parentElement.classList.add('fail')">
-    </div>
-    <div class="test" id="t3">
-      <h4>JRI</h4>
-      <img src="/images/funding/funding-jri-program-v2.jpg" onload="this.parentElement.classList.add('pass')" onerror="this.parentElement.classList.add('fail')">
-    </div>
+  <div class="test" id="test1">
+    <h3>Test 1: Direct JPG</h3>
+    <img src="/images/funding/funding-jri-program-v2.jpg" 
+         onload="this.parentElement.classList.add('pass')" 
+         onerror="this.parentElement.classList.add('fail')">
   </div>
-
-  <h2>Program Category Images (the 3 not loading)</h2>
-  <div class="grid">
-    <div class="test" id="t4">
-      <h4>Healthcare</h4>
-      <img src="/images/healthcare/program-cna-training.jpg" onload="this.parentElement.classList.add('pass')" onerror="this.parentElement.classList.add('fail')">
-    </div>
-    <div class="test" id="t5">
-      <h4>Skilled Trades</h4>
-      <img src="/images/trades/hero-program-hvac.jpg" onload="this.parentElement.classList.add('pass')" onerror="this.parentElement.classList.add('fail')">
-    </div>
-    <div class="test" id="t6">
-      <h4>Technology</h4>
-      <img src="/images/technology/hero-programs-technology.jpg" onload="this.parentElement.classList.add('pass')" onerror="this.parentElement.classList.add('fail')">
-    </div>
+  
+  <div class="test" id="test2">
+    <h3>Test 2: Next.js Optimized</h3>
+    <img src="/_next/image?url=%2Fimages%2Ffunding%2Ffunding-jri-program-v2.jpg&w=640&q=75" 
+         onload="this.parentElement.classList.add('pass')" 
+         onerror="this.parentElement.classList.add('fail')">
   </div>
-
-  <h2>Barber Image</h2>
-  <div class="test" id="t7">
-    <h4>Barber Training</h4>
-    <img src="/images/beauty/program-barber-training.jpg" onload="this.parentElement.classList.add('pass')" onerror="this.parentElement.classList.add('fail')">
+  
+  <div class="test" id="test3">
+    <h3>Test 3: Logo PNG</h3>
+    <img src="/logo.png" 
+         onload="this.parentElement.classList.add('pass')" 
+         onerror="this.parentElement.classList.add('fail')">
+  </div>
+  
+  <div class="test" id="test4">
+    <h3>Test 4: CSS Background</h3>
+    <div style="width:300px;height:200px;background:url('/images/funding/funding-jri-program-v2.jpg') center/cover;"></div>
   </div>
 
   <h2>Results</h2>
-  <p>Green = loaded successfully, Red = failed to load</p>
+  <p>Green = loaded, Red = failed</p>
+  <p>If all fail, there's a network/proxy issue with Gitpod preview.</p>
+  <p>If some pass, the issue is specific to how Next.js serves images.</p>
 </body>
 </html>
