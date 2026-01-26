@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -9,7 +9,7 @@ import { AIInstructorWidget } from '@/components/AIInstructorWidget';
 import { LogoStamp } from '@/components/layout/LogoBanner';
 import { canAccessRoute, getUnauthorizedRedirect } from '@/lib/auth/lms-routes';
 
-export default function LmsAppLayout({ children }: { children: ReactNode }) {
+function LmsAppLayoutInner({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -91,5 +91,20 @@ export default function LmsAppLayout({ children }: { children: ReactNode }) {
       {/* AI Instructor Widget - Available on all LMS pages */}
       <AIInstructorWidget context="lesson" />
     </div>
+  );
+}
+
+export default function LmsAppLayout({ children }: { children: ReactNode }) {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-slate-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <LmsAppLayoutInner>{children}</LmsAppLayoutInner>
+    </Suspense>
   );
 }
