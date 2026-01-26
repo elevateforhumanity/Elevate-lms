@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diagnostic</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .test { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+    .pass { background: #d4edda; }
+    .fail { background: #f8d7da; }
+    img { max-width: 300px; height: auto; }
+  </style>
+</head>
+<body>
+  <h1>Image Loading Diagnostic</h1>
+  
+  <div class="test" id="test1">
+    <h3>Test 1: Direct JPG</h3>
+    <img src="/images/funding/funding-jri-program-v2.jpg" 
+         onload="this.parentElement.classList.add('pass')" 
+         onerror="this.parentElement.classList.add('fail')">
+  </div>
+  
+  <div class="test" id="test2">
+    <h3>Test 2: Next.js Optimized</h3>
+    <img src="/_next/image?url=%2Fimages%2Ffunding%2Ffunding-jri-program-v2.jpg&w=640&q=75" 
+         onload="this.parentElement.classList.add('pass')" 
+         onerror="this.parentElement.classList.add('fail')">
+  </div>
+  
+  <div class="test" id="test3">
+    <h3>Test 3: Logo PNG</h3>
+    <img src="/logo.png" 
+         onload="this.parentElement.classList.add('pass')" 
+         onerror="this.parentElement.classList.add('fail')">
+  </div>
+  
+  <div class="test" id="test4">
+    <h3>Test 4: CSS Background</h3>
+    <div style="width:300px;height:200px;background:url('/images/funding/funding-jri-program-v2.jpg') center/cover;"></div>
+  </div>
+
+  <h2>Results</h2>
+  <p>Green = loaded, Red = failed</p>
+  <p>If all fail, there's a network/proxy issue with Gitpod preview.</p>
+  <p>If some pass, the issue is specific to how Next.js serves images.</p>
+</body>
+</html>

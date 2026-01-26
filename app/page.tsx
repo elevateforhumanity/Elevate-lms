@@ -109,6 +109,7 @@ export default function HomePage() {
                   src="/images/funding/funding-dol-program-v2.jpg"
                   alt="WIOA funded career training"
                   fill
+                  priority
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
@@ -134,6 +135,7 @@ export default function HomePage() {
                   src="/images/funding/funding-dol-program.jpg"
                   alt="Apprenticeship training"
                   fill
+                  priority
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
@@ -159,6 +161,7 @@ export default function HomePage() {
                   src="/images/funding/funding-jri-program-v2.jpg"
                   alt="JRI funding programs"
                   fill
+                  priority
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
