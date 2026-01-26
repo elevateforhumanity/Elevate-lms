@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from 'react';
 
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
+import PageAvatar from '@/components/PageAvatar';
 
 interface Program {
   id: string;
@@ -121,6 +122,12 @@ export default function HealthcareProgramsPage() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/healthcare-guide.mp4" 
+        title="Healthcare Guide" 
+      />
 
       {/* Breadcrumbs */}
       <Breadcrumbs />

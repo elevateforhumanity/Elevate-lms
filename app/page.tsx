@@ -4,6 +4,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import HomeHeroVideo from './HomeHeroVideo';
+import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
   title: 'Free Career Training | Elevate for Humanity',
@@ -70,10 +71,16 @@ export default function HomePage() {
           
           <div className="flex flex-wrap gap-3 items-center">
             <Link 
-              href="/apply"
+              href="/enroll"
               className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all hover:scale-105 text-base shadow-lg shadow-blue-600/30"
             >
-              Apply Now — It&apos;s Free
+              Enroll Now — It&apos;s Free
+            </Link>
+            <Link 
+              href="/inquiry"
+              className="inline-flex items-center justify-center bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full font-semibold hover:bg-white/30 transition-all text-base border border-white/30"
+            >
+              Get More Info
             </Link>
             <Link 
               href="tel:317-314-3757"
@@ -86,7 +93,11 @@ export default function HomePage() {
         </div>
       </section>
 
-
+      {/* Avatar Guide - plays with sound on page load */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/home-welcome.mp4" 
+        title="Welcome to Elevate" 
+      />
 
       {/* How No-Cost Training Works */}
       <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">

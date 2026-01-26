@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import PageAvatar from '@/components/PageAvatar';
 
 const contactInfo = [
   { icon: Phone, title: 'Phone', value: '(317) 314-3757', subtitle: 'Mon-Fri 8am-6pm EST', href: 'tel:317-314-3757' },
@@ -68,6 +69,12 @@ export default function ContactPage() {
           <p className="text-xl text-blue-100">We&apos;re here to help with any questions</p>
         </div>
       </div>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/orientation-guide.mp4" 
+        title="Contact Us" 
+      />
 
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">

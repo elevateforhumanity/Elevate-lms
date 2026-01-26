@@ -97,11 +97,18 @@ export default function HeaderMobileMenu({ items }: HeaderMobileMenuProps) {
               Sign In
             </Link>
             <Link
-              href="/apply"
+              href="/inquiry"
+              onClick={() => setIsOpen(false)}
+              className="block w-full text-center py-3 border border-blue-600 text-blue-600 rounded-lg font-semibold"
+            >
+              Get Info
+            </Link>
+            <Link
+              href="/enroll"
               onClick={() => setIsOpen(false)}
               className="block w-full text-center py-3 bg-blue-600 text-white rounded-lg font-semibold"
             >
-              Apply Now
+              Enroll Now
             </Link>
           </div>
         </nav>

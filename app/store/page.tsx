@@ -5,6 +5,7 @@ import { ArrowRight, Home, ChevronRight, Play, ShoppingBag, GraduationCap, BookO
 import { primaryCards, secondaryCards } from '@/lib/store/cards';
 import StoreClientWrapper from './StoreClientWrapper';
 import UniversalSearch from '@/components/search/UniversalSearch';
+import PageAvatar from '@/components/PageAvatar';
 
 
 export const metadata: Metadata = {
@@ -64,7 +65,7 @@ export default function StorePage() {
 
         {/* Hero Section with Search */}
         <section className="relative bg-slate-900 text-white py-16 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+
           <div className="absolute inset-0">
             <Image
               src="/images/store/platform-hero.jpg"
@@ -94,7 +95,11 @@ export default function StorePage() {
           </div>
         </section>
 
-
+        {/* Avatar Guide */}
+        <PageAvatar 
+          videoSrc="/videos/avatars/store-assistant.mp4" 
+          title="Store Assistant" 
+        />
 
         {/* Stats Strip */}
         <section className="bg-orange-600 py-4">

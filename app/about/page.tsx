@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Target, Users, Award, Heart, ArrowRight, CheckCircle, Shield, Building, GraduationCap, Briefcase, MapPin } from 'lucide-react';
+import PageAvatar from '@/components/PageAvatar';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
@@ -25,7 +26,7 @@ export default function AboutPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-12">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4">
             About Elevate for Humanity
@@ -35,6 +36,12 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/about-mission.mp4" 
+        title="About Elevate" 
+      />
 
       {/* WHO WE ARE */}
       <section className="py-16 bg-white">

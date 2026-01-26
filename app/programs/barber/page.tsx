@@ -1,25 +1,39 @@
-import { Metadata } from 'next';
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Scissors, Clock, DollarSign, Award, MapPin, CheckCircle, Play, Users, Building2, GraduationCap, Phone } from 'lucide-react';
-
-export const metadata: Metadata = {
-  title: 'Barber Apprenticeship Program | Elevate For Humanity',
-  description: 'Become a licensed barber through our USDOL Registered Apprenticeship. Learn from master barbers, earn while you learn.',
-};
+import PageAvatar from '@/components/PageAvatar';
 
 export default function BarberProgramPage() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    
+    video.muted = true;
+    video.loop = true;
+    video.play().catch(() => {});
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section 
-        className="relative min-h-[70vh] flex items-center"
-        style={{ 
-          backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url(/images/beauty/program-barber-training.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        <div className="max-w-6xl mx-auto px-4 py-16 w-full">
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover"
+          loop
+          muted
+          playsInline
+          autoPlay
+          preload="auto"
+          poster="/images/beauty/program-barber-training.jpg"
+        >
+          <source src="/videos/barber-hero-final.mp4" type="video/mp4" />
+        </video>
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 w-full">
           <div className="max-w-2xl">
             <span className="inline-block bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
               USDOL Registered Apprenticeship
@@ -74,6 +88,12 @@ export default function BarberProgramPage() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/barber-guide.mp4" 
+        title="Barber Guide" 
+      />
 
       {/* How It Works Section */}
       <section className="py-16 bg-gray-50">

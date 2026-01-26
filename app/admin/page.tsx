@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, Users, Settings, BarChart3, Database, Lock } from 'lucide-react';
+import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
   title: 'Admin Portal | Elevate For Humanity',
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function AdminPortalLanding() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-slate-700 to-slate-900 text-white py-20">
+      <section className="bg-slate-800 text-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center gap-3 mb-6">
             <Shield className="w-10 h-10" />
@@ -27,6 +28,12 @@ export default function AdminPortalLanding() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/orientation-guide.mp4" 
+        title="Admin Overview" 
+      />
 
       <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">

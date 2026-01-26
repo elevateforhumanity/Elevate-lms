@@ -1,96 +1,21 @@
-'use client';
-
-import { useState } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
-import { Phone, Mail, CheckCircle, Loader2, User, GraduationCap } from 'lucide-react';
+import { MessageSquare, GraduationCap, Phone, Clock, CheckCircle } from 'lucide-react';
+import PageAvatar from '@/components/PageAvatar';
 
-const PROGRAMS = [
-  { value: '', label: 'Select a program...' },
-  { value: 'healthcare', label: 'Healthcare Programs' },
-  { value: 'cna', label: '— CNA (Certified Nursing Assistant)' },
-  { value: 'medical-assistant', label: '— Medical Assistant' },
-  { value: 'phlebotomy', label: '— Phlebotomy' },
-  { value: 'skilled-trades', label: 'Skilled Trades Programs' },
-  { value: 'hvac', label: '— HVAC Technician' },
-  { value: 'electrical', label: '— Electrical' },
-  { value: 'welding', label: '— Welding' },
-  { value: 'cdl', label: '— CDL Training' },
-  { value: 'technology', label: 'Technology Programs' },
-  { value: 'it-support', label: '— IT Support' },
-  { value: 'cybersecurity', label: '— Cybersecurity' },
-  { value: 'barber', label: 'Barber Apprenticeship ($4,980 - Self Pay)' },
-  { value: 'other', label: 'Other / Not Sure Yet' },
-];
+export const metadata: Metadata = {
+  title: 'Apply | Elevate for Humanity',
+  description: 'Start your journey to a new career. Choose to get more information or enroll directly in our free workforce training programs.',
+};
 
 export default function ApplyPage() {
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      firstName: formData.get('firstName') as string,
-      lastName: formData.get('lastName') as string,
-      email: formData.get('email') as string,
-      phone: formData.get('phone') as string,
-      program: formData.get('program') as string,
-      message: formData.get('message') as string,
-    };
-
-    try {
-      const res = await fetch('/api/inquiries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) throw new Error('Failed to submit');
-      setSuccess(true);
-    } catch (err) {
-      setError('Something went wrong. Please call us at (317) 314-3757.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (success) {
-    return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-8 h-8 text-green-600" />
-          </div>
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">Thank You!</h1>
-          <p className="text-slate-600 mb-6">
-            We received your inquiry. Our enrollment team will contact you within 1-2 business days.
-          </p>
-          <p className="text-slate-600 mb-8">
-            Need immediate assistance? Call us at{' '}
-            <a href="tel:+13173143757" className="text-blue-600 font-semibold">(317) 314-3757</a>
-          </p>
-          <Link
-            href="/"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700"
-          >
-            Return Home
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero */}
       <section 
         className="relative py-20 px-4"
         style={{ 
-          backgroundImage: 'linear-gradient(to right, rgba(30, 64, 175, 0.95), rgba(59, 130, 246, 0.9)), url(/images/heroes/apply-hero.jpg)',
+          backgroundImage: 'url(/hero-images/apply-hero.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -99,184 +24,135 @@ export default function ApplyPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Start Your New Career
           </h1>
-          <p className="text-xl text-blue-100 mb-6">
-            Fill out this quick form and our enrollment team will help you get started.
+          <p className="text-xl text-blue-100 mb-2">
+            Free workforce training through WIOA funding
           </p>
           <p className="text-blue-200">
-            Most programs are 100% FREE through WIOA funding
+            Most programs are 100% free for eligible Indiana residents
           </p>
         </div>
       </section>
 
-      {/* Form Section */}
-      <section className="py-12 px-4">
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <GraduationCap className="w-6 h-6 text-blue-600" />
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/apply-section-video.mp4" 
+        title="Start Your Journey" 
+      />
+
+      {/* Two Options */}
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-center text-slate-900 mb-4">
+            How Would You Like to Get Started?
+          </h2>
+          <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+            Not sure which program is right for you? Start with an inquiry. Ready to commit? Enroll directly.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Inquiry Option */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-transparent hover:border-blue-500 transition-all">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                <MessageSquare className="w-8 h-8 text-blue-600" />
               </div>
-              <div>
-                <h2 className="text-xl font-bold text-slate-900">Enrollment Inquiry</h2>
-                <p className="text-slate-600 text-sm">We will contact you within 1-2 business days</p>
-              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">Get More Information</h3>
+              <p className="text-slate-600 mb-6">
+                Not sure which program is right for you? Submit an inquiry and our enrollment team will contact you to discuss your options.
+              </p>
+              
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Quick 2-minute form</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Get personalized program recommendations</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Learn about funding options</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Response within 1-2 business days</span>
+                </li>
+              </ul>
+
+              <Link
+                href="/inquiry"
+                className="block w-full text-center py-4 border-2 border-blue-600 text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-colors"
+              >
+                Submit an Inquiry
+              </Link>
             </div>
 
-            {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
-                {error}
+            {/* Enroll Option */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-blue-600 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                Most Popular
               </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-slate-700 mb-1">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="John"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-slate-700 mb-1">
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Smith"
-                  />
-                </div>
+              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                <GraduationCap className="w-8 h-8 text-white" />
               </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="john@example.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="(317) 555-1234"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="program" className="block text-sm font-medium text-slate-700 mb-1">
-                  Program of Interest *
-                </label>
-                <select
-                  id="program"
-                  name="program"
-                  required
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                >
-                  {PROGRAMS.map((p) => (
-                    <option key={p.value} value={p.value}>{p.label}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">
-                  Questions or Comments (Optional)
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={3}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Tell us about your goals or any questions you have..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Submitting...
-                  </>
-                ) : (
-                  'Submit Inquiry'
-                )}
-              </button>
-            </form>
-
-            <div className="mt-8 pt-6 border-t border-slate-200">
-              <p className="text-center text-slate-600 mb-4">
-                Prefer to talk to someone now?
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">Enroll Now</h3>
+              <p className="text-slate-600 mb-6">
+                Ready to start? Choose your program and begin the enrollment process. Our team will guide you through funding eligibility.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="tel:+13173143757"
-                  className="inline-flex items-center justify-center gap-2 bg-slate-100 text-slate-700 px-6 py-3 rounded-lg font-medium hover:bg-slate-200"
-                >
-                  <Phone className="w-5 h-5" />
-                  (317) 314-3757
-                </a>
-                <a
-                  href="mailto:enroll@elevateforhumanity.org"
-                  className="inline-flex items-center justify-center gap-2 bg-slate-100 text-slate-700 px-6 py-3 rounded-lg font-medium hover:bg-slate-200"
-                >
-                  <Mail className="w-5 h-5" />
-                  Email Us
-                </a>
-              </div>
+              
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Browse all available programs</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">See program details and schedules</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Start enrollment immediately</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Most programs are FREE with WIOA</span>
+                </li>
+              </ul>
+
+              <Link
+                href="/enroll"
+                className="block w-full text-center py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors"
+              >
+                View Programs & Enroll
+              </Link>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Info Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mt-8">
-            <div className="bg-white rounded-xl p-6 shadow">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                <CheckCircle className="w-5 h-5 text-green-600" />
-              </div>
-              <h3 className="font-bold text-slate-900 mb-2">100% Free Training</h3>
-              <p className="text-slate-600 text-sm">Most programs are fully funded through WIOA grants.</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow">
-              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                <GraduationCap className="w-5 h-5 text-blue-600" />
-              </div>
-              <h3 className="font-bold text-slate-900 mb-2">8-16 Week Programs</h3>
-              <p className="text-slate-600 text-sm">Get certified and job-ready in just weeks, not years.</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow">
-              <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-                <User className="w-5 h-5 text-purple-600" />
-              </div>
-              <h3 className="font-bold text-slate-900 mb-2">Job Placement Help</h3>
-              <p className="text-slate-600 text-sm">Career services and employer connections included.</p>
-            </div>
+      {/* Contact Section */}
+      <section className="py-12 px-4 bg-slate-100">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-xl font-bold text-slate-900 mb-4">
+            Prefer to Talk to Someone?
+          </h2>
+          <p className="text-slate-600 mb-6">
+            Our enrollment team is available Monday-Friday, 9am-5pm EST
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="tel:317-314-3757"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
+            >
+              <Phone className="w-5 h-5 text-blue-600" />
+              <span className="font-semibold text-slate-900">(317) 314-3757</span>
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
+            >
+              <span className="font-semibold text-slate-900">Contact Us Online</span>
+            </Link>
           </div>
         </div>
       </section>

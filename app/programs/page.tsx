@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import ProgramsHeroVideo from './ProgramsHeroVideo';
+import PageAvatar from '@/components/PageAvatar';
 
 interface ProgramCategory {
   title: string;
@@ -87,7 +88,12 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* Avatar Guide - Below Hero */}
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/home-welcome.mp4" 
+        title="Explore Programs" 
+      />
+
       {/* Programs Grid */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

@@ -34,15 +34,13 @@ export default function AvatarVideoOverlay({
     const video = videoRef.current;
     if (!video) return;
     
+    // Always try to play with sound - user initiated
+    video.muted = false;
+    video.volume = 1;
+    
     if (autoPlay && isVisible) {
-      // Try to play with sound first
-      video.muted = false;
       video.play().catch(() => {
-        // Autoplay with sound blocked, try muted
-        video.muted = true;
-        video.play().catch(() => {
-          // Even muted autoplay blocked
-        });
+        // Autoplay blocked by browser - wait for user interaction
       });
     }
   }, [autoPlay, isVisible]);
@@ -53,6 +51,10 @@ export default function AvatarVideoOverlay({
 
     setHasInteracted(true);
     setHasEnded(false);
+    
+    // Ensure audio is on when user plays
+    video.muted = false;
+    video.volume = 1;
     
     if (isPlaying) {
       video.pause();
@@ -142,8 +144,7 @@ export default function AvatarVideoOverlay({
           <source src={videoSrc} type="video/mp4" />
         </video>
 
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+
 
         {/* Controls */}
         <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between">

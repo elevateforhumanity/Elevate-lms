@@ -98,10 +98,16 @@ export default function Header() {
             Sign In
           </Link>
           <Link
-            href="/apply"
+            href="/inquiry"
+            className="border border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-50 transition-colors"
+          >
+            Get Info
+          </Link>
+          <Link
+            href="/enroll"
             className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition-colors"
           >
-            Apply Now
+            Enroll Now
           </Link>
         </div>
 

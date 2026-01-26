@@ -11,6 +11,7 @@ import {
   Phone,
   Building2,
 } from 'lucide-react';
+import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
   title: 'For Employers | Elevate for Humanity',
@@ -65,6 +66,12 @@ export default function EmployersPage() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/orientation-guide.mp4" 
+        title="Employer Partners" 
+      />
 
       {/* Quick Links */}
       <section className="py-6 bg-gray-50 border-b">
@@ -172,7 +179,7 @@ export default function EmployersPage() {
       {/* Apprenticeship Option */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 md:p-12 text-white">
+          <div className="bg-gray-900 rounded-3xl p-8 md:p-12 text-white">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <Building2 className="w-12 h-12 text-orange-400 mb-4" />
@@ -257,7 +264,7 @@ export default function EmployersPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-orange-500 to-orange-600 text-white">
+      <section className="py-20 bg-orange-500 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Ready to Build Your Team?

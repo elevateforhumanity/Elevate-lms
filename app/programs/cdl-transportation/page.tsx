@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
+import PageAvatar from '@/components/PageAvatar';
 
 export const dynamic = 'force-dynamic';
 
@@ -46,6 +47,12 @@ export default async function CdlTransportationPage() {
         subheadline="Start Your Trucking Career - Earn $50K+ Annually"
         primaryCTA={{ text: 'Apply Now', href: '/apply' }}
         secondaryCTA={{ text: 'View All Programs', href: '/programs' }}
+      />
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/trades-guide.mp4" 
+        title="CDL Guide" 
       />
 
       {/* At-a-Glance */}

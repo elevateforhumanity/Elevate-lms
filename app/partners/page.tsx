@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Metadata } from 'next';
 import Image from "next/image";
 import { Building, GraduationCap, Briefcase, Shield, Users, Award } from 'lucide-react';
+import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
   title: 'Partners | Elevate for Humanity',
@@ -117,6 +118,12 @@ export default function PartnersPage() {
           </div>
         </div>
       </header>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/orientation-guide.mp4" 
+        title="Partner With Us" 
+      />
 
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-6 py-14 grid gap-10 md:grid-cols-2">

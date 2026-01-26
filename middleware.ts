@@ -12,13 +12,26 @@ const SUPERSONIC_DOMAIN = 'supersonicfastermoney.com';
 const PLATFORM_SUBDOMAIN = 'platform.elevateforhumanity.org';
 
 // Routes that require authentication and specific roles
+// NOTE: Landing pages (exact match) are PUBLIC for marketing/preview
+// Only sub-routes require authentication
 const PROTECTED_ROUTES: Record<string, string[]> = {
-  '/admin': ['admin', 'super_admin'],
-  '/staff-portal': ['staff', 'admin', 'super_admin', 'advisor'],
-  '/instructor': ['instructor', 'admin', 'super_admin'],
-  '/program-holder': ['program_holder', 'admin', 'super_admin'],
-  '/workforce-board': ['workforce_board', 'admin', 'super_admin'],
-  '/employer-portal': ['employer', 'admin', 'super_admin'],
+  '/admin/dashboard': ['admin', 'super_admin'],
+  '/admin/users': ['admin', 'super_admin'],
+  '/admin/programs': ['admin', 'super_admin'],
+  '/admin/settings': ['admin', 'super_admin'],
+  '/admin/reports': ['admin', 'super_admin'],
+  '/admin/crm': ['admin', 'super_admin'],
+  '/admin/enrollments': ['admin', 'super_admin'],
+  '/staff-portal/dashboard': ['staff', 'admin', 'super_admin', 'advisor'],
+  '/staff-portal/students': ['staff', 'admin', 'super_admin', 'advisor'],
+  '/staff-portal/courses': ['staff', 'admin', 'super_admin', 'advisor'],
+  '/instructor/dashboard': ['instructor', 'admin', 'super_admin'],
+  '/instructor/courses': ['instructor', 'admin', 'super_admin'],
+  '/instructor/students': ['instructor', 'admin', 'super_admin'],
+  '/program-holder/dashboard': ['program_holder', 'admin', 'super_admin'],
+  '/program-holder/programs': ['program_holder', 'admin', 'super_admin'],
+  '/workforce-board/dashboard': ['workforce_board', 'admin', 'super_admin'],
+  '/employer-portal/dashboard': ['employer', 'admin', 'super_admin'],
   '/employer/dashboard': ['employer', 'admin', 'super_admin'],
   '/employer/candidates': ['employer', 'admin', 'super_admin'],
   '/employer/jobs': ['employer', 'admin', 'super_admin'],
@@ -26,8 +39,21 @@ const PROTECTED_ROUTES: Record<string, string[]> = {
   '/employer/settings': ['employer', 'admin', 'super_admin'],
 };
 
-// Routes restricted to specific admin emails only
-const ADMIN_ONLY_ROUTES = ['/admin'];
+// Dashboard landing pages that are PUBLIC (for marketing/preview)
+const PUBLIC_DASHBOARD_LANDINGS = [
+  '/admin',
+  '/staff-portal', 
+  '/instructor',
+  '/program-holder',
+  '/workforce-board',
+  '/employer-portal',
+  '/employer',
+  '/student-portal',
+  '/partner-portal',
+];
+
+// Routes restricted to specific admin emails only (sub-routes, not landing)
+const ADMIN_ONLY_ROUTES = ['/admin/dashboard', '/admin/users', '/admin/settings', '/admin/crm'];
 
 // Partner routes that require active partner status
 const PARTNER_ROUTES = ['/partner/dashboard', '/partner/programs'];
@@ -189,6 +215,16 @@ export async function middleware(request: NextRequest) {
     pathname === '/signup' ||
     pathname === '/unauthorized'
   ) {
+    return NextResponse.next();
+  }
+
+  // Dashboard landing pages are PUBLIC (exact match only)
+  // This allows marketing/preview of dashboard features
+  const isPublicDashboardLanding = PUBLIC_DASHBOARD_LANDINGS.some(
+    (landing) => pathname === landing || pathname === `${landing}/`
+  );
+  
+  if (isPublicDashboardLanding) {
     return NextResponse.next();
   }
 
