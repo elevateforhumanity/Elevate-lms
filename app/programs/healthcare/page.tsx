@@ -145,14 +145,12 @@ export default function HealthcareProgramsPage() {
                   href={`/programs/${program.slug}`}
                   className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
                 >
-                  <div className="relative h-48">
-                    <Image
-                      src={getImageForProgram(program.slug)}
-                      alt={program.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      quality={85}
-                    />
+                  <div 
+                    className="relative h-48 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${getImageForProgram(program.slug)})` }}
+                    role="img"
+                    aria-label={program.name}
+                  >
                     <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                       {formatDuration(program.duration_weeks)}
                     </div>
