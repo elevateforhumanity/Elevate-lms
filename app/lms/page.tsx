@@ -279,25 +279,53 @@ export default async function LMSPage() {
 
         {/* Stats Row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white rounded-xl shadow-sm border p-5">
-            <BookOpen className="w-7 h-7 text-blue-900 mb-2" />
-            <div className="text-2xl font-bold">{typedEnrollments.length}</div>
-            <div className="text-gray-600 text-sm">Enrolled Courses</div>
+          <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
+            <div className="relative h-20">
+              <Image src="/images/programs-hq/training-classroom.jpg" alt="Courses" fill className="object-cover" />
+              <div className="absolute inset-0 bg-blue-900/60" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-2xl font-bold text-white">{typedEnrollments.length}</div>
+              </div>
+            </div>
+            <div className="p-3 text-center">
+              <div className="text-gray-900 text-sm font-medium">Enrolled Courses</div>
+            </div>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border p-5">
-            <CheckCircle className="w-7 h-7 text-green-600 mb-2" />
-            <div className="text-2xl font-bold">{completedCourses}</div>
-            <div className="text-gray-600 text-sm">Completed</div>
+          <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
+            <div className="relative h-20">
+              <Image src="/images/programs-hq/career-success.jpg" alt="Completed" fill className="object-cover" />
+              <div className="absolute inset-0 bg-green-600/60" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-2xl font-bold text-white">{completedCourses}</div>
+              </div>
+            </div>
+            <div className="p-3 text-center">
+              <div className="text-gray-900 text-sm font-medium">Completed</div>
+            </div>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border p-5">
-            <Award className="w-7 h-7 text-yellow-500 mb-2" />
-            <div className="text-2xl font-bold">{typedCertificates.length}</div>
-            <div className="text-gray-600 text-sm">Certificates</div>
+          <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
+            <div className="relative h-20">
+              <Image src="/images/programs-hq/students-learning.jpg" alt="Certificates" fill className="object-cover" />
+              <div className="absolute inset-0 bg-yellow-500/60" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-2xl font-bold text-white">{typedCertificates.length}</div>
+              </div>
+            </div>
+            <div className="p-3 text-center">
+              <div className="text-gray-900 text-sm font-medium">Certificates</div>
+            </div>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border p-5">
-            <Target className="w-7 h-7 text-red-600 mb-2" />
-            <div className="text-2xl font-bold">{totalProgress}%</div>
-            <div className="text-gray-600 text-sm">Overall Progress</div>
+          <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
+            <div className="relative h-20">
+              <Image src="/images/programs-hq/business-office.jpg" alt="Progress" fill className="object-cover" />
+              <div className="absolute inset-0 bg-red-600/60" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-2xl font-bold text-white">{totalProgress}%</div>
+              </div>
+            </div>
+            <div className="p-3 text-center">
+              <div className="text-gray-900 text-sm font-medium">Overall Progress</div>
+            </div>
           </div>
         </div>
 

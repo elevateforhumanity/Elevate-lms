@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { GraduationCap, BookOpen, Users, BarChart3, FileText, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -10,13 +12,31 @@ export const metadata: Metadata = {
 export default function InstructorPortalLanding() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white py-20">
-        <div className="max-w-6xl mx-auto px-4">
+      {/* Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/avatars/ai-tutor.mp4"
+        avatarName="Instructor Guide"
+        position="bottom-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
+      
+      {/* Hero with Image */}
+      <section className="relative min-h-[400px] flex items-center overflow-hidden">
+        <Image
+          src="/images/programs-hq/training-classroom.jpg"
+          alt="Instructor Portal"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-indigo-900/70" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 w-full">
           <div className="flex items-center gap-3 mb-6">
-            <GraduationCap className="w-10 h-10" />
+            <GraduationCap className="w-10 h-10 text-white" />
             <span className="text-indigo-200 font-medium">Instructor Portal</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Instructor Portal</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Instructor Portal</h1>
           <p className="text-xl text-indigo-100 max-w-2xl mb-8">
             Manage your courses, track student progress, grade assignments, and communicate with learners.
           </p>
@@ -35,47 +55,59 @@ export default function InstructorPortalLanding() {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">Portal Features</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <BookOpen className="w-6 h-6 text-indigo-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
+              <div className="relative h-32">
+                <Image src="/images/programs-hq/training-classroom.jpg" alt="Course Management" fill className="object-cover" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Course Management</h3>
-              <p className="text-slate-600">Create and manage your course content and materials.</p>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Course Management</h3>
+                <p className="text-slate-600">Create and manage your course content and materials.</p>
+              </div>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <Users className="w-6 h-6 text-indigo-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
+              <div className="relative h-32">
+                <Image src="/images/programs-hq/students-learning.jpg" alt="Student Roster" fill className="object-cover" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Student Roster</h3>
-              <p className="text-slate-600">View enrolled students and their information.</p>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Student Roster</h3>
+                <p className="text-slate-600">View enrolled students and their information.</p>
+              </div>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <BarChart3 className="w-6 h-6 text-indigo-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
+              <div className="relative h-32">
+                <Image src="/images/programs-hq/career-success.jpg" alt="Progress Tracking" fill className="object-cover" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Progress Tracking</h3>
-              <p className="text-slate-600">Monitor student progress and completion rates.</p>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Progress Tracking</h3>
+                <p className="text-slate-600">Monitor student progress and completion rates.</p>
+              </div>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <FileText className="w-6 h-6 text-indigo-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
+              <div className="relative h-32">
+                <Image src="/images/programs-hq/business-office.jpg" alt="Grading" fill className="object-cover" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Grading</h3>
-              <p className="text-slate-600">Grade assignments and provide feedback.</p>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Grading</h3>
+                <p className="text-slate-600">Grade assignments and provide feedback.</p>
+              </div>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <MessageSquare className="w-6 h-6 text-indigo-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
+              <div className="relative h-32">
+                <Image src="/images/team-hq/team-meeting.jpg" alt="Communication" fill className="object-cover" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Communication</h3>
-              <p className="text-slate-600">Message students and make announcements.</p>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Communication</h3>
+                <p className="text-slate-600">Message students and make announcements.</p>
+              </div>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <GraduationCap className="w-6 h-6 text-indigo-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
+              <div className="relative h-32">
+                <Image src="/images/programs-hq/healthcare-hero.jpg" alt="Certifications" fill className="object-cover" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Certifications</h3>
-              <p className="text-slate-600">Issue certificates to completing students.</p>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Certifications</h3>
+                <p className="text-slate-600">Issue certificates to completing students.</p>
+              </div>
             </div>
           </div>
         </div>

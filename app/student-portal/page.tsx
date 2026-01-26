@@ -46,6 +46,7 @@ export default async function StudentPortalPage() {
       description: 'Access course materials, lectures, and assignments',
       href: '/student-portal/courses',
       color: 'blue',
+      image: '/images/programs-hq/training-classroom.jpg',
     },
     {
       icon: Calendar,
@@ -53,6 +54,7 @@ export default async function StudentPortalPage() {
       description: 'View class schedule, deadlines, and upcoming events',
       href: '/student-portal/schedule',
       color: 'green',
+      image: '/images/programs-hq/career-success.jpg',
     },
     {
       icon: BarChart3,
@@ -60,13 +62,15 @@ export default async function StudentPortalPage() {
       description: 'Track your academic performance and completion status',
       href: '/student-portal/grades',
       color: 'purple',
+      image: '/images/programs-hq/students-learning.jpg',
     },
     {
       icon: Users,
       title: 'Instructors',
       description: 'Connect with instructors and get support',
-      href: '/student-portal/instructors',
+      href: '/lms/support',
       color: 'orange',
+      image: '/images/team-hq/team-meeting.jpg',
     },
     {
       icon: Briefcase,
@@ -74,13 +78,15 @@ export default async function StudentPortalPage() {
       description: 'Resume help, job placement, and interview prep',
       href: '/career-services',
       color: 'teal',
+      image: '/images/programs-hq/business-office.jpg',
     },
     {
       icon: FileText,
       title: 'Documents',
       description: 'Transcripts, certificates, and important forms',
-      href: '/student-portal/documents',
+      href: '/lms/files',
       color: 'indigo',
+      image: '/images/programs-hq/business-training.jpg',
     },
   ];
 
@@ -89,7 +95,7 @@ export default async function StudentPortalPage() {
       icon: Video,
       title: 'Video Tutorials',
       description: 'Step-by-step guides for using the portal and course tools',
-      href: '/student-portal/tutorials',
+      href: '/lms/resources',
     },
     {
       icon: HelpCircle,
@@ -101,13 +107,13 @@ export default async function StudentPortalPage() {
       icon: MessageSquare,
       title: 'Discussion Forums',
       description: 'Connect with classmates and study groups',
-      href: '/student-portal/forums',
+      href: '/lms/forums',
     },
     {
       icon: Award,
       title: 'Certifications',
       description: 'View earned credentials and download certificates',
-      href: '/student-portal/certifications',
+      href: '/lms/certificates',
     },
   ];
 
@@ -161,7 +167,7 @@ export default async function StudentPortalPage() {
       icon: HelpCircle,
       title: 'Help Center',
       description: 'FAQs and troubleshooting guides',
-      href: '/student-portal/help',
+      href: '/lms/help',
     },
   ];
 
@@ -266,7 +272,7 @@ export default async function StudentPortalPage() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/lms/dashboard"
+              href="/lms"
               className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition"
             >
               <GraduationCap className="w-5 h-5" />
@@ -302,16 +308,20 @@ export default async function StudentPortalPage() {
               <Link
                 key={index}
                 href={link.href}
-                className="bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-blue-600 hover:shadow-lg transition group"
+                className="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-blue-600 hover:shadow-lg transition group"
               >
-                <link.icon className={`w-12 h-12 text-${link.color}-600 mb-4`} />
-                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-blue-600 transition">
-                  {link.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{link.description}</p>
-                <span className="text-blue-600 font-semibold text-sm flex items-center gap-1">
-                  Access Now <ArrowRight className="w-4 h-4" />
-                </span>
+                <div className="relative h-36">
+                  <Image src={link.image} alt={link.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-black mb-2 group-hover:text-blue-600 transition">
+                    {link.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">{link.description}</p>
+                  <span className="text-blue-600 font-semibold text-sm flex items-center gap-1">
+                    Access Now <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>

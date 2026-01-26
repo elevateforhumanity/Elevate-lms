@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Bell, Mail, MessageSquare, Smartphone } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Notification Settings | Account | Elevate For Humanity',
   description: 'Manage your notification preferences.',

@@ -32,7 +32,7 @@ export default function EmployersPage() {
         position="bottom-right"
         size="medium"
         showOnLoad={true}
-        autoPlay={false}
+        autoPlay={true}
       />
       
       {/* Hero with Image */}
@@ -110,32 +110,34 @@ export default function EmployersPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: Users,
                 title: 'Pre-Screened Talent',
                 description: 'Candidates have completed training and demonstrated commitment.',
+                image: '/images/programs-hq/students-learning.jpg',
               },
               {
-                icon: Award,
                 title: 'Certified Skills',
                 description: 'Industry-recognized credentials verify their competency.',
+                image: '/images/programs-hq/career-success.jpg',
               },
               {
-                icon: DollarSign,
                 title: 'No Recruiting Fees',
                 description: 'Access our talent pipeline at no cost to your organization.',
+                image: '/images/business/handshake-1.jpg',
               },
               {
-                icon: Clock,
                 title: 'Faster Onboarding',
                 description: 'Trained candidates require less ramp-up time.',
+                image: '/images/programs-hq/training-classroom.jpg',
               },
             ].map((item) => (
-              <div key={item.title} className="text-center">
-                <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-7 h-7 text-orange-600" />
+              <div key={item.title} className="bg-white rounded-xl overflow-hidden shadow-sm border">
+                <div className="relative h-32">
+                  <Image src={item.image} alt={item.title} fill className="object-cover" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
+                <div className="p-4 text-center">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm">{item.description}</p>
+                </div>
               </div>
             ))}
           </div>

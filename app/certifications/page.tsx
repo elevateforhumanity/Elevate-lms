@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 
 export default function CertificationsPage() {
   const certifications = [
-    { name: 'Certified Medical Assistant (CMA)', industry: 'Healthcare', duration: '12 weeks', demand: 'High' },
-    { name: 'Certified Phlebotomy Technician (CPT)', industry: 'Healthcare', duration: '6 weeks', demand: 'High' },
-    { name: 'EPA 608 Certification', industry: 'HVAC', duration: '2 weeks', demand: 'High' },
-    { name: 'OSHA 10/30 Safety', industry: 'Construction', duration: '1-3 days', demand: 'Required' },
-    { name: 'CompTIA A+', industry: 'Technology', duration: '8 weeks', demand: 'High' },
-    { name: 'Barber License', industry: 'Beauty', duration: '2000 hours', demand: 'Required' },
+    { name: 'Certified Medical Assistant (CMA)', industry: 'Healthcare', duration: '12 weeks', demand: 'High', image: '/images/healthcare/hero-program-medical-assistant.jpg' },
+    { name: 'Certified Phlebotomy Technician (CPT)', industry: 'Healthcare', duration: '6 weeks', demand: 'High', image: '/images/healthcare/hero-program-phlebotomy.jpg' },
+    { name: 'EPA 608 Certification', industry: 'HVAC', duration: '2 weeks', demand: 'High', image: '/images/trades/hero-program-hvac.jpg' },
+    { name: 'OSHA 10/30 Safety', industry: 'Construction', duration: '1-3 days', demand: 'Required', image: '/images/trades/program-electrical-training.jpg' },
+    { name: 'CompTIA A+', industry: 'Technology', duration: '8 weeks', demand: 'High', image: '/images/technology/hero-programs-technology.jpg' },
+    { name: 'Barber License', industry: 'Beauty', duration: '2000 hours', demand: 'Required', image: '/images/beauty/program-barber-training.jpg' },
   ];
 
   return (
@@ -46,21 +46,28 @@ export default function CertificationsPage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Available Certifications</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certifications.map((cert, i) => (
-              <div key={i} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition">
-                <div className="flex items-start justify-between mb-4">
-                  <Award className="w-10 h-10 text-green-600" />
-                  <span className={`text-xs font-bold px-2 py-1 rounded ${cert.demand === 'Required' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+              <div key={i} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+                <div className="relative h-40">
+                  <Image
+                    src={cert.image}
+                    alt={cert.name}
+                    fill
+                    className="object-cover"
+                  />
+                  <span className={`absolute top-3 right-3 text-xs font-bold px-2 py-1 rounded ${cert.demand === 'Required' ? 'bg-red-500 text-white' : 'bg-green-500 text-white'}`}>
                     {cert.demand} Demand
                   </span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{cert.name}</h3>
-                <div className="space-y-2 text-sm text-gray-600">
-                  <p className="flex items-center"><Shield className="w-4 h-4 mr-2" />{cert.industry}</p>
-                  <p className="flex items-center"><Clock className="w-4 h-4 mr-2" />{cert.duration}</p>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{cert.name}</h3>
+                  <div className="space-y-2 text-sm text-gray-600 mb-4">
+                    <p className="flex items-center"><Shield className="w-4 h-4 mr-2" />{cert.industry}</p>
+                    <p className="flex items-center"><Clock className="w-4 h-4 mr-2" />{cert.duration}</p>
+                  </div>
+                  <Link href="/programs" className="text-green-600 font-medium hover:text-green-700 inline-flex items-center">
+                    Learn More <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
                 </div>
-                <Link href="/programs" className="mt-4 text-green-600 font-medium hover:text-green-700 inline-flex items-center">
-                  Learn More <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
               </div>
             ))}
           </div>

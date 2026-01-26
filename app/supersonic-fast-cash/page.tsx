@@ -186,54 +186,70 @@ export default function SupersonicFastCashPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link
               href="/supersonic-fast-cash/services/tax-preparation"
-              className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all group"
+              className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
             >
-              <FileText className="w-12 h-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                Tax Preparation
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Professional tax prep by IRS-certified experts.
-              </p>
+              <div className="relative h-36">
+                <Image src="/images/business/program-tax-preparation.jpg" alt="Tax Preparation" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                  Tax Preparation
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Professional tax prep by IRS-certified experts.
+                </p>
+              </div>
             </Link>
 
             <Link
               href="/supersonic-fast-cash/services/refund-advance"
-              className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all group"
+              className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
             >
-              <DollarSign className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
-                Refund Advance
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Get up to $7,500 same day with 0% interest.
-              </p>
+              <div className="relative h-36">
+                <Image src="/images/business/success-1.jpg" alt="Refund Advance" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
+                  Refund Advance
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Get up to $7,500 same day with 0% interest.
+                </p>
+              </div>
             </Link>
 
             <Link
               href="/supersonic-fast-cash/diy-taxes"
-              className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all group"
+              className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
             >
-              <Calculator className="w-12 h-12 text-purple-600 mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
-                DIY Tax Filing
-              </h3>
-              <p className="text-gray-600 text-sm">
-                File your own taxes with our easy online software.
-              </p>
+              <div className="relative h-36">
+                <Image src="/images/business/office-admin.jpg" alt="DIY Tax Filing" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
+                  DIY Tax Filing
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  File your own taxes with our easy online software.
+                </p>
+              </div>
             </Link>
 
             <Link
               href="/supersonic-fast-cash/services/audit-protection"
-              className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all group"
+              className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
             >
-              <Shield className="w-12 h-12 text-red-600 mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
-                Audit Protection
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Peace of mind with full audit representation.
-              </p>
+              <div className="relative h-36">
+                <Image src="/images/business/professional-1.jpg" alt="Audit Protection" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                  Audit Protection
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Peace of mind with full audit representation.
+                </p>
+              </div>
             </Link>
           </div>
         </div>

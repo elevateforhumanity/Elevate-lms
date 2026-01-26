@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
 import { CheckCircle, Users, Award, Building2, TrendingUp, Shield, Phone, ArrowRight } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -16,34 +17,34 @@ export const metadata: Metadata = {
 
 const benefits = [
   {
-    icon: Users,
     title: 'Student Referrals',
     description: 'Receive pre-screened, WIOA-eligible students ready to enroll in your programs.',
+    image: '/images/programs-hq/students-learning.jpg',
   },
   {
-    icon: Award,
     title: 'ETPL Listing Support',
     description: 'We help you get listed on the Eligible Training Provider List for WIOA funding.',
+    image: '/images/programs-hq/career-success.jpg',
   },
   {
-    icon: TrendingUp,
     title: 'Marketing Support',
     description: 'Your programs featured on our website and promoted to workforce partners.',
+    image: '/images/programs-hq/business-office.jpg',
   },
   {
-    icon: Shield,
     title: 'Compliance Assistance',
     description: 'Support with WIOA reporting requirements and documentation.',
+    image: '/images/programs-hq/business-training.jpg',
   },
   {
-    icon: Building2,
     title: 'Employer Connections',
     description: 'Connect your graduates with our network of hiring employers.',
+    image: '/images/team-hq/team-meeting.jpg',
   },
   {
-    icon: CheckCircle,
     title: 'Streamlined Enrollment',
     description: 'Our team handles eligibility verification and funding paperwork.',
+    image: '/images/programs-hq/training-classroom.jpg',
   },
 ];
 
@@ -91,6 +92,15 @@ const programTypes = [
 export default function TrainingProvidersPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Avatar Guide */}
+      <AvatarVideoOverlay 
+        videoSrc="/videos/hero-employers-avatar.mp4"
+        avatarName="Partner Guide"
+        position="bottom-right"
+        autoPlay={true}
+        showOnLoad={true}
+      />
+      
       {/* Hero Section */}
       <section className="relative min-h-[500px] flex items-center">
         <div className="absolute inset-0">
@@ -154,12 +164,14 @@ export default function TrainingProvidersPage() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition">
-                <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                  <benefit.icon className="w-7 h-7 text-blue-600" />
+              <div key={benefit.title} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div className="relative h-36">
+                  <Image src={benefit.image} alt={benefit.title} fill className="object-cover" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                  <p className="text-gray-600">{benefit.description}</p>
+                </div>
               </div>
             ))}
           </div>

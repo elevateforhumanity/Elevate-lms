@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Key, Calendar, CheckCircle, AlertCircle } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'My Licenses | Elevate For Humanity',
   description: 'View and manage your software licenses.',

@@ -58,8 +58,8 @@ export default function AvatarChatBar() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isChatExpanded, setIsChatExpanded] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -76,13 +76,18 @@ export default function AvatarChatBar() {
     setMessages([{ role: 'assistant', content: welcomeMessage }]);
   }, [welcomeMessage]);
 
-  // Auto-play video muted
+  // Auto-play video with sound
   useEffect(() => {
     const videoEl = videoRef.current;
     if (!videoEl || isExcluded) return;
 
-    videoEl.muted = true;
-    videoEl.play().catch(() => {});
+    videoEl.muted = false;
+    videoEl.play().catch(() => {
+      // If autoplay with sound fails, try muted (browser policy)
+      videoEl.muted = true;
+      setIsMuted(true);
+      videoEl.play().catch(() => {});
+    });
     setIsPlaying(true);
   }, [video, isExcluded]);
 

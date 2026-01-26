@@ -67,8 +67,8 @@ export default function StorePage() {
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
           <div className="absolute inset-0">
             <Image
-              src="/images/programs-hq/technology-hero.jpg"
-              alt="Store"
+              src="/images/store/platform-hero.jpg"
+              alt="Elevate Store"
               fill
               className="object-cover opacity-20"
               priority
@@ -145,18 +145,12 @@ export default function StorePage() {
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute bottom-3 left-3">
-                        <div className="w-10 h-10 bg-white/90 rounded-xl flex items-center justify-center">
-                          <Icon className="w-5 h-5 text-orange-600" />
-                        </div>
-                      </div>
                     </div>
                     
                     {/* Card Content */}
                     <div className="p-4 flex-1 flex flex-col">
                       <h3 className="font-bold text-black text-lg mb-1">{card.title}</h3>
-                      <p className="text-sm text-gray-500 mb-3">{card.subtitle}</p>
+                      <p className="text-sm text-gray-700 mb-3">{card.subtitle}</p>
                       <p className="text-sm text-gray-600 mb-4 flex-1 line-clamp-2">{card.description}</p>
                       <span className="inline-flex items-center gap-1 text-orange-600 font-semibold text-sm group-hover:gap-2 transition-all">
                         Explore
@@ -173,7 +167,7 @@ export default function StorePage() {
         {/* Divider */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-t border-gray-200 relative">
-            <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-gray-500 font-medium">
+            <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-gray-700 font-medium">
               More
             </span>
           </div>
@@ -190,17 +184,25 @@ export default function StorePage() {
                     key={card.id}
                     href={card.href}
                     data-tour={card.tourId}
-                    className="group bg-gray-50 rounded-xl overflow-hidden border border-gray-200 hover:border-orange-500 hover:shadow-lg hover:bg-white transition-all flex items-start gap-4 p-4"
+                    className="group bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-orange-500 hover:shadow-xl transition-all flex flex-col"
                   >
-                    <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-orange-200 transition">
-                      <Icon className="w-6 h-6 text-orange-600" />
+                    {/* Card Image */}
+                    <div className="relative h-32 overflow-hidden">
+                      <Image
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
-                    <div className="flex-1 min-w-0">
+                    
+                    {/* Card Content */}
+                    <div className="p-4 flex-1 flex flex-col">
                       <h3 className="font-bold text-black mb-1">{card.title}</h3>
-                      <p className="text-sm text-gray-500 mb-2">{card.subtitle}</p>
-                      <span className="inline-flex items-center gap-1 text-orange-600 font-medium text-sm">
+                      <p className="text-sm text-gray-700 mb-3">{card.subtitle}</p>
+                      <span className="inline-flex items-center gap-1 text-orange-600 font-semibold text-sm group-hover:gap-2 transition-all">
                         Explore
-                        <ArrowRight className="w-3 h-3" />
+                        <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
                   </Link>
@@ -218,7 +220,7 @@ export default function StorePage() {
               {[
                 { label: 'View Cart', href: '/shop/cart', icon: ShoppingBag },
                 { label: 'My Orders', href: '/shop/orders', icon: FileText },
-                { label: 'My Courses', href: '/lms/dashboard', icon: GraduationCap },
+                { label: 'My Courses', href: '/lms', icon: GraduationCap },
                 { label: 'Contact Sales', href: '/contact', icon: Users },
               ].map((link) => (
                 <Link
@@ -226,7 +228,7 @@ export default function StorePage() {
                   href={link.href}
                   className="flex items-center gap-3 bg-white p-4 rounded-lg border border-gray-200 hover:border-orange-500 hover:shadow transition"
                 >
-                  <link.icon className="w-5 h-5 text-gray-400" />
+                  <link.icon className="w-5 h-5 text-orange-600" />
                   <span className="font-medium text-black">{link.label}</span>
                 </Link>
               ))}
