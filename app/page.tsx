@@ -104,7 +104,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-6 mb-10">
             {/* WIOA Card */}
             <Link href="/wioa-eligibility" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
-              <div className="relative h-48">
+              <div className="relative" style={{ height: '192px' }}>
                 <Image
                   src="/images/funding/funding-dol-program-v2.jpg"
                   alt="WIOA funded career training"
@@ -129,7 +129,7 @@ export default function HomePage() {
             
             {/* Apprenticeships Card */}
             <Link href="/apprenticeships" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
-              <div className="relative h-48">
+              <div className="relative" style={{ height: '192px' }}>
                 <Image
                   src="/images/funding/funding-dol-program.jpg"
                   alt="Apprenticeship training"
@@ -154,7 +154,7 @@ export default function HomePage() {
             
             {/* JRI Card */}
             <Link href="/jri" className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full hover:shadow-xl transition-shadow">
-              <div className="relative h-48">
+              <div className="relative" style={{ height: '192px' }}>
                 <Image
                   src="/images/funding/funding-jri-program-v2.jpg"
                   alt="JRI funding programs"
@@ -210,7 +210,7 @@ export default function HomePage() {
                 key={program.title}
                 className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-100 max-w-sm mx-auto sm:max-w-none"
               >
-                <div className="relative h-36 md:h-32 lg:h-40">
+                <div className="relative" style={{ height: '144px' }}>
                   <Image
                     src={program.image}
                     alt={program.alt}
@@ -251,7 +251,7 @@ export default function HomePage() {
       <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div className="relative h-56 sm:h-64 lg:h-80 rounded-xl overflow-hidden">
+            <div className="relative rounded-xl overflow-hidden" style={{ height: '320px' }}>
               <Image
                 src="/images/beauty/program-barber-training.jpg"
                 alt="Barber Apprenticeship Program"

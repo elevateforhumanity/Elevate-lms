@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Test</title>
+  <style>
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    .image-box { position: relative; height: 200px; background: #eee; margin: 20px 0; }
+    .image-box img { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Image Loading Test</h1>
+    
+    <h2>1. Direct Image (no optimization)</h2>
+    <div class="image-box">
+      <img src="/images/funding/funding-jri-program-v2.jpg" alt="JRI Direct">
+    </div>
+    
+    <h2>2. Next.js Optimized Image</h2>
+    <div class="image-box">
+      <img src="/_next/image?url=%2Fimages%2Ffunding%2Ffunding-jri-program-v2.jpg&w=640&q=75" alt="JRI Optimized">
+    </div>
+    
+    <h2>3. Healthcare Image</h2>
+    <div class="image-box">
+      <img src="/images/healthcare/program-cna-training.jpg" alt="Healthcare">
+    </div>
+  </div>
+</body>
+</html>
