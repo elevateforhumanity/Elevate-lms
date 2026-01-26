@@ -53,7 +53,7 @@ const programCategories = [
   },
 ];
 
-export default async function HomePage() {
+export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
