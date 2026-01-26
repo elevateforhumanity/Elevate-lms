@@ -1150,7 +1150,7 @@ html {
 @media (max-width: 768px) {
   html,
   body {
-    /* overflow-x: hidden removed - can clip fixed positioned elements */
+    overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
   }
@@ -1161,6 +1161,23 @@ html {
   .max-w-5xl {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  
+  /* Ensure images don't overflow on mobile */
+  img {
+    max-width: 100%;
+  }
+  
+  /* Fix any absolute/fixed elements that might overflow */
+  [class*="fixed"],
+  [class*="absolute"] {
+    max-width: 100vw;
+  }
+  
+  /* Ensure text doesn't cause horizontal scroll */
+  h1, h2, h3, h4, h5, h6, p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   /* Heading sizes - scoped to main content */
