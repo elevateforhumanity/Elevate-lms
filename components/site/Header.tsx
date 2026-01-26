@@ -16,6 +16,8 @@ export const NAV_ITEMS = [
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
       { name: 'Business', href: '/programs/business' },
+      { name: 'Barber & Cosmetology', href: '/programs/barber' },
+      { name: 'CDL & Transportation', href: '/programs/cdl-transportation' },
       { name: 'Apprenticeships', href: '/apprenticeships' },
       { name: 'All Programs', href: '/programs' },
     ]
@@ -28,6 +30,7 @@ export const NAV_ITEMS = [
       { name: 'JRI Programs', href: '/jri' },
       { name: 'Financial Aid', href: '/financial-aid' },
       { name: 'How It Works', href: '/how-it-works' },
+      { name: 'Tuition & Costs', href: '/tuition' },
     ]
   },
   { 
@@ -37,7 +40,17 @@ export const NAV_ITEMS = [
       { name: 'Career Services', href: '/career-services' },
       { name: 'Certifications', href: '/certifications' },
       { name: 'Tax Services', href: '/supersonic-fast-cash' },
-      { name: 'Employers', href: '/employers' },
+      { name: 'Job Placement', href: '/career-services' },
+    ]
+  },
+  { 
+    name: 'Partners', 
+    href: '/partners',
+    subItems: [
+      { name: 'Become a Partner', href: '/partners' },
+      { name: 'Employer Partners', href: '/employers' },
+      { name: 'Training Providers', href: '/training-providers' },
+      { name: 'Partner Portal', href: '/partner-portal' },
     ]
   },
   { name: 'Store', href: '/store' },
@@ -47,8 +60,9 @@ export const NAV_ITEMS = [
     subItems: [
       { name: 'Our Mission', href: '/about/mission' },
       { name: 'Our Team', href: '/about/team' },
-      { name: 'Partners', href: '/about/partners' },
-      { name: 'Contact', href: '/contact' },
+      { name: 'Success Stories', href: '/testimonials' },
+      { name: 'Contact Us', href: '/contact' },
+      { name: 'Blog', href: '/blog' },
     ]
   },
 ];

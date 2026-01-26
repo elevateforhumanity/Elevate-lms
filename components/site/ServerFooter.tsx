@@ -9,19 +9,38 @@ const footerLinks = {
     { name: 'Healthcare', href: '/programs/healthcare' },
     { name: 'Skilled Trades', href: '/programs/skilled-trades' },
     { name: 'Technology', href: '/programs/technology' },
+    { name: 'Business', href: '/programs/business' },
+    { name: 'Barber & Cosmetology', href: '/programs/barber' },
+    { name: 'CDL & Transportation', href: '/programs/cdl-transportation' },
     { name: 'Apprenticeships', href: '/apprenticeships' },
+    { name: 'All Programs', href: '/programs' },
+  ],
+  funding: [
+    { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
+    { name: 'JRI Programs', href: '/jri' },
+    { name: 'Financial Aid', href: '/financial-aid' },
+    { name: 'How It Works', href: '/how-it-works' },
+    { name: 'Tuition & Costs', href: '/tuition' },
   ],
   resources: [
-    { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
     { name: 'Career Services', href: '/career-services' },
+    { name: 'Certifications', href: '/certifications' },
     { name: 'Student Handbook', href: '/student-handbook' },
     { name: 'FAQ', href: '/faq' },
+    { name: 'Blog', href: '/blog' },
+  ],
+  partners: [
+    { name: 'Become a Partner', href: '/partners' },
+    { name: 'Employer Partners', href: '/employers' },
+    { name: 'Training Providers', href: '/training-providers' },
+    { name: 'Partner Portal', href: '/partner-portal' },
   ],
   company: [
     { name: 'About Us', href: '/about' },
+    { name: 'Our Team', href: '/about/team' },
+    { name: 'Success Stories', href: '/testimonials' },
     { name: 'Contact', href: '/contact' },
     { name: 'Careers', href: '/careers' },
-    { name: 'Partners', href: '/partners' },
   ],
 };
 
@@ -29,7 +48,7 @@ export default function ServerFooter() {
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
@@ -43,7 +62,7 @@ export default function ServerFooter() {
               <span className="font-bold text-lg">Elevate</span>
             </Link>
             <p className="text-slate-400 text-sm">
-              Free career training for Indiana residents through WIOA funding.
+              Free career training through WIOA funding.
             </p>
           </div>
 
@@ -53,10 +72,21 @@ export default function ServerFooter() {
             <ul className="space-y-2">
               {footerLinks.programs.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-400 hover:text-white text-sm"
-                  >
+                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Funding */}
+          <div>
+            <h3 className="font-semibold mb-4">Funding</h3>
+            <ul className="space-y-2">
+              {footerLinks.funding.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
                     {link.name}
                   </Link>
                 </li>
@@ -70,10 +100,21 @@ export default function ServerFooter() {
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-400 hover:text-white text-sm"
-                  >
+                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Partners */}
+          <div>
+            <h3 className="font-semibold mb-4">Partners</h3>
+            <ul className="space-y-2">
+              {footerLinks.partners.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
                     {link.name}
                   </Link>
                 </li>
@@ -87,10 +128,7 @@ export default function ServerFooter() {
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-400 hover:text-white text-sm"
-                  >
+                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
                     {link.name}
                   </Link>
                 </li>
