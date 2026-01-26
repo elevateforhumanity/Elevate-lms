@@ -17,6 +17,17 @@ export const NAV_ITEMS = [
       { name: 'Technology', href: '/programs/technology' },
       { name: 'Business', href: '/programs/business' },
       { name: 'Apprenticeships', href: '/apprenticeships' },
+      { name: 'All Programs', href: '/programs' },
+    ]
+  },
+  { 
+    name: 'Funding', 
+    href: '/funding',
+    subItems: [
+      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
+      { name: 'JRI Programs', href: '/jri' },
+      { name: 'Financial Aid', href: '/financial-aid' },
+      { name: 'How It Works', href: '/how-it-works' },
     ]
   },
   { 
@@ -26,10 +37,20 @@ export const NAV_ITEMS = [
       { name: 'Career Services', href: '/career-services' },
       { name: 'Certifications', href: '/certifications' },
       { name: 'Tax Services', href: '/supersonic-fast-cash' },
+      { name: 'Employers', href: '/employers' },
     ]
   },
   { name: 'Store', href: '/store' },
-  { name: 'About', href: '/about' },
+  { 
+    name: 'About', 
+    href: '/about',
+    subItems: [
+      { name: 'Our Mission', href: '/about/mission' },
+      { name: 'Our Team', href: '/about/team' },
+      { name: 'Partners', href: '/about/partners' },
+      { name: 'Contact', href: '/contact' },
+    ]
+  },
 ];
 
 export default function Header() {

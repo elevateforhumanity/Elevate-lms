@@ -133,7 +133,7 @@ export const secondaryCards: StoreCard[] = [
     subtitle: 'Enterprise Solutions',
     description: 'Talk to our team about custom solutions for your organization.',
     href: '/contact',
-    image: '/images/team-hq/team-meeting.jpg',
+    image: '/images/team-hq/instructor-1.jpg',
     icon: 'users',
     tourId: 'store-card-contact',
     tier: 'secondary',

@@ -5,7 +5,7 @@ import { ArrowRight, Home, ChevronRight, Play, ShoppingBag, GraduationCap, BookO
 import { primaryCards, secondaryCards } from '@/lib/store/cards';
 import StoreClientWrapper from './StoreClientWrapper';
 import UniversalSearch from '@/components/search/UniversalSearch';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
+
 
 export const metadata: Metadata = {
   title: 'Store | Elevate for Humanity',
@@ -94,21 +94,7 @@ export default function StorePage() {
           </div>
         </section>
 
-        {/* Avatar Guide - Under Hero */}
-        <section className="bg-slate-800 py-6">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <AvatarVideoOverlay
-                videoSrc="/videos/avatars/store-assistant.mp4"
-                avatarName="Store Guide"
-                position="inline"
-                size="medium"
-                autoPlay={true}
-                showOnLoad={true}
-              />
-            </div>
-          </div>
-        </section>
+
 
         {/* Stats Strip */}
         <section className="bg-orange-600 py-4">
