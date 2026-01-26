@@ -1,447 +1,285 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
-import { PathwayBlock } from '@/components/PathwayBlock';
-import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
-import { Phone, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import Link from 'next/link';
+import { Phone, Mail, CheckCircle, Loader2, User, GraduationCap } from 'lucide-react';
 
-// Pathway slug to program name mapping
-const PATHWAY_TO_PROGRAM: Record<string, string> = {
-  // General categories
-  'healthcare': 'Healthcare (General Interest)',
-  'skilled-trades': 'Skilled Trades (General Interest)',
-  'technology': 'Technology (General Interest)',
-  'business': 'Business (General Interest)',
-  'apprenticeship': 'Apprenticeship (General Interest)',
-  // Healthcare
-  'cna-certification': 'CNA (Certified Nursing Assistant)',
-  'medical-assistant': 'Medical Assistant',
-  'phlebotomy': 'Phlebotomy',
-  'direct-support-professional': 'Direct Support Professional',
-  'drug-collector': 'Drug Collector',
-  // Skilled Trades
-  'hvac-technician': 'HVAC Technician',
-  'electrical-apprenticeship': 'Electrical',
-  'plumbing-apprenticeship': 'Plumbing',
-  'welding': 'Welding',
-  'cdl-training': 'CDL (Commercial Driver License)',
-  // Beauty & Barbering
-  'barber-apprenticeship': 'Barber Apprenticeship',
-  'cosmetology': 'Cosmetology',
-  'esthetician-apprenticeship': 'Esthetician Apprenticeship',
-  'nail-technician-apprenticeship': 'Nail Technician Apprenticeship',
-  // Technology
-  'it-support': 'IT Support',
-  'cybersecurity': 'Cybersecurity',
-  'web-development': 'Web Development',
-  // Business
-  'accounting': 'Accounting',
-  'business-management': 'Business Management',
-};
+const PROGRAMS = [
+  { value: '', label: 'Select a program...' },
+  { value: 'healthcare', label: 'Healthcare Programs' },
+  { value: 'cna', label: '— CNA (Certified Nursing Assistant)' },
+  { value: 'medical-assistant', label: '— Medical Assistant' },
+  { value: 'phlebotomy', label: '— Phlebotomy' },
+  { value: 'skilled-trades', label: 'Skilled Trades Programs' },
+  { value: 'hvac', label: '— HVAC Technician' },
+  { value: 'electrical', label: '— Electrical' },
+  { value: 'welding', label: '— Welding' },
+  { value: 'cdl', label: '— CDL Training' },
+  { value: 'technology', label: 'Technology Programs' },
+  { value: 'it-support', label: '— IT Support' },
+  { value: 'cybersecurity', label: '— Cybersecurity' },
+  { value: 'barber', label: 'Barber Apprenticeship ($4,980 - Self Pay)' },
+  { value: 'other', label: 'Other / Not Sure Yet' },
+];
 
-
-
-function ApplyPageContent() {
-  const searchParams = useSearchParams();
-  const [selectedProgram, setSelectedProgram] = useState('');
-  const [pathwaySlug, setPathwaySlug] = useState<string | null>(null);
+export default function ApplyPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
-  const [consent, setConsent] = useState(false);
-
-  useEffect(() => {
-    // Check for pathway param first (from /pathways pages)
-    const pathway = searchParams.get('pathway');
-    if (pathway && PATHWAY_TO_PROGRAM[pathway]) {
-      setPathwaySlug(pathway);
-      setSelectedProgram(PATHWAY_TO_PROGRAM[pathway]);
-      return;
-    }
-
-    // Legacy: check for program param
-    const programParam = searchParams.get('program');
-    if (programParam) {
-      // Barber apprenticeship has its own dedicated apply page
-      if (programParam === 'barber-apprenticeship') {
-        window.location.href = '/programs/barber-apprenticeship/apply';
-        return;
-      }
-      
-      const programMap: Record<string, string> = {
-        'hvac-technician': 'HVAC Technician',
-        'cna-certification': 'CNA (Certified Nursing Assistant)',
-      };
-      if (programMap[programParam]) {
-        setSelectedProgram(programMap[programParam]);
-        setPathwaySlug(programParam);
-      }
-    }
-  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    if (!consent) {
-      setError('Please consent to be contacted before submitting.');
-      return;
-    }
-    
     setLoading(true);
     setError('');
 
     const formData = new FormData(e.currentTarget);
     const data = {
-      name: formData.get('name') as string,
+      firstName: formData.get('firstName') as string,
+      lastName: formData.get('lastName') as string,
       email: formData.get('email') as string,
       phone: formData.get('phone') as string,
       program: formData.get('program') as string,
-      funding: formData.get('funding') as string,
-      pathway_slug: pathwaySlug || undefined,
-      source: pathwaySlug ? 'pathway' : 'direct',
+      message: formData.get('message') as string,
     };
 
-    // Basic validation
-    if (!data.name || data.name.length < 2) {
-      setError('Please enter your full name.');
-      setLoading(false);
-      return;
-    }
-    
-    if (!data.email || !data.email.includes('@')) {
-      setError('Please enter a valid email address.');
-      setLoading(false);
-      return;
-    }
-    
-    if (!data.phone || data.phone.replace(/\D/g, '').length < 10) {
-      setError('Please enter a valid phone number (at least 10 digits).');
-      setLoading(false);
-      return;
-    }
-    
-    if (!data.program) {
-      setError('Please select a program.');
-      setLoading(false);
-      return;
-    }
-    
-    if (!data.funding) {
-      setError('Please select a funding option.');
-      setLoading(false);
-      return;
-    }
-
     try {
-      const response = await fetch('/api/apply', {
+      const res = await fetch('/api/inquiries', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
-
-      if (response.ok) {
-        setSuccess(true);
-        setTimeout(() => {
-          window.location.href = '/apply/success';
-        }, 1500);
-      } else {
-        setError(result.error || 'Application failed. Please try again or call us.');
-        setLoading(false);
-      }
+      if (!res.ok) throw new Error('Failed to submit');
+      setSuccess(true);
     } catch (err) {
-      console.error('Submit error:', err);
-      setError('An error occurred. Please try again or call 317-314-3757.');
+      setError('Something went wrong. Please call us at (317) 314-3757.');
+    } finally {
       setLoading(false);
     }
   };
 
-  return (
-    <>
-      <ModernLandingHero
-        badge="⚡ Eligibility & Career Alignment"
-        headline="Start Your Career Pathway"
-        accentText="Check Eligibility First"
-        subheadline="Eligibility screening. Program selection. Career alignment."
-        description="All training begins with eligibility determination. Complete this form to check your eligibility and select a career pathway."
-        imageSrc="/hero-images/apply-hero.jpg"
-        imageAlt="Start Eligibility"
-        primaryCTA={{ text: "Start Eligibility Check", href: "#application" }}
-        secondaryCTA={{ text: "Questions? Call Us", href: "tel:317-314-3757" }}
-        features={[
-          "10-minute eligibility check with 2-3 day response",
-          "Free training for eligible participants through WIOA and state grants",
-          "Program selection occurs after eligibility is confirmed"
-        ]}
-        imageOnRight={true}
-      />
-      
-      <section id="application" className="max-w-3xl mx-auto px-6 py-12">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          Eligibility & Career Alignment
-        </h1>
-        <p className="text-gray-600 mb-4">
-          Complete this form to check your eligibility and select a career pathway. 10–15 minutes. Response within 2–3 business days.
-        </p>
-        
-        {/* Pathway Disclosure */}
-        <PathwayDisclosure variant="full" className="mb-8" />
-
-        {/* Error Message */}
-        {error && (
-          <div className="mb-6 p-4 bg-red-50 border-2 border-red-200 rounded-lg flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-red-800 font-semibold">{error}</p>
-              <p className="text-red-700 text-sm mt-1">
-                Need help? Call us at{' '}
-                <a href="tel:317-314-3757" className="underline font-medium">
-                  317-314-3757
-                </a>
-              </p>
-            </div>
+  if (success) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle className="w-8 h-8 text-green-600" />
           </div>
-        )}
-
-        {/* Success Message */}
-        {success && (
-          <div className="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-lg flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-green-800 font-semibold">
-                Application submitted successfully!
-              </p>
-              <p className="text-green-700 text-sm mt-1">
-                Redirecting to confirmation page...
-              </p>
-            </div>
-          </div>
-        )}
-
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-6 bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
-        >
-          {/* Full Name */}
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-900 mb-2"
-            >
-              Full Name <span className="text-red-600">*</span>
-            </label>
-            <input
-              required
-              id="name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              placeholder="Enter your full name"
-              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
-            />
-          </div>
-
-          {/* Email */}
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-900 mb-2"
-            >
-              Email <span className="text-red-600">*</span>
-            </label>
-            <input
-              required
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              placeholder="your.email@gmail.com"
-              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
-            />
-          </div>
-
-          {/* Phone */}
-          <div>
-            <label
-              htmlFor="phone"
-              className="block text-sm font-medium text-gray-900 mb-2"
-            >
-              Phone <span className="text-red-600">*</span>
-            </label>
-            <input
-              required
-              id="phone"
-              name="phone"
-              type="tel"
-              autoComplete="tel"
-              placeholder="(317) 555-1234"
-              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
-            />
-          </div>
-
-          {/* Program */}
-          <div>
-            <label
-              htmlFor="program"
-              className="block text-sm font-medium text-gray-900 mb-2"
-            >
-              Program <span className="text-red-600">*</span>
-            </label>
-            <select
-              required
-              id="program"
-              name="program"
-              value={selectedProgram}
-              onChange={(e) => setSelectedProgram(e.target.value)}
-              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
-            >
-              <option value="">Select a program...</option>
-              <optgroup label="Healthcare">
-                <option value="CNA (Certified Nursing Assistant)">CNA (Certified Nursing Assistant)</option>
-                <option value="Medical Assistant">Medical Assistant</option>
-                <option value="Home Health Aide">Home Health Aide</option>
-                <option value="Phlebotomy">Phlebotomy</option>
-              </optgroup>
-              <optgroup label="Skilled Trades">
-                <option value="HVAC Technician">HVAC Technician</option>
-                <option value="Electrical">Electrical</option>
-                <option value="Plumbing">Plumbing</option>
-                <option value="Building Maintenance">Building Maintenance</option>
-                <option value="Construction">Construction</option>
-              </optgroup>
-              <optgroup label="Barber & Beauty">
-                <option value="Barber Apprenticeship">Barber Apprenticeship</option>
-                <option value="Cosmetology">Cosmetology</option>
-                <option value="Esthetics">Esthetics</option>
-              </optgroup>
-              <optgroup label="Technology">
-                <option value="IT Support">IT Support</option>
-                <option value="Cybersecurity">Cybersecurity</option>
-                <option value="Web Development">Web Development</option>
-              </optgroup>
-              <optgroup label="Business">
-                <option value="Accounting">Accounting</option>
-                <option value="Business Management">Business Management</option>
-                <option value="Entrepreneurship">Entrepreneurship</option>
-              </optgroup>
-              <optgroup label="Transportation">
-                <option value="CDL (Commercial Driver License)">CDL (Commercial Driver License)</option>
-              </optgroup>
-              <option value="Not Sure - Help Me Choose">Not Sure - Help Me Choose</option>
-            </select>
-          </div>
-
-          {/* Funding */}
-          <div>
-            <label
-              htmlFor="funding"
-              className="block text-sm font-medium text-gray-900 mb-2"
-            >
-              How do you plan to pay? <span className="text-red-600">*</span>
-            </label>
-            <select
-              required
-              id="funding"
-              name="funding"
-              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
-            >
-              <option value="">Select funding option...</option>
-              <option value="WIOA">WIOA / Next Level Jobs (Free if eligible)</option>
-              <option value="Employer Sponsored">Employer Sponsored</option>
-              <option value="Self Pay">Self Pay</option>
-              <option value="Not Sure">Not Sure - Help Me Find Options</option>
-            </select>
-          </div>
-
-          {/* Consent Checkbox */}
-          <div className="flex items-start gap-3">
-            <input
-              type="checkbox"
-              id="consent"
-              name="consent"
-              checked={consent}
-              onChange={(e) => setConsent(e.target.checked)}
-              className="w-5 h-5 mt-0.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-            />
-            <label htmlFor="consent" className="text-sm text-gray-700">
-              I consent to be contacted by Elevate for Humanity via phone, email, or text
-              regarding my application and training opportunities.{' '}
-              <span className="text-red-600">*</span>
-            </label>
-          </div>
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={loading || success}
-            className="w-full min-h-[52px] bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-          >
-            {loading ? (
-              <>
-                <Loader2 className="w-5 h-5 animate-spin" />
-                Submitting...
-              </>
-            ) : success ? (
-              <>
-                <CheckCircle className="w-5 h-5" />
-                Submitted!
-              </>
-            ) : (
-              'Submit Application'
-            )}
-          </button>
-        </form>
-
-        {/* Help Section */}
-        <div className="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
-          <div className="flex items-center gap-3 mb-3">
-            <Phone className="w-5 h-5 text-blue-600" />
-            <h3 className="font-semibold text-gray-900">Need Help?</h3>
-          </div>
-          <p className="text-gray-600 mb-4">
-            Having trouble with the application? Our team is here to help.
+          <h1 className="text-2xl font-bold text-slate-900 mb-4">Thank You!</h1>
+          <p className="text-slate-600 mb-6">
+            We received your inquiry. Our enrollment team will contact you within 1-2 business days.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href="tel:317-314-3757"
-              className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              <Phone className="w-4 h-4 mr-2" />
-              Call 317-314-3757
-            </a>
-            <a
-              href="mailto:elevate4humanityedu@gmail.com"
-              className="inline-flex items-center justify-center px-6 py-3 bg-white border-2 border-gray-300 text-gray-900 font-semibold rounded-lg hover:border-gray-400 transition-colors"
-            >
-              Email Us
-            </a>
-          </div>
+          <p className="text-slate-600 mb-8">
+            Need immediate assistance? Call us at{' '}
+            <a href="tel:+13173143757" className="text-blue-600 font-semibold">(317) 314-3757</a>
+          </p>
+          <Link
+            href="/"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700"
+          >
+            Return Home
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-50">
+      {/* Hero */}
+      <section 
+        className="relative py-20 px-4"
+        style={{ 
+          backgroundImage: 'linear-gradient(to right, rgba(30, 64, 175, 0.95), rgba(59, 130, 246, 0.9)), url(/images/heroes/apply-hero.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <div className="max-w-4xl mx-auto text-center text-white">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Start Your New Career
+          </h1>
+          <p className="text-xl text-blue-100 mb-6">
+            Fill out this quick form and our enrollment team will help you get started.
+          </p>
+          <p className="text-blue-200">
+            Most programs are 100% FREE through WIOA funding
+          </p>
         </div>
       </section>
 
-      {/* Pathway Block */}
-      <PathwayBlock variant="light" />
-    </>
-  );
-}
+      {/* Form Section */}
+      <section className="py-12 px-4">
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <GraduationCap className="w-6 h-6 text-blue-600" />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-slate-900">Enrollment Inquiry</h2>
+                <p className="text-slate-600 text-sm">We will contact you within 1-2 business days</p>
+              </div>
+            </div>
 
-// Wrap in Suspense for useSearchParams
-export default function ApplyPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-[60vh] bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-10 h-10 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-gray-500 text-sm">Loading application form...</p>
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+                {error}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="firstName" className="block text-sm font-medium text-slate-700 mb-1">
+                    First Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    required
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="John"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="lastName" className="block text-sm font-medium text-slate-700 mb-1">
+                    Last Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    required
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Smith"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="john@example.com"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="(317) 555-1234"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="program" className="block text-sm font-medium text-slate-700 mb-1">
+                  Program of Interest *
+                </label>
+                <select
+                  id="program"
+                  name="program"
+                  required
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                >
+                  {PROGRAMS.map((p) => (
+                    <option key={p.value} value={p.value}>{p.label}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">
+                  Questions or Comments (Optional)
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={3}
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Tell us about your goals or any questions you have..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  'Submit Inquiry'
+                )}
+              </button>
+            </form>
+
+            <div className="mt-8 pt-6 border-t border-slate-200">
+              <p className="text-center text-slate-600 mb-4">
+                Prefer to talk to someone now?
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="tel:+13173143757"
+                  className="inline-flex items-center justify-center gap-2 bg-slate-100 text-slate-700 px-6 py-3 rounded-lg font-medium hover:bg-slate-200"
+                >
+                  <Phone className="w-5 h-5" />
+                  (317) 314-3757
+                </a>
+                <a
+                  href="mailto:enroll@elevateforhumanity.org"
+                  className="inline-flex items-center justify-center gap-2 bg-slate-100 text-slate-700 px-6 py-3 rounded-lg font-medium hover:bg-slate-200"
+                >
+                  <Mail className="w-5 h-5" />
+                  Email Us
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Info Cards */}
+          <div className="grid md:grid-cols-3 gap-6 mt-8">
+            <div className="bg-white rounded-xl p-6 shadow">
+              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                <CheckCircle className="w-5 h-5 text-green-600" />
+              </div>
+              <h3 className="font-bold text-slate-900 mb-2">100% Free Training</h3>
+              <p className="text-slate-600 text-sm">Most programs are fully funded through WIOA grants.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow">
+              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <GraduationCap className="w-5 h-5 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-slate-900 mb-2">8-16 Week Programs</h3>
+              <p className="text-slate-600 text-sm">Get certified and job-ready in just weeks, not years.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow">
+              <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                <User className="w-5 h-5 text-purple-600" />
+              </div>
+              <h3 className="font-bold text-slate-900 mb-2">Job Placement Help</h3>
+              <p className="text-slate-600 text-sm">Career services and employer connections included.</p>
+            </div>
+          </div>
         </div>
-      </div>
-    }>
-      <ApplyPageContent />
-    </Suspense>
+      </section>
+    </div>
   );
 }
