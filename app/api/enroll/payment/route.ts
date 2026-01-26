@@ -1,0 +1,110 @@
+import { NextResponse } from 'next/server';
+import { stripe } from '@/lib/stripe/client';
+import { createClient } from '@/lib/supabase/server';
+import { toErrorMessage } from '@/lib/safe';
+import { paymentRateLimit } from '@/lib/rate-limit';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
+
+const PROGRAM_DETAILS: Record<string, { name: string; totalPrice: number }> = {
+  cna: { name: 'Certified Nursing Assistant (CNA)', totalPrice: 1200 },
+  barber: { name: 'Barber Apprenticeship', totalPrice: 4980 },
+  hvac: { name: 'HVAC Technician', totalPrice: 5500 },
+  'medical-assistant': { name: 'Medical Assistant', totalPrice: 4200 },
+  cdl: { name: 'CDL Training', totalPrice: 5000 },
+};
+
+export async function POST(req: Request) {
+  try {
+    // Rate limiting
+    if (paymentRateLimit) {
+      const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+      const rateLimiter = paymentRateLimit.get();
+      if (rateLimiter) {
+        const { success } = await rateLimiter.limit(ip);
+        if (!success) {
+          return NextResponse.json(
+            { error: 'Too many payment requests. Please try again later.' },
+            { status: 429 }
+          );
+        }
+      }
+    }
+
+    if (!process.env.STRIPE_SECRET_KEY) {
+      return NextResponse.json(
+        { error: 'Payment system not configured. Please contact support.' },
+        { status: 503 }
+      );
+    }
+
+    const body = await req.json();
+    const { amount, program, paymentType, description, successUrl, cancelUrl } = body;
+
+    if (!amount || !program || !successUrl || !cancelUrl) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    const programInfo = PROGRAM_DETAILS[program] || { 
+      name: program.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()), 
+      totalPrice: amount 
+    };
+
+    // Create Stripe Checkout session
+    const session = await stripe.checkout.sessions.create({
+      mode: 'payment',
+      customer_email: user?.email || undefined,
+      line_items: [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: programInfo.name,
+              description: description || `${paymentType === 'down-payment' ? 'Down Payment' : 'Full Payment'} for ${programInfo.name}`,
+            },
+            unit_amount: amount * 100, // Convert to cents
+          },
+          quantity: 1,
+        },
+      ],
+      success_url: successUrl,
+      cancel_url: cancelUrl,
+      metadata: {
+        payment_type: 'enrollment',
+        funding_source: 'self_pay',
+        program_slug: program,
+        program_name: programInfo.name,
+        enrollment_payment_type: paymentType,
+        amount_paid: amount.toString(),
+        total_program_cost: programInfo.totalPrice.toString(),
+        user_id: user?.id || '',
+      },
+      automatic_tax: {
+        enabled: true,
+      },
+    });
+
+    if (!session.url) {
+      return NextResponse.json(
+        { error: 'Failed to create checkout session' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ url: session.url });
+  } catch (error) {
+    console.error('Enrollment payment error:', error);
+    return NextResponse.json(
+      { error: toErrorMessage(error) || 'Payment processing failed' },
+      { status: 500 }
+    );
+  }
+}

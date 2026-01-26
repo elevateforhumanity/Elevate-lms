@@ -7,7 +7,7 @@ import { programs } from '@/app/data/programs';
 export const metadata: Metadata = {
   title: 'Healthcare Programs | Elevate for Humanity',
   description:
-    'Free healthcare training programs - CNA, Medical Assistant, Home Health Aide, and more',
+    'Healthcare training programs - CNA ($1,200), Medical Assistant, Home Health Aide, and more. Payment plans available.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/industries/healthcare',
   },

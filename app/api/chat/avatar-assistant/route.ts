@@ -77,7 +77,7 @@ function buildSystemPrompt(req: ChatRequest): string {
 
 // Fallback responses when OpenAI is not configured
 const FALLBACK_RESPONSES: Record<string, string> = {
-  programs: "We offer career training in Healthcare (CNA, Medical Assistant), Skilled Trades (HVAC, Electrical, Welding), Technology, CDL Transportation, Barber/Cosmetology, and Tax Preparation. Most programs are FREE through WIOA funding! Call (317) 314-3757 to learn more.",
+  programs: "We offer career training in Healthcare (CNA, Medical Assistant), Skilled Trades (HVAC, Electrical, Welding), Technology, CDL Transportation, Barber/Cosmetology, and Tax Preparation. Some programs may qualify for WIOA funding assistance! Call (317) 314-3757 to learn more.",
   funding: "Most of our programs are FREE through WIOA (Workforce Innovation and Opportunity Act) funding. We also offer Workforce Ready Grants and other financial assistance. Call (317) 314-3757 to check your eligibility!",
   apply: "Ready to apply? Visit elevateforhumanity.org/apply or call (317) 314-3757. You'll need a valid ID and proof of income. The process takes about 15 minutes!",
   default: "I'm here to help! We offer FREE career training in healthcare, skilled trades, technology, and more. Call (317) 314-3757 or visit /apply to get started. What would you like to know?",

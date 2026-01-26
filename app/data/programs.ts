@@ -280,15 +280,26 @@ export const programs: Program[] = [
       'Anyone preparing for nursing pathways',
     ],
     ctaPrimary: {
-      label: 'Start CNA Application',
-      href: '/contact?topic=cna',
+      label: 'Enroll Now - $1,200',
+      href: '/programs/cna-certification/enroll',
     },
     ctaSecondary: {
       label: 'Talk to Healthcare Career Coach',
       href: '/contact?topic=cna',
     },
-    price: 1200, // Self-pay program
+    price: 1200,
+    downPayment: 200,
+    weeklyPayment: 50,
+    paymentWeeks: 20,
     fundingType: 'self-pay',
+    paymentPlan: {
+      totalPrice: 1200,
+      downPayment: 200,
+      remainingBalance: 1000,
+      weeklyPayment: 50,
+      numberOfWeeks: 20,
+      description: '$200 down payment + $50/week for 20 weeks',
+    },
   },
   {
     slug: 'cdl-training',
