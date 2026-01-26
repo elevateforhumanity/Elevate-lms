@@ -336,20 +336,20 @@ export default async function CareerServicesPage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-4xl font-bold mb-2">500+</p>
-              <p className="text-blue-200">Job Placements</p>
+              <p className="text-4xl font-bold mb-2">85%</p>
+              <p className="text-blue-200">Placement Goal</p>
             </div>
             <div>
-              <p className="text-4xl font-bold mb-2">95%</p>
-              <p className="text-blue-200">Placement Rate</p>
+              <p className="text-4xl font-bold mb-2">100%</p>
+              <p className="text-blue-200">Free Training</p>
             </div>
             <div>
-              <p className="text-4xl font-bold mb-2">100+</p>
-              <p className="text-blue-200">Employer Partners</p>
+              <p className="text-4xl font-bold mb-2">6+</p>
+              <p className="text-blue-200">Service Areas</p>
             </div>
             <div>
-              <p className="text-4xl font-bold mb-2">$45K</p>
-              <p className="text-blue-200">Avg Starting Salary</p>
+              <p className="text-4xl font-bold mb-2">24/7</p>
+              <p className="text-blue-200">Support Available</p>
             </div>
           </div>
         </div>

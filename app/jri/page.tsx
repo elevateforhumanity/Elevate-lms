@@ -108,10 +108,10 @@ export default function JRIPage() {
   ];
 
   const stats = [
-    { value: '500+', label: 'JRI Graduates', icon: GraduationCap },
-    { value: '85%', label: 'Job Placement Rate', icon: Briefcase },
-    { value: '60%', label: 'Recidivism Reduction', icon: TrendingUp },
-    { value: '100+', label: 'Employer Partners', icon: Users },
+    { value: '100%', label: 'Free Training', icon: GraduationCap },
+    { value: '85%', label: 'Placement Goal', icon: Briefcase },
+    { value: '6+', label: 'Career Programs', icon: TrendingUp },
+    { value: '24/7', label: 'Support', icon: Users },
   ];
 
   return (

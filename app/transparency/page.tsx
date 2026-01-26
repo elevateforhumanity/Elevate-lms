@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 
 export default function TransparencyPage() {
   const outcomes = [
-    { label: 'Students Enrolled', value: '500+', image: '/images/programs-hq/students-learning.jpg' },
-    { label: 'Graduates', value: '200+', image: '/images/programs-hq/career-success.jpg' },
-    { label: 'Job Placements', value: '150+', image: '/images/programs-hq/business-training.jpg' },
-    { label: 'Placement Rate', value: '85%', image: '/images/programs-hq/training-classroom.jpg' },
-    { label: 'Employer Partners', value: '50+', image: '/images/programs-hq/skilled-trades-hero.jpg' },
-    { label: 'Programs', value: '20+', image: '/images/programs-hq/healthcare-hero.jpg' },
+    { label: 'Programs Available', value: '10+', image: '/images/programs-hq/students-learning.jpg' },
+    { label: 'Placement Goal', value: '85%', image: '/images/programs-hq/career-success.jpg' },
+    { label: 'Training Cost', value: '$0', image: '/images/programs-hq/business-training.jpg' },
+    { label: 'Support', value: '24/7', image: '/images/programs-hq/training-classroom.jpg' },
+    { label: 'Funding Sources', value: '5+', image: '/images/programs-hq/skilled-trades-hero.jpg' },
+    { label: 'Indiana Locations', value: '3+', image: '/images/programs-hq/healthcare-hero.jpg' },
   ];
 
   const financials = [

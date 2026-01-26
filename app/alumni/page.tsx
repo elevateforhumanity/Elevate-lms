@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { label: 'Active Alumni', value: '2,500+' },
-  { label: 'Job Placements', value: '89%' },
-  { label: 'Avg Salary Increase', value: '45%' },
-  { label: 'Partner Employers', value: '150+' },
+  { label: 'Programs Available', value: '10+' },
+  { label: 'Placement Goal', value: '85%' },
+  { label: 'Free Training', value: '100%' },
+  { label: 'Support', value: '24/7' },
 ];
 
 const benefits = [
@@ -38,29 +38,8 @@ const benefits = [
   },
 ];
 
-const featuredAlumni = [
-  {
-    name: 'Marcus Johnson',
-    program: 'HVAC Technician',
-    company: 'Carrier Corporation',
-    image: '/images/success-new/success-2.jpg',
-    quote: 'Elevate gave me the skills and confidence to start a new career at 35.',
-  },
-  {
-    name: 'Sarah Williams',
-    program: 'CNA Certification',
-    company: 'IU Health',
-    image: '/images/success-new/success-3.jpg',
-    quote: 'The hands-on training prepared me for real-world healthcare situations.',
-  },
-  {
-    name: 'David Chen',
-    program: 'IT Support',
-    company: 'Salesforce',
-    image: '/images/success-new/success-4.jpg',
-    quote: 'From warehouse worker to IT professional in just 6 months.',
-  },
-];
+// Alumni profiles will be added as students graduate and provide consent
+const featuredAlumni: { name: string; program: string; company: string; image: string; quote: string }[] = [];
 
 export default function AlumniPage() {
   return (
@@ -127,29 +106,47 @@ export default function AlumniPage() {
       {/* Featured Alumni */}
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12">Featured Alumni</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {featuredAlumni.map((alumni) => (
-              <div key={alumni.name} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <div className="relative h-48">
-                  <Image
-                    src={alumni.image}
-                    alt={alumni.name}
-                    fill
-                    className="object-cover"
-                  />
+          <h2 className="text-3xl font-bold text-center mb-12">Alumni Network</h2>
+          {featuredAlumni.length > 0 ? (
+            <div className="grid md:grid-cols-3 gap-8">
+              {featuredAlumni.map((alumni) => (
+                <div key={alumni.name} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                  <div className="relative h-48">
+                    <Image
+                      src={alumni.image}
+                      alt={alumni.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-semibold text-lg">{alumni.name}</h3>
+                    <p className="text-blue-600 text-sm mb-2">{alumni.program}</p>
+                    <p className="text-gray-500 text-sm flex items-center gap-1 mb-4">
+                      <MapPin className="w-3 h-3" /> {alumni.company}
+                    </p>
+                    <p className="text-gray-600 italic text-sm">&quot;{alumni.quote}&quot;</p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-lg">{alumni.name}</h3>
-                  <p className="text-blue-600 text-sm mb-2">{alumni.program}</p>
-                  <p className="text-gray-500 text-sm flex items-center gap-1 mb-4">
-                    <MapPin className="w-3 h-3" /> {alumni.company}
-                  </p>
-                  <p className="text-gray-600 italic text-sm">"{alumni.quote}"</p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 bg-white rounded-xl">
+              <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Building Our Alumni Network</h3>
+              <p className="text-gray-600 max-w-md mx-auto mb-6">
+                As our first cohorts graduate, their success stories will be featured here. 
+                Be part of our founding class of graduates.
+              </p>
+              <Link
+                href="/apply"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              >
+                Start Your Journey
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 

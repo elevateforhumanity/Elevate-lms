@@ -117,11 +117,11 @@ export default async function SuccessStoriesPage() {
               <div className="text-gray-600">Success Stories</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600">85%+</div>
-              <div className="text-gray-600">Job Placement Rate</div>
+              <div className="text-3xl font-bold text-blue-600">85%</div>
+              <div className="text-gray-600">Placement Goal</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600">{avgIncrease > 0 ? `${avgIncrease}%` : '50%+'}</div>
+              <div className="text-3xl font-bold text-blue-600">{avgIncrease > 0 ? `${avgIncrease}%` : '--'}</div>
               <div className="text-gray-600">Avg Salary Increase</div>
             </div>
             <div>
