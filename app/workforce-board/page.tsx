@@ -110,7 +110,7 @@ export default async function WorkforceBoardPage() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="/images/artlist/hero-training-1.jpg"
+          poster="/images/workforce-1.jpg"
         >
           <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/staff-portal-hero.mp4" type="video/mp4" />
         </video>

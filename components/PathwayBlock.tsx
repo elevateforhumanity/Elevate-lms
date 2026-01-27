@@ -1,4 +1,4 @@
-import { ClipboardCheck, GraduationCap, Briefcase } from 'lucide-react';
+import Image from 'next/image';
 
 interface PathwayBlockProps {
   variant?: 'light' | 'dark';
@@ -21,8 +21,13 @@ export function PathwayBlock({ variant = 'light', className = '' }: PathwayBlock
         <div className="grid md:grid-cols-3 gap-8">
           {/* Step 1 */}
           <div className="text-center">
-            <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${isDark ? 'bg-blue-600' : 'bg-blue-100'}`}>
-              <ClipboardCheck className={`w-8 h-8 ${isDark ? 'text-white' : 'text-blue-600'}`} />
+            <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden relative">
+              <Image
+                src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=200"
+                alt="Eligibility screening"
+                fill
+                className="object-cover"
+              />
             </div>
             <div className={`text-sm font-bold mb-2 ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>Step 1</div>
             <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -35,8 +40,13 @@ export function PathwayBlock({ variant = 'light', className = '' }: PathwayBlock
 
           {/* Step 2 */}
           <div className="text-center">
-            <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${isDark ? 'bg-green-600' : 'bg-green-100'}`}>
-              <GraduationCap className={`w-8 h-8 ${isDark ? 'text-white' : 'text-green-600'}`} />
+            <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden relative">
+              <Image
+                src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=200"
+                alt="Training classroom"
+                fill
+                className="object-cover"
+              />
             </div>
             <div className={`text-sm font-bold mb-2 ${isDark ? 'text-green-400' : 'text-green-600'}`}>Step 2</div>
             <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -49,8 +59,13 @@ export function PathwayBlock({ variant = 'light', className = '' }: PathwayBlock
 
           {/* Step 3 */}
           <div className="text-center">
-            <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${isDark ? 'bg-orange-600' : 'bg-orange-100'}`}>
-              <Briefcase className={`w-8 h-8 ${isDark ? 'text-white' : 'text-orange-600'}`} />
+            <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden relative">
+              <Image
+                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=200"
+                alt="Job placement"
+                fill
+                className="object-cover"
+              />
             </div>
             <div className={`text-sm font-bold mb-2 ${isDark ? 'text-orange-400' : 'text-orange-600'}`}>Step 3</div>
             <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>

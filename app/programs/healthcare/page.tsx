@@ -98,7 +98,7 @@ export default function HealthcareProgramsPage() {
           playsInline
           autoPlay
           preload="metadata"
-          poster="/images/artlist/hero-training-4.jpg"
+          poster="/images/healthcare/hero-programs-healthcare.jpg"
         >
           <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/cna-hero.mp4" type="video/mp4" />
         </video>
