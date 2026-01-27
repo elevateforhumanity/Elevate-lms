@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from 'react';
 
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
+import PageAvatar from '@/components/PageAvatar';
 
 interface Program {
   id: string;
@@ -87,10 +88,10 @@ export default function SkilledTradesProgramsPage() {
           muted
           playsInline
           autoPlay
-          preload="auto"
+          preload="metadata"
           poster="/images/artlist/hero-training-2.jpg"
         >
-          <source src="/videos/hvac-hero-final.mp4" type="video/mp4" />
+          <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hvac-hero-final.mp4" type="video/mp4" />
         </video>
         
         
@@ -112,6 +113,12 @@ export default function SkilledTradesProgramsPage() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/trades-guide.mp4" 
+        title="Trades Guide" 
+      />
 
       {/* Breadcrumbs */}
       <Breadcrumbs />
@@ -136,14 +143,12 @@ export default function SkilledTradesProgramsPage() {
                   href={`/programs/${program.slug}`}
                   className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
                 >
-                  <div className="relative h-48">
-                    <Image
-                      src={programImages[program.slug] || programImages['default']}
-                      alt={program.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      quality={85}
-                    />
+                  <div 
+                    className="relative h-48 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${programImages[program.slug] || programImages['default']})` }}
+                    role="img"
+                    aria-label={program.name}
+                  >
                     <div className="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
                       {program.duration_weeks ? (program.duration_weeks > 20 ? `${Math.round(program.duration_weeks / 4)} Months` : `${program.duration_weeks} Weeks`) : 'Flexible'}
                     </div>

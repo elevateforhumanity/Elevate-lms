@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from 'react';
 
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
+import PageAvatar from '@/components/PageAvatar';
 
 interface Program {
   id: string;
@@ -96,10 +97,10 @@ export default function HealthcareProgramsPage() {
           muted
           playsInline
           autoPlay
-          preload="auto"
+          preload="metadata"
           poster="/images/artlist/hero-training-4.jpg"
         >
-          <source src="/videos/cna-hero.mp4" type="video/mp4" />
+          <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/cna-hero.mp4" type="video/mp4" />
         </video>
         
         
@@ -121,6 +122,12 @@ export default function HealthcareProgramsPage() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/healthcare-guide.mp4" 
+        title="Healthcare Guide" 
+      />
 
       {/* Breadcrumbs */}
       <Breadcrumbs />
@@ -145,14 +152,12 @@ export default function HealthcareProgramsPage() {
                   href={`/programs/${program.slug}`}
                   className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
                 >
-                  <div className="relative h-48">
-                    <Image
-                      src={getImageForProgram(program.slug)}
-                      alt={program.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      quality={85}
-                    />
+                  <div 
+                    className="relative h-48 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${getImageForProgram(program.slug)})` }}
+                    role="img"
+                    aria-label={program.name}
+                  >
                     <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                       {formatDuration(program.duration_weeks)}
                     </div>

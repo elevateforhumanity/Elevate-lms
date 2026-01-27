@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import ProgramsHeroVideo from './ProgramsHeroVideo';
+import PageAvatar from '@/components/PageAvatar';
 
 interface ProgramCategory {
   title: string;
@@ -63,7 +64,7 @@ export default function ProgramsPage() {
     <div className="min-h-screen bg-white">
 
       {/* Hero - Clean video with just CTAs */}
-      <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
+      <section className="relative w-full h-[70vh] sm:h-[75vh] md:h-[80vh] flex items-end overflow-hidden bg-slate-900">
         <ProgramsHeroVideo />
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
@@ -87,6 +88,12 @@ export default function ProgramsPage() {
         </div>
       </section>
 
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/home-welcome.mp4" 
+        title="Explore Programs" 
+      />
+
       {/* Programs Grid */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -97,14 +104,12 @@ export default function ProgramsPage() {
                 href={category.href}
                 className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
               >
-                <div className="relative h-48">
-                  <Image
-                    src={category.image}
-                    alt={category.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    quality={85}
-                  />
+                <div 
+                  className="relative h-48 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${category.image})` }}
+                  role="img"
+                  aria-label={category.title}
+                >
                   {category.count > 0 && (
                     <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                       {category.count} Programs

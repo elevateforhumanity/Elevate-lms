@@ -1,363 +1,336 @@
-import { Metadata } from 'next';
-import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
-import PathwayDisclosure from '@/components/PathwayDisclosure';
-import AvatarVideoOverlay from '@/components/AvatarVideoOverlay';
-import { createClient } from '@/lib/supabase/server';
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Scissors, Clock, DollarSign, Award, MapPin, Calendar, ArrowRight, CheckCircle, Users } from 'lucide-react';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { Scissors, Clock, DollarSign, Award, MapPin, CheckCircle, Play, Users, Building2, GraduationCap, Phone } from 'lucide-react';
+import PageAvatar from '@/components/PageAvatar';
 
-export const metadata: Metadata = {
-  title: 'Barber Apprenticeship Program | $4,980 Tuition | Elevate For Humanity',
-  description: 'Become a licensed barber through our fee-based USDOL Registered Apprenticeship program. Learn cutting, styling, and business skills.',
-};
+export default function BarberProgramPage() {
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-export const dynamic = 'force-dynamic';
-
-export default async function BarberProgramPage() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-
-  const { data: program } = await supabase
-    .from('programs')
-    .select('*')
-    .eq('slug', 'barber')
-    .single();
-
-  const { count: enrollmentCount } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('program_id', program?.id);
-
-  const { data: cohorts } = await supabase
-    .from('cohorts')
-    .select('*')
-    .eq('program_id', program?.id)
-    .gte('start_date', new Date().toISOString())
-    .order('start_date', { ascending: true })
-    .limit(3);
-
-  const curriculum = [
-    { phase: 'Foundation', duration: '3 months', topics: ['Sanitation & safety', 'Tool knowledge', 'Basic cuts', 'Client consultation'] },
-    { phase: 'Intermediate', duration: '6 months', topics: ['Fades & tapers', 'Beard grooming', 'Razor techniques', 'Hair textures'] },
-    { phase: 'Advanced', duration: '6 months', topics: ['Creative styling', 'Color basics', 'Business skills', 'Client retention'] },
-    { phase: 'Licensure', duration: '3 months', topics: ['State exam prep', 'Portfolio building', 'Shop management', 'Marketing'] },
-  ];
-
-  const skills = [
-    'Clipper cuts and fades',
-    'Scissor cutting techniques',
-    'Beard trimming and shaping',
-    'Hot towel shaves',
-    'Hair styling and finishing',
-    'Sanitation and safety',
-    'Client consultation',
-    'Business management',
-  ];
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    
+    video.muted = true;
+    video.loop = true;
+    video.play().catch(() => {});
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* AI Avatar Guide */}
-      <AvatarVideoOverlay 
-        videoSrc="/videos/avatars/barber-guide.mp4"
-        avatarName="Barber Guide"
-        position="bottom-right"
-        autoPlay={false}
-        showOnLoad={true}
-      />
-      
-      {/* Breadcrumbs */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <Breadcrumbs 
-            items={[
-              { label: 'Programs', href: '/programs' },
-              { label: 'Skilled Trades', href: '/programs/skilled-trades' },
-              { label: 'Barber Program' },
-            ]} 
-          />
-        </div>
-      </div>
-
-      {/* Hero */}
-      <section className="relative min-h-[500px] flex items-center">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/programs-hq/barber-hero.jpg)' }}
-        />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-white">
-          <Link href="/programs" className="text-gray-300 hover:text-white mb-4 inline-block">
-            ← All Programs
-          </Link>
-          <div className="flex items-center gap-3 mb-4">
-            <Scissors className="w-10 h-10" />
-            <span className="bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full">USDOL Registered</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Barber Apprenticeship
-          </h1>
-          <p className="text-xl text-gray-200 max-w-2xl mb-6">
-            Master the art of barbering through hands-on apprenticeship. Earn while you learn 
-            and graduate with your Indiana Barber License.
-          </p>
-          <div className="flex flex-wrap gap-4 text-sm mb-8">
-            <span className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full">
-              <Clock className="w-4 h-4" /> 18 Months
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover"
+          loop
+          muted
+          playsInline
+          autoPlay
+          preload="metadata"
+          poster="/images/beauty/program-barber-training.jpg"
+        >
+          <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/barber-hero-final.mp4" type="video/mp4" />
+        </video>
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 w-full">
+          <div className="max-w-2xl">
+            <span className="inline-block bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
+              USDOL Registered Apprenticeship
             </span>
-            <span className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full">
-              <MapPin className="w-4 h-4" /> Indianapolis, IN
-            </span>
-            <span className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full">
-              <DollarSign className="w-4 h-4" /> $30K-$60K+ Salary
-            </span>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/apply?program=barber"
-              className="inline-flex items-center justify-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-600"
-            >
-              Apply Now <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/wioa-eligibility"
-              className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-xl font-bold hover:bg-gray-100"
-            >
-              Check Eligibility
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Pathway Disclosure */}
-      <PathwayDisclosure programName="Barber" programSlug="barber" />
-
-      {/* Stats */}
-      <section className="py-10 bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-              <div className="text-3xl font-bold text-gray-800">18</div>
-              <div className="text-gray-600">Months</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-purple-600">$4,980</div>
-              <div className="text-gray-600">Tuition</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-purple-600">2,000</div>
-              <div className="text-gray-600">Hours Required</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-orange-600">$60K+</div>
-              <div className="text-gray-600">Earning Potential</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-12">
-            {/* About */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6">About This Program</h2>
-              <p className="text-gray-600 text-lg mb-4">
-                Our Barber Apprenticeship program provides a pathway to becoming a licensed barber 
-                in Indiana. Through hands-on training at partner barbershops, you'll learn the 
-                technical skills and business knowledge needed to succeed in this creative profession.
-              </p>
-              <p className="text-gray-600 text-lg">
-                Unlike traditional barber school, our apprenticeship model allows you to earn money 
-                while you learn. You'll work alongside experienced barbers, building your skills 
-                and clientele from day one.
-              </p>
-            </section>
-
-            {/* Curriculum */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6">Program Phases</h2>
-              <div className="space-y-4">
-                {curriculum.map((phase, index) => (
-                  <div key={phase.phase} className="bg-white rounded-xl shadow-sm border p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                        {index + 1}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <h3 className="font-semibold text-lg">{phase.phase}</h3>
-                          <span className="text-sm text-gray-500">{phase.duration}</span>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {phase.topics.map((topic) => (
-                            <span key={topic} className="text-sm bg-gray-100 px-3 py-1 rounded-full">
-                              {topic}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Skills */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6">Skills You'll Learn</h2>
-              <div className="grid md:grid-cols-2 gap-3">
-                {skills.map((skill) => (
-                  <div key={skill} className="flex items-center gap-2 bg-white rounded-lg shadow-sm border p-4">
-                    <CheckCircle className="w-5 h-5 text-green-500" />
-                    <span>{skill}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Certification */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6">Certification</h2>
-              <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
-                <div className="flex items-center gap-4">
-                  <Award className="w-12 h-12 text-yellow-600" />
-                  <div>
-                    <h3 className="font-bold text-lg">Indiana Barber License</h3>
-                    <p className="text-gray-600">
-                      Upon completing 2,000 hours and passing the state exam, you'll receive your 
-                      Indiana Barber License, allowing you to work anywhere in the state.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Apply CTA */}
-            <div className="bg-gray-900 text-white rounded-xl p-6">
-              <h3 className="font-bold text-xl mb-3">Start Your Journey</h3>
-              <p className="text-gray-300 mb-4">
-                Apply now to join our barber apprenticeship program.
-              </p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Become a Licensed Barber
+            </h1>
+            <p className="text-xl text-gray-200 mb-8">
+              Learn from master barbers in real shops. Earn money while you train. Get your Indiana Barber License in 15-24 months.
+            </p>
+            
+            {/* 3 Main Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link
                 href="/apply?program=barber"
-                className="block w-full text-center bg-orange-500 text-white py-3 rounded-lg font-bold hover:bg-orange-600"
+                className="inline-flex items-center justify-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-colors"
               >
-                Apply Now
+                <GraduationCap className="w-6 h-6" />
+                Enroll Now
+              </Link>
+              <Link
+                href="/partners/barber-shop"
+                className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors"
+              >
+                <Building2 className="w-6 h-6" />
+                Partner Shop Sign-Up
+              </Link>
+              <Link
+                href="/contact?type=barber"
+                className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-colors"
+              >
+                <Phone className="w-6 h-6" />
+                Inquiry
               </Link>
             </div>
 
-            {/* Upcoming Cohorts */}
-            <div className="bg-white rounded-xl shadow-sm border p-6">
-              <h3 className="font-semibold mb-4">Upcoming Start Dates</h3>
-              {cohorts && cohorts.length > 0 ? (
-                <div className="space-y-3">
-                  {cohorts.map((cohort: any) => (
-                    <div key={cohort.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                      <Calendar className="w-5 h-5 text-gray-600" />
-                      <div>
-                        <p className="font-medium">{new Date(cohort.start_date).toLocaleDateString()}</p>
-                        <p className="text-sm text-gray-500">{cohort.seats_available} spots left</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-gray-500 text-sm">Rolling admissions - apply anytime</p>
-              )}
-            </div>
-
-            {/* Eligibility */}
-            <div className="bg-gray-50 rounded-xl p-6">
-              <h3 className="font-semibold mb-3">Eligibility</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5" />
-                  18 years or older
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5" />
-                  High school diploma or GED
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5" />
-                  Pass background check
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5" />
-                  Reliable transportation
-                </li>
-              </ul>
-            </div>
-
-            {/* Earning Potential */}
-            <div className="bg-green-50 border border-green-200 rounded-xl p-6">
-              <h3 className="font-semibold mb-3">Earning Potential</h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span>Entry Level</span>
-                  <span className="font-medium">$30,000</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Experienced</span>
-                  <span className="font-medium">$45,000</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Shop Owner</span>
-                  <span className="font-medium">$60,000+</span>
-                </div>
+            {/* Quick Stats */}
+            <div className="flex flex-wrap gap-6 text-white">
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5 text-orange-400" />
+                <span>15-24 Months</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <DollarSign className="w-5 h-5 text-green-400" />
+                <span>Earn While You Learn</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-5 h-5 text-blue-400" />
+                <span>Indianapolis, IN</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Credentials & Outcomes */}
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/barber-guide.mp4" 
+        title="Barber Guide" 
+      />
+
+      {/* How It Works Section */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <CredentialsOutcomes
-            programName="Barber"
-            partnerCertifications={[
-              'Indiana Barber License (issued by Indiana Professional Licensing Agency)',
-              'USDOL Registered Apprenticeship Certificate of Completion',
-            ]}
-            employmentOutcomes={[
-              'Licensed Barber',
-              'Barbershop Owner/Operator',
-              'Master Barber',
-              'Barber Instructor',
-            ]}
-          />
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
+            How It Works
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Our apprenticeship program is simple. Here's your path to becoming a licensed barber.
+          </p>
+          
+          {/* 4 Step Process - Visual Cards */}
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="bg-white rounded-2xl p-6 shadow-lg text-center relative">
+              <div className="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-4">1</div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Apply Online</h3>
+              <p className="text-gray-600 text-sm">Fill out a quick form. Takes 5 minutes.</p>
+              <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 text-orange-300 text-4xl">→</div>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg text-center relative">
+              <div className="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-4">2</div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Get Matched</h3>
+              <p className="text-gray-600 text-sm">We pair you with a licensed barbershop near you.</p>
+              <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 text-orange-300 text-4xl">→</div>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg text-center relative">
+              <div className="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-4">3</div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Train & Earn</h3>
+              <p className="text-gray-600 text-sm">Learn from master barbers. Get paid from day one.</p>
+              <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 text-orange-300 text-4xl">→</div>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
+              <div className="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-4">
+                <Award className="w-8 h-8" />
+              </div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Get Licensed!</h3>
+              <p className="text-gray-600 text-sm">Complete 2,000 hours. Pass the exam. You're a barber!</p>
+            </div>
+          </div>
+
+          {/* Timeline Info */}
+          <div className="mt-12 bg-orange-100 rounded-2xl p-8 text-center">
+            <div className="flex flex-wrap justify-center gap-8">
+              <div>
+                <p className="text-3xl font-bold text-orange-600">2,000</p>
+                <p className="text-gray-700">Training Hours</p>
+              </div>
+              <div className="hidden sm:block w-px bg-orange-300"></div>
+              <div>
+                <p className="text-3xl font-bold text-orange-600">15-24</p>
+                <p className="text-gray-700">Months to Complete</p>
+              </div>
+              <div className="hidden sm:block w-px bg-orange-300"></div>
+              <div>
+                <p className="text-3xl font-bold text-orange-600">$45K+</p>
+                <p className="text-gray-700">Avg. Salary After</p>
+              </div>
+              <div className="hidden sm:block w-px bg-orange-300"></div>
+              <div>
+                <p className="text-3xl font-bold text-green-600">Paid</p>
+                <p className="text-gray-700">While You Learn</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-gray-900 text-white">
+      {/* What You'll Learn */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">What You'll Learn</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Scissors className="w-8 h-8 text-orange-600" />
+              </div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Cutting & Styling</h3>
+              <p className="text-gray-600">Fades, tapers, lineups, beard trims, and all modern styles.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Client Relations</h3>
+              <p className="text-gray-600">Build your clientele, consultations, and customer service.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <DollarSign className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Business Skills</h3>
+              <p className="text-gray-600">Pricing, marketing, and how to run your own shop someday.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Requirements - Simple */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">Requirements</h2>
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                <span className="text-gray-700">18 years or older</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                <span className="text-gray-700">High school diploma or GED</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                <span className="text-gray-700">Valid ID</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                <span className="text-gray-700">Passion for barbering</span>
+              </div>
+            </div>
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <p className="text-gray-600 text-center">
+                <strong>Tuition:</strong> $4,980 (payment plans available) • <strong>Duration:</strong> 2,000 hours (15-24 months)
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Shop Owner Section */}
+      <section className="py-16 bg-orange-500">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-white">
+              <span className="inline-block bg-white/20 px-4 py-1 rounded-full text-sm font-semibold mb-4">
+                For Shop Owners
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Host an Apprentice at Your Shop
+              </h2>
+              <p className="text-xl text-orange-100 mb-6">
+                Train the next generation of barbers. No cost to you — we handle the paperwork and compliance.
+              </p>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-white" />
+                  <span>Develop talent trained in YOUR style</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-white" />
+                  <span>USDOL registered program</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-white" />
+                  <span>We handle all paperwork</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-white" />
+                  <span>Ongoing support & resources</span>
+                </li>
+              </ul>
+              <Link
+                href="/partners/barber-shop"
+                className="inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors"
+              >
+                <Building2 className="w-6 h-6" />
+                Become a Partner Shop
+              </Link>
+            </div>
+            <div className="bg-white rounded-2xl p-8 shadow-xl">
+              <h3 className="font-bold text-gray-900 text-xl mb-6">Shop Requirements</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                  <span className="text-gray-700">Licensed barbershop in Indiana</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                  <span className="text-gray-700">At least one licensed barber on staff</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                  <span className="text-gray-700">Willingness to mentor apprentices</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                  <span className="text-gray-700">Safe, professional environment</span>
+                </li>
+              </ul>
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <p className="text-gray-600 text-sm">
+                  Questions? Call <a href="tel:+13173143757" className="text-orange-600 font-semibold">(317) 314-3757</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-16 bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Become a Barber?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Ready to Start Your Barber Career?
+          </h2>
           <p className="text-xl text-gray-300 mb-8">
-            Join our apprenticeship program and start your career in barbering.
+            Join our apprenticeship program and become a licensed barber.
           </p>
-          <Link
-            href="/apply?program=barber"
-            className="inline-flex items-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-600"
-          >
-            Apply Now <ArrowRight className="w-5 h-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/apply?program=barber"
+              className="inline-flex items-center justify-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600"
+            >
+              <GraduationCap className="w-6 h-6" />
+              Enroll Now
+            </Link>
+            <Link
+              href="/partners/barber-shop"
+              className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100"
+            >
+              <Building2 className="w-6 h-6" />
+              Partner Shop Sign-Up
+            </Link>
+            <Link
+              href="/contact?type=barber"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10"
+            >
+              <Phone className="w-6 h-6" />
+              Inquiry
+            </Link>
+          </div>
+          <p className="mt-8 text-gray-400">
+            Or call us: <a href="tel:+13173143757" className="text-orange-400 font-semibold">(317) 314-3757</a>
+          </p>
         </div>
       </section>
     </div>
