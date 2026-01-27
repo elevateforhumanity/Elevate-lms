@@ -35,12 +35,10 @@ const footerLinks = {
     { name: 'Events', href: '/events' },
     { name: 'Support', href: '/support' },
   ],
-  store: [
-    { name: 'Store Home', href: '/store' },
-    { name: 'Platform Licensing', href: '/store/licenses' },
-    { name: 'AI Tools', href: '/store/apps' },
-    { name: 'Courses', href: '/store/courses' },
-    { name: 'Pricing', href: '/store/pricing' },
+  licensing: [
+    { name: 'Platform Licensing', href: '/licenses' },
+    { name: 'Managed LMS', href: '/licenses' },
+    { name: 'Enterprise Review', href: '/licenses/enterprise-review' },
   ],
   partners: [
     { name: 'Become a Partner', href: '/partners' },
@@ -121,11 +119,11 @@ export default function ServerFooter() {
             </ul>
           </div>
 
-          {/* Store */}
+          {/* Licensing */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Store</h3>
+            <h3 className="font-semibold mb-4 text-white">Licensing</h3>
             <ul className="space-y-2">
-              {footerLinks.store.map((link) => (
+              {footerLinks.licensing.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
                     {link.name}

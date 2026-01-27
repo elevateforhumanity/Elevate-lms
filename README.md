@@ -46,7 +46,7 @@ VITA (Free Tax Services) → Selfish Inc. (Mental Wellness) → Elevate (Trainin
 2. **Program Holder Revenue Share** - Partners receive 1/3 (33.33%) of Net Program Revenue per student
 3. **Credential Course Markup** - 50/50 split on add-on certification courses
 4. **Stripe Payments (Secondary)** - Self-pay and employer-sponsored training
-5. **Platform Licensing** - $4,999 - $50,000 for other training providers
+5. **Platform Licensing** - Managed Enterprise LMS subscriptions ($1,500-$3,500/month)
 6. **Supersonic Fast Cash** - Tax preparation and refund advance services
 7. **Curvature Body Sculpting** - Body sculpting services
 8. **Meri-Gold-Round™ Products** - Wellness products (teas, butters, oils, soaps, kids line)
@@ -605,6 +605,25 @@ We welcome contributions! Please see `docs/CONTRIBUTING.md` for guidelines.
 5. Submit a pull request
 
 ---
+
+## Licensing
+
+Elevate for Humanity provides licensed access to enterprise platforms it operates.
+Ownership of software, infrastructure, and intellectual property is not transferred.
+
+### Managed Enterprise LMS
+The Managed Enterprise LMS is subscription-based and fully operated by Elevate for Humanity.
+Non-payment results in automatic suspension.
+
+- **Setup:** $7,500–$15,000 (one-time)
+- **Subscription:** $1,500–$3,500 per month
+- **Enforcement:** Total platform lockout on non-payment
+
+### Source Code Access
+Source code is not included with managed licenses.
+Restricted Source-Use Licenses are enterprise-only agreements starting at $75,000 and do not grant ownership, resale, rebranding, or credential authority.
+
+**We sell managed access and operational control, not software ownership.**
 
 ## License
 

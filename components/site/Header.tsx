@@ -65,7 +65,7 @@ export const NAV_ITEMS = [
       { name: 'Partner Portal', href: '/partner-portal' },
     ]
   },
-  { name: 'Store', href: '/store' },
+  { name: 'Licensing', href: '/licenses' },
   { 
     name: 'About', 
     href: '/about',
