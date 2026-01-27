@@ -216,8 +216,16 @@ export default function ServerFooter() {
           </div>
         </div>
 
+        {/* Licensing Notice */}
+        <div className="border-t border-slate-800 mt-8 pt-6">
+          <p className="text-slate-500 text-xs text-center max-w-3xl mx-auto">
+            All platform products are licensed access to systems operated by Elevate for Humanity. 
+            Ownership of software, infrastructure, and intellectual property is not transferred.
+          </p>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="border-t border-slate-800 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="border-t border-slate-800 mt-6 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-slate-400 text-sm">
             © {new Date().getFullYear()} Elevate for Humanity. All rights reserved.
           </p>
