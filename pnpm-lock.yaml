@@ -334,8 +334,8 @@ importers:
         specifier: ^9.38.0
         version: 9.39.2
       '@netlify/plugin-nextjs':
-        specifier: ^5.15.6
-        version: 5.15.6
+        specifier: ^5.15.7
+        version: 5.15.7
       '@next/bundle-analyzer':
         specifier: 16.1.1
         version: 16.1.1
@@ -1456,8 +1456,8 @@ packages:
     resolution: {integrity: sha512-DxuT1ClnIPts1kQx8FBmkk4BQDTfI5kIzywAaMjQSXfNnra5UFU9PwurXrl+Je3bJ6BGsp/zmshVVFbCmyI+ww==}
     engines: {node: '>= 10'}
 
-  '@netlify/plugin-nextjs@5.15.6':
-    resolution: {integrity: sha512-SZa4a0nBllKNaVV19kIFBuZ6p8Lt3Hagrw5gxysm2qs5AMQJRQfJq6av+rnRwCk8w/zNn2FShF4Fckk4+L1Hzg==}
+  '@netlify/plugin-nextjs@5.15.7':
+    resolution: {integrity: sha512-tSlGTwOR/dFZMrjhCxynlwc/NkOwY+bc0gurOranLtwASH5wat2WqZaPkyIdfVdNd/zNpmGxgbkH0uppg1Lsxg==}
     engines: {node: '>=18.0.0'}
 
   '@next/bundle-analyzer@16.1.1':
@@ -9483,7 +9483,7 @@ snapshots:
       '@napi-rs/canvas-linux-x64-musl': 0.1.80
       '@napi-rs/canvas-win32-x64-msvc': 0.1.80
 
-  '@netlify/plugin-nextjs@5.15.6': {}
+  '@netlify/plugin-nextjs@5.15.7': {}
 
   '@next/bundle-analyzer@16.1.1':
     dependencies:
