@@ -47,13 +47,14 @@ export function InvisibleWatermark({
     try {
       // Add invisible watermark to body
       const watermarkText = `ORIGINAL-SITE-${siteId}-${clientTimestamp}-OWNER-${owner}`;
-      // Method 1: Hidden div with zero opacity
+      // Method 1: Hidden div with zero opacity (truly invisible)
       const hiddenDiv = document.createElement('div');
       hiddenDiv.style.cssText =
-        'position:absolute;width:0;height:0;opacity:0;pointer-events:none;';
+        'position:absolute;width:0;height:0;opacity:0;visibility:hidden;overflow:hidden;pointer-events:none;clip:rect(0,0,0,0);';
       hiddenDiv.setAttribute('data-site-owner', owner);
       hiddenDiv.setAttribute('data-site-id', siteId);
       hiddenDiv.setAttribute('data-original-timestamp', clientTimestamp);
+      hiddenDiv.setAttribute('aria-hidden', 'true');
       hiddenDiv.textContent = watermarkText;
       document.body.appendChild(hiddenDiv);
     // Method 2: Add to console (visible to developers who copy)
