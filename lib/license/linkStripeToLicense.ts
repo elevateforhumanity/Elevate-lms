@@ -32,21 +32,38 @@ function getStripe(): Stripe {
  */
 export async function linkStripeToLicense(
   eventId: string,
-  customerId: string,
+  customerId: string | null,
   subscriptionId: string | null,
   metadata: LinkingMetadata,
   currentPeriodEnd?: string
 ): Promise<LinkResult> {
   const supabase = createAdminClient();
+  
+  if (!supabase) {
+    console.error('[linkStripeToLicense] Supabase admin client not available');
+    return { success: false, error: 'Database connection failed' };
+  }
+  
+  console.log('[linkStripeToLicense] Starting with:', { eventId, customerId, subscriptionId, metadata });
   const { license_id, tenant_id } = metadata;
 
-  const updateData = {
+  const updateData: Record<string, any> = {
     status: 'active',
-    stripe_customer_id: customerId,
-    stripe_subscription_id: subscriptionId,
-    current_period_end: currentPeriodEnd || null,
     updated_at: new Date().toISOString(),
   };
+  
+  // Only set stripe fields if they have values
+  if (customerId) {
+    updateData.stripe_customer_id = customerId;
+  }
+  if (subscriptionId) {
+    updateData.stripe_subscription_id = subscriptionId;
+  }
+  if (currentPeriodEnd) {
+    updateData.current_period_end = currentPeriodEnd;
+  }
+  
+  console.log('[linkStripeToLicense] Update data:', updateData);
 
   // PRIORITY 1: Update by license_id
   if (license_id) {
