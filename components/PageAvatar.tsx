@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Play } from 'lucide-react';
+import { Volume2, VolumeX } from 'lucide-react';
 
 interface PageAvatarProps {
   videoSrc: string;
@@ -13,21 +13,34 @@ const R2_URL = process.env.NEXT_PUBLIC_R2_URL;
 
 export default function PageAvatar({ videoSrc, title, poster }: PageAvatarProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   
   // Use R2 URL if configured and video is from /videos/
   const finalVideoSrc = R2_URL && videoSrc.startsWith('/videos/') 
     ? `${R2_URL}${videoSrc}` 
     : videoSrc;
 
-  const handlePlay = () => {
+  useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
     
-    video.volume = 1;
-    video.play().then(() => {
-      setIsPlaying(true);
-    }).catch(() => {});
+    video.muted = true;
+    video.playsInline = true;
+    video.loop = true;
+    
+    const playVideo = () => video.play().catch(() => {});
+    playVideo();
+    video.addEventListener('canplay', playVideo);
+    
+    return () => video.removeEventListener('canplay', playVideo);
+  }, []);
+
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
   };
 
   return (
@@ -38,25 +51,26 @@ export default function PageAvatar({ videoSrc, title, poster }: PageAvatarProps)
             ref={videoRef}
             className="w-full aspect-video object-cover"
             playsInline
-            preload="none"
-            poster={poster || '/images/heroes-hq/homepage-hero.jpg'}
-            onEnded={() => setIsPlaying(false)}
+            autoPlay
+            muted
+            loop
+            preload="auto"
           >
             <source src={finalVideoSrc} type="video/mp4" />
           </video>
           
-          {/* Play button overlay - shows until video plays */}
-          {!isPlaying && (
-            <button
-              onClick={handlePlay}
-              className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors cursor-pointer"
-              aria-label="Play video"
-            >
-              <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
-                <Play className="w-10 h-10 text-blue-600 ml-1" />
-              </div>
-            </button>
-          )}
+          {/* Mute/Unmute button */}
+          <button
+            onClick={toggleMute}
+            className="absolute top-4 right-4 w-12 h-12 rounded-full bg-black/60 hover:bg-black/80 flex items-center justify-center transition-colors cursor-pointer"
+            aria-label={isMuted ? 'Unmute' : 'Mute'}
+          >
+            {isMuted ? (
+              <VolumeX className="w-6 h-6 text-white" />
+            ) : (
+              <Volume2 className="w-6 h-6 text-white" />
+            )}
+          </button>
           
           <div className="absolute bottom-4 left-4 bg-black/60 text-white px-4 py-2 rounded-lg">
             <span className="font-medium">{title}</span>

@@ -15,8 +15,21 @@ export default function HomeHeroVideo() {
     video.muted = true;
     video.playsInline = true;
     video.loop = true;
-
-    video.play().catch(() => {});
+    
+    // Force immediate play
+    const playImmediately = () => {
+      video.play().catch(() => {});
+    };
+    
+    // Try to play immediately
+    playImmediately();
+    
+    // Also try on canplay event
+    video.addEventListener('canplay', playImmediately);
+    
+    return () => {
+      video.removeEventListener('canplay', playImmediately);
+    };
   }, []);
 
   return (
@@ -28,8 +41,7 @@ export default function HomeHeroVideo() {
       muted
       playsInline
       autoPlay
-      preload="metadata"
-      poster="/images/heroes-hq/homepage-hero.jpg"
+      preload="auto"
     >
       <source src={videoSrc} type="video/mp4" />
     </video>

@@ -8,10 +8,14 @@ export function HomeHero() {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (video) {
-      video.muted = true;
-      video.play().catch(() => {});
-    }
+    if (!video) return;
+    video.muted = true;
+    video.playsInline = true;
+    video.loop = true;
+    const playVideo = () => video.play().catch(() => {});
+    playVideo();
+    video.addEventListener('canplay', playVideo);
+    return () => video.removeEventListener('canplay', playVideo);
   }, []);
 
   return (
@@ -24,7 +28,7 @@ export function HomeHero() {
         muted
         playsInline
         autoPlay
-        poster="/images/heroes-hq/homepage-hero.jpg"
+        preload="auto"
       >
         <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home.mp4" type="video/mp4" />
       </video>

@@ -62,7 +62,12 @@ export default function TechnologyProgramsPage() {
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
-    video.play().catch(() => {});
+    video.playsInline = true;
+    video.loop = true;
+    const playVideo = () => video.play().catch(() => {});
+    playVideo();
+    video.addEventListener('canplay', playVideo);
+    return () => video.removeEventListener('canplay', playVideo);
   }, []);
 
   return (
@@ -78,8 +83,7 @@ export default function TechnologyProgramsPage() {
           muted
           playsInline
           autoPlay
-          preload="metadata"
-          poster="/images/technology/hero-programs-technology.jpg"
+          preload="auto"
         >
           <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home-fast.mp4" type="video/mp4" />
         </video>
