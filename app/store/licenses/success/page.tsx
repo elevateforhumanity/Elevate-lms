@@ -5,381 +5,243 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
   CheckCircle,
-  Copy,
-  Download,
-  Mail,
-  ArrowRight,
-  Key,
-  Github,
-  Server,
+  Users,
   Palette,
-  Database,
-  CreditCard,
-  Globe,
   BookOpen,
-  MessageCircle,
-  Check,
-  ExternalLink,
+  Globe,
+  Headphones,
+  ArrowRight,
   Loader2,
+  Play,
+  Settings,
 } from 'lucide-react';
 
-function LicenseSuccessContent() {
-  const searchParams = useSearchParams();
-  const [licenseData, setLicenseData] = useState<any>(null);
-  const [copied, setCopied] = useState(false);
-  const [loading, setLoading] = useState(true);
+const MASTER_STATEMENT = `All platform products are licensed access to systems operated by Elevate for Humanity. Ownership of software, infrastructure, and intellectual property is not transferred.`;
 
-  const productSlug = searchParams.get('product');
-  const paymentIntent = searchParams.get('payment_intent');
+const NEXT_STEPS = [
+  {
+    icon: CheckCircle,
+    title: 'Organization Created',
+    description: 'Your tenant space has been provisioned.',
+    status: 'complete',
+  },
+  {
+    icon: Users,
+    title: 'Invite Team Members',
+    description: 'Add admins, instructors, and staff to your organization.',
+    href: '/admin/users/invite',
+    cta: 'Invite Team',
+  },
+  {
+    icon: Palette,
+    title: 'Add Logo & Branding',
+    description: 'Upload your logo and customize colors.',
+    href: '/admin/settings/branding',
+    cta: 'Customize',
+  },
+  {
+    icon: BookOpen,
+    title: 'Import Programs & Courses',
+    description: 'Create courses or import existing content.',
+    href: '/admin/courses',
+    cta: 'Add Content',
+  },
+  {
+    icon: Play,
+    title: 'Explore Demo Center',
+    description: 'See platform features in action.',
+    href: '/store/demo',
+    cta: 'View Demos',
+  },
+  {
+    icon: Globe,
+    title: 'Connect Domain (Optional)',
+    description: 'Use your own domain or our subdomain.',
+    href: '/admin/settings/domain',
+    cta: 'Configure',
+  },
+];
+
+function SuccessContent() {
+  const searchParams = useSearchParams();
+  const [loading, setLoading] = useState(true);
+  const [tenantData, setTenantData] = useState<any>(null);
+
   const sessionId = searchParams.get('session_id');
 
   useEffect(() => {
-    // Fetch license details after successful payment
-    async function fetchLicense() {
-      // Try session_id first (new flow), then payment_intent (legacy)
-      const identifier = sessionId || paymentIntent;
-      const param = sessionId ? 'session_id' : 'payment_intent';
-      
-      if (identifier) {
+    async function fetchTenantInfo() {
+      if (sessionId) {
         try {
-          // First check checkout session status
-          if (sessionId) {
-            const statusRes = await fetch(`/api/licenses/checkout?session_id=${sessionId}`);
-            if (statusRes.ok) {
-              const statusData = await statusRes.json();
-              if (statusData.payment_status === 'paid') {
-                // Payment confirmed, fetch license
-                const licenseRes = await fetch(`/api/store/licenses/get-by-payment?${param}=${identifier}`);
-                if (licenseRes.ok) {
-                  const data = await licenseRes.json();
-                  setLicenseData(data);
-                }
-              }
-            }
-          } else {
-            // Legacy flow
-            const res = await fetch(`/api/store/licenses/get-by-payment?${param}=${identifier}`);
-            if (res.ok) {
-              const data = await res.json();
-              setLicenseData(data);
-            }
+          const res = await fetch(`/api/licenses/checkout?session_id=${sessionId}`);
+          if (res.ok) {
+            const data = await res.json();
+            setTenantData(data);
           }
-        } catch (error) {
-          console.error('Failed to fetch license:', error);
+        } catch (e) {
+          console.error('Failed to fetch tenant info:', e);
         }
       }
       setLoading(false);
     }
-    fetchLicense();
-  }, [paymentIntent, sessionId]);
-
-  const copyLicenseKey = () => {
-    if (licenseData?.licenseKey) {
-      navigator.clipboard.writeText(licenseData.licenseKey);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  const implementationSteps = [
-    {
-      step: 1,
-      title: 'Access Your Repository',
-      description: 'Clone the private GitHub repository to your local machine or fork it to your account.',
-      icon: Github,
-      action: {
-        label: 'Open GitHub Repository',
-        href: licenseData?.repoUrl || 'https://github.com/elevateforhumanity/elevate-lms',
-      },
-      details: [
-        'You\'ll receive an email with repository access',
-        'Use your license key when prompted during setup',
-        'Repository includes full source code and documentation',
-      ],
-    },
-    {
-      step: 2,
-      title: 'Set Up Supabase Database',
-      description: 'Create a free Supabase project and run the database migrations.',
-      icon: Database,
-      action: {
-        label: 'Create Supabase Project',
-        href: 'https://supabase.com/dashboard',
-      },
-      details: [
-        'Create a new project at supabase.com',
-        'Copy your project URL and anon key',
-        'Run migrations: npx supabase db push',
-      ],
-    },
-    {
-      step: 3,
-      title: 'Configure Stripe Payments',
-      description: 'Connect your Stripe account to accept payments from students.',
-      icon: CreditCard,
-      action: {
-        label: 'Stripe Dashboard',
-        href: 'https://dashboard.stripe.com',
-      },
-      details: [
-        'Create or use existing Stripe account',
-        'Get your API keys from Developers section',
-        'Set up webhook endpoint for payment events',
-      ],
-    },
-    {
-      step: 4,
-      title: 'Customize Your Branding',
-      description: 'Update colors, logo, and organization name to match your brand.',
-      icon: Palette,
-      action: {
-        label: 'View Branding Guide',
-        href: '/docs/branding',
-      },
-      details: [
-        'Update logo in /public/images/',
-        'Modify colors in tailwind.config.js',
-        'Edit organization name in .env.local',
-      ],
-    },
-    {
-      step: 5,
-      title: 'Deploy to Production',
-      description: 'Deploy your platform to Netlify, AWS, or your preferred hosting.',
-      icon: Server,
-      action: {
-        label: 'Deploy to Netlify',
-        href: 'https://app.netlify.com/start',
-      },
-      details: [
-        'Connect your GitHub repository',
-        'Add environment variables',
-        'Deploy with one click',
-      ],
-    },
-    {
-      step: 6,
-      title: 'Connect Your Domain',
-      description: 'Point your custom domain to your deployed platform.',
-      icon: Globe,
-      action: {
-        label: 'Domain Setup Guide',
-        href: '/docs/custom-domain',
-      },
-      details: [
-        'Add domain in Vercel dashboard',
-        'Update DNS records at your registrar',
-        'SSL certificate auto-provisioned',
-      ],
-    },
-  ];
+    fetchTenantInfo();
+  }, [sessionId]);
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600" />
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-slate-50">
       {/* Success Header */}
-      <div className="bg-gradient-to-br from-green-600 to-emerald-700 text-white py-16">
+      <section className="bg-gradient-to-br from-green-600 to-emerald-700 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-12 h-12" />
           </div>
-          <h1 className="text-4xl font-bold mb-4">License Activated!</h1>
+          <h1 className="text-4xl font-black mb-4">License Activated!</h1>
           <p className="text-xl text-green-100 max-w-2xl mx-auto">
-            Your platform license is ready. Follow the steps below to deploy your own workforce training platform.
+            Your managed LMS platform is being provisioned. Follow the steps below to get started.
           </p>
         </div>
-      </div>
+      </section>
 
       <div className="max-w-4xl mx-auto px-4 py-12">
-        {/* License Key Card */}
+        {/* Tenant Info Card */}
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 -mt-8 relative z-10">
-          <div className="flex items-center gap-3 mb-6">
-            <Key className="w-8 h-8 text-amber-500" />
-            <h2 className="text-2xl font-bold">Your License Key</h2>
-          </div>
-
-          <div className="bg-gray-900 rounded-xl p-6 mb-6">
-            <div className="flex items-center justify-between">
-              <code className="text-green-400 font-mono text-lg break-all">
-                {licenseData?.licenseKey || 'EFH-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX'}
-              </code>
-              <button
-                onClick={copyLicenseKey}
-                className="ml-4 p-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition flex-shrink-0"
-              >
-                {copied ? (
-                  <Check className="w-5 h-5 text-green-400" />
-                ) : (
-                  <Copy className="w-5 h-5 text-gray-400" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-4 text-sm">
-            <div className="bg-gray-50 rounded-lg p-4">
-              <div className="text-gray-500 mb-1">License Type</div>
-              <div className="font-semibold capitalize">
-                {licenseData?.tier || productSlug?.replace('-', ' ') || 'Professional'}
+          <h2 className="text-2xl font-bold mb-6">Your Platform Details</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="bg-slate-50 rounded-lg p-4">
+              <div className="text-slate-500 text-sm mb-1">Organization</div>
+              <div className="font-bold text-slate-900">
+                {tenantData?.organizationName || 'Your Organization'}
               </div>
             </div>
-            <div className="bg-gray-50 rounded-lg p-4">
-              <div className="text-gray-500 mb-1">Valid Until</div>
-              <div className="font-semibold">
-                {licenseData?.expiresAt
-                  ? new Date(licenseData.expiresAt).toLocaleDateString()
-                  : 'Lifetime'}
+            <div className="bg-slate-50 rounded-lg p-4">
+              <div className="text-slate-500 text-sm mb-1">Platform URL</div>
+              <div className="font-bold text-blue-600">
+                {tenantData?.subdomain || 'yourorg'}.elevateforhumanity.org
               </div>
             </div>
-            <div className="bg-gray-50 rounded-lg p-4">
-              <div className="text-gray-500 mb-1">Deployments</div>
-              <div className="font-semibold">
-                {licenseData?.maxDeployments === 999 ? 'Unlimited' : licenseData?.maxDeployments || '1'}
+            <div className="bg-slate-50 rounded-lg p-4">
+              <div className="text-slate-500 text-sm mb-1">Status</div>
+              <div className="font-bold text-green-600 flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                Active
               </div>
             </div>
           </div>
 
-          <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg flex items-start gap-3">
-            <Mail className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-            <div className="text-sm">
-              <p className="font-semibold text-amber-800">License key sent to your email</p>
-              <p className="text-amber-700">
-                Save this key securely. You'll need it to validate your deployment and access updates.
-              </p>
-            </div>
+          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-blue-800 text-sm">
+              <strong>Provisioning in progress:</strong> Your platform will be fully ready within 24 hours. 
+              You'll receive an email with admin login credentials.
+            </p>
           </div>
         </div>
 
-        {/* Implementation Steps */}
+        {/* Next Steps */}
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-bold mb-2">Implementation Guide</h2>
-          <p className="text-gray-600 mb-8">
-            Follow these steps to deploy your platform. Most customers are live within 30 minutes.
-          </p>
+          <h2 className="text-2xl font-bold mb-2">Next Steps</h2>
+          <p className="text-slate-600 mb-8">Complete these steps to launch your platform.</p>
 
-          <div className="space-y-6">
-            {implementationSteps.map((item) => (
-              <div
-                key={item.step}
-                className="border border-gray-200 rounded-xl p-6 hover:border-blue-300 transition"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-6 h-6 text-blue-600" />
+          <div className="space-y-4">
+            {NEXT_STEPS.map((step, idx) => {
+              const Icon = step.icon;
+              const isComplete = step.status === 'complete';
+              
+              return (
+                <div
+                  key={idx}
+                  className={`flex items-start gap-4 p-4 rounded-xl border ${
+                    isComplete ? 'bg-green-50 border-green-200' : 'bg-white border-slate-200'
+                  }`}
+                >
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                    isComplete ? 'bg-green-600 text-white' : 'bg-slate-100 text-slate-600'
+                  }`}>
+                    <Icon className="w-5 h-5" />
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-lg font-bold">
-                        Step {item.step}: {item.title}
-                      </h3>
-                      <a
-                        href={item.action.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 font-medium text-sm"
-                      >
-                        {item.action.label}
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </div>
-                    <p className="text-gray-600 mb-3">{item.description}</p>
-                    <ul className="space-y-1">
-                      {item.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-sm text-gray-500">
-                          <Check className="w-4 h-4 text-green-500" />
-                          {detail}
-                        </li>
-                      ))}
-                    </ul>
+                    <h3 className={`font-bold ${isComplete ? 'text-green-800' : 'text-slate-900'}`}>
+                      {step.title}
+                    </h3>
+                    <p className={`text-sm ${isComplete ? 'text-green-700' : 'text-slate-600'}`}>
+                      {step.description}
+                    </p>
                   </div>
+                  {step.href && (
+                    <Link
+                      href={step.href}
+                      className="inline-flex items-center gap-1 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+                    >
+                      {step.cta}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  )}
+                  {isComplete && (
+                    <span className="text-green-600 font-medium text-sm">Done</span>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
         {/* Resources */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <Link
+            href="/store/guides/licensing"
+            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
+          >
             <BookOpen className="w-10 h-10 text-purple-600 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Documentation</h3>
-            <p className="text-gray-600 mb-4">
-              Complete guides for setup, customization, and administration.
+            <h3 className="text-xl font-bold mb-2">Licensing Guide</h3>
+            <p className="text-slate-600 mb-4">
+              Step-by-step walkthrough of setup, billing, and platform management.
             </p>
-            <Link
-              href="/docs"
-              className="inline-flex items-center gap-2 text-purple-600 font-semibold hover:text-purple-700"
-            >
-              View Documentation <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+            <span className="inline-flex items-center gap-2 text-purple-600 font-semibold">
+              Read Guide <ArrowRight className="w-4 h-4" />
+            </span>
+          </Link>
 
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <MessageCircle className="w-10 h-10 text-green-600 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Priority Support</h3>
-            <p className="text-gray-600 mb-4">
+          <Link
+            href="/contact?topic=license-support"
+            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
+          >
+            <Headphones className="w-10 h-10 text-green-600 mb-4" />
+            <h3 className="text-xl font-bold mb-2">Support</h3>
+            <p className="text-slate-600 mb-4">
               Get help from our team with setup, customization, or technical issues.
             </p>
-            <Link
-              href="/contact?topic=license-support"
-              className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700"
-            >
+            <span className="inline-flex items-center gap-2 text-green-600 font-semibold">
               Contact Support <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+            </span>
+          </Link>
         </div>
 
-        {/* Quick Start Commands */}
-        <div className="bg-gray-900 rounded-2xl p-8 text-white">
-          <h3 className="text-xl font-bold mb-4">Quick Start Commands</h3>
-          <div className="space-y-4 font-mono text-sm">
-            <div>
-              <div className="text-gray-400 mb-1"># Clone the repository</div>
-              <code className="text-green-400">
-                git clone https://github.com/elevateforhumanity/elevate-lms.git my-platform
-              </code>
-            </div>
-            <div>
-              <div className="text-gray-400 mb-1"># Install dependencies</div>
-              <code className="text-green-400">cd my-platform && pnpm install</code>
-            </div>
-            <div>
-              <div className="text-gray-400 mb-1"># Copy environment template</div>
-              <code className="text-green-400">cp .env.example .env.local</code>
-            </div>
-            <div>
-              <div className="text-gray-400 mb-1"># Start development server</div>
-              <code className="text-green-400">pnpm dev</code>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="mt-8 text-center">
-          <p className="text-gray-600 mb-4">
-            Need help getting started? Schedule a free onboarding call with our team.
+        {/* Admin Dashboard CTA */}
+        <div className="bg-blue-600 rounded-2xl p-8 text-white text-center">
+          <Settings className="w-12 h-12 mx-auto mb-4 opacity-80" />
+          <h2 className="text-2xl font-bold mb-2">Ready to Configure?</h2>
+          <p className="text-blue-100 mb-6">
+            Access your admin dashboard to start setting up your platform.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/schedule?type=onboarding"
-              className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition"
-            >
-              Schedule Onboarding Call
-            </Link>
-            <Link
-              href="/store/deployment"
-              className="inline-flex items-center justify-center gap-2 bg-white text-gray-700 px-8 py-4 rounded-lg font-bold hover:bg-gray-50 transition border border-gray-300"
-            >
-              View Deployment Options
-            </Link>
-          </div>
+          <Link
+            href="/admin"
+            className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors"
+          >
+            Open Admin Dashboard
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+
+        {/* Master Statement */}
+        <div className="mt-8 text-center">
+          <p className="text-sm text-slate-500 italic">{MASTER_STATEMENT}</p>
         </div>
       </div>
     </div>
@@ -388,8 +250,8 @@ function LicenseSuccessContent() {
 
 function LoadingFallback() {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <Loader2 className="w-10 h-10 text-blue-500 animate-spin" />
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
     </div>
   );
 }
@@ -397,7 +259,7 @@ function LoadingFallback() {
 export default function LicenseSuccessPage() {
   return (
     <Suspense fallback={<LoadingFallback />}>
-      <LicenseSuccessContent />
+      <SuccessContent />
     </Suspense>
   );
 }

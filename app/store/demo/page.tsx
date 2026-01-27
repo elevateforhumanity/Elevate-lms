@@ -1,375 +1,225 @@
-'use client';
-
-import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
-  Play, 
-  ChevronRight,
-  ChevronLeft,
-  ExternalLink,
-  Monitor,
-  Smartphone,
-  GraduationCap,
-  Building2,
-  Briefcase,
-  Settings,
-  Zap,
-  Users,
-  RefreshCw,
+  Settings, 
+  GraduationCap, 
+  Users, 
+  ArrowRight, 
+  Play,
+  Lock,
+  CheckCircle,
 } from 'lucide-react';
 
-interface DemoPage {
-  name: string;
-  path: string;
-  description: string;
-}
+export const metadata: Metadata = {
+  title: 'Demo Center | Elevate LMS Platform',
+  description: 'Explore the Elevate LMS platform through guided demos. See admin, instructor, and student experiences before you buy.',
+};
 
-interface DemoSection {
-  id: string;
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  pages: DemoPage[];
-}
-
-const DEMO_SECTIONS: DemoSection[] = [
-  {
-    id: 'public',
-    title: 'Public Website',
-    description: 'What visitors see when they discover your training programs',
-    icon: <Monitor className="w-6 h-6" />,
-    pages: [
-      { name: 'Homepage', path: '/', description: 'Main landing page with programs and CTAs' },
-      { name: 'Programs', path: '/programs', description: 'Browse all training programs' },
-      { name: 'Courses', path: '/courses', description: 'Course catalog with pricing' },
-      { name: 'Apply', path: '/apply', description: 'Student application form' },
-      { name: 'Career Services', path: '/career-services', description: 'Job placement and support' },
-      { name: 'About', path: '/about', description: 'Organization information' },
-    ],
-  },
-  {
-    id: 'lms',
-    title: 'Learning Management System',
-    description: 'Student experience inside the LMS',
-    icon: <GraduationCap className="w-6 h-6" />,
-    pages: [
-      { name: 'LMS Dashboard', path: '/lms/dashboard', description: 'Student home with progress' },
-      { name: 'My Courses', path: '/lms/courses', description: 'Enrolled courses list' },
-      { name: 'Achievements', path: '/lms/achievements', description: 'Badges and certificates' },
-      { name: 'Resources', path: '/lms/resources', description: 'Learning materials' },
-      { name: 'Community', path: '/lms/community', description: 'Discussion forums' },
-    ],
-  },
+const DEMO_PATHS = [
   {
     id: 'admin',
-    title: 'Admin Dashboard',
-    description: 'Program management and reporting tools',
-    icon: <Settings className="w-6 h-6" />,
-    pages: [
-      { name: 'Admin Dashboard', path: '/admin', description: 'Overview and metrics' },
-      { name: 'Enrollments', path: '/admin/enrollments', description: 'Manage student enrollments' },
-      { name: 'Applications', path: '/admin/applications', description: 'Review applications' },
-      { name: 'Courses', path: '/admin/courses', description: 'Course management' },
-      { name: 'Reports', path: '/admin/reports', description: 'Compliance and analytics' },
-      { name: 'AI Studio', path: '/ai-studio', description: 'Generate videos and content' },
+    title: 'Admin Demo',
+    icon: Settings,
+    color: 'blue',
+    description: 'See how administrators manage the platform, users, and reporting.',
+    canDo: [
+      'View organization dashboard',
+      'Browse user management interface',
+      'Explore reporting and analytics',
+      'See compliance tracking tools',
+      'Review enrollment workflows',
+      'Check system settings',
     ],
+    locked: [
+      'Create real users or data',
+      'Modify system configuration',
+      'Access production databases',
+      'Export real reports',
+    ],
+    href: '/store/demo/admin',
   },
   {
-    id: 'employer',
-    title: 'Employer Portal',
-    description: 'Partner employers can post jobs and hire graduates',
-    icon: <Briefcase className="w-6 h-6" />,
-    pages: [
-      { name: 'Employer Dashboard', path: '/employer', description: 'Hiring overview' },
-      { name: 'Post a Job', path: '/employers/post-job', description: 'Create job listings' },
-      { name: 'Browse Graduates', path: '/employer/candidates', description: 'Find qualified candidates' },
-      { name: 'Hire Graduates', path: '/hire-graduates', description: 'Partnership information' },
+    id: 'instructor',
+    title: 'Instructor Demo',
+    icon: GraduationCap,
+    color: 'purple',
+    description: 'Experience the instructor view for course management and student tracking.',
+    canDo: [
+      'Browse course builder interface',
+      'View assessment creation tools',
+      'See gradebook and progress tracking',
+      'Explore certificate templates',
+      'Review student communication tools',
+      'Check attendance tracking',
     ],
+    locked: [
+      'Create real courses',
+      'Grade actual students',
+      'Issue real certificates',
+      'Send live communications',
+    ],
+    href: '/store/demo/instructor',
   },
   {
-    id: 'program-holder',
-    title: 'Program Holder Portal',
-    description: 'Training providers manage their programs',
-    icon: <Building2 className="w-6 h-6" />,
-    pages: [
-      { name: 'Program Dashboard', path: '/program-holder/dashboard', description: 'Program overview' },
-      { name: 'Students', path: '/program-holder/students', description: 'Manage enrolled students' },
-      { name: 'Compliance', path: '/program-holder/compliance', description: 'Compliance tracking' },
-      { name: 'Reports', path: '/program-holder/reports', description: 'Program reports' },
+    id: 'student',
+    title: 'Student Demo',
+    icon: Users,
+    color: 'green',
+    description: 'Walk through the student experience from enrollment to certification.',
+    canDo: [
+      'View student dashboard',
+      'Browse course catalog',
+      'See lesson player interface',
+      'Explore progress tracking',
+      'View certificate display',
+      'Check mobile PWA experience',
     ],
+    locked: [
+      'Enroll in real courses',
+      'Submit actual assignments',
+      'Earn real credentials',
+      'Access paid content',
+    ],
+    href: '/store/demo/student',
   },
 ];
 
-
-
-export default function InteractiveDemoPage() {
-  const [activeSection, setActiveSection] = useState<string>('public');
-  const [activePage, setActivePage] = useState<string>('/programs');
-  const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>('desktop');
-  const [iframeKey, setIframeKey] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const currentSection = DEMO_SECTIONS.find(s => s.id === activeSection);
-  const currentPageInfo = currentSection?.pages.find(p => p.path === activePage);
-
-  useEffect(() => {
-    setIsLoading(true);
-  }, [activePage]);
-
-  const handleSectionChange = (sectionId: string) => {
-    const section = DEMO_SECTIONS.find(s => s.id === sectionId);
-    if (section && section.pages.length > 0) {
-      setActiveSection(sectionId);
-      setActivePage(section.pages[0].path);
-      setIframeKey(prev => prev + 1);
-    }
-  };
-
-  const handlePageChange = (path: string) => {
-    setActivePage(path);
-    setIframeKey(prev => prev + 1);
-  };
-
-  const refreshIframe = () => {
-    setIframeKey(prev => prev + 1);
-    setIsLoading(true);
-  };
-
+export default function DemoCenterPage() {
   return (
-    <div className="min-h-screen bg-slate-900">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-6 sm:py-8">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 text-blue-200 text-sm mb-2">
-                <Play className="w-4 h-4" />
-                <span>Interactive Demo - No Login Required</span>
-              </div>
-              <h1 className="text-2xl sm:text-3xl font-bold">Explore the Platform</h1>
-              <p className="text-blue-100 mt-1 text-sm sm:text-base">Click any page to see it live in the preview below.</p>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="flex bg-white/20 rounded-lg p-1">
-                <button
-                  onClick={() => setViewMode('desktop')}
-                  className={`p-2 rounded ${viewMode === 'desktop' ? 'bg-white text-blue-600' : 'text-white'}`}
-                  title="Desktop view"
-                >
-                  <Monitor className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={() => setViewMode('mobile')}
-                  className={`p-2 rounded ${viewMode === 'mobile' ? 'bg-white text-blue-600' : 'text-white'}`}
-                  title="Mobile view"
-                >
-                  <Smartphone className="w-5 h-5" />
-                </button>
-              </div>
-              <Link
-                href="/store/licenses"
-                className="bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 transition text-sm sm:text-base"
-              >
-                Get License
-              </Link>
-            </div>
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-600 text-white rounded-full text-sm font-bold mb-6">
+            <Play className="w-4 h-4" />
+            Interactive Demos
           </div>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8">
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-          {/* Sidebar */}
-          <div className="w-full lg:w-72 flex-shrink-0">
-            <div className="bg-slate-800 rounded-xl p-4 lg:sticky lg:top-24">
-              <h2 className="text-white font-bold mb-4">Demo Sections</h2>
-              <div className="space-y-2">
-                {DEMO_SECTIONS.map((section) => (
-                  <button
-                    key={section.id}
-                    onClick={() => handleSectionChange(section.id)}
-                    className={`w-full flex items-center gap-3 p-3 rounded-lg transition text-left ${
-                      activeSection === section.id
-                        ? 'bg-blue-600 text-white'
-                        : 'text-slate-300 hover:bg-slate-700'
-                    }`}
-                  >
-                    {section.icon}
-                    <div>
-                      <div className="font-medium">{section.title}</div>
-                      <div className="text-xs opacity-75">{section.pages.length} pages</div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {/* Pages in current section */}
-              {currentSection && (
-                <div className="mt-6 pt-6 border-t border-slate-700">
-                  <h3 className="text-slate-400 text-sm font-medium mb-3">{currentSection.title} Pages</h3>
-                  <div className="space-y-1">
-                    {currentSection.pages.map((page) => (
-                      <button
-                        key={page.path}
-                        onClick={() => handlePageChange(page.path)}
-                        className={`w-full flex items-center justify-between p-2 rounded text-sm transition ${
-                          activePage === page.path
-                            ? 'bg-slate-700 text-white'
-                            : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
-                        }`}
-                      >
-                        <span>{page.name}</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Quick Links */}
-              <div className="mt-6 pt-6 border-t border-slate-700">
-                <h3 className="text-slate-400 text-sm font-medium mb-3">Quick Actions</h3>
-                <div className="space-y-2">
-                  <Link
-                    href="/ai-studio"
-                    className="flex items-center gap-2 text-purple-400 hover:text-purple-300 text-sm"
-                  >
-                    <Zap className="w-4 h-4" />
-                    Try AI Studio
-                  </Link>
-                  <Link
-                    href="/apply"
-                    className="flex items-center gap-2 text-green-400 hover:text-green-300 text-sm"
-                  >
-                    <Users className="w-4 h-4" />
-                    Apply as Student
-                  </Link>
-                  <Link
-                    href="/store/licenses"
-                    className="flex items-center gap-2 text-orange-400 hover:text-orange-300 text-sm"
-                  >
-                    <Building2 className="w-4 h-4" />
-                    View Pricing
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Content - Live Preview */}
-          <div className="flex-1 min-w-0">
-            {/* Page Info Bar */}
-            <div className="bg-slate-800 rounded-t-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div>
-                <div className="text-white font-medium">{currentPageInfo?.name || 'Page'}</div>
-                <div className="text-slate-400 text-sm">{currentPageInfo?.description}</div>
-              </div>
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={refreshIframe}
-                  className="p-2 text-slate-400 hover:text-white transition"
-                  title="Refresh preview"
-                >
-                  <RefreshCw className="w-4 h-4" />
-                </button>
-                <div className="bg-slate-700 px-3 py-1 rounded text-slate-300 text-xs sm:text-sm font-mono truncate max-w-[150px] sm:max-w-none">
-                  {activePage}
-                </div>
-                <a
-                  href={activePage}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-blue-400 hover:text-blue-300 text-sm whitespace-nowrap"
-                >
-                  Open
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-
-            {/* iframe Preview */}
-            <div 
-              className={`bg-white rounded-b-xl overflow-hidden shadow-2xl relative ${
-                viewMode === 'mobile' ? 'max-w-[375px] mx-auto' : ''
-              }`}
-              style={{ height: viewMode === 'mobile' ? '667px' : '700px' }}
-            >
-              {isLoading && (
-                <div className="absolute inset-0 bg-slate-100 flex items-center justify-center z-10">
-                  <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-                    <p className="text-slate-600">Loading preview...</p>
-                  </div>
-                </div>
-              )}
-              <iframe
-                key={iframeKey}
-                src={`${activePage}${activePage.includes('?') ? '&' : '?'}embed=true`}
-                className="w-full h-full border-0"
-                title="Demo Preview"
-                onLoad={() => setIsLoading(false)}
-              />
-            </div>
-
-            {/* Navigation */}
-            <div className="flex items-center justify-between mt-4">
-              <button
-                onClick={() => {
-                  const pages = currentSection?.pages || [];
-                  const currentIndex = pages.findIndex(p => p.path === activePage);
-                  if (currentIndex > 0) {
-                    handlePageChange(pages[currentIndex - 1].path);
-                  }
-                }}
-                disabled={!currentSection || currentSection.pages.findIndex(p => p.path === activePage) === 0}
-                className="flex items-center gap-2 text-slate-400 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <ChevronLeft className="w-5 h-5" />
-                <span className="hidden sm:inline">Previous</span>
-              </button>
-              <div className="text-slate-500 text-sm">
-                Page {(currentSection?.pages.findIndex(p => p.path === activePage) ?? 0) + 1} of {currentSection?.pages.length ?? 0}
-              </div>
-              <button
-                onClick={() => {
-                  const pages = currentSection?.pages || [];
-                  const currentIndex = pages.findIndex(p => p.path === activePage);
-                  if (currentIndex < pages.length - 1) {
-                    handlePageChange(pages[currentIndex + 1].path);
-                  }
-                }}
-                disabled={!currentSection || currentSection.pages.findIndex(p => p.path === activePage) === (currentSection?.pages.length ?? 0) - 1}
-                className="flex items-center gap-2 text-slate-400 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <span className="hidden sm:inline">Next</span>
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 sm:p-8 text-center text-white">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">Ready to Launch Your Training Platform?</h2>
-          <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-            Get the complete platform with all features you just explored. White-label it with your brand.
+          <h1 className="text-4xl md:text-5xl font-black mb-4">
+            Demo Center
+          </h1>
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            Explore the Elevate LMS platform from every perspective. 
+            See exactly what you're getting before you commit.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+        </div>
+      </section>
+
+      {/* Demo Paths */}
+      <section className="py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
+            {DEMO_PATHS.map((demo) => {
+              const Icon = demo.icon;
+              const colorClasses = {
+                blue: 'bg-blue-100 text-blue-600 border-blue-200',
+                purple: 'bg-purple-100 text-purple-600 border-purple-200',
+                green: 'bg-green-100 text-green-600 border-green-200',
+              };
+              const btnClasses = {
+                blue: 'bg-blue-600 hover:bg-blue-700',
+                purple: 'bg-purple-600 hover:bg-purple-700',
+                green: 'bg-green-600 hover:bg-green-700',
+              };
+              
+              return (
+                <div key={demo.id} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                  <div className={`p-6 ${colorClasses[demo.color as keyof typeof colorClasses]} border-b`}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <Icon className="w-8 h-8" />
+                      <h2 className="text-2xl font-bold text-slate-900">{demo.title}</h2>
+                    </div>
+                    <p className="text-slate-600">{demo.description}</p>
+                  </div>
+                  
+                  <div className="p-6">
+                    <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      What You Can Do
+                    </h3>
+                    <ul className="space-y-2 mb-6">
+                      {demo.canDo.map((item, idx) => (
+                        <li key={idx} className="text-sm text-slate-600 flex items-start gap-2">
+                          <span className="text-green-500 mt-1">•</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                      <Lock className="w-5 h-5 text-slate-400" />
+                      Locked Until Onboarding
+                    </h3>
+                    <ul className="space-y-2 mb-6">
+                      {demo.locked.map((item, idx) => (
+                        <li key={idx} className="text-sm text-slate-400 flex items-start gap-2">
+                          <span className="mt-1">•</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <Link
+                      href={demo.href}
+                      className={`block w-full text-center text-white py-3 rounded-lg font-bold ${btnClasses[demo.color as keyof typeof btnClasses]} transition-colors`}
+                    >
+                      Start {demo.title}
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-black text-slate-900 mb-8 text-center">
+            How Demos Work
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { step: 1, title: 'Choose a Role', desc: 'Select admin, instructor, or student perspective.' },
+              { step: 2, title: 'Explore Features', desc: 'Click through real interfaces with sample data.' },
+              { step: 3, title: 'Decide & Buy', desc: 'When ready, start your managed platform setup.' },
+            ].map((item) => (
+              <div key={item.step} className="text-center">
+                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">
+                  {item.step}
+                </div>
+                <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
+                <p className="text-slate-600 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 px-4 bg-blue-600 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-black mb-4">Ready to Get Started?</h2>
+          <p className="text-xl text-blue-100 mb-8">
+            After exploring the demos, set up your managed platform.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/store/licenses"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition"
+              href="/store/licenses/managed"
+              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors"
             >
-              View Pricing
+              Start License Setup
+              <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/contact"
-              className="bg-white/20 text-white px-8 py-3 rounded-lg font-bold hover:bg-white/30 transition border border-white/30"
+              href="/store/guides/licensing"
+              className="inline-flex items-center justify-center gap-2 bg-blue-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-900 transition-colors"
             >
-              Contact Sales
+              Read Licensing Guide
             </Link>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

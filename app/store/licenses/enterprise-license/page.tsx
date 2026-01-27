@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-// Enterprise licensing moved to /licenses
-export default function EnterpriseRedirect() {
-  redirect('/licenses');
+// Legacy clone license - redirects to source-use enterprise info
+export default function EnterpriseLicenseRedirect() {
+  redirect('/store/licenses/source-use');
 }
