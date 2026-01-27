@@ -44,17 +44,24 @@ const categories: ProgramCategory[] = [
     count: 3,
   },
   {
-    title: 'Beauty & Barbering',
-    description: 'Barber Apprenticeship, Cosmetology',
+    title: 'Barber Apprenticeship',
+    description: 'USDOL Registered Barber Training',
     href: '/programs/barber-apprenticeship',
     image: '/images/beauty/program-barber-training.jpg',
-    count: 4,
+    count: 1,
+  },
+  {
+    title: 'Cosmetology',
+    description: 'Esthetician, Nail Tech, Hair Styling',
+    href: '/programs/cosmetology-apprenticeship',
+    image: '/images/beauty/hero-program-cosmetology.jpg',
+    count: 3,
   },
   {
     title: 'Apprenticeships',
     description: 'USDOL Registered Programs',
     href: '/apprenticeships',
-    image: '/images/beauty/program-barber-training.jpg',
+    image: '/images/trades/hero-program-welding.jpg',
     count: 5,
   },
 ];
