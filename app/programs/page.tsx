@@ -64,7 +64,7 @@ export default function ProgramsPage() {
     <div className="min-h-screen bg-white">
 
       {/* Hero - Clean video with just CTAs */}
-      <section className="relative w-full h-[70vh] sm:h-[75vh] md:h-[80vh] flex items-end overflow-hidden bg-slate-900">
+      <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
         <ProgramsHeroVideo />
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
