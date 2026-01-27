@@ -10,6 +10,7 @@
 [build.environment]
   NODE_VERSION = "20"
   NETLIFY_USE_PNPM = "true"
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
