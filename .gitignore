@@ -76,6 +76,13 @@ id_rsa*
 id_dsa*
 *.asc
 *.gpg
+service-account*.json
+*-credentials.json
+*_credentials.json
+firebase-adminsdk*.json
+google-credentials*.json
+private-key*.json
+*.keystore
 
 # Database
 *.db

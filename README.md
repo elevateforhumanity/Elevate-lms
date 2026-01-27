@@ -411,12 +411,7 @@ pnpm deploy:netlify
 
 ### Health Checks
 
-Production health endpoint: https://www.elevateforhumanity.org/api/health
-
-```bash
-# Check production health
-curl https://www.elevateforhumanity.org/api/health
-```
+Health monitoring is configured for production environments.
 
 ---
 
@@ -461,43 +456,9 @@ pnpm db:seed
 
 ## API Documentation
 
-### API Structure
+API documentation is available to authorized developers only.
 
-**Base URL:** `https://www.elevateforhumanity.org/api`
-
-**Total Endpoints:** 200+
-
-### Key API Routes
-
-#### Authentication
-- `POST /api/auth/signup` - User registration
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-- `GET /api/auth/session` - Get current session
-
-#### Courses
-- `GET /api/courses` - List courses
-- `GET /api/courses/[id]` - Get course details
-- `POST /api/courses` - Create course (admin)
-- `PUT /api/courses/[id]` - Update course (admin)
-
-#### Enrollments
-- `GET /api/enrollments` - List user enrollments
-- `POST /api/enrollments` - Create enrollment
-- `GET /api/enrollments/[id]` - Get enrollment details
-- `PUT /api/enrollments/[id]` - Update enrollment
-
-#### Progress
-- `GET /api/progress` - Get user progress
-- `POST /api/progress` - Update progress
-- `GET /api/progress/[courseId]` - Course-specific progress
-
-#### Payments
-- `POST /api/stripe/create-checkout-session` - Create checkout
-- `POST /api/stripe/webhook` - Stripe webhook handler
-- `GET /api/payments/history` - Payment history
-
-See `docs/API_DOCUMENTATION.md` for complete API reference.
+Contact support@elevateforhumanity.org for API access.
 
 ---
 
@@ -539,18 +500,7 @@ pnpm test:coverage
 
 ### Health Check
 
-```bash
-# Check system health
-curl https://www.elevateforhumanity.org/api/health
-
-# Response
-{
-  "status": "healthy",
-  "timestamp": "2026-01-04T21:00:00.000Z",
-  "database": "connected",
-  "version": "2.0.0"
-}
-```
+System health monitoring is configured for production.
 
 ---
 
