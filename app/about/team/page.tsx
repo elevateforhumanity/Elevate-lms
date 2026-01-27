@@ -122,28 +122,7 @@ At Elevate for Humanity, Sharon brings her decades of clinical experience and in
 Known for her professionalism, clinical precision, and commitment to excellence, Sharon Douglass is a trusted leader and educator dedicated to elevating patient outcomes and supporting the next generation of healthcare professionals.`,
     email: 'elevate4humanityedu@gmail.com',
   },
-  {
-    name: 'Ameco Martin',
-    title: 'Director of Staffing',
-    image: '/images/ameco-martin.jpg',
-    bio: `Ameco Martin serves as the Director of Staffing at Elevate for Humanity, where he oversees workforce placement, employer partnerships, and staffing operations. His role is essential in connecting program graduates with employment opportunities and ensuring successful transitions from training to career.
 
-Ameco brings extensive experience in human resources, talent acquisition, and workforce development. He works closely with employer partners to understand their hiring needs and match them with qualified candidates from Elevate's training programs.
-
-His commitment to helping individuals find meaningful employment aligns perfectly with Elevate for Humanity's mission to create pathways to economic mobility and self-sufficiency.`,
-    email: 'elevate4humanityedu@gmail.com',
-  },
-  {
-    name: 'Clystjah Woodley',
-    title: 'Lead Life Coach & Personal Development Specialist',
-    image: '/images/clystjah-woodley.jpg',
-    bio: `Clystjah Woodley serves as the Lead Life Coach and Personal Development Specialist at Elevate for Humanity. She provides one-on-one coaching, group facilitation, and personal development programming to help students overcome barriers and achieve their goals.
-
-Clystjah's approach combines motivational coaching with practical life skills training, helping individuals build confidence, develop healthy habits, and create actionable plans for success. She specializes in working with justice-involved individuals and those facing significant life challenges.
-
-Her dedication to personal transformation and her ability to connect with people from all backgrounds make her an invaluable member of the Elevate for Humanity team.`,
-    email: 'elevate4humanityedu@gmail.com',
-  },
   {
     name: 'Delores Reynolds',
     title: 'Social Media & Digital Engagement Coordinator',
