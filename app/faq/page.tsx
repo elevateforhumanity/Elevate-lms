@@ -2,7 +2,8 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { HelpCircle, ChevronDown, Search, MessageSquare } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
+import FAQSearch from './FAQSearch';
 
 export const metadata: Metadata = {
   title: 'FAQ | Elevate For Humanity',
@@ -93,14 +94,7 @@ export default async function FAQPage() {
               Find answers to common questions about our free training programs, 
               eligibility requirements, funding options, and career services.
             </p>
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="search"
-                placeholder="Search questions..."
-                className="w-full pl-12 pr-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 border border-gray-300"
-              />
-            </div>
+
           </div>
         </div>
       </section>
@@ -144,23 +138,8 @@ export default async function FAQPage() {
           </div>
         )}
 
-        {/* FAQ List */}
-        <div className="space-y-4">
-          {faqs.map((faq: FAQ) => (
-            <details key={faq.id} className="bg-white rounded-lg shadow-sm border group">
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <div className="flex items-start gap-4">
-                  <HelpCircle className="w-6 h-6 text-orange-500 flex-shrink-0 mt-0.5" />
-                  <span className="font-medium text-gray-900">{faq.question}</span>
-                </div>
-                <ChevronDown className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" />
-              </summary>
-              <div className="px-6 pb-6 pl-16">
-                <p className="text-gray-600 whitespace-pre-line">{faq.answer}</p>
-              </div>
-            </details>
-          ))}
-        </div>
+        {/* FAQ List with Search */}
+        <FAQSearch faqs={faqs} />
 
         {/* Contact CTA */}
         <div className="mt-12 bg-orange-50 rounded-xl p-8 text-center">

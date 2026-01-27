@@ -59,8 +59,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Send confirmation email
-    // await sendAppointmentConfirmation(appointment);
+    // Send confirmation email
+    try {
+      await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: appointment.email,
+          subject: 'Appointment Confirmation - Curvature Body Sculpting',
+          template: 'appointment-confirmation',
+          data: { appointment }
+        })
+      });
+    } catch (emailError) {
+      console.error('Failed to send confirmation email:', emailError);
+    }
 
     return NextResponse.json({
       success: true,

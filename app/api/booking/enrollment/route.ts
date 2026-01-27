@@ -46,8 +46,21 @@ export async function POST(req: Request) {
       });
     }
 
-    // TODO: Send confirmation email
-    // TODO: Add to calendar
+    // Send confirmation email
+    try {
+      await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: email,
+          subject: `Enrollment Confirmation - ${program}`,
+          template: 'enrollment-confirmation',
+          data: { name, email, phone, program, date, time }
+        })
+      });
+    } catch (emailError) {
+      console.error('Failed to send confirmation email:', emailError);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

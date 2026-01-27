@@ -231,8 +231,23 @@ export async function PATCH(request: NextRequest) {
         last_status_update_sent_at: new Date().toISOString(),
       };
 
-      // TODO: Implement actual email sending
-      console.log('Status update would be sent to:', referral.case_manager_email);
+      // Send status update email
+      if (referral.case_manager_email) {
+        try {
+          await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              to: referral.case_manager_email,
+              subject: `Referral Status Update - ${referral.participant_name}`,
+              template: 'referral-status-update',
+              data: { referral, status: updateData }
+            })
+          });
+        } catch (emailError) {
+          console.error('Failed to send status email:', emailError);
+        }
+      }
       break;
 
     default:
@@ -287,8 +302,21 @@ export async function PUT(request: NextRequest) {
   let sentCount = 0;
 
   for (const referral of referrals) {
-    // TODO: Implement actual email sending
-    console.log('Would send status update to:', referral.case_manager_email);
+    // Send status update email
+    try {
+      await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: referral.case_manager_email,
+          subject: `Weekly Status Update - ${referral.participant_name}`,
+          template: 'referral-weekly-update',
+          data: { referral }
+        })
+      });
+    } catch (emailError) {
+      console.error('Failed to send email to:', referral.case_manager_email, emailError);
+    }
     
     await supabase
       .from('workforce_referrals')
