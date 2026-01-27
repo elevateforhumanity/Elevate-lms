@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-// Redirect /programs to the first program category
+// Redirect /programs to WIOA eligibility
 export default function ProgramsPage() {
-  redirect('/programs/healthcare');
+  redirect('/wioa-eligibility');
 }

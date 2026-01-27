@@ -6,20 +6,17 @@ import Image from 'next/image';
 
 const footerLinks = {
   programs: [
-    // Healthcare
+    // WIOA
+    { name: 'WIOA Programs', href: '/wioa-eligibility' },
     { name: 'CNA Training', href: '/programs/cna-certification' },
-    { name: 'Medical Assistant', href: '/programs/medical-assistant' },
-    { name: 'Phlebotomy', href: '/programs/phlebotomy-technician' },
-    // Skilled Trades
     { name: 'HVAC Technician', href: '/programs/hvac-technician' },
     { name: 'CDL Training', href: '/programs/cdl-training' },
-    { name: 'Electrical', href: '/programs/electrical' },
-    // Technology
-    { name: 'IT Support', href: '/programs/it-support' },
-    { name: 'Cybersecurity', href: '/programs/cybersecurity' },
-    // Other
+    // Apprenticeships
+    { name: 'Apprenticeships', href: '/apprenticeships' },
     { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
-    { name: 'Tax Preparation', href: '/programs/tax-prep-financial-services' },
+    // Microclasses
+    { name: 'Microclasses', href: '/microclasses' },
+    { name: 'CPR & First Aid', href: '/programs/cpr-first-aid-hsi' },
   ],
   funding: [
     { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
