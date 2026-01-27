@@ -135,6 +135,111 @@ export async function POST(request: NextRequest) {
     case 'checkout.session.completed': {
       const session = event.data.object as Stripe.Checkout.Session;
 
+      // LANE 0: Handle TRIAL-TO-SUBSCRIPTION UPGRADE
+      if (session.metadata?.upgrade_from === 'trial' && session.mode === 'subscription') {
+        try {
+          const tenantId = session.metadata.tenant_id;
+          const previousLicenseId = session.metadata.previous_license_id;
+          const newTier = session.metadata.new_tier;
+          const subscriptionId = session.subscription as string;
+
+          if (!tenantId || !previousLicenseId || !newTier) {
+            console.error('[webhook] Trial upgrade missing required metadata', {
+              tenantId, previousLicenseId, newTier
+            });
+            break;
+          }
+
+          console.log('[webhook] Processing trial-to-subscription upgrade', {
+            tenantId, previousLicenseId, newTier, subscriptionId
+          });
+
+          // Get subscription details from Stripe for current_period_end
+          const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+          const currentPeriodEnd = new Date(subscription.current_period_end * 1000).toISOString();
+
+          // 1. Create new subscription license
+          const { data: newLicense, error: createError } = await supabase
+            .from('licenses')
+            .insert({
+              tenant_id: tenantId,
+              tier: newTier,
+              status: 'active',
+              stripe_subscription_id: subscriptionId,
+              stripe_customer_id: session.customer as string,
+              current_period_end: currentPeriodEnd,
+              // No expires_at for subscription tiers - controlled by current_period_end
+              expires_at: null,
+              metadata: {
+                upgraded_from_license: previousLicenseId,
+                upgraded_at: new Date().toISOString(),
+                checkout_session_id: session.id,
+              },
+            })
+            .select()
+            .single();
+
+          if (createError) {
+            console.error('[webhook] Failed to create subscription license', createError);
+            break;
+          }
+
+          console.log('[webhook] Created subscription license', { newLicenseId: newLicense.id });
+
+          // 2. Mark trial license as expired
+          const { error: expireError } = await supabase
+            .from('licenses')
+            .update({
+              status: 'expired',
+              expires_at: new Date().toISOString(),
+              metadata: {
+                upgraded_to_license: newLicense.id,
+                expired_reason: 'upgraded_to_subscription',
+              },
+            })
+            .eq('id', previousLicenseId);
+
+          if (expireError) {
+            console.error('[webhook] Failed to expire trial license', expireError);
+            // Don't break - new license is created, this is non-critical
+          }
+
+          // 3. Update subscription metadata with new license ID
+          await stripe.subscriptions.update(subscriptionId, {
+            metadata: {
+              ...subscription.metadata,
+              license_id: newLicense.id,
+            },
+          });
+
+          console.log('[webhook] Trial upgrade complete', {
+            tenantId,
+            oldLicenseId: previousLicenseId,
+            newLicenseId: newLicense.id,
+            tier: newTier,
+          });
+
+          // Audit log
+          await auditLog({
+            action: AuditAction.LICENSE_UPGRADED,
+            entity: AuditEntity.LICENSE,
+            entityId: newLicense.id,
+            userId: session.metadata.user_id || null,
+            metadata: {
+              previous_license_id: previousLicenseId,
+              previous_tier: session.metadata.previous_tier,
+              new_tier: newTier,
+              subscription_id: subscriptionId,
+            },
+          });
+
+        } catch (err: any) {
+          console.error('[webhook] Error processing trial upgrade:', err);
+          logger.error('Error processing trial upgrade:', err instanceof Error ? err : new Error(String(err)));
+        }
+        break;
+      }
+
       // LANE A: Handle LICENSE purchase (platform license)
       if (session.metadata?.product_type === 'license') {
         try {

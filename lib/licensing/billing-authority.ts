@@ -387,3 +387,141 @@ export function checkLicenseAccess(license: License): AccessResult & { hasAccess
 
 // Legacy alias
 export const getUpdatableFields = getStripeUpdatableFields;
+
+// ============================================================================
+// ACCESS MODE (for graceful degradation on expiry)
+// ============================================================================
+
+export type AccessMode = 
+  | 'full'                    // Active license, full access
+  | 'admin_readonly_hold'     // Expired trial, admin can view but not mutate
+  | 'blocked'                 // Expired, non-admin - no access
+  | 'blocked_billing_issue';  // Subscription billing problem
+
+// Roles that get admin-level access during billing hold
+const ADMIN_ROLES = new Set([
+  'super_admin',
+  'admin', 
+  'org_admin',
+  'executive',
+]);
+
+export function isAdminRole(role: string | null | undefined): boolean {
+  return !!role && ADMIN_ROLES.has(role);
+}
+
+export interface AccessModeResult {
+  mode: AccessMode;
+  canRead: boolean;
+  canMutate: boolean;
+  reason: string;
+  redirectTo?: string;
+  message?: string;
+}
+
+/**
+ * Determine access mode based on license status and user role
+ * 
+ * This enables graceful degradation:
+ * - Admins get read-only access during billing hold
+ * - Non-admins get blocked with "contact admin" message
+ */
+export function getLicenseAccessMode(
+  license: License | null | undefined,
+  userRole: string | null | undefined,
+  now: Date = new Date()
+): AccessModeResult {
+  const accessResult = isLicenseActiveNow(license, now);
+  const isAdmin = isAdminRole(userRole);
+
+  // Full access if license is active
+  if (accessResult.ok) {
+    return {
+      mode: 'full',
+      canRead: true,
+      canMutate: true,
+      reason: accessResult.reason,
+    };
+  }
+
+  // No license at all
+  if (!license || accessResult.reason === 'no_license') {
+    return {
+      mode: 'blocked',
+      canRead: false,
+      canMutate: false,
+      reason: 'no_license',
+      redirectTo: '/store/licenses/managed?reason=missing',
+      message: 'No active license found. Please purchase a license to continue.',
+    };
+  }
+
+  // Determine if this is a trial expiry or subscription issue
+  const isTrialExpiry = 
+    accessResult.reason === 'license_expired' || 
+    accessResult.reason === 'missing_expires_at';
+  
+  const isSubscriptionIssue = 
+    accessResult.reason === 'subscription_expired' ||
+    accessResult.reason === 'missing_subscription_id' ||
+    accessResult.reason === 'missing_current_period_end';
+
+  const isCanceled = 
+    accessResult.reason === 'license_canceled' ||
+    accessResult.reason === 'status_canceled';
+
+  const isSuspended =
+    accessResult.reason === 'license_suspended' ||
+    accessResult.reason === 'status_suspended';
+
+  // Billing issues (canceled, suspended) - block everyone
+  if (isCanceled || isSuspended) {
+    return {
+      mode: 'blocked_billing_issue',
+      canRead: false,
+      canMutate: false,
+      reason: accessResult.reason,
+      redirectTo: `/store/licenses/managed?reason=${isCanceled ? 'canceled' : 'suspended'}&license_id=${license.id}`,
+      message: isCanceled 
+        ? 'Your subscription has been canceled. Please resubscribe to restore access.'
+        : 'Your license is suspended due to a billing issue. Please update your payment method.',
+    };
+  }
+
+  // Trial expired or subscription expired
+  if (isTrialExpiry || isSubscriptionIssue) {
+    if (isAdmin) {
+      // Admins get read-only hold mode
+      return {
+        mode: 'admin_readonly_hold',
+        canRead: true,
+        canMutate: false,
+        reason: accessResult.reason,
+        redirectTo: undefined, // Don't redirect, show inline banner
+        message: isTrialExpiry
+          ? 'Trial ended. Your workspace is in billing hold. Upgrade to restore full access. Your data is safe.'
+          : 'Subscription expired. Your workspace is in billing hold. Renew to restore full access.',
+      };
+    } else {
+      // Non-admins get blocked
+      return {
+        mode: 'blocked',
+        canRead: false,
+        canMutate: false,
+        reason: accessResult.reason,
+        redirectTo: '/access-paused',
+        message: 'Access paused. Please contact your administrator.',
+      };
+    }
+  }
+
+  // Unknown denial reason - block to be safe
+  return {
+    mode: 'blocked',
+    canRead: false,
+    canMutate: false,
+    reason: accessResult.reason,
+    redirectTo: '/store/licenses/managed?reason=unknown',
+    message: 'Access denied. Please contact support.',
+  };
+}

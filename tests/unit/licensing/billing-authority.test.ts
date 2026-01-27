@@ -6,6 +6,8 @@ import {
   isKnownTier,
   tierRequiresExpiry,
   tierAllowsPerpetual,
+  getLicenseAccessMode,
+  isAdminRole,
   type License 
 } from '@/lib/licensing/billing-authority';
 
@@ -361,6 +363,91 @@ describe('billing-authority', () => {
       const result = isLicenseActiveNow(license, now);
       expect(result.ok).toBe(false);
       expect(result.reason).toBe('missing_current_period_end');
+    });
+  });
+
+  describe('isAdminRole', () => {
+    it('returns true for admin roles', () => {
+      expect(isAdminRole('super_admin')).toBe(true);
+      expect(isAdminRole('admin')).toBe(true);
+      expect(isAdminRole('org_admin')).toBe(true);
+      expect(isAdminRole('executive')).toBe(true);
+    });
+
+    it('returns false for non-admin roles', () => {
+      expect(isAdminRole('student')).toBe(false);
+      expect(isAdminRole('learner')).toBe(false);
+      expect(isAdminRole('instructor')).toBe(false);
+      expect(isAdminRole(null)).toBe(false);
+      expect(isAdminRole(undefined)).toBe(false);
+    });
+  });
+
+  describe('getLicenseAccessMode', () => {
+    it('returns full access for active license', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'trial',
+        expires_at: future.toISOString(),
+        current_period_end: null,
+        stripe_subscription_id: null,
+      };
+      const result = getLicenseAccessMode(license, 'admin', now);
+      expect(result.mode).toBe('full');
+      expect(result.canRead).toBe(true);
+      expect(result.canMutate).toBe(true);
+    });
+
+    it('returns admin_readonly_hold for expired trial + admin', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'trial',
+        expires_at: past.toISOString(),
+        current_period_end: null,
+        stripe_subscription_id: null,
+      };
+      const result = getLicenseAccessMode(license, 'admin', now);
+      expect(result.mode).toBe('admin_readonly_hold');
+      expect(result.canRead).toBe(true);
+      expect(result.canMutate).toBe(false);
+      expect(result.message).toContain('billing hold');
+    });
+
+    it('returns blocked for expired trial + non-admin', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'trial',
+        expires_at: past.toISOString(),
+        current_period_end: null,
+        stripe_subscription_id: null,
+      };
+      const result = getLicenseAccessMode(license, 'student', now);
+      expect(result.mode).toBe('blocked');
+      expect(result.canRead).toBe(false);
+      expect(result.canMutate).toBe(false);
+      expect(result.redirectTo).toBe('/access-paused');
+      expect(result.message).toContain('contact your administrator');
+    });
+
+    it('returns blocked_billing_issue for canceled license', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'managed_monthly',
+        expires_at: null,
+        current_period_end: future.toISOString(),
+        stripe_subscription_id: 'sub_123',
+        canceled_at: past.toISOString(),
+      };
+      const result = getLicenseAccessMode(license, 'admin', now);
+      expect(result.mode).toBe('blocked_billing_issue');
+      expect(result.canRead).toBe(false);
+      expect(result.canMutate).toBe(false);
+    });
+
+    it('returns blocked for no license', () => {
+      const result = getLicenseAccessMode(null, 'admin', now);
+      expect(result.mode).toBe('blocked');
+      expect(result.redirectTo).toContain('reason=missing');
     });
   });
 });
