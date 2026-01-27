@@ -6,7 +6,6 @@ import { useEffect, useState, useRef } from 'react';
 
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
-import PageAvatar from '@/components/PageAvatar';
 
 interface Program {
   id: string;
@@ -68,12 +67,7 @@ export default function HealthcareProgramsPage() {
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
-    video.playsInline = true;
-    video.loop = true;
-    const playVideo = () => video.play().catch(() => {});
-    playVideo();
-    video.addEventListener('canplay', playVideo);
-    return () => video.removeEventListener('canplay', playVideo);
+    video.play().catch(() => {});
   }, []);
 
   const getImageForProgram = (slug: string) => {
@@ -93,26 +87,40 @@ export default function HealthcareProgramsPage() {
     <div className="min-h-screen bg-white">
 
 
-      {/* Hero - Video only */}
-      <section className="relative w-full h-[50vh] min-h-[350px] overflow-hidden bg-slate-900">
+      {/* Hero */}
+      <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover brightness-110"
           loop
           muted
           playsInline
           autoPlay
           preload="auto"
+          poster="/images/artlist/hero-training-4.jpg"
         >
-          <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/cna-hero.mp4" type="video/mp4" />
+          <source src="/videos/cna-hero.mp4" type="video/mp4" />
         </video>
+        
+        
+        
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
+          <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <Link 
+              href="/apply?program=healthcare"
+              className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors text-lg"
+            >
+              Apply Now
+            </Link>
+            <Link 
+              href="/wioa-eligibility"
+              className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
+            >
+              Check Eligibility
+            </Link>
+          </div>
+        </div>
       </section>
-
-      {/* Avatar Guide */}
-      <PageAvatar 
-        videoSrc="/videos/avatars/healthcare-guide.mp4" 
-        title="Healthcare Guide" 
-      />
 
       {/* Breadcrumbs */}
       <Breadcrumbs />
@@ -137,12 +145,14 @@ export default function HealthcareProgramsPage() {
                   href={`/programs/${program.slug}`}
                   className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
                 >
-                  <div 
-                    className="relative h-48 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${getImageForProgram(program.slug)})` }}
-                    role="img"
-                    aria-label={program.name}
-                  >
+                  <div className="relative h-48">
+                    <Image
+                      src={getImageForProgram(program.slug)}
+                      alt={program.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      quality={85}
+                    />
                     <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                       {formatDuration(program.duration_weeks)}
                     </div>

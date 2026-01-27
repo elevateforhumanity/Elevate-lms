@@ -11,14 +11,22 @@ export default function ProgramsHeroVideo() {
 
     video.muted = true;
     video.playsInline = true;
-    video.loop = true;
     
-    const playVideo = () => video.play().catch(() => {});
+    const playVideo = async () => {
+      try {
+        await video.play();
+      } catch {
+        setTimeout(() => {
+          video.play().catch(() => {});
+        }, 100);
+      }
+    };
+
     playVideo();
-    video.addEventListener('canplay', playVideo);
+    video.addEventListener('loadeddata', playVideo);
     
     return () => {
-      video.removeEventListener('canplay', playVideo);
+      video.removeEventListener('loadeddata', playVideo);
     };
   }, []);
 
@@ -31,8 +39,9 @@ export default function ProgramsHeroVideo() {
       playsInline
       autoPlay
       preload="auto"
+      poster="/images/artlist/hero-training-3.jpg"
     >
-      <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
+      <source src="/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
     </video>
   );
 }

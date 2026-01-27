@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import HeroAvatarGuide from '@/components/HeroAvatarGuide';
 import TestimonialsSection from '@/components/content/TestimonialsSection';
 import {
   BadgeCheck,
@@ -34,7 +35,7 @@ export default function SupersonicFastCashPage() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home.mp4" type="video/mp4" />
+          <source src="/videos/hero-home.mp4" type="video/mp4" />
         </video>
         
 
@@ -107,7 +108,12 @@ export default function SupersonicFastCashPage() {
         </div>
       </section>
 
-
+      {/* Avatar Guide - Below Hero */}
+      <HeroAvatarGuide 
+        videoSrc="/videos/avatars/financial-guide.mp4"
+        avatarName="Tax Guide"
+        message="Let me help you get your tax refund fast. Click to learn more."
+      />
 
       {/* How It Works */}
       <section className="py-20 bg-gray-50">
@@ -177,90 +183,57 @@ export default function SupersonicFastCashPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link
               href="/supersonic-fast-cash/services/tax-preparation"
-              className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
+              className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all group"
             >
-              <div className="relative h-36">
-                <Image src="/images/business/program-tax-preparation.jpg" alt="Tax Preparation" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  Tax Preparation
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Professional tax prep by IRS-certified experts.
-                </p>
-              </div>
+              <FileText className="w-12 h-12 text-blue-600 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                Tax Preparation
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Professional tax prep by IRS-certified experts.
+              </p>
             </Link>
 
             <Link
               href="/supersonic-fast-cash/services/refund-advance"
-              className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
+              className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all group"
             >
-              <div className="relative h-36">
-                <Image src="/images/business/success-1.jpg" alt="Refund Advance" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
-                  Refund Advance
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Get up to $7,500 same day with 0% interest.
-                </p>
-              </div>
+              <DollarSign className="w-12 h-12 text-green-600 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
+                Refund Advance
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Get up to $7,500 same day with 0% interest.
+              </p>
             </Link>
 
             <Link
               href="/supersonic-fast-cash/diy-taxes"
-              className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
+              className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all group"
             >
-              <div className="relative h-36">
-                <Image src="/images/business/office-admin.jpg" alt="DIY Tax Filing" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
-                  DIY Tax Filing
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  File your own taxes with our easy online software.
-                </p>
-              </div>
+              <Calculator className="w-12 h-12 text-purple-600 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
+                DIY Tax Filing
+              </h3>
+              <p className="text-gray-600 text-sm">
+                File your own taxes with our easy online software.
+              </p>
             </Link>
 
             <Link
               href="/supersonic-fast-cash/services/audit-protection"
-              className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
+              className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all group"
             >
-              <div className="relative h-36">
-                <Image src="/images/business/professional-1.jpg" alt="Audit Protection" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
-                  Audit Protection
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Peace of mind with full audit representation.
-                </p>
-              </div>
-            </Link>
-
-            <Link
-              href="/supersonic-fast-cash/training"
-              className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
-            >
-              <div className="relative h-36">
-                <Image src="/images/business/tax-prep-certification-optimized.jpg" alt="Tax Preparer Training" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">
-                  Become a Tax Pro
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Get trained and certified as a tax preparer.
-                </p>
-              </div>
+              <Shield className="w-12 h-12 text-red-600 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                Audit Protection
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Peace of mind with full audit representation.
+              </p>
             </Link>
           </div>
         </div>
@@ -347,7 +320,7 @@ export default function SupersonicFastCashPage() {
       {/* Quick Links */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <Link
               href="/supersonic-fast-cash/calculator"
               className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition-colors"
@@ -368,13 +341,6 @@ export default function SupersonicFastCashPage() {
             >
               <Upload className="w-8 h-8 text-purple-600" />
               <span className="font-semibold text-gray-900">Upload Documents</span>
-            </Link>
-            <Link
-              href="/supersonic-fast-cash/training"
-              className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition-colors"
-            >
-              <BadgeCheck className="w-8 h-8 text-orange-600" />
-              <span className="font-semibold text-gray-900">Tax Training</span>
             </Link>
             <Link
               href="/supersonic-fast-cash/careers"
