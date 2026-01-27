@@ -47,7 +47,7 @@ jobs:
         continue-on-error: false
 
       - name: Run unit tests
-        run: pnpm run test --if-present || echo "No unit tests found"
+        run: pnpm run test || echo "No unit tests found"
         continue-on-error: false
 
       - name: Run smoke tests
