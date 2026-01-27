@@ -102,10 +102,10 @@ export default function LicensesPage() {
             </div>
 
             <Link
-              href="/licenses/request"
+              href="/store/licenses/starter-license"
               className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors"
             >
-              Request License / Start Setup
+              Start License Setup
             </Link>
           </div>
         </div>

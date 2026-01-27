@@ -194,22 +194,22 @@ export default function LicensingPage() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/store/demo"
+              href="/store/licenses/starter-license"
               className="inline-flex items-center justify-center px-8 py-3 text-base font-bold text-white bg-brand-green-600 rounded-lg hover:bg-green-700 transition-colors"
             >
-              Watch Demo Live
+              Start License Setup
+            </Link>
+            <Link
+              href="/store/demo"
+              className="inline-flex items-center justify-center px-8 py-3 text-base font-bold text-zinc-900 bg-white border-2 border-zinc-900 rounded-lg hover:bg-zinc-50 transition-colors"
+            >
+              Watch Demo First
             </Link>
             <Link
               href="/contact?topic=licensing"
-              className="inline-flex items-center justify-center px-8 py-3 text-base font-bold text-zinc-900 bg-white border-2 border-zinc-900 rounded-lg hover:bg-zinc-50 transition-colors"
-            >
-              Discuss Licensing Options
-            </Link>
-            <Link
-              href="/contact"
               className="inline-flex items-center justify-center px-8 py-3 text-base font-bold text-zinc-700 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors"
             >
-              Contact Our Team
+              Have Questions?
             </Link>
           </div>
         </div>
