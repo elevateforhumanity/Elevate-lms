@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
   Check,
@@ -15,6 +16,7 @@ import {
   Headphones,
   Globe,
   AlertTriangle,
+  XCircle,
 } from 'lucide-react';
 
 const MANAGED_LICENSE = {
@@ -55,11 +57,98 @@ Non-payment results in automatic platform lockout. This is not negotiable.`;
 const MASTER_STATEMENT = `All platform products are licensed access to systems operated by Elevate for Humanity. 
 Ownership of software, infrastructure, and intellectual property is not transferred.`;
 
-export default function ManagedLicensePage() {
+// Upgrade banner messages based on reason
+const UPGRADE_MESSAGES: Record<string, { title: string; description: string; icon: typeof AlertTriangle }> = {
+  expired: {
+    title: 'Your Trial Has Ended',
+    description: 'Subscribe now to continue using the platform. Your data and settings are preserved.',
+    icon: Clock,
+  },
+  suspended: {
+    title: 'License Suspended',
+    description: 'Please resolve billing issues to restore access to your account.',
+    icon: XCircle,
+  },
+  missing: {
+    title: 'License Required',
+    description: 'Purchase a license to access the platform features.',
+    icon: Shield,
+  },
+};
+
+// Inner component that uses searchParams
+function ManagedLicenseContent() {
+  const searchParams = useSearchParams();
   const [selectedPlan, setSelectedPlan] = useState<'standard' | 'premium'>('standard');
+  const [showUpgradeBanner, setShowUpgradeBanner] = useState(false);
+  const [upgradeReason, setUpgradeReason] = useState<string | null>(null);
+  const [licenseId, setLicenseId] = useState<string | null>(null);
+  const [customMessage, setCustomMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const reason = searchParams.get('reason');
+    const license = searchParams.get('license_id');
+    const message = searchParams.get('message');
+    
+    if (reason) {
+      setUpgradeReason(reason);
+      setShowUpgradeBanner(true);
+    }
+    if (license) setLicenseId(license);
+    if (message) setCustomMessage(message);
+  }, [searchParams]);
+
+  const bannerInfo = upgradeReason ? UPGRADE_MESSAGES[upgradeReason] : null;
+  const BannerIcon = bannerInfo?.icon || AlertTriangle;
 
   return (
     <div className="bg-white min-h-screen">
+      {/* Upgrade Banner - shown when redirected from expired/suspended license */}
+      {showUpgradeBanner && bannerInfo && (
+        <div className="bg-amber-50 border-b-2 border-amber-400">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0">
+                <BannerIcon className="w-6 h-6 text-amber-600" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-amber-900">{bannerInfo.title}</h3>
+                <p className="text-amber-800 mt-1">
+                  {customMessage || bannerInfo.description}
+                </p>
+                {licenseId && (
+                  <p className="text-sm text-amber-700 mt-2">
+                    License ID: <code className="bg-amber-100 px-1 rounded">{licenseId}</code>
+                  </p>
+                )}
+              </div>
+              <button
+                onClick={() => setShowUpgradeBanner(false)}
+                className="flex-shrink-0 text-amber-600 hover:text-amber-800"
+                aria-label="Dismiss"
+              >
+                <XCircle className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="mt-4 flex gap-3">
+              <a
+                href="#pricing"
+                className="inline-flex items-center gap-2 bg-amber-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-amber-700 transition-colors"
+              >
+                Subscribe Now
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <Link
+                href="/support/contact"
+                className="inline-flex items-center gap-2 bg-white text-amber-800 border border-amber-300 px-4 py-2 rounded-lg font-medium hover:bg-amber-50 transition-colors"
+              >
+                Contact Sales
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -272,5 +361,14 @@ export default function ManagedLicensePage() {
         </div>
       </section>
     </div>
+  );
+}
+
+// Main export wrapped in Suspense for useSearchParams
+export default function ManagedLicensePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <ManagedLicenseContent />
+    </Suspense>
   );
 }

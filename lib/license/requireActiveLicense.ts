@@ -158,14 +158,41 @@ export async function checkLicense(): Promise<License | null> {
 }
 
 /**
- * Create error response for license errors
+ * Get the appropriate redirect URL for a license error
  */
-export function licenseErrorResponse(error: LicenseError): NextResponse {
+export function getLicenseErrorRedirect(error: LicenseError, licenseId?: string): string {
+  const baseUrl = '/store/licenses/managed';
+  const params = new URLSearchParams();
+  
+  params.set('reason', error.licenseStatus);
+  if (licenseId) params.set('license_id', licenseId);
+  
+  // Add specific messaging based on error type
+  if (error.licenseStatus === 'expired') {
+    params.set('message', 'Your trial has ended. Subscribe to continue using the platform.');
+  } else if (error.licenseStatus === 'suspended') {
+    params.set('message', 'Your license is suspended. Please resolve billing issues to restore access.');
+  } else if (error.licenseStatus === 'missing') {
+    params.set('message', 'No active license found. Purchase a license to get started.');
+  }
+  
+  return `${baseUrl}?${params.toString()}`;
+}
+
+/**
+ * Create error response for license errors
+ * Includes redirect URL for client-side handling
+ */
+export function licenseErrorResponse(error: LicenseError, licenseId?: string): NextResponse {
+  const redirectUrl = getLicenseErrorRedirect(error, licenseId);
+  
   return NextResponse.json(
     { 
       error: error.message,
       licenseStatus: error.licenseStatus,
-      code: 'LICENSE_REQUIRED'
+      code: 'LICENSE_REQUIRED',
+      redirectUrl,
+      billingAuthority: error.billingAuthority,
     },
     { status: error.statusCode }
   );
