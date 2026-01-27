@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, AlertCircle, Loader2 } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 import Turnstile from '@/components/Turnstile';
 
@@ -59,18 +59,15 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="relative bg-blue-900 text-white py-16">
+      {/* Hero - Image only */}
+      <div className="relative h-[40vh] min-h-[300px]">
         <Image
           src="/images/heroes-hq/contact-hero.jpg"
           alt="Contact Us"
           fill
-          className="object-cover opacity-40"
+          className="object-cover"
           priority
         />
-        <div className="relative max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl text-blue-100">We&apos;re here to help with any questions</p>
-        </div>
       </div>
 
       {/* Avatar Guide */}

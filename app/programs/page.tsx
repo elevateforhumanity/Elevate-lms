@@ -70,29 +70,9 @@ export default function ProgramsPage() {
   return (
     <div className="min-h-screen bg-white">
 
-      {/* Hero - Clean video with just CTAs */}
-      <section className="relative w-full h-[70vh] sm:h-[75vh] md:h-[80vh] flex items-end overflow-hidden bg-slate-900">
+      {/* Hero - Video only */}
+      <section className="relative w-full h-[50vh] min-h-[350px] overflow-hidden bg-slate-900">
         <ProgramsHeroVideo />
-        
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
-          <div className="flex flex-wrap gap-4">
-            <Link 
-              href="/apply"
-              className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors text-lg"
-            >
-              Start Eligibility & Choose a Career Path
-            </Link>
-            <Link 
-              href="/wioa-eligibility"
-              className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
-            >
-              Learn About Eligibility
-            </Link>
-          </div>
-          <p className="text-blue-200 text-sm mt-4 max-w-xl">
-            All programs require eligibility screening before enrollment.
-          </p>
-        </div>
       </section>
 
       {/* Avatar Guide */}

@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Target, Users, Award, Heart, ArrowRight, CheckCircle, Shield, Building, GraduationCap, Briefcase, MapPin } from 'lucide-react';
+import { Target, Users, Award, Heart, ArrowRight, Shield, Building, GraduationCap, Briefcase, MapPin } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
+import { ImageHero } from '@/components/ImageHero';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
@@ -17,25 +18,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* HERO */}
-      <section className="relative h-[50vh] min-h-[400px] flex items-end">
-        <Image
-          src="/images/heroes-hq/about-hero.jpg"
-          alt="Elevate for Humanity"
-          fill
-          className="object-cover"
-          priority
-        />
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-12">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4">
-            About Elevate for Humanity
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl">
-            Transforming lives through workforce development, one person at a time.
-          </p>
-        </div>
-      </section>
+      {/* HERO - Image only */}
+      <ImageHero src="/images/heroes-hq/about-hero.jpg" alt="About Elevate for Humanity" />
 
       {/* Avatar Guide */}
       <PageAvatar 
