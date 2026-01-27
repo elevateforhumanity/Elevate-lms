@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { checkLicenseAccess, type BillingAuthority } from './billing-authority';
 
 /**
  * License validation for API routes
  * Use this in API route handlers to check license status
+ * 
+ * Uses billing authority rules:
+ * - DB-Authoritative tiers: Access via expires_at
+ * - Stripe-Authoritative tiers: Access via current_period_end
  */
 export async function validateLicenseForAPI(
   request: NextRequest,
@@ -11,7 +16,13 @@ export async function validateLicenseForAPI(
     requireActive?: boolean;
     checkLimit?: 'students' | 'admins' | 'programs';
   } = {}
-): Promise<{ valid: boolean; error?: NextResponse; organizationId?: string; license?: any }> {
+): Promise<{ 
+  valid: boolean; 
+  error?: NextResponse; 
+  organizationId?: string; 
+  license?: any;
+  billingAuthority?: BillingAuthority;
+}> {
   const supabase = await createClient();
   
   if (!supabase) {
@@ -60,27 +71,38 @@ export async function validateLicenseForAPI(
     };
   }
 
-  // Check status
-  if (options.requireActive && !['active', 'trial'].includes(license.status)) {
-    return {
-      valid: false,
-      error: NextResponse.json(
-        { error: `License ${license.status}`, code: 'LICENSE_INACTIVE' },
-        { status: 403 }
-      ),
-    };
-  }
+  // Use billing authority rules for access check
+  if (options.requireActive) {
+    const accessResult = checkLicenseAccess({
+      id: license.id,
+      tier: license.tier || license.plan_id || 'unknown',
+      status: license.status,
+      expires_at: license.expires_at || license.trial_ends_at,
+      current_period_end: license.current_period_end,
+      stripe_subscription_id: license.stripe_subscription_id,
+      stripe_customer_id: license.stripe_customer_id,
+    });
 
-  // Check trial expiration
-  if (license.status === 'trial' && license.trial_ends_at) {
-    const trialEnd = new Date(license.trial_ends_at);
-    if (trialEnd < new Date()) {
+    if (!accessResult.hasAccess) {
+      // Determine specific error code for UI handling
+      let code = 'LICENSE_INACTIVE';
+      if (accessResult.reason.includes('expired')) {
+        code = license.tier === 'trial' ? 'TRIAL_EXPIRED' : 'LICENSE_EXPIRED';
+      } else if (accessResult.reason.includes('subscription')) {
+        code = 'SUBSCRIPTION_REQUIRED';
+      }
+
       return {
         valid: false,
         error: NextResponse.json(
-          { error: 'Trial expired', code: 'TRIAL_EXPIRED' },
+          { 
+            error: accessResult.reason, 
+            code,
+            billingAuthority: accessResult.authority,
+          },
           { status: 403 }
         ),
+        billingAuthority: accessResult.authority,
       };
     }
   }

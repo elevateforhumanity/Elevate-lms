@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { logger } from '@/lib/logger';
 import { TenantContext } from './withTenant';
+import { checkLicenseAccess, type BillingAuthority } from '@/lib/licensing/billing-authority';
 
 export interface LicenseContext extends TenantContext {
   licenseId: string;
@@ -10,7 +11,8 @@ export interface LicenseContext extends TenantContext {
   features: string[];
   maxUsers: number;
   maxDeployments: number;
-  expiresAt: Date;
+  expiresAt: Date | null;
+  billingAuthority: BillingAuthority;
 }
 
 interface LicenseRecord {
@@ -19,7 +21,10 @@ interface LicenseRecord {
   features: string[];
   max_users: number;
   max_deployments: number;
-  expires_at: string;
+  expires_at: string | null;
+  current_period_end: string | null;
+  stripe_subscription_id: string | null;
+  stripe_customer_id: string | null;
   status: string;
 }
 
@@ -27,6 +32,10 @@ interface LicenseRecord {
  * SECTION 6: License enforcement middleware
  * Validates license exists, is active, and not expired
  * Checks feature entitlements
+ * 
+ * Uses billing authority rules:
+ * - DB-Authoritative tiers (trial, lifetime): Access via expires_at
+ * - Stripe-Authoritative tiers (*_monthly, *_annual): Access via current_period_end
  */
 export async function withLicense(
   request: NextRequest,
@@ -36,30 +45,38 @@ export async function withLicense(
   try {
     const adminSupabase = createAdminClient();
 
-    // Get license for tenant
+    // Get license for tenant - include all fields needed for billing authority check
     const { data: license, error } = await adminSupabase
       .from('licenses')
-      .select('id, tier, features, max_users, max_deployments, expires_at, status')
+      .select('id, tier, features, max_users, max_deployments, expires_at, current_period_end, stripe_subscription_id, stripe_customer_id, status')
       .eq('tenant_id', tenant.tenantId)
-      .eq('status', 'active')
       .single();
 
     if (error || !license) {
-      await logLicenseViolation(adminSupabase, tenant.tenantId, 'no_active_license');
-      return { valid: false, error: 'No active license found' };
+      await logLicenseViolation(adminSupabase, tenant.tenantId, 'no_license');
+      return { valid: false, error: 'No license found' };
     }
 
     const typedLicense = license as LicenseRecord;
 
-    // Check expiration
-    const expiresAt = new Date(typedLicense.expires_at);
-    if (expiresAt < new Date()) {
-      await logLicenseViolation(adminSupabase, tenant.tenantId, 'license_expired');
-      return { valid: false, error: 'License has expired' };
+    // Use billing authority rules for access check
+    const accessResult = checkLicenseAccess({
+      id: typedLicense.id,
+      tier: typedLicense.tier,
+      status: typedLicense.status,
+      expires_at: typedLicense.expires_at,
+      current_period_end: typedLicense.current_period_end,
+      stripe_subscription_id: typedLicense.stripe_subscription_id,
+      stripe_customer_id: typedLicense.stripe_customer_id,
+    });
+
+    if (!accessResult.hasAccess) {
+      await logLicenseViolation(adminSupabase, tenant.tenantId, 'license_invalid', accessResult.reason);
+      return { valid: false, error: accessResult.reason };
     }
 
     // Check feature entitlement
-    if (requiredFeature && !typedLicense.features.includes(requiredFeature)) {
+    if (requiredFeature && !typedLicense.features?.includes(requiredFeature)) {
       await logLicenseViolation(adminSupabase, tenant.tenantId, 'feature_not_entitled', requiredFeature);
       return { valid: false, error: `Feature not included in license: ${requiredFeature}` };
     }
@@ -70,10 +87,11 @@ export async function withLicense(
         ...tenant,
         licenseId: typedLicense.id,
         tier: typedLicense.tier,
-        features: typedLicense.features,
+        features: typedLicense.features || [],
         maxUsers: typedLicense.max_users,
         maxDeployments: typedLicense.max_deployments,
-        expiresAt,
+        expiresAt: accessResult.expiresAt,
+        billingAuthority: accessResult.authority,
       },
     };
   } catch (error) {

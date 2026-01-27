@@ -10,6 +10,12 @@ import { createClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/logger';
 import { createEnrollmentCase, submitCaseForSignatures } from '@/lib/workflow/case-management';
 import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
+import { 
+  getBillingAuthority, 
+  getUpdatableFields,
+  isSubscriptionTier,
+  assertSubscriptionData,
+} from '@/lib/licensing/billing-authority';
 
 const stripeKey = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeKey

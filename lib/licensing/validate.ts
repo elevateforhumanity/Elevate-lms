@@ -1,14 +1,23 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
+import {
+  checkLicenseAccess,
+  getBillingAuthority,
+  validateLicenseIntegrity,
+  type BillingAuthority,
+} from './billing-authority';
 
 export interface License {
   id: string;
   organization_id: string;
+  tier: string;
   status: 'trial' | 'active' | 'past_due' | 'canceled' | 'suspended';
   plan_id: string;
   trial_ends_at: string | null;
-  current_period_end: string;
+  expires_at: string | null;
+  current_period_end: string | null;
   stripe_subscription_id: string | null;
+  stripe_customer_id: string | null;
 }
 
 export interface LicenseUsage {
@@ -28,6 +37,8 @@ export interface LicenseValidation {
   daysRemaining?: number;
   isTrialExpired?: boolean;
   isPastDue?: boolean;
+  billingAuthority?: BillingAuthority;
+  warnings?: string[];
   limitReached?: {
     students?: boolean;
     admins?: boolean;
@@ -37,6 +48,7 @@ export interface LicenseValidation {
 
 /**
  * Validate a license by organization ID
+ * Uses billing authority rules to determine access
  */
 export async function validateLicense(organizationId: string): Promise<LicenseValidation> {
   const supabase = await createClient();
@@ -63,86 +75,69 @@ export async function validateLicense(organizationId: string): Promise<LicenseVa
     .eq('license_id', license.id)
     .single();
 
-  const now = new Date();
+  // Use billing authority rules for access check
+  const accessResult = checkLicenseAccess({
+    id: license.id,
+    tier: license.tier || license.plan_id || 'unknown',
+    status: license.status,
+    expires_at: license.expires_at || license.trial_ends_at,
+    current_period_end: license.current_period_end,
+    stripe_subscription_id: license.stripe_subscription_id,
+    stripe_customer_id: license.stripe_customer_id,
+  });
 
-  // Check trial expiration
-  if (license.status === 'trial' && license.trial_ends_at) {
-    const trialEnd = new Date(license.trial_ends_at);
-    if (trialEnd < now) {
-      return {
-        valid: false,
-        license,
-        usage,
-        reason: 'Trial expired',
-        isTrialExpired: true,
-        daysRemaining: 0,
-      };
-    }
-    const daysRemaining = Math.ceil((trialEnd.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-    return {
-      valid: true,
-      license,
-      usage,
-      daysRemaining,
-    };
+  // Calculate days remaining
+  let daysRemaining: number | undefined;
+  if (accessResult.expiresAt) {
+    const now = new Date();
+    daysRemaining = Math.ceil(
+      (accessResult.expiresAt.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)
+    );
   }
 
-  // Check canceled/suspended
-  if (license.status === 'canceled' || license.status === 'suspended') {
-    return {
-      valid: false,
-      license,
-      usage,
-      reason: `License ${license.status}`,
-    };
-  }
+  // Determine specific failure reasons for UI
+  const isTrialExpired = 
+    !accessResult.hasAccess && 
+    (license.tier === 'trial' || license.status === 'trial');
+  
+  const isPastDue = license.status === 'past_due';
 
-  // Check past due (allow grace period of 7 days)
-  if (license.status === 'past_due') {
-    const periodEnd = new Date(license.current_period_end);
-    const gracePeriodEnd = new Date(periodEnd.getTime() + 7 * 24 * 60 * 60 * 1000);
-    
-    if (now > gracePeriodEnd) {
-      return {
-        valid: false,
-        license,
-        usage,
-        reason: 'Payment overdue - grace period expired',
-        isPastDue: true,
-      };
-    }
-    
-    // Still in grace period
+  // Handle past_due with grace period (7 days)
+  if (isPastDue && accessResult.hasAccess) {
     return {
       valid: true,
       license,
       usage,
       isPastDue: true,
       reason: 'Payment overdue - please update payment method',
+      daysRemaining,
+      billingAuthority: accessResult.authority,
+      warnings: accessResult.warnings,
     };
   }
 
-  // Check subscription expiration
-  if (license.current_period_end) {
-    const periodEnd = new Date(license.current_period_end);
-    if (periodEnd < now) {
-      return {
-        valid: false,
-        license,
-        usage,
-        reason: 'License expired',
-      };
-    }
-    const daysRemaining = Math.ceil((periodEnd.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+  if (!accessResult.hasAccess) {
     return {
-      valid: true,
+      valid: false,
       license,
       usage,
-      daysRemaining,
+      reason: accessResult.reason,
+      isTrialExpired,
+      isPastDue,
+      daysRemaining: isTrialExpired ? 0 : daysRemaining,
+      billingAuthority: accessResult.authority,
+      warnings: accessResult.warnings,
     };
   }
 
-  return { valid: true, license, usage };
+  return {
+    valid: true,
+    license,
+    usage,
+    daysRemaining,
+    billingAuthority: accessResult.authority,
+    warnings: accessResult.warnings,
+  };
 }
 
 /**

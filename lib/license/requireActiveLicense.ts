@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getTenantContext, TenantContextError } from '@/lib/tenant';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
+import { checkLicenseAccess, type BillingAuthority } from '@/lib/licensing/billing-authority';
 
 /**
  * STEP 5B: License Enforcement Middleware
@@ -11,6 +12,10 @@ import { logger } from '@/lib/logger';
  * - suspended: Payment problem (refund/dispute)
  * - expired: Time-based expiry
  * - revoked: Admin action
+ * 
+ * Billing Authority Rules:
+ * - DB-Authoritative tiers (trial, lifetime, one_time): Access via expires_at
+ * - Stripe-Authoritative tiers (*_monthly, *_annual): Access via current_period_end
  */
 
 export type LicenseStatus = 'active' | 'suspended' | 'expired' | 'revoked';
@@ -18,24 +23,36 @@ export type LicenseStatus = 'active' | 'suspended' | 'expired' | 'revoked';
 export interface License {
   id: string;
   tenant_id: string;
+  tier: string;
   status: LicenseStatus;
   plan: string;
   expires_at: string | null;
+  current_period_end: string | null;
+  stripe_subscription_id: string | null;
+  stripe_customer_id: string | null;
   features: Record<string, boolean>;
   max_users: number | null;
   max_students: number | null;
   max_programs: number | null;
+  billingAuthority?: BillingAuthority;
 }
 
 export class LicenseError extends Error {
   public statusCode: number;
   public licenseStatus: LicenseStatus | 'missing';
+  public billingAuthority?: BillingAuthority;
   
-  constructor(message: string, statusCode: number, licenseStatus: LicenseStatus | 'missing') {
+  constructor(
+    message: string, 
+    statusCode: number, 
+    licenseStatus: LicenseStatus | 'missing',
+    billingAuthority?: BillingAuthority
+  ) {
     super(message);
     this.name = 'LicenseError';
     this.statusCode = statusCode;
     this.licenseStatus = licenseStatus;
+    this.billingAuthority = billingAuthority;
   }
 }
 
@@ -59,7 +76,9 @@ export async function getActiveLicense(tenantId: string): Promise<License | null
 }
 
 /**
- * Validate license is active and not expired
+ * Validate license using billing authority rules
+ * - DB-Authoritative: Check expires_at
+ * - Stripe-Authoritative: Check current_period_end
  */
 function validateLicense(license: License | null): void {
   if (!license) {
@@ -70,38 +89,43 @@ function validateLicense(license: License | null): void {
     );
   }
   
-  if (license.status === 'suspended') {
+  // Use billing authority rules for access check
+  const accessResult = checkLicenseAccess({
+    id: license.id,
+    tier: license.tier || license.plan || 'unknown',
+    status: license.status,
+    expires_at: license.expires_at,
+    current_period_end: license.current_period_end,
+    stripe_subscription_id: license.stripe_subscription_id,
+    stripe_customer_id: license.stripe_customer_id,
+  });
+
+  if (!accessResult.hasAccess) {
+    // Map to appropriate error based on reason
+    let status: LicenseStatus | 'missing' = 'expired';
+    let statusCode = 402;
+    
+    if (license.status === 'suspended') {
+      status = 'suspended';
+      statusCode = 402;
+    } else if (license.status === 'revoked') {
+      status = 'revoked';
+      statusCode = 403;
+    } else if (accessResult.reason.includes('expired') || accessResult.reason.includes('ended')) {
+      status = 'expired';
+      statusCode = 402;
+    }
+
     throw new LicenseError(
-      'License suspended due to payment issue. Please resolve billing to restore access.',
-      402,
-      'suspended'
+      accessResult.reason,
+      statusCode,
+      status,
+      accessResult.authority
     );
   }
-  
-  if (license.status === 'expired') {
-    throw new LicenseError(
-      'License expired. Please renew to continue.',
-      402,
-      'expired'
-    );
-  }
-  
-  if (license.status === 'revoked') {
-    throw new LicenseError(
-      'License revoked. Please contact support.',
-      403,
-      'revoked'
-    );
-  }
-  
-  // Double-check expiry (belt and suspenders)
-  if (license.expires_at && new Date(license.expires_at) < new Date()) {
-    throw new LicenseError(
-      'License expired. Please renew to continue.',
-      402,
-      'expired'
-    );
-  }
+
+  // Store billing authority on license for downstream use
+  license.billingAuthority = accessResult.authority;
 }
 
 /**

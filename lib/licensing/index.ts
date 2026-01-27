@@ -6,9 +6,18 @@
  * - lib/licenseGuard.ts (deprecated)
  * - lib/license-guard.ts (deprecated)
  * - lib/license.ts (EFH domain license only)
+ * 
+ * BILLING AUTHORITY RULES:
+ * - DB-Authoritative tiers (trial, lifetime, one_time): Access via expires_at
+ * - Stripe-Authoritative tiers (*_monthly, *_annual): Access via current_period_end
+ * 
+ * See billing-authority.ts for implementation details.
  */
 
-// Re-export new validation utilities
+// Re-export billing authority utilities
+export * from './billing-authority';
+
+// Re-export validation utilities
 export * from './validate';
 export * from './middleware';
 export {
