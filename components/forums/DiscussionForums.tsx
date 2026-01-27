@@ -125,12 +125,19 @@ export default function DiscussionForums() {
       if (error) throw error;
 
       if (data) {
-        // Mock thread/post counts for now
+        // Static counts until we have real data
+        const staticCounts = [
+          { thread_count: 24, post_count: 156 },
+          { thread_count: 18, post_count: 89 },
+          { thread_count: 31, post_count: 203 },
+          { thread_count: 12, post_count: 67 },
+          { thread_count: 45, post_count: 312 },
+        ];
         setCategories(
-          data.map((cat) => ({
+          data.map((cat, i) => ({
             ...cat,
-            thread_count: Math.floor(Math.random() * 50) + 10,
-            post_count: Math.floor(Math.random() * 200) + 50,
+            thread_count: staticCounts[i % staticCounts.length].thread_count,
+            post_count: staticCounts[i % staticCounts.length].post_count,
           }))
         );
       }
@@ -156,11 +163,12 @@ export default function DiscussionForums() {
       if (error) throw error;
 
       if (data) {
+        const staticReplies = [8, 3, 15, 6, 12, 4, 9, 2, 11, 7];
         setThreads(
-          data.map((thread) => ({
+          data.map((thread, i) => ({
             ...thread,
             author_name: 'Student',
-            reply_count: Math.floor(Math.random() * 20),
+            reply_count: staticReplies[i % staticReplies.length],
           }))
         );
       }

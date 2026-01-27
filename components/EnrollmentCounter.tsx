@@ -39,32 +39,8 @@ export default function EnrollmentCounter() {
     animate(todayCount, enrollmentData.today, { duration: 2 });
     animate(activeCount, enrollmentData.activeStudents, { duration: 2 });
 
-    // Simulate real-time enrollment updates every 10-30 seconds
-    const interval = setInterval(() => {
-      const shouldUpdate = Math.random() > 0.7; // 30% chance of update
-
-      if (shouldUpdate) {
-        setEnrollmentData(prev => {
-          const newTotal = prev.total + 1;
-          const newToday = prev.today + 1;
-          const newMonth = prev.thisMonth + 1;
-
-          animate(totalCount, newTotal, { duration: 0.5 });
-          animate(todayCount, newToday, { duration: 0.5 });
-          animate(monthCount, newMonth, { duration: 0.5 });
-
-          return {
-            ...prev,
-            total: newTotal,
-            today: newToday,
-            thisMonth: newMonth,
-            lastUpdated: new Date()
-          };
-        });
-      }
-    }, Math.random() * 20000 + 10000); // Random interval between 10-30 seconds
-
-    return () => clearInterval(interval);
+    // No fake updates - show static data only
+    return () => {};
   }, []);
 
   // Format number with commas

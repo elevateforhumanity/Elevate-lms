@@ -65,7 +65,7 @@ export default function DocumentUpload({
   const simulateUpload = (fileId: string) => {
     let progress = 0;
     const interval = setInterval(() => {
-      progress += Math.random() * 30;
+      progress += 25;
       if (progress >= 100) {
         progress = 100;
         clearInterval(interval);

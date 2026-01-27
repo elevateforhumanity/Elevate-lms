@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import Turnstile from '@/components/Turnstile';
 
 function InquiryForm() {
   const searchParams = useSearchParams();
@@ -10,6 +11,7 @@ function InquiryForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   useEffect(() => {
     const programParam = searchParams.get('program');
@@ -25,6 +27,12 @@ function InquiryForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    if (!turnstileToken) {
+      setError('Please complete the verification');
+      return;
+    }
+    
     setLoading(true);
     setError('');
 
@@ -37,7 +45,7 @@ function InquiryForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
       });
 
       const result = await response.json();
@@ -226,9 +234,11 @@ function InquiryForm() {
             <span>Consent to contact</span>
           </label>
 
+          <Turnstile onVerify={setTurnstileToken} />
+
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || !turnstileToken}
             className="w-full min-h-[44px] bg-slate-900 text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition-colors font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             {loading ? 'Submitting...' : 'Submit Application'}
