@@ -1,145 +1,313 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { AlertTriangle, X, Shield, ArrowRight } from 'lucide-react';
+import { AlertTriangle, Check, X, FileCode, Building2, Shield, ArrowRight, Ban } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Restricted Source-Use License | Elevate for Humanity',
-  description: 'Enterprise-only restricted source-use license for organizations requiring code-level deployment. Starting at $75,000. Approval required.',
+  description: 'Enterprise-only internal deployment license. Source code access for internal use only. No ownership. No rebranding. No resale. No credentials.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/store/licenses/source-use',
+  },
 };
-
-const DOES_NOT_INCLUDE = [
-  'Ownership of the software',
-  'Rebranding or white-label rights',
-  'Resale or sublicensing rights',
-  'Credential or ETPL authority',
-  'Managed hosting or infrastructure',
-  'The right to represent the platform as customer-owned',
-  'Self-service checkout',
-  'Automatic provisioning',
-];
-
-const REQUIREMENTS = [
-  'Enterprise approval required before purchase',
-  'Legal review of use case and deployment plan',
-  'Signed restricted-use agreement',
-  'Annual compliance attestation',
-  'No public redistribution',
-];
-
-const MASTER_STATEMENT = `All platform products are licensed access to systems operated by Elevate for Humanity. Ownership of software, infrastructure, and intellectual property is not transferred.`;
 
 export default function SourceUseLicensePage() {
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
-      {/* Header */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-600 text-white rounded-full text-sm font-bold mb-6">
-            <AlertTriangle className="w-4 h-4" />
-            ENTERPRISE ONLY
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl font-black mb-6">
-            Restricted Source-Use License
-          </h1>
-          
-          <p className="text-xl text-slate-300 mb-8">
-            A restricted license granting internal use of source code only. This option exists for 
-            organizations that require code-level deployment and are prepared to assume full 
-            operational responsibility.
-          </p>
-
-          <div className="bg-amber-900/30 border border-amber-600/50 rounded-xl p-6 mb-8">
-            <p className="text-amber-200 font-medium">
-              This is NOT a self-service product. Enterprise review and approval is required 
-              before any purchase can proceed.
+    <div className="min-h-screen bg-slate-950">
+      {/* Hero */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-red-900/20 to-transparent" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 bg-red-900/30 border border-red-700/50 rounded-full px-4 py-2 mb-6">
+              <Ban className="w-4 h-4 text-red-400" />
+              <span className="text-red-300 text-sm font-medium">Enterprise Only — Manual Approval Required</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
+              Restricted Source-Use License
+            </h1>
+            
+            <p className="text-xl text-slate-400 mb-4 max-w-2xl mx-auto">
+              This license grants limited internal use of source code only. 
+              Ownership, rebranding, resale, sublicensing, and credential use are expressly prohibited.
+            </p>
+            <p className="text-slate-500 max-w-2xl mx-auto">
+              This is NOT our standard offering. Most organizations should use the Managed Platform instead.
             </p>
           </div>
         </div>
       </section>
 
-      {/* What This License Does NOT Include */}
-      <section className="py-16 px-4 bg-slate-800">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-8 text-red-400">
-            This License Does NOT Include
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {DOES_NOT_INCLUDE.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 bg-slate-900/50 p-4 rounded-lg">
-                <X className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                <span className="text-slate-300">{item}</span>
-              </div>
-            ))}
+      {/* Warning Banner */}
+      <section className="py-8 bg-red-900/20 border-y border-red-700/30">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-start gap-4">
+            <AlertTriangle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+            <div>
+              <h3 className="text-red-400 font-bold mb-2">This License is Rare and Expensive</h3>
+              <p className="text-red-200/80 text-sm mb-3">
+                The Restricted Source-Use License starts at <strong className="text-white">$75,000</strong> and requires executive approval. 
+                It is designed only for organizations with legal or compliance requirements that prevent use of managed platforms.
+              </p>
+              <p className="text-red-200/80 text-sm">
+                <strong>Most organizations should choose the{' '}
+                <Link href="/store/licenses/managed-platform" className="underline hover:text-white">Managed Platform License</Link> instead.</strong>{' '}
+                It includes hosting, support, updates, and costs significantly less.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Requirements */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-8">
-            Requirements for Source-Use License
-          </h2>
-          <div className="space-y-4">
-            {REQUIREMENTS.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3">
-                <Shield className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-                <span className="text-slate-300">{item}</span>
+      {/* What This Is / Is Not */}
+      <section className="py-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* What You Get */}
+            <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700">
+              <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <Check className="w-6 h-6 text-green-500" />
+                What You Get
+              </h2>
+              <ul className="space-y-4">
+                {[
+                  'Access to source code repository',
+                  'Right to deploy on your own infrastructure',
+                  'Core LMS and course management features',
+                  'Student enrollment and tracking',
+                  'Basic reporting and analytics',
+                  'Internal organizational use',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-slate-300">
+                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* What You Do NOT Get */}
+            <div className="bg-slate-800 rounded-2xl p-8 border border-red-900/50">
+              <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <X className="w-6 h-6 text-red-500" />
+                What You Do NOT Get
+              </h2>
+              <ul className="space-y-4">
+                {[
+                  'Ownership of the software or IP',
+                  'Right to rebrand as your own platform',
+                  'Right to resell, sublicense, or distribute',
+                  'ETPL, WIOA, or any credential authority',
+                  'Compliance reporting capabilities',
+                  'Ongoing support or guaranteed updates',
+                  'White-label rights',
+                  'Managed hosting',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-slate-300">
+                    <X className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Restrictions */}
+      <section className="py-16 bg-slate-900/50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white text-center mb-8">License Restrictions</h2>
+          
+          <div className="bg-slate-800 rounded-xl p-8 border border-slate-700">
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-red-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-red-500 font-bold">1</span>
+                </div>
+                <div>
+                  <h3 className="text-white font-semibold mb-1">Internal Use Only</h3>
+                  <p className="text-slate-400 text-sm">
+                    You may only use this software within your own organization for your own workforce development operations. 
+                    You may NOT offer it as a service to third parties.
+                  </p>
+                </div>
               </div>
-            ))}
+
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-red-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-red-500 font-bold">2</span>
+                </div>
+                <div>
+                  <h3 className="text-white font-semibold mb-1">Attribution Required</h3>
+                  <p className="text-slate-400 text-sm">
+                    All deployments must display "Powered by Elevate for Humanity™" in the footer, about page, and login screen. 
+                    Removal of attribution is a material breach and terminates the license.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-red-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-red-500 font-bold">3</span>
+                </div>
+                <div>
+                  <h3 className="text-white font-semibold mb-1">No Credential Claims</h3>
+                  <p className="text-slate-400 text-sm">
+                    This license does NOT grant ETPL listing, WIOA provider status, state board recognition, or any compliance authority. 
+                    You must obtain credentials independently through proper channels.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-red-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-red-500 font-bold">4</span>
+                </div>
+                <div>
+                  <h3 className="text-white font-semibold mb-1">No Resale or Distribution</h3>
+                  <p className="text-slate-400 text-sm">
+                    You may NOT sell, lease, sublicense, or distribute this software or any derivative to any third party. 
+                    Violation results in immediate termination and legal action.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-red-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-red-500 font-bold">5</span>
+                </div>
+                <div>
+                  <h3 className="text-white font-semibold mb-1">Updates Not Guaranteed</h3>
+                  <p className="text-slate-400 text-sm">
+                    Access to updates requires active compliance with license terms. 
+                    Elevate for Humanity may revoke update access for any breach.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Pricing */}
-      <section className="py-16 px-4 bg-slate-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-4">Pricing</h2>
-          <div className="text-5xl font-black text-white mb-4">
-            Starting at $75,000
-          </div>
-          <p className="text-slate-400 mb-8">
-            Final pricing determined after enterprise review based on use case, 
-            deployment scope, and support requirements.
-          </p>
-          
-          <Link
-            href="/contact?topic=source-use-license"
-            className="inline-flex items-center gap-2 bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-700 transition-colors"
-          >
-            Request Enterprise Review
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
-      </section>
+      <section className="py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-slate-800 rounded-2xl p-8 border border-red-900/50 text-center">
+            <Building2 className="w-12 h-12 text-slate-400 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-white mb-2">Enterprise Pricing</h2>
+            
+            <div className="my-6">
+              <span className="text-5xl font-black text-white">$75,000</span>
+              <span className="text-slate-400 ml-2">minimum</span>
+              <p className="text-slate-500 text-sm mt-2">
+                + 20% annual maintenance (optional but recommended)
+              </p>
+            </div>
+            
+            <div className="bg-red-900/20 border border-red-800/50 rounded-xl p-6 mb-8 text-left">
+              <h4 className="text-red-400 font-semibold mb-3">Requirements</h4>
+              <ul className="text-slate-300 text-sm space-y-2">
+                <li>• Executive approval required</li>
+                <li>• Signed legal agreement with restrictions</li>
+                <li>• Verified use case (compliance/legal necessity)</li>
+                <li>• No instant checkout — manual process only</li>
+              </ul>
+            </div>
 
-      {/* Alternative - Managed Platform */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-blue-900/30 border border-blue-600/50 rounded-xl p-8 text-center">
-            <h3 className="text-xl font-bold mb-4">Looking for Managed Platform Access?</h3>
-            <p className="text-slate-300 mb-6">
-              Most organizations choose our Managed Enterprise LMS Platform. We handle hosting, 
-              security, updates, and infrastructure. You focus on your learners.
-            </p>
+            <div className="bg-slate-900/50 rounded-xl p-6 mb-8">
+              <p className="text-slate-300 text-sm">
+                <strong className="text-white">This license does not include</strong> managed hosting, 
+                platform authority, credential delegation, or shutdown guarantees. 
+                You are responsible for your own infrastructure and compliance.
+              </p>
+            </div>
+
             <Link
-              href="/store/licenses/managed"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
+              href="/contact?subject=Source-Use%20License%20Inquiry%20($75k+)"
+              className="inline-flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white font-bold px-8 py-4 rounded-lg transition"
             >
-              View Managed Platform
+              Request Enterprise License
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Master Statement */}
-      <section className="py-8 px-4 bg-slate-950">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm text-slate-500 italic">
-            {MASTER_STATEMENT}
-          </p>
+      {/* Comparison */}
+      <section className="py-16 bg-slate-900/50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white text-center mb-8">Compare License Types</h2>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead>
+                <tr className="border-b border-slate-700">
+                  <th className="py-4 px-4 text-slate-400 font-medium">Feature</th>
+                  <th className="py-4 px-4 text-orange-400 font-medium">Managed Platform</th>
+                  <th className="py-4 px-4 text-slate-400 font-medium">Source-Use</th>
+                </tr>
+              </thead>
+              <tbody className="text-sm">
+                {[
+                  ['Hosting', 'We host & operate', 'You host (your responsibility)'],
+                  ['Updates', 'Automatic', 'Manual (no guarantee)'],
+                  ['Support', 'Included', 'Not included'],
+                  ['Security & Backups', 'Included', 'Your responsibility'],
+                  ['Branding', 'Your branding', 'Your branding + required attribution'],
+                  ['Credential add-ons', 'Available', 'Never available'],
+                  ['Resale rights', 'No', 'No'],
+                  ['Ownership', 'No', 'No'],
+                  ['White-label', 'No', 'No'],
+                  ['Starting price', '$1,500/mo + $7,500 setup', '$75,000 one-time'],
+                ].map(([feature, managed, source]) => (
+                  <tr key={feature} className="border-b border-slate-800">
+                    <td className="py-4 px-4 text-slate-300">{feature}</td>
+                    <td className="py-4 px-4 text-white">{managed}</td>
+                    <td className="py-4 px-4 text-slate-400">{source}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="text-center mt-8">
+            <Link
+              href="/store/licenses/managed-platform"
+              className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-medium"
+            >
+              <Shield className="w-5 h-5" />
+              Most organizations should choose Managed Platform →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Legal Notice */}
+      <section className="py-12 border-t border-slate-800">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 mb-8">
+            <h4 className="text-white font-semibold mb-3">Attribution Requirement</h4>
+            <p className="text-slate-400 text-sm">
+              All deployments must retain "Powered by Elevate for Humanity" attribution and trademark notices 
+              in the footer, login screen, and about page. Removal of attribution is a material breach 
+              and results in immediate license termination.
+            </p>
+          </div>
+
+          <div className="text-center text-slate-500 text-xs space-y-2">
+            <p>
+              Elevate for Humanity™ and the Elevate logo are trademarks of Elevate for Humanity, Inc.
+            </p>
+            <p>
+              Source-Use License is subject to full license agreement. Unauthorized use, distribution, 
+              rebranding, or credential misrepresentation will result in license termination and legal action.
+            </p>
+            <p className="pt-4 border-t border-slate-800 mt-4">
+              All products are licensed access to platforms operated by Elevate for Humanity. 
+              Ownership of software, infrastructure, and intellectual property is not transferred.
+            </p>
+          </div>
         </div>
       </section>
     </div>
