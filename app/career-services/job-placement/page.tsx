@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { Briefcase, Building2, TrendingUp, ArrowRight, CheckCircle, Users, Target, Award, Search, Handshake } from 'lucide-react';
+import { Briefcase, Building2, TrendingUp, ArrowRight, Users, Target, Award, Search, Handshake } from 'lucide-react';
 import { CareerHero } from '../components/CareerHero';
 
 export const metadata: Metadata = {
@@ -15,11 +15,7 @@ export const metadata: Metadata = {
 export default function JobPlacementPage() {
   return (
     <div className="min-h-screen bg-white">
-      <CareerHero
-        badge="💼 Job Placement"
-        title="Job Placement Services"
-        description="We connect you directly with employers who are actively hiring. Our employer partnerships and job matching services help you land your first job or advance your career."
-      />
+      <CareerHero />
 
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-4 gap-8 text-center">
