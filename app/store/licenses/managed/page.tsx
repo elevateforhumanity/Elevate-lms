@@ -100,6 +100,43 @@ function ManagedLicenseContent() {
 
   const bannerInfo = upgradeReason ? UPGRADE_MESSAGES[upgradeReason] : null;
   const BannerIcon = bannerInfo?.icon || AlertTriangle;
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleUpgrade = async (tierId: string) => {
+    if (!licenseId) {
+      // No existing license - redirect to new license checkout
+      window.location.href = `/store/licenses/checkout/managed?tier=${tierId}`;
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/license/upgrade', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tierId,
+          licenseId,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to create checkout session');
+      }
+
+      // Redirect to Stripe Checkout
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    } catch (error) {
+      console.error('Upgrade error:', error);
+      alert('Failed to start checkout. Please try again or contact support.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="bg-white min-h-screen">
@@ -248,44 +285,128 @@ function ManagedLicenseContent() {
 
       {/* Pricing */}
       <section id="pricing" className="py-16 bg-slate-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black mb-8 text-center">Pricing</h2>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-black mb-4 text-center">Pricing</h2>
+          <p className="text-slate-400 text-center mb-8">
+            Choose the plan that fits your organization. Cancel anytime.
+          </p>
           
-          <div className="bg-slate-800 rounded-2xl p-8 mb-8">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-lg font-bold text-slate-400 mb-2">One-Time Setup</h3>
-                <div className="text-4xl font-black text-white">
-                  ${MANAGED_LICENSE.setupFee.min.toLocaleString()} – ${MANAGED_LICENSE.setupFee.max.toLocaleString()}
-                </div>
-                <p className="text-slate-400 mt-2">
-                  Includes tenant provisioning, domain setup, branding configuration, and onboarding.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-slate-400 mb-2">Monthly Subscription</h3>
-                <div className="text-4xl font-black text-white">
-                  ${MANAGED_LICENSE.monthlyFee.min.toLocaleString()} – ${MANAGED_LICENSE.monthlyFee.max.toLocaleString()}
-                  <span className="text-lg font-normal text-slate-400">/month</span>
-                </div>
-                <p className="text-slate-400 mt-2">
-                  Annual commitment preferred. Includes all platform features and support.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 pt-8 border-t border-slate-700">
-              <Link
-                href="/store/licenses/checkout/managed"
-                className="block w-full text-center bg-blue-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors"
+          {/* Billing Toggle */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-slate-800 p-1 rounded-lg inline-flex">
+              <button
+                onClick={() => setSelectedPlan('standard')}
+                className={`px-6 py-2 rounded-md font-semibold transition-colors ${
+                  selectedPlan === 'standard'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-slate-400 hover:text-white'
+                }`}
               >
-                Start License Setup
-              </Link>
+                Monthly
+              </button>
+              <button
+                onClick={() => setSelectedPlan('premium')}
+                className={`px-6 py-2 rounded-md font-semibold transition-colors flex items-center gap-2 ${
+                  selectedPlan === 'premium'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                Annual
+                <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">
+                  Save 20%
+                </span>
+              </button>
             </div>
           </div>
 
+          {/* Pricing Cards */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* Schools & Training Providers */}
+            <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+              <div className="text-blue-400 font-semibold text-sm mb-2">FOR SCHOOLS & TRAINING PROVIDERS</div>
+              <h3 className="text-2xl font-bold text-white mb-2">School Plan</h3>
+              <p className="text-slate-400 text-sm mb-4">
+                Full LMS for training providers, schools, and educational organizations.
+              </p>
+              <div className="mb-6">
+                <span className="text-4xl font-black text-white">
+                  ${selectedPlan === 'premium' ? '1,200' : '1,500'}
+                </span>
+                <span className="text-slate-400">/{selectedPlan === 'premium' ? 'month, billed annually' : 'month'}</span>
+                {selectedPlan === 'premium' && (
+                  <div className="text-green-400 text-sm mt-1">Save $3,600/year</div>
+                )}
+              </div>
+              <ul className="space-y-3 mb-6">
+                {['Up to 100 learners', 'Unlimited courses', 'Certificates & credentials', 'Progress tracking', 'Email support'].map((feature) => (
+                  <li key={feature} className="flex items-center gap-2 text-slate-300">
+                    <Check className="w-5 h-5 text-green-400" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <button
+                onClick={() => handleUpgrade(selectedPlan === 'premium' ? 'school_annual' : 'school_monthly')}
+                className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
+              >
+                Start {selectedPlan === 'premium' ? 'Annual' : 'Monthly'} Plan
+              </button>
+            </div>
+
+            {/* Organizations / Managed */}
+            <div className="bg-slate-800 rounded-2xl p-6 border-2 border-blue-500 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                MOST POPULAR
+              </div>
+              <div className="text-blue-400 font-semibold text-sm mb-2">FOR ORGANIZATIONS</div>
+              <h3 className="text-2xl font-bold text-white mb-2">Managed License</h3>
+              <p className="text-slate-400 text-sm mb-4">
+                Full platform with domain isolation, role-based access, and priority support.
+              </p>
+              <div className="mb-6">
+                <span className="text-4xl font-black text-white">
+                  ${selectedPlan === 'premium' ? '2,000' : '2,500'}
+                </span>
+                <span className="text-slate-400">/{selectedPlan === 'premium' ? 'month, billed annually' : 'month'}</span>
+                {selectedPlan === 'premium' && (
+                  <div className="text-green-400 text-sm mt-1">Save $6,000/year</div>
+                )}
+              </div>
+              <ul className="space-y-3 mb-6">
+                {['Up to 50 users', 'Domain isolation', 'Role-based access control', 'Custom branding', 'Priority support', 'Dedicated onboarding'].map((feature) => (
+                  <li key={feature} className="flex items-center gap-2 text-slate-300">
+                    <Check className="w-5 h-5 text-green-400" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <button
+                onClick={() => handleUpgrade(selectedPlan === 'premium' ? 'managed_annual' : 'managed_monthly')}
+                className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
+              >
+                Start {selectedPlan === 'premium' ? 'Annual' : 'Monthly'} Plan
+              </button>
+            </div>
+          </div>
+
+          {/* Enterprise / Contact Sales */}
+          <div className="bg-slate-800/50 rounded-xl p-6 text-center border border-slate-700">
+            <h3 className="text-xl font-bold text-white mb-2">Need a custom solution?</h3>
+            <p className="text-slate-400 mb-4">
+              For larger organizations, custom integrations, or special requirements.
+            </p>
+            <Link
+              href="/support/contact?subject=enterprise"
+              className="inline-flex items-center gap-2 bg-slate-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-600 transition-colors"
+            >
+              Contact Sales
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
           {/* Enforcement Notice */}
-          <div className="bg-amber-900/30 border border-amber-600/50 rounded-xl p-6">
+          <div className="mt-8 bg-amber-900/30 border border-amber-600/50 rounded-xl p-6">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-6 h-6 text-amber-500 flex-shrink-0 mt-0.5" />
               <div>

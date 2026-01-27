@@ -2,6 +2,9 @@ import React from 'react';
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { requireAdmin } from '@/lib/auth';
+import { createClient } from '@/lib/supabase/server';
+import { AdminLicenseWrapper } from '@/components/licensing/AdminLicenseWrapper';
+import { getLicenseAccessMode } from '@/lib/licensing/billing-authority';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,6 +29,43 @@ export const metadata: Metadata = {
   },
 };
 
+async function getLicenseContext() {
+  try {
+    const supabase = await createClient();
+    if (!supabase) return null;
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return null;
+
+    // Get user profile with role and tenant
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role, tenant_id')
+      .eq('id', user.id)
+      .single();
+
+    if (!profile?.tenant_id) return null;
+
+    // Get license for tenant
+    const { data: license } = await supabase
+      .from('licenses')
+      .select('id, tier, status, expires_at, current_period_end, stripe_subscription_id, stripe_customer_id, canceled_at, suspended_at')
+      .eq('tenant_id', profile.tenant_id)
+      .eq('status', 'active')
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .single();
+
+    return {
+      license,
+      userRole: profile.role,
+      tenantId: profile.tenant_id,
+    };
+  } catch {
+    return null;
+  }
+}
+
 export default async function AdminLayout({
   children,
 }: {
@@ -38,5 +78,34 @@ export default async function AdminLayout({
     redirect('/admin/login?redirect=/admin');
   }
 
-  return <>{children}</>;
+  // Get license context for banner
+  const context = await getLicenseContext();
+
+  // Check if user should be blocked (non-admin with expired license)
+  if (context?.license) {
+    const accessResult = getLicenseAccessMode(context.license, context.userRole);
+    
+    if (accessResult.mode === 'blocked' && accessResult.redirectTo) {
+      redirect(accessResult.redirectTo);
+    }
+    
+    if (accessResult.mode === 'blocked_billing_issue' && accessResult.redirectTo) {
+      redirect(accessResult.redirectTo);
+    }
+  }
+
+  // If no license context, render without wrapper (handles demo mode, etc.)
+  if (!context) {
+    return <>{children}</>;
+  }
+
+  return (
+    <AdminLicenseWrapper
+      license={context.license}
+      userRole={context.userRole}
+      tenantId={context.tenantId}
+    >
+      {children}
+    </AdminLicenseWrapper>
+  );
 }
