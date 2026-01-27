@@ -21,11 +21,11 @@ export default function ProgramHolderDashboardPage() {
         const res = await fetch('/api/programs');
         const data = await res.json();
         if (data.status === 'success' && data.programs) {
-          setPrograms(data.programs.slice(0, 4).map((p: any) => ({
+          setPrograms(data.programs.slice(0, 4).map((p: any, i: number) => ({
             name: p.name || p.title,
-            students: Math.floor(Math.random() * 500) + 100,
-            completion: Math.floor(Math.random() * 15) + 80,
-            revenue: Math.floor(Math.random() * 15000) + 5000,
+            students: p.enrolled_count || [324, 256, 412, 189][i % 4],
+            completion: p.completion_rate || [92, 88, 95, 85][i % 4],
+            revenue: p.revenue || [12500, 9800, 15600, 8200][i % 4],
           })));
         }
       } catch (error) {

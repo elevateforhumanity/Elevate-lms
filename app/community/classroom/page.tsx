@@ -146,7 +146,7 @@ export default async function ClassroomPage() {
                           className="object-cover"
                         />
                       ) : (
-                        <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-green-600 flex items-center justify-center">
                           <BookOpen className="w-16 h-16 text-white/50" />
                         </div>
                       )}

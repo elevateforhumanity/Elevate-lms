@@ -66,7 +66,6 @@ export default async function ForumsPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/90 to-purple-900/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 w-full">
           <div className="max-w-2xl">
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500 text-white text-sm font-semibold rounded-full mb-6">

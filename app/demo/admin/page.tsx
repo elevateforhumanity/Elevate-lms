@@ -30,11 +30,11 @@ export default function AdminDemo() {
         const res = await fetch('/api/programs');
         const data = await res.json();
         if (data.status === 'success' && data.programs) {
-          setPrograms(data.programs.slice(0, 6).map((p: any) => ({
+          setPrograms(data.programs.slice(0, 6).map((p: any, i: number) => ({
             name: p.name || p.title,
             cat: p.category || 'General',
-            enrolled: Math.floor(Math.random() * 100) + 20,
-            done: Math.floor(Math.random() * 50) + 10,
+            enrolled: p.enrolled_count || [85, 62, 94, 45, 78, 56][i % 6],
+            done: p.completed_count || [42, 38, 67, 28, 51, 33][i % 6],
           })));
         }
       } catch (error) {

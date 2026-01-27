@@ -39,7 +39,6 @@ export default function DisclosuresPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
           <div className="max-w-2xl">
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 text-white text-sm font-semibold rounded-full mb-6">
@@ -109,7 +108,6 @@ export default function DisclosuresPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <h3 className="text-2xl font-bold text-white">About Our Institution</h3>
                 </div>
@@ -140,7 +138,6 @@ export default function DisclosuresPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <h3 className="text-2xl font-bold text-white">Approvals & Registrations</h3>
                 </div>

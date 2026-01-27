@@ -141,7 +141,6 @@ export default function WIOACompliancePage() {
             fill
             className="object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-green-800/90 to-green-600/80" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -203,7 +202,6 @@ export default function WIOACompliancePage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">{feature.title}</h3>
                 </div>
                 <div className="p-6">

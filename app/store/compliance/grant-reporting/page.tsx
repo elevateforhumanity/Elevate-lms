@@ -91,7 +91,6 @@ export default function GrantReportingPage() {
       <section className="relative bg-orange-600 text-white py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/images/heroes-hq/funding-hero.jpg" alt="Grant Reporting" fill className="object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-700/90 to-orange-500/80" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -143,7 +142,6 @@ export default function GrantReportingPage() {
               <div key={feature.title} className="bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-orange-500 hover:shadow-xl transition-all group">
                 <div className="relative h-48">
                   <Image src={feature.image} alt={feature.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">{feature.title}</h3>
                 </div>
                 <div className="p-6">

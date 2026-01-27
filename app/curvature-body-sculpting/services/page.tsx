@@ -152,7 +152,6 @@ export default function ServicesPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-pink-900/90 via-purple-900/80 to-indigo-900/70" />
         </div>
         <div className="relative max-w-6xl mx-auto px-4 text-center text-white">
           <h1 className="text-4xl md:text-5xl font-black mb-6">Our Services</h1>
