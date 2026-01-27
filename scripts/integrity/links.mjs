@@ -48,6 +48,57 @@ function collectRoutes(dir, basePath = '') {
   return routes;
 }
 
+// Collect all API routes from app/api directory
+function collectApiRoutes(dir, basePath = '/api') {
+  const routes = [];
+  
+  if (!fs.existsSync(dir)) {
+    return routes;
+  }
+
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  
+  for (const entry of entries) {
+    if (entry.name.startsWith('_') || entry.name.startsWith('.')) continue;
+    
+    const fullPath = path.join(dir, entry.name);
+    
+    if (entry.isDirectory()) {
+      const routeSegment = entry.name.startsWith('(') ? '' : `/${entry.name}`;
+      routes.push(...collectApiRoutes(fullPath, basePath + routeSegment));
+    } else if (entry.name === 'route.ts' || entry.name === 'route.js') {
+      routes.push(basePath);
+    }
+  }
+  
+  return routes;
+}
+
+// Collect all static files from public directory
+function collectStaticFiles(dir, basePath = '') {
+  const files = [];
+  
+  if (!fs.existsSync(dir)) {
+    return files;
+  }
+
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  
+  for (const entry of entries) {
+    if (entry.name.startsWith('.')) continue;
+    
+    const fullPath = path.join(dir, entry.name);
+    
+    if (entry.isDirectory()) {
+      files.push(...collectStaticFiles(fullPath, `${basePath}/${entry.name}`));
+    } else {
+      files.push(`${basePath}/${entry.name}`);
+    }
+  }
+  
+  return files;
+}
+
 // Extract href values from source files
 function extractLinks(dir) {
   const links = new Set();
@@ -89,8 +140,20 @@ function extractLinks(dir) {
 
 // Main execution
 const appDir = path.join(rootDir, 'app');
-const routes = collectRoutes(appDir);
+const apiDir = path.join(rootDir, 'app', 'api');
+const publicDir = path.join(rootDir, 'public');
+
+const pageRoutes = collectRoutes(appDir);
+const apiRoutes = collectApiRoutes(apiDir);
+const staticFiles = collectStaticFiles(publicDir);
 const links = extractLinks(appDir);
+
+// Combine all valid paths
+const allValidPaths = new Set([
+  ...pageRoutes,
+  ...apiRoutes,
+  ...staticFiles,
+]);
 
 // Check which links don't have corresponding routes
 const brokenLinks = [];
@@ -103,16 +166,15 @@ for (const link of links) {
     continue;
   }
   
-  // Check if route exists
-  const routeExists = routes.some(route => {
-    // Exact match
-    if (route === link) return true;
-    // Handle trailing slashes
-    if (route === link + '/' || route + '/' === link) return true;
-    return false;
-  });
+  // Check if route/file exists
+  const pathExists = 
+    allValidPaths.has(link) ||
+    allValidPaths.has(link + '/') ||
+    allValidPaths.has(link.replace(/\/$/, '')) ||
+    // Check if it's a parent path of an existing route (e.g., /admin exists if /admin/dashboard exists)
+    Array.from(allValidPaths).some(p => p.startsWith(link + '/'));
   
-  if (routeExists) {
+  if (pathExists) {
     validLinks.push({ link, status: 'valid' });
   } else {
     brokenLinks.push({ link, status: 'broken' });
