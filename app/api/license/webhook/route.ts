@@ -49,6 +49,12 @@ export async function POST(request: NextRequest) {
 
   // Idempotency check
   const supabase = createAdminClient();
+  
+  if (!supabase) {
+    console.error('[/api/license/webhook] Supabase admin client not available');
+    return NextResponse.json({ error: 'Database unavailable' }, { status: 500 });
+  }
+  
   const { data: existing } = await supabase
     .from('stripe_webhook_events')
     .select('id')
@@ -62,7 +68,7 @@ export async function POST(request: NextRequest) {
   await supabase
     .from('stripe_webhook_events')
     .insert({ stripe_event_id: event.id, event_type: event.type, status: 'processing' })
-    .catch(() => {});
+    .catch((e) => console.warn('[/api/license/webhook] Could not insert event:', e));
 
   try {
     switch (event.type) {
