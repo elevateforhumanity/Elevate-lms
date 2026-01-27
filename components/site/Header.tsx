@@ -12,15 +12,23 @@ export const NAV_ITEMS = [
     name: 'Programs', 
     href: '/programs/healthcare',
     subItems: [
+      // Healthcare
+      { name: '— Healthcare —', href: '/programs/healthcare', isHeader: true },
       { name: 'CNA Training', href: '/programs/cna-certification' },
       { name: 'Medical Assistant', href: '/programs/medical-assistant' },
       { name: 'Phlebotomy', href: '/programs/phlebotomy-technician' },
+      // Skilled Trades
+      { name: '— Skilled Trades —', href: '/programs/skilled-trades', isHeader: true },
       { name: 'HVAC Technician', href: '/programs/hvac-technician' },
       { name: 'CDL Training', href: '/programs/cdl-training' },
       { name: 'Electrical', href: '/programs/electrical' },
       { name: 'Welding', href: '/programs/welding' },
+      // Technology
+      { name: '— Technology —', href: '/programs/technology', isHeader: true },
       { name: 'IT Support', href: '/programs/it-support' },
       { name: 'Cybersecurity', href: '/programs/cybersecurity' },
+      // Other
+      { name: '— Other Programs —', href: '/programs/barber-apprenticeship', isHeader: true },
       { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
       { name: 'Tax Preparation', href: '/programs/tax-prep-financial-services' },
     ]
