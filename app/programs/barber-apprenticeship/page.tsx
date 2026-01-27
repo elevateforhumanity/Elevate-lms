@@ -105,59 +105,34 @@ export default async function BarberApprenticeshipPage() {
             </p>
           </div>
 
-          {/* What's Included vs Not Included */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Included */}
-            <div className="bg-green-50 border-2 border-green-200 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-green-900 mb-4 flex items-center gap-2">
-                <CheckCircle className="w-6 h-6" />
-                What the Program Fee Covers
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3 text-green-900">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Structured training as USDOL Sponsor of Record</span>
-                </li>
-                <li className="flex items-start gap-3 text-green-900">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Related instruction (Milady theory curriculum)</span>
-                </li>
-                <li className="flex items-start gap-3 text-green-900">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Program administration and compliance tracking</span>
-                </li>
-                <li className="flex items-start gap-3 text-green-900">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Training site coordination and hour verification</span>
-                </li>
-                <li className="flex items-start gap-3 text-green-900">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Completion documentation</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Not Included */}
-            <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-red-900 mb-4 flex items-center gap-2">
-                <XCircle className="w-6 h-6" />
-                What the Program Fee Does NOT Cover
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3 text-red-900">
-                  <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Practical hands-on barber skills training</span>
-                </li>
-                <li className="flex items-start gap-3 text-red-900">
-                  <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>State licensure-required instructional hours</span>
-                </li>
-                <li className="flex items-start gap-3 text-red-900">
-                  <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Barber school enrollment</span>
-                </li>
-              </ul>
-            </div>
+          {/* What's Included */}
+          <div className="bg-green-50 border-2 border-green-200 rounded-xl p-6">
+            <h3 className="text-xl font-bold text-green-900 mb-4 flex items-center gap-2">
+              <CheckCircle className="w-6 h-6" />
+              What the Program Fee Covers
+            </h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-green-900">
+                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <span>Structured training as USDOL Sponsor of Record</span>
+              </li>
+              <li className="flex items-start gap-3 text-green-900">
+                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <span>Related instruction (Milady theory curriculum)</span>
+              </li>
+              <li className="flex items-start gap-3 text-green-900">
+                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <span>Program administration and compliance tracking</span>
+              </li>
+              <li className="flex items-start gap-3 text-green-900">
+                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <span>Training site coordination and hour verification</span>
+              </li>
+              <li className="flex items-start gap-3 text-green-900">
+                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <span>Completion documentation</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
