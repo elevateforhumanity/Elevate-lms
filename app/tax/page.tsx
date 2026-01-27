@@ -46,6 +46,7 @@ export default function TaxServicesPage() {
           className="object-cover"
           priority
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-blue-800/80" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
           <div className="max-w-3xl">
@@ -127,6 +128,7 @@ export default function TaxServicesPage() {
                   fill
                   className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                     100% FREE
@@ -187,6 +189,7 @@ export default function TaxServicesPage() {
                   fill
                   className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-red-900/80 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                     PROFESSIONAL

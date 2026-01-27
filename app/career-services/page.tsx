@@ -91,6 +91,7 @@ export default async function CareerServicesPage() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-green-800/80 z-10" />
         <div className="relative h-[450px] bg-gray-900">
           <Image
             src="/images/programs-hq/career-success.jpg"
@@ -190,6 +191,7 @@ export default async function CareerServicesPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4">
                     <span className="inline-flex items-center gap-1 bg-white/90 text-gray-900 text-xs font-semibold px-3 py-1 rounded-full">
                       <Briefcase className="w-3 h-3" />

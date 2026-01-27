@@ -23,6 +23,7 @@ export default function FederalCompliancePage() {
           className="object-cover"
           priority
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 w-full">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white text-sm font-semibold rounded-full mb-6">

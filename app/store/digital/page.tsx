@@ -202,6 +202,7 @@ export default function StoreDigitalPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <span className="inline-block px-3 py-1 bg-indigo-600 text-white text-xs font-bold rounded-full">
                       {product.priceDisplay}
@@ -288,6 +289,7 @@ export default function StoreDigitalPage() {
                     fill
                     className="object-cover"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4">
                     <span className="px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full">
                       {product.priceDisplay}

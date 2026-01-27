@@ -47,6 +47,7 @@ export default async function VolunteerPage() {
           className="object-cover"
           priority
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-600/90 to-orange-500/80" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center text-white">
           <Heart className="w-16 h-16 mx-auto mb-4 opacity-90" />
           <h1 className="text-4xl font-bold mb-4">Volunteer With Us</h1>

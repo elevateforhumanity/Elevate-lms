@@ -114,6 +114,7 @@ export default async function WorkforceBoardPage() {
         >
           <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/staff-portal-hero.mp4" type="video/mp4" />
         </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 to-indigo-800/75" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
           <Image
@@ -184,6 +185,7 @@ export default async function WorkforceBoardPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition duration-300"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
                     {feature.title}
                   </h3>
@@ -223,6 +225,7 @@ export default async function WorkforceBoardPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition duration-300"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <h3 className="text-lg font-bold mb-1">{link.title}</h3>
                     <p className="text-white/80 text-sm">{link.description}</p>

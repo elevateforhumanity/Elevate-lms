@@ -98,6 +98,7 @@ export default function DemosPage() {
           className="object-cover"
           priority
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-blue-800/80" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 w-full">
           <div className="max-w-3xl">

@@ -54,6 +54,7 @@ export default async function CoursesPage() {
             className="object-cover"
             priority
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/60" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -150,6 +151,7 @@ export default async function CoursesPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-xl font-bold text-white mb-1">{category.name}</h3>
                     <p className="text-sm text-white/80">{category.courses} programs available</p>

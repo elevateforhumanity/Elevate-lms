@@ -118,7 +118,11 @@ export default function VideoHeroBanner({
           />
         )}
         
-        {/* Content background for readability */}
+        {/* Overlay */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"
+          style={{ opacity: overlayOpacity }}
+        />
       </div>
 
       {/* Content */}

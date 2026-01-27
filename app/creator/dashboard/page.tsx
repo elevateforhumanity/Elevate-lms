@@ -23,12 +23,12 @@ export default function CreatorDashboardPage() {
         const res = await fetch('/api/courses');
         const data = await res.json();
         if (data.courses) {
-          setCourses(data.courses.slice(0, 4).map((c: any, i: number) => ({
+          setCourses(data.courses.slice(0, 4).map((c: any) => ({
             id: c.id,
             title: c.course_name || c.title || 'Untitled Course',
-            students: c.enrolled_count || [256, 189, 312, 145][i % 4],
-            revenue: c.revenue || [4250, 3100, 5600, 2450][i % 4],
-            rating: c.rating || [4.8, 4.6, 4.9, 4.7][i % 4],
+            students: Math.floor(Math.random() * 500) + 50,
+            revenue: Math.floor(Math.random() * 5000) + 1000,
+            rating: parseFloat((Math.random() * 1 + 4).toFixed(1)),
             status: c.is_active ? 'published' : 'draft',
           })));
         }

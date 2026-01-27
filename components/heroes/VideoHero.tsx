@@ -42,8 +42,9 @@ export function VideoHero({
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
+      {overlayColor && <div className={`absolute inset-0 bg-gradient-to-b ${overlayColor}`} />}
       <div className="absolute inset-0 flex items-center justify-center text-center px-4">
-        <div className="max-w-4xl w-full bg-black/50 backdrop-blur-sm p-8 rounded-2xl">
+        <div className="max-w-4xl w-full">
           {badge && (
             <div className="mb-6 inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full border border-white/30">
               <badge.icon className="w-5 h-5 text-white" />

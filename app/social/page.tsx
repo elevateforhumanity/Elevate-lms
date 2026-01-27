@@ -250,6 +250,7 @@ export default function SocialMediaPage() {
             className="object-cover"
             priority
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-transparent" />
         </div>
 
         <div className={`relative z-10 max-w-7xl mx-auto px-4 py-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

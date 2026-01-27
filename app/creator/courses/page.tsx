@@ -27,11 +27,11 @@ export default function CreatorCoursesPage() {
           setCourses(data.courses.map((c: any, i: number) => ({
             id: c.id || i + 1,
             title: c.course_name || c.title || 'Untitled Course',
-            students: c.enrolled_count || [145, 89, 234, 67, 178][i % 5],
-            rating: c.rating || ['4.8', '4.6', '4.9', '4.5', '4.7'][i % 5],
+            students: Math.floor(Math.random() * 200),
+            rating: (Math.random() * 1 + 4).toFixed(1),
             status: c.is_active ? 'published' : 'draft',
-            lessons: c.lesson_count || [12, 18, 8, 24, 15][i % 5],
-            revenue: c.revenue || [3450, 2100, 4800, 1560, 2890][i % 5],
+            lessons: Math.floor(Math.random() * 25) + 5,
+            revenue: Math.floor(Math.random() * 5000),
           })));
         }
       } catch (error) {

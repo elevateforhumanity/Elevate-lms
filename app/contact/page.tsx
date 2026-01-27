@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
-import Turnstile from '@/components/Turnstile';
 
 const contactInfo = [
   { icon: Phone, title: 'Phone', value: '(317) 314-3757', subtitle: 'Mon-Fri 8am-6pm EST', href: 'tel:317-314-3757' },
@@ -16,7 +15,6 @@ const contactInfo = [
 export default function ContactPage() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -32,7 +30,6 @@ export default function ContactPage() {
       phone: formData.get('phone') as string || '',
       message: formData.get('message') as string,
       role: formData.get('subject') as string,
-      turnstileToken,
     };
 
     try {
@@ -220,12 +217,9 @@ export default function ContactPage() {
                   />
                 </div>
                 
-                {/* Turnstile CAPTCHA */}
-                <Turnstile onVerify={setTurnstileToken} />
-                
                 <button
                   type="submit"
-                  disabled={formState === 'submitting' || !turnstileToken}
+                  disabled={formState === 'submitting'}
                   className="flex items-center justify-center gap-2 w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors"
                 >
                   {formState === 'submitting' ? (
