@@ -3,6 +3,9 @@ import {
   isLicenseActiveNow, 
   isSubscriptionTier, 
   getBillingAuthority,
+  isKnownTier,
+  tierRequiresExpiry,
+  tierAllowsPerpetual,
   type License 
 } from '@/lib/licensing/billing-authority';
 
@@ -11,37 +14,66 @@ describe('billing-authority', () => {
   const future = new Date('2026-02-15T12:00:00Z');
   const past = new Date('2026-01-01T12:00:00Z');
 
-  describe('isSubscriptionTier', () => {
-    it('returns true for subscription tiers', () => {
-      expect(isSubscriptionTier('managed_monthly')).toBe(true);
-      expect(isSubscriptionTier('managed_annual')).toBe(true);
-      expect(isSubscriptionTier('pro_monthly')).toBe(true);
+  describe('Tier Classification', () => {
+    describe('isSubscriptionTier', () => {
+      it('returns true for subscription tiers', () => {
+        expect(isSubscriptionTier('managed_monthly')).toBe(true);
+        expect(isSubscriptionTier('managed_annual')).toBe(true);
+        expect(isSubscriptionTier('pro_monthly')).toBe(true);
+      });
+
+      it('returns false for DB tiers', () => {
+        expect(isSubscriptionTier('trial')).toBe(false);
+        expect(isSubscriptionTier('lifetime')).toBe(false);
+        expect(isSubscriptionTier('basic')).toBe(false);
+      });
+
+      it('returns false for null/undefined', () => {
+        expect(isSubscriptionTier(null)).toBe(false);
+        expect(isSubscriptionTier(undefined)).toBe(false);
+      });
     });
 
-    it('returns false for DB tiers', () => {
-      expect(isSubscriptionTier('trial')).toBe(false);
-      expect(isSubscriptionTier('lifetime')).toBe(false);
-      expect(isSubscriptionTier('basic')).toBe(false);
+    describe('isKnownTier', () => {
+      it('returns true for known tiers', () => {
+        expect(isKnownTier('trial')).toBe(true);
+        expect(isKnownTier('lifetime')).toBe(true);
+        expect(isKnownTier('managed_monthly')).toBe(true);
+      });
+
+      it('returns false for unknown tiers', () => {
+        expect(isKnownTier('typo_tier')).toBe(false);
+        expect(isKnownTier('random')).toBe(false);
+        expect(isKnownTier('')).toBe(false);
+      });
     });
 
-    it('returns false for null/undefined', () => {
-      expect(isSubscriptionTier(null)).toBe(false);
-      expect(isSubscriptionTier(undefined)).toBe(false);
+    describe('tierRequiresExpiry', () => {
+      it('returns true for trial, pilot, grant', () => {
+        expect(tierRequiresExpiry('trial')).toBe(true);
+        expect(tierRequiresExpiry('pilot')).toBe(true);
+        expect(tierRequiresExpiry('grant')).toBe(true);
+      });
+
+      it('returns false for perpetual tiers', () => {
+        expect(tierRequiresExpiry('lifetime')).toBe(false);
+        expect(tierRequiresExpiry('one_time')).toBe(false);
+      });
+    });
+
+    describe('getBillingAuthority', () => {
+      it('returns stripe for subscription tiers', () => {
+        expect(getBillingAuthority('managed_monthly')).toBe('stripe');
+      });
+
+      it('returns database for DB tiers', () => {
+        expect(getBillingAuthority('trial')).toBe('database');
+        expect(getBillingAuthority('lifetime')).toBe('database');
+      });
     });
   });
 
-  describe('getBillingAuthority', () => {
-    it('returns stripe for subscription tiers', () => {
-      expect(getBillingAuthority('managed_monthly')).toBe('stripe');
-    });
-
-    it('returns database for DB tiers', () => {
-      expect(getBillingAuthority('trial')).toBe('database');
-      expect(getBillingAuthority('lifetime')).toBe('database');
-    });
-  });
-
-  describe('isLicenseActiveNow - Trial (DB-authoritative)', () => {
+  describe('isLicenseActiveNow - Trial (DB-authoritative, requires expiry)', () => {
     it('allows trial with future expires_at', () => {
       const license: License = {
         status: 'active',
@@ -70,6 +102,34 @@ describe('billing-authority', () => {
       expect(result.authority).toBe('database');
     });
 
+    it('denies trial with NO expires_at (no perpetual trials)', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'trial',
+        expires_at: null,
+        current_period_end: null,
+        stripe_subscription_id: null,
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe('missing_expires_at');
+    });
+
+    it('denies trial with expires_at exactly at now (boundary)', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'trial',
+        expires_at: now.toISOString(),
+        current_period_end: null,
+        stripe_subscription_id: null,
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe('license_expired');
+    });
+  });
+
+  describe('isLicenseActiveNow - Lifetime (DB-authoritative, perpetual allowed)', () => {
     it('allows lifetime with no expires_at', () => {
       const license: License = {
         status: 'active',
@@ -81,6 +141,19 @@ describe('billing-authority', () => {
       const result = isLicenseActiveNow(license, now);
       expect(result.ok).toBe(true);
       expect(result.reason).toBe('db_perpetual');
+    });
+
+    it('allows lifetime with future expires_at', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'lifetime',
+        expires_at: future.toISOString(),
+        current_period_end: null,
+        stripe_subscription_id: null,
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(true);
+      expect(result.reason).toBe('db_active');
     });
   });
 
@@ -137,6 +210,90 @@ describe('billing-authority', () => {
       expect(result.ok).toBe(false);
       expect(result.reason).toBe('subscription_expired');
     });
+
+    it('denies subscription with cpe exactly at now (boundary)', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'managed_monthly',
+        expires_at: null,
+        current_period_end: now.toISOString(),
+        stripe_subscription_id: 'sub_123',
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe('subscription_expired');
+    });
+  });
+
+  describe('isLicenseActiveNow - Unknown tier (fail closed)', () => {
+    it('denies unknown tier with status active', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'typo_tier',
+        expires_at: future.toISOString(),
+        current_period_end: null,
+        stripe_subscription_id: null,
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe('unknown_tier');
+    });
+
+    it('denies unknown tier with null expires_at (prevents perpetual)', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'random_tier',
+        expires_at: null,
+        current_period_end: null,
+        stripe_subscription_id: null,
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe('unknown_tier');
+    });
+
+    it('denies empty tier', () => {
+      const license: License = {
+        status: 'active',
+        tier: '',
+        expires_at: future.toISOString(),
+        current_period_end: null,
+        stripe_subscription_id: null,
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe('unknown_tier');
+    });
+  });
+
+  describe('isLicenseActiveNow - Lifecycle flags (canceled_at, suspended_at)', () => {
+    it('denies license with canceled_at set (even if status=active)', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'trial',
+        expires_at: future.toISOString(),
+        current_period_end: null,
+        stripe_subscription_id: null,
+        canceled_at: past.toISOString(),
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe('license_canceled');
+    });
+
+    it('denies license with suspended_at set (even if status=active)', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'managed_monthly',
+        expires_at: null,
+        current_period_end: future.toISOString(),
+        stripe_subscription_id: 'sub_123',
+        suspended_at: past.toISOString(),
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe('license_suspended');
+    });
   });
 
   describe('isLicenseActiveNow - Status checks', () => {
@@ -157,6 +314,53 @@ describe('billing-authority', () => {
       const result = isLicenseActiveNow(null, now);
       expect(result.ok).toBe(false);
       expect(result.reason).toBe('no_license');
+    });
+
+    it('denies undefined license', () => {
+      const result = isLicenseActiveNow(undefined, now);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe('no_license');
+    });
+  });
+
+  describe('isLicenseActiveNow - Invalid date handling', () => {
+    it('treats invalid expires_at as null', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'lifetime', // perpetual allowed
+        expires_at: 'not-a-date',
+        current_period_end: null,
+        stripe_subscription_id: null,
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(true);
+      expect(result.reason).toBe('db_perpetual');
+    });
+
+    it('denies trial with invalid expires_at (requires expiry)', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'trial',
+        expires_at: 'invalid',
+        current_period_end: null,
+        stripe_subscription_id: null,
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe('missing_expires_at');
+    });
+
+    it('denies subscription with invalid current_period_end', () => {
+      const license: License = {
+        status: 'active',
+        tier: 'managed_monthly',
+        expires_at: null,
+        current_period_end: 'invalid',
+        stripe_subscription_id: 'sub_123',
+      };
+      const result = isLicenseActiveNow(license, now);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe('missing_current_period_end');
     });
   });
 });

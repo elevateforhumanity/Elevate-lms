@@ -7,11 +7,18 @@
  * 1. DB-Authoritative: Access controlled by expires_at (trial, lifetime, one_time)
  * 2. Stripe-Authoritative: Access controlled by current_period_end (subscriptions)
  * 
- * Rule: Subscription tiers MUST have stripe_subscription_id AND current_period_end.
- *       Missing either = DENY (fail closed, not open).
+ * Rules:
+ * - Subscription tiers MUST have stripe_subscription_id AND current_period_end
+ * - Trial tiers MUST have expires_at (no perpetual trials)
+ * - Unknown tiers are DENIED (fail closed)
+ * - canceled_at or suspended_at set = DENY regardless of status
  */
 
-// Explicit set of subscription tiers - add new subscription tiers here
+// ============================================================================
+// TIER CATALOG - All valid tiers must be declared here
+// ============================================================================
+
+// Subscription tiers (Stripe-authoritative)
 const SUBSCRIPTION_TIERS = new Set([
   'managed_monthly',
   'managed_annual',
@@ -27,6 +34,31 @@ const SUBSCRIPTION_TIERS = new Set([
   'team_annual',
 ]);
 
+// DB tiers that MUST have expires_at (time-boxed)
+const TIERS_REQUIRING_EXPIRY = new Set([
+  'trial',
+  'pilot',
+  'grant',
+  'demo',
+]);
+
+// DB tiers where expires_at can be null (perpetual allowed)
+const TIERS_ALLOWING_PERPETUAL = new Set([
+  'lifetime',
+  'one_time',
+  'basic',
+  'starter',
+  'free',
+  'enterprise', // one-time enterprise purchase
+]);
+
+// All known tiers (union of all sets)
+const ALL_KNOWN_TIERS = new Set([
+  ...SUBSCRIPTION_TIERS,
+  ...TIERS_REQUIRING_EXPIRY,
+  ...TIERS_ALLOWING_PERPETUAL,
+]);
+
 export type BillingAuthority = 'database' | 'stripe';
 
 export interface License {
@@ -37,6 +69,30 @@ export interface License {
   current_period_end: string | Date | null;
   stripe_subscription_id: string | null;
   stripe_customer_id?: string | null;
+  // Lifecycle fields - if set, license should be denied
+  canceled_at?: string | Date | null;
+  suspended_at?: string | Date | null;
+}
+
+/**
+ * Check if a tier is known/declared in the catalog
+ */
+export function isKnownTier(tier: string | null | undefined): boolean {
+  return !!tier && ALL_KNOWN_TIERS.has(tier);
+}
+
+/**
+ * Check if a tier requires expires_at (no perpetual allowed)
+ */
+export function tierRequiresExpiry(tier: string | null | undefined): boolean {
+  return !!tier && TIERS_REQUIRING_EXPIRY.has(tier);
+}
+
+/**
+ * Check if a tier allows perpetual (no expires_at)
+ */
+export function tierAllowsPerpetual(tier: string | null | undefined): boolean {
+  return !!tier && TIERS_ALLOWING_PERPETUAL.has(tier);
 }
 
 export interface AccessResult {
@@ -82,22 +138,47 @@ function toDate(d: string | Date | null | undefined): Date | null {
  * This is THE function that decides if a license grants access.
  * All other access checks should delegate to this.
  * 
- * Rules:
- * - status must be 'active'
- * - Subscription tiers: require stripe_subscription_id AND current_period_end > now
- * - DB tiers: require expires_at IS NULL OR expires_at > now
- * - Missing required fields = DENY (fail closed)
+ * Rules (in order of evaluation):
+ * 1. No license = DENY
+ * 2. canceled_at or suspended_at set = DENY (regardless of status)
+ * 3. status != 'active' = DENY
+ * 4. Unknown tier = DENY (fail closed)
+ * 5. Subscription tiers: require stripe_subscription_id AND current_period_end > now
+ * 6. DB tiers requiring expiry (trial, pilot): require expires_at > now
+ * 7. DB tiers allowing perpetual: expires_at IS NULL OR expires_at > now
  */
 export function isLicenseActiveNow(
   license: License | null | undefined,
   now: Date = new Date()
 ): AccessResult {
-  // No license = deny
+  // Rule 1: No license = deny
   if (!license) {
     return { ok: false, reason: 'no_license', authority: 'database', expiresAt: null };
   }
 
-  // Status must be 'active'
+  // Rule 2: Check lifecycle flags (canceled_at, suspended_at)
+  // These override status - a license can be status='active' but canceled
+  const canceledAt = toDate(license.canceled_at);
+  if (canceledAt) {
+    return {
+      ok: false,
+      reason: 'license_canceled',
+      authority: getBillingAuthority(license.tier),
+      expiresAt: null,
+    };
+  }
+
+  const suspendedAt = toDate(license.suspended_at);
+  if (suspendedAt) {
+    return {
+      ok: false,
+      reason: 'license_suspended',
+      authority: getBillingAuthority(license.tier),
+      expiresAt: null,
+    };
+  }
+
+  // Rule 3: Status must be 'active'
   if (license.status !== 'active') {
     return { 
       ok: false, 
@@ -110,8 +191,22 @@ export function isLicenseActiveNow(
   const tier = license.tier ?? '';
   const authority = getBillingAuthority(tier);
 
+  // Rule 4: Unknown tier = DENY (fail closed)
+  if (!isKnownTier(tier)) {
+    console.error('[billing-authority] Unknown tier - denying access', {
+      tier,
+      licenseId: license.id,
+    });
+    return {
+      ok: false,
+      reason: 'unknown_tier',
+      authority: 'database',
+      expiresAt: null,
+    };
+  }
+
+  // Rule 5: Subscription tiers (Stripe-authoritative)
   if (isSubscriptionTier(tier)) {
-    // STRIPE-AUTHORITATIVE: Subscription tiers
     // MUST have stripe_subscription_id
     if (!license.stripe_subscription_id) {
       console.error('[billing-authority] Subscription tier missing stripe_subscription_id', {
@@ -141,7 +236,7 @@ export function isLicenseActiveNow(
       };
     }
 
-    // current_period_end must be in the future
+    // current_period_end must be strictly in the future (> not >=)
     if (cpe <= now) {
       return { 
         ok: false, 
@@ -159,10 +254,24 @@ export function isLicenseActiveNow(
     };
   }
 
-  // DB-AUTHORITATIVE: Trial, lifetime, one-time, etc.
+  // Rule 6 & 7: DB-Authoritative tiers
   const exp = toDate(license.expires_at);
-  
-  // If expires_at is set, it must be in the future
+
+  // Rule 6: Tiers requiring expiry (trial, pilot, etc.) MUST have expires_at
+  if (tierRequiresExpiry(tier) && !exp) {
+    console.error('[billing-authority] Tier requires expires_at but none set', {
+      tier,
+      licenseId: license.id,
+    });
+    return {
+      ok: false,
+      reason: 'missing_expires_at',
+      authority: 'database',
+      expiresAt: null,
+    };
+  }
+
+  // If expires_at is set, it must be strictly in the future (> not >=)
   if (exp && exp <= now) {
     return { 
       ok: false, 
@@ -172,7 +281,7 @@ export function isLicenseActiveNow(
     };
   }
 
-  // No expiration = perpetual/lifetime
+  // Rule 7: Perpetual allowed (lifetime, one_time, etc.) or has valid expiry
   return { 
     ok: true, 
     reason: exp ? 'db_active' : 'db_perpetual', 
