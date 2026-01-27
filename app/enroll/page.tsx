@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = { 
@@ -33,16 +34,15 @@ export default async function EnrollPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">Enroll in a Program</h1>
-          <p className="text-xl text-blue-100">
-            Workforce training programs to launch your career
-          </p>
-          <p className="text-sm text-blue-200 mt-2">
-            Many programs are FREE through WIOA/WRG funding
-          </p>
-        </div>
+      {/* Hero - Image only */}
+      <div className="relative h-[40vh] min-h-[300px]">
+        <Image
+          src="/images/heroes-hq/programs-hero.jpg"
+          alt="Enroll in Training"
+          fill
+          className="object-cover"
+          priority
+        />
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-12">

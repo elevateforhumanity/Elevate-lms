@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { MessageSquare, GraduationCap, Phone, Clock, CheckCircle } from 'lucide-react';
+import Image from 'next/image';
+import { MessageSquare, GraduationCap, Phone, Clock } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
@@ -11,26 +12,15 @@ export const metadata: Metadata = {
 export default function ApplyPage() {
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Hero */}
-      <section 
-        className="relative py-20 px-4"
-        style={{ 
-          backgroundImage: 'url(/hero-images/apply-hero.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Start Your New Career
-          </h1>
-          <p className="text-xl text-blue-100 mb-2">
-            Free workforce training through WIOA funding
-          </p>
-          <p className="text-blue-200">
-            Most programs are 100% free for eligible Indiana residents
-          </p>
-        </div>
+      {/* Hero - Image only */}
+      <section className="relative h-[40vh] min-h-[300px]">
+        <Image
+          src="/images/heroes-hq/programs-hero.jpg"
+          alt="Apply for Training"
+          fill
+          className="object-cover"
+          priority
+        />
       </section>
 
       {/* Avatar Guide */}

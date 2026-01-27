@@ -2,8 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { DollarSign, GraduationCap, Home, CheckCircle, Users, Briefcase, ArrowRight } from 'lucide-react';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import { DollarSign, Home, Users, Briefcase, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
@@ -114,23 +113,16 @@ export default async function WIOAEligibilityPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <ModernLandingHero
-        badge="⚡ Most People Qualify"
-        headline="Check Your"
-        accentText="WIOA Eligibility"
-        subheadline="Find out if you qualify for 100% free career training"
-        description="WIOA (Workforce Innovation and Opportunity Act) provides funding for job training programs. Most Indiana residents qualify if they're unemployed, underemployed, or seeking better employment."
-        imageSrc="/images/heroes-hq/funding-hero.jpg"
-        imageAlt="WIOA Eligibility"
-        primaryCTA={{ text: "Check Eligibility", href: "#form" }}
-        secondaryCTA={{ text: "Apply Now", href: "/apply" }}
-        features={[
-          "100% free training for eligible Indiana residents",
-          "No student debt - all costs covered by WIOA funding",
-          "Most people qualify - we help with the application"
-        ]}
-        imageOnRight={true}
-      />
+      {/* Hero - Image only */}
+      <section className="relative h-[50vh] min-h-[350px]">
+        <Image
+          src="/images/heroes-hq/funding-hero.jpg"
+          alt="WIOA Eligibility"
+          fill
+          className="object-cover"
+          priority
+        />
+      </section>
 
       {/* Quick Links */}
       <section className="py-6 bg-white border-b">

@@ -301,47 +301,15 @@ export default function ApprenticeshipsPage() {
         )}
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-12 md:py-20 lg:py-24">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/images/pattern.svg')] bg-repeat"></div>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <Briefcase className="h-5 w-5" />
-              <span className="text-sm font-semibold">
-                Registered Apprenticeship Programs
-              </span>
-            </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight text-white">
-              Earn While You Learn
-            </h1>
-            <p className="text-base md:text-lg lg:text-xl text-white mb-4 leading-relaxed">
-              Start your career with hands-on training, industry credentials,
-              and a paycheck. Our registered apprenticeship programs combine
-              on-the-job experience with classroom instruction.
-            </p>
-            <p className="text-sm text-white/80 mb-8">
-              Elevate for Humanity serves as the Program Administrator for registered apprenticeship pathways, coordinating training, employer participation, and funding access.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="#programs"
-                className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-orange-600 text-white font-bold text-base md:text-lg rounded-lg hover:bg-orange-700 transition-colors shadow-lg"
-              >
-                View Programs
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                href="/apply?pathway=apprenticeship"
-                className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 font-bold text-base md:text-lg rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
-              >
-                Apply Today
-              </Link>
-            </div>
-          </div>
-        </div>
+      {/* Hero - Image only */}
+      <section className="relative h-[50vh] min-h-[350px]">
+        <Image
+          src="/images/trades/hero-program-welding.jpg"
+          alt="Apprenticeship Programs"
+          fill
+          className="object-cover"
+          priority
+        />
       </section>
 
       {/* Pathway Disclosure */}
