@@ -10,16 +10,19 @@ import HeaderDesktopNav from './HeaderDesktopNav';
 export const NAV_ITEMS = [
   { 
     name: 'Programs', 
-    href: '/programs',
+    href: '/programs/healthcare',
     subItems: [
-      { name: 'Healthcare', href: '/programs/healthcare' },
-      { name: 'Skilled Trades', href: '/programs/skilled-trades' },
-      { name: 'Technology', href: '/programs/technology' },
-      { name: 'Business', href: '/programs/business' },
-      { name: 'Barber & Cosmetology', href: '/programs/barber' },
-      { name: 'CDL & Transportation', href: '/programs/cdl-transportation' },
-      { name: 'Apprenticeships', href: '/apprenticeships' },
-      { name: 'All Programs', href: '/programs' },
+      { name: 'CNA Training', href: '/programs/cna-certification' },
+      { name: 'Medical Assistant', href: '/programs/medical-assistant' },
+      { name: 'Phlebotomy', href: '/programs/phlebotomy-technician' },
+      { name: 'HVAC Technician', href: '/programs/hvac-technician' },
+      { name: 'CDL Training', href: '/programs/cdl-training' },
+      { name: 'Electrical', href: '/programs/electrical' },
+      { name: 'Welding', href: '/programs/welding' },
+      { name: 'IT Support', href: '/programs/it-support' },
+      { name: 'Cybersecurity', href: '/programs/cybersecurity' },
+      { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
+      { name: 'Tax Preparation', href: '/programs/tax-prep-financial-services' },
     ]
   },
   { 
