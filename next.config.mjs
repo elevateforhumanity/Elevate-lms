@@ -9,8 +9,8 @@ const nextConfig = {
     buildActivityPosition: 'bottom-right',
   },
   
-  // Disable Turbopack, use webpack
-  // turbopack: false, // This doesn't work in Next 16
+  // Empty turbopack config to silence the warning about webpack config
+  turbopack: {},
 
   // Force cache bust - build timestamp + deployment marker
   generateBuildId: async () => {
