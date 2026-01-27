@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Target, Users, Award, Heart, ArrowRight, Shield, Building, GraduationCap, Briefcase, MapPin } from 'lucide-react';
+import { Users, Award, Heart, ArrowRight, Shield, Building, GraduationCap, Briefcase, MapPin } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 import { ImageHero } from '@/components/ImageHero';
 
@@ -67,24 +67,12 @@ export default function AboutPage() {
                 To create pathways out of poverty and into prosperity by providing accessible, 
                 high-quality workforce training and support services to those who need it most.
               </p>
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                  <span className="text-slate-700">Remove financial barriers to career training</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                  <span className="text-slate-700">Provide industry-recognized certifications</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                  <span className="text-slate-700">Connect graduates with employment</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                  <span className="text-slate-700">Offer wraparound support for lasting success</span>
-                </div>
-              </div>
+              <ul className="space-y-3 text-slate-700">
+                <li>Remove financial barriers to career training</li>
+                <li>Provide industry-recognized certifications</li>
+                <li>Connect graduates with employment</li>
+                <li>Offer wraparound support for lasting success</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -167,7 +155,7 @@ export default function AboutPage() {
               <div className="text-slate-600 text-sm">Apprenticeship Sponsor</div>
             </div>
             <div className="bg-slate-50 rounded-xl p-6 text-center">
-              <CheckCircle className="w-10 h-10 text-green-600 mx-auto mb-3" />
+              <Award className="w-10 h-10 text-green-600 mx-auto mb-3" />
               <div className="font-bold text-slate-900">WIOA Approved</div>
               <div className="text-slate-600 text-sm">Training Provider</div>
             </div>
