@@ -27,7 +27,18 @@ const supabase =
   supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
 export async function POST(request: NextRequest) {
+  // Stage 0: Log env var presence for debugging
+  console.log('[webhook] Env check:', {
+    hasStripeKey: !!stripeKey,
+    hasWebhookSecret: !!webhookSecret,
+    hasSupabaseUrl: !!supabaseUrl,
+    hasSupabaseKey: !!supabaseKey,
+    stripeInitialized: !!stripe,
+    supabaseInitialized: !!supabase,
+  });
+
   if (!stripe || !supabase) {
+    console.error('[webhook] Missing config:', { stripe: !!stripe, supabase: !!supabase });
     return NextResponse.json(
       { error: 'Stripe or Supabase not configured' },
       { status: 503 }
@@ -38,6 +49,7 @@ export async function POST(request: NextRequest) {
   const signature = request.headers.get('stripe-signature');
 
   if (!signature) {
+    console.error('[webhook] No stripe-signature header');
     return NextResponse.json(
       { error: 'No signature provided' },
       { status: 400 }
@@ -49,46 +61,71 @@ export async function POST(request: NextRequest) {
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (err) {
+    const errMsg = err instanceof Error ? err.message : String(err);
+    console.error('[webhook] Signature verification failed:', errMsg);
     logger.error('Webhook signature verification failed:', err);
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
   }
 
-  // Idempotency check - prevent duplicate processing
-  const { data: existingEvent } = await supabase
-    .from('stripe_webhook_events')
-    .select('id, status')
-    .eq('stripe_event_id', event.id)
-    .single();
+  // ========== SIGNATURE VERIFIED - NEVER RETURN 500 FROM HERE ==========
+  // Log verified event details
+  console.log('[webhook] Verified event:', {
+    id: event.id,
+    type: event.type,
+    livemode: event.livemode,
+  });
 
-  if (existingEvent) {
-    logger.info(`Webhook already processed: ${event.id}, status: ${existingEvent.status}`);
-    return NextResponse.json({ received: true, duplicate: true });
-  }
+  // Wrap ALL post-verify logic in try/catch to prevent 500s
+  try {
+    // Idempotency check - prevent duplicate processing
+    let existingEvent = null;
+    try {
+      const { data } = await supabase
+        .from('stripe_webhook_events')
+        .select('id, status')
+        .eq('stripe_event_id', event.id)
+        .single();
+      existingEvent = data;
+    } catch (idempotencyErr) {
+      console.error('[webhook] Idempotency check failed (continuing):', idempotencyErr);
+    }
 
-  // Record webhook event before processing
-  const { error: insertError } = await supabase
-    .from('stripe_webhook_events')
-    .insert({
-      stripe_event_id: event.id,
-      event_type: event.type,
-      status: 'processing',
-      payload: event.data.object,
-      metadata: { received_at: new Date().toISOString() },
-    });
-
-  if (insertError) {
-    // If insert fails due to unique constraint, another process is handling it
-    if (insertError.code === '23505') {
-      logger.info(`Webhook being processed by another instance: ${event.id}`);
+    if (existingEvent) {
+      console.log(`[webhook] Already processed: ${event.id}, status: ${existingEvent.status}`);
+      logger.info(`Webhook already processed: ${event.id}, status: ${existingEvent.status}`);
       return NextResponse.json({ received: true, duplicate: true });
     }
-    // Log but continue - idempotency table might not exist yet
-    logger.warn('Failed to record webhook event (continuing):', insertError);
-  }
 
-  // Handle the event
-  try {
-    switch (event.type) {
+    // Record webhook event before processing
+    try {
+      const { error: insertError } = await supabase
+        .from('stripe_webhook_events')
+        .insert({
+          stripe_event_id: event.id,
+          event_type: event.type,
+          status: 'processing',
+          payload: event.data.object,
+          metadata: { received_at: new Date().toISOString() },
+        });
+
+      if (insertError) {
+        // If insert fails due to unique constraint, another process is handling it
+        if (insertError.code === '23505') {
+          console.log(`[webhook] Being processed by another instance: ${event.id}`);
+          logger.info(`Webhook being processed by another instance: ${event.id}`);
+          return NextResponse.json({ received: true, duplicate: true });
+        }
+        // Log but continue - idempotency table might not exist yet
+        console.warn('[webhook] Failed to record event (continuing):', insertError);
+        logger.warn('Failed to record webhook event (continuing):', insertError);
+      }
+    } catch (recordErr) {
+      console.error('[webhook] Record event failed (continuing):', recordErr);
+    }
+
+    // Handle the event - each case wrapped in its own try/catch
+    try {
+      switch (event.type) {
     case 'checkout.session.completed': {
       const session = event.data.object as Stripe.Checkout.Session;
 
@@ -927,33 +964,55 @@ export async function POST(request: NextRequest) {
       break;
     }
 
-    default:
-      logger.info(`Unhandled event type: ${event.type}`);
-  }
+      default:
+        console.log(`[webhook] Unhandled event type: ${event.type}`);
+        logger.info(`Unhandled event type: ${event.type}`);
+      }
+    } catch (switchErr) {
+      // Event handler threw - log but don't fail
+      const errMsg = switchErr instanceof Error ? switchErr.message : String(switchErr);
+      const errStack = switchErr instanceof Error ? switchErr.stack : undefined;
+      console.error('[webhook] Event handler error:', errMsg);
+      if (errStack) console.error('[webhook] Stack:', errStack);
+      logger.error('Event handler error:', switchErr);
+    }
 
     // Update webhook event status to processed
-    await supabase
-      .from('stripe_webhook_events')
-      .update({ status: 'processed', processed_at: new Date().toISOString() })
-      .eq('stripe_event_id', event.id)
-      .catch(err => logger.warn('Failed to update webhook status:', err));
+    try {
+      await supabase
+        .from('stripe_webhook_events')
+        .update({ status: 'processed', processed_at: new Date().toISOString() })
+        .eq('stripe_event_id', event.id);
+    } catch (updateErr) {
+      console.warn('[webhook] Failed to update status:', updateErr);
+      logger.warn('Failed to update webhook status:', updateErr);
+    }
 
   } catch (processingError: any) {
-    // Update webhook event status to failed
-    await supabase
-      .from('stripe_webhook_events')
-      .update({ 
-        status: 'failed', 
-        error_message: processingError.message,
-        processed_at: new Date().toISOString() 
-      })
-      .eq('stripe_event_id', event.id)
-      .catch(err => logger.warn('Failed to update webhook failure status:', err));
+    // Outer catch - something unexpected happened
+    const errMsg = processingError instanceof Error ? processingError.message : String(processingError);
+    const errStack = processingError instanceof Error ? processingError.stack : undefined;
+    console.error('[webhook] Post-verify error:', errMsg);
+    if (errStack) console.error('[webhook] Stack:', errStack);
+    
+    // Try to update webhook event status to failed
+    try {
+      await supabase
+        .from('stripe_webhook_events')
+        .update({ 
+          status: 'failed', 
+          error_message: errMsg,
+          processed_at: new Date().toISOString() 
+        })
+        .eq('stripe_event_id', event.id);
+    } catch (updateErr) {
+      console.warn('[webhook] Failed to update failure status:', updateErr);
+    }
 
     logger.error('Webhook processing error:', processingError);
-    // Still return 200 to prevent Stripe retries for application errors
-    return NextResponse.json({ received: true, error: processingError.message });
   }
 
+  // ALWAYS return 200 after signature verification to stop Stripe retries
+  console.log('[webhook] Returning 200 for event:', event.id);
   return NextResponse.json({ received: true });
 }
