@@ -77,7 +77,6 @@ export default function FounderPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-12">
           <p className="text-blue-400 font-semibold mb-2">Founder & Chief Executive Officer</p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4">

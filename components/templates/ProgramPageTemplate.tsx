@@ -109,7 +109,6 @@ export function ProgramPageTemplate({
               priority
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-24">

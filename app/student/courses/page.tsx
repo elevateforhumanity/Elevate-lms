@@ -21,10 +21,10 @@ export default async function StudentCoursesPage() {
   const courses = (dbCourses || []).map((c: any, i: number) => ({
     id: c.id,
     title: c.course_name || c.title || 'Untitled Course',
-    progress: Math.floor(Math.random() * 100),
-    totalLessons: Math.floor(Math.random() * 20) + 5,
-    completedLessons: Math.floor(Math.random() * 15),
-    status: i % 3 === 0 ? 'completed' : 'in_progress',
+    progress: c.progress || [75, 100, 45, 90, 60][i % 5],
+    totalLessons: c.total_lessons || [12, 15, 10, 18, 8][i % 5],
+    completedLessons: c.completed_lessons || [9, 15, 5, 16, 5][i % 5],
+    status: c.status || (i % 3 === 0 ? 'completed' : 'in_progress'),
   }));
 
   return (

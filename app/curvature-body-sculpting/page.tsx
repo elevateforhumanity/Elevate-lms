@@ -86,7 +86,6 @@ export default function CurvatureBodySculptingPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-pink-900/90 via-purple-900/80 to-indigo-900/70" />
         </div>
         <div className="relative max-w-6xl mx-auto px-4 text-center text-white">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-6">

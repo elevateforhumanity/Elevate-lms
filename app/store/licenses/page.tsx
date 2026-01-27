@@ -44,7 +44,6 @@ export default async function LicensesPage() {
             className="object-cover opacity-20"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-zinc-900/90 to-zinc-900/70" />
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
@@ -90,7 +89,6 @@ export default async function LicensesPage() {
                 >
                   <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
                 </video>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
             </div>
           </div>
@@ -159,7 +157,6 @@ export default async function LicensesPage() {
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     {product.licenseType === 'school' && (
                       <div className="absolute top-3 right-3 px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full">
                         Most Popular

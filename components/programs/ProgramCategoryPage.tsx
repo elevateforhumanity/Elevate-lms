@@ -115,7 +115,6 @@ export default function ProgramCategoryPage({
           <source src={heroVideoSrc} type="video/mp4" />
         </video>
         
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className={`max-w-2xl transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -205,7 +204,6 @@ export default function ProgramCategoryPage({
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     quality={85}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="flex items-center gap-2 text-white/90 text-sm">
                       <Clock className="w-4 h-4" />

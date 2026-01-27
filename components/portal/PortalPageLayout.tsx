@@ -55,11 +55,12 @@ export function PortalPageLayout({
         >
           <source src={videoSrc} type="video/mp4" />
         </video>
-        <div className={`absolute inset-0 bg-gradient-to-r ${gradientFrom} ${gradientTo}`} />
         
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">{subtitle}</p>
+          <div className="bg-black/50 backdrop-blur-sm p-8 rounded-2xl inline-block">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto">{subtitle}</p>
+          </div>
         </div>
       </section>
 
@@ -77,8 +78,7 @@ export function PortalPageLayout({
                     height={200}
                     className="w-full h-40 object-cover"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${stat.color || 'from-black/80'} to-transparent`} />
-                  <div className="absolute bottom-4 left-4 text-white">
+                  <div className="absolute bottom-4 left-4 text-white bg-black/60 backdrop-blur-sm p-3 rounded-lg">
                     <p className="text-4xl font-bold">{stat.value}</p>
                     <p className="text-sm">{stat.label}</p>
                   </div>
@@ -108,7 +108,6 @@ export function PortalPageLayout({
                       fill
                       className="object-cover group-hover:scale-105 transition duration-300"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <h3 className="absolute bottom-3 left-3 text-lg font-bold text-white">
                       {action.title}
                     </h3>

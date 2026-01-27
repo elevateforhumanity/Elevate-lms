@@ -165,7 +165,6 @@ export default function StorePage() {
     <div className="bg-white">
       {/* Hero with Avatar */}
       <section className="relative bg-slate-900 text-white py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -195,7 +194,6 @@ export default function StorePage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="text-sm text-slate-300">Complete workforce platform</p>
                   <p className="text-lg font-bold">LMS • Admin • Enrollment • Compliance</p>
@@ -292,7 +290,6 @@ export default function StorePage() {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                     <div className={`inline-flex items-center gap-2 ${category.color} px-3 py-1 rounded-full text-xs font-bold mb-2`}>

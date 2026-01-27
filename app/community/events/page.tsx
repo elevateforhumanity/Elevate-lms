@@ -198,7 +198,7 @@ export default async function EventsPage() {
                           className="object-cover"
                         />
                       ) : (
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-indigo-500 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-blue-600 flex items-center justify-center">
                           <Calendar className="w-12 h-12 text-white/50" />
                         </div>
                       )}

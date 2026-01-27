@@ -200,11 +200,10 @@ export default async function GroupsPage() {
                             sizes="(max-width: 768px) 100vw, 50vw"
                           />
                         ) : (
-                          <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-indigo-500 flex items-center justify-center">
+                          <div className="absolute inset-0 bg-blue-600 flex items-center justify-center">
                             <Users className="w-12 h-12 text-white/50" />
                           </div>
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         <div className="absolute bottom-3 left-3 right-3 flex justify-between items-center">
                           <span className="bg-white/90 text-gray-800 text-xs font-medium px-2 py-1 rounded">
                             {group.category || 'General'}

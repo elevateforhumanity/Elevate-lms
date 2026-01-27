@@ -492,7 +492,6 @@ export default async function AdminDashboardOrchestrated() {
                 fill
                 className="object-cover group-hover:scale-105 transition duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent" />
               <h3 className="absolute bottom-3 left-3 font-bold text-white">
                 Manage Students
               </h3>
@@ -516,7 +515,6 @@ export default async function AdminDashboardOrchestrated() {
                 fill
                 className="object-cover group-hover:scale-105 transition duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent" />
               <h3 className="absolute bottom-3 left-3 font-bold text-white">
                 Program Holders
               </h3>
@@ -540,7 +538,6 @@ export default async function AdminDashboardOrchestrated() {
                 fill
                 className="object-cover group-hover:scale-105 transition duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent" />
               <h3 className="absolute bottom-3 left-3 font-bold text-white">
                 Employers
               </h3>
@@ -564,7 +561,6 @@ export default async function AdminDashboardOrchestrated() {
                 fill
                 className="object-cover group-hover:scale-105 transition duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-orange-900/80 to-transparent" />
               <h3 className="absolute bottom-3 left-3 font-bold text-white">
                 Generate Reports
               </h3>
