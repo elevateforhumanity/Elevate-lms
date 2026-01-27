@@ -239,15 +239,39 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
     invoiceUrl: invoice.hosted_invoice_url,
   });
 
-  // TODO: Update license in database
-  // await db.licenses.update({
-  //   where: { stripeSubscriptionId: subscriptionId },
-  //   data: {
-  //     status: 'active',
-  //     lastPaymentStatus: 'paid',
-  //     lastInvoiceUrl: invoice.hosted_invoice_url,
-  //   },
-  // });
+  // Update license status to active
+  const { createAdminClient } = await import('@/lib/supabase/admin');
+  const supabase = createAdminClient();
+
+  const { data, error } = await supabase
+    .from('licenses')
+    .update({
+      status: 'active',
+      suspended_at: null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('stripe_subscription_id', subscriptionId)
+    .select('id, organization_id')
+    .single();
+
+  if (error) {
+    console.error('Error updating license on invoice.paid:', error);
+    return;
+  }
+
+  // Log license event
+  if (data) {
+    await supabase.from('license_events').insert({
+      license_id: data.id,
+      event_type: 'payment_succeeded',
+      event_data: {
+        invoice_id: invoice.id,
+        amount_paid: invoice.amount_paid,
+        invoice_url: invoice.hosted_invoice_url,
+      },
+    });
+    console.log('License activated:', data.id);
+  }
 }
 
 /**
@@ -264,16 +288,42 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
     attemptCount: invoice.attempt_count,
   });
 
-  // TODO: Update license in database
-  // await db.licenses.update({
-  //   where: { stripeSubscriptionId: subscriptionId },
-  //   data: {
-  //     status: 'past_due',
-  //     lastPaymentStatus: 'failed',
-  //   },
-  // });
+  // Update license status to past_due (grace period before suspension)
+  const { createAdminClient } = await import('@/lib/supabase/admin');
+  const supabase = createAdminClient();
 
-  // TODO: Send email notification about payment failure
+  // After 3 failed attempts, suspend. Otherwise mark past_due.
+  const newStatus = (invoice.attempt_count || 0) >= 3 ? 'suspended' : 'past_due';
+
+  const { data, error } = await supabase
+    .from('licenses')
+    .update({
+      status: newStatus,
+      suspended_at: newStatus === 'suspended' ? new Date().toISOString() : null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('stripe_subscription_id', subscriptionId)
+    .select('id, organization_id')
+    .single();
+
+  if (error) {
+    console.error('Error updating license on invoice.payment_failed:', error);
+    return;
+  }
+
+  // Log license event
+  if (data) {
+    await supabase.from('license_events').insert({
+      license_id: data.id,
+      event_type: newStatus === 'suspended' ? 'license_suspended' : 'payment_failed',
+      event_data: {
+        invoice_id: invoice.id,
+        attempt_count: invoice.attempt_count,
+        new_status: newStatus,
+      },
+    });
+    console.log(`License ${newStatus}:`, data.id);
+  }
 }
 
 /**
@@ -287,8 +337,8 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
     cancelAtPeriodEnd: subscription.cancel_at_period_end,
   });
 
+  // Map Stripe status to license status
   let newStatus: string;
-  
   switch (subscription.status) {
     case 'trialing':
       newStatus = 'trial';
@@ -301,40 +351,105 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
       break;
     case 'canceled':
     case 'unpaid':
-      newStatus = 'suspended';
+    case 'incomplete_expired':
+      newStatus = 'canceled';
       break;
     default:
-      newStatus = subscription.status;
+      newStatus = 'suspended';
   }
 
-  // TODO: Update license in database
-  // await db.licenses.update({
-  //   where: { stripeSubscriptionId: subscription.id },
-  //   data: {
-  //     status: newStatus,
-  //     currentPeriodEnd: new Date(subscription.current_period_end * 1000),
-  //     canceledAt: subscription.cancel_at_period_end ? new Date() : null,
-  //   },
-  // });
+  // Update license in database
+  const { createAdminClient } = await import('@/lib/supabase/admin');
+  const supabase = createAdminClient();
+
+  const updateData: Record<string, unknown> = {
+    status: newStatus,
+    current_period_start: new Date(subscription.current_period_start * 1000).toISOString(),
+    current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
+    updated_at: new Date().toISOString(),
+  };
+
+  // Set suspended_at if transitioning to suspended/canceled
+  if (newStatus === 'suspended' || newStatus === 'canceled') {
+    updateData.suspended_at = new Date().toISOString();
+  } else {
+    updateData.suspended_at = null;
+  }
+
+  // Set canceled_at if subscription is being canceled
+  if (subscription.cancel_at_period_end || subscription.status === 'canceled') {
+    updateData.canceled_at = new Date().toISOString();
+  }
+
+  const { data, error } = await supabase
+    .from('licenses')
+    .update(updateData)
+    .eq('stripe_subscription_id', subscription.id)
+    .select('id, organization_id, status')
+    .single();
+
+  if (error) {
+    console.error('Error updating license on subscription.updated:', error);
+    return;
+  }
+
+  // Log license event
+  if (data) {
+    await supabase.from('license_events').insert({
+      license_id: data.id,
+      event_type: 'subscription_updated',
+      event_data: {
+        stripe_status: subscription.status,
+        new_status: newStatus,
+        cancel_at_period_end: subscription.cancel_at_period_end,
+      },
+    });
+    console.log('License updated:', data.id, 'status:', newStatus);
+  }
 }
 
 /**
  * customer.subscription.deleted
- * Hard cancel - suspend license immediately
+ * Hard cancel - suspend license immediately (TOTAL LOCKOUT)
  */
 async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
-  console.log('Subscription deleted:', {
+  console.log('Subscription deleted - TOTAL LOCKOUT:', {
     subscriptionId: subscription.id,
   });
 
-  // TODO: Update license in database
-  // await db.licenses.update({
-  //   where: { stripeSubscriptionId: subscription.id },
-  //   data: {
-  //     status: 'canceled',
-  //     canceledAt: new Date(),
-  //   },
-  // });
+  // Update license to canceled status - this triggers total lockout
+  const { createAdminClient } = await import('@/lib/supabase/admin');
+  const supabase = createAdminClient();
+
+  const { data, error } = await supabase
+    .from('licenses')
+    .update({
+      status: 'canceled',
+      canceled_at: new Date().toISOString(),
+      suspended_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    })
+    .eq('stripe_subscription_id', subscription.id)
+    .select('id, organization_id')
+    .single();
+
+  if (error) {
+    console.error('Error updating license on subscription.deleted:', error);
+    return;
+  }
+
+  // Log license event
+  if (data) {
+    await supabase.from('license_events').insert({
+      license_id: data.id,
+      event_type: 'license_canceled',
+      event_data: {
+        reason: 'subscription_deleted',
+        lockout: true,
+      },
+    });
+    console.log('License CANCELED (total lockout):', data.id);
+  }
 }
 
 /**
@@ -349,35 +464,88 @@ async function handleChargeRefunded(charge: Stripe.Charge) {
     amount: charge.amount_refunded / 100,
   });
 
-  // TODO: Find and suspend license
-  // await db.licenses.updateMany({
-  //   where: { stripeCustomerId: customerId },
-  //   data: {
-  //     status: 'suspended',
-  //     suspendedAt: new Date(),
-  //   },
-  // });
+  // Suspend all licenses for this customer
+  const { createAdminClient } = await import('@/lib/supabase/admin');
+  const supabase = createAdminClient();
+
+  const { data, error } = await supabase
+    .from('licenses')
+    .update({
+      status: 'suspended',
+      suspended_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    })
+    .eq('stripe_customer_id', customerId)
+    .select('id');
+
+  if (error) {
+    console.error('Error suspending licenses on charge.refunded:', error);
+    return;
+  }
+
+  // Log events for each suspended license
+  if (data && data.length > 0) {
+    for (const license of data) {
+      await supabase.from('license_events').insert({
+        license_id: license.id,
+        event_type: 'license_suspended',
+        event_data: {
+          reason: 'charge_refunded',
+          charge_id: charge.id,
+          amount_refunded: charge.amount_refunded,
+        },
+      });
+    }
+    console.log('Licenses suspended due to refund:', data.length);
+  }
 }
 
 /**
  * charge.dispute.created
- * Immediate suspension on chargeback
+ * Immediate suspension on chargeback - TOTAL LOCKOUT
  */
 async function handleDisputeCreated(dispute: Stripe.Dispute) {
+  const stripe = getStripe();
   const charge = await stripe.charges.retrieve(dispute.charge as string);
   const customerId = charge.customer as string;
 
-  console.log('Dispute created - suspending license:', {
+  console.log('Dispute created - TOTAL LOCKOUT:', {
     customerId,
     reason: dispute.reason,
   });
 
-  // TODO: Find and suspend license
-  // await db.licenses.updateMany({
-  //   where: { stripeCustomerId: customerId },
-  //   data: {
-  //     status: 'suspended',
-  //     suspendedAt: new Date(),
-  //   },
-  // });
+  // Suspend all licenses for this customer immediately
+  const { createAdminClient } = await import('@/lib/supabase/admin');
+  const supabase = createAdminClient();
+
+  const { data, error } = await supabase
+    .from('licenses')
+    .update({
+      status: 'suspended',
+      suspended_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    })
+    .eq('stripe_customer_id', customerId)
+    .select('id');
+
+  if (error) {
+    console.error('Error suspending licenses on dispute:', error);
+    return;
+  }
+
+  // Log events for each suspended license
+  if (data && data.length > 0) {
+    for (const license of data) {
+      await supabase.from('license_events').insert({
+        license_id: license.id,
+        event_type: 'license_suspended',
+        event_data: {
+          reason: 'chargeback_dispute',
+          dispute_id: dispute.id,
+          dispute_reason: dispute.reason,
+        },
+      });
+    }
+    console.log('Licenses suspended due to dispute:', data.length);
+  }
 }
