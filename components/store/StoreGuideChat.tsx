@@ -50,7 +50,7 @@ function useSpeech() {
 
   const stop = useCallback(() => {
     if (synthRef.current) {
-      try { synthRef.current.cancel(); } catch {}
+      try { synthRef.current.cancel(); } catch { /* ignore cancel errors */ }
       setIsSpeaking(false);
     }
   }, []);

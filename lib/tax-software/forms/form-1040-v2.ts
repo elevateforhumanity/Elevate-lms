@@ -549,7 +549,7 @@ function calculateQBIDeduction(
   const qbiConfig = config.qbi;
   
   // Basic deduction is 20% of QBI
-  let deduction = scheduleC * qbiConfig.deductionRate;
+  const deduction = scheduleC * qbiConfig.deductionRate;
   
   // Check if above threshold (where limitations apply)
   const thresholdStart = qbiConfig.thresholdStart[taxReturn.filingStatus] ||

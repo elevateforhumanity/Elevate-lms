@@ -66,7 +66,7 @@ export default function ShopWeeklyReportPage() {
           title: `Weekly Report - ${report.shopName}`,
           text: `Week ending ${new Date(report.weekEnding).toLocaleDateString()}: ${report.totalHours} total hours across ${report.apprenticeCount} apprentices.`,
         });
-      } catch (err) {}
+      } catch { /* share cancelled or unsupported */ }
     }
   };
 

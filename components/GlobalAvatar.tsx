@@ -125,20 +125,16 @@ export default function GlobalAvatar() {
   const pathname = usePathname();
   const videoRef = useRef<HTMLVideoElement>(null);
   
-  // Don't show on excluded pages
-  if (excludedPatterns.some(pattern => pattern.test(pathname))) {
-    return null;
-  }
-  
   // Find matching avatar config
   const config = avatarConfig.find(c => c.pattern.test(pathname));
   
-  if (!config) {
-    return null;
-  }
+  // Check if excluded
+  const isExcluded = excludedPatterns.some(pattern => pattern.test(pathname));
 
-  // Auto-play on page load
+  // Auto-play on page load (must be before any returns)
   useEffect(() => {
+    if (isExcluded || !config) return;
+    
     const video = videoRef.current;
     if (!video) return;
     
@@ -146,7 +142,16 @@ export default function GlobalAvatar() {
     video.play().catch(() => {
       // Browser blocked autoplay - will play on interaction
     });
-  }, [pathname]);
+  }, [pathname, isExcluded, config]);
+  
+  // Don't show on excluded pages
+  if (isExcluded) {
+    return null;
+  }
+  
+  if (!config) {
+    return null;
+  }
   
   return (
     <section className="relative w-full bg-slate-100 py-8">
