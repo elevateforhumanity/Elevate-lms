@@ -157,7 +157,7 @@ export default function GlobalAvatar() {
             className="w-full aspect-video object-cover"
             playsInline
             autoPlay
-            preload="auto"
+            preload="metadata"
           >
             <source src={config.video} type="video/mp4" />
           </video>

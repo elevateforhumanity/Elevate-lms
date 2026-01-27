@@ -78,7 +78,7 @@ export default function VideoHeroBanner({
           loop
           muted={!withAudio}
           playsInline
-          preload="auto"
+          preload="metadata"
           autoPlay
           controls
         >
@@ -108,7 +108,7 @@ export default function VideoHeroBanner({
           loop
           muted={!withAudio}
           playsInline
-          preload="auto"
+          preload="metadata"
           autoPlay
         >
           <source src={videoSrc} type="video/mp4" />

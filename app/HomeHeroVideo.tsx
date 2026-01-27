@@ -2,8 +2,11 @@
 
 import { useEffect, useRef } from 'react';
 
+const R2_URL = process.env.NEXT_PUBLIC_R2_URL;
+
 export default function HomeHeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const videoSrc = R2_URL ? `${R2_URL}/videos/hero-home-fast.mp4` : '/videos/hero-home-fast.mp4';
 
   useEffect(() => {
     const video = videoRef.current;
@@ -12,7 +15,6 @@ export default function HomeHeroVideo() {
     video.muted = true;
     video.playsInline = true;
     video.loop = true;
-    video.preload = 'auto';
 
     video.play().catch(() => {});
   }, []);
@@ -26,9 +28,10 @@ export default function HomeHeroVideo() {
       muted
       playsInline
       autoPlay
-      preload="auto"
+      preload="metadata"
+      poster="/images/heroes-hq/homepage-hero.jpg"
     >
-      <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
+      <source src={videoSrc} type="video/mp4" />
     </video>
   );
 }

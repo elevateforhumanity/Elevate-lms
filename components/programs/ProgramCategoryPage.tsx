@@ -109,7 +109,7 @@ export default function ProgramCategoryPage({
           muted
           playsInline
           autoPlay
-          preload="auto"
+          preload="metadata"
           poster={heroPosterImage}
         >
           <source src={heroVideoSrc} type="video/mp4" />

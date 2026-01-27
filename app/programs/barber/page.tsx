@@ -28,10 +28,10 @@ export default function BarberProgramPage() {
           muted
           playsInline
           autoPlay
-          preload="auto"
+          preload="metadata"
           poster="/images/beauty/program-barber-training.jpg"
         >
-          <source src="/videos/barber-hero-final.mp4" type="video/mp4" />
+          <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/barber-hero-final.mp4" type="video/mp4" />
         </video>
         <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 w-full">
           <div className="max-w-2xl">

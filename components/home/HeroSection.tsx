@@ -62,7 +62,7 @@ export default function HeroSection({ user, activeEnrollment, isLoading = false 
         preload="metadata"
         poster="/images/heroes-hq/homepage-hero.jpg"
       >
-        <source src="/videos/hero-home-fast.mp4" type="video/mp4" />
+        <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home-fast.mp4" type="video/mp4" />
       </video>
       
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />

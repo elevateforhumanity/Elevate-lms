@@ -100,7 +100,7 @@ export default function ProgramPageLayout({
           muted
           playsInline
           autoPlay
-          preload="auto"
+          preload="metadata"
         >
           <source src={videoSrc} type="video/mp4" />
         </video>

@@ -14,11 +14,11 @@ export async function GET() {
     const { data: courses, error } = await supabase
       .from('courses')
       .select('*')
-      .eq('published', true)
+      .eq('is_active', true)
       .order('created_at', { ascending: false });
 
     if (error) {
-      return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
+      return NextResponse.json({ error: error.message || 'Database error' }, { status: 500 });
     }
 
     return NextResponse.json({ courses: courses || [], total: courses?.length || 0 });
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
       .single();
 
     if (error) {
-      return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
+      return NextResponse.json({ error: error.message || 'Database error' }, { status: 500 });
     }
 
     return NextResponse.json(newCourse, { status: 201 });

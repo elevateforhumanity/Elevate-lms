@@ -38,10 +38,10 @@ export default function ProgramsHeroVideo() {
       muted
       playsInline
       autoPlay
-      preload="auto"
+      preload="metadata"
       poster="/images/artlist/hero-training-3.jpg"
     >
-      <source src="/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
+      <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
     </video>
   );
 }

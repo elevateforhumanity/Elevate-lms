@@ -88,7 +88,7 @@ export default async function LicensesPage() {
                   playsInline
                   className="w-full h-full object-cover"
                 >
-                  <source src="/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
+                  <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
                 </video>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
