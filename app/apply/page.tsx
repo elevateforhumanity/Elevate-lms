@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MessageSquare, GraduationCap, Phone, Clock } from 'lucide-react';
+import { MessageSquare, GraduationCap, Phone, Clock, CheckCircle } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {

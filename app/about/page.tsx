@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Users, Award, Heart, ArrowRight, Shield, Building, GraduationCap, Briefcase, MapPin } from 'lucide-react';
+import { Users, Award, Heart, ArrowRight, Shield, Building, GraduationCap, Briefcase, MapPin, Target } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 import { ImageHero } from '@/components/ImageHero';
 

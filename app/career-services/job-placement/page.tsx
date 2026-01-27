@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { Briefcase, Building2, TrendingUp, ArrowRight, Users, Target, Award, Search, Handshake } from 'lucide-react';
+import { Briefcase, Building2, TrendingUp, ArrowRight, Users, Target, Award, Search, Handshake, CheckCircle } from 'lucide-react';
 import { CareerHero } from '../components/CareerHero';
 
 export const metadata: Metadata = {

@@ -131,7 +131,14 @@ export async function provisionLicense(ctx: ProvisioningContext): Promise<Provis
         slug,
         license_status: 'active',
         stripe_customer_id: ctx.metadata?.stripe_customer_id,
-        settings: { product_id: productId, provisioned_at: new Date().toISOString(), correlation_id: correlationId },
+        stripe_subscription_id: ctx.metadata?.stripe_subscription_id,
+        settings: { 
+          product_id: productId, 
+          plan_id: ctx.metadata?.plan_id,
+          license_type: ctx.metadata?.license_type,
+          provisioned_at: new Date().toISOString(), 
+          correlation_id: correlationId,
+        },
       })
       .select('id')
       .single();
