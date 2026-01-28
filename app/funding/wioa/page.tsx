@@ -15,25 +15,21 @@ export const metadata: Metadata = {
 };
 
 export default async function WioaPage() {
-  const supabase = await createClient();
+  let wioaInfo = null;
 
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
+  try {
+    const supabase = await createClient();
+    if (supabase) {
+      const { data } = await supabase
+        .from('funding_options')
+        .select('*')
+        .eq('type', 'wioa')
+        .single();
+      wioaInfo = data;
+    }
+  } catch (error) {
+    console.error('Error fetching WIOA info:', error);
   }
-  
-  // Fetch WIOA funding info
-  const { data: wioaInfo } = await supabase
-    .from('funding_options')
-    .select('*')
-    .eq('type', 'wioa')
-    .single();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Image Only */}
