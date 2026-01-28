@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 export default function PathwaysPage() {
   const pathways = [
-    { name: 'Healthcare', description: 'Medical assistant, phlebotomy, CNA, and more', image: '/images/programs-hq/healthcare-hero.jpg', programs: 8, href: '/programs/healthcare', color: 'blue' },
+    { name: 'Healthcare', description: 'Medical assistant, phlebotomy, CNA, and more', image: '/images/healthcare/hero-healthcare-professionals.jpg', programs: 8, href: '/programs/healthcare', color: 'blue' },
     { name: 'Skilled Trades', description: 'HVAC, electrical, plumbing, and construction', image: '/images/programs-hq/skilled-trades-hero.jpg', programs: 6, href: '/programs/skilled-trades', color: 'orange' },
-    { name: 'Technology', description: 'IT support, cybersecurity, and software development', image: '/images/programs-hq/technology-hero.jpg', programs: 5, href: '/programs/technology', color: 'purple' },
-    { name: 'Business', description: 'Entrepreneurship, marketing, and management', image: '/images/programs-hq/business-training.jpg', programs: 4, href: '/programs/business', color: 'green' },
+    { name: 'Technology', description: 'IT support, cybersecurity, and software development', image: '/images/hero-programs-technology.jpg', programs: 5, href: '/programs/technology', color: 'purple' },
+    { name: 'Business', description: 'Entrepreneurship, marketing, and management', image: '/images/business/tax-prep-certification.jpg', programs: 4, href: '/programs/business', color: 'green' },
     { name: 'Beauty & Cosmetology', description: 'Barber, cosmetology, and esthetics', image: '/images/programs-hq/barber-hero.jpg', programs: 5, href: '/barber-apprenticeship', color: 'pink' },
   ];
 

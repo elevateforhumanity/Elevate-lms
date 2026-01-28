@@ -48,7 +48,7 @@ export default async function FAQPage() {
       <div className="min-h-screen bg-gray-50">
         <section className="relative h-64 overflow-hidden">
           <Image
-            src="/images/programs-hq/students-learning.jpg"
+            src="/images/healthcare/healthcare-programs-grid.jpg"
             alt="FAQ"
             fill
             className="object-cover"

@@ -161,7 +161,7 @@ export default async function PartnerPortalPage() {
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
                 <div className="relative h-32">
-                  <Image src="/images/programs-hq/training-classroom.jpg" alt="Learn" fill className="object-cover" />
+                  <Image src="/images/trades/program-building-construction.jpg" alt="Learn" fill className="object-cover" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-lg font-semibold mb-3">Learn</h3>
@@ -173,7 +173,7 @@ export default async function PartnerPortalPage() {
 
               <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
                 <div className="relative h-32">
-                  <Image src="/images/programs-hq/career-success.jpg" alt="Certify" fill className="object-cover" />
+                  <Image src="/images/healthcare/healthcare-professional-portrait-1.jpg" alt="Certify" fill className="object-cover" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-lg font-semibold mb-3">Certify</h3>

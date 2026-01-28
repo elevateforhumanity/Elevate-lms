@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Healthcare Programs',
   categoryHref: '/programs/healthcare',
   description: 'Train to become a Medical Assistant and work in clinics, hospitals, and physician offices. Learn both clinical procedures and front-office administration.',
-  image: '/images/programs-hq/medical-assistant.jpg',
+  image: '/images/healthcare/hero-program-medical-assistant.jpg',
   duration: '12-16 weeks',
   tuition: '$0 with WIOA',
   fundingType: 'funded',
@@ -36,22 +36,22 @@ const programData: ProgramData = {
     {
       title: 'Certified Medical Assistant (CMA)',
       description: 'Work in physician offices, clinics, and outpatient facilities performing both clinical and administrative duties. Average salary $38,000-$45,000 with excellent benefits.',
-      image: '/images/programs-hq/medical-assistant.jpg',
+      image: '/images/healthcare/video-thumbnail-medical-assistant.jpg',
     },
     {
       title: 'Clinical Medical Assistant',
       description: 'Focus on patient care tasks like taking vitals, administering injections, performing EKGs, and assisting physicians during examinations.',
-      image: '/images/programs-hq/healthcare-hero.jpg',
+      image: '/images/healthcare/healthcare-professional-portrait-1.jpg',
     },
     {
       title: 'Administrative Medical Assistant',
       description: 'Manage front office operations including patient scheduling, medical records, insurance verification, and billing. Great for those who prefer office work.',
-      image: '/images/programs-hq/medical-assistant.jpg',
+      image: '/images/healthcare/healthcare-professional-portrait-2.jpg',
     },
     {
       title: 'Medical Office Specialist',
       description: 'Combine clinical knowledge with office management skills. Oversee daily operations, manage staff schedules, and ensure smooth patient flow.',
-      image: '/images/programs-hq/healthcare-hero.jpg',
+      image: '/images/healthcare/hero-healthcare-professionals.jpg',
     },
   ],
   requirements: [

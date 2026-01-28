@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Healthcare Programs',
   categoryHref: '/programs/healthcare',
   description: 'Become a Certified Nursing Assistant in 4-6 weeks. Work in hospitals, nursing homes, and home health settings.',
-  image: '/images/programs-hq/cna-training.jpg',
+  image: '/images/healthcare/program-cna-overview.jpg',
   duration: '4-6 weeks',
   tuition: '$1,200',
   fundingType: 'self-pay',
@@ -44,32 +44,32 @@ const programData: ProgramData = {
     {
       title: 'Certified Nursing Assistant',
       description: 'Work in hospitals, nursing homes, or clinics providing direct patient care. Starting salary $16-$20/hour with benefits. High demand across all healthcare settings.',
-      image: '/images/programs-hq/cna-training.jpg',
+      image: '/images/healthcare/healthcare-professional-portrait-1.jpg',
     },
     {
       title: 'Hospital CNA',
       description: 'Assist nurses in acute care settings with patient monitoring, mobility, and daily care. Fast-paced environment with opportunities for advancement to Patient Care Tech.',
-      image: '/images/programs-hq/healthcare-hero.jpg',
+      image: '/images/healthcare/hero-program-patient-care.jpg',
     },
     {
       title: 'Nursing Home Aide',
       description: 'Provide compassionate long-term care to elderly residents. Build meaningful relationships while helping with daily activities, meals, and comfort.',
-      image: '/images/programs-hq/cna-training.jpg',
+      image: '/images/healthcare/healthcare-professional-portrait-2.jpg',
     },
     {
       title: 'Home Health Aide',
       description: 'Deliver personalized care in patients\' homes. Flexible scheduling, independence, and one-on-one patient relationships. Growing demand as population ages.',
-      image: '/images/programs-hq/healthcare-hero.jpg',
+      image: '/images/healthcare/video-thumbnail-cna-training.jpg',
     },
     {
       title: 'Rehabilitation Aide',
       description: 'Support physical and occupational therapists in helping patients recover from injuries or surgeries. Work in rehab centers, hospitals, or outpatient clinics.',
-      image: '/images/programs-hq/cna-training.jpg',
+      image: '/images/healthcare/hero-healthcare-professionals.jpg',
     },
     {
       title: 'Hospice Aide',
       description: 'Provide comfort and dignity to patients in end-of-life care. Meaningful work supporting patients and families during difficult times. Specialized training provided.',
-      image: '/images/programs-hq/healthcare-hero.jpg',
+      image: '/images/healthcare/program-healthcare-overview.jpg',
     },
   ],
   requirements: [

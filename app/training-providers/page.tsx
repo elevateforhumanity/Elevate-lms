@@ -18,22 +18,22 @@ const benefits = [
   {
     title: 'Student Referrals',
     description: 'Receive pre-screened, WIOA-eligible students ready to enroll in your programs.',
-    image: '/images/programs-hq/students-learning.jpg',
+    image: '/images/healthcare/healthcare-programs-grid.jpg',
   },
   {
     title: 'ETPL Listing Support',
     description: 'We help you get listed on the Eligible Training Provider List for WIOA funding.',
-    image: '/images/programs-hq/career-success.jpg',
+    image: '/images/healthcare/healthcare-professional-portrait-1.jpg',
   },
   {
     title: 'Marketing Support',
     description: 'Your programs featured on our website and promoted to workforce partners.',
-    image: '/images/programs-hq/business-office.jpg',
+    image: '/images/business/tax-prep-certification.jpg',
   },
   {
     title: 'Compliance Assistance',
     description: 'Support with WIOA reporting requirements and documentation.',
-    image: '/images/programs-hq/business-training.jpg',
+    image: '/images/business/tax-prep-certification.jpg',
   },
   {
     title: 'Employer Connections',
@@ -43,7 +43,7 @@ const benefits = [
   {
     title: 'Streamlined Enrollment',
     description: 'Our team handles eligibility verification and funding paperwork.',
-    image: '/images/programs-hq/training-classroom.jpg',
+    image: '/images/trades/program-building-construction.jpg',
   },
 ];
 

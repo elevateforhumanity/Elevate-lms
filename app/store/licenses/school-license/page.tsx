@@ -13,7 +13,7 @@ export default function SchoolLicensePage() {
       {/* Hero - Clean */}
       <section className="relative h-[50vh] overflow-hidden">
         <Image
-          src="/images/programs-hq/technology-hero.jpg"
+          src="/images/hero-programs-technology.jpg"
           alt="School License Platform"
           fill
           className="object-cover"
@@ -241,12 +241,12 @@ export default function SchoolLicensePage() {
               {
                 title: 'Self-Service Enrollment',
                 desc: 'Students apply online, upload documents, and get instant eligibility decisions. No staff time required.',
-                img: '/images/programs-hq/healthcare-hero.jpg'
+                img: '/images/healthcare/hero-healthcare-professionals.jpg'
               },
               {
                 title: 'Complete LMS',
                 desc: 'Courses, quizzes, certificates, progress tracking. Students learn on any device. Instructors see everything.',
-                img: '/images/programs-hq/technology-hero.jpg'
+                img: '/images/hero-programs-technology.jpg'
               },
               {
                 title: 'Automated Compliance',
@@ -266,7 +266,7 @@ export default function SchoolLicensePage() {
               {
                 title: 'Your Brand',
                 desc: 'Your logo, your colors, your domain. Students see your organization, not ours.',
-                img: '/images/programs-hq/business-training.jpg'
+                img: '/images/business/tax-prep-certification.jpg'
               },
             ].map((item, i) => (
               <div key={i} className="bg-gray-50 rounded-xl overflow-hidden">

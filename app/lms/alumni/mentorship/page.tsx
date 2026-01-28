@@ -63,7 +63,7 @@ export default async function MentorshipPage() {
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-xl overflow-hidden shadow-sm">
             <div className="relative h-32">
-              <Image src="/images/programs-hq/career-success.jpg" alt="Career Guidance" fill className="object-cover" />
+              <Image src="/images/healthcare/healthcare-professional-portrait-1.jpg" alt="Career Guidance" fill className="object-cover" />
             </div>
             <div className="p-4">
               <h3 className="font-semibold mb-2">Career Guidance</h3>
@@ -72,7 +72,7 @@ export default async function MentorshipPage() {
           </div>
           <div className="bg-white rounded-xl overflow-hidden shadow-sm">
             <div className="relative h-32">
-              <Image src="/images/programs-hq/business-training.jpg" alt="Networking" fill className="object-cover" />
+              <Image src="/images/business/tax-prep-certification.jpg" alt="Networking" fill className="object-cover" />
             </div>
             <div className="p-4">
               <h3 className="font-semibold mb-2">Networking</h3>
@@ -95,12 +95,12 @@ export default async function MentorshipPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {mentorList.map((mentor: any, idx: number) => {
               const images = [
-                '/images/programs-hq/healthcare-hero.jpg',
+                '/images/healthcare/hero-healthcare-professionals.jpg',
                 '/images/programs-hq/hvac-technician.jpg',
-                '/images/programs-hq/technology-hero.jpg',
+                '/images/hero-programs-technology.jpg',
                 '/images/programs-hq/electrical.jpg',
                 '/images/programs-hq/barber-hero.jpg',
-                '/images/programs-hq/tax-preparation.jpg',
+                '/images/business/program-tax-preparation.jpg',
               ];
               return (
               <div key={mentor.id} className="bg-white rounded-xl border overflow-hidden hover:shadow-lg transition">
@@ -129,7 +129,7 @@ export default async function MentorshipPage() {
         ) : (
           <div className="bg-white rounded-xl border overflow-hidden">
             <div className="relative h-48">
-              <Image src="/images/programs-hq/career-success.jpg" alt="Mentorship" fill className="object-cover" />
+              <Image src="/images/healthcare/healthcare-professional-portrait-1.jpg" alt="Mentorship" fill className="object-cover" />
             </div>
             <div className="p-8 text-center">
               <h2 className="text-xl font-semibold text-gray-900 mb-2">No Mentors Available</h2>

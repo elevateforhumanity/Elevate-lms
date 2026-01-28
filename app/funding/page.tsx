@@ -28,7 +28,7 @@ export default function FundingPage() {
       icon: CheckCircle,
       color: 'green',
       category: 'Eligibility',
-      image: '/images/programs-hq/healthcare-hero.jpg',
+      image: '/images/healthcare/hero-healthcare-professionals.jpg',
     },
     {
       title: 'Grants',
@@ -48,7 +48,7 @@ export default function FundingPage() {
       icon: Shield,
       color: 'purple',
       category: 'Funding',
-      image: '/images/programs-hq/technology-hero.jpg',
+      image: '/images/hero-programs-technology.jpg',
     },
     {
       title: 'SNAP E&T',
@@ -98,7 +98,7 @@ export default function FundingPage() {
       icon: Users,
       color: 'violet',
       category: 'Partnerships',
-      image: '/images/programs-hq/business-training.jpg',
+      image: '/images/business/tax-prep-certification.jpg',
     },
     {
       title: 'WorkOne Partner Packet',
@@ -138,7 +138,7 @@ export default function FundingPage() {
       icon: CheckCircle,
       color: 'teal',
       category: 'Compliance',
-      image: '/images/programs-hq/cybersecurity.jpg',
+      image: '/images/hero-program-cybersecurity.jpg',
     },
     {
       title: 'Equal Opportunity',

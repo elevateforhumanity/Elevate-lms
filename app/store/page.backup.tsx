@@ -18,7 +18,7 @@ const storeCategories = [
     id: 'licenses',
     name: 'Platform Licenses',
     description: 'Full workforce platform deployment with LMS, admin dashboard, enrollment, and compliance tools.',
-    image: '/images/programs-hq/technology-hero.jpg',
+    image: '/images/hero-programs-technology.jpg',
     href: '/store/licenses',
     icon: Globe,
     color: 'bg-orange-600',
@@ -29,7 +29,7 @@ const storeCategories = [
     id: 'infrastructure',
     name: 'Monthly Infrastructure',
     description: 'Self-operating workforce infrastructure with automated intake, compliance, and credentialing.',
-    image: '/images/programs-hq/it-support.jpg',
+    image: '/images/hero-program-it-support.jpg',
     href: '/store/licenses#monthly',
     icon: Zap,
     color: 'bg-blue-600',
@@ -40,7 +40,7 @@ const storeCategories = [
     id: 'certifications',
     name: 'Professional Certifications',
     description: 'Industry-recognized credentials from Certiport, HSI, and CareerSafe.',
-    image: '/images/programs-hq/healthcare-hero.jpg',
+    image: '/images/healthcare/hero-healthcare-professionals.jpg',
     href: '/store/courses',
     icon: GraduationCap,
     color: 'bg-green-600',
@@ -70,7 +70,7 @@ const storeCategories = [
     id: 'ai-tools',
     name: 'AI & Automation',
     description: 'AI-powered tutoring, content creation, and automated workflows.',
-    image: '/images/programs-hq/cybersecurity.jpg',
+    image: '/images/hero-program-cybersecurity.jpg',
     href: '/store/ai-studio',
     icon: Wrench,
     color: 'bg-violet-600',
@@ -90,7 +90,7 @@ const storeCategories = [
     id: 'developer',
     name: 'Developer Licenses',
     description: 'Full codebase access for self-hosting and custom deployments.',
-    image: '/images/programs-hq/technology-hero.jpg',
+    image: '/images/hero-programs-technology.jpg',
     href: '/store/licenses#developer',
     icon: Code,
     color: 'bg-slate-700',
@@ -100,7 +100,7 @@ const storeCategories = [
     id: 'digital',
     name: 'Digital Resources',
     description: 'Toolkits, guides, templates, and educational materials.',
-    image: '/images/programs-hq/tax-preparation.jpg',
+    image: '/images/business/program-tax-preparation.jpg',
     href: '/store/digital',
     icon: FileText,
     color: 'bg-indigo-600',
@@ -125,7 +125,7 @@ const featuredProducts = [
     name: 'School / Training Provider License',
     description: 'White-label platform with compliance tools, partner dashboard, and case management.',
     price: '$15,000',
-    image: '/images/programs-hq/technology-hero.jpg',
+    image: '/images/hero-programs-technology.jpg',
     href: '/store/licenses/school-license',
     demoHref: '/demo/admin',
     badge: 'Most Popular',
@@ -145,7 +145,7 @@ const featuredProducts = [
     name: 'AI Tutor License',
     description: 'Personalized AI tutoring for learners with 24/7 support and progress tracking.',
     price: '$999',
-    image: '/images/programs-hq/it-support.jpg',
+    image: '/images/hero-program-it-support.jpg',
     href: '/store/ai-studio',
     demoHref: '/demo/learner',
     badge: 'New',
@@ -189,7 +189,7 @@ export default function StorePage() {
             <div className="relative">
               <div className="aspect-video bg-slate-800 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/programs-hq/technology-hero.jpg"
+                  src="/images/hero-programs-technology.jpg"
                   alt="Elevate Platform"
                   fill
                   className="object-cover"

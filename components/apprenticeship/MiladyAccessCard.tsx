@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { ExternalLink, BookOpen, CheckCircle, Loader2, AlertCircle, Copy, Check } from 'lucide-react';
 
 interface MiladyAccessInfo {
@@ -74,6 +75,8 @@ export function MiladyAccessCard({
 
   const isActive = accessInfo?.status === 'active' || miladyEnrolled;
   const isPending = accessInfo?.status === 'pending_setup';
+  const isPendingApproval = accessInfo?.status === 'pending_approval';
+  const isNotProvisioned = accessInfo?.status === 'not_provisioned' && !miladyEnrolled;
 
   return (
     <div className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-2xl p-6 text-white shadow-xl">
@@ -135,23 +138,43 @@ export function MiladyAccessCard({
       <p className="text-purple-100 mb-6">
         {miladyCompleted
           ? 'Congratulations! You have completed all theory coursework.'
-          : isPending
-            ? 'Your Milady access is being set up. You will receive an email with login details within 24 hours.'
-            : isActive
-              ? 'Your theory training is ready. Click below to access Milady RISE and continue your coursework.'
-              : 'Your Milady access is included in your program fee. Click below to get started.'}
+          : isPendingApproval
+            ? (accessInfo as any)?.docsVerified
+              ? 'Your enrollment is pending admin approval. You will have access to Milady once approved.'
+              : 'Please upload required documents to complete your enrollment and access Milady.'
+            : isPending
+              ? 'Your Milady access is being set up. You will receive an email with login details within 24 hours.'
+              : isActive
+                ? 'Your theory training is ready. Click below to access Milady RISE and continue your coursework.'
+                : isNotProvisioned
+                  ? 'Complete your enrollment to access Milady theory training.'
+                  : 'Your Milady access is included in your program fee. Click below to get started.'}
       </p>
 
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-3">
-        <button
-          onClick={handleAccess}
-          disabled={isPending && !accessInfo?.accessUrl}
-          className="flex-1 flex items-center justify-center gap-2 bg-white text-purple-700 font-bold py-3 px-6 rounded-xl hover:bg-purple-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <ExternalLink className="w-5 h-5" />
-          {isActive ? 'Open Milady RISE' : isPending ? 'Access Pending...' : 'Access Milady'}
-        </button>
+        {isPendingApproval ? (
+          <div className="flex-1 flex items-center justify-center gap-2 bg-white/20 text-white font-bold py-3 px-6 rounded-xl cursor-not-allowed">
+            <AlertCircle className="w-5 h-5" />
+            {(accessInfo as any)?.docsVerified ? 'Pending Approval' : 'Documents Required'}
+          </div>
+        ) : isNotProvisioned ? (
+          <Link
+            href="/programs/barber-apprenticeship"
+            className="flex-1 flex items-center justify-center gap-2 bg-white text-purple-700 font-bold py-3 px-6 rounded-xl hover:bg-purple-50 transition-all"
+          >
+            Complete Enrollment
+          </Link>
+        ) : (
+          <button
+            onClick={handleAccess}
+            disabled={isPending && !accessInfo?.accessUrl}
+            className="flex-1 flex items-center justify-center gap-2 bg-white text-purple-700 font-bold py-3 px-6 rounded-xl hover:bg-purple-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <ExternalLink className="w-5 h-5" />
+            {isActive ? 'Open Milady RISE' : isPending ? 'Access Pending...' : 'Access Milady'}
+          </button>
+        )}
       </div>
 
       {/* Status Footer */}

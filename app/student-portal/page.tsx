@@ -46,7 +46,7 @@ export default async function StudentPortalPage() {
       description: 'Access course materials, lectures, and assignments',
       href: '/student-portal/courses',
       color: 'blue',
-      image: '/images/programs-hq/training-classroom.jpg',
+      image: '/images/trades/program-building-construction.jpg',
     },
     {
       icon: Calendar,
@@ -54,7 +54,7 @@ export default async function StudentPortalPage() {
       description: 'View class schedule, deadlines, and upcoming events',
       href: '/student-portal/schedule',
       color: 'green',
-      image: '/images/programs-hq/career-success.jpg',
+      image: '/images/healthcare/healthcare-professional-portrait-1.jpg',
     },
     {
       icon: BarChart3,
@@ -62,7 +62,7 @@ export default async function StudentPortalPage() {
       description: 'Track your academic performance and completion status',
       href: '/student-portal/grades',
       color: 'purple',
-      image: '/images/programs-hq/students-learning.jpg',
+      image: '/images/healthcare/healthcare-programs-grid.jpg',
     },
     {
       icon: Users,
@@ -78,7 +78,7 @@ export default async function StudentPortalPage() {
       description: 'Resume help, job placement, and interview prep',
       href: '/career-services',
       color: 'teal',
-      image: '/images/programs-hq/business-office.jpg',
+      image: '/images/business/tax-prep-certification.jpg',
     },
     {
       icon: FileText,
@@ -86,7 +86,7 @@ export default async function StudentPortalPage() {
       description: 'Transcripts, certificates, and important forms',
       href: '/lms/files',
       color: 'indigo',
-      image: '/images/programs-hq/business-training.jpg',
+      image: '/images/business/tax-prep-certification.jpg',
     },
   ];
 

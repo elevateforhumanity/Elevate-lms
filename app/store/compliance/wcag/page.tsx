@@ -16,19 +16,19 @@ const features = [
   {
     title: 'Screen Reader Support',
     description: 'Full compatibility with JAWS, NVDA, VoiceOver, and other assistive technologies.',
-    image: '/images/programs-hq/technology-hero.jpg',
+    image: '/images/hero-programs-technology.jpg',
     items: ['ARIA labels', 'Semantic HTML', 'Alt text automation', 'Focus management'],
   },
   {
     title: 'Keyboard Navigation',
     description: 'Complete keyboard accessibility for all interactive elements.',
-    image: '/images/programs-hq/it-support.jpg',
+    image: '/images/hero-program-it-support.jpg',
     items: ['Tab order optimization', 'Skip links', 'Focus indicators', 'Shortcut keys'],
   },
   {
     title: 'Visual Accessibility',
     description: 'Color contrast, text sizing, and visual presentation compliance.',
-    image: '/images/programs-hq/business-office.jpg',
+    image: '/images/business/tax-prep-certification.jpg',
     items: ['4.5:1 contrast ratio', 'Resizable text', 'No color-only info', 'Reduced motion'],
   },
   {
@@ -90,7 +90,7 @@ export default function WCAGCompliancePage() {
       {/* Hero */}
       <section className="relative bg-purple-700 text-white py-20 overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/programs-hq/technology-hero.jpg" alt="WCAG" fill className="object-cover opacity-30" />
+          <Image src="/images/hero-programs-technology.jpg" alt="WCAG" fill className="object-cover opacity-30" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

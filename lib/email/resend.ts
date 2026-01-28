@@ -43,7 +43,24 @@ export async function sendWelcomeEmail(params: {
   name: string;
   programName: string;
   dashboardUrl: string;
+  includesMilady?: boolean;
 }) {
+  const miladySection = params.includesMilady !== false ? `
+            <div style="background: #7c3aed; color: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="margin-top: 0; color: white;">Start Your Theory Training (Milady RISE)</h3>
+              <p style="margin-bottom: 15px;">Your theory training through Milady RISE is included in your program. This is required coursework.</p>
+              <p style="margin-bottom: 10px;"><strong>To get started:</strong></p>
+              <ol style="margin: 0 0 15px 0; padding-left: 20px;">
+                <li>Click the button below to go to Milady</li>
+                <li>Create your Milady account (use this email: ${params.email})</li>
+                <li>Begin your theory coursework</li>
+              </ol>
+              <p style="text-align: center; margin-bottom: 0;">
+                <a href="https://www.miladytraining.com/users/sign_in" style="display: inline-block; padding: 12px 30px; background: white; color: #7c3aed; text-decoration: none; border-radius: 6px; font-weight: bold;">Sign Up for Milady RISE →</a>
+              </p>
+            </div>
+  ` : '';
+
   const html = `
     <!DOCTYPE html>
     <html>
@@ -67,23 +84,26 @@ export async function sendWelcomeEmail(params: {
             <h2>Hi ${params.name},</h2>
             <p>Congratulations! You've successfully enrolled in <strong>${params.programName}</strong>.</p>
             <p>We're excited to have you join our community of learners. Your journey to a better career starts now!</p>
-            <p><strong>What's Next:</strong></p>
+            
+            ${miladySection}
+            
+            <p><strong>Your Student Dashboard:</strong></p>
             <ul>
-              <li>Access your student dashboard</li>
-              <li>Complete your student profile</li>
-              <li>Review your course materials</li>
+              <li>Track your progress and hours</li>
+              <li>Access course materials</li>
               <li>Connect with your instructor</li>
+              <li>View your schedule</li>
             </ul>
             <p style="text-align: center;">
               <a href="${params.dashboardUrl}" class="button">Go to Dashboard</a>
             </p>
-            <p>If you have any questions, our support team is here to help. Just reply to this email.</p>
+            <p>If you have any questions, our support team is here to help. Just reply to this email or call (317) 314-3757.</p>
             <p>Best regards,<br>The Elevate for Humanity Team</p>
           </div>
           <div class="footer">
             <p>Elevate for Humanity Career & Technical Institute<br>
             8888 Keystone Crossing Suite 1300, Indianapolis, IN 46240</p>
-            <p><a href="https://www.elevateforhumanity.org">www.www.elevateforhumanity.org</a></p>
+            <p><a href="https://www.elevateforhumanity.org">www.elevateforhumanity.org</a></p>
           </div>
         </div>
       </body>

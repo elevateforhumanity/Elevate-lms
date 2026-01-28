@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 };
 
 const features = [
-  { title: 'Student Management', desc: 'View and manage student records and enrollments.', image: '/images/programs-hq/students-learning.jpg' },
-  { title: 'Attendance', desc: 'Track and record student attendance.', image: '/images/programs-hq/training-classroom.jpg' },
-  { title: 'Reports', desc: 'Generate and view performance reports.', image: '/images/programs-hq/business-training.jpg' },
-  { title: 'Scheduling', desc: 'Manage class schedules and appointments.', image: '/images/programs-hq/career-success.jpg' },
-  { title: 'Documents', desc: 'Access and manage important documents.', image: '/images/programs-hq/technology-hero.jpg' },
-  { title: 'Settings', desc: 'Configure portal preferences and settings.', image: '/images/programs-hq/healthcare-hero.jpg' },
+  { title: 'Student Management', desc: 'View and manage student records and enrollments.', image: '/images/healthcare/healthcare-programs-grid.jpg' },
+  { title: 'Attendance', desc: 'Track and record student attendance.', image: '/images/trades/program-building-construction.jpg' },
+  { title: 'Reports', desc: 'Generate and view performance reports.', image: '/images/business/tax-prep-certification.jpg' },
+  { title: 'Scheduling', desc: 'Manage class schedules and appointments.', image: '/images/healthcare/healthcare-professional-portrait-1.jpg' },
+  { title: 'Documents', desc: 'Access and manage important documents.', image: '/images/hero-programs-technology.jpg' },
+  { title: 'Settings', desc: 'Configure portal preferences and settings.', image: '/images/healthcare/hero-healthcare-professionals.jpg' },
 ];
 
 export default function StaffPortalLanding() {

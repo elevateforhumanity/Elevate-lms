@@ -55,7 +55,7 @@ export default async function CalendarPage() {
       {/* Hero with image */}
       <section className="relative h-64 overflow-hidden">
         <Image
-          src="/images/programs-hq/training-classroom.jpg"
+          src="/images/trades/program-building-construction.jpg"
           alt="Calendar and Schedule"
           fill
           className="object-cover"
@@ -74,7 +74,7 @@ export default async function CalendarPage() {
         {!user && (
           <div className="bg-white rounded-xl overflow-hidden shadow-lg mb-8">
             <div className="relative h-32">
-              <Image src="/images/programs-hq/students-learning.jpg" alt="Sign in" fill className="object-cover" />
+              <Image src="/images/healthcare/healthcare-programs-grid.jpg" alt="Sign in" fill className="object-cover" />
             </div>
             <div className="p-6 text-center">
               <h2 className="text-lg font-semibold text-purple-900 mb-2">Sign in to see your schedule</h2>
@@ -97,7 +97,7 @@ export default async function CalendarPage() {
                       <div key={enrollment.id} className="bg-white rounded-lg shadow-sm border overflow-hidden">
                         <div className="flex items-stretch">
                           <div className="relative w-24 flex-shrink-0">
-                            <Image src="/images/programs-hq/training-classroom.jpg" alt={enrollment.course?.title || 'Course'} fill className="object-cover" />
+                            <Image src="/images/trades/program-building-construction.jpg" alt={enrollment.course?.title || 'Course'} fill className="object-cover" />
                           </div>
                           <div className="flex-1 p-4">
                             <h3 className="font-semibold">{enrollment.course?.title}</h3>
@@ -118,7 +118,7 @@ export default async function CalendarPage() {
                     )) : (
                       <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
                         <div className="relative h-32">
-                          <Image src="/images/programs-hq/students-learning.jpg" alt="Browse programs" fill className="object-cover" />
+                          <Image src="/images/healthcare/healthcare-programs-grid.jpg" alt="Browse programs" fill className="object-cover" />
                         </div>
                         <div className="p-6 text-center text-gray-500">
                           <p>No enrolled classes</p>
@@ -181,7 +181,7 @@ export default async function CalendarPage() {
             <div className="mt-6">
               <Link href="/events" className="block bg-white rounded-lg overflow-hidden shadow-sm border hover:shadow-md transition">
                 <div className="relative h-24">
-                  <Image src="/images/programs-hq/career-success.jpg" alt="Events" fill className="object-cover" />
+                  <Image src="/images/healthcare/healthcare-professional-portrait-1.jpg" alt="Events" fill className="object-cover" />
                 </div>
                 <div className="p-4 text-center">
                   <span className="font-medium text-purple-700">View Public Events</span>

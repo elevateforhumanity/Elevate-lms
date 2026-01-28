@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Skilled Trades Programs',
   categoryHref: '/programs/skilled-trades',
   description: 'Master the art of welding. Learn multiple welding processes and earn industry-recognized certifications. Welders are in high demand across manufacturing, construction, and energy sectors.',
-  image: '/images/programs-hq/welding.jpg',
+  image: '/images/trades/welding-hero.jpg',
   duration: '12-16 weeks',
   tuition: '$0 with WIOA',
   fundingType: 'funded',

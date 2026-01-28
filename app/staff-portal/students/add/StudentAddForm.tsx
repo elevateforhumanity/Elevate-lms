@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { User, GraduationCap, Briefcase, FileText, CheckCircle, ChevronRight, ChevronLeft } from 'lucide-react';
+import { User, GraduationCap, Briefcase, FileText, CheckCircle, ChevronRight, ChevronLeft, Upload } from 'lucide-react';
+import EnrollmentDocumentStep from '@/components/enrollment/EnrollmentDocumentStep';
 
 interface Program {
   id: string;
@@ -18,18 +19,35 @@ interface FundingType {
   label: string;
 }
 
+interface UploadedDocument {
+  id: string;
+  document_type: string;
+  file_name: string;
+  status: 'pending' | 'verified' | 'rejected';
+}
+
 interface Props {
   programs: Program[];
   fundingTypes: FundingType[];
   staffId: string;
 }
 
+const APPRENTICE_DOCUMENT_REQUIREMENTS = [
+  {
+    type: 'photo_id',
+    label: 'Photo ID',
+    description: 'Government-issued photo ID (driver\'s license, state ID, or passport)',
+    required: true,
+  },
+];
+
 const steps = [
   { id: 1, name: 'Personal Info', icon: User },
   { id: 2, name: 'Program', icon: GraduationCap },
   { id: 3, name: 'Funding', icon: Briefcase },
-  { id: 4, name: 'Case Manager', icon: FileText },
-  { id: 5, name: 'Review', icon: CheckCircle },
+  { id: 4, name: 'Documents', icon: Upload },
+  { id: 5, name: 'Case Manager', icon: FileText },
+  { id: 6, name: 'Review', icon: CheckCircle },
 ];
 
 export default function StudentAddForm({ programs, fundingTypes, staffId }: Props) {
@@ -37,6 +55,7 @@ export default function StudentAddForm({ programs, fundingTypes, staffId }: Prop
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [uploadedDocuments, setUploadedDocuments] = useState<UploadedDocument[]>([]);
   
   const [formData, setFormData] = useState({
     firstName: '',
@@ -57,68 +76,64 @@ export default function StudentAddForm({ programs, fundingTypes, staffId }: Prop
     notes: '',
   });
 
+  // Check if selected program is barber apprenticeship
+  const selectedProgram = programs.find(p => p.id === formData.programId);
+  const isApprenticeshipProgram = selectedProgram?.slug?.includes('barber') || 
+    selectedProgram?.slug?.includes('apprentice');
+
+  const handleDocumentUpload = async (documentType: string, file: File) => {
+    const formDataUpload = new FormData();
+    formDataUpload.append('file', file);
+    formDataUpload.append('documentType', documentType);
+
+    const response = await fetch('/api/documents/upload', {
+      method: 'POST',
+      body: formDataUpload,
+    });
+
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data.error || 'Failed to upload document');
+    }
+
+    const data = await response.json();
+    setUploadedDocuments(prev => [...prev, {
+      id: data.document.id,
+      document_type: documentType,
+      file_name: file.name,
+      status: 'pending',
+    }]);
+  };
+
+  const handleDocumentRemove = async (documentId: string) => {
+    // For now, just remove from local state
+    // In production, you'd also delete from storage
+    setUploadedDocuments(prev => prev.filter(d => d.id !== documentId));
+  };
+
   const updateField = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
-
-  const selectedProgram = programs.find(p => p.id === formData.programId);
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
     setError(null);
 
     try {
-      const supabase = createClient();
+      // Call API to handle enrollment (creates profile, enrollment, apprentice record, sends email)
+      const response = await fetch('/api/staff/enroll-student', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          staffId,
+          documentIds: uploadedDocuments.map(d => d.id),
+        }),
+      });
 
-      // Create the student profile
-      const { data: newProfile, error: profileError } = await supabase
-        .from('profiles')
-        .insert({
-          email: formData.email,
-          first_name: formData.firstName,
-          last_name: formData.lastName,
-          full_name: `${formData.firstName} ${formData.lastName}`,
-          phone: formData.phone,
-          role: 'student',
-        })
-        .select()
-        .single();
-
-      if (profileError) throw profileError;
-
-      // Create student record
-      const { error: studentError } = await supabase
-        .from('students')
-        .insert({
-          id: newProfile.id,
-          date_of_birth: formData.dateOfBirth || null,
-          address: formData.address || null,
-          city: formData.city || null,
-          state: formData.state || null,
-          zip_code: formData.zipCode || null,
-          county: formData.county || null,
-          funding_type: formData.fundingType || null,
-          case_manager_name: formData.caseManagerName || null,
-          case_manager_email: formData.caseManagerEmail || null,
-          case_manager_phone: formData.caseManagerPhone || null,
-          notes: formData.notes || null,
-        });
-
-      if (studentError) throw studentError;
-
-      // Create enrollment if program selected
-      if (formData.programId) {
-        const { error: enrollmentError } = await supabase
-          .from('enrollments')
-          .insert({
-            student_id: newProfile.id,
-            program_id: formData.programId,
-            funding_type: formData.fundingType || 'self_pay',
-            status: 'pending',
-            enrolled_by: staffId,
-          });
-
-        if (enrollmentError) throw enrollmentError;
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to enroll student');
       }
 
       router.push('/staff-portal/students?success=enrolled');
@@ -260,6 +275,24 @@ export default function StudentAddForm({ programs, fundingTypes, staffId }: Prop
 
         {currentStep === 4 && (
           <div className="space-y-4">
+            <EnrollmentDocumentStep
+              requirements={isApprenticeshipProgram ? APPRENTICE_DOCUMENT_REQUIREMENTS : []}
+              uploadedDocuments={uploadedDocuments}
+              onUpload={handleDocumentUpload}
+              onRemove={handleDocumentRemove}
+            />
+            {!isApprenticeshipProgram && (
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                <p className="text-gray-600 text-sm">
+                  No documents required for this program. You can proceed to the next step.
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {currentStep === 5 && (
+          <div className="space-y-4">
             <h2 className="text-xl font-semibold mb-4">Case Manager Information</h2>
             <p className="text-sm text-gray-500 mb-4">Optional: Enter case manager details if applicable</p>
             <div className="grid md:grid-cols-2 gap-4">
@@ -287,7 +320,7 @@ export default function StudentAddForm({ programs, fundingTypes, staffId }: Prop
           </div>
         )}
 
-        {currentStep === 5 && (
+        {currentStep === 6 && (
           <div className="space-y-4">
             <h2 className="text-xl font-semibold mb-4">Review Enrollment</h2>
             <div className="space-y-4">
@@ -310,6 +343,21 @@ export default function StudentAddForm({ programs, fundingTypes, staffId }: Prop
                   {fundingTypes.find(f => f.value === formData.fundingType)?.label || 'Not specified'}
                 </p>
               </div>
+              <div className="bg-gray-50 rounded-lg p-4">
+                <h3 className="font-medium text-gray-900 mb-2">Documents</h3>
+                {uploadedDocuments.length > 0 ? (
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    {uploadedDocuments.map(doc => (
+                      <li key={doc.id} className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        {doc.file_name} ({doc.document_type})
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-sm text-gray-500">No documents uploaded</p>
+                )}
+              </div>
               {formData.caseManagerName && (
                 <div className="bg-gray-50 rounded-lg p-4">
                   <h3 className="font-medium text-gray-900 mb-2">Case Manager</h3>
@@ -326,7 +374,7 @@ export default function StudentAddForm({ programs, fundingTypes, staffId }: Prop
             className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 disabled:opacity-50">
             <ChevronLeft className="w-4 h-4" /> Previous
           </button>
-          {currentStep < 5 ? (
+          {currentStep < 6 ? (
             <button onClick={() => setCurrentStep(s => s + 1)}
               disabled={currentStep === 1 && (!formData.firstName || !formData.lastName || !formData.email)}
               className="flex items-center gap-2 px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-50">

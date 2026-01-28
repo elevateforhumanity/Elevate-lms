@@ -191,7 +191,7 @@ export function CareerCoursesClient({ courses, bundle }: CareerCoursesClientProp
                 <div key={course.id} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col">
                   <div className="relative h-48">
                     <Image
-                      src={course.image_url || '/images/programs-hq/business-training.jpg'}
+                      src={course.image_url || '/images/business/tax-prep-certification.jpg'}
                       alt={course.title}
                       fill
                       className="object-cover"

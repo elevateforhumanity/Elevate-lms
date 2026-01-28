@@ -108,12 +108,12 @@ export default function EmployersPage() {
               {
                 title: 'Pre-Screened Talent',
                 description: 'Candidates have completed training and demonstrated commitment.',
-                image: '/images/programs-hq/students-learning.jpg',
+                image: '/images/healthcare/healthcare-programs-grid.jpg',
               },
               {
                 title: 'Certified Skills',
                 description: 'Industry-recognized credentials verify their competency.',
-                image: '/images/programs-hq/career-success.jpg',
+                image: '/images/healthcare/healthcare-professional-portrait-1.jpg',
               },
               {
                 title: 'No Recruiting Fees',
@@ -123,7 +123,7 @@ export default function EmployersPage() {
               {
                 title: 'Faster Onboarding',
                 description: 'Trained candidates require less ramp-up time.',
-                image: '/images/programs-hq/training-classroom.jpg',
+                image: '/images/trades/program-building-construction.jpg',
               },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-xl overflow-hidden shadow-sm border">

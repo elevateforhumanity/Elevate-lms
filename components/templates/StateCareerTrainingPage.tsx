@@ -17,7 +17,7 @@ export default function StateCareerTrainingPage({ state }: StateCareerTrainingPa
       {/* Hero Section */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image
-          src="/images/programs-hq/career-success.jpg"
+          src="/images/healthcare/healthcare-professional-portrait-1.jpg"
           alt={`Career Training in ${state.name}`}
           fill
           className="object-cover"

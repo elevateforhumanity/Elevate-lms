@@ -6,6 +6,8 @@ export const maxDuration = 60;
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
+import { canApproveApprentice } from '@/lib/documents';
+import { notifyApprenticeDecision } from '@/lib/notifications';
 
 interface ApproveEnrollmentRequest {
   enrollment_id: string;
@@ -16,12 +18,17 @@ interface ApproveEnrollmentRequest {
  *
  * This is the authoritative trigger point for enrollment activation.
  *
+ * MANDATORY VERIFICATION ENFORCEMENT:
+ * Approval is BLOCKED until required documents are VERIFIED.
+ * - Apprentice enrollment: photo_id must be verified
+ *
  * Flow:
  * 1. Verify caller is program holder or admin
- * 2. Flip enrollments.status: pending -> active
- * 3. Flip profiles.enrollment_status: pending -> active
- * 4. Call generate_enrollment_steps RPC
- * 5. Return proof of orchestration
+ * 2. CHECK DOCUMENT VERIFICATION (GATE)
+ * 3. Flip enrollments.status: pending -> active
+ * 4. Flip profiles.enrollment_status: pending -> active
+ * 5. Call generate_enrollment_steps RPC
+ * 6. Return proof of orchestration
  */
 export async function POST(req: NextRequest) {
   try {
@@ -100,11 +107,52 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // =========================================================================
+    // MANDATORY VERIFICATION GATE
+    // Approval is BLOCKED until required documents are VERIFIED
+    // =========================================================================
+    
+    // Check if this is an apprentice enrollment (check for apprentice record)
+    const { data: apprentice } = await supabase
+      .from('apprentices')
+      .select('id')
+      .eq('user_id', enrollment.user_id)
+      .single();
+
+    if (apprentice) {
+      const verificationGate = await canApproveApprentice(apprentice.id);
+      
+      if (!verificationGate.allowed) {
+        logger.warn('Enrollment approval blocked - documents not verified', {
+          enrollment_id,
+          apprentice_id: apprentice.id,
+          reason: verificationGate.reason,
+          unverified_docs: verificationGate.unverifiedDocs,
+        });
+        
+        return NextResponse.json(
+          {
+            error: 'Document verification required before approval',
+            reason: verificationGate.reason,
+            unverifiedDocuments: verificationGate.unverifiedDocs,
+            message: 'Required documents must be verified before enrollment can be approved.',
+          },
+          { status: 400 }
+        );
+      }
+      
+      logger.info('Document verification gate passed', {
+        enrollment_id,
+        apprentice_id: apprentice.id,
+      });
+    }
+
     // STEP 1: Activate enrollment (admin-only, no program holder checks needed)
     const { error: updateEnrollmentError } = await supabase
       .from('enrollments')
       .update({
         status: 'active',
+        milady_enrolled: true, // Grant Milady access on approval
         updated_at: new Date().toISOString(),
       })
       .eq('id', enrollment_id);
@@ -138,6 +186,47 @@ export async function POST(req: NextRequest) {
       logger.info('Profile enrollment_status activated', {
         user_id: enrollment.user_id,
       });
+    }
+
+    // STEP 2.5: Create apprentice record (for hour logging and tracking)
+    // Check if apprentice record already exists
+    const { data: existingApprentice } = await supabase
+      .from('apprentices')
+      .select('id')
+      .eq('user_id', enrollment.user_id)
+      .single();
+
+    if (!existingApprentice) {
+      // Get program info
+      const { data: program } = await supabase
+        .from('programs')
+        .select('id, name, total_hours')
+        .eq('id', enrollment.program_id)
+        .single();
+
+      const { error: apprenticeError } = await supabase
+        .from('apprentices')
+        .insert({
+          user_id: enrollment.user_id,
+          application_id: null, // Link if came from application flow
+          program_id: enrollment.program_id,
+          program_name: program?.name || 'Barber Apprenticeship',
+          status: 'active',
+          total_hours_required: program?.total_hours || 2000,
+          hours_completed: 0,
+          transfer_hours_credited: 0,
+          enrollment_date: new Date().toISOString().split('T')[0],
+        });
+
+      if (apprenticeError) {
+        logger.error('Failed to create apprentice record', apprenticeError);
+        // Non-fatal - continue with enrollment
+      } else {
+        logger.info('Apprentice record created', {
+          user_id: enrollment.user_id,
+          program_id: enrollment.program_id,
+        });
+      }
     }
 
     // STEP 3: Generate enrollment steps via RPC
@@ -177,8 +266,9 @@ export async function POST(req: NextRequest) {
       logger.warn('Failed to write audit log (non-critical)', err);
     }
 
-    // STEP 5: Notify student of approval
+    // STEP 5: Notify student of approval (using notification outbox)
     try {
+      // In-app notification
       await supabase.from('notifications').insert({
         user_id: enrollment.user_id,
         type: 'system',
@@ -187,7 +277,7 @@ export async function POST(req: NextRequest) {
           'Your enrollment has been approved. You now have access to the student portal.',
       });
 
-      // Send email notification
+      // Email notification via outbox (with token link)
       const { data: studentProfile } = await supabase
         .from('profiles')
         .select('email, full_name')
@@ -195,18 +285,13 @@ export async function POST(req: NextRequest) {
         .single();
 
       if (studentProfile?.email) {
-        const { sendEmail } = await import('@/lib/email/resend');
-        await sendEmail({
-          to: studentProfile.email,
-          subject: 'Enrollment Approved - Access Granted',
-          html: `
-            <h2>Enrollment Approved</h2>
-            <p>Hello ${studentProfile.full_name || 'Student'},</p>
-            <p>Your enrollment has been approved. You now have access to the student portal.</p>
-            <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}/student/dashboard">Access Student Portal</a></p>
-          `,
-        });
-        logger.info('Student notification email sent', {
+        await notifyApprenticeDecision(
+          studentProfile.email,
+          studentProfile.full_name || 'Student',
+          true, // approved
+          enrollment_id
+        );
+        logger.info('Student notification enqueued', {
           userId: enrollment.user_id,
         });
       }

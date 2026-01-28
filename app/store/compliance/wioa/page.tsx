@@ -16,13 +16,13 @@ const features = [
   {
     title: 'Participant Intake & Eligibility',
     description: 'Automated eligibility verification with document upload and digital signatures.',
-    image: '/images/programs-hq/business-office.jpg',
+    image: '/images/business/tax-prep-certification.jpg',
     items: ['Digital intake forms', 'Eligibility checklist automation', 'Document management', 'E-signature integration'],
   },
   {
     title: 'Performance Metrics Tracking',
     description: 'Real-time tracking of all WIOA primary indicators of performance.',
-    image: '/images/programs-hq/technology-hero.jpg',
+    image: '/images/hero-programs-technology.jpg',
     items: ['Employment rate tracking', 'Median earnings calculation', 'Credential attainment', 'Measurable skill gains'],
   },
   {
@@ -34,7 +34,7 @@ const features = [
   {
     title: 'Quarterly & Annual Reports',
     description: 'Pre-built report templates for all required WIOA submissions.',
-    image: '/images/programs-hq/it-support.jpg',
+    image: '/images/hero-program-it-support.jpg',
     items: ['ETA-9169 reports', 'ETA-9170 reports', 'Custom report builder', 'Scheduled generation'],
   },
 ];
@@ -227,10 +227,10 @@ export default function WIOACompliancePage() {
           <h2 className="text-3xl font-black text-black mb-8 text-center">How It Works</h2>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: '1', title: 'Setup', desc: 'Configure your program and eligibility criteria', image: '/images/programs-hq/technology-hero.jpg' },
-              { step: '2', title: 'Enroll', desc: 'Participants complete digital intake forms', image: '/images/programs-hq/business-office.jpg' },
+              { step: '1', title: 'Setup', desc: 'Configure your program and eligibility criteria', image: '/images/hero-programs-technology.jpg' },
+              { step: '2', title: 'Enroll', desc: 'Participants complete digital intake forms', image: '/images/business/tax-prep-certification.jpg' },
               { step: '3', title: 'Track', desc: 'Automatic performance metric tracking', image: '/images/team-hq/team-meeting.jpg' },
-              { step: '4', title: 'Report', desc: 'Generate PIRL exports and quarterly reports', image: '/images/programs-hq/it-support.jpg' },
+              { step: '4', title: 'Report', desc: 'Generate PIRL exports and quarterly reports', image: '/images/hero-program-it-support.jpg' },
             ].map((item) => (
               <div key={item.step} className="text-center">
                 <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-green-600">
@@ -316,7 +316,7 @@ export default function WIOACompliancePage() {
               </div>
               <div className="relative h-64 rounded-xl overflow-hidden">
                 <Image
-                  src="/images/programs-hq/business-office.jpg"
+                  src="/images/business/tax-prep-certification.jpg"
                   alt="WIOA Resources"
                   fill
                   className="object-cover"

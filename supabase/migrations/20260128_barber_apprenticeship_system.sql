@@ -1,7 +1,23 @@
 -- Barber Apprenticeship System Tables
 -- Supports: inquiries, applications, agreements, assignments, hours tracking, transfers
+-- Token-based access, automatic transfer evaluation, IPLA exam tracking
 
--- 1. Inquiries table (public submissions)
+-- 1. Access Tokens (controlled access without login)
+CREATE TABLE IF NOT EXISTS access_tokens (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  token TEXT UNIQUE NOT NULL,
+  purpose TEXT NOT NULL CHECK (purpose IN ('host_shop_hours', 'school_transfer', 'ce_submission')),
+  apprentice_application_id UUID,
+  host_shop_application_id UUID,
+  expires_at TIMESTAMPTZ NOT NULL,
+  max_uses INT NOT NULL DEFAULT 100,
+  uses_count INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_access_tokens_token ON access_tokens(token);
+
+-- 2. Inquiries table (public submissions)
 CREATE TABLE IF NOT EXISTS inquiries (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   inquiry_type TEXT NOT NULL CHECK (inquiry_type IN ('apprentice', 'host_shop')),
@@ -72,22 +88,117 @@ CREATE TABLE IF NOT EXISTS apprentice_assignments (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 6. Hour Entries (auditable ledger)
+-- 6. Hour Entries (source-aware, auditable ledger)
 CREATE TABLE IF NOT EXISTS hour_entries (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   apprentice_application_id UUID NOT NULL REFERENCES apprentice_applications(id),
-  host_shop_application_id UUID NOT NULL REFERENCES host_shop_applications(id),
-  work_date DATE NOT NULL,
-  hours NUMERIC(5,2) NOT NULL CHECK (hours > 0 AND hours <= 24),
+  host_shop_application_id UUID REFERENCES host_shop_applications(id),
+  -- Source tracking
+  source_type TEXT NOT NULL CHECK (source_type IN ('host_shop', 'in_state_barber_school', 'out_of_state_school', 'out_of_state_license', 'continuing_education')),
+  source_entity_name TEXT,
+  source_state TEXT,
+  source_document_url TEXT,
+  -- Hours
+  work_date DATE,
+  hours_claimed NUMERIC(5,2) NOT NULL CHECK (hours_claimed > 0),
+  accepted_hours NUMERIC(5,2) DEFAULT 0,
   category TEXT,
   notes TEXT,
+  -- Evaluation
+  evaluation_required BOOLEAN DEFAULT false,
+  evaluation_decision TEXT CHECK (evaluation_decision IN ('accepted', 'partially_accepted', 'rejected', 'requires_manual_review')),
+  rule_set_id TEXT,
+  rule_hash TEXT,
+  evaluated_at TIMESTAMPTZ,
+  evaluated_by TEXT,
+  evaluation_notes TEXT,
+  -- Entry metadata
   entered_by_email TEXT NOT NULL,
   entered_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
   approved_by TEXT,
   approved_at TIMESTAMPTZ,
-  rejection_reason TEXT
+  rejection_reason TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- 6b. Transfer Hour Submissions (incoming transfers from schools/states)
+CREATE TABLE IF NOT EXISTS transfer_hour_submissions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  apprentice_application_id UUID NOT NULL REFERENCES apprentice_applications(id),
+  source_type TEXT NOT NULL CHECK (source_type IN ('in_state_barber_school', 'out_of_state_school', 'out_of_state_license')),
+  source_entity_name TEXT NOT NULL,
+  source_state TEXT NOT NULL,
+  hours_claimed NUMERIC(5,2) NOT NULL,
+  completion_date DATE,
+  documents JSONB DEFAULT '[]',
+  status TEXT NOT NULL DEFAULT 'submitted' CHECK (status IN ('submitted', 'evaluated', 'manual_review')),
+  submitted_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  evaluated_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- 6c. Licensure Exam Events (IPLA tracking)
+CREATE TABLE IF NOT EXISTS licensure_exam_events (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  apprentice_application_id UUID NOT NULL REFERENCES apprentice_applications(id),
+  exam_authority TEXT NOT NULL DEFAULT 'IPLA',
+  exam_type TEXT NOT NULL CHECK (exam_type IN ('written', 'practical')),
+  scheduled_date DATE,
+  status TEXT NOT NULL DEFAULT 'not_eligible' CHECK (status IN ('not_eligible', 'eligible', 'scheduled', 'passed', 'failed')),
+  documentation_url TEXT,
+  notes TEXT,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- 6d. Continuing Education Hours (separate from licensure)
+CREATE TABLE IF NOT EXISTS continuing_education_hours (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  apprentice_application_id UUID NOT NULL REFERENCES apprentice_applications(id),
+  provider_name TEXT NOT NULL,
+  course_title TEXT NOT NULL,
+  hours NUMERIC(5,2) NOT NULL CHECK (hours > 0),
+  completion_date DATE NOT NULL,
+  documentation_url TEXT,
+  status TEXT NOT NULL DEFAULT 'submitted' CHECK (status IN ('submitted', 'approved', 'rejected')),
+  approved_by TEXT,
+  approved_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- 6e. Documents (source of truth for all uploads)
+CREATE TABLE IF NOT EXISTS documents (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  owner_type TEXT NOT NULL CHECK (owner_type IN ('apprentice', 'host_shop')),
+  owner_id UUID NOT NULL,
+  document_type TEXT NOT NULL CHECK (document_type IN (
+    'photo_id',
+    'school_transcript',
+    'certificate',
+    'out_of_state_license',
+    'shop_license',
+    'barber_license',
+    'ce_certificate',
+    'ipla_packet',
+    'other'
+  )),
+  file_path TEXT NOT NULL,
+  file_name TEXT NOT NULL,
+  mime_type TEXT,
+  file_size_bytes INT,
+  uploaded_by TEXT NOT NULL,
+  uploaded_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  verified BOOLEAN NOT NULL DEFAULT false,
+  verified_by TEXT,
+  verified_at TIMESTAMPTZ,
+  rejection_reason TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_documents_owner ON documents(owner_type, owner_id);
+CREATE INDEX IF NOT EXISTS idx_documents_type ON documents(document_type);
+CREATE INDEX IF NOT EXISTS idx_documents_verified ON documents(verified);
 
 -- 7. Transfer Requests
 CREATE TABLE IF NOT EXISTS transfer_requests (
@@ -114,11 +225,17 @@ CREATE INDEX IF NOT EXISTS idx_apprentice_assignments_shop ON apprentice_assignm
 CREATE INDEX IF NOT EXISTS idx_hour_entries_apprentice ON hour_entries(apprentice_application_id);
 CREATE INDEX IF NOT EXISTS idx_hour_entries_shop ON hour_entries(host_shop_application_id);
 CREATE INDEX IF NOT EXISTS idx_hour_entries_status ON hour_entries(status);
+CREATE INDEX IF NOT EXISTS idx_hour_entries_source_type ON hour_entries(source_type);
 CREATE INDEX IF NOT EXISTS idx_agreement_acceptances_subject ON agreement_acceptances(subject_type, subject_id);
+CREATE INDEX IF NOT EXISTS idx_transfer_submissions_apprentice ON transfer_hour_submissions(apprentice_application_id);
+CREATE INDEX IF NOT EXISTS idx_transfer_submissions_status ON transfer_hour_submissions(status);
+CREATE INDEX IF NOT EXISTS idx_exam_events_apprentice ON licensure_exam_events(apprentice_application_id);
+CREATE INDEX IF NOT EXISTS idx_ce_hours_apprentice ON continuing_education_hours(apprentice_application_id);
 
 -- RLS Policies
 
 -- Enable RLS
+ALTER TABLE access_tokens ENABLE ROW LEVEL SECURITY;
 ALTER TABLE inquiries ENABLE ROW LEVEL SECURITY;
 ALTER TABLE apprentice_applications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE host_shop_applications ENABLE ROW LEVEL SECURITY;
@@ -126,6 +243,9 @@ ALTER TABLE agreement_acceptances ENABLE ROW LEVEL SECURITY;
 ALTER TABLE apprentice_assignments ENABLE ROW LEVEL SECURITY;
 ALTER TABLE hour_entries ENABLE ROW LEVEL SECURITY;
 ALTER TABLE transfer_requests ENABLE ROW LEVEL SECURITY;
+ALTER TABLE transfer_hour_submissions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE licensure_exam_events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE continuing_education_hours ENABLE ROW LEVEL SECURITY;
 
 -- Public can INSERT inquiries
 CREATE POLICY "Public can insert inquiries" ON inquiries
@@ -164,27 +284,71 @@ CREATE POLICY "Service role full access hour_entries" ON hour_entries
 CREATE POLICY "Service role full access transfer_requests" ON transfer_requests
   FOR ALL TO service_role USING (true) WITH CHECK (true);
 
--- View for apprentice hour totals
+CREATE POLICY "Service role full access access_tokens" ON access_tokens
+  FOR ALL TO service_role USING (true) WITH CHECK (true);
+
+CREATE POLICY "Service role full access transfer_hour_submissions" ON transfer_hour_submissions
+  FOR ALL TO service_role USING (true) WITH CHECK (true);
+
+CREATE POLICY "Service role full access licensure_exam_events" ON licensure_exam_events
+  FOR ALL TO service_role USING (true) WITH CHECK (true);
+
+CREATE POLICY "Service role full access continuing_education_hours" ON continuing_education_hours
+  FOR ALL TO service_role USING (true) WITH CHECK (true);
+
+-- Public can insert transfer submissions (via token)
+CREATE POLICY "Public can insert transfer submissions" ON transfer_hour_submissions
+  FOR INSERT TO anon WITH CHECK (true);
+
+-- Public can insert CE hours (via token)
+CREATE POLICY "Public can insert CE hours" ON continuing_education_hours
+  FOR INSERT TO anon WITH CHECK (true);
+
+-- Documents RLS
+ALTER TABLE documents ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public can insert documents" ON documents
+  FOR INSERT TO anon WITH CHECK (true);
+
+CREATE POLICY "Service role full access documents" ON documents
+  FOR ALL TO service_role USING (true) WITH CHECK (true);
+
+-- View for apprentice hour totals (source-aware)
 CREATE OR REPLACE VIEW apprentice_hour_totals AS
 SELECT 
   apprentice_application_id,
-  SUM(CASE WHEN status = 'approved' THEN hours ELSE 0 END) as total_approved_hours,
-  SUM(CASE WHEN status = 'pending' THEN hours ELSE 0 END) as total_pending_hours,
+  SUM(CASE WHEN status = 'approved' THEN accepted_hours ELSE 0 END) as total_accepted_hours,
+  SUM(CASE WHEN status = 'pending' THEN hours_claimed ELSE 0 END) as total_pending_hours,
+  SUM(CASE WHEN status = 'approved' AND source_type = 'host_shop' THEN accepted_hours ELSE 0 END) as host_shop_hours,
+  SUM(CASE WHEN status = 'approved' AND source_type != 'host_shop' THEN accepted_hours ELSE 0 END) as transfer_hours,
   COUNT(CASE WHEN status = 'approved' THEN 1 END) as approved_entry_count,
-  COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending_entry_count
+  COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending_entry_count,
+  COUNT(CASE WHEN evaluation_decision = 'requires_manual_review' THEN 1 END) as pending_review_count
 FROM hour_entries
 GROUP BY apprentice_application_id;
+
+-- View for hours by source type
+CREATE OR REPLACE VIEW apprentice_hours_by_source AS
+SELECT 
+  apprentice_application_id,
+  source_type,
+  SUM(CASE WHEN status = 'approved' THEN accepted_hours ELSE 0 END) as accepted_hours,
+  SUM(CASE WHEN status = 'pending' THEN hours_claimed ELSE 0 END) as pending_hours,
+  COUNT(*) as entry_count
+FROM hour_entries
+GROUP BY apprentice_application_id, source_type;
 
 -- View for hours by shop
 CREATE OR REPLACE VIEW apprentice_hours_by_shop AS
 SELECT 
   apprentice_application_id,
   host_shop_application_id,
-  SUM(CASE WHEN status = 'approved' THEN hours ELSE 0 END) as approved_hours,
-  SUM(CASE WHEN status = 'pending' THEN hours ELSE 0 END) as pending_hours,
+  SUM(CASE WHEN status = 'approved' THEN accepted_hours ELSE 0 END) as approved_hours,
+  SUM(CASE WHEN status = 'pending' THEN hours_claimed ELSE 0 END) as pending_hours,
   MIN(work_date) as first_entry_date,
   MAX(work_date) as last_entry_date
 FROM hour_entries
+WHERE source_type = 'host_shop'
 GROUP BY apprentice_application_id, host_shop_application_id;
 
 -- Function to check if apprentice can be matched (requires approved host shop)

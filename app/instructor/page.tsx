@@ -15,7 +15,7 @@ export default function InstructorPortalLanding() {
       {/* Hero with Image */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image
-          src="/images/programs-hq/training-classroom.jpg"
+          src="/images/trades/program-building-construction.jpg"
           alt="Instructor Portal"
           fill
           className="object-cover"
@@ -54,7 +54,7 @@ export default function InstructorPortalLanding() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
               <div className="relative h-32">
-                <Image src="/images/programs-hq/training-classroom.jpg" alt="Course Management" fill className="object-cover" />
+                <Image src="/images/trades/program-building-construction.jpg" alt="Course Management" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Course Management</h3>
@@ -63,7 +63,7 @@ export default function InstructorPortalLanding() {
             </div>
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
               <div className="relative h-32">
-                <Image src="/images/programs-hq/students-learning.jpg" alt="Student Roster" fill className="object-cover" />
+                <Image src="/images/healthcare/healthcare-programs-grid.jpg" alt="Student Roster" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Student Roster</h3>
@@ -72,7 +72,7 @@ export default function InstructorPortalLanding() {
             </div>
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
               <div className="relative h-32">
-                <Image src="/images/programs-hq/career-success.jpg" alt="Progress Tracking" fill className="object-cover" />
+                <Image src="/images/healthcare/healthcare-professional-portrait-1.jpg" alt="Progress Tracking" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Progress Tracking</h3>
@@ -81,7 +81,7 @@ export default function InstructorPortalLanding() {
             </div>
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
               <div className="relative h-32">
-                <Image src="/images/programs-hq/business-office.jpg" alt="Grading" fill className="object-cover" />
+                <Image src="/images/business/tax-prep-certification.jpg" alt="Grading" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Grading</h3>
@@ -99,7 +99,7 @@ export default function InstructorPortalLanding() {
             </div>
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
               <div className="relative h-32">
-                <Image src="/images/programs-hq/healthcare-hero.jpg" alt="Certifications" fill className="object-cover" />
+                <Image src="/images/healthcare/hero-healthcare-professionals.jpg" alt="Certifications" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Certifications</h3>

@@ -193,42 +193,31 @@ export async function POST(req: Request) {
       })
       .eq('id', applicationId);
 
-    // Step 9: Auto-enroll in Milady RISE if barber program
+    // Step 9: Mark Milady access granted (link-based, no API)
+    // Student will receive Milady signup link in welcome email
     if (programSlug === 'barber-apprenticeship') {
-      try {
-        const miladyResponse = await fetch(
-          `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/milady/auto-enroll`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              studentId: userId,
-              programId: program.id,
-            }),
-          }
-        );
-
-        if (miladyResponse.ok) {
-          logger.info('Milady auto-enrollment successful', { userId });
-        } else {
-          logger.warn('Milady auto-enrollment failed', { userId });
-        }
-      } catch (miladyError) {
-        logger.warn('Milady auto-enrollment error', miladyError);
-        // Don't fail the whole enrollment if Milady fails
-      }
+      await supabase
+        .from('enrollments')
+        .update({ milady_enrolled: true })
+        .eq('id', enrollmentId);
+      logger.info('Milady access granted (link-based)', { userId, enrollmentId });
     }
 
-    // Step 10: Send welcome email
+    // Step 10: Send welcome email with Milady link
     try {
       const { sendWelcomeEmail } = await import('@/lib/email/resend');
+      const isBarberProgram = programSlug === 'barber-apprenticeship' || 
+        program.name.toLowerCase().includes('barber') ||
+        program.name.toLowerCase().includes('apprentice');
+      
       await sendWelcomeEmail({
         email: emailLower,
         name: `${firstName} ${lastName}`,
         programName: program.name,
-        dashboardUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/student/dashboard`,
+        dashboardUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/lms`,
+        includesMilady: isBarberProgram, // Include Milady signup link for barber programs
       });
-      logger.info('Welcome email sent', { email: emailLower });
+      logger.info('Welcome email sent with Milady link', { email: emailLower, includesMilady: isBarberProgram });
     } catch (emailError) {
       logger.warn('Welcome email failed', emailError);
       // Don't fail enrollment if email fails

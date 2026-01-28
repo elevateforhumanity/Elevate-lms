@@ -18,7 +18,7 @@ const demos = [
     title: 'LMS Platform Overview',
     description: 'See how students navigate courses, track progress, earn certificates, and interact with AI tutors.',
     duration: '15 min',
-    thumbnail: '/images/programs-hq/students-learning.jpg',
+    thumbnail: '/images/healthcare/healthcare-programs-grid.jpg',
     features: [
       'Student dashboard walkthrough',
       'Course enrollment and navigation',
@@ -35,7 +35,7 @@ const demos = [
     title: 'Employer Portal Demo',
     description: 'Learn how employers track sponsored employees, post jobs, and access workforce analytics.',
     duration: '10 min',
-    thumbnail: '/images/programs-hq/business-training.jpg',
+    thumbnail: '/images/business/tax-prep-certification.jpg',
     features: [
       'Candidate search and filtering',
       'Job posting workflow',
@@ -52,7 +52,7 @@ const demos = [
     title: 'Admin Dashboard Tour',
     description: 'Explore the administrative tools for managing programs, students, courses, and compliance.',
     duration: '20 min',
-    thumbnail: '/images/programs-hq/technology-hero.jpg',
+    thumbnail: '/images/hero-programs-technology.jpg',
     features: [
       'Student management',
       'Course builder and authoring',
@@ -69,7 +69,7 @@ const demos = [
     title: 'AI Course Builder',
     description: 'Watch how to create complete courses with AI-generated content, quizzes, and video lessons.',
     duration: '12 min',
-    thumbnail: '/images/programs-hq/training-classroom.jpg',
+    thumbnail: '/images/trades/program-building-construction.jpg',
     features: [
       'AI course generation',
       'Drag-and-drop lesson builder',

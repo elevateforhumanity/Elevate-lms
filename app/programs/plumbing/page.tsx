@@ -11,7 +11,7 @@ const programData: ProgramData = {
   category: 'Skilled Trades Programs',
   categoryHref: '/programs/skilled-trades',
   description: 'Learn the plumbing trade through hands-on apprenticeship. Install, repair, and maintain water systems, drainage, and gas lines while earning income.',
-  image: '/images/programs-hq/skilled-trades-hero.jpg',
+  image: '/images/trades/hero-program-plumbing.jpg',
   duration: '4-5 years',
   tuition: 'Employer Sponsored',
   fundingType: 'funded',

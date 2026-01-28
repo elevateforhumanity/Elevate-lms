@@ -1,14 +1,21 @@
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { toError, toErrorMessage } from '@/lib/safe';
+import { canMatchApprentice, hasVerifiedDocuments } from '@/lib/documents';
 
+/**
+ * MANDATORY VERIFICATION ENFORCEMENT:
+ * Matching is BLOCKED until required documents are VERIFIED for BOTH:
+ * - Apprentice: photo_id verified
+ * - Host Shop: shop_license AND barber_license verified
+ */
 export async function POST(req: Request) {
   try {
-    const { studentId, shopName, shopAddress, supervisorName, supervisorEmail } =
+    const { studentId, shopId, shopName, shopAddress, supervisorName, supervisorEmail } =
       await req.json();
 
     if (!studentId) {
@@ -37,6 +44,49 @@ export async function POST(req: Request) {
 
     if (profile?.role !== 'admin' && profile?.role !== 'instructor') {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
+    // =========================================================================
+    // MANDATORY VERIFICATION GATE
+    // Matching is BLOCKED until required documents are VERIFIED
+    // =========================================================================
+    
+    // Get apprentice ID from student
+    const { data: apprentice } = await supabase
+      .from('apprentices')
+      .select('id')
+      .eq('user_id', studentId)
+      .single();
+
+    if (apprentice && shopId) {
+      // Full verification check for both apprentice and shop
+      const matchGate = await canMatchApprentice(apprentice.id, shopId);
+      
+      if (!matchGate.allowed) {
+        return NextResponse.json(
+          {
+            error: 'Document verification required before matching',
+            reason: matchGate.reason,
+            unverifiedDocuments: matchGate.unverifiedDocs,
+            message: 'Required documents must be verified for both apprentice and host shop before matching.',
+          },
+          { status: 400 }
+        );
+      }
+    } else if (apprentice) {
+      // At minimum, check apprentice docs
+      const apprenticeGate = await hasVerifiedDocuments('apprentice', apprentice.id);
+      
+      if (!apprenticeGate.complete) {
+        return NextResponse.json(
+          {
+            error: 'Document verification required before matching',
+            reason: 'Apprentice documents must be verified before shop placement',
+            unverifiedDocuments: apprenticeGate.unverified,
+          },
+          { status: 400 }
+        );
+      }
     }
 
     // Create or update shop placement record

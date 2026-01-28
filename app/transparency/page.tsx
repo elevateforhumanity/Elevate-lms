@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 
 export default function TransparencyPage() {
   const outcomes = [
-    { label: 'Programs Available', value: '10+', image: '/images/programs-hq/students-learning.jpg' },
-    { label: 'Placement Goal', value: '85%', image: '/images/programs-hq/career-success.jpg' },
-    { label: 'Training Cost', value: '$0', image: '/images/programs-hq/business-training.jpg' },
-    { label: 'Support', value: '24/7', image: '/images/programs-hq/training-classroom.jpg' },
+    { label: 'Programs Available', value: '10+', image: '/images/healthcare/healthcare-programs-grid.jpg' },
+    { label: 'Placement Goal', value: '85%', image: '/images/healthcare/healthcare-professional-portrait-1.jpg' },
+    { label: 'Training Cost', value: '$0', image: '/images/business/tax-prep-certification.jpg' },
+    { label: 'Support', value: '24/7', image: '/images/trades/program-building-construction.jpg' },
     { label: 'Funding Sources', value: '5+', image: '/images/programs-hq/skilled-trades-hero.jpg' },
-    { label: 'Indiana Locations', value: '3+', image: '/images/programs-hq/healthcare-hero.jpg' },
+    { label: 'Indiana Locations', value: '3+', image: '/images/healthcare/hero-healthcare-professionals.jpg' },
   ];
 
   const financials = [

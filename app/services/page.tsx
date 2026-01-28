@@ -22,7 +22,7 @@ const services = [
     title: 'Supersonic Fast Cash',
     description: 'Quick refund advances and fast cash services',
     href: '/supersonic-fast-cash',
-    image: '/images/programs-hq/tax-preparation.jpg',
+    image: '/images/business/program-tax-preparation.jpg',
   },
   {
     title: 'Career Services',

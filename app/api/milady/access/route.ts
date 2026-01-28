@@ -47,19 +47,39 @@ export async function GET(request: NextRequest) {
       .single();
 
     if (error || !access) {
-      // Check if student has enrollment but no Milady access yet
+      // Check if student has active enrollment (payment completed, docs verified)
       const { data: enrollment } = await supabase
-        .from('student_enrollments')
-        .select('milady_enrolled')
-        .eq('student_id', studentId)
+        .from('enrollments')
+        .select('id, status, docs_verified')
+        .eq('user_id', studentId)
+        .eq('status', 'active')
         .single();
 
-      if (enrollment?.milady_enrolled) {
-        // Has enrollment flag but no access record - return active with default URL
+      if (enrollment) {
+        // Has active enrollment - return active with default Milady URL
         return NextResponse.json({
           status: 'active',
           method: 'link',
           accessUrl: 'https://www.miladytraining.com/users/sign_in',
+          enrollmentId: enrollment.id,
+        });
+      }
+
+      // Check for pending enrollment (paid but not yet approved)
+      const { data: pendingEnrollment } = await supabase
+        .from('enrollments')
+        .select('id, status, docs_verified')
+        .eq('user_id', studentId)
+        .eq('status', 'pending')
+        .single();
+
+      if (pendingEnrollment) {
+        return NextResponse.json({
+          status: 'pending_approval',
+          docsVerified: pendingEnrollment.docs_verified,
+          message: pendingEnrollment.docs_verified 
+            ? 'Your enrollment is pending admin approval.'
+            : 'Please upload required documents to complete enrollment.',
         });
       }
 
