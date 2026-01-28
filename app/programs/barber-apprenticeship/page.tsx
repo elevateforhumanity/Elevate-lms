@@ -74,10 +74,16 @@ export default async function BarberApprenticeshipPage() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
-              href="/apply?program=barber-apprenticeship"
-              className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white hover:bg-blue-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
+              href="/forms/barber-apprenticeship-inquiry"
+              className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-gray-900 hover:bg-gray-100 transition-all shadow-xl"
             >
-              Apply for Barber Program
+              General Inquiry
+            </Link>
+            <Link
+              href="/portal/student/enroll/barber-apprenticeship"
+              className="inline-flex items-center justify-center rounded-lg bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-purple-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
+            >
+              Enroll in Student Portal
             </Link>
             <Link
               href="#pricing"
@@ -278,6 +284,23 @@ export default async function BarberApprenticeshipPage() {
         </div>
       </section>
 
+      {/* How Placement Works */}
+      <section className="py-8 bg-amber-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="bg-white border-2 border-amber-200 rounded-xl p-6 text-center">
+            <p className="text-amber-900 font-medium">
+              Apprentices complete training hours inside an approved host barbershop. Host shops must be approved before apprentice placement.
+            </p>
+            <Link
+              href="/programs/barber-apprenticeship/host-shops"
+              className="inline-block mt-4 text-amber-700 font-medium hover:underline"
+            >
+              Learn about becoming a host shop →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* What is a Registered Apprenticeship */}
       <section className="py-16 bg-blue-50">
         <div className="max-w-6xl mx-auto px-6">
@@ -393,17 +416,17 @@ export default async function BarberApprenticeshipPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/apply?program=barber-apprenticeship"
-              className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-purple-600 hover:bg-purple-50 transition-all shadow-xl"
-            >
-              Enroll in Barber Program
-            </Link>
-            <a
-              href="#pricing"
+              href="/forms/barber-apprenticeship-inquiry"
               className="inline-flex items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all"
             >
-              View program fee
-            </a>
+              General Inquiry
+            </Link>
+            <Link
+              href="/portal/student/enroll/barber-apprenticeship"
+              className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-purple-600 hover:bg-purple-50 transition-all shadow-xl"
+            >
+              Enroll in Student Portal
+            </Link>
           </div>
         </div>
       </section>
