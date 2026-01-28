@@ -28,24 +28,20 @@ export const metadata = {
 };
 
 export default async function PayrollPage() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
+  let dbServices = null;
   
-  // Fetch payroll services
-  const { data: dbServices } = await supabase
-    .from('tax_services')
-    .select('*')
-    .eq('type', 'payroll');
+  try {
+    const supabase = await createClient();
+    if (supabase) {
+      const { data } = await supabase
+        .from('tax_services')
+        .select('*')
+        .eq('type', 'payroll');
+      dbServices = data;
+    }
+  } catch (error) {
+    console.error('Error fetching payroll services:', error);
+  }
 
   const services = [
     {
