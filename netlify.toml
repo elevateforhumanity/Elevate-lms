@@ -12,12 +12,8 @@
   NETLIFY_USE_PNPM = "true"
   NODE_OPTIONS = "--max-old-space-size=4096"
 
-# Clear cache on every deploy
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-[[plugins]]
-  package = "netlify-plugin-cache-clear"
 
 # Force cache invalidation on HTML pages
 [[headers]]
