@@ -128,7 +128,7 @@ export default async function CareerSafePage() {
       {/* Hero Section */}
       <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/heroes/training-provider-1.jpg"
+          src="/images/heroes/hero-homepage.jpg"
           alt="CareerSafe OSHA Training"
           fill
           className="object-cover"

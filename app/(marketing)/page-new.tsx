@@ -232,7 +232,7 @@ export default function HomePage() {
             <Link href="/career-services" className="group block">
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-4">
                 <Image
-                  src="/images/business/collaboration-1.jpg"
+                  src="/images/heroes/training-provider-3.jpg"
                   alt="Job placement"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"

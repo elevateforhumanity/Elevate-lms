@@ -74,7 +74,7 @@ export default function ResumeBuildingPage() {
       {/* Hero */}
       <section className="relative h-[350px] md:h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/business/tax-prep-certification.jpg"
+          src="/images/business/startup.jpg"
           alt="Resume Building Services"
           fill
           className="object-cover object-center"

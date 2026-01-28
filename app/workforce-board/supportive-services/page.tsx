@@ -139,7 +139,7 @@ export default async function SupportiveServicesPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/pathways/business-hero.jpg"
+                  src="/images/heroes/hero-elevate-learners.jpg"
                   alt="Supportive Services"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

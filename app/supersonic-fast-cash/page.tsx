@@ -200,7 +200,7 @@ export default function SupersonicFastCashPage() {
               className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
             >
               <div className="relative h-36">
-                <Image src="/images/business/success-1.jpg" alt="Refund Advance" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                <Image src="/images/success-new/success-8.jpg" alt="Refund Advance" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
@@ -217,7 +217,7 @@ export default function SupersonicFastCashPage() {
               className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
             >
               <div className="relative h-36">
-                <Image src="/images/business/office-admin.jpg" alt="DIY Tax Filing" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                <Image src="/images/heroes/employer-partner-3.jpg" alt="DIY Tax Filing" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
@@ -234,7 +234,7 @@ export default function SupersonicFastCashPage() {
               className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group border border-gray-200"
             >
               <div className="relative h-36">
-                <Image src="/images/business/professional-1.jpg" alt="Audit Protection" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                <Image src="/images/heroes/about-team.jpg" alt="Audit Protection" fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">

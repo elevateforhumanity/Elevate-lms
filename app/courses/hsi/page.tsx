@@ -78,7 +78,7 @@ export default async function HsiPage() {
       {/* Hero Section */}
       <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/business/team-4.jpg"
+          src="/images/success-new/success-18.jpg"
           alt="Hsi"
           fill
           className="object-cover"

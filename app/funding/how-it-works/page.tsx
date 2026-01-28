@@ -141,7 +141,7 @@ export default async function HowItWorksPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/pathways/business-hero.jpg"
+                  src="/images/heroes/hero-state-funding.jpg"
                   alt="How It Works"
                   fill
                   className="object-cover"

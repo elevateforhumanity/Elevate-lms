@@ -51,7 +51,7 @@ export default function ProgramHolderLanding() {
       {/* Hero */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden bg-teal-800">
         <Image
-          src="/images/heroes/training-provider-1.jpg"
+          src="/images/heroes/training-provider-2.jpg"
           alt="Program Holder Portal"
           fill
           className="object-cover opacity-30"

@@ -89,7 +89,7 @@ export default async function ReportsPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/business/success-1.jpg"
+          src="/images/success-new/success-3.jpg"
           alt="Reports"
           fill
           className="object-cover"

@@ -186,7 +186,7 @@ export default async function AttendancePage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/business/team-1.jpg"
+                  src="/images/success-new/success-19.jpg"
                   alt="Attendance"
                   fill
                   className="object-cover"

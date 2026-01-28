@@ -186,7 +186,7 @@ export default async function BuilderPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/business/collaboration-1.jpg"
+                  src="/images/heroes/training-provider-2.jpg"
                   alt="Builder"
                   fill
                   className="object-cover"

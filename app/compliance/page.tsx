@@ -28,7 +28,7 @@ export default function CompliancePage() {
       {/* Hero with image */}
       <section className="relative h-64 overflow-hidden">
         <Image
-          src="/images/business/tax-prep-certification.jpg"
+          src="/images/business/customer-service.jpg"
           alt="Compliance Center"
           fill
           className="object-cover"

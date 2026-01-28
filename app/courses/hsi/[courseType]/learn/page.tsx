@@ -139,7 +139,7 @@ export default async function LearnPage({ params }: { params: { courseType: stri
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/business/team-3.jpg"
+                  src="/images/success-new/success-18.jpg"
                   alt="Learn"
                   fill
                   className="object-cover"

@@ -328,7 +328,7 @@ export default async function PayrollPage() {
       {/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <Image
-          src="/images/business/professional-1.jpg"
+          src="/images/success-new/success-11.jpg"
           alt="Payroll"
           fill
           className="object-cover"

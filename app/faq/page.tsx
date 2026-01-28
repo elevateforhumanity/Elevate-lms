@@ -78,7 +78,7 @@ export default async function FAQPage() {
       {/* Hero */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image
-          src="/images/business/collaboration-1.jpg"
+          src="/images/heroes/training-provider-3.jpg"
           alt="Get answers to your questions"
           fill
           className="object-cover"

@@ -41,7 +41,7 @@ export default function HeroSlideshow() {
         autoPlay
         playsInline
         preload="none"
-        poster="/images/pathways/business-hero.jpg"
+        poster="/images/heroes/hero-federal-funding.jpg"
         className="absolute inset-0 w-full h-full object-cover"
         style={{
           objectFit: 'cover',

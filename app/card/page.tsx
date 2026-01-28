@@ -40,7 +40,7 @@ export default async function CardPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/business/team-4.jpg"
+          src="/images/success-new/success-17.jpg"
           alt="Card"
           fill
           className="object-cover"
@@ -137,7 +137,7 @@ export default async function CardPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/business/professional-1.jpg"
+                  src="/images/heroes/career-services.jpg"
                   alt="Card"
                   fill
                   className="object-cover"

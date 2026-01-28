@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 const features = [
   { title: 'Student Management', desc: 'View and manage student records and enrollments.', image: '/images/healthcare/healthcare-programs-grid.jpg' },
   { title: 'Attendance', desc: 'Track and record student attendance.', image: '/images/trades/program-building-construction.jpg' },
-  { title: 'Reports', desc: 'Generate and view performance reports.', image: '/images/business/tax-prep-certification.jpg' },
-  { title: 'Scheduling', desc: 'Manage class schedules and appointments.', image: '/images/healthcare/healthcare-professional-portrait-1.jpg' },
+  { title: 'Reports', desc: 'Generate and view performance reports.', image: '/images/business/tax-prep.jpg' },
+  { title: 'Scheduling', desc: 'Manage class schedules and appointments.', image: '/images/healthcare/medical-assistant.jpg' },
   { title: 'Documents', desc: 'Access and manage important documents.', image: '/images/hero-programs-technology.jpg' },
-  { title: 'Settings', desc: 'Configure portal preferences and settings.', image: '/images/healthcare/hero-healthcare-professionals.jpg' },
+  { title: 'Settings', desc: 'Configure portal preferences and settings.', image: '/images/healthcare/hero-programs-healthcare.jpg' },
 ];
 
 export default function StaffPortalLanding() {

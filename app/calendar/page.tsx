@@ -181,7 +181,7 @@ export default async function CalendarPage() {
             <div className="mt-6">
               <Link href="/events" className="block bg-white rounded-lg overflow-hidden shadow-sm border hover:shadow-md transition">
                 <div className="relative h-24">
-                  <Image src="/images/healthcare/healthcare-professional-portrait-1.jpg" alt="Events" fill className="object-cover" />
+                  <Image src="/images/healthcare/healthcare-professional-portrait-2.jpg" alt="Events" fill className="object-cover" />
                 </div>
                 <div className="p-4 text-center">
                   <span className="font-medium text-purple-700">View Public Events</span>

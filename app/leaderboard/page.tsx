@@ -40,7 +40,7 @@ export default async function LeaderboardPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/business/team-1.jpg"
+          src="/images/success-new/success-20.jpg"
           alt="Leaderboard"
           fill
           className="object-cover"

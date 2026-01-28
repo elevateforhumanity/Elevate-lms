@@ -58,7 +58,7 @@ export default async function OnboardingPage() {
     <div className="min-h-screen bg-white">
       <section className="relative h-[400px] sm:h-[500px] w-full overflow-hidden bg-white">
         <Image
-          src="/images/healthcare/hero-healthcare-professionals.jpg"
+          src="/images/healthcare/healthcare-programs-grid.jpg"
           alt="Welcome"
           fill
           className="object-cover"
@@ -134,7 +134,7 @@ export default async function OnboardingPage() {
               className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-lg transition-all"
             >
               <div className="relative h-40">
-                <Image src="/images/business/tax-prep-certification.jpg" alt="Program Holder" fill className="object-cover" />
+                <Image src="/images/business/program-tax-preparation.jpg" alt="Program Holder" fill className="object-cover" />
               </div>
               <div className="p-8">
               <h3 className="text-lg md:text-lg font-bold text-black mb-3 text-center">
@@ -178,7 +178,7 @@ export default async function OnboardingPage() {
               className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-lg transition-all"
             >
               <div className="relative h-40">
-                <Image src="/images/healthcare/healthcare-professional-portrait-1.jpg" alt="Partner/Employer" fill className="object-cover" />
+                <Image src="/images/healthcare/phlebotomy.jpg" alt="Partner/Employer" fill className="object-cover" />
               </div>
               <div className="p-8">
               <h3 className="text-lg md:text-lg font-bold text-black mb-3 text-center">

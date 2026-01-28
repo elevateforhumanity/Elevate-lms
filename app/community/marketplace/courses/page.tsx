@@ -115,7 +115,7 @@ export default function CommunityCoursesPage() {
       students: 445,
       duration: '3 hours',
       price: 'Free',
-      image: '/images/business/professional-1.jpg',
+      image: '/images/business/professional-2.jpg',
       category: 'Career Development',
     },
     {

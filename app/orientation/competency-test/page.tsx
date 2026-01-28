@@ -115,7 +115,7 @@ export default async function CompetencyTestPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/business/professional-1.jpg"
+                  src="/images/success-new/success-16.jpg"
                   alt="Competency Test"
                   fill
                   className="object-cover"

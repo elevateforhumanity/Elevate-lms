@@ -122,7 +122,7 @@ export default function TaxServicesPage() {
             <div className="bg-white rounded-2xl border-2 border-green-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <div className="relative h-48">
                 <Image
-                  src="/images/business/collaboration-1.jpg"
+                  src="/images/heroes/training-provider-2.jpg"
                   alt="VITA Free Tax Preparation"
                   fill
                   className="object-cover"
@@ -182,7 +182,7 @@ export default function TaxServicesPage() {
             <div className="bg-white rounded-2xl border-2 border-red-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <div className="relative h-48">
                 <Image
-                  src="/images/business/professional-1.jpg"
+                  src="/images/success-new/success-14.jpg"
                   alt="Supersonic Fast Cash Tax Services"
                   fill
                   className="object-cover"

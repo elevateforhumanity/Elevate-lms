@@ -138,7 +138,7 @@ export default async function ReportsPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/pathways/business-hero.jpg"
+                  src="/images/pathways/trades-hero.jpg"
                   alt="Reports"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

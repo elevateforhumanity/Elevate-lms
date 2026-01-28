@@ -103,7 +103,7 @@ export default function DisclosuresPage() {
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image
-                  src="/images/business/collaboration-1.jpg"
+                  src="/images/success-new/success-19.jpg"
                   alt="Our Institution"
                   fill
                   className="object-cover"

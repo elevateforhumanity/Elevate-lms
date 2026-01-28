@@ -49,7 +49,7 @@ export default async function ProgramHolderOnboarding() {
       {/* Hero Section */}
       <section className="relative h-[400px] sm:h-[500px] w-full overflow-hidden bg-white">
         <Image
-          src="/images/healthcare/hero-healthcare-professionals.jpg"
+          src="/images/healthcare/medical-assistant.jpg"
           alt="Program holder training"
           fill
           className="object-cover"

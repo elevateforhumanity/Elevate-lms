@@ -17,7 +17,7 @@ export default function FederalCompliancePage() {
       {/* Hero */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image
-          src="/images/business/collaboration-1.jpg"
+          src="/images/heroes/training-provider-2.jpg"
           alt="Federal Compliance"
           fill
           className="object-cover"

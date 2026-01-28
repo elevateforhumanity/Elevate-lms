@@ -36,7 +36,7 @@ export default async function SuccessPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/business/professional-1.jpg"
+          src="/images/success-new/success-11.jpg"
           alt="Success"
           fill
           className="object-cover"

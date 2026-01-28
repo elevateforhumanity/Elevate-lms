@@ -103,7 +103,7 @@ const programs = [
   {
     title: 'Business',
     description: 'Tax Preparation, Entrepreneurship',
-    image: '/images/business/tax-prep-certification.jpg',
+    image: '/images/heroes/hero-state-funding.jpg',
     href: '/programs/business',
   },
 ];

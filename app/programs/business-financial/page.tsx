@@ -43,7 +43,7 @@ export default async function BusinessFinancialPage() {
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
           <Image
-            src="/images/pathways/business-hero.jpg"
+            src="/images/pathways/trades-hero.jpg"
             alt="Business & Financial Programs"
             fill
             priority

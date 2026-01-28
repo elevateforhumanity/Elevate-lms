@@ -138,7 +138,7 @@ export default async function FollowUpsPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/pathways/business-hero.jpg"
+                  src="/images/heroes/hero-banner-elevate.jpg"
                   alt="Follow Ups"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

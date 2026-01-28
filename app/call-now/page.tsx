@@ -137,7 +137,7 @@ export default async function CallNowPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/business/collaboration-1.jpg"
+                  src="/images/business/handshake-1.jpg"
                   alt="Call Now"
                   fill
                   className="object-cover"

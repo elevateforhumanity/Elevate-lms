@@ -115,7 +115,7 @@ export default async function ApiPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/business/professional-1.jpg"
+                  src="/images/success-new/success-13.jpg"
                   alt="Api"
                   fill
                   className="object-cover"

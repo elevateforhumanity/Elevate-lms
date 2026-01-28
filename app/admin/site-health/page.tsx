@@ -66,7 +66,7 @@ export default async function SiteHealthPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/business/office-admin.jpg"
+          src="/images/heroes/hero-employers.jpg"
           alt="Site Health"
           fill
           className="object-cover"

@@ -138,7 +138,7 @@ export default async function EligibilityPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/pathways/business-hero.jpg"
+                  src="/images/pathways/technology-hero.jpg"
                   alt="Eligibility"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

@@ -29,7 +29,7 @@ const SERVICES = [
   {
     title: 'Resume Building',
     description: 'Professional resume writing and optimization to highlight your skills and experience. Get ATS-optimized resumes that get noticed.',
-    image: '/images/business/tax-prep-certification.jpg',
+    image: '/images/business/customer-service.jpg',
     href: '/career-services/resume-building',
     features: ['Professional formatting', 'ATS optimization', 'Cover letter help'],
   },
@@ -64,7 +64,7 @@ const SERVICES = [
   {
     title: 'Ongoing Support',
     description: 'We don\'t stop when you get hired. Get continued support for career growth and advancement.',
-    image: '/images/healthcare/hero-healthcare-professionals.jpg',
+    image: '/images/healthcare/hero-program-patient-care.jpg',
     href: '/career-services/ongoing-support',
     features: ['90-day check-ins', 'Career advancement', 'Skill development'],
   },
@@ -93,7 +93,7 @@ export default async function CareerServicesPage() {
       <section className="relative">
         <div className="relative h-[450px] bg-gray-900">
           <Image
-            src="/images/healthcare/healthcare-professional-portrait-1.jpg"
+            src="/images/healthcare/program-medical-assistant.jpg"
             alt="Career Services - Job Placement and Career Support"
             fill
             className="object-cover object-center"

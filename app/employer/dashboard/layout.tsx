@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Employer Dashboard | Elevate for Humanity",
     description: "Post jobs, review candidates, and manage your workforce pipeline.",
-    images: ["/images/business/collaboration-1.jpg"],
+    images: ["/images/heroes/training-provider-2.jpg"],
     type: "website",
   },
 };

@@ -64,7 +64,7 @@ export default async function Page() {
       {/* Hero Section */}
       <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/business/professional-1.jpg"
+          src="/images/success-new/success-15.jpg"
           alt="Users"
           fill
           className="object-cover"
