@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Image from 'next/image';
 
 const R2_URL = process.env.NEXT_PUBLIC_R2_URL;
 
@@ -13,37 +12,37 @@ export default function HomeHeroVideo() {
     const video = videoRef.current;
     if (!video) return;
 
-    video.muted = true;
-    video.playsInline = true;
-    video.loop = true;
-    
-    const handleCanPlay = () => {
+    // Force play immediately
+    const playVideo = () => {
       video.play().catch(() => {});
     };
+
+    // Try to play right away
+    playVideo();
     
-    video.addEventListener('canplay', handleCanPlay);
+    // Also try on various events
+    video.addEventListener('loadeddata', playVideo);
+    video.addEventListener('canplay', playVideo);
     
-    if (video.readyState >= 3) {
-      handleCanPlay();
-    }
+    // Retry after short delay as fallback
+    const timeout = setTimeout(playVideo, 100);
     
     return () => {
-      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('loadeddata', playVideo);
+      video.removeEventListener('canplay', playVideo);
+      clearTimeout(timeout);
     };
   }, []);
 
   return (
     <>
-      {/* Poster image behind video - loads immediately, hidden by video once it plays */}
-      <Image
-        src="/images/hero-poster.jpg"
-        alt=""
-        fill
-        priority
-        className="object-cover z-0"
-        sizes="100vw"
+      {/* Fallback poster image - loads instantly via CSS background, hidden behind video */}
+      <div 
+        className="absolute inset-0 w-full h-full z-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/hero-poster.jpg')" }}
+        aria-hidden="true"
       />
-      {/* Video on top - covers poster once loaded */}
+      {/* Video on top - starts immediately on page load */}
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover z-10"
@@ -53,6 +52,7 @@ export default function HomeHeroVideo() {
         playsInline
         autoPlay
         preload="auto"
+        poster="/images/hero-poster.jpg"
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
