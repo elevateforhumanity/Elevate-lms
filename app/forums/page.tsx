@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { MessageSquare, Users, TrendingUp, ArrowRight, Clock, Search, Plus } from 'lucide-react';
@@ -12,8 +11,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = 'force-dynamic';
-
 interface ForumCategory {
   id: string;
   name: string;
@@ -21,21 +18,16 @@ interface ForumCategory {
   order_index: number;
 }
 
-export default async function ForumsPage() {
-  const supabase = await createClient();
+const defaultCategories: ForumCategory[] = [
+  { id: '1', name: 'General Discussion', description: 'General topics and community chat', order_index: 1 },
+  { id: '2', name: 'Career Advice', description: 'Get advice on your career path', order_index: 2 },
+  { id: '3', name: 'Study Groups', description: 'Find study partners and groups', order_index: 3 },
+  { id: '4', name: 'Job Opportunities', description: 'Share and find job openings', order_index: 4 },
+  { id: '5', name: 'Success Stories', description: 'Share your achievements', order_index: 5 },
+];
 
-  let categories: ForumCategory[] = [];
-  
-  if (supabase) {
-    const { data, error } = await supabase
-      .from('forum_categories')
-      .select('id, name, description, order_index')
-      .order('order_index', { ascending: true });
-    
-    if (!error && data) {
-      categories = data;
-    }
-  }
+export default function ForumsPage() {
+  const categories = defaultCategories;
 
   const categoryIcons: Record<string, string> = {
     'General Discussion': '💬',
