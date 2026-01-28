@@ -256,12 +256,12 @@ export default function SchoolLicensePage() {
               {
                 title: 'Case Management',
                 desc: 'Track barriers, interventions, and outcomes. Flag at-risk students. Coordinate services.',
-                img: '/images/programs-hq/cna-training.jpg'
+                img: '/images/healthcare/program-cna-overview.jpg'
               },
               {
                 title: 'Employer Portal',
                 desc: 'Employers post jobs, view candidates, verify credentials. Placement tracking built in.',
-                img: '/images/programs-hq/skilled-trades-hero.jpg'
+                img: '/images/trades/program-building-construction.jpg'
               },
               {
                 title: 'Your Brand',

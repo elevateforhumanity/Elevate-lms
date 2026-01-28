@@ -38,7 +38,7 @@ export default function FundingPage() {
       icon: DollarSign,
       color: 'emerald',
       category: 'Funding',
-      image: '/images/programs-hq/skilled-trades-hero.jpg',
+      image: '/images/trades/program-building-construction.jpg',
     },
     {
       title: 'JRI Funding',
@@ -58,7 +58,7 @@ export default function FundingPage() {
       icon: Users,
       color: 'orange',
       category: 'Funding',
-      image: '/images/programs-hq/cna-training.jpg',
+      image: '/images/healthcare/program-cna-overview.jpg',
     },
     {
       title: 'FSSA Partnership',
@@ -68,7 +68,7 @@ export default function FundingPage() {
       icon: Handshake,
       color: 'pink',
       category: 'Partnerships',
-      image: '/images/programs-hq/medical-assistant.jpg',
+      image: '/images/healthcare/hero-program-medical-assistant.jpg',
     },
     {
       title: 'OJT & Funding',
@@ -78,7 +78,7 @@ export default function FundingPage() {
       icon: Briefcase,
       color: 'indigo',
       category: 'Programs',
-      image: '/images/programs-hq/hvac-technician.jpg',
+      image: '/images/trades/program-hvac-technician.jpg',
     },
     {
       title: 'Funding Impact',
@@ -108,7 +108,7 @@ export default function FundingPage() {
       icon: FileText,
       color: 'rose',
       category: 'Resources',
-      image: '/images/programs-hq/welding.jpg',
+      image: '/images/trades/welding-hero.jpg',
     },
     {
       title: 'Partner Agencies',
@@ -118,7 +118,7 @@ export default function FundingPage() {
       icon: Building2,
       color: 'amber',
       category: 'Partnerships',
-      image: '/images/programs-hq/electrical.jpg',
+      image: '/images/trades/program-electrical-training.jpg',
     },
     {
       title: 'Government Programs',
@@ -128,7 +128,7 @@ export default function FundingPage() {
       icon: Shield,
       color: 'lime',
       category: 'Programs',
-      image: '/images/programs-hq/cdl-trucking.jpg',
+      image: '/images/trades/hero-program-cdl.jpg',
     },
     {
       title: 'Federal Compliance',

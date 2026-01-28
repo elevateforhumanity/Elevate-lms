@@ -14,7 +14,7 @@ export default function TransparencyPage() {
     { label: 'Placement Goal', value: '85%', image: '/images/healthcare/healthcare-professional-portrait-1.jpg' },
     { label: 'Training Cost', value: '$0', image: '/images/business/tax-prep-certification.jpg' },
     { label: 'Support', value: '24/7', image: '/images/trades/program-building-construction.jpg' },
-    { label: 'Funding Sources', value: '5+', image: '/images/programs-hq/skilled-trades-hero.jpg' },
+    { label: 'Funding Sources', value: '5+', image: '/images/trades/program-building-construction.jpg' },
     { label: 'Indiana Locations', value: '3+', image: '/images/healthcare/hero-healthcare-professionals.jpg' },
   ];
 

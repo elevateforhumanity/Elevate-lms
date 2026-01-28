@@ -36,7 +36,7 @@ const SERVICES = [
   {
     title: 'Interview Preparation',
     description: 'Mock interviews, coaching, and strategies to help you ace any interview. Practice with real scenarios.',
-    image: '/images/programs-hq/medical-assistant.jpg',
+    image: '/images/healthcare/hero-program-medical-assistant.jpg',
     href: '/career-services/interview-prep',
     features: ['Mock interviews', 'Feedback sessions', 'Industry-specific prep'],
   },

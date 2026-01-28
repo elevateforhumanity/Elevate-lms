@@ -89,7 +89,7 @@ export default function CompliancePage() {
               {certifications.map((cert, index) => (
                 <div key={index} className="bg-white rounded-xl shadow-sm overflow-hidden">
                   <div className="relative h-24">
-                    <Image src="/images/programs-hq/skilled-trades-hero.jpg" alt={cert.name} fill className="object-cover" />
+                    <Image src="/images/trades/program-building-construction.jpg" alt={cert.name} fill className="object-cover" />
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold text-gray-900">{cert.name}</h3>

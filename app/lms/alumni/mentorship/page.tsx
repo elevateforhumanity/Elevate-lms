@@ -81,7 +81,7 @@ export default async function MentorshipPage() {
           </div>
           <div className="bg-white rounded-xl overflow-hidden shadow-sm">
             <div className="relative h-32">
-              <Image src="/images/programs-hq/skilled-trades-hero.jpg" alt="Skill Development" fill className="object-cover" />
+              <Image src="/images/trades/program-building-construction.jpg" alt="Skill Development" fill className="object-cover" />
             </div>
             <div className="p-4">
               <h3 className="font-semibold mb-2">Skill Development</h3>
@@ -96,10 +96,10 @@ export default async function MentorshipPage() {
             {mentorList.map((mentor: any, idx: number) => {
               const images = [
                 '/images/healthcare/hero-healthcare-professionals.jpg',
-                '/images/programs-hq/hvac-technician.jpg',
+                '/images/trades/program-hvac-technician.jpg',
                 '/images/hero-programs-technology.jpg',
-                '/images/programs-hq/electrical.jpg',
-                '/images/programs-hq/barber-hero.jpg',
+                '/images/trades/program-electrical-training.jpg',
+                '/images/barber-hero.jpg',
                 '/images/business/program-tax-preparation.jpg',
               ];
               return (
