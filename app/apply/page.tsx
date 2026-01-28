@@ -3,9 +3,6 @@ import Link from 'next/link';
 import { MessageSquare, GraduationCap, Phone, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 
-// Force static generation - page will be pre-rendered at build time
-export const revalidate = 3600; // Revalidate every hour
-
 export const metadata: Metadata = {
   title: 'Apply | Elevate for Humanity',
   description: 'Start your journey to a new career. Choose to get more information or enroll directly in our free workforce training programs.',

@@ -4,9 +4,6 @@ import Link from 'next/link';
 import HomeHeroVideo from './HomeHeroVideo';
 import PageAvatar from '@/components/PageAvatar';
 
-// Force static generation - page will be pre-rendered at build time
-export const revalidate = 3600; // Revalidate every hour
-
 export const metadata: Metadata = {
   title: 'Free Career Training | Elevate for Humanity',
   description: 'Launch your new career in 8-16 weeks with 100% free WIOA-funded training.',

@@ -4,9 +4,6 @@ import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import PageAvatar from '@/components/PageAvatar';
 
-// Force static generation - page will be pre-rendered at build time
-export const revalidate = 3600; // Revalidate every hour
-
 // ALL UNIQUE IMAGES - completely different from homepage
 const categories = [
   { title: 'Healthcare', description: 'Start a rewarding career helping others in medical settings.', href: '/programs/healthcare', image: '/images/prog-healthcare.jpg', programs: ['CNA Training', 'Medical Assistant', 'Phlebotomy', 'EKG Technician'] },
