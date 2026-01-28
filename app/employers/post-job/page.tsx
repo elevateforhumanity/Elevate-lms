@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Button({ children, variant, onClick, type, className }: { children: React.ReactNode; variant?: string; onClick?: () => void; type?: 'button' | 'submit'; className?: string }) {
   const baseClass = 'px-4 py-2 rounded-lg font-medium transition-colors';
@@ -196,11 +197,11 @@ export default function PostJobPage() {
             </div>
 
             <div className="flex gap-4">
-              <Button type="submit" size="lg">
+              <Button type="submit" className="px-6 py-3">
                 Post Job
               </Button>
               <Link href="/employers">
-                <Button type="button" variant="outline" size="lg">
+                <Button type="button" variant="outline" className="px-6 py-3">
                   Cancel
                 </Button>
               </Link>

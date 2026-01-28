@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
-import { Heart, Users, Phone, CheckCircle, Calendar } from 'lucide-react';
+import { Heart, Phone, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Divorce Support | Rise Forward Foundation',
@@ -11,55 +10,17 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = 'force-dynamic';
+const defaultServices = [
+  { title: 'Individual Counseling', description: 'One-on-one support through your transition' },
+  { title: 'Co-Parenting Support', description: 'Guidance for healthy co-parenting relationships' },
+  { title: 'Support Groups', description: 'Connect with others going through similar experiences' },
+  { title: 'Financial Planning', description: 'Resources for managing finances during divorce' },
+  { title: 'Children\'s Programs', description: 'Age-appropriate support for children' },
+  { title: 'Legal Resources', description: 'Information about legal processes and rights' },
+];
 
-export default async function DivorceSupportPage() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-
-  // Get divorce support services
-  const { data: services } = await supabase
-    .from('foundation_services')
-    .select('*')
-    .eq('category', 'divorce-support')
-    .eq('is_active', true)
-    .order('order', { ascending: true });
-
-  // Get support groups
-  const { data: supportGroups } = await supabase
-    .from('support_groups')
-    .select('*')
-    .eq('category', 'divorce')
-    .eq('is_active', true);
-
-  // Get testimonials
-  const { data: testimonials } = await supabase
-    .from('testimonials')
-    .select('*')
-    .eq('category', 'divorce-support')
-    .eq('is_featured', true)
-    .limit(2);
-
-  const defaultServices = [
-    { title: 'Individual Counseling', description: 'One-on-one support through your transition' },
-    { title: 'Co-Parenting Support', description: 'Guidance for healthy co-parenting relationships' },
-    { title: 'Support Groups', description: 'Connect with others going through similar experiences' },
-    { title: 'Financial Planning', description: 'Resources for managing finances during divorce' },
-    { title: 'Children\'s Programs', description: 'Age-appropriate support for children' },
-    { title: 'Legal Resources', description: 'Information about legal processes and rights' },
-  ];
-
-  const displayServices = services && services.length > 0 ? services : defaultServices;
+export default function DivorceSupportPage() {
+  const displayServices = defaultServices;
 
   return (
     <div className="min-h-screen bg-white">
@@ -101,40 +62,6 @@ export default async function DivorceSupportPage() {
             ))}
           </div>
         </section>
-
-        {/* Support Groups */}
-        {supportGroups && supportGroups.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6">Support Groups</h2>
-            <div className="space-y-4">
-              {supportGroups.map((group: any) => (
-                <div key={group.id} className="bg-white border rounded-xl p-6">
-                  <div className="flex items-center gap-2 text-rose-600 mb-2">
-                    <Calendar className="w-5 h-5" />
-                    <span className="font-medium">{group.schedule}</span>
-                  </div>
-                  <h3 className="font-bold text-lg">{group.title}</h3>
-                  <p className="text-gray-600 mt-1">{group.description}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Testimonials */}
-        {testimonials && testimonials.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6">Stories of Hope</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {testimonials.map((testimonial: any) => (
-                <div key={testimonial.id} className="bg-gray-50 rounded-xl p-6">
-                  <p className="text-gray-600 italic mb-4">"{testimonial.content}"</p>
-                  <div className="font-semibold">{testimonial.name}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
 
         {/* CTA */}
         <section className="bg-rose-50 border border-rose-200 rounded-xl p-8 text-center">
