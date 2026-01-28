@@ -23,46 +23,49 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function RiseFoundationPage() {
-  const supabase = await createClient();
+  let programs = null;
+  let peopleHelped = null;
+  let events = null;
+  let testimonials = null;
 
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
+  try {
+    const supabase = await createClient();
+    if (supabase) {
+      // Get programs
+      const { data: programsData } = await supabase
+        .from('rise_programs')
+        .select('*')
+        .eq('is_active', true)
+        .order('order', { ascending: true });
+      programs = programsData;
+
+      // Get stats
+      const { count } = await supabase
+        .from('rise_participants')
+        .select('*', { count: 'exact', head: true });
+      peopleHelped = count;
+
+      // Get upcoming events
+      const { data: eventsData } = await supabase
+        .from('events')
+        .select('*')
+        .eq('organization', 'rise-foundation')
+        .gte('start_date', new Date().toISOString())
+        .order('start_date', { ascending: true })
+        .limit(3);
+      events = eventsData;
+
+      // Get testimonials
+      const { data: testimonialsData } = await supabase
+        .from('testimonials')
+        .select('*')
+        .eq('is_featured', true)
+        .limit(3);
+      testimonials = testimonialsData;
+    }
+  } catch (error) {
+    console.error('Error fetching Rise Foundation data:', error);
   }
-
-  // Get programs
-  const { data: programs } = await supabase
-    .from('rise_programs')
-    .select('*')
-    .eq('is_active', true)
-    .order('order', { ascending: true });
-
-  // Get stats
-  const { count: peopleHelped } = await supabase
-    .from('rise_participants')
-    .select('*', { count: 'exact', head: true });
-
-  // Get upcoming events
-  const { data: events } = await supabase
-    .from('events')
-    .select('*')
-    .eq('organization', 'rise-foundation')
-    .gte('start_date', new Date().toISOString())
-    .order('start_date', { ascending: true })
-    .limit(3);
-
-  // Get testimonials
-  const { data: testimonials } = await supabase
-    .from('testimonials')
-    .select('*')
-    .eq('is_featured', true)
-    .limit(3);
 
   const defaultPrograms = [
     {
