@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 echo ""
 echo "==================================================================="
@@ -20,12 +19,12 @@ echo "" >> "$REPORT"
 
 test_pass() {
     echo "  ✅ $1" | tee -a "$REPORT"
-    ((PASS++))
+    PASS=$((PASS + 1))
 }
 
 test_fail() {
     echo "  ❌ $1" | tee -a "$REPORT"
-    ((FAIL++))
+    FAIL=$((FAIL + 1))
 }
 
 # Run all critical tests
