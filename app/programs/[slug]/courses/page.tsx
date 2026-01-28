@@ -67,7 +67,7 @@ export default function ProgramCoursesPage() {
       {/* Hero Banner */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <img
-          src="/og-default.jpg"
+          src="/images/business/tax-prep-certification.jpg"
           alt="Professional training courses and certification programs"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -186,7 +186,7 @@ export default function ProgramCoursesPage() {
                       sizes="(max-width: 768px) 100vw, 33vw"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src = '/images/og-default.jpg';
+                        target.src = '/images/healthcare/hero-healthcare-professionals.jpg';
                       }}
                     />
                     <div className="absolute top-4 right-4">
