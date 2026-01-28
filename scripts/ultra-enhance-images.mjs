@@ -1,21 +1,29 @@
 import sharp from 'sharp';
 import { join } from 'path';
 
-const publicDir = '/workspaces/fix2/public';
+const publicDir = '/workspaces/Elevate-lms/public';
 
-// Images to ultra-enhance for crystal clear quality (Avon-style)
+// Images to ultra-enhance for crystal clear quality
 const imagesToEnhance = [
-  // Program images
-  'media/programs/cna-hd.jpg',
-  'media/programs/hvac-hd.jpg',
-  'media/programs/cdl-hd.jpg',
-  'media/programs/barber-hd.jpg',
-  'media/programs/healthcare-professional-1-hd.jpg',
-
-  // Location images
-  'images/location-4.jpg',
-  'images/location-5.jpg',
-  'images/location-9.jpg',
+  // Healthcare images
+  'images/healthcare/hero-healthcare-professionals.jpg',
+  'images/healthcare/healthcare-professional-portrait-1.jpg',
+  'images/healthcare/healthcare-professional-portrait-2.jpg',
+  'images/healthcare/program-cna-overview.jpg',
+  'images/healthcare/hero-program-medical-assistant.jpg',
+  'images/healthcare/hero-program-phlebotomy.jpg',
+  
+  // Trades images
+  'images/trades/program-building-construction.jpg',
+  'images/trades/program-hvac-technician.jpg',
+  'images/trades/hero-program-cdl.jpg',
+  'images/trades/welding-hero.jpg',
+  'images/trades/program-electrical-training.jpg',
+  
+  // Business images
+  'images/business/tax-prep-certification.jpg',
+  'images/business/professional-1.jpg',
+  'images/business/team-1.jpg',
 ];
 
 async function ultraEnhanceImage(inputPath) {
