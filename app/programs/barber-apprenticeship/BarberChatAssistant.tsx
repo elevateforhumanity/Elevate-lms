@@ -13,7 +13,6 @@ const BARBER_WELCOME = `Hi! I'm here to answer your questions about the Barber A
 I can help you with:
 • Program requirements (2,000 hours)
 • Pricing & payment plans
-• WIOA/WRG funding eligibility
 • How to get started
 
 What would you like to know?`;
@@ -38,24 +37,17 @@ Weekly payment examples:
 
 Payment plans are available. Looking for free training? Check your WIOA/WRG eligibility!`,
 
-  'wioa|wrg|funding|free|financial aid': `You may qualify for **FREE training** through:
+  'wioa|wrg|funding|free|financial aid': `This is a **fee-based program** ($4,980 total).
 
-**WIOA (Workforce Innovation & Opportunity Act)**
-• Must be 18+
-• Meet income guidelines OR be unemployed/underemployed
-• Authorized to work in the U.S.
+**Payment Options:**
+• Pay in full: $4,980
+• 4-month plan: $1,245/month
+• 6-month plan: $830/month
+• 12-month plan: $415/month
 
-**Workforce Ready Grant (WRG)**
-• Indiana resident
-• No bachelor's degree
-• Enrolled in eligible program
+Payment is collected after your enrollment is approved. We offer flexible payment plans to fit your budget.
 
-To check eligibility:
-1. Visit indianacareerconnect.com
-2. Schedule an intake appointment at WorkOne
-3. Request "Elevate for Humanity - Barber Apprenticeship"
-
-Or visit our eligibility page: /programs/barber-apprenticeship/eligibility`,
+Ready to get started? Apply at /apply?program=barber-apprenticeship`,
 
   'requirements|qualify|eligible': `**Basic Requirements:**
 • 18+ years old
@@ -85,18 +77,14 @@ Already have a shop in mind? They can apply to become a partner training site.`,
 
   'start|begin|enroll|apply': `**Ready to start?** Here's how:
 
-**Option 1: Self-Pay**
-1. Apply at /programs/barber-apprenticeship/apply
-2. Complete enrollment paperwork
-3. Pay setup fee ($1,743)
-4. Get matched with a partner shop
-5. Start training!
+1. Apply at /apply?program=barber-apprenticeship
+2. Speak with an enrollment advisor
+3. Complete enrollment paperwork
+4. Choose your payment plan
+5. Get matched with a partner shop
+6. Start training!
 
-**Option 2: Funded Training**
-1. Check eligibility at /programs/barber-apprenticeship/eligibility
-2. Visit WorkOne for intake appointment
-3. Get approved for WIOA/WRG
-4. We'll contact you to complete enrollment
+Payment is collected after your enrollment is approved.
 
 Questions? Call us: (317) 314-3757`,
 
@@ -200,7 +188,7 @@ export default function BarberChatAssistant() {
   // Quick action buttons
   const quickActions = [
     { label: 'Program Cost', query: 'How much does it cost?' },
-    { label: 'Free Training?', query: 'Can I get free training through WIOA?' },
+    { label: 'Payment Plans', query: 'What payment plans are available?' },
     { label: 'Requirements', query: 'What are the requirements?' },
     { label: 'How to Start', query: 'How do I get started?' },
   ];
