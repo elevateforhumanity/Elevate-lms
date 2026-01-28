@@ -50,7 +50,7 @@ const updates = [
     date: 'December 2025',
     title: 'VITA Tax Preparation Services',
     description: 'Free tax preparation services available for students and community members. IRS-certified volunteers ready to help.',
-    href: '/vita',
+    href: '/tax',
     category: 'Services',
     icon: Users,
   },

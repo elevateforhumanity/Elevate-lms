@@ -48,7 +48,7 @@ const NAV_ITEMS = [
     name: 'Services', 
     href: '/services',
     subItems: [
-      { name: 'Free Tax Help (VITA)', href: '/vita' },
+      { name: 'Free Tax Help (VITA)', href: '/tax' },
       { name: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
       { name: 'Store', href: '/store' },
       { name: 'Videos & Demos', href: '/videos' },

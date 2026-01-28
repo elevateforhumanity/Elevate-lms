@@ -330,7 +330,7 @@ export default function CurvatureBodySculptingPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/vita"
+              href="/tax"
               className="px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition"
             >
               Free Tax Services (VITA)

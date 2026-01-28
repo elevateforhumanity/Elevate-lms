@@ -28,7 +28,7 @@ const services = [
     description: 'IRS-certified volunteers prepare your taxes for free if you earn under $64,000.',
     icon: DollarSign,
     color: 'green',
-    href: '/vita',
+    href: '/tax',
     benefits: [
       'Save $200+ in tax prep fees',
       'Average refund $2,847',
@@ -103,7 +103,7 @@ export default function CommunityServicesPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/vita"
+              href="/tax"
               className="px-8 py-4 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition"
             >
               Free Tax Prep

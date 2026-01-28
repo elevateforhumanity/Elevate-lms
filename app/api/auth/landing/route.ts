@@ -79,7 +79,7 @@ export async function GET() {
         redirectTo = '/app/grants';
         break;
       case 'vita_staff':
-        redirectTo = '/app/vita';
+        redirectTo = '/tax';
         break;
       case 'supersonic_staff':
         redirectTo = '/app/supersonic';

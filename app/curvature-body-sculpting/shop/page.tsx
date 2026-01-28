@@ -671,7 +671,7 @@ export default function CurvatureShopPage() {
               Learn About Selfish Inc.
             </Link>
             <Link
-              href="/vita"
+              href="/tax"
               className="px-6 py-3 border border-white/30 text-white font-medium rounded-lg hover:bg-white/10 transition"
             >
               Free VITA Services

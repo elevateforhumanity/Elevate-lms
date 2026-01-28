@@ -92,7 +92,7 @@ export default async function TaxIntakePage() {
             <h1 className="text-3xl font-bold text-gray-900">VITA Tax Intake</h1>
             <p className="text-gray-600">Manage tax preparation appointments</p>
           </div>
-          <Link href="/vita/schedule"
+          <Link href="/tax"
             className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
             Schedule Appointment
           </Link>

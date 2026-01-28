@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
     services: [
       { name: 'Tax Services', href: '/tax' },
       { name: 'SupersonicFastCash', href: '/supersonic-fast-cash' },
-      { name: 'VITA Free Tax Help', href: '/vita' },
+      { name: 'VITA Free Tax Help', href: '/tax' },
       { name: 'Rise Foundation', href: '/rise-foundation' },
       { name: 'Career Services', href: '/career-services' },
       { name: 'AI Studio', href: '/ai-studio' },

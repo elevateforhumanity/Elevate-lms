@@ -62,7 +62,7 @@ export default function TaxServicesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/vita"
+                href="/tax"
                 className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-bold transition-colors"
               >
                 <Users className="w-5 h-5" />
@@ -86,16 +86,16 @@ export default function TaxServicesPage() {
       <section className="py-4 bg-gray-100 border-b">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link href="/vita" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
+            <Link href="/tax" className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
               VITA Free Tax Prep
             </Link>
             <Link href="/supersonic-fast-cash" className="px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium hover:bg-red-200 transition-colors">
               Supersonic Fast Cash
             </Link>
-            <Link href="/vita/locations" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+            <Link href="/tax" className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
               Locations
             </Link>
-            <Link href="/vita/what-to-bring" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+            <Link href="/tax" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
               What to Bring
             </Link>
             <Link href="/tax/volunteer" className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors">
@@ -169,7 +169,7 @@ export default function TaxServicesPage() {
                 </ul>
 
                 <Link
-                  href="/vita"
+                  href="/tax"
                   className="block w-full text-center px-6 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold transition-colors"
                 >
                   Get Free Tax Help
@@ -435,7 +435,7 @@ export default function TaxServicesPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/vita"
+              href="/tax"
               className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-green-700 transition-colors"
             >
               Free VITA Tax Prep

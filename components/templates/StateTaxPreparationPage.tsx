@@ -30,14 +30,14 @@ export default function StateTaxPreparationPage({ state }: StateTaxPreparationPa
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link 
-              href="/vita/schedule" 
+              href="/tax" 
               className="inline-flex items-center justify-center px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-lg text-lg font-bold transition-colors"
             >
               <Calendar className="mr-2 w-5 h-5" />
               Schedule Appointment
             </Link>
             <Link 
-              href="/vita/locations" 
+              href="/tax" 
               className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white border-2 border-white/30 rounded-lg text-lg font-bold transition-colors"
             >
               Find a Location
@@ -110,7 +110,7 @@ export default function StateTaxPreparationPage({ state }: StateTaxPreparationPa
           </div>
           <p className="mt-6 text-gray-600">
             Plus many more locations throughout {state.name}.{' '}
-            <Link href="/vita/locations" className="text-blue-600 hover:underline">
+            <Link href="/tax" className="text-blue-600 hover:underline">
               View all locations →
             </Link>
           </p>
@@ -149,7 +149,7 @@ export default function StateTaxPreparationPage({ state }: StateTaxPreparationPa
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/vita/schedule"
+              href="/tax"
               className="inline-flex items-center px-8 py-4 bg-white text-blue-600 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors"
             >
               <Calendar className="mr-2 w-5 h-5" />

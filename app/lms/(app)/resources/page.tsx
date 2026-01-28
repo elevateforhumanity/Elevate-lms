@@ -122,7 +122,7 @@ const resourceCategories = [
       {
         title: 'Tax Preparation',
         description: 'Free tax filing for students',
-        href: '/vita',
+        href: '/tax',
         type: 'service',
       },
     ],
