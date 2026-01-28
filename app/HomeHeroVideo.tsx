@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const R2_URL = process.env.NEXT_PUBLIC_R2_URL;
 
@@ -16,34 +17,45 @@ export default function HomeHeroVideo() {
     video.playsInline = true;
     video.loop = true;
     
-    // Force immediate play
-    const playImmediately = () => {
+    const handleCanPlay = () => {
       video.play().catch(() => {});
     };
     
-    // Try to play immediately
-    playImmediately();
+    video.addEventListener('canplay', handleCanPlay);
     
-    // Also try on canplay event
-    video.addEventListener('canplay', playImmediately);
+    if (video.readyState >= 3) {
+      handleCanPlay();
+    }
     
     return () => {
-      video.removeEventListener('canplay', playImmediately);
+      video.removeEventListener('canplay', handleCanPlay);
     };
   }, []);
 
   return (
-    <video
-      ref={videoRef}
-      className="absolute inset-0 w-full h-full object-cover"
-      style={{ objectFit: 'cover' }}
-      loop
-      muted
-      playsInline
-      autoPlay
-      preload="auto"
-    >
-      <source src={videoSrc} type="video/mp4" />
-    </video>
+    <>
+      {/* Poster image behind video - loads immediately, hidden by video once it plays */}
+      <Image
+        src="/images/hero-poster.jpg"
+        alt=""
+        fill
+        priority
+        className="object-cover z-0"
+        sizes="100vw"
+      />
+      {/* Video on top - covers poster once loaded */}
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover z-10"
+        style={{ objectFit: 'cover' }}
+        loop
+        muted
+        playsInline
+        autoPlay
+        preload="auto"
+      >
+        <source src={videoSrc} type="video/mp4" />
+      </video>
+    </>
   );
 }
