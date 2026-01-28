@@ -1,0 +1,239 @@
+import Link from 'next/link';
+import Image from 'next/image';
+import { getProgramImages } from '@/lib/program-images';
+import type { Program } from '@/app/data/programs';
+
+interface VisualProgramTemplateProps {
+  program: Program;
+  slug: string;
+}
+
+/**
+ * Visual-first program page template
+ * 
+ * Design principles:
+ * - Real photos only, NO icons or placeholders
+ * - Minimal text, maximum visual impact
+ * - Eligibility signaling is explicit
+ * - Mobile-first, scannable layout
+ */
+export function VisualProgramTemplate({ program, slug }: VisualProgramTemplateProps) {
+  const images = getProgramImages(slug);
+
+  return (
+    <main className="bg-white">
+      {/* HERO - Full-width photo with program title */}
+      <section className="relative h-[60vh] min-h-[400px] max-h-[600px]">
+        <Image
+          src={images.hero}
+          alt={program.name || program.heroTitle || 'Program'}
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+          <div className="max-w-5xl mx-auto">
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-3">
+              {program.name || program.heroTitle}
+            </h1>
+            <p className="text-white/90 text-sm md:text-base mb-4 max-w-2xl">
+              Eligibility approval through WorkOne / Indiana Career Connect is required before enrollment.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/apply"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition shadow-lg"
+              >
+                Start Eligibility Review
+              </Link>
+              <Link
+                href="/check-eligibility"
+                className="bg-white/20 hover:bg-white/30 backdrop-blur text-white px-6 py-3 rounded-lg font-medium transition border border-white/30"
+              >
+                Check Eligibility
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROGRAM SNAPSHOT - 4 Photo Cards */}
+      <section className="py-12 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl font-bold text-center mb-8 text-gray-900">Program at a Glance</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <SnapshotCard
+              image={images.snapshot.jobOutcome}
+              label="Career Outcome"
+              description={program.credential || 'Industry-recognized credential'}
+            />
+            <SnapshotCard
+              image={images.snapshot.programLength}
+              label="Program Length"
+              description={program.duration || 'Flexible scheduling'}
+            />
+            <SnapshotCard
+              image={images.snapshot.credential}
+              label="Credential"
+              description={program.credential || 'Professional certification'}
+            />
+            <SnapshotCard
+              image={images.snapshot.support}
+              label="Support Included"
+              description="Career coaching & job placement"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT YOU'LL DO - Visual Tile Grid */}
+      {program.whatYouLearn && program.whatYouLearn.length > 0 && (
+        <section className="py-12 px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl font-bold text-center mb-8 text-gray-900">What You'll Learn</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {program.whatYouLearn.slice(0, 6).map((item: string, index: number) => (
+                <div key={index} className="relative aspect-[4/3] rounded-xl overflow-hidden group">
+                  <Image
+                    src={images.tiles[index % images.tiles.length]}
+                    alt={item}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <p className="absolute bottom-3 left-3 right-3 text-white text-sm font-medium">
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ELIGIBILITY & FUNDING */}
+      <section className="py-12 px-4 bg-blue-50">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-bold mb-4 text-gray-900">Eligibility & Funding</h2>
+          <p className="text-gray-700 mb-2">
+            This program requires eligibility approval through WorkOne / Indiana Career Connect.
+          </p>
+          <p className="text-gray-700 mb-2">
+            Training is funded through state or federal workforce programs.
+          </p>
+          <p className="text-gray-600 text-sm mb-6">
+            Final eligibility is confirmed after review with WorkOne.
+          </p>
+          <Link
+            href="/check-eligibility"
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition"
+          >
+            Check Eligibility Before Applying
+          </Link>
+        </div>
+      </section>
+
+      {/* WHAT HAPPENS NEXT - 4-Step Visual Flow */}
+      <section className="py-12 px-4">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-center mb-8 text-gray-900">Your Path Forward</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <StepCard
+              image={images.steps.apply}
+              step={1}
+              label="Apply"
+              description="Submit your application"
+            />
+            <StepCard
+              image={images.steps.eligibility}
+              step={2}
+              label="Eligibility Review"
+              description="WorkOne confirms eligibility"
+            />
+            <StepCard
+              image={images.steps.training}
+              step={3}
+              label="Training"
+              description="Complete your program"
+            />
+            <StepCard
+              image={images.steps.career}
+              step={4}
+              label="Career Support"
+              description="Job placement assistance"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* BOTTOM CTA */}
+      <section className="relative h-[50vh] min-h-[350px]">
+        <Image
+          src={images.bottomCta}
+          alt="Start your career journey"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Your first step is confirming eligibility.
+            </h2>
+            <Link
+              href="/apply"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg font-bold text-lg transition shadow-lg"
+            >
+              Start Eligibility Review
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+// Snapshot Card Component
+function SnapshotCard({ image, label, description }: { image: string; label: string; description: string }) {
+  return (
+    <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+      <div className="relative aspect-[4/3]">
+        <Image
+          src={image}
+          alt={label}
+          fill
+          className="object-cover"
+        />
+      </div>
+      <div className="p-4">
+        <h3 className="font-bold text-gray-900 mb-1">{label}</h3>
+        <p className="text-sm text-gray-600">{description}</p>
+      </div>
+    </div>
+  );
+}
+
+// Step Card Component
+function StepCard({ image, step, label, description }: { image: string; step: number; label: string; description: string }) {
+  return (
+    <div className="relative">
+      <div className="relative aspect-square rounded-xl overflow-hidden">
+        <Image
+          src={image}
+          alt={label}
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute top-3 left-3 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+          {step}
+        </div>
+        <div className="absolute bottom-3 left-3 right-3">
+          <h3 className="font-bold text-white">{label}</h3>
+          <p className="text-white/80 text-xs">{description}</p>
+        </div>
+      </div>
+    </div>
+  );
+}

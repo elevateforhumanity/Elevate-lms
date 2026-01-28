@@ -4,11 +4,29 @@ import fs from 'fs';
 import path from 'path';
 import { programs, type Program } from '@/app/data/programs';
 import { ProgramTemplate } from '@/components/programs/ProgramTemplate';
+import { VisualProgramTemplate } from '@/components/programs/VisualProgramTemplate';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { PROGRAM_CATEGORIES } from '@/components/programs/ProgramPageWrapper';
 import { EligibilityNotice } from '@/components/EligibilityNotice';
+
+// Programs that use the new visual-first template
+const VISUAL_TEMPLATE_PROGRAMS = [
+  'barber',
+  'barber-apprenticeship',
+  'cna',
+  'cna-certification',
+  'healthcare',
+  'beauty',
+  'esthetician-apprenticeship',
+  'hvac',
+  'skilled-trades',
+  'business',
+  'tax-preparation',
+  'cdl',
+  'jri',
+];
 
 export const dynamic = 'force-dynamic';
 
@@ -278,6 +296,23 @@ export default async function ProgramDetailPage({
           </div>
         </div>
         </div>
+      </div>
+    );
+  }
+
+  // Check if this program should use the visual-first template
+  const useVisualTemplate = VISUAL_TEMPLATE_PROGRAMS.includes(slug);
+
+  if (useVisualTemplate) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        {/* Breadcrumbs */}
+        <div className="bg-white border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <Breadcrumbs items={breadcrumbItems} />
+          </div>
+        </div>
+        <VisualProgramTemplate program={program} slug={slug} />
       </div>
     );
   }
