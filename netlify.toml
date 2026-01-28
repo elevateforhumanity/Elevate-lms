@@ -43,11 +43,10 @@
 [functions]
   node_bundler = "esbuild"
 
-
-# Social Media Scheduler - Runs 3x daily (9 AM, 1 PM, 5 PM EST)
-# Cron: 0 14,18,22 * * * (UTC times for EST schedule)
-[functions."social-media-scheduler"]
-  schedule = "0 14,18,22 * * *"
+# Social Media Scheduler - DISABLED due to AWS Lambda 4KB env var limit
+# TODO: Re-enable with reduced env vars or use background functions
+# [functions."social-media-scheduler"]
+#   schedule = "0 14,18,22 * * *"
 
 # ============================================
 # LMS DOMAIN (elevateforhumanityeducation.com)
