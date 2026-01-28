@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { DollarSign, Home, Users, Briefcase, ArrowRight } from 'lucide-react';
+import { DollarSign, Home, Users, Briefcase, ArrowRight, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {

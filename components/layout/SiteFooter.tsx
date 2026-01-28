@@ -44,6 +44,7 @@ const footerSections = [
     title: 'Get Started',
     links: [
       { name: 'Apply Now', href: '/apply' },
+      { name: 'Check Eligibility', href: '/check-eligibility' },
       { name: 'How It Works', href: '/how-it-works' },
       { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
       { name: 'Funding & Grants', href: '/funding' },

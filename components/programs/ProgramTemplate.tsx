@@ -5,10 +5,14 @@ import { ProgramPaymentButton } from './ProgramPaymentButton';
 import { PricingTiers } from './PricingTiers';
 import { CareerServicesHook } from './CareerServicesHook';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
+import { EligibilityNotice } from '@/components/EligibilityNotice';
 
 export function ProgramTemplate({ program }: { program: Program }) {
   return (
     <main className="bg-white">
+      {/* Eligibility Notice Banner */}
+      <EligibilityNotice variant="banner" className="mx-4 mt-4 max-w-6xl lg:mx-auto" />
+
       {/* HERO SECTION - Video or Text */}
       {program.heroVideo ? (
         <VideoHeroBanner

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { MessageSquare, GraduationCap, Phone, Clock, CheckCircle } from 'lucide-react';
+import { MessageSquare, GraduationCap, Phone, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
@@ -38,6 +38,26 @@ export default function ApplyPage() {
         videoSrc="/videos/apply-section-video.mp4" 
         title="Start Your Journey" 
       />
+
+      {/* Eligibility Notice */}
+      <section className="py-6 px-4 bg-amber-50 border-b border-amber-100">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-start gap-4">
+            <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-amber-900 font-medium">
+                Eligibility approval through WorkOne / Indiana Career Connect is required before enrollment.
+              </p>
+              <Link 
+                href="/check-eligibility" 
+                className="text-amber-700 text-sm hover:underline mt-1 inline-block"
+              >
+                Check eligibility before applying →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Two Options */}
       <section className="py-16 px-4">

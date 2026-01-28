@@ -8,6 +8,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { PROGRAM_CATEGORIES } from '@/components/programs/ProgramPageWrapper';
+import { EligibilityNotice } from '@/components/EligibilityNotice';
 
 export const dynamic = 'force-dynamic';
 
@@ -162,6 +163,9 @@ export default async function ProgramDetailPage({
         
         <div className="py-16 px-6 bg-white text-black">
           <div className="max-w-4xl mx-auto">
+            {/* Eligibility Notice */}
+            <EligibilityNotice variant="banner" className="mb-6" />
+            
             <h1 className="text-3xl font-bold mb-6">{displayProgram.name}</h1>
             
             {/* Program Quick Facts */}
