@@ -1,198 +1,197 @@
 import { Metadata } from 'next';
-export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { DollarSign, Clock, CheckCircle, FileText, Plus, Calendar, ExternalLink } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/admin/grants',
-  },
-  title: 'Grants | Elevate For Humanity',
-  description: 'Manage system data and configurations',
+  title: 'Grant Management | Admin',
+  description: 'Manage grant opportunities and applications',
 };
 
 export default async function GrantsPage() {
   const supabase = await createClient();
 
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // Fetch grant opportunities
+  const { data: grants } = await supabase
+    .from('grant_opportunities')
+    .select('*')
+    .order('deadline', { ascending: true });
 
-  if (!user) {
-    redirect('/login');
-  }
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single();
-
-  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
-    redirect('/unauthorized');
-  }
-
-  const { data: items, count: totalItems } = await supabase
-    .from('profiles')
-    .select('*', { count: 'exact' })
+  // Fetch grant applications
+  const { data: applications } = await supabase
+    .from('grant_applications')
+    .select('*')
     .order('created_at', { ascending: false })
-    .limit(50);
+    .limit(20);
 
-  const { count: activeItems } = await supabase
-    .from('profiles')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'active');
+  const allGrants = grants || [];
+  const allApps = applications || [];
 
-  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
-    redirect('/unauthorized');
-  }
+  // Calculate stats
+  const openGrants = allGrants.filter(g => g.status === 'open').length;
+  const totalFunding = allGrants
+    .filter(g => g.status === 'open')
+    .reduce((sum, g) => sum + (parseFloat(g.amount_max) || 0), 0);
+  const pendingApps = allApps.filter(a => ['submitted', 'under_review'].includes(a.status)).length;
+  const approvedAmount = allApps
+    .filter(a => a.status === 'approved' && a.amount_awarded)
+    .reduce((sum, a) => sum + (parseFloat(a.amount_awarded) || 0), 0);
+
+  const stats = [
+    { label: 'Open Opportunities', value: openGrants.toString(), icon: FileText, color: 'text-blue-600', bgColor: 'bg-blue-100' },
+    { label: 'Available Funding', value: `$${(totalFunding / 1000).toFixed(0)}K`, icon: DollarSign, color: 'text-green-600', bgColor: 'bg-green-100' },
+    { label: 'Pending Applications', value: pendingApps.toString(), icon: Clock, color: 'text-yellow-600', bgColor: 'bg-yellow-100' },
+    { label: 'Awarded This Year', value: `$${approvedAmount.toLocaleString()}`, icon: CheckCircle, color: 'text-purple-600', bgColor: 'bg-purple-100' },
+  ];
+
+  const statusColors: Record<string, string> = {
+    open: 'bg-green-100 text-green-700',
+    closed: 'bg-gray-100 text-gray-600',
+    upcoming: 'bg-blue-100 text-blue-700',
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Breadcrumbs */}
-      <div className="bg-slate-50 border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Grants' }]} />
+    <div className="min-h-screen bg-gray-50 p-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">Grant Management</h1>
+            <p className="text-gray-600">Track grant opportunities and manage applications</p>
+          </div>
+          <Link
+            href="/admin/grants/new"
+            className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition flex items-center gap-2"
+          >
+            <Plus className="w-4 h-4" />
+            Add Opportunity
+          </Link>
+        </div>
+
+        <div className="grid md:grid-cols-4 gap-6 mb-8">
+          {stats.map((stat, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-sm p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className={`p-3 rounded-lg ${stat.bgColor}`}>
+                  <stat.icon className={`w-6 h-6 ${stat.color}`} />
+                </div>
+              </div>
+              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+              <p className="text-sm text-gray-600">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Grant Opportunities */}
+          <div className="bg-white rounded-xl shadow-sm">
+            <div className="p-4 border-b flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-gray-900">Grant Opportunities</h2>
+              <span className="text-sm text-gray-500">{allGrants.length} total</span>
+            </div>
+            
+            {allGrants.length === 0 ? (
+              <div className="p-12 text-center">
+                <FileText className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-gray-900 mb-2">No Grant Opportunities</h3>
+                <p className="text-gray-600 mb-6">Add grant opportunities to track funding sources.</p>
+                <Link
+                  href="/admin/grants/new"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
+                >
+                  <Plus className="w-4 h-4" />
+                  Add Opportunity
+                </Link>
+              </div>
+            ) : (
+              <div className="divide-y max-h-[500px] overflow-y-auto">
+                {allGrants.map((grant) => (
+                  <div key={grant.id} className="p-4 hover:bg-gray-50">
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="font-medium text-gray-900">{grant.title}</h3>
+                      <span className={`px-2 py-1 text-xs rounded-full ${statusColors[grant.status] || 'bg-gray-100'}`}>
+                        {grant.status}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-2">{grant.funder}</p>
+                    <div className="flex items-center gap-4 text-sm">
+                      <span className="text-green-600 font-medium">
+                        ${(grant.amount_min / 1000).toFixed(0)}K - ${(grant.amount_max / 1000).toFixed(0)}K
+                      </span>
+                      {grant.deadline && (
+                        <span className="flex items-center gap-1 text-gray-500">
+                          <Calendar className="w-4 h-4" />
+                          {new Date(grant.deadline).toLocaleDateString()}
+                        </span>
+                      )}
+                    </div>
+                    {grant.focus_areas && grant.focus_areas.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {grant.focus_areas.slice(0, 3).map((area: string, i: number) => (
+                          <span key={i} className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded">
+                            {area}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Grant Applications */}
+          <div className="bg-white rounded-xl shadow-sm">
+            <div className="p-4 border-b flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-gray-900">Applications</h2>
+              <span className="text-sm text-gray-500">{allApps.length} total</span>
+            </div>
+            
+            {allApps.length === 0 ? (
+              <div className="p-12 text-center">
+                <FileText className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-gray-900 mb-2">No Applications</h3>
+                <p className="text-gray-600">Grant applications will appear here once submitted.</p>
+              </div>
+            ) : (
+              <div className="divide-y max-h-[500px] overflow-y-auto">
+                {allApps.map((app) => (
+                  <div key={app.id} className="p-4 hover:bg-gray-50">
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="font-medium text-gray-900">Application #{app.id.slice(0, 8)}</h3>
+                      <span className={`px-2 py-1 text-xs rounded-full ${
+                        app.status === 'approved' ? 'bg-green-100 text-green-700' :
+                        app.status === 'denied' ? 'bg-red-100 text-red-700' :
+                        app.status === 'under_review' ? 'bg-yellow-100 text-yellow-700' :
+                        'bg-blue-100 text-blue-700'
+                      }`}>
+                        {app.status.replace('_', ' ')}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-4 text-sm">
+                      {app.amount_requested && (
+                        <span className="text-gray-600">
+                          Requested: ${parseFloat(app.amount_requested).toLocaleString()}
+                        </span>
+                      )}
+                      {app.amount_awarded && (
+                        <span className="text-green-600 font-medium">
+                          Awarded: ${parseFloat(app.amount_awarded).toLocaleString()}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-gray-500 mt-2">
+                      {new Date(app.created_at).toLocaleDateString()}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
-
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/homepage/student-portal-interface.png"
-          alt="Grants"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Grants
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access your dashboard and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/admin/dashboard"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Back to Dashboard
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Total Items
-                </h3>
-                <p className="text-3xl font-bold text-brand-blue-600">
-                  {totalItems || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Active
-                </h3>
-                <p className="text-3xl font-bold text-brand-green-600">
-                  {activeItems || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Recent
-                </h3>
-                <p className="text-3xl font-bold text-purple-600">
-                  {items?.filter((i) => {
-                    const created = new Date(i.created_at);
-                    const weekAgo = new Date();
-                    weekAgo.setDate(weekAgo.getDate() - 7);
-                    return created > weekAgo;
-                  }).length || 0}
-                </p>
-              </div>
-            </div>
-
-            {/* Data Display */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-2xl font-bold mb-4">Items</h2>
-              {items && items.length > 0 ? (
-                <div className="space-y-4">
-                  {items.map((item: any) => (
-                    <div
-                      key={item.id}
-                      className="p-4 border rounded-lg hover:bg-gray-50"
-                    >
-                      <p className="font-semibold">
-                        {item.title || item.name || item.id}
-                      </p>
-                      <p className="text-sm text-black">
-                        {new Date(item.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-black text-center py-8">No items found</p>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

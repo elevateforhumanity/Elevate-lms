@@ -148,7 +148,49 @@ CREATE TABLE IF NOT EXISTS notification_preferences (
   UNIQUE(user_id)
 );
 
+-- Grant opportunities table
+CREATE TABLE IF NOT EXISTS grant_opportunities (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  description TEXT,
+  funder TEXT NOT NULL,
+  amount_min DECIMAL(12,2),
+  amount_max DECIMAL(12,2),
+  deadline TIMESTAMPTZ,
+  eligibility_criteria JSONB,
+  focus_areas TEXT[],
+  application_url TEXT,
+  status TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open', 'closed', 'upcoming')),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_grants_status ON grant_opportunities(status);
+CREATE INDEX IF NOT EXISTS idx_grants_deadline ON grant_opportunities(deadline);
+
+-- Grant applications table
+CREATE TABLE IF NOT EXISTS grant_applications (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  grant_id UUID REFERENCES grant_opportunities(id) ON DELETE CASCADE,
+  submitted_by UUID REFERENCES auth.users(id) ON DELETE SET NULL,
+  status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'submitted', 'under_review', 'approved', 'denied', 'withdrawn')),
+  amount_requested DECIMAL(12,2),
+  amount_awarded DECIMAL(12,2),
+  proposal_summary TEXT,
+  documents JSONB,
+  submitted_at TIMESTAMPTZ,
+  reviewed_at TIMESTAMPTZ,
+  reviewer_notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_grant_apps_status ON grant_applications(status);
+CREATE INDEX IF NOT EXISTS idx_grant_apps_grant_id ON grant_applications(grant_id);
+
 -- RLS Policies
+ALTER TABLE grant_opportunities ENABLE ROW LEVEL SECURITY;
+ALTER TABLE grant_applications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
 ALTER TABLE campaigns ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api_keys ENABLE ROW LEVEL SECURITY;
@@ -166,6 +208,10 @@ CREATE POLICY "Admin full access to contacts" ON crm_contacts FOR ALL USING (tru
 -- Users can manage their own notification preferences
 CREATE POLICY "Users manage own notifications" ON notification_preferences 
   FOR ALL USING (auth.uid() = user_id);
+
+-- Grant policies
+CREATE POLICY "Admin full access to grants" ON grant_opportunities FOR ALL USING (true);
+CREATE POLICY "Admin full access to grant_apps" ON grant_applications FOR ALL USING (true);
 
 -- Seed data
 INSERT INTO leads (first_name, last_name, email, phone, program_interest, source, status) VALUES
@@ -193,4 +239,12 @@ INSERT INTO crm_contacts (first_name, last_name, email, phone, company, job_titl
   ('Mark', 'Thompson', 'mthompson@buildright.com', '(317) 555-0203', 'BuildRight Construction', 'Operations Manager', 'employer'),
   ('Amanda', 'White', 'awhite@carefirst.org', '(317) 555-0204', 'CareFirst Medical', 'Nurse Manager', 'employer'),
   ('Carlos', 'Rodriguez', 'crodriguez@example.com', '(317) 555-0205', NULL, NULL, 'alumni')
+ON CONFLICT DO NOTHING;
+
+INSERT INTO grant_opportunities (title, description, funder, amount_min, amount_max, deadline, focus_areas, status) VALUES
+  ('Workforce Innovation Grant', 'Funding for innovative workforce development programs', 'US Department of Labor', 50000, 250000, NOW() + INTERVAL '60 days', ARRAY['workforce', 'training', 'innovation'], 'open'),
+  ('Healthcare Training Initiative', 'Support for healthcare career training programs', 'Indiana State Health Department', 25000, 100000, NOW() + INTERVAL '45 days', ARRAY['healthcare', 'nursing', 'medical'], 'open'),
+  ('STEM Education Fund', 'Grants for STEM-focused vocational training', 'National Science Foundation', 75000, 500000, NOW() + INTERVAL '90 days', ARRAY['technology', 'engineering', 'science'], 'open'),
+  ('Community Development Block Grant', 'Support for community-based job training', 'HUD', 100000, 750000, NOW() - INTERVAL '10 days', ARRAY['community', 'economic development'], 'closed'),
+  ('Green Jobs Training Grant', 'Funding for sustainable energy workforce training', 'EPA', 50000, 200000, NOW() + INTERVAL '120 days', ARRAY['sustainability', 'energy', 'environment'], 'upcoming')
 ON CONFLICT DO NOTHING;

@@ -197,7 +197,6 @@ const nextConfig = {
       { source: '/tax-filing/:path*', destination: '/tax/:path*', permanent: true },
       { source: '/tax-services/:path*', destination: '/tax/:path*', permanent: true },
       { source: '/tax-software/:path*', destination: '/tax/:path*', permanent: true },
-      { source: '/vita/:path*', destination: '/tax/:path*', permanent: true },
 
       // Program consolidation
       { source: '/programs-catalog/:path*', destination: '/programs/:path*', permanent: true },

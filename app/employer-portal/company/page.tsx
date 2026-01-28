@@ -1,8 +1,11 @@
 import { Metadata } from 'next';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Building, MapPin, Users, Globe, Phone, Mail, Edit, Camera, Award, Briefcase, CheckCircle } from 'lucide-react';
+import { redirect } from 'next/navigation';
+import { Building, MapPin, Users, Globe, Phone, Mail, Edit, Camera, Award, Briefcase, CheckCircle, AlertCircle } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Company Profile | Employer Portal',
@@ -10,44 +13,115 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const companyData = {
-  name: 'ABC Healthcare Services',
-  logo: '/images/community/community-hero.jpg',
-  cover: '/images/community/event-1.jpg',
-  industry: 'Healthcare',
-  size: '50-200 employees',
-  founded: '2015',
-  website: 'www.abchealthcare.com',
-  phone: '(555) 123-4567',
-  email: 'hr@abchealthcare.com',
-  address: '500 Medical Center Dr, Indianapolis, IN 46208',
-  description: 'ABC Healthcare Services is a leading provider of home health and medical staffing solutions. We are committed to providing quality care while creating opportunities for career growth.',
-  benefits: ['Health Insurance', 'Dental & Vision', '401(k) Match', 'Paid Time Off', 'Training Programs', 'Career Advancement'],
-  stats: {
-    activeJobs: 5,
-    totalHires: 47,
-    wotcCredits: '$142,500',
-    avgTimeToHire: '18 days',
-  },
-};
+export default async function CompanyProfilePage() {
+  const supabase = await createClient();
+  
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    redirect('/login?redirect=/employer-portal/company');
+  }
 
-export default function CompanyProfilePage() {
+  // Get employer profile linked to this user
+  const { data: employer } = await supabase
+    .from('rapids_employers')
+    .select('*')
+    .eq('contact_email', user.email)
+    .single();
+
+  // Get job stats if employer exists
+  let stats = {
+    activeJobs: 0,
+    totalHires: 0,
+    wotcCredits: '$0',
+    avgTimeToHire: 'N/A',
+  };
+
+  if (employer) {
+    // Count active jobs
+    const { count: jobCount } = await supabase
+      .from('job_postings')
+      .select('*', { count: 'exact', head: true })
+      .eq('employer_id', employer.id)
+      .eq('status', 'active');
+    
+    stats.activeJobs = jobCount || 0;
+
+    // Count total hires (placements)
+    const { count: hireCount } = await supabase
+      .from('placements')
+      .select('*', { count: 'exact', head: true })
+      .eq('employer_id', employer.id);
+    
+    stats.totalHires = hireCount || 0;
+  }
+
+  // If no employer profile, show setup prompt
+  if (!employer) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white rounded-xl shadow-sm p-8 text-center">
+          <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Building className="w-8 h-8 text-purple-600" />
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Set Up Your Company Profile</h1>
+          <p className="text-gray-600 mb-8">
+            Create your company profile to start posting jobs and connecting with qualified candidates.
+          </p>
+          <Link
+            href="/employer-portal/company/setup"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
+          >
+            <Edit className="w-4 h-4" />
+            Create Profile
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const companyData = {
+    name: employer.business_name || 'Company Name',
+    dba: employer.dba_name,
+    logo: '/images/defaults/company-logo.png',
+    cover: '/images/defaults/company-cover.jpg',
+    industry: employer.industry || 'Not specified',
+    size: employer.employee_count ? `${employer.employee_count} employees` : 'Not specified',
+    founded: employer.year_established || 'Not specified',
+    website: employer.website || '',
+    phone: employer.contact_phone || '',
+    email: employer.contact_email || '',
+    address: [
+      employer.address_line1,
+      employer.address_line2,
+      employer.city,
+      employer.state,
+      employer.zip_code
+    ].filter(Boolean).join(', ') || 'Not specified',
+    description: employer.description || 'No description provided.',
+    benefits: employer.benefits || [],
+    verified: employer.verified || false,
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
-            <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Company" }]} />
-{/* Cover Image */}
-      <div className="relative h-64">
-        <Image
-          src={companyData.cover}
-          alt="Company cover"
-          fill
-          className="object-cover"
-        />
+      {/* Cover Image */}
+      <div className="relative h-64 bg-gradient-to-r from-purple-600 to-blue-600">
+        {companyData.cover && companyData.cover !== '/images/defaults/company-cover.jpg' && (
+          <Image
+            src={companyData.cover}
+            alt="Company cover"
+            fill
+            className="object-cover"
+          />
+        )}
         
-        <button className="absolute top-4 right-4 px-4 py-2 bg-white/90 rounded-lg hover:bg-white transition flex items-center gap-2 text-sm">
+        <Link 
+          href="/employer-portal/company/setup"
+          className="absolute top-4 right-4 px-4 py-2 bg-white/90 rounded-lg hover:bg-white transition flex items-center gap-2 text-sm"
+        >
           <Camera className="w-4 h-4" />
           Change Cover
-        </button>
+        </Link>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,24 +130,33 @@ export default function CompanyProfilePage() {
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex flex-col md:flex-row md:items-end gap-6">
               <div className="relative -mt-20 md:-mt-24">
-                <Image
-                  src={companyData.logo}
-                  alt={companyData.name}
-                  width={120}
-                  height={120}
-                  className="rounded-xl border-4 border-white shadow-lg object-cover"
-                />
-                <button className="absolute bottom-0 right-0 p-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">
+                <div className="w-[120px] h-[120px] rounded-xl border-4 border-white shadow-lg bg-gray-100 flex items-center justify-center">
+                  <Building className="w-12 h-12 text-gray-400" />
+                </div>
+                <Link 
+                  href="/employer-portal/company/setup"
+                  className="absolute bottom-0 right-0 p-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition"
+                >
                   <Camera className="w-4 h-4" />
-                </button>
+                </Link>
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
                   <h1 className="text-2xl font-bold text-gray-900">{companyData.name}</h1>
-                  <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full flex items-center gap-1">
-                    <CheckCircle className="w-4 h-4" />
-                    Verified
-                  </span>
+                  {companyData.dba && (
+                    <span className="text-gray-500">DBA: {companyData.dba}</span>
+                  )}
+                  {companyData.verified ? (
+                    <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full flex items-center gap-1">
+                      <CheckCircle className="w-4 h-4" />
+                      Verified
+                    </span>
+                  ) : (
+                    <span className="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm font-medium rounded-full flex items-center gap-1">
+                      <AlertCircle className="w-4 h-4" />
+                      Pending Verification
+                    </span>
+                  )}
                 </div>
                 <div className="flex flex-wrap items-center gap-4 text-gray-600">
                   <span className="flex items-center gap-1">
@@ -84,10 +167,12 @@ export default function CompanyProfilePage() {
                     <Users className="w-4 h-4" />
                     {companyData.size}
                   </span>
-                  <span className="flex items-center gap-1">
-                    <MapPin className="w-4 h-4" />
-                    Indianapolis, IN
-                  </span>
+                  {employer.city && employer.state && (
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-4 h-4" />
+                      {employer.city}, {employer.state}
+                    </span>
+                  )}
                 </div>
               </div>
               <Link
@@ -114,38 +199,40 @@ export default function CompanyProfilePage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-white rounded-xl shadow-sm p-6 text-center">
                 <Briefcase className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-                <p className="text-2xl font-bold text-gray-900">{companyData.stats.activeJobs}</p>
+                <p className="text-2xl font-bold text-gray-900">{stats.activeJobs}</p>
                 <p className="text-sm text-gray-600">Active Jobs</p>
               </div>
               <div className="bg-white rounded-xl shadow-sm p-6 text-center">
                 <Users className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                <p className="text-2xl font-bold text-gray-900">{companyData.stats.totalHires}</p>
+                <p className="text-2xl font-bold text-gray-900">{stats.totalHires}</p>
                 <p className="text-sm text-gray-600">Total Hires</p>
               </div>
               <div className="bg-white rounded-xl shadow-sm p-6 text-center">
                 <Award className="w-8 h-8 text-green-600 mx-auto mb-2" />
-                <p className="text-2xl font-bold text-gray-900">{companyData.stats.wotcCredits}</p>
+                <p className="text-2xl font-bold text-gray-900">{stats.wotcCredits}</p>
                 <p className="text-sm text-gray-600">WOTC Credits</p>
               </div>
               <div className="bg-white rounded-xl shadow-sm p-6 text-center">
                 <CheckCircle className="w-8 h-8 text-orange-600 mx-auto mb-2" />
-                <p className="text-2xl font-bold text-gray-900">{companyData.stats.avgTimeToHire}</p>
+                <p className="text-2xl font-bold text-gray-900">{stats.avgTimeToHire}</p>
                 <p className="text-sm text-gray-600">Avg. Time to Hire</p>
               </div>
             </div>
 
             {/* Benefits */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-bold text-gray-900 mb-4">Benefits & Perks</h2>
-              <div className="grid md:grid-cols-3 gap-4">
-                {companyData.benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
-                    <span className="text-gray-700">{benefit}</span>
-                  </div>
-                ))}
+            {companyData.benefits.length > 0 && (
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <h2 className="text-lg font-bold text-gray-900 mb-4">Benefits &amp; Perks</h2>
+                <div className="grid md:grid-cols-3 gap-4">
+                  {companyData.benefits.map((benefit: string, index: number) => (
+                    <div key={index} className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <span className="text-gray-700">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -154,22 +241,36 @@ export default function CompanyProfilePage() {
             <div className="bg-white rounded-xl shadow-sm p-6">
               <h3 className="font-bold text-gray-900 mb-4">Contact Information</h3>
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Globe className="w-5 h-5 text-gray-400" />
-                  <a href="#" className="text-purple-600 hover:underline">{companyData.website}</a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-gray-400" />
-                  <span className="text-gray-700">{companyData.phone}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-gray-400" />
-                  <span className="text-gray-700">{companyData.email}</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-gray-400 mt-0.5" />
-                  <span className="text-gray-700">{companyData.address}</span>
-                </div>
+                {companyData.website && (
+                  <div className="flex items-center gap-3">
+                    <Globe className="w-5 h-5 text-gray-400" />
+                    <a href={`https://${companyData.website}`} target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:underline">
+                      {companyData.website}
+                    </a>
+                  </div>
+                )}
+                {companyData.phone && (
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-5 h-5 text-gray-400" />
+                    <a href={`tel:${companyData.phone}`} className="text-gray-700 hover:text-purple-600">
+                      {companyData.phone}
+                    </a>
+                  </div>
+                )}
+                {companyData.email && (
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-5 h-5 text-gray-400" />
+                    <a href={`mailto:${companyData.email}`} className="text-gray-700 hover:text-purple-600">
+                      {companyData.email}
+                    </a>
+                  </div>
+                )}
+                {companyData.address !== 'Not specified' && (
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-gray-400 mt-0.5" />
+                    <span className="text-gray-700">{companyData.address}</span>
+                  </div>
+                )}
               </div>
             </div>
 

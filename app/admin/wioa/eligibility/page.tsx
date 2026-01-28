@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { CheckCircle, XCircle, Clock, Search, Filter, ArrowLeft, User, FileCheck } from 'lucide-react';
+import { CheckCircle, XCircle, Clock, Search, ArrowLeft, User, FileCheck, Plus } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'WIOA Eligibility | Admin',
@@ -9,17 +12,25 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Applications will be fetched from database - empty until real data exists
-const applications: any[] = [];
+export default async function WIOAEligibilityPage() {
+  const supabase = await createClient();
 
-const stats = [
-  { label: 'Pending Review', value: 0, color: 'yellow' },
-  { label: 'Approved', value: 0, color: 'green' },
-  { label: 'Denied', value: 0, color: 'red' },
-  { label: 'Incomplete', value: 0, color: 'gray' },
-];
+  // Fetch WIOA applications
+  const { data: applications } = await supabase
+    .from('wioa_applications')
+    .select('*, profiles(first_name, last_name, email)')
+    .order('created_at', { ascending: false })
+    .limit(50);
 
-export default function WIOAEligibilityPage() {
+  const allApps = applications || [];
+
+  // Calculate stats
+  const stats = [
+    { label: 'Pending Review', value: allApps.filter(a => a.status === 'pending').length, color: 'yellow' },
+    { label: 'Approved', value: allApps.filter(a => a.status === 'approved').length, color: 'green' },
+    { label: 'Denied', value: allApps.filter(a => a.status === 'denied').length, color: 'red' },
+    { label: 'Incomplete', value: allApps.filter(a => a.status === 'incomplete').length, color: 'gray' },
+  ];
   return (
     <div className="min-h-screen bg-gray-50 p-8">
             <div className="max-w-7xl mx-auto px-4 py-4">
@@ -72,67 +83,90 @@ export default function WIOAEligibilityPage() {
             </select>
           </div>
 
-          <table className="w-full">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Applicant</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Submitted</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Documents</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              {applications.map((app) => (
-                <tr key={app.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                        <User className="w-5 h-5 text-purple-600" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">{app.name}</p>
-                        <p className="text-sm text-gray-500">{app.email}</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
-                      {app.category}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 text-gray-600">{app.submitted}</td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-1">
-                      <FileCheck className="w-4 h-4 text-gray-400" />
-                      <span className="text-gray-600">{app.documents}</span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium ${
-                      app.status === 'approved' ? 'bg-green-100 text-green-700' :
-                      app.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
-                      'bg-red-100 text-red-700'
-                    }`}>
-                      {app.status === 'approved' && <CheckCircle className="w-4 h-4" />}
-                      {app.status === 'pending' && <Clock className="w-4 h-4" />}
-                      {app.status === 'denied' && <XCircle className="w-4 h-4" />}
-                      {app.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <Link
-                      href={`/admin/wioa/verify?id=${app.id}`}
-                      className="px-4 py-2 bg-purple-600 text-white text-sm rounded-lg hover:bg-purple-700 transition"
-                    >
-                      Review
-                    </Link>
-                  </td>
+          {allApps.length === 0 ? (
+            <div className="p-12 text-center">
+              <FileCheck className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No Eligibility Applications</h3>
+              <p className="text-gray-600 mb-6">WIOA eligibility applications will appear here once submitted.</p>
+              <Link
+                href="/wioa-eligibility"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
+              >
+                <Plus className="w-4 h-4" />
+                Start New Application
+              </Link>
+            </div>
+          ) : (
+            <table className="w-full">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Applicant</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Submitted</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Documents</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y">
+                {allApps.map((app) => {
+                  const profile = app.profiles as { first_name: string; last_name: string; email: string } | null;
+                  return (
+                    <tr key={app.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                            <User className="w-5 h-5 text-purple-600" />
+                          </div>
+                          <div>
+                            <p className="font-medium text-gray-900">
+                              {profile?.first_name || 'Unknown'} {profile?.last_name || ''}
+                            </p>
+                            <p className="text-sm text-gray-500">{profile?.email || ''}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                          {app.eligibility_category || 'Adult'}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-gray-600">
+                        {new Date(app.created_at).toLocaleDateString()}
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-1">
+                          <FileCheck className="w-4 h-4 text-gray-400" />
+                          <span className="text-gray-600">{app.documents_count || 0}</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium ${
+                          app.status === 'approved' ? 'bg-green-100 text-green-700' :
+                          app.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
+                          app.status === 'denied' ? 'bg-red-100 text-red-700' :
+                          'bg-gray-100 text-gray-700'
+                        }`}>
+                          {app.status === 'approved' && <CheckCircle className="w-4 h-4" />}
+                          {app.status === 'pending' && <Clock className="w-4 h-4" />}
+                          {app.status === 'denied' && <XCircle className="w-4 h-4" />}
+                          {app.status}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <Link
+                          href={`/admin/wioa/verify?id=${app.id}`}
+                          className="px-4 py-2 bg-purple-600 text-white text-sm rounded-lg hover:bg-purple-700 transition"
+                        >
+                          Review
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </div>

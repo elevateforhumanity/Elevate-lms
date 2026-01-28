@@ -1,22 +1,14 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, User, Building, FileText, Calendar } from 'lucide-react';
+import { createWOTCApplication } from '../actions';
 
 export const metadata: Metadata = {
-  title: 'New WOTC Application | Admin | Elevate For Humanity',
+  title: 'New WOTC Application | Admin',
   description: 'Submit a new Work Opportunity Tax Credit application.',
 };
 
-export default async function NewWOTCPage() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login?redirect=/admin/wotc/new');
-  }
-
+export default function NewWOTCPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-3xl mx-auto px-4 py-8">
@@ -43,7 +35,7 @@ export default async function NewWOTCPage() {
         </div>
 
         {/* Form */}
-        <form className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <form action={createWOTCApplication} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           {/* Employee Information */}
           <div className="mb-8">
             <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
@@ -273,7 +265,9 @@ export default async function NewWOTCPage() {
               Cancel
             </Link>
             <button
-              type="button"
+              type="submit"
+              name="saveAsDraft"
+              value="true"
               className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
             >
               Save as Draft

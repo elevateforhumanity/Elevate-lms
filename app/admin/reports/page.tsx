@@ -1,195 +1,174 @@
 import { Metadata } from 'next';
-export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { BarChart3, Users, GraduationCap, DollarSign, TrendingUp, Download, FileText, Eye } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/admin/reports',
-  },
-  title: 'Admin Reports | Elevate For Humanity',
+  title: 'Reports | Admin',
   description: 'Generate and view system reports',
 };
 
 export default async function ReportsPage() {
   const supabase = await createClient();
 
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // Fetch data for reports
+  const [
+    { count: totalUsers },
+    { count: totalCourses },
+    { count: totalLeads },
+    { count: totalEnrollments },
+  ] = await Promise.all([
+    supabase.from('profiles').select('*', { count: 'exact', head: true }),
+    supabase.from('courses').select('*', { count: 'exact', head: true }),
+    supabase.from('leads').select('*', { count: 'exact', head: true }),
+    supabase.from('enrollments').select('*', { count: 'exact', head: true }),
+  ]);
 
-  if (!user) {
-    redirect('/login');
-  }
+  // Get recent activity
+  const { data: recentLeads } = await supabase
+    .from('leads')
+    .select('created_at')
+    .gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString());
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single();
+  const { data: recentEnrollments } = await supabase
+    .from('enrollments')
+    .select('created_at')
+    .gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString());
 
-  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
-    redirect('/unauthorized');
-  }
+  const stats = [
+    { label: 'Total Users', value: totalUsers || 0, icon: Users, color: 'text-blue-600', bgColor: 'bg-blue-100' },
+    { label: 'Active Courses', value: totalCourses || 0, icon: GraduationCap, color: 'text-green-600', bgColor: 'bg-green-100' },
+    { label: 'Total Leads', value: totalLeads || 0, icon: TrendingUp, color: 'text-purple-600', bgColor: 'bg-purple-100' },
+    { label: 'Enrollments', value: totalEnrollments || 0, icon: FileText, color: 'text-orange-600', bgColor: 'bg-orange-100' },
+  ];
 
-  // Fetch relevant data
-  const { data: items, count: totalItems } = await supabase
-    .from('reports')
-    .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false });
+  const reportTypes = [
+    {
+      title: 'Enrollment Report',
+      description: 'Student enrollment trends, completion rates, and program performance',
+      icon: GraduationCap,
+      color: 'bg-blue-500',
+      href: '/admin/reports/enrollment',
+      metrics: [`${recentEnrollments?.length || 0} new this month`],
+    },
+    {
+      title: 'Lead Generation Report',
+      description: 'Lead sources, conversion rates, and pipeline analysis',
+      icon: TrendingUp,
+      color: 'bg-green-500',
+      href: '/admin/reports/leads',
+      metrics: [`${recentLeads?.length || 0} new leads this month`],
+    },
+    {
+      title: 'Financial Report',
+      description: 'WOTC credits, grants awarded, and funding overview',
+      icon: DollarSign,
+      color: 'bg-purple-500',
+      href: '/admin/reports/financial',
+      metrics: ['WOTC tracking', 'Grant utilization'],
+    },
+    {
+      title: 'User Activity Report',
+      description: 'User registrations, roles, and platform engagement',
+      icon: Users,
+      color: 'bg-orange-500',
+      href: '/admin/reports/users',
+      metrics: [`${totalUsers || 0} total users`],
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Breadcrumbs */}
-      <div className="bg-slate-50 border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Reports' }]} />
+    <div className="min-h-screen bg-gray-50 p-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">Reports & Analytics</h1>
+            <p className="text-gray-600">Generate reports and view platform analytics</p>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-4 gap-6 mb-8">
+          {stats.map((stat, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-sm p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className={`p-3 rounded-lg ${stat.bgColor}`}>
+                  <stat.icon className={`w-6 h-6 ${stat.color}`} />
+                </div>
+              </div>
+              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+              <p className="text-sm text-gray-600">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          {reportTypes.map((report, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition">
+              <div className="flex items-start gap-4">
+                <div className={`p-3 rounded-lg ${report.color}`}>
+                  <report.icon className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-1">{report.title}</h3>
+                  <p className="text-sm text-gray-600 mb-3">{report.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {report.metrics.map((metric, i) => (
+                      <span key={i} className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
+                        {metric}
+                      </span>
+                    ))}
+                  </div>
+                  <Link
+                    href={report.href}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 text-sm bg-purple-600 text-white rounded hover:bg-purple-700 transition"
+                  >
+                    <Eye className="w-3 h-3" />
+                    View Report
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-white rounded-xl shadow-sm p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-6">Quick Stats Overview</h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <BarChart3 className="w-5 h-5 text-blue-600" />
+                <span className="font-medium text-gray-900">Lead Conversion</span>
+              </div>
+              <p className="text-2xl font-bold text-gray-900">
+                {totalLeads && totalEnrollments ? ((totalEnrollments / totalLeads) * 100).toFixed(1) : 0}%
+              </p>
+              <p className="text-sm text-gray-600">Leads to enrollments</p>
+            </div>
+            
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <TrendingUp className="w-5 h-5 text-green-600" />
+                <span className="font-medium text-gray-900">Monthly Growth</span>
+              </div>
+              <p className="text-2xl font-bold text-gray-900">{recentLeads?.length || 0}</p>
+              <p className="text-sm text-gray-600">New leads this month</p>
+            </div>
+            
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <GraduationCap className="w-5 h-5 text-purple-600" />
+                <span className="font-medium text-gray-900">Active Programs</span>
+              </div>
+              <p className="text-2xl font-bold text-gray-900">{totalCourses || 0}</p>
+              <p className="text-sm text-gray-600">Available courses</p>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/success-new/success-13.jpg"
-          alt="Reports"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Reports
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access your dashboard and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/admin/dashboard"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Back to Dashboard
-            </Link>
-            <Link
-              href="/admin/reports/samples"
-              className="bg-brand-blue-600 hover:bg-brand-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors border-2 border-white"
-            >
-              View Sample Reports
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Total Items
-                </h3>
-                <p className="text-3xl font-bold text-brand-blue-600">
-                  {totalItems || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Active
-                </h3>
-                <p className="text-3xl font-bold text-brand-green-600">
-                  {totalItems || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Recent
-                </h3>
-                <p className="text-3xl font-bold text-purple-600">
-                  {items?.filter((i) => {
-                    const created = new Date(i.created_at);
-                    const weekAgo = new Date();
-                    weekAgo.setDate(weekAgo.getDate() - 7);
-                    return created > weekAgo;
-                  }).length || 0}
-                </p>
-              </div>
-            </div>
-
-            {/* Data Display */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-2xl font-bold mb-4">Items</h2>
-              {items && items.length > 0 ? (
-                <div className="space-y-4">
-                  {items.map((item: any) => (
-                    <div
-                      key={item.id}
-                      className="p-4 border rounded-lg hover:bg-gray-50"
-                    >
-                      <p className="font-semibold">
-                        {item.title || item.name || item.id}
-                      </p>
-                      <p className="text-sm text-black">
-                        {new Date(item.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-black text-center py-8">No items found</p>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

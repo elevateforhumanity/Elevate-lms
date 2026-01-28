@@ -5,8 +5,13 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = { title: 'Help Articles | Elevate LMS' };
 
-export default function HelpCategoryPage({ params }: { params: { category: string } }) {
-  const categoryName = params.category.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+interface Props {
+  params: Promise<{ category: string }>;
+}
+
+export default async function HelpCategoryPage({ params }: Props) {
+  const { category } = await params;
+  const categoryName = category.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
   
   const articles = [
     { id: '1', title: 'How to create your account', readTime: '3 min', updated: 'Jan 15, 2026' },

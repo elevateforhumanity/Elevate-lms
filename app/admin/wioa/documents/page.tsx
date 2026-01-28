@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { FileText, Upload, Download, Search, Filter, Folder, File, Eye, Trash2, ArrowLeft } from 'lucide-react';
+import { Upload, Download, Search, Filter, Folder, File, Eye, Trash2, ArrowLeft, Plus } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'WIOA Documents | Admin',
@@ -9,18 +12,26 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Documents will be fetched from database - empty until real data exists
-const documents: any[] = [];
+export default async function WIOADocumentsPage() {
+  const supabase = await createClient();
 
-const folders = [
-  { name: 'Eligibility Forms', count: 156 },
-  { name: 'Income Verification', count: 142 },
-  { name: 'Training Agreements', count: 89 },
-  { name: 'Outcome Documentation', count: 67 },
-  { name: 'Support Services', count: 45 },
-];
+  // Fetch WIOA documents
+  const { data: documents } = await supabase
+    .from('wioa_documents')
+    .select('*, profiles(first_name, last_name)')
+    .order('created_at', { ascending: false })
+    .limit(50);
 
-export default function WIOADocumentsPage() {
+  const allDocs = documents || [];
+
+  // Calculate folder counts
+  const folders = [
+    { name: 'Eligibility Forms', count: allDocs.filter(d => d.document_type === 'eligibility').length },
+    { name: 'Income Verification', count: allDocs.filter(d => d.document_type === 'income').length },
+    { name: 'Training Agreements', count: allDocs.filter(d => d.document_type === 'training').length },
+    { name: 'Outcome Documentation', count: allDocs.filter(d => d.document_type === 'outcome').length },
+    { name: 'Support Services', count: allDocs.filter(d => d.document_type === 'support').length },
+  ];
   return (
     <div className="min-h-screen bg-gray-50 p-8">
             <div className="max-w-7xl mx-auto px-4 py-4">
@@ -78,38 +89,57 @@ export default function WIOADocumentsPage() {
                 </button>
               </div>
 
-              <div className="divide-y">
-                {documents.map((doc) => (
-                  <div key={doc.id} className="p-4 flex items-center gap-4 hover:bg-gray-50">
-                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                      <File className="w-5 h-5 text-gray-500" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-gray-900 truncate">{doc.name}</p>
-                      <p className="text-sm text-gray-500">{doc.participant} - {doc.type} - {doc.size}</p>
-                    </div>
-                    <div className="text-sm text-gray-500">{doc.date}</div>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      doc.status === 'verified' ? 'bg-green-100 text-green-700' :
-                      doc.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
-                      'bg-red-100 text-red-700'
-                    }`}>
-                      {doc.status}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <button className="p-2 hover:bg-gray-100 rounded-lg" title="View">
-                        <Eye className="w-4 h-4 text-gray-500" />
-                      </button>
-                      <button className="p-2 hover:bg-gray-100 rounded-lg" title="Download">
-                        <Download className="w-4 h-4 text-gray-500" />
-                      </button>
-                      <button className="p-2 hover:bg-gray-100 rounded-lg" title="Delete">
-                        <Trash2 className="w-4 h-4 text-red-500" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              {allDocs.length === 0 ? (
+                <div className="p-12 text-center">
+                  <File className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">No Documents</h3>
+                  <p className="text-gray-600 mb-6">Upload WIOA participant documents to get started.</p>
+                  <button className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                    <Plus className="w-4 h-4" />
+                    Upload Document
+                  </button>
+                </div>
+              ) : (
+                <div className="divide-y">
+                  {allDocs.map((doc) => {
+                    const profile = doc.profiles as { first_name: string; last_name: string } | null;
+                    return (
+                      <div key={doc.id} className="p-4 flex items-center gap-4 hover:bg-gray-50">
+                        <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                          <File className="w-5 h-5 text-gray-500" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium text-gray-900 truncate">{doc.file_name || doc.title}</p>
+                          <p className="text-sm text-gray-500">
+                            {profile ? `${profile.first_name} ${profile.last_name}` : 'Unknown'} - {doc.document_type}
+                          </p>
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {new Date(doc.created_at).toLocaleDateString()}
+                        </div>
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                          doc.status === 'verified' ? 'bg-green-100 text-green-700' :
+                          doc.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
+                          'bg-red-100 text-red-700'
+                        }`}>
+                          {doc.status || 'pending'}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <button className="p-2 hover:bg-gray-100 rounded-lg" title="View">
+                            <Eye className="w-4 h-4 text-gray-500" />
+                          </button>
+                          <button className="p-2 hover:bg-gray-100 rounded-lg" title="Download">
+                            <Download className="w-4 h-4 text-gray-500" />
+                          </button>
+                          <button className="p-2 hover:bg-gray-100 rounded-lg" title="Delete">
+                            <Trash2 className="w-4 h-4 text-red-500" />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>
