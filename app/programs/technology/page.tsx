@@ -117,28 +117,35 @@ export default function TechnologyProgramsPage() {
       <PathwayDisclosure programName="Technology" programSlug="technology" />
 
       {/* Programs Grid */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-16 lg:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-purple-600 font-semibold text-sm uppercase tracking-widest mb-3">Technology Programs</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Choose Your Tech Path</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">All programs are free for eligible participants through WIOA funding.</p>
+          </div>
+          
           {loading ? (
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-gray-100 rounded-xl h-80 animate-pulse" />
+                <div key={i} className="bg-white rounded-2xl h-96 animate-pulse shadow-lg" />
               ))}
             </div>
           ) : (
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {programs.map((program) => (
                 <Link
                   key={program.id || program.slug}
                   href={`/programs/${program.slug}`}
-                  className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-100"
+                  className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-100"
                 >
-                  <div 
-                    className="relative h-48 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${programImages[program.slug] || programImages['default']})` }}
-                    role="img"
-                    aria-label={program.name}
-                  >
+                  <div className="aspect-[4/3] relative overflow-hidden">
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
+                      style={{ backgroundImage: `url(${programImages[program.slug] || programImages['default']})` }}
+                      role="img"
+                      aria-label={program.name}
+                    />
                     <div className="absolute top-3 right-3 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                       {program.duration_weeks ? `${program.duration_weeks} Weeks` : 'Flexible'}
                     </div>
@@ -148,13 +155,13 @@ export default function TechnologyProgramsPage() {
                       </div>
                     )}
                   </div>
-                  <div className="p-6">
-                    <h2 className="text-xl font-bold text-gray-900 mb-2">
+                  <div className="p-5">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition-colors">
                       {program.name}
-                    </h2>
-                    <p className="text-gray-600 mb-4 line-clamp-2">{program.description}</p>
-                    <span className="text-purple-600 font-semibold group-hover:underline">
-                      Learn More →
+                    </h3>
+                    <p className="text-slate-600 text-sm mb-3 line-clamp-2">{program.description}</p>
+                    <span className="text-purple-600 font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                      Learn More <span>→</span>
                     </span>
                   </div>
                 </Link>
