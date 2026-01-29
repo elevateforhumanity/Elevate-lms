@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 import { programs } from '@/app/data/programs';
 import { Briefcase, Clock, DollarSign, Award } from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -52,6 +53,12 @@ export default async function ApprenticeshipProgramsPage() {
 
   return (
     <div className="bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Apprenticeships' },
+        ]}
+      />
       {/* Hero */}
       <section className="bg-white text-white px-6 sm:px-10 lg:px-12 py-20 lg:py-28">
         <div className="mx-auto max-w-5xl text-center">
