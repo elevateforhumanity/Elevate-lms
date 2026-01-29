@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Shield, Users, Clock, Award, Building2 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Become a Host Barbershop | Barber Apprenticeship | Elevate for Humanity',
@@ -14,6 +15,13 @@ export const metadata: Metadata = {
 export default function HostShopsPage() {
   return (
     <main className="bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
+          { label: 'Host Shops' },
+        ]}
+      />
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[450px] max-h-[600px]">
         <Image
