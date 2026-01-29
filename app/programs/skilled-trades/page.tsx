@@ -35,7 +35,7 @@ const programImages: Record<string, string> = {
   'forklift-operator': '/images/trades/hero-program-hvac.jpg',
   'manufacturing-technician': '/images/trades/hero-program-hvac.jpg',
   'automotive-technician': '/images/trades/hero-program-hvac.jpg',
-  'diesel-mechanic': '/images/trades/hero-program-cdl.jpg',
+
   'building-maintenance-wrg': '/images/trades/hero-program-hvac.jpg',
   'default': '/images/trades/hero-program-hvac.jpg',
 };
