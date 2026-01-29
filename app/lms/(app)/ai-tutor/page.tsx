@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Sparkles, BookOpen, FileText, Lightbulb, Loader2 } from 'lucide-react';
@@ -99,6 +100,9 @@ export default function AITutorPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "LMS", href: "/lms/dashboard" }, { label: "Ai Tutor" }]} />
+      </div>
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-6">
         <div className="max-w-4xl mx-auto px-4">

@@ -1,4 +1,5 @@
 // app/admin/tax-filing/page.tsx
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 import { supabaseServer } from '@/lib/supabase-server';
@@ -22,6 +23,9 @@ export default async function TaxFilingAdminPage() {
   if (!supabase) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Tax Filing" }]} />
+        </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
           <p className="text-gray-600">Please try again later.</p>

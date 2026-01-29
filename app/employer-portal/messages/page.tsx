@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Image from 'next/image';
 import { MessageSquare, Search, Star, Send, Paperclip, MoreVertical, Check, CheckCheck } from 'lucide-react';
 
@@ -85,7 +86,8 @@ const messages = [
 export default function EmployerMessagesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
+            <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Messages" }]} />
+<div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div>

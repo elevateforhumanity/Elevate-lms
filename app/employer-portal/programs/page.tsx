@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Award, DollarSign, Users, Clock, ArrowRight, CheckCircle, Briefcase, GraduationCap } from 'lucide-react';
@@ -51,7 +52,8 @@ const programs = [
 export default function EmployerProgramsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="relative h-64 bg-gradient-to-r from-purple-900 to-indigo-900">
+            <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Programs" }]} />
+<div className="relative h-64 bg-gradient-to-r from-purple-900 to-indigo-900">
         <Image
           src="/images/community/event-1.jpg"
           alt="Employer programs"

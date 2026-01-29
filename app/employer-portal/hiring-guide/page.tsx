@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BookOpen, CheckCircle, ArrowRight, FileText, Users, DollarSign, Clock, Award, Download } from 'lucide-react';
@@ -64,7 +65,8 @@ const resources = [
 export default function HiringGuidePage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="relative h-80 bg-gradient-to-r from-purple-900 to-indigo-900">
+            <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Hiring Guide" }]} />
+<div className="relative h-80 bg-gradient-to-r from-purple-900 to-indigo-900">
         <Image
           src="/images/community/event-5.jpg"
           alt="Hiring guide"

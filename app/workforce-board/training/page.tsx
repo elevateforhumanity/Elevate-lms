@@ -49,7 +49,6 @@ export default async function TrainingPage() {
           className="object-cover"
           quality={85}
         />
-        <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Training</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Building, MapPin, Users, Globe, Phone, Mail, Edit, Camera, Award, Briefcase, CheckCircle } from 'lucide-react';
@@ -33,7 +34,8 @@ const companyData = {
 export default function CompanyProfilePage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Cover Image */}
+            <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Company" }]} />
+{/* Cover Image */}
       <div className="relative h-64">
         <Image
           src={companyData.cover}

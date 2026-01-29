@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -167,7 +168,8 @@ export default function NewOfficePage() {
 
   return (
     <div className="container mx-auto py-8 max-w-3xl space-y-6">
-      {/* Header */}
+            <Breadcrumbs items={[{ label: "Franchise", href: "/franchise" }, { label: "Admin", href: "/franchise/admin" }, { label: "Offices" }]} />
+{/* Header */}
       <div className="flex items-center gap-4">
         <Link href="/franchise/admin/offices">
           <Button variant="ghost" size="icon">

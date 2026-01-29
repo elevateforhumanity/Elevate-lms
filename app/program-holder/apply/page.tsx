@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

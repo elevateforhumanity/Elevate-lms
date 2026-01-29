@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -271,7 +272,8 @@ export default function DataImportPage() {
 
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="mb-8">
+        <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Data Import' }]} />
+        <div className="mb-8 mt-4">
           <h1 className="text-3xl font-black text-gray-900">Data Import</h1>
           <p className="text-gray-600 mt-1">
             Import students, courses, enrollments, and employers from CSV files

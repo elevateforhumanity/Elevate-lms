@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Briefcase, MapPin, DollarSign, Clock, Users, CheckCircle, ArrowLeft, Save, Eye } from 'lucide-react';
 
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
 export default function NewJobPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
+            <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Jobs" }]} />
+<div className="bg-white border-b">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <Link href="/employer-portal/jobs" className="flex items-center gap-2 text-gray-600 hover:text-purple-600 mb-4">
             <ArrowLeft className="w-4 h-4" />

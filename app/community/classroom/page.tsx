@@ -59,7 +59,6 @@ export default async function ClassroomPage() {
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-green-800 to-emerald-900 text-white py-20">
-        <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4">

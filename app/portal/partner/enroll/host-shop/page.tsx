@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -91,7 +92,8 @@ export default function HostShopEnrollmentPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-2xl mx-auto">
+            <Breadcrumbs items={[{ label: "Portal", href: "/portal" }, { label: "Partner" }]} />
+<div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <Link

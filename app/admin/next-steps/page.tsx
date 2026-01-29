@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import React from 'react';
 
@@ -80,7 +81,8 @@ export default function AdminNextStepsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Next Steps' }]} />
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mt-4">
         <div>
           <h1 className="text-3xl font-bold">
             WorkOne / ICC Progress Dashboard

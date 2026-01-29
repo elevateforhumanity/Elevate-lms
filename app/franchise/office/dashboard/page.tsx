@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -186,6 +187,7 @@ export default function OfficeDashboard() {
 
   return (
     <div className="container mx-auto py-8 space-y-8">
+      <Breadcrumbs items={[{ label: 'Franchise', href: '/franchise' }, { label: 'Office Dashboard' }]} />
       {/* Header */}
       <div className="flex justify-between items-start">
         <div>

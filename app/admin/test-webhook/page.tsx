@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import React from 'react';
 
@@ -38,6 +39,9 @@ export default function TestWebhookPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 p-8">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Test Webhook" }]} />
+      </div>
       <div className="max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold mb-2">Test Webhook (No Payment)</h1>
         <p className="text-black mb-8">

@@ -31,7 +31,6 @@ export default function HostShopsPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
         <div className="absolute inset-0 flex items-end">
           <div className="max-w-5xl mx-auto px-6 pb-12 w-full">
             <div className="inline-block bg-amber-500 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">

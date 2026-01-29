@@ -1,12 +1,11 @@
-
 "use client";
 
 import React from 'react';
-
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Split from 'react-split';
 import FileTree from '@/components/editor/FileTree';
 import CodeEditor from '@/components/editor/CodeEditor';
@@ -71,6 +70,9 @@ const mockFileContents: Record<string, string> = {
   }, [router]);
   return (
     <div>
+      <div className="bg-white px-4 py-2">
+        <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Editor' }]} />
+      </div>
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white overflow-hidden">
         <Image

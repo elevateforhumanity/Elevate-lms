@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import React from 'react';
 
@@ -264,6 +265,9 @@ export default function DevStudioPage() {
 
   return (
     <div className="h-screen flex flex-col bg-slate-900">
+      <div className="bg-slate-800 px-4 py-2">
+        <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Dev Studio' }]} />
+      </div>
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white overflow-hidden">
         <Image

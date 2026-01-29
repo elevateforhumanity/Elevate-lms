@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
@@ -97,7 +98,8 @@ export default async function ActivityLogPage() {
       {/* Header */}
       <section className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex items-center justify-between">
+          <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Activity' }]} />
+          <div className="flex items-center justify-between mt-4">
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <Activity className="w-8 h-8 text-indigo-600" />

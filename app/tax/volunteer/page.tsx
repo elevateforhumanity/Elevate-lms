@@ -13,7 +13,6 @@ export default function VolunteerPage() {
       {/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <Image src="/images/business/tax-prep-certification.jpg" alt="Volunteer" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} loading="lazy" />
-        <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="max-w-4xl mx-auto px-6 text-center text-white">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">

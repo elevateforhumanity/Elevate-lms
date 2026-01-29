@@ -54,7 +54,6 @@ export default function HomePage() {
       <section className="relative w-full h-[60vh] sm:h-[70vh] lg:h-[80vh]">
         <div className="absolute inset-0">
           <HomeHeroVideo />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60"></div>
         </div>
         <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8">
           <span className="inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4 animate-fade-in">

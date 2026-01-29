@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { Settings, User, Bell, Shield, Building } from 'lucide-react';
@@ -62,7 +63,8 @@ export default async function EmployerSettingsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
+            <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Settings" }]} />
+<div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center gap-3">
             <Settings className="w-8 h-8 text-gray-600" />

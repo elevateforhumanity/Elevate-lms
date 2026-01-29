@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import {
   CheckCircle,
   AlertTriangle,
@@ -225,7 +226,8 @@ export default async function AccreditationPage() {
       {/* Header */}
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
+          <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Accreditation' }]} />
+          <div className="flex items-center justify-between mt-4">
             <div>
               <h1 className="text-3xl font-bold text-black">
                 Accreditation Readiness
