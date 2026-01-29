@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   alternates: {
@@ -55,6 +56,14 @@ export default async function MessagesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Admin', href: '/programs/admin' },
+          { label: 'Portal', href: '/programs/admin/portal' },
+          { label: 'Messages' },
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
