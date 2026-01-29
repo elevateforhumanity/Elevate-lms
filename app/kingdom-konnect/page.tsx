@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Heart, Users, Globe, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Kingdom Konnect | Elevate for Humanity',
@@ -11,6 +12,11 @@ export const metadata: Metadata = {
 export default function KingdomKonnectPage() {
   return (
     <div className="bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Kingdom Konnect' },
+        ]}
+      />
       <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image src="/images/hero/hero-community.jpg" alt="Kingdom Konnect" fill className="object-cover" priority sizes="100vw" />
         

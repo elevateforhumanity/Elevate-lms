@@ -41,6 +41,7 @@ import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Clock, Users, Award, BookOpen, Play, CheckCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default async function CourseDetailPage({
   params,
@@ -86,6 +87,12 @@ export default async function CourseDetailPage({
 
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Courses', href: '/courses' },
+          { label: course.title },
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative h-[400px] w-full overflow-hidden">
         {course.cover_image_url ? (
