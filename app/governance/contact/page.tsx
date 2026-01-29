@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Mail, Building2, Shield, Scale, FileText } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Governance Contact | Elevate for Humanity',
@@ -54,16 +55,15 @@ export default function GovernanceContactPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Governance', href: '/governance' },
+          { label: 'Contact' },
+        ]}
+      />
       {/* Header */}
       <div className="bg-slate-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">
-          <Link 
-            href="/governance" 
-            className="inline-flex items-center text-slate-400 hover:text-white mb-6 text-sm"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Governance
-          </Link>
           <div className="flex items-center gap-3 mb-4">
             <Mail className="w-8 h-8 text-blue-400" />
           </div>

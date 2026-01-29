@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function EnterpriseReviewPage() {
   const [formData, setFormData] = useState({
@@ -63,11 +64,13 @@ export default function EnterpriseReviewPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 py-16 px-4">
+      <Breadcrumbs
+        items={[
+          { label: 'Licenses', href: '/licenses' },
+          { label: 'Enterprise Review' },
+        ]}
+      />
       <div className="max-w-2xl mx-auto">
-        <Link href="/licenses" className="text-gray-400 hover:text-white text-sm mb-8 inline-block">
-          ← Back to Platform Licensing
-        </Link>
-
         <h1 className="text-3xl font-bold text-white mb-4">
           Request Enterprise Review
         </h1>
