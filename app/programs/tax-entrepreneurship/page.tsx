@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,6 +39,12 @@ export default async function TaxEntrepreneurshipPage() {
     .single();
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Tax Entrepreneurship' },
+        ]}
+      />
       {/* Hero */}
       <section className="bg-white text-white py-20">
         <div className="mx-auto max-w-7xl px-6">

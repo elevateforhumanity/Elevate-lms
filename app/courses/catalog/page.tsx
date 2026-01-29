@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import React from 'react';
@@ -15,6 +13,7 @@ import {
   Award,
   DollarSign,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 // Partner course data from catalog
 const PARTNER_COURSES = {
@@ -398,6 +397,12 @@ export default function CoursesCatalogPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Courses', href: '/courses' },
+          { label: 'Catalog' },
+        ]}
+      />
       {/* Hero */}
       <section className="bg-white text-white py-16">
         <div className="max-w-7xl mx-auto px-4">

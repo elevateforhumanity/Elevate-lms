@@ -7,6 +7,7 @@ import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import { ArrowRight, Clock, DollarSign, Award, CheckCircle } from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -84,6 +85,12 @@ export default async function BeautyProgramsPage() {
 
   return (
     <div className="pb-20 md:pb-0">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Beauty' },
+        ]}
+      />
       <ModernLandingHero
         badge="DOL Registered Apprenticeships"
         headline="Beauty Industry Apprenticeships"

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Briefcase } from 'lucide-react';
 import { CompactHero } from '@/components/heroes/CompactHero';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -39,6 +40,12 @@ export default async function BusinessFinancialPage() {
     .eq('category', 'business_financial');
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Business & Financial' },
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">

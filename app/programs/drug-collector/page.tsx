@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Stethoscope, CheckCircle } from 'lucide-react';
 import { CompactHero } from '@/components/heroes/CompactHero';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -48,6 +49,12 @@ export default async function Page() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Drug Collector' },
+        ]}
+      />
       <CompactHero
         variant="default"
         badge={{
