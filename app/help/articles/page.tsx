@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FileText, Search, ChevronRight, Eye } from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
@@ -80,6 +81,13 @@ export default async function HelpArticlesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Help', href: '/help' }, { label: 'Articles' }]} />
+        </div>
+      </div>
+
       <div className="relative bg-blue-800 text-white py-16">
         <Image
           src="/images/misc/help-hero.jpg"

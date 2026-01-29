@@ -16,6 +16,7 @@ import {
   Search,
   Filter,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -251,6 +252,13 @@ export default async function TutorialsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Help', href: '/help' }, { label: 'Tutorials' }]} />
+        </div>
+      </div>
+
       {/* Hero Banner */}
       <section className="relative h-[300px] md:h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image
