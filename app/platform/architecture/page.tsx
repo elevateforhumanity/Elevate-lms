@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { generateMetadata } from '@/lib/seo/metadata';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Platform Architecture',
@@ -33,6 +34,12 @@ export default async function ArchitecturePage() {
     .eq('category', 'architecture');
   return (
     <div className="bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Platform', href: '/platform' },
+          { label: 'Architecture' },
+        ]}
+      />
       <ComplianceBar />
 
       <div className="max-w-6xl mx-auto px-6 py-16">

@@ -14,6 +14,7 @@ import {
   Eye,
   Shield,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -49,6 +50,11 @@ export default async function ParentPortalPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Parent Portal' },
+        ]}
+      />
       <section className="bg-gradient-to-br from-pink-600 to-purple-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
