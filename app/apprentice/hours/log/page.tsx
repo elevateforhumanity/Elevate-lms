@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Clock, Save, AlertCircle, CheckCircle, Building, Award } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function LogApprenticeHoursPage() {
   const router = useRouter();
@@ -104,17 +105,10 @@ export default function LogApprenticeHoursPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex items-center text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600">Home</Link>
-            <span className="mx-2">/</span>
-            <Link href="/apprentice" className="hover:text-blue-600">Apprentice Portal</Link>
-            <span className="mx-2">/</span>
-            <Link href="/apprentice/hours" className="hover:text-blue-600">Hours</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">Log Hours</span>
-          </nav>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apprentice', href: '/apprentice' }, { label: 'Hours', href: '/apprentice/hours' }, { label: 'Log Hours' }]} />
         </div>
       </div>
 

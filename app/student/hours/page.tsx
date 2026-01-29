@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { Clock, Plus, Calendar, TrendingUp } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Hours Log | Student Portal',
@@ -47,7 +48,15 @@ export default async function StudentHoursPage() {
     .reduce((sum, log: any) => sum + (log.hours || 0), 0);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Student', href: '/student' }, { label: 'Hours' }]} />
+        </div>
+      </div>
+
+      <div className="py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
           <div>
@@ -154,6 +163,7 @@ export default async function StudentHoursPage() {
             </Link>
           </div>
         )}
+      </div>
       </div>
     </div>
   );
