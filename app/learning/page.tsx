@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { BookOpen, FileText, NotebookPen, Compass, BookMarked, GraduationCap, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -34,6 +35,11 @@ export default async function LearningHubPage() {
     .order('category');
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Learning Hub' },
+        ]}
+      />
       {/* Hero */}
       <section className="bg-gradient-to-r from-green-600 to-blue-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">

@@ -13,6 +13,7 @@ import {
   Award,
   TrendingUp
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,6 +46,11 @@ export default async function StudentsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Students' },
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-600 to-purple-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
