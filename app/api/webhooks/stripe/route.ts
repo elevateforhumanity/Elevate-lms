@@ -1075,6 +1075,137 @@ export async function POST(request: NextRequest) {
       break;
     }
 
+    case 'charge.refunded': {
+      const charge = event.data.object as Stripe.Charge;
+      console.log('[webhook] Processing refund for charge:', charge.id);
+
+      try {
+        // Get payment intent to find metadata
+        const paymentIntentId = charge.payment_intent as string;
+        if (!paymentIntentId) {
+          console.log('[webhook] No payment intent on charge, skipping');
+          break;
+        }
+
+        const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+        const userId = paymentIntent.metadata?.user_id;
+        const productId = paymentIntent.metadata?.product_id;
+        const enrollmentId = paymentIntent.metadata?.enrollment_id;
+
+        if (!userId) {
+          console.log('[webhook] No user_id in payment intent metadata, checking customer');
+          // Try to find user by customer ID
+          const customerId = charge.customer as string;
+          if (customerId) {
+            const { data: profile } = await supabase
+              .from('profiles')
+              .select('id')
+              .eq('stripe_customer_id', customerId)
+              .single();
+            
+            if (profile) {
+              // Revoke all recent entitlements for this user from this charge
+              const { error: revokeError } = await supabase
+                .from('store_entitlements')
+                .update({ 
+                  revoked_at: new Date().toISOString(),
+                  revoke_reason: 'refund'
+                })
+                .eq('user_id', profile.id)
+                .eq('stripe_payment_intent_id', paymentIntentId);
+
+              if (revokeError) {
+                console.error('[webhook] Error revoking entitlements:', revokeError);
+              } else {
+                console.log('[webhook] Revoked entitlements for refunded charge');
+              }
+            }
+          }
+          break;
+        }
+
+        // Revoke entitlements for this payment
+        const { error: revokeError } = await supabase
+          .from('store_entitlements')
+          .update({ 
+            revoked_at: new Date().toISOString(),
+            revoke_reason: 'refund'
+          })
+          .eq('user_id', userId)
+          .eq('stripe_payment_intent_id', paymentIntentId);
+
+        if (revokeError) {
+          console.error('[webhook] Error revoking entitlements:', revokeError);
+          logger.error('Error revoking entitlements on refund:', revokeError);
+        } else {
+          console.log(`[webhook] ✅ Revoked entitlements for user ${userId} due to refund`);
+          logger.info(`Revoked entitlements for user ${userId} due to refund on charge ${charge.id}`);
+        }
+
+        // If there's an enrollment, mark it as refunded
+        if (enrollmentId) {
+          const { error: enrollError } = await supabase
+            .from('enrollments')
+            .update({ 
+              status: 'refunded',
+              refunded_at: new Date().toISOString()
+            })
+            .eq('id', enrollmentId);
+
+          if (enrollError) {
+            console.error('[webhook] Error updating enrollment status:', enrollError);
+          } else {
+            console.log(`[webhook] ✅ Marked enrollment ${enrollmentId} as refunded`);
+          }
+        }
+
+        // Revoke LMS access if product grants course access
+        if (productId) {
+          const { data: product } = await supabase
+            .from('store_products')
+            .select('grants_course_access, course_id')
+            .eq('id', productId)
+            .single();
+
+          if (product?.grants_course_access && product.course_id) {
+            const { error: lmsError } = await supabase
+              .from('course_enrollments')
+              .update({ 
+                status: 'revoked',
+                revoked_at: new Date().toISOString(),
+                revoke_reason: 'refund'
+              })
+              .eq('user_id', userId)
+              .eq('course_id', product.course_id);
+
+            if (lmsError) {
+              console.error('[webhook] Error revoking LMS access:', lmsError);
+            } else {
+              console.log(`[webhook] ✅ Revoked LMS access for course ${product.course_id}`);
+            }
+          }
+        }
+
+        // Audit log the refund
+        await auditLog({
+          action: AuditAction.DELETE,
+          entity: AuditEntity.ENTITLEMENT,
+          entityId: paymentIntentId,
+          userId: userId,
+          metadata: {
+            charge_id: charge.id,
+            refund_amount: charge.amount_refunded,
+            reason: 'stripe_refund'
+          }
+        });
+
+      } catch (err) {
+        console.error('[webhook] Error processing refund:', err);
+        logger.error('Error processing refund:', err);
+      }
+      break;
+    }
+
       default:
         console.log(`[webhook] Unhandled event type: ${event.type}`);
         logger.info(`Unhandled event type: ${event.type}`);

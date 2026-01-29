@@ -1,9 +1,17 @@
 // Stripe Price ID Mapping
 // Maps store product IDs to Stripe Price IDs
+//
+// IMPORTANT: Before going live, set these environment variables:
+// - STRIPE_PRICE_CR_GUIDE: Create product "The Elevate Capital Readiness Guide" ($39) in Stripe Dashboard
+// - STRIPE_PRICE_CR_ENTERPRISE: Create enterprise tier product in Stripe Dashboard
+//
+// All placeholder IDs (price_PLACEHOLDER_*) must be replaced with real Stripe Price IDs
 
 export const STRIPE_PRICE_IDS: Record<string, string> = {
   // Capital Readiness Guide Products
+  // TODO: Set STRIPE_PRICE_CR_GUIDE in .env with real Stripe Price ID
   "capital-readiness-guide": process.env.STRIPE_PRICE_CR_GUIDE || "price_PLACEHOLDER_CR_GUIDE",
+  // TODO: Set STRIPE_PRICE_CR_ENTERPRISE in .env with real Stripe Price ID
   "capital-readiness-enterprise": process.env.STRIPE_PRICE_CR_ENTERPRISE || "price_PLACEHOLDER_CR_ENTERPRISE",
   
   // Platform Licenses
@@ -46,13 +54,37 @@ export const STRIPE_PRICE_IDS: Record<string, string> = {
   "drug-collector-certification": process.env.STRIPE_PRICE_DRUG_COLLECTOR || "price_1Ss3bYIRNf5vPH3APCasxzte",
 };
 
-// Helper to check if price IDs are configured
+// Helper to check if price IDs are configured (not placeholders)
 export function isPriceConfigured(productId: string): boolean {
   const priceId = STRIPE_PRICE_IDS[productId];
-  return priceId !== undefined && priceId.startsWith('price_');
+  return priceId !== undefined && 
+         priceId.startsWith('price_') && 
+         !priceId.includes('PLACEHOLDER');
 }
 
 // Get price ID for a product
 export function getPriceId(productId: string): string | null {
   return STRIPE_PRICE_IDS[productId] || null;
+}
+
+// Runtime guard - throws if required price IDs are not configured
+export function validateRequiredPriceIds(): void {
+  const requiredProducts = [
+    'capital-readiness-guide',
+  ];
+
+  const missingOrPlaceholder: string[] = [];
+
+  for (const productId of requiredProducts) {
+    if (!isPriceConfigured(productId)) {
+      missingOrPlaceholder.push(productId);
+    }
+  }
+
+  if (missingOrPlaceholder.length > 0) {
+    throw new Error(
+      `Missing or placeholder Stripe Price IDs for: ${missingOrPlaceholder.join(', ')}. ` +
+      `Set the following env vars: ${missingOrPlaceholder.map(p => `STRIPE_PRICE_${p.toUpperCase().replace(/-/g, '_')}`).join(', ')}`
+    );
+  }
 }
