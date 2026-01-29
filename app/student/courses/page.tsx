@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { BookOpen, Clock, CheckCircle, Play, Award } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = { title: 'My Courses | Student Portal' };
 export const dynamic = 'force-dynamic';
@@ -29,15 +30,10 @@ export default async function StudentCoursesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex items-center text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600">Home</Link>
-            <span className="mx-2">/</span>
-            <Link href="/student" className="hover:text-blue-600">Student Portal</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">My Courses</span>
-          </nav>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Student', href: '/student' }, { label: 'Courses' }]} />
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 py-8">

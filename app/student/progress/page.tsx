@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { BookOpen, Clock, CheckCircle, Award, TrendingUp } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'My Progress | Student Portal',
@@ -58,8 +59,15 @@ export default async function StudentProgressPage() {
     : 0;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Student', href: '/student' }, { label: 'Progress' }]} />
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">My Progress</h1>
           <p className="text-gray-600 mt-1">Track your learning journey</p>

@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { requireRole } from '@/lib/auth/require-role';
 import Link from 'next/link';
 import { safeFormatDate } from '@/lib/format-utils';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const dynamic = 'force-dynamic';
 
 import {
@@ -66,7 +67,14 @@ export default async function ProgramHolderDashboard() {
     students?.filter((e) => e.status === 'completed').length || 0;
 
   return (
-    <div className="min-h-screen   ">
+    <div className="min-h-screen">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Instructor', href: '/instructor' }, { label: 'Dashboard' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-6 py-6">

@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Users, Search, Mail, GraduationCap, Clock, CheckCircle } from 'lucide-react';
 import { safeFormatDate } from '@/lib/format-utils';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'My Students | Instructor Portal',
@@ -65,6 +66,13 @@ export default async function InstructorStudentsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Instructor', href: '/instructor' }, { label: 'Students' }]} />
+        </div>
+      </div>
+
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">

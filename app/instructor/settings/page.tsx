@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Settings, User, Mail, Phone, Bell, Shield } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Settings | Instructor Portal',
@@ -40,6 +41,13 @@ export default async function InstructorSettingsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Instructor', href: '/instructor' }, { label: 'Settings' }]} />
+        </div>
+      </div>
+
       <div className="bg-white border-b">
         <div className="max-w-4xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">

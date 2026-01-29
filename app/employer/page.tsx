@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, CheckCircle, Users, DollarSign, Award, Briefcase } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'For Employers | Elevate for Humanity',
@@ -11,6 +12,13 @@ export const metadata: Metadata = {
 export default function EmployerPage() {
   return (
     <>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Employer' }]} />
+        </div>
+      </div>
+
       {/* Hero with Image */}
       <section className="relative min-h-[550px] flex items-center overflow-hidden">
         <Image

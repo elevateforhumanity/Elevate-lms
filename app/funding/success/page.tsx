@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Funding Approved | Elevate for Humanity',
@@ -27,7 +28,15 @@ export default async function FundingSuccessPage() {
     );
   }
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'Success' }]} />
+        </div>
+      </div>
+
+      <div className="flex items-center justify-center px-4 py-12">
       <div className="max-w-2xl w-full text-center">
         <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-green-600 rounded-full mb-6">
           <CheckCircle className="w-12 h-12 text-white" />
@@ -104,6 +113,7 @@ export default async function FundingSuccessPage() {
             Back to Dashboard
           </Link>
         </div>
+      </div>
       </div>
     </div>
   );

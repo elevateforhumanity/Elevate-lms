@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Building2, Users, BookOpen, TrendingUp, Calendar, FileText, Settings, Bell } from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -127,6 +128,13 @@ export default async function PartnerDashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-100">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Partner', href: '/partner' }, { label: 'Dashboard' }]} />
+        </div>
+      </div>
+
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">

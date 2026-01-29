@@ -18,6 +18,7 @@ import {
   Mail,
   CheckCircle
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Student Consumer Information & Disclosures | Elevate for Humanity',
@@ -30,6 +31,13 @@ export const metadata: Metadata = {
 export default function DisclosuresPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Disclosures' }]} />
+        </div>
+      </div>
+
       {/* Hero Banner */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden">
         <Image

@@ -13,6 +13,7 @@ import {
   ChevronRight,
   Bell,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Student Portal | Elevate',
@@ -71,6 +72,13 @@ export default async function StudentPortalPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Student Portal' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
