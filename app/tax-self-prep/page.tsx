@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { CountUp } from '@/components/animations/CountUp';
 import { BarChart, Lock, Smartphone, Zap } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -39,6 +40,12 @@ export default async function TaxSelfPrepPage() {
     .eq('type', 'self_prep');
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Tax Services', href: '/tax' },
+          { label: 'Self Prep' },
+        ]}
+      />
       {/* Hero - TurboTax Style */}
       <section className="relative    text-white py-20">
         <div className="max-w-7xl mx-auto px-4">

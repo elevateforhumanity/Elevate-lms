@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle, Loader2 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function LicensingRequestPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,14 +64,14 @@ export default function LicensingRequestPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-12">
+      <Breadcrumbs
+        items={[
+          { label: 'Platform', href: '/platform' },
+          { label: 'Licensing', href: '/platform/licensing' },
+          { label: 'Request' },
+        ]}
+      />
       <div className="max-w-2xl mx-auto px-6">
-        <Link
-          href="/platform/licensing"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Platform Overview
-        </Link>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
           <h1 className="text-2xl font-black text-gray-900 mb-2">
