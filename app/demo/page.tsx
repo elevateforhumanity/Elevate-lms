@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { GraduationCap, Settings, Building2, ArrowRight, Calendar, Info } from 'lucide-react';
 import { ROUTES } from '@/lib/pricing';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Demo Environment | Elevate LMS',
@@ -14,6 +15,13 @@ export const metadata: Metadata = {
 export default function DemoHubPage() {
   return (
     <div className="min-h-screen bg-slate-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Demo' }]} />
+        </div>
+      </div>
+
       {/* Live Platform Banner */}
       <div className="bg-green-600 text-white py-2 px-4 text-center text-sm">
         <Info className="w-4 h-4 inline mr-2" />

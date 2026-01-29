@@ -184,6 +184,7 @@ export default async function JobsPage() {
           </tbody>
         </table>
       </div>
+      </div>
     </div>
   );
 }

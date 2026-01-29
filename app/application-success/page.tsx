@@ -115,5 +115,6 @@ export default async function ApplicationSuccessPage() {
         </div>
       </div>
     </div>
+    </div>
   );
 }

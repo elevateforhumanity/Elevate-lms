@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Users, Search, Filter, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Members | Community | Elevate For Humanity',
@@ -46,6 +47,13 @@ export default async function MembersPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Community', href: '/community' }, { label: 'Members' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-orange-600 to-amber-700 text-white py-20">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

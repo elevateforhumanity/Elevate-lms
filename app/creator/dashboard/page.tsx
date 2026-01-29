@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Palette, BookOpen, Users, DollarSign, TrendingUp, Plus, Eye, Edit, BarChart3 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface Course {
   id: string;
@@ -50,6 +51,13 @@ export default function CreatorDashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-100">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Creator', href: '/creator' }, { label: 'Dashboard' }]} />
+        </div>
+      </div>
+
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
