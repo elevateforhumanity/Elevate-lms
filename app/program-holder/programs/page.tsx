@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BookOpen, Plus, Users, TrendingUp, MoreVertical, Edit, Eye, Trash2 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface Program {
   id: string;
@@ -43,15 +44,12 @@ export default function ProgramHolderProgramsPage() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex items-center text-sm text-gray-600">
-            <Link href="/program-holder/dashboard" className="hover:text-purple-600">Dashboard</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">Programs</span>
-          </nav>
-        </div>
-      </div>
+      <Breadcrumbs
+        items={[
+          { label: 'Program Holder', href: '/program-holder/dashboard' },
+          { label: 'Programs' },
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Manage Programs</h1>

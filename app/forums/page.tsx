@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { MessageSquare, Users, TrendingUp, ArrowRight, Clock, Search, Plus } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Community Forums | Elevate for Humanity',
@@ -49,6 +50,11 @@ export default function ForumsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Forums' },
+        ]}
+      />
       {/* Hero */}
       <section className="relative min-h-[450px] flex items-center overflow-hidden">
         <Image

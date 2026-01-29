@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import React from 'react';
@@ -7,6 +5,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Mail, Send, Users, Loader2 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 
 
@@ -97,6 +96,12 @@ export default function ProgramOwnerCampaignsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
+      <Breadcrumbs
+        items={[
+          { label: 'Program Holder', href: '/program-holder/dashboard' },
+          { label: 'Campaigns' },
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-black">
