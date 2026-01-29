@@ -31,7 +31,7 @@ export default function AboutPage() {
 
       {/* Avatar Guide */}
       <PageAvatar 
-        videoSrc="/videos/about-mission.mp4" 
+        videoSrc="/videos/elevate-overview-with-narration.mp4" 
         title="About Elevate" 
       />
 
