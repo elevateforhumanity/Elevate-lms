@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { HeartHandshake, BookOpen, DollarSign, Briefcase, Users, Phone, MessageSquare, Calendar } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
@@ -46,6 +47,13 @@ const services = [
 export default function StudentSupportPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Student Support' }]} />
+        </div>
+      </div>
+
       <div className="relative bg-green-800 text-white py-16">
         <Image
           src="/images/community/event-4.jpg"
