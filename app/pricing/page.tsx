@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Check } from 'lucide-react';
 import { APP_STORE_PRODUCTS } from '@/lib/stripe/app-store-products';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -35,8 +36,15 @@ export default async function PricingPage() {
     .select('*')
     .order('price');
   return (
-    <div className="min-h-screen bg-slate-50 py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-slate-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Pricing' }]} />
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto py-16 px-4">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">
