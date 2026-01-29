@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Support Services | Elevate for Humanity',
@@ -71,6 +72,13 @@ const services = [
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Services' }]} />
+        </div>
+      </div>
+
       {/* Hero - Image only */}
       <section className="relative h-[50vh] min-h-[350px]">
         <Image

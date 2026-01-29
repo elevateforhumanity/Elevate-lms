@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Home, ChevronRight, Play, ShoppingBag, GraduationCap, BookOpen, Server, CreditCard, FileText, Settings, Users } from 'lucide-react';
+import { ArrowRight, Play, ShoppingBag, GraduationCap, BookOpen, Server, CreditCard, FileText, Settings, Users } from 'lucide-react';
 import { primaryCards, secondaryCards } from '@/lib/store/cards';
 import StoreClientWrapper from './StoreClientWrapper';
 import UniversalSearch from '@/components/search/UniversalSearch';
 import PageAvatar from '@/components/PageAvatar';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 
 export const metadata: Metadata = {
@@ -39,29 +40,12 @@ export default function StorePage() {
   return (
     <StoreClientWrapper>
       <div className="bg-white min-h-screen">
-        {/* Breadcrumb Navigation */}
-        <nav className="bg-gray-100 border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-12">
-              <div className="flex items-center text-sm">
-                <Link href="/" className="text-gray-600 hover:text-black flex items-center gap-1">
-                  <Home className="w-4 h-4" />
-                  Home
-                </Link>
-                <ChevronRight className="w-4 h-4 text-gray-400 mx-2" />
-                <span className="text-black font-semibold">Store</span>
-              </div>
-              {/* Tour trigger button */}
-              <button
-                data-tour-trigger="store-tour"
-                className="text-sm text-orange-600 hover:text-orange-700 font-medium flex items-center gap-1"
-              >
-                <Play className="w-4 h-4" />
-                Start Guided Tour
-              </button>
-            </div>
+        {/* Breadcrumbs */}
+        <div className="bg-slate-50 border-b">
+          <div className="max-w-6xl mx-auto px-4 py-3">
+            <Breadcrumbs items={[{ label: 'Store' }]} />
           </div>
-        </nav>
+        </div>
 
         {/* Hero Section with Search */}
         <section className="relative bg-slate-900 text-white py-16 overflow-hidden">
