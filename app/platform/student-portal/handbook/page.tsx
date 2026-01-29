@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   alternates: {
@@ -37,6 +38,13 @@ export default async function HandbookPage() {
     .single();
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Platform', href: '/platform' },
+          { label: 'Student Portal', href: '/platform/student-portal' },
+          { label: 'Handbook' },
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
