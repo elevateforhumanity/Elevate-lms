@@ -68,13 +68,10 @@ export default function AboutPage() {
                   individuals, low-income families, veterans, and anyone facing barriers to employment.
                 </p>
                 <p>
-                  Elizabeth also owns several businesses that support the Elevate mission:
+                  Elizabeth also owns <strong>Textures Institute of Cosmetology</strong>, a licensed 
+                  cosmetology school providing state board-approved training in barbering, cosmetology, 
+                  esthetics, and nail technology.
                 </p>
-                <ul>
-                  <li><strong>Textures Institute of Cosmetology</strong> – Licensed cosmetology school</li>
-                  <li><strong>Greene Staffing Solutions</strong> – Employment placement</li>
-                  <li><strong>Greene Property Management</strong> – Transitional housing</li>
-                </ul>
               </div>
               
               <Link 
@@ -88,14 +85,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* THE ECOSYSTEM */}
+      {/* WHAT WE DO */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">The Elevate Ecosystem</h2>
+          <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">What We Do</h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
-              <div className="relative h-48">
+              <div className="relative h-56">
                 <Image
                   src="/images/hero/hero-hands-on-training.jpg"
                   alt="Elevate for Humanity Training"
@@ -104,16 +101,16 @@ export default function AboutPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-slate-900 mb-2">Elevate for Humanity</h3>
-                <p className="text-slate-600 text-sm">
-                  Workforce development organization providing career training through WIOA, 
-                  JRI, and WRG funding.
+                <h3 className="font-bold text-slate-900 text-xl mb-2">Elevate for Humanity</h3>
+                <p className="text-slate-600">
+                  Workforce development organization providing career training. We help connect 
+                  eligible participants with funding through WIOA, JRI, and WRG programs.
                 </p>
               </div>
             </div>
 
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
-              <div className="relative h-48">
+              <div className="relative h-56">
                 <Image
                   src="/images/hero/hero-beauty-wellness.jpg"
                   alt="Textures Institute of Cosmetology"
@@ -122,44 +119,10 @@ export default function AboutPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-slate-900 mb-2">Textures Institute of Cosmetology</h3>
-                <p className="text-slate-600 text-sm">
+                <h3 className="font-bold text-slate-900 text-xl mb-2">Textures Institute of Cosmetology</h3>
+                <p className="text-slate-600">
                   Licensed cosmetology school providing state board-approved training in barbering, 
                   cosmetology, esthetics, and nail technology.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
-              <div className="relative h-48">
-                <Image
-                  src="/images/hero/hero-career-services.jpg"
-                  alt="Greene Staffing Solutions"
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-bold text-slate-900 mb-2">Greene Staffing Solutions</h3>
-                <p className="text-slate-600 text-sm">
-                  Staffing agency connecting graduates with employment opportunities.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
-              <div className="relative h-48">
-                <Image
-                  src="/images/hero/hero-community.jpg"
-                  alt="Greene Property Management"
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-bold text-slate-900 mb-2">Greene Property Management</h3>
-                <p className="text-slate-600 text-sm">
-                  Transitional and supportive housing options for program participants.
                 </p>
               </div>
             </div>
@@ -180,7 +143,6 @@ export default function AboutPage() {
               <div>
                 <div className="font-bold text-slate-900">U.S. Department of Labor</div>
                 <div className="text-blue-600 text-sm">Registered Apprenticeship Sponsor</div>
-                <div className="text-slate-500 text-sm">RAPIDS ID: 2025-IN-132301</div>
               </div>
             </div>
 
@@ -190,8 +152,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <div className="font-bold text-slate-900">Indiana DWD</div>
-                <div className="text-green-600 text-sm">Approved INTraining Provider</div>
-                <div className="text-slate-500 text-sm">Location ID: 10004621</div>
+                <div className="text-green-600 text-sm">Approved Training Provider</div>
               </div>
             </div>
 
@@ -200,8 +161,8 @@ export default function AboutPage() {
                 <Image src="/images/partners/workone.webp" alt="WorkOne" fill className="object-contain" />
               </div>
               <div>
-                <div className="font-bold text-slate-900">WorkOne Center Partner</div>
-                <div className="text-purple-600 text-sm">State Workforce System Integration</div>
+                <div className="font-bold text-slate-900">WorkOne</div>
+                <div className="text-purple-600 text-sm">Workforce Partner</div>
               </div>
             </div>
 
@@ -210,8 +171,8 @@ export default function AboutPage() {
                 <Image src="/images/partners/nextleveljobs.webp" alt="Next Level Jobs" fill className="object-contain" />
               </div>
               <div>
-                <div className="font-bold text-slate-900">Workforce Ready Grant</div>
-                <div className="text-orange-600 text-sm">WRG Approved Provider</div>
+                <div className="font-bold text-slate-900">Next Level Jobs</div>
+                <div className="text-orange-600 text-sm">WRG Provider</div>
               </div>
             </div>
 
@@ -220,8 +181,8 @@ export default function AboutPage() {
                 <span className="text-blue-600 font-bold text-xl">WIOA</span>
               </div>
               <div>
-                <div className="font-bold text-slate-900">WIOA Eligible</div>
-                <div className="text-blue-600 text-sm">Training Provider</div>
+                <div className="font-bold text-slate-900">WIOA</div>
+                <div className="text-blue-600 text-sm">Eligible Training Provider</div>
               </div>
             </div>
 
@@ -230,8 +191,8 @@ export default function AboutPage() {
                 <span className="text-red-600 font-bold text-xl">JRI</span>
               </div>
               <div>
-                <div className="font-bold text-slate-900">JRI Approved</div>
-                <div className="text-red-600 text-sm">Justice Reinvestment Initiative</div>
+                <div className="font-bold text-slate-900">JRI</div>
+                <div className="text-red-600 text-sm">Approved Provider</div>
               </div>
             </div>
           </div>
