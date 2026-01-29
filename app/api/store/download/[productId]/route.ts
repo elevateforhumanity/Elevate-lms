@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 import { getDigitalProduct } from '@/lib/store/digital-products';
 import { createClient } from '@/lib/supabase/server';
-import { generateSignedDownloadUrl, isStorageConfigured, getProductFileInfo } from '@/lib/storage/file-storage';
+import { generateSignedDownloadUrl, isStorageConfigured, getProductFileInfo, getPublicFallbackUrl } from '@/lib/storage/file-storage';
 
 /**
  * Download digital product
@@ -135,7 +135,7 @@ export async function GET(
     // Log download attempt
     await logDownload(productId, token, request);
 
-    // Check if storage is configured
+    // Check if storage is configured (R2/S3)
     if (isStorageConfigured()) {
       // Generate signed URL from S3/R2
       const fileInfo = getProductFileInfo(productId);
@@ -152,15 +152,18 @@ export async function GET(
       return NextResponse.redirect(product.downloadUrl);
     }
 
-    // If no download URL configured, return instructions
+    // Fallback: use public folder if file exists there
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
+    const publicUrl = getPublicFallbackUrl(productId, baseUrl);
+    if (publicUrl) {
+      return NextResponse.redirect(publicUrl);
+    }
+
+    // If no download URL configured, return error
     return NextResponse.json({
-      message: 'Download link will be sent to your email',
-      product: {
-        id: product.id,
-        name: product.name,
-      },
-      note: 'File storage not configured. Contact support if you need immediate access.',
-    });
+      error: 'Download not available',
+      message: 'Please contact support for assistance.',
+    }, { status: 503 });
   } catch (err: unknown) {
     return NextResponse.json(
       { error: 'Failed to process download' },

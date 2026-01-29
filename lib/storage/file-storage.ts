@@ -54,28 +54,42 @@ export function isStorageConfigured(): boolean {
  * Product file paths mapping
  * Maps product IDs to their file paths in storage
  */
-export const PRODUCT_FILES: Record<string, { path: string; filename: string; contentType: string }> = {
+export const PRODUCT_FILES: Record<string, { path: string; filename: string; contentType: string; publicPath: string }> = {
   'capital-readiness-guide': {
     path: 'guides/capital-readiness-guide-v1.pdf',
+    publicPath: '/downloads/guides/capital-readiness-guide-v1.pdf',
     filename: 'The-Elevate-Capital-Readiness-Guide.pdf',
     contentType: 'application/pdf',
   },
   'capital-readiness-workbook': {
     path: 'workbooks/capital-readiness-workbook-v1.pdf',
+    publicPath: '/downloads/guides/capital-readiness-workbook-v1.pdf',
     filename: 'Capital-Readiness-Workbook.pdf',
     contentType: 'application/pdf',
   },
   'tax-toolkit': {
     path: 'guides/tax-business-toolkit-v1.pdf',
+    publicPath: '/downloads/guides/tax-business-toolkit-v1.pdf',
     filename: 'Start-a-Tax-Business-Toolkit.pdf',
     contentType: 'application/pdf',
   },
   'grant-guide': {
     path: 'guides/grant-readiness-guide-v1.pdf',
+    publicPath: '/downloads/guides/grant-readiness-guide-v1.pdf',
     filename: 'Grant-Readiness-Guide.pdf',
     contentType: 'application/pdf',
   },
 };
+
+/**
+ * Get public fallback URL for a product
+ * Used when R2/S3 is not configured
+ */
+export function getPublicFallbackUrl(productId: string, baseUrl: string): string | null {
+  const fileInfo = PRODUCT_FILES[productId];
+  if (!fileInfo?.publicPath) return null;
+  return `${baseUrl}${fileInfo.publicPath}`;
+}
 
 /**
  * Generate a signed download URL for a product
