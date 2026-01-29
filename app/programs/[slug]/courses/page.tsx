@@ -5,8 +5,7 @@ import { useState, useEffect } from 'react';
 import { BookOpen, Clock, Award, DollarSign, CheckCircle, Users } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-
-
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function ProgramCoursesPage() {
   const params = useParams();
@@ -64,6 +63,13 @@ export default function ProgramCoursesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: programName, href: `/programs/${slug}` },
+          { label: 'Courses' },
+        ]}
+      />
       {/* Hero Banner */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <img
