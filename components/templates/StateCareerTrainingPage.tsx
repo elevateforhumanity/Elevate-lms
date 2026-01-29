@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, CheckCircle, MapPin } from 'lucide-react';
 import { StateConfig, getOtherStates } from '@/config/states';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface StateCareerTrainingPageProps {
   state: StateConfig;
@@ -14,6 +15,13 @@ export default function StateCareerTrainingPage({ state }: StateCareerTrainingPa
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: `Career Training ${state.name}` }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image

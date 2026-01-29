@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { SamGovApp } from './SamGovApp';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -95,6 +96,13 @@ export default async function SamGovPage() {
   }
 
   return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apps', href: '/apps' }, { label: 'SAM.gov' }]} />
+        </div>
+      </div>
     <SamGovApp
       user={user}
       subscription={subscription}
@@ -103,5 +111,6 @@ export default async function SamGovPage() {
       alerts={alerts}
       trialDaysRemaining={trialDaysRemaining}
     />
+    </div>
   );
 }

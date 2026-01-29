@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { GrantsApp } from './GrantsApp';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -74,6 +75,13 @@ export default async function GrantsPage() {
     .order('updated_at', { ascending: false });
 
   return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apps', href: '/apps' }, { label: 'Grants' }]} />
+        </div>
+      </div>
     <GrantsApp
       user={user}
       subscription={subscription}
@@ -82,5 +90,6 @@ export default async function GrantsPage() {
       applications={applications || []}
       trialDaysRemaining={trialDaysRemaining}
     />
+    </div>
   );
 }

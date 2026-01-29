@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { StateConfig, getOtherStates } from '@/config/states';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface StateCommunityServicesPageProps {
   state: StateConfig;
@@ -21,6 +22,13 @@ export default function StateCommunityServicesPage({ state }: StateCommunityServ
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Community Services', href: '/community-services' }, { label: state.name }]} />
+        </div>
+      </div>
+
       <section className="py-16 px-4 max-w-6xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
           {state.communityServices.headline}

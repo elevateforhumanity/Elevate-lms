@@ -7,6 +7,7 @@ import {
   BookOpen, Trophy, Video, Sparkles, Heart, Star,
   TrendingUp, Clock, CheckCircle
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Community | Elevate For Humanity',
@@ -111,6 +112,13 @@ export default async function CommunityPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Community' }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-violet-900 via-purple-800 to-indigo-900 text-white overflow-hidden">
         <div className="absolute inset-0">

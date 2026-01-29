@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { BookOpen, ChevronRight, Download, Search } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Apprentice Handbook | Elevate For Humanity',
@@ -84,6 +86,13 @@ export default async function ApprenticeHandbookPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-4xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apprentice', href: '/apprentice' }, { label: 'Handbook' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">

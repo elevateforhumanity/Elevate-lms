@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { WebsiteBuilderApp } from './WebsiteBuilderApp';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -58,11 +59,19 @@ export default async function WebsiteBuilderPage() {
     .order('updated_at', { ascending: false });
 
   return (
-    <WebsiteBuilderApp
-      user={user}
-      subscription={subscription}
-      websites={websites || []}
-      trialDaysRemaining={trialDaysRemaining}
-    />
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apps', href: '/apps' }, { label: 'Website Builder' }]} />
+        </div>
+      </div>
+      <WebsiteBuilderApp
+        user={user}
+        subscription={subscription}
+        websites={websites || []}
+        trialDaysRemaining={trialDaysRemaining}
+      />
+    </div>
   );
 }

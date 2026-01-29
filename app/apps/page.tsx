@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Building2, DollarSign, Layout, Lock, ArrowRight, Star } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'My Apps | Elevate for Humanity',
@@ -48,8 +49,15 @@ const colorClasses = {
 
 export default function AppsPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apps' }]} />
+        </div>
+      </div>
+
+      <div className="py-8 max-w-6xl mx-auto px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">My Apps</h1>
           <p className="text-gray-600 mt-1">Access your purchased apps and tools</p>
