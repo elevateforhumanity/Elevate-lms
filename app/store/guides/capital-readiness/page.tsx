@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { 
   CheckCircle, 
   BookOpen, 
@@ -11,8 +10,10 @@ import {
   TrendingUp,
   Download,
   ShieldCheck,
-  ArrowRight
+  ArrowRight,
+  Presentation
 } from 'lucide-react';
+import { BuyButton } from './BuyButton';
 
 export const metadata: Metadata = {
   title: 'Capital Readiness Guide | Elevate Store',
@@ -70,18 +71,19 @@ export default function CapitalReadinessGuidePage() {
               </p>
               
               <div className="flex flex-wrap gap-4 mb-8">
-                <Link
-                  href="/store/checkout?product=capital-readiness-guide"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
-                >
-                  Buy Now — $39
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
+                <BuyButton productId="capital-readiness-guide" price="$39" />
                 <Link
                   href="#preview"
                   className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-white font-semibold rounded-lg hover:bg-slate-800 transition"
                 >
                   Preview Contents
+                </Link>
+                <Link
+                  href="/store/guides/capital-readiness/slides"
+                  className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-white font-semibold rounded-lg hover:bg-slate-800 transition"
+                >
+                  <Presentation className="w-5 h-5" />
+                  View Slides
                 </Link>
               </div>
 
@@ -253,13 +255,7 @@ export default function CapitalReadinessGuidePage() {
             <div className="text-5xl font-bold mb-2">$39</div>
             <p className="text-blue-200 mb-8">One-time purchase • Lifetime updates</p>
             
-            <Link
-              href="/store/checkout?product=capital-readiness-guide"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition"
-            >
-              Buy Now
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            <BuyButton productId="capital-readiness-guide" price="$39" variant="white" />
             
             <p className="text-sm text-blue-200 mt-6">
               Free inside Elevate programs • Included with enterprise licenses

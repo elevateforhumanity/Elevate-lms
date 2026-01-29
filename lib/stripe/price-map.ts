@@ -2,6 +2,10 @@
 // Maps store product IDs to Stripe Price IDs
 
 export const STRIPE_PRICE_IDS: Record<string, string> = {
+  // Capital Readiness Guide Products
+  "capital-readiness-guide": process.env.STRIPE_PRICE_CR_GUIDE || "price_PLACEHOLDER_CR_GUIDE",
+  "capital-readiness-enterprise": process.env.STRIPE_PRICE_CR_ENTERPRISE || "price_PLACEHOLDER_CR_ENTERPRISE",
+  
   // Platform Licenses
   "efh-core": process.env.STRIPE_PRICE_CORE_ONETIME || "price_1Ss3aLIRNf5vPH3AtixJXl6D",
   "efh-core-3month": process.env.STRIPE_PRICE_CORE_3MONTH || "price_1Ss3aTIRNf5vPH3A9xZN6yvH",

@@ -156,6 +156,53 @@ export async function getSubscriptionStatus(userId: string) {
 }
 
 /**
+ * Check if user has access to a digital product download
+ */
+export async function hasDigitalProductAccess(
+  userId: string,
+  productId: string
+): Promise<boolean> {
+  const { data, error }: any = await supabaseAdmin
+    .from('user_entitlements')
+    .select('id')
+    .eq('user_id', userId)
+    .eq('product_id', productId)
+    .eq('status', 'active')
+    .single();
+
+  if (error) {
+    return false;
+  }
+
+  return !!data;
+}
+
+/**
+ * Get all digital products user has access to
+ */
+export async function getUserDigitalProducts(userId: string): Promise<string[]> {
+  const { data, error }: any = await supabaseAdmin
+    .from('user_entitlements')
+    .select('product_id')
+    .eq('user_id', userId)
+    .eq('entitlement_type', 'digital_download')
+    .eq('status', 'active');
+
+  if (error) {
+    return [];
+  }
+
+  return data.map((e: any) => e.product_id);
+}
+
+/**
+ * Check if user has Capital Readiness Guide access
+ */
+export async function hasCapitalReadinessAccess(userId: string): Promise<boolean> {
+  return hasDigitalProductAccess(userId, 'capital-readiness-guide');
+}
+
+/**
  * Entitlement keys reference
  */
 export const ENTITLEMENTS = {
@@ -177,6 +224,10 @@ export const ENTITLEMENTS = {
   ACCOUNT_MANAGER: 'account_manager',
   CUSTOM_PRODUCTS: 'custom_products',
   WHITE_LABEL: 'white_label',
+
+  // Digital Products
+  CAPITAL_READINESS_GUIDE: 'capital-readiness-guide',
+  CAPITAL_READINESS_ENTERPRISE: 'capital-readiness-enterprise',
 } as const;
 
 export type EntitlementKey = (typeof ENTITLEMENTS)[keyof typeof ENTITLEMENTS];
