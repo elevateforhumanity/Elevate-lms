@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Heart, Users, Calendar, Phone, Mail, ArrowRight, HandHeart, Briefcase } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Get Involved | Rise Forward Foundation',
@@ -73,6 +74,13 @@ export default async function GetInvolvedPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Rise Foundation', href: '/rise-foundation' }, { label: 'Get Involved' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative min-h-[400px] flex items-center">
         <div 
@@ -81,9 +89,6 @@ export default async function GetInvolvedPage() {
         />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">
-          <Link href="/rise-foundation" className="text-pink-200 hover:text-white mb-4 inline-block">
-            ← Rise Forward Foundation
-          </Link>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Get Involved</h1>
           <p className="text-xl text-purple-100 max-w-2xl">
             Join our community of compassionate individuals making a difference in people's lives.

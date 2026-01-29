@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { Heart, Phone, CheckCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Divorce Support | Rise Forward Foundation',
@@ -24,6 +25,13 @@ export default function DivorceSupportPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Rise Foundation', href: '/rise-foundation' }, { label: 'Divorce Support' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-rose-500 to-rose-700 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
