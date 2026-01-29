@@ -4,6 +4,7 @@ import { ShoppingBag } from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
 import { ShopClient } from './ShopClient';
 import { PageTracker } from '@/components/analytics/PageTracker';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
@@ -68,6 +69,13 @@ export default async function ShopPage() {
     <div className="min-h-screen bg-gray-50">
       <PageTracker pageName="Shop" pageCategory="ecommerce" />
       
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Shop' }]} />
+        </div>
+      </div>
+
       <div className="relative bg-slate-900 text-white py-16">
         <Image
           src="/images/shop/shop-hero.jpg"

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Download, CheckCircle, FileText } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Transparency | Elevate For Humanity',
@@ -33,6 +34,13 @@ export default function TransparencyPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Transparency' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative h-72 overflow-hidden">
         <Image
