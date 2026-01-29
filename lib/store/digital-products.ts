@@ -26,6 +26,28 @@ export interface DigitalProduct {
 
 export const DIGITAL_PRODUCTS: DigitalProduct[] = [
   {
+    id: 'capital-readiness-guide',
+    name: 'The Elevate Capital Readiness Guide',
+    slug: 'capital-readiness-guide',
+    description:
+      'Build trust before you chase capital. A practical guide for licensed businesses, workforce-aligned employers, and nonprofits that want funding, credibility, and sustainable growth.',
+    price: 3900, // $39.00
+    priceDisplay: '$39',
+    category: 'guide',
+    deliveryType: 'download',
+    fileSize: '15 MB',
+    features: [
+      'Full ebook (PDF)',
+      'Integrated workbook',
+      'Readiness scoring system',
+      '10 actionable chapters',
+      'The Elevate Model framework',
+      'Lifetime updates',
+    ],
+    image: '/images/store/capital-readiness-guide.jpg',
+    featured: true,
+  },
+  {
     id: 'tax-toolkit',
     name: 'Start a Tax Business Toolkit',
     slug: 'tax-toolkit',
