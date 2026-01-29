@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import { useState } from 'react';
@@ -12,8 +10,7 @@ import {
   FileText,
   CheckCircle,
 } from 'lucide-react';
-
-
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function RevenueShareCalculator() {
   const [clientPayment, setClientPayment] = useState(300);
@@ -31,6 +28,13 @@ export default function RevenueShareCalculator() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Calculator', href: '/calculator' }, { label: 'Revenue Share' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative h-[300px] flex items-center justify-center text-white overflow-hidden">
         <Image

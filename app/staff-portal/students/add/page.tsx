@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, User, Mail, Phone, Calendar, MapPin, GraduationCap, Save, CheckCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function AddStudentPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -49,11 +50,15 @@ export default function AddStudentPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-3xl mx-auto px-4">
-        <Link href="/staff-portal/students" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6">
-          <ArrowLeft className="w-4 h-4" /> Back to Students
-        </Link>
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Staff Portal', href: '/staff-portal' }, { label: 'Students', href: '/staff-portal/students' }, { label: 'Add Student' }]} />
+        </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto px-4 py-8">
 
         <div className="bg-white rounded-xl shadow-sm border p-6">
           <div className="flex items-center gap-3 mb-6">
