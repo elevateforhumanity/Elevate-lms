@@ -124,7 +124,7 @@ export default function HomePage() {
       </section>
 
       {/* AVATAR */}
-      <PageAvatar videoSrc="/videos/avatars/home-welcome.mp4" title="Welcome to Elevate" />
+      <PageAvatar videoSrc="/videos/elevate-overview-with-narration.mp4" title="Learn About Elevate" />
 
       {/* ABOUT with play button overlay */}
       <section className="py-16 lg:py-24 bg-slate-50">
