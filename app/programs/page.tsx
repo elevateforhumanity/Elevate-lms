@@ -1,5 +1,6 @@
 // Programs page - ALL DIFFERENT images from homepage, high quality, different avatar
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import PageAvatar from '@/components/PageAvatar';
@@ -26,6 +27,12 @@ const roadmap = [
 export default function ProgramsPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs' }]} />
+        </div>
+      </div>
 
       {/* HERO - Full width, consistent height */}
       <section className="relative w-full h-[45vh] sm:h-[50vh] lg:h-[55vh]">

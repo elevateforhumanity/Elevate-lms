@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { MessageSquare, GraduationCap, Phone, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 
@@ -11,6 +12,13 @@ export const metadata: Metadata = {
 export default function ApplyPage() {
   return (
     <div className="min-h-screen bg-slate-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apply' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section 
         className="relative py-20 px-4"

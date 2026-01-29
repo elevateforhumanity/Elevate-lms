@@ -4,6 +4,7 @@ import {
   FileText, Shield, Scale, Search, Settings, Mail, 
   ArrowRight, Building2, CheckCircle 
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Governance | Elevate for Humanity',
@@ -73,6 +74,13 @@ export default function GovernancePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Governance' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-slate-900 text-white py-16">
         <div className="max-w-4xl mx-auto px-4">

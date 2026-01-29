@@ -10,6 +10,7 @@ export const dynamic = 'force-dynamic';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default async function AdminLicensesPage() {
   const supabase = await createClient();
@@ -31,8 +32,15 @@ export default async function AdminLicensesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Licenses' }]} />
+        </div>
+      </div>
+
+      <div className="py-12 container mx-auto px-4 max-w-6xl">
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold mb-2">License Management</h1>

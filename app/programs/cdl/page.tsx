@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { ProgramPageTemplate, ProgramData } from '@/components/programs/ProgramPageTemplate';
 
 export const metadata: Metadata = {
@@ -53,5 +54,14 @@ const programData: ProgramData = {
 };
 
 export default function CDLPage() {
-  return <ProgramPageTemplate program={programData} />;
+  return (
+    <>
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: 'Skilled Trades', href: '/programs/skilled-trades' }, { label: 'CDL Training' }]} />
+        </div>
+      </div>
+      <ProgramPageTemplate program={programData} />
+    </>
+  );
 }

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Users, Briefcase, Award, Calendar, ArrowRight, MapPin } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Alumni Network | Elevate For Humanity',
@@ -44,6 +45,13 @@ const featuredAlumni: { name: string; program: string; company: string; image: s
 export default function AlumniPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Alumni' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-blue-900 to-blue-700 text-white">
         <div className="max-w-7xl mx-auto px-6">

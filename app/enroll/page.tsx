@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = { 
@@ -34,6 +35,13 @@ export default async function EnrollPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: 'Enroll' }]} />
+        </div>
+      </div>
+
       {/* Hero - Image only */}
       <div className="relative h-[40vh] min-h-[300px]">
         <Image

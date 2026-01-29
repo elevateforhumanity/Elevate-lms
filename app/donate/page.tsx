@@ -12,6 +12,7 @@ import {
   Shield,
   Award,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Donate | Support Career Training | Elevate for Humanity',
@@ -80,6 +81,13 @@ export default async function DonatePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Donate' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-gradient-to-r from-teal-600 to-teal-700 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">

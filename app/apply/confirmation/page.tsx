@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { CheckCircle, Phone, Mail, ArrowRight } from 'lucide-react';
 import ConfirmationTracking from './ConfirmationTracking';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -34,6 +35,12 @@ export default async function ConfirmationPage() {
   return (
     <>
       <ConfirmationTracking />
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apply', href: '/apply' }, { label: 'Confirmation' }]} />
+        </div>
+      </div>
       <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-12">
         <div className="max-w-2xl w-full">
           {/* Success Card */}

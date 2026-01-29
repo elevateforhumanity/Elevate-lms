@@ -8,6 +8,7 @@ import {
   DollarSign, Clock, Award, BarChart3,
   ArrowUpRight, ArrowDownRight
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Analytics Dashboard | Admin',
@@ -160,8 +161,15 @@ export default async function AnalyticsDashboardPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Analytics Dashboard' }]} />
+        </div>
+      </div>
+
+      <div className="p-6 max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Analytics Dashboard</h1>

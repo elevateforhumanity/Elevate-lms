@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, Shield, Scale, Users, FileText, Download } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { CheckCircle, Shield, Scale, Users, FileText, Download, ArrowRight, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Federal Compliance | Elevate For Humanity',
@@ -13,6 +14,13 @@ export const metadata: Metadata = {
 export default function FederalCompliancePage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-800 border-b border-slate-700">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'Federal Compliance' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-6">
@@ -282,6 +290,30 @@ export default function FederalCompliancePage() {
               <h4 className="font-bold text-black mb-2">Security</h4>
               <p className="text-sm text-black">How we keep your data secure</p>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-blue-600">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">Questions About Compliance?</h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Contact our compliance team for more information about our policies and procedures.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
+            >
+              Contact Us <ArrowRight className="w-5 h-5" />
+            </Link>
+            <a
+              href="tel:3173143757"
+              className="inline-flex items-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-800 transition border border-white/30"
+            >
+              <Phone className="w-5 h-5" /> (317) 314-3757
+            </a>
           </div>
         </div>
       </section>

@@ -1,249 +1,226 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
-
 import Link from 'next/link';
 import Image from 'next/image';
-
-export const dynamic = 'force-dynamic';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { Building2, Users, MapPin, Phone, CheckCircle, ArrowRight, Handshake, Award, FileText } from 'lucide-react';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/workforce-partners',
-  },
-  title: 'Workforce Development Partners | Elevate For Humanity',
-  description:
-    'Resources and tools for your success.',
+  title: 'Workforce Partners | WorkOne & Community Organizations | Elevate For Humanity',
+  description: 'Partner with Elevate for Humanity to connect job seekers with free career training. WorkOne centers, community organizations, and workforce boards - learn how we work together.',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/workforce-partners' },
 };
 
-export default async function WorkforcePartnersPage() {
-  const supabase = await createClient();
+const partners = [
+  {
+    name: 'WorkOne Indy',
+    type: 'American Job Center',
+    description: 'Primary workforce development partner for Marion County. Provides WIOA eligibility determination and career counseling.',
+    location: 'Indianapolis, IN',
+    image: '/images/heroes/workforce-partner-1.jpg',
+  },
+  {
+    name: 'Employ Indy',
+    type: 'Workforce Development Board',
+    description: 'Local workforce board overseeing federal workforce funding and programs in Marion County.',
+    location: 'Indianapolis, IN',
+    image: '/images/heroes/workforce-partner-2.jpg',
+  },
+  {
+    name: 'Indiana DWD',
+    type: 'State Agency',
+    description: 'Indiana Department of Workforce Development administers WIOA, Workforce Ready Grant, and unemployment programs statewide.',
+    location: 'Statewide',
+    image: '/images/heroes/workforce-partner-3.jpg',
+  },
+  {
+    name: 'Goodwill of Central Indiana',
+    type: 'Community Partner',
+    description: 'Provides job readiness training, career coaching, and supportive services for job seekers.',
+    location: 'Central Indiana',
+    image: '/images/heroes/workforce-partner-4.jpg',
+  },
+];
 
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+const services = [
+  { icon: Users, title: 'Referral Pipeline', desc: 'We accept referrals from WorkOne and community partners for WIOA-eligible training.' },
+  { icon: FileText, title: 'ITA Processing', desc: 'Streamlined Individual Training Account voucher processing for enrolled students.' },
+  { icon: Award, title: 'Credential Tracking', desc: 'Real-time reporting on student progress, completions, and credential attainment.' },
+  { icon: Handshake, title: 'Employer Connections', desc: 'Direct pipeline to hiring employers for job placement after training.' },
+];
+
+export default function WorkforcePartnersPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'Workforce Partners' }]} />
         </div>
       </div>
-    );
-  }
-  
-  // Fetch workforce partners
-  const { data: partners } = await supabase
-    .from('workforce_partners')
-    .select('*')
-    .eq('status', 'active')
-    .order('name');
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative min-h-[500px] flex items-center overflow-hidden">
-        <Image
-          src="/images/heroes/workforce-partner-1.jpg"
-          alt="Workforce Partners"
-          fill
-          className="object-cover"
-          quality={90}
-          priority
-          sizes="100vw"
-        />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Workforce Partners
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
-            workforce training and career success.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Workforce Partners
-                </h2>
-                <p className="text-black mb-6">
-                  Your hub for
-                  career workforce training and career success.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/courses/hvac-technician-10002289-cover.jpg"
-                  alt="Workforce Partners"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
+      {/* Hero */}
+      <section className="relative h-[50vh] min-h-[400px]">
+        <Image src="/images/heroes/workforce-partner-1.jpg" alt="Workforce development partners" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+          <div className="max-w-5xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
+              <Handshake className="w-4 h-4" /> Partner Network
             </div>
-
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
+            <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
+              Workforce Partners
+            </h1>
+            <p className="text-xl text-white/90 max-w-xl mb-6">
+              We work with WorkOne centers, workforce boards, and community organizations to connect Hoosiers with free career training.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
+            <div className="flex flex-wrap gap-4">
+              <Link href="/contact" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold transition-all hover:scale-105">
+                Become a Partner <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
+              <Link href="/workone-partner-packet" className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full font-bold transition-all border border-white/40">
+                Partner Resources
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How We Work Together */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-black text-center mb-4">How We Work Together</h2>
+          <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+            Elevate for Humanity is an approved training provider on Indiana's Eligible Training Provider List (ETPL). Here's how we partner with workforce organizations.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, i) => (
+              <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-slate-200 text-center">
+                <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <service.icon className="w-7 h-7 text-blue-600" />
+                </div>
+                <h3 className="font-bold text-slate-900 mb-2">{service.title}</h3>
+                <p className="text-slate-600 text-sm">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Partners */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-black text-center mb-4">Our Partners</h2>
+          <p className="text-center text-slate-600 mb-12">Organizations we work with to serve Indiana job seekers</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {partners.map((partner, i) => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-shadow">
+                <div className="relative h-48">
+                  <Image src={partner.image} alt={partner.name} fill className="object-cover" />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">{partner.type}</span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">{partner.name}</h3>
+                  <p className="text-slate-600 text-sm mb-4">{partner.description}</p>
+                  <div className="flex items-center gap-2 text-slate-500 text-sm">
+                    <MapPin className="w-4 h-4" />
+                    {partner.location}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* For WorkOne Staff */}
+      <section className="py-16 bg-blue-600">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-white">
+              <h2 className="text-3xl font-black mb-6">For WorkOne Staff</h2>
+              <p className="text-blue-100 mb-6">
+                Career advisors and case managers: We've created resources specifically for you to help your clients access our training programs.
+              </p>
+              <ul className="space-y-4 mb-8">
+                {[
+                  'Program fact sheets and eligibility requirements',
+                  'ITA request forms and processing guides',
+                  'Direct contact for student referrals',
+                  'Real-time enrollment and progress updates',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/workone-partner-packet" className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-all">
+                Access Partner Packet <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+            <div className="relative h-80 rounded-2xl overflow-hidden shadow-2xl">
+              <Image src="/images/heroes/workforce-partner-5.jpg" alt="WorkOne career advisor" fill className="object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ETPL Information */}
+      <section className="py-16">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="bg-slate-50 rounded-2xl p-8 md:p-12">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-2xl font-black text-slate-900 mb-4">ETPL Approved Provider</h2>
+                <p className="text-slate-600 mb-4">
+                  Elevate for Humanity is listed on Indiana's Eligible Training Provider List (ETPL), which means our programs are approved for WIOA funding.
+                </p>
+                <p className="text-slate-600 mb-6">
+                  Job seekers can use Individual Training Accounts (ITAs) to enroll in our programs at no cost to them.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link href="/programs" className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                    View Approved Programs
+                  </Link>
+                  <a href="https://www.in.gov/dwd/career-training-adult-ed/intraining/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-slate-300 text-slate-700 px-6 py-3 rounded-lg font-semibold hover:bg-slate-100 transition-colors">
+                    View ETPL List
+                  </a>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { label: 'Programs', value: '15+' },
+                  { label: 'Credentials', value: '25+' },
+                  { label: 'Completion Rate', value: '89%' },
+                  { label: 'Job Placement', value: '85%' },
+                ].map((stat, i) => (
+                  <div key={i} className="bg-white rounded-xl p-6 text-center shadow-sm">
+                    <div className="text-3xl font-black text-blue-600 mb-1">{stat.value}</div>
+                    <div className="text-slate-600 text-sm">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-slate-900">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-black text-white mb-4">Partner With Us</h2>
+          <p className="text-xl text-slate-300 mb-8">
+            Let's work together to connect more Hoosiers with career training and employment.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold transition-all hover:scale-105">
+              Contact Us <ArrowRight className="w-5 h-5" />
+            </Link>
+            <a href="tel:+13173143757" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full font-bold transition-all border border-white/30">
+              <Phone className="w-5 h-5" /> (317) 314-3757
+            </a>
           </div>
         </div>
       </section>

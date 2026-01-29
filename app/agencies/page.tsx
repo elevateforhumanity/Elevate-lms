@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import {
   Shield,
   TrendingUp,
@@ -12,6 +13,7 @@ import {
   Building2,
   Users,
   Award,
+  ArrowRight,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -89,6 +91,13 @@ export default async function AgenciesPage() {
 
   return (
     <div className="bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'Partner Agencies' }]} />
+        </div>
+      </div>
+
       {/* HERO */}
       <section className="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
         <Image
@@ -271,14 +280,20 @@ export default async function AgenciesPage() {
             Ready to Modernize Your Workforce System?
           </h2>
           <p className="text-blue-100 mb-8">
-            Schedule a demo to see how our platform can support your agency's goals.
+            Schedule a demo to see how our platform can support your agency&apos;s goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/license/demo"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
             >
-              Schedule Demo
+              Schedule Demo <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-800 transition border border-white/30"
+            >
+              Contact Us <ArrowRight className="w-5 h-5" />
             </Link>
             <a
               href="tel:3173143757"

@@ -3,6 +3,7 @@ import React from 'react';
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import {
   Mail,
   Phone,
@@ -140,7 +141,15 @@ export default function FSSAPartnershipRequestPage() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-900   py-12 px-4">
+    <div className="min-h-screen bg-zinc-900">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-800 border-b border-slate-700">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'FSSA Partnership Request' }]} />
+        </div>
+      </div>
+
+      <div className="py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -377,6 +386,7 @@ export default function FSSAPartnershipRequestPage() {
             317-314-3757 | elevate4humanityedu@gmail.com
           </p>
         </div>
+      </div>
       </div>
     </div>
   );

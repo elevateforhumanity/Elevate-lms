@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Mail, Phone, MapPin, Clock, Send, AlertCircle, Loader2 } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 import Turnstile from '@/components/Turnstile';
@@ -59,6 +60,13 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Contact Us' }]} />
+        </div>
+      </div>
+
       {/* Hero - Image only */}
       <div className="relative h-[40vh] min-h-[300px]">
         <Image

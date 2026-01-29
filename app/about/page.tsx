@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Users, Award, Heart, ArrowRight, Shield, Building, GraduationCap, Briefcase, MapPin, Target } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 import { ImageHero } from '@/components/ImageHero';
@@ -18,6 +19,13 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'About Us' }]} />
+        </div>
+      </div>
+
       {/* HERO - Image only */}
       <ImageHero src="/images/heroes-hq/about-hero.jpg" alt="About Elevate for Humanity" />
 

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   alternates: {
@@ -137,6 +138,12 @@ Delores brings creativity and strategic thinking to digital communications, help
 export default function TeamPage() {
   return (
     <div className="bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'About', href: '/about' }, { label: 'Team' }]} />
+        </div>
+      </div>
       {/* Avatar Guide - handled by GlobalAvatar in layout */}
       
       {/* Hero Section */}

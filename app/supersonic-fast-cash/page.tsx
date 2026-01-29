@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import TestimonialsSection from '@/components/content/TestimonialsSection';
 import {
   BadgeCheck,
@@ -24,18 +25,24 @@ import {
 export default function SupersonicFastCashPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-900 border-b border-slate-800">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Supersonic Fast Cash' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
-        {/* Video Background */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home.mp4" type="video/mp4" />
-        </video>
+        {/* Image Background */}
+        <Image
+          src="/images/heroes-hq/tax-refund-hero.jpg"
+          alt="Tax Refund Services"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
         
 
         {/* Animated background accents */}

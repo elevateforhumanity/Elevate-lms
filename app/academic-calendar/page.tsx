@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Calendar, Clock, BookOpen, GraduationCap } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Academic Calendar | Elevate For Humanity',
@@ -50,6 +51,13 @@ export default function AcademicCalendarPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Academic Calendar' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4">

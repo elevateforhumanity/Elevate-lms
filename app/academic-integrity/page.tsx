@@ -10,6 +10,7 @@ import {
   Users,
   CheckCircle,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -44,7 +45,12 @@ export default async function AcademicIntegrityPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Avatar Guide - handled by GlobalAvatar in layout */}
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Academic Integrity' }]} />
+        </div>
+      </div>
       
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white overflow-hidden">

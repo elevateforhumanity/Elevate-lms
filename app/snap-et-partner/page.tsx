@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import {
   CheckCircle,
   Users,
@@ -8,6 +9,8 @@ import {
   TrendingUp,
   FileText,
   Clock,
+  ArrowRight,
+  Phone,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -34,8 +37,15 @@ export const metadata: Metadata = {
 export default function SNAPETPartnerPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'SNAP E&T Partner' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
-      <section className="bg-white text-white py-20">
+      <section className="bg-blue-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-4xl">
             <div className="inline-block bg-yellow-400 text-blue-900 px-6 py-3 rounded-full font-bold text-sm mb-6">
@@ -440,27 +450,38 @@ export default function SNAPETPartnerPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-white text-white">
+      <section className="py-20 bg-blue-900 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Partner?</h2>
           <p className="text-xl text-blue-100 mb-8">
             Contact us to discuss SNAP E&T partnership opportunities
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="mailto:elevate4humanityedu@gmail.com"
-              className="inline-block px-10 py-5 bg-yellow-400 text-blue-900 font-bold rounded-lg hover:bg-yellow-300 transition text-lg"
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-yellow-400 text-blue-900 font-bold rounded-lg hover:bg-yellow-300 transition text-lg"
             >
-              Email: elevate4humanityedu@gmail.com
-            </a>
+              Contact Us <ArrowRight className="w-5 h-5" />
+            </Link>
             <a
               href="tel:3173143757"
-              className="inline-block px-10 py-5 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-50 transition text-lg"
+              className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-50 transition text-lg"
             >
-              Call: 317-314-3757
+              <Phone className="w-5 h-5" /> (317) 314-3757
             </a>
           </div>
-          <p className="mt-6 text-blue-100">Elizabeth Greene, Founder & CEO</p>
+          <p className="mt-6 text-blue-200">Elizabeth Greene, Founder & CEO</p>
+          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <Link href="/fssa-partnership-request" className="text-yellow-400 hover:underline font-semibold">
+              FSSA Partnership Request →
+            </Link>
+            <Link href="/grants" className="text-yellow-400 hover:underline font-semibold">
+              View All Funding Options →
+            </Link>
+            <Link href="/programs" className="text-yellow-400 hover:underline font-semibold">
+              Browse Programs →
+            </Link>
+          </div>
         </div>
       </section>
     </div>

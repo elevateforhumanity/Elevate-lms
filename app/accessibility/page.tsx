@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Accessibility, Mail, Phone } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   alternates: {
@@ -15,7 +16,12 @@ export const metadata: Metadata = {
 export default function AccessibilityPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Avatar Guide - handled by GlobalAvatar in layout */}
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Accessibility' }]} />
+        </div>
+      </div>
       
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white overflow-hidden">

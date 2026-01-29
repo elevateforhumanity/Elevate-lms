@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, Users, Settings, BarChart3, Database, Lock } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Admin Portal | Elevate For Humanity',
@@ -11,6 +12,13 @@ export const metadata: Metadata = {
 export default function AdminPortalLanding() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Admin' }]} />
+        </div>
+      </div>
+
       <section className="bg-slate-800 text-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center gap-3 mb-6">

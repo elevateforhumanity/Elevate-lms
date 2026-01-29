@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Briefcase, Building2, MapPin, Clock, Plus, Search, Filter, Eye, Edit, Trash2 } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Job Postings | Admin | Elevate for Humanity',
@@ -63,7 +64,15 @@ export default async function JobsPage() {
   ];
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Jobs' }]} />
+        </div>
+      </div>
+
+      <div className="p-6 max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Job Postings</h1>

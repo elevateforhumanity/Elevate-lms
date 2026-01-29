@@ -7,6 +7,7 @@ import {
   BookOpen,
   Briefcase,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata = {
   title: 'AI-Powered Learning Tools | Elevate for Humanity',
@@ -20,6 +21,13 @@ export const metadata = {
 export default function AIHubPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'AI Tools' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-zinc-900  via-white  py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

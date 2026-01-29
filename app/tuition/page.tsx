@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { 
   Building2, Calendar, CheckCircle, 
   ArrowRight, Users, Briefcase, CreditCard, Phone
@@ -34,9 +36,22 @@ export default async function TuitionPage() {
     .order('order_index');
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-800 border-b border-slate-700">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'Tuition & Payment' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
-      <section className="bg-slate-900 text-white py-12 sm:py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative bg-slate-900 text-white py-12 sm:py-16">
+        <Image
+          src="/images/heroes-hq/funding-hero.jpg"
+          alt="Tuition and Payment Options"
+          fill
+          className="object-cover opacity-30"
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-2xl sm:text-4xl font-bold mb-4">
             How to Pay for Training
           </h1>

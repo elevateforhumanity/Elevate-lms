@@ -12,6 +12,7 @@ export const metadata: Metadata = generateMetadata({
 
 import Link from 'next/link';
 import { PartyPopper } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default async function ApplicationSuccessPage() {
   const supabase = await createClient();
@@ -30,6 +31,14 @@ export default async function ApplicationSuccessPage() {
   // Log success page visit
   await supabase.from('page_views').insert({ page: 'application_success' }).select();
   return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apply', href: '/apply' }, { label: 'Success' }]} />
+        </div>
+      </div>
+
     <div className="mx-auto max-w-2xl px-4 py-16">
       <div className="rounded-2xl border bg-white p-8 shadow-sm text-center">
         <div className="text-5xl mb-4">

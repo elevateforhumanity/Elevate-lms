@@ -1,733 +1,286 @@
-'use client';
-
-import { useState, useEffect } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  Briefcase,
-  Clock,
-  DollarSign,
-  GraduationCap,
-  Phone,
-  Mail,
-  MapPin,
-  CheckCircle,
-  ArrowRight,
-  Users,
-  Award,
-  TrendingUp,
-  FileText,
-  Calendar,
-  Building2,
-  Menu,
-  X,
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { 
+  DollarSign, CheckCircle, Briefcase, Building2, ArrowRight, 
+  Users, Clock, Award, GraduationCap, Zap, Phone 
 } from 'lucide-react';
-import PathwayDisclosure from '@/components/PathwayDisclosure';
+
+export const metadata: Metadata = {
+  title: 'Apprenticeships | Earn While You Learn | Elevate For Humanity',
+  description: 'USDOL Registered Apprenticeship programs in Indiana. Earn a paycheck while learning barbering, cosmetology, HVAC, electrical, and more. No tuition required.',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/apprenticeships' },
+};
+
+const benefits = [
+  { icon: DollarSign, title: 'Paid Training', color: 'green' },
+  { icon: GraduationCap, title: 'State License', color: 'blue' },
+  { icon: Users, title: 'Mentorship', color: 'purple' },
+  { icon: Award, title: 'Credentials', color: 'orange' },
+];
+
+const apprenticeships = [
+  { 
+    name: 'Barber Apprenticeship', 
+    duration: '1,500 hours', 
+    wage: 'Earn while learning',
+    image: '/images/beauty/program-barber-training.jpg',
+    href: '/programs/barber-apprenticeship',
+    description: 'USDOL Registered program. Learn cutting, styling, and shaving in a licensed shop.'
+  },
+  { 
+    name: 'Cosmetology Apprenticeship', 
+    duration: '1,500 hours', 
+    wage: 'Earn while learning',
+    image: '/images/beauty/cosmetology-training.jpg',
+    href: '/programs/cosmetology-apprenticeship',
+    description: 'Full cosmetology training covering hair, nails, and skincare.'
+  },
+  { 
+    name: 'HVAC Apprenticeship', 
+    duration: '2-4 years', 
+    wage: '$15-$25/hr',
+    image: '/images/trades/hero-program-hvac.jpg',
+    href: '/programs/hvac-apprenticeship',
+    description: 'Heating, ventilation, and air conditioning installation and repair.'
+  },
+  { 
+    name: 'Electrical Apprenticeship', 
+    duration: '4-5 years', 
+    wage: '$16-$30/hr',
+    image: '/images/trades/program-electrical-training.jpg',
+    href: '/programs/electrical-apprenticeship',
+    description: 'Commercial and residential electrical systems installation.'
+  },
+  { 
+    name: 'Welding Apprenticeship', 
+    duration: '3-4 years', 
+    wage: '$17-$28/hr',
+    image: '/images/trades/welding-hero.jpg',
+    href: '/programs/welding-apprenticeship',
+    description: 'MIG, TIG, and stick welding for manufacturing and construction.'
+  },
+  { 
+    name: 'CDL Training', 
+    duration: '3-6 weeks', 
+    wage: '$50K-$80K/yr',
+    image: '/images/trades/hero-program-cdl.jpg',
+    href: '/programs/cdl-training',
+    description: 'Commercial driver license training with job placement.'
+  },
+];
+
+const steps = [
+  { num: 1, title: 'Apply', desc: 'Submit your application', image: '/images/business/collaboration-1.jpg' },
+  { num: 2, title: 'Interview', desc: 'Meet with employers', image: '/images/business/handshake-1.jpg' },
+  { num: 3, title: 'Train', desc: 'Learn on the job', image: '/images/business/team-1.jpg' },
+  { num: 4, title: 'Certify', desc: 'Earn your credential', image: '/images/business/success-1.jpg' },
+];
 
 export default function ApprenticeshipsPage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [mobileMenuOpen]);
-  const apprenticeships = [
-    {
-      title: 'Barber Apprenticeship',
-      slug: 'barber-apprenticeship',
-      duration: '2,000 hours (15-24 months)',
-      wage: 'Earn while you learn',
-      image: '/images/beauty/program-barber-training.jpg',
-      wioa: true,
-      description:
-        'Learn professional barbering skills in a licensed shop environment with experienced mentors. Master cutting, styling, shaving, and client relations while earning income.',
-      requirements: ['18+ years old', 'High school diploma or GED', 'Valid ID', 'Professional attitude'],
-      benefits: ['Paid training from day one', 'State licensure pathway', 'One-on-one mentorship', 'Build your client portfolio'],
-      locations: ['Indianapolis, IN'],
-    },
-    {
-      title: 'Cosmetology Apprenticeship',
-      slug: 'cosmetology-apprenticeship',
-      duration: '1,500 hours (12-18 months)',
-      wage: 'Earn while you learn',
-      image: '/images/beauty/cosmetology-training.jpg',
-      wioa: true,
-      description:
-        'Full cosmetology training covering hair cutting, coloring, styling, and salon management. Work in a licensed salon while earning your state license.',
-      requirements: ['18+ years old', 'High school diploma or GED', 'Valid ID', 'Creative mindset'],
-      benefits: ['State cosmetology license', 'Salon experience', 'Build clientele', 'Flexible career options'],
-      locations: ['Indianapolis, IN'],
-    },
-    {
-      title: 'Esthetician Apprenticeship',
-      slug: 'esthetician-apprenticeship',
-      duration: '700 hours (6-9 months)',
-      wage: 'Earn while you learn',
-      image: '/images/beauty/esthetician-training.jpg',
-      wioa: true,
-      description:
-        'Specialize in skincare, facials, and beauty treatments. Learn advanced techniques in a spa or salon environment with hands-on client experience.',
-      requirements: ['18+ years old', 'High school diploma or GED', 'Valid ID', 'Attention to detail'],
-      benefits: ['State esthetician license', 'Spa/salon experience', 'Skincare expertise', 'Growing industry'],
-      locations: ['Indianapolis, IN'],
-    },
-    {
-      title: 'Nail Technician Apprenticeship',
-      slug: 'nail-tech-apprenticeship',
-      duration: '450 hours (4-6 months)',
-      wage: 'Earn while you learn',
-      image: '/images/beauty/nail-tech-training.jpg',
-      wioa: true,
-      description:
-        'Master manicures, pedicures, nail art, and gel/acrylic applications. Train in a licensed salon with real clients.',
-      requirements: ['18+ years old', 'High school diploma or GED', 'Valid ID', 'Artistic ability'],
-      benefits: ['State nail tech license', 'Salon experience', 'Flexible schedule', 'Low startup costs'],
-      locations: ['Indianapolis, IN'],
-    },
-    {
-      title: 'HVAC Technician Apprenticeship',
-      slug: 'hvac-apprenticeship',
-      duration: '3-4 years',
-      wage: '$15-$25/hour',
-      image: '/images/trades/hero-program-hvac.jpg',
-      wioa: true,
-      description:
-        'Hands-on training in heating, ventilation, air conditioning, and refrigeration systems. Work alongside certified technicians on real installations and repairs.',
-      requirements: ['18+ years old', 'High school diploma or GED', "Valid driver's license", 'Physical fitness'],
-      benefits: ['EPA certification included', 'Industry credentials', 'Tool allowance provided', 'Health benefits available'],
-      locations: ['Indianapolis, IN', 'Surrounding counties'],
-    },
-    {
-      title: 'Building Maintenance Apprenticeship',
-      slug: 'building-maintenance-apprenticeship',
-      duration: '2-3 years',
-      wage: '$14-$22/hour',
-      image: '/images/trades/building-maintenance.jpg',
-      wioa: true,
-      description:
-        'Learn facility maintenance including basic electrical, plumbing, HVAC, and building systems. Become a versatile technician in high demand.',
-      requirements: ['18+ years old', 'High school diploma or GED', 'Basic tool knowledge', 'Reliable transportation'],
-      benefits: ['Multi-trade skills training', 'Safety certifications', 'Clear career advancement', 'Stable year-round employment'],
-      locations: ['Indianapolis, IN'],
-    },
-    {
-      title: 'EMS / EMT Training',
-      slug: 'ems-emt-training',
-      duration: '8-16 weeks',
-      wage: '$35,000-$50,000/year after completion',
-      image: '/images/healthcare/ems-training.jpg',
-      wioa: true,
-      description:
-        'Become a certified Emergency Medical Technician. Learn life-saving skills, patient assessment, and emergency response procedures.',
-      requirements: ['18+ years old', 'High school diploma or GED', 'CPR certification', 'Clean background'],
-      benefits: ['State EMT certification', 'Clinical rotations', 'Job placement support', 'Career advancement to Paramedic'],
-      locations: ['Indianapolis, IN'],
-    },
-    {
-      title: 'Culinary Arts Apprenticeship',
-      slug: 'culinary-apprenticeship',
-      duration: '1-2 years',
-      wage: '$12-$18/hour',
-      image: '/images/culinary/culinary-training.jpg',
-      wioa: true,
-      description:
-        'Train in professional kitchens learning culinary techniques, food safety, and kitchen management. Work with experienced chefs in real restaurant environments.',
-      requirements: ['18+ years old', 'High school diploma or GED', 'Food handler certification', 'Ability to stand for long periods'],
-      benefits: ['ServSafe certification', 'Professional kitchen experience', 'Culinary credentials', 'Restaurant industry connections'],
-      locations: ['Indianapolis, IN'],
-    },
-    {
-      title: 'CDL Truck Driver Training',
-      slug: 'cdl-transportation',
-      duration: '3-6 weeks',
-      wage: '$50,000-$80,000/year after completion',
-      image: '/images/trades/cdl-training.jpg',
-      wioa: true,
-      description:
-        'Earn your Commercial Driver\'s License with classroom and behind-the-wheel training. High-demand career with immediate job opportunities.',
-      requirements: ['21+ years old', 'Valid driver\'s license', 'Clean driving record', 'DOT physical clearance'],
-      benefits: ['CDL-A license', 'Job placement assistance', 'Sign-on bonuses available', 'Flexible schedules'],
-      locations: ['Indianapolis, IN'],
-    },
-    {
-      title: 'Healthcare Support (CNA/MA)',
-      slug: 'healthcare-apprenticeship',
-      duration: '8-12 weeks',
-      wage: '$13-$18/hour',
-      image: '/images/healthcare/program-cna-training.jpg',
-      wioa: true,
-      description:
-        'Entry into healthcare through CNA, medical assistant, or patient care roles. Gain clinical experience while earning certifications.',
-      requirements: ['18+ years old', 'High school diploma or GED', 'Background check clearance', 'Current immunizations'],
-      benefits: ['CNA certification included', 'Real clinical experience', 'Healthcare career pathway', 'Job placement support'],
-      locations: ['Indianapolis, IN', 'Partner facilities'],
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-white">
-      {/* Top Contact Bar */}
-      <div className="bg-blue-900 text-white py-2.5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-between items-center text-xs sm:text-sm gap-2">
-            <div className="flex items-center gap-4 sm:gap-6">
-              <a
-                href="tel:+13173143757"
-                className="flex items-center gap-1.5 hover:text-blue-300 transition-colors"
-              >
-                <Phone className="h-3.5 w-3.5" />
-                <span className="font-medium">(317) 314-3757</span>
-              </a>
-              <a
-                href="mailto:elevate4humanityedu@gmail.com"
-                className="hidden sm:flex items-center gap-1.5 hover:text-blue-300 transition-colors"
-              >
-                <Mail className="h-3.5 w-3.5" />
-                <span className="truncate max-w-[200px] md:max-w-none">
-                  elevate4humanityedu@gmail.com
-                </span>
-              </a>
-            </div>
-            <div className="flex items-center gap-1.5 text-blue-100">
-              <MapPin className="h-3.5 w-3.5" />
-              <span>Indianapolis, IN</span>
-            </div>
-          </div>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: 'Apprenticeships' }]} />
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="text-xl md:text-2xl font-bold text-blue-900">
-                Elevate <span className="text-orange-600">For Humanity</span>
-              </div>
+      {/* Hero */}
+      <section className="relative h-[55vh] min-h-[400px]">
+        <Image src="/images/beauty/program-barber-training.jpg" alt="Apprenticeship training" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+          <div className="max-w-5xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
+              <Zap className="w-4 h-4" /> USDOL Registered Programs
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black text-white mb-4">
+              Apprenticeships
+            </h1>
+            <p className="text-xl text-white/90 max-w-xl mb-6">
+              Earn a paycheck from day one while learning a skilled trade. No tuition. Real credentials.
+            </p>
+            <Link href="/apply" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105">
+              Apply Now <ArrowRight className="w-5 h-5" />
             </Link>
-            <div className="hidden md:flex items-center gap-6">
-              <Link
-                href="/programs"
-                className="text-black hover:text-blue-900 font-medium transition-colors"
-              >
-                Programs
-              </Link>
-              <Link href="/apprenticeships" className="text-blue-900 font-bold">
-                Apprenticeships
-              </Link>
-              <Link
-                href="/about"
-                className="text-black hover:text-blue-900 font-medium transition-colors"
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className="text-black hover:text-blue-900 font-medium transition-colors"
-              >
-                Contact
-              </Link>
-              <Link
-                href="/apply?pathway=apprenticeship"
-                className="px-6 py-2 bg-orange-600 text-white rounded-lg font-bold hover:bg-orange-700 transition-colors"
-              >
-                Apply Now
-              </Link>
-            </div>
-            {/* Mobile menu button */}
-            <button
-              className="md:hidden p-2"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
           </div>
         </div>
-
-        {/* Mobile Menu Drawer */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 bg-white">
-            <div className="flex flex-col">
-              <Link
-                href="/programs"
-                className="px-6 py-4 text-base font-medium text-black hover:bg-gray-50 hover:text-blue-900 transition-colors border-b border-gray-200"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Programs
-              </Link>
-              <Link
-                href="/apprenticeships"
-                className="px-6 py-4 text-base font-bold text-blue-900 bg-blue-50 border-b border-gray-200"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Apprenticeships
-              </Link>
-              <Link
-                href="/about"
-                className="px-6 py-4 text-base font-medium text-black hover:bg-gray-50 hover:text-blue-900 transition-colors border-b border-gray-200"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className="px-6 py-4 text-base font-medium text-black hover:bg-gray-50 hover:text-blue-900 transition-colors border-b border-gray-200"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
-              <Link
-                href="/apply?pathway=apprenticeship"
-                className="mx-6 my-4 px-6 py-3 bg-orange-600 text-white text-center rounded-lg font-bold hover:bg-orange-700 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Apply Now
-              </Link>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* Hero - Image only */}
-      <section className="relative h-[50vh] min-h-[350px]">
-        <Image
-          src="/images/trades/hero-program-welding.jpg"
-          alt="Apprenticeship Programs"
-          fill
-          className="object-cover"
-          priority
-        />
       </section>
 
-      {/* Pathway Disclosure */}
-      <PathwayDisclosure programName="Apprenticeship" programSlug="apprenticeship" />
-
-      {/* Benefits Section */}
-      <section className="py-12 md:py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4">
-              Why Choose Apprenticeship?
-            </h2>
-            <p className="text-base md:text-lg text-black max-w-2xl mx-auto">
-              Apprenticeships offer a proven pathway to skilled careers with no
-              student debt
-            </p>
+      {/* Benefits Strip */}
+      <section className="py-8 bg-slate-900">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {benefits.map((b, i) => (
+              <div key={i} className="flex items-center gap-3 justify-center">
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                  b.color === 'green' ? 'bg-green-500' : 
+                  b.color === 'blue' ? 'bg-blue-500' : 
+                  b.color === 'purple' ? 'bg-purple-500' : 'bg-orange-500'
+                }`}>
+                  <b.icon className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-white font-semibold">{b.title}</span>
+              </div>
+            ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <DollarSign className="h-10 w-10 text-green-600" />
+        </div>
+      </section>
+
+      {/* What is an Apprenticeship */}
+      <section className="py-16 bg-blue-600">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-white">
+              <h2 className="text-3xl md:text-4xl font-black mb-6">What is an Apprenticeship?</h2>
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Briefcase className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg">Earn While You Learn</h3>
+                    <p className="text-blue-100">Get paid from day one while training on the job with experienced mentors.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <GraduationCap className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg">Industry Credentials</h3>
+                    <p className="text-blue-100">Earn state licenses and nationally recognized certifications.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Building2 className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg">Job Guarantee</h3>
+                    <p className="text-blue-100">You&apos;re already employed - training leads directly to your career.</p>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
-                Get Paid
-              </h3>
-              <p className="text-sm md:text-base text-black">
-                Earn a wage from day one while you learn valuable skills
-              </p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <Award className="h-10 w-10 text-blue-600" />
-              </div>
-              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
-                Earn Credentials
-              </h3>
-              <p className="text-sm md:text-base text-black">
-                Receive industry-recognized certifications and licenses
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <Users className="h-10 w-10 text-purple-600" />
-              </div>
-              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
-                Expert Mentors
-              </h3>
-              <p className="text-sm md:text-base text-black">
-                Learn from experienced professionals in your field
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="h-10 w-10 text-orange-600" />
-              </div>
-              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
-                Career Growth
-              </h3>
-              <p className="text-sm md:text-base text-black">
-                Build a foundation for long-term career advancement
-              </p>
+            <div className="relative h-80 rounded-2xl overflow-hidden shadow-2xl">
+              <Image src="/images/trades/hero-program-hvac.jpg" alt="Apprentice training" fill className="object-cover" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Apprenticeship Programs */}
-      <section id="programs" className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4">
-              Available Apprenticeship Programs
-            </h2>
-            <p className="text-base md:text-lg text-black max-w-2xl mx-auto">
-              Explore our registered apprenticeship opportunities across
-              multiple industries
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-            {apprenticeships.map((program, index) => (
-              <div
-                key={index}
-                className="bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-blue-500 hover:shadow-lg transition-all"
-              >
-                {/* Program Image */}
-                <div 
-                  className="relative h-48 w-full overflow-hidden bg-cover bg-center"
-                  style={{ backgroundImage: `url(${program.image})` }}
-                  role="img"
-                  aria-label={program.title}
-                >
-                  
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
-                      {program.title}
-                    </h3>
-                    <div className="flex flex-wrap gap-3 text-sm">
-                      <span className="flex items-center gap-1 text-white/90">
-                        <Clock className="h-4 w-4" />
-                        {program.duration}
+      {/* Available Apprenticeships */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-black text-center mb-4">Available Programs</h2>
+          <p className="text-center text-slate-600 mb-12">Choose your career path</p>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {apprenticeships.map((prog, i) => (
+              <Link key={i} href={prog.href} className="group">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all border border-slate-200">
+                  <div className="relative h-48">
+                    <Image src={prog.image} alt={prog.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-xl font-bold text-white">{prog.name}</h3>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-slate-600 text-sm mb-4">{prog.description}</p>
+                    <div className="flex justify-between text-sm">
+                      <span className="flex items-center gap-1 text-slate-500">
+                        <Clock className="w-4 h-4" /> {prog.duration}
                       </span>
-                      <span className="flex items-center gap-1 text-green-400 font-semibold">
-                        <DollarSign className="h-4 w-4" />
-                        {program.wage}
+                      <span className="flex items-center gap-1 text-green-600 font-semibold">
+                        <DollarSign className="w-4 h-4" /> {prog.wage}
                       </span>
                     </div>
                   </div>
                 </div>
-
-                <div className="p-6 md:p-8">
-                <p className="text-sm md:text-base text-black mb-6 leading-relaxed">
-                  {program.description}
-                </p>
-
-                <div className="space-y-4 mb-6">
-                  <div>
-                    <h4 className="font-bold text-black mb-2 flex items-center gap-2 text-sm md:text-base">
-                      <FileText className="h-4 w-4 text-blue-600" />
-                      Requirements
-                    </h4>
-                    <ul className="space-y-1">
-                      {program.requirements.map((req, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start gap-2 text-xs md:text-sm text-black"
-                        >
-                          <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                          <span>{req}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-black mb-2 flex items-center gap-2 text-sm md:text-base">
-                      <Award className="h-4 w-4 text-orange-600" />
-                      Benefits
-                    </h4>
-                    <ul className="space-y-1">
-                      {program.benefits.map((benefit, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start gap-2 text-xs md:text-sm text-black"
-                        >
-                          <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
-                          <span>{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-black mb-2 flex items-center gap-2 text-sm md:text-base">
-                      <MapPin className="h-4 w-4 text-purple-600" />
-                      Locations
-                    </h4>
-                    <p className="text-xs md:text-sm text-black">
-                      {program.locations.join(', ')}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    href={`/apply?program=${program.slug}`}
-                    className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-brand-red-600 text-white font-bold rounded-lg hover:bg-brand-red-700 transition-colors text-sm md:text-base"
-                  >
-                    Apply Now
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                  <Link
-                    href={`/programs/${program.slug}`}
-                    className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-brand-blue-600 text-white font-bold rounded-lg hover:bg-brand-blue-700 transition-colors text-sm md:text-base"
-                  >
-                    Learn More
-                  </Link>
-                </div>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="py-12 md:py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4">
-              How Apprenticeship Works
-            </h2>
-            <p className="text-base md:text-lg text-black max-w-2xl mx-auto">
-              A clear path from application to career success
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {[
-              {
-                step: '1',
-                title: 'Apply',
-                description:
-                  'Submit your application and meet with our team to discuss your goals',
-                icon: FileText,
-              },
-              {
-                step: '2',
-                title: 'Get Matched',
-                description:
-                  'We connect you with an employer sponsor and training program',
-                icon: Users,
-              },
-              {
-                step: '3',
-                title: 'Start Training',
-                description:
-                  'Begin earning while learning on the job and in the classroom',
-                icon: GraduationCap,
-              },
-              {
-                step: '4',
-                title: 'Launch Career',
-                description:
-                  'Complete your apprenticeship and advance in your chosen field',
-                icon: TrendingUp,
-              },
-            ].map((item, index) => (
-              <div key={index} className="relative">
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 h-full">
-                  <div className="w-12 h-12 bg-blue-900 text-white rounded-lg flex items-center justify-center mb-4 text-xl font-bold">
-                    {item.step}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-black text-center mb-4">How It Works</h2>
+          <p className="text-center text-slate-600 mb-12">4 steps to your new career</p>
+          
+          <div className="grid md:grid-cols-4 gap-6">
+            {steps.map((step, i) => (
+              <div key={i} className="group">
+                <div className="relative h-48 rounded-2xl overflow-hidden mb-4 shadow-lg group-hover:shadow-xl transition-shadow">
+                  <Image src={step.image} alt={step.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute top-4 left-4 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    {step.num}
                   </div>
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <item.icon className="h-10 w-10 text-blue-600" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-xl font-bold text-white">{step.title}</h3>
+                    <p className="text-white/80 text-sm">{step.desc}</p>
                   </div>
-                  <h3 className="text-lg md:text-xl font-bold text-black mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm md:text-base text-black">
-                    {item.description}
-                  </p>
                 </div>
-                {index < 3 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <ArrowRight className="h-10 w-10 text-black" />
-                  </div>
-                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-blue-900 to-blue-800 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-            Ready to Start Your Apprenticeship?
+      {/* Eligibility */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-black mb-4">Do You Qualify?</h2>
+          <p className="text-slate-600 mb-8">Most adults qualify for apprenticeship programs</p>
+          
+          <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8">
+            {[
+              '18+ years old',
+              'High school diploma or GED',
+              'US work authorized',
+              'Reliable transportation',
+              'Pass background check',
+              'Committed to learning',
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+                <CheckCircle className="w-6 h-6 text-green-500" />
+                <span className="font-medium text-slate-700">{item}</span>
+              </div>
+            ))}
+          </div>
+          
+          <Link href="/wioa-eligibility" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105">
+            Check Eligibility <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-slate-900">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+            Start Your Apprenticeship
           </h2>
-          <p className="text-lg md:text-xl text-blue-100 mb-8">
-            Take the first step toward a rewarding career with paid training
+          <p className="text-xl text-slate-300 mb-8">
+            No tuition. Real pay. Industry credentials.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply?pathway=apprenticeship"
-              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-orange-600 text-white font-bold text-base md:text-lg rounded-lg hover:bg-orange-700 transition-colors shadow-lg"
-            >
-              Apply Now
-              <ArrowRight className="ml-2 h-5 w-5" />
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link href="/apply" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all hover:scale-105">
+              Apply Now <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 font-bold text-base md:text-lg rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
-            >
-              Contact Us
-            </Link>
+            <a href="tel:+13173143757" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-10 py-5 rounded-full font-bold text-lg transition-all border border-white/30">
+              <Phone className="w-5 h-5" /> (317) 314-3757
+            </a>
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="h-11 w-11 text-blue-600" />
-              </div>
-              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
-                Call Us
-              </h3>
-              <a
-                href="tel:+13173143757"
-                className="text-blue-600 hover:text-blue-800 font-semibold text-base md:text-lg"
-              >
-                (317) 314-3757
-              </a>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Mail className="h-11 w-11 text-green-600" />
-              </div>
-              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
-                Email Us
-              </h3>
-              <a
-                href="mailto:elevate4humanityedu@gmail.com"
-                className="text-blue-600 hover:text-blue-800 font-semibold text-sm md:text-base break-all px-2"
-              >
-                elevate4humanityedu@gmail.com
-              </a>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="h-11 w-11 text-purple-600" />
-              </div>
-              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
-                Visit Us
-              </h3>
-              <p className="text-sm md:text-base text-black">
-                8888 Keystone Crossing, Suite 1300
-                <br />
-                Indianapolis, IN 46240
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="text-lg md:text-xl font-bold mb-4">
-                Elevate For Humanity
-              </h3>
-              <p className="text-black text-sm">
-                Empowering individuals through workforce development and
-                apprenticeship programs.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Programs</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    href="/programs"
-                    className="text-black hover:text-white transition-colors"
-                  >
-                    All Programs
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/apprenticeships"
-                    className="text-black hover:text-white transition-colors"
-                  >
-                    Apprenticeships
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/apply?pathway=apprenticeship"
-                    className="text-black hover:text-white transition-colors"
-                  >
-                    Apply Now
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">About</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    href="/about"
-                    className="text-black hover:text-white transition-colors"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/team"
-                    className="text-black hover:text-white transition-colors"
-                  >
-                    Our Team
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/founder"
-                    className="text-black hover:text-white transition-colors"
-                  >
-                    Our Founder
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-black">
-                <li>(317) 314-3757</li>
-                <li className="break-all">elevate4humanityedu@gmail.com</li>
-                <li>Indianapolis, IN</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-sm text-black">
-            <p>
-              &copy; {new Date().getFullYear()} Elevate For Humanity. All rights
-              reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

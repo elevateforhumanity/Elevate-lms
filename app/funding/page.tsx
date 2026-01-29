@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import {
   DollarSign,
   Users,
@@ -28,7 +29,7 @@ export default function FundingPage() {
       icon: CheckCircle,
       color: 'green',
       category: 'Eligibility',
-      image: '/images/healthcare/hero-healthcare-professionals.jpg',
+      image: '/images/business/collaboration-1.jpg',
     },
     {
       title: 'Grants',
@@ -38,7 +39,7 @@ export default function FundingPage() {
       icon: DollarSign,
       color: 'emerald',
       category: 'Funding',
-      image: '/images/trades/program-building-construction.jpg',
+      image: '/images/business/partnership-1.jpg',
     },
     {
       title: 'JRI Funding',
@@ -48,7 +49,7 @@ export default function FundingPage() {
       icon: Shield,
       color: 'purple',
       category: 'Funding',
-      image: '/images/hero-programs-technology.jpg',
+      image: '/images/business/team-1.jpg',
     },
     {
       title: 'SNAP E&T',
@@ -58,7 +59,7 @@ export default function FundingPage() {
       icon: Users,
       color: 'orange',
       category: 'Funding',
-      image: '/images/healthcare/program-cna-overview.jpg',
+      image: '/images/business/team-2.jpg',
     },
     {
       title: 'FSSA Partnership',
@@ -68,7 +69,7 @@ export default function FundingPage() {
       icon: Handshake,
       color: 'pink',
       category: 'Partnerships',
-      image: '/images/healthcare/hero-program-medical-assistant.jpg',
+      image: '/images/business/team-3.jpg',
     },
     {
       title: 'OJT & Funding',
@@ -78,7 +79,7 @@ export default function FundingPage() {
       icon: Briefcase,
       color: 'indigo',
       category: 'Programs',
-      image: '/images/trades/program-hvac-technician.jpg',
+      image: '/images/business/team-4.jpg',
     },
     {
       title: 'Funding Impact',
@@ -88,7 +89,7 @@ export default function FundingPage() {
       icon: TrendingUp,
       color: 'cyan',
       category: 'Impact',
-      image: '/images/heroes-hq/success-stories-hero.jpg',
+      image: '/images/business/professional-1.jpg',
     },
     {
       title: 'Workforce Partners',
@@ -108,7 +109,7 @@ export default function FundingPage() {
       icon: FileText,
       color: 'rose',
       category: 'Resources',
-      image: '/images/trades/welding-hero.jpg',
+      image: '/images/business/professional-2.jpg',
     },
     {
       title: 'Partner Agencies',
@@ -118,7 +119,7 @@ export default function FundingPage() {
       icon: Building2,
       color: 'amber',
       category: 'Partnerships',
-      image: '/images/trades/program-electrical-training.jpg',
+      image: '/images/business/handshake-1.jpg',
     },
     {
       title: 'Government Programs',
@@ -128,7 +129,7 @@ export default function FundingPage() {
       icon: Shield,
       color: 'lime',
       category: 'Programs',
-      image: '/images/trades/hero-program-cdl.jpg',
+      image: '/images/business/success-1.jpg',
     },
     {
       title: 'Federal Compliance',
@@ -138,7 +139,7 @@ export default function FundingPage() {
       icon: CheckCircle,
       color: 'teal',
       category: 'Compliance',
-      image: '/images/hero-program-cybersecurity.jpg',
+      image: '/images/business/collaboration-1.jpg',
     },
     {
       title: 'Equal Opportunity',
@@ -148,12 +149,19 @@ export default function FundingPage() {
       icon: Users,
       color: 'sky',
       category: 'Compliance',
-      image: '/images/apprenticeships-card.jpg',
+      image: '/images/business/partnership-1.jpg',
     },
   ];
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding' }]} />
+        </div>
+      </div>
+
       {/* Hero - Clean image, no text overlay */}
       <section className="relative h-[50vh] overflow-hidden">
         <Image

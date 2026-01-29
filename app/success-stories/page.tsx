@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Quote, ArrowRight, TrendingUp, Users } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Success Stories - Real People, Real Results | Elevate for Humanity',
@@ -82,6 +83,13 @@ export default async function SuccessStoriesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Success Stories' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden">
         <Image

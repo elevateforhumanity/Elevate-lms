@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import {
   CheckCircle,
   Users,
@@ -116,6 +117,13 @@ export default function JRIPage() {
 
   return (
     <div className="bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'JRI Program' }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative min-h-[450px] flex items-center bg-slate-900">
         <Image

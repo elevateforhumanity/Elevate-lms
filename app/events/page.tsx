@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Events | Elevate For Humanity',
@@ -109,6 +110,13 @@ export default async function EventsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Events' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <div className="bg-gradient-to-r from-rose-600 to-rose-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4">

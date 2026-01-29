@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -221,6 +222,13 @@ export default async function SitemapPage() {
   return (
     <>
       <main className="min-h-screen bg-slate-50">
+        {/* Breadcrumbs */}
+        <div className="bg-slate-50 border-b">
+          <div className="max-w-6xl mx-auto px-4 py-3">
+            <Breadcrumbs items={[{ label: 'Site Map' }]} />
+          </div>
+        </div>
+
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
           <div className="max-w-7xl mx-auto px-4">
             <h1 className="text-4xl font-bold mb-4">Sitemap</h1>

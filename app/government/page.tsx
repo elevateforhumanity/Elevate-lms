@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Building2, Users, FileText, Shield, CheckCircle, Award, Briefcase, Phone, Mail, TrendingUp, Target, Handshake, BarChart3 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -36,6 +37,13 @@ export default async function GovernmentPage() {
     .eq('type', 'government');
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'Government Programs' }]} />
+        </div>
+      </div>
+
       {/* Hero Section with Video Background */}
       <section className="relative min-h-[650px] flex items-center overflow-hidden">
         {/* Video Background */}

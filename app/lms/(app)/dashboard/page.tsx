@@ -4,8 +4,8 @@ export const dynamic = 'force-dynamic';
 import { generateInternalMetadata } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = generateInternalMetadata({
-  title: 'Lms (App) Dashboard',
-  description: 'Internal page for Lms (App) Dashboard',
+  title: 'Student Dashboard',
+  description: 'Your learning dashboard - track progress, courses, and achievements',
   path: '/lms/(app)/dashboard',
 });
 
@@ -15,6 +15,7 @@ import { requireRole } from '@/lib/auth/require-role';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { getStudentState } from '@/lib/orchestration/state-machine';
 import {
   StateAwareDashboard,
@@ -183,6 +184,11 @@ export default async function StudentDashboardOrchestrated() {
 
   return (
     <>
+      {/* Breadcrumbs */}
+      <div className="mb-6">
+        <Breadcrumbs items={[{ label: 'LMS', href: '/lms' }, { label: 'Dashboard' }]} />
+      </div>
+
       {/* Hero Welcome Banner */}
       <div className="relative text-white mb-8 rounded-2xl overflow-hidden">
         <div className="absolute inset-0">

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'How It Works | Elevate for Humanity',
@@ -111,6 +112,13 @@ const programs = [
 export default function HowItWorksPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'How It Works' }]} />
+        </div>
+      </div>
+
       {/* Hero - Image only, no overlay */}
       <section className="relative h-[50vh] min-h-[350px]">
         <Image

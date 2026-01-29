@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { 
   TrendingUp, 
   Users, 
@@ -26,6 +27,13 @@ export const metadata: Metadata = {
 export default function FundingImpactPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'Funding Impact' }]} />
+        </div>
+      </div>
+
       {/* Hero Section with Video Background */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
         {/* Video Background */}

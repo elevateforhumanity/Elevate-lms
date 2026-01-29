@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { Building2, Users, Briefcase, GraduationCap, Handshake, Award } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Our Partners | Elevate for Humanity',
@@ -82,7 +83,12 @@ const employerPartners = [
 export default function PartnersPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Avatar Guide - handled by GlobalAvatar in layout */}
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'About', href: '/about' }, { label: 'Partners' }]} />
+        </div>
+      </div>
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-800 to-slate-900 text-white py-20 md:py-28">

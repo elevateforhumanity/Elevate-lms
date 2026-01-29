@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import {
   Users,
   Award,
@@ -25,6 +26,13 @@ export const metadata: Metadata = {
 export default function EmployersPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'For Employers' }]} />
+        </div>
+      </div>
+
       {/* Hero with Image */}
       <section className="relative min-h-[550px] flex items-center overflow-hidden">
         <Image

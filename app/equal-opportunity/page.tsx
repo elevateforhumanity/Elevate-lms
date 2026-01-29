@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Scale, Shield, Users, Heart, Accessibility, FileText, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { Scale, Shield, Users, Heart, Accessibility, FileText, ArrowRight, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Equal Opportunity Employer | Elevate for Humanity',
@@ -83,6 +84,13 @@ const colorClasses: Record<string, { bg: string; border: string; icon: string }>
 export default function EqualOpportunityPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-blue-900 border-b border-blue-800">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'Equal Opportunity' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-gradient-to-r from-blue-800 to-blue-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
@@ -254,6 +262,36 @@ export default function EqualOpportunityPage() {
           </p>
         </section>
       </div>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-blue-600">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">Need Assistance or Have Questions?</h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Contact us for accommodations, to file a complaint, or for more information about our equal opportunity policies.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
+            >
+              Contact Us <ArrowRight className="w-5 h-5" />
+            </Link>
+            <a
+              href="tel:3173143757"
+              className="inline-flex items-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-800 transition border border-white/30"
+            >
+              <Phone className="w-5 h-5" /> (317) 314-3757
+            </a>
+            <Link
+              href="/apply"
+              className="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-green-600 transition"
+            >
+              Apply for Training <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,256 +1,272 @@
 import { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
-
 import Link from 'next/link';
 import Image from 'next/image';
-import { PolicyReference } from '@/components/compliance/PolicyReference';
-import { POLICIES } from '@/lib/policies';
-
-export const dynamic = 'force-dynamic';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { DollarSign, CheckCircle, Users, Building2, ArrowRight, Shield, GraduationCap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/grants',
-  },
-  title: 'Grants | Elevate For Humanity',
-  description:
-    'Resources and tools for your success.',
+  title: 'Grants & Scholarships | Get Your Training Paid For | Elevate For Humanity',
+  description: 'Indiana residents can get 100% free career training through federal and state grants. No loans, no debt. See if you qualify for WIOA, Workforce Ready Grant, or other funding.',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/grants' },
 };
 
-export default async function GrantsPage() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+export default function GrantsPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'Grants & Scholarships' }]} />
         </div>
       </div>
-    );
-  }
-  
-  // Fetch grants
-  const { data: grants } = await supabase
-    .from('grants')
-    .select('*')
-    .eq('status', 'active');
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
+
+      {/* Hero */}
+      <section className="relative h-[50vh] min-h-[400px] flex items-center overflow-hidden">
         <Image
-          src="/images/efh/sections/coaching.jpg"
-          alt="Grants"
+          src="/images/heroes-hq/funding-hero.jpg"
+          alt="Students celebrating graduation"
           fill
           className="object-cover"
-          quality={100}
           priority
-          sizes="100vw"
         />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Grants</h1>
-          <p className="text-base md:text-lg mb-4 text-gray-100">
-            Access your dashboard and
-            development.
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="inline-block bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
+            No Loans — No Repayment
+          </span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            Get Your Training Paid For
+          </h1>
+          <p className="text-xl text-gray-200 max-w-2xl mb-8">
+            You shouldn&apos;t have to go into debt to start a new career. Federal and state grants cover your entire training — tuition, books, supplies, and even certification exams.
           </p>
-          <div className="mb-8">
-            <PolicyReference
-              policyName={POLICIES.GRANT_APPLICATION.name}
-              policyUrl={POLICIES.GRANT_APPLICATION.url}
-              description="Grant applications subject to"
-              variant="inline"
-              className="text-white"
-            />
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
+          <Link
+            href="/wioa-eligibility"
+            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+          >
+            See If You Qualify <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+      </section>
+
+      {/* What This Means For You */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+            What This Means For You
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: DollarSign, title: '$0 Out of Pocket', desc: 'Grants cover everything. You pay nothing upfront or later.' },
+              { icon: GraduationCap, title: 'Real Certifications', desc: 'Earn industry credentials that employers actually want.' },
+              { icon: Users, title: 'Support Services', desc: 'Many grants include help with transportation and childcare.' },
+              { icon: Shield, title: 'No Risk', desc: 'Unlike loans, grants never need to be paid back. Ever.' },
+            ].map((item, i) => (
+              <div key={i} className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <item.icon className="w-10 h-10 text-blue-600 mb-4" />
+                <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
+                <p className="text-slate-600 text-sm">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Content Section */}
+      {/* Grant Programs Explained */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">Grants</h2>
-                <p className="text-black mb-6">
-                  Your hub for training and career growth.
-                  and development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/efh/sections/staffing.jpg"
-                  alt="Grants"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
+            Grants Available to Indiana Residents
+          </h2>
+          <p className="text-lg text-slate-600 text-center mb-12 max-w-3xl mx-auto">
+            There are several programs that can pay for your training. Here&apos;s what each one offers and who qualifies.
+          </p>
+
+          <div className="space-y-8">
+            {/* WIOA */}
+            <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Users className="w-8 h-8 text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">WIOA (Workforce Innovation and Opportunity Act)</h3>
+                  <p className="text-slate-600 mb-4">
+                    This is the main federal program that pays for career training. It&apos;s designed for adults who need new skills to get a good job. WIOA covers your tuition, books, supplies, certification exams, and can even help with transportation and childcare.
+                  </p>
+                  <div className="bg-slate-50 rounded-lg p-4 mb-4">
+                    <h4 className="font-semibold text-slate-900 mb-2">You likely qualify if you:</h4>
+                    <ul className="grid md:grid-cols-2 gap-2">
+                      {[
+                        'Are 18 or older',
+                        'Can legally work in the US',
+                        'Have low-to-moderate income',
+                        'Receive SNAP, TANF, or SSI',
+                        'Are a veteran or military spouse',
+                        'Were recently laid off',
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-center gap-2 text-slate-700 text-sm">
+                          <CheckCircle className="w-4 h-4 text-green-500" /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link href="/wioa-eligibility" className="text-blue-600 font-semibold hover:underline inline-flex items-center gap-1">
+                    Check WIOA Eligibility <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             </div>
 
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
+            {/* Workforce Ready Grant */}
+            <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Building2 className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Workforce Ready Grant (Indiana)</h3>
+                  <p className="text-slate-600 mb-4">
+                    This is Indiana&apos;s state grant for high-demand careers. It&apos;s specifically for programs that lead to jobs employers are hiring for right now — like healthcare, IT, and skilled trades.
+                  </p>
+                  <div className="bg-slate-50 rounded-lg p-4 mb-4">
+                    <h4 className="font-semibold text-slate-900 mb-2">Requirements:</h4>
+                    <ul className="space-y-2">
+                      {[
+                        'Be an Indiana resident',
+                        'Have a high school diploma or GED',
+                        'Enroll in an eligible high-demand program',
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-center gap-2 text-slate-700 text-sm">
+                          <CheckCircle className="w-4 h-4 text-green-500" /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
+            </div>
 
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
+            {/* SNAP E&T */}
+            <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-8 h-8 text-orange-600" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">SNAP Employment & Training</h3>
+                  <p className="text-slate-600 mb-4">
+                    If you receive SNAP benefits (food stamps), you can get free job training plus extra support like transportation money and help finding childcare. This program is designed to help you become self-sufficient.
+                  </p>
+                  <div className="bg-slate-50 rounded-lg p-4 mb-4">
+                    <h4 className="font-semibold text-slate-900 mb-2">You qualify if you:</h4>
+                    <ul className="space-y-2">
+                      {[
+                        'Currently receive SNAP benefits',
+                        'Are able and willing to work',
+                        'Want to gain skills for a better job',
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-center gap-2 text-slate-700 text-sm">
+                          <CheckCircle className="w-4 h-4 text-green-500" /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link href="/snap-et-partner" className="text-blue-600 font-semibold hover:underline inline-flex items-center gap-1">
+                    Learn About SNAP E&T <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
+            </div>
 
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
+            {/* JRI */}
+            <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <GraduationCap className="w-8 h-8 text-purple-600" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">JRI (Justice Reinvestment Initiative)</h3>
+                  <p className="text-slate-600 mb-4">
+                    Everyone deserves a second chance. JRI funding helps justice-involved individuals get career training and support services to build a stable future. We believe in your potential.
+                  </p>
+                  <div className="bg-slate-50 rounded-lg p-4 mb-4">
+                    <h4 className="font-semibold text-slate-900 mb-2">This program is for you if:</h4>
+                    <ul className="space-y-2">
+                      {[
+                        'You have justice system involvement',
+                        'You\'re committed to building a new career',
+                        'You\'re ready to take the next step',
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-center gap-2 text-slate-700 text-sm">
+                          <CheckCircle className="w-4 h-4 text-green-500" /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link href="/jri" className="text-blue-600 font-semibold hover:underline inline-flex items-center gap-1">
+                    Learn About JRI Programs <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
+      {/* How to Apply */}
+      <section className="py-16 bg-blue-600">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-white mb-4 text-center">
+            How to Get Started
+          </h2>
+          <p className="text-xl text-blue-100 text-center mb-12">
+            We make the process simple. Here&apos;s what happens:
+          </p>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { num: '1', title: 'Check Eligibility', desc: 'Take our quick quiz to see which grants you qualify for.' },
+              { num: '2', title: 'Meet With Us', desc: 'We\'ll help you understand your options and choose a program.' },
+              { num: '3', title: 'Apply for Funding', desc: 'We guide you through the paperwork — it\'s easier than you think.' },
+              { num: '4', title: 'Start Training', desc: 'Begin your program with everything paid for.' },
+            ].map((step, i) => (
+              <div key={i} className="text-center">
+                <div className="w-14 h-14 bg-white text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                  {step.num}
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
+                <p className="text-blue-100 text-sm">{step.desc}</p>
+              </div>
+            ))}
           </div>
+          <div className="text-center mt-12">
+            <Link
+              href="/wioa-eligibility"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
+              Check Your Eligibility Now <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-xl font-bold text-slate-900 mb-2">Have Questions?</h3>
+          <p className="text-slate-600 mb-4">
+            We&apos;re here to help you figure out your funding options.
+          </p>
+          <p className="text-slate-700">
+            Call us at{' '}
+            <a href="tel:+13173143757" className="font-semibold text-blue-600 hover:underline">
+              (317) 314-3757
+            </a>{' '}
+            or email{' '}
+            <a href="mailto:elevate4humanityedu@gmail.com" className="font-semibold text-blue-600 hover:underline">
+              elevate4humanityedu@gmail.com
+            </a>
+          </p>
         </div>
       </section>
     </div>

@@ -4,6 +4,7 @@ import React from 'react';
 // app/advising/page.tsx
 
 import { useState } from 'react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function AdvisingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,8 +49,15 @@ export default function AdvisingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Advising' }]} />
+        </div>
+      </div>
+
+      <div className="py-12 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <header className="mb-8">
           <p className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
             Student Advising

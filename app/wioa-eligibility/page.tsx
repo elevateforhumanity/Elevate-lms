@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { DollarSign, Home, Users, Briefcase, ArrowRight, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -113,6 +114,13 @@ export default async function WIOAEligibilityPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Funding', href: '/funding' }, { label: 'WIOA Eligibility' }]} />
+        </div>
+      </div>
+
       {/* Hero - Image only */}
       <section className="relative h-[50vh] min-h-[350px]">
         <Image

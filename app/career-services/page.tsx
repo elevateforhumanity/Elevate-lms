@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import {
   Briefcase,
   FileText,
@@ -89,6 +90,13 @@ export default async function CareerServicesPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Career Services' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative">
         <div className="relative h-[450px] bg-gray-900">

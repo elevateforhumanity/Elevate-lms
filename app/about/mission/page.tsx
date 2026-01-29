@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { Target, Heart, Users, Briefcase, GraduationCap, HandHeart } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Our Mission | Elevate for Humanity',
@@ -14,7 +15,12 @@ export const metadata: Metadata = {
 export default function MissionPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Avatar Guide - handled by GlobalAvatar in layout */}
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'About', href: '/about' }, { label: 'Mission' }]} />
+        </div>
+      </div>
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-orange-600 to-orange-700 text-white py-20 md:py-28">
