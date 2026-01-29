@@ -5,8 +5,8 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = { 
-  title: 'Enroll | Elevate For Humanity',
-  description: 'Enroll in free workforce training programs at Elevate For Humanity.',
+  title: 'Complete Your Application | Elevate For Humanity',
+  description: 'Enter your contact information, location, and program selection. If funded, we ask eligibility questions. If self-pay, we focus on enrollment and payment options.',
 };
 
 export const dynamic = 'force-dynamic';
@@ -55,7 +55,8 @@ export default async function EnrollPage() {
 
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="bg-white rounded-xl shadow-sm p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Available Programs</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Complete Your Application</h2>
+          <p className="text-gray-600 mb-6">Enter your contact information, location, and the program you're applying for. If your training is funded, we'll also ask questions tied to eligibility. If you're self-pay, we'll focus on enrollment and payment options.</p>
           
           {programs && programs.length > 0 ? (
             <div className="space-y-4">

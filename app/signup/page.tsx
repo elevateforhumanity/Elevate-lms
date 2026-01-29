@@ -38,19 +38,19 @@ export default async function SignupPage() {
     <div className="min-h-screen bg-slate-50">
       <div className="mx-auto max-w-3xl px-4 py-10">
         <h1 className="text-3xl font-bold text-black">
-          Create your Elevate account
+          Create Your Secure Student Account
         </h1>
         <p className="mt-2 text-black">
-          Use one account to apply, track training, and manage documents. After
-          you apply, a real advisor follows up.
+          To protect your application and documents, you'll create a secure account. This lets you save progress, upload required documents, and get status updates without calling or waiting.
         </p>
 
         <div className="mt-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-black">What you get</h2>
+          <h2 className="text-lg font-semibold text-black">Your account includes</h2>
           <ul className="mt-3 list-disc pl-5 text-black space-y-2">
-            <li>Program access (training, apprenticeships, credentials)</li>
-            <li>Progress tracking and reporting</li>
-            <li>Secure document upload for funding and onboarding</li>
+            <li>Save and resume your application anytime</li>
+            <li>Upload required documents securely</li>
+            <li>Track your application status in real-time</li>
+            <li>Access your Student Portal once enrolled</li>
           </ul>
         </div>
 

@@ -54,23 +54,23 @@ export default async function EnrollSuccessPage() {
   const defaultNextSteps = [
     {
       step: 1,
-      title: 'Start Learning Now',
-      description: 'Your courses are ready! Access them in the Learning Portal.',
+      title: 'Start Your First Lesson',
+      description: 'Your course is ready. Click below to begin learning immediately.',
     },
     {
       step: 2,
-      title: 'Check Your Email',
-      description: 'We\'ve sent a confirmation email with important details.',
+      title: 'Track Your Progress',
+      description: 'See your completion percentage, deadlines, and announcements.',
     },
     {
       step: 3,
-      title: 'Complete Any Paperwork',
-      description: 'Review and sign any required documents sent to your email.',
+      title: 'Upload Required Items',
+      description: 'Submit any additional documents needed for your program.',
     },
     {
       step: 4,
-      title: 'Track Your Progress',
-      description: 'View your progress and earn certificates as you complete courses.',
+      title: 'Complete & Earn Certificate',
+      description: 'When you complete the course requirements, your certificate is issued automatically.',
     },
   ];
 
@@ -95,17 +95,20 @@ export default async function EnrollSuccessPage() {
           </div>
           <h1 className="text-4xl font-bold text-black mb-4">
             <PartyPopper className="w-8 h-8 inline-block mr-2" aria-hidden="true" />
-            Enrollment Successful!
+            Access Unlocked!
           </h1>
-          <p className="text-lg text-gray-600">
-            Welcome to Elevate for Humanity. We&apos;re excited to have you!
+          <p className="text-lg text-gray-600 mb-2">
+            Go to Student Portal to start.
+          </p>
+          <p className="text-base text-gray-500">
+            Our system has created your student access, assigned your course, and unlocked your learning dashboard. You don't have to wait for someone to manually add you.
           </p>
         </div>
 
         {/* What's Next */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
           <h2 className="text-2xl font-bold text-black mb-6">
-            What Happens Next:
+            Welcome to Your Student Portal
           </h2>
 
           <div className="space-y-6">

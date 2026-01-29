@@ -96,9 +96,9 @@ export default function DocumentUploadPage() {
 
       <div className="py-12">
       <div className="container mx-auto px-4 max-w-2xl">
-        <h1 className="text-3xl font-bold mb-2">Upload Document</h1>
+        <h1 className="text-3xl font-bold mb-2">Upload Required Documents to Stay on Track</h1>
         <p className="text-black mb-8">
-          Upload certificates, transcripts, or other required documents.
+          This step is what keeps your application moving. If any required document is missing, your application cannot be approved yet. Once your uploads are complete, you'll submit your application.
         </p>
 
         <div className="bg-white rounded-lg shadow-sm p-8">

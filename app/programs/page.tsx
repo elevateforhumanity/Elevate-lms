@@ -54,11 +54,11 @@ export default function ProgramsPage() {
             <span className="text-red-600">Start Free.</span>
           </h1>
           <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-6">
-            Choose from healthcare, skilled trades, technology, and more. All programs are free for eligible participants.
+            If you're here, you're in the right place. This program is designed to take you from interested to enrolled, then into class with a clear next step at every stage.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/apply" className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all shadow-lg">
-              Check Eligibility
+              Start Eligibility &amp; Apply
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

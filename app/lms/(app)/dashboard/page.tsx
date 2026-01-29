@@ -205,10 +205,10 @@ export default async function StudentDashboardOrchestrated() {
             <GraduationCap className="w-10 h-10" />
             <div>
               <h1 className="text-3xl md:text-4xl font-black">
-                Welcome back, {profile?.full_name || user.email?.split('@')[0]}!
+                Welcome to Your Student Portal
               </h1>
               <p className="text-lg text-green-100">
-                Continue your learning journey
+                {profile?.full_name || user.email?.split('@')[0]}, you're in. Start your first lesson, track progress, upload required items, see deadlines and announcements, and complete quizzes and assessments.
               </p>
             </div>
           </div>

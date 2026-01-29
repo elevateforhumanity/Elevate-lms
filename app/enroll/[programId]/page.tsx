@@ -345,10 +345,10 @@ export default function EnrollPage() {
                 ) : (
                   <>
                     {program?.is_free === true || program?.funding_eligible
-                      ? 'Enroll Now - Free'
+                      ? 'Complete Enrollment'
                       : (program?.price || program?.total_cost)
-                        ? 'Continue to Payment'
-                        : 'Enroll Now'}
+                        ? 'Enroll Now (Secure Checkout)'
+                        : 'Complete Enrollment'}
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </>
                 )}

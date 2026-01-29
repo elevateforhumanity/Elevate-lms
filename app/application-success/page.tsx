@@ -47,14 +47,16 @@ export default async function ApplicationSuccessPage() {
         <h1 className="text-3xl font-bold text-black mb-4">
           Application Received
         </h1>
-        <p className="text-lg text-black mb-8">
-          Thank you for applying to Elevate for Humanity. A real advisor will
-          contact you within 1–2 business days.
+        <p className="text-lg text-black mb-4">
+          Your application is received and time-stamped. You'll receive an email update. From here, your application moves into review.
+        </p>
+        <p className="text-base text-gray-600 mb-8">
+          One of two things happens: you'll be approved and receive your next step to enroll, or we'll send you a request for any missing items and your application pauses until it's provided.
         </p>
 
         <div className="rounded-xl border bg-gray-50 p-6 text-left mb-8">
           <h2 className="text-lg font-semibold text-black mb-4">
-            What to do now:
+            Next: Review & Enrollment Steps
           </h2>
           <ol className="space-y-3 text-black">
             <li className="flex items-start gap-3">

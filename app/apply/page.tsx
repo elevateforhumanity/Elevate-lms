@@ -30,13 +30,13 @@ export default function ApplyPage() {
       >
         <div className="max-w-4xl mx-auto text-center text-white">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Start Your New Career
+            Let's Match You to the Fastest Enrollment Path
           </h1>
           <p className="text-xl text-blue-100 mb-2">
-            Free workforce training through WIOA funding
+            We'll ask a few quick questions to route you to funded options if you qualify, or self-pay if you don't.
           </p>
           <p className="text-blue-200">
-            Most programs are 100% free for eligible Indiana residents
+            Answer honestly—this doesn't lock you in. It just routes you to the fastest approval path.
           </p>
         </div>
       </section>
@@ -71,10 +71,10 @@ export default function ApplyPage() {
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold text-center text-slate-900 mb-4">
-            How Would You Like to Get Started?
+            Choose Your Enrollment Path
           </h2>
           <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-            Not sure which program is right for you? Start with an inquiry. Ready to commit? Enroll directly.
+            Your answers help route you to funded options if you qualify. We'll match you with funded training (WIOA/WRG/JRI or partner funding), or self-pay / employer-pay.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
