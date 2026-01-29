@@ -11,6 +11,7 @@ import {
   Calendar,
   Shield,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'The Rise Foundation | A DBA of Selfish Inc. 501(c)(3) | Free VITA Tax Services & Mental Wellness',
@@ -106,6 +107,13 @@ export default async function RiseFoundationPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Rise Foundation' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative min-h-[500px] flex items-center">
         <div 

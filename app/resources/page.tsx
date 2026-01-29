@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { FileText, DollarSign, GraduationCap, Shield, ArrowRight, BookOpen } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
@@ -77,6 +78,13 @@ export default function ResourcesPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Resources' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-slate-900 text-white py-16">
         <div className="max-w-4xl mx-auto px-4">
