@@ -37,6 +37,13 @@ const PROTECTED_ROUTES: Record<string, string[]> = {
   '/employer/jobs': ['employer', 'admin', 'super_admin'],
   '/employer/reports': ['employer', 'admin', 'super_admin'],
   '/employer/settings': ['employer', 'admin', 'super_admin'],
+  // LMS and dashboard routes - require any authenticated user
+  '/lms/courses': ['student', 'instructor', 'admin', 'super_admin'],
+  '/lms/my-courses': ['student', 'instructor', 'admin', 'super_admin'],
+  '/lms/progress': ['student', 'instructor', 'admin', 'super_admin'],
+  '/dashboard/courses': ['student', 'instructor', 'admin', 'super_admin'],
+  '/dashboard/certificates': ['student', 'instructor', 'admin', 'super_admin'],
+  '/client-portal/dashboard': ['client', 'admin', 'super_admin'],
 };
 
 // Dashboard landing pages that are PUBLIC (for marketing/preview)
