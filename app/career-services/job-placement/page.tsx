@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { Briefcase, Building2, TrendingUp, ArrowRight, Users, Target, Award, Search, Handshake, CheckCircle } from 'lucide-react';
 import { CareerHero } from '../components/CareerHero';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Job Placement Services | Elevate for Humanity',
@@ -15,6 +16,13 @@ export const metadata: Metadata = {
 export default function JobPlacementPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Career Services', href: '/career-services' }, { label: 'Job Placement' }]} />
+        </div>
+      </div>
+
       <CareerHero />
 
       <section className="max-w-6xl mx-auto px-6 py-16">

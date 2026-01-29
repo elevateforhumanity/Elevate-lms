@@ -10,6 +10,7 @@ import {
   MessageSquare
 } from 'lucide-react';
 import { CareerCoursesClient } from './CareerCoursesClient';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Career Success Courses | Elevate for Humanity',
@@ -45,6 +46,13 @@ export default async function CareerCoursesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Career Services', href: '/career-services' }, { label: 'Courses' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative bg-gradient-to-r from-blue-900 to-purple-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4">

@@ -11,6 +11,7 @@ import {
   Sparkles,
   AlertCircle,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Resume Building - Create a Winning Resume | Elevate for Humanity',
@@ -58,16 +59,10 @@ export default function ResumeBuildingPage() {
 
   return (
     <div className="bg-white">
-      {/* Breadcrumb */}
-      <div className="bg-gray-50 border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex items-center text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600">Home</Link>
-            <span className="mx-2">/</span>
-            <Link href="/career-services" className="hover:text-blue-600">Career Services</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">Resume Building</span>
-          </nav>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Career Services', href: '/career-services' }, { label: 'Resume Building' }]} />
         </div>
       </div>
 
