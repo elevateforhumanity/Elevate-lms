@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import PageAvatar from '@/components/PageAvatar';
 import {
   Heart,
   CheckCircle,
@@ -72,6 +73,9 @@ export default function JRIProgramsPage() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar videoSrc="/videos/avatars/jri-guide.mp4" title="JRI Programs Guide" />
 
       {/* What is JRI */}
       <section className="py-20 bg-slate-50">

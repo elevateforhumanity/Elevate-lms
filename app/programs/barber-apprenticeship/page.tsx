@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { OptimizedVideo } from '@/components/OptimizedVideo';
+import PageAvatar from '@/components/PageAvatar';
 import type { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
@@ -103,7 +104,8 @@ export default async function BarberApprenticeshipPage() {
         </div>
       </section>
 
-
+      {/* Avatar Guide */}
+      <PageAvatar videoSrc="/videos/avatars/barber-guide.mp4" title="Barber Apprenticeship Guide" />
 
       {/* Program Description */}
       <section className="bg-white py-16">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
+import PageAvatar from '@/components/PageAvatar';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -74,6 +75,9 @@ export default async function TaxEntrepreneurshipPage() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar videoSrc="/videos/avatars/tax-guide.mp4" title="Tax Entrepreneurship Program Guide" />
 
       {/* Pathway Disclosure */}
       <PathwayDisclosure programName="Tax Entrepreneurship" programSlug="tax-entrepreneurship" />

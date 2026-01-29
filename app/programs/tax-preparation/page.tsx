@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
+import PageAvatar from '@/components/PageAvatar';
 
 export const dynamic = 'force-dynamic';
 
@@ -89,6 +90,9 @@ export default async function Page() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar videoSrc="/videos/avatars/tax-guide.mp4" title="Tax Preparation Program Guide" />
 
       {/* Pathway Disclosure */}
       <PathwayDisclosure programName="Tax Preparation" programSlug="tax-preparation" />

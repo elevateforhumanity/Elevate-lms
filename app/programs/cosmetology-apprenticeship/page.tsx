@@ -2,6 +2,7 @@
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { FundingBadge } from '@/components/programs/FundingBadge';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
+import PageAvatar from '@/components/PageAvatar';
 import type { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
@@ -82,6 +83,9 @@ export default async function CosmetologyApprenticeshipPage() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar videoSrc="/videos/avatars/cosmetology-guide.mp4" title="Cosmetology Apprenticeship Guide" />
 
       {/* Pathway Disclosure */}
       <PathwayDisclosure programName="Cosmetology Apprenticeship" programSlug="cosmetology-apprenticeship" />

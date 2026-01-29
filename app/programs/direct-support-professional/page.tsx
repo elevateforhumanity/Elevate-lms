@@ -7,6 +7,7 @@ import { Heart, CheckCircle, Users, Award, Clock, DollarSign } from 'lucide-reac
 import { CompactHero } from '@/components/heroes/CompactHero';
 import { FundingBadge } from '@/components/programs/FundingBadge';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
+import PageAvatar from '@/components/PageAvatar';
 
 export const dynamic = 'force-dynamic';
 
@@ -68,6 +69,9 @@ export default async function Page() {
           <FundingBadge type="funded" />
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar videoSrc="/videos/avatars/dsp-guide.mp4" title="DSP Program Guide" />
 
       {/* Program Overview */}
       <section className="max-w-7xl mx-auto px-4 py-16">
