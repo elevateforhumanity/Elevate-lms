@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Award, CheckCircle, Circle, Target, TrendingUp } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Skills Checklist | Apprentice Portal',
@@ -103,6 +104,12 @@ export default async function ApprenticeSkillsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Apprentice Portal', href: '/apprentice' },
+          { label: 'Skills' },
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-2xl font-bold">Skills Checklist</h1>

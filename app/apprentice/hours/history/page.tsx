@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight, Clock, Calendar, CheckCircle, TrendingUp, Plus } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Hours History | Apprentice Portal | Elevate For Humanity',
@@ -51,14 +52,14 @@ export default async function HoursHistoryPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
+      <Breadcrumbs
+        items={[
+          { label: 'Apprentice Portal', href: '/apprentice' },
+          { label: 'Hours', href: '/apprentice/hours' },
+          { label: 'History' },
+        ]}
+      />
       <div className="max-w-5xl mx-auto px-4">
-        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-          <Link href="/" className="hover:text-orange-600">Home</Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link href="/apprentice" className="hover:text-orange-600">Apprentice</Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900">Hours History</span>
-        </nav>
 
         <div className="flex justify-between items-center mb-6">
           <div>

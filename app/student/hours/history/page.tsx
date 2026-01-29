@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { Clock, ChevronLeft, Download } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Hours History | Student Portal',
@@ -41,6 +42,13 @@ export default async function HoursHistoryPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
+      <Breadcrumbs
+        items={[
+          { label: 'Student Portal', href: '/student' },
+          { label: 'Hours', href: '/student/hours' },
+          { label: 'History' },
+        ]}
+      />
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex items-center gap-4 mb-8">
           <Link href="/student/hours" className="p-2 hover:bg-gray-200 rounded-lg">

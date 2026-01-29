@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Award, BarChart3, BookOpen, Clock } from 'lucide-react';
 import { CertificationTracker } from '@/components/lms/CertificationTracker';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Certifications | Elevate LMS',
@@ -38,6 +39,12 @@ export default async function StudentCertificationsPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Student Portal', href: '/student' },
+          { label: 'Certifications' },
+        ]}
+      />
       {/* Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Users, MessageSquare, Calendar, BookOpen, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   alternates: {
@@ -60,6 +61,12 @@ export default async function CommunityHubPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Community', href: '/community' },
+          { label: 'Community Hub' },
+        ]}
+      />
       {/* Hero */}
       <section className="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">

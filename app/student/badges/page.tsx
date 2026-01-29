@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { Award, Lock, CheckCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'My Badges | Elevate for Humanity',
@@ -40,6 +41,12 @@ export default async function BadgesPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Student Portal', href: '/student' },
+          { label: 'Badges' },
+        ]}
+      />
       <div className="max-w-4xl mx-auto px-6 py-12">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">My Badges</h1>
         <p className="text-gray-600 mb-8">

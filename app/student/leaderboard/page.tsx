@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { Trophy, Medal, Award } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Leaderboard | Elevate for Humanity',
@@ -42,6 +43,12 @@ export default async function LeaderboardPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Student Portal', href: '/student' },
+          { label: 'Leaderboard' },
+        ]}
+      />
       <div className="max-w-2xl mx-auto px-6 py-12">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Leaderboard</h1>
         <p className="text-gray-600 mb-8">
