@@ -13,6 +13,7 @@ import {
   Loader2,
 } from 'lucide-react';
 import { PLANS, LicenseStatus, PlanId } from '@/lib/license/types';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface LicenseData {
   status: LicenseStatus;
@@ -212,8 +213,15 @@ export default function BillingPage() {
   const StatusIcon = status.icon;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-3xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Account', href: '/account' }, { label: 'Billing' }]} />
+        </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto px-4 py-12">
         <div className="mb-8">
           <h1 className="text-3xl font-black text-gray-900">Billing</h1>
           <p className="text-gray-600">Manage your subscription and payment methods</p>

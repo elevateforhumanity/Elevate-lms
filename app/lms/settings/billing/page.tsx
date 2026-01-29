@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
-  ChevronRight,
   CreditCard,
   DollarSign,
   Download,
@@ -16,6 +15,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface PaymentMethod {
   id: string;
@@ -130,17 +130,15 @@ export default function BillingSettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-          <Link href="/lms" className="hover:text-gray-700">LMS</Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link href="/lms/settings" className="hover:text-gray-700">Settings</Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900">Billing</span>
-        </nav>
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'LMS', href: '/lms' }, { label: 'Settings', href: '/lms/settings' }, { label: 'Billing' }]} />
+        </div>
+      </div>
 
+      <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">Billing & Payments</h1>
 
         {error && (

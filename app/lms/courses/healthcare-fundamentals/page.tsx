@@ -13,6 +13,7 @@ import {
   Star,
   Calendar,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Healthcare Fundamentals Course | LMS | Elevate For Humanity',
@@ -88,26 +89,18 @@ export default function HealthcareFundamentalsCoursePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'LMS', href: '/lms' }, { label: 'Courses', href: '/lms' }, { label: 'Healthcare Fundamentals' }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-600 to-teal-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              {/* Breadcrumb */}
-              <div className="flex items-center gap-2 text-sm mb-6 text-white/80">
-                <Link href="/lms" className="hover:text-white">
-                  LMS
-                </Link>
-                <span>/</span>
-                <Link href="/lms#courses" className="hover:text-white">
-                  Courses
-                </Link>
-                <span>/</span>
-                <span className="text-white font-semibold">
-                  Healthcare Fundamentals
-                </span>
-              </div>
-
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
                 <BookOpen className="w-5 h-5" />
                 <span className="text-sm font-bold">Beginner Level</span>
