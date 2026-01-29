@@ -2,13 +2,13 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { Users, Award, Heart, ArrowRight, Shield, Building, Target, CheckCircle, Briefcase, GraduationCap } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
 export const metadata: Metadata = {
   title: 'About Us | Our Story | Elevate for Humanity',
-  description: 'Learn about Elevate for Humanity - a nonprofit workforce development organization providing free career training to underserved communities in Indianapolis, Indiana.',
+  description: 'Learn about Elevate for Humanity - a nonprofit workforce development organization providing free career training to underserved communities in Indianapolis, Indiana. Founded by Elizabeth Greene.',
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
@@ -39,74 +39,114 @@ export default function AboutPage() {
             Our Story
           </h1>
           <p className="text-xl text-white/90 max-w-2xl">
-            How Elevate for Humanity is changing lives through free workforce training in Indiana.
+            Building pathways out of poverty through free workforce training in Indiana.
           </p>
         </div>
       </section>
 
-      {/* THE STORY */}
+      {/* THE FOUNDER'S VISION */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8">How It All Started</h2>
-          <div className="prose prose-lg max-w-none text-slate-700 space-y-6">
-            <p>
-              <strong>Elevate for Humanity</strong> was founded with a simple but powerful belief: 
-              everyone deserves access to career training, regardless of their financial situation, 
-              background, or past circumstances.
-            </p>
-            <p>
-              Based in Indianapolis, Indiana, we saw too many people stuck in cycles of poverty—not 
-              because they lacked ambition or ability, but because they couldn't afford training programs 
-              or didn't know funding existed to help them.
-            </p>
-            <p>
-              We built Elevate to bridge that gap. By connecting individuals with federal and state 
-              workforce funding (WIOA, JRI, WRG), we make career training <strong>100% free</strong> for 
-              eligible participants. No tuition. No fees. No debt.
-            </p>
-            <p>
-              Today, we're proud to be a <strong>DOL Registered Apprenticeship Sponsor</strong> and 
-              <strong> WIOA-approved training provider</strong>, helping hundreds of Indiana residents 
-              launch new careers in healthcare, skilled trades, technology, and more.
-            </p>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/team/elizabeth-greene.jpg"
+                alt="Elizabeth Greene, Founder & CEO"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">Founded on a Mission</h2>
+              <div className="prose prose-lg max-w-none text-slate-700 space-y-4">
+                <p>
+                  <strong>Elizabeth Greene</strong> founded Elevate for Humanity with a clear vision: 
+                  create pathways out of poverty and into prosperity for those who need it most.
+                </p>
+                <p>
+                  As a transformational leader and social entrepreneur, Elizabeth saw too many people 
+                  in Indianapolis stuck in cycles of poverty—not because they lacked ambition, but 
+                  because they couldn't access training or didn't know funding existed to help them.
+                </p>
+                <p>
+                  She built Elevate to bridge that gap. Today, Elevate for Humanity is one of Indiana's 
+                  most innovative workforce development organizations, serving justice-involved individuals, 
+                  low-income families, veterans, and anyone facing barriers to employment.
+                </p>
+              </div>
+              <Link 
+                href="/about/team" 
+                className="inline-flex items-center gap-2 mt-6 text-blue-600 font-semibold hover:gap-3 transition-all"
+              >
+                Meet Our Full Team <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* WHAT WE DO */}
+      {/* THE ECOSYSTEM */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">What We Do</h2>
+          <h2 className="text-3xl font-bold text-slate-900 text-center mb-4">A Complete Ecosystem</h2>
+          <p className="text-center text-slate-600 mb-12 max-w-3xl mx-auto">
+            We've built an integrated system that addresses the three pillars essential for 
+            sustainable economic mobility: training, employment, and housing.
+          </p>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-sm">
-              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                <GraduationCap className="w-7 h-7 text-blue-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+              <div className="relative h-48">
+                <Image
+                  src="/images/hero/hero-hands-on-training.jpg"
+                  alt="Career Training"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Career Training</h3>
-              <p className="text-slate-600">
-                Industry-recognized certifications in healthcare, skilled trades, technology, 
-                CDL, barbering, and more. Programs range from 4-16 weeks.
-              </p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Career Training</h3>
+                <p className="text-slate-600">
+                  Industry-recognized certifications in healthcare, skilled trades, technology, 
+                  CDL, and beauty. Programs are 100% free for eligible participants through 
+                  WIOA, JRI, and WRG funding.
+                </p>
+              </div>
             </div>
-            <div className="bg-white rounded-xl p-8 shadow-sm">
-              <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6">
-                <Users className="w-7 h-7 text-green-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+              <div className="relative h-48">
+                <Image
+                  src="/images/hero/hero-career-services.jpg"
+                  alt="Job Placement"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Support Services</h3>
-              <p className="text-slate-600">
-                We help with transportation, childcare, work supplies, and other barriers 
-                that might prevent you from completing training.
-              </p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Job Placement</h3>
+                <p className="text-slate-600">
+                  Greene Staffing Solutions connects graduates directly with employers. 
+                  Resume help, interview prep, and ongoing career support until you're 
+                  successfully employed.
+                </p>
+              </div>
             </div>
-            <div className="bg-white rounded-xl p-8 shadow-sm">
-              <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
-                <Briefcase className="w-7 h-7 text-purple-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+              <div className="relative h-48">
+                <Image
+                  src="/images/hero/hero-community.jpg"
+                  alt="Support Services"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Job Placement</h3>
-              <p className="text-slate-600">
-                Resume help, interview prep, and direct connections to employers actively 
-                hiring in your field. We support you until you're employed.
-              </p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Support Services</h3>
+                <p className="text-slate-600">
+                  Wraparound support including transitional housing through Greene Property 
+                  Management, mental health services, case management, and assistance with 
+                  transportation and childcare.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -120,66 +160,61 @@ export default function AboutPage() {
             We specialize in helping people who face barriers to traditional education and employment.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-blue-50 rounded-xl p-6 text-center">
-              <Heart className="w-10 h-10 text-blue-600 mx-auto mb-3" />
-              <h3 className="font-bold text-slate-900 mb-2">Justice-Involved</h3>
-              <p className="text-slate-600 text-sm">Second chance training through JRI funding</p>
-            </div>
-            <div className="bg-green-50 rounded-xl p-6 text-center">
-              <Users className="w-10 h-10 text-green-600 mx-auto mb-3" />
-              <h3 className="font-bold text-slate-900 mb-2">Low-Income Families</h3>
-              <p className="text-slate-600 text-sm">Free training through WIOA funding</p>
-            </div>
-            <div className="bg-purple-50 rounded-xl p-6 text-center">
-              <Shield className="w-10 h-10 text-purple-600 mx-auto mb-3" />
-              <h3 className="font-bold text-slate-900 mb-2">Veterans</h3>
-              <p className="text-slate-600 text-sm">Career transition support and training</p>
-            </div>
-            <div className="bg-orange-50 rounded-xl p-6 text-center">
-              <Target className="w-10 h-10 text-orange-600 mx-auto mb-3" />
-              <h3 className="font-bold text-slate-900 mb-2">Career Changers</h3>
-              <p className="text-slate-600 text-sm">New skills for new opportunities</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* IMPACT */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Impact</h2>
-              <p className="text-lg text-slate-700 mb-6">
-                Since our founding, we've helped hundreds of Indiana residents gain the skills 
-                and certifications they need to build sustainable careers and support their families.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-                  <div className="text-4xl font-black text-blue-600">500+</div>
-                  <div className="text-slate-600">Graduates</div>
-                </div>
-                <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-                  <div className="text-4xl font-black text-green-600">85%</div>
-                  <div className="text-slate-600">Job Placement</div>
-                </div>
-                <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-                  <div className="text-4xl font-black text-purple-600">20+</div>
-                  <div className="text-slate-600">Programs</div>
-                </div>
-                <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-                  <div className="text-4xl font-black text-orange-600">100%</div>
-                  <div className="text-slate-600">Free for Eligible</div>
-                </div>
+            <div className="rounded-xl overflow-hidden shadow-sm">
+              <div className="relative h-40">
+                <Image
+                  src="/images/funding/funding-jri-program-v2.jpg"
+                  alt="Justice-Involved Individuals"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="bg-blue-50 p-4 text-center">
+                <h3 className="font-bold text-slate-900 mb-1">Justice-Involved</h3>
+                <p className="text-slate-600 text-sm">Second chance training through JRI funding</p>
               </div>
             </div>
-            <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/pexels/training-team.jpg"
-                alt="Training session"
-                fill
-                className="object-cover"
-              />
+            <div className="rounded-xl overflow-hidden shadow-sm">
+              <div className="relative h-40">
+                <Image
+                  src="/images/funding/funding-dol-program-v2.jpg"
+                  alt="Low-Income Families"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="bg-green-50 p-4 text-center">
+                <h3 className="font-bold text-slate-900 mb-1">Low-Income Families</h3>
+                <p className="text-slate-600 text-sm">Free training through WIOA funding</p>
+              </div>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-sm">
+              <div className="relative h-40">
+                <Image
+                  src="/images/hero/hero-skilled-trades.jpg"
+                  alt="Veterans"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="bg-purple-50 p-4 text-center">
+                <h3 className="font-bold text-slate-900 mb-1">Veterans</h3>
+                <p className="text-slate-600 text-sm">Career transition support and training</p>
+              </div>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-sm">
+              <div className="relative h-40">
+                <Image
+                  src="/images/hero/hero-tech-careers.jpg"
+                  alt="Career Changers"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="bg-orange-50 p-4 text-center">
+                <h3 className="font-bold text-slate-900 mb-1">Career Changers</h3>
+                <p className="text-slate-600 text-sm">New skills for new opportunities</p>
+              </div>
             </div>
           </div>
         </div>
@@ -188,64 +223,123 @@ export default function AboutPage() {
       {/* CREDENTIALS */}
       <section className="py-16 bg-slate-900">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-white text-center mb-12">Our Credentials</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-slate-800 rounded-xl p-6 text-center">
-              <Shield className="w-10 h-10 text-blue-400 mx-auto mb-3" />
-              <div className="font-bold text-white">DOL Registered</div>
-              <div className="text-slate-400 text-sm">Apprenticeship Sponsor</div>
+          <h2 className="text-3xl font-bold text-white text-center mb-4">Our Credentials</h2>
+          <p className="text-center text-slate-400 mb-12 max-w-2xl mx-auto">
+            Fully approved and recognized by federal, state, and local workforce agencies.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="bg-slate-800 rounded-xl p-4 text-center">
+              <div className="relative h-16 mb-3">
+                <Image
+                  src="/images/partners/usdol.webp"
+                  alt="U.S. Department of Labor"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="font-bold text-white text-sm">DOL Registered</div>
+              <div className="text-slate-400 text-xs">Apprenticeship Sponsor</div>
             </div>
-            <div className="bg-slate-800 rounded-xl p-6 text-center">
-              <CheckCircle className="w-10 h-10 text-green-400 mx-auto mb-3" />
-              <div className="font-bold text-white">WIOA Approved</div>
-              <div className="text-slate-400 text-sm">Training Provider</div>
+            <div className="bg-slate-800 rounded-xl p-4 text-center">
+              <div className="relative h-16 mb-3">
+                <Image
+                  src="/images/partners/dwd.webp"
+                  alt="Indiana DWD"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="font-bold text-white text-sm">DWD Approved</div>
+              <div className="text-slate-400 text-xs">INTraining Provider</div>
             </div>
-            <div className="bg-slate-800 rounded-xl p-6 text-center">
-              <Building className="w-10 h-10 text-purple-400 mx-auto mb-3" />
-              <div className="font-bold text-white">State Certified</div>
-              <div className="text-slate-400 text-sm">Indiana DWD & DOE</div>
+            <div className="bg-slate-800 rounded-xl p-4 text-center">
+              <div className="relative h-16 mb-3">
+                <Image
+                  src="/images/partners/workone.webp"
+                  alt="WorkOne"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="font-bold text-white text-sm">WorkOne Partner</div>
+              <div className="text-slate-400 text-xs">Workforce System</div>
             </div>
-            <div className="bg-slate-800 rounded-xl p-6 text-center">
-              <Heart className="w-10 h-10 text-red-400 mx-auto mb-3" />
-              <div className="font-bold text-white">JRI Approved</div>
-              <div className="text-slate-400 text-sm">Justice Programs</div>
+            <div className="bg-slate-800 rounded-xl p-4 text-center">
+              <div className="relative h-16 mb-3">
+                <Image
+                  src="/images/partners/nextleveljobs.webp"
+                  alt="Next Level Jobs"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="font-bold text-white text-sm">WRG Approved</div>
+              <div className="text-slate-400 text-xs">Workforce Ready Grant</div>
+            </div>
+            <div className="bg-slate-800 rounded-xl p-4 text-center">
+              <div className="relative h-16 mb-3">
+                <Image
+                  src="/images/partners/osha.webp"
+                  alt="OSHA"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="font-bold text-white text-sm">OSHA Authorized</div>
+              <div className="text-slate-400 text-xs">Safety Training</div>
+            </div>
+            <div className="bg-slate-800 rounded-xl p-4 text-center">
+              <div className="bg-red-600 rounded-lg h-16 mb-3 flex items-center justify-center">
+                <span className="text-white font-bold text-xl">JRI</span>
+              </div>
+              <div className="font-bold text-white text-sm">JRI Approved</div>
+              <div className="text-slate-400 text-xs">Justice Programs</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* VALUES */}
+      {/* IMPACT */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">Our Values</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Target className="w-8 h-8 text-blue-600" />
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Impact</h2>
+              <p className="text-lg text-slate-700 mb-6">
+                Elizabeth's holistic approach recognizes that career success requires more than 
+                skills training—it requires wraparound support, trauma-informed care, and genuine 
+                human connection.
+              </p>
+              <p className="text-lg text-slate-700 mb-8">
+                Our impact is measured not just in credentials earned or jobs secured, but in 
+                lives transformed, families stabilized, and communities strengthened.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-blue-50 rounded-xl p-6 text-center">
+                  <div className="text-4xl font-black text-blue-600">500+</div>
+                  <div className="text-slate-600">Graduates</div>
+                </div>
+                <div className="bg-green-50 rounded-xl p-6 text-center">
+                  <div className="text-4xl font-black text-green-600">85%</div>
+                  <div className="text-slate-600">Job Placement</div>
+                </div>
+                <div className="bg-purple-50 rounded-xl p-6 text-center">
+                  <div className="text-4xl font-black text-purple-600">20+</div>
+                  <div className="text-slate-600">Programs</div>
+                </div>
+                <div className="bg-orange-50 rounded-xl p-6 text-center">
+                  <div className="text-4xl font-black text-orange-600">100%</div>
+                  <div className="text-slate-600">Free for Eligible</div>
+                </div>
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">Mission-Driven</h3>
-              <p className="text-slate-600 text-sm">Every decision serves our mission to create pathways out of poverty.</p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="font-bold text-slate-900 mb-2">Student-First</h3>
-              <p className="text-slate-600 text-sm">Your success is our success. We provide support at every step.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="font-bold text-slate-900 mb-2">Excellence</h3>
-              <p className="text-slate-600 text-sm">Industry-recognized training that employers actually want.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-red-600" />
-              </div>
-              <h3 className="font-bold text-slate-900 mb-2">Community</h3>
-              <p className="text-slate-600 text-sm">We believe in second chances and the power of community.</p>
+            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/pexels/success-team.jpg"
+                alt="Success stories"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </div>
