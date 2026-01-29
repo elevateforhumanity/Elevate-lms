@@ -246,6 +246,25 @@ export default function ProgramsPage() {
         </div>
       </section>
 
+      {/* Resources */}
+      <section className="py-16 lg:py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-center mb-8">Resources for Organizations</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/store/guides/capital-readiness" className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition border border-slate-200">
+              <h3 className="font-semibold text-lg mb-2">Capital Readiness Guide</h3>
+              <p className="text-slate-600 text-sm mb-3">Build institutional trust and funding readiness for workforce-aligned organizations.</p>
+              <span className="text-blue-600 text-sm font-medium">Learn more →</span>
+            </Link>
+            <Link href="/courses/capital-readiness" className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition border border-slate-200">
+              <h3 className="font-semibold text-lg mb-2">Capital Readiness Course</h3>
+              <p className="text-slate-600 text-sm mb-3">Structured training on compliance, audits, and accessing workforce funding.</p>
+              <span className="text-blue-600 text-sm font-medium">View course →</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 lg:py-24 bg-blue-600">
         <div className="max-w-3xl mx-auto px-4 text-center">

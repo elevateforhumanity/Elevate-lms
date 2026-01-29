@@ -15,9 +15,93 @@ import {
 } from 'lucide-react';
 import { BuyButton } from './BuyButton';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
+
 export const metadata: Metadata = {
-  title: 'Capital Readiness Guide | Elevate Store',
-  description: 'Build trust before you chase capital. A practical guide for licensed businesses, workforce-aligned employers, and nonprofits.',
+  title: 'Capital Readiness Guide for Licensed & Workforce Organizations | Elevate',
+  description: 'Build institutional trust, pass audits, and scale responsibly. A practical capital readiness guide for licensed and workforce-aligned organizations.',
+  keywords: ['capital readiness', 'workforce funding', 'institutional trust', 'audit readiness', 'licensed business', 'nonprofit funding'],
+  openGraph: {
+    title: 'Capital Readiness Guide for Licensed & Workforce Organizations',
+    description: 'Build institutional trust, pass audits, and scale responsibly. A practical guide for licensed and workforce-aligned organizations.',
+    url: `${siteUrl}/store/guides/capital-readiness`,
+    siteName: 'Elevate for Humanity',
+    type: 'website',
+    images: [
+      {
+        url: `${siteUrl}/images/og/capital-readiness-guide.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'The Elevate Capital Readiness Guide',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Capital Readiness Guide | Elevate for Humanity',
+    description: 'Build institutional trust, pass audits, and scale responsibly.',
+    images: [`${siteUrl}/images/og/capital-readiness-guide.jpg`],
+  },
+  alternates: {
+    canonical: `${siteUrl}/store/guides/capital-readiness`,
+  },
+};
+
+// JSON-LD Schema for Product
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'The Elevate Capital Readiness Guide',
+  description: 'A practical guide to building institutional trust, compliance, and funding readiness for licensed businesses, workforce-aligned employers, and nonprofits.',
+  brand: { '@type': 'Brand', name: 'Elevate for Humanity' },
+  offers: {
+    '@type': 'Offer',
+    price: '39.00',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: `${siteUrl}/store/guides/capital-readiness`,
+  },
+  image: `${siteUrl}/images/store/capital-readiness-guide.jpg`,
+};
+
+// JSON-LD Schema for FAQ
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Who is this guide for?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Licensed businesses, workforce-aligned employers, nonprofits, and program administrators seeking to build institutional trust and funding readiness.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is this financial or legal advice?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. This guide is educational only. It provides frameworks and best practices but is not a substitute for professional legal, tax, or financial advice.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is this suitable for workforce-funded organizations?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. The guide specifically addresses WIOA compliance, workforce reporting requirements, and audit readiness for organizations receiving public funding.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I get updates?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. All purchases include lifetime updates at no additional cost.',
+      },
+    },
+  ],
 };
 
 export default function CapitalReadinessGuidePage() {
@@ -50,6 +134,16 @@ export default function CapitalReadinessGuidePage() {
   ];
 
   return (
+    <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 lg:py-28">
@@ -293,5 +387,6 @@ export default function CapitalReadinessGuidePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

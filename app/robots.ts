@@ -36,10 +36,10 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
-          // API routes
+          // API routes (all backend endpoints)
           '/api/',
           
-          // Auth flows
+          // Auth flows (login, registration, password reset)
           '/auth/',
           '/login',
           '/signup',

@@ -333,6 +333,25 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Resources for Partners */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-2xl font-bold text-slate-900 text-center mb-8">For Organizations & Partners</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/store/guides/capital-readiness" className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition border border-slate-200">
+              <h3 className="font-semibold text-lg mb-2">Capital Readiness Guide</h3>
+              <p className="text-slate-600 text-sm mb-3">Build institutional trust and funding readiness for workforce-aligned organizations.</p>
+              <span className="text-blue-600 text-sm font-medium">Get the guide →</span>
+            </Link>
+            <Link href="/partner" className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition border border-slate-200">
+              <h3 className="font-semibold text-lg mb-2">Partner With Us</h3>
+              <p className="text-slate-600 text-sm mb-3">Become a training provider, employer partner, or community organization.</p>
+              <span className="text-blue-600 text-sm font-medium">Learn more →</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-blue-600">
         <div className="max-w-4xl mx-auto px-6 text-center">

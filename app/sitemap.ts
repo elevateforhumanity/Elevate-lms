@@ -44,7 +44,8 @@ function getPriority(route: string): number {
   if (route.startsWith('/career-training-')) return 0.9;
   if (route.startsWith('/community-services-')) return 0.9;
   if (route.startsWith('/supersonic-fast-cash/tax-preparation-')) return 0.9;
-  if (route.startsWith('/courses')) return 0.7;
+  if (route.startsWith('/courses')) return 0.8;
+  if (route.startsWith('/store/guides')) return 0.8;
   if (route.startsWith('/blog') || route.startsWith('/resources')) return 0.7;
   if (route.startsWith('/policies') || route.startsWith('/privacy') || route.startsWith('/terms')) return 0.4;
   return 0.6;
