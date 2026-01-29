@@ -17,6 +17,7 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { CourseDetailClient } from './CourseDetailClient';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -78,6 +79,13 @@ export default async function CourseDetailPage({
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Career Services', href: '/career-services' }, { label: 'Courses', href: '/career-services/courses' }, { label: course.title }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 py-16 lg:py-24">

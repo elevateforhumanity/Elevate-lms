@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { CheckCircle, Calendar, Users, BookOpen, BarChart, Settings, Shield, Zap } from 'lucide-react';
 import { PLATFORM_FEATURES, ROUTES } from '@/lib/pricing';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Platform Features | Elevate LMS',
@@ -101,6 +102,13 @@ export default async function FeaturesPage() {
 
   return (
     <div>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'License', href: '/license' }, { label: 'Features' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <section className="bg-slate-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">

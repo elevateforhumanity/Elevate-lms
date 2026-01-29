@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Heart, DollarSign, Users, TrendingUp, Gift, CheckCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Donate | Selfish Inc.',
@@ -85,6 +86,13 @@ export default async function DonationsPage() {
 
   return (
     <div className="min-h-screen">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Nonprofit', href: '/nonprofit' }, { label: 'Donations' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="py-20 px-4 bg-gradient-to-br from-purple-50 to-white text-center">
         <div className="max-w-4xl mx-auto">

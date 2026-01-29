@@ -11,6 +11,7 @@ import {
   AlertCircle,
   ArrowRight,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface Program {
   id: string;
@@ -190,7 +191,15 @@ export default function EnrollPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-4 sm:py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Enroll', href: '/enroll' }, { label: program?.name || 'Program' }]} />
+        </div>
+      </div>
+
+      <div className="py-4 sm:py-8 md:py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 text-white">
@@ -353,6 +362,7 @@ export default function EnrollPage() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

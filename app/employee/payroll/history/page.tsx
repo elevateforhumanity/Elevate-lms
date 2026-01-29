@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, DollarSign, Download, Filter, Calendar } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function PayrollHistoryPage() {
   const [year, setYear] = useState('2026');
@@ -25,17 +26,10 @@ export default function PayrollHistoryPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex items-center text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600">Home</Link>
-            <span className="mx-2">/</span>
-            <Link href="/employee" className="hover:text-blue-600">Employee Portal</Link>
-            <span className="mx-2">/</span>
-            <Link href="/employee/payroll" className="hover:text-blue-600">Payroll</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">History</span>
-          </nav>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Employee', href: '/employee' }, { label: 'Payroll', href: '/employee/payroll' }, { label: 'History' }]} />
         </div>
       </div>
 

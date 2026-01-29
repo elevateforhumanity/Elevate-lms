@@ -7,6 +7,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Search, CheckCircle, Clock, XCircle, Phone, Mail } from 'lucide-react';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 type ApplicationStatus = 'pending' | 'approved' | 'rejected' | 'contacted';
 
@@ -137,6 +138,13 @@ export default function TrackApplicationPage() {
 
   return (
     <div className="min-h-screen bg-zinc-900  via-white ">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apply', href: '/apply' }, { label: 'Track' }]} />
+        </div>
+      </div>
+
       <div className="max-w-4xl mx-auto px-4 py-16">
         {/* Header */}
         <div className="text-center mb-12">

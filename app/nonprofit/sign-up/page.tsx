@@ -3,6 +3,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 
 
@@ -71,7 +72,15 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen py-20 px-4">
+    <div className="min-h-screen">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Nonprofit', href: '/nonprofit' }, { label: 'Sign Up' }]} />
+        </div>
+      </div>
+
+      <div className="py-20 px-4">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-black text-black mb-6 text-center">
           Sign Up for Workshops
@@ -149,6 +158,7 @@ export default function SignUpPage() {
             Submit Registration
           </button>
         </form>
+      </div>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import AttendanceRecordForm from './AttendanceRecordForm';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Record Attendance | Staff Portal | Elevate For Humanity',
@@ -70,17 +71,16 @@ export default async function RecordAttendancePage() {
   })) || [];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Staff Portal', href: '/staff-portal' }, { label: 'Attendance', href: '/staff-portal/attendance' }, { label: 'Record' }]} />
+        </div>
+      </div>
+
+      <div className="py-8">
       <div className="max-w-5xl mx-auto px-4">
-        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-          <Link href="/" className="hover:text-orange-600">Home</Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link href="/staff-portal" className="hover:text-orange-600">Staff Portal</Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link href="/staff-portal/attendance" className="hover:text-orange-600">Attendance</Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900">Record</span>
-        </nav>
 
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Record Attendance</h1>
         <p className="text-gray-600 mb-8">
@@ -92,6 +92,7 @@ export default async function RecordAttendancePage() {
           date={today}
           staffId={user.id}
         />
+      </div>
       </div>
     </div>
   );

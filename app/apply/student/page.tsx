@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import StudentApplicationForm from './StudentApplicationForm';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -33,6 +34,13 @@ export default async function StudentApplicationPage() {
     .eq('accepting_applications', true);
   return (
     <div className="min-h-screen bg-slate-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apply', href: '/apply' }, { label: 'Student' }]} />
+        </div>
+      </div>
+
       <section className="border-b border-slate-200 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <p className="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-2">

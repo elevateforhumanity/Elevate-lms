@@ -9,6 +9,7 @@ import {
   Star,
   Package,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Products | Elevate Shop',
@@ -73,13 +74,15 @@ export default async function ProductsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Shop', href: '/shop' }, { label: 'Products' }]} />
+        </div>
+      </div>
+
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-            <Link href="/shop" className="hover:text-gray-700">Shop</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 font-medium">Products</span>
-          </nav>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Products</h1>

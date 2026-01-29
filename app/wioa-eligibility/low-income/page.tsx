@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { CheckCircle, DollarSign, Phone, Users } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'WIOA Eligibility - Low Income Guidelines | Elevate for Humanity',
@@ -55,6 +56,13 @@ export default async function LowIncomePage() {
 
   return (
     <main className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'WIOA Eligibility', href: '/wioa-eligibility' }, { label: 'Low Income' }]} />
+        </div>
+      </div>
+
       <section className="bg-blue-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <DollarSign className="w-16 h-16 mx-auto mb-4" />

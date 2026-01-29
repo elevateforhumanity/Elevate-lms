@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { Sparkles, Users, Calendar, CheckCircle, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Young Adult Wellness | Selfish Inc.',
@@ -66,6 +67,13 @@ export default async function YoungAdultWellnessPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Nonprofit', href: '/nonprofit' }, { label: 'Young Adult Wellness' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-teal-500 to-teal-700 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">

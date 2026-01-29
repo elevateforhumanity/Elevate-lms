@@ -12,6 +12,7 @@ import {
   Lock,
   Tag,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface CartItem {
   id: string;
@@ -70,13 +71,15 @@ export default function ShoppingCartPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Shop', href: '/shop' }, { label: 'Cart' }]} />
+        </div>
+      </div>
+
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-            <Link href="/shop" className="hover:text-gray-700">Shop</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 font-medium">Cart</span>
-          </nav>
           <h1 className="text-2xl font-bold text-gray-900">Shopping Cart</h1>
           <p className="text-gray-600 mt-1">{items.length} items in your cart</p>
         </div>

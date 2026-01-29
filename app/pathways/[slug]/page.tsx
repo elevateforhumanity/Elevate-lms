@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import Image from "next/image";
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { PATHWAYS } from "@/lib/pathways/data";
 
 export const dynamic = 'force-dynamic';
@@ -40,6 +41,13 @@ export default async function PathwayDetailPage({ params }: { params: Promise<{ 
 
   return (
     <main className="w-full">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Pathways', href: '/pathways' }, { label: pathway.title }]} />
+        </div>
+      </div>
+
       <header className="relative min-h-[350px] flex items-center">
         <Image
           src={`/images/pathways/${pathway.slug}.jpg`}

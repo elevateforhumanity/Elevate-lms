@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, Circle, BookOpen, FileText, CreditCard, Calendar, User, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Student Onboarding | Elevate For Humanity',
@@ -132,6 +133,13 @@ export default async function LearnerOnboardingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Onboarding', href: '/onboarding' }, { label: 'Learner' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">

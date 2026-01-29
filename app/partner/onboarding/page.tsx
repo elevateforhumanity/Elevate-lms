@@ -13,6 +13,7 @@ import {
   getRequiredDocuments,
   type DocumentType 
 } from '@/lib/partner/types';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 const AVAILABLE_PROGRAMS = [
   { id: 'BARBER', name: 'Barber Apprenticeship', description: 'Host barber apprentices for hands-on training' },
@@ -163,8 +164,15 @@ export default function PartnerOnboardingPage() {
   const requiredDocs = getRequiredDocs();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 py-12 px-4">
-      <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Partner', href: '/partner' }, { label: 'Onboarding' }]} />
+        </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto py-12 px-4">
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 bg-purple-600/20 text-purple-300 px-4 py-2 rounded-full text-sm font-medium mb-4">
             <Building2 className="w-4 h-4" />

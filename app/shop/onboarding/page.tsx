@@ -13,6 +13,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, Clock, Upload, FileText } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 
 export default async function ShopOnboardingPage() {
@@ -69,6 +70,13 @@ export default async function ShopOnboardingPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Shop', href: '/shop' }, { label: 'Onboarding' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6">

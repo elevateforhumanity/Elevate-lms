@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { CheckCircle, Play, ArrowRight, Mail } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Purchase Successful | Elevate for Humanity',
@@ -21,7 +22,15 @@ export default async function CourseSuccessPage({
   // For now, show success message
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Career Services', href: '/career-services' }, { label: 'Courses', href: '/career-services/courses' }, { label: 'Success' }]} />
+        </div>
+      </div>
+
+      <div className="flex items-center justify-center px-4 py-16">
       <div className="max-w-lg w-full">
         <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -71,6 +80,7 @@ export default async function CourseSuccessPage({
             elevate4humanityedu@gmail.com
           </a>
         </p>
+      </div>
       </div>
     </div>
   );

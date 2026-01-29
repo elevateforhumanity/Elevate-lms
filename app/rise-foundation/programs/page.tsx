@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ChevronRight, GraduationCap, DollarSign, Users, Calendar, ArrowRight, CheckCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 const programs = [
   {
@@ -46,16 +47,16 @@ const programs = [
 
 export default function RiseFoundationProgramsPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4">
-        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-          <Link href="/" className="hover:text-orange-600">Home</Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link href="/rise-foundation" className="hover:text-orange-600">RISE Foundation</Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900">Programs</span>
-        </nav>
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'RISE Foundation', href: '/rise-foundation' }, { label: 'Programs' }]} />
+        </div>
+      </div>
 
+      <div className="py-8">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Foundation Programs</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -112,6 +113,7 @@ export default function RiseFoundationProgramsPage() {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </div>
   );

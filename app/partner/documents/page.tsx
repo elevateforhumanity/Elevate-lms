@@ -13,6 +13,7 @@ import {
   X,
   Building2
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface DocumentRequirement {
   id: string;
@@ -126,7 +127,15 @@ export default function PartnerDocumentsPage() {
   const progress = requiredDocs.length > 0 ? Math.round((completedDocs.length / requiredDocs.length) * 100) : 0;
 
   return (
-    <div className="min-h-screen bg-slate-100 py-8 px-4">
+    <div className="min-h-screen bg-slate-100">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Partner', href: '/partner' }, { label: 'Documents' }]} />
+        </div>
+      </div>
+      
+      <div className="py-8 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
@@ -267,6 +276,7 @@ export default function PartnerDocumentsPage() {
             </p>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

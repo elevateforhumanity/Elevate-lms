@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Enrollment Agreement | Elevate for Humanity',
@@ -12,6 +13,13 @@ export const metadata: Metadata = {
 export default function EnrollmentAgreementPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Enrollment Agreement' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-gray-900 text-white py-16">
         <div className="max-w-4xl mx-auto px-6">

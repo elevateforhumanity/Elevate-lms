@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { FileText, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function ComplianceReportPage() {
   const [formData, setFormData] = useState({ type: '', description: '', anonymous: false });
@@ -29,6 +30,13 @@ export default function ComplianceReportPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Compliance', href: '/compliance' }, { label: 'Report' }]} />
+        </div>
+      </div>
+
       <div className="bg-red-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <FileText className="w-12 h-12 mx-auto mb-4 opacity-80" />

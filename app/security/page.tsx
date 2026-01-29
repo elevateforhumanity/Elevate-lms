@@ -12,6 +12,7 @@ import {
   Server,
   Key,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   alternates: {
@@ -94,7 +95,15 @@ export default async function SecurityPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Security' }]} />
+        </div>
+      </div>
+
+      <div className="py-16">
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex items-center gap-3 mb-8">
           <Shield className="w-10 h-10 text-blue-600" />
@@ -229,6 +238,7 @@ export default async function SecurityPage() {
           <p>Last security audit: {auditInfo?.value || 'January 2025'}</p>
           <p>This page was last updated: January 2025</p>
         </div>
+      </div>
       </div>
     </div>
   );

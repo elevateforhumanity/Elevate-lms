@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Send, ArrowLeft, Mail, Trash2, Eye } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function SentMessagesPage() {
   const sentMessages = [
@@ -12,15 +13,10 @@ export default function SentMessagesPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex items-center text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600">Home</Link>
-            <span className="mx-2">/</span>
-            <Link href="/messages" className="hover:text-blue-600">Messages</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">Sent</span>
-          </nav>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Messages', href: '/messages' }, { label: 'Sent' }]} />
         </div>
       </div>
 

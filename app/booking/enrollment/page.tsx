@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, User, CheckCircle, Phone } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 const timeSlots = [
   '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
@@ -110,6 +111,13 @@ export default function EnrollmentBookingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Booking', href: '/booking' }, { label: 'Enrollment' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-blue-900 text-white py-8">
         <div className="max-w-3xl mx-auto px-4">

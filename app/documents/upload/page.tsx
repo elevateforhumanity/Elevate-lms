@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function DocumentUploadPage() {
   const [uploading, setUploading] = useState(false);
@@ -85,7 +86,15 @@ export default function DocumentUploadPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Documents', href: '/documents' }, { label: 'Upload' }]} />
+        </div>
+      </div>
+
+      <div className="py-12">
       <div className="container mx-auto px-4 max-w-2xl">
         <h1 className="text-3xl font-bold mb-2">Upload Document</h1>
         <p className="text-black mb-8">
@@ -154,6 +163,7 @@ export default function DocumentUploadPage() {
             </div>
           </form>
         </div>
+      </div>
       </div>
     </div>
   );

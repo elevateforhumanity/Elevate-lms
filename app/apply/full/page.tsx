@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import ApplicationForm from './ApplicationForm';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Full Application | Elevate For Humanity',
@@ -46,16 +47,16 @@ export default async function FullApplicationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4">
-        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-          <Link href="/" className="hover:text-orange-600">Home</Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link href="/apply" className="hover:text-orange-600">Apply</Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900">Full Application</span>
-        </nav>
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Apply', href: '/apply' }, { label: 'Full Application' }]} />
+        </div>
+      </div>
 
+      <div className="py-8">
+      <div className="max-w-4xl mx-auto px-4">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Program Application</h1>
         <p className="text-gray-600 mb-8">Complete all steps to submit your application</p>
 
@@ -65,6 +66,7 @@ export default async function FullApplicationPage() {
           existingProfile={existingProfile}
           userId={user?.id}
         />
+      </div>
       </div>
     </div>
   );

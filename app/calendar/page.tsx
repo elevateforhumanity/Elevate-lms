@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Clock } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'My Calendar | Elevate For Humanity',
@@ -52,6 +53,13 @@ export default async function CalendarPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Calendar' }]} />
+        </div>
+      </div>
+
       {/* Hero with image */}
       <section className="relative h-64 overflow-hidden">
         <Image

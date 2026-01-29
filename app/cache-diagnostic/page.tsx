@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { generateInternalMetadata } from '@/lib/seo/metadata';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = generateInternalMetadata({
   title: 'Cache Diagnostic',
@@ -15,8 +16,15 @@ export default function CacheDiagnostic() {
   const buildId = process.env.NEXT_BUILD_ID || 'unknown';
 
   return (
-    <div className="min-h-screen bg-white p-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Cache Diagnostic' }]} />
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto p-8">
         <h1 className="text-3xl font-bold mb-6">Cache Diagnostic</h1>
 
         <div className="bg-gray-100 p-6 rounded-lg mb-6">
