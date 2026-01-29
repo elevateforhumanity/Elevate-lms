@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
 import PageAvatar from '@/components/PageAvatar';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface Program {
   id: string;
@@ -41,6 +42,12 @@ export default function BusinessPage() {
 
   return (
     <>
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Business Programs' },
+        ]}
+      />
       {/* Hero */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

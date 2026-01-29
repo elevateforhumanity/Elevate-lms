@@ -7,6 +7,7 @@ import { Heart, CheckCircle, Users, Award, Clock, DollarSign } from 'lucide-reac
 import { CompactHero } from '@/components/heroes/CompactHero';
 import { FundingBadge } from '@/components/programs/FundingBadge';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -49,6 +50,12 @@ export default async function Page() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Direct Support Professional' },
+        ]}
+      />
       <CompactHero
         variant="default"
         badge={{
