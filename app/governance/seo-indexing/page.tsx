@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Search, CheckCircle, XCircle, Shield, Code } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'SEO & Indexing Governance | Elevate for Humanity',
@@ -60,16 +61,15 @@ export default function SeoIndexingPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Governance', href: '/governance' },
+          { label: 'SEO & Indexing' },
+        ]}
+      />
       {/* Header */}
       <div className="bg-slate-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">
-          <Link 
-            href="/governance" 
-            className="inline-flex items-center text-slate-400 hover:text-white mb-6 text-sm"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Governance
-          </Link>
           <div className="flex items-center gap-3 mb-4">
             <Search className="w-8 h-8 text-blue-400" />
           </div>

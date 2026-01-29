@@ -23,6 +23,7 @@ import {
   DISCLAIMERS,
   getStartingPrice 
 } from '@/lib/pricing';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'License the Elevate LMS + Workforce Hub | Elevate for Humanity',
@@ -96,6 +97,13 @@ export default async function LicensePage() {
 
   return (
     <div>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'License' }]} />
+        </div>
+      </div>
+
       {/* HERO BANNER */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
         <div className="absolute inset-0 opacity-10">

@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Scissors, Clock, DollarSign, Award, MapPin, CheckCircle, Play, Users, Building2, GraduationCap, Phone } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function BarberProgramPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -19,6 +20,12 @@ export default function BarberProgramPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Barber' },
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         <video

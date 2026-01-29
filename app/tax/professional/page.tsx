@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Image from 'next/image';
 
 export const metadata = {
@@ -9,7 +10,10 @@ export const metadata = {
 export default function ProfessionalTaxPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Tax", href: "/tax" }, { label: "Professional" }]} />
+      </div>
+{/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <Image src="/images/pathways/business-hero.jpg" alt="Professional Tax Services" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} loading="lazy" />
         

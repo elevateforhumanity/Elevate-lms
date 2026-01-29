@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { redirect, notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -49,6 +50,9 @@ export default async function ProgramHolderProgramPage({ params }: Props) {
   if (!supabase) {
     return (
       <div className="p-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "Program Holder", href: "/program-holder" }, { label: "Programs" }]} />
+        </div>
         <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
       </div>
     );
@@ -97,6 +101,9 @@ export default async function ProgramHolderProgramPage({ params }: Props) {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "Program Holder", href: "/program-holder" }, { label: "Programs" }]} />
+        </div>
       {/* Header */}
       <div className="mb-6">
         <Link

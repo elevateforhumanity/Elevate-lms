@@ -1,12 +1,16 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { ArrowLeft, Printer } from 'lucide-react';
 
 export default function MOUPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Print-hidden header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Docs", href: "/docs" }, { label: "Indiana Barbershop Apprenticeship Mou" }]} />
+      </div>
+{/* Print-hidden header */}
       <div className="print:hidden bg-gray-100 py-4 border-b">
         <div className="max-w-4xl mx-auto px-4 flex items-center justify-between">
           <Link href="/partners/barbershop-apprenticeship" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900">

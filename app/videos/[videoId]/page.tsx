@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -111,7 +112,10 @@ export default async function VideoWatchPage({
 
   return (
     <>
-      <script
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Videos", href: "/videos" }, { label: "[Videoid]" }]} />
+      </div>
+<script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
       />

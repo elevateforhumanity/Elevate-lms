@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -39,7 +40,10 @@ export default async function RiseFoundationPage() {
     .single();
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Rise" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative h-[600px] overflow-hidden bg-slate-900">
         <Image
           src="/images/programs/barber-apprenticeship.jpg"

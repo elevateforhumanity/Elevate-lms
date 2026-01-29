@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import {
   DollarSign,
@@ -36,6 +37,9 @@ export const metadata: Metadata = {
 export default function FranchisePage() {
   return (
     <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Franchise", href: "/franchise" }, { label: "Page.tsx" }]} />
+      </div>
       {/* Hero */}
       <section className="bg-white text-white py-20">
         <div className="max-w-7xl mx-auto px-6">

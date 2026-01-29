@@ -7,6 +7,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FileText, Download, Calendar, Users, Clock } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 type Report = {
   id: string;
@@ -74,7 +75,15 @@ export default function ShopReportsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Shop', href: '/shop' }, { label: 'Reports' }]} />
+        </div>
+      </div>
+
+      <div className="py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <Link
@@ -263,6 +272,7 @@ export default function ShopReportsPage() {
             </table>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

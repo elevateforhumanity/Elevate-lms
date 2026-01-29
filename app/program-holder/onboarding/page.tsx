@@ -12,6 +12,7 @@ import {
   FileText,
   HelpCircle,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -46,6 +47,12 @@ export default async function ProgramHolderOnboarding() {
     .order('order_index');
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Program Holder', href: '/program-holder/dashboard' },
+          { label: 'Onboarding' },
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative h-[400px] sm:h-[500px] w-full overflow-hidden bg-white">
         <Image

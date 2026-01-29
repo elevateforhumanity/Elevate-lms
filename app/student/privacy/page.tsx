@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Shield, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface Consent {
   id: string;
@@ -88,7 +89,15 @@ export default function StudentPrivacyPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Student', href: '/student' }, { label: 'Privacy' }]} />
+        </div>
+      </div>
+
+      <div className="py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="flex items-center gap-3 mb-6">
@@ -187,6 +196,7 @@ export default function StudentPrivacyPage() {
             </a>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

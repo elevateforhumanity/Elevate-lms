@@ -7,6 +7,7 @@ import {
   NAIL_TECH_PROGRAM,
   TUITION_EFFECTIVE_DATE 
 } from '@/lib/program-constants';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Tuition & Fees | Elevate for Humanity',
@@ -110,6 +111,13 @@ const programs = [
 export default function TuitionFeesPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Tuition & Fees' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-gray-900 text-white py-16">
         <div className="max-w-6xl mx-auto px-6">

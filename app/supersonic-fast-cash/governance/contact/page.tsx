@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { ArrowLeft, Mail, Building2, Shield, Scale, FileText, Zap } from 'lucide-react';
 import { QuickSummary } from '@/app/governance/_content/QuickSummary';
@@ -62,7 +63,10 @@ export default function SupersonicGovernanceContactPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header - Supersonic branded */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Contact" }]} />
+      </div>
+{/* Header - Supersonic branded */}
       <div className="bg-emerald-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">
           <Link 

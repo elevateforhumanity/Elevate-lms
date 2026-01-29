@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useState, useEffect } from 'react';
 import { 
@@ -92,6 +93,9 @@ export default function ComplianceAuditPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Compliance Audit" }]} />
+      </div>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">

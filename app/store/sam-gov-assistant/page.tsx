@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
@@ -229,7 +230,10 @@ Come back anytime if you need help!`,
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Sam Gov Assistant" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">

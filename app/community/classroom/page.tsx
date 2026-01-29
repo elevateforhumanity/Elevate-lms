@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpen, Play, Clock, Users, Star, Lock, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Classroom | Community | Elevate For Humanity',
@@ -49,9 +50,15 @@ export default async function ClassroomPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Community', href: '/community' }, { label: 'Classroom' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-green-800 to-emerald-900 text-white py-20">
-        <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4">

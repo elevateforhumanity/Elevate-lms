@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
@@ -70,7 +71,8 @@ export default async function ApprenticeVerifyPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 py-8">
+            <Breadcrumbs items={[{ label: "Portal", href: "/portal" }, { label: "Admin Verify" }]} />
+<div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
           <Link
             href="/portal/admin/verify"

@@ -4,6 +4,7 @@ import {
   ArrowLeft, FileText, Shield, Scale, BookOpen, 
   CreditCard, Receipt, Users, Download, ExternalLink 
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Authoritative Documents | Governance | Elevate for Humanity',
@@ -114,16 +115,15 @@ export default function AuthoritativeDocsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Governance', href: '/governance' },
+          { label: 'Authoritative Documents' },
+        ]}
+      />
       {/* Header */}
       <div className="bg-slate-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">
-          <Link 
-            href="/governance" 
-            className="inline-flex items-center text-slate-400 hover:text-white mb-6 text-sm"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Governance
-          </Link>
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
             Authoritative Documentation Index
           </h1>

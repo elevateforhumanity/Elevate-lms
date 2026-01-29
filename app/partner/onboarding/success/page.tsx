@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, Mail, Clock, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Application Submitted | Partner Shop | Elevate for Humanity',
@@ -8,7 +9,15 @@ export const metadata: Metadata = {
 
 export default function PartnerOnboardingSuccessPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 py-12 px-4 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Partner', href: '/partner' }, { label: 'Onboarding', href: '/partner/onboarding' }, { label: 'Success' }]} />
+        </div>
+      </div>
+
+      <div className="py-12 px-4 flex items-center justify-center">
       <div className="max-w-lg w-full">
         <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -82,6 +91,7 @@ export default function PartnerOnboardingSuccessPage() {
             </a>
           </p>
         </div>
+      </div>
       </div>
     </div>
   );

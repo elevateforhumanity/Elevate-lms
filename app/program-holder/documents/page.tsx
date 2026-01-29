@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
@@ -20,6 +21,9 @@ export default async function ProgramHolderDocumentsPage() {
   if (!supabase) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "Program Holder", href: "/program-holder" }, { label: "Documents" }]} />
+        </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
           <p className="text-gray-600">Please try again later.</p>
@@ -80,6 +84,9 @@ export default async function ProgramHolderDocumentsPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "Program Holder", href: "/program-holder" }, { label: "Documents" }]} />
+        </div>
       <section className="bg-white border-b py-8">
         <div className="max-w-7xl mx-auto px-6">
           <h1 className="text-4xl font-bold text-black mb-2">

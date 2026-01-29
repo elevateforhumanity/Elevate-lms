@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { Heart, Users, Sparkles, BookOpen, Calendar, Gift } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Nonprofit | Mental Wellness & Holistic Healing',
@@ -96,6 +97,13 @@ export default async function NonprofitPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Nonprofit' }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative py-20 px-4 text-center">
         <div className="max-w-6xl mx-auto">

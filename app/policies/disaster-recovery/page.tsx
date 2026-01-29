@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Shield, Database, Clock, AlertTriangle, CheckCircle } from 'lucide-react';
 
@@ -12,11 +13,14 @@ export const metadata: Metadata = {
 
 export default function DisasterRecoveryPage() {
   return (
-    <article className="bg-white rounded-xl shadow-sm p-8 md:p-12">
-      <div className="mb-8">
-        <div className="flex items-center gap-3 mb-4">
-          <Shield className="w-8 h-8 text-orange-600" />
-          <h1 className="text-4xl font-bold text-black">Disaster Recovery Policy</h1>
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <Breadcrumbs items={[{ label: 'Policies', href: '/policies' }, { label: 'Disaster Recovery' }]} />
+        <article className="bg-white rounded-xl shadow-sm p-8 md:p-12 mt-6">
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Shield className="w-8 h-8 text-orange-600" />
+              <h1 className="text-4xl font-bold text-black">Disaster Recovery Policy</h1>
         </div>
         <p className="text-sm text-gray-600">Last Updated: January 24, 2026</p>
       </div>
@@ -219,6 +223,8 @@ export default function DisasterRecoveryPage() {
           </ul>
         </div>
       </div>
-    </article>
+        </article>
+      </div>
+    </div>
   );
 }

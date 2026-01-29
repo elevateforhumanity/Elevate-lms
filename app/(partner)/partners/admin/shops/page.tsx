@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Partners Admin Shops | Elevate For Humanity',
@@ -37,7 +38,10 @@ export default async function AdminShopsPage() {
 
   return (
     <div className="rounded-2xl border p-5">
-      <div className="font-semibold">Admin: Shops</div>
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Shops" }]} />
+      </div>
+<div className="font-semibold">Admin: Shops</div>
       <div className="text-sm text-black mt-1">
         Approve and manage partner locations.
       </div>

@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { FileText, Download, Upload, Folder } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Documents | Apprentice Portal',
@@ -51,6 +52,12 @@ export default async function ApprenticeDocumentsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Apprentice Portal', href: '/apprentice' },
+          { label: 'Documents' },
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-8">
           <div>

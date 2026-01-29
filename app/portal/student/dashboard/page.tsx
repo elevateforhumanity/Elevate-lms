@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
@@ -67,7 +68,8 @@ export default async function StudentDashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+            <Breadcrumbs items={[{ label: "Portal", href: "/portal" }, { label: "Student", href: "/portal/student/dashboard" }, { label: "Dashboard" }]} />
+{/* Header */}
       <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-8">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-3xl font-bold">Welcome back, {profile?.first_name || profile?.full_name || 'Student'}!</h1>

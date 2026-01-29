@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
@@ -20,6 +21,9 @@ export default async function NewReportPage() {
   if (!supabase) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "Program Holder", href: "/program-holder" }, { label: "Reports" }]} />
+        </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
           <p className="text-gray-600">Please try again later.</p>
@@ -61,6 +65,9 @@ export default async function NewReportPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "Program Holder", href: "/program-holder" }, { label: "Reports" }]} />
+        </div>
       {/* Hero Section */}
       <section className="relative h-[300px] flex items-center justify-center text-white overflow-hidden">
         <Image

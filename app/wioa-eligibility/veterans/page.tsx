@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Shield, Award, Briefcase, Phone } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'WIOA Eligibility for Veterans | Elevate for Humanity',
@@ -71,6 +72,13 @@ export default async function VeteransPage() {
 
   return (
     <main className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'WIOA Eligibility', href: '/wioa-eligibility' }, { label: 'Veterans' }]} />
+        </div>
+      </div>
+
       <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image
           src="/hero-images/about-hero.jpg"

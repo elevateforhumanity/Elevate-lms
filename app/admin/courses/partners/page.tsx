@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Building, Plus, Search, ExternalLink, Mail, Phone, Edit, Trash2 } from 'lucide-react';
@@ -55,7 +56,10 @@ const partners = [
 export default function CoursePartnersPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Partners" }]} />
+      </div>
+<div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Course Partners</h1>

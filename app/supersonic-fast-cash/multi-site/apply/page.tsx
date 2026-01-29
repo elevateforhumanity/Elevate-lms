@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import {
@@ -113,7 +114,10 @@ export default function MultiSiteApplyPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-3xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Apply" }]} />
+      </div>
+<div className="max-w-3xl mx-auto px-4">
         {/* Back Link */}
         <Link
           href="/supersonic-fast-cash/multi-site"

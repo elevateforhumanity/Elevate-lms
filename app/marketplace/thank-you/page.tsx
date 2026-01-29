@@ -1,6 +1,6 @@
-
-
 'use client';
+
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import React from 'react';
 
@@ -87,7 +87,10 @@ function MarketplaceThankYouContent() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-2xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Marketplace", href: "/marketplace" }, { label: "Thank You" }]} />
+      </div>
+<div className="max-w-2xl mx-auto">
         <div className="bg-white rounded-lg shadow-md p-8 text-center mb-6">
           <div className="w-16 h-16 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg

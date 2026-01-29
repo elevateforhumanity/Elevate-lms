@@ -1,6 +1,6 @@
-
 "use client";
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import React from 'react';
 
 import { useEffect, useState } from 'react';
@@ -223,7 +223,10 @@ export default function AnalyticsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Analytics" }]} />
+      </div>
+{/* Header */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">

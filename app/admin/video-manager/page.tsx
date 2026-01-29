@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import React from 'react';
 
@@ -23,6 +24,9 @@ export default function VideoManagerPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-12">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Video Manager" }]} />
+      </div>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}

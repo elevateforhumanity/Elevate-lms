@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import React from 'react';
@@ -9,6 +7,7 @@ import { createClient } from '@/lib/supabase/client';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function CourseLeaderboardPage() {
   const params = useParams();
@@ -82,6 +81,13 @@ export default function CourseLeaderboardPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
+        <Breadcrumbs
+          items={[
+            { label: 'Courses', href: '/courses' },
+            { label: 'Course', href: `/courses/${courseId}` },
+            { label: 'Leaderboard' },
+          ]}
+        />
         {/* Hero Section */}
         <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
           <Image
@@ -265,15 +271,16 @@ export default function CourseLeaderboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Courses', href: '/courses' },
+          { label: course?.title || 'Course', href: `/courses/${courseId}` },
+          { label: 'Leaderboard' },
+        ]}
+      />
       <section className="   text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Link
-              href={`/courses/${courseId}`}
-              className="text-black hover:text-white text-sm mb-4 inline-block"
-            >
-              ← Back to Course
-            </Link>
             <h1 className="text-4xl font-bold mb-4 text-2xl md:text-3xl lg:text-4xl">
               {course?.title}
             </h1>

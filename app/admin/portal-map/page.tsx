@@ -1,4 +1,5 @@
 "use client";
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import React from 'react';
 
 import { useState } from 'react';
@@ -714,6 +715,9 @@ export default function AdminPortalMapPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Portal Map" }]} />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -24,7 +25,10 @@ export const metadata: Metadata = {
 export default function DirectDepositPage() {
   return (
     <div className="bg-white">
-      {/* Breadcrumb */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Banking", href: "/banking" }, { label: "Direct Deposit" }]} />
+      </div>
+{/* Breadcrumb */}
       <div className="bg-gray-50 border-b">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <nav className="flex items-center text-sm text-gray-600">

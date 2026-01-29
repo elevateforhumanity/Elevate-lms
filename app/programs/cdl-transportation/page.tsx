@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import PageAvatar from '@/components/PageAvatar';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -41,6 +42,12 @@ export default async function CdlTransportationPage() {
     .single();
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'CDL Transportation' },
+        ]}
+      />
       <VideoHeroBanner
         videoSrc="/videos/cdl-hero.mp4"
         headline="CDL & Transportation"

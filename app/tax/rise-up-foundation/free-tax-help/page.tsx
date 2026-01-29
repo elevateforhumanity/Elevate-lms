@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { Calendar } from 'lucide-react';
@@ -29,7 +30,10 @@ export default function FreeTaxHelpPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
-      <div className="mb-6">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Tax", href: "/tax" }, { label: "Free Tax Help" }]} />
+      </div>
+<div className="mb-6">
         <Link
           href="/tax/rise-up-foundation"
           className="text-sm text-black hover:text-black"

@@ -12,6 +12,7 @@ import {
   Building2,
   Phone,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Find Your Pathway | Start Your Career Training Journey',
@@ -118,6 +119,13 @@ export default async function StartPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Start' }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
         <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">

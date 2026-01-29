@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import React from 'react';
@@ -9,6 +7,7 @@ import { createClient } from '@/lib/supabase/client';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function CourseDiscussionsPage() {
   const params = useParams();
@@ -273,17 +272,18 @@ export default function CourseDiscussionsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Courses', href: '/courses' },
+          { label: course?.title || 'Course', href: `/courses/${courseId}` },
+          { label: 'Discussions' },
+        ]}
+      />
       {/* Header */}
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <Link
-                href={`/courses/${courseId}`}
-                className="text-brand-blue-600 hover:text-brand-blue-700 text-sm mb-2 inline-block"
-              >
-                ← Back to Course
-              </Link>
               <h1 className="text-3xl font-bold text-black">
                 {course?.title}
               </h1>

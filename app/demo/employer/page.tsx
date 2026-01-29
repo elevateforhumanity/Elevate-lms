@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Info, Home, Users, Briefcase, DollarSign, Award, Star, ChevronRight, Plus, CheckCircle, MapPin, X } from 'lucide-react';
@@ -38,7 +39,10 @@ export default function EmployerDemo() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-blue-600 text-white text-center py-3 px-2 text-xs"><Info className="w-3 h-3 inline mr-1" />Live Demo - Employer Portal</div>
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Demo", href: "/demo" }, { label: "Employer" }]} />
+      </div>
+<div className="bg-blue-600 text-white text-center py-3 px-2 text-xs"><Info className="w-3 h-3 inline mr-1" />Live Demo - Employer Portal</div>
       
       <header className="bg-white border-b sticky top-0 z-40">
         <div className="flex items-center justify-between px-3 py-2">

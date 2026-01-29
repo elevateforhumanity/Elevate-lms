@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
@@ -190,7 +191,10 @@ export default function BookAppointmentPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50">
-      {/* Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Curvature Body Sculpting", href: "/curvature-body-sculpting" }, { label: "Book Appointment" }]} />
+      </div>
+{/* Header */}
       <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-8">
         <div className="max-w-4xl mx-auto px-4">
           <Link href="/curvature-body-sculpting" className="text-pink-200 hover:text-white text-sm mb-2 inline-flex items-center gap-1">

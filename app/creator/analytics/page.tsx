@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -73,7 +74,10 @@ export default async function CreatorAnalyticsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {!user ? (
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Creator", href: "/creator" }, { label: "Analytics" }]} />
+      </div>
+{!user ? (
         <>
           <h1 className="text-3xl font-bold mb-6">Analytics & Insights</h1>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">

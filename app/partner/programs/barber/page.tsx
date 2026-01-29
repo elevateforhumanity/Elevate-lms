@@ -17,6 +17,7 @@ import {
   Download,
   ClipboardList
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface Apprentice {
   id: string;
@@ -203,6 +204,13 @@ export default function BarberPartnerPage() {
 
   return (
     <div className="min-h-screen bg-slate-100">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Partner', href: '/partner' }, { label: 'Programs', href: '/partner/programs' }, { label: 'Barber' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <header className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 py-6">

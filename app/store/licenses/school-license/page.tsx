@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,7 +11,10 @@ export default function SchoolLicensePage() {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Hero - Clean */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "School License" }]} />
+      </div>
+{/* Hero - Clean */}
       <section className="relative h-[50vh] overflow-hidden">
         <Image
           src="/images/hero-programs-technology.jpg"

@@ -18,6 +18,7 @@ import {
   Lock,
 } from 'lucide-react';
 import { IPLA_EXAM_INFO, IPLA_EXAM_FEES } from '@/lib/payment-config';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'State Board Exam | Indiana IPLA',
@@ -70,6 +71,12 @@ export default async function StateBoardExamPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      <Breadcrumbs
+        items={[
+          { label: 'Apprentice Portal', href: '/apprentice' },
+          { label: 'State Board Exam' },
+        ]}
+      />
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div>

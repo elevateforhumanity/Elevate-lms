@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { createClient } from '@/lib/supabase/server';
 
@@ -46,7 +47,10 @@ export default async function ReelsPage() {
 
   return (
     <div className="bg-gray-950 min-h-screen">
-      <ReelsFeed reels={reels} />
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Reels" }]} />
+      </div>
+<ReelsFeed reels={reels} />
     </div>
   );
 }

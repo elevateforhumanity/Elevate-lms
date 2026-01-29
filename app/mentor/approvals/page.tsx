@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { generateMetadata } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = generateMetadata({
@@ -124,7 +125,10 @@ export default async function MentorApprovalsPage({
 
   return (
     <div className="p-6 space-y-4 max-w-7xl mx-auto">
-      <div className="flex flex-col gap-2">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Mentor", href: "/mentor" }, { label: "Approvals" }]} />
+      </div>
+<div className="flex flex-col gap-2">
         <h1 className="text-2xl font-bold text-black">Mentor Approvals</h1>
         <p className="text-sm text-black">
           Review submitted hours, approve/reject, and lock once finalized.

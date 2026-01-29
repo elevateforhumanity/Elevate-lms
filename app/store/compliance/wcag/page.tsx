@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Home, ChevronRight, CheckCircle, Eye, Keyboard, Volume2, Monitor } from 'lucide-react';
@@ -60,7 +61,10 @@ const guideSteps = [
 export default function WCAGCompliancePage() {
   return (
     <div className="bg-white">
-      {/* Avatar Guide */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Wcag" }]} />
+      </div>
+{/* Avatar Guide */}
       <AvatarGuide
         avatarImage="/images/team-hq/instructor-1.jpg"
         avatarName="Alex"

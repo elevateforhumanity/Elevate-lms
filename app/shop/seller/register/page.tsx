@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Store, CheckCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function SellerRegisterPage() {
   const [formData, setFormData] = useState({ name: '', email: '', storeName: '', description: '' });
@@ -29,6 +30,13 @@ export default function SellerRegisterPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Shop', href: '/shop' }, { label: 'Seller', href: '/shop/seller' }, { label: 'Register' }]} />
+        </div>
+      </div>
+
       <div className="bg-purple-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Store className="w-12 h-12 mx-auto mb-4 opacity-80" />

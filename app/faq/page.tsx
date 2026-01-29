@@ -55,7 +55,6 @@ export default async function FAQPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-blue-900/60" />
           <div className="relative z-10 h-full flex items-center justify-center">
             <h1 className="text-4xl font-bold text-white">Frequently Asked Questions</h1>
           </div>
@@ -92,7 +91,6 @@ export default async function FAQPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
           <div className="max-w-2xl bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
             <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">

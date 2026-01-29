@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import {
   Users,
@@ -77,7 +78,10 @@ const useCases = [
 export default function CommunityHubPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Community Hub" }]} />
+      </div>
+{/* Hero */}
       <section className="relative py-20 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

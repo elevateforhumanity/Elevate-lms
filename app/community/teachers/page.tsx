@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { GraduationCap, BookOpen, Users, FileText, Video, Download } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   alternates: {
@@ -63,6 +64,13 @@ export default async function TeachersPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Community', href: '/community' }, { label: 'Teachers' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-green-600 to-teal-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">

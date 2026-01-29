@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { FileText, Video, Download, ExternalLink } from 'lucide-react';
 
@@ -17,7 +18,10 @@ export default function MentorResourcesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Mentor", href: "/mentor" }, { label: "Resources" }]} />
+      </div>
+<div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <nav className="flex items-center text-sm text-gray-600">
             <Link href="/mentor/dashboard" className="hover:text-blue-600">Mentor Dashboard</Link>

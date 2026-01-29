@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
@@ -36,7 +37,10 @@ export default async function ApprenticeshipPage() {
     .eq('type', 'apprenticeship');
   return (
     <div className="min-h-screen">
-      <div className="bg-gradient-to-br from-orange-600 to-orange-700 text-white py-12">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Employers", href: "/employers" }, { label: "Apprenticeships" }]} />
+      </div>
+<div className="bg-gradient-to-br from-orange-600 to-orange-700 text-white py-12">
         <div className="container mx-auto px-4">
           <Link
             href="/employers"

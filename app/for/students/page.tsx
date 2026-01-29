@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -58,7 +59,10 @@ export default function StudentsPage() {
 
   return (
     <div className="bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "For", href: "/for" }, { label: "Students" }]} />
+      </div>
+{/* Hero */}
       <section className="relative h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
           src="/images/courses/medical-assistant-10002419-cover.jpg"

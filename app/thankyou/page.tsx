@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { CheckCircle, ArrowRight, Phone, Mail, Calendar } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   alternates: {
@@ -69,6 +70,13 @@ export default async function ThankyouPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Thank You' }]} />
+        </div>
+      </div>
+
       {/* Success Message */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">

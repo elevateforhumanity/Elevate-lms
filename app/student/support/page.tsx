@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { HelpCircle, MessageSquare, Phone, Mail, FileText, Video } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = { title: 'Student Support | Elevate for Humanity' };
 
@@ -20,6 +21,13 @@ export default function StudentSupportPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Student', href: '/student' }, { label: 'Support' }]} />
+        </div>
+      </div>
+
       <div className="bg-blue-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <HelpCircle className="w-12 h-12 mx-auto mb-4 opacity-80" />

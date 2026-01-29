@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { Metadata } from 'next';
 
@@ -17,7 +18,10 @@ export const metadata: Metadata = {
 export default async function HandbookPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Student Portal", href: "/student-portal" }, { label: "Handbook" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
           src="/images/business/team-2.jpg"

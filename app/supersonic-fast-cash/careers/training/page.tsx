@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { logger } from '@/lib/logger';
 import React, { useState } from 'react';
 import {
@@ -337,7 +338,10 @@ export default function TrainingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Training" }]} />
+      </div>
+<div className="max-w-7xl mx-auto px-6">
         {/* New Applicant Banner */}
         <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-xl shadow-lg p-8 mb-8 text-white">
           <div className="max-w-4xl mx-auto">

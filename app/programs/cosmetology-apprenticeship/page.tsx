@@ -1,4 +1,3 @@
-
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { FundingBadge } from '@/components/programs/FundingBadge';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
@@ -12,6 +11,7 @@ import {
   XCircle,
 } from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -50,6 +50,12 @@ export default async function CosmetologyApprenticeshipPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Cosmetology Apprenticeship' },
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative w-full -mt-[72px] min-h-[70vh] flex items-center bg-gradient-to-br from-rose-500 via-fuchsia-600 to-purple-700">
         {/* overlay removed */}

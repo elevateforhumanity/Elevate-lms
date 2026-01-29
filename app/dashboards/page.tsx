@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { 
   LayoutDashboard, 
@@ -97,7 +98,10 @@ const portals = [
 export default function PortalsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 py-16">
-      <div className="max-w-6xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Dashboards" }]} />
+      </div>
+<div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-white mb-4">Portals & Dashboards</h1>

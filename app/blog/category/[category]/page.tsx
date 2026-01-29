@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -82,7 +83,10 @@ export default async function CategoryPage({
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: "[Category]" }]} />
+      </div>
+<div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         {/* Header */}
         <div className="mb-8">
           <nav

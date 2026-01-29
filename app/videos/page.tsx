@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getAllLiveVideos, getAllCategories } from '@/lib/video/registry';
 import { Play } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -43,6 +44,13 @@ export default async function VideosPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Videos' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-orange-600 to-orange-700 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">

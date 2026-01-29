@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Scale, CheckCircle, AlertTriangle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Compliance & Disclosure Framework | Governance | Elevate for Humanity',
@@ -23,6 +24,13 @@ export default function CompliancePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Governance', href: '/governance' }, { label: 'Compliance' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-slate-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">

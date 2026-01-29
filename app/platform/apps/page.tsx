@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { PLATFORM_APPS } from '@/app/data/store-products';
 import { ArrowLeft, Check, Zap } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,6 +41,12 @@ export default async function PlatformAppsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Platform', href: '/platform' },
+          { label: 'Apps' },
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative h-[300px] md:h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image
@@ -52,13 +59,6 @@ export default async function PlatformAppsPage() {
           sizes="100vw"
         />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <Link
-            href="/platform"
-            className="inline-flex items-center text-white hover:text-gray-200 mb-4"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Platform
-          </Link>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Modular Apps & Features
           </h1>

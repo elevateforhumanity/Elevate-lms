@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Phone, CheckCircle, ArrowRight, HelpCircle } from 'lucide-react';
 
 export const metadata = {
@@ -60,7 +61,10 @@ const taxPrepPlans = [
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Pricing" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-gradient-to-b from-blue-50 to-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-semibold text-gray-900 mb-4">

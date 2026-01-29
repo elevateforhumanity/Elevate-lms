@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -59,7 +60,10 @@ export default async function ProductDetailPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Breadcrumb */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Curvature Body Sculpting", href: "/curvature-body-sculpting" }, { label: "[Slug]" }]} />
+      </div>
+{/* Breadcrumb */}
       <div className="bg-gray-50 border-b">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <nav className="flex items-center gap-2 text-sm">

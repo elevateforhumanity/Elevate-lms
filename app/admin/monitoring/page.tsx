@@ -1,8 +1,8 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
 import { Activity, AlertCircle, CheckCircle, Clock, Database, Server, TrendingUp, Users, Zap } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface SystemStatus {
   overall: 'healthy' | 'degraded' | 'down';
@@ -117,6 +117,9 @@ export default function MonitoringDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Monitoring" }]} />
+        </div>
         <div className="text-center">
           <Activity className="h-12 w-12 animate-spin text-blue-600 mx-auto mb-4" />
           <p className="text-black">Loading monitoring data...</p>
@@ -127,6 +130,9 @@ export default function MonitoringDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Monitoring" }]} />
+        </div>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

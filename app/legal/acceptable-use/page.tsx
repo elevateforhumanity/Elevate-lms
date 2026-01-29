@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
 export default function AcceptableUsePage() {
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Legal", href: "/legal" }, { label: "Acceptable Use" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4">
         <div className="bg-white rounded-xl shadow-sm p-8 md:p-12">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Acceptable Use Policy</h1>
           <p className="text-gray-500 mb-8">Version 1.0 | Effective: January 22, 2026</p>

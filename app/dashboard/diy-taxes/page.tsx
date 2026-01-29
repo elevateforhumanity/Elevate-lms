@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -300,7 +301,10 @@ export default function DIYTaxesPage() {
 
   return (
     <div className="container mx-auto py-8 max-w-4xl">
-      <div className="mb-8">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Dashboard", href: "/dashboard" }, { label: "Diy Taxes" }]} />
+      </div>
+<div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">DIY Tax Filing</h1>
         <p className="text-muted-foreground">
           File your federal tax return directly with the IRS - free for simple returns

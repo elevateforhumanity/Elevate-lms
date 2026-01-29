@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -283,7 +284,10 @@ export default async function BookkeepingPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Bookkeeping" }]} />
+      </div>
+{/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <Image
           src="/images/success-new/success-9.jpg"

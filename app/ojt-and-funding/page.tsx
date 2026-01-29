@@ -46,7 +46,6 @@ export default function OJTAndFundingPage() {
       {/* Hero - Visual First */}
       <section className="relative h-[55vh] min-h-[400px]">
         <Image src="/images/business/handshake-1.jpg" alt="Get hired and trained" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
           <div className="max-w-5xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
@@ -96,7 +95,6 @@ export default function OJTAndFundingPage() {
               <div key={i} className="group">
                 <div className="relative h-48 rounded-2xl overflow-hidden mb-4 shadow-lg group-hover:shadow-xl transition-shadow">
                   <Image src={step.image} alt={step.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute top-4 left-4 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                     {step.num}
                   </div>
@@ -169,7 +167,6 @@ export default function OJTAndFundingPage() {
             {industries.map((ind, i) => (
               <div key={i} className="group relative h-56 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer">
                 <Image src={ind.image} alt={ind.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <h3 className="text-xl font-bold text-white">{ind.name}</h3>
                   <p className="text-white/80 text-sm">{ind.roles}</p>

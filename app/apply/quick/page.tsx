@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import QuickApplyForm from './QuickApplyForm';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -33,6 +34,12 @@ export default async function QuickApplyPage() {
     .eq('quick_apply_enabled', true);
   return (
     <div className="min-h-screen bg-slate-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Apply', href: '/apply' },
+          { label: 'Quick Apply' },
+        ]}
+      />
       <section className="border-b border-slate-200 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <p className="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-2">

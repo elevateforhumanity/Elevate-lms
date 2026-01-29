@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Hammer, Users, Award, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Urban Build Crew | Elevate for Humanity',
@@ -11,6 +12,11 @@ export const metadata: Metadata = {
 export default function UrbanBuildCrewPage() {
   return (
     <div className="bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Urban Build Crew' },
+        ]}
+      />
       <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image src="/images/trades/program-construction-training.jpg" alt="Urban Build Crew" fill className="object-cover" priority sizes="100vw" />
         

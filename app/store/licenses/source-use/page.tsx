@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { AlertTriangle, Check, X, FileCode, Building2, Shield, ArrowRight, Ban } from 'lucide-react';
 
@@ -13,9 +14,11 @@ export const metadata: Metadata = {
 export default function SourceUseLicensePage() {
   return (
     <div className="min-h-screen bg-slate-950">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Source Use" }]} />
+      </div>
+{/* Hero */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-red-900/20 to-transparent" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
             <div className="inline-flex items-center gap-2 bg-red-900/30 border border-red-700/50 rounded-full px-4 py-2 mb-6">

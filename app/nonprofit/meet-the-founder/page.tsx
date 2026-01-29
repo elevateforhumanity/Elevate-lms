@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -34,6 +35,13 @@ export default async function MeetTheFounderPage() {
     .single();
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Nonprofit', href: '/nonprofit' }, { label: 'Meet the Founder' }]} />
+        </div>
+      </div>
+
       <div className="max-w-4xl mx-auto px-4 py-16">
         <Link href="/nonprofit" className="text-purple-600 hover:text-purple-700 mb-8 inline-block">
           ← Back to Selfish Inc.

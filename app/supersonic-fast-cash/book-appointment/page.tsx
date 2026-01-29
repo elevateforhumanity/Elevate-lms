@@ -1,7 +1,7 @@
-
-
-
 'use client';
+
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+
 
 import { logger } from '@/lib/logger';
 import React from 'react';
@@ -201,7 +201,10 @@ export default function BookAppointment() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-5xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Book Appointment" }]} />
+      </div>
+<div className="max-w-5xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Book Your Tax Appointment</h1>

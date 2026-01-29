@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Heart, Users, TrendingUp, MessageSquare, Calendar, ArrowRight, CheckCircle, Phone } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Ongoing Support | Career Services | Elevate For Humanity',
@@ -80,6 +82,13 @@ export default async function OngoingSupportPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Career Services', href: '/career-services' }, { label: 'Ongoing Support' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative min-h-[400px] flex items-center">
         <div 

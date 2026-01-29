@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import {
   CheckCircle,
@@ -129,7 +130,10 @@ const faqs = [
 export default function BarbershopPartnerPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Barbershop Apprenticeship" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center gap-2 text-slate-300 mb-4">

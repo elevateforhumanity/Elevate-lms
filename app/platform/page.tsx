@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { generateMetadata } from '@/lib/seo/metadata';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Platform',
@@ -34,6 +35,11 @@ export default async function PlatformPage() {
     .single();
   return (
     <div className="bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Platform' },
+        ]}
+      />
       {/* Hero Section */}
       <section className="px-4 sm:px-6 lg:px-10 py-16 bg-slate-50">
         <div className="mx-auto max-w-4xl text-center">

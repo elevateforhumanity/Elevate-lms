@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, CheckCircle, ArrowLeft, Building2, Users, Shield, Clock, BarChart3 } from 'lucide-react';
@@ -95,7 +96,10 @@ const volumePricing = [
 export default function EmployerProgramsPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Drug Testing", href: "/drug-testing" }, { label: "Employer Programs" }]} />
+      </div>
+{/* Hero */}
       <section className="relative min-h-[400px] flex items-center">
         <div className="absolute inset-0">
           <Image

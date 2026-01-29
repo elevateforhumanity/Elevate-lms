@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { ChevronRight, Zap } from 'lucide-react';
@@ -40,7 +41,10 @@ export default async function SupersonicApplyPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-3xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic", href: "/supersonic" }, { label: "Apply" }]} />
+      </div>
+<div className="max-w-3xl mx-auto px-4">
         <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
           <Link href="/" className="hover:text-orange-600">Home</Link>
           <ChevronRight className="w-4 h-4" />

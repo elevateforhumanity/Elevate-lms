@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import ProgramHolderForm from './ProgramHolderForm';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -35,6 +36,12 @@ export default async function ProgramHolderApplicationPage() {
     .single();
   return (
     <div className="min-h-screen bg-slate-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Apply', href: '/apply' },
+          { label: 'Program Holder' },
+        ]}
+      />
       <section className="border-b border-slate-200 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <p className="text-xs font-semibold tracking-widest text-blue-700 uppercase mb-2">

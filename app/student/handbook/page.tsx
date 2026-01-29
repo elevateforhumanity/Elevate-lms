@@ -11,6 +11,7 @@ import {
   ChevronDown,
   ExternalLink,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Student Handbook | Student Portal',
@@ -86,13 +87,14 @@ export default async function StudentHandbookPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Student Portal', href: '/student' },
+          { label: 'Handbook' },
+        ]}
+      />
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-            <Link href="/student" className="hover:text-gray-700">Student Portal</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 font-medium">Handbook</span>
-          </nav>
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Student Handbook</h1>

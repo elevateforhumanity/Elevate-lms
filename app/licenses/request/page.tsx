@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function LicenseRequestPage() {
   const [formData, setFormData] = useState({
@@ -60,11 +61,13 @@ export default function LicenseRequestPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-16 px-4">
+      <Breadcrumbs
+        items={[
+          { label: 'Licenses', href: '/licenses' },
+          { label: 'Request' },
+        ]}
+      />
       <div className="max-w-2xl mx-auto">
-        <Link href="/licenses" className="text-blue-600 hover:underline text-sm mb-8 inline-block">
-          ← Back to Platform Licensing
-        </Link>
-
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
           Request Managed Enterprise LMS License
         </h1>

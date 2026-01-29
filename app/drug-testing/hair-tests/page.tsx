@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, CheckCircle, ArrowLeft, Clock, Calendar, Shield } from 'lucide-react';
@@ -63,7 +64,10 @@ const hairTests = [
 export default function HairTestsPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Drug Testing", href: "/drug-testing" }, { label: "Hair Tests" }]} />
+      </div>
+{/* Hero */}
       <section className="relative py-20 bg-purple-900 text-white">
         <div className="max-w-6xl mx-auto px-6">
           <Link href="/drug-testing" className="inline-flex items-center gap-2 text-purple-200 hover:text-white mb-6 transition">

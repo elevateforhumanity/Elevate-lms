@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Users, Search, Filter, Download, Mail, Eye } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = { title: 'Students | Program Holder Portal' };
 
@@ -21,15 +22,12 @@ export default function ProgramHolderStudentsPage() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex items-center text-sm text-gray-600">
-            <Link href="/program-holder/dashboard" className="hover:text-purple-600">Dashboard</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">Students</span>
-          </nav>
-        </div>
-      </div>
+      <Breadcrumbs
+        items={[
+          { label: 'Program Holder', href: '/program-holder/dashboard' },
+          { label: 'Students' },
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Students</h1>

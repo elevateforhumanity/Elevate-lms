@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { ResourcePageTemplate, generateResourceMetadata } from '@/components/templates/ResourcePageTemplate';
 
 const PAGE_PATH = '/resources/how-refund-advances-work';

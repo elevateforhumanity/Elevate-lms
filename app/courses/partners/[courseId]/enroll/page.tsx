@@ -1,6 +1,6 @@
-
-
 'use client';
+
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -158,7 +158,10 @@ export default function EnrollPage({
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Courses", href: "/courses" }, { label: "Enroll" }]} />
+      </div>
+{/* Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 py-6">
           <Link

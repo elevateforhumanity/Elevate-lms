@@ -14,6 +14,7 @@ import {
   Paperclip,
   Smile,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface Conversation {
   id: string;
@@ -103,13 +104,15 @@ export default function StudentChatPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Student', href: '/student' }, { label: 'Chat' }]} />
+        </div>
+      </div>
+
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-            <Link href="/student" className="hover:text-gray-700">Student Portal</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 font-medium">Messages</span>
-          </nav>
           <h1 className="text-xl font-bold text-gray-900">Messages</h1>
         </div>
       </div>

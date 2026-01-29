@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Calendar, Clock, Video, CheckCircle, Phone } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Schedule a Demo | Elevate LMS',
@@ -54,6 +55,13 @@ export default async function DemoPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'License', href: '/license' }, { label: 'Demo' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <section className="bg-slate-900 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">

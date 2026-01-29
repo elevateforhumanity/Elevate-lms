@@ -1,6 +1,3 @@
-
-
-
 'use client';
 
 import { useState } from 'react';
@@ -8,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { loadStripe } from '@stripe/stripe-js';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
@@ -81,6 +79,12 @@ export default function PurchaseLicensePage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
+      <Breadcrumbs
+        items={[
+          { label: 'Licenses', href: '/licenses' },
+          { label: 'Purchase' },
+        ]}
+      />
       <div className="container mx-auto px-4 max-w-6xl">
         <h1 className="text-4xl font-bold mb-2">Purchase Program License</h1>
         <p className="text-black mb-8">

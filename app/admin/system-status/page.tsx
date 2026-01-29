@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { 
   CheckCircle, 
@@ -314,6 +315,9 @@ export default async function SystemStatusPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "System Status" }]} />
+      </div>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">

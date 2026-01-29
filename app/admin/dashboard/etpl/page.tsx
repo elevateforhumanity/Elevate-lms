@@ -1,3 +1,4 @@
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import {
   getEtplMetrics,
   getFundingMetrics,
@@ -30,7 +31,10 @@ export default async function EtplDashboard() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-8 px-4">
-      <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Etpl" }]} />
+      </div>
+<div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <div>

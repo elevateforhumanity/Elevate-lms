@@ -8,6 +8,7 @@ import {
   ArrowRight, Play, Users, Heart, MessageCircle,
   Share2, ExternalLink, Calendar, Video, Loader2
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 // Types for social feeds
 interface BlogPost {
@@ -240,6 +241,13 @@ export default function SocialMediaPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Social' }]} />
+        </div>
+      </div>
+
       {/* Hero Section with Animation */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden">
         <div className="absolute inset-0">

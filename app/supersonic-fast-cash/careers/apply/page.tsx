@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -66,7 +67,10 @@ export default function CareersApplyPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Apply" }]} />
+      </div>
+{/* Hero */}
       <section className="relative h-[300px] w-full overflow-hidden">
         <Image src="/images/heroes/alumni.jpg" alt="Apply for Career" fill className="object-cover" quality={85} priority />
         

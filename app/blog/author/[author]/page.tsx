@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -60,7 +61,10 @@ export default async function AuthorPage({
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: "[Author]" }]} />
+      </div>
+<div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         {/* Author Header */}
         <div className="mb-12 text-center">
           <div className="w-24 h-24    rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">

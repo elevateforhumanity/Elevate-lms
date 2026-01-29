@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
@@ -154,7 +155,10 @@ export default function CreateCourseContentPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Create" }]} />
+      </div>
+{/* Header */}
       <header className="bg-white border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">

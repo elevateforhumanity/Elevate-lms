@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Star, ShoppingCart, Building2, DollarSign, Layout } from 'lucide-react';
 
@@ -61,7 +62,10 @@ const colorClasses = {
 export default function AppsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Apps" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Apps & Tools</h1>

@@ -12,6 +12,7 @@ import {
   Filter,
   Play,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface Course {
   id: string;
@@ -144,18 +145,10 @@ export default function CommunityCoursesPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* Breadcrumb */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex items-center text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600">Home</Link>
-            <span className="mx-2">/</span>
-            <Link href="/community" className="hover:text-blue-600">Community</Link>
-            <span className="mx-2">/</span>
-            <Link href="/community/marketplace" className="hover:text-blue-600">Marketplace</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">Courses</span>
-          </nav>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Community', href: '/community' }, { label: 'Marketplace', href: '/community/marketplace' }, { label: 'Courses' }]} />
         </div>
       </div>
 

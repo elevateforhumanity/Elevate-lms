@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Check, Play, ShoppingCart, Star, Search, Bell, FileText, DollarSign, Calendar, Users } from 'lucide-react';
 
@@ -44,7 +45,10 @@ const pricing = [
 export default function GrantsAppPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Grants" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-gradient-to-br from-green-800 to-green-600 text-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { logger } from '@/lib/logger';
 import { useState } from 'react';
 import { Shield, Download, FileText, CheckCircle } from 'lucide-react';
@@ -116,7 +117,10 @@ export default function SubOfficeAgreementPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Sub Office Agreement" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="bg-blue-900 text-white rounded-t-lg p-8">
           <div className="flex items-center gap-4 mb-4">

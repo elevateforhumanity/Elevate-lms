@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { PolicyReference } from '@/components/compliance/PolicyReference';
 import { POLICIES } from '@/lib/policies';
@@ -39,7 +40,10 @@ export default async function AiTutorPage() {
     .single();
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Banner */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Ai Tutor" }]} />
+      </div>
+{/* Hero Banner */}
       <ModernLandingHero
         badge="🤖 AI-Powered Learning"
         headline="Your Personal AI"

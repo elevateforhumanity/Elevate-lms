@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Sparkles, Target, TrendingUp, ArrowRight } from 'lucide-react';
@@ -11,7 +12,10 @@ export const metadata: Metadata = {
 export default function SelfishIncPage() {
   return (
     <div className="bg-white">
-      <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Selfish Inc" }]} />
+      </div>
+<section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image src="/images/success-new/success-13.jpg" alt="Selfish Inc" fill className="object-cover" priority sizes="100vw" />
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">

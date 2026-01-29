@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -101,7 +102,10 @@ const capabilities = [
 export default function AIStudioPage() {
   return (
     <div className="bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Ai Studio" }]} />
+      </div>
+{/* Hero */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden bg-gradient-to-br from-violet-900 via-purple-900 to-indigo-900">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-20 w-72 h-72 bg-pink-500 rounded-full blur-3xl animate-pulse" />

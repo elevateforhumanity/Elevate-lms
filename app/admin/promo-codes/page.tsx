@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -152,6 +153,9 @@ export default function PromoCodesAdminPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Promo Codes" }]} />
+        </div>
         <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
       </div>
     );
@@ -159,6 +163,9 @@ export default function PromoCodesAdminPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Promo Codes" }]} />
+        </div>
       {/* Header */}
       <header className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-4">

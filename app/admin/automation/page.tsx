@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
@@ -100,6 +101,7 @@ export default async function AutomationLogPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-6">
+          <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Automation' }]} />
           <div className="flex items-center gap-3">
             <Zap className="w-8 h-8 text-amber-500" />
             <div>

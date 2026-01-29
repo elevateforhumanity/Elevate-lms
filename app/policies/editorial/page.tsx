@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { Metadata } from 'next';
 
@@ -13,7 +14,10 @@ export const metadata: Metadata = {
 export default function EditorialPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Policies", href: "/policies" }, { label: "Editorial" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
         <article className="bg-white rounded-xl shadow-sm p-8 md:p-12">
           <div className="mb-8">
             <h1 className="text-4xl font-bold text-black mb-4">Editorial Policy</h1>

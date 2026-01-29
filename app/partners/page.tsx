@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Metadata } from 'next';
 import Image from "next/image";
 import { Building, GraduationCap, Briefcase, Shield, Users, Award } from 'lucide-react';
@@ -92,7 +93,10 @@ const industryPartners = [
 export default function PartnersPage() {
   return (
     <main className="w-full">
-      <header className="relative min-h-[400px] flex items-center">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Partners" }]} />
+      </div>
+<header className="relative min-h-[400px] flex items-center">
         <Image
           src="/images/heroes/partner-hero.jpg"
           alt="Partner with Elevate for Humanity"

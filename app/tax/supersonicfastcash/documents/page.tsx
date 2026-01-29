@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import React from 'react';
 
 import { useState } from 'react';
@@ -105,7 +106,10 @@ export default function DocumentUploadPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
-      <div className="mb-6">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Tax", href: "/tax" }, { label: "Documents" }]} />
+      </div>
+<div className="mb-6">
         <Link
           href="/tax"
           aria-label="Link"

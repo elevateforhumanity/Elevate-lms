@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ChevronRight, Plus, BookOpen, Users, Star, MoreVertical, Eye, Edit, Trash2 } from 'lucide-react';
@@ -44,7 +45,10 @@ export default function CreatorCoursesPage() {
   }, []);
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Creator", href: "/creator" }, { label: "Courses" }]} />
+      </div>
+<div className="max-w-6xl mx-auto px-4">
         <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
           <Link href="/" className="hover:text-orange-600">Home</Link>
           <ChevronRight className="w-4 h-4" />

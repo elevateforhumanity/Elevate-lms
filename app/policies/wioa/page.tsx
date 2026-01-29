@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'WIOA Eligibility Policy | Elevate for Humanity',
@@ -10,7 +11,10 @@ export const metadata: Metadata = {
 
 export default function WIOAPage() {
   return (
-    <article className="prose prose-lg max-w-none">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <Breadcrumbs items={[{ label: 'Policies', href: '/policies' }, { label: 'WIOA' }]} />
+        <article className="prose prose-lg max-w-none mt-6">
       <h1>WIOA Eligibility Policy</h1>
       <p className="text-black">Last Updated: December 22, 2024</p>
 
@@ -107,6 +111,8 @@ export default function WIOAPage() {
         Email: elevate4humanityedu@gmail.com<br />
         Phone: (317) 314-3757
       </p>
-    </article>
+        </article>
+      </div>
+    </div>
   );
 }

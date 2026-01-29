@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, Clock, FileCheck, Building2, Users, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'White-Label Workforce Platform | Elevate for Humanity',
@@ -13,6 +14,12 @@ export const metadata: Metadata = {
 export default function PlatformLicensingPage() {
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Platform', href: '/platform' },
+          { label: 'Licensing' },
+        ]}
+      />
       {/* Hero - Above the fold */}
       <section className="bg-slate-900 text-white py-24 lg:py-32">
         <div className="max-w-4xl mx-auto px-6 text-center">

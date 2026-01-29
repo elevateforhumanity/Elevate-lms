@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'FERPA Privacy Policy | Elevate for Humanity',
@@ -10,7 +11,10 @@ export const metadata: Metadata = {
 
 export default function FERPAPage() {
   return (
-    <article className="prose prose-lg max-w-none">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <Breadcrumbs items={[{ label: 'Policies', href: '/policies' }, { label: 'FERPA' }]} />
+        <article className="prose prose-lg max-w-none mt-6">
       <h1>FERPA Privacy Policy</h1>
       <p className="text-black">Last Updated: December 22, 2024</p>
 
@@ -116,6 +120,8 @@ export default function FERPAPage() {
         400 Maryland Avenue, SW<br />
         Washington, DC 20202-8520
       </p>
-    </article>
+        </article>
+      </div>
+    </div>
   );
 }

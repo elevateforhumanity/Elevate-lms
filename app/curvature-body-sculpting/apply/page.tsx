@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -299,7 +300,10 @@ function ApplyPageContent() {
 function LoadingFallback() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center">
-      <Loader2 className="w-10 h-10 text-purple-500 animate-spin" />
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Curvature Body Sculpting", href: "/curvature-body-sculpting" }, { label: "Apply" }]} />
+      </div>
+<Loader2 className="w-10 h-10 text-purple-500 animate-spin" />
     </div>
   );
 }

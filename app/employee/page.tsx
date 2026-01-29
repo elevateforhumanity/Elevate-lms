@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { User, FileText, Calendar, DollarSign, Clock, Settings } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Employee Portal | Elevate For Humanity',
@@ -41,6 +42,11 @@ export default async function EmployeePortalPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Employee Portal' },
+        ]}
+      />
       <div className="bg-indigo-600 text-white py-8">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-3xl font-bold">Employee Portal</h1>

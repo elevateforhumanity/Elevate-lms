@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -13,7 +14,10 @@ export const metadata: Metadata = {
 export default function NDAPage() {
   return (
     <div className="min-h-screen bg-white py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Legal", href: "/legal" }, { label: "Nda" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
           className="text-brand-blue-600 hover:text-blue-800 mb-6 inline-block"

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Building2, BookOpen, Users, BarChart3, FileText, Settings } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
@@ -48,6 +49,13 @@ const features = [
 export default function ProgramHolderLanding() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Program Holder' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden bg-teal-800">
         <Image

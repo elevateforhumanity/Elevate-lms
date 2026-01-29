@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Licensing Architecture v1 | Elevate for Humanity',
@@ -8,7 +9,10 @@ export const metadata: Metadata = {
 export default function LicensingArchitecturePage() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto px-4 py-12">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Docs", href: "/docs" }, { label: "Licensing Architecture" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">
           Licensing Architecture v1
         </h1>

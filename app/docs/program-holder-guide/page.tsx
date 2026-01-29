@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { BookOpen, ArrowLeft, CheckCircle, Users, FileText, Settings, BarChart3 } from 'lucide-react';
 
 const sections = [
@@ -11,7 +12,10 @@ const sections = [
 export default function ProgramHolderGuidePage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Docs", href: "/docs" }, { label: "Program Holder Guide" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4">
         <Link href="/docs" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6">
           <ArrowLeft className="w-4 h-4" /> Back to Docs
         </Link>

@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -55,7 +56,10 @@ export default function CreateOrgPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "(Dashboard)", href: "/(dashboard)" }, { label: "Create" }]} />
+      </div>
+<div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-black">
             Create Organization

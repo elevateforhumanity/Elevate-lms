@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = {
@@ -31,7 +32,10 @@ export default async function MetricsPage() {
     .order('category');
   return (
     <div className="bg-white">
-      <ComplianceBar />
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Metrics" }]} />
+      </div>
+<ComplianceBar />
 
       <div className="max-w-4xl mx-auto px-6 py-16">
         <h1 className="text-4xl font-bold mb-4 text-black">

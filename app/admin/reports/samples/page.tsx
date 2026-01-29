@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { 
   FileText, 
@@ -101,7 +102,10 @@ const SAMPLE_FUNDING_REPORT = {
 export default function SampleReportsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Samples" }]} />
+      </div>
+{/* Header */}
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <Link href="/admin/reports" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4">

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { BookOpen, Upload, CheckCircle, AlertCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface License {
   license_key: string;
@@ -112,7 +113,15 @@ export default function CreateCoursePage() {
   const selectedLicenseData = licenses.find(l => l.license_key === selectedLicense);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Partner', href: '/partner' }, { label: 'Courses', href: '/partner/courses' }, { label: 'Create' }]} />
+        </div>
+      </div>
+
+      <div className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="bg-white shadow rounded-lg p-8">
           <div className="flex items-center gap-3 mb-8">
@@ -284,6 +293,7 @@ export default function CreateCoursePage() {
             </form>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

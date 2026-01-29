@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Building, CheckCircle, ArrowRight, AlertCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function PartnerApplyPage() {
   const [formData, setFormData] = useState({ orgName: '', contactName: '', email: '', phone: '', type: '', description: '' });
@@ -31,6 +32,13 @@ export default function PartnerApplyPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Partner', href: '/partner' }, { label: 'Apply' }]} />
+        </div>
+      </div>
+
       <div className="bg-blue-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Building className="w-12 h-12 mx-auto mb-4 opacity-80" />

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
@@ -85,7 +86,10 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ c
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "[Courseid]" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-12">
         <div className="max-w-7xl mx-auto px-6">
           <Link

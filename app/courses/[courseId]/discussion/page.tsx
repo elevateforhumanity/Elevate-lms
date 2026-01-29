@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,6 +39,13 @@ export default async function DiscussionPage({ params }: { params: { courseId: s
     .order('created_at', { ascending: false });
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Courses', href: '/courses' },
+          { label: 'Course', href: `/courses/${params.courseId}` },
+          { label: 'Discussion' },
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image

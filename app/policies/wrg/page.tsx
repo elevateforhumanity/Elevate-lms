@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Workforce Ready Grant Policy | Elevate for Humanity',
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
 
 export default function WRGPage() {
   return (
-    <article className="prose prose-lg max-w-none">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <Breadcrumbs items={[{ label: 'Policies', href: '/policies' }, { label: 'WRG' }]} />
+        <article className="prose prose-lg max-w-none mt-6">
       <h1>Workforce Ready Grant Policy</h1>
       <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Overview</h2>
@@ -25,6 +29,8 @@ export default function WRGPage() {
       <p>Up to $7,500 per year for tuition and fees.</p>
       <h2>Contact</h2>
       <p>Email: elevate4humanityedu@gmail.com | Phone: (317) 314-3757</p>
-    </article>
+        </article>
+      </div>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Clock, ThumbsUp, ThumbsDown, Share2, Printer } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = { title: 'Help Article | Elevate LMS' };
 
@@ -48,13 +49,13 @@ export default function HelpArticlePage({ params }: { params: { id: string } }) 
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <Link href="/help/articles" className="flex items-center gap-2 text-gray-600 hover:text-blue-600">
-            <ArrowLeft className="w-5 h-5" /> Back to Help Center
-          </Link>
-        </div>
-      </div>
+      <Breadcrumbs
+        items={[
+          { label: 'Help', href: '/help' },
+          { label: 'Articles', href: '/help/articles' },
+          { label: article.title },
+        ]}
+      />
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="bg-white rounded-xl shadow-sm p-8">
           <div className="mb-6">

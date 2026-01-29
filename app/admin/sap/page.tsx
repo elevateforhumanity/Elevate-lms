@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
@@ -209,6 +210,7 @@ export default async function SAPMonitoringPage() {
       {/* Header */}
       <div className="bg-white border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-6">
+          <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Sap' }]} />
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-black">

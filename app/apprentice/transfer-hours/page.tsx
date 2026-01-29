@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight, Clock, FileText, CheckCircle, AlertCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Transfer Hours | Apprentice Portal',
@@ -58,6 +59,12 @@ export default async function TransferHoursPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs
+        items={[
+          { label: 'Apprentice Portal', href: '/apprentice' },
+          { label: 'Transfer Hours' },
+        ]}
+      />
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-2xl font-bold">Transfer Hours</h1>

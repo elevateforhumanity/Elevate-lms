@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { DollarSign, Users, Clock, CheckCircle, AlertTriangle, Search, Filter, FileText, TrendingUp } from 'lucide-react';
@@ -22,6 +23,9 @@ const applications: any[] = [];
 export default function WOTCAdminPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Wotc" }]} />
+      </div>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>

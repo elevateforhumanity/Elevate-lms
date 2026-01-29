@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Home, ChevronRight, CheckCircle, Download, FileText, Users, BarChart3, Shield } from 'lucide-react';
@@ -105,7 +106,10 @@ const wioaGuideSteps = [
 export default function WIOACompliancePage() {
   return (
     <div className="bg-white">
-      {/* Avatar Guide at Top */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Wioa" }]} />
+      </div>
+{/* Avatar Guide at Top */}
       <AvatarGuide
         avatarImage="/images/team-hq/instructor-2.jpg"
         avatarName="James"

@@ -12,6 +12,7 @@ import {
   Home,
   Shield,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'JRI Programs | Justice Reinvestment Initiative | Elevate for Humanity',
@@ -25,6 +26,12 @@ export const metadata: Metadata = {
 export default function JRIProgramsPage() {
   return (
     <div className="bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'JRI Programs' },
+        ]}
+      />
       {/* Hero */}
       <section className="relative min-h-[500px] flex items-center overflow-hidden">
         <div className="absolute inset-0">

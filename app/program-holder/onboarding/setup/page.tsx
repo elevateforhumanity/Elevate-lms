@@ -1,11 +1,9 @@
-
-
 'use client';
 
 import React from 'react';
-
 import { useState } from 'react';
 import { Upload, FileText, CheckCircle, AlertCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 
 
@@ -58,6 +56,9 @@ export default function ProgramHolderSetup() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Program Holder", href: "/program-holder" }, { label: "Onboarding" }]} />
+      </div>
       <div className="max-w-4xl mx-auto px-6">
         {/* Progress Steps */}
         <div className="mb-8">

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
@@ -20,6 +21,9 @@ export default async function CertificatesPage() {
   if (!supabase) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "LMS", href: "/lms/dashboard" }, { label: "Certificates" }]} />
+        </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
           <p className="text-gray-600">Please try again later.</p>
@@ -58,6 +62,9 @@ export default async function CertificatesPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 p-4 md:p-8">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <Breadcrumbs items={[{ label: "LMS", href: "/lms/dashboard" }, { label: "Certificates" }]} />
+        </div>
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">My Certificates</h1>

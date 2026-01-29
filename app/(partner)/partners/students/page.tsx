@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Partners Students | Elevate For Humanity',
@@ -38,7 +39,10 @@ export default async function PartnerStudentsPage() {
 
   return (
     <div className="rounded-2xl border p-5">
-      <div className="font-semibold">Students</div>
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Students" }]} />
+      </div>
+<div className="font-semibold">Students</div>
       <div className="text-sm text-black mt-1">
         Placements tied to your location(s).
       </div>

@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import React from 'react';
 
 import { useEffect, useState } from 'react';
@@ -81,7 +82,10 @@ export default function PartnerDocumentsPage() {
 
   return (
     <div className="rounded-2xl border p-5 space-y-4">
-      <div>
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Documents" }]} />
+      </div>
+<div>
         <div className="font-semibold">Documents</div>
         <div className="text-sm text-black">
           Upload onboarding documents for approval.

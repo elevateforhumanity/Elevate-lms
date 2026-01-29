@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useState, useEffect } from 'react';
 import { Activity, AlertCircle, CheckCircle, Database, Server, Zap, Users } from 'lucide-react';
@@ -40,7 +41,8 @@ export default function SystemMonitorPage() {
   return (
     <div className="p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8 flex items-center gap-3">
+        <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'System Monitor' }]} />
+        <h1 className="text-3xl font-bold mb-8 mt-4 flex items-center gap-3">
           <Activity className="h-11 w-11 text-blue-600" />
           System Monitor
         </h1>

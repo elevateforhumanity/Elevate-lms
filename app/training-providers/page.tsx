@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, Users, Award, Building2, TrendingUp, Shield, Phone, ArrowRight } from 'lucide-react';
@@ -91,7 +92,10 @@ const programTypes = [
 export default function TrainingProvidersPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Training Providers" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative min-h-[500px] flex items-center">
         <div className="absolute inset-0">
           <Image

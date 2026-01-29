@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -65,7 +66,10 @@ export default function BarberApprenticeshipApplyPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Programs", href: "/programs" }, { label: "Apply" }]} />
+      </div>
+{/* Header */}
       <section className="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <Link 

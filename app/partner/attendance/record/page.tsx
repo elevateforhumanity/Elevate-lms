@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Users } from 'lucide-react';
 import AttendanceRecordForm from './AttendanceRecordForm';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Record Attendance | Partner Portal',
@@ -63,15 +64,10 @@ export default async function RecordAttendancePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <nav className="flex items-center text-sm text-gray-600">
-            <Link href="/partner/dashboard" className="hover:text-blue-600">Partner Portal</Link>
-            <span className="mx-2">/</span>
-            <Link href="/partner/attendance" className="hover:text-blue-600">Attendance</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">Record</span>
-          </nav>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Partner', href: '/partner' }, { label: 'Attendance', href: '/partner/attendance' }, { label: 'Record' }]} />
         </div>
       </div>
       <div className="max-w-4xl mx-auto px-4 py-8">

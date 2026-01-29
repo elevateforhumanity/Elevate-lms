@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
@@ -62,7 +63,8 @@ export default async function CandidatesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+            <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Candidates" }]} />
+{/* Hero */}
       <section className="relative bg-gradient-to-br from-green-800 to-emerald-900 text-white py-16">
         <div className="absolute inset-0">
           <Image

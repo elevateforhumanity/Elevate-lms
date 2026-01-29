@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -266,7 +267,10 @@ export default function PreviewPage() {
 
   return (
     <>
-      {/* Google Fonts */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Preview", href: "/preview" }, { label: "[Previewid]" }]} />
+      </div>
+{/* Google Fonts */}
       <link rel="stylesheet" href={fonts.googleFontsUrl} />
       
       <div 

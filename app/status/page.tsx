@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { CheckCircle, Activity, Clock, AlertTriangle } from 'lucide-react';
 
@@ -61,7 +62,10 @@ export default function StatusPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Status" }]} />
+      </div>
+{/* Header */}
       <div className={`${allOperational ? 'bg-green-600' : 'bg-yellow-600'} text-white py-12`}>
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">

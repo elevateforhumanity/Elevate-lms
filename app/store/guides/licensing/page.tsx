@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, AlertTriangle } from 'lucide-react';
 
@@ -12,7 +13,10 @@ const MASTER_STATEMENT = `All platform products are licensed access to systems o
 export default function LicensingGuidePage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Licensing" }]} />
+      </div>
+{/* Header */}
       <section className="bg-slate-900 text-white py-16">
         <div className="max-w-4xl mx-auto px-4">
           <h1 className="text-4xl font-black mb-4">Licensing Guide</h1>

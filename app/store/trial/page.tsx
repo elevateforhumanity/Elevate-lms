@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Check, ArrowRight, Clock, Shield } from 'lucide-react';
@@ -100,7 +101,10 @@ export default function TrialPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Trial" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-black text-gray-900 mb-4">
             Start Your Platform Trial

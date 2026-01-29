@@ -10,6 +10,7 @@ import {
   PartyPopper,
 } from 'lucide-react';
 import ConfettiWrapper from '@/components/ConfettiWrapper';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Enrollment Successful | Elevate for Humanity',
@@ -76,7 +77,15 @@ export default async function EnrollSuccessPage() {
   const displayNextSteps = nextSteps && nextSteps.length > 0 ? nextSteps : defaultNextSteps;
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Enroll', href: '/enroll' }, { label: 'Success' }]} />
+        </div>
+      </div>
+
+      <div className="flex items-center justify-center px-4 py-12">
       <ConfettiWrapper />
       <div className="max-w-2xl w-full">
         {/* Success Icon */}
@@ -173,6 +182,7 @@ export default async function EnrollSuccessPage() {
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import React from 'react';
 
 import { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 type Checklist = any;
 
@@ -74,7 +75,15 @@ export default function NextStepsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Next Steps' }]} />
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-3xl px-4 py-10">
       <h1 className="text-3xl font-bold">Your Next Steps Checklist</h1>
       <p className="mt-2 text-sm text-black leading-relaxed">
         Complete each step so we can move you into the correct funding and
@@ -622,6 +631,7 @@ export default function NextStepsPage() {
             nothing falls through the cracks.
           </p>
         </div>
+      </div>
       </div>
     </div>
   );

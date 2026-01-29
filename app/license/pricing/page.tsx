@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { CheckCircle, Calendar, HelpCircle } from 'lucide-react';
 import { LICENSE_TIERS, DISCLAIMERS, ROUTES, PLATFORM_FEATURES } from '@/lib/pricing';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Platform Licensing Pricing | Elevate LMS',
@@ -55,6 +56,13 @@ export default async function PricingPage() {
 
   return (
     <div>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'License', href: '/license' }, { label: 'Pricing' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <section className="bg-slate-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

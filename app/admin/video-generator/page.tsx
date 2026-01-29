@@ -1,4 +1,5 @@
 'use client';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useState, useEffect } from 'react';
 import { Video, Play, Loader2, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
@@ -103,6 +104,9 @@ export default function VideoGeneratorPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Video Generator" }]} />
+      </div>
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
           <div className="flex items-center gap-3 mb-6">

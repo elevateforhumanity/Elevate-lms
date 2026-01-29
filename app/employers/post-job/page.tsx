@@ -1,6 +1,6 @@
-
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -71,7 +71,10 @@ export default function PostJobPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="container mx-auto px-4 max-w-4xl">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Employers", href: "/employers" }, { label: "Post Job" }]} />
+      </div>
+<div className="container mx-auto px-4 max-w-4xl">
         <Link href="/employers" className="inline-flex items-center text-orange-600 hover:underline mb-6">
           ← Back to Employers
         </Link>

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { ChevronRight, Briefcase, MessageSquare, ThumbsUp, Clock, User, Plus, Pin } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Career Discussions | Community | Elevate For Humanity',
@@ -43,15 +44,16 @@ export default async function CareerDiscussionsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Community', href: '/community' }, { label: 'Discussions', href: '/community/discussions' }, { label: 'Career' }]} />
+        </div>
+      </div>
+
+      <div className="py-8">
       <div className="max-w-4xl mx-auto px-4">
-        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-          <Link href="/" className="hover:text-orange-600">Home</Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link href="/community" className="hover:text-orange-600">Community</Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900">Career Discussions</span>
-        </nav>
 
         <div className="flex items-center gap-4 mb-6">
           <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -124,6 +126,7 @@ export default async function CareerDiscussionsPage() {
             </div>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

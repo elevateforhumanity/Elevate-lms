@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { programs } from '@/app/data/programs';
 import { Shield, CheckCircle, Users, Award } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -52,6 +53,12 @@ export default async function FederalFundedProgramsPage() {
 
   return (
     <div className="bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Programs', href: '/programs' },
+          { label: 'Federal Funded Programs' },
+        ]}
+      />
       {/* Hero */}
       <section className="bg-white text-white px-6 sm:px-10 lg:px-12 py-20 lg:py-28">
         <div className="mx-auto max-w-5xl text-center">
