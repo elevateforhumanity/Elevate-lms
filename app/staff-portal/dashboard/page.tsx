@@ -6,6 +6,7 @@ import { requireRole } from '@/lib/auth/require-role';
 import Link from 'next/link';
 import { Users, BookOpen, AlertCircle, CheckCircle, Clock } from 'lucide-react';
 import { safeFormatDate } from '@/lib/format-utils';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   alternates: {
@@ -92,6 +93,13 @@ export default async function StaffDashboard() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Staff Portal', href: '/staff-portal' }, { label: 'Dashboard' }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <section className="bg-white border-b border-slate-200 py-6">
         <div className="max-w-7xl mx-auto px-4">

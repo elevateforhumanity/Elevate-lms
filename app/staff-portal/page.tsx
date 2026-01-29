@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageAvatar from '@/components/PageAvatar';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Staff Portal | Elevate For Humanity',
@@ -20,6 +21,13 @@ const features = [
 export default function StaffPortalLanding() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Staff Portal' }]} />
+        </div>
+      </div>
+
       {/* Hero with image */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image
