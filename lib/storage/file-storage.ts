@@ -17,7 +17,7 @@ const STORAGE_CONFIG = {
     accessKeyId: process.env.R2_ACCESS_KEY || process.env.AWS_ACCESS_KEY_ID || '',
     secretAccessKey: process.env.R2_SECRET_KEY || process.env.AWS_SECRET_ACCESS_KEY || '',
   },
-  bucket: process.env.R2_BUCKET || process.env.AWS_S3_BUCKET || 'elevate-downloads',
+  bucket: process.env.R2_BUCKET || process.env.AWS_S3_BUCKET || 'elevate-media',
 };
 
 // Initialize S3 client (works with R2 and S3)
