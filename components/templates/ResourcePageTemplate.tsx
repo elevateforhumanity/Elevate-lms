@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowLeft, Calendar, User, FileText } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 /**
  * SEO-SAFE RESOURCE PAGE TEMPLATE
@@ -67,16 +68,16 @@ export function ResourcePageTemplate({
 }: ResourcePageProps) {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: parentPage.label, href: parentPage.href }, { label: title }]} />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-slate-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">
-          <Link 
-            href={parentPage.href}
-            className="inline-flex items-center text-slate-400 hover:text-white mb-6 text-sm"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {parentPage.label}
-          </Link>
           
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
             {title}

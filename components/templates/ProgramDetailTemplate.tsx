@@ -5,6 +5,7 @@ import { AtAGlanceSection } from '@/components/sections/AtAGlanceSection';
 import { WhoThisIsForSection } from '@/components/sections/WhoThisIsForSection';
 import { CTASection } from '@/components/sections/CTASection';
 import { CheckCircle, Award, Briefcase } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export interface ProgramDetailData {
   // Basic info
@@ -47,6 +48,13 @@ interface ProgramDetailTemplateProps {
 export function ProgramDetailTemplate({ data }: ProgramDetailTemplateProps) {
   return (
     <main className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: data.name }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <HeroSection
         title={data.heroTitle || data.name}

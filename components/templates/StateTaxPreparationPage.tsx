@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, MapPin, Phone, Calendar } from 'lucide-react';
 import { StateConfig, getOtherStates } from '@/config/states';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface StateTaxPreparationPageProps {
   state: StateConfig;
@@ -13,6 +14,13 @@ export default function StateTaxPreparationPage({ state }: StateTaxPreparationPa
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Tax Preparation', href: '/supersonic-fast-cash' }, { label: state.name }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 py-20">
         <div className="max-w-6xl mx-auto px-4">

@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface FooterPageTemplateProps {
   title: string;
@@ -17,6 +18,13 @@ export default function FooterPageTemplate({
 }: FooterPageTemplateProps) {
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: title }]} />
+        </div>
+      </div>
+
       {/* Hero Banner */}
       <section className="relative min-h-[400px] flex items-center">
         <div className="absolute inset-0">

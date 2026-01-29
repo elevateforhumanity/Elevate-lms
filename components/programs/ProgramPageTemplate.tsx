@@ -6,6 +6,7 @@ import { FundingBadge } from './FundingBadge';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import HeroAvatarGuide from '@/components/HeroAvatarGuide';
 import { ArrowRight, Briefcase, TrendingUp, Clock, DollarSign, CheckCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export type OutcomeItem = string | { title: string; description: string; image?: string };
 
@@ -36,6 +37,13 @@ interface ProgramPageTemplateProps {
 export function ProgramPageTemplate({ program }: ProgramPageTemplateProps) {
   return (
     <>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: program.category, href: program.categoryHref }, { label: program.title }]} />
+        </div>
+      </div>
+
       {/* Hero Image - Compact */}
       <section className="relative h-[35vh] min-h-[250px] lg:h-[40vh] lg:min-h-[300px] bg-gray-100">
         <Image

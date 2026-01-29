@@ -15,6 +15,7 @@ import {
   Phone,
   FileText
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export interface ProgramPageProps {
   // Basic Info
@@ -87,6 +88,13 @@ export function ProgramPageTemplate({
 }: ProgramPageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: title }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative w-full min-h-[70vh] flex items-center">
         <div className="absolute inset-0 z-0">

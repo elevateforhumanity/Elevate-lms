@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ClickableImage } from './ClickableImage';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface PageTemplateProps {
   title: string;
@@ -63,6 +64,13 @@ export function PageTemplate({
 }: PageTemplateProps) {
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: title }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <ClickableImage

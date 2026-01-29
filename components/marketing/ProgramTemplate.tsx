@@ -11,6 +11,7 @@ import {
   Briefcase,
   GraduationCap,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface ProgramData {
   name: string;
@@ -39,6 +40,13 @@ interface ProgramTemplateProps {
 export function ProgramTemplate({ program }: ProgramTemplateProps) {
   return (
     <main className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: program.name }]} />
+        </div>
+      </div>
+
       {/* TOP BANNER */}
       <section className="   py-3 sticky top-0 z-50 shadow-lg">
         <div className="mx-auto max-w-7xl px-4">

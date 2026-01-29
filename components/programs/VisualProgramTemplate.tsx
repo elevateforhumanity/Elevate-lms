@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getProgramImages } from '@/lib/program-images';
 import type { Program } from '@/app/data/programs';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface VisualProgramTemplateProps {
   program: Program;
@@ -22,6 +23,13 @@ export function VisualProgramTemplate({ program, slug }: VisualProgramTemplatePr
 
   return (
     <main className="bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: program.name || program.heroTitle || 'Program' }]} />
+        </div>
+      </div>
+
       {/* HERO - Full-width photo with program title */}
       <section className="relative h-[60vh] min-h-[400px] max-h-[600px]">
         <Image

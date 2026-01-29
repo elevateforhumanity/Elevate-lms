@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface ProgramLandingPageProps {
   category: string;
@@ -47,6 +48,13 @@ export default function ProgramLandingPage({
 }: ProgramLandingPageProps) {
   return (
     <main className="bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: category, href: `/programs/${category.toLowerCase().replace(/\s+/g, '-')}` }, { label: title }]} />
+        </div>
+      </div>
+
       {/* HERO */}
       <section className="border-b bg-slate-50">
         <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-10 md:flex-row md:items-center">

@@ -6,10 +6,18 @@ import { PricingTiers } from './PricingTiers';
 import { CareerServicesHook } from './CareerServicesHook';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import { EligibilityNotice } from '@/components/EligibilityNotice';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export function ProgramTemplate({ program }: { program: Program }) {
   return (
     <main className="bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: program.heroTitle || program.name || 'Program' }]} />
+        </div>
+      </div>
+
       {/* Eligibility Notice Banner */}
       <EligibilityNotice variant="banner" className="mx-4 mt-4 max-w-6xl lg:mx-auto" />
 

@@ -5,6 +5,7 @@ import { AtAGlanceSection } from '@/components/sections/AtAGlanceSection';
 import { WhoThisIsForSection } from '@/components/sections/WhoThisIsForSection';
 import { ProgramsGridSection } from '@/components/sections/ProgramsGridSection';
 import { CTASection } from '@/components/sections/CTASection';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export interface CategoryPageData {
   // Hero
@@ -44,6 +45,13 @@ interface CategoryPageTemplateProps {
 export function CategoryPageTemplate({ data }: CategoryPageTemplateProps) {
   return (
     <main className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: data.title }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <HeroSection
         title={data.title}
