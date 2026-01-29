@@ -12,6 +12,7 @@ import {
   Clock,
   CheckCircle,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   alternates: {
@@ -101,6 +102,11 @@ const colorClasses: Record<string, { bg: string; text: string; border: string; l
 export default function PortalsPage() {
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Portals' },
+        ]}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">

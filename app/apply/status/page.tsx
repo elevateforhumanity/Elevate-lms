@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Search, CheckCircle, Clock, XCircle, Phone } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface ApplicationStatus {
   id: string;
@@ -83,6 +84,12 @@ export default function ApplicationStatusPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
+      <Breadcrumbs
+        items={[
+          { label: 'Apply', href: '/apply' },
+          { label: 'Status' },
+        ]}
+      />
       <div className="max-w-xl mx-auto px-4">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Check Application Status</h1>

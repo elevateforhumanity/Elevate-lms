@@ -12,6 +12,7 @@ import {
   Phone,
   MapPin,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Free Community Services | VITA, Mental Wellness, Job Training | Elevate for Humanity',
@@ -87,6 +88,11 @@ const colorClasses: Record<string, { bg: string; text: string; border: string; l
 export default function CommunityServicesPage() {
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumbs
+        items={[
+          { label: 'Community Services' },
+        ]}
+      />
       {/* Hero */}
       <section className="relative py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="max-w-6xl mx-auto px-4 text-center">
