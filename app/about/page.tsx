@@ -67,11 +67,6 @@ export default function AboutPage() {
                   Based in Indianapolis, Indiana, Elevate for Humanity serves justice-involved 
                   individuals, low-income families, veterans, and anyone facing barriers to employment.
                 </p>
-                <p>
-                  Elizabeth also owns <strong>Textures Institute of Cosmetology</strong>, a licensed 
-                  cosmetology school providing state board-approved training in barbering, cosmetology, 
-                  esthetics, and nail technology.
-                </p>
               </div>
               
               <Link 
@@ -90,9 +85,9 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">What We Do</h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="max-w-3xl mx-auto">
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
-              <div className="relative h-56">
+              <div className="relative h-64">
                 <Image
                   src="/images/hero/hero-hands-on-training.jpg"
                   alt="Elevate for Humanity Training"
@@ -100,29 +95,11 @@ export default function AboutPage() {
                   className="object-cover object-center"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="font-bold text-slate-900 text-xl mb-2">Elevate for Humanity</h3>
+              <div className="p-8">
+                <h3 className="font-bold text-slate-900 text-xl mb-4">Career Training & Workforce Development</h3>
                 <p className="text-slate-600">
-                  Workforce development organization providing career training. We help connect 
-                  eligible participants with funding through WIOA, JRI, and WRG programs.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
-              <div className="relative h-56">
-                <Image
-                  src="/images/hero/hero-beauty-wellness.jpg"
-                  alt="Textures Institute of Cosmetology"
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-bold text-slate-900 text-xl mb-2">Textures Institute of Cosmetology</h3>
-                <p className="text-slate-600">
-                  Licensed cosmetology school providing state board-approved training in barbering, 
-                  cosmetology, esthetics, and nail technology.
+                  Elevate for Humanity is a workforce development organization that helps connect 
+                  eligible participants with career training through WIOA, JRI, and WRG funding programs.
                 </p>
               </div>
             </div>
@@ -172,7 +149,17 @@ export default function AboutPage() {
               </div>
               <div>
                 <div className="font-bold text-slate-900">Next Level Jobs</div>
-                <div className="text-orange-600 text-sm">WRG Provider</div>
+                <div className="text-orange-600 text-sm">Workforce Ready Grant Provider</div>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="relative w-20 h-20 flex-shrink-0">
+                <Image src="/images/partners/osha.webp" alt="OSHA" fill className="object-contain" />
+              </div>
+              <div>
+                <div className="font-bold text-slate-900">OSHA</div>
+                <div className="text-yellow-600 text-sm">Authorized Safety Training</div>
               </div>
             </div>
 
@@ -193,6 +180,26 @@ export default function AboutPage() {
               <div>
                 <div className="font-bold text-slate-900">JRI</div>
                 <div className="text-red-600 text-sm">Approved Provider</div>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="relative w-20 h-20 flex-shrink-0 bg-green-100 rounded-lg flex items-center justify-center">
+                <span className="text-green-600 font-bold text-sm">EmployIndy</span>
+              </div>
+              <div>
+                <div className="font-bold text-slate-900">EmployIndy</div>
+                <div className="text-green-600 text-sm">Workforce Partner</div>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="relative w-20 h-20 flex-shrink-0 bg-purple-100 rounded-lg flex items-center justify-center">
+                <span className="text-purple-600 font-bold text-sm">ISBCE</span>
+              </div>
+              <div>
+                <div className="font-bold text-slate-900">Indiana State Board</div>
+                <div className="text-purple-600 text-sm">Cosmetology & Barber Examiners</div>
               </div>
             </div>
           </div>
