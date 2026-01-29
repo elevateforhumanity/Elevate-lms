@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { Heart, Users, Clock, MapPin, Calendar, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Volunteer Opportunities | Elevate For Humanity',
@@ -38,6 +39,13 @@ export default async function VolunteerPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Volunteer' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <div className="relative h-[40vh] min-h-[300px] flex items-center">
         <Image

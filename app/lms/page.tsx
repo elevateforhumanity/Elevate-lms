@@ -9,6 +9,7 @@ import {
   BookOpen, Play, Award, Bell, Settings, ChevronRight, CheckCircle,
   Target, Calendar, MessageSquare, BarChart3, Clock,
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Learning Dashboard | Elevate for Humanity',
@@ -81,6 +82,13 @@ export default async function LMSPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'LMS' }]} />
+        </div>
+      </div>
+
       {/* Avatar Guide */}
       <AvatarVideoOverlay videoSrc="/videos/avatars/ai-tutor.mp4" avatarName="AI Tutor" position="bottom-right" autoPlay={true} showOnLoad={true} />
       

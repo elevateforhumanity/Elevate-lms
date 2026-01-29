@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, CheckCircle } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -102,6 +103,13 @@ export default async function WorkforceBoardPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Workforce Board' }]} />
+        </div>
+      </div>
+
       {/* Video Hero Section */}
       <section className="relative h-[500px] md:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <video
