@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight, FileText, Users, GraduationCap, Clock, Download, TrendingUp, Calendar } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Reports | Staff Portal | Elevate For Humanity',
@@ -107,7 +108,15 @@ export default async function StaffReportsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Staff Portal', href: '/staff-portal' }, { label: 'Reports' }]} />
+        </div>
+      </div>
+
+      <div className="py-8">
       <div className="max-w-7xl mx-auto px-4">
         <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
           <Link href="/" className="hover:text-orange-600">Home</Link>
@@ -223,6 +232,7 @@ export default async function StaffReportsPage() {
             </tbody>
           </table>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Attendance | Staff Portal',
@@ -8,7 +9,15 @@ export const metadata: Metadata = {
 
 export default function StaffPortalAttendancePage() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Staff Portal', href: '/staff-portal' }, { label: 'Attendance' }]} />
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Attendance Management</h1>
       
       {/* Quick Actions */}
@@ -122,6 +131,7 @@ export default function StaffPortalAttendancePage() {
           <span><span className="text-blue-600">E</span> Excused</span>
         </div>
       </section>
+      </div>
     </div>
   );
 }
