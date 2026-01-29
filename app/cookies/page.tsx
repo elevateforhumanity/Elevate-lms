@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -36,6 +37,13 @@ export default async function CookiesPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-4xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Cookie Policy' }]} />
+        </div>
+      </div>
+
       {/* Hero Section - No Gradient */}
       <section className="bg-slate-900 text-white py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">

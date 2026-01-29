@@ -6,6 +6,7 @@ import {
   GraduationCap, Briefcase, Award, BookOpen, Sparkles 
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -44,6 +45,13 @@ export default async function CoursesPage() {
 
   return (
     <div className="bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Courses' }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0">

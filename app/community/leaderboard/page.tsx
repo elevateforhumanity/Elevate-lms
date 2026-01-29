@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Trophy, Medal, Crown, ArrowRight } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Leaderboard | Community | Elevate For Humanity',
@@ -50,6 +51,13 @@ export default async function LeaderboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Community', href: '/community' }, { label: 'Leaderboard' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-yellow-500 via-amber-500 to-orange-600 text-white py-20">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -20,6 +20,7 @@ import {
   Monitor,
   ChevronRight
 } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Community Marketplace | Elevate for Humanity',
@@ -145,6 +146,13 @@ export default async function CommunityMarketplacePage() {
   return (
     <>
       <main className="min-h-screen bg-slate-50">
+        {/* Breadcrumbs */}
+        <div className="bg-slate-50 border-b">
+          <div className="max-w-6xl mx-auto px-4 py-3">
+            <Breadcrumbs items={[{ label: 'Community', href: '/community' }, { label: 'Marketplace' }]} />
+          </div>
+        </div>
+
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700 text-white">
           <div className="max-w-7xl mx-auto px-4 py-20">

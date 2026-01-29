@@ -122,6 +122,13 @@ export default async function EventsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Community', href: '/community' }, { label: 'Events' }]} />
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-purple-700 to-indigo-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

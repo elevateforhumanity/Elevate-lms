@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Download } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = { 
   title: 'Compliance Center | Elevate LMS',
@@ -25,6 +26,13 @@ export default function CompliancePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Compliance' }]} />
+        </div>
+      </div>
+
       {/* Hero with image */}
       <section className="relative h-64 overflow-hidden">
         <Image
