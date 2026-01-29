@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Settings, ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 
@@ -18,7 +19,10 @@ const DEMO_SECTIONS = [
 export default function AdminDemoPage() {
   return (
     <div className="min-h-screen bg-slate-50">
-      <section className="bg-blue-600 text-white py-12">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Admin" }]} />
+      </div>
+<section className="bg-blue-600 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">
           <Link href="/store/demo" className="inline-flex items-center gap-2 text-blue-200 hover:text-white mb-4">
             <ArrowLeft className="w-4 h-4" /> Back to Demo Center

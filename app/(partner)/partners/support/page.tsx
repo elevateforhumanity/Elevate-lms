@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Partners Support | Elevate For Humanity',
@@ -8,7 +9,10 @@ export const metadata: Metadata = {
 export default function PartnerSupportPage() {
   return (
     <div className="rounded-2xl border p-5 space-y-3">
-      <div className="font-semibold">Support</div>
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Support" }]} />
+      </div>
+<div className="font-semibold">Support</div>
       <div className="text-sm text-black">
         If something isn't working, submit a callback request and we'll follow
         up.

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Award, Clock, Check, ArrowRight, BookOpen, Shield } from 'lucide-react';
@@ -26,7 +27,10 @@ export default function StoreCoursesPage() {
 
   return (
     <div className="bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Courses" }]} />
+      </div>
+{/* Hero */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden bg-purple-900">
         <video
           autoPlay

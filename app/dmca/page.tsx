@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 
@@ -35,7 +36,10 @@ export default async function DMCAPage() {
     .single();
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Clean, No Image */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Dmca" }]} />
+      </div>
+{/* Hero Section - Clean, No Image */}
       <section className="bg-slate-900 text-white py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">DMCA Policy</h1>

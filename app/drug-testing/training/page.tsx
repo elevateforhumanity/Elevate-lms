@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, ArrowLeft, ExternalLink, GraduationCap, Award, Clock, Users } from 'lucide-react';
@@ -137,7 +138,10 @@ const courses = [
 export default function DrugTestingTrainingPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Drug Testing", href: "/drug-testing" }, { label: "Training" }]} />
+      </div>
+{/* Hero */}
       <section className="relative py-20 bg-indigo-900 text-white">
         <div className="max-w-6xl mx-auto px-6">
           <Link href="/drug-testing" className="inline-flex items-center gap-2 text-indigo-200 hover:text-white mb-6 transition">

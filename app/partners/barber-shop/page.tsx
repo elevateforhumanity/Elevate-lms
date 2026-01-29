@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Phone, Mail, CheckCircle, Loader2, Building2, Users, Award, ArrowRight } from 'lucide-react';
@@ -71,7 +72,10 @@ export default function BarberShopPartnerPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Barber Shop" }]} />
+      </div>
+{/* Hero */}
       <section 
         className="relative py-20 px-4"
         style={{ 

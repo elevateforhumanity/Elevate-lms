@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -93,7 +94,10 @@ export default function LicensingPartnershipsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Licensing Partnerships" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative bg-gradient-to-br from-purple-600 to-blue-600 text-white py-20 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/10" />
 

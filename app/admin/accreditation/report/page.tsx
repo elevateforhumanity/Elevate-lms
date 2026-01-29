@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { FileText, Download, Calendar, CheckCircle, AlertTriangle, Clock, ArrowLeft, Filter } from 'lucide-react';
 
@@ -28,7 +29,10 @@ const reportData = {
 export default function AccreditationReportPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Report" }]} />
+      </div>
+<div className="max-w-6xl mx-auto">
         <Link href="/admin/accreditation" className="flex items-center gap-2 text-gray-600 hover:text-purple-600 mb-6">
           <ArrowLeft className="w-4 h-4" />
           Back to Accreditation

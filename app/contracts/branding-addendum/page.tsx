@@ -1,10 +1,14 @@
 import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { FileText, Download, Printer, ArrowLeft } from 'lucide-react';
 
 export default function BrandingAddendumPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Contracts", href: "/contracts" }, { label: "Branding Addendum" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4">
         <Link href="/contracts" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6">
           <ArrowLeft className="w-4 h-4" /> Back to Contracts
         </Link>

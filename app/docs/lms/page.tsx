@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -15,7 +16,10 @@ export default async function LmsPage() {
   // Public documentation page - no auth required
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Docs", href: "/docs" }, { label: "Lms" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
           src="/images/business/team-2.jpg"

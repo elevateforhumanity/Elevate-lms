@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
@@ -47,7 +48,10 @@ export default async function SponsorLicensingPage() {
 
   return (
     <div className="bg-white">
-      {/* Hero Banner */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Pricing", href: "/pricing" }, { label: "Sponsor Licensing" }]} />
+      </div>
+{/* Hero Banner */}
       <ModernLandingHero
         badge="🤝 Sponsor-in-a-Box Licensing"
         headline="License Our Apprenticeship"

@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Upload, CheckCircle, Briefcase, MapPin, Clock, DollarSign } from 'lucide-react';
@@ -65,7 +66,10 @@ export default function CareerApplicationPage({ params }: { params: { id: string
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Careers", href: "/careers" }, { label: "[Id]" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4">
         {/* Back Link */}
         <Link href="/careers" className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-6">
           <ArrowLeft className="w-4 h-4 mr-2" />

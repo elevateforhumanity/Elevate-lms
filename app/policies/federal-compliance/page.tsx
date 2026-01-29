@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Shield, Scale, Users, Accessibility, FileText, ArrowRight, Phone, Mail } from 'lucide-react';
@@ -14,7 +15,10 @@ export const metadata: Metadata = {
 export default function FederalCompliancePage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Policies", href: "/policies" }, { label: "Federal Compliance" }]} />
+      </div>
+{/* Hero */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image
           src="/images/heroes/training-provider-2.jpg"

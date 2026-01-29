@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Building2, Users, BarChart3, FileText, ArrowRight, CheckCircle, Shield } from 'lucide-react';
 
@@ -42,7 +43,10 @@ const benefits = [
 export default function ClientPortalPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Client Portal" }]} />
+      </div>
+{/* Hero */}
       <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-slate-900 to-slate-700 text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">

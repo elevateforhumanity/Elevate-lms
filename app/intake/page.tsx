@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { ClipboardList, ArrowRight, CheckCircle, Clock, Phone } from 'lucide-react';
 
@@ -10,7 +11,10 @@ export const metadata: Metadata = {
 export default function IntakePage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Intake" }]} />
+      </div>
+{/* Hero */}
       <section className="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-white border-b">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <ClipboardList className="w-12 h-12 text-blue-600 mx-auto mb-4" />

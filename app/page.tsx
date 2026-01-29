@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { useState } from 'react';
 import HomeHeroVideo from './HomeHeroVideo';
@@ -50,7 +51,10 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       
-      {/* HERO with animated text */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Page.Tsx" }]} />
+      </div>
+{/* HERO with animated text */}
       <section className="relative w-full h-[60vh] sm:h-[70vh] lg:h-[80vh]">
         <div className="absolute inset-0">
           <HomeHeroVideo />

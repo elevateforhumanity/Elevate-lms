@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -96,7 +97,10 @@ export default function AutomationPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Automation" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
         <Image
           src="/images/pathways/hvac.jpg"

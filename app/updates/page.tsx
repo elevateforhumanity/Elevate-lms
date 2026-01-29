@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Calendar, ArrowRight, Bell, Megaphone, GraduationCap, Building2, Users } from 'lucide-react';
@@ -86,7 +87,10 @@ export default async function UpdatesPage() {
 
   return (
     <main className="min-h-screen bg-gray-50">
-      {/* Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Updates" }]} />
+      </div>
+{/* Header */}
       <div className="bg-white border-b">
         <div className="max-w-5xl mx-auto px-6 py-12">
           <div className="flex items-center gap-3 mb-4">

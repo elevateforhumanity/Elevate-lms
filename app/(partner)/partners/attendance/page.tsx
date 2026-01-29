@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -113,7 +114,10 @@ export default function PartnerAttendancePage() {
 
   return (
     <div className="rounded-2xl border p-5 space-y-4">
-      <div>
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Attendance" }]} />
+      </div>
+<div>
         <div className="font-semibold">Attendance</div>
         <div className="text-sm text-black">Weekly hours per student.</div>
       </div>

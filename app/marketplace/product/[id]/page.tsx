@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const dynamic = 'force-dynamic';
 import { generateMetadata } from '@/lib/seo/metadata';
 
@@ -49,7 +50,10 @@ export default async function ProductPage({
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-5xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Marketplace", href: "/marketplace" }, { label: "[Id]" }]} />
+      </div>
+<div className="max-w-5xl mx-auto">
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Product Image */}

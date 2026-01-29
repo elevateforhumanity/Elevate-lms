@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -142,7 +143,10 @@ const colorClasses: Record<string, { bg: string; light: string; text: string }> 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Curvature Body Sculpting", href: "/curvature-body-sculpting" }, { label: "Services" }]} />
+      </div>
+{/* Hero */}
       <section className="relative py-20 min-h-[400px] flex items-center">
         <div className="absolute inset-0">
           <Image

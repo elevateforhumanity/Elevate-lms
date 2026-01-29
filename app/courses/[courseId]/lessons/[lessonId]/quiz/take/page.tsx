@@ -1,5 +1,6 @@
 "use client";
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 
 import React from 'react';
@@ -297,7 +298,10 @@ export default function TakeQuizPage({
 
   return (
     <div className="min-h-screen bg-slate-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Courses", href: "/courses" }, { label: "Take" }]} />
+      </div>
+<div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="bg-white rounded-xl border border-slate-200 p-6 mb-6 sticky top-4 z-10 shadow-sm">
           <div className="flex items-center justify-between">

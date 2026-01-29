@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -116,7 +117,10 @@ export default function ApplicationStatusPage() {
 
   return (
     <div className="max-w-2xl mx-auto py-12 px-4">
-      <div className={`rounded-lg border-2 p-8 ${config.bgColor} ${config.borderColor}`}>
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Lms", href: "/lms" }, { label: "Status" }]} />
+      </div>
+<div className={`rounded-lg border-2 p-8 ${config.bgColor} ${config.borderColor}`}>
         <div className="text-center">
           <div className="flex justify-center mb-6">
             {config.icon}

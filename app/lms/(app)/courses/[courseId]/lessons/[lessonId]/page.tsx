@@ -1,6 +1,6 @@
-
-
 'use client';
+
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import React from 'react';
 
@@ -164,7 +164,10 @@ export default function LessonPage() {
 
   return (
     <div className="flex h-screen bg-slate-50">
-      {/* Mobile Sidebar Toggle */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Lms", href: "/lms" }, { label: "[Lessonid]" }]} />
+      </div>
+{/* Mobile Sidebar Toggle */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
         className="md:hidden fixed top-4 left-4 z-50 bg-white p-3 rounded-lg shadow-lg"

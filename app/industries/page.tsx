@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import {
@@ -131,7 +132,10 @@ export default async function IndustriesPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <ModernLandingHero
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Industries" }]} />
+      </div>
+<ModernLandingHero
         badge="⚡ 8 High-Demand Industries"
         headline="Industries"
         accentText="We Serve"

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -117,7 +118,10 @@ export default function BarberApprenticeshipDemoPage() {
 
   return (
     <div className="min-h-screen bg-slate-100">
-      {/* Demo Mode Banner */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Demo", href: "/demo" }, { label: "Barber" }]} />
+      </div>
+{/* Demo Mode Banner */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 text-center">
         <Info className="w-4 h-4 inline mr-2" />
         <span className="font-semibold">Full Feature Demo</span> — Barber Apprenticeship Student Portal Experience

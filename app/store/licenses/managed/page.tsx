@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -140,7 +141,10 @@ function ManagedLicenseContent() {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Upgrade Banner - shown when redirected from expired/suspended license */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Managed" }]} />
+      </div>
+{/* Upgrade Banner - shown when redirected from expired/suspended license */}
       {showUpgradeBanner && bannerInfo && (
         <div className="bg-amber-50 border-b-2 border-amber-400">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">

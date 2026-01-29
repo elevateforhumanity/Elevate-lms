@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -45,7 +46,10 @@ export default async function CAREERSAFEPage() {
     .single();
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Careersafe" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative h-[400px] w-full overflow-hidden   ">
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-7xl mx-auto px-6 w-full">

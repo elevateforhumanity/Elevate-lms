@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
@@ -29,7 +30,10 @@ export default function HealthcarePage() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Industries", href: "/industries" }, { label: "Healthcare" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative h-[450px] md:h-[500px] w-full overflow-hidden">
         <Image src="/images/healthcare/hero-healthcare-professionals.jpg" alt="Healthcare Programs" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} loading="lazy" />
         

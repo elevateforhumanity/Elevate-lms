@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Home, ChevronRight, CheckCircle, Lock, Shield, Eye, Key } from 'lucide-react';
@@ -60,7 +61,10 @@ const guideSteps = [
 export default function FERPACompliancePage() {
   return (
     <div className="bg-white">
-      {/* Avatar Guide */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Ferpa" }]} />
+      </div>
+{/* Avatar Guide */}
       <AvatarGuide
         avatarImage="/images/team-hq/instructor-3.jpg"
         avatarName="Sarah"

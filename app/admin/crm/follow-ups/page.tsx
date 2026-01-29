@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Clock, Phone, Mail, Calendar, User, CheckCircle, AlertTriangle, Plus } from 'lucide-react';
 
@@ -26,7 +27,10 @@ const stats = [
 export default function CRMFollowUpsPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Follow Ups" }]} />
+      </div>
+<div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Follow-ups</h1>

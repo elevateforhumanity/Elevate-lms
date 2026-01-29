@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import { Phone, GraduationCap, Award, Users, CheckCircle } from 'lucide-react';
@@ -134,7 +135,10 @@ const trainingCourses = {
 export default async function DrugTestingTrainingPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Drug Testing Training" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-white text-white py-20">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center">

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -67,7 +68,10 @@ const organizations = [
 export default function FounderPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Avatar Video Overlay */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Founder" }]} />
+      </div>
+{/* Avatar Video Overlay */}
       {/* Hero Section */}
       <section className="relative min-h-[500px] flex items-end overflow-hidden">
         <Image

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { ArrowLeft, FileText, User, DollarSign, Calendar, Save, Upload } from 'lucide-react';
 
@@ -11,7 +12,10 @@ export const metadata: Metadata = {
 export default function NewTaxFilingApplicationPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-3xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "New" }]} />
+      </div>
+<div className="max-w-3xl mx-auto">
         <Link href="/admin/tax-filing" className="flex items-center gap-2 text-gray-600 hover:text-purple-600 mb-6">
           <ArrowLeft className="w-4 h-4" />
           Back to Tax Filing

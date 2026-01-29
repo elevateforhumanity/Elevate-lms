@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
@@ -32,7 +33,10 @@ export default async function DIYStartPage() {
     .single();
   return (
     <div className="min-h-screen bg-gray-50 py-16">
-      <div className="max-w-4xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Start" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-6">
         <h1 className="text-4xl font-bold mb-6">Start Your DIY Tax Return</h1>
         <div className="bg-white rounded-lg shadow-sm border p-8">
           <h2 className="text-2xl font-bold mb-6">Let's Get Started</h2>

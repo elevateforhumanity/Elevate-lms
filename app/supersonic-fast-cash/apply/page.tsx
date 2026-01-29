@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle, DollarSign, Clock, Shield, Phone } from 'lucide-react';
@@ -71,7 +72,10 @@ export default function RefundApplyPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Apply" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-gradient-to-r from-orange-600 to-orange-500 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">
           <Link href="/supersonic-fast-cash" className="inline-flex items-center gap-2 text-orange-100 hover:text-white mb-4">

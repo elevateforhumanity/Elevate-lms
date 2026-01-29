@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -115,7 +116,10 @@ export default async function TalentPipelinePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Employers", href: "/employers" }, { label: "Talent Pipeline" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-800 to-slate-900 text-white py-20 md:py-28">
         <div className="absolute inset-0 opacity-20">
           <Image

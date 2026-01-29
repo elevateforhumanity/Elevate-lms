@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { DollarSign, Phone, XCircle } from 'lucide-react';
@@ -31,7 +32,10 @@ export default async function PaymentCancelPage() {
   await supabase.from('page_views').insert({ page: 'payment_cancel' }).select();
   return (
     <div className="min-h-screen bg-zinc-900  to-white py-20">
-      <div className="container mx-auto px-4 max-w-2xl text-center">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Payment", href: "/payment" }, { label: "Cancel" }]} />
+      </div>
+<div className="container mx-auto px-4 max-w-2xl text-center">
         <div className="bg-white rounded-2xl shadow-xl p-12">
           <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <XCircle className="w-12 h-12 text-black" />

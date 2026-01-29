@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import {
   Check,
@@ -46,7 +47,10 @@ export default async function ProgramHolderLicensePage() {
 
   return (
     <div className="bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Pricing", href: "/pricing" }, { label: "Program Holder" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-zinc-900    text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-bold mb-6">

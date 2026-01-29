@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -72,7 +73,10 @@ export default async function CertificateViewPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12">
-      <div className="max-w-4xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Certificates", href: "/certificates" }, { label: "[Certificateid]" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4">
         {/* Verification Badge */}
         <div className="flex items-center justify-center gap-2 mb-8">
           <div className="flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded-full">

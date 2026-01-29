@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Shield, FileText, BarChart3, ArrowLeft } from 'lucide-react';
@@ -14,7 +15,10 @@ export const metadata: Metadata = {
 export default function PartnerCompliancePage() {
   return (
     <div className="min-h-screen py-12">
-      <div className="container mx-auto px-4 max-w-4xl">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Compliance" }]} />
+      </div>
+<div className="container mx-auto px-4 max-w-4xl">
         <Link
           href="/partners"
           className="inline-flex items-center text-orange-600 hover:underline mb-6"

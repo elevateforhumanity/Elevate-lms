@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Grades | Student Portal',
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
 export default function StudentPortalGradesPage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Academic Grades</h1>
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Student Portal", href: "/student-portal" }, { label: "Grades" }]} />
+      </div>
+<h1 className="text-3xl font-bold mb-6">Academic Grades</h1>
       
       {/* GPA Summary */}
       <div className="grid md:grid-cols-3 gap-4 mb-8">

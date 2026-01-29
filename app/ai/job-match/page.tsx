@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import React from 'react';
 
 import { useState } from 'react';
@@ -31,7 +32,10 @@ export default function AIJobMatchPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Ai", href: "/ai" }, { label: "Job Match" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-900 rounded-full text-sm font-bold mb-6">
             <Briefcase className="w-4 h-4" />

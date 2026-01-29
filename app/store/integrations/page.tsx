@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Plug, CheckCircle, Code, Zap, Database, Mail, CreditCard, Users } from 'lucide-react';
@@ -34,7 +35,10 @@ export default async function IntegrationsPage() {
     .eq('status', 'active');
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white py-20">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Integrations" }]} />
+      </div>
+<section className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <Plug className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-5xl font-black mb-6">

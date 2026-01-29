@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -94,7 +95,10 @@ export default function CNAEnrollPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Programs", href: "/programs" }, { label: "Enroll" }]} />
+      </div>
+{/* Header */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-8">
         <div className="max-w-4xl mx-auto px-4">
           <Link href="/programs/cna" className="inline-flex items-center gap-2 text-blue-100 hover:text-white mb-4">

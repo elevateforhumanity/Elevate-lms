@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Test Images | Elevate For Humanity',
@@ -8,7 +9,10 @@ export const metadata: Metadata = {
 export default function TestImagesPage() {
   return (
     <div className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-4xl font-bold mb-8">Image Test Page</h1>
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Test Images" }]} />
+      </div>
+<h1 className="text-4xl font-bold mb-8">Image Test Page</h1>
       
       <div className="space-y-8">
         <div>

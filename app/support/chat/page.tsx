@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Send, Bot, User, Clock, MessageSquare } from 'lucide-react';
@@ -106,7 +107,10 @@ export default function LiveChatPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Support", href: "/support" }, { label: "Chat" }]} />
+      </div>
+{/* Header */}
       <div className="bg-sky-600 text-white py-4 px-4 shadow-md">
         <div className="max-w-3xl mx-auto flex items-center gap-4">
           <Link href="/support" className="p-2 hover:bg-sky-700 rounded-lg transition">

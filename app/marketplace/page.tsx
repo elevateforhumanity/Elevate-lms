@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Store, Search, Filter, Star, Users, Clock, ChevronRight } from 'lucide-react';
@@ -64,7 +65,10 @@ export default async function MarketplacePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="relative bg-indigo-900 text-white py-16">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Marketplace" }]} />
+      </div>
+<div className="relative bg-indigo-900 text-white py-16">
         <Image
           src="/images/community/community-hero.jpg"
           alt="Marketplace"

@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { Metadata } from 'next';
 import Image from 'next/image';
@@ -26,7 +27,10 @@ export const metadata: Metadata = {
 export default function HSIPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Hsi" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative h-[400px] w-full overflow-hidden   ">
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-7xl mx-auto px-6 w-full">

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Shield, CheckCircle, FileText, Lock, Download, ExternalLink } from 'lucide-react';
@@ -34,7 +35,10 @@ export default async function CompliancePage() {
     .order('category');
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-green-600 to-blue-600 text-white py-20">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Compliance" }]} />
+      </div>
+<section className="bg-gradient-to-br from-green-600 to-blue-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <Shield className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-5xl font-black mb-6">

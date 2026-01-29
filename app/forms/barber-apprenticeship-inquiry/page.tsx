@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
@@ -65,7 +66,10 @@ export default function BarberApprenticeshipInquiryPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-md mx-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Forms", href: "/forms" }, { label: "Barber Apprenticeship Inquiry" }]} />
+      </div>
+<div className="max-w-md mx-auto">
         <Link
           href="/programs/barber-apprenticeship"
           className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6"

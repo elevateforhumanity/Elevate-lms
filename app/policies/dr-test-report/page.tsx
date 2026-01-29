@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { CheckCircle, Calendar, Database, Clock, Shield } from 'lucide-react';
 
@@ -13,7 +14,10 @@ export const metadata: Metadata = {
 export default function DRTestReportPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Policies", href: "/policies" }, { label: "Dr Test Report" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
         <article className="bg-white rounded-xl shadow-sm p-8 md:p-12">
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">

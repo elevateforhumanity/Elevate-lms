@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { User, Star, Package, Users } from 'lucide-react';
@@ -37,7 +38,10 @@ export default async function MarketplaceSellersPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Marketplace", href: "/marketplace" }, { label: "Sellers" }]} />
+      </div>
+<div className="max-w-6xl mx-auto px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Marketplace Sellers</h1>
           <p className="text-gray-600 mt-1">Discover creators and their products</p>

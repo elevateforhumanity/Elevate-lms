@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Play, Monitor, Users, Calendar, ArrowRight, Clock, CheckCircle } from 'lucide-react';
@@ -89,7 +90,10 @@ export default function DemosPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Demos" }]} />
+      </div>
+{/* Hero */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <Image
           src="/images/business/team-1.jpg"

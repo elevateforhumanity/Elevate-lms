@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -79,7 +80,10 @@ export default function EmployerDemoPage() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Demo Header */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Employer" }]} />
+      </div>
+{/* Demo Header */}
       <div className="bg-green-600 text-white py-2 px-4 text-center text-sm">
         <span className="font-bold">DEMO MODE</span> - This is a preview of the employer portal. 
         <Link href="/store/licenses" className="underline ml-2">Get the full platform →</Link>

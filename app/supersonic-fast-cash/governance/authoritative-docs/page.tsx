@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { 
   ArrowLeft, FileText, Shield, Scale, BookOpen, 
@@ -123,7 +124,10 @@ export default function SupersonicAuthoritativeDocsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header - Supersonic branded */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Authoritative Docs" }]} />
+      </div>
+{/* Header - Supersonic branded */}
       <div className="bg-emerald-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">
           <Link 

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Approvals | Elevate For Humanity',
@@ -19,7 +20,10 @@ import {
 export default function ApprovalsPage() {
   return (
     <div className="bg-white">
-      {/* Hero Section with Background Image */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Approvals" }]} />
+      </div>
+{/* Hero Section with Background Image */}
       <section className="relative h-[500px] w-full overflow-hidden">
         <Image
           src="/images/programs/cpr-group-training-hd.jpg"

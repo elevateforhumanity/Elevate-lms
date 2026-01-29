@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { FileText, Upload, Download, Search, Filter, Folder, File, Eye, Trash2, ArrowLeft } from 'lucide-react';
 
@@ -22,7 +23,10 @@ const folders = [
 export default function WIOADocumentsPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Documents" }]} />
+      </div>
+<div className="max-w-7xl mx-auto">
         <Link href="/admin/wioa" className="flex items-center gap-2 text-gray-600 hover:text-purple-600 mb-6">
           <ArrowLeft className="w-4 h-4" />
           Back to WIOA Management

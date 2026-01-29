@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Users, DollarSign, TrendingUp, Calendar, ArrowRight } from 'lucide-react';
 
@@ -14,7 +15,10 @@ export default function PartnerDashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "(Partner)", href: "/(partner)" }, { label: "Dashboard" }]} />
+      </div>
+<div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <h1 className="text-2xl font-bold text-gray-900">Partner Dashboard</h1>
         </div>

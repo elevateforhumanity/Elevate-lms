@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -56,7 +57,10 @@ export default async function BlogSearchPage({
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: "Search" }]} />
+      </div>
+<div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         {/* Search Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-black mb-4 text-2xl md:text-3xl lg:text-4xl">

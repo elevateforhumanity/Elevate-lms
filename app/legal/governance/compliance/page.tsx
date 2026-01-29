@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { FileText, Download, ChevronRight, Scale, FileCheck, AlertCircle, Globe, Building, Users } from 'lucide-react';
 
@@ -10,7 +11,10 @@ export const metadata: Metadata = {
 export default function ComplianceFrameworkPage() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="bg-gray-900 text-white py-12">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Legal", href: "/legal" }, { label: "Compliance" }]} />
+      </div>
+<div className="bg-gray-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-6">
           <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
             <Link href="/" className="hover:text-white">Home</Link>

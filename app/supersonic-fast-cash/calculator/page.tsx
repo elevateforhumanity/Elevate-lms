@@ -1,6 +1,6 @@
-
-
 'use client';
+
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { logger } from '@/lib/logger';
 import { useState, useEffect } from 'react';
@@ -120,7 +120,10 @@ export default function TaxCalculatorPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4">
-      <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Calculator" }]} />
+      </div>
+<div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full mb-4">

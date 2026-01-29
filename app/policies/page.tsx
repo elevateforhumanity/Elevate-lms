@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { 
   FileText, 
@@ -84,7 +85,10 @@ const policies = [
 export default function PoliciesIndexPage() {
   return (
     <div className="space-y-8">
-      {/* Intro Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Policies" }]} />
+      </div>
+{/* Intro Section */}
       <div className="bg-white rounded-xl shadow-sm p-8">
         <h1 className="text-3xl font-bold text-black mb-4">Policies & Governance</h1>
         <p className="text-lg text-gray-700 mb-4">

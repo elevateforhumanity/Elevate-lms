@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpen, Video, FileText, Award } from 'lucide-react';
@@ -31,7 +32,10 @@ export default async function TrainingPage() {
     .eq('company', 'supersonic');
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Training" }]} />
+      </div>
+{/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <Image 
           src="/images/business/tax-prep-certification-optimized.jpg" 

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Check, Play, ShoppingCart, Star, Layout, Palette, Globe, Zap, Shield, BarChart } from 'lucide-react';
 
@@ -46,7 +47,10 @@ const pricing = [
 export default function WebsiteBuilderAppPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Website Builder" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-gradient-to-br from-purple-900 to-purple-700 text-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

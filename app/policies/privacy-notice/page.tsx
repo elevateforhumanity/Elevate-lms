@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -12,7 +13,10 @@ export const metadata: Metadata = {
 
 export default function PrivacyNoticePage() {
   return (
-    <article className="prose prose-lg max-w-none">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <Breadcrumbs items={[{ label: 'Policies', href: '/policies' }, { label: 'Privacy Notice' }]} />
+        <article className="prose prose-lg max-w-none mt-6">
       <h1>Privacy Notice</h1>
       <p className="text-xl text-gray-600 mb-8">Last Updated: December 22, 2024</p>
 
@@ -504,6 +508,8 @@ export default function PrivacyNoticePage() {
           </a>.
         </p>
       </div>
-    </article>
+        </article>
+      </div>
+    </div>
   );
 }

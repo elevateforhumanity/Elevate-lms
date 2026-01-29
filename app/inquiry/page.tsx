@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
@@ -67,7 +68,10 @@ function InquiryForm() {
 
   return (
     <>
-      <ModernLandingHero
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Inquiry" }]} />
+      </div>
+<ModernLandingHero
         badge="⚡ Limited Seats Available"
         headline="Start Your Career"
         accentText="In 10 Minutes"

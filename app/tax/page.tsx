@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -37,7 +38,10 @@ export const metadata: Metadata = {
 export default function TaxServicesPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Tax" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative min-h-[550px] flex items-center overflow-hidden">
         <Image
           src="/images/business/tax-prep-certification.jpg"

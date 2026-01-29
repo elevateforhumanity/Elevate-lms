@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Copyright as CopyrightIcon, Shield, FileText } from 'lucide-react';
@@ -36,7 +37,10 @@ export default async function CopyrightPage() {
     .single();
   return (
     <div className="min-h-screen bg-gray-50 py-16">
-      <div className="max-w-4xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Copyright" }]} />
+      </div>
+<div className="max-w-4xl mx-auto px-4">
         <div className="flex items-center gap-3 mb-8">
           <CopyrightIcon className="w-10 h-10 text-brand-blue-600" />
           <h1 className="text-4xl font-bold text-black">

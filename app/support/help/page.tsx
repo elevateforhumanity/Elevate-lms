@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { createAdminClient } from '@/lib/supabase/server';
 import { Search, BookOpen, ArrowRight, HelpCircle } from 'lucide-react';
@@ -56,7 +57,10 @@ export default async function HelpCenterPage({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Support", href: "/support" }, { label: "Help" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-4xl font-bold mb-4">Help Center</h1>

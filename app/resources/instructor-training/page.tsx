@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { Video, Play, Clock, CheckCircle, BookOpen, Users, Award } from 'lucide-react';
@@ -58,7 +59,10 @@ export default async function InstructorTrainingPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="bg-white border-b">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Resources", href: "/resources" }, { label: "Instructor Training" }]} />
+      </div>
+<div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <nav className="flex items-center text-sm text-gray-600">
             <Link href="/" className="hover:text-blue-600">Home</Link>

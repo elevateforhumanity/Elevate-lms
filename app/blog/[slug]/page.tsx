@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -112,7 +113,10 @@ export default async function BlogPostPage({ params }: { params: Params }) {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: "[Slug]" }]} />
+      </div>
+{/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] flex items-end overflow-hidden">
         <Image
           src={post.image || '/images/blog/default.jpg'}

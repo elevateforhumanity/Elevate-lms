@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -36,7 +37,10 @@ export default async function CredentialsPage() {
     .order('name');
   return (
     <div className="min-h-screen bg-white">
-      {/* Breadcrumb Navigation */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Credentials" }]} />
+      </div>
+{/* Breadcrumb Navigation */}
       <nav className="bg-white border-b border-gray-200 py-3">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center gap-2 text-sm">

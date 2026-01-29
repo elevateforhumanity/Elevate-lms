@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -47,7 +48,10 @@ export default async function EmployerPostingsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-6">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Employer", href: "/employer" }, { label: "Postings" }]} />
+      </div>
+<div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Job Postings</h1>
       </div>
 

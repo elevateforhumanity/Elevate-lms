@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { ProgramPageTemplate, ProgramData } from '@/components/programs/ProgramPageTemplate';
 
 export const metadata: Metadata = {

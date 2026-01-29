@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Admin Marketplace Creators | Elevate For Humanity',
@@ -48,7 +49,10 @@ export default async function AdminCreatorsPage() {
 
   return (
     <div className="py-8">
-      <div className="mb-8">
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Creators" }]} />
+      </div>
+<div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Manage Creators</h1>
         <p className="text-black">
           Approve applications, manage creator accounts, and track earnings

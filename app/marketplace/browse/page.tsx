@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
@@ -41,7 +42,10 @@ export default async function MarketplaceBrowsePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Marketplace", href: "/marketplace" }, { label: "Browse" }]} />
+      </div>
+{/* Hero */}
       <section className="relative h-64 overflow-hidden">
         <Image
           src="/images/hero-programs-technology.jpg"

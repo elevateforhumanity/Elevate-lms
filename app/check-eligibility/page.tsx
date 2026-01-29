@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { CheckCircle, XCircle, AlertCircle, ArrowRight, Phone, MapPin } from 'lucide-react';
 
@@ -20,7 +21,10 @@ export const metadata: Metadata = {
 export default function CheckEligibilityPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Check Eligibility" }]} />
+      </div>
+{/* Hero */}
       <section className="bg-gradient-to-b from-blue-900 to-blue-800 text-white py-16 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">

@@ -1,5 +1,6 @@
 'use client';
 
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { BookOpen, Upload, DollarSign, Clock, CheckCircle } from 'lucide-react';
@@ -54,7 +55,10 @@ export default function CreatorNewCoursePage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Create New Course</h1>
+            <div className="max-w-7xl mx-auto px-4 py-4">
+        <Breadcrumbs items={[{ label: "Creator", href: "/creator" }, { label: "New" }]} />
+      </div>
+<h1 className="text-3xl font-bold mb-6">Create New Course</h1>
       <div className="bg-white rounded-lg shadow-md p-8 max-w-3xl">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
