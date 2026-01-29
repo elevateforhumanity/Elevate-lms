@@ -1,44 +1,66 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs'; // Changed from edge to support S3 SDK
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 import { getDigitalProduct } from '@/lib/store/digital-products';
 import { createClient } from '@/lib/supabase/server';
+import { generateSignedDownloadUrl, isStorageConfigured, getProductFileInfo } from '@/lib/storage/file-storage';
 
 /**
  * Download digital product
  *
  * This endpoint handles secure download delivery for purchased digital products.
- * Verifies purchase tokens, tracks downloads, and delivers files securely.
+ * Verifies purchase tokens, tracks downloads, and delivers files via signed URLs.
  */
 
 async function verifyDownloadToken(
   token: string,
   productId: string
-): Promise<boolean> {
+): Promise<{ valid: boolean; userId?: string }> {
   try {
     const supabase = await createClient();
 
     // Check if purchase exists with this token
     const { data: purchase } = await supabase
       .from('purchases')
-      .select('*')
+      .select('*, user_id')
       .eq('download_token', token)
       .eq('product_id', productId)
       .single();
 
-    if (!purchase) return false;
+    if (!purchase) return { valid: false };
 
     // Check if token has expired (24 hours)
     if (purchase.token_expires_at) {
       const expiresAt = new Date(purchase.token_expires_at);
-      if (expiresAt < new Date()) return false;
+      if (expiresAt < new Date()) return { valid: false };
     }
 
-    return true;
+    return { valid: true, userId: purchase.user_id };
   } catch (error) {
     // Token verification failed
+    return { valid: false };
+  }
+}
+
+async function verifyUserEntitlement(
+  userId: string,
+  productId: string
+): Promise<boolean> {
+  try {
+    const supabase = await createClient();
+
+    const { data: entitlement } = await supabase
+      .from('user_entitlements')
+      .select('id')
+      .eq('user_id', userId)
+      .eq('product_id', productId)
+      .eq('status', 'active')
+      .single();
+
+    return !!entitlement;
+  } catch (error) {
     return false;
   }
 }
@@ -91,29 +113,41 @@ export async function GET(
     }
 
     // Verify token against purchase records
-    // In production, this should check:
-    // 1. Token exists in database
-    // 2. Token matches product ID
-    // 3. Token hasn't expired
-    // 4. Download limit not exceeded
-    const isValidToken = await verifyDownloadToken(token, productId);
-    if (!isValidToken) {
+    const tokenResult = await verifyDownloadToken(token, productId);
+    if (!tokenResult.valid) {
       return NextResponse.json(
         { error: 'Invalid or expired download link' },
         { status: 403 }
       );
     }
 
+    // Double-check user entitlement
+    if (tokenResult.userId) {
+      const hasEntitlement = await verifyUserEntitlement(tokenResult.userId, productId);
+      if (!hasEntitlement) {
+        return NextResponse.json(
+          { error: 'Access revoked or expired' },
+          { status: 403 }
+        );
+      }
+    }
+
     // Log download attempt
     await logDownload(productId, token, request);
 
-    // Generate signed URL or redirect to file storage
-    // In production:
-    // 1. Generate time-limited signed URL from S3/CloudFlare R2
-    // 2. Return redirect to signed URL
-    // 3. Track download analytics
+    // Check if storage is configured
+    if (isStorageConfigured()) {
+      // Generate signed URL from S3/R2
+      const fileInfo = getProductFileInfo(productId);
+      if (fileInfo) {
+        const signedUrl = await generateSignedDownloadUrl(productId, 3600); // 1 hour expiry
+        if (signedUrl) {
+          return NextResponse.redirect(signedUrl);
+        }
+      }
+    }
 
-    // For now, return product download URL if configured
+    // Fallback: return product download URL if configured
     if (product.downloadUrl) {
       return NextResponse.redirect(product.downloadUrl);
     }
@@ -125,6 +159,7 @@ export async function GET(
         id: product.id,
         name: product.name,
       },
+      note: 'File storage not configured. Contact support if you need immediate access.',
     });
   } catch (err: unknown) {
     return NextResponse.json(

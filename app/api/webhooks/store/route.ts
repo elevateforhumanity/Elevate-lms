@@ -57,7 +57,7 @@ async function grantLmsAccess(userId: string, courseSlug: string) {
 /**
  * Unlock digital download for user
  */
-async function unlockDownload(userId: string, productId: string) {
+async function unlockDownload(userId: string, productId: string, stripePaymentId?: string) {
   const supabase = await createClient();
 
   const { error } = await supabase.from('user_entitlements').upsert({
@@ -66,6 +66,7 @@ async function unlockDownload(userId: string, productId: string) {
     product_id: productId,
     granted_at: new Date().toISOString(),
     status: 'active',
+    stripe_payment_id: stripePaymentId || null,
   }, {
     onConflict: 'user_id,product_id',
   });
@@ -161,6 +162,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const stripePaymentId = session.payment_intent as string;
+
     // Handle Capital Readiness specific fulfillment
     if (productType === 'capital_readiness') {
       if (userId) {
@@ -170,7 +173,7 @@ export async function POST(req: NextRequest) {
         }
 
         // Unlock PDF download
-        await unlockDownload(userId, productId);
+        await unlockDownload(userId, productId, stripePaymentId);
 
         logger.info('Capital Readiness purchase fulfilled', { userId, productId });
       }
@@ -178,7 +181,7 @@ export async function POST(req: NextRequest) {
 
     // Generic digital product fulfillment
     if (metadata.delivery === 'digital' && userId && productId) {
-      await unlockDownload(userId, productId);
+      await unlockDownload(userId, productId, stripePaymentId);
     }
   }
 
@@ -195,6 +198,60 @@ export async function POST(req: NextRequest) {
       });
       
       // Enterprise provisioning handled separately via admin workflow
+    }
+  }
+
+  // Handle charge.refunded - revoke access
+  if (event.type === 'charge.refunded') {
+    const charge = event.data.object as Stripe.Charge;
+    const paymentIntentId = charge.payment_intent as string;
+
+    logger.info('Processing refund', { chargeId: charge.id, paymentIntentId });
+
+    if (paymentIntentId) {
+      const supabase = await createClient();
+
+      // Revoke user_entitlements
+      const { error: entitlementError } = await supabase
+        .from('user_entitlements')
+        .update({
+          status: 'revoked',
+          revoked_at: new Date().toISOString(),
+          revoke_reason: 'refund',
+        })
+        .eq('stripe_payment_id', paymentIntentId);
+
+      if (entitlementError) {
+        logger.error('Error revoking entitlements on refund', { error: entitlementError });
+      }
+
+      // Update purchase record
+      const { error: purchaseError } = await supabase
+        .from('purchases')
+        .update({
+          status: 'refunded',
+          refunded_at: new Date().toISOString(),
+        })
+        .eq('stripe_payment_id', paymentIntentId);
+
+      if (purchaseError) {
+        logger.error('Error updating purchase on refund', { error: purchaseError });
+      }
+
+      // Revoke LMS enrollment if applicable
+      const { error: enrollmentError } = await supabase
+        .from('enrollments')
+        .update({
+          status: 'refunded',
+          refunded_at: new Date().toISOString(),
+        })
+        .eq('payment_id', paymentIntentId);
+
+      if (enrollmentError) {
+        logger.error('Error revoking enrollment on refund', { error: enrollmentError });
+      }
+
+      logger.info('Refund processed - access revoked', { chargeId: charge.id });
     }
   }
 

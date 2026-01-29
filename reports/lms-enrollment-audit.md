@@ -309,7 +309,7 @@ SELECT * FROM stripe_webhook_events ORDER BY created_at DESC LIMIT 10;
 | 6 | Progress is tracked | ✅ PASS | `lesson_progress` table + API |
 | 7 | Course completion triggers certificate | ✅ PASS | `/api/courses/[courseId]/complete` |
 | 8 | Certificate is verifiable | ✅ PASS | `/verify/[certificateId]` route |
-| 9 | Server-side route protection | ❌ FAIL | No middleware.ts, client-side only |
+| 9 | Server-side route protection | ✅ PASS | `proxy.ts` handles auth at edge |
 | 10 | Single canonical checkout endpoint | ⚠️ WARN | 39 endpoints, fragmented |
 | 11 | RLS policies documented | ⚠️ WARN | Baseline migration is no-op |
 | 12 | Idempotent webhook handling | ✅ PASS | `stripe_webhook_events` table |
@@ -320,40 +320,24 @@ SELECT * FROM stripe_webhook_events ORDER BY created_at DESC LIMIT 10;
 
 ## I) Critical Issues & Fixes
 
-### Issue 1: No Server-Side Route Protection (LAUNCH BLOCKER)
+### Issue 1: Server-Side Route Protection - RESOLVED
 
-**Problem:** LMS routes use client-side auth only. Attackers can bypass by disabling JavaScript or directly calling APIs.
+**Status:** ✅ Already implemented via `proxy.ts`
 
-**Fix:**
-```typescript
-// Create: middleware.ts (root)
-import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+The project uses Next.js 16's proxy pattern instead of middleware. The `proxy.ts` file at the project root handles:
+- Domain-based routing (LMS, Supersonic, Platform subdomains)
+- Authentication checks via Supabase
+- Role-based access control
+- Onboarding completion checks
+- Partner status verification
+- Tenant context injection
 
-export async function middleware(req: NextRequest) {
-  const res = NextResponse.next();
-  const supabase = createMiddlewareClient({ req, res });
-  const { data: { session } } = await supabase.auth.getSession();
-
-  const protectedPaths = ['/lms', '/admin', '/staff-portal', '/dashboard'];
-  const isProtected = protectedPaths.some(p => req.nextUrl.pathname.startsWith(p));
-
-  if (isProtected && !session) {
-    return NextResponse.redirect(new URL('/login', req.url));
-  }
-
-  return res;
-}
-
-export const config = {
-  matcher: ['/lms/:path*', '/admin/:path*', '/staff-portal/:path*', '/dashboard/:path*'],
-};
-```
-
-**Files to modify:**
-- Create `middleware.ts` in project root
-- Update `next.config.js` if needed
+**Protected Routes** (from `proxy.ts`):
+- `/admin/*` - admin, super_admin
+- `/staff-portal/*` - staff, admin, super_admin, advisor
+- `/lms/*` - student, instructor, admin, super_admin
+- `/employer-portal/*` - employer, admin, super_admin
+- And more...
 
 ### Issue 2: Fragmented Checkout Endpoints (NON-BLOCKING)
 
@@ -388,12 +372,11 @@ The platform has a complete end-to-end flow from discovery to certification. The
 - ✅ Certificate generation
 
 **Launch Blockers:**
-1. ❌ Server-side route protection missing (security risk)
+None - all critical issues resolved.
 
 **Recommended Before $75K Sale:**
-1. Implement `middleware.ts` for server-side auth
-2. Document RLS policies in migrations
-3. Consider consolidating checkout endpoints
+1. Document RLS policies in migrations
+2. Consider consolidating checkout endpoints
 
 ---
 

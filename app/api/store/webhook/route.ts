@@ -1,3 +1,13 @@
+/**
+ * DEPRECATED: Legacy store webhook handler
+ * 
+ * This endpoint is maintained for backward compatibility.
+ * New integrations should use /api/webhooks/store instead.
+ * 
+ * This handler focuses on license key generation for platform licenses.
+ * Digital product fulfillment is handled by /api/webhooks/store.
+ */
+
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
