@@ -59,8 +59,15 @@ export default async function DiscussionsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Community', href: '/community' }, { label: 'Discussions' }]} />
+        </div>
+      </div>
+
+      <div className="py-8 max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Community Discussions</h1>

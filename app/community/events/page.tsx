@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Calendar, Clock, MapPin, Users, Video, ArrowRight, Plus } from 'lucide-react';
 import RSVPButton from './RSVPButton';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Events | Community | Elevate For Humanity',
