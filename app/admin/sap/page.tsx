@@ -436,7 +436,7 @@ export default async function SAPMonitoringPage() {
                         {student.gpa.toFixed(2)}
                       </div>
                       <div className="text-xs text-slate-500">
-                        {student.meetsGPA ? '✓ Meets' : '✗ Below'}
+                        {student.meetsGPA ? '• Meets' : '✗ Below'}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
@@ -446,7 +446,7 @@ export default async function SAPMonitoringPage() {
                         {student.attendanceRate.toFixed(1)}%
                       </div>
                       <div className="text-xs text-slate-500">
-                        {student.meetsAttendance ? '✓ Meets' : '✗ Below'}
+                        {student.meetsAttendance ? '• Meets' : '✗ Below'}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
@@ -456,7 +456,7 @@ export default async function SAPMonitoringPage() {
                         {student.completionRate.toFixed(1)}%
                       </div>
                       <div className="text-xs text-slate-500">
-                        {student.meetsCompletion ? '✓ Meets' : '✗ Below'}
+                        {student.meetsCompletion ? '• Meets' : '✗ Below'}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">

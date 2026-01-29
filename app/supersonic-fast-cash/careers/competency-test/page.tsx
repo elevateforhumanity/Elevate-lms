@@ -419,21 +419,21 @@ export default function CompetencyTest() {
               <h2 className="font-bold text-lg mb-3">Test Information:</h2>
               <ul className="space-y-2 text-sm">
                 <li>
-                  ✓ <strong>30 questions</strong> covering tax preparation
+                  • <strong>30 questions</strong> covering tax preparation
                   knowledge
                 </li>
                 <li>
-                  ✓ <strong>45 minutes</strong> time limit
+                  • <strong>45 minutes</strong> time limit
                 </li>
                 <li>
-                  ✓ <strong>80% passing score</strong> required (24/30 correct)
+                  • <strong>80% passing score</strong> required (24/30 correct)
                 </li>
                 <li>
-                  ✓ Topics: Filing status, income, deductions, credits, Drake
+                  • Topics: Filing status, income, deductions, credits, Drake
                   Software, ethics
                 </li>
-                <li>✓ Multiple choice format</li>
-                <li>✓ Results available immediately</li>
+                <li>• Multiple choice format</li>
+                <li>• Results available immediately</li>
               </ul>
             </div>
 

@@ -86,7 +86,7 @@ export default async function TaxSelfPrepPage() {
               </Link>
             </div>
             <p className="text-sm opacity-90">
-              ✓ Free to start ✓ Pay only when you file ✓ Maximum refund
+              • Free to start • Pay only when you file • Maximum refund
               guaranteed
             </p>
           </div>
@@ -465,7 +465,7 @@ export default async function TaxSelfPrepPage() {
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white p-8 rounded-lg">
                 <div className="text-4xl mb-4 text-2xl md:text-3xl lg:text-4xl">
-                  ✓
+                  •
                 </div>
                 <h3 className="text-lg font-bold mb-3">
                   Maximum Refund Guaranteed

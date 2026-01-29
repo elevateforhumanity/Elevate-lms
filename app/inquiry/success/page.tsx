@@ -28,9 +28,9 @@ export default function InquirySuccessPage() {
         <div className="bg-gray-50 rounded-lg p-4 mb-6">
           <h2 className="font-semibold text-gray-900 mb-3">What's Next?</h2>
           <ul className="text-left text-gray-600 space-y-2">
-            <li>✓ Check your email for confirmation</li>
-            <li>✓ Expect a call from our admissions team</li>
-            <li>✓ Prepare any questions you have</li>
+            <li>• Check your email for confirmation</li>
+            <li>• Expect a call from our admissions team</li>
+            <li>• Prepare any questions you have</li>
           </ul>
         </div>
 

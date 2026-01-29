@@ -73,7 +73,7 @@ export default function FreeTaxHelpPage() {
 
         <div className="space-y-3">
           <div className="flex items-start gap-3">
-            <span className="text-brand-green-600 font-bold text-xl">✓</span>
+            <span className="text-brand-green-600 font-bold text-xl">•</span>
             <div>
               <div className="font-semibold">Income Limit</div>
               <div className="text-sm text-black">
@@ -82,7 +82,7 @@ export default function FreeTaxHelpPage() {
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <span className="text-brand-green-600 font-bold text-xl">✓</span>
+            <span className="text-brand-green-600 font-bold text-xl">•</span>
             <div>
               <div className="font-semibold">Persons with Disabilities</div>
               <div className="text-sm text-black">
@@ -91,7 +91,7 @@ export default function FreeTaxHelpPage() {
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <span className="text-brand-green-600 font-bold text-xl">✓</span>
+            <span className="text-brand-green-600 font-bold text-xl">•</span>
             <div>
               <div className="font-semibold">Limited English Speakers</div>
               <div className="text-sm text-black">

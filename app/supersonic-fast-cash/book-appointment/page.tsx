@@ -341,10 +341,10 @@ export default function BookAppointment() {
               <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-6">
                 <h4 className="font-bold mb-2">Video Call Requirements:</h4>
                 <ul className="text-sm text-black space-y-1">
-                  <li>✓ Computer, tablet, or smartphone with camera</li>
-                  <li>✓ Stable internet connection</li>
-                  <li>✓ Zoom app (we'll send link before appointment)</li>
-                  <li>✓ Have tax documents ready to share screen</li>
+                  <li>• Computer, tablet, or smartphone with camera</li>
+                  <li>• Stable internet connection</li>
+                  <li>• Zoom app (we'll send link before appointment)</li>
+                  <li>• Have tax documents ready to share screen</li>
                 </ul>
               </div>
             )}

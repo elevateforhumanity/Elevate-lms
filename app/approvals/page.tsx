@@ -231,28 +231,28 @@ export default function ApprovalsPage() {
                   </p>
                   <ul className="grid md:grid-cols-2 gap-3">
                     <li className="flex items-center gap-2 text-black">
-                      <span className="text-brand-green-600">✓</span> Microsoft
+                      <span className="text-brand-green-600">•</span> Microsoft
                       Office Specialist (MOS)
                     </li>
                     <li className="flex items-center gap-2 text-black">
-                      <span className="text-brand-green-600">✓</span> IC3
+                      <span className="text-brand-green-600">•</span> IC3
                       Digital Literacy
                     </li>
                     <li className="flex items-center gap-2 text-black">
-                      <span className="text-brand-green-600">✓</span> IT
+                      <span className="text-brand-green-600">•</span> IT
                       Specialist (Networking, Security, Python, Databases,
                       HTML/CSS/JS)
                     </li>
                     <li className="flex items-center gap-2 text-black">
-                      <span className="text-brand-green-600">✓</span> Adobe
+                      <span className="text-brand-green-600">•</span> Adobe
                       Certified Professional
                     </li>
                     <li className="flex items-center gap-2 text-black">
-                      <span className="text-brand-green-600">✓</span>{' '}
+                      <span className="text-brand-green-600">•</span>{' '}
                       Entrepreneurship & Small Business (ESB)
                     </li>
                     <li className="flex items-center gap-2 text-black">
-                      <span className="text-brand-green-600">✓</span>{' '}
+                      <span className="text-brand-green-600">•</span>{' '}
                       Communication Skills for Business (CSB)
                     </li>
                   </ul>

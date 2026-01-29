@@ -91,7 +91,7 @@ export default function MonitoringSetupPage() {
               )}
               <div>
                 <h2 className="text-2xl font-bold text-black">
-                  {result.status === 'ready' ? '✅ Ready' : '⚠️ Setup Required'}
+                  {result.status === 'ready' ? '• Ready' : '⚠️ Setup Required'}
                 </h2>
                 <p className="text-black">{result.message}</p>
               </div>

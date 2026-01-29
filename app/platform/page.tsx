@@ -59,27 +59,27 @@ export default async function PlatformPage() {
             </h2>
             <ul className="space-y-2 text-black">
               <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold">✓</span>
+                <span className="text-blue-600 font-bold">•</span>
                 <span>
                   U.S. Department of Labor Registered Apprenticeship Sponsor
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold">✓</span>
+                <span className="text-blue-600 font-bold">•</span>
                 <span>WIOA / Workforce Ready Grant eligible programs</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold">✓</span>
+                <span className="text-blue-600 font-bold">•</span>
                 <span>ETPL-approved training provider in Indiana</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold">✓</span>
+                <span className="text-blue-600 font-bold">•</span>
                 <span>
                   Multi-tenant SaaS platform licensed to schools & partners
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold">✓</span>
+                <span className="text-blue-600 font-bold">•</span>
                 <span>Mobile app, AI tutoring, compliance reporting</span>
               </li>
             </ul>
@@ -262,23 +262,23 @@ export default async function PlatformPage() {
           </h2>
           <ul className="space-y-3 text-lg text-zinc-700">
             <li className="flex items-start">
-              <span className="text-brand-green-600 font-bold mr-2">✓</span>
+              <span className="text-brand-green-600 font-bold mr-2">•</span>
               Faster deployment than custom builds
             </li>
             <li className="flex items-start">
-              <span className="text-brand-green-600 font-bold mr-2">✓</span>
+              <span className="text-brand-green-600 font-bold mr-2">•</span>
               Lower cost than enterprise LMS + reporting stacks
             </li>
             <li className="flex items-start">
-              <span className="text-brand-green-600 font-bold mr-2">✓</span>
+              <span className="text-brand-green-600 font-bold mr-2">•</span>
               Designed for workforce funding realities
             </li>
             <li className="flex items-start">
-              <span className="text-brand-green-600 font-bold mr-2">✓</span>
+              <span className="text-brand-green-600 font-bold mr-2">•</span>
               Built for licensing, not one-off use
             </li>
             <li className="flex items-start">
-              <span className="text-brand-green-600 font-bold mr-2">✓</span>
+              <span className="text-brand-green-600 font-bold mr-2">•</span>
               Proven in real training and apprenticeship environments
             </li>
           </ul>

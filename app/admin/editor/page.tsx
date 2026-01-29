@@ -159,10 +159,10 @@ export default function EditorPage() {
   const handleCommand = async (command: string): Promise<string> => {
     // Command execution simulation
     if (command.startsWith('npm ')) {
-      return `Running: ${command}\n✓ Command completed successfully`;
+      return `Running: ${command}\n• Command completed successfully`;
     }
     if (command.startsWith('git ')) {
-      return `Running: ${command}\n✓ Git command executed`;
+      return `Running: ${command}\n• Git command executed`;
     }
     if (command === 'ls' || command === 'dir') {
       return 'app/\ncomponents/\nlib/\npackage.json\npublic/';
@@ -170,7 +170,7 @@ export default function EditorPage() {
     if (command === 'pwd') {
       return '/workspace/project';
     }
-    return `$ ${command}\n✓ Command executed`;
+    return `$ ${command}\n• Command executed`;
   };
   const getLanguage = (path: string): string => {
     if (path.endsWith('.tsx') || path.endsWith('.ts')) return 'typescript';

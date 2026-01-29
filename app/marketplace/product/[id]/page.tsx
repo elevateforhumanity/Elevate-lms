@@ -123,9 +123,9 @@ export default async function ProductPage({
                   What you'll get:
                 </h3>
                 <ul className="text-sm text-blue-800 space-y-1">
-                  <li>✓ Instant digital download</li>
-                  <li>✓ Lifetime access</li>
-                  <li>✓ Support from creator</li>
+                  <li>• Instant digital download</li>
+                  <li>• Lifetime access</li>
+                  <li>• Support from creator</li>
                 </ul>
               </div>
             </div>

@@ -124,7 +124,7 @@ export default function VerifyCredentialPage() {
                   <CheckCircle className="w-8 h-8 text-green-600 flex-shrink-0" />
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-green-900 mb-4">
-                      ✓ Valid Credential
+                      • Valid Credential
                     </h3>
 
                     <div className="space-y-3">

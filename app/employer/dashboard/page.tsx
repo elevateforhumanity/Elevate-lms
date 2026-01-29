@@ -310,7 +310,7 @@ export default async function EmployerDashboardOrchestrated() {
                 <div className="text-sm text-black">
                   {profile.verified ? (
                     <span className="text-green-600 font-semibold">
-                      ✓ Verified
+                      • Verified
                     </span>
                   ) : (
                     <span className="text-yellow-600 font-semibold">

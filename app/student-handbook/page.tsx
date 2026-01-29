@@ -253,7 +253,7 @@ export default async function StudentHandbookPage() {
         {acknowledgment && (
           <div className="mt-8 bg-green-50 border border-green-200 rounded-xl p-6">
             <p className="text-green-700">
-              ✓ You acknowledged this handbook on {new Date(acknowledgment.acknowledged_at).toLocaleDateString()}
+              • You acknowledged this handbook on {new Date(acknowledgment.acknowledged_at).toLocaleDateString()}
             </p>
           </div>
         )}

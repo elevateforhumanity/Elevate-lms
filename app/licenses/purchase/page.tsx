@@ -141,12 +141,12 @@ export default function PurchaseLicensePage() {
             <div className="bg-white rounded-lg shadow-sm p-6">
               <h3 className="text-lg font-semibold mb-4">What's Included</h3>
               <ul className="space-y-2 text-black">
-                <li>✓ Full curriculum access</li>
-                <li>✓ Student enrollment management</li>
-                <li>✓ Progress tracking and reporting</li>
-                <li>✓ Certificate generation</li>
-                <li>✓ Compliance documentation</li>
-                <li>✓ Ongoing support</li>
+                <li>• Full curriculum access</li>
+                <li>• Student enrollment management</li>
+                <li>• Progress tracking and reporting</li>
+                <li>• Certificate generation</li>
+                <li>• Compliance documentation</li>
+                <li>• Ongoing support</li>
               </ul>
             </div>
           </div>

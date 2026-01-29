@@ -166,7 +166,7 @@ export default async function FERPAPortal() {
               </div>
               <span className="text-sm text-slate-500">Status</span>
             </div>
-            <div className="text-3xl font-bold text-brand-green-600">✓</div>
+            <div className="text-3xl font-bold text-brand-green-600">•</div>
             <div className="text-sm text-black mt-1">Compliant</div>
           </div>
         </div>

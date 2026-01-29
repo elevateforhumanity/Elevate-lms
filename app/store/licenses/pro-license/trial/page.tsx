@@ -25,19 +25,19 @@ export default function ProLicenseTrialPage() {
             <h2 className="text-xl font-semibold mb-4">What's Included:</h2>
             <ul className="space-y-2 text-gray-700">
               <li className="flex items-center gap-2">
-                <span className="text-green-600">✓</span>
+                <span className="text-green-600">•</span>
                 Full access to all Pro features
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-green-600">✓</span>
+                <span className="text-green-600">•</span>
                 Unlimited courses and students
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-green-600">✓</span>
+                <span className="text-green-600">•</span>
                 Advanced analytics and reporting
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-green-600">✓</span>
+                <span className="text-green-600">•</span>
                 Priority support
               </li>
             </ul>

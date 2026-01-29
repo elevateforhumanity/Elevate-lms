@@ -591,7 +591,7 @@ function ScheduleSlot({ time, status, campaign }: ScheduleSlotProps) {
         className={`inline-flex items-center px-3 py-2 rounded-full text-xs font-medium ${statusColors[status]}`}
       >
         {status === 'completed'
-          ? '✓ Posted'
+          ? '• Posted'
           : status === 'upcoming'
             ? '→ Next'
             : '○ Scheduled'}

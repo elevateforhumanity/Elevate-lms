@@ -234,7 +234,7 @@ export default function SSNVerificationForm({
             {loading
               ? 'Verifying...'
               : result?.verified
-                ? 'Verified ✓'
+                ? 'Verified •'
                 : 'Verify SSN (FREE)'}
           </button>
         </div>

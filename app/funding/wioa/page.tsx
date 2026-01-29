@@ -92,7 +92,7 @@ export default async function WioaPage() {
           <ul className="space-y-3 mb-8">
             <li className="flex items-start gap-3">
               <span className="text-brand-green-600 font-bold text-base">
-                ✓
+                •
               </span>
               <span className="text-black">
                 <strong>Unemployed</strong> (lost your job, can't find work)
@@ -100,7 +100,7 @@ export default async function WioaPage() {
             </li>
             <li className="flex items-start gap-3">
               <span className="text-brand-green-600 font-bold text-base">
-                ✓
+                •
               </span>
               <span className="text-black">
                 <strong>Underemployed</strong> (working part-time, low wages, no
@@ -109,7 +109,7 @@ export default async function WioaPage() {
             </li>
             <li className="flex items-start gap-3">
               <span className="text-brand-green-600 font-bold text-base">
-                ✓
+                •
               </span>
               <span className="text-black">
                 <strong>Facing barriers</strong> (disability, low income,
@@ -118,7 +118,7 @@ export default async function WioaPage() {
             </li>
             <li className="flex items-start gap-3">
               <span className="text-brand-green-600 font-bold text-base">
-                ✓
+                •
               </span>
               <span className="text-black">
                 <strong>Dislocated workers</strong> (laid off, plant closure,
@@ -145,7 +145,7 @@ export default async function WioaPage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-green-50 rounded-lg p-6">
               <h3 className="text-lg font-bold mb-3 text-green-900">
-                ✓ Tuition
+                • Tuition
               </h3>
               <p className="text-black">
                 100% of training costs. Whether it's a 3-week CNA program or a
@@ -155,7 +155,7 @@ export default async function WioaPage() {
 
             <div className="bg-green-50 rounded-lg p-6">
               <h3 className="text-lg font-bold mb-3 text-green-900">
-                ✓ Books & Materials
+                • Books & Materials
               </h3>
               <p className="text-black">
                 Textbooks, workbooks, uniforms, tools—whatever you need for
@@ -165,7 +165,7 @@ export default async function WioaPage() {
 
             <div className="bg-green-50 rounded-lg p-6">
               <h3 className="text-lg font-bold mb-3 text-green-900">
-                ✓ Transportation
+                • Transportation
               </h3>
               <p className="text-black">
                 Gas money, bus passes, or mileage reimbursement to get to class.
@@ -174,7 +174,7 @@ export default async function WioaPage() {
 
             <div className="bg-green-50 rounded-lg p-6">
               <h3 className="text-lg font-bold mb-3 text-green-900">
-                ✓ Childcare
+                • Childcare
               </h3>
               <p className="text-black">
                 If you need childcare while you're in training, WIOA can help
@@ -184,7 +184,7 @@ export default async function WioaPage() {
 
             <div className="bg-green-50 rounded-lg p-6">
               <h3 className="text-lg font-bold mb-3 text-green-900">
-                ✓ Support Services
+                • Support Services
               </h3>
               <p className="text-black">
                 Work clothes, internet access, even emergency assistance if
@@ -194,7 +194,7 @@ export default async function WioaPage() {
 
             <div className="bg-green-50 rounded-lg p-6">
               <h3 className="text-lg font-bold mb-3 text-green-900">
-                ✓ Job Placement Help
+                • Job Placement Help
               </h3>
               <p className="text-black">
                 Resume writing, interview prep, and connections to employers

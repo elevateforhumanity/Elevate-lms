@@ -59,7 +59,7 @@ export default async function FundingSuccessPage() {
           <div className="text-left space-y-4">
             <div className="flex items-start gap-3">
               <div className="flex-shrink-0 w-8 h-8 bg-brand-green-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
-                ✓
+                •
               </div>
               <div>
                 <p className="font-semibold text-black">
@@ -73,7 +73,7 @@ export default async function FundingSuccessPage() {
 
             <div className="flex items-start gap-3">
               <div className="flex-shrink-0 w-8 h-8 bg-brand-green-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
-                ✓
+                •
               </div>
               <div>
                 <p className="font-semibold text-black">
@@ -87,7 +87,7 @@ export default async function FundingSuccessPage() {
 
             <div className="flex items-start gap-3">
               <div className="flex-shrink-0 w-8 h-8 bg-brand-green-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
-                ✓
+                •
               </div>
               <div>
                 <p className="font-semibold text-black">Dashboard Access</p>

@@ -322,16 +322,16 @@ export default async function AcademicIntegrityPage() {
                 Do's
               </h3>
               <ul className="space-y-2 text-green-800 text-sm">
-                <li>✓ Always cite your sources properly</li>
-                <li>✓ Use quotation marks for direct quotes</li>
-                <li>✓ Ask instructors if collaboration is allowed</li>
-                <li>✓ Keep your work secure and private</li>
-                <li>✓ Start assignments early to avoid pressure</li>
-                <li>✓ Seek help from instructors or tutors</li>
-                <li>✓ Use plagiarism checkers before submitting</li>
-                <li>✓ Disclose use of AI tools when required</li>
-                <li>✓ Take notes in your own words</li>
-                <li>✓ Report suspected violations</li>
+                <li>• Always cite your sources properly</li>
+                <li>• Use quotation marks for direct quotes</li>
+                <li>• Ask instructors if collaboration is allowed</li>
+                <li>• Keep your work secure and private</li>
+                <li>• Start assignments early to avoid pressure</li>
+                <li>• Seek help from instructors or tutors</li>
+                <li>• Use plagiarism checkers before submitting</li>
+                <li>• Disclose use of AI tools when required</li>
+                <li>• Take notes in your own words</li>
+                <li>• Report suspected violations</li>
               </ul>
             </div>
 

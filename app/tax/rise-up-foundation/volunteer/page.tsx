@@ -52,7 +52,7 @@ export default function VolunteerPage() {
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-4">
             <div className="flex items-start gap-3">
-              <span className="text-brand-green-600 font-bold text-xl">✓</span>
+              <span className="text-brand-green-600 font-bold text-xl">•</span>
               <div>
                 <div className="font-semibold">Help Your Community</div>
                 <div className="text-sm text-black">
@@ -61,7 +61,7 @@ export default function VolunteerPage() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-brand-green-600 font-bold text-xl">✓</span>
+              <span className="text-brand-green-600 font-bold text-xl">•</span>
               <div>
                 <div className="font-semibold">Gain Valuable Skills</div>
                 <div className="text-sm text-black">
@@ -70,7 +70,7 @@ export default function VolunteerPage() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-brand-green-600 font-bold text-xl">✓</span>
+              <span className="text-brand-green-600 font-bold text-xl">•</span>
               <div>
                 <div className="font-semibold">IRS Certification</div>
                 <div className="text-sm text-black">
@@ -81,7 +81,7 @@ export default function VolunteerPage() {
           </div>
           <div className="space-y-4">
             <div className="flex items-start gap-3">
-              <span className="text-brand-green-600 font-bold text-xl">✓</span>
+              <span className="text-brand-green-600 font-bold text-xl">•</span>
               <div>
                 <div className="font-semibold">Flexible Schedule</div>
                 <div className="text-sm text-black">
@@ -90,7 +90,7 @@ export default function VolunteerPage() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-brand-green-600 font-bold text-xl">✓</span>
+              <span className="text-brand-green-600 font-bold text-xl">•</span>
               <div>
                 <div className="font-semibold">Free Training</div>
                 <div className="text-sm text-black">
@@ -99,7 +99,7 @@ export default function VolunteerPage() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-brand-green-600 font-bold text-xl">✓</span>
+              <span className="text-brand-green-600 font-bold text-xl">•</span>
               <div>
                 <div className="font-semibold">Resume Builder</div>
                 <div className="text-sm text-black">

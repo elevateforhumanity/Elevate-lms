@@ -255,7 +255,7 @@ export default async function AchievementsPage() {
                         </p>
                         <div className="flex items-center justify-between">
                           <span className={`text-xs ${isEarned ? 'text-green-600 font-medium' : 'text-gray-400'}`}>
-                            {isEarned ? '✓ Earned' : 'Locked'}
+                            {isEarned ? '• Earned' : 'Locked'}
                           </span>
                           <span className={`text-xs font-medium ${isEarned ? 'text-orange-600' : 'text-gray-400'}`}>
                             {achievement.points} pts

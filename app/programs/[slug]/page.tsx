@@ -267,7 +267,7 @@ export default async function ProgramDetailPage({
             {/* Funding Badge */}
             {displayProgram.fundingEligible && (
               <div className="mb-8 inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                ✓ Funding Available (WIOA Eligible)
+                • Funding Available (WIOA Eligible)
               </div>
             )}
 

@@ -73,21 +73,21 @@ export default async function MetricsPage() {
           </h2>
           <div className="space-y-4 text-black">
             <div className="flex items-start gap-3">
-              <span className="text-green-600 font-bold">✓</span>
+              <span className="text-green-600 font-bold">•</span>
               <div>
                 <strong>WIOA Eligible:</strong> All programs qualify for
                 Workforce Innovation and Opportunity Act funding
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-green-600 font-bold">✓</span>
+              <span className="text-green-600 font-bold">•</span>
               <div>
                 <strong>WRG Approved:</strong> Workforce Ready Grant eligible in
                 Indiana
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-green-600 font-bold">✓</span>
+              <span className="text-green-600 font-bold">•</span>
               <div>
                 <strong>SNAP E&T:</strong> Supplemental Nutrition Assistance
                 Program Employment & Training approved
@@ -126,19 +126,19 @@ export default async function MetricsPage() {
           </h2>
           <div className="space-y-3 text-black">
             <div className="flex items-start gap-3">
-              <span className="text-blue-600 font-bold">✓</span>
+              <span className="text-blue-600 font-bold">•</span>
               <span>RAPIDS apprenticeship tracking integrated</span>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-blue-600 font-bold">✓</span>
+              <span className="text-blue-600 font-bold">•</span>
               <span>ETPL compliance reporting automated</span>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-blue-600 font-bold">✓</span>
+              <span className="text-blue-600 font-bold">•</span>
               <span>Workforce board dashboards available</span>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-blue-600 font-bold">✓</span>
+              <span className="text-blue-600 font-bold">•</span>
               <span>Real-time outcome tracking</span>
             </div>
           </div>

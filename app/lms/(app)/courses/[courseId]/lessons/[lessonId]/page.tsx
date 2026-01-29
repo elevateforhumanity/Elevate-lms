@@ -295,7 +295,7 @@ export default function LessonPage() {
                   : 'bg-brand-green-600 hover:bg-green-700 text-white'
               }`}
             >
-              {isCompleted ? '✓ Completed' : 'Mark as Complete'}
+              {isCompleted ? '• Completed' : 'Mark as Complete'}
             </button>
           </div>
 

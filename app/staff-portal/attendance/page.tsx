@@ -88,36 +88,36 @@ export default function StaffPortalAttendancePage() {
               <tr className="border-b">
                 <td className="py-3">Alice Johnson</td>
                 <td className="py-3 text-gray-600">STU001</td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
                 <td className="py-3"><span className="text-green-600 font-medium">100%</span></td>
               </tr>
               <tr className="border-b">
                 <td className="py-3">Bob Smith</td>
                 <td className="py-3 text-gray-600">STU002</td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
                 <td className="py-3 text-center"><span className="text-red-600">✗</span></td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
                 <td className="py-3"><span className="text-yellow-600 font-medium">92%</span></td>
               </tr>
               <tr className="border-b">
                 <td className="py-3">Carol Davis</td>
                 <td className="py-3 text-gray-600">STU003</td>
                 <td className="py-3 text-center"><span className="text-red-600">✗</span></td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
                 <td className="py-3 text-center"><span className="text-yellow-600">L</span></td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
                 <td className="py-3"><span className="text-yellow-600 font-medium">85%</span></td>
               </tr>
               <tr className="border-b">
                 <td className="py-3">David Wilson</td>
                 <td className="py-3 text-gray-600">STU004</td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
-                <td className="py-3 text-center"><span className="text-green-600">✓</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
+                <td className="py-3 text-center"><span className="text-green-600">•</span></td>
                 <td className="py-3 text-center"><span className="text-red-600">✗</span></td>
                 <td className="py-3"><span className="text-yellow-600 font-medium">88%</span></td>
               </tr>
@@ -125,7 +125,7 @@ export default function StaffPortalAttendancePage() {
           </table>
         </div>
         <div className="mt-4 flex items-center gap-6 text-sm text-gray-600">
-          <span><span className="text-green-600">✓</span> Present</span>
+          <span><span className="text-green-600">•</span> Present</span>
           <span><span className="text-red-600">✗</span> Absent</span>
           <span><span className="text-yellow-600">L</span> Late</span>
           <span><span className="text-blue-600">E</span> Excused</span>

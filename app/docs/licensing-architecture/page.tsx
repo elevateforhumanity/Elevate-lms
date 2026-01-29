@@ -185,33 +185,33 @@ export default function LicensingArchitecturePage() {
             <div className="border border-gray-200 rounded-lg p-4">
               <h3 className="font-semibold text-gray-800 mb-2">Payment Safety</h3>
               <ul className="text-sm text-gray-600 space-y-1">
-                <li>✓ Stripe webhook signature verification</li>
-                <li>✓ Idempotency prevents duplicate processing</li>
-                <li>✓ Controlled checkout mode available</li>
+                <li>• Stripe webhook signature verification</li>
+                <li>• Idempotency prevents duplicate processing</li>
+                <li>• Controlled checkout mode available</li>
               </ul>
             </div>
             <div className="border border-gray-200 rounded-lg p-4">
               <h3 className="font-semibold text-gray-800 mb-2">Data Isolation</h3>
               <ul className="text-sm text-gray-600 space-y-1">
-                <li>✓ Row Level Security on all tenant tables</li>
-                <li>✓ Tenant context required for protected routes</li>
-                <li>✓ License keys stored as hashes</li>
+                <li>• Row Level Security on all tenant tables</li>
+                <li>• Tenant context required for protected routes</li>
+                <li>• License keys stored as hashes</li>
               </ul>
             </div>
             <div className="border border-gray-200 rounded-lg p-4">
               <h3 className="font-semibold text-gray-800 mb-2">Provisioning</h3>
               <ul className="text-sm text-gray-600 space-y-1">
-                <li>✓ Transactional with rollback on failure</li>
-                <li>✓ Admin user auto-created with magic link</li>
-                <li>✓ Full audit trail for debugging</li>
+                <li>• Transactional with rollback on failure</li>
+                <li>• Admin user auto-created with magic link</li>
+                <li>• Full audit trail for debugging</li>
               </ul>
             </div>
             <div className="border border-gray-200 rounded-lg p-4">
               <h3 className="font-semibold text-gray-800 mb-2">Revenue Protection</h3>
               <ul className="text-sm text-gray-600 space-y-1">
-                <li>✓ Dispute/refund triggers license suspension</li>
-                <li>✓ License violations logged</li>
-                <li>✓ Feature entitlement enforcement</li>
+                <li>• Dispute/refund triggers license suspension</li>
+                <li>• License violations logged</li>
+                <li>• Feature entitlement enforcement</li>
               </ul>
             </div>
           </div>

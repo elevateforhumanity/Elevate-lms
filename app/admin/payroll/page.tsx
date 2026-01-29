@@ -271,7 +271,7 @@ export default function AdminPayroll() {
                       )}
                       {payroll.status === 'paid' && (
                         <span className="text-black">
-                          ✓ Paid{' '}
+                          • Paid{' '}
                           {new Date(payroll.paid_at).toLocaleDateString()}
                         </span>
                       )}

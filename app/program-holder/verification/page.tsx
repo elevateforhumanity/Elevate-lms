@@ -226,7 +226,7 @@ export default async function VerificationPage() {
                       </p>
                       {req.completed && (
                         <p className="text-sm text-green-700 font-medium mt-2">
-                          ✓ Document approved
+                          • Document approved
                         </p>
                       )}
                     </div>

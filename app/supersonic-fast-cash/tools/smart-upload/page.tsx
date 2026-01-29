@@ -479,7 +479,7 @@ export default function SmartUploadPage() {
 
                         <div className="mt-4 pt-4 border-t border-green-200">
                           <p className="text-sm text-green-700 font-semibold">
-                            ✓ Data automatically added to your tax return
+                            • Data automatically added to your tax return
                           </p>
                         </div>
                       </div>

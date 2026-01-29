@@ -304,7 +304,7 @@ export default function ShopOwnerReportsPage() {
                       <div className="flex justify-between">
                         <span className="text-slate-400">Weekly Minimum (30 hrs)</span>
                         <span className={apprentice.weeklyHours >= 30 ? 'text-green-400' : 'text-amber-400'}>
-                          {apprentice.weeklyHours >= 30 ? '✓ Met' : '⚠ Below'}
+                          {apprentice.weeklyHours >= 30 ? '• Met' : '⚠ Below'}
                         </span>
                       </div>
                       <div className="flex justify-between">

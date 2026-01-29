@@ -118,7 +118,7 @@ export default function GrantProgramsPage() {
             <ul className="space-y-2">
               <li className="flex items-start gap-3">
                 <span className="text-brand-green-600 font-bold text-base">
-                  ✓
+                  •
                 </span>
                 <span className="text-black">
                   <strong>100% Tuition</strong> - No cost to you
@@ -126,7 +126,7 @@ export default function GrantProgramsPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-brand-green-600 font-bold text-base">
-                  ✓
+                  •
                 </span>
                 <span className="text-black">
                   <strong>Books & Materials</strong> - All included
@@ -134,7 +134,7 @@ export default function GrantProgramsPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-brand-green-600 font-bold text-base">
-                  ✓
+                  •
                 </span>
                 <span className="text-black">
                   <strong>Certification Exams</strong> - Fees covered
@@ -142,7 +142,7 @@ export default function GrantProgramsPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-brand-green-600 font-bold text-base">
-                  ✓
+                  •
                 </span>
                 <span className="text-black">
                   <strong>No Payback Required</strong> - It's a grant, not a
@@ -207,7 +207,7 @@ export default function GrantProgramsPage() {
 
                   <div className="bg-green-50 rounded p-3 mb-4">
                     <p className="text-sm font-semibold text-green-900 mb-1">
-                      ✓ 100% FREE with:
+                      • 100% FREE with:
                     </p>
                     <ul className="text-xs text-black space-y-1">
                       {program.fundingOptions.slice(0, 3).map((option, idx) => (

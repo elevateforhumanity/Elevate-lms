@@ -113,7 +113,7 @@ export default async function WrgPage() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <span className="text-brand-green-600 font-bold text-base">
-                  ✓
+                  •
                 </span>
                 <span className="text-black">
                   <strong>Indiana resident</strong> (live in Indiana)
@@ -121,7 +121,7 @@ export default async function WrgPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-brand-green-600 font-bold text-base">
-                  ✓
+                  •
                 </span>
                 <span className="text-black">
                   <strong>High school diploma or GED</strong>
@@ -129,7 +129,7 @@ export default async function WrgPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-brand-green-600 font-bold text-base">
-                  ✓
+                  •
                 </span>
                 <span className="text-black">
                   <strong>No bachelor's degree or higher</strong> (in most
@@ -138,7 +138,7 @@ export default async function WrgPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-brand-green-600 font-bold text-base">
-                  ✓
+                  •
                 </span>
                 <span className="text-black">
                   <strong>Enroll in a WRG-approved program</strong> (we're
@@ -163,7 +163,7 @@ export default async function WrgPage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-green-50 rounded-lg p-6">
               <h3 className="text-lg font-bold mb-3 text-green-900">
-                ✓ Tuition
+                • Tuition
               </h3>
               <p className="text-black">
                 100% of training costs. Whether it's $575 for CPR or $5,000 for
@@ -173,7 +173,7 @@ export default async function WrgPage() {
 
             <div className="bg-green-50 rounded-lg p-6">
               <h3 className="text-lg font-bold mb-3 text-green-900">
-                ✓ Books & Materials
+                • Books & Materials
               </h3>
               <p className="text-black">
                 Textbooks, workbooks, study guides—all included.
@@ -182,7 +182,7 @@ export default async function WrgPage() {
 
             <div className="bg-green-50 rounded-lg p-6">
               <h3 className="text-lg font-bold mb-3 text-green-900">
-                ✓ Certification Exams
+                • Certification Exams
               </h3>
               <p className="text-black">
                 State exams, industry certifications, licensing fees—covered.
@@ -191,7 +191,7 @@ export default async function WrgPage() {
 
             <div className="bg-green-50 rounded-lg p-6">
               <h3 className="text-lg font-bold mb-3 text-green-900">
-                ✓ No Payback Required
+                • No Payback Required
               </h3>
               <p className="text-black">
                 WRG is a grant, not a loan. You never pay it back. Ever.

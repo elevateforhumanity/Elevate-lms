@@ -158,10 +158,10 @@ function MarketplaceThankYouContent() {
               Important Information:
             </h3>
             <ul className="space-y-1 text-yellow-800">
-              <li>✓ Download link sent to your email</li>
-              <li>✓ Link expires in 30 days</li>
-              <li>✓ Save your confirmation email</li>
-              <li>✓ Contact creator for product support</li>
+              <li>• Download link sent to your email</li>
+              <li>• Link expires in 30 days</li>
+              <li>• Save your confirmation email</li>
+              <li>• Contact creator for product support</li>
             </ul>
           </div>
         </div>

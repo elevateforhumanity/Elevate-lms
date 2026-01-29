@@ -269,10 +269,10 @@ export default function GenerateSitePage() {
               AI is generating your custom LMS configuration
             </p>
             <div className="mt-8 space-y-2 text-sm text-slate-400">
-              <p>✓ Analyzing your organization type</p>
-              <p>✓ Generating brand colors and styling</p>
-              <p>✓ Creating homepage content</p>
-              <p>✓ Building program templates</p>
+              <p>• Analyzing your organization type</p>
+              <p>• Generating brand colors and styling</p>
+              <p>• Creating homepage content</p>
+              <p>• Building program templates</p>
             </div>
           </div>
         )}

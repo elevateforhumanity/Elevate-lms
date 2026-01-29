@@ -59,29 +59,29 @@ export default function TrainingPage() {
           <h3 className="font-semibold text-lg mb-3">Training Includes:</h3>
           <ul className="space-y-2">
             <li className="flex items-start gap-2">
-              <span className="text-brand-green-600 font-bold">✓</span>
+              <span className="text-brand-green-600 font-bold">•</span>
               <span className="text-black">
                 Interactive lessons and videos
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-brand-green-600 font-bold">✓</span>
+              <span className="text-brand-green-600 font-bold">•</span>
               <span className="text-black">
                 Practice exercises and quizzes
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-brand-green-600 font-bold">✓</span>
+              <span className="text-brand-green-600 font-bold">•</span>
               <span className="text-black">Real-world tax scenarios</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-brand-green-600 font-bold">✓</span>
+              <span className="text-brand-green-600 font-bold">•</span>
               <span className="text-black">
                 Certification exam preparation
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-brand-green-600 font-bold">✓</span>
+              <span className="text-brand-green-600 font-bold">•</span>
               <span className="text-black">
                 Reference materials and resources
               </span>

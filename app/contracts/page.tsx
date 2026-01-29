@@ -38,7 +38,7 @@ export default function ContractsPage() {
             </p>
             <div className="bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-xl p-4">
               <p className="text-sm text-green-400 font-bold">
-                ✓ WIOA/WRG-Safe | ✓ Audit-Ready | ✓ DWD-Approved Language
+                • WIOA/WRG-Safe | • Audit-Ready | • DWD-Approved Language
               </p>
             </div>
           </div>

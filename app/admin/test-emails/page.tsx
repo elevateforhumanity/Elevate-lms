@@ -108,13 +108,13 @@ export default function TestEmailsPage() {
                 Configuration
               </span>
               <span className="text-sm text-brand-green-600 font-medium">
-                ✓ Configured
+                • Configured
               </span>
             </div>
             <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
               <span className="text-sm font-medium text-black">API Key</span>
               <span className="text-sm text-brand-green-600 font-medium">
-                ✓ Set
+                • Set
               </span>
             </div>
           </div>

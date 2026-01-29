@@ -360,10 +360,10 @@ export default function TrainingPage() {
                   Get <strong>ALL courses FREE</strong> when you join our team!
                 </div>
                 <ul className="space-y-2 text-sm mb-4">
-                  <li>✓ FREE training (worth $1,000+)</li>
-                  <li>✓ Earn money preparing taxes</li>
-                  <li>✓ Flexible schedule</li>
-                  <li>✓ Work from home option</li>
+                  <li>• FREE training (worth $1,000+)</li>
+                  <li>• Earn money preparing taxes</li>
+                  <li>• Flexible schedule</li>
+                  <li>• Work from home option</li>
                 </ul>
                 <div className="space-y-2">
                   <div className="bg-white/20 rounded p-3 text-sm">
@@ -399,10 +399,10 @@ export default function TrainingPage() {
                   Purchase courses individually or as bundles
                 </div>
                 <ul className="space-y-2 text-sm mb-4">
-                  <li>✓ Learn at your own pace</li>
-                  <li>✓ Get certified</li>
-                  <li>✓ Start your own tax business</li>
-                  <li>✓ Lifetime access</li>
+                  <li>• Learn at your own pace</li>
+                  <li>• Get certified</li>
+                  <li>• Start your own tax business</li>
+                  <li>• Lifetime access</li>
                 </ul>
                 <div className="space-y-2">
                   <div className="bg-white/20 rounded p-3 text-sm">
@@ -636,7 +636,7 @@ export default function TrainingPage() {
 
                   {isEmployee && (
                     <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-3 text-sm text-green-700">
-                      ✓ You have employee access to this course
+                      • You have employee access to this course
                     </div>
                   )}
 
@@ -837,14 +837,14 @@ export default function TrainingPage() {
               <h3 className="font-bold text-lg mb-3">What's Included:</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  ✓ Live instruction from Elevate-certified tax professionals
+                  • Live instruction from Elevate-certified tax professionals
                 </li>
-                <li>✓ Digital course materials and workbook</li>
-                <li>✓ Practice tax returns and real-world scenarios</li>
-                <li>✓ Professional tax software access (training version)</li>
-                <li>✓ Elevate for Humanity certificate of completion</li>
-                <li>✓ 30 days post-training email support</li>
-                <li>✓ Access to recorded sessions</li>
+                <li>• Digital course materials and workbook</li>
+                <li>• Practice tax returns and real-world scenarios</li>
+                <li>• Professional tax software access (training version)</li>
+                <li>• Elevate for Humanity certificate of completion</li>
+                <li>• 30 days post-training email support</li>
+                <li>• Access to recorded sessions</li>
               </ul>
             </div>
 

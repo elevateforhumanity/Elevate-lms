@@ -315,7 +315,7 @@ export default async function CommunityMarketplacePage() {
                           {course.category || 'Course'}
                         </span>
                         {course.creator_profiles?.verified && (
-                          <span className="text-blue-600 text-xs font-medium">✓ Verified</span>
+                          <span className="text-blue-600 text-xs font-medium">• Verified</span>
                         )}
                       </div>
                       <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-green-600 transition line-clamp-2">
@@ -430,7 +430,7 @@ export default async function CommunityMarketplacePage() {
                         <div className="flex items-center justify-between text-xs text-slate-500">
                           <span>{product.shop_profiles?.shop_name}</span>
                           {product.shop_profiles?.verified && (
-                            <span className="text-blue-600 font-medium">✓ Verified</span>
+                            <span className="text-blue-600 font-medium">• Verified</span>
                           )}
                         </div>
                       </div>

@@ -111,7 +111,7 @@ export default function SystemMonitorPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               {Object.entries(status.production_ready).map(([key, value]: [string, any]) => (
                 <div key={key} className="flex items-start gap-2">
-                  {typeof value === 'string' && value.includes('✅') ? (
+                  {typeof value === 'string' && value.includes('•') ? (
                     <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
                   ) : (
                     <AlertCircle className="h-4 w-4 text-yellow-600 flex-shrink-0 mt-0.5" />

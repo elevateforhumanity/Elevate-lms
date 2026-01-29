@@ -62,7 +62,7 @@ export default function DocumentsPage() {
         <div className="space-y-6">
           <div>
             <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
-              <span className="text-brand-green-600">✓</span>
+              <span className="text-brand-green-600">•</span>
               Identification
             </h3>
             <ul className="space-y-2 pl-6">
@@ -91,7 +91,7 @@ export default function DocumentsPage() {
 
           <div>
             <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
-              <span className="text-brand-green-600">✓</span>
+              <span className="text-brand-green-600">•</span>
               Income Documents
             </h3>
             <ul className="space-y-2 pl-6">
@@ -142,7 +142,7 @@ export default function DocumentsPage() {
 
           <div>
             <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
-              <span className="text-brand-green-600">✓</span>
+              <span className="text-brand-green-600">•</span>
               Bank Information
             </h3>
             <ul className="space-y-2 pl-6">
@@ -163,7 +163,7 @@ export default function DocumentsPage() {
 
           <div>
             <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
-              <span className="text-brand-green-600">✓</span>
+              <span className="text-brand-green-600">•</span>
               Prior Year Return
             </h3>
             <ul className="space-y-2 pl-6">
@@ -298,31 +298,31 @@ export default function DocumentsPage() {
         <h2 className="text-2xl font-bold mb-4">Preparation Tips</h2>
         <div className="space-y-3">
           <div className="flex items-start gap-3">
-            <span className="text-brand-green-600 font-bold">✓</span>
+            <span className="text-brand-green-600 font-bold">•</span>
             <p className="text-black">
               Organize documents by category before your appointment
             </p>
           </div>
           <div className="flex items-start gap-3">
-            <span className="text-brand-green-600 font-bold">✓</span>
+            <span className="text-brand-green-600 font-bold">•</span>
             <p className="text-black">
               Make copies of important documents for your records
             </p>
           </div>
           <div className="flex items-start gap-3">
-            <span className="text-brand-green-600 font-bold">✓</span>
+            <span className="text-brand-green-600 font-bold">•</span>
             <p className="text-black">
               Bring a folder or envelope to keep everything together
             </p>
           </div>
           <div className="flex items-start gap-3">
-            <span className="text-brand-green-600 font-bold">✓</span>
+            <span className="text-brand-green-600 font-bold">•</span>
             <p className="text-black">
               Double-check that all Social Security numbers are correct
             </p>
           </div>
           <div className="flex items-start gap-3">
-            <span className="text-brand-green-600 font-bold">✓</span>
+            <span className="text-brand-green-600 font-bold">•</span>
             <p className="text-black">
               Call ahead if you're missing any documents - we can advise
             </p>

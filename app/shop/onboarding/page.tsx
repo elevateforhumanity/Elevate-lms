@@ -156,7 +156,7 @@ export default async function ShopOnboardingPage() {
                       )}
                       {doc.approved && doc.approved_at && (
                         <div className="text-xs text-brand-green-600 mt-2">
-                          ✓ Approved on{' '}
+                          • Approved on{' '}
                           {new Date(doc.approved_at).toLocaleDateString()}
                         </div>
                       )}

@@ -268,28 +268,28 @@ export default function SupersonicFastCashPage() {
                   <div className="text-slate-400 text-sm mb-2">
                     IRS Certified
                   </div>
-                  <div className="text-4xl font-bold text-brand-green-500">✓</div>
+                  <div className="text-4xl font-bold text-brand-green-500">•</div>
                 </div>
 
                 <div className="border-b border-white/10 pb-6">
                   <div className="text-slate-400 text-sm mb-2">
                     Drake Software
                   </div>
-                  <div className="text-4xl font-bold text-brand-green-500">✓</div>
+                  <div className="text-4xl font-bold text-brand-green-500">•</div>
                 </div>
 
                 <div className="border-b border-white/10 pb-6">
                   <div className="text-slate-400 text-sm mb-2">
                     E-File Available
                   </div>
-                  <div className="text-4xl font-bold text-brand-green-500">✓</div>
+                  <div className="text-4xl font-bold text-brand-green-500">•</div>
                 </div>
 
                 <div>
                   <div className="text-slate-400 text-sm mb-2">
                     Same Day Service
                   </div>
-                  <div className="text-4xl font-bold text-brand-green-500">✓</div>
+                  <div className="text-4xl font-bold text-brand-green-500">•</div>
                 </div>
               </div>
             </div>

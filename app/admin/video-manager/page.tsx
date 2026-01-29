@@ -138,12 +138,12 @@ export default function VideoManagerPage() {
                 Enhanced:
               </h4>
               <ul className="space-y-2 text-sm text-black">
-                <li>✓ Resolution upscaled to 1080p</li>
-                <li>✓ Noise and grain removed</li>
-                <li>✓ Colors enhanced and balanced</li>
-                <li>✓ Contrast improved</li>
-                <li>✓ Shaky footage stabilized</li>
-                <li>✓ Optimized for web streaming</li>
+                <li>• Resolution upscaled to 1080p</li>
+                <li>• Noise and grain removed</li>
+                <li>• Colors enhanced and balanced</li>
+                <li>• Contrast improved</li>
+                <li>• Shaky footage stabilized</li>
+                <li>• Optimized for web streaming</li>
               </ul>
             </div>
             <div className="bg-white rounded-lg shadow p-6">

@@ -548,7 +548,7 @@ export default function NewSocialCampaignPage() {
                   <div className="pt-4 border-t border-gray-200">
                     <div className="text-xs text-black mb-1">Status</div>
                     <div className="text-sm font-medium text-brand-green-600">
-                      ✓ {generatedPosts.length} posts ready
+                      • {generatedPosts.length} posts ready
                     </div>
                   </div>
                 )}

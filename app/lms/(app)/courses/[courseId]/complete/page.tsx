@@ -71,7 +71,7 @@ export default async function CompleteCourse({ params }: { params: Params }) {
       {isAlreadyCompleted ? (
         <div className="mt-4 rounded-xl border border-green-200 bg-green-50 p-6">
           <p className="font-semibold text-green-800">
-            ✓ You completed this course on{' '}
+            • You completed this course on{' '}
             {new Date(progress.completed_at!).toLocaleDateString()}
           </p>
         </div>

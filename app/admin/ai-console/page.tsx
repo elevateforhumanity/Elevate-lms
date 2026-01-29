@@ -62,7 +62,7 @@ export default async function AIConsolePage() {
             <h3 className="text-sm font-medium text-black">
               AI Tutor Active
             </h3>
-            <p className="text-3xl font-bold text-green-600 mt-2">✓</p>
+            <p className="text-3xl font-bold text-green-600 mt-2">•</p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-sm font-medium text-black">OpenAI Status</h3>
@@ -73,15 +73,15 @@ export default async function AIConsolePage() {
           <h2 className="text-xl font-semibold mb-4">AI Features</h2>
           <ul className="space-y-2">
             <li className="flex items-center gap-2">
-              <span className="text-green-600">✓</span>
+              <span className="text-green-600">•</span>
               <span>AI Tutor - Chat, Essay, Study Guide modes</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-green-600">✓</span>
+              <span className="text-green-600">•</span>
               <span>Course Generator - AI-powered course creation</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-green-600">✓</span>
+              <span className="text-green-600">•</span>
               <span>Content Analysis - Automated content review</span>
             </li>
           </ul>

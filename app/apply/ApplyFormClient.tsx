@@ -245,7 +245,7 @@ export default function ApplyFormClient() {
           {status === 'success' ? (
             <div className="text-center py-12">
               <div className="w-16 h-16 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">✓</span>
+                <span className="text-3xl">•</span>
               </div>
               <h2 className="text-2xl font-bold text-black mb-2">
                 Inquiry Received!

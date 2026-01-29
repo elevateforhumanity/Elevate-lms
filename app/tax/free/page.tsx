@@ -66,23 +66,23 @@ export default function FreeTaxPage() {
               <h3 className="text-2xl font-bold mb-4">What's Included</h3>
               <ul className="space-y-3 text-black">
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 font-bold">✓</span>
+                  <span className="text-blue-600 font-bold">•</span>
                   <span>100% free tax preparation</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 font-bold">✓</span>
+                  <span className="text-blue-600 font-bold">•</span>
                   <span>IRS-certified volunteers</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 font-bold">✓</span>
+                  <span className="text-blue-600 font-bold">•</span>
                   <span>Electronic filing (e-file)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 font-bold">✓</span>
+                  <span className="text-blue-600 font-bold">•</span>
                   <span>Direct deposit setup</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-600 font-bold">✓</span>
+                  <span className="text-blue-600 font-bold">•</span>
                   <span>All federal and state forms</span>
                 </li>
               </ul>

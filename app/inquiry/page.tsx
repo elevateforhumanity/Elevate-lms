@@ -104,7 +104,7 @@ function InquiryForm() {
 
         {success && (
           <div className="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-lg">
-            <p className="text-green-800 font-semibold">✓ Application submitted successfully! Redirecting...</p>
+            <p className="text-green-800 font-semibold">• Application submitted successfully! Redirecting...</p>
           </div>
         )}
 

@@ -198,7 +198,7 @@ export function ModulesTable({
                   <td className="px-6 py-4">
                     {module.is_required ? (
                       <span className="text-brand-green-600 font-medium">
-                        ✓ Required
+                        • Required
                       </span>
                     ) : (
                       <span className="text-black">Optional</span>

@@ -188,7 +188,7 @@ export default async function IndustriesPage() {
                           key={program}
                           className="text-sm text-black flex items-center gap-2"
                         >
-                          <span className="text-green-600">✓</span>
+                          <span className="text-green-600">•</span>
                           {program}
                         </li>
                       ))}

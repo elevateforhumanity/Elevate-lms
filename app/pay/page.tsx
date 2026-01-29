@@ -31,7 +31,7 @@ export default function PayPage() {
         {/* Funding Check */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
           <h2 className="text-xl font-bold text-blue-900 mb-2">
-            ✅ Check Free Funding First!
+            • Check Free Funding First!
           </h2>
           <p className="text-black mb-4">
             Most students qualify for 100% FREE training through WIOA, WRG, or JRI.

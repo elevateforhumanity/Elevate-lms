@@ -129,11 +129,11 @@ export default async function AccreditationPage() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
-            <span className="text-sm font-semibold">✓ DOL Approved</span>
+            <span className="text-sm font-semibold">• DOL Approved</span>
             <span className="text-white/50">|</span>
-            <span className="text-sm font-semibold">✓ DWD Approved</span>
+            <span className="text-sm font-semibold">• DWD Approved</span>
             <span className="text-white/50">|</span>
-            <span className="text-sm font-semibold">✓ DOE Approved</span>
+            <span className="text-sm font-semibold">• DOE Approved</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Accreditation & Approvals

@@ -119,25 +119,25 @@ export default function DRTestReportPage() {
                     <td className="px-4 py-3 border-b text-black">Recovery Time (RTO)</td>
                     <td className="px-4 py-3 border-b text-black">24 hours</td>
                     <td className="px-4 py-3 border-b text-black">&lt; 4 hours</td>
-                    <td className="px-4 py-3 border-b text-green-600 font-semibold">✓ PASS</td>
+                    <td className="px-4 py-3 border-b text-green-600 font-semibold">• PASS</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3 border-b text-black">Recovery Point (RPO)</td>
                     <td className="px-4 py-3 border-b text-black">24 hours</td>
                     <td className="px-4 py-3 border-b text-black">&lt; 24 hours</td>
-                    <td className="px-4 py-3 border-b text-green-600 font-semibold">✓ PASS</td>
+                    <td className="px-4 py-3 border-b text-green-600 font-semibold">• PASS</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3 border-b text-black">Data Integrity</td>
                     <td className="px-4 py-3 border-b text-black">100%</td>
                     <td className="px-4 py-3 border-b text-black">100%</td>
-                    <td className="px-4 py-3 border-b text-green-600 font-semibold">✓ PASS</td>
+                    <td className="px-4 py-3 border-b text-green-600 font-semibold">• PASS</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3 border-b text-black">Application Function</td>
                     <td className="px-4 py-3 border-b text-black">Operational</td>
                     <td className="px-4 py-3 border-b text-black">Operational</td>
-                    <td className="px-4 py-3 border-b text-green-600 font-semibold">✓ PASS</td>
+                    <td className="px-4 py-3 border-b text-green-600 font-semibold">• PASS</td>
                   </tr>
                 </tbody>
               </table>

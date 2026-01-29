@@ -112,7 +112,7 @@ export function HSICoursePlayer({
                     onClick={handleCompletion}
                     className="px-4 py-2 bg-brand-green-600 text-white text-sm font-semibold rounded-lg hover:bg-green-700 transition-colors"
                   >
-                    ✓ Mark as Complete
+                    • Mark as Complete
                   </button>
                 </div>
               </div>
@@ -148,7 +148,7 @@ export function HSICoursePlayer({
                     onClick={handleCompletion}
                     className="px-6 py-3 bg-brand-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
                   >
-                    ✓ I've Completed the Course
+                    • I've Completed the Course
                   </button>
                 </div>
               </div>
