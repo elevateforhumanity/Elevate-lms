@@ -139,10 +139,79 @@ test.describe('Security Tests', () => {
   });
 });
 
+test.describe('Tenant Isolation', () => {
+  test('tenant_id immutable for non-admin users', async ({ page, request }) => {
+    // This test verifies the DB-level tenant isolation is enforced.
+    // It requires a logged-in user session. Skip if no test user configured.
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const testUserEmail = process.env.TEST_USER_EMAIL;
+    const testUserPassword = process.env.TEST_USER_PASSWORD;
+
+    if (!supabaseUrl || !supabaseAnonKey || !testUserEmail || !testUserPassword) {
+      console.log('Skipping tenant isolation test - missing env vars');
+      test.skip();
+      return;
+    }
+
+    // Sign in as test user
+    const signInResponse = await request.post(`${supabaseUrl}/auth/v1/token?grant_type=password`, {
+      headers: {
+        'apikey': supabaseAnonKey,
+        'Content-Type': 'application/json',
+      },
+      data: {
+        email: testUserEmail,
+        password: testUserPassword,
+      },
+    });
+
+    if (signInResponse.status() !== 200) {
+      console.log('Could not sign in test user - skipping');
+      test.skip();
+      return;
+    }
+
+    const { access_token, user } = await signInResponse.json();
+
+    // Attempt to update tenant_id (should fail)
+    const updateResponse = await request.patch(
+      `${supabaseUrl}/rest/v1/profiles?id=eq.${user.id}`,
+      {
+        headers: {
+          'apikey': supabaseAnonKey,
+          'Authorization': `Bearer ${access_token}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation',
+        },
+        data: {
+          tenant_id: '00000000-0000-0000-0000-000000000000',
+        },
+      }
+    );
+
+    // Expected: 400/403 error or empty result due to RLS/trigger
+    const status = updateResponse.status();
+    const body = await updateResponse.text();
+
+    console.log('tenant_id update attempt:', { status, body });
+
+    // Pass if blocked by trigger (400 with error message) or RLS (empty/403)
+    const blocked = 
+      status === 400 || 
+      status === 403 || 
+      body.includes('tenant_id cannot be changed') ||
+      body === '[]';
+
+    expect(blocked).toBeTruthy();
+    console.log('✅ tenant_id immutability enforced');
+  });
+});
+
 test.describe('Security Summary', () => {
   test('Generate security report', async () => {
     console.log('✅ Security testing complete');
-    console.log('Tests: 8');
-    console.log('Checks: Headers, HTTPS, SQL injection, XSS, rate limiting, auth, CSRF, data exposure');
+    console.log('Tests: 9');
+    console.log('Checks: Headers, HTTPS, SQL injection, XSS, rate limiting, auth, CSRF, data exposure, tenant isolation');
   });
 });

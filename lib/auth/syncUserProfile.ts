@@ -1,5 +1,11 @@
 // lib/auth/syncUserProfile.ts
 // Sync SSO users into Supabase profiles table
+//
+// SECURITY: tenant_id is immutable after initial insert.
+// The DB enforces this via RLS policy + trigger, but we also
+// enforce it here to prevent accidental field creep.
+// Do NOT add tenant_id to the update payload.
+
 import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
@@ -15,6 +21,16 @@ type SyncUserInput = {
   tenantId?: string;
 };
 
+// SECURITY: Allowlist of fields that can be updated on existing profiles.
+// tenant_id is intentionally excluded - it can only be set on INSERT.
+const ALLOWED_UPDATE_FIELDS = [
+  'full_name',
+  'last_login_at',
+  'last_login_provider',
+  'last_login_provider_account_id',
+  'updated_at',
+] as const;
+
 export async function syncUserProfile(input: SyncUserInput) {
   const { email, name, provider, providerAccountId, tenantId } = input;
 
@@ -28,19 +44,21 @@ export async function syncUserProfile(input: SyncUserInput) {
     .single();
 
   if (existing) {
-    // Update existing user
+    // SECURITY: Strict allowlist update - tenant_id is never updated
+    const updatePayload = {
+      full_name: name,
+      last_login_at: new Date().toISOString(),
+      last_login_provider: provider,
+      last_login_provider_account_id: providerAccountId,
+      updated_at: new Date().toISOString(),
+    };
+
     await supabase
       .from('profiles')
-      .update({
-        full_name: name,
-        last_login_at: new Date().toISOString(),
-        last_login_provider: provider,
-        last_login_provider_account_id: providerAccountId,
-        updated_at: new Date().toISOString()
-      })
+      .update(updatePayload)
       .eq('email', email);
   } else {
-    // Create new user
+    // New user: tenant_id is set ONLY on initial insert
     await supabase.from('profiles').insert({
       email,
       full_name: name,
@@ -49,7 +67,7 @@ export async function syncUserProfile(input: SyncUserInput) {
       last_login_provider: provider,
       last_login_provider_account_id: providerAccountId,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString()
+      updated_at: new Date().toISOString(),
     });
   }
 }
