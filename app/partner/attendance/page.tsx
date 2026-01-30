@@ -11,11 +11,8 @@ export const metadata: Metadata = {
   description: 'Track and manage student attendance for your training sessions.',
 };
 
-const fallbackSessions = [
-  { id: '1', title: 'HVAC Lab Session', date: '2026-01-18', time: '2:00 PM - 5:00 PM', present: 10, absent: 2, total: 12 },
-  { id: '2', title: 'Medical Assistant Theory', date: '2026-01-17', time: '9:00 AM - 12:00 PM', present: 7, absent: 1, total: 8 },
-  { id: '3', title: 'CDL Road Test Prep', date: '2026-01-16', time: '8:00 AM - 4:00 PM', present: 6, absent: 0, total: 6 },
-];
+// Sessions loaded from database - empty when no data
+const fallbackSessions: Array<{ id: string; title: string; date: string; time: string; present: number; absent: number; total: number }> = [];
 
 export default async function PartnerAttendancePage() {
   const supabase = await createClient();

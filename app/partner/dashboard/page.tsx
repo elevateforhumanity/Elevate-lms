@@ -12,11 +12,12 @@ export const metadata: Metadata = {
 };
 
 // Fallback data when Supabase is unavailable
+// Real stats calculated from database - zeros when no data
 const fallbackStats = [
-  { label: 'Active Students', value: '47', change: '+5 this month', icon: Users },
-  { label: 'Programs', value: '3', change: 'Active', icon: BookOpen },
-  { label: 'Completion Rate', value: '89%', change: '+3% vs last quarter', icon: TrendingUp },
-  { label: 'Upcoming Sessions', value: '12', change: 'This week', icon: Calendar },
+  { label: 'Active Students', value: '0', change: '--', icon: Users },
+  { label: 'Programs', value: '0', change: '--', icon: BookOpen },
+  { label: 'Completion Rate', value: '--', change: '--', icon: TrendingUp },
+  { label: 'Upcoming Sessions', value: '0', change: '--', icon: Calendar },
 ];
 
 // Students and schedule loaded from database
