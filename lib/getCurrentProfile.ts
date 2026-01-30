@@ -23,7 +23,7 @@ export async function getCurrentProfile(): Promise<CurrentProfile> {
   const cookieStore = cookies();
 
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://Content.supabase.co',
+    process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'Content-key',
     {
       cookies: {
