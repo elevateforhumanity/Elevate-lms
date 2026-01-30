@@ -78,8 +78,8 @@ export async function processUI3Results(
   }
 
   const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
   const matchResults: UI3MatchResult[] = [];
@@ -172,8 +172,8 @@ export async function scheduleUI3Matching() {
   }
 
   const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
   // Get all students who completed 6 months ago (for 2nd quarter check)
@@ -235,8 +235,8 @@ export async function generateUI3Report() {
   }
 
   const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
   const { data: tracking } = await supabase

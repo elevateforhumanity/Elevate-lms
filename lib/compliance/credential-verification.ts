@@ -111,8 +111,8 @@ export async function verifyCredential(
   }
 
   const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
   // Create verification record
@@ -199,7 +199,7 @@ export async function bulkVerifyCredentials(
         verified: result.verified,
         error: result.error,
       });
-    } catch (error) { /* Error handled silently */ 
+    } catch (error: any) {
       results.push({
         student_id: request.student_id,
         verified: false,
@@ -223,8 +223,8 @@ export async function getPendingVerifications() {
   }
 
   const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
   const { data }: any = await supabase
@@ -252,8 +252,8 @@ export async function markCredentialVerified(
   }
 
   const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
   await supabase
@@ -281,8 +281,8 @@ export async function generateCredentialReport() {
   }
 
   const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
   const { data: all } = await supabase
