@@ -1,20 +1,92 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-export const dynamic = 'force-dynamic';
-
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import Image from 'next/image';
+import { 
+  HelpCircle, Book, MessageCircle, Phone, Mail, 
+  FileText, Video, Search, ChevronRight, ExternalLink
+} from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/lms/help',
   },
-  title: 'Help | Elevate For Humanity',
-  description:
-    'Resources and tools for your success.',
+  title: 'Help Center | LMS | Elevate For Humanity',
+  description: 'Get help with your courses, technical issues, and account questions. Access tutorials, FAQs, and contact support.',
 };
+
+const helpCategories = [
+  {
+    title: 'Getting Started',
+    icon: Book,
+    description: 'New to the platform? Start here.',
+    links: [
+      { label: 'Platform Overview', href: '/lms/help/getting-started' },
+      { label: 'How to Enroll in Courses', href: '/lms/help/enrollment' },
+      { label: 'Navigating Your Dashboard', href: '/lms/help/dashboard' },
+      { label: 'Setting Up Your Profile', href: '/lms/help/profile' },
+    ],
+  },
+  {
+    title: 'Courses & Learning',
+    icon: Video,
+    description: 'Help with course content and progress.',
+    links: [
+      { label: 'Accessing Course Materials', href: '/lms/help/course-access' },
+      { label: 'Completing Assignments', href: '/lms/help/assignments' },
+      { label: 'Taking Quizzes & Exams', href: '/lms/help/quizzes' },
+      { label: 'Tracking Your Progress', href: '/lms/help/progress' },
+    ],
+  },
+  {
+    title: 'Technical Support',
+    icon: HelpCircle,
+    description: 'Troubleshoot common issues.',
+    links: [
+      { label: 'Video Playback Issues', href: '/lms/help/video-issues' },
+      { label: 'Login Problems', href: '/lms/help/login-issues' },
+      { label: 'Browser Compatibility', href: '/lms/help/browsers' },
+      { label: 'Mobile App Help', href: '/lms/help/mobile' },
+    ],
+  },
+  {
+    title: 'Certificates & Credentials',
+    icon: FileText,
+    description: 'Information about certifications.',
+    links: [
+      { label: 'Earning Certificates', href: '/lms/help/certificates' },
+      { label: 'Downloading Your Certificate', href: '/lms/help/download-cert' },
+      { label: 'Verification & Sharing', href: '/lms/help/verification' },
+      { label: 'Continuing Education Credits', href: '/lms/help/ce-credits' },
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: 'How do I reset my password?',
+    answer: 'Click "Forgot Password" on the login page and enter your email. You\'ll receive a reset link within a few minutes.',
+  },
+  {
+    question: 'Can I access courses on my phone?',
+    answer: 'Yes! Our platform is fully mobile-responsive. You can access all courses through your mobile browser or download our app.',
+  },
+  {
+    question: 'How long do I have access to a course?',
+    answer: 'Most courses provide lifetime access once enrolled. Some certification courses have specific completion deadlines noted in the course description.',
+  },
+  {
+    question: 'What if I fail a quiz?',
+    answer: 'Don\'t worry! Most quizzes allow multiple attempts. Review the material and try again. Your highest score is recorded.',
+  },
+  {
+    question: 'How do I contact my instructor?',
+    answer: 'Use the "Message Instructor" button on your course page, or post in the course discussion forum.',
+  },
+];
 
 export default async function HelpPage() {
   const supabase = await createClient();
@@ -22,9 +94,6 @@ export default async function HelpPage() {
   if (!supabase) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <Breadcrumbs items={[{ label: "LMS", href: "/lms/dashboard" }, { label: "Help" }]} />
-        </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
           <p className="text-gray-600">Please try again later.</p>
@@ -32,269 +101,161 @@ export default async function HelpPage() {
       </div>
     );
   }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+
+  const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
-    redirect('/login');
+    redirect('/login?redirect=/lms/help');
   }
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
-
-  // Fetch student's courses
-  const { data: enrollments } = await supabase
-    .from('enrollments')
-    .select(
-      `
-      *,
-      courses (
-        id,
-        title,
-        description,
-        thumbnail_url
-      )
-    `
-    )
-    .eq('user_id', user.id)
-    .order('created_at', { ascending: false });
-
-  const { count: activeCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'active');
-
-  const { count: completedCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'completed');
-
-  const { data: recentProgress } = await supabase
-    .from('student_progress')
-    .select(
-      `
-      *,
-      courses (title)
-    `
-    )
-    .eq('student_id', user.id)
-    .order('updated_at', { ascending: false })
-    .limit(5);
 
   return (
     <div className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <Breadcrumbs items={[{ label: "LMS", href: "/lms/dashboard" }, { label: "Help" }]} />
+      {/* Breadcrumbs */}
+      <div className="bg-white border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[
+            { label: 'LMS', href: '/lms/dashboard' },
+            { label: 'Help Center' }
+          ]} />
         </div>
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/success-new/success-2.jpg"
-          alt="Help"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+      </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Help</h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access your dashboard and
-            development.
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-blue-600 to-blue-700 text-white py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            How Can We Help?
+          </h1>
+          <p className="text-xl text-blue-100 mb-8">
+            Find answers, tutorials, and support for your learning journey.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/support"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/lms"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
+          
+          {/* Search */}
+          <div className="max-w-xl mx-auto relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search for help articles..."
+              className="w-full pl-12 pr-4 py-4 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Contact */}
+      <section className="py-8 bg-white border-b">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-6">
+            <a href="tel:+13173143757" className="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
+              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                <Phone className="w-6 h-6 text-green-600" />
+              </div>
+              <div>
+                <div className="font-semibold text-gray-900">Call Us</div>
+                <div className="text-gray-600">(317) 314-3757</div>
+              </div>
+            </a>
+            <a href="mailto:support@elevateforhumanity.org" className="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                <Mail className="w-6 h-6 text-blue-600" />
+              </div>
+              <div>
+                <div className="font-semibold text-gray-900">Email Support</div>
+                <div className="text-gray-600">support@elevateforhumanity.org</div>
+              </div>
+            </a>
+            <Link href="/lms/messages/new" className="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                <MessageCircle className="w-6 h-6 text-purple-600" />
+              </div>
+              <div>
+                <div className="font-semibold text-gray-900">Send Message</div>
+                <div className="text-gray-600">Contact your instructor</div>
+              </div>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Content Section */}
+      {/* Help Categories */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">Help</h2>
-                <p className="text-black mb-6">
-                  Access your dashboard and
-                  development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Browse Help Topics</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {helpCategories.map((category, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 shadow-sm border">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <category.icon className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 text-lg">{category.title}</h3>
+                    <p className="text-gray-600 text-sm">{category.description}</p>
+                  </div>
+                </div>
+                <ul className="space-y-2">
+                  {category.links.map((link, i) => (
+                    <li key={i}>
+                      <Link 
+                        href={link.href}
+                        className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-50 text-gray-700 hover:text-blue-600 transition-colors"
+                      >
+                        <span>{link.label}</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/success-new/success-3.jpg"
-                  alt="Help"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Need Help?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Contact support if you have questions about the learning
-              platform or need assistance.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/support"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/lms"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
+      {/* FAQs */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <details key={index} className="group bg-gray-50 rounded-xl">
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                  <span className="font-semibold text-gray-900">{faq.question}</span>
+                  <ChevronRight className="w-5 h-5 text-gray-400 group-open:rotate-90 transition-transform" />
+                </summary>
+                <div className="px-6 pb-6 text-gray-600">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Still Need Help */}
+      <section className="py-16 bg-slate-900">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            Still Need Help?
+          </h2>
+          <p className="text-gray-300 mb-8">
+            Our support team is available Monday-Friday, 9am-5pm EST.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
+            >
+              Contact Support
+            </Link>
+            <Link
+              href="/lms/dashboard"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
+            >
+              Back to Dashboard
+            </Link>
           </div>
         </div>
       </section>
