@@ -19,16 +19,6 @@ const teamMembers = [
     image: '/images/team/elizabeth-greene.jpg',
     bio: `Elizabeth Greene is a transformational leader, workforce development pioneer, and social entrepreneur who has dedicated her career to creating pathways out of poverty and into prosperity. As Founder and Chief Executive Officer of Elevate for Humanity Technical & Career Institute, she has built one of Indiana's most innovative and compliant workforce development organizations—serving justice-involved individuals, low-income families, and barrier-facing populations with dignity, excellence, and measurable results.
 
-Elizabeth is also the owner of several businesses that directly correlate with and support the Elevate for Humanity platform:
-
-• **Textures Institute of Cosmetology** – A licensed cosmetology school providing state board-approved training in barbering, cosmetology, esthetics, and nail technology. This school serves as the beauty industry training arm of Elevate for Humanity, allowing students to earn professional licenses while participating in apprenticeship programs.
-
-• **Greene Staffing Solutions** – A staffing agency that connects Elevate graduates with employment opportunities, creating a direct pipeline from training to career placement.
-
-• **Greene Property Management** – Provides transitional and supportive housing options for program participants, addressing one of the most significant barriers to workforce success.
-
-These interconnected businesses create a holistic ecosystem that addresses training, employment, and housing—the three pillars essential for sustainable economic mobility.
-
 **Credentials & Approvals:**
 
 • **U.S. Department of Labor (DOL)** – Registered Apprenticeship Sponsor (RAPIDS ID: 2025-IN-132301)
@@ -53,22 +43,19 @@ Her impact is measured not just in credentials earned or jobs secured, but in li
   },
   {
     name: 'Jozanna George',
-    title: 'Director of Enrollment & Beauty Industry Programs | Site Coordinator, Textures Institute of Cosmetology',
+    title: 'Director of Enrollment & Beauty Industry Programs',
     image: '/images/jozanna-george.jpg',
-    bio: `Jozanna George is a multi-licensed beauty industry professional and educator who leads enrollment operations and oversees all beauty industry programs at Elevate for Humanity. She also serves as the Site Coordinator for the nail technology program at Textures Institute of Cosmetology.
+    bio: `Jozanna George is a multi-licensed beauty industry professional and educator who leads enrollment operations and oversees all beauty industry programs at Elevate for Humanity.
 
 **Professional Licenses & Credentials:**
 
 • **Licensed Nail Technician** – Indiana State Board of Cosmetology & Barber Examiners
 • **Licensed Nail Instructor** – Certified to train and supervise nail technology students
 • **Licensed Esthetician** – Certified in skincare, facials, and esthetic services
-• **Site Coordinator** – Textures Institute of Cosmetology, Beauty Industry Division
 
 Jozanna brings hands-on industry experience combined with a passion for teaching and mentorship. Her role encompasses student recruitment, enrollment processing, program coordination, and ensuring students successfully complete their training and obtain state licensure.
 
-As Site Coordinator for the beauty industry programs, Jozanna oversees daily operations, student progress tracking, state board exam preparation, and compliance with Indiana licensing requirements. She works closely with students to ensure they develop the technical skills and professional habits needed for successful careers in the beauty industry.
-
-Her dedication to student success and her deep knowledge of cosmetology licensing requirements make her an invaluable asset to both Elevate for Humanity and Textures Institute of Cosmetology.`,
+Her dedication to student success and her deep knowledge of cosmetology licensing requirements make her an invaluable asset to Elevate for Humanity.`,
     email: 'elevate4humanityedu@gmail.com',
   },
   {
@@ -164,9 +151,9 @@ export default function TeamPage() {
       </section>
 
       {/* Team Members */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="space-y-20">
+          <div className="space-y-12">
             {teamMembers.map((member, index) => (
               <div
                 key={member.name}
@@ -176,13 +163,13 @@ export default function TeamPage() {
               >
                 {/* Photo */}
                 <div className="lg:w-1/3">
-                  <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl bg-slate-200">
+                  <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl bg-slate-200">
                     <Image
                       priority={index < 2}
                       src={member.image}
                       alt={member.name}
                       fill
-                      className="object-cover"
+                      className="object-cover object-top"
                       quality={100}
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
