@@ -45,7 +45,7 @@ export const mainNavigation: NavItem[] = [
           { label: 'Home Health Aide', href: '/programs/home-health-aide' },
           { label: 'Direct Support Professional', href: '/programs/direct-support-professional' },
           { label: 'CDL', href: '/programs/cdl' },
-          { label: 'CPR Certification', href: '/programs/cpr-certification' },
+          { label: 'CPR & First Aid', href: '/programs/cpr-first-aid-hsi' },
           { label: 'Peer Recovery Coach', href: '/programs/peer-recovery-coach' },
         ]
       },

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Settings } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import PageAvatar from '@/components/PageAvatar';
 
 export const dynamic = 'force-dynamic';
 
@@ -83,72 +84,50 @@ export default async function HsiPage() {
         ]}
       />
       {/* Hero Section */}
-      <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
+      <section className="relative h-[500px] md:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
           src="/images/success-new/success-18.jpg"
-          alt="Hsi"
+          alt="HSI Safety Training"
           fill
           className="object-cover"
           quality={100}
           priority
           sizes="100vw"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+            <span className="text-sm font-semibold">Powered by HSI</span>
+          </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-2xl">
-            Hsi
+            HSI Safety Training Courses
           </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100 drop-shadow-lg">
-            Transform your career with free training and industry certifications
+          <p className="text-base md:text-lg mb-8 text-gray-100 drop-shadow-lg max-w-2xl mx-auto">
+            Access 1,200+ OSHA-compliant safety training courses. CPR, First Aid, and workplace safety certifications - 100% free through WIOA funding.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/programs/cpr-first-aid-hsi"
               className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-2xl"
             >
-              Get Started Free
+              Get CPR Certified
             </Link>
             <Link
-              href="/programs"
+              href="/courses/catalog"
               className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-2xl"
             >
-              View Programs
+              Browse All Courses
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Hero Section */}
-      <section className="   text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <span className="text-sm font-semibold">Powered by HSI</span>
-            </div>
-            <h1 className="text-5xl font-bold mb-6 text-3xl md:text-4xl lg:text-5xl">
-              Safety Training Courses
-            </h1>
-            <p className="text-base md:text-lg text-red-100 mb-8">
-              Access 1,200+ OSHA-compliant safety training courses. All courses
-              are 100% free through WIOA funding.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-brand-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors"
-              >
-                Apply for Free Training
-              </Link>
-              <Link
-                href="/courses/catalog"
-                className="bg-red-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-orange-600 border-2 border-white transition-colors"
-              >
-                Browse All Courses
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/healthcare-guide.mp4" 
+        title="HSI Safety Training Guide" 
+      />
 
       {/* Stats Section */}
       <section className="py-12 bg-white border-b">
@@ -193,7 +172,7 @@ export default async function HsiPage() {
               {courseCategories.map((category) => (
                 <Link
                   key={category.name}
-                  href={`/courses/hsi/${category.name.toLowerCase().replace(/\s+/g, '-')}/enroll`}
+                  href="/programs/cpr-first-aid-hsi"
                   className="bg-white rounded-lg shadow-sm border hover:shadow-lg transition-shadow p-6 group"
                 >
                   <div className="text-4xl mb-4 text-2xl md:text-3xl lg:text-4xl">

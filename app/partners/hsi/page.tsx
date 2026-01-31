@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import PageAvatar from '@/components/PageAvatar';
 
 import { Metadata } from 'next';
 import Image from 'next/image';
@@ -66,6 +67,12 @@ export default function HSIPage() {
           </div>
         </div>
       </section>
+
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/healthcare-guide.mp4" 
+        title="HSI Partner Guide" 
+      />
 
       {/* Features */}
       <section className="py-16 bg-slate-50">

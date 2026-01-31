@@ -374,7 +374,7 @@ export const siteMapSections: SiteMapSection[] = [
       { label: "Cdl", href: "/programs/cdl" },
       { label: "Childcare", href: "/programs/childcare" },
       { label: "Cna", href: "/programs/cna" },
-      { label: "Cpr Certification", href: "/programs/cpr-certification" },
+      { label: "CPR & First Aid (HSI)", href: "/programs/cpr-first-aid-hsi" },
       { label: "Dental Assistant", href: "/programs/dental-assistant" },
       { label: "Ekg Technician", href: "/programs/ekg-technician" },
       { label: "Emergency Health Safety Tech", href: "/programs/emergency-health-safety-tech" },
