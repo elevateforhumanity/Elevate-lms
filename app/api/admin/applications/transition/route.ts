@@ -101,14 +101,14 @@ export async function POST(request: NextRequest) {
     const { error: eventError } = await supabase
       .from("application_state_events")
       .insert({
+        application_type,
         application_id,
         from_state: oldState,
         to_state: new_state,
         actor_id: user.id,
-        actor_role: profile.role,
         reason: reason || `State changed from ${oldState} to ${new_state}`,
         metadata: {
-          application_type,
+          actor_role: profile.role,
           timestamp: new Date().toISOString(),
         },
       });
