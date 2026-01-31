@@ -40,8 +40,8 @@ export async function POST(req: Request) {
 
     // Parse name into first and last
     const nameParts = body.name.trim().split(' ');
-    const firstName = nameParts[0] || '';
-    const lastName = nameParts.slice(1).join(' ') || '';
+    const firstName = nameParts[0] || 'Unknown';
+    const lastName = nameParts.slice(1).join(' ') || 'Inquiry';
 
     const programId = body.program || 'general-inquiry';
 
