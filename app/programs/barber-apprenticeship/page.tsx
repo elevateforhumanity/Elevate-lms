@@ -102,19 +102,13 @@ export default async function BarberApprenticeshipPage() {
               href="/forms/barber-apprenticeship-inquiry"
               className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-gray-900 hover:bg-gray-100 transition-all shadow-xl"
             >
-              General Inquiry
+              Talk to Us First
             </Link>
             <Link
               href="/enroll/barber-apprenticeship"
               className="inline-flex items-center justify-center rounded-lg bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-purple-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
-              Enroll in Student Portal
-            </Link>
-            <Link
-              href="#pricing"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-bold text-white hover:bg-white/20 transition-all shadow-xl"
-            >
-              View Tuition & Fees
+              Enroll & Start Training
             </Link>
           </div>
         </div>
@@ -192,55 +186,31 @@ export default async function BarberApprenticeshipPage() {
               </p>
             </div>
 
-            {/* Payment Options */}
+            {/* Simplified Payment Info */}
             <div className="space-y-4">
-              <h3 className="text-lg font-bold text-black">Payment Options (after enrollment approval)</h3>
-              
-              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
-                <div>
-                  <div className="font-bold text-lg">Pay in Full</div>
-                  <div className="text-sm text-gray-500">One-time payment</div>
-                </div>
-                <span className="text-2xl font-bold">{BARBER_PROGRAM.tuitionFormatted}</span>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <p className="text-green-800 font-medium text-center">
+                  Flexible payment plans available — choose what works for you during enrollment.
+                </p>
               </div>
 
-              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
-                <div>
-                  <div className="font-bold text-lg">4-Month Plan</div>
-                  <div className="text-sm text-gray-500">4 payments of $1,245</div>
-                </div>
-                <span className="text-xl font-bold">$1,245/mo</span>
-              </div>
-
-              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
-                <div>
-                  <div className="font-bold text-lg">6-Month Plan</div>
-                  <div className="text-sm text-gray-500">6 payments of $830</div>
-                </div>
-                <span className="text-xl font-bold">$830/mo</span>
-              </div>
-
-              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
-                <div>
-                  <div className="font-bold text-lg">12-Month Plan</div>
-                  <div className="text-sm text-gray-500">12 payments of $415</div>
-                </div>
-                <span className="text-xl font-bold">$415/mo</span>
-              </div>
-
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                 <p className="text-blue-800 text-sm">
-                  <strong>How to Enroll:</strong> Submit an application and speak with an enrollment advisor. 
-                  Payment is collected after your enrollment is approved and you've signed your enrollment agreement.
+                  <strong>How to Enroll:</strong> Create an account, speak with an enrollment advisor, and choose your payment option. 
+                  Payment is collected after your enrollment is approved.
                 </p>
               </div>
 
               <Link
-                href="/forms/barber-apprenticeship-inquiry"
+                href="/enroll/barber-apprenticeship"
                 className="w-full flex items-center justify-center px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-all text-lg"
               >
-                Apply Now
+                Enroll & Choose Payment Plan
               </Link>
+              
+              <p className="text-center text-gray-500 text-sm">
+                Have questions first? <Link href="/forms/barber-apprenticeship-inquiry" className="text-purple-600 underline">Talk to us</Link>
+              </p>
             </div>
           </div>
         </div>
@@ -445,13 +415,13 @@ export default async function BarberApprenticeshipPage() {
               href="/forms/barber-apprenticeship-inquiry"
               className="inline-flex items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all"
             >
-              General Inquiry
+              Still Have Questions? Talk to Us
             </Link>
             <Link
               href="/enroll/barber-apprenticeship"
               className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-purple-600 hover:bg-purple-50 transition-all shadow-xl"
             >
-              Enroll in Student Portal
+              Enroll & Start Training
             </Link>
           </div>
         </div>

@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { User, GraduationCap, Briefcase, FileText, CheckCircle, ChevronRight, ChevronLeft } from 'lucide-react';
+import { User, GraduationCap, Briefcase, FileText, CheckCircle, ChevronRight, ChevronLeft, AlertCircle } from 'lucide-react';
 
 interface Program {
   id: string;
@@ -27,66 +27,270 @@ interface Props {
   userId?: string;
 }
 
+// Map UI steps to server state machine states
+const STEP_TO_STATE: Record<number, string> = {
+  1: 'started',
+  2: 'eligibility_complete',
+  3: 'documents_complete',
+  4: 'review_ready',
+  5: 'review_ready', // Review step doesn't advance state, just validates
+};
+
 const steps = [
-  { id: 1, name: 'Personal Info', icon: User },
-  { id: 2, name: 'Education', icon: GraduationCap },
-  { id: 3, name: 'Program', icon: Briefcase },
-  { id: 4, name: 'Documents', icon: FileText },
-  { id: 5, name: 'Review', icon: CheckCircle },
+  { id: 1, name: 'Personal Info', icon: User, state: 'started' },
+  { id: 2, name: 'Education', icon: GraduationCap, state: 'eligibility_complete' },
+  { id: 3, name: 'Program', icon: Briefcase, state: 'documents_complete' },
+  { id: 4, name: 'Documents', icon: FileText, state: 'review_ready' },
+  { id: 5, name: 'Review', icon: CheckCircle, state: 'review_ready' },
 ];
+
+const STORAGE_KEY = 'elevate_application_draft';
+const SAVE_DEBOUNCE_MS = 1000;
+
+interface SavedDraft {
+  formData: typeof defaultFormData;
+  currentStep: number;
+  applicationId: string | null;
+  savedAt: string;
+}
+
+const defaultFormData = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  dateOfBirth: '',
+  address: '',
+  city: '',
+  state: 'IN',
+  zipCode: '',
+  highSchool: '',
+  graduationYear: '',
+  gpa: '',
+  college: '',
+  major: '',
+  programId: '',
+  fundingType: '',
+  employed: '',
+  employer: '',
+  yearsExperience: '',
+  agreeTerms: false,
+};
 
 export default function ApplicationForm({ programs, fundingTypes, existingProfile, userId }: Props) {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showRecoveryBanner, setShowRecoveryBanner] = useState(false);
+  const [applicationId, setApplicationId] = useState<string | null>(null);
+  const [serverState, setServerState] = useState<string>('started');
+  const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const initRef = useRef(false);
   
-  const [formData, setFormData] = useState({
-    firstName: existingProfile?.first_name || '',
-    lastName: existingProfile?.last_name || '',
-    email: existingProfile?.email || '',
-    phone: existingProfile?.phone || '',
-    dateOfBirth: '',
-    address: '',
-    city: '',
-    state: 'IN',
-    zipCode: '',
-    highSchool: '',
-    graduationYear: '',
-    gpa: '',
-    college: '',
-    major: '',
-    programId: '',
-    fundingType: '',
-    employed: '',
-    employer: '',
-    yearsExperience: '',
-    agreeTerms: false,
+  const [formData, setFormData] = useState(() => {
+    return {
+      ...defaultFormData,
+      firstName: existingProfile?.first_name || '',
+      lastName: existingProfile?.last_name || '',
+      email: existingProfile?.email || '',
+      phone: existingProfile?.phone || '',
+    };
   });
 
-  const updateField = (field: string, value: string | boolean) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
+  // Initialize application on mount via RPC
+  useEffect(() => {
+    if (initRef.current) return;
+    initRef.current = true;
 
-  const selectedProgram = programs.find(p => p.id === formData.programId);
+    const initApplication = async () => {
+      // Check for saved draft first
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const draft: SavedDraft = JSON.parse(saved);
+          const savedDate = new Date(draft.savedAt);
+          const hoursSinceSave = (Date.now() - savedDate.getTime()) / (1000 * 60 * 60);
+          
+          if (hoursSinceSave < 24 && draft.formData && draft.applicationId) {
+            setShowRecoveryBanner(true);
+            return; // Wait for user to decide
+          }
+        }
+      } catch {
+        // Ignore localStorage errors
+      }
 
-  const handleSubmit = async () => {
-    if (!formData.agreeTerms) {
-      setError('You must agree to the terms and conditions');
+      // Start new application via RPC
+      await startNewApplication();
+    };
+
+    initApplication();
+  }, []);
+
+  const startNewApplication = async () => {
+    const supabase = createClient();
+    
+    const { data, error: rpcError } = await supabase.rpc('start_application', {
+      p_user_id: userId || null,
+      p_first_name: formData.firstName || null,
+      p_last_name: formData.lastName || null,
+      p_email: formData.email || null,
+      p_phone: formData.phone || null,
+    });
+
+    if (rpcError) {
+      console.error('Failed to start application:', rpcError);
+      setError('Failed to initialize application. Please refresh and try again.');
       return;
     }
 
-    setIsSubmitting(true);
+    if (data?.success) {
+      setApplicationId(data.application_id);
+      setServerState('started');
+      if (data.resumed) {
+        // Fetch existing application data
+        await loadExistingApplication(data.application_id);
+      }
+    }
+  };
+
+  const loadExistingApplication = async (appId: string) => {
+    const supabase = createClient();
+    const { data } = await supabase
+      .from('career_applications')
+      .select('*')
+      .eq('id', appId)
+      .single();
+
+    if (data) {
+      setFormData({
+        firstName: data.first_name || '',
+        lastName: data.last_name || '',
+        email: data.email || '',
+        phone: data.phone || '',
+        dateOfBirth: data.date_of_birth || '',
+        address: data.address || '',
+        city: data.city || '',
+        state: data.state || 'IN',
+        zipCode: data.zip_code || '',
+        highSchool: data.high_school || '',
+        graduationYear: data.graduation_year || '',
+        gpa: data.gpa || '',
+        college: data.college || '',
+        major: data.major || '',
+        programId: data.program_id || '',
+        fundingType: data.funding_type || '',
+        employed: data.employment_status || '',
+        employer: data.current_employer || '',
+        yearsExperience: data.years_experience || '',
+        agreeTerms: false,
+      });
+      setServerState(data.application_state || 'started');
+      // Set step based on server state
+      const stateToStep: Record<string, number> = {
+        'started': 1,
+        'eligibility_complete': 2,
+        'documents_complete': 3,
+        'review_ready': 4,
+      };
+      setCurrentStep(stateToStep[data.application_state] || 1);
+    }
+  };
+
+  // Save draft to localStorage with debounce
+  const saveDraft = useCallback((data: typeof formData, step: number, appId: string | null) => {
+    if (saveTimeoutRef.current) {
+      clearTimeout(saveTimeoutRef.current);
+    }
+    
+    saveTimeoutRef.current = setTimeout(() => {
+      try {
+        const draft: SavedDraft = {
+          formData: data,
+          currentStep: step,
+          applicationId: appId,
+          savedAt: new Date().toISOString(),
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
+      } catch {
+        // Ignore localStorage errors
+      }
+    }, SAVE_DEBOUNCE_MS);
+  }, []);
+
+  const clearDraft = useCallback(() => {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // Ignore
+    }
+  }, []);
+
+  const recoverDraft = useCallback(async () => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const draft: SavedDraft = JSON.parse(saved);
+        if (draft.formData && draft.applicationId) {
+          setApplicationId(draft.applicationId);
+          await loadExistingApplication(draft.applicationId);
+        }
+      }
+    } catch {
+      // Ignore
+    }
+    setShowRecoveryBanner(false);
+  }, []);
+
+  const dismissRecovery = useCallback(async () => {
+    clearDraft();
+    setShowRecoveryBanner(false);
+    await startNewApplication();
+  }, [clearDraft]);
+
+  const updateField = (field: string, value: string | boolean) => {
+    setFormData(prev => {
+      const updated = { ...prev, [field]: value };
+      saveDraft(updated, currentStep, applicationId);
+      return updated;
+    });
+  };
+
+  // Save step changes
+  useEffect(() => {
+    if (applicationId) {
+      saveDraft(formData, currentStep, applicationId);
+    }
+  }, [currentStep, formData, applicationId, saveDraft]);
+
+  const selectedProgram = programs.find(p => p.id === formData.programId);
+
+  // Advance to next step via RPC
+  const handleNextStep = async () => {
+    if (!applicationId) {
+      setError('Application not initialized. Please refresh.');
+      return;
+    }
+
+    if (!canProceed()) {
+      setError('Please complete all required fields before continuing.');
+      return;
+    }
+
+    setIsTransitioning(true);
     setError(null);
 
-    try {
-      const supabase = createClient();
+    const supabase = createClient();
+    const nextState = STEP_TO_STATE[currentStep + 1];
 
-      // Create application record
-      const { data: application, error: appError } = await supabase
-        .from('career_applications')
-        .insert({
-          user_id: userId || null,
+    // Only advance state if moving to a new state
+    if (nextState && nextState !== serverState) {
+      const { data, error: rpcError } = await supabase.rpc('advance_application_state', {
+        p_application_id: applicationId,
+        p_next_state: nextState,
+        p_data: {
           first_name: formData.firstName,
           last_name: formData.lastName,
           email: formData.email,
@@ -106,19 +310,101 @@ export default function ApplicationForm({ programs, fundingTypes, existingProfil
           employment_status: formData.employed,
           current_employer: formData.employer,
           years_experience: formData.yearsExperience,
-          status: 'submitted',
-        })
-        .select()
-        .single();
+        },
+      });
 
-      if (appError) throw appError;
+      if (rpcError) {
+        setError('Failed to save progress. Please try again.');
+        setIsTransitioning(false);
+        return;
+      }
 
-      router.push('/apply/success?id=' + application.id);
-    } catch (err: any) {
-      setError(err.message || 'Failed to submit application');
-    } finally {
-      setIsSubmitting(false);
+      if (!data?.success) {
+        setError(data?.error || 'Invalid state transition');
+        setIsTransitioning(false);
+        return;
+      }
+
+      setServerState(nextState);
     }
+
+    setCurrentStep(prev => Math.min(prev + 1, 5));
+    setIsTransitioning(false);
+  };
+
+  // Submit application via RPC
+  const handleSubmit = async () => {
+    if (!applicationId) {
+      setError('Application not initialized. Please refresh.');
+      return;
+    }
+
+    if (!formData.agreeTerms) {
+      setError('You must agree to the terms and conditions');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError(null);
+
+    const supabase = createClient();
+
+    // First ensure we're in review_ready state
+    if (serverState !== 'review_ready') {
+      const { data: advanceData, error: advanceError } = await supabase.rpc('advance_application_state', {
+        p_application_id: applicationId,
+        p_next_state: 'review_ready',
+        p_data: {
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          date_of_birth: formData.dateOfBirth || null,
+          address: formData.address,
+          city: formData.city,
+          state: formData.state,
+          zip_code: formData.zipCode,
+          high_school: formData.highSchool,
+          graduation_year: formData.graduationYear,
+          gpa: formData.gpa,
+          college: formData.college,
+          major: formData.major,
+          program_id: formData.programId || null,
+          funding_type: formData.fundingType || null,
+          employment_status: formData.employed,
+          current_employer: formData.employer,
+          years_experience: formData.yearsExperience,
+        },
+      });
+
+      if (advanceError || !advanceData?.success) {
+        setError('Please complete all steps before submitting.');
+        setIsSubmitting(false);
+        return;
+      }
+    }
+
+    // Now submit
+    const { data, error: submitError } = await supabase.rpc('submit_application', {
+      p_application_id: applicationId,
+      p_agree_terms: true,
+    });
+
+    if (submitError) {
+      setError('Submission failed. Please try again.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!data?.success) {
+      setError(data?.error || 'Submission failed. Please complete all required fields.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Clear draft on successful submission
+    clearDraft();
+    router.push('/apply/success?id=' + applicationId);
   };
 
   const canProceed = () => {
@@ -157,6 +443,28 @@ export default function ApplicationForm({ programs, fundingTypes, existingProfil
           </div>
         ))}
       </div>
+
+      {showRecoveryBanner && (
+        <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg flex items-center justify-between">
+          <div className="text-blue-800">
+            <span className="font-medium">Draft found!</span> You have an unsaved application. Would you like to continue where you left off?
+          </div>
+          <div className="flex gap-2 ml-4">
+            <button
+              onClick={recoverDraft}
+              className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
+            >
+              Restore
+            </button>
+            <button
+              onClick={dismissRecovery}
+              className="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300"
+            >
+              Start Fresh
+            </button>
+          </div>
+        </div>
+      )}
 
       {error && (
         <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
@@ -359,18 +667,27 @@ export default function ApplicationForm({ programs, fundingTypes, existingProfil
         )}
 
         <div className="flex justify-between mt-6 pt-4 border-t">
-          <button onClick={() => setCurrentStep(s => Math.max(1, s - 1))} disabled={currentStep === 1}
-            className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 disabled:opacity-50">
+          <button 
+            onClick={() => setCurrentStep(s => Math.max(1, s - 1))} 
+            disabled={currentStep === 1 || isTransitioning}
+            className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 disabled:opacity-50"
+          >
             <ChevronLeft className="w-4 h-4" /> Previous
           </button>
           {currentStep < 5 ? (
-            <button onClick={() => setCurrentStep(s => s + 1)} disabled={!canProceed()}
-              className="flex items-center gap-2 px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-50">
-              Next <ChevronRight className="w-4 h-4" />
+            <button 
+              onClick={handleNextStep} 
+              disabled={!canProceed() || isTransitioning || !applicationId}
+              className="flex items-center gap-2 px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-50"
+            >
+              {isTransitioning ? 'Saving...' : 'Next'} <ChevronRight className="w-4 h-4" />
             </button>
           ) : (
-            <button onClick={handleSubmit} disabled={isSubmitting || !formData.agreeTerms}
-              className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:opacity-50">
+            <button 
+              onClick={handleSubmit} 
+              disabled={isSubmitting || !formData.agreeTerms || !applicationId}
+              className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:opacity-50"
+            >
               {isSubmitting ? 'Submitting...' : 'Submit Application'}
             </button>
           )}
