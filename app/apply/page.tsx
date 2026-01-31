@@ -19,13 +19,14 @@ const programRedirects: Record<string, string> = {
   'medical-assistant': '/forms/medical-assistant-inquiry',
 };
 
-export default function ApplyPage({
+export default async function ApplyPage({
   searchParams,
 }: {
-  searchParams: { program?: string };
+  searchParams: Promise<{ program?: string }>;
 }) {
+  const params = await searchParams;
   // Redirect program-specific apply links to modern forms
-  const program = (searchParams?.program || '').toLowerCase();
+  const program = (params?.program || '').toLowerCase();
   if (program && programRedirects[program]) {
     redirect(programRedirects[program]);
   }
