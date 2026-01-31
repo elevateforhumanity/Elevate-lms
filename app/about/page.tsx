@@ -47,7 +47,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/elizabeth-greene-founder.jpg"
+                src="/images/team/elizabeth-greene.jpg"
                 alt="Elizabeth Greene, Founder & CEO"
                 fill
                 className="object-cover object-top"
