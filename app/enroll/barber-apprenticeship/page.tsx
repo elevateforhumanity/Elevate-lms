@@ -2,24 +2,24 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const ENROLLMENT_PATH = '/lms/student/enroll/barber-apprenticeship';
+const LOGIN_URL = `/login?next=${encodeURIComponent(ENROLLMENT_PATH)}`;
 
 export default async function BarberEnrollEntryPage() {
   const supabase = await createClient();
   
   if (!supabase) {
-    // Fallback: send to login with return URL
-    redirect(`/login?next=${encodeURIComponent(ENROLLMENT_PATH)}`);
+    redirect(LOGIN_URL);
   }
 
   const { data: { user } } = await supabase.auth.getUser();
 
   if (user) {
-    // Logged in: go directly to enrollment
     redirect(ENROLLMENT_PATH);
-  } else {
-    // Not logged in: go to login with return URL
-    redirect(`/login?next=${encodeURIComponent(ENROLLMENT_PATH)}`);
   }
+  
+  // Default: not logged in, go to login
+  redirect(LOGIN_URL);
 }
