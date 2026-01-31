@@ -4,6 +4,7 @@ export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect, notFound } from 'next/navigation';
 import Link from 'next/link';
+import TransitionButtons from './TransitionButtons';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -189,6 +190,16 @@ export default async function ApplicationDetailPage({
 
           {/* Sidebar */}
           <div className="space-y-6">
+            {/* Actions Card */}
+            <div className="bg-white rounded-lg shadow-sm border p-6">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">Actions</h2>
+              <TransitionButtons
+                applicationType={type}
+                applicationId={id}
+                currentState={application.state}
+              />
+            </div>
+
             {/* Status Card */}
             <div className="bg-white rounded-lg shadow-sm border p-6">
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Application Status</h2>
