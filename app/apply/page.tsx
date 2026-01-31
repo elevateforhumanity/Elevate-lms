@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { MessageSquare, GraduationCap, Phone, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
