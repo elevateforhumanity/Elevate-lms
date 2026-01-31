@@ -163,47 +163,27 @@ export async function POST(request: NextRequest) {
           .eq('stripe_subscription_id', subscriptionId)
           .single();
 
-        // Generate login credentials for the student
-        let generatedPassword = '';
-        let loginUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/login`;
-        let dashboardUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/apprentice`;
+        // Generate magic link for dashboard access
+        let magicLink = `${process.env.NEXT_PUBLIC_SITE_URL}/apprentice`;
         
-        // Check if user already exists, if not create with generated password
         if (adminClient && customerEmail) {
           try {
-            // Generate a secure temporary password
-            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
-            generatedPassword = Array.from({ length: 12 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-            
-            // Check if user exists
-            const { data: existingUser } = await adminClient.auth.admin.getUserById(userId);
-            
-            if (!existingUser?.user) {
-              // Create new user with generated password
-              await adminClient.auth.admin.createUser({
-                email: customerEmail,
-                password: generatedPassword,
-                email_confirm: true,
-                user_metadata: {
-                  full_name: customerName,
-                  program: 'barber-apprenticeship',
-                },
-              });
-              console.log(`Created new user account for ${customerEmail}`);
-            } else {
-              // User exists - update their password so they have fresh credentials
-              await adminClient.auth.admin.updateUserById(userId, {
-                password: generatedPassword,
-              });
-              console.log(`Updated password for existing user ${customerEmail}`);
+            const { data: linkData } = await adminClient.auth.admin.generateLink({
+              type: 'magiclink',
+              email: customerEmail,
+              options: {
+                redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/apprentice`,
+              },
+            });
+            if (linkData?.properties?.action_link) {
+              magicLink = linkData.properties.action_link;
             }
-          } catch (authErr) {
-            console.error('User credential generation failed:', authErr);
-            // Continue without credentials - they can use password reset
+          } catch (linkErr) {
+            console.error('Magic link generation failed:', linkErr);
           }
         }
 
-        // Send Welcome Email with Login Credentials (if not already sent)
+        // Send Welcome Email with Magic Link (if not already sent)
         if (!subRecord?.welcome_email_sent_at && customerEmail) {
           try {
             const { sendEmail } = await import('@/lib/email/resend');
@@ -212,39 +192,33 @@ export async function POST(request: NextRequest) {
             
             await sendEmail({
               to: customerEmail,
-              subject: 'Welcome to Barber Apprenticeship - Your Login Credentials',
+              subject: 'Welcome to Barber Apprenticeship - Dashboard Access',
               html: `
-                <h2>Welcome to the Barber Apprenticeship Program!</h2>
-                <p>Hi ${customerName || 'there'},</p>
-                <p>Your enrollment is confirmed and your account is ready.</p>
-                
-                <div style="background:#f3f4f6;padding:20px;border-radius:8px;margin:20px 0;">
-                  <h3 style="margin-top:0;">Your Login Credentials</h3>
-                  <p><strong>Email:</strong> ${customerEmail}</p>
-                  <p><strong>Temporary Password:</strong> ${generatedPassword || '(Use forgot password to set one)'}</p>
-                  <p style="font-size:14px;color:#666;">Please change your password after first login.</p>
-                </div>
-                
-                <p><a href="${loginUrl}" style="display:inline-block;padding:12px 24px;background:#7c3aed;color:white;text-decoration:none;border-radius:8px;font-weight:bold;">Log In Now</a></p>
-                
-                <h3>Next Steps After Login:</h3>
-                <ul>
-                  <li>Complete your onboarding checklist</li>
-                  <li>Sign your Memorandum of Understanding (MOU)</li>
-                  <li>Set up your timeclock for tracking hours</li>
-                  <li>Review your weekly payment schedule</li>
-                </ul>
-                
-                <h3>Payment Schedule:</h3>
-                <ul>
-                  <li>Setup fee of $${BARBER_PRICING.setupFee.toLocaleString()} has been paid</li>
-                  <li>Weekly payments of $${weeklyPayment} begin ${firstBillingDate}</li>
-                  <li>Payments are charged every Friday at 10 AM</li>
-                </ul>
-                
-                <p>Questions? Reply to this email or call (317) 314-3757.</p>
-                
-                <p>— Elevate for Humanity Team</p>
+<p>Hello,</p>
+
+<p>Welcome to the Barber Apprenticeship Program. Your enrollment payment has been successfully processed.</p>
+
+<p>You now have access to your student dashboard. This is where you will manage your apprenticeship from start to finish.</p>
+
+<p><strong>What you can do in your dashboard:</strong></p>
+<p>• Complete onboarding and sign your apprenticeship agreement (MOU)<br>
+• Clock in and out for training hours<br>
+• Track progress toward required hours<br>
+• Submit progress reports and required documentation</p>
+
+<p>Access your dashboard using the secure link below:</p>
+
+<p><a href="${magicLink}" style="display:inline-block;padding:12px 24px;background:#7c3aed;color:white;text-decoration:none;border-radius:8px;font-weight:bold;">Access Your Student Dashboard</a></p>
+
+<p><strong>Important notes:</strong></p>
+<p>• This link is secure and time-limited. If it expires, you can request a new one from the login page.<br>
+• You may be required to complete onboarding steps before accessing all features.</p>
+
+<p>Related instruction through Milady is handled separately. You will receive additional information about Milady access in a separate email.</p>
+
+<p>If you have questions or need assistance, contact support at (317) 314-3757.</p>
+
+<p>— Elevate for Humanity</p>
               `,
             });
             
@@ -277,7 +251,7 @@ export async function POST(request: NextRequest) {
               })
               .eq('stripe_subscription_id', subscriptionId);
               
-            console.log(`Welcome email with credentials sent to ${customerEmail}`);
+            console.log(`Welcome email sent to ${customerEmail}`);
           } catch (emailErr) {
             console.error('Welcome email failed:', emailErr);
             // Don't fail webhook - email can be retried
@@ -292,23 +266,27 @@ export async function POST(request: NextRequest) {
               to: customerEmail,
               subject: 'Your Milady Access - Barber Apprenticeship',
               html: `
-                <h2>Milady Training Access</h2>
-                <p>Hi ${customerName || 'there'},</p>
-                <p>As part of your Barber Apprenticeship enrollment, you have access to Milady training materials.</p>
-                
-                <h3>What to Expect:</h3>
-                <ul>
-                  <li>Milady will send you a separate welcome email with login credentials</li>
-                  <li>This typically arrives within 24-48 hours</li>
-                  <li>Check your spam folder if you don't see it</li>
-                </ul>
-                
-                <p><strong>Access Milady here:</strong></p>
-                <p><a href="${MILADY_LOGIN_URL}" style="display:inline-block;padding:12px 24px;background:#2563eb;color:white;text-decoration:none;border-radius:8px;font-weight:bold;">Go to Milady</a></p>
-                
-                <p>If you don't receive Milady access within 48 hours, contact us at (317) 314-3757 or reply to this email.</p>
-                
-                <p>— Elevate for Humanity Team</p>
+<p>Hello,</p>
+
+<p>As part of your Barber Apprenticeship enrollment, your related instruction is provided through Milady.</p>
+
+<p><strong>Here's what to expect:</strong></p>
+<p>• Milady access is issued after successful enrollment<br>
+• Milady will send you a separate email with login instructions<br>
+• This email may take several hours to arrive</p>
+
+<p>You can also access Milady using the link below once your account is active:</p>
+
+<p><a href="${MILADY_LOGIN_URL}" style="display:inline-block;padding:12px 24px;background:#2563eb;color:white;text-decoration:none;border-radius:8px;font-weight:bold;">Access Milady</a></p>
+
+<p><strong>If you do not receive an email from Milady:</strong></p>
+<p>• Check your spam or junk folder<br>
+• Allow up to 24 hours after enrollment<br>
+• Contact support at (317) 314-3757 if access is still unavailable</p>
+
+<p>Your Elevate for Humanity dashboard is separate from Milady and is used to track hours, progress, and compliance.</p>
+
+<p>— Elevate for Humanity</p>
               `,
             });
             
