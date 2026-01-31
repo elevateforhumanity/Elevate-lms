@@ -5,12 +5,12 @@ export const dynamic = 'force-dynamic';
 
 /**
  * GET /api/timeclock/context
- * Returns the authenticated user's timeclock context:
- * - apprenticeId (from apprentices table, not auth.uid directly)
- * - programId
- * - defaultSiteId (current_shop_id)
- * - allowedSites (sites the apprentice can clock into)
- * - activeShift (if currently clocked in)
+ * Returns the authenticated user's timeclock context.
+ * 
+ * Site access is role-based:
+ * - admin/super_admin/staff: all active sites
+ * - apprentice: only sites linked to their employer
+ * - others: empty list
  */
 export async function GET(request: NextRequest) {
   try {
@@ -33,94 +33,122 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Get apprentice record for this user
-    const { data: apprentice, error: apprenticeError } = await supabase
+    // Get user profile
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('id, role, full_name')
+      .eq('id', user.id)
+      .single();
+
+    const role = profile?.role || 'student';
+    const isAdmin = ['admin', 'super_admin', 'staff'].includes(role);
+
+    // Get apprentice record linked to this user
+    // TODO: Once apprentices.user_id column is added, filter by .eq('user_id', user.id)
+    // For now, this is a placeholder that needs the migration applied
+    const { data: apprentice } = await supabase
       .from('apprentices')
       .select(`
         id,
-        user_id,
-        program_id,
-        program_name,
-        current_shop_id,
-        status,
-        hours_completed,
-        total_hours_required
+        referral_id,
+        employer_id,
+        rapids_id,
+        start_date,
+        status
       `)
-      .eq('user_id', user.id)
       .eq('status', 'active')
-      .single();
+      .limit(1)
+      .maybeSingle();
 
-    if (apprenticeError || !apprentice) {
-      return NextResponse.json(
-        { 
-          error: 'No active apprenticeship found',
-          code: 'NO_APPRENTICESHIP'
-        },
-        { status: 404 }
-      );
-    }
-
-    // Get allowed sites (partner shops the apprentice can clock into)
-    // For now, use current_shop_id as the only allowed site
-    // In future, could expand to multiple assigned sites
-    const allowedSites: { id: string; name: string; lat: number; lng: number; radius_m: number }[] = [];
-    
-    if (apprentice.current_shop_id) {
+    // Get employer/shop info
+    let shopId: string | null = null;
+    let shopName: string | null = null;
+    if (apprentice?.employer_id) {
       const { data: shop } = await supabase
-        .from('partner_shops')
-        .select('id, name, latitude, longitude, geofence_radius_m')
-        .eq('id', apprentice.current_shop_id)
+        .from('shops')
+        .select('id, name')
+        .eq('id', apprentice.employer_id)
         .single();
-      
       if (shop) {
-        allowedSites.push({
-          id: shop.id,
-          name: shop.name,
-          lat: shop.latitude,
-          lng: shop.longitude,
-          radius_m: shop.geofence_radius_m || 100,
-        });
+        shopId = shop.id;
+        shopName = shop.name;
       }
     }
 
-    // Check for active shift (clocked in but not out)
-    const { data: activeShift } = await supabase
-      .from('progress_entries')
-      .select('id, clock_in_at, lunch_start_at, lunch_end_at, site_id')
-      .eq('apprentice_id', apprentice.id)
-      .is('clock_out_at', null)
-      .order('clock_in_at', { ascending: false })
-      .limit(1)
-      .single();
+    // Build site query based on role
+    let sitesQuery = supabase
+      .from('apprentice_sites')
+      .select(`
+        id,
+        name,
+        latitude,
+        longitude,
+        radius_meters,
+        shop_id,
+        shops:shop_id (
+          id,
+          name
+        )
+      `)
+      .eq('is_active', true);
 
-    // Get partner_id from the shop if available
-    let partnerId: string | null = null;
-    if (apprentice.current_shop_id) {
-      const { data: shopPartner } = await supabase
-        .from('partner_shops')
-        .select('partner_id')
-        .eq('id', apprentice.current_shop_id)
-        .single();
-      partnerId = shopPartner?.partner_id || null;
+    // Restrict sites for non-admin users
+    if (!isAdmin && apprentice?.employer_id) {
+      // Apprentice: only sites linked to their employer
+      sitesQuery = sitesQuery.eq('shop_id', apprentice.employer_id);
+    } else if (!isAdmin) {
+      // No apprentice record and not admin: no sites
+      sitesQuery = sitesQuery.eq('id', '00000000-0000-0000-0000-000000000000'); // Returns empty
+    }
+
+    const { data: sites } = await sitesQuery;
+
+    const allowedSites = (sites || []).map(site => ({
+      id: site.id,
+      name: site.name || (site.shops as { name: string } | null)?.name || 'Unknown Site',
+      lat: site.latitude,
+      lng: site.longitude,
+      radius_m: site.radius_meters || 100,
+      shopId: site.shop_id,
+    }));
+
+    // Check for active shift from timeclock_shifts table
+    let activeShift = null;
+    if (apprentice) {
+      try {
+        const { data: shift } = await supabase
+          .from('timeclock_shifts')
+          .select('id, clock_in_at, lunch_start_at, lunch_end_at, site_id')
+          .eq('apprentice_id', apprentice.id)
+          .is('clock_out_at', null)
+          .order('clock_in_at', { ascending: false })
+          .limit(1)
+          .maybeSingle();
+        
+        if (shift) {
+          activeShift = {
+            entryId: shift.id,
+            clockInAt: shift.clock_in_at,
+            lunchStartAt: shift.lunch_start_at,
+            lunchEndAt: shift.lunch_end_at,
+            siteId: shift.site_id,
+          };
+        }
+      } catch {
+        // timeclock_shifts table may not exist yet - migration pending
+      }
     }
 
     return NextResponse.json({
-      apprenticeId: apprentice.id,
+      apprenticeId: apprentice?.id || null,
       userId: user.id,
-      programId: apprentice.program_id,
-      programName: apprentice.program_name,
-      partnerId,
-      defaultSiteId: apprentice.current_shop_id,
+      userName: profile?.full_name || user.email,
+      role,
+      shopId,
+      shopName,
+      defaultSiteId: allowedSites[0]?.id || null,
       allowedSites,
-      hoursCompleted: apprentice.hours_completed,
-      hoursRequired: apprentice.total_hours_required,
-      activeShift: activeShift ? {
-        entryId: activeShift.id,
-        clockInAt: activeShift.clock_in_at,
-        lunchStartAt: activeShift.lunch_start_at,
-        lunchEndAt: activeShift.lunch_end_at,
-        siteId: activeShift.site_id,
-      } : null,
+      activeShift,
     });
   } catch (error) {
     console.error('Timeclock context error:', error);

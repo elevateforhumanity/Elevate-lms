@@ -80,7 +80,7 @@ export async function POST(req: Request) {
       .filter(Boolean)
       .join('\n');
 
-    // Insert into applications table (matching 20251204 migration schema)
+    // Insert into applications table
     const { data, error }: any = await supabase
       .from('applications')
       .insert({
@@ -88,9 +88,13 @@ export async function POST(req: Request) {
         last_name: body.lastName,
         phone: body.phone,
         email: body.email,
-        program_id: program, // TEXT field, stores slug/name
-        notes: notes,
+        city: body.city || 'Not provided',
+        zip: body.zip || '00000',
+        program_interest: program, // TEXT field for program name/slug
+        support_notes: notes,
         status: 'pending',
+        source: body.source || 'website',
+        contact_preference: body.preferredContact || 'phone',
       })
       .select()
       .single();

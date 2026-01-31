@@ -81,7 +81,23 @@ export default async function BarberApprenticeshipPage() {
             Elevate for Humanity is the Sponsor of Record for this program, which combines structured practical training with required related instruction.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+          {/* Mobile Contact Buttons - Always visible on mobile */}
+          <div className="mt-6 flex gap-3 sm:hidden">
+            <a
+              href="tel:317-314-3757"
+              className="flex-1 inline-flex items-center justify-center rounded-lg bg-green-500 px-4 py-3 text-base font-bold text-white shadow-xl"
+            >
+              📞 Call Now
+            </a>
+            <a
+              href="sms:317-314-3757"
+              className="flex-1 inline-flex items-center justify-center rounded-lg bg-blue-500 px-4 py-3 text-base font-bold text-white shadow-xl"
+            >
+              💬 Text Us
+            </a>
+          </div>
+
+          <div className="mt-4 sm:mt-8 flex flex-col sm:flex-row gap-4">
             <Link
               href="/forms/barber-apprenticeship-inquiry"
               className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-gray-900 hover:bg-gray-100 transition-all shadow-xl"

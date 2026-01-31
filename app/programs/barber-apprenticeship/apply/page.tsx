@@ -114,8 +114,22 @@ export default function BarberApprenticeshipApplyPage() {
       <section className="py-12">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
-              {error}
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-800 font-medium mb-2">{error}</p>
+              <div className="flex flex-col sm:flex-row gap-2 mt-3">
+                <a 
+                  href="tel:317-314-3757" 
+                  className="inline-flex items-center justify-center px-4 py-2 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700"
+                >
+                  📞 Call (317) 314-3757
+                </a>
+                <a 
+                  href="sms:317-314-3757" 
+                  className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700"
+                >
+                  💬 Text Us
+                </a>
+              </div>
             </div>
           )}
 

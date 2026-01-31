@@ -25,18 +25,24 @@ export default function BarberApprenticeshipInquiryPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          inquiry_type: 'apprentice',
-          data: formData,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          city: formData.city,
+          message: formData.message,
+          program: 'barber-apprenticeship',
         }),
       });
 
+      const result = await response.json();
+      
       if (response.ok) {
         setIsSubmitted(true);
       } else {
-        alert('There was an error submitting your inquiry. Please try again.');
+        alert(result.error || 'There was an error submitting your inquiry. Please call (317) 314-3757 for assistance.');
       }
     } catch {
-      alert('There was an error submitting your inquiry. Please try again.');
+      alert('Unable to submit. Please call (317) 314-3757 for assistance.');
     } finally {
       setIsSubmitting(false);
     }
