@@ -169,7 +169,7 @@ export async function POST(request: NextRequest) {
 }
 
 /**
- * Get application status
+ * Get application status - requires admin auth or matching email verification
  */
 export async function GET(request: NextRequest) {
   try {
@@ -185,6 +185,63 @@ export async function GET(request: NextRequest) {
     }
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    
+    // Verify caller is admin or owns the application
+    const authHeader = request.headers.get('authorization');
+    const token = authHeader?.replace('Bearer ', '');
+    
+    let isAdmin = false;
+    let userEmail: string | null = null;
+    
+    if (token) {
+      const { data: { user } } = await supabase.auth.getUser(token);
+      if (user) {
+        userEmail = user.email || null;
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', user.id)
+          .single();
+        isAdmin = profile?.role === 'admin' || profile?.role === 'super_admin';
+      }
+    }
+    
+    // Non-admins can only query their own email
+    if (!isAdmin) {
+      if (!email) {
+        return NextResponse.json(
+          { error: 'Email required for non-admin queries' },
+          { status: 400 }
+        );
+      }
+      // Verify the queried email matches the authenticated user
+      if (userEmail && userEmail.toLowerCase() !== email.toLowerCase()) {
+        return NextResponse.json(
+          { error: 'Forbidden: can only query own applications' },
+          { status: 403 }
+        );
+      }
+      // For unauthenticated users, only return limited status info
+      if (!userEmail) {
+        const { data, error } = await supabase
+          .from('career_applications')
+          .select('id, status, created_at')
+          .eq('email', email.toLowerCase())
+          .order('created_at', { ascending: false });
+        
+        if (error) {
+          return NextResponse.json(
+            { error: 'Failed to fetch applications' },
+            { status: 500 }
+          );
+        }
+        
+        return NextResponse.json({
+          success: true,
+          applications: data,
+        });
+      }
+    }
 
     let query = supabase
       .from('career_applications')
@@ -194,7 +251,7 @@ export async function GET(request: NextRequest) {
     if (applicationId) {
       query = query.eq('id', applicationId);
     } else if (email) {
-      query = query.eq('email', email);
+      query = query.eq('email', email.toLowerCase());
     }
 
     const { data, error } = await query;
