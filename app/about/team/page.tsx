@@ -21,6 +21,8 @@ const teamMembers = [
 
 **Credentials & Approvals:**
 
+• **501(c)(3) Nonprofit Organization** – Tax-exempt charitable organization
+• **Buy Black Certified** – Certified Black-owned business
 • **U.S. Department of Labor (DOL)** – Registered Apprenticeship Sponsor (RAPIDS ID: 2025-IN-132301)
 • **Indiana Department of Workforce Development (DWD)** – Approved INTraining Provider (Location ID: 10004621)
 • **Certiport Authorized Testing Center** – Certified testing site
