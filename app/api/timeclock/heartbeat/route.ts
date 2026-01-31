@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createAdminClient } from '@/lib/supabase/server';
+import { createAdminClient, createClient } from '@/lib/supabase/server';
 
 const MAX_ACCURACY_M = 50;
 
@@ -46,6 +46,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Verify authenticated user
+    const authClient = await createClient();
+    if (!authClient) {
+      return NextResponse.json(
+        { error: 'Database not configured' },
+        { status: 503 }
+      );
+    }
+    
+    const { data: { user }, error: authError } = await authClient.auth.getUser();
+    if (authError || !user) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     const supabase = createAdminClient();
     if (!supabase) {
       return NextResponse.json(
@@ -54,12 +71,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Load progress_entries row
+    // Load progress_entries row with apprentice ownership check
     const { data: entry, error: entryError } = await supabase
       .from('progress_entries')
-      .select('id, clock_in_at, clock_out_at, site_id, auto_clocked_out, auto_clock_out_reason')
+      .select(`
+        id, clock_in_at, clock_out_at, site_id, auto_clocked_out, auto_clock_out_reason,
+        apprentice_id,
+        apprentices!inner(user_id)
+      `)
       .eq('id', progress_entry_id)
       .single();
+    
+    // Verify user owns this entry via apprentice relationship
+    if (entry && entry.apprentices && (entry.apprentices as any).user_id !== user.id) {
+      return NextResponse.json(
+        { error: 'Forbidden: entry does not belong to you' },
+        { status: 403 }
+      );
+    }
 
     if (entryError || !entry) {
       return NextResponse.json(

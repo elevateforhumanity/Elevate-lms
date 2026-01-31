@@ -11,12 +11,32 @@ import {
   Coffee, 
   LogOut,
   Loader2,
-  ArrowLeft
+  ArrowLeft,
+  RefreshCw
 } from 'lucide-react';
 
 const HEARTBEAT_INTERVAL_MS = 2 * 60 * 1000; // 2 minutes
 const LOCATION_TIMEOUT_MS = 10000;
 const MAX_ACCURACY_M = 50;
+
+interface TimeclockContext {
+  apprenticeId: string;
+  userId: string;
+  programId: string;
+  programName: string;
+  partnerId: string | null;
+  defaultSiteId: string | null;
+  allowedSites: { id: string; name: string; lat: number; lng: number; radius_m: number }[];
+  hoursCompleted: number;
+  hoursRequired: number;
+  activeShift: {
+    entryId: string;
+    clockInAt: string;
+    lunchStartAt: string | null;
+    lunchEndAt: string | null;
+    siteId: string;
+  } | null;
+}
 
 interface ShiftState {
   entryId: string | null;
@@ -44,11 +64,13 @@ export default function TimeclockPage() {
   const router = useRouter();
   const heartbeatRef = useRef<NodeJS.Timeout | null>(null);
   
-  // TODO: Get these from user context/session
-  const [apprenticeId] = useState<string>('');
-  const [partnerId] = useState<string>('');
-  const [programId] = useState<string>('');
-  const [siteId] = useState<string>('');
+  // Context from API (replaces placeholder IDs)
+  const [context, setContext] = useState<TimeclockContext | null>(null);
+  const [contextLoading, setContextLoading] = useState(true);
+  const [contextError, setContextError] = useState<string | null>(null);
+  
+  // Selected site (from allowedSites)
+  const [selectedSiteId, setSelectedSiteId] = useState<string | null>(null);
   
   const [shift, setShift] = useState<ShiftState>({
     entryId: null,
@@ -74,6 +96,48 @@ export default function TimeclockPage() {
   
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // Fetch timeclock context on mount
+  useEffect(() => {
+    async function fetchContext() {
+      try {
+        const response = await fetch('/api/timeclock/context');
+        const data = await response.json();
+        
+        if (!response.ok) {
+          if (data.code === 'NO_APPRENTICESHIP') {
+            setContextError('You do not have an active apprenticeship. Please contact your program coordinator.');
+          } else if (response.status === 401) {
+            router.push('/login?next=/apprentice/timeclock');
+            return;
+          } else {
+            setContextError(data.error || 'Failed to load timeclock');
+          }
+          return;
+        }
+        
+        setContext(data);
+        setSelectedSiteId(data.defaultSiteId);
+        
+        // If there's an active shift, restore it
+        if (data.activeShift) {
+          setShift({
+            entryId: data.activeShift.entryId,
+            clockInAt: data.activeShift.clockInAt,
+            lunchStartAt: data.activeShift.lunchStartAt,
+            lunchEndAt: data.activeShift.lunchEndAt,
+            clockOutAt: null,
+          });
+        }
+      } catch (err) {
+        setContextError('Failed to connect to server');
+      } finally {
+        setContextLoading(false);
+      }
+    }
+    
+    fetchContext();
+  }, [router]);
 
   // Get current location
   const getLocation = useCallback((): Promise<GeolocationPosition> => {
@@ -186,6 +250,8 @@ export default function TimeclockPage() {
 
   // Timeclock action handler
   const handleAction = async (action: 'clock_in' | 'lunch_start' | 'lunch_end' | 'clock_out') => {
+    if (!context) return;
+    
     setActionLoading(action);
     setError(null);
     
@@ -198,15 +264,22 @@ export default function TimeclockPage() {
         return;
       }
       
+      // Require site selection for clock-in
+      if (action === 'clock_in' && !selectedSiteId) {
+        setError('Please select a work site before clocking in.');
+        setActionLoading(null);
+        return;
+      }
+      
       const response = await fetch('/api/timeclock/action', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           action,
-          apprentice_id: apprenticeId,
-          partner_id: partnerId,
-          program_id: programId,
-          site_id: siteId,
+          apprentice_id: context.apprenticeId,
+          partner_id: context.partnerId,
+          program_id: context.programId,
+          site_id: selectedSiteId,
           progress_entry_id: shift.entryId,
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -258,6 +331,49 @@ export default function TimeclockPage() {
   const isClockedIn = shift.clockInAt && !shift.clockOutAt;
   const isOnLunch = shift.lunchStartAt && !shift.lunchEndAt;
 
+  // Loading state
+  if (contextLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin text-blue-600 mx-auto mb-4" />
+          <p className="text-gray-600">Loading timeclock...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (contextError || !context) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8">
+        <div className="max-w-md mx-auto px-4">
+          <Link 
+            href="/apprentice/dashboard" 
+            className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Dashboard
+          </Link>
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="text-center">
+              <AlertTriangle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+              <h2 className="text-xl font-bold text-gray-900 mb-2">Cannot Access Timeclock</h2>
+              <p className="text-gray-600 mb-4">{contextError || 'Unable to load timeclock context'}</p>
+              <button
+                onClick={() => window.location.reload()}
+                className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                <RefreshCw className="w-4 h-4 mr-2" />
+                Try Again
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-md mx-auto px-4">
@@ -270,10 +386,62 @@ export default function TimeclockPage() {
         </Link>
 
         <div className="bg-white rounded-xl shadow-lg p-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-2 flex items-center">
             <Clock className="w-6 h-6 mr-2 text-blue-600" />
             Timeclock
           </h1>
+          <p className="text-sm text-gray-600 mb-6">{context.programName}</p>
+          
+          {/* Hours Progress */}
+          <div className="mb-6 p-3 bg-blue-50 rounded-lg">
+            <div className="flex justify-between text-sm mb-1">
+              <span className="text-blue-700 font-medium">Hours Progress</span>
+              <span className="text-blue-700">{context.hoursCompleted} / {context.hoursRequired}</span>
+            </div>
+            <div className="w-full bg-blue-200 rounded-full h-2">
+              <div 
+                className="bg-blue-600 h-2 rounded-full transition-all"
+                style={{ width: `${Math.min(100, (context.hoursCompleted / context.hoursRequired) * 100)}%` }}
+              />
+            </div>
+          </div>
+
+          {/* Site Selection (only show if not clocked in and has multiple sites) */}
+          {!isClockedIn && context.allowedSites.length > 0 && (
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Work Site
+              </label>
+              {context.allowedSites.length === 1 ? (
+                <div className="p-3 bg-gray-50 rounded-lg text-sm text-gray-700">
+                  {context.allowedSites[0].name}
+                </div>
+              ) : (
+                <select
+                  value={selectedSiteId || ''}
+                  onChange={(e) => setSelectedSiteId(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">Select a site...</option>
+                  {context.allowedSites.map((site) => (
+                    <option key={site.id} value={site.id}>{site.name}</option>
+                  ))}
+                </select>
+              )}
+            </div>
+          )}
+          
+          {/* No site assigned warning */}
+          {!isClockedIn && context.allowedSites.length === 0 && (
+            <div className="mb-6 p-4 bg-yellow-50 rounded-lg">
+              <div className="flex items-center">
+                <AlertTriangle className="w-5 h-5 mr-2 text-yellow-600" />
+                <span className="text-sm text-yellow-700">
+                  No work site assigned. Please contact your program coordinator.
+                </span>
+              </div>
+            </div>
+          )}
 
           {/* Location Status */}
           <div className="mb-6 p-4 bg-gray-50 rounded-lg">
@@ -355,7 +523,7 @@ export default function TimeclockPage() {
             {!isClockedIn ? (
               <button
                 onClick={() => handleAction('clock_in')}
-                disabled={actionLoading !== null || location.loading}
+                disabled={actionLoading !== null || location.loading || !selectedSiteId}
                 className="w-full flex items-center justify-center px-6 py-4 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white font-bold rounded-lg transition-colors"
               >
                 {actionLoading === 'clock_in' ? (
