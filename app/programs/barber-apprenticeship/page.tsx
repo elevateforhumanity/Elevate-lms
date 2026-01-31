@@ -89,7 +89,7 @@ export default async function BarberApprenticeshipPage() {
               General Inquiry
             </Link>
             <Link
-              href="/portal/student/enroll/barber-apprenticeship"
+              href="/enroll/barber-apprenticeship"
               className="inline-flex items-center justify-center rounded-lg bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-purple-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
               Enroll in Student Portal
@@ -432,7 +432,7 @@ export default async function BarberApprenticeshipPage() {
               General Inquiry
             </Link>
             <Link
-              href="/portal/student/enroll/barber-apprenticeship"
+              href="/enroll/barber-apprenticeship"
               className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-purple-600 hover:bg-purple-50 transition-all shadow-xl"
             >
               Enroll in Student Portal

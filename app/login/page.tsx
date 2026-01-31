@@ -15,7 +15,8 @@ function LoginForm() {
   const [error, setError] = useState('');
   const router = useRouter();
   const searchParams = useSearchParams();
-  const next = searchParams.get('next') || '';
+  // Support both 'next' and 'redirect' params for backward compatibility
+  const next = searchParams.get('next') || searchParams.get('redirect') || '';
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
