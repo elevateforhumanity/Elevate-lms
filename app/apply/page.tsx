@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { MessageSquare, GraduationCap, Phone, Clock, CheckCircle, AlertCircle } from 'lucide-react';
@@ -9,7 +10,25 @@ export const metadata: Metadata = {
   description: 'Start your journey to a new career. Choose to get more information or enroll directly in our free workforce training programs.',
 };
 
-export default function ApplyPage() {
+// Program-specific redirects to modern intake forms
+const programRedirects: Record<string, string> = {
+  'barber-apprenticeship': '/forms/barber-apprenticeship-inquiry',
+  'barber': '/forms/barber-apprenticeship-inquiry',
+  'cna': '/forms/cna-inquiry',
+  'hvac': '/forms/hvac-inquiry',
+  'medical-assistant': '/forms/medical-assistant-inquiry',
+};
+
+export default function ApplyPage({
+  searchParams,
+}: {
+  searchParams: { program?: string };
+}) {
+  // Redirect program-specific apply links to modern forms
+  const program = (searchParams?.program || '').toLowerCase();
+  if (program && programRedirects[program]) {
+    redirect(programRedirects[program]);
+  }
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Breadcrumbs */}
