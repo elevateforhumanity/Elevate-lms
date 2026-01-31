@@ -1,432 +1,173 @@
-// @ts-nocheck
-import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
-import { OptimizedVideo } from '@/components/OptimizedVideo';
-import PageAvatar from '@/components/PageAvatar';
-import type { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import {
-  CheckCircle,
-  XCircle,
-} from 'lucide-react';
-import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
-import { BARBER_PROGRAM } from '@/lib/program-constants';
-
-export const dynamic = 'force-dynamic';
+import Image from "next/image";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title:
-    'USDOL Registered Barber Apprenticeship | Elevate for Humanity | Indiana',
-  description:
-    'Fee-based barber training within a USDOL Registered Apprenticeship framework. Elevate for Humanity is the Sponsor of Record. Structured practical training with required related instruction.',
-  keywords:
-    'barber apprenticeship Indiana, USDOL registered apprenticeship, barber training Indianapolis, RAPIDS registered, sponsor of record',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/barber-apprenticeship',
-  },
+  title: 'Barber Apprenticeship Program | Become a Licensed Barber | Elevate for Humanity',
+  description: 'Become a licensed barber through real-world apprenticeship training in Indianapolis. Train in approved barbershops, earn hours, track progress digitally, and graduate job-ready.',
 };
 
-export default async function BarberApprenticeshipPage() {
-  const supabase = await createClient();
-  
-  // Fetch barber apprenticeship program
-  const { data: program } = await supabase
-    .from('programs')
-    .select('*')
-    .eq('slug', 'barber-apprenticeship')
-    .single();
+const IMAGES = {
+  hero: "/images/barber/hero.jpg",
+  training: "/images/barber/training.jpg",
+  gallery1: "/images/barber/gallery-1.jpg",
+  gallery2: "/images/barber/gallery-2.jpg",
+  gallery3: "/images/barber/gallery-3.jpg",
+};
 
+export default function BarberApprenticeshipPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Breadcrumbs */}
-      <div className="bg-slate-50 border-b relative z-10">
-        <div className="max-w-6xl mx-auto px-4 py-3">
-          <Breadcrumbs items={[{ label: 'Programs', href: '/programs' }, { label: 'Apprenticeships', href: '/apprenticeships' }, { label: 'Barber Apprenticeship' }]} />
-        </div>
-      </div>
-
-      {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex items-center">
-        <div className="absolute inset-0 z-0">
-          <OptimizedVideo
-            src="https://cms-artifacts.artlist.io/content/generated-video-v1/video__3/video-7b329d1f-3f92-4ec5-acdf-9d2d7ff6de5f.mp4?Expires=2083752835&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=PwinNDJ~aDGbHoMI8-Hfr28QIj7s~0mwzn92P-muIHO0bW86~4gW6MzRyslLtk~TOzdfX8aTYA9OeGF-sbBPwCBUw8gTpXO6QvhwpJsFW5DiLHnEP6q6vCTvQ-jEpwV20izIuWVSpY-txGY7bDGHhkSq6-wP26b0J-lstFIMwxRHQjJ9rKmX9i4pzNruZJEQ2ILvO-LdWivm98j5TMLm09HgYzesifHFPPzUzNH7NlYwwvIO2-NtXWEuixrQFdJ2Zt4ocgdmqP9auvaeYr9hbS~F6k6CBybWLlnGoLggGkluqp1vFzt-eIslYgFKl8m4Du4UFJawNl3KmcyA9uTWtA__"
-            poster="/hero-images/barber-hero.jpg"
-            className="w-full h-full object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
+    <main className="min-h-screen bg-white text-gray-900">
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-slate-900 text-white">
+        <div className="absolute inset-0">
+          <Image
+            src={IMAGES.hero}
+            alt="Barber apprentice training in shop"
+            fill
+            priority
+            className="object-cover object-center opacity-50"
           />
-          
+          <div className="absolute inset-0 bg-slate-900/80" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6 py-32 md:py-40">
-          <div className="flex flex-wrap items-center gap-2 mb-4">
-            <span className="px-3 py-2 bg-blue-600 text-white text-sm font-bold rounded-full shadow-lg">
-              USDOL Registered
-            </span>
-            <span className="px-3 py-2 bg-purple-600 text-white text-sm font-bold rounded-full shadow-lg">
-              Sponsor of Record
-            </span>
-          </div>
+        <div className="relative max-w-7xl mx-auto px-6 py-28 md:py-32">
+          <div className="max-w-3xl">
+            <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white">
+              USDOL Registered · Self-Pay Program
+            </p>
+            <h1 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
+              Barber Apprenticeship
+              <span className="block text-white/80">Built for real shop skills and real hours.</span>
+            </h1>
+            <p className="mt-6 text-lg md:text-xl text-white/80">
+              Train at approved partner sites, track hours in your dashboard, and complete the pathway with structured support.
+            </p>
 
-          <h1 className="max-w-3xl text-4xl font-black leading-tight md:text-6xl text-white drop-shadow-2xl">
-            USDOL Registered Barber Apprenticeship
-          </h1>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <a
+                href="/programs/barber-apprenticeship/inquiry"
+                className="rounded-2xl bg-white text-slate-900 px-8 py-4 font-semibold shadow-lg hover:bg-gray-100 transition text-center"
+              >
+                Request Information
+              </a>
+              <a
+                href="/programs/barber-apprenticeship/apply"
+                className="rounded-2xl bg-red-600 text-white px-8 py-4 font-semibold shadow-lg hover:bg-red-700 transition text-center"
+              >
+                Enroll Now
+              </a>
+            </div>
 
-          <p className="mt-6 max-w-2xl text-lg md:text-xl text-white leading-relaxed drop-shadow-lg">
-            Fee-based barber training delivered within a USDOL Registered Apprenticeship framework.
-            Elevate for Humanity is the Sponsor of Record for this program, which combines structured practical training with required related instruction.
-          </p>
-
-          {/* Mobile Contact Buttons - Always visible on mobile */}
-          <div className="mt-6 flex gap-3 sm:hidden">
-            <a
-              href="tel:317-314-3757"
-              className="flex-1 inline-flex items-center justify-center rounded-lg bg-green-500 px-4 py-3 text-base font-bold text-white shadow-xl"
-            >
-              📞 Call Now
-            </a>
-            <a
-              href="sms:317-314-3757"
-              className="flex-1 inline-flex items-center justify-center rounded-lg bg-blue-500 px-4 py-3 text-base font-bold text-white shadow-xl"
-            >
-              💬 Text Us
-            </a>
-          </div>
-
-          <div className="mt-4 sm:mt-8 flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/forms/barber-apprenticeship-inquiry"
-              className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-gray-900 hover:bg-gray-100 transition-all shadow-xl"
-            >
-              Talk to Us First
-            </Link>
-            <Link
-              href="/enroll/barber-apprenticeship"
-              className="inline-flex items-center justify-center rounded-lg bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-purple-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
-            >
-              Enroll & Start Training
-            </Link>
+            <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="rounded-2xl bg-white/10 px-5 py-4">
+                <div className="text-2xl font-bold">2,000</div>
+                <div className="text-sm text-white/80">Hours tracked</div>
+              </div>
+              <div className="rounded-2xl bg-white/10 px-5 py-4">
+                <div className="text-2xl font-bold">Milady</div>
+                <div className="text-sm text-white/80">Related instruction</div>
+              </div>
+              <div className="rounded-2xl bg-white/10 px-5 py-4">
+                <div className="text-2xl font-bold">35%</div>
+                <div className="text-sm text-white/80">Deposit option</div>
+              </div>
+              <div className="rounded-2xl bg-white/10 px-5 py-4">
+                <div className="text-2xl font-bold">Weekly</div>
+                <div className="text-sm text-white/80">Payments available</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Avatar Guide */}
-      <PageAvatar videoSrc="/videos/avatars/barber-guide.mp4" title="Barber Apprenticeship Guide" />
+      {/* GALLERY STRIP */}
+      <section className="max-w-7xl mx-auto px-6 -mt-10 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[IMAGES.gallery1, IMAGES.gallery2, IMAGES.gallery3].map((src, idx) => (
+            <div key={src} className="relative h-56 md:h-64 rounded-3xl overflow-hidden shadow-lg">
+              <Image
+                src={src}
+                alt={`Barber apprenticeship gallery ${idx + 1}`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
 
-      {/* Program Description */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-6">Program Description</h2>
-          <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 mb-8">
-            <p className="text-lg text-black leading-relaxed">
-              <strong>Fee-based barber training delivered within a USDOL Registered Apprenticeship framework.</strong>
-            </p>
-            <p className="text-black mt-4 leading-relaxed">
-              Elevate for Humanity is the Sponsor of Record for this program, which combines structured practical training with required related instruction.
-              Practical skills training is provided at approved partner training sites. Related instruction includes Milady theory curriculum.
+      {/* HOW IT WORKS */}
+      <section className="max-w-7xl mx-auto px-6 py-20">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-blue-900">How It Works</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="rounded-3xl border border-gray-200 p-8 shadow-sm hover:shadow-md transition bg-white">
+            <div className="text-blue-800 text-2xl font-bold mb-4">1</div>
+            <p className="text-lg font-semibold text-gray-900">Choose your path</p>
+            <p className="mt-3 text-gray-600">
+              Use the Inquiry form for questions. Use Enrollment to submit your application and complete payment.
             </p>
           </div>
+          <div className="rounded-3xl border border-gray-200 p-8 shadow-sm hover:shadow-md transition bg-white">
+            <div className="text-blue-800 text-2xl font-bold mb-4">2</div>
+            <p className="text-lg font-semibold text-gray-900">Pay + get access</p>
+            <p className="mt-3 text-gray-600">
+              After successful payment, you receive two emails: Milady access (from Milady) and dashboard access (from us).
+            </p>
+          </div>
+          <div className="rounded-3xl border border-gray-200 p-8 shadow-sm hover:shadow-md transition bg-white">
+            <div className="text-blue-800 text-2xl font-bold mb-4">3</div>
+            <p className="text-lg font-semibold text-gray-900">Train + track hours</p>
+            <p className="mt-3 text-gray-600">
+              Clock hours, sign your MOU, and report progress in your dashboard until completion.
+            </p>
+          </div>
+        </div>
+      </section>
 
-          {/* What's Included */}
-          <div className="bg-green-50 border-2 border-green-200 rounded-xl p-6">
-            <h3 className="text-xl font-bold text-green-900 mb-4 flex items-center gap-2">
-              <CheckCircle className="w-6 h-6" />
-              What the Program Fee Covers
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-green-900">
-                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <span>Structured training as USDOL Sponsor of Record</span>
-              </li>
-              <li className="flex items-start gap-3 text-green-900">
-                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <span>Related instruction (Milady theory curriculum)</span>
-              </li>
-              <li className="flex items-start gap-3 text-green-900">
-                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <span>Program administration and compliance tracking</span>
-              </li>
-              <li className="flex items-start gap-3 text-green-900">
-                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <span>Training site coordination and hour verification</span>
-              </li>
-              <li className="flex items-start gap-3 text-green-900">
-                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <span>Completion documentation</span>
-              </li>
+      {/* VALUE PROPS */}
+      <section className="bg-gray-50 py-24">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900">Professional training, clean compliance.</h2>
+            <p className="mt-5 text-lg text-gray-700">
+              You get a structured pathway with clear requirements, documented progress, and a dashboard that keeps everything organized.
+            </p>
+            <ul className="mt-8 space-y-4 text-lg text-gray-700">
+              <li>• Approved training sites + hour verification</li>
+              <li>• Digital clock-in/out and progress tracking</li>
+              <li>• Payment options (deposit + weekly)</li>
+              <li>• Related instruction through Milady (Milady emails you access)</li>
             </ul>
           </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="bg-gray-50 py-16">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-6">Program Cost & Payment</h2>
-          
-          <div className="bg-white border-2 border-slate-200 rounded-xl p-8 shadow-lg">
-            <div className="text-center mb-6">
-              <div className="text-5xl font-black text-purple-600">{BARBER_PROGRAM.tuitionFormatted}</div>
-              <div className="text-xl text-slate-600 mt-2">Program Tuition</div>
-            </div>
-
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
-              <p className="text-purple-900">
-                This Barber Program is a fee-based USDOL Registered Apprenticeship training pathway. Tuition is paid by the student and is not funded by the State of Indiana.
-              </p>
-              <p className="text-purple-900 mt-3">
-                Tuition covers structured training, related instruction, program administration, compliance tracking, and completion documentation delivered by Elevate for Humanity as the Sponsor of Record.
-              </p>
-              <p className="text-purple-800 mt-3 text-sm">
-                Tuition does not include personal tools, uniforms, or state licensing and examination fees.
-              </p>
-            </div>
-
-            {/* Simplified Payment Info */}
-            <div className="space-y-4">
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <p className="text-green-800 font-medium text-center">
-                  Flexible payment plans available — choose what works for you during enrollment.
-                </p>
-              </div>
-
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <p className="text-blue-800 text-sm">
-                  <strong>How to Enroll:</strong> Create an account, speak with an enrollment advisor, and choose your payment option. 
-                  Payment is collected after your enrollment is approved.
-                </p>
-              </div>
-
-              <Link
-                href="/enroll/barber-apprenticeship"
-                className="w-full flex items-center justify-center px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-all text-lg"
-              >
-                Enroll & Choose Payment Plan
-              </Link>
-              
-              <p className="text-center text-gray-500 text-sm">
-                Have questions first? <Link href="/forms/barber-apprenticeship-inquiry" className="text-purple-600 underline">Talk to us</Link>
-              </p>
-            </div>
+          <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg">
+            <Image src={IMAGES.training} alt="Hands-on barber training" fill className="object-cover" />
           </div>
         </div>
       </section>
 
-      {/* Licensure & State Requirements */}
-      <section className="bg-amber-50 py-12">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-2xl font-bold text-amber-900 mb-4">Licensure & State Requirements</h2>
-          <p className="text-amber-900 leading-relaxed">
-            This program operates within a USDOL Registered Apprenticeship framework. Completion supports eligibility to apply for barber licensure; however, licensure approval, examination requirements, and fees are governed by the Indiana Professional Licensing Agency and applicable state law. Completion of this program does not guarantee licensure.
+      {/* CTA */}
+      <section className="bg-slate-900 text-white py-24">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold">Start your apprenticeship with clarity.</h2>
+          <p className="mt-4 text-lg text-white/80">
+            Inquiry is for questions. Enrollment is for application + payment. No confusion.
           </p>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-8">Frequently Asked Questions</h2>
-          
-          <div className="space-y-6">
-            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
-              <h3 className="text-lg font-bold text-black mb-2">
-                Does the $4,980 change if I transfer in hours?
-              </h3>
-              <p className="text-slate-700">
-                No. The program fee is a flat rate. Transferred hours reduce time-in-program, not the scope of services or fee.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
-              <h3 className="text-lg font-bold text-black mb-2">
-                Does this program replace barber school?
-              </h3>
-              <p className="text-slate-700">
-                No. Apprentices must complete licensure-required instructional hours through a licensed barber school.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
-              <h3 className="text-lg font-bold text-black mb-2">
-                What does the $4,980 cover?
-              </h3>
-              <p className="text-slate-700">
-                Federal apprenticeship sponsorship, compliance reporting, employer coordination, Milady theory instruction, and program completion documentation.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
-              <h3 className="text-lg font-bold text-black mb-2">
-                What is a Registered Apprenticeship?
-              </h3>
-              <p className="text-slate-700">
-                A Registered Apprenticeship is a structured talent development strategy approved by the U.S. Department of Labor that combines on-the-job learning, classroom instruction (related technical instruction), and mentorship. Upon completion, participants receive a nationally-recognized credential.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
-              <h3 className="text-lg font-bold text-black mb-2">
-                How do I get my barber license?
-              </h3>
-              <p className="text-slate-700">
-                To obtain an Indiana barber license, you must complete the required instructional hours at a licensed barber school, complete the apprenticeship program, and pass the state licensing examination administered by the Indiana Professional Licensing Agency (IPLA).
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How Placement Works */}
-      <section className="py-8 bg-amber-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-white border-2 border-amber-200 rounded-xl p-6 text-center">
-            <p className="text-amber-900 font-medium">
-              Apprentices complete training hours inside an approved host barbershop. Host shops must be approved before apprentice placement.
-            </p>
-            <Link
-              href="/programs/barber-apprenticeship/host-shops"
-              className="inline-block mt-4 text-amber-700 font-medium hover:underline"
+          <div className="mt-10 flex justify-center gap-4 flex-col sm:flex-row">
+            <a
+              href="/programs/barber-apprenticeship/inquiry"
+              className="rounded-2xl bg-white text-slate-900 px-8 py-4 font-semibold hover:bg-gray-100 transition"
             >
-              Learn about becoming a host shop →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* What is a Registered Apprenticeship */}
-      <section className="py-16 bg-blue-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-            What is a Registered Apprenticeship?
-          </h2>
-          <div className="bg-white border-2 border-blue-200 rounded-xl p-6 md:p-8">
-            <p className="text-lg text-black mb-4">
-              A <strong>Registered Apprenticeship</strong> is a structured
-              talent development strategy approved by the U.S. Department of
-              Labor that combines:
-            </p>
-            <div className="grid md:grid-cols-3 gap-6 mb-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                  1
-                </div>
-                <div>
-                  <h3 className="font-bold text-black mb-1">
-                    On-the-Job Learning
-                  </h3>
-                  <p className="text-sm text-black">
-                    Practical training at a licensed barber shop
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                  2
-                </div>
-                <div>
-                  <h3 className="font-bold text-black mb-1">
-                    Related Instruction
-                  </h3>
-                  <p className="text-sm text-black">
-                    Milady theory curriculum
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                  3
-                </div>
-                <div>
-                  <h3 className="font-bold text-black mb-1">Mentorship</h3>
-                  <p className="text-sm text-black">
-                    Guidance from licensed barbers
-                  </p>
-                </div>
-              </div>
-            </div>
-            <p className="text-black">
-              Upon completion, you receive a <strong>nationally-recognized credential</strong> from the U.S. Department of Labor.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Host Shop Requirements Section */}
-      <HostShopRequirements 
-        programTrack="barber" 
-        showApprovalProcess={true}
-        showMultiRegion={true}
-      />
-
-      {/* Registration Details Accordion */}
-      <section className="py-12 bg-slate-100">
-        <div className="mx-auto max-w-4xl px-6">
-          <details className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-            <summary className="px-6 py-4 cursor-pointer font-bold text-black hover:bg-slate-50 transition-colors">
-              Registration Details (USDOL)
-            </summary>
-            <div className="px-6 py-4 border-t border-slate-200 text-slate-700 space-y-3">
-              <p>
-                Elevate for Humanity is the program brand operated by 2Exclusive LLC, the USDOL Registered Apprenticeship Sponsor of Record.
-              </p>
-              <p>
-                Registration documentation (including sponsor details and program registration information) is available upon request for procurement, compliance, or partner onboarding purposes.
-              </p>
-              <p>
-                This program is fee-based and not funded by the State of Indiana. Wages and employment terms, if applicable, are governed by host sites and applicable labor laws and are not administered through Elevate.
-              </p>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      {/* Credentials & Outcomes */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <CredentialsOutcomes
-            programName="Barber Apprenticeship"
-            partnerCertifications={[
-              'Indiana Barber License (issued by Indiana Professional Licensing Agency)',
-              'USDOL Registered Apprenticeship Certificate of Completion',
-            ]}
-            employmentOutcomes={[
-              'Licensed Barber',
-              'Barbershop Owner/Operator',
-              'Master Barber',
-              'Barber Instructor',
-            ]}
-          />
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-purple-600">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
-          <p className="text-purple-100 text-lg mb-8">
-            Enroll in the USDOL Registered Barber Apprenticeship program.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/forms/barber-apprenticeship-inquiry"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all"
+              Request Info
+            </a>
+            <a
+              href="/programs/barber-apprenticeship/apply"
+              className="rounded-2xl bg-red-600 text-white px-8 py-4 font-semibold hover:bg-red-700 transition"
             >
-              Still Have Questions? Talk to Us
-            </Link>
-            <Link
-              href="/enroll/barber-apprenticeship"
-              className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-purple-600 hover:bg-purple-50 transition-all shadow-xl"
-            >
-              Enroll & Start Training
-            </Link>
+              Enroll & Pay Deposit
+            </a>
           </div>
         </div>
       </section>
-
-    </div>
+    </main>
   );
 }

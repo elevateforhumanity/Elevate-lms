@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CheckCircle, Shield, Users, Clock, Award, Building2 } from 'lucide-react';
+import { Shield, Users, Award, Building2 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
@@ -31,9 +31,10 @@ export default function HostShopsPage() {
           className="object-cover"
           priority
         />
+        <div className="absolute inset-0 bg-slate-900/60" />
         <div className="absolute inset-0 flex items-end">
           <div className="max-w-5xl mx-auto px-6 pb-12 w-full">
-            <div className="inline-block bg-amber-500 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
+            <div className="inline-block bg-blue-800 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
               Partner Opportunity
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -51,7 +52,7 @@ export default function HostShopsPage() {
               </Link>
               <Link
                 href="/portal/partner/enroll/host-shop"
-                className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg"
+                className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg"
               >
                 Enroll as a Host Shop
               </Link>
@@ -63,7 +64,7 @@ export default function HostShopsPage() {
       {/* Why Partner */}
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Partner With Us?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">Why Partner With Us?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <BenefitCard
               icon={<Users className="w-8 h-8" />}
@@ -87,7 +88,7 @@ export default function HostShopsPage() {
       {/* Qualifications */}
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-4">Host Shop Qualifications</h2>
+          <h2 className="text-3xl font-bold text-center mb-4 text-blue-900">Host Shop Qualifications</h2>
           <p className="text-gray-600 text-center mb-12">
             To participate as a host barbershop, your shop must meet these requirements:
           </p>
@@ -102,7 +103,7 @@ export default function HostShopsPage() {
                 'Carry appropriate business insurance',
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-blue-800 font-bold">•</span>
                   <span className="text-gray-700">{item}</span>
                 </li>
               ))}
@@ -114,25 +115,25 @@ export default function HostShopsPage() {
       {/* Responsibilities */}
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Host Shop Responsibilities</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">Host Shop Responsibilities</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-amber-50 rounded-xl p-6 border border-amber-100">
-              <h3 className="font-bold text-lg mb-4 text-amber-900">What You Provide</h3>
-              <ul className="space-y-3 text-amber-800">
+            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+              <h3 className="font-bold text-lg mb-4 text-gray-900">What You Provide</h3>
+              <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-blue-800 font-bold">•</span>
                   Supervised on-the-job training
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-blue-800 font-bold">•</span>
                   Workspace and tools access
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-blue-800 font-bold">•</span>
                   Attendance verification
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-blue-800 font-bold">•</span>
                   Professional mentorship
                 </li>
               </ul>
@@ -141,19 +142,19 @@ export default function HostShopsPage() {
               <h3 className="font-bold text-lg mb-4 text-blue-900">What We Handle</h3>
               <ul className="space-y-3 text-blue-800">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="font-bold">•</span>
                   Apprenticeship structure & framework
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="font-bold">•</span>
                   Related instruction (Milady curriculum)
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="font-bold">•</span>
                   Documentation & compliance
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="font-bold">•</span>
                   Completion verification
                 </li>
               </ul>
@@ -165,7 +166,7 @@ export default function HostShopsPage() {
       {/* Approval Process */}
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Approval Process</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">Approval Process</h2>
           <div className="space-y-6">
             {[
               { step: 1, title: 'Submit Application', description: 'Complete the host shop enrollment form with your shop details and license information.' },
@@ -174,7 +175,7 @@ export default function HostShopsPage() {
               { step: 4, title: 'Approval & Placement', description: 'Once approved, you can begin hosting apprentices based on availability.' },
             ].map((item) => (
               <div key={item.step} className="flex gap-4 items-start">
-                <div className="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">
+                <div className="w-12 h-12 bg-blue-800 text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">
                   {item.step}
                 </div>
                 <div className="flex-1 bg-white rounded-xl p-5 shadow-sm">
@@ -184,8 +185,8 @@ export default function HostShopsPage() {
               </div>
             ))}
           </div>
-          <div className="mt-8 bg-amber-100 border border-amber-200 rounded-xl p-6 text-center">
-            <p className="text-amber-900 font-medium">
+          <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6 text-center">
+            <p className="text-blue-900 font-medium">
               Host shops must be approved before they can host apprentices. Enrollment includes intake and Host Shop Agreement acceptance.
             </p>
           </div>
@@ -195,7 +196,7 @@ export default function HostShopsPage() {
       {/* Bottom CTA */}
       <section className="py-16 px-6 bg-slate-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
-          <Building2 className="w-16 h-16 mx-auto mb-6 text-amber-400" />
+          <Building2 className="w-16 h-16 mx-auto mb-6 text-white" />
           <h2 className="text-3xl font-bold mb-4">Ready to Train the Next Generation?</h2>
           <p className="text-slate-300 mb-8">
             Join our network of approved host barbershops and help shape future barbers.
@@ -209,7 +210,7 @@ export default function HostShopsPage() {
             </Link>
             <Link
               href="/portal/partner/enroll/host-shop"
-              className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-bold transition"
+              className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-bold transition"
             >
               Enroll as a Host Shop
             </Link>
@@ -223,7 +224,7 @@ export default function HostShopsPage() {
 function BenefitCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
   return (
     <div className="text-center p-6">
-      <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 text-amber-600">
+      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-800">
         {icon}
       </div>
       <h3 className="font-bold text-lg mb-2">{title}</h3>
