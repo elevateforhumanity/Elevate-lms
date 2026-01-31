@@ -23,11 +23,16 @@ const teamMembers = [
 
 • **U.S. Department of Labor (DOL)** – Registered Apprenticeship Sponsor (RAPIDS ID: 2025-IN-132301)
 • **Indiana Department of Workforce Development (DWD)** – Approved INTraining Provider (Location ID: 10004621)
-• **Indiana Department of Education (DOE)** – Recognized educational institution
-• **Indiana State Board of Cosmetology & Barber Examiners** – Licensed school operator
+• **Certiport Authorized Testing Center** – Certified testing site
+• **RISE Partnership** – Reentry program collaboration
+• **CareerSafe Partner** – OSHA safety training provider
+• **HSI Partner** – Health & Safety Institute certified
+• **Indiana Substitute Teaching License** – Licensed educator
+• **ITAP Approved** – Indiana Training Assistance Program
+• **CAGE Code 59QC3** – Federal contractor registration
+• **Indiana State Board of Cosmetology & Barber Examiners** – Licensed Barber School
 • **WIOA Eligible Training Provider** – Programs qualify for Workforce Innovation and Opportunity Act funding
 • **Workforce Ready Grant (WRG) Approved** – State grant funding eligibility
-• **Justice Reinvestment Initiative (JRI) Approved** – Reentry program funding eligibility
 • **EmployIndy Partner** – Workforce development collaboration
 • **WorkOne Center Partner** – State workforce system integration
 
