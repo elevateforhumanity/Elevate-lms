@@ -31,6 +31,8 @@ const teamMembers = [
 • **HSI Partner** – Health & Safety Institute certified
 • **Indiana Substitute Teaching License** – Licensed educator
 • **ITAP Approved** – Indiana Training Assistance Program
+• **IRS Enrolled Agent** – Federally licensed tax practitioner
+• **VITA Site** – Volunteer Income Tax Assistance program site
 • **CAGE Code 59QC3** – Federal contractor registration
 • **Indiana State Board of Cosmetology & Barber Examiners** – Licensed Barber School
 • **WIOA Eligible Training Provider** – Programs qualify for Workforce Innovation and Opportunity Act funding
