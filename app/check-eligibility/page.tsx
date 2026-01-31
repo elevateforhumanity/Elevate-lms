@@ -1,18 +1,17 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import Image from 'next/image';
-import { CheckCircle, XCircle, AlertCircle, ArrowRight, Phone, MapPin, GraduationCap, Briefcase, DollarSign } from 'lucide-react';
+import { CheckCircle, XCircle, AlertCircle, ArrowRight, Phone, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Check Eligibility for Free Career Training | Elevate for Humanity',
-  description: 'Find out if you qualify for FREE career training in barbering, healthcare, CDL, and skilled trades in Indianapolis. WIOA-funded programs for Indiana residents 18+.',
+  title: 'Check Eligibility (Before WorkOne) | Elevate for Humanity',
+  description: 'Check if you may qualify for free career training through WIOA funding before applying. Final eligibility is determined by WorkOne / Indiana Career Connect.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/check-eligibility',
   },
   openGraph: {
-    title: 'Check Eligibility - Free Career Training in Indianapolis',
-    description: 'See if you qualify for free workforce training in barbering, CNA, CDL, and more. No cost to eligible Indiana residents.',
+    title: 'Check Eligibility - Free Career Training',
+    description: 'See if you may qualify for free workforce training before applying.',
     url: 'https://www.elevateforhumanity.org/check-eligibility',
     siteName: 'Elevate for Humanity',
     type: 'website',
@@ -22,102 +21,36 @@ export const metadata: Metadata = {
 export default function CheckEligibilityPage() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 py-4">
+            <div className="max-w-7xl mx-auto px-4 py-4">
         <Breadcrumbs items={[{ label: "Check Eligibility" }]} />
       </div>
-
-      {/* Hero with Image */}
-      <section className="relative bg-blue-900 text-white">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/hero/hero-hands-on-training.jpg"
-            alt="Students in hands-on career training"
-            fill
-            className="object-cover opacity-30"
-            priority
-          />
-        </div>
-        <div className="relative max-w-4xl mx-auto text-center py-20 px-4">
-          <h1 className="text-3xl md:text-5xl font-bold mb-6">
-            Could You Qualify for FREE Career Training?
+{/* Hero */}
+      <section className="bg-gradient-to-b from-blue-900 to-blue-800 text-white py-16 px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            Check Eligibility (Before WorkOne)
           </h1>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Take 2 minutes to see if you may be eligible for no-cost training in barbering, healthcare, CDL trucking, skilled trades, and more.
+          <p className="text-blue-100 text-lg">
+            A quick pre-screen to help you understand if our programs are a good fit
           </p>
-          <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-              <DollarSign className="w-5 h-5 text-green-400" />
-              <span>100% Free for Eligible Students</span>
-            </div>
-            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-              <GraduationCap className="w-5 h-5 text-yellow-400" />
-              <span>Industry Certifications</span>
-            </div>
-            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-              <Briefcase className="w-5 h-5 text-orange-400" />
-              <span>Job Placement Support</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Programs Available */}
-      <section className="py-12 px-4 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">Training Programs You Could Access</h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
-              <div className="relative h-32">
-                <Image src="/images/programs/barber-hero.jpg" alt="Barber training" fill className="object-cover" />
-              </div>
-              <div className="p-4">
-                <h3 className="font-bold text-gray-900">Barber Apprenticeship</h3>
-                <p className="text-sm text-gray-600 mt-1">1,500 hours • State License</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
-              <div className="relative h-32">
-                <Image src="/images/programs/cna-hero.jpg" alt="CNA training" fill className="object-cover" />
-              </div>
-              <div className="p-4">
-                <h3 className="font-bold text-gray-900">CNA / Healthcare</h3>
-                <p className="text-sm text-gray-600 mt-1">4-8 weeks • State Certification</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
-              <div className="relative h-32">
-                <Image src="/images/programs/cdl-hero.jpg" alt="CDL training" fill className="object-cover" />
-              </div>
-              <div className="p-4">
-                <h3 className="font-bold text-gray-900">CDL Truck Driving</h3>
-                <p className="text-sm text-gray-600 mt-1">3-4 weeks • CDL License</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm border">
-              <div className="relative h-32">
-                <Image src="/images/hero/hero-skilled-trades.jpg" alt="Skilled trades" fill className="object-cover" />
-              </div>
-              <div className="p-4">
-                <h3 className="font-bold text-gray-900">Skilled Trades</h3>
-                <p className="text-sm text-gray-600 mt-1">HVAC, Electrical, Plumbing</p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* Important Notice */}
-      <section className="py-8 px-4 bg-amber-50 border-y border-amber-200">
+      <section className="py-8 px-4 bg-amber-50 border-b border-amber-200">
         <div className="max-w-3xl mx-auto">
           <div className="flex gap-4">
             <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
             <div>
-              <h2 className="font-bold text-amber-900 mb-2">How Funding Works:</h2>
+              <h2 className="font-bold text-amber-900 mb-2">Before you apply:</h2>
               <p className="text-amber-800">
-                Our programs are funded through <strong>WIOA (Workforce Innovation and Opportunity Act)</strong>, Indiana&apos;s Workforce Ready Grant, and other state/federal workforce programs. This means training is <strong>completely free</strong> for those who qualify.
+                Most Elevate for Humanity programs are funded through state and federal workforce programs.
               </p>
-              <p className="text-amber-800 mt-2">
-                <strong>Important:</strong> Final eligibility is verified by WorkOne / Indiana Career Connect — not by Elevate for Humanity. The checklist below helps you understand if you&apos;re likely to qualify before you apply.
+              <p className="text-amber-800 mt-2 font-semibold">
+                Final eligibility is determined by WorkOne / Indiana Career Connect (ICC) — not by Elevate for Humanity.
+              </p>
+              <p className="text-amber-700 mt-2 text-sm">
+                The information below is a basic pre-screen to help you understand whether these programs are a good fit before starting the application.
               </p>
             </div>
           </div>
@@ -131,119 +64,74 @@ export default function CheckEligibilityPage() {
           <div className="mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
               <CheckCircle className="w-7 h-7 text-green-600" />
-              You&apos;re Likely Eligible If You:
+              You may be a good fit if you:
             </h2>
             <ul className="space-y-4">
               {[
-                { text: 'Are 18 years or older', detail: 'Some programs accept 16+ with parental consent' },
-                { text: 'Live in Indiana', detail: 'Must be a current Indiana resident' },
-                { text: 'Are legally authorized to work in the United States', detail: 'U.S. citizen, permanent resident, or valid work authorization' },
-                { text: 'Are unemployed, underemployed, or seeking a career change', detail: 'Working part-time, low wages, or in an unstable job situation' },
-                { text: 'Want training that leads to a real job', detail: 'Our programs connect directly to employers hiring now' },
-                { text: 'Can commit to the training schedule', detail: 'Programs range from 3 weeks to 18 months depending on the career path' },
+                'Are 18 years or older',
+                'Live in Indiana',
+                'Are legally authorized to work in the United States',
+                'Are unemployed, underemployed, or seeking better-paying work',
+                'Are interested in training that leads directly to employment',
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 bg-green-50 p-4 rounded-lg">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <span className="text-gray-900 font-medium">{item.text}</span>
-                    <p className="text-sm text-gray-600 mt-1">{item.detail}</p>
-                  </div>
+                  <span className="text-gray-800">{item}</span>
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Priority Groups */}
-          <div className="mb-10 bg-blue-50 rounded-xl p-6 border border-blue-100">
-            <h2 className="text-xl font-bold text-blue-900 mb-4">Priority Consideration Given To:</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              {[
-                'Veterans and military spouses',
-                'Recipients of public assistance (SNAP, TANF, SSI)',
-                'Individuals with disabilities',
-                'Ex-offenders seeking reentry',
-                'Single parents',
-                'Youth aging out of foster care',
-                'Long-term unemployed (6+ months)',
-                'Low-income households',
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-2 text-blue-800">
-                  <CheckCircle className="w-4 h-4 text-blue-600" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* You May Not Qualify */}
           <div className="mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
               <XCircle className="w-7 h-7 text-red-500" />
-              You May Not Be Eligible If You:
+              You may not qualify if you:
             </h2>
             <ul className="space-y-4">
               {[
-                { text: 'Do not live in Indiana', detail: 'Funding is specific to Indiana residents' },
-                { text: 'Are not authorized to work in the U.S.', detail: 'Work authorization documentation is required' },
-                { text: 'Are already enrolled in another publicly funded training program', detail: 'Cannot receive duplicate funding' },
-                { text: 'Are seeking training for hobby or personal enrichment only', detail: 'Programs are designed for employment outcomes' },
-                { text: 'Have a felony that disqualifies you from licensure in your chosen field', detail: 'Some careers have background restrictions — we can help you find alternatives' },
+                'Do not live in Indiana',
+                'Are not authorized to work in the U.S.',
+                'Are already enrolled in another publicly funded training program',
+                'Are seeking training for personal enrichment only (not employment)',
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 bg-red-50 p-4 rounded-lg">
                   <XCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <span className="text-gray-900 font-medium">{item.text}</span>
-                    <p className="text-sm text-gray-600 mt-1">{item.detail}</p>
-                  </div>
+                  <span className="text-gray-800">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* What Happens Next */}
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">What Happens After You Apply:</h2>
-            <div className="space-y-6">
-              {[
-                { step: 1, title: 'Submit Your Application', text: 'Complete a short online application (takes about 10 minutes). Tell us about your background and which career interests you.' },
-                { step: 2, title: 'Eligibility Verification', text: 'WorkOne / Indiana Career Connect will review your information and verify your eligibility for funding. You may need to provide documents like ID, proof of residence, and income verification.' },
-                { step: 3, title: 'Career Counseling', text: 'Meet with a career advisor to discuss your goals, choose the right training program, and create your personalized career plan.' },
-                { step: 4, title: 'Start Training', text: 'Begin your training program with full support — including supplies, certifications, and job placement assistance upon completion.' },
-              ].map((item) => (
-                <div key={item.step} className="flex gap-4">
-                  <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold flex-shrink-0 text-lg">
-                    {item.step}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900">{item.title}</h3>
-                    <p className="text-gray-600 mt-1">{item.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          {/* About Funding */}
+          <div className="mb-10 bg-blue-50 rounded-xl p-6 border border-blue-100">
+            <h2 className="text-xl font-bold text-blue-900 mb-3">About funding:</h2>
+            <p className="text-blue-800 mb-3">
+              Training is made possible through workforce funding programs such as WIOA, Workforce Ready Grants, and other state or partner funding sources.
+            </p>
+            <p className="text-blue-700 text-sm">
+              Each funding source has specific requirements. WorkOne / Indiana Career Connect verifies eligibility and documentation as part of the official process.
+            </p>
           </div>
 
-          {/* Documents You May Need */}
-          <div className="mb-10 bg-gray-50 rounded-xl p-6 border">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Documents You May Need:</h2>
-            <div className="grid md:grid-cols-2 gap-3 text-gray-700">
+          {/* What Happens Next */}
+          <div className="mb-10">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Next steps if you apply:</h2>
+            <div className="space-y-4">
               {[
-                'Government-issued photo ID',
-                'Social Security card',
-                'Proof of Indiana residency',
-                'Proof of income (pay stubs, tax return, or benefit letter)',
-                'High school diploma or GED (if available)',
-                'DD-214 (for veterans)',
-                'Selective Service registration (males 18-25)',
-                'Work authorization documents (if applicable)',
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-blue-600" />
-                  <span>{item}</span>
+                { step: 1, text: 'Submit a short application through Elevate for Humanity' },
+                { step: 2, text: 'Complete an eligibility review with WorkOne / Indiana Career Connect' },
+                { step: 3, text: 'If approved, you\'ll be placed into the appropriate training pathway' },
+                { step: 4, text: 'Begin training and career support' },
+              ].map((item) => (
+                <div key={item.step} className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold flex-shrink-0">
+                    {item.step}
+                  </div>
+                  <p className="text-gray-700">{item.text}</p>
                 </div>
               ))}
             </div>
-            <p className="text-sm text-gray-500 mt-4">Don&apos;t have all documents? Apply anyway — we can help you obtain what you need.</p>
           </div>
 
           {/* CTA */}
