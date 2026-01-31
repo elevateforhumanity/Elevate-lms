@@ -220,7 +220,7 @@ export default async function BarberApprenticeshipPage() {
               </div>
 
               <Link
-                href="/apply?program=barber-apprenticeship"
+                href="/forms/barber-apprenticeship-inquiry"
                 className="w-full flex items-center justify-center px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-all text-lg"
               >
                 Apply Now

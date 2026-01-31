@@ -47,7 +47,7 @@ Payment plans are available. Looking for free training? Check your WIOA/WRG elig
 
 Payment is collected after your enrollment is approved. We offer flexible payment plans to fit your budget.
 
-Ready to get started? Apply at /apply?program=barber-apprenticeship`,
+Ready to get started? Apply at /forms/barber-apprenticeship-inquiry`,
 
   'requirements|qualify|eligible': `**Basic Requirements:**
 • 18+ years old
@@ -77,7 +77,7 @@ Already have a shop in mind? They can apply to become a partner training site.`,
 
   'start|begin|enroll|apply': `**Ready to start?** Here's how:
 
-1. Apply at /apply?program=barber-apprenticeship
+1. Apply at /forms/barber-apprenticeship-inquiry
 2. Speak with an enrollment advisor
 3. Complete enrollment paperwork
 4. Choose your payment plan
