@@ -5,8 +5,10 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { 
   Briefcase, Award, FileText, Plus, ExternalLink, 
-  Download, Share2, Eye, Calendar, CheckCircle
+  Download, Share2, Eye, Calendar, CheckCircle, Trophy, Flame, Star
 } from 'lucide-react';
+import { StreakTracker } from '@/components/gamification/StreakTracker';
+import { PointsDisplay } from '@/components/gamification/PointsDisplay';
 
 export const dynamic = 'force-dynamic';
 
@@ -251,6 +253,16 @@ export default async function PortfolioPage() {
               </button>
             </div>
 
+            {/* Gamification Stats */}
+            <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl p-6 mb-6">
+              <PointsDisplay userId={user.id} />
+            </div>
+
+            {/* Learning Streak */}
+            <div className="mb-6">
+              <StreakTracker userId={user.id} />
+            </div>
+
             {/* Portfolio Tips */}
             <div className="bg-blue-50 rounded-xl p-6">
               <h2 className="font-semibold text-gray-900 mb-4">Portfolio Tips</h2>
@@ -272,6 +284,39 @@ export default async function PortfolioPage() {
                   <span>Keep your portfolio updated as you complete new courses</span>
                 </li>
               </ul>
+            </div>
+
+            {/* Badges Earned */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border mt-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-semibold text-gray-900 flex items-center gap-2">
+                  <Trophy className="w-5 h-5 text-yellow-600" />
+                  Recent Badges
+                </h2>
+                <Link href="/lms/badges" className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                  View All
+                </Link>
+              </div>
+              <div className="grid grid-cols-3 gap-3">
+                <div className="text-center p-3 bg-gray-50 rounded-lg">
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <Star className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <p className="text-xs text-gray-600">First Steps</p>
+                </div>
+                <div className="text-center p-3 bg-gray-50 rounded-lg opacity-40">
+                  <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <Flame className="w-5 h-5 text-gray-400" />
+                  </div>
+                  <p className="text-xs text-gray-400">Locked</p>
+                </div>
+                <div className="text-center p-3 bg-gray-50 rounded-lg opacity-40">
+                  <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <Trophy className="w-5 h-5 text-gray-400" />
+                  </div>
+                  <p className="text-xs text-gray-400">Locked</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

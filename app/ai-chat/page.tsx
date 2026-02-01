@@ -1,228 +1,231 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-
 import Link from 'next/link';
-import Image from 'next/image';
+import { 
+  MessageSquare, Bot, Sparkles, Clock, BookOpen, 
+  HelpCircle, ArrowRight, CheckCircle, Zap
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/ai-chat',
   },
-  title: 'Ai Chat | Elevate For Humanity',
-  description:
-    'Resources and tools for your success.',
+  title: 'AI Learning Assistant | Elevate For Humanity',
+  description: 'Get instant help with your courses, career questions, and learning journey from our AI-powered assistant.',
 };
 
-export default async function AiChatPage() {
+const features = [
+  {
+    icon: BookOpen,
+    title: 'Course Help',
+    description: 'Get explanations for difficult concepts, quiz prep, and study tips',
+  },
+  {
+    icon: HelpCircle,
+    title: 'Career Guidance',
+    description: 'Ask about career paths, certifications, and job opportunities',
+  },
+  {
+    icon: Clock,
+    title: '24/7 Available',
+    description: 'Get help anytime, day or night, whenever you need it',
+  },
+  {
+    icon: Zap,
+    title: 'Instant Answers',
+    description: 'No waiting - get immediate responses to your questions',
+  },
+];
+
+const sampleQuestions = [
+  "What certifications should I get for healthcare?",
+  "Explain the WIOA eligibility requirements",
+  "How do I prepare for the CNA exam?",
+  "What career paths are available after completing CDL training?",
+  "Help me understand this course material",
+  "What funding options are available for my training?",
+];
+
+export default function AIChatPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-            <div className="max-w-7xl mx-auto px-4 py-4">
-        <Breadcrumbs items={[{ label: "Ai Chat" }]} />
+      {/* Breadcrumbs */}
+      <div className="bg-white border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'AI Learning Assistant' }]} />
+        </div>
       </div>
-{/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/success-new/success-17.jpg"
-          alt="Ai Chat"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Ai Chat</h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access your dashboard and
-            development.
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-20">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full mb-6">
+            <Sparkles className="w-5 h-5" />
+            <span className="font-semibold">Powered by AI</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Your Personal Learning Assistant
+          </h1>
+          <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
+            Get instant help with courses, career questions, and your learning journey. 
+            Available 24/7 to support your success.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
+          <Link
+            href="/ai-tutor"
+            className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-purple-50 transition-colors"
+          >
+            <MessageSquare className="w-5 h-5" />
+            Start Chatting
+          </Link>
         </div>
       </section>
 
-      {/* Content Section */}
+      {/* Chat Preview */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">Ai Chat</h2>
-                <p className="text-black mb-6">
-                  Your hub for training and career growth.
-                  and development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="bg-white rounded-2xl shadow-xl border overflow-hidden">
+            {/* Chat Header */}
+            <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-4 flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                <Bot className="w-6 h-6 text-white" />
               </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/business/professional-2.jpg"
-                  alt="Ai Chat"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+              <div>
+                <h3 className="font-semibold text-white">Elevate AI Assistant</h3>
+                <p className="text-purple-200 text-sm">Always here to help</p>
               </div>
             </div>
 
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
+            {/* Chat Messages */}
+            <div className="p-6 space-y-4 bg-gray-50">
+              {/* AI Message */}
+              <div className="flex gap-3">
+                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Bot className="w-5 h-5 text-purple-600" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
+                <div className="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm max-w-md">
+                  <p className="text-gray-700">
+                    Hi! I'm your AI learning assistant. I can help you with:
+                  </p>
+                  <ul className="mt-2 space-y-1 text-gray-600 text-sm">
+                    <li>• Course content and study tips</li>
+                    <li>• Career guidance and job search</li>
+                    <li>• Program information and eligibility</li>
+                    <li>• Technical support</li>
+                  </ul>
+                  <p className="mt-2 text-gray-700">What can I help you with today?</p>
+                </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
+              {/* User Message */}
+              <div className="flex gap-3 justify-end">
+                <div className="bg-purple-600 text-white rounded-2xl rounded-tr-none p-4 max-w-md">
+                  <p>What certifications should I get for a healthcare career?</p>
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
+              {/* AI Response */}
+              <div className="flex gap-3">
+                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Bot className="w-5 h-5 text-purple-600" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
+                <div className="bg-white rounded-2xl rounded-tl-none p-4 shadow-sm max-w-md">
+                  <p className="text-gray-700">
+                    Great question! For healthcare careers, I recommend starting with:
+                  </p>
+                  <ul className="mt-2 space-y-2 text-gray-600 text-sm">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span><strong>CNA (Certified Nursing Assistant)</strong> - Entry-level, high demand</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span><strong>CPR/First Aid</strong> - Required for most healthcare roles</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span><strong>Phlebotomy</strong> - Quick certification, good pay</span>
+                    </li>
+                  </ul>
+                  <p className="mt-2 text-gray-700">
+                    Would you like me to tell you more about any of these programs?
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Chat Input */}
+            <div className="p-4 border-t bg-white">
+              <div className="flex gap-3">
+                <input
+                  type="text"
+                  placeholder="Type your question..."
+                  className="flex-1 px-4 py-3 border rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  disabled
+                />
+                <Link
+                  href="/ai-tutor"
+                  className="px-6 py-3 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors"
+                >
+                  Start Chat
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
+      {/* Features */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">How AI Assistant Helps You</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <feature.icon className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600 text-sm">{feature.description}</p>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* Sample Questions */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-center mb-8">Try Asking</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {sampleQuestions.map((question, index) => (
+              <Link
+                key={index}
+                href="/ai-tutor"
+                className="flex items-center gap-3 p-4 bg-white rounded-xl border hover:border-purple-300 hover:shadow-md transition-all"
+              >
+                <MessageSquare className="w-5 h-5 text-purple-600 flex-shrink-0" />
+                <span className="text-gray-700">{question}</span>
+                <ArrowRight className="w-4 h-4 text-gray-400 ml-auto" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+          <p className="text-purple-100 mb-8">
+            Your AI learning assistant is ready to help you succeed.
+          </p>
+          <Link
+            href="/ai-tutor"
+            className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-purple-50 transition-colors"
+          >
+            <MessageSquare className="w-5 h-5" />
+            Start Chatting Now
+          </Link>
         </div>
       </section>
     </div>
