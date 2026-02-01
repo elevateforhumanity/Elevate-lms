@@ -5,6 +5,7 @@ import { requireAdmin } from '@/lib/auth';
 import { createClient } from '@/lib/supabase/server';
 import { AdminLicenseWrapper } from '@/components/licensing/AdminLicenseWrapper';
 import { getLicenseAccessMode } from '@/lib/licensing/billing-authority';
+import AdminHeader from '@/components/admin/AdminHeader';
 
 export const dynamic = 'force-dynamic';
 
@@ -96,7 +97,12 @@ export default async function AdminLayout({
 
   // If no license context, render without wrapper (handles demo mode, etc.)
   if (!context) {
-    return <>{children}</>;
+    return (
+      <>
+        <AdminHeader />
+        <div className="pt-16">{children}</div>
+      </>
+    );
   }
 
   return (
@@ -105,7 +111,8 @@ export default async function AdminLayout({
       userRole={context.userRole}
       tenantId={context.tenantId}
     >
-      {children}
+      <AdminHeader />
+      <div className="pt-16">{children}</div>
     </AdminLicenseWrapper>
   );
 }
