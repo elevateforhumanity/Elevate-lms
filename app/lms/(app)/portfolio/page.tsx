@@ -1,19 +1,19 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
+import { 
+  Briefcase, Award, FileText, Plus, ExternalLink, 
+  Download, Share2, Eye, Calendar, CheckCircle
+} from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/portal/student/portfolio',
-  },
-  title: 'Portfolio | Elevate For Humanity',
-  description:
-    'Resources and tools for your success.',
+  title: 'My Portfolio | LMS | Elevate For Humanity',
+  description: 'Showcase your achievements, certificates, and completed projects.',
 };
 
 export default async function PortfolioPage() {
@@ -22,9 +22,6 @@ export default async function PortfolioPage() {
   if (!supabase) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <Breadcrumbs items={[{ label: "LMS", href: "/lms/dashboard" }, { label: "Portfolio" }]} />
-        </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
           <p className="text-gray-600">Please try again later.</p>
@@ -32,12 +29,11 @@ export default async function PortfolioPage() {
       </div>
     );
   }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+
+  const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
-    redirect('/login');
+    redirect('/login?redirect=/lms/portfolio');
   }
 
   const { data: profile } = await supabase
@@ -46,139 +42,240 @@ export default async function PortfolioPage() {
     .eq('id', user.id)
     .single();
 
-  // Fetch relevant data
-  const { data: items, count } = await supabase
-    .from('profiles')
-    .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
-    .limit(20);
+  // Fetch certificates
+  const { data: certificates } = await supabase
+    .from('certificates')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('issued_at', { ascending: false });
+
+  // Fetch completed courses
+  const { data: completedCourses } = await supabase
+    .from('enrollments')
+    .select('*, course:courses(*)')
+    .eq('user_id', user.id)
+    .eq('status', 'completed')
+    .order('completed_at', { ascending: false });
 
   return (
     <div className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <Breadcrumbs items={[{ label: "LMS", href: "/lms/dashboard" }, { label: "Portfolio" }]} />
+      {/* Breadcrumbs */}
+      <div className="bg-white border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[
+            { label: 'LMS', href: '/lms/dashboard' },
+            { label: 'My Portfolio' }
+          ]} />
         </div>
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/getting-started-hero.jpg"
-          alt="Portfolio"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+      </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Portfolio</h1>
-          <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Access your dashboard and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/student/dashboard"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Back to Dashboard
-            </Link>
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
+              <Briefcase className="w-8 h-8 text-blue-600" />
+              My Portfolio
+            </h1>
+            <p className="text-gray-600 mt-1">
+              Showcase your achievements and share with employers
+            </p>
+          </div>
+          <div className="flex gap-3">
+            <button className="flex items-center gap-2 px-4 py-2 bg-white border rounded-lg hover:bg-gray-50 text-gray-700">
+              <Share2 className="w-4 h-4" />
+              Share Portfolio
+            </button>
+            <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+              <Download className="w-4 h-4" />
+              Export PDF
+            </button>
           </div>
         </div>
-      </section>
 
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Total Items
-                </h3>
-                <p className="text-3xl font-bold text-brand-blue-600">
-                  {count || 0}
-                </p>
+        {/* Stats */}
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white rounded-xl p-6 shadow-sm border">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                <Award className="w-6 h-6 text-green-600" />
               </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Active
-                </h3>
-                <p className="text-3xl font-bold text-brand-green-600">
-                  {items?.filter((i) => i.status === 'active').length || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Recent
-                </h3>
-                <p className="text-3xl font-bold text-purple-600">
-                  {items?.filter((i) => {
-                    const created = new Date(i.created_at);
-                    const weekAgo = new Date();
-                    weekAgo.setDate(weekAgo.getDate() - 7);
-                    return created > weekAgo;
-                  }).length || 0}
-                </p>
+              <div>
+                <div className="text-2xl font-bold text-gray-900">
+                  {certificates?.length || 0}
+                </div>
+                <div className="text-gray-600 text-sm">Certificates Earned</div>
               </div>
             </div>
+          </div>
+          <div className="bg-white rounded-xl p-6 shadow-sm border">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                <CheckCircle className="w-6 h-6 text-blue-600" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-gray-900">
+                  {completedCourses?.length || 0}
+                </div>
+                <div className="text-gray-600 text-sm">Courses Completed</div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl p-6 shadow-sm border">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                <FileText className="w-6 h-6 text-purple-600" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-gray-900">0</div>
+                <div className="text-gray-600 text-sm">Projects Added</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-            {/* Data Display */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-2xl font-bold mb-4">Items</h2>
-              {items && items.length > 0 ? (
-                <div className="space-y-4">
-                  {items.map((item: any) => (
-                    <div
-                      key={item.id}
-                      className="p-4 border rounded-lg hover:bg-gray-50"
-                    >
-                      <p className="font-semibold">
-                        {item.title || item.name || item.id}
-                      </p>
-                      <p className="text-sm text-black">
-                        {new Date(item.created_at).toLocaleDateString()}
-                      </p>
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Certificates */}
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-xl shadow-sm border">
+              <div className="p-6 border-b">
+                <h2 className="font-semibold text-gray-900 flex items-center gap-2">
+                  <Award className="w-5 h-5 text-yellow-600" />
+                  Certificates & Credentials
+                </h2>
+              </div>
+              {certificates && certificates.length > 0 ? (
+                <div className="divide-y">
+                  {certificates.map((cert: any) => (
+                    <div key={cert.id} className="p-6 hover:bg-gray-50">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <h3 className="font-medium text-gray-900">{cert.title}</h3>
+                          <p className="text-sm text-gray-600 mt-1">{cert.issuer}</p>
+                          <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="w-4 h-4" />
+                              Issued {new Date(cert.issued_at).toLocaleDateString()}
+                            </span>
+                            {cert.credential_id && (
+                              <span>ID: {cert.credential_id}</span>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex gap-2">
+                          <button className="p-2 hover:bg-gray-100 rounded-lg" title="View">
+                            <Eye className="w-4 h-4 text-gray-600" />
+                          </button>
+                          <button className="p-2 hover:bg-gray-100 rounded-lg" title="Download">
+                            <Download className="w-4 h-4 text-gray-600" />
+                          </button>
+                          <button className="p-2 hover:bg-gray-100 rounded-lg" title="Share">
+                            <ExternalLink className="w-4 h-4 text-gray-600" />
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-black text-center py-8">No items found</p>
+                <div className="p-12 text-center">
+                  <Award className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                  <h3 className="font-medium text-gray-900 mb-2">No certificates yet</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    Complete courses to earn certificates and credentials
+                  </p>
+                  <Link
+                    href="/lms/courses"
+                    className="text-blue-600 hover:text-blue-700 font-medium text-sm"
+                  >
+                    Browse Courses →
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Completed Courses */}
+            <div className="bg-white rounded-xl shadow-sm border mt-6">
+              <div className="p-6 border-b">
+                <h2 className="font-semibold text-gray-900 flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  Completed Courses
+                </h2>
+              </div>
+              {completedCourses && completedCourses.length > 0 ? (
+                <div className="divide-y">
+                  {completedCourses.map((enrollment: any) => (
+                    <div key={enrollment.id} className="p-6 hover:bg-gray-50">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="font-medium text-gray-900">
+                            {enrollment.course?.title || 'Course'}
+                          </h3>
+                          <p className="text-sm text-gray-600 mt-1">
+                            Completed {new Date(enrollment.completed_at).toLocaleDateString()}
+                          </p>
+                        </div>
+                        <Link
+                          href={`/lms/courses/${enrollment.course_id}`}
+                          className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                        >
+                          View Course
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="p-12 text-center">
+                  <CheckCircle className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                  <h3 className="font-medium text-gray-900 mb-2">No completed courses</h3>
+                  <p className="text-gray-600 text-sm">
+                    Your completed courses will appear here
+                  </p>
+                </div>
               )}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Need Help?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Contact support if you have questions about the learning
-              platform or need assistance.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/support"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/lms"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
+          {/* Sidebar */}
+          <div className="lg:col-span-1">
+            {/* Add Project */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border mb-6">
+              <h2 className="font-semibold text-gray-900 mb-4">Add to Portfolio</h2>
+              <p className="text-gray-600 text-sm mb-4">
+                Showcase your work by adding projects, case studies, or work samples.
+              </p>
+              <button className="w-full flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors">
+                <Plus className="w-5 h-5" />
+                Add Project
+              </button>
+            </div>
+
+            {/* Portfolio Tips */}
+            <div className="bg-blue-50 rounded-xl p-6">
+              <h2 className="font-semibold text-gray-900 mb-4">Portfolio Tips</h2>
+              <ul className="space-y-3 text-sm text-gray-700">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <span>Add descriptions to your certificates explaining what you learned</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <span>Include projects that demonstrate your skills</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <span>Share your portfolio link on LinkedIn and resumes</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <span>Keep your portfolio updated as you complete new courses</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
