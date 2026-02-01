@@ -135,6 +135,78 @@ export async function POST(request: NextRequest) {
     case 'checkout.session.completed': {
       const session = event.data.object as Stripe.Checkout.Session;
 
+      // ========== CANONICAL PROGRAM ENROLLMENT ==========
+      // This is the standard path for ALL program enrollments
+      if (session.metadata?.kind === 'program_enrollment') {
+        try {
+          const studentId = session.metadata.student_id;
+          const programId = session.metadata.program_id;
+          const programSlug = session.metadata.program_slug;
+          const fundingSource = session.metadata.funding_source || 'self_pay';
+          const amountPaid = (session.amount_total || 0) / 100;
+
+          if (!studentId || !programId) {
+            console.error('[webhook] program_enrollment missing required metadata', {
+              studentId, programId, programSlug
+            });
+            break;
+          }
+
+          console.log('[webhook] Processing program_enrollment', {
+            studentId, programId, programSlug, fundingSource, amountPaid
+          });
+
+          // UPSERT student_enrollments - canonical enrollment record
+          const { data: enrollment, error: enrollError } = await supabase
+            .from('student_enrollments')
+            .upsert({
+              student_id: studentId,
+              program_id: programId,
+              program_slug: programSlug,
+              stripe_checkout_session_id: session.id,
+              status: 'active',
+              funding_source: fundingSource,
+              amount_paid: amountPaid,
+              started_at: new Date().toISOString(),
+            }, {
+              onConflict: 'stripe_checkout_session_id',
+            })
+            .select('id')
+            .single();
+
+          if (enrollError) {
+            console.error('[webhook] Failed to upsert student_enrollment', enrollError);
+          } else {
+            console.log('[webhook] student_enrollment created/updated', { 
+              enrollmentId: enrollment?.id,
+              studentId,
+              programSlug 
+            });
+
+            // Audit log
+            await auditLog({
+              action: AuditAction.ENROLLMENT_CREATED,
+              entity: AuditEntity.ENROLLMENT,
+              entityId: enrollment?.id,
+              userId: studentId,
+              metadata: {
+                program_id: programId,
+                program_slug: programSlug,
+                funding_source: fundingSource,
+                amount_paid: amountPaid,
+                checkout_session_id: session.id,
+              },
+            });
+          }
+
+          logger.info(`✅ Program enrollment provisioned: ${programSlug} for student ${studentId}`);
+        } catch (err: any) {
+          console.error('[webhook] Error processing program_enrollment:', err);
+          logger.error('Error processing program_enrollment:', err instanceof Error ? err : new Error(String(err)));
+        }
+        break;
+      }
+
       // LANE 0: Handle TRIAL-TO-SUBSCRIPTION UPGRADE
       if (session.metadata?.upgrade_from === 'trial' && session.mode === 'subscription') {
         try {
@@ -589,12 +661,15 @@ export async function POST(request: NextRequest) {
                 ((session.amount_total || 0) > 0 ? 'self_pay' : 'unknown');
 
               // Create student_enrollments record with transfer hours
+              // Uses stripe_checkout_session_id for canonical tracking
               const { data: enrollment } = await supabase.from('student_enrollments').insert({
                 student_id: userId,
                 program_slug: 'barber-apprenticeship',
+                stripe_checkout_session_id: session.id,
                 status: 'active',
                 region_id: 'IN',
                 funding_source: barberFundingSource,
+                amount_paid: (session.amount_total || 0) / 100,
                 transfer_hours: transferHours || 0,
                 has_host_shop: hasHostShop === 'yes',
                 host_shop_name: hostShopName || null,
