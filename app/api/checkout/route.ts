@@ -30,11 +30,13 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { programId, planType, successUrl, cancelUrl } = body as {
+    const { programId, planType, successUrl, cancelUrl, customerEmail, metadata } = body as {
       programId: string;
       planType?: 'full' | 'payment-plan';
       successUrl?: string;
       cancelUrl?: string;
+      customerEmail?: string;
+      metadata?: Record<string, string>;
     };
 
     if (!programId) {
@@ -77,7 +79,8 @@ export async function POST(req: NextRequest) {
             ? `https://${process.env.URL}`
             : 'http://localhost:3000'));
 
-    const session = await stripe.checkout.sessions.create({
+    // Build session options
+    const sessionOptions: Stripe.Checkout.SessionCreateParams = {
       mode: 'payment',
       line_items: [
         {
@@ -94,8 +97,19 @@ export async function POST(req: NextRequest) {
       metadata: {
         programId,
         planType: chosenPlan,
+        programSlug: programId === 'prog-barber' ? 'barber-apprenticeship' : programId,
+        ...metadata,
       },
-    });
+      // Enable buy now pay later options
+      payment_method_types: ['card', 'affirm', 'klarna', 'afterpay_clearpay'],
+    };
+
+    // Add customer email if provided
+    if (customerEmail) {
+      sessionOptions.customer_email = customerEmail;
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionOptions);
 
     return NextResponse.json({ url: session.url }, { status: 200 });
   } catch (err: any) {

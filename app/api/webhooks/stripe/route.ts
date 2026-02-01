@@ -499,22 +499,30 @@ export async function POST(request: NextRequest) {
       }
 
       // Handle barber apprenticeship enrollment
-      if (session.metadata?.programSlug === 'barber-apprenticeship' && session.metadata?.applicationId) {
+      if (session.metadata?.programSlug === 'barber-apprenticeship') {
         try {
           const applicationId = session.metadata.applicationId;
+          const transferHours = parseInt(session.metadata.transferHours || '0', 10);
+          const customerName = session.metadata.customerName;
+          const customerPhone = session.metadata.customerPhone;
+          const hasHostShop = session.metadata.hasHostShop;
+          const hostShopName = session.metadata.hostShopName;
           
-          // Update application status to paid
-          const { error: appError } = await supabase
-            .from('applications')
-            .update({
-              status: 'paid',
-              payment_completed_at: new Date().toISOString(),
-              stripe_session_id: session.id,
-            })
-            .eq('id', applicationId);
+          // Update application status to paid if applicationId exists
+          if (applicationId) {
+            const { error: appError } = await supabase
+              .from('applications')
+              .update({
+                status: 'paid',
+                payment_completed_at: new Date().toISOString(),
+                stripe_session_id: session.id,
+                transfer_hours: transferHours,
+              })
+              .eq('id', applicationId);
 
-          if (appError) {
-            logger.error('Error updating barber application:', appError);
+            if (appError) {
+              logger.error('Error updating barber application:', appError);
+            }
           }
 
           // Update RAPIDS registration status
@@ -526,30 +534,53 @@ export async function POST(request: NextRequest) {
             })
             .eq('application_id', applicationId);
 
-          // Create LMS enrollment
-          const { data: application } = await supabase
-            .from('applications')
-            .select('*')
-            .eq('id', applicationId)
-            .single();
+          // Get application or create enrollment directly from checkout metadata
+          let application = null;
+          if (applicationId) {
+            const { data } = await supabase
+              .from('applications')
+              .select('*')
+              .eq('id', applicationId)
+              .single();
+            application = data;
+          }
 
-          if (application) {
+          // If no application but we have customer info from metadata, create enrollment directly
+          const customerEmail = session.customer_email || session.customer_details?.email;
+          
+          if (application || customerEmail) {
             // Get or create user profile
-            let userId = application.user_id;
+            let userId = application?.user_id;
+            const email = application?.email || customerEmail;
+            const fullName = application 
+              ? `${application.first_name} ${application.last_name}`
+              : customerName || 'Unknown';
             
-            if (!userId) {
-              // Create profile for new user
-              const { data: profile } = await supabase
+            if (!userId && email) {
+              // Check if profile exists
+              const { data: existingProfile } = await supabase
                 .from('profiles')
-                .insert({
-                  email: application.email,
-                  full_name: `${application.first_name} ${application.last_name}`,
-                  role: 'student',
-                })
                 .select('id')
+                .eq('email', email)
                 .single();
               
-              userId = profile?.id;
+              if (existingProfile) {
+                userId = existingProfile.id;
+              } else {
+                // Create profile for new user
+                const { data: profile } = await supabase
+                  .from('profiles')
+                  .insert({
+                    email,
+                    full_name: fullName,
+                    phone: application?.phone || customerPhone || null,
+                    role: 'student',
+                  })
+                  .select('id')
+                  .single();
+                
+                userId = profile?.id;
+              }
             }
 
             if (userId) {
@@ -557,13 +588,16 @@ export async function POST(request: NextRequest) {
               const barberFundingSource = session.metadata?.funding_source || 
                 ((session.amount_total || 0) > 0 ? 'self_pay' : 'unknown');
 
-              // Create student_enrollments record
+              // Create student_enrollments record with transfer hours
               const { data: enrollment } = await supabase.from('student_enrollments').insert({
                 student_id: userId,
                 program_slug: 'barber-apprenticeship',
                 status: 'active',
                 region_id: 'IN',
                 funding_source: barberFundingSource,
+                transfer_hours: transferHours || 0,
+                has_host_shop: hasHostShop === 'yes',
+                host_shop_name: hostShopName || null,
               }).select('id').single();
 
               // Create enrollment case (case spine) for workflow automation
