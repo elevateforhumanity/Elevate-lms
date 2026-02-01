@@ -39,7 +39,8 @@ export default function BarberApprenticeshipApplyPage() {
     setError('');
 
     try {
-      const response = await fetch('/api/applications', {
+      // First save the application
+      await fetch('/api/applications', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -51,11 +52,32 @@ export default function BarberApprenticeshipApplyPage() {
         }),
       });
 
-      if (response.ok) {
-        router.push('/programs/barber-apprenticeship/apply/success');
+      // Then redirect to Stripe checkout
+      const checkoutResponse = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          programId: 'prog-barber',
+          planType: 'payment-plan',
+          successUrl: `${window.location.origin}/programs/barber-apprenticeship/apply/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancelUrl: `${window.location.origin}/programs/barber-apprenticeship/apply`,
+          customerEmail: formData.email,
+          metadata: {
+            customerName: `${formData.firstName} ${formData.lastName}`,
+            customerPhone: formData.phone,
+            program: 'barber-apprenticeship',
+            hasHostShop: formData.hasHostShop,
+            hostShopName: formData.hostShopName,
+          },
+        }),
+      });
+
+      const checkoutData = await checkoutResponse.json();
+
+      if (checkoutResponse.ok && checkoutData.url) {
+        window.location.href = checkoutData.url;
       } else {
-        const result = await response.json();
-        setError(result.error || 'Something went wrong. Please try again or call (317) 314-3757.');
+        setError(checkoutData.error || 'Unable to create checkout session. Please try again or call (317) 314-3757.');
         setLoading(false);
       }
     } catch {
@@ -89,17 +111,17 @@ export default function BarberApprenticeshipApplyPage() {
       </section>
 
       {/* Self-Pay Notice */}
-      <section className="bg-amber-50 border-b border-amber-200">
+      <section className="bg-green-50 border-b border-green-200">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+            <AlertCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-amber-900 font-medium">Self-Pay Option</p>
-              <p className="text-sm text-amber-800 mb-2">
-                This is a direct enrollment for self-pay students. 
-                Payment plans are available. Program fee details will be provided after application review.
+              <p className="text-green-900 font-medium">Enroll & Pay Today</p>
+              <p className="text-sm text-green-800 mb-2">
+                Complete your enrollment and payment in one step. 
+                Payment plans available starting at $415/month.
               </p>
-              <p className="text-sm text-amber-800">
+              <p className="text-sm text-green-800">
                 <strong>Looking for funded training?</strong>{' '}
                 <a href="/programs/barber-apprenticeship/eligibility" className="text-blue-600 hover:underline font-medium">
                   Check your eligibility for WIOA/WRG funding first →
@@ -338,27 +360,30 @@ export default function BarberApprenticeshipApplyPage() {
                 {loading ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" />
-                    Submitting...
+                    Processing...
                   </>
                 ) : (
                   <>
-                    Submit Application
+                    Continue to Payment
                     <ArrowRight className="w-5 h-5" />
                   </>
                 )}
               </button>
+              <p className="text-center text-sm text-gray-500 mt-3">
+                You'll be redirected to our secure payment processor (Stripe)
+              </p>
             </div>
           </form>
 
           {/* What happens next */}
           <div className="mt-8 bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">What Happens Next?</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">What Happens After Payment?</h2>
             <div className="space-y-4">
               {[
-                'We review your application within 5-10 business days',
-                'You receive program fee details and payment options',
-                'We discuss host shop placement if needed',
-                'Upon enrollment, you begin your 2,000-hour apprenticeship',
+                'You receive immediate access to your student dashboard',
+                'Milady sends you login credentials for related instruction',
+                'We contact you to finalize host shop placement',
+                'You begin logging your 2,000 apprenticeship hours',
               ].map((text, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium">
