@@ -1,103 +1,59 @@
-export const runtime = 'edge';
+import { NextResponse } from 'next/server';
+import { ProgramCreateSchema } from '@/lib/validators/course';
+import { createProgram, listPrograms } from '@/lib/db/courses';
+import { createClient } from '@/lib/supabase/server';
+
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-export const maxDuration = 60;
 
-// app/api/admin/programs/route.ts
-import { NextRequest, NextResponse } from 'next/server';
-import { supabaseAdmin } from '@/lib/supabaseClients';
-import { withAuth } from '@/lib/with-auth';
-import { logger } from '@/lib/logger';
+async function requireAdmin() {
+  const supabase = await createClient();
+  if (!supabase) return { error: 'Database unavailable', status: 500 };
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: 'Unauthorized', status: 401 };
+  const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
+  if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
+    return { error: 'Forbidden', status: 403 };
+  }
+  return { user, profile, supabase };
+}
 
-// Admin auth guard should be implemented via middleware
-// Protected by /admin route middleware in production
+export async function GET(request: Request) {
+  const auth = await requireAdmin();
+  if ('error' in auth) return NextResponse.json({ error: auth.error }, { status: auth.status });
+  try {
+    const { searchParams } = new URL(request.url);
+    const status = searchParams.get('status') || undefined;
+    const data = await listPrograms({ status });
+    return NextResponse.json({ data }, { status: 200 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
 
-export const GET = withAuth(
-  async (req, context) => {
-    const user = context.user;
-    if (!supabaseAdmin) {
-      return NextResponse.json(
-        { error: 'Supabase not configured' },
-        { status: 503 }
-      );
+export async function POST(request: Request) {
+  const auth = await requireAdmin();
+  if ('error' in auth) return NextResponse.json({ error: auth.error }, { status: auth.status });
+  try {
+    const body = await request.json().catch(() => null);
+    const parsed = ProgramCreateSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: 'Invalid input', details: parsed.error.flatten() }, { status: 400 });
     }
-
-    const { data, error }: any = await supabaseAdmin
-      .from('programs')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      logger.error('Error loading programs:', error);
-      return NextResponse.json(
-        { error: 'Failed to load programs' },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json({ programs: data ?? [] });
-  },
-  { roles: ['admin', 'super_admin'] }
-);
-
-export const POST = withAuth(
-  async (req: NextRequest, user) => {
-    if (!supabaseAdmin) {
-      return NextResponse.json(
-        { error: 'Supabase not configured' },
-        { status: 503 }
-      );
-    }
-
-    try {
-      const body = await req.json();
-      const { id, ...payload } = body;
-
-      if (!payload.title) {
-        return NextResponse.json(
-          { error: 'Title is required' },
-          { status: 400 }
-        );
-      }
-
-      // auto-generate slug if missing
-      if (!payload.slug && payload.title) {
-        payload.slug = payload.title
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/(^-|-$)/g, '');
-      }
-
-      let result;
-      if (id) {
-        result = await supabaseAdmin
-          .from('programs')
-          .update(payload)
-          .eq('id', id)
-          .select('*')
-          .maybeSingle();
-      } else {
-        result = await supabaseAdmin
-          .from('programs')
-          .insert(payload)
-          .select('*')
-          .maybeSingle();
-      }
-
-      const { data, error } = result;
-
-      if (error || !data) {
-        logger.error('Program save error:', error);
-        return NextResponse.json(
-          { error: 'Failed to save program' },
-          { status: 500 }
-        );
-      }
-
-      return NextResponse.json({ program: data });
-    } catch (err) {
-      logger.error('Program save error:', err);
-      return NextResponse.json({ error: 'Unexpected error' }, { status: 500 });
-    }
-  },
-  { roles: ['admin', 'super_admin'] }
-);
+    const data = await createProgram(parsed.data);
+    
+    // Log audit
+    await auth.supabase.from('audit_logs').insert({
+      actor_id: auth.user.id,
+      actor_role: auth.profile.role,
+      action: 'create',
+      resource_type: 'program',
+      resource_id: data.id,
+      after_state: data,
+    });
+    
+    return NextResponse.json({ data }, { status: 201 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}

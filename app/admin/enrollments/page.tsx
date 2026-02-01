@@ -2,263 +2,69 @@ import { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import Link from 'next/link';
-import { Users, CheckCircle, Clock, XCircle, TrendingUp } from 'lucide-react';
-import { ComplianceNotice } from '@/components/compliance/ComplianceNotice';
-import { getPoliciesForFeature } from '@/lib/policies';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import EnrollmentManagementClient from './EnrollmentManagementClient';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
-  title: 'Enrollments | Admin Dashboard',
-  description: 'Manage student enrollments',
+  title: 'Enrollment Management | Admin Dashboard',
+  description: 'Manage student course enrollments - create, edit, and track progress.',
 };
 
 export default async function AdminEnrollmentsPage() {
   const supabase = await createClient();
+  if (!supabase) return <div className="min-h-screen bg-gray-50 flex items-center justify-center"><div className="text-center"><h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1></div></div>;
 
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login');
 
-  if (!user) {
-    redirect('/login');
-  }
+  const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
+  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') redirect('/unauthorized');
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single();
-
-  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
-    redirect('/unauthorized');
-  }
-
-  // Get all enrollments with student and program details
+  // Fetch enrollments with student and course details
   const { data: enrollments } = await supabase
     .from('enrollments')
-    .select(
-      `
+    .select(`
       *,
-      student:profiles!enrollments_student_id_fkey(
-        id,
-        full_name,
-        email,
-        phone
-      ),
-      program:programs(
-        id,
-        name,
-        slug
-      )
-    `
-    )
-    .order('created_at', { ascending: false })
-    .limit(100);
+      student:profiles!enrollments_user_id_fkey(id, full_name, email),
+      course:courses(id, title)
+    `)
+    .order('enrolled_at', { ascending: false });
 
-  // Calculate stats
-  const activeCount =
-    enrollments?.filter((e) => e.status === 'active').length || 0;
-  const completedCount =
-    enrollments?.filter((e) => e.status === 'completed').length || 0;
-  const withdrawnCount =
-    enrollments?.filter((e) => e.status === 'withdrawn').length || 0;
-  const totalCount = enrollments?.length || 0;
+  // Fetch users for dropdown (students)
+  const { data: users } = await supabase
+    .from('profiles')
+    .select('id, full_name, email')
+    .order('full_name');
+
+  // Fetch courses for dropdown
+  const { data: courses } = await supabase
+    .from('courses')
+    .select('id, title')
+    .eq('is_published', true)
+    .order('title');
+
+  const allEnrollments = enrollments || [];
+  const stats = {
+    total: allEnrollments.length,
+    active: allEnrollments.filter(e => e.status === 'active').length,
+    completed: allEnrollments.filter(e => e.status === 'completed').length,
+    atRisk: allEnrollments.filter(e => e.at_risk).length,
+  };
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Breadcrumbs */}
+    <div className="min-h-screen bg-gray-50">
       <div className="bg-slate-50 border-b">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Enrollments' }]} />
         </div>
       </div>
-
-      {/* Header */}
-      <div className="bg-white border-b border-slate-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-black">Enrollments</h1>
-              <p className="text-black mt-1">
-                Manage student enrollments and progress
-              </p>
-            </div>
-            <Link
-              href="/admin/dashboard"
-              className="px-4 py-2 text-black hover:text-black border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
-            >
-              Back to Dashboard
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Compliance Notice */}
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <ComplianceNotice
-          policies={getPoliciesForFeature('enrollment')}
-          context="Enrollment requires verification of:"
-          variant="compact"
-        />
-      </div>
-
-      {/* Stats */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-            <div className="flex items-center justify-between mb-2">
-              <Users className="w-8 h-8 text-brand-blue-600" />
-              <span className="text-3xl font-bold text-black">
-                {totalCount}
-              </span>
-            </div>
-            <h3 className="text-sm font-semibold text-black uppercase">
-              Total Enrollments
-            </h3>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-            <div className="flex items-center justify-between mb-2">
-              <CheckCircle className="w-8 h-8 text-brand-green-600" />
-              <span className="text-3xl font-bold text-brand-green-600">
-                {activeCount}
-              </span>
-            </div>
-            <h3 className="text-sm font-semibold text-black uppercase">
-              Active
-            </h3>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-            <div className="flex items-center justify-between mb-2">
-              <TrendingUp className="w-8 h-8 text-purple-600" />
-              <span className="text-3xl font-bold text-purple-600">
-                {completedCount}
-              </span>
-            </div>
-            <h3 className="text-sm font-semibold text-black uppercase">
-              Completed
-            </h3>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-            <div className="flex items-center justify-between mb-2">
-              <XCircle className="w-8 h-8 text-brand-orange-600" />
-              <span className="text-3xl font-bold text-brand-orange-600">
-                {withdrawnCount}
-              </span>
-            </div>
-            <h3 className="text-sm font-semibold text-black uppercase">
-              Withdrawn
-            </h3>
-          </div>
-        </div>
-
-        {/* Enrollments Table */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          <div className="px-6 py-4 border-b border-slate-200 bg-slate-50">
-            <h2 className="text-xl font-bold text-black">
-              All Enrollments
-            </h2>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-slate-50 border-b border-slate-200">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">
-                    Student
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">
-                    Program
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">
-                    Enrolled
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">
-                    Status
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-200">
-                {enrollments && enrollments.length > 0 ? (
-                  enrollments.map((enrollment) => (
-                    <tr key={enrollment.id} className="hover:bg-slate-50">
-                      <td className="px-6 py-4">
-                        <div>
-                          <div className="font-semibold text-black">
-                            {enrollment.student?.full_name || 'Unknown'}
-                          </div>
-                          <div className="text-sm text-black">
-                            {enrollment.student?.email}
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="font-medium text-black">
-                          {enrollment.program?.name || 'Unknown Program'}
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 text-sm text-black">
-                        {new Date(
-                          enrollment.enrolled_at || enrollment.created_at
-                        ).toLocaleDateString()}
-                      </td>
-                      <td className="px-6 py-4">
-                        <span
-                          className={`inline-flex px-2 py-2 text-xs font-semibold rounded-full ${
-                            enrollment.status === 'active'
-                              ? 'bg-brand-green-100 text-green-800'
-                              : enrollment.status === 'completed'
-                                ? 'bg-purple-100 text-purple-800'
-                                : enrollment.status === 'withdrawn'
-                                  ? 'bg-orange-100 text-orange-800'
-                                  : 'bg-slate-100 text-black'
-                          }`}
-                        >
-                          {enrollment.status}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4">
-                        <Link
-                          href={`/admin/students/${enrollment.student_id}`}
-                          className="text-brand-blue-600 hover:text-brand-blue-700 font-semibold text-sm"
-                        >
-                          View Details →
-                        </Link>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td
-                      colSpan={5}
-                      className="px-6 py-12 text-center text-slate-500"
-                    >
-                      No enrollments found
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      <EnrollmentManagementClient 
+        initialEnrollments={allEnrollments} 
+        users={users || []} 
+        courses={courses || []} 
+        stats={stats} 
+      />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 'use client';
+import Turnstile from '@/components/Turnstile';
 
 import React from 'react';
 // app/apply/QuickApplyFormClient.tsx

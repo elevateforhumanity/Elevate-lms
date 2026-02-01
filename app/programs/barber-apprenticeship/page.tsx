@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { createClient } from "@/lib/supabase/server";
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Barber Apprenticeship Program | Become a Licensed Barber | Elevate for Humanity',
@@ -14,7 +17,45 @@ const IMAGES = {
   gallery3: "/images/barber/gallery-3.jpg",
 };
 
-export default function BarberApprenticeshipPage() {
+async function getProgramStats() {
+  try {
+    const supabase = await createClient();
+    if (!supabase) return { totalHours: 2000, enrolledCount: 0, completedCount: 0 };
+
+    // Get program details
+    const { data: program } = await supabase
+      .from('programs')
+      .select('id, total_hours, tuition')
+      .or('slug.eq.barber-apprenticeship,code.eq.BARBER-2024')
+      .single();
+
+    // Get enrollment stats
+    const { count: enrolledCount } = await supabase
+      .from('enrollments')
+      .select('*', { count: 'exact', head: true })
+      .eq('program_id', program?.id)
+      .in('status', ['active', 'completed']);
+
+    const { count: completedCount } = await supabase
+      .from('enrollments')
+      .select('*', { count: 'exact', head: true })
+      .eq('program_id', program?.id)
+      .eq('status', 'completed');
+
+    return {
+      totalHours: program?.total_hours || 2000,
+      tuition: program?.tuition || 5250,
+      enrolledCount: enrolledCount || 0,
+      completedCount: completedCount || 0,
+    };
+  } catch {
+    return { totalHours: 2000, tuition: 5250, enrolledCount: 0, completedCount: 0 };
+  }
+}
+
+export default async function BarberApprenticeshipPage() {
+  const stats = await getProgramStats();
+  
   return (
     <main className="min-h-screen bg-white text-gray-900">
       {/* VIDEO HERO */}
@@ -65,15 +106,15 @@ export default function BarberApprenticeshipPage() {
 
             <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div className="rounded-2xl bg-white/90 px-5 py-4 text-gray-900">
-                <div className="text-2xl font-bold">2,000</div>
-                <div className="text-sm text-gray-600">Hours tracked</div>
+                <div className="text-2xl font-bold">{stats.totalHours.toLocaleString()}</div>
+                <div className="text-sm text-gray-600">Hours required</div>
               </div>
               <div className="rounded-2xl bg-white/90 px-5 py-4 text-gray-900">
                 <div className="text-2xl font-bold">Milady</div>
                 <div className="text-sm text-gray-600">Related instruction</div>
               </div>
               <div className="rounded-2xl bg-white/90 px-5 py-4 text-gray-900">
-                <div className="text-2xl font-bold">$4,980</div>
+                <div className="text-2xl font-bold">${stats.tuition?.toLocaleString() || '4,980'}</div>
                 <div className="text-sm text-gray-600">Program tuition</div>
               </div>
               <div className="rounded-2xl bg-white/90 px-5 py-4 text-gray-900">

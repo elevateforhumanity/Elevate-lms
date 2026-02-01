@@ -1,0 +1,65 @@
+import { NextResponse } from 'next/server';
+import { EnrollmentUpdateSchema } from '@/lib/validators/course';
+import { getEnrollment, updateEnrollment, deleteEnrollment } from '@/lib/db/courses';
+import { createClient } from '@/lib/supabase/server';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+async function requireAdmin() {
+  const supabase = await createClient();
+  if (!supabase) return { error: 'Database unavailable', status: 500 };
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: 'Unauthorized', status: 401 };
+  const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
+  if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
+    return { error: 'Forbidden', status: 403 };
+  }
+  return { user, profile };
+}
+
+export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const auth = await requireAdmin();
+  if ('error' in auth) return NextResponse.json({ error: auth.error }, { status: auth.status });
+  try {
+    const data = await getEnrollment(id);
+    if (!data) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    return NextResponse.json({ data }, { status: 200 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const auth = await requireAdmin();
+  if ('error' in auth) return NextResponse.json({ error: auth.error }, { status: auth.status });
+  try {
+    const body = await request.json().catch(() => null);
+    const parsed = EnrollmentUpdateSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: 'Invalid input', details: parsed.error.flatten() }, { status: 400 });
+    }
+    if (Object.keys(parsed.data).length === 0) {
+      return NextResponse.json({ error: 'No fields to update' }, { status: 400 });
+    }
+    const data = await updateEnrollment(id, parsed.data);
+    if (!data) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    return NextResponse.json({ data }, { status: 200 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+export async function DELETE(_: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const auth = await requireAdmin();
+  if ('error' in auth) return NextResponse.json({ error: auth.error }, { status: auth.status });
+  try {
+    const data = await deleteEnrollment(id);
+    return NextResponse.json({ data }, { status: 200 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}

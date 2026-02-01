@@ -1,119 +1,46 @@
 import { NextResponse } from 'next/server';
+import { CourseCreateSchema } from '@/lib/validators/course';
+import { createCourse, listCourses } from '@/lib/db/courses';
+import { createClient } from '@/lib/supabase/server';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-export const maxDuration = 60;
-import { parseBody, getErrorMessage } from '@/lib/api-helpers';
-import { supabaseServer } from '@/lib/supabase-server';
-import { withAuth } from '@/lib/with-auth';
-import { logger } from '@/lib/logger';
-import { toError, toErrorMessage } from '@/lib/safe';
 
-export const POST = withAuth(
-  async (request: Request, user) => {
-
-  try {
-    const course = await request.json();
-    const supabase = supabaseServer();
-
-    // Insert course
-    const { data: courseData, error: courseError } = await supabase
-      .from('courses')
-      .insert({
-        title: course.title,
-        description: course.description,
-        slug: course.title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-        status: 'draft',
-      })
-      .select()
-      .single();
-
-    if (courseError) {
-      logger.error('Error creating course:', courseError);
-      return NextResponse.json({ error: courseError.message }, { status: 500 });
-    }
-
-    // Insert modules
-    for (const [moduleIndex, module] of course.modules.entries()) {
-      const { data: moduleData, error: moduleError } = await supabase
-        .from('modules')
-        .insert({
-          course_id: courseData.id,
-          title: module.title,
-          description: module.description,
-          order: moduleIndex,
-        })
-        .select()
-        .single();
-
-      if (moduleError) {
-        logger.error('Error creating module:', moduleError);
-        continue;
-      }
-
-      // Insert lessons
-      for (const [lessonIndex, lesson] of module.lessons.entries()) {
-        const { error: lessonError } = await supabase
-          .from('lessons')
-          .insert({
-            module_id: moduleData.id,
-            title: lesson.title,
-            description: lesson.description,
-            content: JSON.stringify(lesson.blocks),
-            order: lessonIndex,
-          });
-
-        if (lessonError) {
-          logger.error('Error creating lesson:', lessonError);
-        }
-      }
-    }
-
-    return NextResponse.json({
-      success: true,
-      course: courseData,
-    });
-  } catch (error) { /* Error handled silently */ 
-    logger.error('Error in course creation:', toError(error));
-    return NextResponse.json(
-      { error: toErrorMessage(error) || 'Failed to create course' },
-      { status: 500 }
-    );
+async function requireAdmin() {
+  const supabase = await createClient();
+  if (!supabase) return { error: 'Database unavailable', status: 500 };
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: 'Unauthorized', status: 401 };
+  const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
+  if (!profile || !['admin', 'super_admin', 'instructor'].includes(profile.role)) {
+    return { error: 'Forbidden', status: 403 };
   }
+  return { user, profile };
+}
 
-  },
-  { roles: ['admin', 'super_admin'] }
-);
-
-export const GET = withAuth(
-  async (request: Request, user) => {
-
+export async function GET() {
+  const auth = await requireAdmin();
+  if ('error' in auth) return NextResponse.json({ error: auth.error }, { status: auth.status });
   try {
-    const supabase = supabaseServer();
-
-    const { data: courses, error } = await supabase
-      .from('courses')
-      .select(`
-        *,
-        modules (
-          *,
-          lessons (*)
-        )
-      `)
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
-    }
-
-    return NextResponse.json({ courses });
-  } catch (error) { /* Error handled silently */ 
-    return NextResponse.json(
-      { error: toErrorMessage(error) || 'Failed to fetch courses' },
-      { status: 500 }
-    );
+    const data = await listCourses();
+    return NextResponse.json({ data }, { status: 200 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
+}
 
-  },
-  { roles: ['admin', 'super_admin'] }
-);
+export async function POST(request: Request) {
+  const auth = await requireAdmin();
+  if ('error' in auth) return NextResponse.json({ error: auth.error }, { status: auth.status });
+  try {
+    const body = await request.json().catch(() => null);
+    const parsed = CourseCreateSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: 'Invalid input', details: parsed.error.flatten() }, { status: 400 });
+    }
+    const data = await createCourse(parsed.data);
+    return NextResponse.json({ data }, { status: 201 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}

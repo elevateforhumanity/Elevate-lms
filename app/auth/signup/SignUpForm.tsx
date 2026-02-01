@@ -1,4 +1,5 @@
 
+import Turnstile from '@/components/Turnstile';
 'use client';
 
 import React from 'react';

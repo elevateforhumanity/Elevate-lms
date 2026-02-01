@@ -8,6 +8,7 @@ import { ApprenticeshipBadge } from '@/components/programs/ApprenticeshipBadge';
 import { ComplianceNotice } from '@/components/compliance/ComplianceNotice';
 import { getPoliciesForFeature } from '@/lib/policies';
 import { ApprenticeshipShopFields, type ShopFormData } from '@/components/forms/ApprenticeshipShopFields';
+import Turnstile from '@/components/Turnstile';
 
 const APPRENTICESHIP_PROGRAMS = [
   'barber-apprenticeship',
@@ -46,6 +47,7 @@ export default function ApplyFormClient() {
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('idle');
+  const [turnstileToken, setTurnstileToken] = useState<string>('');
 
   const isApprenticeshipProgram = APPRENTICESHIP_PROGRAMS.includes(formData.program);
 

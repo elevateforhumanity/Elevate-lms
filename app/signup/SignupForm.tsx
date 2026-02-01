@@ -6,6 +6,7 @@ import { useState, Suspense } from 'react';
 import { createBrowserClient } from '@supabase/ssr';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import Turnstile from '@/components/Turnstile';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,6 +24,7 @@ function SignupFormContent() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string>('');
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();

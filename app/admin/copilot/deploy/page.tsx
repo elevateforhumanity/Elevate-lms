@@ -62,7 +62,7 @@ export default async function DeployCopilotPage() {
       id: 'support',
       name: 'Support Bot',
       description: 'Automated support for common inquiries',
-      status: 'coming_soon',
+      status: 'available',
       features: ['FAQ handling', 'Ticket routing', 'Self-service support']
     }
   ];

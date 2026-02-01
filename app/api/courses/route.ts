@@ -1,64 +1,69 @@
 import { NextResponse } from 'next/server';
+import { CourseCreateSchema } from '@/lib/validators/course';
+import { createCourse, listCourses } from '@/lib/db/courses';
+import { createClient } from '@/lib/supabase/server';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
-import { parseBody, getErrorMessage } from '@/lib/api-helpers';
-import { createServerSupabaseClient } from '@/lib/auth';
-import { toError, toErrorMessage } from '@/lib/safe';
 
-export async function GET() {
+/**
+ * GET /api/courses - List all courses
+ */
+export async function GET(request: Request) {
   try {
-    const supabase = await createServerSupabaseClient();
+    const { searchParams } = new URL(request.url);
+    const status = searchParams.get('status') || undefined;
+    const programId = searchParams.get('program_id') || undefined;
 
-    const { data: courses, error } = await supabase
-      .from('courses')
-      .select('*')
-      .eq('is_active', true)
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      return NextResponse.json({ error: error.message || 'Database error' }, { status: 500 });
-    }
-
-    return NextResponse.json({ courses: courses || [], total: courses?.length || 0 });
+    const data = await listCourses({ status, programId });
+    return NextResponse.json({ data }, { status: 200 });
   } catch (error: any) {
-    return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
+    return NextResponse.json({ error: error.message || 'Failed to list courses' }, { status: 500 });
   }
 }
 
+/**
+ * POST /api/courses - Create a new course
+ */
 export async function POST(request: Request) {
   try {
-    const supabase = await createServerSupabaseClient();
-    const body = await parseBody<Record<string, any>>(request);
+    // Auth check
+    const supabase = await createClient();
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database unavailable' }, { status: 500 });
+    }
 
-    if (!body.title) {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+
+    if (!profile || !['admin', 'super_admin', 'instructor'].includes(profile.role)) {
+      return NextResponse.json({ error: 'Forbidden - Admin or Instructor required' }, { status: 403 });
+    }
+
+    // Validate input
+    const body = await request.json().catch(() => null);
+    const parsed = CourseCreateSchema.safeParse(body);
+
+    if (!parsed.success) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Invalid input', details: parsed.error.flatten() },
         { status: 400 }
       );
     }
 
-    const { data: newCourse, error } = await supabase
-      .from('courses')
-      .insert({
-        title: body.title,
-        subtitle: body.subtitle,
-        description: body.description,
-        level: body.level,
-        duration_hours: body.duration_hours,
-        status: body.status || 'draft',
-        is_free: body.is_free || true,
-      })
-      .select()
-      .single();
-
-    if (error) {
-      return NextResponse.json({ error: error.message || 'Database error' }, { status: 500 });
-    }
-
-    return NextResponse.json(newCourse, { status: 201 });
+    // Create course
+    const data = await createCourse(parsed.data);
+    return NextResponse.json({ data }, { status: 201 });
   } catch (error: any) {
-    return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
+    return NextResponse.json({ error: error.message || 'Failed to create course' }, { status: 500 });
   }
 }
