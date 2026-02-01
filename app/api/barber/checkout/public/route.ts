@@ -3,7 +3,6 @@ import Stripe from 'stripe';
 import {
   BARBER_PRICING,
   calculateWeeklyPayment,
-  getBillingCycleAnchor,
   formatFirstBillingDate,
 } from '@/lib/programs/pricing';
 
@@ -19,14 +18,15 @@ function getStripe() {
  * POST /api/barber/checkout/public
  * 
  * Public checkout for Barber Apprenticeship - no authentication required.
- * Creates a Stripe Checkout session with:
- * 1. Setup fee ($1,743) collected immediately
- * 2. Weekly payments starting on the FOLLOWING Friday
- * 3. Weekly amount = $3,237 / weeks_remaining
  * 
- * Friday billing rule:
- * - Mon-Thu enrollment: first charge upcoming Friday
- * - Friday enrollment: first charge next week's Friday (7 days later)
+ * Payment Model (NOT a subscription):
+ * 1. Setup fee ($1,743) - collected immediately via Checkout
+ * 2. Weekly invoices - scheduled for each Friday, sent automatically
+ * 
+ * This allows:
+ * - BNPL (Affirm, Klarna, Afterpay) for setup fee
+ * - Automatic weekly invoice emails with payment links
+ * - Student can pay via link or auto-charge if card saved
  */
 export async function POST(request: NextRequest) {
   try {
@@ -75,9 +75,9 @@ export async function POST(request: NextRequest) {
       limit: 1,
     });
 
-    let stripeCustomerId: string;
+    let customerId: string;
     if (customers.data.length > 0) {
-      stripeCustomerId = customers.data[0].id;
+      customerId = customers.data[0].id;
     } else {
       const customer = await stripe.customers.create({
         email: customer_email,
@@ -86,94 +86,68 @@ export async function POST(request: NextRequest) {
         metadata: {
           program: 'barber-apprenticeship',
           application_id: application_id || '',
+          hours_per_week: hours_per_week.toString(),
+          transferred_hours: transferred_hours_verified.toString(),
+          weeks_remaining: calculation.weeksRemaining.toString(),
+          weekly_payment_cents: calculation.weeklyPaymentCents.toString(),
         },
       });
-      stripeCustomerId = customer.id;
+      customerId = customer.id;
     }
-
-    // Get billing cycle anchor (following Friday at 10 AM Indianapolis)
-    const billingCycleAnchor = getBillingCycleAnchor();
-    const firstBillingDateFormatted = formatFirstBillingDate();
 
     // Build success/cancel URLs
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
     const finalSuccessUrl = success_url || `${baseUrl}/programs/barber-apprenticeship/enrollment-success?session_id={CHECKOUT_SESSION_ID}`;
     const finalCancelUrl = cancel_url || `${baseUrl}/programs/barber-apprenticeship/apply?canceled=true`;
 
-    // Create Checkout Session with subscription mode
+    const firstBillingDate = formatFirstBillingDate();
+
+    // Create Checkout Session for SETUP FEE ONLY (one-time payment)
+    // This allows BNPL options (Affirm, Klarna, Afterpay)
     const session = await stripe.checkout.sessions.create({
-      customer: stripeCustomerId,
-      mode: 'subscription',
-      payment_method_types: ['card', 'us_bank_account'],
+      customer: customerId,
+      mode: 'payment', // One-time payment, NOT subscription
+      payment_method_types: ['card', 'us_bank_account', 'affirm', 'klarna', 'afterpay_clearpay'],
       line_items: [
-        // Setup fee (one-time) - collected immediately
         {
           price_data: {
             currency: 'usd',
             product_data: {
               name: 'Barber Apprenticeship - Setup Fee (35%)',
-              description: 'Enrollment setup fee - covers onboarding, registration support, employer coordination, and program setup. Non-refundable.',
+              description: `Enrollment fee. Weekly payments of $${calculation.weeklyPaymentDollars.toFixed(2)} begin ${firstBillingDate}.`,
             },
             unit_amount: BARBER_PRICING.setupFee * 100, // $1,743 in cents
           },
           quantity: 1,
         },
-        // Weekly payment (recurring)
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: 'Barber Apprenticeship - Weekly Payment',
-              description: `Weekly payment billed every Friday for ~${calculation.weeksRemaining} weeks. Total remaining: $${BARBER_PRICING.remainingBalance.toLocaleString()}`,
-            },
-            unit_amount: calculation.weeklyPaymentCents,
-            recurring: {
-              interval: 'week',
-              interval_count: 1,
-            },
-          },
-          quantity: 1,
-        },
       ],
-      subscription_data: {
-        billing_cycle_anchor: billingCycleAnchor,
-        metadata: {
-          program: 'barber-apprenticeship',
-          programSlug: 'barber-apprenticeship',
-          application_id: application_id || '',
-          customer_name: customer_name || '',
-          customer_phone: customer_phone || '',
-          hours_per_week: hours_per_week.toString(),
-          transferred_hours_verified: transferred_hours_verified.toString(),
-          hours_remaining: calculation.hoursRemaining.toString(),
-          weeks_remaining: calculation.weeksRemaining.toString(),
-          weekly_payment_cents: calculation.weeklyPaymentCents.toString(),
-          weekly_payment_dollars: calculation.weeklyPaymentDollars.toFixed(2),
-          full_price: BARBER_PRICING.fullPrice.toString(),
-          setup_fee: BARBER_PRICING.setupFee.toString(),
-          remaining_balance: BARBER_PRICING.remainingBalance.toString(),
-          first_billing_date: firstBillingDateFormatted,
-          has_host_shop: has_host_shop || '',
-          host_shop_name: host_shop_name || '',
-        },
-      },
       success_url: finalSuccessUrl,
       cancel_url: finalCancelUrl,
       metadata: {
         program: 'barber-apprenticeship',
         programSlug: 'barber-apprenticeship',
-        checkout_type: 'barber_enrollment_public',
+        checkout_type: 'barber_setup_fee',
         application_id: application_id || '',
         customer_name: customer_name || '',
         customer_phone: customer_phone || '',
         transferHours: transferred_hours_verified.toString(),
+        hours_per_week: hours_per_week.toString(),
+        weeks_remaining: calculation.weeksRemaining.toString(),
+        weekly_payment_cents: calculation.weeklyPaymentCents.toString(),
+        weekly_payment_dollars: calculation.weeklyPaymentDollars.toFixed(2),
         has_host_shop: has_host_shop || '',
         host_shop_name: host_shop_name || '',
+        // Flag to trigger invoice scheduling in webhook
+        schedule_weekly_invoices: 'true',
       },
       custom_text: {
         submit: {
-          message: `Setup fee ($${BARBER_PRICING.setupFee.toLocaleString()}) due today. Weekly payments ($${calculation.weeklyPaymentDollars.toFixed(2)}/week) begin ${firstBillingDateFormatted}.`,
+          message: `Setup fee due today. Weekly payments ($${calculation.weeklyPaymentDollars.toFixed(2)}/week for ~${calculation.weeksRemaining} weeks) begin ${firstBillingDate}.`,
         },
+      },
+      // Save payment method for future weekly charges
+      payment_intent_data: {
+        setup_future_usage: 'off_session',
       },
       // Allow promotion codes
       allow_promotion_codes: true,
@@ -188,7 +162,7 @@ export async function POST(request: NextRequest) {
         weeklyPaymentCents: calculation.weeklyPaymentCents,
         weeksRemaining: calculation.weeksRemaining,
         hoursRemaining: calculation.hoursRemaining,
-        firstBillingDate: firstBillingDateFormatted,
+        firstBillingDate,
         billingDay: 'Friday',
         totalProgram: BARBER_PRICING.fullPrice,
       },
@@ -221,7 +195,7 @@ export async function GET(request: NextRequest) {
     }
 
     const calculation = calculateWeeklyPayment(hoursPerWeek, transferredHours);
-    const firstBillingDateFormatted = formatFirstBillingDate();
+    const firstBillingDate = formatFirstBillingDate();
 
     return NextResponse.json({
       pricing: {
@@ -241,13 +215,17 @@ export async function GET(request: NextRequest) {
       },
       billing: {
         setupFeeDueAt: 'enrollment',
-        firstWeeklyCharge: firstBillingDateFormatted,
+        firstWeeklyCharge: firstBillingDate,
         billingDay: 'Friday',
+        paymentMethod: 'Invoice sent weekly with payment link',
       },
+      bnplAvailable: true,
+      bnplOptions: ['Affirm', 'Klarna', 'Afterpay'],
       summary: {
         dueToday: `$${BARBER_PRICING.setupFee.toLocaleString()} (setup fee)`,
         weeklyPayment: `$${calculation.weeklyPaymentDollars.toFixed(2)}/week`,
         duration: `~${calculation.weeksRemaining} weeks`,
+        paymentLinks: 'Sent every Friday via email',
       },
     });
   } catch (error) {

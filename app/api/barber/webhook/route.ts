@@ -6,6 +6,68 @@ import { BARBER_PRICING, calculateWeeklyPayment } from '@/lib/programs/pricing';
 
 const MILADY_LOGIN_URL = 'https://www.miladytraining.com/users/sign_in';
 
+/**
+ * Schedule weekly invoices for a customer
+ * Creates invoice items for each Friday until program completion
+ */
+async function scheduleWeeklyInvoices(
+  stripe: Stripe,
+  params: {
+    customerId: string;
+    customerEmail: string;
+    weeksRemaining: number;
+    weeklyPaymentCents: number;
+    hoursPerWeek: number;
+    transferredHours: number;
+    applicationId?: string;
+  }
+) {
+  const { customerId, weeksRemaining, weeklyPaymentCents } = params;
+
+  // Get next Friday
+  const now = new Date();
+  const dayOfWeek = now.getDay();
+  const daysUntilFriday = dayOfWeek === 5 ? 7 : (5 - dayOfWeek + 7) % 7 || 7;
+  
+  // Schedule invoices for each week
+  for (let week = 0; week < weeksRemaining; week++) {
+    const invoiceDate = new Date(now);
+    invoiceDate.setDate(now.getDate() + daysUntilFriday + (week * 7));
+    invoiceDate.setHours(10, 0, 0, 0); // 10 AM
+
+    // Create invoice item scheduled for that date
+    await stripe.invoiceItems.create({
+      customer: customerId,
+      amount: weeklyPaymentCents,
+      currency: 'usd',
+      description: `Barber Apprenticeship - Week ${week + 1} of ${weeksRemaining}`,
+      metadata: {
+        program: 'barber-apprenticeship',
+        week_number: (week + 1).toString(),
+        total_weeks: weeksRemaining.toString(),
+      },
+    });
+
+    // Create and finalize the invoice to be sent on that date
+    const invoice = await stripe.invoices.create({
+      customer: customerId,
+      collection_method: 'send_invoice',
+      days_until_due: 3, // 3 days to pay
+      auto_advance: true,
+      metadata: {
+        program: 'barber-apprenticeship',
+        week_number: (week + 1).toString(),
+      },
+    });
+
+    // Schedule the invoice to be sent on the Friday
+    // Note: Stripe will auto-send when finalized if collection_method is send_invoice
+    await stripe.invoices.finalizeInvoice(invoice.id);
+  }
+
+  console.log(`Scheduled ${weeksRemaining} weekly invoices for customer ${customerId}`);
+}
+
 function getStripe() {
   if (!process.env.STRIPE_SECRET_KEY) {
     throw new Error('STRIPE_SECRET_KEY is not configured');
@@ -66,14 +128,107 @@ export async function POST(request: NextRequest) {
           break;
         }
 
+        const customerId = session.customer as string;
+        const customerEmail = session.customer_details?.email || session.customer_email || '';
+        const customerName = session.customer_details?.name || session.metadata?.customer_name || '';
+        const customerPhone = session.metadata?.customer_phone || '';
+        const applicationId = session.metadata?.application_id;
+        const checkoutType = session.metadata?.checkout_type;
+
+        // Handle setup fee payment (new invoice-based model)
+        if (checkoutType === 'barber_setup_fee' && session.metadata?.schedule_weekly_invoices === 'true') {
+          const weeksRemaining = parseInt(session.metadata?.weeks_remaining || '50');
+          const weeklyPaymentCents = parseInt(session.metadata?.weekly_payment_cents || '6474');
+          const hoursPerWeek = parseInt(session.metadata?.hours_per_week || '40');
+          const transferredHours = parseInt(session.metadata?.transferHours || '0');
+
+          // Schedule weekly invoices
+          await scheduleWeeklyInvoices(stripe, {
+            customerId,
+            customerEmail,
+            weeksRemaining,
+            weeklyPaymentCents,
+            hoursPerWeek,
+            transferredHours,
+            applicationId,
+          });
+
+          // Create enrollment record
+          const { data: enrollment } = await supabase.from('barber_subscriptions').insert({
+            stripe_customer_id: customerId,
+            customer_email: customerEmail,
+            customer_name: customerName,
+            status: 'active',
+            setup_fee_paid: true,
+            setup_fee_amount: BARBER_PRICING.setupFee,
+            weekly_payment_cents: weeklyPaymentCents,
+            weeks_remaining: weeksRemaining,
+            hours_per_week: hoursPerWeek,
+            transferred_hours_verified: transferredHours,
+            payment_model: 'invoices', // Not subscription
+            created_at: new Date().toISOString(),
+          }).select().single();
+
+          // Send welcome email
+          try {
+            const { sendEmail } = await import('@/lib/email/resend');
+            await sendEmail({
+              to: customerEmail,
+              subject: 'Welcome to Barber Apprenticeship - Setup Complete!',
+              html: `
+<p>Hi ${customerName || 'there'},</p>
+
+<p>Your enrollment in the Barber Apprenticeship program is confirmed!</p>
+
+<p><strong>Payment Summary:</strong></p>
+<p>• Setup fee paid: $${BARBER_PRICING.setupFee.toLocaleString()}<br>
+• Weekly payment: $${(weeklyPaymentCents / 100).toFixed(2)}<br>
+• Duration: ~${weeksRemaining} weeks</p>
+
+<p><strong>What's next:</strong></p>
+<p>• You'll receive weekly payment invoices every Friday<br>
+• Milady will email you login credentials for coursework<br>
+• Log into your dashboard to track hours</p>
+
+<p>Questions? Reply to this email or call (317) 314-3757.</p>
+
+<p>— Elevate for Humanity Team</p>
+              `,
+            });
+          } catch (emailErr) {
+            console.error('Failed to send welcome email:', emailErr);
+          }
+
+          // Send Milady notification
+          try {
+            const { sendEmail } = await import('@/lib/email/resend');
+            await sendEmail({
+              to: 'miladyaccess@elevateforhumanity.org',
+              subject: `New Barber Apprentice - ${customerName || customerEmail}`,
+              html: `
+<p>New barber apprentice enrolled:</p>
+<p>• Name: ${customerName}<br>
+• Email: ${customerEmail}<br>
+• Phone: ${customerPhone}<br>
+• Transfer Hours: ${transferredHours}</p>
+<p>Please create Milady account and send credentials.</p>
+              `,
+            });
+          } catch (emailErr) {
+            console.error('Failed to send Milady notification:', emailErr);
+          }
+
+          console.log(`Barber setup fee paid, invoices scheduled: ${customerId}`);
+          break;
+        }
+
+        // Legacy subscription-based flow (for existing enrollments)
         const subscriptionId = session.subscription as string;
         const userId = session.metadata?.user_id;
         const enrollmentId = session.metadata?.enrollment_id;
-        const customerEmail = session.customer_details?.email || session.customer_email || '';
-        const customerName = session.customer_details?.name || '';
 
         if (!subscriptionId || !userId) {
-          console.error('Missing subscription or user ID');
+          console.error('Missing subscription or user ID for legacy flow');
           break;
         }
 
@@ -377,13 +532,51 @@ export async function POST(request: NextRequest) {
         // Decrement weeks remaining
         const currentWeeks = parseInt(subscription.metadata?.weeks_remaining || '0');
         if (currentWeeks > 0) {
+          const newWeeksRemaining = currentWeeks - 1;
+          
           await supabase
             .from('barber_subscriptions')
             .update({
-              weeks_remaining: currentWeeks - 1,
+              weeks_remaining: newWeeksRemaining,
               last_payment_date: new Date().toISOString(),
             })
             .eq('stripe_subscription_id', subscriptionId);
+
+          // Auto-cancel subscription when fully paid
+          if (newWeeksRemaining <= 0) {
+            try {
+              await stripe.subscriptions.cancel(subscriptionId);
+              console.log(`Barber subscription auto-canceled (fully paid): ${subscriptionId}`);
+              
+              // Send completion email
+              const customerEmail = subscription.metadata?.customer_email;
+              if (customerEmail) {
+                const { sendEmail } = await import('@/lib/email/resend');
+                await sendEmail({
+                  to: customerEmail,
+                  subject: 'Congratulations! Your Barber Apprenticeship Tuition is Paid in Full',
+                  html: `
+<p>Congratulations!</p>
+
+<p>You have successfully completed all tuition payments for your Barber Apprenticeship program.</p>
+
+<p><strong>What's next:</strong></p>
+<p>• Continue logging your apprenticeship hours<br>
+• Complete your Milady coursework<br>
+• Prepare for your state board exam</p>
+
+<p>Your dashboard remains active for hour tracking and progress monitoring.</p>
+
+<p>Thank you for choosing Elevate for Humanity!</p>
+
+<p>— Elevate for Humanity Team</p>
+                  `,
+                });
+              }
+            } catch (cancelErr) {
+              console.error('Failed to auto-cancel subscription:', cancelErr);
+            }
+          }
         }
 
         console.log(`Barber payment recorded: ${invoice.id}`);

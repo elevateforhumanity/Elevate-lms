@@ -39,6 +39,9 @@ export default function BarberApprenticeshipApplyPage() {
   const [transferHours, setTransferHours] = useState(0);
   const [hoursPerWeek, setHoursPerWeek] = useState(40);
   
+  // Payment option
+  const [paymentOption, setPaymentOption] = useState<'weekly' | 'full'>('weekly');
+  
   // Form state
   const [formData, setFormData] = useState({
     firstName: '',
@@ -77,29 +80,51 @@ export default function BarberApprenticeshipApplyPage() {
           programSlug: 'barber-apprenticeship',
           fundingType: 'self-pay',
           source: 'program-page',
+          paymentOption,
         }),
       });
 
       const appData = await appResponse.json();
       const applicationId = appData?.id;
 
-      // Use the full barber checkout with Friday billing and subscription
-      const checkoutResponse = await fetch('/api/barber/checkout/public', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          hours_per_week: hoursPerWeek,
-          transferred_hours_verified: transferHours,
-          customer_email: formData.email,
-          customer_name: `${formData.firstName} ${formData.lastName}`,
-          customer_phone: formData.phone,
-          application_id: applicationId,
-          has_host_shop: formData.hasHostShop,
-          host_shop_name: formData.hostShopName,
-          success_url: `${window.location.origin}/programs/barber-apprenticeship/apply/success?session_id={CHECKOUT_SESSION_ID}`,
-          cancel_url: `${window.location.origin}/programs/barber-apprenticeship/apply`,
-        }),
-      });
+      let checkoutResponse;
+
+      if (paymentOption === 'full') {
+        // Pay in full - one-time payment with BNPL options
+        checkoutResponse = await fetch('/api/barber/checkout/full', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            customer_email: formData.email,
+            customer_name: `${formData.firstName} ${formData.lastName}`,
+            customer_phone: formData.phone,
+            application_id: applicationId,
+            transferred_hours: transferHours,
+            has_host_shop: formData.hasHostShop,
+            host_shop_name: formData.hostShopName,
+            success_url: `${window.location.origin}/programs/barber-apprenticeship/apply/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${window.location.origin}/programs/barber-apprenticeship/apply`,
+          }),
+        });
+      } else {
+        // Weekly payments - subscription model
+        checkoutResponse = await fetch('/api/barber/checkout/public', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            hours_per_week: hoursPerWeek,
+            transferred_hours_verified: transferHours,
+            customer_email: formData.email,
+            customer_name: `${formData.firstName} ${formData.lastName}`,
+            customer_phone: formData.phone,
+            application_id: applicationId,
+            has_host_shop: formData.hasHostShop,
+            host_shop_name: formData.hostShopName,
+            success_url: `${window.location.origin}/programs/barber-apprenticeship/apply/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${window.location.origin}/programs/barber-apprenticeship/apply`,
+          }),
+        });
+      }
 
       const checkoutData = await checkoutResponse.json();
 
@@ -428,25 +453,25 @@ export default function BarberApprenticeshipApplyPage() {
                   + ${weeklyDollars.toFixed(2)}/week starting {nextFriday}
                 </p>
 
-                {/* Buy Now Pay Later Options */}
+                {/* Payment Methods with BNPL */}
                 <div className="border-t border-gray-200 pt-4 mt-4">
-                  <p className="text-center text-sm text-gray-600 mb-3">Or pay over time with</p>
-                  <div className="grid grid-cols-3 gap-3">
-                    <div className="flex flex-col items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
-                      <span className="font-bold text-blue-600">affirm</span>
-                      <span className="text-xs text-gray-500 mt-1">0% APR available</span>
+                  <p className="text-center text-sm text-gray-600 mb-3">Pay setup fee with</p>
+                  <div className="grid grid-cols-3 gap-2 mb-3">
+                    <div className="flex flex-col items-center p-2 border border-gray-200 rounded-lg bg-gray-50">
+                      <CreditCard className="w-5 h-5 text-gray-600" />
+                      <span className="text-xs text-gray-500">Card</span>
                     </div>
-                    <div className="flex flex-col items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
-                      <span className="font-bold text-pink-500">Klarna</span>
-                      <span className="text-xs text-gray-500 mt-1">Pay in 4</span>
+                    <div className="flex flex-col items-center p-2 border border-gray-200 rounded-lg bg-gray-50">
+                      <span className="font-bold text-blue-600 text-xs">affirm</span>
+                      <span className="text-xs text-gray-500">0% APR</span>
                     </div>
-                    <div className="flex flex-col items-center p-3 border border-gray-200 rounded-lg bg-gray-50">
-                      <span className="font-bold text-teal-600">Afterpay</span>
-                      <span className="text-xs text-gray-500 mt-1">Pay in 4</span>
+                    <div className="flex flex-col items-center p-2 border border-gray-200 rounded-lg bg-gray-50">
+                      <span className="font-bold text-pink-500 text-xs">Klarna</span>
+                      <span className="text-xs text-gray-500">Pay in 4</span>
                     </div>
                   </div>
-                  <p className="text-center text-xs text-gray-500 mt-3">
-                    Buy now, pay later options available at checkout
+                  <p className="text-center text-xs text-gray-500">
+                    Weekly invoices sent every Friday via email
                   </p>
                 </div>
 
