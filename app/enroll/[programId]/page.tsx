@@ -108,15 +108,13 @@ export default function EnrollPage() {
       const isPaid = !isFreeProgram && (program?.price || program?.total_cost);
 
       if (isPaid) {
-        // Redirect to checkout for paid programs
-        const response = await fetch('/api/enroll/checkout', {
+        // Use canonical program enrollment checkout
+        const response = await fetch('/api/programs/enroll/checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            firstName: user.user_metadata?.first_name || user.email?.split('@')[0] || '',
-            lastName: user.user_metadata?.last_name || '',
-            email: user.email,
-            programSlug: programId,
+            program_id: program?.id || programId,
+            funding_source: 'self_pay',
           }),
         });
 
@@ -126,35 +124,58 @@ export default function EnrollPage() {
           throw new Error(data.error || 'Failed to start checkout');
         }
 
-        if (data.checkoutUrl) {
-          window.location.href = data.checkoutUrl;
+        if (data.url) {
+          window.location.href = data.url;
           return;
         }
       } else {
-        // Free enrollment
-        const response = await fetch('/api/enroll/apply', {
+        // Funded enrollment - still use canonical checkout with funding_source
+        const fundingSource = program?.funding_eligible ? 'wioa' : 'self_pay';
+        const response = await fetch('/api/programs/enroll/checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            firstName: user.user_metadata?.first_name || '',
-            lastName: user.user_metadata?.last_name || '',
-            email: user.email,
-            preferredProgramId: programId,
-            licenseKey: licenseKey || null,
+            program_id: program?.id || programId,
+            funding_source: fundingSource,
           }),
         });
 
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(data.message || 'Enrollment failed');
+          // If checkout fails for free programs, fall back to direct enrollment
+          const applyResponse = await fetch('/api/enroll/apply', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              firstName: user.user_metadata?.first_name || '',
+              lastName: user.user_metadata?.last_name || '',
+              email: user.email,
+              preferredProgramId: programId,
+              licenseKey: licenseKey || null,
+            }),
+          });
+
+          const applyData = await applyResponse.json();
+
+          if (!applyResponse.ok) {
+            throw new Error(applyData.message || 'Enrollment failed');
+          }
+
+          setMessage(applyData.message || 'Enrollment successful! Redirecting...');
+          setTimeout(() => {
+            router.push('/enroll/success');
+          }, 2000);
+          return;
         }
 
-        setMessage(data.message || 'Enrollment successful! Redirecting...');
-        setTimeout(() => {
-          router.push('/enroll/success');
-        }, 2000);
+        if (data.url) {
+          window.location.href = data.url;
+          return;
+        }
       }
+
+
     } catch (error: any) {
       setMessage(`Error: ${error.message}`);
     } finally {

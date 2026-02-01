@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import PerformanceChart from './PerformanceChart';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://www.elevateforhumanity.org/workforce-board/reports/performance' },
@@ -32,7 +33,7 @@ export default async function PerformanceReportPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6"><h3 className="text-sm font-medium text-gray-500">Median Earnings</h3><p className="text-3xl font-bold text-purple-600 mt-2">$32K</p><p className="text-sm text-gray-500">Target: $30K</p></div>
           <div className="bg-white rounded-lg shadow-sm border p-6"><h3 className="text-sm font-medium text-gray-500">Measurable Skill Gains</h3><p className="text-3xl font-bold text-orange-600 mt-2">72%</p><p className="text-sm text-gray-500">Target: 70%</p></div>
         </div>
-        <div className="bg-white rounded-lg shadow-sm border p-6"><h2 className="text-lg font-semibold mb-4">Performance Trends</h2><div className="h-64 bg-gray-100 rounded flex items-center justify-center text-gray-500">Chart placeholder</div></div>
+        <div className="bg-white rounded-lg shadow-sm border p-6"><h2 className="text-lg font-semibold mb-4">Performance Trends</h2><PerformanceChart /></div>
       </div>
     </div>
   );

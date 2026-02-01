@@ -97,10 +97,16 @@ export async function POST(request: NextRequest) {
         case 'youtube':
           result = await postToYouTube({ title, content, media_url });
           break;
+        case 'instagram':
+          result = await postToInstagram({ content, media_url });
+          break;
+        case 'twitter':
+          result = await postToTwitter({ content, media_url });
+          break;
         default:
           return NextResponse.json(
-            { error: 'Platform not implemented yet' },
-            { status: 501 }
+            { error: 'Unknown platform' },
+            { status: 400 }
           );
       }
 
@@ -314,6 +320,175 @@ async function postToYouTube(data: any) {
         'YouTube posting requires OAuth 2.0 setup. Please configure refresh token.',
     };
   } catch (error) { /* Error handled silently */ 
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : String(error),
+    };
+  }
+}
+
+/**
+ * Post to Instagram (via Facebook Graph API)
+ */
+async function postToInstagram(data: any) {
+  try {
+    const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
+    const accountId = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID;
+
+    if (!accessToken || !accountId) {
+      return { success: false, error: 'Instagram credentials not configured' };
+    }
+
+    const { content, media_url } = data;
+
+    if (!media_url) {
+      return { success: false, error: 'Instagram requires an image or video' };
+    }
+
+    // Step 1: Create media container
+    const containerResponse = await fetch(
+      `https://graph.facebook.com/v18.0/${accountId}/media`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          image_url: media_url,
+          caption: content || '',
+          access_token: accessToken,
+        }),
+      }
+    );
+
+    if (!containerResponse.ok) {
+      const error = await containerResponse.json();
+      return { success: false, error: `Instagram API error: ${JSON.stringify(error)}` };
+    }
+
+    const container = await containerResponse.json();
+
+    // Step 2: Publish the container
+    const publishResponse = await fetch(
+      `https://graph.facebook.com/v18.0/${accountId}/media_publish`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          creation_id: container.id,
+          access_token: accessToken,
+        }),
+      }
+    );
+
+    if (!publishResponse.ok) {
+      const error = await publishResponse.json();
+      return { success: false, error: `Instagram publish error: ${JSON.stringify(error)}` };
+    }
+
+    const result = await publishResponse.json();
+    return {
+      success: true,
+      post_id: result.id,
+      url: `https://www.instagram.com/p/${result.id}`,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : String(error),
+    };
+  }
+}
+
+/**
+ * Post to Twitter/X
+ */
+async function postToTwitter(data: any) {
+  try {
+    const bearerToken = process.env.TWITTER_BEARER_TOKEN;
+    const apiKey = process.env.TWITTER_API_KEY;
+    const apiSecret = process.env.TWITTER_API_SECRET;
+    const accessToken = process.env.TWITTER_ACCESS_TOKEN;
+    const accessSecret = process.env.TWITTER_ACCESS_SECRET;
+
+    if (!bearerToken || !apiKey || !apiSecret || !accessToken || !accessSecret) {
+      return { success: false, error: 'Twitter credentials not configured' };
+    }
+
+    const { content, media_url } = data;
+
+    // Twitter API v2 requires OAuth 1.0a for posting
+    // Using oauth-1.0a library pattern
+    const OAuth = require('oauth-1.0a');
+    const crypto = require('crypto');
+
+    const oauth = new OAuth({
+      consumer: { key: apiKey, secret: apiSecret },
+      signature_method: 'HMAC-SHA1',
+      hash_function(base_string: string, key: string) {
+        return crypto.createHmac('sha1', key).update(base_string).digest('base64');
+      },
+    });
+
+    const token = { key: accessToken, secret: accessSecret };
+
+    let mediaId = null;
+
+    // Upload media if provided
+    if (media_url) {
+      // Download image and upload to Twitter
+      const imageResponse = await fetch(media_url);
+      const imageBuffer = await imageResponse.arrayBuffer();
+      const base64Image = Buffer.from(imageBuffer).toString('base64');
+
+      const uploadUrl = 'https://upload.twitter.com/1.1/media/upload.json';
+      const uploadData = { media_data: base64Image };
+
+      const uploadAuth = oauth.authorize({ url: uploadUrl, method: 'POST' }, token);
+
+      const uploadResponse = await fetch(uploadUrl, {
+        method: 'POST',
+        headers: {
+          ...oauth.toHeader(uploadAuth),
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(uploadData),
+      });
+
+      if (uploadResponse.ok) {
+        const uploadResult = await uploadResponse.json();
+        mediaId = uploadResult.media_id_string;
+      }
+    }
+
+    // Post tweet
+    const tweetUrl = 'https://api.twitter.com/2/tweets';
+    const tweetData: any = { text: content || '' };
+    if (mediaId) {
+      tweetData.media = { media_ids: [mediaId] };
+    }
+
+    const tweetAuth = oauth.authorize({ url: tweetUrl, method: 'POST' }, token);
+
+    const tweetResponse = await fetch(tweetUrl, {
+      method: 'POST',
+      headers: {
+        ...oauth.toHeader(tweetAuth),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(tweetData),
+    });
+
+    if (!tweetResponse.ok) {
+      const error = await tweetResponse.json();
+      return { success: false, error: `Twitter API error: ${JSON.stringify(error)}` };
+    }
+
+    const result = await tweetResponse.json();
+    return {
+      success: true,
+      post_id: result.data.id,
+      url: `https://twitter.com/i/web/status/${result.data.id}`,
+    };
+  } catch (error) {
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),

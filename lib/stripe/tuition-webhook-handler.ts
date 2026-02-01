@@ -1,4 +1,3 @@
-
 /**
  * TUITION WEBHOOK HANDLER
  * 
@@ -11,12 +10,55 @@
 
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
+import { Resend } from 'resend';
 import { 
   createInstallmentSubscription, 
   checkAndCancelCompletedSubscription,
   handleFailedPayment 
 } from './tuition-checkout';
 import { INSTALLMENT_RULES } from './tuition-config';
+
+async function sendPaymentFailedEmail(studentId: string, programId: string): Promise<void> {
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!resendKey) return;
+
+  const supabaseClient = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+
+  // Get student info
+  const { data: student } = await supabaseClient
+    .from('profiles')
+    .select('email, full_name')
+    .eq('id', studentId)
+    .single();
+
+  // Get program info
+  const { data: program } = await supabaseClient
+    .from('programs')
+    .select('title')
+    .eq('id', programId)
+    .single();
+
+  if (!student?.email) return;
+
+  const resend = new Resend(resendKey);
+
+  await resend.emails.send({
+    from: 'Elevate LMS <billing@elevateforhumanity.org>',
+    to: student.email,
+    subject: 'Payment Failed - Action Required',
+    html: `
+      <h1>Payment Failed</h1>
+      <p>Hi ${student.full_name || 'Student'},</p>
+      <p>We were unable to process your tuition payment for <strong>${program?.title || 'your program'}</strong>.</p>
+      <p>Please update your payment method to avoid interruption to your course access.</p>
+      <p><a href="https://www.elevateforhumanity.org/student/billing">Update Payment Method</a></p>
+      <p>If you have questions, contact us at support@elevateforhumanity.org</p>
+    `,
+  });
+}
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-10-29.clover',
@@ -238,8 +280,12 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice): Promise<void
     })
     .eq('stripe_subscription_id', subscriptionId);
   
-  // TODO: Send notification email to student
-  // await sendPaymentFailedEmail(studentId, programId);
+  // Send notification email to student
+  try {
+    await sendPaymentFailedEmail(studentId, programId);
+  } catch (emailError) {
+    console.error('Failed to send payment failed email:', emailError);
+  }
 }
 
 /**

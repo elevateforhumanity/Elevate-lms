@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import { HiringTrendsChart, RetentionByRoleChart } from './EmployerCharts';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://www.elevateforhumanity.org/employer/analytics' },
@@ -31,8 +32,8 @@ export default async function EmployerAnalyticsPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6"><h3 className="text-sm font-medium text-gray-500">Avg. Time to Hire</h3><p className="text-3xl font-bold text-orange-600 mt-2">18d</p></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg shadow-sm border p-6"><h2 className="text-lg font-semibold mb-4">Hiring Trends</h2><div className="h-48 bg-gray-100 rounded flex items-center justify-center text-gray-500">Chart placeholder</div></div>
-          <div className="bg-white rounded-lg shadow-sm border p-6"><h2 className="text-lg font-semibold mb-4">Retention by Role</h2><div className="h-48 bg-gray-100 rounded flex items-center justify-center text-gray-500">Chart placeholder</div></div>
+          <div className="bg-white rounded-lg shadow-sm border p-6"><h2 className="text-lg font-semibold mb-4">Hiring Trends</h2><HiringTrendsChart /></div>
+          <div className="bg-white rounded-lg shadow-sm border p-6"><h2 className="text-lg font-semibold mb-4">Retention by Role</h2><RetentionByRoleChart /></div>
         </div>
       </div>
     </div>

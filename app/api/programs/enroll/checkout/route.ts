@@ -1,65 +1,81 @@
+/**
+ * CANONICAL PROGRAM ENROLLMENT CHECKOUT
+ * 
+ * This is the single, canonical endpoint for ALL program enrollments.
+ * Every program (Barber, HVAC, CPR, etc.) must use this endpoint.
+ * 
+ * Metadata contract:
+ *   kind: 'program_enrollment'
+ *   program_id: UUID from programs.id
+ *   student_id: auth user id
+ *   program_slug: slug for routing
+ *   funding_source: 'self_pay' | 'workone' | 'wioa' | 'grant' | 'employer'
+ * 
+ * The webhook handler provisions student_enrollments on checkout.session.completed.
+ */
+
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
 import Stripe from 'stripe';
-
-/**
- * POST /api/programs/enroll/checkout
- * 
- * Canonical program enrollment checkout for ALL programs.
- * Creates a Stripe Checkout Session with standardized metadata.
- * 
- * Metadata contract (required for webhook provisioning):
- *   kind: 'program_enrollment'
- *   program_id: uuid
- *   student_id: uuid (auth user id)
- *   program_slug: string
- *   funding_source: 'self_pay' | 'workone' | 'wioa' | 'grant' | 'employer'
- * 
- * Pricing rules:
- *   - If funding_source is workone/wioa/grant/employer → amount = 0 (funded)
- *   - If funding_source is self_pay → amount = programs.total_cost
- */
+import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/logger';
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
-  if (!key) {
-    throw new Error('STRIPE_SECRET_KEY is not configured');
-  }
-  return new Stripe(key);
+  if (!key) return null;
+  return new Stripe(key, { apiVersion: '2025-10-29.clover' });
 }
+
+type FundingSource = 'self_pay' | 'workone' | 'wioa' | 'grant' | 'employer';
 
 interface CheckoutRequest {
   program_id: string;
-  funding_source?: 'self_pay' | 'workone' | 'wioa' | 'grant' | 'employer';
+  funding_source?: FundingSource;
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const supabase = await createClient();
-    if (!supabase) {
-      return NextResponse.json({ error: 'Service unavailable' }, { status: 503 });
+    const stripe = getStripe();
+    if (!stripe) {
+      return NextResponse.json(
+        { error: 'Payment system not configured' },
+        { status: 503 }
+      );
     }
 
-    // Require authenticated user
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      return NextResponse.json({ error: 'Unauthorized - login required' }, { status: 401 });
+    const supabase = await createClient();
+    
+    // Require authentication
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const body: CheckoutRequest = await request.json();
     const { program_id, funding_source = 'self_pay' } = body;
 
     if (!program_id) {
-      return NextResponse.json({ error: 'program_id is required' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'program_id is required' },
+        { status: 400 }
+      );
     }
 
-    // Lookup program
+    // Validate funding_source
+    const validFundingSources: FundingSource[] = ['self_pay', 'workone', 'wioa', 'grant', 'employer'];
+    if (!validFundingSources.includes(funding_source)) {
+      return NextResponse.json(
+        { error: 'Invalid funding_source' },
+        { status: 400 }
+      );
+    }
+
+    // Get program details
     const { data: program, error: programError } = await supabase
       .from('programs')
-      .select('id, slug, title, total_cost')
+      .select('id, title, slug, total_cost, status')
       .eq('id', program_id)
       .single();
 
@@ -67,64 +83,88 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Program not found' }, { status: 404 });
     }
 
-    const stripe = getStripe();
+    if (program.status !== 'active') {
+      return NextResponse.json(
+        { error: 'Program is not available for enrollment' },
+        { status: 400 }
+      );
+    }
 
-    // Get or create Stripe customer
+    // Check for existing active enrollment
+    const { data: existingEnrollment } = await supabase
+      .from('student_enrollments')
+      .select('id, status')
+      .eq('student_id', user.id)
+      .eq('program_id', program_id)
+      .in('status', ['active', 'pending'])
+      .single();
+
+    if (existingEnrollment) {
+      return NextResponse.json(
+        { error: 'You are already enrolled in this program' },
+        { status: 409 }
+      );
+    }
+
+    // Calculate amount based on funding source
+    const stickerPrice = program.total_cost ? Number(program.total_cost) : 0;
+    let amountToCharge = stickerPrice;
+
+    // Funded enrollments charge $0 (or use 100% coupon)
+    if (funding_source !== 'self_pay') {
+      amountToCharge = 0;
+    }
+
+    const amountCents = Math.round(amountToCharge * 100);
+
+    // Get user profile for customer details
     const { data: profile } = await supabase
       .from('profiles')
-      .select('stripe_customer_id, email, full_name')
+      .select('email, full_name')
       .eq('id', user.id)
       .single();
 
-    let stripeCustomerId: string;
+    const customerEmail = profile?.email || user.email || '';
 
-    if (profile?.stripe_customer_id) {
-      stripeCustomerId = profile.stripe_customer_id;
-    } else {
-      const customer = await stripe.customers.create({
-        email: user.email || profile?.email,
-        name: profile?.full_name || undefined,
-        metadata: {
-          user_id: user.id,
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
+
+    // Build line items
+    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
+
+    if (amountCents > 0) {
+      lineItems.push({
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: program.title,
+            description: `Enrollment in ${program.title}`,
+          },
+          unit_amount: amountCents,
         },
+        quantity: 1,
       });
-      stripeCustomerId = customer.id;
-
-      // Save customer ID to profile
-      await supabase
-        .from('profiles')
-        .update({ stripe_customer_id: stripeCustomerId })
-        .eq('id', user.id);
+    } else {
+      // For $0 checkouts, create a free line item
+      lineItems.push({
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: program.title,
+            description: `Enrollment in ${program.title} (Funded by ${funding_source.replace('_', ' ')})`,
+          },
+          unit_amount: 0,
+        },
+        quantity: 1,
+      });
     }
 
-    // Determine amount based on funding source
-    const isFunded = ['workone', 'wioa', 'grant', 'employer'].includes(funding_source);
-    const totalCostCents = program.total_cost 
-      ? Math.round(Number(program.total_cost) * 100) 
-      : 0;
-    const amountCents = isFunded ? 0 : totalCostCents;
-
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
-
-    // Create Checkout Session with canonical metadata
-    const sessionConfig: Stripe.Checkout.SessionCreateParams = {
-      customer: stripeCustomerId,
+    // Create Stripe Checkout session with canonical metadata
+    const sessionParams: Stripe.Checkout.SessionCreateParams = {
       mode: 'payment',
-      line_items: [
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: program.title,
-              description: `Enrollment in ${program.title}`,
-            },
-            unit_amount: amountCents,
-          },
-          quantity: 1,
-        },
-      ],
-      success_url: `${baseUrl}/enroll/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/programs/${program.slug}?canceled=true`,
+      customer_email: customerEmail,
+      line_items: lineItems,
+      success_url: `${siteUrl}/enroll/success?session_id={CHECKOUT_SESSION_ID}&program=${program.slug}`,
+      cancel_url: `${siteUrl}/programs/${program.slug}`,
       metadata: {
         // CANONICAL METADATA CONTRACT
         kind: 'program_enrollment',
@@ -133,34 +173,70 @@ export async function POST(request: NextRequest) {
         program_slug: program.slug,
         funding_source: funding_source,
       },
+      payment_intent_data: amountCents > 0 ? {
+        metadata: {
+          kind: 'program_enrollment',
+          program_id: program.id,
+          student_id: user.id,
+        },
+      } : undefined,
     };
 
-    // For self-pay, enable BNPL options
-    if (!isFunded && amountCents > 0) {
-      sessionConfig.payment_method_types = ['card', 'affirm', 'klarna', 'afterpay_clearpay'];
-      sessionConfig.payment_intent_data = {
-        setup_future_usage: 'off_session',
-      };
+    // Only add payment method types for paid checkouts
+    if (amountCents > 0) {
+      sessionParams.payment_method_types = ['card'];
     }
 
-    const session = await stripe.checkout.sessions.create(sessionConfig);
+    const session = await stripe.checkout.sessions.create(sessionParams);
+
+    if (!session.url) {
+      return NextResponse.json(
+        { error: 'Failed to create checkout session' },
+        { status: 500 }
+      );
+    }
+
+    logger.info('Program enrollment checkout created', {
+      sessionId: session.id,
+      programId: program.id,
+      programSlug: program.slug,
+      studentId: user.id,
+      fundingSource: funding_source,
+      amountCents,
+    });
 
     return NextResponse.json({
+      success: true,
       url: session.url,
-      sessionId: session.id,
-      program: {
-        id: program.id,
-        slug: program.slug,
-        title: program.title,
-      },
-      funding_source,
-      amount: amountCents / 100,
+      session_id: session.id,
     });
   } catch (error) {
-    console.error('Program enrollment checkout error:', error);
+    logger.error('Program enrollment checkout error', error instanceof Error ? error : new Error(String(error)));
     return NextResponse.json(
       { error: 'Failed to create checkout session' },
       { status: 500 }
     );
   }
+}
+
+/**
+ * GET - Return API documentation
+ */
+export async function GET() {
+  return NextResponse.json({
+    name: 'Program Enrollment Checkout API',
+    description: 'Canonical endpoint for all program enrollments',
+    method: 'POST',
+    authentication: 'Required (user must be logged in)',
+    request: {
+      program_id: 'UUID - Required - The program ID from programs.id',
+      funding_source: 'Optional - One of: self_pay, workone, wioa, grant, employer (default: self_pay)',
+    },
+    response: {
+      success: 'boolean',
+      url: 'Stripe checkout URL to redirect user',
+      session_id: 'Stripe session ID for tracking',
+    },
+    webhook_provisioning: 'On checkout.session.completed, student_enrollments is created with status=active',
+  });
 }

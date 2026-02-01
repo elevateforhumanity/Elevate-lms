@@ -14,6 +14,69 @@ function isPDF(file: File | Blob): boolean {
   return file.type === 'application/pdf';
 }
 
+// Extract text from PDF using pdf-parse (dynamic import for ESM compatibility)
+async function extractTextFromPDF(buffer: Buffer): Promise<string> {
+  try {
+    // Dynamic import to handle ESM/CJS compatibility
+    const pdfParse = (await import('pdf-parse')).default;
+    const data = await pdfParse(buffer);
+    return data.text || '';
+  } catch (error) {
+    logger.error('PDF extraction error:', error);
+    throw new Error('Failed to extract text from PDF');
+  }
+}
+
+// Parse W-2 data from extracted text
+function parseW2FromText(text: string): Record<string, unknown> {
+  const data: Record<string, unknown> = {};
+  
+  // Extract employer EIN (XX-XXXXXXX pattern)
+  const einMatch = text.match(/\b(\d{2}-\d{7})\b/);
+  if (einMatch) data.employerEIN = einMatch[1];
+  
+  // Extract SSN (XXX-XX-XXXX pattern)
+  const ssnMatch = text.match(/\b(\d{3}-\d{2}-\d{4})\b/);
+  if (ssnMatch) data.employeeSSN = ssnMatch[1];
+  
+  // Extract wages (Box 1)
+  const wagesMatch = text.match(/wages[,\s]*tips[,\s]*other\s*comp[^\d]*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i);
+  if (wagesMatch) data.wages = wagesMatch[1];
+  
+  // Extract federal tax withheld (Box 2)
+  const fedTaxMatch = text.match(/federal\s*income\s*tax\s*withheld[^\d]*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i);
+  if (fedTaxMatch) data.federalTaxWithheld = fedTaxMatch[1];
+  
+  // Extract social security wages (Box 3)
+  const ssWagesMatch = text.match(/social\s*security\s*wages[^\d]*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i);
+  if (ssWagesMatch) data.socialSecurityWages = ssWagesMatch[1];
+  
+  return data;
+}
+
+// Parse 1099 data from extracted text
+function parse1099FromText(text: string): Record<string, unknown> {
+  const data: Record<string, unknown> = {};
+  
+  // Extract payer TIN
+  const payerTinMatch = text.match(/payer['']?s?\s*(?:tin|federal\s*identification)[^\d]*(\d{2}-\d{7})/i);
+  if (payerTinMatch) data.payerTIN = payerTinMatch[1];
+  
+  // Extract recipient TIN/SSN
+  const recipientTinMatch = text.match(/recipient['']?s?\s*(?:tin|identification)[^\d]*(\d{2}-\d{7}|\d{3}-\d{2}-\d{4})/i);
+  if (recipientTinMatch) data.recipientTIN = recipientTinMatch[1];
+  
+  // Extract nonemployee compensation
+  const compensationMatch = text.match(/nonemployee\s*compensation[^\d]*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i);
+  if (compensationMatch) data.nonemployeeCompensation = compensationMatch[1];
+  
+  // Extract federal tax withheld
+  const fedTaxMatch = text.match(/federal\s*income\s*tax\s*withheld[^\d]*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i);
+  if (fedTaxMatch) data.federalTaxWithheld = fedTaxMatch[1];
+  
+  return data;
+}
+
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 120; // OCR can take time
@@ -99,14 +162,28 @@ export async function POST(request: NextRequest) {
 
     // Handle PDF files
     if (isPDF(file)) {
-      // PDF files require conversion to images first
+      const buffer = Buffer.from(await file.arrayBuffer());
+      const extractedText = await extractTextFromPDF(buffer);
+      
+      // Try to detect document type from content
+      let detectedType = 'unknown';
+      let extractedData: Record<string, unknown> = {};
+      
+      const textLower = extractedText.toLowerCase();
+      if (textLower.includes('w-2') || textLower.includes('wage and tax statement')) {
+        detectedType = 'w2';
+        // Parse W-2 fields from text
+        extractedData = parseW2FromText(extractedText);
+      } else if (textLower.includes('1099') || textLower.includes('miscellaneous income')) {
+        detectedType = '1099';
+        extractedData = parse1099FromText(extractedText);
+      }
+      
       result = {
-        documentType: 'pdf',
-        raw: '',
-        confidence: 0,
-        data: {
-          note: 'PDF files require image conversion. Please upload images (JPG, PNG) for direct OCR processing.',
-        },
+        documentType: detectedType,
+        raw: extractedText,
+        confidence: extractedText.length > 100 ? 0.8 : 0.5,
+        data: extractedData,
         processingTime: Date.now() - startTime,
       };
     } else {

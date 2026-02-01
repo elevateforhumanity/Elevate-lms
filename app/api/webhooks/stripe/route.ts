@@ -312,6 +312,111 @@ export async function POST(request: NextRequest) {
         break;
       }
 
+      // ========== CANONICAL PROGRAM ENROLLMENT ==========
+      // This is the single provisioning path for ALL program enrollments
+      // Metadata contract: kind='program_enrollment', program_id, student_id, program_slug, funding_source
+      if (session.metadata?.kind === 'program_enrollment') {
+        try {
+          const programId = session.metadata.program_id;
+          const studentId = session.metadata.student_id;
+          const programSlug = session.metadata.program_slug;
+          const fundingSource = session.metadata.funding_source || 'self_pay';
+
+          if (!programId || !studentId) {
+            console.error('[webhook] Program enrollment missing required metadata', {
+              programId, studentId, programSlug
+            });
+            break;
+          }
+
+          console.log('[webhook] Processing program enrollment', {
+            programId, studentId, programSlug, fundingSource,
+            amountTotal: session.amount_total,
+          });
+
+          // UPSERT student_enrollments - canonical enrollment table
+          const { data: enrollment, error: enrollError } = await supabase
+            .from('student_enrollments')
+            .upsert({
+              student_id: studentId,
+              program_id: programId,
+              program_slug: programSlug,
+              stripe_checkout_session_id: session.id,
+              status: 'active',
+              amount_paid: (session.amount_total || 0) / 100,
+              funding_source: fundingSource,
+              enrolled_at: new Date().toISOString(),
+            }, {
+              onConflict: 'stripe_checkout_session_id',
+            })
+            .select('id')
+            .single();
+
+          if (enrollError) {
+            // Check if it's a duplicate (already processed)
+            if (enrollError.code === '23505') {
+              console.log('[webhook] Enrollment already exists (duplicate webhook)', { sessionId: session.id });
+            } else {
+              console.error('[webhook] Failed to create enrollment', enrollError);
+              logger.error('Failed to create student enrollment:', enrollError);
+            }
+          } else {
+            console.log('[webhook] Student enrollment created', { 
+              enrollmentId: enrollment?.id,
+              programSlug,
+              studentId,
+            });
+
+            // Audit log (non-critical)
+            try {
+              await auditLog({
+                actorId: studentId,
+                actorRole: 'student',
+                action: AuditAction.ENROLLMENT_CREATED,
+                entity: AuditEntity.ENROLLMENT,
+                entityId: enrollment?.id,
+                metadata: {
+                  program_id: programId,
+                  program_slug: programSlug,
+                  funding_source: fundingSource,
+                  amount_paid: (session.amount_total || 0) / 100,
+                  checkout_session_id: session.id,
+                },
+              });
+            } catch (auditErr) {
+              console.warn('[webhook] Failed to create audit log (non-critical):', auditErr);
+            }
+
+            logger.info(`✅ Program enrollment provisioned: ${programSlug} for student ${studentId}`);
+          }
+
+          // Log payment (non-critical - don't fail enrollment if this fails)
+          try {
+            await supabase.from('payment_logs').insert({
+              stripe_session_id: session.id,
+              stripe_payment_id: session.payment_intent as string,
+              amount: (session.amount_total || 0) / 100,
+              currency: 'usd',
+              status: 'completed',
+              metadata: {
+                kind: 'program_enrollment',
+                program_id: programId,
+                program_slug: programSlug,
+                student_id: studentId,
+                funding_source: fundingSource,
+              },
+            });
+          } catch (logErr) {
+            console.warn('[webhook] Failed to log payment (non-critical):', logErr);
+          }
+
+        } catch (err: any) {
+          console.error('[webhook] Error processing program enrollment:', err);
+          logger.error('Error processing program enrollment:', err instanceof Error ? err : new Error(String(err)));
+        }
+        break;
+      }
+
       // LANE A: Handle LICENSE purchase (platform license)
       if (session.metadata?.product_type === 'license') {
         try {

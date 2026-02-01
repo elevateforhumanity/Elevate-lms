@@ -1,13 +1,65 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { createClient as createServerClient } from '@/lib/supabase/server';
+import { Resend } from 'resend';
 
 function getSupabaseAdmin() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) {
-    throw new Error('Supabase credentials not configured');
+    return null;
   }
   return createClient(url, key);
+}
+
+async function verifyAdminAuth(request: NextRequest): Promise<{ isAdmin: boolean; userId?: string }> {
+  try {
+    const serverClient = await createServerClient();
+    const { data: { user } } = await serverClient.auth.getUser();
+    
+    if (!user) return { isAdmin: false };
+    
+    const { data: profile } = await serverClient
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+    
+    const isAdmin = profile?.role === 'admin' || profile?.role === 'super_admin';
+    return { isAdmin, userId: user.id };
+  } catch {
+    return { isAdmin: false };
+  }
+}
+
+async function sendWelcomeEmail(email: string, orgName: string, subdomain: string, dashboardUrl: string) {
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!resendKey) {
+    console.warn('RESEND_API_KEY not configured, skipping welcome email');
+    return;
+  }
+  
+  const resend = new Resend(resendKey);
+  
+  await resend.emails.send({
+    from: 'Elevate LMS <noreply@elevateforhumanity.org>',
+    to: email,
+    subject: `Welcome to Elevate LMS - ${orgName} is ready!`,
+    html: `
+      <h1>Welcome to Elevate LMS!</h1>
+      <p>Your organization <strong>${orgName}</strong> has been successfully provisioned.</p>
+      <p><strong>Your Dashboard:</strong> <a href="${dashboardUrl}">${dashboardUrl}</a></p>
+      <p><strong>Subdomain:</strong> ${subdomain}.elevatelms.com</p>
+      <h2>Next Steps:</h2>
+      <ol>
+        <li>Log in to your admin dashboard</li>
+        <li>Configure your organization settings</li>
+        <li>Add your first course or program</li>
+        <li>Invite your team members</li>
+      </ol>
+      <p>Need help? Contact us at support@elevateforhumanity.org</p>
+    `,
+  });
 }
 
 /**
@@ -22,11 +74,20 @@ function getSupabaseAdmin() {
 export async function POST(request: NextRequest) {
   try {
     // Verify admin or webhook secret
-    const authHeader = request.headers.get('authorization');
     const webhookSecret = request.headers.get('x-webhook-secret');
     
-    if (webhookSecret !== process.env.PROVISIONING_WEBHOOK_SECRET) {
-      // TODO: Add proper admin auth check
+    let authorized = false;
+    
+    // Check webhook secret first
+    if (webhookSecret === process.env.PROVISIONING_WEBHOOK_SECRET) {
+      authorized = true;
+    } else {
+      // Check admin auth
+      const { isAdmin } = await verifyAdminAuth(request);
+      authorized = isAdmin;
+    }
+    
+    if (!authorized) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -55,6 +116,11 @@ export async function POST(request: NextRequest) {
     // Generate subdomain if not provided
     const tenantSubdomain = subdomain || 
       organizationName.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 30);
+
+    const supabase = getSupabaseAdmin();
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
+    }
 
     // Check if subdomain is taken
     const { data: existing } = await supabase
@@ -115,7 +181,7 @@ export async function POST(request: NextRequest) {
     if (licenseError) {
       console.error('License creation error:', licenseError);
       // Rollback org creation
-      await getSupabaseAdmin().from('organizations').delete().eq('id', org.id);
+      await supabase.from('organizations').delete().eq('id', org.id);
       return NextResponse.json(
         { error: 'Failed to create license' },
         { status: 500 }
@@ -123,7 +189,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Log provisioning event
-    await getSupabaseAdmin().from('license_events').insert({
+    await supabase.from('license_events').insert({
       license_id: license.id,
       organization_id: org.id,
       event_type: 'tenant_provisioned',
@@ -134,8 +200,21 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // TODO: Send welcome email via Resend
-    // TODO: Set up DNS for custom domain if provided
+    // Send welcome email
+    try {
+      await sendWelcomeEmail(
+        contactEmail,
+        organizationName,
+        tenantSubdomain,
+        `https://${tenantSubdomain}.elevatelms.com/admin`
+      );
+    } catch (emailError) {
+      console.error('Failed to send welcome email:', emailError);
+      // Don't fail provisioning if email fails
+    }
+
+    // DNS setup for custom domain is handled by Vercel/infrastructure
+    // Custom domains are configured in the Vercel dashboard or via API
 
     return NextResponse.json({
       success: true,
@@ -180,6 +259,11 @@ export async function GET(request: NextRequest) {
   const reserved = ['www', 'app', 'api', 'admin', 'dashboard', 'mail', 'support', 'help', 'docs'];
   if (reserved.includes(normalized)) {
     return NextResponse.json({ available: false, reason: 'Reserved' });
+  }
+
+  const supabase = getSupabaseAdmin();
+  if (!supabase) {
+    return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
   }
 
   const { data } = await supabase

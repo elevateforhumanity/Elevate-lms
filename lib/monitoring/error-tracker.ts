@@ -1,4 +1,56 @@
 import { createAdminClient } from '@/lib/supabase/admin';
+import { Resend } from 'resend';
+
+async function sendCriticalAlert(data: {
+  type: string;
+  description: string;
+  endpoint?: string;
+  severity: string;
+  userId?: string;
+}): Promise<void> {
+  const resendKey = process.env.RESEND_API_KEY;
+  const adminEmail = process.env.ADMIN_ALERT_EMAIL || 'admin@elevateforhumanity.org';
+  
+  if (!resendKey) {
+    console.error('RESEND_API_KEY not configured for alerts');
+    return;
+  }
+
+  const resend = new Resend(resendKey);
+
+  await resend.emails.send({
+    from: 'Elevate LMS Alerts <alerts@elevateforhumanity.org>',
+    to: adminEmail,
+    subject: `🚨 CRITICAL: ${data.type}`,
+    html: `
+      <h1 style="color: red;">Critical Security Alert</h1>
+      <p><strong>Type:</strong> ${data.type}</p>
+      <p><strong>Description:</strong> ${data.description}</p>
+      <p><strong>Endpoint:</strong> ${data.endpoint || 'N/A'}</p>
+      <p><strong>Severity:</strong> ${data.severity}</p>
+      <p><strong>User ID:</strong> ${data.userId || 'N/A'}</p>
+      <p><strong>Time:</strong> ${new Date().toISOString()}</p>
+      <hr>
+      <p>Review this event in the admin dashboard immediately.</p>
+    `,
+  });
+
+  // Also try Slack if configured
+  const slackWebhook = process.env.SLACK_ALERT_WEBHOOK;
+  if (slackWebhook) {
+    try {
+      await fetch(slackWebhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: `🚨 *CRITICAL SECURITY ALERT*\n*Type:* ${data.type}\n*Description:* ${data.description}\n*Endpoint:* ${data.endpoint || 'N/A'}\n*Time:* ${new Date().toISOString()}`,
+        }),
+      });
+    } catch (slackError) {
+      console.error('Failed to send Slack alert:', slackError);
+    }
+  }
+}
 
 export interface ErrorLog {
   endpoint: string;
@@ -123,10 +175,14 @@ export async function logSecurityEvent(data: {
       },
     });
 
-    // If critical, could trigger alerts here
+    // Send alerts for critical events
     if (data.severity === 'critical') {
       console.error('🚨 CRITICAL SECURITY EVENT:', data);
-      // TODO: Send alert to admin email/Slack/etc
+      try {
+        await sendCriticalAlert(data);
+      } catch (alertError) {
+        console.error('Failed to send critical alert:', alertError);
+      }
     }
   } catch (error) {
     console.error('Failed to log security event:', error);

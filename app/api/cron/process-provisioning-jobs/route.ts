@@ -4,6 +4,82 @@ import { logger } from '@/lib/logger';
 import { processLicenseProvision } from '@/lib/jobs/handlers/license-provision';
 import { processLicenseSuspend } from '@/lib/jobs/handlers/license-suspend';
 import { processEmailSend } from '@/lib/jobs/handlers/email-send';
+import { createClient } from '@supabase/supabase-js';
+
+function getSupabaseAdmin() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) throw new Error('Supabase not configured');
+  return createClient(url, key);
+}
+
+async function processTenantSetup(job: ProvisioningJob): Promise<void> {
+  const { organizationId, subdomain, planId, contactEmail } = job.payload as {
+    organizationId: string;
+    subdomain: string;
+    planId: string;
+    contactEmail: string;
+  };
+
+  logger.info('Processing tenant setup', { organizationId, subdomain });
+
+  const supabase = getSupabaseAdmin();
+
+  // Create default settings for the tenant
+  await supabase.from('organization_settings').upsert({
+    organization_id: organizationId,
+    settings: {
+      branding: {
+        primaryColor: '#3B82F6',
+        logoUrl: null,
+        faviconUrl: null,
+      },
+      features: {
+        courses: true,
+        certificates: true,
+        analytics: true,
+        api: planId === 'enterprise',
+      },
+      notifications: {
+        emailEnabled: true,
+        smsEnabled: false,
+      },
+    },
+    updated_at: new Date().toISOString(),
+  });
+
+  // Create default roles for the organization
+  const defaultRoles = ['admin', 'instructor', 'student'];
+  for (const role of defaultRoles) {
+    await supabase.from('organization_roles').upsert({
+      organization_id: organizationId,
+      role_name: role,
+      permissions: getDefaultPermissions(role),
+    });
+  }
+
+  // Log setup completion
+  await supabase.from('license_events').insert({
+    organization_id: organizationId,
+    event_type: 'tenant_setup_complete',
+    event_data: { subdomain, planId },
+  });
+
+  logger.info('Tenant setup complete', { organizationId });
+}
+
+function getDefaultPermissions(role: string): string[] {
+  switch (role) {
+    case 'admin':
+      return ['manage_users', 'manage_courses', 'manage_settings', 'view_analytics', 'manage_billing'];
+    case 'instructor':
+      return ['manage_courses', 'view_students', 'grade_assignments'];
+    case 'student':
+      return ['view_courses', 'submit_assignments', 'view_grades'];
+    default:
+      return [];
+  }
+}
 
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
@@ -118,8 +194,7 @@ async function processJob(job: ProvisioningJob): Promise<void> {
       break;
       
     case 'tenant_setup':
-      // TODO: Implement tenant setup handler
-      logger.info('Tenant setup job - not yet implemented', { jobId: job.id });
+      await processTenantSetup(job);
       break;
       
     case 'webhook_process':

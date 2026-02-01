@@ -43,10 +43,11 @@ export async function GET(request: NextRequest) {
     const role = profile?.role || 'student';
     const isAdmin = ['admin', 'super_admin', 'staff'].includes(role);
 
-    // Get apprentice record linked to this user
-    // TODO: Once apprentices.user_id column is added, filter by .eq('user_id', user.id)
-    // For now, this is a placeholder that needs the migration applied
-    const { data: apprentice } = await supabase
+    // Get apprentice record linked to this user via user_id or email match
+    let apprentice = null;
+    
+    // First try direct user_id match
+    const { data: apprenticeByUserId } = await supabase
       .from('apprentices')
       .select(`
         id,
@@ -56,9 +57,38 @@ export async function GET(request: NextRequest) {
         start_date,
         status
       `)
+      .eq('user_id', user.id)
       .eq('status', 'active')
-      .limit(1)
       .maybeSingle();
+    
+    if (apprenticeByUserId) {
+      apprentice = apprenticeByUserId;
+    } else if (user.email) {
+      // Fallback: match by email if user_id not set
+      const { data: apprenticeByEmail } = await supabase
+        .from('apprentices')
+        .select(`
+          id,
+          referral_id,
+          employer_id,
+          rapids_id,
+          start_date,
+          status,
+          email
+        `)
+        .eq('email', user.email)
+        .eq('status', 'active')
+        .maybeSingle();
+      
+      if (apprenticeByEmail) {
+        apprentice = apprenticeByEmail;
+        // Update the apprentice record with user_id for future lookups
+        await supabase
+          .from('apprentices')
+          .update({ user_id: user.id })
+          .eq('id', apprenticeByEmail.id);
+      }
+    }
 
     // Get employer/shop info
     let shopId: string | null = null;
