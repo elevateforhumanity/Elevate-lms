@@ -151,7 +151,7 @@ export default async function AdminPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/pathways/technology-hero.jpg"
+                  src="/images/technology/hero-programs-technology.jpg"
                   alt="Admin"
                   fill
                   className="object-cover"

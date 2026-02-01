@@ -17,13 +17,13 @@ const features = [
   {
     title: 'Data Encryption',
     description: 'AES-256 encryption for all student data at rest and in transit.',
-    image: '/images/hero-program-cybersecurity.jpg',
+    image: '/images/technology/hero-program-cybersecurity.jpg',
     items: ['AES-256 encryption', 'TLS 1.3 in transit', 'Encrypted backups', 'Key rotation'],
   },
   {
     title: 'Access Controls',
     description: 'Role-based access control ensures only authorized users see student data.',
-    image: '/images/hero-programs-technology.jpg',
+    image: '/images/technology/hero-programs-technology.jpg',
     items: ['Role-based permissions', 'Multi-factor authentication', 'Session management', 'IP restrictions'],
   },
   {
@@ -94,7 +94,7 @@ export default function FERPACompliancePage() {
       {/* Hero */}
       <section className="relative bg-blue-700 text-white py-20 overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/hero-program-cybersecurity.jpg" alt="FERPA" fill className="object-cover opacity-30" />
+          <Image src="/images/technology/hero-program-cybersecurity.jpg" alt="FERPA" fill className="object-cover opacity-30" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

@@ -97,7 +97,7 @@ export default async function MentorshipPage() {
               const images = [
                 '/images/healthcare/hero-healthcare-professionals.jpg',
                 '/images/trades/program-hvac-technician.jpg',
-                '/images/hero-programs-technology.jpg',
+                '/images/technology/hero-programs-technology.jpg',
                 '/images/trades/program-electrical-training.jpg',
                 '/images/barber-hero.jpg',
                 '/images/business/program-tax-preparation.jpg',

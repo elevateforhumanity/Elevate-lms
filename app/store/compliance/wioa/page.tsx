@@ -23,7 +23,7 @@ const features = [
   {
     title: 'Performance Metrics Tracking',
     description: 'Real-time tracking of all WIOA primary indicators of performance.',
-    image: '/images/hero-programs-technology.jpg',
+    image: '/images/technology/hero-programs-technology.jpg',
     items: ['Employment rate tracking', 'Median earnings calculation', 'Credential attainment', 'Measurable skill gains'],
   },
   {
@@ -231,7 +231,7 @@ export default function WIOACompliancePage() {
           <h2 className="text-3xl font-black text-black mb-8 text-center">How It Works</h2>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: '1', title: 'Setup', desc: 'Configure your program and eligibility criteria', image: '/images/hero-programs-technology.jpg' },
+              { step: '1', title: 'Setup', desc: 'Configure your program and eligibility criteria', image: '/images/technology/hero-programs-technology.jpg' },
               { step: '2', title: 'Enroll', desc: 'Participants complete digital intake forms', image: '/images/business/tax-prep-certification.jpg' },
               { step: '3', title: 'Track', desc: 'Automatic performance metric tracking', image: '/images/team-hq/team-meeting.jpg' },
               { step: '4', title: 'Report', desc: 'Generate PIRL exports and quarterly reports', image: '/images/hero-program-it-support.jpg' },

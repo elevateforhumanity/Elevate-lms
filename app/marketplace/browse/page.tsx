@@ -48,7 +48,7 @@ export default async function MarketplaceBrowsePage() {
 {/* Hero */}
       <section className="relative h-64 overflow-hidden">
         <Image
-          src="/images/hero-programs-technology.jpg"
+          src="/images/technology/hero-programs-technology.jpg"
           alt="Marketplace"
           fill
           className="object-cover"

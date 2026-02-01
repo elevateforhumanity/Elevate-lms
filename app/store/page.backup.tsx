@@ -18,7 +18,7 @@ const storeCategories = [
     id: 'licenses',
     name: 'Platform Licenses',
     description: 'Full workforce platform deployment with LMS, admin dashboard, enrollment, and compliance tools.',
-    image: '/images/hero-programs-technology.jpg',
+    image: '/images/technology/hero-programs-technology.jpg',
     href: '/store/licenses',
     icon: Globe,
     color: 'bg-orange-600',
@@ -70,7 +70,7 @@ const storeCategories = [
     id: 'ai-tools',
     name: 'AI & Automation',
     description: 'AI-powered tutoring, content creation, and automated workflows.',
-    image: '/images/hero-program-cybersecurity.jpg',
+    image: '/images/technology/hero-program-cybersecurity.jpg',
     href: '/store/ai-studio',
     icon: Wrench,
     color: 'bg-violet-600',
@@ -90,7 +90,7 @@ const storeCategories = [
     id: 'developer',
     name: 'Developer Licenses',
     description: 'Full codebase access for self-hosting and custom deployments.',
-    image: '/images/hero-programs-technology.jpg',
+    image: '/images/technology/hero-programs-technology.jpg',
     href: '/store/licenses#developer',
     icon: Code,
     color: 'bg-slate-700',
@@ -125,7 +125,7 @@ const featuredProducts = [
     name: 'School / Training Provider License',
     description: 'White-label platform with compliance tools, partner dashboard, and case management.',
     price: '$15,000',
-    image: '/images/hero-programs-technology.jpg',
+    image: '/images/technology/hero-programs-technology.jpg',
     href: '/store/licenses/school-license',
     demoHref: '/demo/admin',
     badge: 'Most Popular',
@@ -189,7 +189,7 @@ export default function StorePage() {
             <div className="relative">
               <div className="aspect-video bg-slate-800 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/hero-programs-technology.jpg"
+                  src="/images/technology/hero-programs-technology.jpg"
                   alt="Elevate Platform"
                   fill
                   className="object-cover"

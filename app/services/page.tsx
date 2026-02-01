@@ -82,7 +82,7 @@ export default function ServicesPage() {
       {/* Hero - Image only */}
       <section className="relative h-[50vh] min-h-[350px]">
         <Image
-          src="/images/heroes-hq/homepage-hero.jpg"
+          src="/images/heroes/hero-homepage.jpg"
           alt="Support Services"
           fill
           className="object-cover"

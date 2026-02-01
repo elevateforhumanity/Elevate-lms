@@ -17,7 +17,7 @@ export default function SchoolLicensePage() {
 {/* Hero - Clean */}
       <section className="relative h-[50vh] overflow-hidden">
         <Image
-          src="/images/hero-programs-technology.jpg"
+          src="/images/technology/hero-programs-technology.jpg"
           alt="School License Platform"
           fill
           className="object-cover"
@@ -250,7 +250,7 @@ export default function SchoolLicensePage() {
               {
                 title: 'Complete LMS',
                 desc: 'Courses, quizzes, certificates, progress tracking. Students learn on any device. Instructors see everything.',
-                img: '/images/hero-programs-technology.jpg'
+                img: '/images/technology/hero-programs-technology.jpg'
               },
               {
                 title: 'Automated Compliance',

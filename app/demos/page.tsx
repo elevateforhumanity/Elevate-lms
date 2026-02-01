@@ -53,7 +53,7 @@ const demos = [
     title: 'Admin Dashboard Tour',
     description: 'Explore the administrative tools for managing programs, students, courses, and compliance.',
     duration: '20 min',
-    thumbnail: '/images/hero-programs-technology.jpg',
+    thumbnail: '/images/technology/hero-programs-technology.jpg',
     features: [
       'Student management',
       'Course builder and authoring',

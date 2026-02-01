@@ -12,7 +12,7 @@ const programData: ProgramData = {
   category: 'Technology Programs',
   categoryHref: '/programs/technology',
   description: 'Enter one of the fastest-growing fields in tech. Learn to protect organizations from cyber threats, manage security systems, and respond to incidents.',
-  image: '/images/hero-program-cybersecurity.jpg',
+  image: '/images/technology/hero-program-cybersecurity.jpg',
   duration: '12-16 weeks',
   tuition: '$0 with WIOA',
   fundingType: 'funded',

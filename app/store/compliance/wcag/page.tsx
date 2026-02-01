@@ -17,7 +17,7 @@ const features = [
   {
     title: 'Screen Reader Support',
     description: 'Full compatibility with JAWS, NVDA, VoiceOver, and other assistive technologies.',
-    image: '/images/hero-programs-technology.jpg',
+    image: '/images/technology/hero-programs-technology.jpg',
     items: ['ARIA labels', 'Semantic HTML', 'Alt text automation', 'Focus management'],
   },
   {
@@ -94,7 +94,7 @@ export default function WCAGCompliancePage() {
       {/* Hero */}
       <section className="relative bg-purple-700 text-white py-20 overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/hero-programs-technology.jpg" alt="WCAG" fill className="object-cover opacity-30" />
+          <Image src="/images/technology/hero-programs-technology.jpg" alt="WCAG" fill className="object-cover opacity-30" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

@@ -56,7 +56,7 @@ export default async function CoursesPage() {
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/heroes-hq/homepage-hero.jpg"
+            src="/images/heroes/hero-homepage.jpg"
             alt="Career Training Courses"
             fill
             className="object-cover"
@@ -195,7 +195,7 @@ export default async function CoursesPage() {
                 >
                   <div className="relative h-40">
                     <Image
-                      src={course.image_url || '/images/heroes-hq/homepage-hero.jpg'}
+                      src={course.image_url || '/images/heroes/hero-homepage.jpg'}
                       alt={course.title}
                       fill
                       className="object-cover"

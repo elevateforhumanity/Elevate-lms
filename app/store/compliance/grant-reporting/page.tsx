@@ -17,7 +17,7 @@ const features = [
   {
     title: 'Automated Data Collection',
     description: 'Automatically capture participant data, outcomes, and metrics as they happen.',
-    image: '/images/hero-programs-technology.jpg',
+    image: '/images/technology/hero-programs-technology.jpg',
     items: ['Real-time data capture', 'Automatic calculations', 'Data validation', 'Error prevention'],
   },
   {
