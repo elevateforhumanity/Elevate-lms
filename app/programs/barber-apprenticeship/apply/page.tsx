@@ -5,19 +5,30 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Loader2, CreditCard, Calculator, Info } from 'lucide-react';
 
-// Pricing constants
+// Pricing constants - matches lib/programs/pricing.ts
 const PRICING = {
   totalHours: 2000,
-  tuition: 4980,
+  fullPrice: 4980,
   setupFee: 1743,
+  setupFeeRate: 0.35,
   remainingBalance: 3237,
+  billingDay: 'Friday',
 };
 
 function calculateWeeklyPayment(hoursPerWeek: number, transferHours: number = 0) {
   const remainingHours = PRICING.totalHours - transferHours;
   const weeks = Math.ceil(remainingHours / hoursPerWeek);
-  const weekly = PRICING.remainingBalance / weeks;
-  return { weekly: Math.round(weekly * 100) / 100, weeks, remainingHours };
+  const weeklyDollars = weeks > 0 ? Math.round((PRICING.remainingBalance / weeks) * 100) / 100 : 0;
+  return { weeklyDollars, weeks, remainingHours };
+}
+
+function getNextFriday(): string {
+  const now = new Date();
+  const dayOfWeek = now.getDay();
+  const daysUntilFriday = dayOfWeek === 5 ? 7 : (5 - dayOfWeek + 7) % 7 || 7;
+  const nextFriday = new Date(now);
+  nextFriday.setDate(now.getDate() + daysUntilFriday);
+  return nextFriday.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 }
 
 export default function BarberApprenticeshipApplyPage() {
@@ -38,7 +49,8 @@ export default function BarberApprenticeshipApplyPage() {
     hostShopName: '',
   });
 
-  const { weeks, remainingHours } = calculateWeeklyPayment(hoursPerWeek, transferHours);
+  const { weeklyDollars, weeks, remainingHours } = calculateWeeklyPayment(hoursPerWeek, transferHours);
+  const nextFriday = getNextFriday();
 
   const updateField = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -55,7 +67,7 @@ export default function BarberApprenticeshipApplyPage() {
 
     try {
       // Save application first
-      await fetch('/api/applications', {
+      const appResponse = await fetch('/api/applications', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -68,24 +80,24 @@ export default function BarberApprenticeshipApplyPage() {
         }),
       });
 
-      // Redirect to Stripe checkout
-      const checkoutResponse = await fetch('/api/checkout', {
+      const appData = await appResponse.json();
+      const applicationId = appData?.id;
+
+      // Use the full barber checkout with Friday billing and subscription
+      const checkoutResponse = await fetch('/api/barber/checkout/public', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          programId: 'prog-barber',
-          planType: 'full',
-          successUrl: `${window.location.origin}/programs/barber-apprenticeship/apply/success?session_id={CHECKOUT_SESSION_ID}`,
-          cancelUrl: `${window.location.origin}/programs/barber-apprenticeship/apply`,
-          customerEmail: formData.email,
-          metadata: {
-            customerName: `${formData.firstName} ${formData.lastName}`,
-            customerPhone: formData.phone,
-            program: 'barber-apprenticeship',
-            transferHours: transferHours.toString(),
-            hasHostShop: formData.hasHostShop,
-            hostShopName: formData.hostShopName,
-          },
+          hours_per_week: hoursPerWeek,
+          transferred_hours_verified: transferHours,
+          customer_email: formData.email,
+          customer_name: `${formData.firstName} ${formData.lastName}`,
+          customer_phone: formData.phone,
+          application_id: applicationId,
+          has_host_shop: formData.hasHostShop,
+          host_shop_name: formData.hostShopName,
+          success_url: `${window.location.origin}/programs/barber-apprenticeship/apply/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancel_url: `${window.location.origin}/programs/barber-apprenticeship/apply`,
         }),
       });
 
@@ -201,17 +213,37 @@ export default function BarberApprenticeshipApplyPage() {
                 </div>
               </div>
 
-              <div className="bg-white/10 rounded-xl p-4">
+              {/* Pricing Breakdown */}
+              <div className="bg-white/10 rounded-xl p-4 space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-purple-200 text-sm">Setup Fee (35%)</span>
+                  <span className="font-bold">${PRICING.setupFee.toLocaleString()}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-purple-200 text-sm">Weekly Payment</span>
+                  <span className="font-bold">${weeklyDollars.toFixed(2)}/wk</span>
+                </div>
+                <div className="border-t border-white/20 pt-3 flex justify-between items-center">
+                  <span className="text-purple-200 text-sm">Total Program</span>
+                  <span className="font-bold">${PRICING.fullPrice.toLocaleString()}</span>
+                </div>
+              </div>
+
+              {/* Billing Info */}
+              <div className="bg-green-500/20 rounded-xl p-4 mt-4">
                 <div className="text-center">
-                  <div className="text-purple-200 text-xs uppercase mb-1">Program Tuition</div>
-                  <div className="text-3xl font-black">${PRICING.tuition.toLocaleString()}</div>
+                  <div className="text-green-200 text-xs uppercase mb-1">Due Today</div>
+                  <div className="text-2xl font-black">${PRICING.setupFee.toLocaleString()}</div>
+                  <p className="text-xs text-green-200 mt-2">
+                    Weekly payments (${weeklyDollars.toFixed(2)}) start {nextFriday}
+                  </p>
                 </div>
               </div>
 
               <div className="mt-4 flex items-start gap-2">
                 <Info className="w-4 h-4 text-purple-200 flex-shrink-0 mt-0.5" />
                 <p className="text-xs text-purple-200">
-                  Tuition is the same regardless of transfer hours. Transfer hours reduce your time in program, not the cost.
+                  Billed every Friday. Transfer hours reduce duration, not cost.
                 </p>
               </div>
             </div>
@@ -388,10 +420,13 @@ export default function BarberApprenticeshipApplyPage() {
                   ) : (
                     <>
                       <CreditCard className="w-5 h-5" />
-                      Pay ${PRICING.tuition.toLocaleString()} Now
+                      Pay ${PRICING.setupFee.toLocaleString()} Setup Fee
                     </>
                   )}
                 </button>
+                <p className="text-center text-xs text-gray-500 mt-2">
+                  + ${weeklyDollars.toFixed(2)}/week starting {nextFriday}
+                </p>
 
                 {/* Buy Now Pay Later Options */}
                 <div className="border-t border-gray-200 pt-4 mt-4">
