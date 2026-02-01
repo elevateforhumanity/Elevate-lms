@@ -135,60 +135,111 @@ export async function POST(request: NextRequest) {
         const applicationId = session.metadata?.application_id;
         const checkoutType = session.metadata?.checkout_type;
 
-        // Handle setup fee payment (new invoice-based model)
-        if (checkoutType === 'barber_setup_fee' && session.metadata?.schedule_weekly_invoices === 'true') {
+        // Handle full tuition payment (with BNPL support)
+        if (checkoutType === 'barber_full_tuition') {
+          const fullTuitionCents = parseInt(session.metadata?.full_tuition_cents || '498000');
+          const amountPaidCents = session.amount_total || 0;
           const weeksRemaining = parseInt(session.metadata?.weeks_remaining || '50');
-          const weeklyPaymentCents = parseInt(session.metadata?.weekly_payment_cents || '6474');
           const hoursPerWeek = parseInt(session.metadata?.hours_per_week || '40');
           const transferredHours = parseInt(session.metadata?.transferHours || '0');
+          
+          // Check payment method used
+          const paymentIntent = session.payment_intent as string;
+          let paymentMethodType = 'card';
+          let bnplProvider = null;
+          
+          if (paymentIntent) {
+            try {
+              const pi = await stripe.paymentIntents.retrieve(paymentIntent);
+              paymentMethodType = pi.payment_method_types?.[0] || 'card';
+              if (['affirm', 'klarna', 'afterpay_clearpay'].includes(paymentMethodType)) {
+                bnplProvider = paymentMethodType;
+              }
+            } catch (e) {
+              console.error('Failed to retrieve payment intent:', e);
+            }
+          }
 
-          // Schedule weekly invoices
-          await scheduleWeeklyInvoices(stripe, {
-            customerId,
-            customerEmail,
-            weeksRemaining,
-            weeklyPaymentCents,
-            hoursPerWeek,
-            transferredHours,
-            applicationId,
-          });
+          // Calculate remaining balance (if any)
+          const remainingBalanceCents = fullTuitionCents - amountPaidCents;
+          const fullyPaid = remainingBalanceCents <= 0;
+
+          // If BNPL fully approved or paid in full with card: no weekly invoices needed
+          // If partial payment or remaining balance: schedule weekly invoices
+          let weeklyPaymentCents = 0;
+          let invoiceWeeks = 0;
+
+          if (!fullyPaid && remainingBalanceCents > 0) {
+            // Calculate weekly payments for remaining balance
+            invoiceWeeks = weeksRemaining;
+            weeklyPaymentCents = Math.ceil(remainingBalanceCents / invoiceWeeks);
+
+            // Schedule weekly invoices for remaining balance
+            await scheduleWeeklyInvoices(stripe, {
+              customerId,
+              customerEmail,
+              weeksRemaining: invoiceWeeks,
+              weeklyPaymentCents,
+              hoursPerWeek,
+              transferredHours,
+              applicationId,
+            });
+          }
 
           // Create enrollment record
-          const { data: enrollment } = await supabase.from('barber_subscriptions').insert({
+          await supabase.from('barber_subscriptions').insert({
             stripe_customer_id: customerId,
             customer_email: customerEmail,
             customer_name: customerName,
             status: 'active',
-            setup_fee_paid: true,
-            setup_fee_amount: BARBER_PRICING.setupFee,
+            full_tuition_amount: BARBER_PRICING.fullPrice,
+            amount_paid_at_checkout: amountPaidCents / 100,
+            remaining_balance: remainingBalanceCents / 100,
+            payment_method: paymentMethodType,
+            bnpl_provider: bnplProvider,
+            fully_paid: fullyPaid,
             weekly_payment_cents: weeklyPaymentCents,
-            weeks_remaining: weeksRemaining,
+            weeks_remaining: fullyPaid ? 0 : invoiceWeeks,
             hours_per_week: hoursPerWeek,
             transferred_hours_verified: transferredHours,
-            payment_model: 'invoices', // Not subscription
+            payment_model: fullyPaid ? 'paid_in_full' : 'invoices',
             created_at: new Date().toISOString(),
-          }).select().single();
+          });
 
           // Send welcome email
           try {
             const { sendEmail } = await import('@/lib/email/resend');
+            
+            let paymentSummary = '';
+            if (fullyPaid) {
+              if (bnplProvider) {
+                paymentSummary = `• Paid via ${bnplProvider.charAt(0).toUpperCase() + bnplProvider.slice(1)}: $${BARBER_PRICING.fullPrice.toLocaleString()}<br>
+• ${bnplProvider === 'affirm' ? 'Affirm will handle your payment schedule' : 'Your payments are managed by ' + bnplProvider}`;
+              } else {
+                paymentSummary = `• Paid in full: $${BARBER_PRICING.fullPrice.toLocaleString()}<br>
+• No additional payments required!`;
+              }
+            } else {
+              paymentSummary = `• Amount paid today: $${(amountPaidCents / 100).toFixed(2)}<br>
+• Remaining balance: $${(remainingBalanceCents / 100).toFixed(2)}<br>
+• Weekly payment: $${(weeklyPaymentCents / 100).toFixed(2)} for ~${invoiceWeeks} weeks`;
+            }
+
             await sendEmail({
               to: customerEmail,
-              subject: 'Welcome to Barber Apprenticeship - Setup Complete!',
+              subject: 'Welcome to Barber Apprenticeship - Enrollment Confirmed!',
               html: `
 <p>Hi ${customerName || 'there'},</p>
 
 <p>Your enrollment in the Barber Apprenticeship program is confirmed!</p>
 
 <p><strong>Payment Summary:</strong></p>
-<p>• Setup fee paid: $${BARBER_PRICING.setupFee.toLocaleString()}<br>
-• Weekly payment: $${(weeklyPaymentCents / 100).toFixed(2)}<br>
-• Duration: ~${weeksRemaining} weeks</p>
+<p>${paymentSummary}</p>
 
 <p><strong>What's next:</strong></p>
-<p>• You'll receive weekly payment invoices every Friday<br>
-• Milady will email you login credentials for coursework<br>
-• Log into your dashboard to track hours</p>
+<p>• Milady will email you login credentials for coursework<br>
+• Log into your dashboard to track hours<br>
+${!fullyPaid ? '• You\'ll receive weekly payment invoices every Friday' : ''}</p>
 
 <p>Questions? Reply to this email or call (317) 314-3757.</p>
 
@@ -210,7 +261,8 @@ export async function POST(request: NextRequest) {
 <p>• Name: ${customerName}<br>
 • Email: ${customerEmail}<br>
 • Phone: ${customerPhone}<br>
-• Transfer Hours: ${transferredHours}</p>
+• Transfer Hours: ${transferredHours}<br>
+• Payment: ${fullyPaid ? 'Paid in full' : 'Payment plan'}</p>
 <p>Please create Milady account and send credentials.</p>
               `,
             });
@@ -218,7 +270,7 @@ export async function POST(request: NextRequest) {
             console.error('Failed to send Milady notification:', emailErr);
           }
 
-          console.log(`Barber setup fee paid, invoices scheduled: ${customerId}`);
+          console.log(`Barber enrollment complete: ${customerId}, fullyPaid: ${fullyPaid}, bnpl: ${bnplProvider}`);
           break;
         }
 

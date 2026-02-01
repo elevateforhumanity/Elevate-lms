@@ -102,21 +102,22 @@ export async function POST(request: NextRequest) {
 
     const firstBillingDate = formatFirstBillingDate();
 
-    // Create Checkout Session for SETUP FEE ONLY (one-time payment)
-    // This allows BNPL options (Affirm, Klarna, Afterpay)
+    // Create Checkout Session for FULL TUITION with BNPL options
+    // If BNPL approved for full amount: no weekly invoices
+    // If BNPL partially approved or declined: webhook calculates remaining and schedules invoices
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
-      mode: 'payment', // One-time payment, NOT subscription
+      mode: 'payment', // One-time payment with BNPL
       payment_method_types: ['card', 'us_bank_account', 'affirm', 'klarna', 'afterpay_clearpay'],
       line_items: [
         {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: 'Barber Apprenticeship - Setup Fee (35%)',
-              description: `Enrollment fee. Weekly payments of $${calculation.weeklyPaymentDollars.toFixed(2)} begin ${firstBillingDate}.`,
+              name: 'Barber Apprenticeship - Full Tuition',
+              description: `Complete program tuition. If using Affirm/Klarna/Afterpay, they handle your payment plan.`,
             },
-            unit_amount: BARBER_PRICING.setupFee * 100, // $1,743 in cents
+            unit_amount: BARBER_PRICING.fullPrice * 100, // $4,980 in cents
           },
           quantity: 1,
         },
@@ -126,7 +127,8 @@ export async function POST(request: NextRequest) {
       metadata: {
         program: 'barber-apprenticeship',
         programSlug: 'barber-apprenticeship',
-        checkout_type: 'barber_setup_fee',
+        checkout_type: 'barber_full_tuition',
+        full_tuition_cents: (BARBER_PRICING.fullPrice * 100).toString(),
         application_id: application_id || '',
         customer_name: customer_name || '',
         customer_phone: customer_phone || '',
@@ -137,15 +139,13 @@ export async function POST(request: NextRequest) {
         weekly_payment_dollars: calculation.weeklyPaymentDollars.toFixed(2),
         has_host_shop: has_host_shop || '',
         host_shop_name: host_shop_name || '',
-        // Flag to trigger invoice scheduling in webhook
-        schedule_weekly_invoices: 'true',
       },
       custom_text: {
         submit: {
-          message: `Setup fee due today. Weekly payments ($${calculation.weeklyPaymentDollars.toFixed(2)}/week for ~${calculation.weeksRemaining} weeks) begin ${firstBillingDate}.`,
+          message: `Full tuition: $${BARBER_PRICING.fullPrice.toLocaleString()}. Use Affirm/Klarna/Afterpay to split into payments, or pay in full with card.`,
         },
       },
-      // Save payment method for future weekly charges
+      // Save payment method for any remaining balance
       payment_intent_data: {
         setup_future_usage: 'off_session',
       },

@@ -238,37 +238,36 @@ export default function BarberApprenticeshipApplyPage() {
                 </div>
               </div>
 
-              {/* Pricing Breakdown */}
-              <div className="bg-white/10 rounded-xl p-4 space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-purple-200 text-sm">Setup Fee (35%)</span>
-                  <span className="font-bold">${PRICING.setupFee.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-purple-200 text-sm">Weekly Payment</span>
-                  <span className="font-bold">${weeklyDollars.toFixed(2)}/wk</span>
-                </div>
-                <div className="border-t border-white/20 pt-3 flex justify-between items-center">
-                  <span className="text-purple-200 text-sm">Total Program</span>
-                  <span className="font-bold">${PRICING.fullPrice.toLocaleString()}</span>
+              {/* Pricing */}
+              <div className="bg-white/10 rounded-xl p-4">
+                <div className="text-center">
+                  <div className="text-purple-200 text-xs uppercase mb-1">Program Tuition</div>
+                  <div className="text-3xl font-black">${PRICING.fullPrice.toLocaleString()}</div>
                 </div>
               </div>
 
-              {/* Billing Info */}
+              {/* Payment Options */}
               <div className="bg-green-500/20 rounded-xl p-4 mt-4">
                 <div className="text-center">
-                  <div className="text-green-200 text-xs uppercase mb-1">Due Today</div>
-                  <div className="text-2xl font-black">${PRICING.setupFee.toLocaleString()}</div>
-                  <p className="text-xs text-green-200 mt-2">
-                    Weekly payments (${weeklyDollars.toFixed(2)}) start {nextFriday}
-                  </p>
+                  <div className="text-green-200 text-xs uppercase mb-1">Payment Options</div>
+                  <div className="text-sm text-white mt-2 space-y-1">
+                    <p><strong>Pay in Full:</strong> Card or Bank</p>
+                    <p><strong>Affirm/Klarna:</strong> Split into payments</p>
+                  </div>
                 </div>
+              </div>
+
+              {/* If not approved for full BNPL */}
+              <div className="bg-white/10 rounded-xl p-3 mt-4">
+                <p className="text-xs text-purple-200 text-center">
+                  If BNPL partially approved, remaining balance split into ~{weeks} weekly payments of ${weeklyDollars.toFixed(2)}
+                </p>
               </div>
 
               <div className="mt-4 flex items-start gap-2">
                 <Info className="w-4 h-4 text-purple-200 flex-shrink-0 mt-0.5" />
                 <p className="text-xs text-purple-200">
-                  Billed every Friday. Transfer hours reduce duration, not cost.
+                  Transfer hours reduce program duration, not tuition cost.
                 </p>
               </div>
             </div>
@@ -445,13 +444,10 @@ export default function BarberApprenticeshipApplyPage() {
                   ) : (
                     <>
                       <CreditCard className="w-5 h-5" />
-                      Pay ${PRICING.setupFee.toLocaleString()} Setup Fee
+                      Continue to Payment
                     </>
                   )}
                 </button>
-                <p className="text-center text-xs text-gray-500 mt-2">
-                  + ${weeklyDollars.toFixed(2)}/week starting {nextFriday}
-                </p>
 
                 {/* Payment Methods with BNPL */}
                 <div className="border-t border-gray-200 pt-4 mt-4">
