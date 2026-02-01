@@ -1,0 +1,245 @@
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { 
+  Shield, FileText, Users, AlertTriangle, CheckCircle, 
+  Clock, Download, Eye, Search, Filter
+} from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: 'FERPA Compliance | Admin | Elevate For Humanity',
+  description: 'Manage FERPA compliance, student records access, and privacy controls.',
+};
+
+const complianceStats = [
+  { label: 'Active Consent Forms', value: '1,247', icon: FileText, color: 'green' },
+  { label: 'Pending Reviews', value: '23', icon: Clock, color: 'yellow' },
+  { label: 'Access Requests', value: '8', icon: Eye, color: 'blue' },
+  { label: 'Violations (YTD)', value: '0', icon: AlertTriangle, color: 'green' },
+];
+
+const recentActivity = [
+  { action: 'Consent form signed', student: 'John D.', date: '2 hours ago', status: 'complete' },
+  { action: 'Records access request', student: 'Sarah M.', date: '5 hours ago', status: 'pending' },
+  { action: 'Directory opt-out', student: 'Michael R.', date: '1 day ago', status: 'complete' },
+  { action: 'Third-party disclosure', student: 'Emily K.', date: '2 days ago', status: 'approved' },
+];
+
+export default async function AdminFerpaPage() {
+  const supabase = await createClient();
+
+  if (!supabase) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
+          <p className="text-gray-600">Please try again later.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/login?redirect=/admin/ferpa');
+  }
+
+  // Check admin role
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+
+  if (profile?.role !== 'admin' && profile?.role !== 'staff') {
+    redirect('/dashboard');
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-100">
+      {/* Breadcrumbs */}
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[
+            { label: 'Admin', href: '/admin' },
+            { label: 'FERPA Compliance' }
+          ]} />
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
+              <Shield className="w-8 h-8 text-blue-600" />
+              FERPA Compliance Dashboard
+            </h1>
+            <p className="text-gray-600 mt-1">
+              Manage student privacy, consent forms, and records access
+            </p>
+          </div>
+          <div className="flex gap-3">
+            <Link
+              href="/admin/ferpa/audit-log"
+              className="px-4 py-2 bg-white border rounded-lg hover:bg-gray-50 text-gray-700 font-medium"
+            >
+              Audit Log
+            </Link>
+            <Link
+              href="/admin/ferpa/training"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium"
+            >
+              Staff Training
+            </Link>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="grid md:grid-cols-4 gap-6 mb-8">
+          {complianceStats.map((stat, index) => (
+            <div key={index} className="bg-white rounded-xl p-6 shadow-sm border">
+              <div className="flex items-center justify-between mb-4">
+                <stat.icon className={`w-8 h-8 ${
+                  stat.color === 'green' ? 'text-green-600' :
+                  stat.color === 'yellow' ? 'text-yellow-600' :
+                  stat.color === 'blue' ? 'text-blue-600' : 'text-gray-600'
+                }`} />
+                <span className={`text-xs font-medium px-2 py-1 rounded-full ${
+                  stat.color === 'green' ? 'bg-green-100 text-green-700' :
+                  stat.color === 'yellow' ? 'bg-yellow-100 text-yellow-700' :
+                  stat.color === 'blue' ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-700'
+                }`}>
+                  {stat.color === 'green' ? 'Good' : stat.color === 'yellow' ? 'Action Needed' : 'Info'}
+                </span>
+              </div>
+              <div className="text-3xl font-bold text-gray-900">{stat.value}</div>
+              <div className="text-gray-600 text-sm">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Quick Actions */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-xl p-6 shadow-sm border">
+              <h2 className="font-semibold text-gray-900 mb-4">Quick Actions</h2>
+              <div className="space-y-3">
+                <Link
+                  href="/admin/ferpa/consent-forms"
+                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <FileText className="w-5 h-5 text-blue-600" />
+                  <span className="text-gray-700">Manage Consent Forms</span>
+                </Link>
+                <Link
+                  href="/admin/ferpa/access-requests"
+                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <Eye className="w-5 h-5 text-purple-600" />
+                  <span className="text-gray-700">Review Access Requests</span>
+                </Link>
+                <Link
+                  href="/admin/ferpa/directory-info"
+                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <Users className="w-5 h-5 text-green-600" />
+                  <span className="text-gray-700">Directory Information</span>
+                </Link>
+                <Link
+                  href="/admin/ferpa/reports"
+                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <Download className="w-5 h-5 text-orange-600" />
+                  <span className="text-gray-700">Generate Reports</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Compliance Checklist */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border mt-6">
+              <h2 className="font-semibold text-gray-900 mb-4">Annual Compliance</h2>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <span className="text-gray-700 text-sm">Annual FERPA notice sent</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <span className="text-gray-700 text-sm">Staff training completed</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <span className="text-gray-700 text-sm">Directory opt-out period closed</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-yellow-600" />
+                  <span className="text-gray-700 text-sm">Q1 audit pending</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Recent Activity */}
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-xl shadow-sm border">
+              <div className="p-6 border-b">
+                <div className="flex items-center justify-between">
+                  <h2 className="font-semibold text-gray-900">Recent Activity</h2>
+                  <div className="flex gap-2">
+                    <div className="relative">
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                      <input
+                        type="text"
+                        placeholder="Search..."
+                        className="pl-9 pr-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <button className="p-2 border rounded-lg hover:bg-gray-50">
+                      <Filter className="w-4 h-4 text-gray-600" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="divide-y">
+                {recentActivity.map((activity, index) => (
+                  <div key={index} className="p-4 hover:bg-gray-50">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="font-medium text-gray-900">{activity.action}</div>
+                        <div className="text-sm text-gray-600">Student: {activity.student}</div>
+                      </div>
+                      <div className="text-right">
+                        <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
+                          activity.status === 'complete' ? 'bg-green-100 text-green-700' :
+                          activity.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
+                          'bg-blue-100 text-blue-700'
+                        }`}>
+                          {activity.status}
+                        </span>
+                        <div className="text-sm text-gray-500 mt-1">{activity.date}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="p-4 border-t">
+                <Link
+                  href="/admin/ferpa/activity"
+                  className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                >
+                  View All Activity →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
