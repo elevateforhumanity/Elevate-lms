@@ -3,15 +3,13 @@ export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/admin/analytics/engagement',
   },
-  title: 'Engagement | Elevate For Humanity',
-  description:
-    'User engagement analytics.',
+  title: 'Engagement Analytics | Elevate For Humanity',
+  description: 'Track user engagement metrics and platform activity.',
 };
 
 export default async function EngagementPage() {
@@ -45,141 +43,139 @@ export default async function EngagementPage() {
     redirect('/unauthorized');
   }
 
-  // Fetch relevant data
-  const { data: items, count } = await supabase
+  // Fetch engagement data
+  const { count: totalUsers } = await supabase
     .from('profiles')
-    .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
-    .limit(20);
+    .select('*', { count: 'exact', head: true });
 
-  const { count: activeItems } = await supabase
+  const { count: activeUsers } = await supabase
     .from('profiles')
     .select('*', { count: 'exact', head: true })
-    .eq('status', 'active');
+    .gte('last_sign_in_at', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString());
+
+  const { count: totalEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true });
+
+  const { data: recentActivity } = await supabase
+    .from('profiles')
+    .select('id, full_name, email, last_sign_in_at')
+    .order('last_sign_in_at', { ascending: false })
+    .limit(10);
+
+  const engagementRate = totalUsers ? Math.round(((activeUsers || 0) / totalUsers) * 100) : 0;
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/success-new/success-1.jpg"
-          alt="Engagement"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="mb-8">
+          <nav className="text-sm mb-4">
+            <ol className="flex items-center space-x-2 text-gray-500">
+              <li><Link href="/admin" className="hover:text-primary">Admin</Link></li>
+              <li>/</li>
+              <li><Link href="/admin/analytics" className="hover:text-primary">Analytics</Link></li>
+              <li>/</li>
+              <li className="text-gray-900 font-medium">Engagement</li>
+            </ol>
+          </nav>
+          <h1 className="text-3xl font-bold text-gray-900">Engagement Analytics</h1>
+          <p className="text-gray-600 mt-2">Monitor user activity and platform engagement metrics</p>
+        </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Engagement</h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access your dashboard and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/admin/dashboard"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Back to Dashboard
-            </Link>
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-lg shadow-sm border p-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-medium text-gray-500">Total Users</h3>
+              <span className="text-blue-600 bg-blue-100 p-2 rounded-lg">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </span>
+            </div>
+            <p className="text-3xl font-bold text-gray-900 mt-2">{totalUsers || 0}</p>
+            <p className="text-sm text-gray-500 mt-1">Registered accounts</p>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm border p-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-medium text-gray-500">Active Users (7d)</h3>
+              <span className="text-green-600 bg-green-100 p-2 rounded-lg">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+            </div>
+            <p className="text-3xl font-bold text-gray-900 mt-2">{activeUsers || 0}</p>
+            <p className="text-sm text-gray-500 mt-1">Logged in this week</p>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm border p-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-medium text-gray-500">Engagement Rate</h3>
+              <span className="text-purple-600 bg-purple-100 p-2 rounded-lg">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </span>
+            </div>
+            <p className="text-3xl font-bold text-gray-900 mt-2">{engagementRate}%</p>
+            <p className="text-sm text-gray-500 mt-1">Weekly active rate</p>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm border p-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-medium text-gray-500">Total Enrollments</h3>
+              <span className="text-orange-600 bg-orange-100 p-2 rounded-lg">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </span>
+            </div>
+            <p className="text-3xl font-bold text-gray-900 mt-2">{totalEnrollments || 0}</p>
+            <p className="text-sm text-gray-500 mt-1">Course enrollments</p>
           </div>
         </div>
-      </section>
 
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Total Items
-                </h3>
-                <p className="text-3xl font-bold text-brand-blue-600">
-                  {count || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Active
-                </h3>
-                <p className="text-3xl font-bold text-brand-green-600">
-                  {activeItems || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Recent
-                </h3>
-                <p className="text-3xl font-bold text-purple-600">
-                  {items?.filter((i) => {
-                    const created = new Date(i.created_at);
-                    const weekAgo = new Date();
-                    weekAgo.setDate(weekAgo.getDate() - 7);
-                    return created > weekAgo;
-                  }).length || 0}
-                </p>
-              </div>
-            </div>
-
-            {/* Data Display */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-2xl font-bold mb-4">Items</h2>
-              {items && items.length > 0 ? (
-                <div className="space-y-4">
-                  {items.map((item: any) => (
-                    <div
-                      key={item.id}
-                      className="p-4 border rounded-lg hover:bg-gray-50"
-                    >
-                      <p className="font-semibold">
-                        {item.title || item.name || item.id}
-                      </p>
-                      <p className="text-sm text-black">
-                        {new Date(item.created_at).toLocaleDateString()}
-                      </p>
+        {/* Recent Activity */}
+        <div className="bg-white rounded-lg shadow-sm border">
+          <div className="p-6 border-b">
+            <h2 className="text-lg font-semibold">Recent Activity</h2>
+            <p className="text-sm text-gray-500">Users who recently logged in</p>
+          </div>
+          <div className="divide-y">
+            {recentActivity && recentActivity.length > 0 ? (
+              recentActivity.map((user: any) => (
+                <div key={user.id} className="p-4 flex items-center justify-between hover:bg-gray-50">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                      <span className="text-blue-600 font-medium">
+                        {(user.full_name || user.email || '?')[0].toUpperCase()}
+                      </span>
                     </div>
-                  ))}
+                    <div>
+                      <p className="font-medium text-gray-900">{user.full_name || 'Unknown'}</p>
+                      <p className="text-sm text-gray-500">{user.email}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm text-gray-500">
+                      {user.last_sign_in_at 
+                        ? new Date(user.last_sign_in_at).toLocaleDateString()
+                        : 'Never'}
+                    </p>
+                  </div>
                 </div>
-              ) : (
-                <p className="text-black text-center py-8">No items found</p>
-              )}
-            </div>
+              ))
+            ) : (
+              <div className="p-8 text-center text-gray-500">
+                No recent activity found
+              </div>
+            )}
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

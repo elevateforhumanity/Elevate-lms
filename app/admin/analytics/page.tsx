@@ -4,14 +4,13 @@ export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/admin/analytics',
   },
-  title: 'Admin Analytics | Elevate For Humanity',
-  description: 'View analytics and usage statistics',
+  title: 'Analytics Dashboard | Elevate For Humanity',
+  description: 'View platform analytics, user metrics, and performance data.',
 };
 
 export default async function AnalyticsPage() {
@@ -48,161 +47,118 @@ export default async function AnalyticsPage() {
     redirect('/unauthorized');
   }
 
-  const { data: events, count: totalEvents } = await supabase
-    .from('analytics_events')
-    .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
-    .limit(100);
-
-  const { count: activeItems } = await supabase
-    .from('analytics_events')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'active');
-
-  const { count: todayEvents } = await supabase
-    .from('analytics_events')
-    .select('*', { count: 'exact', head: true })
-    .gte('created_at', new Date().toISOString().split('T')[0]);
-
-  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
-    redirect('/unauthorized');
-  }
-
-  // Fetch relevant data
-  const { data: items, count } = await supabase
+  // Fetch analytics overview data
+  const { count: totalUsers } = await supabase
     .from('profiles')
-    .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
-    .limit(20);
+    .select('*', { count: 'exact', head: true });
+
+  const { count: totalCourses } = await supabase
+    .from('courses')
+    .select('*', { count: 'exact', head: true });
+
+  const { count: totalEnrollments } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true });
+
+  const { count: totalPrograms } = await supabase
+    .from('programs')
+    .select('*', { count: 'exact', head: true });
+
+  const analyticsCategories = [
+    {
+      title: 'Learning Analytics',
+      description: 'Course completion rates, progress tracking, and educational outcomes',
+      href: '/admin/analytics/learning',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      ),
+      color: 'blue'
+    },
+    {
+      title: 'Engagement Analytics',
+      description: 'User activity, login patterns, and platform engagement metrics',
+      href: '/admin/analytics/engagement',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        </svg>
+      ),
+      color: 'green'
+    },
+    {
+      title: 'Program Analytics',
+      description: 'Program performance, participant outcomes, and success metrics',
+      href: '/admin/analytics/programs',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
+      color: 'purple'
+    }
+  ];
+
+  const getColorClasses = (color: string) => {
+    const colors: Record<string, string> = {
+      blue: 'bg-blue-100 text-blue-600',
+      green: 'bg-green-100 text-green-600',
+      purple: 'bg-purple-100 text-purple-600',
+    };
+    return colors[color] || colors.blue;
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="mb-4">
           <Breadcrumbs items={[{ label: "Admin", href: "/admin" }, { label: "Analytics" }]} />
         </div>
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/success-new/success-20.jpg"
-          alt="Analytics"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Analytics
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access your dashboard and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Analytics Dashboard</h1>
+          <p className="text-gray-600 mt-2">Monitor platform performance and user metrics</p>
+        </div>
+
+        {/* Overview Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-lg shadow-sm border p-6">
+            <h3 className="text-sm font-medium text-gray-500">Total Users</h3>
+            <p className="text-3xl font-bold text-gray-900 mt-2">{totalUsers || 0}</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-sm border p-6">
+            <h3 className="text-sm font-medium text-gray-500">Total Courses</h3>
+            <p className="text-3xl font-bold text-gray-900 mt-2">{totalCourses || 0}</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-sm border p-6">
+            <h3 className="text-sm font-medium text-gray-500">Enrollments</h3>
+            <p className="text-3xl font-bold text-gray-900 mt-2">{totalEnrollments || 0}</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-sm border p-6">
+            <h3 className="text-sm font-medium text-gray-500">Programs</h3>
+            <p className="text-3xl font-bold text-gray-900 mt-2">{totalPrograms || 0}</p>
+          </div>
+        </div>
+
+        {/* Analytics Categories */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {analyticsCategories.map((category) => (
             <Link
-              href="/admin/dashboard"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+              key={category.href}
+              href={category.href}
+              className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow"
             >
-              Back to Dashboard
+              <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${getColorClasses(category.color)}`}>
+                {category.icon}
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.title}</h3>
+              <p className="text-gray-600 text-sm">{category.description}</p>
             </Link>
-          </div>
+          ))}
         </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Total Items
-                </h3>
-                <p className="text-3xl font-bold text-brand-blue-600">
-                  {totalEvents || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Active
-                </h3>
-                <p className="text-3xl font-bold text-brand-green-600">
-                  {activeItems || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Recent
-                </h3>
-                <p className="text-3xl font-bold text-purple-600">
-                  {items?.filter((i) => {
-                    const created = new Date(i.created_at);
-                    const weekAgo = new Date();
-                    weekAgo.setDate(weekAgo.getDate() - 7);
-                    return created > weekAgo;
-                  }).length || 0}
-                </p>
-              </div>
-            </div>
-
-            {/* Data Display */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-2xl font-bold mb-4">Items</h2>
-              {events && events.length > 0 ? (
-                <div className="space-y-4">
-                  {events.map((item: any) => (
-                    <div
-                      key={item.id}
-                      className="p-4 border rounded-lg hover:bg-gray-50"
-                    >
-                      <p className="font-semibold">
-                        {item.title || item.name || item.id}
-                      </p>
-                      <p className="text-sm text-black">
-                        {new Date(item.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-black text-center py-8">No items found</p>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

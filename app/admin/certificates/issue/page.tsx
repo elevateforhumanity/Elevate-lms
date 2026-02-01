@@ -3,18 +3,16 @@ export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/admin/certificates/issue',
   },
-  title: 'Issue | Elevate For Humanity',
-  description:
-    'Issue certificates to participants.',
+  title: 'Issue Certificate | Elevate For Humanity',
+  description: 'Issue a certificate to a participant.',
 };
 
-export default async function IssuePage() {
+export default async function IssueCertificatePage() {
   const supabase = await createClient();
 
   if (!supabase) {
@@ -45,141 +43,188 @@ export default async function IssuePage() {
     redirect('/unauthorized');
   }
 
-  // Fetch relevant data
-  const { data: items, count } = await supabase
-    .from('certificates')
-    .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
-    .limit(20);
+  // Fetch certificate templates
+  const { data: templates } = await supabase
+    .from('certificate_templates')
+    .select('id, name, description')
+    .eq('status', 'active')
+    .order('name');
 
-  const { count: activeItems } = await supabase
-    .from('profiles')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'active');
+  // Fetch courses for selection
+  const { data: courses } = await supabase
+    .from('courses')
+    .select('id, title')
+    .eq('status', 'published')
+    .order('title');
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/platform/student-portal-mock.jpg"
-          alt="Issue"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Issue</h1>
-          <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Access your dashboard and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/admin/dashboard"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Back to Dashboard
-            </Link>
-          </div>
+      <div className="max-w-3xl mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="mb-8">
+          <nav className="text-sm mb-4">
+            <ol className="flex items-center space-x-2 text-gray-500">
+              <li><Link href="/admin" className="hover:text-primary">Admin</Link></li>
+              <li>/</li>
+              <li><Link href="/admin/certificates" className="hover:text-primary">Certificates</Link></li>
+              <li>/</li>
+              <li className="text-gray-900 font-medium">Issue</li>
+            </ol>
+          </nav>
+          <h1 className="text-3xl font-bold text-gray-900">Issue Certificate</h1>
+          <p className="text-gray-600 mt-2">Create and issue a certificate to a participant</p>
         </div>
-      </section>
 
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Total Items
-                </h3>
-                <p className="text-3xl font-bold text-brand-blue-600">
-                  {count || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Active
-                </h3>
-                <p className="text-3xl font-bold text-brand-green-600">
-                  {activeItems || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Recent
-                </h3>
-                <p className="text-3xl font-bold text-purple-600">
-                  {items?.filter((i) => {
-                    const created = new Date(i.created_at);
-                    const weekAgo = new Date();
-                    weekAgo.setDate(weekAgo.getDate() - 7);
-                    return created > weekAgo;
-                  }).length || 0}
-                </p>
-              </div>
-            </div>
-
-            {/* Data Display */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-2xl font-bold mb-4">Items</h2>
-              {items && items.length > 0 ? (
-                <div className="space-y-4">
-                  {items.map((item: any) => (
-                    <div
-                      key={item.id}
-                      className="p-4 border rounded-lg hover:bg-gray-50"
-                    >
-                      <p className="font-semibold">
-                        {item.title || item.name || item.id}
-                      </p>
-                      <p className="text-sm text-black">
-                        {new Date(item.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                  ))}
+        {/* Form */}
+        <div className="bg-white rounded-lg shadow-sm border p-6">
+          <form className="space-y-6">
+            {/* Recipient Section */}
+            <div>
+              <h2 className="text-lg font-semibold mb-4">Recipient Information</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Recipient Name *
+                  </label>
+                  <input 
+                    type="text" 
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Full name as it appears on certificate"
+                    required
+                  />
                 </div>
-              ) : (
-                <p className="text-black text-center py-8">No items found</p>
-              )}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address *
+                  </label>
+                  <input 
+                    type="email" 
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="recipient@email.com"
+                    required
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
+            {/* Certificate Details */}
+            <div>
+              <h2 className="text-lg font-semibold mb-4">Certificate Details</h2>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Certificate Template *
+                  </label>
+                  <select 
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  >
+                    <option value="">Select a template</option>
+                    {templates?.map((template: any) => (
+                      <option key={template.id} value={template.id}>
+                        {template.name}
+                      </option>
+                    ))}
+                    {(!templates || templates.length === 0) && (
+                      <option value="default">Default Certificate</option>
+                    )}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Course / Program
+                  </label>
+                  <select className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">Select a course (optional)</option>
+                    {courses?.map((course: any) => (
+                      <option key={course.id} value={course.id}>
+                        {course.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Issue Date *
+                    </label>
+                    <input 
+                      type="date" 
+                      className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      defaultValue={new Date().toISOString().split('T')[0]}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Expiration Date
+                    </label>
+                    <input 
+                      type="date" 
+                      className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Signed By
+                  </label>
+                  <input 
+                    type="text" 
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Director or authorized signer name"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Additional Notes
+                  </label>
+                  <textarea 
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    rows={3}
+                    placeholder="Any additional information to include"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Notification Options */}
+            <div>
+              <h2 className="text-lg font-semibold mb-4">Notification</h2>
+              <div className="space-y-2">
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" className="w-4 h-4 text-blue-600 rounded" defaultChecked />
+                  <span className="text-sm text-gray-700">Send email notification to recipient</span>
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" className="w-4 h-4 text-blue-600 rounded" />
+                  <span className="text-sm text-gray-700">Include PDF attachment</span>
+                </label>
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-4 pt-4 border-t">
+              <button 
+                type="submit"
+                className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
               >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
+                Issue Certificate
+              </button>
+              <Link 
+                href="/admin/certificates"
+                className="px-4 py-2 border rounded-lg hover:bg-gray-50 text-center"
               >
-                Browse Programs
+                Cancel
               </Link>
             </div>
-          </div>
+          </form>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
