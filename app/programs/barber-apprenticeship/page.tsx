@@ -250,6 +250,107 @@ export default async function BarberApprenticeshipPage() {
         </div>
       </section>
 
+      {/* PARTNERSHIP SECTION */}
+      <section className="py-20 bg-blue-900 text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="px-4 py-2 bg-white/20 text-white text-sm font-bold rounded-full">
+                For Barbershop Owners
+              </span>
+              <h2 className="mt-6 text-3xl md:text-4xl font-bold">
+                Become a Host Barbershop Partner
+              </h2>
+              <p className="mt-4 text-lg text-blue-100">
+                Join our network of approved training sites and help shape the next generation of licensed barbers. 
+                We handle the paperwork, you provide the real-world training.
+              </p>
+              
+              <div className="mt-8 space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">1</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Access Trained Apprentices</h3>
+                    <p className="text-blue-200 text-sm">Get motivated learners ready to contribute to your shop</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">2</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">We Handle Compliance</h3>
+                    <p className="text-blue-200 text-sm">Documentation, hour tracking, and state requirements managed for you</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">3</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Build Your Legacy</h3>
+                    <p className="text-blue-200 text-sm">Train future barbers and strengthen the profession</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="/programs/barber-apprenticeship/host-shops"
+                  className="rounded-2xl bg-white text-blue-900 px-8 py-4 font-semibold hover:bg-blue-50 transition"
+                >
+                  Learn More
+                </Link>
+                <Link
+                  href="/forms/host-shop-inquiry"
+                  className="rounded-2xl bg-transparent border-2 border-white text-white px-8 py-4 font-semibold hover:bg-white/10 transition"
+                >
+                  Partner Inquiry
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white/10 rounded-2xl p-8">
+              <h3 className="text-xl font-bold mb-6">Host Shop Requirements</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span>Active Indiana barbershop license in good standing</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span>At least one licensed barber to supervise apprentices</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span>Safe, professional training environment</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span>Commitment to apprentice development</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span>Willingness to use digital hour tracking</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-slate-900 text-white py-24">
         <div className="max-w-5xl mx-auto px-6 text-center">
