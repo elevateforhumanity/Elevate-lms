@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 const TEST_PROGRAMS = [
+  { id: 'aaaaaaaa-test-0001-0001-000000000001', name: 'Test Enrollment ($1)', cost: 1 },
   { id: 'bb4a45a1-2029-419a-8ed9-5f4cf167954b', name: 'Medical Assistant', cost: 504 },
   { id: 'e8bc1dbb-723a-4f4d-93bd-e07654280dc5', name: 'Forklift Operator', cost: 800 },
   { id: '7ceaca9d-71fa-449e-821b-012a16a6a503', name: 'CDL Training', cost: 4730 },
