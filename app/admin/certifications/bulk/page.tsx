@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Bulk | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Bulk manage certifications.',
 };
 
 export default async function BulkPage() {

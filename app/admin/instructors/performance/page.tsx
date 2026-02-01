@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Performance | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Monitor instructor performance metrics.',
 };
 
 export default async function PerformancePage() {

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Learning Paths | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Explore structured learning paths for career development.',
 };
 
 export const dynamic = 'force-dynamic';
@@ -115,7 +115,7 @@ export default async function LearningPathsPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Learning Paths</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Explore structured learning paths for career development.
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -144,7 +144,7 @@ export default async function LearningPathsPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Learning Paths</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Explore structured learning paths for career development.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

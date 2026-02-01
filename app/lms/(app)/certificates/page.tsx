@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Certificates | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'View and download your earned certificates.',
 };
 
 export default async function CertificatesPage() {

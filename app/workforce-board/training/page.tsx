@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Workforce Board Training | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Oversee training programs and provider relationships.',
 };
 
 export default async function TrainingPage() {
@@ -85,7 +85,7 @@ export default async function TrainingPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Training</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Oversee training programs and provider relationships.
                   and development.
                 </p>
                 <ul className="space-y-3">

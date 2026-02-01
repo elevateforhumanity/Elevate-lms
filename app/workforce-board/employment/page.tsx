@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Employment | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Track employment outcomes and job placements.',
 };
 
 export default async function EmploymentPage() {
@@ -85,7 +85,7 @@ export default async function EmploymentPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Employment</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Track employment outcomes and job placements.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

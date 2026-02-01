@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
   title: 'Learning Center | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Access the learning center resources.',
 };
 
 export default async function LearningCenterPage() {
@@ -36,7 +36,7 @@ export default async function LearningCenterPage() {
             Learning Center
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Access the learning center resources.
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -67,7 +67,7 @@ export default async function LearningCenterPage() {
                   Learning Center
                 </h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Access the learning center resources.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

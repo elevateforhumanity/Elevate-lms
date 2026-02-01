@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Questions | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage quiz questions and answers.',
 };
 
 export default async function QuestionsPage() {

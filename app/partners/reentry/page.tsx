@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Reentry | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Reentry program partnerships.',
 };
 
 export default async function ReentryPage() {
@@ -65,7 +65,7 @@ export default async function ReentryPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Reentry Partnership Programs</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Reentry program partnerships.
                   and development.
                 </p>
                 <ul className="space-y-3">

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   title: 'Performance | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'View performance metrics and program outcomes.',
 };
 
 export default async function PerformancePage() {
@@ -87,7 +87,7 @@ export default async function PerformancePage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Performance</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  View performance metrics and program outcomes.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

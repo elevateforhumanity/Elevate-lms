@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Builder | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Build and customize course content.',
 };
 
 export default async function BuilderPage() {
@@ -137,7 +137,7 @@ export default async function BuilderPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Builder</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Build and customize course content.
                   and development.
                 </p>
                 <ul className="space-y-3">

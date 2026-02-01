@@ -65,7 +65,7 @@ export default async function HandbookPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Handbook</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Access the student handbook and policies.
                   and development.
                 </p>
                 <ul className="space-y-3">

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Caseload | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'View caseload reports and metrics.',
 };
 
 export default async function CaseloadPage() {

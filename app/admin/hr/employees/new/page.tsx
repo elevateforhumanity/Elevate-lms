@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Add New Employee | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Add new employees to the system.',
 };
 
 export default async function NewPage() {

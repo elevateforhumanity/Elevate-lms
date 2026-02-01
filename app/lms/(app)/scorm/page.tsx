@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Scorm | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage SCORM-compliant learning content and modules.',
 };
 
 export default async function ScormPage() {

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Deploy | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Deploy AI copilot features.',
 };
 
 export default async function DeployPage() {

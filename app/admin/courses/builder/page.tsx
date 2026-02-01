@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Builder | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Build and customize course structures.',
 };
 
 export default async function BuilderPage() {

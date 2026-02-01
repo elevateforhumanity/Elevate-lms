@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Training Provider Partnership | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Training provider partnership information.',
 };
 
 export default async function TrainingProviderPage() {
@@ -38,7 +38,7 @@ export default async function TrainingProviderPage() {
             Training Provider
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Training provider partnership information.
             workforce training and career success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

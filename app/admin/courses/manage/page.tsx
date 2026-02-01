@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Manage | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage existing courses and content.',
 };
 
 export default async function ManagePage() {

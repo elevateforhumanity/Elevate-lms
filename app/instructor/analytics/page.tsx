@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Instructor Analytics | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'View teaching analytics and student performance data.',
 };
 
 export default async function AnalyticsPage() {

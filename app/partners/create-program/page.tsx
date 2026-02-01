@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Create Program | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Create a new partner program.',
 };
 
 export default async function CreateProgramPage() {
@@ -36,7 +36,7 @@ export default async function CreateProgramPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Create a Partner Program</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Create a new partner program.
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -65,7 +65,7 @@ export default async function CreateProgramPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Create a Partner Program</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Create a new partner program.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

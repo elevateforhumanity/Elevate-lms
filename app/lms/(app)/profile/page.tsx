@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Profile | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage your learner profile and preferences.',
 };
 
 export default async function ProfilePage() {
@@ -137,7 +137,7 @@ export default async function ProfilePage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Profile</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Manage your learner profile and preferences.
                   and development.
                 </p>
                 <ul className="space-y-3">

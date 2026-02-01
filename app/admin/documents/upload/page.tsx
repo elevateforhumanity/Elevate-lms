@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Upload Admin Documents | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Upload and manage documents.',
 };
 
 export default async function UploadPage() {

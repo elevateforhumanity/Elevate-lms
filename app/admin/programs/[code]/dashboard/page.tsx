@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Dashboard | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Program-specific dashboard and metrics.',
 };
 
 export default async function DashboardPage() {

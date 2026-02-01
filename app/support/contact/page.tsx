@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Contact | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Contact our support team for assistance.',
 };
 
 export default async function ContactPage() {
@@ -64,7 +64,7 @@ export default async function ContactPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Contact Support</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Contact our support team for assistance.
                   and development.
                 </p>
                 <ul className="space-y-3">

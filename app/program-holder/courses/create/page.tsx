@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Create Program Holder Course | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Create and publish new training courses for your program.',
 };
 
 export default async function CreatePage() {

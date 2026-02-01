@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Create Admin Course | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Create new courses in the system.',
 };
 
 export default async function CreatePage() {

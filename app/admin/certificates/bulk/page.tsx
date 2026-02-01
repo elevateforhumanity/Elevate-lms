@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Bulk | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Bulk issue certificates.',
 };
 
 export default async function BulkPage() {

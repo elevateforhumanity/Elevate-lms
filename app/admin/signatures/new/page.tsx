@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'New Signature Request | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Create new signature requests.',
 };
 
 export default async function NewPage() {

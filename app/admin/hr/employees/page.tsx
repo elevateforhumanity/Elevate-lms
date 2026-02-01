@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Employees | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage employee records.',
 };
 
 export default async function EmployeesPage() {

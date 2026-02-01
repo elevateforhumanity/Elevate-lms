@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Gradebook | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage student grades and assessments.',
 };
 
 export default async function GradebookPage() {

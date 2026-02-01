@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
   title: 'Schedule | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Schedule your program orientation session.',
 };
 
 export default async function SchedulePage() {
@@ -63,7 +63,7 @@ export default async function SchedulePage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Schedule</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Schedule your program orientation session.
                   and development.
                 </p>
                 <ul className="space-y-3">

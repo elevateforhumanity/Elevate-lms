@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Learning | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Learning analytics and insights.',
 };
 
 export default async function LearningPage() {

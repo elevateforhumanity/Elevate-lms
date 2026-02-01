@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Program Holder Acknowledgements | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage program holder acknowledgements.',
 };
 
 export default async function ProgramHolderAcknowledgementsPage() {

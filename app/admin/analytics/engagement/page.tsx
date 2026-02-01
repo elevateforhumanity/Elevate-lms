@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Engagement | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'User engagement analytics.',
 };
 
 export default async function EngagementPage() {

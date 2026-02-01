@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
   title: 'Forms | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Access and submit required forms.',
 };
 
 export default async function FormsPage() {

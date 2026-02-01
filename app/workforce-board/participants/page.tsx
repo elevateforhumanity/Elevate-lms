@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   title: 'Participants | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'View and manage program participants.',
 };
 
 export default async function ParticipantsPage() {
@@ -57,7 +57,7 @@ export default async function ParticipantsPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Participants</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
+            View and manage program participants.
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,7 +86,7 @@ export default async function ParticipantsPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Participants</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  View and manage program participants.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

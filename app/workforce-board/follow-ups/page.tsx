@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Follow Ups | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Track and manage participant follow-up activities.',
 };
 
 export default async function FollowUpsPage() {
@@ -85,7 +85,7 @@ export default async function FollowUpsPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Follow Ups</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Track and manage participant follow-up activities.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

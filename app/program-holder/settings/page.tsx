@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Program Holder Settings | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Configure your program holder account and preferences.',
 };
 
 export default async function SettingsPage() {

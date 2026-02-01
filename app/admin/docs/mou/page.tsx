@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'MOU Documentation | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage MOU documentation.',
 };
 
 export default async function MouPage() {

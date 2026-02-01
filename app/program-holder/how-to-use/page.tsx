@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'How To Use | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Guide for using the program holder dashboard and tools.',
 };
 
 export default async function HowToUsePage() {

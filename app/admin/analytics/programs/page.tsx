@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Programs | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Program performance analytics.',
 };
 
 export default async function ProgramsPage() {

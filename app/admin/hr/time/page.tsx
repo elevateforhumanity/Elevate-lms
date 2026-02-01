@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Time | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Track employee time and attendance.',
 };
 
 export default async function TimePage() {

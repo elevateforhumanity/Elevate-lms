@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Signup | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Create your Elevate For Humanity account.',
 };
 
 export default async function SignupPage() {
@@ -59,7 +59,7 @@ export default async function SignupPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Signup</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Create your Elevate For Humanity account.
                   and development.
                 </p>
                 <ul className="space-y-3">

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Attendance | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Track and manage course attendance records.',
 };
 
 export default async function AttendancePage() {
@@ -137,7 +137,7 @@ export default async function AttendancePage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Attendance</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Track and manage course attendance records.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

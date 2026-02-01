@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   title: 'Supportive Services | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage supportive services for program participants.',
 };
 
 export default async function SupportiveServicesPage() {
@@ -57,7 +57,7 @@ export default async function SupportiveServicesPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Supportive Services</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Manage supportive services for program participants.
             workforce training and career success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

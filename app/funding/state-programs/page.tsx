@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Indiana State Training Programs | Workforce Development | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'State-level workforce funding programs.',
 };
 
 export default async function StateProgramsPage() {
@@ -61,7 +61,7 @@ export default async function StateProgramsPage() {
             State Programs
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
+            State-level workforce funding programs.
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -92,7 +92,7 @@ export default async function StateProgramsPage() {
                   State Programs
                 </h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  State-level workforce funding programs.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

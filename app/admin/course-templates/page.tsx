@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Course Templates | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage reusable course templates.',
 };
 
 export default async function CourseTemplatesPage() {
@@ -84,7 +84,7 @@ export default async function CourseTemplatesPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Course Templates</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Manage reusable course templates.
             workforce training and career success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Discussion | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Participate in course discussions and connect with peers.',
 };
 
 export default async function DiscussionPage({ params }: { params: { courseId: string } }) {
@@ -90,7 +90,7 @@ export default async function DiscussionPage({ params }: { params: { courseId: s
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Discussion</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Participate in course discussions and connect with peers.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

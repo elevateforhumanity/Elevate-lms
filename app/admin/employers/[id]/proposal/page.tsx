@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Proposal | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'View and manage employer proposals.',
 };
 
 export default async function ProposalPage() {

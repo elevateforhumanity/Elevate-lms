@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Video | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Access video-based learning content and tutorials.',
 };
 
 export default async function VideoPage() {

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Revenue | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Track grant revenue and funding.',
 };
 
 export default async function RevenuePage() {

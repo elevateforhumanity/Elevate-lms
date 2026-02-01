@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Post a Job | Employer Portal | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Post new job opportunities for qualified candidates.',
 };
 
 export default async function PostJobPage() {

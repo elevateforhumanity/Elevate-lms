@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'How Funding Works | Free Career Training | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Learn how workforce funding programs work.',
 };
 
 export default async function HowItWorksPage() {
@@ -62,7 +62,7 @@ export default async function HowItWorksPage() {
             How It Works
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Learn how workforce funding programs work.
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -93,7 +93,7 @@ export default async function HowItWorksPage() {
                   How It Works
                 </h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Learn how workforce funding programs work.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Quiz | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Test your knowledge with interactive quizzes.',
 };
 
 export default async function QuizPage({ params }: { params: { courseId: string; lessonId: string } }) {

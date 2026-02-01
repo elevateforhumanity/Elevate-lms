@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Placements | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Track job placements and hiring outcomes.',
 };
 
 export default async function PlacementsPage() {

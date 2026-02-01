@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Charts | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Visual charts and data analytics.',
 };
 
 export default async function ChartsPage() {

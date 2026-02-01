@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Payroll | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Process and manage payroll.',
 };
 
 export default async function PayrollPage() {

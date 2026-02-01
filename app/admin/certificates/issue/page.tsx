@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Issue | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Issue certificates to participants.',
 };
 
 export default async function IssuePage() {

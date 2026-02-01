@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Workforce Board Reports | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Access workforce development reports and analytics.',
 };
 
 export default async function ReportsPage() {
@@ -85,7 +85,7 @@ export default async function ReportsPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Reports</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Access workforce development reports and analytics.
                   and development.
                 </p>
                 <ul className="space-y-3">

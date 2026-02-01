@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Share | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Share content and resources with others.',
 };
 
 export default async function SharePage() {

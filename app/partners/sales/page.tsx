@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Sales | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Sales and business development partnerships.',
 };
 
 export default async function SalesPage() {

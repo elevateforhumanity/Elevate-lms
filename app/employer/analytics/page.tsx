@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Employer Analytics | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'View hiring analytics and workforce metrics.',
 };
 
 export default async function AnalyticsPage() {

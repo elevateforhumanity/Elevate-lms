@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Upload Admin Videos | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Upload video content for courses.',
 };
 
 export default async function UploadPage() {

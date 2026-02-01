@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Site Health | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Monitor website health and performance.',
 };
 
 export default async function SiteHealthPage() {

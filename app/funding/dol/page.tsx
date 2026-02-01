@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Department of Labor Funding | WIOA Programs | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Department of Labor funding opportunities.',
 };
 
 export default async function DolPage() {

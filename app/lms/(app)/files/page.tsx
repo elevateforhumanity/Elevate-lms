@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'Files | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage course files and learning materials.',
 };
 
 export default async function FilesPage() {

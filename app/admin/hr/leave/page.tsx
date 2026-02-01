@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Leave | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Manage employee leave requests.',
 };
 
 export default async function LeavePage() {

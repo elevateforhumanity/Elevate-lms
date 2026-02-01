@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Approvals | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Approve external learning modules.',
 };
 
 export default async function ApprovalsPage() {

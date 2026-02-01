@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Reset Password | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Set a new password for your account.',
 };
 
 export const dynamic = 'force-dynamic';
@@ -32,7 +32,7 @@ export default async function ResetPasswordPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Reset Password</h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Set a new password for your account.
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,7 +61,7 @@ export default async function ResetPasswordPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Reset Password</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Set a new password for your account.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

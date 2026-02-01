@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   title: 'Training Programs | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Explore training programs and courses.',
 };
 
 export default async function TrainingPage() {

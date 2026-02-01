@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Portal | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Partner portal access and resources.',
 };
 
 export default async function PortalPage() {
@@ -87,7 +87,7 @@ export default async function PortalPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Partner Portal</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Partner portal access and resources.
                   and development.
                 </p>
                 <ul className="space-y-3">

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Certifications | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Browse available certification programs.',
 };
 
 export default async function CertificationsPage() {
@@ -37,7 +37,7 @@ export default async function CertificationsPage() {
             Certifications
           </h1>
           <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Browse available certification programs.
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -68,7 +68,7 @@ export default async function CertificationsPage() {
                   Certifications
                 </h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Browse available certification programs.
                   workforce training and career success.
                 </p>
                 <ul className="space-y-3">

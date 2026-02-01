@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Chat | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Connect with instructors and peers through chat.',
 };
 
 export default async function ChatPage() {

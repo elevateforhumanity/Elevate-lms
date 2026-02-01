@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Higher Ed | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Learning solutions for higher education institutions.',
 };
 
 export default async function HigherEdPage() {
@@ -85,7 +85,7 @@ export default async function HigherEdPage() {
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Higher Ed</h2>
                 <p className="text-black mb-6">
-                  Your hub for training and career growth.
+                  Learning solutions for higher education institutions.
                   and development.
                 </p>
                 <ul className="space-y-3">

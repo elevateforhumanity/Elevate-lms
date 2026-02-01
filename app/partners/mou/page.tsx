@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Partner MOU | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Partnership memorandum of understanding.',
 };
 
 export default async function MouPage() {

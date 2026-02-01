@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Data Processor | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Process and manage data imports.',
 };
 
 export default async function DataProcessorPage() {
@@ -85,7 +85,7 @@ export default async function DataProcessorPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Data Processor</h1>
           <p className="text-base md:text-lg mb-8 text-gray-100">
-            Your hub for training and career growth.
+            Process and manage data imports.
             and development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

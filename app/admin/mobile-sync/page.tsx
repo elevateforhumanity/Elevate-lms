@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'Mobile Sync | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Configure mobile app synchronization.',
 };
 
 export default async function MobileSyncPage() {

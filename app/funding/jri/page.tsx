@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Justice Reinvestment Initiative (JRI) | Reentry Training | Elevate For Humanity',
   description:
-    'Resources and tools for your success.',
+    'Justice Reinvestment Initiative funding information.',
 };
 
 export default async function JriPage() {
