@@ -3,181 +3,46 @@ export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
-  robots: { index: false, follow: false },
-  title: 'Students | Staff Portal | Elevate For Humanity',
-  description: 'View and manage student enrollments and progress.',
+  alternates: { canonical: 'https://www.elevateforhumanity.org/staff-portal/students' },
+  title: 'Student Management | Elevate For Humanity',
+  description: 'View and manage student records and progress.',
 };
 
 export default async function StudentsPage() {
   const supabase = await createClient();
+  if (!supabase) return <div className="min-h-screen bg-gray-50 flex items-center justify-center"><div className="text-center"><h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1></div></div>;
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/login');
 
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login');
-  }
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
-
-  // Fetch students with enrollments
-  const { data: items, count } = await supabase
-    .from('profiles')
-    .select('*, enrollments(*, courses(title))', { count: 'exact' })
-    .eq('role', 'student')
-    .order('created_at', { ascending: false })
-    .limit(20);
+  const { data: students, count } = await supabase.from('profiles').select('*', { count: 'exact' }).eq('role', 'student').order('created_at', { ascending: false }).limit(20);
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Breadcrumbs */}
-      <div className="bg-slate-50 border-b">
-        <div className="max-w-6xl mx-auto px-4 py-3">
-          <Breadcrumbs items={[{ label: 'Staff Portal', href: '/staff-portal' }, { label: 'Students' }]} />
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="mb-8">
+          <nav className="text-sm mb-4"><ol className="flex items-center space-x-2 text-gray-500"><li><Link href="/staff-portal" className="hover:text-primary">Staff Portal</Link></li><li>/</li><li className="text-gray-900 font-medium">Students</li></ol></nav>
+          <div className="flex justify-between items-center">
+            <div><h1 className="text-3xl font-bold text-gray-900">Student Management</h1><p className="text-gray-600 mt-2">{count || 0} students enrolled</p></div>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Add Student</button>
+          </div>
+        </div>
+        <div className="bg-white rounded-lg shadow-sm border">
+          <div className="p-4 border-b"><input type="text" placeholder="Search students..." className="w-full border rounded-lg px-3 py-2" /></div>
+          <div className="divide-y">
+            {students && students.length > 0 ? students.map((student: any) => (
+              <div key={student.id} className="p-4 flex items-center justify-between hover:bg-gray-50">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center"><span className="text-blue-600 font-medium">{(student.full_name || 'S')[0]}</span></div>
+                  <div><p className="font-medium">{student.full_name || 'Student'}</p><p className="text-sm text-gray-500">{student.email}</p></div>
+                </div>
+                <Link href={`/staff-portal/students/${student.id}`} className="text-blue-600 hover:text-blue-800 text-sm">View Profile</Link>
+              </div>
+            )) : <div className="p-8 text-center text-gray-500">No students found</div>}
+          </div>
         </div>
       </div>
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/success-new/success-1.jpg"
-          alt="Students"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Students
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Access your dashboard and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/student/dashboard"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Back to Dashboard
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Total Items
-                </h3>
-                <p className="text-3xl font-bold text-brand-blue-600">
-                  {count || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Active
-                </h3>
-                <p className="text-3xl font-bold text-brand-green-600">
-                  {items?.filter((i) => i.status === 'active').length || 0}
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-black mb-2">
-                  Recent
-                </h3>
-                <p className="text-3xl font-bold text-purple-600">
-                  {items?.filter((i) => {
-                    const created = new Date(i.created_at);
-                    const weekAgo = new Date();
-                    weekAgo.setDate(weekAgo.getDate() - 7);
-                    return created > weekAgo;
-                  }).length || 0}
-                </p>
-              </div>
-            </div>
-
-            {/* Data Display */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-2xl font-bold mb-4">Items</h2>
-              {items && items.length > 0 ? (
-                <div className="space-y-4">
-                  {items.map((item: any) => (
-                    <div
-                      key={item.id}
-                      className="p-4 border rounded-lg hover:bg-gray-50"
-                    >
-                      <p className="font-semibold">
-                        {item.title || item.name || item.id}
-                      </p>
-                      <p className="text-sm text-black">
-                        {new Date(item.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-black text-center py-8">No items found</p>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Need Help?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Contact support if you have questions about managing your
-              programs or need assistance.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/support"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/staff-portal"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
