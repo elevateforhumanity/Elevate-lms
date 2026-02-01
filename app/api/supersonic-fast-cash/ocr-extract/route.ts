@@ -99,13 +99,13 @@ export async function POST(request: NextRequest) {
 
     // Handle PDF files
     if (isPDF(file)) {
-      // PDF extraction not yet supported - return message
+      // PDF files require conversion to images first
       result = {
         documentType: 'pdf',
         raw: '',
         confidence: 0,
         data: {
-          note: 'PDF extraction coming soon. Please upload images (JPG, PNG) for OCR.',
+          note: 'PDF files require image conversion. Please upload images (JPG, PNG) for direct OCR processing.',
         },
         processingTime: Date.now() - startTime,
       };

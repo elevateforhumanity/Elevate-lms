@@ -101,7 +101,7 @@ export default async function DeployCopilotPage() {
                       <h3 className="text-lg font-semibold">{option.name}</h3>
                       {option.status === 'coming_soon' && (
                         <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">
-                          Coming Soon
+                          In Development
                         </span>
                       )}
                     </div>
@@ -126,7 +126,7 @@ export default async function DeployCopilotPage() {
                   }`}
                   disabled={option.status !== 'available'}
                 >
-                  {option.status === 'available' ? 'Deploy' : 'Coming Soon'}
+                  {option.status === 'available' ? 'Deploy' : 'Unavailable'}
                 </button>
               </div>
             </div>

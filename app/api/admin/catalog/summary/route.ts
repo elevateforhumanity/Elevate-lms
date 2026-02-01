@@ -1,9 +1,45 @@
 import { NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  return NextResponse.json({
-    message: 'Catalog summary endpoint - coming soon',
-    totalPrograms: 0,
-    totalCourses: 0,
-  });
+  try {
+    const supabase = await createClient();
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database unavailable' }, { status: 500 });
+    }
+
+    const { count: programCount } = await supabase
+      .from('programs')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'active');
+
+    const { count: courseCount } = await supabase
+      .from('courses')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'published');
+
+    const { count: enrollmentCount } = await supabase
+      .from('enrollments')
+      .select('*', { count: 'exact', head: true })
+      .in('status', ['active', 'completed']);
+
+    const { data: categories } = await supabase
+      .from('programs')
+      .select('category')
+      .eq('status', 'active');
+
+    const uniqueCategories = [...new Set(categories?.map(c => c.category).filter(Boolean))];
+
+    return NextResponse.json({
+      totalPrograms: programCount || 0,
+      totalCourses: courseCount || 0,
+      totalEnrollments: enrollmentCount || 0,
+      categories: uniqueCategories,
+      generatedAt: new Date().toISOString(),
+    });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 }

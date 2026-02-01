@@ -458,12 +458,30 @@ export default function OfficeSettingsPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-8">
-                <p className="text-muted-foreground mb-4">
-                  Fee schedule management coming soon
-                </p>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center p-4 border rounded-lg">
+                  <div>
+                    <p className="font-medium">Tax Preparation Fee</p>
+                    <p className="text-sm text-muted-foreground">Standard 1040 filing</p>
+                  </div>
+                  <p className="font-semibold">$150.00</p>
+                </div>
+                <div className="flex justify-between items-center p-4 border rounded-lg">
+                  <div>
+                    <p className="font-medium">Business Return Fee</p>
+                    <p className="text-sm text-muted-foreground">Schedule C / LLC</p>
+                  </div>
+                  <p className="font-semibold">$250.00</p>
+                </div>
+                <div className="flex justify-between items-center p-4 border rounded-lg">
+                  <div>
+                    <p className="font-medium">State Return Fee</p>
+                    <p className="text-sm text-muted-foreground">Per state filed</p>
+                  </div>
+                  <p className="font-semibold">$45.00</p>
+                </div>
                 <Link href="/franchise/office/fees">
-                  <Button variant="outline">Manage Fee Schedules</Button>
+                  <Button variant="outline" className="w-full">Manage Fee Schedules</Button>
                 </Link>
               </div>
             </CardContent>

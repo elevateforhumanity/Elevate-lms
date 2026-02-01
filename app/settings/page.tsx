@@ -147,12 +147,84 @@ export default async function SettingsPage() {
                 </div>
               )}
 
-              {(activeSection === 'language' || activeSection === 'appearance' || activeSection === 'privacy') && (
+              {activeSection === 'language' && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-semibold">{settingsSections.find(s => s.id === activeSection)?.name}</h2>
-                  <p className="text-gray-600">{settingsSections.find(s => s.id === activeSection)?.description}</p>
-                  <div className="bg-gray-50 rounded-lg p-8 text-center">
-                    <p className="text-gray-500">Settings options coming soon</p>
+                  <h2 className="text-xl font-semibold">Language & Region</h2>
+                  <p className="text-gray-600">Choose your preferred language and regional settings</p>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Language</label>
+                      <select className="w-full p-3 border rounded-lg">
+                        <option value="en">English (US)</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Timezone</label>
+                      <select className="w-full p-3 border rounded-lg">
+                        <option value="America/New_York">Eastern Time (ET)</option>
+                        <option value="America/Chicago">Central Time (CT)</option>
+                        <option value="America/Denver">Mountain Time (MT)</option>
+                        <option value="America/Los_Angeles">Pacific Time (PT)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeSection === 'appearance' && (
+                <div className="space-y-6">
+                  <h2 className="text-xl font-semibold">Appearance</h2>
+                  <p className="text-gray-600">Customize how the application looks</p>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Theme</label>
+                      <div className="flex gap-4">
+                        <label className="flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                          <input type="radio" name="theme" value="light" defaultChecked />
+                          <span>Light</span>
+                        </label>
+                        <label className="flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                          <input type="radio" name="theme" value="dark" />
+                          <span>Dark</span>
+                        </label>
+                        <label className="flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                          <input type="radio" name="theme" value="system" />
+                          <span>System</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeSection === 'privacy' && (
+                <div className="space-y-6">
+                  <h2 className="text-xl font-semibold">Privacy</h2>
+                  <p className="text-gray-600">Manage your privacy settings</p>
+                  <div className="space-y-4">
+                    <label className="flex items-center justify-between p-4 border rounded-lg">
+                      <div>
+                        <p className="font-medium">Profile Visibility</p>
+                        <p className="text-sm text-gray-500">Allow others to see your profile</p>
+                      </div>
+                      <input type="checkbox" defaultChecked className="w-5 h-5" />
+                    </label>
+                    <label className="flex items-center justify-between p-4 border rounded-lg">
+                      <div>
+                        <p className="font-medium">Show Progress</p>
+                        <p className="text-sm text-gray-500">Display your learning progress publicly</p>
+                      </div>
+                      <input type="checkbox" className="w-5 h-5" />
+                    </label>
+                    <label className="flex items-center justify-between p-4 border rounded-lg">
+                      <div>
+                        <p className="font-medium">Marketing Emails</p>
+                        <p className="text-sm text-gray-500">Receive promotional emails</p>
+                      </div>
+                      <input type="checkbox" className="w-5 h-5" />
+                    </label>
                   </div>
                 </div>
               )}
