@@ -270,7 +270,6 @@ export async function DELETE(request: Request) {
     });
 
     // Delete from Supabase storage with ownership verification
-    const supabase = await createClient();
     if (supabase) {
       // Verify file belongs to user by checking path prefix
       const userPrefix = `${user.id}/`;
