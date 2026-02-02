@@ -324,16 +324,27 @@ export async function checkAndCancelCompletedSubscription(
  */
 export async function handleFailedPayment(
   subscriptionId: string,
-  studentId: string
+  studentId: string,
+  supabase?: any
 ): Promise<void> {
-  // This would update the student's access status in your database
-  // Implementation depends on your database schema
   console.log(`Payment failed for subscription ${subscriptionId}, student ${studentId}`);
   console.log(`Access should be suspended per INSTALLMENT_RULES.suspendOnFailure`);
   
-  // TODO: Implement in your database
-  // await supabase.from('enrollments').update({ 
-  //   access_status: 'suspended',
-  //   suspension_reason: 'payment_failed'
-  // }).eq('student_id', studentId);
+  if (supabase) {
+    // Update enrollment status to suspended
+    const { error } = await supabase
+      .from('program_enrollments')
+      .update({ 
+        status: 'SUSPENDED',
+        payment_status: 'FAILED',
+        updated_at: new Date().toISOString(),
+      })
+      .eq('student_id', studentId);
+    
+    if (error) {
+      console.error('Failed to suspend enrollment:', error);
+    } else {
+      console.log(`Enrollment suspended for student ${studentId}`);
+    }
+  }
 }

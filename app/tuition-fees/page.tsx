@@ -1,13 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { 
-  BARBER_PROGRAM, 
-  COSMETOLOGY_PROGRAM, 
-  ESTHETICIAN_PROGRAM, 
-  NAIL_TECH_PROGRAM,
-  TUITION_EFFECTIVE_DATE 
-} from '@/lib/program-constants';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { createClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = {
   title: 'Tuition & Fees | Elevate for Humanity',
@@ -17,98 +11,30 @@ export const metadata: Metadata = {
   },
 };
 
-const programs = [
-  {
-    name: BARBER_PROGRAM.name,
-    duration: `${BARBER_PROGRAM.durationFormatted} (${BARBER_PROGRAM.totalHoursFormatted} hours)`,
-    tuition: BARBER_PROGRAM.tuitionDollars,
-    examFees: BARBER_PROGRAM.examFeeDollars,
-    examFeesNote: 'Indiana State Board of Barber Examiners licensing exam',
-    materials: BARBER_PROGRAM.materialsDollars,
-    materialsNote: 'Included in tuition',
-    total: BARBER_PROGRAM.totalCostDollars,
-    fundingType: 'Self-Pay / WIOA Eligible',
-  },
-  {
-    name: 'HVAC Technician',
-    duration: '4-9 months',
-    tuition: 5500,
-    examFees: 150,
-    examFeesNote: 'EPA 608 certification exam (third-party)',
-    materials: 200,
-    materialsNote: 'Tools and safety equipment',
-    total: 5850,
-    fundingType: 'WIOA / WRG Eligible',
-  },
-  {
-    name: 'Medical Assistant',
-    duration: '12 weeks',
-    tuition: 4200,
-    examFees: 0,
-    examFeesNote: 'No third-party exam required',
-    materials: 150,
-    materialsNote: 'Scrubs, supplies',
-    total: 4350,
-    fundingType: 'WIOA / WRG Eligible',
-  },
-  {
-    name: 'CNA (Certified Nursing Assistant)',
-    duration: '4-6 weeks',
-    tuition: 1200,
-    examFees: 105,
-    examFeesNote: 'Indiana State CNA competency exam (third-party)',
-    materials: 75,
-    materialsNote: 'Scrubs, supplies',
-    total: 1380,
-    fundingType: 'Self-Pay',
-  },
-  {
-    name: 'CDL (Commercial Driver\'s License)',
-    duration: '4-6 weeks',
-    tuition: 5000,
-    examFees: 150,
-    examFeesNote: 'Indiana BMV CDL testing fees (third-party)',
-    materials: 0,
-    materialsNote: 'Included in tuition',
-    total: 5150,
-    fundingType: 'WIOA / WRG Eligible',
-  },
-  {
-    name: 'Building Maintenance Technician',
-    duration: '16 weeks',
-    tuition: 3800,
-    examFees: 0,
-    examFeesNote: 'No third-party exam required',
-    materials: 200,
-    materialsNote: 'Tools',
-    total: 4000,
-    fundingType: 'WIOA / WRG Eligible',
-  },
-  {
-    name: 'Peer Recovery Specialist',
-    duration: '8 weeks',
-    tuition: 2500,
-    examFees: 50,
-    examFeesNote: 'Indiana DMHA certification application fee',
-    materials: 0,
-    materialsNote: 'Included in tuition',
-    total: 2550,
-    fundingType: 'WIOA Eligible',
-  },
-  {
-    name: 'Tax Preparation',
-    duration: '6 weeks',
-    tuition: 1500,
-    examFees: 0,
-    examFeesNote: 'No third-party exam required',
-    materials: 50,
-    materialsNote: 'Study materials',
-    total: 1550,
-    fundingType: 'Self-Pay',
-  },
-];
+export const dynamic = 'force-dynamic';
 
-export default function TuitionFeesPage() {
+export default async function TuitionFeesPage() {
+  const supabase = await createClient();
+  
+  // Fetch programs from database
+  const { data: dbPrograms } = await supabase
+    .from('training_programs')
+    .select('*')
+    .eq('is_active', true)
+    .order('name');
+
+  const programs = (dbPrograms || []).map((p: any) => ({
+    name: p.name,
+    duration: p.duration_weeks ? `${p.duration_weeks} weeks` : p.duration || 'Varies',
+    tuition: p.tuition_cost || 0,
+    examFees: p.exam_fee || 0,
+    examFeesNote: p.exam_fee_note || 'Third-party certification exam',
+    materials: p.materials_cost || 0,
+    materialsNote: p.materials_note || 'Included in tuition',
+    total: (p.tuition_cost || 0) + (p.exam_fee || 0) + (p.materials_cost || 0),
+    fundingType: p.funding_type || 'Self-Pay',
+  }));
+
   return (
     <div className="min-h-screen bg-white">
       {/* Breadcrumbs */}
@@ -155,21 +81,29 @@ export default function TuitionFeesPage() {
               </tr>
             </thead>
             <tbody>
-              {programs.map((program, index) => (
-                <tr key={program.name} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                  <td className="p-4 font-medium text-gray-900">{program.name}</td>
-                  <td className="p-4 text-gray-700">{program.duration}</td>
-                  <td className="p-4 text-right text-gray-900">${program.tuition.toLocaleString()}</td>
-                  <td className="p-4 text-right text-gray-700">
-                    {program.examFees > 0 ? `$${program.examFees}` : '—'}
+              {programs.length === 0 ? (
+                <tr>
+                  <td colSpan={7} className="p-8 text-center text-gray-500">
+                    No programs available at this time.
                   </td>
-                  <td className="p-4 text-right text-gray-700">
-                    {program.materials > 0 ? `$${program.materials}` : '—'}
-                  </td>
-                  <td className="p-4 text-right font-bold text-gray-900">${program.total.toLocaleString()}</td>
-                  <td className="p-4 text-gray-700 text-sm">{program.fundingType}</td>
                 </tr>
-              ))}
+              ) : (
+                programs.map((program: any, index: number) => (
+                  <tr key={program.name} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                    <td className="p-4 font-medium text-gray-900">{program.name}</td>
+                    <td className="p-4 text-gray-700">{program.duration}</td>
+                    <td className="p-4 text-right text-gray-900">${program.tuition.toLocaleString()}</td>
+                    <td className="p-4 text-right text-gray-700">
+                      {program.examFees > 0 ? `$${program.examFees}` : '—'}
+                    </td>
+                    <td className="p-4 text-right text-gray-700">
+                      {program.materials > 0 ? `$${program.materials}` : '—'}
+                    </td>
+                    <td className="p-4 text-right font-bold text-gray-900">${program.total.toLocaleString()}</td>
+                    <td className="p-4 text-gray-700 text-sm">{program.fundingType}</td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
@@ -182,7 +116,7 @@ export default function TuitionFeesPage() {
             These fees are paid directly to the certifying organization and are not collected by Elevate for Humanity.
           </p>
           <ul className="text-gray-700 space-y-2 text-sm">
-            {programs.filter(p => p.examFees > 0).map(program => (
+            {programs.filter((p: any) => p.examFees > 0).map((program: any) => (
               <li key={program.name}>
                 <strong>{program.name}:</strong> {program.examFeesNote} — ${program.examFees}
               </li>

@@ -46,19 +46,21 @@ export default async function CheckoutPage({
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="max-w-md w-full bg-white shadow-lg rounded-lg p-8">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">
-            Payment System Not Configured
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            Payment Temporarily Unavailable
           </h1>
-          <p className="text-black mb-4">
-            The payment system is not yet configured. Please contact us directly
-            to purchase.
+          <p className="text-gray-600 mb-4">
+            Online payments are temporarily unavailable. Please contact us to complete your purchase.
           </p>
           <a
-            href="/contact?topic=licensing-enterprise"
+            href="/contact"
             className="block w-full bg-blue-600 text-white text-center py-3 rounded-lg hover:bg-blue-700"
           >
-            Contact Sales
+            Contact Us
           </a>
+          <p className="text-center text-sm text-gray-500 mt-4">
+            Or call (317) 314-3757
+          </p>
         </div>
       </div>
     );

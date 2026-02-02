@@ -2,324 +2,210 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, ArrowLeft, ExternalLink, GraduationCap, Award, Clock, Users } from 'lucide-react';
+import { Phone, ArrowLeft, ExternalLink, GraduationCap, Award, Clock, Users, Star, Sparkles } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = {
   title: 'Drug Testing Training Courses | Elevate for Humanity',
   description: 'DOT and non-DOT drug testing training courses. Supervisor training, collector certification, DER training. Online courses with certification.',
 };
 
-const courses = [
-  {
-    category: 'Supervisor Training',
-    items: [
-      {
-        name: 'DOT Supervisor Training Course',
-        price: 75,
-        description: 'Required training for supervisors of DOT-regulated employees. Learn to identify signs of drug and alcohol use and make reasonable suspicion determinations.',
-        duration: '2 hours',
-        certification: 'DOT Compliant Certificate',
-        link: 'https://mydrugtesttraining.com/course/dot-supervisor-training-course',
-      },
-      {
-        name: 'Non-DOT Supervisor Training Course',
-        price: 75,
-        description: 'Training for supervisors in non-DOT workplaces. Covers drug-free workplace policies, recognizing impairment, and documentation.',
-        duration: '2 hours',
-        certification: 'Certificate of Completion',
-        link: 'https://mydrugtesttraining.com/course/nds-non-dot-supervisor-training-course',
-      },
-    ],
-  },
-  {
-    category: 'Employee Training',
-    items: [
-      {
-        name: 'Drug Free Workplace Training for Employees',
-        price: 29,
-        description: 'Employee awareness training covering drug-free workplace policies, testing procedures, and consequences of violations.',
-        duration: '1 hour',
-        certification: 'Certificate of Completion',
-        link: 'https://mydrugtesttraining.com/course/drug-free-workplace-training-for-employees',
-        popular: true,
-      },
-    ],
-  },
-  {
-    category: 'Collector Certification',
-    items: [
-      {
-        name: 'DOT Urine Specimen Collector Training and Mocks',
-        price: 749,
-        description: 'Complete DOT urine collector certification. Includes online training and mock collections required for certification.',
-        duration: '8+ hours',
-        certification: 'DOT Collector Certification',
-        link: 'https://mydrugtesttraining.com/course/dot-urine-specimen-collector-training-and-mocks',
-      },
-      {
-        name: 'DOT Urine Collector Mock Collections',
-        price: 379,
-        description: 'Mock collection sessions for collectors who have completed training. Required for initial certification and refresher.',
-        duration: '2-3 hours',
-        certification: 'Mock Completion Certificate',
-        link: 'https://mydrugtesttraining.com/course/nds-dot-collector-mock-collections',
-      },
-      {
-        name: 'DOT Oral Fluid Collector Training (Mocks Included)',
-        price: 799,
-        description: 'NEW! Complete training for DOT oral fluid specimen collection. Includes mock collections.',
-        duration: '8+ hours',
-        certification: 'DOT Oral Fluid Collector Certification',
-        link: 'https://mydrugtesttraining.com/course/dot-oral-fluid-collector-mocks',
-        new: true,
-      },
-      {
-        name: 'Saliva/Oral Fluid Non-DOT Drug Testing Training',
-        price: 399,
-        description: 'Training for non-DOT oral fluid specimen collection procedures.',
-        duration: '4 hours',
-        certification: 'Certificate of Completion',
-        link: 'https://mydrugtesttraining.com/course/nds-saliva-oral-fluid-drug-testing-training',
-      },
-    ],
-  },
-  {
-    category: 'DER Training (Designated Employer Representative)',
-    items: [
-      {
-        name: 'DER Training Course - FMCSA',
-        price: 249,
-        description: 'Comprehensive DER training for FMCSA-regulated employers. Covers all DER responsibilities and Clearinghouse requirements.',
-        duration: '4 hours',
-        certification: 'DER Certificate',
-        link: 'https://mydrugtesttraining.com/course/nds-der-training-course-fmcsa',
-      },
-      {
-        name: 'DER Training Course - FAA',
-        price: 249,
-        description: 'DER training specific to FAA drug and alcohol testing requirements.',
-        duration: '4 hours',
-        certification: 'DER Certificate',
-        link: 'https://mydrugtesttraining.com/course/nds-der-training-course-faa',
-      },
-      {
-        name: 'Non-DOT General DER Training',
-        price: 249,
-        description: 'DER training for non-DOT employers managing workplace drug testing programs.',
-        duration: '4 hours',
-        certification: 'DER Certificate',
-        link: 'https://mydrugtesttraining.com/course/nds-non-dot-general-designated-employer-representative-training-der',
-      },
-    ],
-  },
-  {
-    category: 'Advanced & Business Training',
-    items: [
-      {
-        name: 'Drug Testing Start-Up Overview',
-        price: 119,
-        description: 'Learn how to start a drug testing business. Covers industry overview, requirements, and business setup.',
-        duration: '2 hours',
-        certification: 'Certificate of Completion',
-        link: 'https://mydrugtesttraining.com/course/nds-drug-testing-start-up-overview',
-      },
-      {
-        name: 'DOT Urine Specimen Collector Train the Trainer',
-        price: 1999,
-        description: 'Become a qualified trainer for DOT urine specimen collectors. For experienced collectors wanting to train others.',
-        duration: '16+ hours',
-        certification: 'Train the Trainer Certification',
-        link: 'https://mydrugtesttraining.com/course/nds-dot-urine-specimen-collector-train-the-trainer',
-      },
-    ],
-  },
-];
+export const dynamic = 'force-dynamic';
 
-export default function DrugTestingTrainingPage() {
+export default async function DrugTestingTrainingPage() {
+  const supabase = await createClient();
+  
+  // Fetch NDS courses from database
+  const { data: dbCourses } = await supabase
+    .from('nds_training_courses')
+    .select('*')
+    .eq('is_active', true)
+    .order('category')
+    .order('name');
+
+  // Group courses by category
+  const coursesByCategory = (dbCourses || []).reduce((acc: Record<string, any[]>, course: any) => {
+    const category = course.category || 'Other';
+    if (!acc[category]) acc[category] = [];
+    acc[category].push({
+      name: course.name,
+      price: course.elevate_price || course.nds_wholesale_cost * 2,
+      description: course.description,
+      duration: course.duration,
+      certification: course.certification_name,
+      link: course.nds_course_url,
+      stripeProductId: course.stripe_product_id,
+      stripePriceId: course.stripe_price_id,
+      popular: course.is_popular,
+      new: course.is_new,
+    });
+    return acc;
+  }, {});
+
+  const categories = Object.keys(coursesByCategory);
+
   return (
-    <div className="min-h-screen bg-white">
-            <div className="max-w-7xl mx-auto px-4 py-4">
-        <Breadcrumbs items={[{ label: "Drug Testing", href: "/drug-testing" }, { label: "Training" }]} />
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-white border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[
+            { label: 'Drug Testing Services', href: '/drug-testing' },
+            { label: 'Training Courses' }
+          ]} />
+        </div>
       </div>
-{/* Hero */}
-      <section className="relative py-20 bg-indigo-900 text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <Link href="/drug-testing" className="inline-flex items-center gap-2 text-indigo-200 hover:text-white mb-6 transition">
-            <ArrowLeft className="w-4 h-4" />
-            Back to Drug Testing
-          </Link>
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 bg-indigo-700 rounded-xl flex items-center justify-center">
-              <GraduationCap className="w-8 h-8" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold">Drug Testing Training Courses</h1>
+
+      {/* Hero */}
+      <section className="relative h-[40vh] min-h-[300px]">
+        <Image 
+          src="/images/healthcare/drug-testing-training.jpg" 
+          alt="Drug Testing Training" 
+          fill 
+          className="object-cover" 
+          priority 
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/70" />
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-6xl mx-auto px-4 text-white">
+            <Link href="/drug-testing" className="inline-flex items-center gap-2 text-blue-200 hover:text-white mb-4">
+              <ArrowLeft className="w-4 h-4" /> Back to Drug Testing Services
+            </Link>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Drug Testing Training Courses</h1>
+            <p className="text-xl text-blue-100 max-w-2xl">
+              DOT and non-DOT certified training. Online courses with immediate certification.
+            </p>
           </div>
-          <p className="text-xl text-indigo-100 max-w-2xl mb-8">
-            Online certification courses for supervisors, collectors, and employers. 
-            DOT-compliant training with certificates upon completion.
-          </p>
-          <a
-            href="https://mydrugtesttraining.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white text-indigo-900 px-6 py-3 rounded-lg font-bold hover:bg-indigo-50 transition"
-          >
-            Browse All Courses
-            <ExternalLink className="w-4 h-4" />
-          </a>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-8 bg-indigo-50 border-b">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
-                <GraduationCap className="w-5 h-5 text-indigo-600" />
-              </div>
-              <div>
-                <div className="font-bold text-gray-900">100% Online</div>
-                <div className="text-sm text-gray-600">Learn at your pace</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                <Award className="w-5 h-5 text-green-600" />
-              </div>
-              <div>
-                <div className="font-bold text-gray-900">Certificates</div>
-                <div className="text-sm text-gray-600">Instant download</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <Clock className="w-5 h-5 text-blue-600" />
-              </div>
-              <div>
-                <div className="font-bold text-gray-900">Self-Paced</div>
-                <div className="text-sm text-gray-600">Start anytime</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                <Users className="w-5 h-5 text-orange-600" />
-              </div>
-              <div>
-                <div className="font-bold text-gray-900">Group Rates</div>
-                <div className="text-sm text-gray-600">Call for pricing</div>
-              </div>
-            </div>
+      {/* Partner Badge */}
+      <section className="bg-white border-b py-6">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-center justify-center gap-4 text-gray-600">
+            <span className="text-sm">Training provided in partnership with</span>
+            <Link href="https://mydrugtesttraining.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 hover:underline flex items-center gap-1">
+              National Drug Screening <ExternalLink className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Courses */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          {courses.map((category) => (
-            <div key={category.category} className="mb-16 last:mb-0">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b-2 border-indigo-200">
-                {category.category}
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {category.items.map((course) => (
-                  <div
-                    key={course.name}
-                    className={`bg-white rounded-xl border-2 p-6 hover:shadow-lg transition-shadow ${
-                      course.popular ? 'border-green-500' : course.new ? 'border-orange-500' : 'border-gray-200'
-                    }`}
-                  >
-                    {course.popular && (
-                      <div className="inline-block bg-green-500 text-white text-xs font-bold px-2 py-1 rounded mb-3">
-                        MOST POPULAR
-                      </div>
-                    )}
-                    {course.new && (
-                      <div className="inline-block bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded mb-3">
-                        NEW
-                      </div>
-                    )}
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{course.name}</h3>
-                    <p className="text-gray-600 text-sm mb-4">{course.description}</p>
-                    
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        {course.duration}
-                      </span>
-                    </div>
-                    
-                    <div className="text-sm text-indigo-600 font-medium mb-4">
-                      <Award className="w-4 h-4 inline mr-1" />
-                      {course.certification}
-                    </div>
-                    
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                      <div className="text-2xl font-bold text-gray-900">${course.price}</div>
-                      <a
-                        href={course.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 bg-indigo-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-indigo-700 transition text-sm"
-                      >
-                        Enroll
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </div>
-                  </div>
-                ))}
-              </div>
+      <section className="py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          {categories.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500">No courses available at this time. Please check back later.</p>
             </div>
-          ))}
+          ) : (
+            categories.map((category) => (
+              <div key={category} className="mb-12">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">{category}</h2>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {coursesByCategory[category].map((course: any, index: number) => (
+                    <div key={index} className="bg-white rounded-xl shadow-sm border p-6 hover:shadow-md transition-shadow">
+                      <div className="flex items-start justify-between mb-3">
+                        <h3 className="text-lg font-semibold text-gray-900 flex-1">{course.name}</h3>
+                        <div className="flex items-center gap-2">
+                          {course.new && (
+                            <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full flex items-center gap-1">
+                              <Sparkles className="w-3 h-3" /> NEW
+                            </span>
+                          )}
+                          {course.popular && (
+                            <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-full flex items-center gap-1">
+                              <Star className="w-3 h-3" /> Popular
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <p className="text-gray-600 text-sm mb-4">{course.description}</p>
+                      
+                      <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
+                        {course.duration && (
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-4 h-4" /> {course.duration}
+                          </span>
+                        )}
+                        {course.certification && (
+                          <span className="flex items-center gap-1">
+                            <Award className="w-4 h-4" /> {course.certification}
+                          </span>
+                        )}
+                      </div>
+                      
+                      <div className="flex items-center justify-between pt-4 border-t">
+                        <span className="text-2xl font-bold text-gray-900">${course.price}</span>
+                        <Link 
+                          href={course.link || '/contact'} 
+                          target={course.link ? '_blank' : undefined}
+                          rel={course.link ? 'noopener noreferrer' : undefined}
+                          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+                        >
+                          Enroll Now {course.link && <ExternalLink className="w-4 h-4" />}
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </section>
 
-      {/* Group Training */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Need Group Training?</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            We offer volume discounts for employers training multiple supervisors or employees. 
-            Contact us for custom pricing.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+13173143757"
-              className="inline-flex items-center justify-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-indigo-700 transition"
-            >
-              <Phone className="w-5 h-5" />
-              (317) 314-3757
-            </a>
-            <a
-              href="https://mydrugtesttraining.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition border-2 border-gray-200"
-            >
-              Visit Training Site
-              <ExternalLink className="w-4 h-4" />
-            </a>
+      {/* Benefits */}
+      <section className="py-12 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">Why Train With Us?</h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <GraduationCap className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="font-semibold mb-2">DOT Compliant</h3>
+              <p className="text-sm text-gray-600">All courses meet DOT regulatory requirements</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Award className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Instant Certification</h3>
+              <p className="text-sm text-gray-600">Download your certificate immediately upon completion</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Clock className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Self-Paced</h3>
+              <p className="text-sm text-gray-600">Complete training on your schedule, 24/7 access</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Users className="w-6 h-6 text-orange-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Group Discounts</h3>
+              <p className="text-sm text-gray-600">Volume pricing available for organizations</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-indigo-600 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Get Certified?</h2>
-          <p className="text-xl text-indigo-100 mb-8">
-            All courses are available online. Start training today and get your certificate.
-          </p>
-          <a
-            href="https://mydrugtesttraining.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold hover:bg-indigo-50 transition text-lg"
-          >
-            Browse All Courses
-            <ExternalLink className="w-5 h-5" />
-          </a>
+      <section className="py-12 bg-blue-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-2xl font-bold mb-4">Need Help Choosing a Course?</h2>
+          <p className="text-blue-100 mb-6">Our team can help you determine which training is right for your needs.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact" className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+              Contact Us
+            </Link>
+            <a href="tel:3173143757" className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+              <Phone className="w-5 h-5" /> (317) 314-3757
+            </a>
+          </div>
         </div>
       </section>
     </div>
