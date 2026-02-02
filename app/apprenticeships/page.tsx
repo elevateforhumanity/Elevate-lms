@@ -9,7 +9,7 @@ import {
 
 export const metadata: Metadata = {
   title: 'Apprenticeships | Earn While You Learn | Elevate For Humanity',
-  description: 'USDOL Registered Apprenticeship programs in Indiana. Earn a paycheck while learning barbering, cosmetology, HVAC, electrical, and more. No tuition required.',
+  description: 'USDOL Registered Apprenticeship programs in Indiana. Earn a paycheck while learning barbering, cosmetology, HVAC, electrical, and more. Tuition and funding eligibility vary by program.',
   alternates: { canonical: 'https://www.elevateforhumanity.org/apprenticeships' },
 };
 
@@ -99,8 +99,11 @@ export default function ApprenticeshipsPage() {
             <h1 className="text-4xl md:text-6xl font-black text-white mb-4">
               Apprenticeships
             </h1>
-            <p className="text-xl text-white/90 max-w-xl mb-6">
-              Earn a paycheck from day one while learning a skilled trade. No tuition. Real credentials.
+            <p className="text-xl text-white/90 max-w-xl mb-4">
+              Earn a paycheck from day one while learning a skilled trade. Real credentials. Real careers.
+            </p>
+            <p className="text-sm text-white/70 max-w-xl mb-6">
+              Tuition and funding eligibility vary by program. See individual program pages for details.
             </p>
             <Link href="/apply" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105">
               Apply Now <ArrowRight className="w-5 h-5" />
@@ -266,7 +269,7 @@ export default function ApprenticeshipsPage() {
             Start Your Apprenticeship
           </h2>
           <p className="text-xl text-slate-300 mb-8">
-            No tuition. Real pay. Industry credentials.
+            Real pay. Industry credentials. Funding options available.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/apply" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all hover:scale-105">

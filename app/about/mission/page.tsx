@@ -108,7 +108,7 @@ export default function MissionPage() {
               <HandHeart className="w-12 h-12 text-orange-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Accessibility</h3>
               <p className="text-gray-600">
-                100% free training through WIOA, WRG, and JRI funding. No tuition, no fees, 
+                Funded training through WIOA, WRG, and JRI funding. No tuition, no fees, 
                 no debt. Financial barriers should never prevent career advancement.
               </p>
             </div>

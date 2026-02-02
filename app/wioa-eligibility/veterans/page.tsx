@@ -53,7 +53,7 @@ export default async function VeteransPage() {
     { title: 'Priority Enrollment', description: 'First access to training programs', icon: Award },
     { title: 'Expedited Processing', description: 'Faster application review', icon: Shield },
     { title: 'Dedicated Counselor', description: 'Veteran-focused career advisor', icon: Briefcase },
-    { title: '100% Free Training', description: 'No tuition, books, or fees', icon: CheckCircle },
+    { title: 'Funded Training', description: 'Tuition covered for eligible veterans', icon: CheckCircle },
   ];
 
   const qualifications = [

@@ -26,7 +26,7 @@ export const programCategories: ProgramCategory[] = [
   {
     slug: 'federal-funded',
     name: 'WIOA Programs (ETPL/WRG)',
-    description: '100% free training funded by WIOA, ETPL, and WRG',
+    description: 'Funded training funded by WIOA, ETPL, and WRG',
     programs: [
       'cna',
       'phlebotomy-technician',

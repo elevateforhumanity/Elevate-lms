@@ -191,7 +191,7 @@ export default async function CareerSafePage() {
               <div className="w-16 h-16 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 text-brand-green-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">100% Free</h3>
+              <h3 className="text-lg font-semibold mb-2">Funded</h3>
               <p className="text-black">
                 Included with your program enrollment through WIOA or WRG
                 funding

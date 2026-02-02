@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title:
     'Free Tax Preparation Training | IRS Certified | VITA Volunteer | Start Your Tax Business | Indianapolis',
   description:
-    '100% free IRS-certified tax preparation training in Indianapolis. Become a VITA volunteer or start your own tax business. IRS Link & Learn certified. Earn $40k-$100k+ per year. H&R Block alternative. TurboTax Pro alternative.',
+    'Funded IRS-certified tax preparation training in Indianapolis. Become a VITA volunteer or start your own tax business. IRS Link & Learn certified. Earn $40k-$100k+ per year. H&R Block alternative. TurboTax Pro alternative.',
   keywords:
     'free tax preparation training, IRS certified tax preparer, VITA volunteer training, start tax business, tax preparer course Indianapolis, IRS Link and Learn, become tax preparer, tax business training, H&R Block alternative, TurboTax Pro alternative, tax franchise alternative, PTIN certification, tax season business',
   alternates: {
@@ -77,7 +77,7 @@ export default async function Page() {
                 Start Your Tax Preparation Business
               </h1>
               <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                100% free IRS-certified training. Earn $40k-$100k+ per year. Work
+                Funded IRS-certified training. Earn $40k-$100k+ per year. Work
                 from home. Be your own boss.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -376,7 +376,7 @@ export default async function Page() {
             Ready to Start Your Tax Business?
           </h2>
           <p className="text-xl mb-8">
-            100% free training. IRS-certified. Start earning this tax season.
+            Funded training. IRS-certified. Start earning this tax season.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

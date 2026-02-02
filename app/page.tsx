@@ -28,9 +28,9 @@ const testimonials = [
 ];
 
 const faqs = [
-  { q: 'Is the training really free?', a: 'Yes! WIOA and other workforce programs cover 100% of tuition, books, and supplies for eligible participants.' },
-  { q: 'How do I know if I qualify?', a: 'Most adults qualify based on income, employment status, or receiving public assistance. Take our 2-minute eligibility check.' },
-  { q: 'How long are the programs?', a: 'Most programs are 8-16 weeks. Some certifications can be completed in as little as 4 weeks.' },
+  { q: 'Is the training free?', a: 'Free training is available for eligible participants through WIOA, WRG, and other workforce programs. Some licensure apprenticeships (like Barber) are offered as self-pay or employer-paid pathways. See individual program pages for details.' },
+  { q: 'How do I know if I qualify for funding?', a: 'Most adults qualify based on income, employment status, or receiving public assistance. Take our 2-minute eligibility check to find out.' },
+  { q: 'How long are the programs?', a: 'Most programs are 8-16 weeks. Some certifications can be completed in as little as 4 weeks. Apprenticeships like Barber are 12-18 months.' },
   { q: 'Do you help with job placement?', a: 'Yes! We provide resume help, interview prep, and connect you directly with hiring employers.' },
 ];
 
@@ -67,15 +67,16 @@ export default function HomePage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6">
             <span className="inline-block animate-slide-up">Launch Your </span>
             <span className="inline-block animate-slide-up animation-delay-100 text-red-600">New Career.</span>
-            <br />
-            <span className="inline-block animate-slide-up animation-delay-200 text-blue-600">100% Free.</span>
           </h1>
-          <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-8 animate-fade-in animation-delay-300">
-            Indiana&apos;s workforce programs pay for your training. No loans. No debt. Just real skills and a real job in weeks.
+          <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-4 animate-fade-in animation-delay-300">
+            Free training is available for eligible participants through public funding. Some licensure apprenticeships are offered as self-pay or employer-paid pathways.
+          </p>
+          <p className="text-sm text-slate-500 max-w-2xl mx-auto mb-8 animate-fade-in animation-delay-300">
+            Elevate for Humanity operates licensed workforce and licensure infrastructure, delivering both publicly funded and self-pay apprenticeship pathways through a managed platform.
           </p>
           <div className="flex flex-wrap justify-center gap-4 animate-fade-in animation-delay-400">
             <Link href="/enroll" className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 hover:scale-105 transition-all shadow-lg">
-              Enroll Now — It&apos;s Free
+              Check Eligibility
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

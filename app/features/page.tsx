@@ -176,7 +176,7 @@ export default async function FeaturesPage() {
                 <DollarSign className="w-6 h-6 text-indigo-600" />
               </div>
               <h3 className="text-lg font-semibold mb-3 text-black">
-                100% Free
+                Funded
               </h3>
               <p className="text-black">
                 No tuition, no hidden fees. We're funded by government grants

@@ -15,7 +15,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Federal Funded Programs | WIOA & WRG | Elevate for Humanity',
   description:
-    '100% free training programs funded by WIOA, WRG, and federal grants. Medical Assistant, CDL, Healthcare, and more. No cost to you.',
+    'Free training for eligible participants funded by WIOA, WRG, and federal grants. Medical Assistant, CDL, Healthcare, and more. No cost to you.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/federal-funded',
   },
@@ -73,7 +73,7 @@ export default async function FederalFundedProgramsPage() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
-            100% Free Training.
+            Funded Training.
             <br />
             Zero Cost to You.
           </h1>

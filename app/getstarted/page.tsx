@@ -42,7 +42,7 @@ export default function Page() {
               Start Your Career Journey Today
             </h1>
             <p className="text-base md:text-lg mb-8 drop-shadow-lg text-white/95">
-              100% free training. No cost, no debt. Real careers waiting. Get
+              Funded training. No cost, no debt. Real careers waiting. Get
               started in 3 simple steps.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -131,7 +131,7 @@ export default function Page() {
                 Start Training
               </h3>
               <p className="text-black mb-6 leading-relaxed">
-                Once approved, you'll start training—100% free. Learn new
+                Once approved, you'll start training—Funded. Learn new
                 skills, earn credentials, and get connected to employers. We
                 support you every step until you're hired.
               </p>

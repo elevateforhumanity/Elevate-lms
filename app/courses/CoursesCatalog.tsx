@@ -66,7 +66,7 @@ export default function CoursesCatalog({
             </h1>
             <p className="text-xl text-blue-100 mb-8">
               Explore our complete catalog of workforce development courses. All
-              programs are 100% free through WIOA funding.
+              programs are Funded through WIOA funding.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
@@ -307,7 +307,7 @@ export default function CoursesCatalog({
 
                       <div className="mt-4 pt-4 border-t">
                         <span className="text-brand-green-600 font-semibold">
-                          100% Free
+                          Funded
                         </span>
                       </div>
                     </div>
@@ -359,7 +359,7 @@ export default function CoursesCatalog({
               Ready to Start Learning?
             </h2>
             <p className="text-xl text-blue-100 mb-8">
-              All courses are 100% free through WIOA funding. No cost to you.
+              All courses are Funded through WIOA funding. No cost to you.
             </p>
             <Link
               href="/contact"

@@ -17,7 +17,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Free Community Services | VITA, Mental Wellness, Job Training | Elevate for Humanity',
   description:
-    'Access free community services: VITA tax preparation, mental wellness support through Selfish Inc., and 100% free job training through WIOA funding.',
+    'Access free community services: VITA tax preparation, mental wellness support through Selfish Inc., and funded job training through WIOA for eligible participants.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/community-services',
   },
@@ -52,7 +52,7 @@ const services = [
   },
   {
     title: 'Free Job Training',
-    description: '100% free career training through WIOA funding. Get certified, get hired.',
+    description: 'Funded career training through WIOA for eligible participants. Get certified, get hired.',
     icon: GraduationCap,
     color: 'blue',
     href: '/programs',

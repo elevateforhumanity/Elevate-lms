@@ -17,7 +17,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Drug & Alcohol Specimen Collector Certification | Free DOT Training',
   description:
-    '100% free DOT-certified drug collector training. Fast-track to a specialized healthcare career. High demand across transportation, healthcare, and corporate sectors.',
+    'Funded DOT-certified drug collector training. Fast-track to a specialized healthcare career. High demand across transportation, healthcare, and corporate sectors.',
   keywords: [
     'Drug Collector Indianapolis',
     'free Drug Collector training',
@@ -67,7 +67,7 @@ export default async function Page() {
           href: '/programs/healthcare',
         }}
         headline="Drug & Alcohol Specimen Collector: DOT-certified training"
-        description="100% free training to become a certified specimen collector. Work in healthcare facilities, labs, and workplace testing programs. High demand across multiple sectors."
+        description="Funded training to become a certified specimen collector. Work in healthcare facilities, labs, and workplace testing programs. High demand across multiple sectors."
         primaryCTA={{ text: 'Apply Now', href: '/apply' }}
         secondaryCTA={{ text: 'Talk to an Advisor', href: '/contact' }}
       />

@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Apply Now | Free Career Training | Elevate For Humanity',
-  description: 'Apply for 100% free career training programs in healthcare, skilled trades, technology, and business. WIOA-funded programs with job placement support.',
+  title: 'Apply Now | Career Training | Elevate For Humanity',
+  description: 'Apply for career training programs in healthcare, skilled trades, technology, and business. Free training available for eligible participants through WIOA funding. Some programs are self-pay or employer-paid.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/apply',
   },

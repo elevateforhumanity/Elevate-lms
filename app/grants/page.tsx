@@ -6,7 +6,7 @@ import { DollarSign, CheckCircle, Users, Building2, ArrowRight, Shield, Graduati
 
 export const metadata: Metadata = {
   title: 'Grants & Scholarships | Get Your Training Paid For | Elevate For Humanity',
-  description: 'Indiana residents can get 100% free career training through federal and state grants. No loans, no debt. See if you qualify for WIOA, Workforce Ready Grant, or other funding.',
+  description: 'Indiana residents can get Funded career training through federal and state grants. No loans, no debt. See if you qualify for WIOA, Workforce Ready Grant, or other funding.',
   alternates: { canonical: 'https://www.elevateforhumanity.org/grants' },
 };
 

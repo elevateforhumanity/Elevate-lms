@@ -91,6 +91,9 @@ export default async function BarberApprenticeshipPage() {
             <p className="mt-6 text-lg md:text-xl text-white drop-shadow-md">
               Train at approved partner sites, track hours in your dashboard, and complete the pathway with structured support.
             </p>
+            <p className="mt-2 text-sm text-white/70">
+              *Eligible participants may qualify for WRG or employer-sponsored funding. Self-pay options available.
+            </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
@@ -121,8 +124,8 @@ export default async function BarberApprenticeshipPage() {
                 <div className="text-sm text-gray-600">Program tuition</div>
               </div>
               <div className="rounded-2xl bg-white/90 px-5 py-4 text-gray-900">
-                <div className="text-2xl font-bold">WRG</div>
-                <div className="text-sm text-gray-600">Funding available</div>
+                <div className="text-2xl font-bold">$0*</div>
+                <div className="text-sm text-gray-600">With WRG funding</div>
               </div>
             </div>
           </div>

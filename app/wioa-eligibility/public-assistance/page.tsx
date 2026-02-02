@@ -44,7 +44,7 @@ export default async function PublicAssistancePage() {
 
   const benefits = [
     'Automatic income eligibility - no additional verification needed',
-    '100% free training - tuition, books, and supplies covered',
+    'Funded training - tuition, books, and supplies covered for eligible participants',
     'Priority enrollment in high-demand programs',
     'Career counseling and job placement assistance',
     'Support services (transportation, childcare assistance)',

@@ -73,7 +73,7 @@ export default function ProgramPage() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-wrap gap-3 mb-6">
             <span className="px-4 py-2 bg-green-100 text-green-800 text-sm font-bold rounded-full">
-              100% Free with Funding
+              Funded with Funding
             </span>
             <span className="px-4 py-2 bg-blue-100 text-blue-800 text-sm font-bold rounded-full">
               WIOA Approved
@@ -142,7 +142,7 @@ export default function ProgramPage() {
                 <DollarSign className="w-7 h-7 text-green-600" />
               </div>
               <h3 className="text-2xl font-bold text-black mb-3">
-                100% Free
+                Funded
               </h3>
               <p className="text-black leading-relaxed">
                 No tuition, no fees, no student debt. Your training is fully
@@ -453,7 +453,7 @@ export default function ProgramPage() {
               href="/apply"
               className="inline-flex items-center justify-center gap-3 bg-brand-orange-600 text-white px-10 py-5 rounded-xl text-lg font-bold hover:bg-brand-orange-700 transition shadow-2xl"
             >
-              Apply Now - 100% Free
+              Apply Now - Funded
               <ArrowRight className="w-6 h-6" />
             </Link>
             <Link

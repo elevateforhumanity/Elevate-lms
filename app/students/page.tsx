@@ -19,7 +19,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'For Students | Free Career Training | Elevate for Humanity',
-  description: '100% free career training with job placement. No cost, no debt. Get certified and start earning in weeks.',
+  description: 'Funded career training with job placement. No cost, no debt. Get certified and start earning in weeks.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/students',
   },
@@ -63,8 +63,11 @@ export default async function StudentsPage() {
             <h1 className="text-4xl md:text-6xl font-black mb-6">
               Launch Your Career
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8">
-              100% free training. Real certifications. Job placement included.
+            <p className="text-xl md:text-2xl text-white/90 mb-4">
+              Real certifications. Job placement included.
+            </p>
+            <p className="text-sm text-white/70 mb-8">
+              Free training available for eligible participants. Some licensure programs are self-pay or employer-paid.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -97,9 +100,9 @@ export default async function StudentsPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
                 <DollarSign className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">100% Free</h3>
+              <h3 className="text-2xl font-bold mb-4">Funding Available</h3>
               <p className="text-black mb-4">
-                No tuition. No fees. No hidden costs. Funded through WIOA, WRG, and JRI programs.
+                Many programs are free through WIOA, WRG, and JRI funding. Some licensure programs offer self-pay or employer-paid options.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">

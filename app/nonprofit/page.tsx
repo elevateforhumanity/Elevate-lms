@@ -69,7 +69,7 @@ export default async function NonprofitPage() {
     },
     {
       title: 'Free Job Training',
-      description: '100% free career training through WIOA. Healthcare, trades, technology.',
+      description: 'Funded career training through WIOA for eligible participants. Healthcare, trades, technology.',
       href: '/programs',
       icon: BookOpen,
     },

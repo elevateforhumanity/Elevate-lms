@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { GraduationCap, Clock, FileText, Award, BookOpen, ArrowRight } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { getNextRequiredAction } from '@/lib/enrollment/gate';
 
 export const metadata: Metadata = {
   title: 'Apprentice Portal | Elevate For Humanity',
@@ -31,14 +32,49 @@ export default async function ApprenticePortalPage() {
     .eq('id', user.id)
     .single();
 
+  // Get active enrollment with program info
+  const { data: enrollment } = await supabase
+    .from('enrollments')
+    .select('*, programs(slug, name)')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .single();
+
+  // Gate: Redirect if orientation or documents not complete
+  if (enrollment) {
+    if (!enrollment.orientation_completed_at) {
+      const programSlug = enrollment.programs?.slug || 'barber-apprenticeship';
+      redirect(`/programs/${programSlug}/orientation`);
+    }
+    if (!enrollment.documents_submitted_at) {
+      const programSlug = enrollment.programs?.slug || 'barber-apprenticeship';
+      redirect(`/programs/${programSlug}/documents`);
+    }
+  }
+
+  // Get next required action based on real enrollment state
+  const nextAction = enrollment ? getNextRequiredAction({
+    status: enrollment.status,
+    orientation_completed_at: enrollment.orientation_completed_at,
+    documents_submitted_at: enrollment.documents_submitted_at,
+    program_slug: enrollment.programs?.slug,
+  }) : { label: 'Apply to a Program', href: '/programs', description: 'Start your journey' };
+
   const { data: enrollments } = await supabase
     .from('enrollments')
     .select('id, status, progress, course_id')
     .eq('user_id', user.id)
     .limit(5);
 
-  const totalHours = 0; // Would come from hours tracking table
-  const requiredHours = 2000;
+  // Get real hours from attendance_hours table
+  const { data: hoursData } = await supabase
+    .from('attendance_hours')
+    .select('hours_logged')
+    .eq('enrollment_id', enrollment?.id);
+  
+  const totalHours = hoursData?.reduce((sum, h) => sum + (h.hours_logged || 0), 0) || 0;
+  const requiredHours = 1500; // Barber requirement
 
   const quickLinks = [
     { name: 'Log Hours', href: '/apprentice/hours', icon: Clock, description: 'Record your work hours' },
@@ -59,6 +95,24 @@ export default async function ApprenticePortalPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* NEXT REQUIRED ACTION - Always visible at top */}
+        <div className="bg-blue-600 text-white rounded-xl p-6 mb-8 shadow-lg">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-blue-100 text-sm font-medium uppercase tracking-wide mb-1">Next Required Action</p>
+              <h2 className="text-2xl font-bold">{nextAction.label}</h2>
+              <p className="text-blue-100 mt-1">{nextAction.description}</p>
+            </div>
+            <Link
+              href={nextAction.href}
+              className="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition flex items-center gap-2"
+            >
+              Start Now
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">
             Welcome, {profile?.full_name || 'Apprentice'}

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   title: 'HSI Safety Training Courses | Elevate For Humanity',
   description:
-    'Access 1,200+ OSHA-compliant safety training courses through our HSI partnership. 100% free for eligible students.',
+    'Access 1,200+ OSHA-compliant safety training courses through our HSI partnership. Funded for eligible students.',
 };
 
 export default async function HsiPage() {
@@ -104,7 +104,7 @@ export default async function HsiPage() {
             HSI Safety Training Courses
           </h1>
           <p className="text-base md:text-lg mb-8 text-gray-100 drop-shadow-lg max-w-2xl mx-auto">
-            Access 1,200+ OSHA-compliant safety training courses. CPR, First Aid, and workplace safety certifications - 100% free through WIOA funding.
+            Access 1,200+ OSHA-compliant safety training courses. CPR, First Aid, and workplace safety certifications - Funded through WIOA funding.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -284,7 +284,7 @@ export default async function HsiPage() {
               Ready to Get Certified?
             </h2>
             <p className="text-base md:text-lg text-red-100 mb-8">
-              Start your safety training today. All courses are 100% free
+              Start your safety training today. All courses are Funded
               through WIOA funding.
             </p>
             <Link

@@ -57,7 +57,7 @@ export default async function RefundPolicyPage() {
               Training Programs
             </h2>
             <p className="text-black mb-6">
-              Our training programs are 100% free and funded by government
+              Our training programs are Funded and funded by government
               grants (WIOA, WRG, and other workforce development programs).
               Since there is no tuition cost to students, refunds do not apply
               to our training programs.

@@ -112,7 +112,7 @@ export default async function OnboardingPage() {
                     className="text-brand-green-600 mr-2 flex-shrink-0 mt-0.5"
                     size={16}
                   />
-                  <span>100% free - no tuition</span>
+                  <span>Free for eligible participants</span>
                 </li>
                 <li className="flex items-start text-sm">
                   <CheckCircle

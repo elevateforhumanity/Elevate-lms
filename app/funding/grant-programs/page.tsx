@@ -32,7 +32,7 @@ export default function GrantProgramsPage() {
       <section className="relative h-[400px] overflow-hidden">
         <Image
           src="/images/heroes/lms-analytics.jpg"
-          alt="100% Free Training Programs"
+          alt="Funded Training Programs"
           fill
           className="object-cover"
           quality={100}
@@ -41,7 +41,7 @@ export default function GrantProgramsPage() {
         />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white h-full flex flex-col justify-center drop-shadow-lg">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-md">
-            100% Free Training Programs
+            Funded Training Programs
           </h1>
           <p className="text-base md:text-lg mb-8 drop-shadow-md">
             ETPL Approved • WIOA Eligible • WRG Funded • JRI Approved
@@ -72,7 +72,7 @@ export default function GrantProgramsPage() {
 
           <p className="text-lg text-black mb-6">
             ETPL stands for <strong>Eligible Training Provider List</strong>. It
-            means our programs are approved by the state for 100% free training
+            means our programs are approved by the state for Funded training
             through government funding programs like WIOA, WRG, and JRI.
           </p>
 

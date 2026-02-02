@@ -83,7 +83,7 @@ function InquiryForm() {
         secondaryCTA={{ text: "Questions? Call Us", href: "tel:317-314-3757" }}
         features={[
           "10-minute application with 2-3 day response",
-          "100% free training through WIOA and state grants",
+          "Funded training through WIOA and state grants",
           "Job placement support and career counseling included"
         ]}
         imageOnRight={true}

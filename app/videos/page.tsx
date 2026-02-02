@@ -122,7 +122,7 @@ export default async function VideosPage() {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-black mb-8">
-            Apply now for 100% free career training. No tuition, no debt, real
+            Apply now for funded career training. Real certifications, real
             careers.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

@@ -370,7 +370,7 @@ export default async function CashAdvancesAdminPage() {
                   Every great career begins with a single step. Whether you're
                   looking to change careers, upgrade your skills, or enter the
                   workforce for the first time, we're here to help you succeed.
-                  Our programs are 100% free, government-funded, and designed to
+                  Our programs are Funded, government-funded, and designed to
                   get you hired fast.
                 </p>
                 <ul className="space-y-4">
@@ -389,7 +389,7 @@ export default async function CashAdvancesAdminPage() {
                       />
                     </svg>
                     <span className="text-black">
-                      100% free training - no tuition, no hidden costs
+                      Funded training - no tuition, no hidden costs
                     </span>
                   </li>
                   <li className="flex items-start">

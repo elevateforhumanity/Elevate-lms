@@ -64,8 +64,11 @@ export default function StorePage() {
               <h1 className="text-4xl sm:text-5xl font-black mb-4">
                 Elevate Store
               </h1>
-              <p className="text-xl text-slate-300 mb-8">
-                Everything you need for workforce development - gear, courses, workbooks, and platform licenses.
+              <p className="text-xl text-slate-300 mb-4">
+                Everything you need for workforce development - courses, tools, and platform licenses.
+              </p>
+              <p className="text-sm text-slate-400 mb-8">
+                Individual access starts at $49. Enterprise and licensure infrastructure solutions are contract-based. Source code and ownership are not transferred.
               </p>
               
               {/* Universal Search with Quick Filters */}

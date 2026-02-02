@@ -145,7 +145,7 @@ export default async function CareersPage() {
               At Elevate For Humanity, we believe everyone deserves access to
               quality career training and the opportunity to build a better
               future. We partner with workforce boards, employers, and community
-              organizations to provide 100% free training programs that lead to
+              organizations to provide Free training for eligible participants that lead to
               real jobs.
             </p>
             <div className="grid md:grid-cols-3 gap-8 mt-12">

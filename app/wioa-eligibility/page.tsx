@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   },
   title: 'WIOA Eligibility Requirements | Elevate For Humanity',
   description:
-    'Check if you qualify for 100% free career training through WIOA funding. Learn about eligibility requirements and how to apply.',
+    'Check if you qualify for funded career training through WIOA. Learn about eligibility requirements and how to apply.',
   openGraph: {
-    title: 'WIOA Eligibility - Free Career Training',
-    description: 'Check if you qualify for 100% free career training through WIOA funding.',
+    title: 'WIOA Eligibility - Funded Career Training',
+    description: 'Check if you qualify for funded career training through WIOA.',
     url: 'https://www.elevateforhumanity.org/wioa-eligibility',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'WIOA Eligibility' }],
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WIOA Eligibility - Free Career Training',
-    description: 'Check if you qualify for 100% free career training.',
+    title: 'WIOA Eligibility - Funded Career Training',
+    description: 'Check if you qualify for funded career training through WIOA.',
     images: ['/og-default.jpg'],
   },
 };

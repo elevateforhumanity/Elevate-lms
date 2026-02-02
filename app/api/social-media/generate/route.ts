@@ -25,7 +25,7 @@ const PROGRAM_INFO = {
     'Phlebotomy Technician. 4-6 weeks. $30K-40K/year. High demand in healthcare.',
   'dental-assistant':
     'Dental Assistant. 8-12 weeks. $35K-45K/year. Clinical + front office.',
-  all: '14+ workforce training programs. 100% free (WIOA-funded). Earn while you learn. Job placement assistance.',
+  all: '14+ workforce training programs. Funded (WIOA-funded). Earn while you learn. Job placement assistance.',
 };
 
 export async function POST(req: Request) {
@@ -95,7 +95,7 @@ Program Details: ${programInfo}
 Requirements:
 - Mix of post types: success stories, program highlights, WIOA eligibility info, career outcomes, application CTAs
 - Include relevant hashtags (#WorkforceDevelopment #Indianapolis #WIOA #CareerTraining)
-- Emphasize "100% free" and "earn while you learn"
+- Emphasize "Funded" and "earn while you learn"
 - Include call-to-action (Apply now, Learn more, Call us)
 - Vary tone: inspirational, informational, urgent
 - Mention Indianapolis/Indiana when relevant

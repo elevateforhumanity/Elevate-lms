@@ -8,7 +8,7 @@ import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
   title: 'Free Career Training | Elevate for Humanity',
-  description: 'Launch your new career in 8-16 weeks with 100% free WIOA-funded training. Healthcare, Skilled Trades, Technology programs in Indiana.',
+  description: 'Launch your new career in 8-16 weeks with Funded WIOA-funded training. Healthcare, Skilled Trades, Technology programs in Indiana.',
 };
 
 // Reusable checkmark icon
@@ -63,7 +63,7 @@ export default function HomePage() {
         {/* Hero Content - Server rendered, always visible */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 max-w-3xl leading-tight">
-            Launch Your New Career in 8-16 Weeks — <span className="text-blue-400">100% Free</span>
+            Launch Your New Career in 8-16 Weeks — <span className="text-blue-400">Funded</span>
           </h1>
           <p className="text-base sm:text-lg text-white/90 mb-4 max-w-2xl">
             Indiana&apos;s workforce programs pay for your training. No loans. No debt. Just real skills and a real job.
@@ -173,7 +173,7 @@ export default function HomePage() {
               <div className="p-6 flex-1 flex flex-col">
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Justice Reinvestment Initiative</h3>
                 <p className="text-slate-600 mb-4 flex-1">
-                  100% free training for justice-involved individuals. Second chance employment support and career services.
+                  Funded training for justice-involved individuals. Second chance employment support and career services.
                 </p>
                 <Link href="/jri" className="text-sm text-purple-600 font-medium hover:underline">
                   Learn about JRI programs →

@@ -44,7 +44,7 @@ export default function HealthcarePage() {
               HEALTHCARE PROGRAMS
             </h1>
             <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-8">
-              Start Your Career in Healthcare - 100% Free Training
+              Start Your Career in Healthcare - Funded Training
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto">
               <Link

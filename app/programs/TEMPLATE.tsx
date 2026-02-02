@@ -20,7 +20,7 @@ export default function ProgramTemplate() {
           {/* Badges */}
           <div className="flex flex-wrap items-center gap-3 mb-6">
             <span className="px-4 py-2 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
-              100% Free with Funding
+              Funded with Funding
             </span>
             <span className="px-4 py-2 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
               DOL Registered
@@ -182,7 +182,7 @@ export default function ProgramTemplate() {
       <section className="py-16 bg-blue-50">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-black mb-4">
-            100% Free with Funding
+            Funded with Funding
           </h2>
           <p className="text-xl text-black mb-8 max-w-3xl">
             Most students qualify for free training through WIOA, WRG, JRI, or

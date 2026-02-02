@@ -47,7 +47,7 @@ export default function StudentsPage() {
   }, []);
 
   const benefits = [
-    '100% Free Training',
+    'Funded Training',
     'No Student Debt',
     'Get Paid While You Learn',
     'Job Placement Assistance',
@@ -76,7 +76,7 @@ export default function StudentsPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-green-600 px-4 py-2 rounded-full mb-6">
             <CheckCircle className="h-5 w-5" />
-            <span className="font-semibold">100% Free Training</span>
+            <span className="font-semibold">Funded Training</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Start Your Career Journey

@@ -18,7 +18,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Direct Support Professional Training | Free DSP Program Indiana',
   description:
-    '100% Free DSP training program. Help individuals with disabilities live fulfilling lives. 4-6 weeks, job placement included.',
+    'Funded DSP training program. Help individuals with disabilities live fulfilling lives. 4-6 weeks, job placement included.',
   keywords: [
     'Direct Support Professional Indianapolis',
     'free Direct Support Professional training',
@@ -68,7 +68,7 @@ export default async function Page() {
           href: '/programs/healthcare',
         }}
         headline="Direct Support Professional: Make a difference in people's lives"
-        description="100% free DSP training. Help individuals with disabilities live independently and participate fully in their communities. 4-6 weeks, job placement included."
+        description="Funded DSP training. Help individuals with disabilities live independently and participate fully in their communities. 4-6 weeks, job placement included."
         primaryCTA={{ text: 'Start Eligibility & Choose This Program', href: '/apply' }}
         secondaryCTA={{ text: 'Questions? Call Us', href: 'tel:317-314-3757' }}
       />

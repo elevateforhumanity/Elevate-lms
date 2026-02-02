@@ -23,7 +23,7 @@ export default function FreeTaxPage() {
               Free Tax Preparation
             </h1>
             <p className="text-xl">
-              VITA Program - 100% Free for Qualifying Individuals
+              VITA Program - Funded for Qualifying Individuals
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function FreeTaxPage() {
               <ul className="space-y-3 text-black">
                 <li className="flex items-start gap-2">
                   <span className="text-blue-600 font-bold">•</span>
-                  <span>100% free tax preparation</span>
+                  <span>Funded tax preparation</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-blue-600 font-bold">•</span>

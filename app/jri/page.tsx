@@ -19,8 +19,8 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Justice Reinvestment Initiative (JRI) | Free Career Training | Elevate for Humanity',
-  description: 'Indiana JRI program provides 100% free career training for justice-involved individuals. Get certified in healthcare, skilled trades, and more.',
+  title: 'Justice Reinvestment Initiative (JRI) | Funded Career Training | Elevate for Humanity',
+  description: 'Indiana JRI program provides funded career training for justice-involved individuals. Get certified in healthcare, skilled trades, and more.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/jri',
   },
@@ -38,8 +38,8 @@ export default function JRIPage() {
 
   const programBenefits = [
     { 
-      title: '100% Free Training', 
-      description: 'Tuition, books, supplies, uniforms, and certification exams are fully covered.',
+      title: 'Fully Funded Training', 
+      description: 'Tuition, books, supplies, uniforms, and certification exams covered for eligible participants.',
       icon: DollarSign 
     },
     { 
@@ -146,7 +146,7 @@ export default function JRIPage() {
             </h1>
             
             <p className="text-xl text-white/90 mb-8">
-              100% free career training for justice-involved individuals. No tuition. No fees. Just opportunity.
+              Funded career training for justice-involved individuals. Tuition covered for eligible participants. Just opportunity.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">

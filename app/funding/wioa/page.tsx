@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'WIOA Free Training | Elevate For Humanity',
   description:
-    'Get 100% free career training through WIOA (Workforce Innovation and Opportunity Act). For unemployed, underemployed, and workers facing barriers.',
+    'Get Funded career training through WIOA (Workforce Innovation and Opportunity Act). For unemployed, underemployed, and workers facing barriers.',
 };
 
 export default async function WioaPage() {

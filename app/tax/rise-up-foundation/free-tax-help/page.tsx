@@ -58,7 +58,7 @@ export default function FreeTaxHelpPage() {
           Schedule Free Tax Appointment (Video or Phone)
         </button>
         <p className="text-sm text-black text-center mt-2">
-          100% Free • IRS-Certified Volunteers • Video or Phone Available
+          Funded • IRS-Certified Volunteers • Video or Phone Available
         </p>
       </div>
 

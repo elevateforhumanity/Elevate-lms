@@ -139,7 +139,7 @@ export default async function CredentialsPage() {
                   <li className="flex items-start">
                     <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
-                      <strong className="text-black">100% Free</strong>
+                      <strong className="text-black">Funded</strong>
                       <p className="text-black">Training and exam costs covered</p>
                     </div>
                   </li>

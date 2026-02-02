@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</p>
       </div>
 
-      <p><strong>Important:</strong> This is a WIOA/WRG/JRI-funded program. Your training is 100% free. There is no cost to you.</p>
+      <p><strong>Important:</strong> This is a WIOA/WRG/JRI-funded program. Your training is Funded. There is no cost to you.</p>
 
       <p>We're excited to have you in our program!</p>
 

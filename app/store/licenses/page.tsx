@@ -20,8 +20,11 @@ export default function StoreLicensesPage() {
       <section className="bg-slate-900 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-black mb-4">Platform Licensing</h1>
-          <p className="text-xl text-slate-300">
+          <p className="text-xl text-slate-300 mb-4">
             Choose the licensing model that fits your organization.
+          </p>
+          <p className="text-sm text-slate-400 max-w-2xl mx-auto">
+            This is a managed, contract-based platform. Source code and ownership are not transferred. Application required for enterprise tiers.
           </p>
         </div>
       </section>

@@ -61,7 +61,7 @@ export default function JRIProgramsPage() {
             </h1>
 
             <p className="text-xl text-indigo-100 mb-8 leading-relaxed">
-              100% free career training and wraparound support for justice-involved 
+              Funded career training and wraparound support for justice-involved 
               individuals in Indiana. Your past doesn&apos;t define your future.
             </p>
 
@@ -124,7 +124,7 @@ export default function JRIProgramsPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">State-Funded</h4>
-                    <p className="text-slate-600 text-sm">100% free training for eligible participants</p>
+                    <p className="text-slate-600 text-sm">Funded training for eligible participants</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -214,7 +214,7 @@ export default function JRIProgramsPage() {
             Ready for Your Second Chance?
           </h2>
           <p className="text-xl text-indigo-100 mb-8">
-            Apply today. Training is 100% free for eligible participants.
+            Apply today. Training is Funded for eligible participants.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link

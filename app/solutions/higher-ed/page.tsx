@@ -103,7 +103,7 @@ export default async function HigherEdPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>100% free training programs</span>
+                    <span>Free training for eligible participants</span>
                   </li>
                   <li className="flex items-start">
                     <svg

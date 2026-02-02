@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: 'WRG Free Training | Elevate For Humanity',
   description:
-    'Get 100% free career training through WRG (Workforce Ready Grant). Indiana residents qualify. No income limits. No age limits.',
+    'Get Funded career training through WRG (Workforce Ready Grant). Indiana residents qualify. No income limits. No age limits.',
 };
 
 export default async function WrgPage() {

@@ -34,7 +34,7 @@ export default function FAQPage() {
     {
       question: 'How much does it cost?',
       answer:
-        'VITA services are 100% free. There are no fees, no hidden charges, and no upsells. Everything from tax preparation to e-filing is provided at no cost.',
+        'VITA services are Funded. There are no fees, no hidden charges, and no upsells. Everything from tax preparation to e-filing is provided at no cost.',
     },
     {
       question: 'Do I need an appointment?',

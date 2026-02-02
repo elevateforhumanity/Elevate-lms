@@ -102,7 +102,7 @@ export default async function OrientationPage() {
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-black">
-                    How our 100% free training programs work
+                    How our Free training for eligible participants work
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
