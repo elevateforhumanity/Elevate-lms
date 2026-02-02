@@ -1260,6 +1260,9 @@ export async function POST(request: NextRequest) {
               .update({
                 status: enrollmentConfig.is_deposit ? 'DEPOSIT_PAID' : 'ACTIVE',
                 payment_status: enrollmentConfig.is_deposit ? 'DEPOSIT_PAID' : 'PAID',
+                enrollment_state: 'confirmed',
+                enrollment_confirmed_at: new Date().toISOString(),
+                next_required_action: 'ORIENTATION',
                 stripe_checkout_session_id: session.id,
                 stripe_payment_intent_id: session.payment_intent as string,
                 amount_paid_cents: session.amount_total || 0,
@@ -1271,7 +1274,7 @@ export async function POST(request: NextRequest) {
             enrollmentResult = `already_active:${existingEnrollment.id}`;
           }
         } else {
-          // Create new enrollment
+          // Create new enrollment with confirmed state (payment complete)
           const { data: newEnrollment, error: enrollError } = await supabase
             .from('program_enrollments')
             .insert({
@@ -1281,6 +1284,9 @@ export async function POST(request: NextRequest) {
               funding_source: enrollmentConfig.funding_source,
               status: enrollmentConfig.is_deposit ? 'DEPOSIT_PAID' : 'ACTIVE',
               payment_status: enrollmentConfig.is_deposit ? 'DEPOSIT_PAID' : 'PAID',
+              enrollment_state: 'confirmed',
+              enrollment_confirmed_at: new Date().toISOString(),
+              next_required_action: 'ORIENTATION',
               stripe_checkout_session_id: session.id,
               stripe_payment_intent_id: session.payment_intent as string,
               amount_paid_cents: session.amount_total || 0,
