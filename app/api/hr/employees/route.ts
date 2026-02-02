@@ -3,10 +3,12 @@ import { createClient } from '@/lib/supabase/server';
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
+
 import { NextRequest, NextResponse } from 'next/server';
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
 import { logger } from '@/lib/logger';
-import { toError, toErrorMessage } from '@/lib/safe';
+import { toErrorMessage } from '@/lib/safe';
+import { sanitizeSearchInput } from '@/lib/utils';
 
 // GET /api/hr/employees - List all employees
 export async function GET(request: NextRequest) {
@@ -45,11 +47,8 @@ export async function GET(request: NextRequest) {
     }
 
     if (search) {
-      query = query.or(`
-        employee_number.ilike.%${search}%,
-        work_email.ilike.%${search}%,
-        personal_email.ilike.%${search}%
-      `);
+      const sanitizedSearch = sanitizeSearchInput(search);
+      query = query.or(`employee_number.ilike.%${sanitizedSearch}%,work_email.ilike.%${sanitizedSearch}%,personal_email.ilike.%${sanitizedSearch}%`);
     }
 
     const { data, error, count } = await query;

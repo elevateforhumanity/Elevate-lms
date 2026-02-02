@@ -3,13 +3,40 @@ import { NextRequest, NextResponse } from 'next/server';
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
+
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
-import { toError, toErrorMessage } from '@/lib/safe';
+import { toErrorMessage } from '@/lib/safe';
+
+// Allowed MIME types for media uploads
+const ALLOWED_TYPES = [
+  'image/jpeg', 'image/png', 'image/gif', 'image/webp',
+  'video/mp4', 'video/webm', 'video/quicktime',
+  'audio/mpeg', 'audio/mp3', 'audio/wav', 'audio/ogg',
+  'application/pdf',
+];
+
+const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
+
+// Allowed bucket names (whitelist)
+const ALLOWED_BUCKETS = ['media', 'documents', 'avatars', 'course-content'];
+
+// Allowed folder patterns
+const ALLOWED_FOLDER_PATTERN = /^[a-zA-Z0-9_-]+$/;
 
 export async function POST(req: NextRequest) {
   try {
     const supabase = await createClient();
+
+    // Authentication check
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      return NextResponse.json(
+        { error: 'Authentication required' },
+        { status: 401 }
+      );
+    }
 
     const form = await req.formData();
     const file = form.get('file') as File;
@@ -20,20 +47,53 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No file provided' }, { status: 400 });
     }
 
+    // Validate file type
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      return NextResponse.json(
+        { error: 'File type not allowed' },
+        { status: 400 }
+      );
+    }
+
+    // Validate file size
+    if (file.size > MAX_FILE_SIZE) {
+      return NextResponse.json(
+        { error: 'File too large. Maximum size is 100MB' },
+        { status: 400 }
+      );
+    }
+
+    // Validate bucket (whitelist)
+    if (!ALLOWED_BUCKETS.includes(bucket)) {
+      return NextResponse.json(
+        { error: 'Invalid storage bucket' },
+        { status: 400 }
+      );
+    }
+
+    // Validate folder name (prevent path traversal)
+    if (!ALLOWED_FOLDER_PATTERN.test(folder) || folder.includes('..')) {
+      return NextResponse.json(
+        { error: 'Invalid folder name' },
+        { status: 400 }
+      );
+    }
+
     // Convert file to buffer
     const arrayBuffer = await file.arrayBuffer();
     const buffer = new Uint8Array(arrayBuffer);
 
-    // Generate unique filename
+    // Generate secure unique filename (no user input in path)
     const timestamp = Date.now();
-    const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-    const filename = `${timestamp}-${sanitizedName}`;
-    const path = `${folder}/${filename}`;
+    const randomId = crypto.randomUUID().replace(/-/g, '').slice(0, 12);
+    const extension = file.name.split('.').pop()?.toLowerCase().replace(/[^a-z0-9]/g, '') || 'bin';
+    const filename = `${timestamp}-${randomId}.${extension}`;
+    const storagePath = `${folder}/${filename}`;
 
     // Upload to Supabase Storage
     const { data, error }: any = await supabase.storage
       .from(bucket)
-      .upload(path, buffer, {
+      .upload(storagePath, buffer, {
         contentType: file.type,
         upsert: false,
         cacheControl: '3600',
@@ -50,7 +110,14 @@ export async function POST(req: NextRequest) {
     // Get public URL
     const {
       data: { publicUrl },
-    } = supabase.storage.from(bucket).getPublicUrl(path);
+    } = supabase.storage.from(bucket).getPublicUrl(storagePath);
+
+    logger.info('Media uploaded successfully', {
+      userId: user.id,
+      filename,
+      size: file.size,
+      type: file.type,
+    });
 
     return NextResponse.json({
       ok: true,
@@ -60,11 +127,8 @@ export async function POST(req: NextRequest) {
       size: file.size,
       type: file.type,
     });
-  } catch (error) { /* Error handled silently */ 
-    logger.error(
-      'Upload error:',
-      error instanceof Error ? error : new Error(String(error))
-    );
+  } catch (error) {
+    logger.error('Upload error:', error instanceof Error ? error : new Error(String(error)));
     return NextResponse.json(
       { error: 'Failed to upload file', message: toErrorMessage(error) },
       { status: 500 }

@@ -1,18 +1,57 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient as createAdminClient } from '@supabase/supabase-js';
+import { createClient } from '@/lib/supabase/server';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
+
 import { NextResponse } from 'next/server';
+import { logger } from '@/lib/logger';
 
 /**
  * Simulate Complete User Journey
  * POST /api/simulate-user-journey
  *
  * Simulates a complete user journey from application to completion
+ * RESTRICTED: Only available in development/staging and requires super_admin role
  */
 export async function POST(request: Request) {
   try {
+    // Block in production
+    if (process.env.NODE_ENV === 'production' && !process.env.ALLOW_SIMULATION) {
+      return NextResponse.json(
+        { error: 'Simulation endpoint disabled in production' },
+        { status: 403 }
+      );
+    }
+
+    // Authentication check - require super_admin
+    const supabase = await createClient();
+    const { data: { user }, error: authError } = await adminSupabase.auth.getUser();
+
+    if (authError || !user) {
+      return NextResponse.json(
+        { error: 'Authentication required' },
+        { status: 401 }
+      );
+    }
+
+    // Check super_admin role
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+
+    if (!profile || profile.role !== 'super_admin') {
+      return NextResponse.json(
+        { error: 'Super admin access required' },
+        { status: 403 }
+      );
+    }
+
+    logger.warn('User journey simulation started', { userId: user.id });
+
     const { role } = await request.json();
 
     if (
@@ -25,7 +64,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const supabase = createClient(
+    const adminSupabase = createAdminClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL,
       process.env.SUPABASE_SERVICE_ROLE_KEY
     );
@@ -220,9 +259,10 @@ export async function POST(request: Request) {
     results.production_ready = results.summary.journey_complete;
 
     return NextResponse.json(results);
-  } catch (error) { /* Error handled silently */ 
+  } catch (error: any) {
+    logger.error('Simulation error:', error);
     return NextResponse.json(
-      { error: error.message, stack: error.stack },
+      { error: error?.message || 'Simulation failed' },
       { status: 500 }
     );
   }
