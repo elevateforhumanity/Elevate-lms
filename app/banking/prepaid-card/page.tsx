@@ -298,12 +298,12 @@ export default function PrepaidCardPage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Download the App</h3>
                 <p className="text-gray-600 mb-6">Available for iOS and Android</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a href="#" className="bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition">
-                    App Store
-                  </a>
-                  <a href="#" className="bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition">
-                    Google Play
-                  </a>
+                  <span className="bg-gray-400 text-white px-6 py-3 rounded-lg font-medium cursor-not-allowed" title="App launching soon">
+                    App Store - Soon
+                  </span>
+                  <span className="bg-gray-400 text-white px-6 py-3 rounded-lg font-medium cursor-not-allowed" title="App launching soon">
+                    Google Play - Soon
+                  </span>
                 </div>
               </div>
             </div>

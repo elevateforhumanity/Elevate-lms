@@ -87,26 +87,28 @@ export default function AppHubPage() {
                 Access courses, track progress, and achieve your goals on the go.
               </p>
               <div className="flex flex-wrap gap-4">
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-900 transition-colors"
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 bg-gray-600 text-white px-6 py-3 rounded-xl cursor-not-allowed opacity-75"
+                  title="iOS app launching soon - join waitlist at elevateforhumanity.org/contact"
                 >
                   <Apple className="w-6 h-6" />
                   <div className="text-left">
-                    <div className="text-xs">Download on the</div>
-                    <div className="font-semibold">App Store</div>
+                    <div className="text-xs">iOS App</div>
+                    <div className="font-semibold">Launching Soon</div>
                   </div>
-                </a>
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-900 transition-colors"
+                </button>
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 bg-gray-600 text-white px-6 py-3 rounded-xl cursor-not-allowed opacity-75"
+                  title="Android app launching soon - join waitlist at elevateforhumanity.org/contact"
                 >
                   <Play className="w-6 h-6" />
                   <div className="text-left">
-                    <div className="text-xs">Get it on</div>
-                    <div className="font-semibold">Google Play</div>
+                    <div className="text-xs">Android App</div>
+                    <div className="font-semibold">Launching Soon</div>
                   </div>
-                </a>
+                </button>
               </div>
             </div>
             <div className="flex justify-center">
@@ -159,14 +161,14 @@ export default function AppHubPage() {
                 </div>
                 <div className="flex gap-2">
                   {app.platforms.includes('ios') && (
-                    <a href="#" className="flex-1 flex items-center justify-center gap-2 bg-black text-white py-2 rounded-lg text-sm hover:bg-gray-900">
-                      <Apple className="w-4 h-4" /> iOS
-                    </a>
+                    <span className="flex-1 flex items-center justify-center gap-2 bg-gray-400 text-white py-2 rounded-lg text-sm cursor-not-allowed" title="Launching soon">
+                      <Apple className="w-4 h-4" /> Soon
+                    </span>
                   )}
                   {app.platforms.includes('android') && (
-                    <a href="#" className="flex-1 flex items-center justify-center gap-2 bg-black text-white py-2 rounded-lg text-sm hover:bg-gray-900">
-                      <Play className="w-4 h-4" /> Android
-                    </a>
+                    <span className="flex-1 flex items-center justify-center gap-2 bg-gray-400 text-white py-2 rounded-lg text-sm cursor-not-allowed" title="Launching soon">
+                      <Play className="w-4 h-4" /> Soon
+                    </span>
                   )}
                 </div>
               </div>

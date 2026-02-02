@@ -129,26 +129,7 @@ export default async function ApprenticeDocumentsPage() {
                   ))}
                 </ul>
               ) : (
-                <ul className="space-y-3">
-                  <li>
-                    <a href="#" className="flex items-center gap-2 text-blue-600 hover:underline">
-                      <FileText className="w-4 h-4" />
-                      Time Sheet Template
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="flex items-center gap-2 text-blue-600 hover:underline">
-                      <FileText className="w-4 h-4" />
-                      Progress Report Form
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="flex items-center gap-2 text-blue-600 hover:underline">
-                      <FileText className="w-4 h-4" />
-                      Skill Verification Form
-                    </a>
-                  </li>
-                </ul>
+                <p className="text-gray-500 text-sm">No forms available yet.</p>
               )}
             </div>
 
