@@ -196,6 +196,13 @@
   status = 302
   force = true
 
+# Redirect /enroll to /apply - prevents "no programs available" dead end
+[[redirects]]
+  from = "/enroll"
+  to = "/apply"
+  status = 302
+  force = true
+
 # Scholarships alias to funding
 [[redirects]]
   from = "/scholarships"
