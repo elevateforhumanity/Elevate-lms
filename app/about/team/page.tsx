@@ -117,7 +117,7 @@ export default async function TeamPage() {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-slate-500">Team information coming soon.</p>
+              <p className="text-slate-500">Contact us to learn more about our team.</p>
             </div>
           )}
         </div>

@@ -1,59 +1,58 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Quote, ArrowRight, TrendingUp, Users, Star } from 'lucide-react';
+import { Quote, ArrowRight, TrendingUp, AlertCircle } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-// Static testimonials data - avoids slow server-side database fetch
-const testimonials = [
-  {
-    id: '1',
-    name: 'Maria Rodriguez',
-    program_completed: 'Medical Assistant Training',
-    current_job_title: 'Certified Medical Assistant',
-    current_employer: 'Community Health Center',
-    quote: 'Elevate gave me the skills and confidence to start a career in healthcare. The instructors were supportive and the hands-on training prepared me for real-world situations.',
-    image_url: null,
-    salary_before: 22000,
-    salary_after: 42000,
-    featured: true,
-  },
-  {
-    id: '2',
-    name: 'James Thompson',
-    program_completed: 'IT Support Specialist',
-    current_job_title: 'Help Desk Technician',
-    current_employer: 'TechServe Solutions',
-    quote: 'I went from working retail to a career in IT. The program was completely free and the job placement support was incredible.',
-    image_url: null,
-    salary_before: 28000,
-    salary_after: 48000,
-    featured: true,
-  },
-  {
-    id: '3',
-    name: 'Aisha Johnson',
-    program_completed: 'Business Administration',
-    current_job_title: 'Office Manager',
-    current_employer: 'Regional Insurance Group',
-    quote: 'The flexible schedule allowed me to complete training while caring for my family. Now I have a stable career with benefits.',
-    image_url: null,
-    salary_before: 25000,
-    salary_after: 45000,
-    featured: true,
-  },
-];
+type Testimonial = {
+  id: string;
+  name: string;
+  program_completed: string;
+  current_job_title: string | null;
+  current_employer: string | null;
+  quote: string;
+  image_url: string | null;
+  salary_before: number | null;
+  salary_after: number | null;
+  featured: boolean;
+};
 
+/**
+ * Testimonials Page - DB-backed
+ * Strict rendering: Shows message if no testimonials (not fake data)
+ */
 export default function TestimonialsPage() {
-  const avgIncrease = Math.round(
-    testimonials.reduce((acc, t) => {
-      if (t.salary_before && t.salary_after) {
-        return acc + ((t.salary_after - t.salary_before) / t.salary_before) * 100;
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchTestimonials() {
+      try {
+        const res = await fetch('/api/testimonials?limit=20');
+        if (!res.ok) throw new Error('Failed to fetch');
+        const data = await res.json();
+        setTestimonials(data.testimonials || []);
+      } catch (err) {
+        setError('Unable to load testimonials');
+      } finally {
+        setLoading(false);
       }
-      return acc;
-    }, 0) / testimonials.filter(t => t.salary_before && t.salary_after).length
-  );
+    }
+    fetchTestimonials();
+  }, []);
+
+  // Calculate stats from real data
+  const avgIncrease = testimonials.length > 0
+    ? Math.round(
+        testimonials
+          .filter(t => t.salary_before && t.salary_after)
+          .reduce((acc, t) => acc + ((t.salary_after! - t.salary_before!) / t.salary_before!) * 100, 0) /
+        (testimonials.filter(t => t.salary_before && t.salary_after).length || 1)
+      )
+    : 0;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -82,92 +81,136 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-8 bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-              <div className="text-3xl font-bold text-blue-600">{testimonials.length}+</div>
-              <div className="text-gray-600">Success Stories</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-600">85%</div>
-              <div className="text-gray-600">Placement Rate</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-600">{avgIncrease}%</div>
-              <div className="text-gray-600">Avg Salary Increase</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-600">100%</div>
-              <div className="text-gray-600">Free Training</div>
+      {/* Stats - only show if we have testimonials */}
+      {testimonials.length > 0 && (
+        <section className="py-8 bg-white border-b">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="text-3xl font-bold text-blue-600">{testimonials.length}</div>
+                <div className="text-gray-600">Success Stories</div>
+              </div>
+              {avgIncrease > 0 && (
+                <div>
+                  <div className="text-3xl font-bold text-blue-600">{avgIncrease}%</div>
+                  <div className="text-gray-600">Avg Salary Increase</div>
+                </div>
+              )}
+              <div>
+                <div className="text-3xl font-bold text-blue-600">Free</div>
+                <div className="text-gray-600">Training Available</div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <div className="max-w-7xl mx-auto px-4 py-16">
-        {/* Testimonials Grid */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Graduate Testimonials</h2>
+        {/* Loading State */}
+        {loading && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((story) => (
-              <div key={story.id} className="bg-white rounded-xl shadow-sm border overflow-hidden">
-                <div className="h-48 bg-gray-200 relative">
-                  {story.image_url ? (
-                    <Image
-                      src={story.image_url}
-                      alt={story.name}
-                      fill
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600">
-                      <span className="text-4xl font-bold text-white">
-                        {story.name.charAt(0)}
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{story.name}</h3>
-                  <p className="text-blue-600 font-medium mb-3">{story.program_completed}</p>
-                  
-                  {story.current_job_title && story.current_employer && (
-                    <p className="text-gray-600 text-sm mb-3">
-                      Now: {story.current_job_title} at {story.current_employer}
-                    </p>
-                  )}
-
-                  {story.quote && (
-                    <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                      <Quote className="w-5 h-5 text-blue-500 mb-2" />
-                      <p className="text-gray-700 text-sm italic line-clamp-3">
-                        &ldquo;{story.quote}&rdquo;
-                      </p>
-                    </div>
-                  )}
-
-                  {story.salary_before && story.salary_after && (
-                    <div className="flex items-center gap-2 text-sm">
-                      <TrendingUp className="w-4 h-4 text-green-500" />
-                      <span className="text-gray-600">
-                        ${story.salary_before.toLocaleString()} → ${story.salary_after.toLocaleString()}
-                      </span>
-                    </div>
-                  )}
+            {[1, 2, 3].map(i => (
+              <div key={i} className="bg-white rounded-xl shadow-sm border overflow-hidden animate-pulse">
+                <div className="h-48 bg-gray-200" />
+                <div className="p-6 space-y-3">
+                  <div className="h-6 bg-gray-200 rounded w-2/3" />
+                  <div className="h-4 bg-gray-200 rounded w-1/2" />
+                  <div className="h-20 bg-gray-100 rounded" />
                 </div>
               </div>
             ))}
           </div>
-        </section>
+        )}
+
+        {/* Error State */}
+        {error && (
+          <div className="bg-red-50 rounded-xl p-8 text-center">
+            <AlertCircle className="w-12 h-12 text-red-400 mx-auto mb-4" />
+            <p className="text-red-700">{error}</p>
+          </div>
+        )}
+
+        {/* No Testimonials State */}
+        {!loading && !error && testimonials.length === 0 && (
+          <div className="bg-white rounded-xl shadow-sm border p-12 text-center">
+            <Quote className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Share Your Story</h2>
+            <p className="text-gray-600 mb-6">
+              Are you a graduate? We&apos;d love to hear about your journey. Contact us to share your success story.
+            </p>
+            <Link
+              href="/apply"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+            >
+              Start Your Journey
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        )}
+
+        {/* Testimonials Grid */}
+        {!loading && testimonials.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">Graduate Testimonials</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {testimonials.map((story) => (
+                <div key={story.id} className="bg-white rounded-xl shadow-sm border overflow-hidden">
+                  <div className="h-48 bg-gray-200 relative">
+                    {story.image_url ? (
+                      <Image
+                        src={story.image_url}
+                        alt={story.name}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600">
+                        <span className="text-4xl font-bold text-white">
+                          {story.name.charAt(0)}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">{story.name}</h3>
+                    <p className="text-blue-600 font-medium mb-3">{story.program_completed}</p>
+                    
+                    {story.current_job_title && story.current_employer && (
+                      <p className="text-gray-600 text-sm mb-3">
+                        Now: {story.current_job_title} at {story.current_employer}
+                      </p>
+                    )}
+
+                    {story.quote && (
+                      <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                        <Quote className="w-5 h-5 text-blue-500 mb-2" />
+                        <p className="text-gray-700 text-sm italic line-clamp-3">
+                          &ldquo;{story.quote}&rdquo;
+                        </p>
+                      </div>
+                    )}
+
+                    {story.salary_before && story.salary_after && (
+                      <div className="flex items-center gap-2 text-sm">
+                        <TrendingUp className="w-4 h-4 text-green-500" />
+                        <span className="text-gray-600">
+                          ${story.salary_before.toLocaleString()} → ${story.salary_after.toLocaleString()}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* CTA */}
         <section className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-4">Your Success Story Starts Here</h2>
           <p className="text-orange-100 mb-6 max-w-xl mx-auto">
-            Join the hundreds of graduates who have transformed their lives through 
-            free career training. Your story could be next.
+            Join the graduates who have transformed their lives through 
+            career training. Your story could be next.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

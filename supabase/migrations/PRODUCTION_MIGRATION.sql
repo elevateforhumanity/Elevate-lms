@@ -120,7 +120,28 @@ CREATE TABLE IF NOT EXISTS student_tasks (
 );
 
 -- ============================================
--- 4. ANNOUNCEMENTS TABLE
+-- 4. TESTIMONIALS TABLE
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS testimonials (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name TEXT NOT NULL,
+  role TEXT,
+  program TEXT,
+  program_completed TEXT,
+  current_job_title TEXT,
+  current_employer TEXT,
+  quote TEXT NOT NULL CHECK (length(quote) > 20),
+  image_url TEXT,
+  salary_before INT,
+  salary_after INT,
+  featured BOOLEAN DEFAULT false,
+  published BOOLEAN DEFAULT false,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- ============================================
+-- 5. ANNOUNCEMENTS TABLE
 -- ============================================
 
 CREATE TABLE IF NOT EXISTS announcements (
@@ -213,8 +234,14 @@ CREATE TRIGGER check_placeholder_program_requirements
   BEFORE INSERT OR UPDATE ON program_requirements
   FOR EACH ROW EXECUTE FUNCTION block_placeholder_text();
 
+-- Apply trigger to testimonials
+DROP TRIGGER IF EXISTS check_placeholder_testimonials ON testimonials;
+CREATE TRIGGER check_placeholder_testimonials
+  BEFORE INSERT OR UPDATE ON testimonials
+  FOR EACH ROW EXECUTE FUNCTION block_placeholder_text();
+
 -- ============================================
--- 6. INDEXES
+-- 7. INDEXES
 -- ============================================
 
 CREATE INDEX IF NOT EXISTS idx_marketing_pages_slug ON marketing_pages(slug);
@@ -227,10 +254,29 @@ CREATE INDEX IF NOT EXISTS idx_student_hours_verified ON student_hours(verified)
 CREATE INDEX IF NOT EXISTS idx_student_tasks_student ON student_tasks(student_id);
 CREATE INDEX IF NOT EXISTS idx_student_tasks_enrollment ON student_tasks(enrollment_id);
 CREATE INDEX IF NOT EXISTS idx_announcements_published ON announcements(published, audience) WHERE published = true;
+CREATE INDEX IF NOT EXISTS idx_testimonials_published ON testimonials(published) WHERE published = true;
+CREATE INDEX IF NOT EXISTS idx_testimonials_featured ON testimonials(featured, published) WHERE featured = true AND published = true;
 
 -- ============================================
--- 7. RLS POLICIES
+-- 8. RLS POLICIES
 -- ============================================
+
+-- Testimonials
+ALTER TABLE testimonials ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Public can view published testimonials" ON testimonials;
+CREATE POLICY "Public can view published testimonials" ON testimonials
+  FOR SELECT USING (published = true);
+
+DROP POLICY IF EXISTS "Admins can manage testimonials" ON testimonials;
+CREATE POLICY "Admins can manage testimonials" ON testimonials
+  FOR ALL USING (
+    EXISTS (
+      SELECT 1 FROM profiles 
+      WHERE profiles.id = auth.uid() 
+      AND profiles.role IN ('admin', 'super_admin')
+    )
+  );
 
 -- Marketing pages
 ALTER TABLE marketing_pages ENABLE ROW LEVEL SECURITY;

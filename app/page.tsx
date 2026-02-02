@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import HomeHeroVideo from './HomeHeroVideo';
 import PageAvatar from '@/components/PageAvatar';
+import TestimonialsSection from '@/components/testimonials/TestimonialsSection';
 
 const programCategories = [
   { title: 'Healthcare', href: '/programs/healthcare', image: '/images/healthcare-vibrant.jpg', desc: 'CNA, Medical Assistant, Phlebotomy' },
@@ -21,11 +22,7 @@ const tabs = [
   { id: 'cdl', label: 'CDL', content: 'Get on the road to a stable driving career. Class A and Class B CDL training available.' },
 ];
 
-const testimonials = [
-  { quote: "Elevate helped me get my CNA certification completely free. Now I'm working at a hospital making good money.", name: 'Maria S.', role: 'CNA Graduate' },
-  { quote: "I never thought I could afford training. WIOA funding changed everything for me and my family.", name: 'James T.', role: 'HVAC Technician' },
-  { quote: "The support from enrollment to job placement was incredible. They really care about your success.", name: 'Ashley R.', role: 'Medical Assistant' },
-];
+// Testimonials now loaded from database via TestimonialsSection component
 
 const faqs = [
   { q: 'Is the training free?', a: 'Free training is available for eligible participants through WIOA, WRG, and other workforce programs. Some licensure apprenticeships (like Barber) are offered as self-pay or employer-paid pathways. See individual program pages for details.' },
@@ -45,7 +42,7 @@ const partners = [
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState('healthcare');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  // Testimonials state removed - now handled by TestimonialsSection component
 
   return (
     <div className="min-h-screen bg-white">
@@ -237,48 +234,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIAL CAROUSEL */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-3">Testimonials</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">What Our Graduates Say</h2>
-          </div>
-          
-          <div className="relative">
-            <div className="bg-slate-50 rounded-3xl p-8 md:p-12">
-              <svg className="w-12 h-12 text-blue-600/20 mb-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-              </svg>
-              <p className="text-2xl md:text-3xl font-medium text-slate-800 mb-8 leading-relaxed">
-                {testimonials[currentTestimonial].quote}
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  {testimonials[currentTestimonial].name[0]}
-                </div>
-                <div>
-                  <p className="font-bold text-slate-900">{testimonials[currentTestimonial].name}</p>
-                  <p className="text-slate-500">{testimonials[currentTestimonial].role}</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Navigation dots */}
-            <div className="flex justify-center gap-2 mt-6">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentTestimonial(i)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    currentTestimonial === i ? 'bg-blue-600 w-8' : 'bg-slate-300 hover:bg-slate-400'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* TESTIMONIALS - DB-backed, renders nothing if no testimonials */}
+      <TestimonialsSection />
 
       {/* FAQ ACCORDION */}
       <section className="py-16 lg:py-24 bg-slate-50">
