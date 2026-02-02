@@ -181,7 +181,8 @@ EXCEPTION
 END;
 $$ LANGUAGE plpgsql;
 
--- Apply trigger to content tables
+-- Apply trigger to ALL user-facing content tables
+-- Marketing
 DROP TRIGGER IF EXISTS check_placeholder_marketing_pages ON marketing_pages;
 CREATE TRIGGER check_placeholder_marketing_pages
   BEFORE INSERT OR UPDATE ON marketing_pages
@@ -192,11 +193,13 @@ CREATE TRIGGER check_placeholder_marketing_sections
   BEFORE INSERT OR UPDATE ON marketing_sections
   FOR EACH ROW EXECUTE FUNCTION block_placeholder_text();
 
+-- Announcements
 DROP TRIGGER IF EXISTS check_placeholder_announcements ON announcements;
 CREATE TRIGGER check_placeholder_announcements
   BEFORE INSERT OR UPDATE ON announcements
   FOR EACH ROW EXECUTE FUNCTION block_placeholder_text();
 
+-- Programs
 DROP TRIGGER IF EXISTS check_placeholder_program_outcomes ON program_outcomes;
 CREATE TRIGGER check_placeholder_program_outcomes
   BEFORE INSERT OR UPDATE ON program_outcomes
@@ -205,6 +208,17 @@ CREATE TRIGGER check_placeholder_program_outcomes
 DROP TRIGGER IF EXISTS check_placeholder_program_tasks ON program_tasks;
 CREATE TRIGGER check_placeholder_program_tasks
   BEFORE INSERT OR UPDATE ON program_tasks
+  FOR EACH ROW EXECUTE FUNCTION block_placeholder_text();
+
+DROP TRIGGER IF EXISTS check_placeholder_program_requirements ON program_requirements;
+CREATE TRIGGER check_placeholder_program_requirements
+  BEFORE INSERT OR UPDATE ON program_requirements
+  FOR EACH ROW EXECUTE FUNCTION block_placeholder_text();
+
+-- Programs table itself (name, description)
+DROP TRIGGER IF EXISTS check_placeholder_programs ON programs;
+CREATE TRIGGER check_placeholder_programs
+  BEFORE INSERT OR UPDATE ON programs
   FOR EACH ROW EXECUTE FUNCTION block_placeholder_text();
 
 -- ============================================
