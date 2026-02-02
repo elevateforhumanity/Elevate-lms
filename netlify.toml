@@ -90,6 +90,64 @@
 # ROUTE REDIRECTS
 # ============================================
 
+# Fix slow 307 redirect - handle at edge for instant response
+[[redirects]]
+  from = "/store/licenses/enterprise-license"
+  to = "/store/licenses/enterprise"
+  status = 301
+  force = true
+
+# Legacy shop URLs → new store URLs
+[[redirects]]
+  from = "/shop/product/:slug"
+  to = "/store/products/:slug"
+  status = 301
+  force = true
+
+# Malformed AASA path seen in logs → correct well-known path
+[[redirects]]
+  from = "/well.known-/apple-app-site-association"
+  to = "/.well-known/apple-app-site-association"
+  status = 301
+  force = true
+
+# Block WordPress vulnerability scans (reduce log noise)
+[[redirects]]
+  from = "/wp-admin"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/wp-admin/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/wp-includes/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/wp-content/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/wp-login.php"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/xmlrpc.php"
+  to = "/404"
+  status = 404
+  force = true
+
 [[redirects]]
   from = "/student/dashboard"
   to = "/student-portal"
