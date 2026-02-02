@@ -128,6 +128,9 @@ export default async function ProgramDetailPage({
 
   let program: Program | null = null;
 
+  let dbOutcomes: { outcome: string }[] = [];
+  let dbRequirements: { requirement: string }[] = [];
+
   try {
     const supabase = await createClient();
 
@@ -143,6 +146,24 @@ export default async function ProgramDetailPage({
         .single();
 
       program = dbProgram || await loadProgram(slug);
+
+      // Fetch outcomes from DB if program found
+      if (program?.id) {
+        const { data: outcomes } = await supabase
+          .from('program_outcomes')
+          .select('outcome')
+          .eq('program_id', program.id)
+          .order('outcome_order', { ascending: true });
+        
+        const { data: requirements } = await supabase
+          .from('program_requirements')
+          .select('requirement')
+          .eq('program_id', program.id)
+          .order('requirement_order', { ascending: true });
+
+        dbOutcomes = outcomes || [];
+        dbRequirements = requirements || [];
+      }
     }
   } catch (err) {
     // Database error - try static fallback
@@ -180,8 +201,12 @@ export default async function ProgramDetailPage({
     salaryMin: program.salary_min,
     salaryMax: program.salary_max,
     whatYouLearn: program.what_you_learn || program.whatYouLearn,
-    careerOutcomes: program.career_outcomes || program.careerOutcomes || program.outcomes,
-    prerequisites: program.prerequisites,
+    careerOutcomes: dbOutcomes.length > 0 
+      ? dbOutcomes.map(o => o.outcome) 
+      : (program.career_outcomes || program.careerOutcomes || program.outcomes),
+    prerequisites: dbRequirements.length > 0
+      ? dbRequirements.map(r => r.requirement).join(', ')
+      : program.prerequisites,
     fundingEligible: program.funding_eligible || program.wioa_approved,
     placementRate: program.placement_rate,
     completionRate: program.completion_rate,

@@ -31,6 +31,7 @@ import {
 } from 'lucide-react';
 import AnnouncementsFeed from './AnnouncementsFeed';
 import EnrollmentDashboard from './EnrollmentDashboard';
+import StudentProgressWidget from './StudentProgressWidget';
 
 export const metadata: Metadata = {
   alternates: {
@@ -279,6 +280,7 @@ export default async function StudentPortalPage() {
       <section className="py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <EnrollmentDashboard />
+          <StudentProgressWidget />
         </div>
       </section>
 
