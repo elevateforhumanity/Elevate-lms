@@ -1,4 +1,21 @@
 // @ts-nocheck
+/**
+ * CANONICAL ENROLLMENT CHECKOUT ENDPOINT
+ * 
+ * This is the SOURCE OF TRUTH for program enrollments.
+ * All "Enroll" CTAs should route through this endpoint.
+ * 
+ * Creates Stripe Checkout Sessions with required metadata:
+ * - payment_type: 'enrollment'
+ * - enrollment_id, program_id, program_slug
+ * - student info (first_name, last_name, email)
+ * 
+ * The webhook at /api/webhooks/stripe/route.ts expects this metadata
+ * to properly process enrollment payments.
+ * 
+ * Payment Links are supported via fallback handler but should NOT be
+ * used for enrollments - they lack guaranteed metadata.
+ */
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;

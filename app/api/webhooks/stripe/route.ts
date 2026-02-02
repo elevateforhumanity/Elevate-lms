@@ -1094,6 +1094,251 @@ export async function POST(request: NextRequest) {
         logger.info(
           `✅ Payment processed (legacy): user ${userId}, course ${courseId}`
         );
+        break;
+      }
+
+      // ========================================================================
+      // PAYMENT LINK FALLBACK HANDLER
+      // For Payment Links without metadata - infer enrollment from price mapping
+      // ========================================================================
+      try {
+        // Log diagnostic info
+        const hasMetadata = !!(session.metadata?.payment_type || session.metadata?.enrollment_id || session.metadata?.program_id);
+        console.log('[webhook] Payment Link fallback check:', {
+          session_id: session.id,
+          has_metadata: hasMetadata,
+          payment_type: session.metadata?.payment_type || 'none',
+          mode: session.mode,
+        });
+
+        // Skip if we already have proper metadata (handled above)
+        if (hasMetadata) {
+          console.log('[webhook] Session has metadata, skipping fallback');
+          break;
+        }
+
+        // Only process payment mode sessions (not subscriptions)
+        if (session.mode !== 'payment') {
+          console.log('[webhook] Not a payment session, skipping fallback');
+          break;
+        }
+
+        // Fetch line items from Stripe to get price/product IDs
+        const lineItems = await stripe.checkout.sessions.listLineItems(session.id, {
+          limit: 10,
+        });
+
+        if (!lineItems.data.length) {
+          console.log('[webhook] No line items found, skipping fallback');
+          break;
+        }
+
+        // Get the first line item's price and product
+        const firstItem = lineItems.data[0];
+        const priceId = firstItem.price?.id || null;
+        const productId = typeof firstItem.price?.product === 'string' 
+          ? firstItem.price.product 
+          : firstItem.price?.product?.id || null;
+
+        console.log('[webhook] Payment Link fallback - line item:', {
+          price_id: priceId,
+          product_id: productId,
+          amount: firstItem.amount_total,
+        });
+
+        if (!priceId && !productId) {
+          console.log('[webhook] No price or product ID, skipping fallback');
+          break;
+        }
+
+        // Look up enrollment mapping in database
+        const { data: mapping, error: mappingError } = await supabase.rpc(
+          'lookup_stripe_enrollment_map',
+          {
+            p_price_id: priceId,
+            p_product_id: productId,
+          }
+        );
+
+        if (mappingError) {
+          console.error('[webhook] Mapping lookup error:', mappingError);
+          break;
+        }
+
+        if (!mapping || mapping.length === 0) {
+          console.log('[webhook] Payment Link - no enrollment mapping:', {
+            session_id: session.id,
+            has_metadata: false,
+            price_id: priceId,
+            product_id: productId,
+            mapping_hit: false,
+            enrollment_result: 'skipped:no_mapping',
+          });
+          break;
+        }
+
+        const enrollmentConfig = mapping[0];
+        console.log('[webhook] Found enrollment mapping:', {
+          program_slug: enrollmentConfig.program_slug,
+          enrollment_type: enrollmentConfig.enrollment_type,
+          is_deposit: enrollmentConfig.is_deposit,
+          auto_enroll: enrollmentConfig.auto_enroll,
+        });
+
+        // Skip if auto-enroll is disabled for this mapping
+        if (!enrollmentConfig.auto_enroll) {
+          console.log('[webhook] Auto-enroll disabled for this mapping');
+          break;
+        }
+
+        // Get customer email
+        const customerEmail = session.customer_email || session.customer_details?.email;
+        if (!customerEmail) {
+          console.log('[webhook] No customer email, cannot create enrollment');
+          break;
+        }
+
+        // Find or create user profile
+        let studentId: string | null = null;
+        const { data: existingProfile } = await supabase
+          .from('profiles')
+          .select('id')
+          .eq('email', customerEmail.toLowerCase())
+          .single();
+
+        if (existingProfile) {
+          studentId = existingProfile.id;
+        } else {
+          // Create a new profile for the student
+          const { data: newProfile, error: profileError } = await supabase
+            .from('profiles')
+            .insert({
+              email: customerEmail.toLowerCase(),
+              full_name: session.customer_details?.name || customerEmail.split('@')[0],
+              role: 'student',
+              onboarding_completed: false,
+            })
+            .select('id')
+            .single();
+
+          if (profileError) {
+            console.error('[webhook] Failed to create profile:', profileError);
+            break;
+          }
+          studentId = newProfile?.id || null;
+        }
+
+        if (!studentId) {
+          console.error('[webhook] Could not determine student ID');
+          break;
+        }
+
+        // Get program ID from training_programs table
+        const { data: program } = await supabase
+          .from('training_programs')
+          .select('id')
+          .eq('slug', enrollmentConfig.program_slug)
+          .single();
+
+        const programId = program?.id || enrollmentConfig.program_id;
+
+        // Check for existing enrollment (idempotency)
+        const { data: existingEnrollment } = await supabase
+          .from('program_enrollments')
+          .select('id, status')
+          .eq('student_id', studentId)
+          .eq('program_id', programId)
+          .maybeSingle();
+
+        let enrollmentResult: string;
+
+        if (existingEnrollment) {
+          // Update existing enrollment if not already active
+          if (existingEnrollment.status !== 'ACTIVE') {
+            await supabase
+              .from('program_enrollments')
+              .update({
+                status: enrollmentConfig.is_deposit ? 'DEPOSIT_PAID' : 'ACTIVE',
+                payment_status: enrollmentConfig.is_deposit ? 'DEPOSIT_PAID' : 'PAID',
+                stripe_checkout_session_id: session.id,
+                stripe_payment_intent_id: session.payment_intent as string,
+                amount_paid_cents: session.amount_total || 0,
+                updated_at: new Date().toISOString(),
+              })
+              .eq('id', existingEnrollment.id);
+            enrollmentResult = `updated:${existingEnrollment.id}`;
+          } else {
+            enrollmentResult = `already_active:${existingEnrollment.id}`;
+          }
+        } else {
+          // Create new enrollment
+          const { data: newEnrollment, error: enrollError } = await supabase
+            .from('program_enrollments')
+            .insert({
+              student_id: studentId,
+              program_id: programId,
+              program_slug: enrollmentConfig.program_slug,
+              funding_source: enrollmentConfig.funding_source,
+              status: enrollmentConfig.is_deposit ? 'DEPOSIT_PAID' : 'ACTIVE',
+              payment_status: enrollmentConfig.is_deposit ? 'DEPOSIT_PAID' : 'PAID',
+              stripe_checkout_session_id: session.id,
+              stripe_payment_intent_id: session.payment_intent as string,
+              amount_paid_cents: session.amount_total || 0,
+              enrolled_at: new Date().toISOString(),
+            })
+            .select('id')
+            .single();
+
+          if (enrollError) {
+            console.error('[webhook] Failed to create enrollment:', enrollError);
+            break;
+          }
+          enrollmentResult = `created:${newEnrollment?.id}`;
+        }
+
+        // Log the successful enrollment
+        console.log('[webhook] ✅ Payment Link enrollment processed:', {
+          session_id: session.id,
+          price_id: priceId,
+          mapping_hit: true,
+          enrollment_result: enrollmentResult,
+          program_slug: enrollmentConfig.program_slug,
+          student_email: customerEmail,
+        });
+
+        // Send welcome email if configured
+        if (enrollmentConfig.send_welcome_email && customerEmail) {
+          try {
+            const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
+            await fetch(`${siteUrl}/api/email/send`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                to: customerEmail,
+                subject: `🎓 Welcome to ${enrollmentConfig.program_slug.replace(/-/g, ' ')} - Enrollment Confirmed!`,
+                html: `
+                  <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h2 style="color: #1e3a8a;">Welcome to Elevate for Humanity!</h2>
+                    <p>Your enrollment has been confirmed.</p>
+                    <p><strong>Program:</strong> ${enrollmentConfig.program_slug.replace(/-/g, ' ')}</p>
+                    <p><strong>Status:</strong> ${enrollmentConfig.is_deposit ? 'Deposit Paid - Remaining balance due' : 'Fully Paid'}</p>
+                    <div style="text-align: center; margin: 24px 0;">
+                      <a href="${siteUrl}/login" style="display: inline-block; background: #2563eb; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold;">Login to Student Portal →</a>
+                    </div>
+                    <p>Questions? Call us at <a href="tel:3173143757">(317) 314-3757</a></p>
+                  </div>
+                `,
+              }),
+            });
+            console.log('[webhook] Welcome email sent to:', customerEmail);
+          } catch (emailErr) {
+            console.warn('[webhook] Failed to send welcome email:', emailErr);
+          }
+        }
+
+      } catch (fallbackErr) {
+        // Don't fail the webhook for fallback errors
+        console.error('[webhook] Payment Link fallback error (non-fatal):', fallbackErr);
       }
       break;
     }
