@@ -30,6 +30,11 @@ import { Leaderboard } from '@/components/Leaderboard';
 import { Gamification } from '@/components/Gamification';
 import { StudyGroups } from '@/components/StudyGroups';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { NextActionBanner } from '@/components/enrollment/NextActionBanner';
+
+function NextActionBannerWrapper() {
+  return <NextActionBanner />;
+}
 
 export const metadata: Metadata = {
   title: 'Student Dashboard | Elevate LMS',
@@ -195,6 +200,9 @@ export default async function StudentDashboardPage() {
       </header>
 
       <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+        {/* Next Required Action Banner */}
+        <NextActionBannerWrapper />
+
         {/* Welcome Banner */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6 text-white">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">

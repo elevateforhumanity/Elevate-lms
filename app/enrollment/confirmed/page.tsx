@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { CheckCircle, Calendar, Building2, Award } from 'lucide-react';
@@ -14,7 +14,7 @@ interface EnrollmentData {
   start_date?: string;
 }
 
-export default function EnrollmentConfirmedPage() {
+function EnrollmentConfirmedContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [enrollment, setEnrollment] = useState<EnrollmentData | null>(null);
@@ -164,5 +164,17 @@ export default function EnrollmentConfirmedPage() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function EnrollmentConfirmedPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      </div>
+    }>
+      <EnrollmentConfirmedContent />
+    </Suspense>
   );
 }

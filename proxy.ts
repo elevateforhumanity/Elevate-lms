@@ -73,6 +73,12 @@ const AUTH_REQUIRED_ROUTES = ['/student', '/my-courses', '/my-progress', '/setti
 // Routes that require onboarding completion
 const ONBOARDING_REQUIRED_ROUTES = ['/hub', '/lms', '/student-portal', '/my-courses', '/my-progress'];
 
+// Routes that require active enrollment (enrollment_state = 'active' or 'documents_complete')
+const ENROLLMENT_REQUIRED_ROUTES = ['/dashboard', '/courses', '/learn', '/lms/courses'];
+
+// Enrollment flow routes (don't redirect these)
+const ENROLLMENT_FLOW_ROUTES = ['/enrollment/confirmed', '/enrollment/orientation', '/enrollment/documents', '/enrollment/placement'];
+
 // Super admin emails - full platform access (platform owner)
 const SUPER_ADMIN_EMAILS = ['elizabethpowell6262@gmail.com'];
 
@@ -375,6 +381,45 @@ export async function proxy(request: NextRequest) {
     // If onboarding not completed, redirect to onboarding
     if (!profile?.onboarding_completed) {
       return NextResponse.redirect(new URL('/onboarding', request.url), { status: 307 });
+    }
+  }
+
+  // ============================================
+  // ENROLLMENT STATE CHECK
+  // ============================================
+  const requiresEnrollment = ENROLLMENT_REQUIRED_ROUTES.some((route) =>
+    pathname.startsWith(route)
+  );
+  const isEnrollmentFlowRoute = ENROLLMENT_FLOW_ROUTES.some((route) =>
+    pathname.startsWith(route)
+  );
+
+  if (requiresEnrollment && !isEnrollmentFlowRoute) {
+    // Check enrollment state
+    const { data: enrollment } = await supabase
+      .from('program_enrollments')
+      .select('enrollment_state')
+      .eq('user_id', user.id)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (enrollment) {
+      const state = enrollment.enrollment_state;
+      
+      // Only allow access if enrollment is active or documents_complete
+      if (state !== 'active' && state !== 'documents_complete') {
+        // Redirect to appropriate enrollment step
+        let redirectPath = '/enrollment/confirmed';
+        
+        if (state === 'confirmed') {
+          redirectPath = '/enrollment/orientation';
+        } else if (state === 'orientation_complete') {
+          redirectPath = '/enrollment/documents';
+        }
+        
+        return NextResponse.redirect(new URL(redirectPath, request.url), { status: 307 });
+      }
     }
   }
 

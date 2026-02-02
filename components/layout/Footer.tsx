@@ -52,7 +52,17 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        {/* Enrollment Disclaimer */}
+        <div className="border-t border-gray-800 mt-8 pt-8">
+          <p className="text-xs text-gray-500 mb-2">
+            Enrollment is program-based. Courses, projects, and hands-on activities are part of your program and cannot be accessed independently.
+          </p>
+          <p className="text-xs text-gray-500">
+            Some programs are publicly funded. Some are self-pay. All pathways are sponsor-managed and state-approved.
+          </p>
+        </div>
+
+        <div className="border-t border-gray-800 mt-6 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <div>© {new Date().getFullYear()} Elevate for Humanity. All rights reserved.</div>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-white">Privacy</Link>

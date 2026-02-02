@@ -59,7 +59,7 @@ export default function BarberProgramPage() {
                 className="inline-flex items-center justify-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-colors"
               >
                 <GraduationCap className="w-6 h-6" />
-                Enroll Now
+                Apply to Program
               </Link>
               <Link
                 href="/partners/barber-shop"
@@ -318,7 +318,7 @@ export default function BarberProgramPage() {
               className="inline-flex items-center justify-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600"
             >
               <GraduationCap className="w-6 h-6" />
-              Enroll Now
+              Apply to Program
             </Link>
             <Link
               href="/partners/barber-shop"

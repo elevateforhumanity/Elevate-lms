@@ -100,7 +100,7 @@ export default async function BarberApprenticeshipPage() {
                 href="/programs/barber-apprenticeship/apply"
                 className="rounded-2xl bg-purple-600 text-white px-8 py-4 font-semibold shadow-lg hover:bg-purple-700 transition text-center"
               >
-                Enroll Now
+                Apply to Program
               </Link>
             </div>
 
