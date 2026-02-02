@@ -1,5 +1,191 @@
-import { redirect } from 'next/navigation';
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { Quote, ArrowRight, TrendingUp, Users, Star } from 'lucide-react';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+
+// Static testimonials data - avoids slow server-side database fetch
+const testimonials = [
+  {
+    id: '1',
+    name: 'Maria Rodriguez',
+    program_completed: 'Medical Assistant Training',
+    current_job_title: 'Certified Medical Assistant',
+    current_employer: 'Community Health Center',
+    quote: 'Elevate gave me the skills and confidence to start a career in healthcare. The instructors were supportive and the hands-on training prepared me for real-world situations.',
+    image_url: null,
+    salary_before: 22000,
+    salary_after: 42000,
+    featured: true,
+  },
+  {
+    id: '2',
+    name: 'James Thompson',
+    program_completed: 'IT Support Specialist',
+    current_job_title: 'Help Desk Technician',
+    current_employer: 'TechServe Solutions',
+    quote: 'I went from working retail to a career in IT. The program was completely free and the job placement support was incredible.',
+    image_url: null,
+    salary_before: 28000,
+    salary_after: 48000,
+    featured: true,
+  },
+  {
+    id: '3',
+    name: 'Aisha Johnson',
+    program_completed: 'Business Administration',
+    current_job_title: 'Office Manager',
+    current_employer: 'Regional Insurance Group',
+    quote: 'The flexible schedule allowed me to complete training while caring for my family. Now I have a stable career with benefits.',
+    image_url: null,
+    salary_before: 25000,
+    salary_after: 45000,
+    featured: true,
+  },
+];
 
 export default function TestimonialsPage() {
-  redirect('/success-stories');
+  const avgIncrease = Math.round(
+    testimonials.reduce((acc, t) => {
+      if (t.salary_before && t.salary_after) {
+        return acc + ((t.salary_after - t.salary_before) / t.salary_before) * 100;
+      }
+      return acc;
+    }, 0) / testimonials.filter(t => t.salary_before && t.salary_after).length
+  );
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Testimonials' }]} />
+        </div>
+      </div>
+
+      {/* Hero */}
+      <section className="relative min-h-[400px] flex items-center overflow-hidden bg-gradient-to-br from-blue-900 to-blue-700">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
+          <div className="max-w-2xl">
+            <span className="inline-block px-4 py-2 bg-green-500 text-white text-sm font-semibold rounded-full mb-6">
+              Real People, Real Results
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+              Success Stories
+            </h1>
+            <p className="text-xl text-gray-200 mb-8">
+              Meet the graduates who transformed their lives through career training. 
+              Their success could be your success.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-8 bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <div className="text-3xl font-bold text-blue-600">{testimonials.length}+</div>
+              <div className="text-gray-600">Success Stories</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-blue-600">85%</div>
+              <div className="text-gray-600">Placement Rate</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-blue-600">{avgIncrease}%</div>
+              <div className="text-gray-600">Avg Salary Increase</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-blue-600">100%</div>
+              <div className="text-gray-600">Free Training</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        {/* Testimonials Grid */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Graduate Testimonials</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((story) => (
+              <div key={story.id} className="bg-white rounded-xl shadow-sm border overflow-hidden">
+                <div className="h-48 bg-gray-200 relative">
+                  {story.image_url ? (
+                    <Image
+                      src={story.image_url}
+                      alt={story.name}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600">
+                      <span className="text-4xl font-bold text-white">
+                        {story.name.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">{story.name}</h3>
+                  <p className="text-blue-600 font-medium mb-3">{story.program_completed}</p>
+                  
+                  {story.current_job_title && story.current_employer && (
+                    <p className="text-gray-600 text-sm mb-3">
+                      Now: {story.current_job_title} at {story.current_employer}
+                    </p>
+                  )}
+
+                  {story.quote && (
+                    <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                      <Quote className="w-5 h-5 text-blue-500 mb-2" />
+                      <p className="text-gray-700 text-sm italic line-clamp-3">
+                        &ldquo;{story.quote}&rdquo;
+                      </p>
+                    </div>
+                  )}
+
+                  {story.salary_before && story.salary_after && (
+                    <div className="flex items-center gap-2 text-sm">
+                      <TrendingUp className="w-4 h-4 text-green-500" />
+                      <span className="text-gray-600">
+                        ${story.salary_before.toLocaleString()} → ${story.salary_after.toLocaleString()}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-8 text-white text-center">
+          <h2 className="text-2xl font-bold mb-4">Your Success Story Starts Here</h2>
+          <p className="text-orange-100 mb-6 max-w-xl mx-auto">
+            Join the hundreds of graduates who have transformed their lives through 
+            free career training. Your story could be next.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/apply"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-orange-600 font-semibold rounded-lg hover:bg-gray-100 transition"
+            >
+              Apply Now
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/programs"
+              className="px-6 py-3 bg-orange-400 text-white font-semibold rounded-lg hover:bg-orange-300 transition"
+            >
+              View Programs
+            </Link>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
 }

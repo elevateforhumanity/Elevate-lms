@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = 'force-dynamic';
+// Cache for 10 minutes - marketing content doesn't need real-time updates
+export const revalidate = 600;
 
 export default async function MentalWellnessPage() {
   const supabase = await createClient();

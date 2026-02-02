@@ -1,18 +1,29 @@
-import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+
+// Consolidated to /testimonials - redirect handled by Netlify edge,
+// this catches local dev and non-Netlify deployments
+export default function SuccessStoriesRedirect() {
+  redirect('/testimonials');
+}
+
+// Keep metadata for SEO during transition
+export const metadata = {
+  title: 'Success Stories - Real People, Real Results | Elevate for Humanity',
+  description:
+    'Read inspiring success stories from graduates who transformed their lives through our workforce training programs. Real careers, real impact.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/testimonials',
+  },
+};
+
+// Original page code below - kept for reference during migration
+// Delete this file entirely once /testimonials is confirmed working
+/*
 import { createClient } from '@/lib/supabase/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Quote, ArrowRight, TrendingUp, Users } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-
-export const metadata: Metadata = {
-  title: 'Success Stories - Real People, Real Results | Elevate for Humanity',
-  description:
-    'Read inspiring success stories from graduates who transformed their lives through our workforce training programs. Real careers, real impact.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/success-stories',
-  },
-};
 
 export const dynamic = 'force-dynamic';
 
@@ -264,3 +275,4 @@ export default async function SuccessStoriesPage() {
     </div>
   );
 }
+*/

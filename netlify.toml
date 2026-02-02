@@ -90,6 +90,38 @@
 # ROUTE REDIRECTS
 # ============================================
 
+# Canonical: NO trailing slashes (prevents 308 hops)
+[[redirects]]
+  from = "/testimonials/"
+  to = "/testimonials"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact/"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/help/articles/article/"
+  to = "/help/articles/article"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/success-stories/"
+  to = "/testimonials"
+  status = 301
+  force = true
+
+# Consolidate /success-stories to /testimonials (single canonical)
+[[redirects]]
+  from = "/success-stories"
+  to = "/testimonials"
+  status = 301
+  force = true
+
 # Fix slow 307 redirect - handle at edge for instant response
 [[redirects]]
   from = "/store/licenses/enterprise-license"
@@ -115,6 +147,52 @@
 [[redirects]]
   from = "/shop/product/:slug"
   to = "/store/products/:slug"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/shop/seller"
+  to = "/store"
+  status = 301
+  force = true
+
+# Fix 502 on /career-center - redirect to training
+[[redirects]]
+  from = "/career-center"
+  to = "/training"
+  status = 301
+  force = true
+
+# Fix broken link /store/pricing → /pricing
+[[redirects]]
+  from = "/store/pricing"
+  to = "/pricing"
+  status = 301
+  force = true
+
+# Kill redirect hops / aliases
+[[redirects]]
+  from = "/pricing/build"
+  to = "/pricing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/register"
+  to = "/signup"
+  status = 301
+  force = true
+
+# Scholarships alias to funding
+[[redirects]]
+  from = "/scholarships"
+  to = "/funding"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/scholarships/"
+  to = "/funding"
   status = 301
   force = true
 

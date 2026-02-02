@@ -28,7 +28,8 @@ const VISUAL_TEMPLATE_PROGRAMS = [
   'jri',
 ];
 
-export const dynamic = 'force-dynamic';
+// Cache program pages for 10 minutes - eliminates 21s+ load times
+export const revalidate = 600;
 
 type Params = Promise<{ slug: string }>;
 
