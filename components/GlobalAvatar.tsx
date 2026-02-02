@@ -3,7 +3,18 @@
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
-// Map page patterns to UNIQUE avatar videos - ALL pages get avatars
+/**
+ * GlobalAvatar - Video avatar component
+ * 
+ * RULES:
+ * 1. DISABLED by default - pages must be explicitly listed
+ * 2. No repeated videos across unrelated pages
+ * 3. Silent on governance/policy pages
+ * 4. Different videos for marketing vs LMS
+ */
+
+// Pages where video avatar is ENABLED (explicit allowlist)
+// If a page is not listed here, NO video avatar appears
 const avatarConfig: { pattern: RegExp; video: string; name: string }[] = [
   // Homepage
   { pattern: /^\/$/, video: '/videos/avatars/home-welcome.mp4', name: 'Welcome to Elevate' },
@@ -102,23 +113,31 @@ const avatarConfig: { pattern: RegExp; video: string; name: string }[] = [
   // Financial/Tax pages
   { pattern: /^\/(vita|tax|financial-aid|funding|wioa)/i, video: '/videos/avatars/financial-guide.mp4', name: 'Financial Guide' },
   
-  // Store pages
-  { pattern: /^\/store/i, video: '/videos/avatars/store-assistant.mp4', name: 'Store Assistant' },
+  // Store pages - checkout only
+  { pattern: /^\/store\/checkout/i, video: '/videos/avatars/store-assistant.mp4', name: 'Checkout Guide' },
   
   // Onboarding/Orientation pages
   { pattern: /^\/(onboarding|orientation)/i, video: '/videos/avatars/orientation-guide.mp4', name: 'Orientation Guide' },
   
-  // Default fallback
-  { pattern: /.*/, video: '/videos/avatars/home-welcome.mp4', name: 'Elevate Guide' },
+  // NO DEFAULT FALLBACK - if not listed above, no avatar appears
 ];
 
-// Pages that should NOT show the avatar (API/auth only)
+// Pages that should NEVER show the avatar
+// This is a safety net - primary control is the allowlist above
 const excludedPatterns = [
   /^\/api/i,
   /^\/auth/i,
   /^\/login/i,
   /^\/signup/i,
   /^\/register/i,
+  /^\/privacy/i,
+  /^\/terms/i,
+  /^\/policies/i,
+  /^\/governance/i,
+  /^\/accessibility/i,
+  /^\/sitemap/i,
+  /^\/404/i,
+  /^\/500/i,
 ];
 
 export default function GlobalAvatar() {
