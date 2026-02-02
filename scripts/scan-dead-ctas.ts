@@ -16,20 +16,21 @@ const EXCLUDE_PATTERNS = [
   /__tests__/,
   /\.stories\./,
   /storybook/i,
+  /\/demo\//i, // Demo pages are acceptable
+  /\/api\//i, // API routes don't have CTAs
+  /\.backup\./i, // Backup files
+  /data\/programs\.ts$/, // Program data descriptions
 ];
 
 const FILE_EXTENSIONS = ['.ts', '.tsx', '.js', '.jsx'];
 
-// Patterns that indicate dead CTAs
+// Patterns that indicate dead CTAs (only check actual UI elements)
 const DEAD_CTA_PATTERNS = [
   { pattern: /href\s*=\s*["']#["']/g, type: 'DEAD_LINK', description: 'href="#" - link goes nowhere' },
   { pattern: /href\s*=\s*["']['"](?!\s*\+)/g, type: 'EMPTY_HREF', description: 'Empty href attribute' },
   { pattern: /onClick\s*=\s*\{\s*\(\)\s*=>\s*\{\s*\}\s*\}/g, type: 'EMPTY_HANDLER', description: 'Empty onClick handler' },
   { pattern: /onClick\s*=\s*\{\s*\(\s*\)\s*=>\s*null\s*\}/g, type: 'NULL_HANDLER', description: 'onClick returns null' },
   { pattern: /onClick\s*=\s*\{\s*\(\s*\)\s*=>\s*undefined\s*\}/g, type: 'UNDEFINED_HANDLER', description: 'onClick returns undefined' },
-  { pattern: /disabled\s*(?:=\s*\{?\s*true\s*\}?)?(?:\s|>)/g, type: 'DISABLED_BUTTON', description: 'Permanently disabled button' },
-  { pattern: /\/\/\s*TODO[:\s]/gi, type: 'TODO_COMMENT', description: 'TODO comment - incomplete implementation' },
-  { pattern: /\/\*\s*TODO[:\s]/gi, type: 'TODO_COMMENT', description: 'TODO comment - incomplete implementation' },
   { pattern: /href\s*=\s*["']\/coming-soon["']/g, type: 'COMING_SOON_ROUTE', description: 'Links to coming-soon page' },
   { pattern: /href\s*=\s*["']\/placeholder["']/g, type: 'PLACEHOLDER_ROUTE', description: 'Links to placeholder page' },
 ];

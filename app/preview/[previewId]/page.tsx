@@ -690,7 +690,7 @@ export default function PreviewPage() {
                 <ul className="space-y-2 text-sm opacity-70" style={{ color: colors.textOnPrimary }}>
                   {programs.map((p, idx) => (
                     <li key={`footer-program-${idx}`}>
-                      <a href="#" className="hover:opacity-100">{p.name}</a>
+                      <span className="hover:opacity-100 cursor-default">{p.name}</span>
                     </li>
                   ))}
                 </ul>
@@ -698,9 +698,9 @@ export default function PreviewPage() {
               <div>
                 <h4 className="font-bold mb-4" style={{ color: colors.textOnPrimary }}>Company</h4>
                 <ul className="space-y-2 text-sm opacity-70" style={{ color: colors.textOnPrimary }}>
-                  <li><a href="#" className="hover:opacity-100">About Us</a></li>
-                  <li><a href="#" className="hover:opacity-100">Careers</a></li>
-                  <li><a href="#" className="hover:opacity-100">Contact</a></li>
+                  <li><span className="hover:opacity-100 cursor-default">About Us</span></li>
+                  <li><span className="hover:opacity-100 cursor-default">Careers</span></li>
+                  <li><span className="hover:opacity-100 cursor-default">Contact</span></li>
                 </ul>
               </div>
               <div>

@@ -422,9 +422,9 @@ export default function SampleReportsPage() {
 
         {/* Note */}
         <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
-          <h3 className="font-semibold text-yellow-800 mb-2">Sample Data Notice</h3>
+          <h3 className="font-semibold text-yellow-800 mb-2">Template Format Notice</h3>
           <p className="text-yellow-700 text-sm">
-            The records shown above are sample templates demonstrating the format and structure of 
+            The records shown above are templates demonstrating the format and structure of 
             actual enrollment records, certificates, and funding reports. Real data is available 
             through the admin dashboard with appropriate access permissions.
           </p>

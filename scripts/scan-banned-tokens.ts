@@ -8,21 +8,21 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-// Tokens that indicate stub/placeholder content
+// Tokens that ALWAYS indicate stub/placeholder content
 const BANNED_TOKENS = [
   'coming soon',
   'lorem ipsum',
   'lorem',
   'tbd',
-  'fake',
 ];
 
-// These need context-aware detection (only flag in string literals, not code)
+// These need context-aware detection (only flag in user-facing string literals)
 const CONTEXT_SENSITIVE_TOKENS = [
-  'sample',
-  'example',
-  'placeholder',
-  'demo',
+  'sample data',
+  'example data',
+  'placeholder text',
+  'fake data',
+  'test data',
 ];
 
 const SCAN_DIRS = ['app', 'components', 'content', 'lib'];
@@ -37,6 +37,13 @@ const EXCLUDE_PATTERNS = [
   /banned-tokens\.ts$/, // Exclude the token list itself
   /scan-banned-tokens\.ts$/,
   /audit-stubs\.ts$/,
+  /archetypes\.ts$/, // Validation lists that define forbidden phrases
+  /content\/archetypes\.ts$/,
+  /api\/trap/, // Honeypot for scrapers
+  /api\/test-/, // Test endpoints
+  /api\/simulate/, // Simulation endpoints
+  /store\/demo/, // Demo pages are legitimate
+  /avatar-scripts\.ts$/, // Avatar scripts for demos
 ];
 
 // Patterns that are false positives

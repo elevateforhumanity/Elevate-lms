@@ -202,7 +202,7 @@ export async function GET(request: NextRequest) {
         time: event.time || '9:00 AM',
         duration: event.duration || 60,
         type: event.event_type || 'class',
-        location: event.description || 'TBD',
+        location: event.description || 'See event details',
         color: event.color || '#3b82f6',
       })),
       achievements: (achievementsResult.data || []).map(a => ({

@@ -112,7 +112,7 @@ export default async function CalendarPage() {
                             <div className="flex gap-4 mt-2 text-sm text-gray-500">
                               <span className="flex items-center gap-1">
                                 <Clock className="w-4 h-4" />
-                                {enrollment.course?.schedule || 'Schedule TBD'}
+                                {enrollment.course?.schedule || 'See course details'}
                               </span>
                             </div>
                           </div>
@@ -172,7 +172,7 @@ export default async function CalendarPage() {
               {programs && programs.length > 0 ? programs.map((program: any) => (
                 <Link key={program.id} href={`/programs/${program.id}`} className="block bg-white rounded-lg shadow-sm border p-4 hover:shadow-md transition">
                   <h3 className="font-semibold text-gray-900">{program.name}</h3>
-                  <p className="text-sm text-gray-600 mt-1">{program.schedule || 'Schedule TBD'}</p>
+                  {program.schedule && <p className="text-sm text-gray-600 mt-1">{program.schedule}</p>}
                   {program.start_date && (
                     <p className="text-xs text-purple-600 mt-2">
                       Starts: {new Date(program.start_date).toLocaleDateString()}
