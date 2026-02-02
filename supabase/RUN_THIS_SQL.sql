@@ -242,6 +242,86 @@ CREATE POLICY "Public read marketing_sections" ON marketing_sections
   );
 
 -- ============================================
+-- ADMIN ROLE MANAGEMENT
+-- ============================================
+
+-- Function to promote a user to admin by email
+CREATE OR REPLACE FUNCTION promote_to_admin(user_email TEXT)
+RETURNS TEXT AS $$
+DECLARE
+  updated_count INT;
+BEGIN
+  UPDATE profiles 
+  SET role = 'admin', updated_at = now()
+  WHERE email = user_email;
+  
+  GET DIAGNOSTICS updated_count = ROW_COUNT;
+  
+  IF updated_count = 0 THEN
+    RETURN 'No user found with email: ' || user_email;
+  ELSE
+    RETURN 'User ' || user_email || ' promoted to admin';
+  END IF;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Function to promote a user to super_admin by email
+CREATE OR REPLACE FUNCTION promote_to_super_admin(user_email TEXT)
+RETURNS TEXT AS $$
+DECLARE
+  updated_count INT;
+BEGIN
+  UPDATE profiles 
+  SET role = 'super_admin', updated_at = now()
+  WHERE email = user_email;
+  
+  GET DIAGNOSTICS updated_count = ROW_COUNT;
+  
+  IF updated_count = 0 THEN
+    RETURN 'No user found with email: ' || user_email;
+  ELSE
+    RETURN 'User ' || user_email || ' promoted to super_admin';
+  END IF;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Function to demote a user to student
+CREATE OR REPLACE FUNCTION demote_to_student(user_email TEXT)
+RETURNS TEXT AS $$
+DECLARE
+  updated_count INT;
+BEGIN
+  UPDATE profiles 
+  SET role = 'student', updated_at = now()
+  WHERE email = user_email;
+  
+  GET DIAGNOSTICS updated_count = ROW_COUNT;
+  
+  IF updated_count = 0 THEN
+    RETURN 'No user found with email: ' || user_email;
+  ELSE
+    RETURN 'User ' || user_email || ' demoted to student';
+  END IF;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- ============================================
+-- HOW TO USE:
+-- ============================================
+-- To make someone an admin, run:
+--   SELECT promote_to_admin('their-email@example.com');
+--
+-- To make someone a super admin, run:
+--   SELECT promote_to_super_admin('their-email@example.com');
+--
+-- To demote someone back to student, run:
+--   SELECT demote_to_student('their-email@example.com');
+--
+-- To see all admins:
+--   SELECT email, role FROM profiles WHERE role IN ('admin', 'super_admin', 'staff');
+-- ============================================
+
+-- ============================================
 -- DONE
 -- ============================================
 SELECT 'Migration complete!' AS status;
