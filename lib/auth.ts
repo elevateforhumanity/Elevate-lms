@@ -155,7 +155,9 @@ export async function getAuthUser(): Promise<AuthUser | null> {
 // =====================================================
 
 function isDemoMode(): boolean {
-  return process.env.DEMO_MODE === 'true' || process.env.NODE_ENV === 'development';
+  // Only enable demo mode if explicitly set - NOT in development by default
+  // This ensures proper auth is required even in development
+  return process.env.DEMO_MODE === 'true';
 }
 
 // Mock session for demo mode
@@ -246,7 +248,8 @@ export async function requireAdmin() {
   if (isDemoMode()) {
     return { session: DEMO_SESSION, role: 'admin' as UserRole };
   }
-  return requireRole('admin');
+  // Allow admin, super_admin, and staff roles to access admin panel
+  return requireRole(['admin', 'super_admin', 'staff']);
 }
 
 export async function requireProgramHolder() {

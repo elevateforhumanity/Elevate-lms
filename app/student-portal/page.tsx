@@ -33,6 +33,8 @@ import AnnouncementsFeed from './AnnouncementsFeed';
 import EnrollmentDashboard from './EnrollmentDashboard';
 import StudentProgressWidget from './StudentProgressWidget';
 
+export const revalidate = 3600; // Revalidate every hour
+
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/student-portal',
