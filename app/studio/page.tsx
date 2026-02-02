@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useStudio } from './hooks/useStudio';
+import { useWebContainer } from './hooks/useWebContainer';
 import { FileTree } from './components/FileTree';
 import { Editor } from './components/Editor';
 import { Tabs } from './components/Tabs';
@@ -10,6 +11,8 @@ import { GitPanel } from './components/GitPanel';
 import { SettingsModal } from './components/SettingsModal';
 import { Header } from './components/Header';
 import { Terminal } from './components/Terminal';
+import { WebContainerTerminal } from './components/WebContainerTerminal';
+import { PreviewPanel } from './components/PreviewPanel';
 import { CommandPalette } from './components/CommandPalette';
 import { WebSocketTerminal } from './components/WebSocketTerminal';
 import { PortForwarding } from './components/PortForwarding';
@@ -22,7 +25,7 @@ import { ConflictResolver } from './components/ConflictResolver';
 import { RefactorModal } from './components/RefactorModal';
 import type { Panel } from './types';
 
-type RightPanel = 'ai' | 'git' | 'debug' | 'ports' | 'prs' | 'actions' | 'deploy';
+type RightPanel = 'ai' | 'git' | 'debug' | 'ports' | 'prs' | 'actions' | 'deploy' | 'preview';
 
 interface Conflict {
   path: string;
@@ -33,6 +36,7 @@ interface Conflict {
 
 export default function StudioPage() {
   const studio = useStudio();
+  const webcontainer = useWebContainer();
   const [panel, setPanel] = useState<Panel>('files');
   const [showTerminal, setShowTerminal] = useState(false);
   const [showCommandPalette, setShowCommandPalette] = useState(false);
@@ -51,6 +55,7 @@ export default function StudioPage() {
   const [breakpoints, setBreakpoints] = useState<{ id: string; file: string; line: number; enabled: boolean }[]>([]);
   const [showBlame, setShowBlame] = useState(false);
   const [useWebSocketTerminal, setUseWebSocketTerminal] = useState(false);
+  const [terminalMode, setTerminalMode] = useState<'webcontainer' | 'server' | 'websocket'>('webcontainer');
   const [conflicts, setConflicts] = useState<Conflict[]>([]);
   const [conflictBranches, setConflictBranches] = useState<{ ours: string; theirs: string }>({ ours: '', theirs: '' });
   const [showRefactor, setShowRefactor] = useState(false);
@@ -192,6 +197,48 @@ export default function StudioPage() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [studio.activeFile, studio.saveFile]);
 
+  // Sync files to WebContainer when they change
+  const syncToWebContainer = useCallback(async () => {
+    if (!webcontainer.booted || studio.files.length === 0) return;
+    
+    // Convert file tree to flat list with content
+    const flatFiles: { path: string; content: string }[] = [];
+    
+    const processNode = async (node: any, parentPath: string = '') => {
+      const fullPath = parentPath ? `${parentPath}/${node.name}` : node.name;
+      
+      if (node.type === 'file') {
+        // Get file content from open files or fetch it
+        const openFile = studio.openFiles.find(f => f.path === fullPath);
+        if (openFile) {
+          flatFiles.push({ path: fullPath, content: openFile.content });
+        }
+      } else if (node.children) {
+        for (const child of node.children) {
+          await processNode(child, fullPath);
+        }
+      }
+    };
+    
+    for (const node of studio.files) {
+      await processNode(node);
+    }
+    
+    if (flatFiles.length > 0) {
+      await webcontainer.syncFiles(flatFiles);
+    }
+  }, [webcontainer, studio.files, studio.openFiles]);
+
+  // Sync file to WebContainer when saved
+  useEffect(() => {
+    if (webcontainer.booted && studio.activeFile) {
+      const file = studio.openFiles.find(f => f.path === studio.activeFile);
+      if (file && !file.modified) {
+        webcontainer.updateFile(file.path, file.content);
+      }
+    }
+  }, [webcontainer.booted, studio.activeFile, studio.openFiles, webcontainer.updateFile]);
+
   // Command palette commands
   const commands = useMemo(() => [
     { id: 'save', label: 'Save File', shortcut: 'Ctrl+S', category: 'File', action: () => studio.saveFile(studio.activeFile) },
@@ -201,12 +248,17 @@ export default function StudioPage() {
     { id: 'settings', label: 'Open Settings', category: 'Preferences', action: () => setShowSettings(true) },
     { id: 'refresh', label: 'Refresh Files', category: 'Git', action: () => studio.loadFiles() },
     { id: 'branch', label: 'Create Branch', category: 'Git', action: () => {} },
+    { id: 'pull', label: 'Pull Latest Changes', category: 'Git', action: () => studio.pullChanges?.() },
     { id: 'check-conflicts', label: 'Check Merge Conflicts', category: 'Git', action: () => checkConflicts('main', studio.branch) },
     { id: 'refactor', label: 'Refactor Symbol', shortcut: 'F2', category: 'Edit', action: () => setShowRefactor(true) },
+    { id: 'sync-webcontainer', label: 'Sync to WebContainer', category: 'Dev', action: syncToWebContainer },
+    { id: 'boot-webcontainer', label: 'Boot WebContainer', category: 'Dev', action: () => webcontainer.boot() },
+    { id: 'npm-install', label: 'npm install', category: 'Dev', action: () => webcontainer.install() },
+    { id: 'npm-dev', label: 'npm run dev', category: 'Dev', action: () => webcontainer.startServer() },
     { id: 'theme-dark', label: 'Theme: Dark', category: 'Preferences', action: () => studio.updateSettings({ theme: 'dark' }) },
     { id: 'theme-light', label: 'Theme: Light', category: 'Preferences', action: () => studio.updateSettings({ theme: 'light' }) },
     { id: 'logout', label: 'Logout', category: 'Account', action: () => studio.disconnect() },
-  ], [studio, checkConflicts]);
+  ], [studio, checkConflicts, syncToWebContainer, webcontainer]);
 
   // Warn on unsaved changes
   useEffect(() => {
@@ -608,15 +660,66 @@ export default function StudioPage() {
               </div>
             </div>
             {showTerminal && (
-              <div style={{ height: 200, borderTop: '1px solid #3c3c3c' }}>
-                {useWebSocketTerminal ? (
-                  <WebSocketTerminal 
-                    wsUrl="http://localhost:3001" 
-                    onPortDetected={handlePortDetected}
-                  />
-                ) : (
-                  <Terminal />
-                )}
+              <div style={{ height: 250, borderTop: '1px solid #3c3c3c', display: 'flex', flexDirection: 'column' }}>
+                {/* Terminal type selector */}
+                <div style={{ display: 'flex', gap: 4, padding: '4px 8px', background: '#1e1e1e', borderBottom: '1px solid #3c3c3c' }}>
+                  <button
+                    onClick={() => setTerminalMode('webcontainer')}
+                    style={{
+                      padding: '2px 8px',
+                      background: terminalMode === 'webcontainer' ? '#0e639c' : '#3c3c3c',
+                      border: 'none',
+                      borderRadius: 4,
+                      color: '#fff',
+                      cursor: 'pointer',
+                      fontSize: 10,
+                    }}
+                  >
+                    WebContainer
+                  </button>
+                  <button
+                    onClick={() => setTerminalMode('server')}
+                    style={{
+                      padding: '2px 8px',
+                      background: terminalMode === 'server' ? '#0e639c' : '#3c3c3c',
+                      border: 'none',
+                      borderRadius: 4,
+                      color: '#fff',
+                      cursor: 'pointer',
+                      fontSize: 10,
+                    }}
+                  >
+                    Server
+                  </button>
+                </div>
+                <div style={{ flex: 1 }}>
+                  {terminalMode === 'webcontainer' ? (
+                    <WebContainerTerminal
+                      terminals={webcontainer.terminals}
+                      activeTerminal={webcontainer.activeTerminal}
+                      servers={webcontainer.servers}
+                      booted={webcontainer.booted}
+                      booting={webcontainer.booting}
+                      installing={webcontainer.installing}
+                      onCommand={webcontainer.runCommand}
+                      onBoot={webcontainer.boot}
+                      onInstall={webcontainer.install}
+                      onStartServer={webcontainer.startServer}
+                      onStopServer={webcontainer.stopServer}
+                      onClear={webcontainer.clearTerminal}
+                      onAddTerminal={webcontainer.addTerminal}
+                      onRemoveTerminal={webcontainer.removeTerminal}
+                      onSetActiveTerminal={webcontainer.setActiveTerminal}
+                    />
+                  ) : terminalMode === 'websocket' ? (
+                    <WebSocketTerminal 
+                      wsUrl="http://localhost:3001" 
+                      onPortDetected={handlePortDetected}
+                    />
+                  ) : (
+                    <Terminal />
+                  )}
+                </div>
               </div>
             )}
           </div>
@@ -656,7 +759,7 @@ export default function StudioPage() {
         >
           {/* Panel Tabs */}
           <div style={{ display: 'flex', borderBottom: '1px solid #3c3c3c', flexWrap: 'wrap' }}>
-            {(['ai', 'git', 'prs', 'actions', 'deploy', 'debug', 'ports'] as RightPanel[]).map(p => (
+            {(['ai', 'git', 'preview', 'prs', 'actions', 'deploy', 'debug', 'ports'] as RightPanel[]).map(p => (
               <button
                 key={p}
                 onClick={() => setRightPanel(p)}
@@ -671,9 +774,21 @@ export default function StudioPage() {
                   fontSize: 10,
                   textTransform: 'uppercase',
                   minWidth: 40,
+                  position: 'relative',
                 }}
               >
                 {p === 'prs' ? 'PRs' : p === 'actions' ? 'CI' : p}
+                {p === 'preview' && webcontainer.servers.some(s => s.status === 'running') && (
+                  <span style={{
+                    position: 'absolute',
+                    top: 4,
+                    right: 4,
+                    width: 6,
+                    height: 6,
+                    borderRadius: '50%',
+                    background: '#7ee787',
+                  }} />
+                )}
               </button>
             ))}
           </div>
@@ -753,6 +868,17 @@ export default function StudioPage() {
                 repo={studio.currentRepo}
                 branch={studio.branch}
                 userId={studio.userId}
+              />
+            )}
+
+            {rightPanel === 'preview' && (
+              <PreviewPanel
+                servers={webcontainer.servers}
+                onRefresh={() => {
+                  // Refresh iframe by toggling panel
+                  setRightPanel('ai');
+                  setTimeout(() => setRightPanel('preview'), 100);
+                }}
               />
             )}
           </div>

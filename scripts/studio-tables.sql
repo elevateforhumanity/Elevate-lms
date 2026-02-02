@@ -159,6 +159,30 @@ CREATE TABLE IF NOT EXISTS studio_workflow_tracking (
   UNIQUE(user_id, repo_id, workflow_id)
 );
 
+-- WebContainer sessions
+CREATE TABLE IF NOT EXISTS studio_webcontainer_sessions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL,
+  repo_id UUID REFERENCES studio_repos(id) ON DELETE CASCADE,
+  status VARCHAR(50) DEFAULT 'idle',
+  last_command TEXT,
+  server_url TEXT,
+  server_port INTEGER,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Terminal history
+CREATE TABLE IF NOT EXISTS studio_terminal_history (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL,
+  session_id UUID REFERENCES studio_webcontainer_sessions(id) ON DELETE CASCADE,
+  command TEXT NOT NULL,
+  output TEXT,
+  exit_code INTEGER,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
 -- Deploy tokens (encrypted)
 CREATE TABLE IF NOT EXISTS studio_deploy_tokens (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -178,3 +202,5 @@ CREATE INDEX IF NOT EXISTS idx_studio_comments_file ON studio_comments(repo_id, 
 CREATE INDEX IF NOT EXISTS idx_studio_shares_code ON studio_shares(share_code);
 CREATE INDEX IF NOT EXISTS idx_studio_deployments_user ON studio_deployments(user_id, created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_studio_pr_tracking_user ON studio_pr_tracking(user_id, repo_id);
+CREATE INDEX IF NOT EXISTS idx_studio_webcontainer_sessions_user ON studio_webcontainer_sessions(user_id, repo_id);
+CREATE INDEX IF NOT EXISTS idx_studio_terminal_history_session ON studio_terminal_history(session_id, created_at DESC);

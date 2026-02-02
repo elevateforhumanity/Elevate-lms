@@ -552,6 +552,61 @@ export function useStudio() {
     setSettings(prev => ({ ...prev, ...updates }));
   }, []);
 
+  // Pull latest changes from remote
+  const pullChanges = useCallback(async () => {
+    if (!token || !currentRepo) return null;
+    setStatus('Pulling latest changes...');
+    setLoading(true);
+    
+    try {
+      const res = await fetch('/api/github/pull', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-gh-token': token },
+        body: JSON.stringify({ repo: currentRepo, branch }),
+      });
+      const data = await res.json();
+      
+      if (data.ok) {
+        // Refresh files to get latest
+        await loadFiles();
+        await loadHistory();
+        
+        // Refresh any open files that changed
+        if (data.filesChanged?.length > 0) {
+          const changedPaths = data.filesChanged.map((f: any) => f.filename);
+          for (const file of openFiles) {
+            if (changedPaths.includes(file.path) && !file.modified) {
+              // Re-fetch the file content
+              const fileRes = await fetch(
+                `/api/github/file?repo=${currentRepo}&path=${encodeURIComponent(file.path)}&ref=${branch}`,
+                { headers: { 'x-gh-token': token } }
+              );
+              const fileData = await fileRes.json();
+              if (!fileData.error) {
+                setOpenFiles(prev => prev.map(f =>
+                  f.path === file.path
+                    ? { ...f, content: fileData.content, originalContent: fileData.content, sha: fileData.sha }
+                    : f
+                ));
+              }
+            }
+          }
+        }
+        
+        setStatus(`Pulled: ${data.latestCommit?.message?.split('\n')[0] || data.latestSha?.slice(0, 7)}`);
+        return data;
+      } else {
+        setStatus(`Pull failed: ${data.error}`);
+        return null;
+      }
+    } catch (e) {
+      setStatus(`Pull failed: ${e}`);
+      return null;
+    } finally {
+      setLoading(false);
+    }
+  }, [token, currentRepo, branch, openFiles, loadFiles, loadHistory]);
+
   // Load on repo/branch change
   useEffect(() => {
     if (token && currentRepo) {
@@ -611,6 +666,8 @@ export function useStudio() {
     recentFiles,
     loadRecentFiles,
     viewFileAtCommit,
+    pullChanges,
+    files: fileTree,
     
     // AI fix errors
     fixErrors: async (path: string, errorMessage: string) => {
