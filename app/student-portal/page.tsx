@@ -29,6 +29,7 @@ import {
   Info,
   AlertTriangle,
 } from 'lucide-react';
+import AnnouncementsFeed from './AnnouncementsFeed';
 import EnrollmentDashboard from './EnrollmentDashboard';
 
 export const metadata: Metadata = {
@@ -174,26 +175,8 @@ export default async function StudentPortalPage() {
     },
   ];
 
-  const announcements = [
-    {
-      title: 'Spring 2026 Registration Open',
-      date: 'January 15, 2026',
-      description: 'Register for spring courses now. Priority deadline is February 1st.',
-      type: 'info',
-    },
-    {
-      title: 'Career Fair - February 8th',
-      date: 'January 12, 2026',
-      description: '50+ employers hiring. Register to attend in-person or virtually.',
-      type: 'event',
-    },
-    {
-      title: 'Financial Aid Reminder',
-      date: 'January 10, 2026',
-      description: 'Complete your FAFSA renewal by March 1st to maintain eligibility.',
-      type: 'important',
-    },
-  ];
+  // Announcements fetched from database via AnnouncementsFeed component
+  // No hardcoded/fake announcements - strict rendering rule
 
   const faqs = [
     {
@@ -331,51 +314,8 @@ export default async function StudentPortalPage() {
         </div>
       </section>
 
-      {/* Announcements */}
-      <section className="bg-gray-100 py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center gap-3 mb-8">
-            <Bell className="w-8 h-8 text-orange-600" />
-            <h2 className="text-3xl font-black text-black">Announcements</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {announcements.map((announcement, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-xl p-6 border-l-4 ${
-                  announcement.type === 'important'
-                    ? 'border-red-600'
-                    : announcement.type === 'event'
-                    ? 'border-green-600'
-                    : 'border-blue-600'
-                }`}
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-lg font-bold text-black">
-                    {announcement.title}
-                  </h3>
-                  <span
-                    className={`text-xs px-2 py-1 rounded-full inline-flex items-center gap-1 ${
-                      announcement.type === 'important'
-                        ? 'bg-red-100 text-red-700'
-                        : announcement.type === 'event'
-                        ? 'bg-green-100 text-green-700'
-                        : 'bg-blue-100 text-blue-700'
-                    }`}
-                  >
-                    {announcement.type === 'important' && <AlertTriangle className="w-3 h-3" />}
-                    {announcement.type === 'event' && <Calendar className="w-3 h-3" />}
-                    {announcement.type === 'info' && <Info className="w-3 h-3" />}
-                    {announcement.type === 'important' ? 'Important' : announcement.type === 'event' ? 'Event' : 'Info'}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-500 mb-3">{announcement.date}</p>
-                <p className="text-gray-600">{announcement.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Announcements - Database-backed, no fake data */}
+      <AnnouncementsFeed />
 
       {/* Career Services */}
       <section className="py-16">

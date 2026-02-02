@@ -1,0 +1,45 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
+
+/**
+ * GET /api/announcements
+ * 
+ * Fetches published announcements for the specified audience.
+ * Returns empty array if no announcements (strict - no fake data).
+ * 
+ * Query params:
+ * - audience: 'student' | 'staff' | 'partner' | 'admin' | 'all'
+ * - limit: number (default 10)
+ */
+export async function GET(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    if (!supabase) {
+      return NextResponse.json({ announcements: [] });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const audience = searchParams.get('audience') || 'all';
+    const limit = parseInt(searchParams.get('limit') || '10', 10);
+
+    // Query published announcements for this audience
+    const { data, error } = await supabase
+      .from('announcements')
+      .select('id, title, body, severity, published_at')
+      .eq('published', true)
+      .or(`audience.eq.all,audience.eq.${audience}`)
+      .or('expires_at.is.null,expires_at.gt.now()')
+      .order('published_at', { ascending: false })
+      .limit(limit);
+
+    if (error) {
+      console.error('Announcements fetch error:', error);
+      return NextResponse.json({ announcements: [] });
+    }
+
+    return NextResponse.json({ announcements: data || [] });
+  } catch (error) {
+    console.error('Announcements API error:', error);
+    return NextResponse.json({ announcements: [] });
+  }
+}
