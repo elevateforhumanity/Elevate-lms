@@ -112,28 +112,46 @@ export default async function ProgramDetailPage({
 }: {
   params: Params;
 }) {
-  const { slug } = await params;
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
+  let slug: string;
   
-  // Try database first
-  const { data: dbProgram } = await supabase
-    .from('programs')
-    .select('*')
-    .eq('slug', slug)
-    .single();
+  try {
+    slug = (await params).slug;
+  } catch {
+    return notFound();
+  }
 
-  const program = dbProgram || await loadProgram(slug);
+  // Validate slug format to prevent bad queries
+  if (!slug || typeof slug !== 'string' || slug.length > 100) {
+    return notFound();
+  }
+
+  let program: Program | null = null;
+
+  try {
+    const supabase = await createClient();
+
+    if (!supabase) {
+      // Fallback to static data if Supabase unavailable
+      program = await loadProgram(slug);
+    } else {
+      // Try database first
+      const { data: dbProgram } = await supabase
+        .from('programs')
+        .select('*')
+        .eq('slug', slug)
+        .single();
+
+      program = dbProgram || await loadProgram(slug);
+    }
+  } catch (err) {
+    // Database error - try static fallback
+    try {
+      program = await loadProgram(slug);
+    } catch {
+      // Both failed - return 404 instead of 502
+      return notFound();
+    }
+  }
 
   // Return 404 if program not found
   if (!program) {

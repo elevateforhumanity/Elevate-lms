@@ -111,41 +111,85 @@
   status = 301
   force = true
 
-# Block WordPress vulnerability scans (reduce log noise)
+# Block exploit scans at edge with 410 Gone (discourages repeat probing)
 [[redirects]]
   from = "/wp-admin"
-  to = "/404"
-  status = 404
+  to = "/410.html"
+  status = 410
   force = true
 
 [[redirects]]
   from = "/wp-admin/*"
-  to = "/404"
-  status = 404
+  to = "/410.html"
+  status = 410
   force = true
 
 [[redirects]]
   from = "/wp-includes/*"
-  to = "/404"
-  status = 404
+  to = "/410.html"
+  status = 410
   force = true
 
 [[redirects]]
   from = "/wp-content/*"
-  to = "/404"
-  status = 404
+  to = "/410.html"
+  status = 410
   force = true
 
 [[redirects]]
   from = "/wp-login.php"
-  to = "/404"
-  status = 404
+  to = "/410.html"
+  status = 410
   force = true
 
 [[redirects]]
   from = "/xmlrpc.php"
-  to = "/404"
-  status = 404
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/cgi-bin/*"
+  to = "/410.html"
+  status = 410
+  force = true
+
+# Common PHP shell probes
+[[redirects]]
+  from = "/info.php"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/admin.php"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/about.php"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/wp-cron.php"
+  to = "/410.html"
+  status = 410
+  force = true
+
+# Malformed typos bots hit
+[[redirects]]
+  from = "/xmrlpc.php"
+  to = "/410.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/wp-content/wp-conflg.php"
+  to = "/410.html"
+  status = 410
   force = true
 
 [[redirects]]
