@@ -3,6 +3,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
+// Force static generation - prevents 20s+ load times
+export const dynamic = 'force-static';
+export const revalidate = 86400; // 24 hours
+
 export const metadata: Metadata = {
   title: 'IT Support Training | Elevate for Humanity',
   description: 'Get CompTIA A+ certified and start your IT career. Help desk and technical support training available at no cost if you qualify.',

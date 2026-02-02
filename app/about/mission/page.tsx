@@ -4,6 +4,10 @@ import { Metadata } from 'next';
 import { Target, Heart, Users, Briefcase, GraduationCap, HandHeart } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
+// Force static generation - prevents 10s+ load times
+export const dynamic = 'force-static';
+export const revalidate = 86400;
+
 export const metadata: Metadata = {
   title: 'Our Mission | Elevate for Humanity',
   description: 'Our mission is to break the cycle of poverty through free workforce training, connecting underserved communities with career opportunities in Indianapolis and Indiana.',

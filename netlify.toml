@@ -183,6 +183,19 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/register/"
+  to = "/signup"
+  status = 301
+  force = true
+
+# Fix missing workbook file - redirect to store until file is available
+[[redirects]]
+  from = "/downloads/workbooks/*"
+  to = "/store"
+  status = 302
+  force = true
+
 # Scholarships alias to funding
 [[redirects]]
   from = "/scholarships"

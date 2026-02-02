@@ -3,6 +3,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
+// Force static generation
+export const dynamic = 'force-static';
+export const revalidate = 86400;
+
 export const metadata: Metadata = {
   title: 'Web Development Training | Elevate for Humanity',
   description: 'Learn to build websites and web applications. Full-stack development training available at no cost if you qualify.',
