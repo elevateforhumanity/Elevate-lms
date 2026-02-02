@@ -97,6 +97,20 @@
   status = 301
   force = true
 
+# Fix 502 on /licenses - redirect to canonical store page
+[[redirects]]
+  from = "/licenses"
+  to = "/store/licenses"
+  status = 301
+  force = true
+
+# Fix 504 on /employee/payrol typo - redirect to correct path
+[[redirects]]
+  from = "/employee/payrol"
+  to = "/employee/payroll"
+  status = 301
+  force = true
+
 # Legacy shop URLs → new store URLs
 [[redirects]]
   from = "/shop/product/:slug"

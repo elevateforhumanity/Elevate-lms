@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 
-// Canonical licensing URL is /store/licenses/managed
+// Redirect /licenses to canonical /store/licenses
+// Primary redirect handled by Netlify edge, this catches local dev
 export default function LicensesRedirect() {
-  redirect('/store/licenses/managed');
+  redirect('/store/licenses');
 }
