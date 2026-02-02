@@ -39,41 +39,29 @@ export const metadata: Metadata = {
 export default async function AdminDashboardOrchestrated() {
   const supabase = await createClient();
 
-  // Require authentication - THROW ERROR INSTEAD OF REDIRECT
+  // Require authentication - redirect to login if not authenticated
   const {
     data: { user },
     error: userError,
   } = await supabase.auth.getUser();
 
   if (userError || !user) {
-    throw new Error(
-      `[ADMIN AUTH] getUser failed: user=${user?.id || 'null'}, error=${userError?.message || 'no user returned'}`
-    );
+    redirect('/login?redirect=/admin/dashboard');
   }
 
-  // Get admin profile - THROW ERROR INSTEAD OF REDIRECT
+  // Get admin profile
   const { data: profile, error: profileError } = await supabase
     .from('profiles')
     .select('id, role, email, full_name')
     .eq('id', user.id)
     .single();
 
-  if (profileError) {
-    throw new Error(
-      `[ADMIN PROFILE] Query failed: user_id=${user.id}, error="${profileError.message}", code=${profileError.code}, hint=${profileError.hint || 'none'}`
-    );
-  }
-
-  if (!profile) {
-    throw new Error(
-      `[ADMIN PROFILE] Null result: user_id=${user.id}, no error but no data returned`
-    );
+  if (profileError || !profile) {
+    redirect('/login?redirect=/admin/dashboard');
   }
 
   if (!['admin', 'super_admin', 'org_admin'].includes(profile.role)) {
-    throw new Error(
-      `[ADMIN ROLE] Unauthorized: user_id=${user.id}, email=${profile.email}, role="${profile.role}"`
-    );
+    redirect('/unauthorized');
   }
 
   // SNAPSHOT METRICS
