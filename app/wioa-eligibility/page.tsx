@@ -264,7 +264,7 @@ export default async function WIOAEligibilityPage() {
                 href="/apply"
                 className="bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition text-center"
               >
-                Apply for Free Training
+                Apply for Funded Training
               </Link>
               <a
                 href="tel:3173143757"

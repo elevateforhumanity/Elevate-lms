@@ -97,7 +97,7 @@ export default async function Page() {
               fully in their communities.
             </p>
             <p className="text-lg text-black mb-4">
-              Our free training program prepares you for immediate employment in
+              Our funded training program prepares you for immediate employment in
               residential facilities, day programs, and community settings.
             </p>
             <div className="relative h-[300px] rounded-xl overflow-hidden mt-6">
@@ -120,7 +120,7 @@ export default async function Page() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Cost:</span>
-                <span className="text-black">$0 with WIOA/WRG funding</span>
+                <span className="text-black">Funded for qualifying students</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Format:</span>

@@ -109,7 +109,7 @@ export default function JRIPage() {
   ];
 
   const stats = [
-    { value: '100%', label: 'Free Training', icon: GraduationCap },
+    { value: 'Funded', label: 'Training Available', icon: GraduationCap },
     { value: '85%', label: 'Placement Goal', icon: Briefcase },
     { value: '6+', label: 'Career Programs', icon: TrendingUp },
     { value: '24/7', label: 'Support', icon: Users },

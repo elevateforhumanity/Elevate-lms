@@ -100,7 +100,7 @@ export default function CNACertificationPage() {
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
           <div className="max-w-5xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
-              <Heart className="w-4 h-4" /> WIOA Funded - $0 Tuition
+              <Heart className="w-4 h-4" /> WIOA Funding Available
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white mb-4">
               CNA Certification
@@ -131,8 +131,8 @@ export default function CNACertificationPage() {
             </div>
             <div>
               <DollarSign className="w-8 h-8 text-green-400 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">$0</div>
-              <div className="text-slate-400 text-sm">Tuition Cost</div>
+              <div className="text-2xl font-bold text-white">Funded</div>
+              <div className="text-slate-400 text-sm">For Qualifying Students</div>
             </div>
             <div>
               <Award className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
@@ -141,8 +141,8 @@ export default function CNACertificationPage() {
             </div>
             <div>
               <Users className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">89%</div>
-              <div className="text-slate-400 text-sm">Job Placement</div>
+              <div className="text-2xl font-bold text-white">High</div>
+              <div className="text-slate-400 text-sm">Job Demand</div>
             </div>
           </div>
         </div>
