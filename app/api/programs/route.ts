@@ -5,6 +5,7 @@ export const dynamic = 'force-dynamic';
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/logger';
+import { sanitizeSearchInput } from '@/lib/utils';
 
 // Create Supabase client for edge runtime
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -27,12 +28,14 @@ export async function GET(request: Request) {
 
     // Filter by category
     if (category) {
-      query = query.ilike('category', `%${category}%`);
+      const sanitizedCategory = sanitizeSearchInput(category);
+      query = query.ilike('category', `%${sanitizedCategory}%`);
     }
 
     // Filter by search term
     if (search) {
-      query = query.or(`name.ilike.%${search}%,description.ilike.%${search}%,slug.ilike.%${search}%`);
+      const sanitizedSearch = sanitizeSearchInput(search);
+      query = query.or(`name.ilike.%${sanitizedSearch}%,description.ilike.%${sanitizedSearch}%,slug.ilike.%${sanitizedSearch}%`);
     }
 
     const { data: programs, error } = await query;

@@ -13,6 +13,7 @@ import {
 } from '@/lib/api/rest-api';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
+import { sanitizeSearchInput } from '@/lib/utils';
 
 // GET /api/v1/courses - List all courses
 export async function GET(request: NextRequest) {
@@ -84,7 +85,8 @@ export async function GET(request: NextRequest) {
     }
 
     if (search) {
-      query = query.or(`title.ilike.%${search}%,description.ilike.%${search}%`);
+      const sanitizedSearch = sanitizeSearchInput(search);
+      query = query.or(`title.ilike.%${sanitizedSearch}%,description.ilike.%${sanitizedSearch}%`);
     }
 
     const { data: courses, error: queryError, count } = await query;

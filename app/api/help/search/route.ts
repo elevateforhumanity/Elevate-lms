@@ -5,6 +5,7 @@ export const maxDuration = 60;
 // app/api/help/search/route.ts
 import { NextResponse } from 'next/server';
 import { createSupabaseClient } from "@/lib/supabase-api";
+import { sanitizeSearchInput } from '@/lib/utils';
 
 
 export async function GET(request: Request) {
@@ -16,10 +17,12 @@ export async function GET(request: Request) {
     return NextResponse.json({ results: [] });
   }
 
+  const sanitizedQ = sanitizeSearchInput(q);
+
   const { data: results, error } = await supabase
     .from('help_articles')
     .select('*')
-    .or(`title.ilike.%${q}%,body.ilike.%${q}%`)
+    .or(`title.ilike.%${sanitizedQ}%,body.ilike.%${sanitizedQ}%`)
     .limit(20)
     .order('created_at', { ascending: false });
 

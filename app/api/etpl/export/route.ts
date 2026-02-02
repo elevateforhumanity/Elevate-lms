@@ -3,36 +3,68 @@ import { NextResponse } from 'next/server';
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
+
+import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { auditExport } from '@/lib/auditLog';
+import { logger } from '@/lib/logger';
 
 export async function GET(req: Request) {
   try {
-    const supabase = createAdminClient();
+    // Authentication check
+    const supabase = await createClient();
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      return NextResponse.json(
+        { error: 'Authentication required' },
+        { status: 401 }
+      );
+    }
+
+    // Check admin or sponsor role
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+
+    if (!profile || !['admin', 'super_admin', 'sponsor', 'staff'].includes(profile.role)) {
+      return NextResponse.json(
+        { error: 'Access denied. Admin or sponsor role required.' },
+        { status: 403 }
+      );
+    }
+
+    const adminSupabase = createAdminClient();
 
     // Get ETPL metrics
-    const { data: metrics, error } = await supabase
+    const { data: metrics, error } = await adminSupabase
       .from('etpl_metrics')
       .select('*')
       .order('quarter', { ascending: false });
 
     if (error) {
+      logger.error('ETPL export error:', error);
       return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 400 });
     }
 
     // Log the export
     await auditExport(
       'audit_snapshot',
-      req.headers.get('x-user-id') || undefined,
-      'sponsor',
+      user.id,
+      profile.role,
       req
     );
+
+    logger.info('ETPL metrics exported', { userId: user.id, recordCount: metrics?.length || 0 });
 
     return NextResponse.json({
       metrics: metrics || [],
       generated_at: new Date().toISOString(),
     });
-  } catch (error) { /* Error handled silently */ 
+  } catch (error) {
+    logger.error('ETPL export error:', error instanceof Error ? error : new Error(String(error)));
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }

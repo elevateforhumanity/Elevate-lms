@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { sanitizeSearchInput } from '@/lib/utils';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -56,7 +57,8 @@ export async function GET(request: NextRequest) {
 
     // Apply filters
     if (category) {
-      query = query.ilike('category', `%${category}%`);
+      const sanitizedCategory = sanitizeSearchInput(category);
+      query = query.ilike('category', `%${sanitizedCategory}%`);
     }
 
     if (deliveryMode) {
@@ -64,7 +66,8 @@ export async function GET(request: NextRequest) {
     }
 
     if (search) {
-      query = query.or(`course_name.ilike.%${search}%,description.ilike.%${search}%`);
+      const sanitizedSearch = sanitizeSearchInput(search);
+      query = query.or(`course_name.ilike.%${sanitizedSearch}%,description.ilike.%${sanitizedSearch}%`);
     }
 
     if (partnerId) {
