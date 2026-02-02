@@ -102,55 +102,211 @@ export interface PageHeroConfig {
 }
 
 // Pre-defined hero configs for key pages
+// TOP 10 PRIORITY PAGES - these get migrated first
 export const PAGE_HEROES: Record<string, PageHeroConfig> = {
-  // Homepage
+  
+  // ============================================
+  // PRIORITY 1: Homepage
+  // ============================================
   '/': {
     title: 'Free Career Training That Changes Lives',
     subtitle: 'WIOA-funded workforce programs in healthcare, skilled trades, and technology. No cost if you qualify.',
-    image: HERO_IMAGES.marketing.homepage,
+    image: '/images/heroes/marketing-homepage.jpg',
     variant: 'full',
     height: 'full',
     ctaPrimary: { label: 'Find a Program', href: '/programs' },
     ctaSecondary: { label: 'For Partners', href: '/partner' },
   },
   
-  // Programs index
+  // ============================================
+  // PRIORITY 2: Programs Index
+  // ============================================
   '/programs': {
     title: 'Career Training Programs',
     subtitle: 'Industry-recognized certifications in high-demand fields. Free for eligible participants.',
-    image: HERO_IMAGES.marketing.programs,
+    image: '/images/heroes/marketing-programs-index.jpg',
     variant: 'split',
     height: 'medium',
     ctaPrimary: { label: 'Check Eligibility', href: '/wioa-eligibility' },
+    ctaSecondary: { label: 'View All Programs', href: '#programs' },
   },
   
-  // Apply/Enroll
+  // ============================================
+  // PRIORITY 3-7: Top 5 Programs
+  // ============================================
+  
+  // Barber Apprenticeship
+  '/programs/barber-apprenticeship': {
+    title: 'Barber Apprenticeship Program',
+    subtitle: 'Become a licensed barber through our USDOL-registered apprenticeship. Earn while you learn.',
+    image: '/images/heroes/program-apprenticeship-barber.jpg',
+    variant: 'split',
+    height: 'medium',
+    badge: 'USDOL Registered',
+    metadata: [
+      { label: 'Duration', value: '1,500 hours' },
+      { label: 'Format', value: 'In-Shop Training' },
+      { label: 'Cost', value: 'Free if eligible' },
+    ],
+    ctaPrimary: { label: 'Apply Now', href: '/programs/barber-apprenticeship/apply' },
+    ctaSecondary: { label: 'Find a Host Shop', href: '/programs/barber-apprenticeship/host-shops' },
+  },
+  
+  // CNA Certification
+  '/programs/cna': {
+    title: 'CNA Certification Training',
+    subtitle: 'Become a Certified Nursing Assistant in 4-6 weeks. High-demand healthcare career.',
+    image: '/images/heroes/program-healthcare-cna.jpg',
+    variant: 'split',
+    height: 'medium',
+    badge: 'WIOA Funded',
+    metadata: [
+      { label: 'Duration', value: '4-6 weeks' },
+      { label: 'Format', value: 'Hybrid' },
+      { label: 'Cost', value: 'Free if eligible' },
+    ],
+    ctaPrimary: { label: 'Apply Now', href: '/apply?program=cna' },
+    ctaSecondary: { label: 'Check Eligibility', href: '/wioa-eligibility' },
+  },
+  
+  // Esthetician Apprenticeship
+  '/programs/esthetician-apprenticeship': {
+    title: 'Esthetician Apprenticeship',
+    subtitle: 'Launch your skincare career through hands-on apprenticeship training.',
+    image: '/images/heroes/program-apprenticeship-esthetician.jpg',
+    variant: 'split',
+    height: 'medium',
+    badge: 'State Approved',
+    metadata: [
+      { label: 'Duration', value: '700 hours' },
+      { label: 'Format', value: 'In-Salon Training' },
+      { label: 'Cost', value: 'Free if eligible' },
+    ],
+    ctaPrimary: { label: 'Apply Now', href: '/apply?program=esthetician' },
+    ctaSecondary: { label: 'Learn More', href: '#program-details' },
+  },
+  
+  // CDL Training
+  '/programs/cdl': {
+    title: 'CDL Training Program',
+    subtitle: 'Get your Commercial Driver\'s License and start a career in transportation.',
+    image: '/images/heroes/program-trades-cdl.jpg',
+    variant: 'split',
+    height: 'medium',
+    badge: 'ELDT Certified',
+    metadata: [
+      { label: 'Duration', value: '3-4 weeks' },
+      { label: 'Format', value: 'In-Person' },
+      { label: 'Cost', value: 'Free if eligible' },
+    ],
+    ctaPrimary: { label: 'Apply Now', href: '/apply?program=cdl' },
+    ctaSecondary: { label: 'Check Eligibility', href: '/wioa-eligibility' },
+  },
+  
+  // IT Support
+  '/programs/technology/it-support': {
+    title: 'IT Support Training',
+    subtitle: 'CompTIA A+ certification training. Launch your career in technology.',
+    image: '/images/heroes/program-technology-it-support.jpg',
+    variant: 'split',
+    height: 'medium',
+    badge: 'CompTIA Partner',
+    metadata: [
+      { label: 'Duration', value: '8-12 weeks' },
+      { label: 'Format', value: 'Hybrid' },
+      { label: 'Certification', value: 'CompTIA A+' },
+    ],
+    ctaPrimary: { label: 'Apply Now', href: '/apply?program=it-support' },
+    ctaSecondary: { label: 'Check Eligibility', href: '/wioa-eligibility' },
+  },
+  
+  // ============================================
+  // PRIORITY 8: Apply/Enrollment
+  // ============================================
   '/apply': {
     title: 'Start Your Application',
     subtitle: 'Take the first step toward a new career. Our team will guide you through the process.',
-    image: HERO_IMAGES.marketing.contact,
+    image: '/images/heroes/marketing-apply.jpg',
     variant: 'split',
     height: 'medium',
     badge: 'Free Training Available',
+    ctaPrimary: { label: 'Begin Application', href: '#application-form' },
   },
   
-  // Licensing/Enterprise
+  // ============================================
+  // PRIORITY 9: Enterprise/Licensing
+  // ============================================
   '/store/licenses': {
     title: 'Enterprise Licensing',
     subtitle: 'Deploy the Elevate LMS platform for your organization. Managed infrastructure, your brand.',
-    image: HERO_IMAGES.enterprise.licensing,
+    image: '/images/heroes/enterprise-licensing.jpg',
     variant: 'illustration',
     height: 'medium',
     ctaPrimary: { label: 'View Plans', href: '/store/licenses/managed' },
     ctaSecondary: { label: 'Contact Sales', href: '/contact' },
   },
   
-  // Student Portal
+  // ============================================
+  // PRIORITY 10: Student Portal (LMS)
+  // ============================================
   '/student-portal': {
     title: 'Student Portal',
     subtitle: 'Access your courses, track progress, and manage your training journey.',
-    image: HERO_IMAGES.lms.studentPortal,
+    image: '/images/heroes/lms-student-portal.jpg',
     variant: 'split',
+    height: 'compact',
+  },
+  
+  // ============================================
+  // ADDITIONAL KEY PAGES
+  // ============================================
+  
+  // About
+  '/about': {
+    title: 'About Elevate for Humanity',
+    subtitle: 'Breaking the cycle of poverty through free workforce training since 2020.',
+    image: '/images/heroes/marketing-about.jpg',
+    variant: 'split',
+    height: 'medium',
+    ctaPrimary: { label: 'Our Mission', href: '/about/mission' },
+    ctaSecondary: { label: 'Meet the Team', href: '/about/team' },
+  },
+  
+  // Contact
+  '/contact': {
+    title: 'Contact Us',
+    subtitle: 'Questions about programs, enrollment, or partnerships? We\'re here to help.',
+    image: '/images/heroes/marketing-contact.jpg',
+    variant: 'split',
+    height: 'medium',
+    ctaPrimary: { label: 'Call Now', href: 'tel:3173143757' },
+  },
+  
+  // Testimonials
+  '/testimonials': {
+    title: 'Success Stories',
+    subtitle: 'Real graduates. Real careers. Real impact.',
+    image: '/images/heroes/marketing-testimonials.jpg',
+    variant: 'split',
+    height: 'medium',
+    ctaPrimary: { label: 'Start Your Journey', href: '/apply' },
+  },
+  
+  // FERPA (Governance)
+  '/policies/ferpa': {
+    title: 'FERPA Privacy Policy',
+    subtitle: 'How we protect student education records under federal law.',
+    image: '/images/heroes/governance-ferpa.jpg',
+    variant: 'illustration',
+    height: 'compact',
+  },
+  
+  // Privacy Policy (Governance)
+  '/privacy': {
+    title: 'Privacy Policy',
+    subtitle: 'How we collect, use, and protect your information.',
+    image: '/images/heroes/governance-privacy.jpg',
+    variant: 'illustration',
     height: 'compact',
   },
 };
