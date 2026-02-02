@@ -25,7 +25,7 @@ import Link from 'next/link';
  * />
  */
 
-export type HeroVariant = 'full' | 'split' | 'illustration';
+export type HeroVariant = 'full' | 'split' | 'illustration' | 'video';
 export type HeroHeight = 'full' | 'medium' | 'compact';
 
 export interface HeroCTA {
@@ -36,8 +36,13 @@ export interface HeroCTA {
 export interface HeroSectionProps {
   title: string;
   subtitle?: string;
-  image: string;
+  /** Image source - required for full/split variants */
+  image?: string;
   imageAlt?: string;
+  /** Video source - required for video variant */
+  videoSrc?: string;
+  /** Poster image for video (required for video variant) */
+  videoPoster?: string;
   variant?: HeroVariant;
   height?: HeroHeight;
   ctaPrimary?: HeroCTA;
@@ -67,6 +72,8 @@ export function HeroSection({
   subtitle,
   image,
   imageAlt,
+  videoSrc,
+  videoPoster,
   variant = 'split',
   height = 'medium',
   ctaPrimary,
@@ -76,6 +83,65 @@ export function HeroSection({
   panelColor = 'white',
 }: HeroSectionProps) {
   const colors = panelColors[panelColor];
+
+  // VARIANT: VIDEO - Video background with solid content panel
+  // Rules: No gradient overlays, text in solid container, calm motion only
+  if (variant === 'video') {
+    return (
+      <section data-hero="true" data-hero-variant="video" className={`relative ${heightClasses[height]} flex items-end overflow-hidden`}>
+        {/* Video background - NO overlay, NO gradient */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={videoPoster}
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+        
+        {/* Content panel - solid background, positioned bottom-left */}
+        <div className="relative z-10 w-full">
+          <div className={`${colors.bg} max-w-2xl mx-4 md:mx-8 lg:mx-16 mb-8 p-8 rounded-t-2xl shadow-lg`}>
+            {badge && (
+              <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full mb-4">
+                {badge}
+              </span>
+            )}
+            <h1 className={`text-3xl md:text-4xl lg:text-5xl font-bold ${colors.text} mb-4`}>
+              {title}
+            </h1>
+            {subtitle && (
+              <p className={`text-lg ${colors.muted} mb-6`}>
+                {subtitle}
+              </p>
+            )}
+            {(ctaPrimary || ctaSecondary) && (
+              <div className="flex flex-wrap gap-4">
+                {ctaPrimary && (
+                  <Link
+                    href={ctaPrimary.href}
+                    className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+                  >
+                    {ctaPrimary.label}
+                  </Link>
+                )}
+                {ctaSecondary && (
+                  <Link
+                    href={ctaSecondary.href}
+                    className={`inline-flex items-center px-6 py-3 border-2 border-current font-semibold rounded-lg hover:bg-gray-100 transition ${colors.text}`}
+                  >
+                    {ctaSecondary.label}
+                  </Link>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   // VARIANT: FULL - Full-bleed image with solid content panel
   if (variant === 'full') {

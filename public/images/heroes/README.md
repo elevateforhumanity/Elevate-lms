@@ -1,6 +1,32 @@
-# Hero Image Asset Convention
+# Hero Asset Convention
 
-## Naming Pattern
+## Hero Variants
+
+The site uses 4 hero variants:
+- **video** - Video background with solid content panel (most pages)
+- **split** - Left content, right image (program details, enrollment)
+- **full** - Full-bleed image with content panel (rare)
+- **illustration** - Diagrams/icons for governance pages
+
+## Video Heroes
+
+Pages with video hero banners:
+- `/` (Homepage)
+- `/programs/barber`
+- `/programs/barber-apprenticeship`
+- `/programs/healthcare`
+- `/programs/skilled-trades`
+- `/programs/technology`
+- `/career-services`
+- `/government`
+- `/workforce-board`
+- `/store/courses`
+- `/store/digital`
+- `/lms/courses`
+
+Video sources are defined in `lib/hero-config.ts` under `VIDEO_HEROES`.
+
+## Image Naming Pattern
 
 ```
 {category}-{subcategory}.jpg

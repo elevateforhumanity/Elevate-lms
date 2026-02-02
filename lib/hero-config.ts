@@ -10,6 +10,32 @@
 
 import type { HeroVariant, HeroHeight, HeroCTA } from '@/components/ui/HeroSection';
 
+// Video hero sources - used across the site
+// Rules: No gradient overlays, text in solid container, calm motion only
+export const VIDEO_HEROES = {
+  // Main/Marketing
+  homepage: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home-fast.mp4',
+  careerServices: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/career-services-hero.mp4',
+  
+  // Program Categories
+  barber: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/barber-hero.mp4',
+  barberApprenticeship: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/barber-hero.mp4',
+  healthcare: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/healthcare-hero.mp4',
+  skilledTrades: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hvac-hero-final.mp4',
+  technology: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home-fast.mp4',
+  
+  // Government/Enterprise
+  government: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home-fast.mp4',
+  workforceBoard: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home-fast.mp4',
+  
+  // Store
+  storeCourses: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home-fast.mp4',
+  storeDigital: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home-fast.mp4',
+  
+  // LMS
+  lmsCourses: 'https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hero-home-fast.mp4',
+} as const;
+
 // Category-based hero image assignments
 // Same category = same visual family, different specific images
 export const HERO_IMAGES = {
@@ -92,7 +118,12 @@ export const HERO_IMAGES = {
 export interface PageHeroConfig {
   title: string;
   subtitle?: string;
-  image: string;
+  /** Image for static heroes (full/split/illustration) */
+  image?: string;
+  /** Video source for video heroes */
+  videoSrc?: string;
+  /** Poster image for video heroes */
+  videoPoster?: string;
   variant: HeroVariant;
   height?: HeroHeight;
   badge?: string;
@@ -106,13 +137,14 @@ export interface PageHeroConfig {
 export const PAGE_HEROES: Record<string, PageHeroConfig> = {
   
   // ============================================
-  // PRIORITY 1: Homepage
+  // PRIORITY 1: Homepage (VIDEO)
   // ============================================
   '/': {
     title: 'Free Career Training That Changes Lives',
     subtitle: 'WIOA-funded workforce programs in healthcare, skilled trades, and technology. No cost if you qualify.',
-    image: '/images/heroes/marketing-homepage.jpg',
-    variant: 'full',
+    videoSrc: VIDEO_HEROES.homepage,
+    videoPoster: '/images/heroes/marketing-homepage.jpg',
+    variant: 'video',
     height: 'full',
     ctaPrimary: { label: 'Find a Program', href: '/programs' },
     ctaSecondary: { label: 'For Partners', href: '/partner' },
@@ -135,12 +167,13 @@ export const PAGE_HEROES: Record<string, PageHeroConfig> = {
   // PRIORITY 3-7: Top 5 Programs
   // ============================================
   
-  // Barber Apprenticeship
+  // Barber Apprenticeship (VIDEO)
   '/programs/barber-apprenticeship': {
     title: 'Barber Apprenticeship Program',
     subtitle: 'Become a licensed barber through our USDOL-registered apprenticeship. Earn while you learn.',
-    image: '/images/heroes/program-apprenticeship-barber.jpg',
-    variant: 'split',
+    videoSrc: VIDEO_HEROES.barberApprenticeship,
+    videoPoster: '/images/heroes/program-apprenticeship-barber.jpg',
+    variant: 'video',
     height: 'medium',
     badge: 'USDOL Registered',
     metadata: [
@@ -307,6 +340,123 @@ export const PAGE_HEROES: Record<string, PageHeroConfig> = {
     subtitle: 'How we collect, use, and protect your information.',
     image: '/images/heroes/governance-privacy.jpg',
     variant: 'illustration',
+    height: 'compact',
+  },
+  
+  // ============================================
+  // VIDEO HERO PAGES (Category Landings)
+  // ============================================
+  
+  // Barber Category (VIDEO)
+  '/programs/barber': {
+    title: 'Barber Training Programs',
+    subtitle: 'Start your career in barbering with hands-on training and apprenticeship opportunities.',
+    videoSrc: VIDEO_HEROES.barber,
+    videoPoster: '/images/heroes/program-apprenticeship-barber.jpg',
+    variant: 'video',
+    height: 'medium',
+    ctaPrimary: { label: 'Apply Now', href: '/apply?program=barber' },
+    ctaSecondary: { label: 'View Programs', href: '#programs' },
+  },
+  
+  // Healthcare Category (VIDEO)
+  '/programs/healthcare': {
+    title: 'Healthcare Training Programs',
+    subtitle: 'Launch your healthcare career with CNA, Medical Assistant, and Phlebotomy training.',
+    videoSrc: VIDEO_HEROES.healthcare,
+    videoPoster: '/images/heroes/program-healthcare-cna.jpg',
+    variant: 'video',
+    height: 'medium',
+    ctaPrimary: { label: 'Apply Now', href: '/apply?program=healthcare' },
+    ctaSecondary: { label: 'View Programs', href: '#programs' },
+  },
+  
+  // Skilled Trades Category (VIDEO)
+  '/programs/skilled-trades': {
+    title: 'Skilled Trades Training',
+    subtitle: 'HVAC, Welding, Electrical, and CDL training for high-demand careers.',
+    videoSrc: VIDEO_HEROES.skilledTrades,
+    videoPoster: '/images/heroes/program-trades-hvac.jpg',
+    variant: 'video',
+    height: 'medium',
+    ctaPrimary: { label: 'Apply Now', href: '/apply?program=trades' },
+    ctaSecondary: { label: 'View Programs', href: '#programs' },
+  },
+  
+  // Technology Category (VIDEO)
+  '/programs/technology': {
+    title: 'Technology Training Programs',
+    subtitle: 'IT Support, Cybersecurity, and Web Development training for tech careers.',
+    videoSrc: VIDEO_HEROES.technology,
+    videoPoster: '/images/heroes/program-technology-it-support.jpg',
+    variant: 'video',
+    height: 'medium',
+    ctaPrimary: { label: 'Apply Now', href: '/apply?program=technology' },
+    ctaSecondary: { label: 'View Programs', href: '#programs' },
+  },
+  
+  // Career Services (VIDEO)
+  '/career-services': {
+    title: 'Career Services',
+    subtitle: 'Job placement, resume building, interview prep, and ongoing career support.',
+    videoSrc: VIDEO_HEROES.careerServices,
+    videoPoster: '/images/heroes/career-services.jpg',
+    variant: 'video',
+    height: 'medium',
+    ctaPrimary: { label: 'Get Started', href: '/career-services/contact' },
+  },
+  
+  // Government (VIDEO)
+  '/government': {
+    title: 'Government Partners',
+    subtitle: 'Workforce development solutions for state and local agencies.',
+    videoSrc: VIDEO_HEROES.government,
+    videoPoster: '/images/heroes/enterprise-government.jpg',
+    variant: 'video',
+    height: 'medium',
+    ctaPrimary: { label: 'Partner With Us', href: '/contact' },
+  },
+  
+  // Workforce Board (VIDEO)
+  '/workforce-board': {
+    title: 'Workforce Board Portal',
+    subtitle: 'Manage participants, track outcomes, and generate compliance reports.',
+    videoSrc: VIDEO_HEROES.workforceBoard,
+    videoPoster: '/images/heroes/enterprise-government.jpg',
+    variant: 'video',
+    height: 'medium',
+    ctaPrimary: { label: 'Access Portal', href: '/workforce-board/dashboard' },
+  },
+  
+  // Store - Courses (VIDEO)
+  '/store/courses': {
+    title: 'Course Marketplace',
+    subtitle: 'Professional development courses and certifications.',
+    videoSrc: VIDEO_HEROES.storeCourses,
+    videoPoster: '/images/heroes/lms-courses.jpg',
+    variant: 'video',
+    height: 'medium',
+    ctaPrimary: { label: 'Browse Courses', href: '#courses' },
+  },
+  
+  // Store - Digital (VIDEO)
+  '/store/digital': {
+    title: 'Digital Products',
+    subtitle: 'Workbooks, guides, and resources for career success.',
+    videoSrc: VIDEO_HEROES.storeDigital,
+    videoPoster: '/images/heroes/lms-courses.jpg',
+    variant: 'video',
+    height: 'medium',
+    ctaPrimary: { label: 'Browse Products', href: '#products' },
+  },
+  
+  // LMS Courses (VIDEO)
+  '/lms/courses': {
+    title: 'My Courses',
+    subtitle: 'Access your enrolled courses and track your progress.',
+    videoSrc: VIDEO_HEROES.lmsCourses,
+    videoPoster: '/images/heroes/lms-courses.jpg',
+    variant: 'video',
     height: 'compact',
   },
 };
