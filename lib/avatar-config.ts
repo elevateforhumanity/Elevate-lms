@@ -12,6 +12,16 @@
 
 export type AvatarRole = 'guide' | 'system' | 'instructor' | 'assistant';
 export type AvatarIntent = 'orient' | 'explain' | 'assist' | 'warn' | 'celebrate';
+export type AvatarAudience = 'student' | 'applicant' | 'partner' | 'government' | 'admin';
+
+/**
+ * Tone characteristics by audience:
+ * - student: procedural, neutral, calm
+ * - applicant: reassuring, factual
+ * - partner: authoritative, formal
+ * - government: compliance-first, restrained
+ * - admin: operational, exact
+ */
 
 export interface AvatarContext {
   /** Whether avatar is enabled on this page - DEFAULT: false */
@@ -22,6 +32,8 @@ export interface AvatarContext {
   role: AvatarRole;
   /** What the avatar is trying to accomplish */
   intent: AvatarIntent;
+  /** Target audience - affects tone */
+  audience?: AvatarAudience;
   /** Page-specific message - NEVER reuse across pages (1-2 sentences max) */
   message: string;
   /** Optional follow-up ONLY if user clicks/interacts */
@@ -556,4 +568,113 @@ export function validateNoDuplicates(): { valid: boolean; duplicates: string[] }
     valid: duplicates.length === 0,
     duplicates,
   };
+}
+
+// ============================================
+// TONE TUNING SYSTEM
+// ============================================
+
+/**
+ * Word replacements by audience
+ * Tone is enforced programmatically, not emotionally
+ */
+const TONE_REPLACEMENTS: Record<AvatarAudience, Record<string, string>> = {
+  student: {
+    'manage': 'track',
+    'compliance': 'requirements',
+    'verify': 'check',
+    'authorize': 'approve',
+  },
+  applicant: {
+    'required': 'needed',
+    'mandatory': 'required',
+    'failure': 'issue',
+    'rejected': 'not approved',
+  },
+  partner: {
+    'help': 'support',
+    'show': 'demonstrate',
+    'use': 'utilize',
+  },
+  government: {
+    'help': 'manage',
+    'guide': 'direct',
+    'support': 'facilitate',
+    'show': 'present',
+    'easy': 'streamlined',
+  },
+  admin: {
+    'help': 'assist',
+    'show': 'display',
+    'check': 'verify',
+  },
+};
+
+/**
+ * Apply tone adjustments to a message based on audience
+ * 
+ * @param message - Original message
+ * @param audience - Target audience
+ * @returns Tone-adjusted message
+ */
+export function applyTone(message: string, audience: AvatarAudience): string {
+  const replacements = TONE_REPLACEMENTS[audience];
+  if (!replacements) return message;
+  
+  let adjusted = message;
+  for (const [find, replace] of Object.entries(replacements)) {
+    // Case-insensitive replacement, preserving original case
+    const regex = new RegExp(`\\b${find}\\b`, 'gi');
+    adjusted = adjusted.replace(regex, (match) => {
+      // Preserve capitalization
+      if (match[0] === match[0].toUpperCase()) {
+        return replace.charAt(0).toUpperCase() + replace.slice(1);
+      }
+      return replace;
+    });
+  }
+  
+  return adjusted;
+}
+
+/**
+ * Get tone-adjusted message for a page
+ */
+export function getTonedMessage(pathname: string): string | null {
+  const config = getAvatarConfig(pathname);
+  
+  if (!config.enabled || !config.message) {
+    return null;
+  }
+  
+  // Apply tone if audience is specified
+  if (config.audience) {
+    return applyTone(config.message, config.audience);
+  }
+  
+  return config.message;
+}
+
+/**
+ * Detect audience from pathname
+ */
+export function detectAudience(pathname: string): AvatarAudience {
+  if (pathname.startsWith('/student-portal') || pathname.startsWith('/lms')) {
+    return 'student';
+  }
+  if (pathname.startsWith('/apply') || pathname.startsWith('/enroll') || pathname.startsWith('/wioa')) {
+    return 'applicant';
+  }
+  if (pathname.startsWith('/partner') || pathname.startsWith('/employer')) {
+    return 'partner';
+  }
+  if (pathname.startsWith('/government') || pathname.startsWith('/workforce-board') || pathname.includes('compliance')) {
+    return 'government';
+  }
+  if (pathname.startsWith('/admin') || pathname.startsWith('/staff') || pathname.startsWith('/instructor')) {
+    return 'admin';
+  }
+  
+  // Default to applicant for marketing pages
+  return 'applicant';
 }

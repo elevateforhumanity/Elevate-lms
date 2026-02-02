@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { getPageLoadMessage, type AvatarContext } from '@/lib/avatar-config';
+import { getPageLoadMessage, getAvatarConfig, type AvatarContext } from '@/lib/avatar-config';
 
 /**
  * useAvatarOnLoad Hook
@@ -25,6 +25,34 @@ export function useAvatarOnLoad(pageId: string | undefined) {
   useEffect(() => {
     if (!pageId) return;
     if (hasSpoken.current) return;
+
+    // DEV-ONLY: Enforcement warnings
+    if (process.env.NODE_ENV === 'development') {
+      const config = getAvatarConfig(pageId);
+      
+      // Warn if enabled but no message
+      if (config.enabled && config.speakOnLoad && !config.message) {
+        console.warn(
+          `[AvatarEngine] Avatar enabled but no message for: ${pageId}`
+        );
+      }
+      
+      // Warn if disabled without being explicitly silent
+      if (!config.enabled && config.message) {
+        console.warn(
+          `[AvatarEngine] Avatar has message but is disabled: ${pageId}`
+        );
+      }
+      
+      // Warn about potential marketing pages without config
+      const marketingPatterns = ['/about', '/contact', '/careers', '/funding', '/testimonials'];
+      const isMarketingPage = marketingPatterns.some(p => pageId.startsWith(p));
+      if (isMarketingPage && !config.enabled) {
+        console.warn(
+          `[AvatarEngine] Marketing page without avatar config: ${pageId}`
+        );
+      }
+    }
 
     const message = getPageLoadMessage(pageId);
     
