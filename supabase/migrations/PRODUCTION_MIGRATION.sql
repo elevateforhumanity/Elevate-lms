@@ -2,7 +2,7 @@
 -- PRODUCTION MIGRATION: ZERO-STUB CONTENT SYSTEM
 -- 
 -- Run this SQL in your Supabase SQL Editor:
--- 1. Go to Supabase Dashboard → SQL Editor
+-- 1. Go to Supabase Dashboard > SQL Editor
 -- 2. Paste this entire file
 -- 3. Click "Run"
 --
@@ -158,48 +158,54 @@ CREATE TABLE IF NOT EXISTS announcements (
 );
 
 -- ============================================
--- 5. PLACEHOLDER BLOCKING TRIGGER
+-- 6. PLACEHOLDER BLOCKING TRIGGER
 -- Prevents fake/stub content at database level
 -- ============================================
 
 CREATE OR REPLACE FUNCTION block_placeholder_text()
 RETURNS trigger AS $$
 DECLARE
-  placeholder_patterns TEXT[] := ARRAY[
-    'coming soon',
-    'lorem ipsum',
-    'placeholder',
-    'test content',
-    'tbd',
-    'to be determined',
-    'insert here',
-    'your text here',
-    'xxx',
-    'asdf'
-  ];
-  pattern TEXT;
-  field_value TEXT;
-  field_name TEXT;
+  check_text TEXT;
 BEGIN
-  FOREACH field_name IN ARRAY ARRAY['title', 'body', 'heading', 'subtitle', 'description', 'instructions', 'outcome', 'requirement']
-  LOOP
-    EXECUTE format('SELECT ($1).%I::TEXT', field_name) INTO field_value USING NEW;
-    
-    IF field_value IS NOT NULL THEN
-      FOREACH pattern IN ARRAY placeholder_patterns
-      LOOP
-        IF lower(field_value) LIKE '%' || pattern || '%' THEN
-          RAISE EXCEPTION 'Placeholder content detected: "%" contains "%". Placeholder content is not allowed.', 
-            field_name, pattern;
-        END IF;
-      END LOOP;
-    END IF;
-  END LOOP;
+  -- Concatenate all text fields that might exist
+  check_text := COALESCE(NEW.title, '') || ' ' || 
+                COALESCE(NEW.body, '') || ' ' || 
+                COALESCE(NEW.heading, '') || ' ' ||
+                COALESCE(NEW.subtitle, '') || ' ' ||
+                COALESCE(NEW.description, '') || ' ' ||
+                COALESCE(NEW.instructions, '') || ' ' ||
+                COALESCE(NEW.outcome, '') || ' ' ||
+                COALESCE(NEW.requirement, '') || ' ' ||
+                COALESCE(NEW.quote, '');
+  
+  check_text := lower(check_text);
+  
+  -- Check for placeholder patterns
+  IF check_text LIKE '%coming soon%' THEN
+    RAISE EXCEPTION 'Placeholder content not allowed: contains "coming soon"';
+  END IF;
+  
+  IF check_text LIKE '%lorem ipsum%' THEN
+    RAISE EXCEPTION 'Placeholder content not allowed: contains "lorem ipsum"';
+  END IF;
+  
+  IF check_text LIKE '%placeholder%' THEN
+    RAISE EXCEPTION 'Placeholder content not allowed: contains "placeholder"';
+  END IF;
+  
+  IF check_text LIKE '%test content%' THEN
+    RAISE EXCEPTION 'Placeholder content not allowed: contains "test content"';
+  END IF;
+  
+  IF check_text LIKE '% tbd %' OR check_text LIKE '%tbd.%' OR check_text LIKE '%tbd,%' THEN
+    RAISE EXCEPTION 'Placeholder content not allowed: contains "tbd"';
+  END IF;
+  
+  IF check_text LIKE '%to be determined%' THEN
+    RAISE EXCEPTION 'Placeholder content not allowed: contains "to be determined"';
+  END IF;
   
   RETURN NEW;
-EXCEPTION
-  WHEN undefined_column THEN
-    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
