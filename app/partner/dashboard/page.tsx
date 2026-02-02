@@ -11,20 +11,10 @@ export const metadata: Metadata = {
   description: 'Manage your partnership, track student progress, and access training resources.',
 };
 
-// Fallback data when Supabase is unavailable
-// Real stats calculated from database - zeros when no data
-const fallbackStats = [
-  { label: 'Active Students', value: '0', change: '--', icon: Users },
-  { label: 'Programs', value: '0', change: '--', icon: BookOpen },
-  { label: 'Completion Rate', value: '--', change: '--', icon: TrendingUp },
-  { label: 'Upcoming Sessions', value: '0', change: '--', icon: Calendar },
-];
-
-// Students and schedule loaded from database
-// Empty arrays shown when no data available
-const fallbackStudents: Array<{ id: string; name: string; program: string; progress: number; status: string }> = [];
-
-const fallbackSchedule: Array<{ id: string; title: string; date: string; time: string; students: number }> = [];
+// Type definitions
+type StatItem = { label: string; value: string; change: string; icon: typeof Users };
+type StudentItem = { id: string; name: string; program: string; progress: number; status: string };
+type ScheduleItem = { id: string; title: string; date: string; time: string; students: number };
 
 const quickActions = [
   { title: 'Record Attendance', href: '/partner/attendance/record', icon: Calendar },
@@ -36,95 +26,97 @@ const quickActions = [
 export default async function PartnerDashboardPage() {
   const supabase = await createClient();
   
-  let stats = fallbackStats;
-  let students = fallbackStudents;
-  let schedule = fallbackSchedule;
+  let stats: StatItem[] = [
+    { label: 'Active Students', value: '0', change: '--', icon: Users },
+    { label: 'Programs', value: '0', change: '--', icon: BookOpen },
+    { label: 'Completion Rate', value: '--', change: '--', icon: TrendingUp },
+    { label: 'Upcoming Sessions', value: '0', change: '--', icon: Calendar },
+  ];
+  let students: StudentItem[] = [];
+  let schedule: ScheduleItem[] = [];
   let partnerName = 'Partner Organization';
 
-  if (supabase) {
-    try {
-      // Get current user and partner info
-      const { data: { user } } = await supabase.auth.getUser();
+  try {
+    // Get current user and partner info
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (user) {
+      // Get partner profile
+      const { data: partner } = await supabase
+        .from('partners')
+        .select('id, name, organization_name')
+        .eq('user_id', user.id)
+        .single();
       
-      if (user) {
-        // Get partner profile
-        const { data: partner } = await supabase
-          .from('partners')
-          .select('id, name, organization_name')
-          .eq('user_id', user.id)
-          .single();
+      if (partner) {
+        partnerName = partner.organization_name || partner.name || 'Partner Organization';
         
-        if (partner) {
-          partnerName = partner.organization_name || partner.name || 'Partner Organization';
-          
-          // Get students for this partner
-          const { data: studentData, count: studentCount } = await supabase
-            .from('student_enrollments')
-            .select(`
-              id,
-              progress,
-              status,
-              profiles:user_id (full_name),
-              programs:program_id (name)
-            `, { count: 'exact' })
-            .eq('partner_id', partner.id)
-            .order('created_at', { ascending: false })
-            .limit(5);
-          
-          if (studentData && studentData.length > 0) {
-            students = studentData.map((s: any) => ({
-              id: s.id,
-              name: s.profiles?.full_name || 'Unknown',
-              program: s.programs?.name || 'Unknown Program',
-              progress: s.progress || 0,
-              status: s.status || 'active',
-            }));
-          }
-
-          // Get upcoming sessions
-          const { data: sessionData } = await supabase
-            .from('partner_sessions')
-            .select('id, title, scheduled_date, start_time, end_time, enrolled_count')
-            .eq('partner_id', partner.id)
-            .gte('scheduled_date', new Date().toISOString().split('T')[0])
-            .order('scheduled_date', { ascending: true })
-            .limit(3);
-          
-          if (sessionData && sessionData.length > 0) {
-            schedule = sessionData.map((s: any) => ({
-              id: s.id,
-              title: s.title,
-              date: new Date(s.scheduled_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-              time: `${s.start_time} - ${s.end_time}`,
-              students: s.enrolled_count || 0,
-            }));
-          }
-
-          // Calculate stats
-          const { count: activeCount } = await supabase
-            .from('student_enrollments')
-            .select('*', { count: 'exact', head: true })
-            .eq('partner_id', partner.id)
-            .eq('status', 'active');
-
-          const { count: programCount } = await supabase
-            .from('partner_programs')
-            .select('*', { count: 'exact', head: true })
-            .eq('partner_id', partner.id)
-            .eq('is_active', true);
-
-          stats = [
-            { label: 'Active Students', value: String(activeCount || 0), change: 'Currently enrolled', icon: Users },
-            { label: 'Programs', value: String(programCount || 0), change: 'Active', icon: BookOpen },
-            { label: 'Completion Rate', value: '89%', change: '+3% vs last quarter', icon: TrendingUp },
-            { label: 'Upcoming Sessions', value: String(schedule.length), change: 'This week', icon: Calendar },
-          ];
+        // Get students for this partner
+        const { data: studentData } = await supabase
+          .from('student_enrollments')
+          .select(`
+            id,
+            progress,
+            status,
+            profiles:user_id (full_name),
+            programs:program_id (name)
+          `, { count: 'exact' })
+          .eq('partner_id', partner.id)
+          .order('created_at', { ascending: false })
+          .limit(5);
+        
+        if (studentData && studentData.length > 0) {
+          students = studentData.map((s: any) => ({
+            id: s.id,
+            name: s.profiles?.full_name || 'Unknown',
+            program: s.programs?.name || 'Unknown Program',
+            progress: s.progress || 0,
+            status: s.status || 'active',
+          }));
         }
+
+        // Get upcoming sessions
+        const { data: sessionData } = await supabase
+          .from('partner_sessions')
+          .select('id, title, scheduled_date, start_time, end_time, enrolled_count')
+          .eq('partner_id', partner.id)
+          .gte('scheduled_date', new Date().toISOString().split('T')[0])
+          .order('scheduled_date', { ascending: true })
+          .limit(3);
+        
+        if (sessionData && sessionData.length > 0) {
+          schedule = sessionData.map((s: any) => ({
+            id: s.id,
+            title: s.title,
+            date: new Date(s.scheduled_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+            time: `${s.start_time} - ${s.end_time}`,
+            students: s.enrolled_count || 0,
+          }));
+        }
+
+        // Calculate stats
+        const { count: activeCount } = await supabase
+          .from('student_enrollments')
+          .select('*', { count: 'exact', head: true })
+          .eq('partner_id', partner.id)
+          .eq('status', 'active');
+
+        const { count: programCount } = await supabase
+          .from('partner_programs')
+          .select('*', { count: 'exact', head: true })
+          .eq('partner_id', partner.id)
+          .eq('is_active', true);
+
+        stats = [
+          { label: 'Active Students', value: String(activeCount || 0), change: 'Currently enrolled', icon: Users },
+          { label: 'Programs', value: String(programCount || 0), change: 'Active', icon: BookOpen },
+          { label: 'Completion Rate', value: '89%', change: '+3% vs last quarter', icon: TrendingUp },
+          { label: 'Upcoming Sessions', value: String(schedule.length), change: 'This week', icon: Calendar },
+        ];
       }
-    } catch (error) {
-      console.error('[Partner Dashboard] Error fetching data:', error);
-      // Use fallback data
     }
+  } catch (error) {
+    console.error('[Partner Dashboard] Error fetching data:', error);
   }
 
   return (

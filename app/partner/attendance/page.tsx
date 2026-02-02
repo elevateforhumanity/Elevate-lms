@@ -11,47 +11,44 @@ export const metadata: Metadata = {
   description: 'Track and manage student attendance for your training sessions.',
 };
 
-// Sessions loaded from database - empty when no data
-const fallbackSessions: Array<{ id: string; title: string; date: string; time: string; present: number; absent: number; total: number }> = [];
+type SessionItem = { id: string; title: string; date: string; time: string; present: number; absent: number; total: number };
 
 export default async function PartnerAttendancePage() {
   const supabase = await createClient();
-  let sessions = fallbackSessions;
+  let sessions: SessionItem[] = [];
 
-  if (supabase) {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data: partner } = await supabase
-          .from('partners')
-          .select('id')
-          .eq('user_id', user.id)
-          .single();
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data: partner } = await supabase
+        .from('partners')
+        .select('id')
+        .eq('user_id', user.id)
+        .single();
 
-        if (partner) {
-          const { data: sessionData } = await supabase
-            .from('partner_sessions')
-            .select('id, title, scheduled_date, start_time, end_time, present_count, absent_count, enrolled_count')
-            .eq('partner_id', partner.id)
-            .order('scheduled_date', { ascending: false })
-            .limit(10);
+      if (partner) {
+        const { data: sessionData } = await supabase
+          .from('partner_sessions')
+          .select('id, title, scheduled_date, start_time, end_time, present_count, absent_count, enrolled_count')
+          .eq('partner_id', partner.id)
+          .order('scheduled_date', { ascending: false })
+          .limit(10);
 
-          if (sessionData && sessionData.length > 0) {
-            sessions = sessionData.map((s: any) => ({
-              id: s.id,
-              title: s.title,
-              date: s.scheduled_date,
-              time: `${s.start_time} - ${s.end_time}`,
-              present: s.present_count || 0,
-              absent: s.absent_count || 0,
-              total: s.enrolled_count || 0,
-            }));
-          }
+        if (sessionData && sessionData.length > 0) {
+          sessions = sessionData.map((s: any) => ({
+            id: s.id,
+            title: s.title,
+            date: s.scheduled_date,
+            time: `${s.start_time} - ${s.end_time}`,
+            present: s.present_count || 0,
+            absent: s.absent_count || 0,
+            total: s.enrolled_count || 0,
+          }));
         }
       }
-    } catch (error) {
-      console.error('[Attendance] Error:', error);
     }
+  } catch (error) {
+    console.error('[Attendance] Error:', error);
   }
 
   return (

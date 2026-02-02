@@ -29,12 +29,8 @@ export default async function CompanyProfilePage() {
     .single();
 
   // Get job stats if employer exists
-  let stats = {
-    activeJobs: 0,
-    totalHires: 0,
-    wotcCredits: '$0',
-    avgTimeToHire: 'N/A',
-  };
+  let activeJobs = 0;
+  let totalHires = 0;
 
   if (employer) {
     // Count active jobs
@@ -44,7 +40,7 @@ export default async function CompanyProfilePage() {
       .eq('employer_id', employer.id)
       .eq('status', 'active');
     
-    stats.activeJobs = jobCount || 0;
+    activeJobs = jobCount || 0;
 
     // Count total hires (placements)
     const { count: hireCount } = await supabase
@@ -52,8 +48,15 @@ export default async function CompanyProfilePage() {
       .select('*', { count: 'exact', head: true })
       .eq('employer_id', employer.id);
     
-    stats.totalHires = hireCount || 0;
+    totalHires = hireCount || 0;
   }
+
+  const stats = {
+    activeJobs,
+    totalHires,
+    wotcCredits: '$0',
+    avgTimeToHire: 'N/A',
+  };
 
   // If no employer profile, show setup prompt
   if (!employer) {

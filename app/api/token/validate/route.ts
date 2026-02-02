@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+// useToken is not a React hook - it's a server-side token validation function
+// eslint-disable-next-line react-hooks/rules-of-hooks
 import { useToken } from '@/lib/notifications';
 
 export const runtime = 'nodejs';
@@ -19,6 +21,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = await useToken(token);
 
     if (!result || !result.valid) {
@@ -58,6 +61,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(new URL('/login?error=missing_token', request.url));
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const result = await useToken(token);
 
   if (!result || !result.valid) {

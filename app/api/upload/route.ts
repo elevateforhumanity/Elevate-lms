@@ -49,7 +49,7 @@ function isValidExtension(mimeType: string, extension: string): boolean {
  */
 function sanitizeFilename(filename: string): string {
   // Remove path separators and null bytes
-  let sanitized = filename.replace(/[\/\\:\*\?"<>\|]/g, '').replace(/\0/g, '');
+  let sanitized = filename.replace(/[/\\:*?"<>|]/g, '').replace(/\0/g, '');
   
   // Remove all dot sequences (path traversal prevention)
   sanitized = sanitized.replace(/\.{2,}/g, '.');

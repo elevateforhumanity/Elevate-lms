@@ -2,8 +2,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import Link from 'next/link';
-import { Users, Plus, Search, MessageSquare, Calendar } from 'lucide-react';
+import { Users, Plus, Search, MessageSquare, AlertCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Study Groups | Elevate For Humanity',
@@ -13,18 +12,25 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic';
 
-const sampleGroups = [
-  { name: 'Healthcare Fundamentals', members: 24, category: 'Healthcare', active: true },
-  { name: 'CDL Test Prep', members: 18, category: 'Transportation', active: true },
-  { name: 'CNA Study Group', members: 32, category: 'Healthcare', active: true },
-  { name: 'IT Certification Prep', members: 15, category: 'Technology', active: false },
-];
+interface StudyGroup {
+  id: string;
+  name: string;
+  category: string;
+  member_count: number;
+  is_active: boolean;
+}
 
 export default async function GroupsPage() {
   const supabase = await createClient();
-  if (!supabase) redirect('/login');
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/login?redirect=/groups');
+
+  // Fetch study groups from database
+  const { data: groups, error } = await supabase
+    .from('study_groups')
+    .select('id, name, category, member_count, is_active')
+    .order('member_count', { ascending: false })
+    .limit(20);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -50,24 +56,42 @@ export default async function GroupsPage() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {sampleGroups.map((group, i) => (
-            <div key={i} className="bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition-all">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="font-bold text-gray-900">{group.name}</h3>
-                  <p className="text-gray-500 text-sm">{group.category}</p>
+        {error && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-center gap-3">
+            <AlertCircle className="w-5 h-5 text-red-500" />
+            <p className="text-red-700">Unable to load study groups. Please try again later.</p>
+          </div>
+        )}
+
+        {!error && (!groups || groups.length === 0) ? (
+          <div className="text-center py-16 bg-white rounded-xl border">
+            <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <h2 className="text-xl font-semibold text-gray-700 mb-2">No Study Groups Yet</h2>
+            <p className="text-gray-500 mb-6">Be the first to create a study group for your program!</p>
+            <button className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+              <Plus className="w-5 h-5" /> Create First Group
+            </button>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-6">
+            {groups?.map((group: StudyGroup) => (
+              <div key={group.id} className="bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition-all">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="font-bold text-gray-900">{group.name}</h3>
+                    <p className="text-gray-500 text-sm">{group.category}</p>
+                  </div>
+                  {group.is_active && <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Active</span>}
                 </div>
-                {group.active && <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Active</span>}
+                <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                  <span className="flex items-center gap-1"><Users className="w-4 h-4" /> {group.member_count} members</span>
+                  <span className="flex items-center gap-1"><MessageSquare className="w-4 h-4" /> Chat</span>
+                </div>
+                <button className="w-full py-2 border rounded-lg text-blue-600 hover:bg-blue-50">Join Group</button>
               </div>
-              <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-                <span className="flex items-center gap-1"><Users className="w-4 h-4" /> {group.members} members</span>
-                <span className="flex items-center gap-1"><MessageSquare className="w-4 h-4" /> Chat</span>
-              </div>
-              <button className="w-full py-2 border rounded-lg text-blue-600 hover:bg-blue-50">Join Group</button>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -417,7 +417,9 @@ async function postToTwitter(data: any) {
 
     // Twitter API v2 requires OAuth 1.0a for posting
     // Using oauth-1.0a library pattern
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const OAuth = require('oauth-1.0a');
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const crypto = require('crypto');
 
     const oauth = new OAuth({

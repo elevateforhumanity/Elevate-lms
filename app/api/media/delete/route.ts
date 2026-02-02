@@ -11,7 +11,7 @@ import { logger } from '@/lib/logger';
 const ALLOWED_BUCKETS = ['media', 'documents', 'avatars', 'course-content'];
 
 // Safe path pattern - no path traversal
-const SAFE_PATH_PATTERN = /^[a-zA-Z0-9_\/-]+\.[a-zA-Z0-9]+$/;
+const SAFE_PATH_PATTERN = /^[a-zA-Z0-9_/-]+\.[a-zA-Z0-9]+$/;
 
 export async function POST(req: Request) {
   try {

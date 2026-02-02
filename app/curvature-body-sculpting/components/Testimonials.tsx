@@ -1,110 +1,41 @@
 'use client';
 
-import { useState } from 'react';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Star, ChevronLeft, ChevronRight, Quote, Loader2 } from 'lucide-react';
 
 interface Review {
+  id: string;
   name: string;
   rating: number;
   text: string;
   date: string;
   service?: string;
-  priceRange?: string;
 }
 
-const reviews: Review[] = [
-  {
-    name: 'Makia D.',
-    rating: 5,
-    text: "Listen, when I tell you, this is a miracle, a true butter healer. If you suffer from anxiety, depression, pain, or lack of sleep, this is for you!",
-    date: '44 weeks ago',
-    service: 'Meri-Go-Round Butter',
-  },
-  {
-    name: 'Joyce F.',
-    rating: 5,
-    text: "I was suffering from a sciatic nerve injury, and I did not really want to take any kind of narcotic. The Meri-Go-Round oil gave me relief!",
-    date: '22 weeks ago',
-    service: 'Meri-Go-Round Oil',
-  },
-  {
-    name: 'Amanda W.',
-    rating: 5,
-    text: "Products are amazing! My Back Pain Went Away Instantly. Highly recommend!",
-    date: '44 weeks ago',
-    priceRange: '$40-60',
-    service: 'Meri-Go-Round Products',
-  },
-  {
-    name: 'Breeyuan G.',
-    rating: 5,
-    text: "I was a little unsure that it was going to work. Guess what - it did! I have been struggling with pain for years and the oils worked!",
-    date: '35 weeks ago',
-    service: 'Meri-Go-Round Oil',
-  },
-  {
-    name: 'Robin H.',
-    rating: 5,
-    text: "I used some oil for my legs that was hurting and within an hour the pain was gone.",
-    date: 'Oct 10, 2024',
-    service: 'Meri-Go-Round Oil',
-  },
-  {
-    name: 'Stephanie A.',
-    rating: 5,
-    text: "The body oils are amazing. I suffer from alopecia so I apply it to my scalp. It's like magic - my hair has begun to grow.",
-    date: 'Nov 4, 2024',
-    service: 'Hair Growth Oil',
-  },
-  {
-    name: 'Tara C.',
-    rating: 5,
-    text: "I tried Ms. Liz's Charcoal bar soap, which she specifically made for my skin type. My skin feels amazing!",
-    date: '48 weeks ago',
-    priceRange: '$1-20',
-    service: 'Charcoal Soap',
-  },
-  {
-    name: 'Nay B.',
-    rating: 5,
-    text: "Liz used the Shea butter on my daughter's hair who's hair is dry and kinky. It brought her hair back to Life!",
-    date: 'Nov 2, 2024',
-    service: 'Shea Butter',
-  },
-  {
-    name: 'Ashley N.',
-    rating: 5,
-    text: "The oils instantly relaxed my tense muscles in my neck!",
-    date: '41 weeks ago',
-    service: 'Meri-Go-Round Oil',
-  },
-  {
-    name: 'Jovonia A.',
-    rating: 5,
-    text: "The Merry GO Round feels so good on my back. I have lumbar lordosis and it really eased my pain.",
-    date: '44 weeks ago',
-    service: 'Meri-Go-Round Oil',
-  },
-  {
-    name: 'Marietta W.',
-    rating: 5,
-    text: "The oils and butter are excellent. Using the products consistently works wonders. Had pain in my leg for a long time and it's finally getting better!",
-    date: 'Nov 3, 2024',
-    service: 'Meri-Go-Round Products',
-  },
-  {
-    name: 'Rachelle P.',
-    rating: 5,
-    text: "It helped me a lot. I am in constant pain everyday. I am your number 1 fan. I used the Meri-Go-Round oil.",
-    date: '35 weeks ago',
-    service: 'Meri-Go-Round Oil',
-  },
-];
-
 export default function Testimonials() {
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const reviewsPerPage = 3;
-  const totalPages = Math.ceil(reviews.length / reviewsPerPage);
+
+  useEffect(() => {
+    async function fetchReviews() {
+      try {
+        const res = await fetch('/api/curvature/reviews');
+        if (res.ok) {
+          const data = await res.json();
+          setReviews(data.reviews || []);
+        }
+      } catch (error) {
+        console.error('Failed to fetch reviews:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchReviews();
+  }, []);
+
+  const totalPages = Math.ceil(reviews.length / reviewsPerPage) || 1;
 
   const nextPage = () => {
     setCurrentIndex((prev) => (prev + 1) % totalPages);
@@ -119,6 +50,31 @@ export default function Testimonials() {
     (currentIndex + 1) * reviewsPerPage
   );
 
+  const avgRating = reviews.length > 0 
+    ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
+    : '5.0';
+
+  if (loading) {
+    return (
+      <section className="py-20 bg-white">
+        <div className="flex items-center justify-center">
+          <Loader2 className="w-8 h-8 text-purple-600 animate-spin" />
+        </div>
+      </section>
+    );
+  }
+
+  if (reviews.length === 0) {
+    return (
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+          <p className="text-gray-600">No reviews yet. Be the first to share your experience!</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-4">
@@ -129,7 +85,7 @@ export default function Testimonials() {
                 <Star key={star} className="w-6 h-6 text-yellow-400 fill-yellow-400" />
               ))}
             </div>
-            <span className="text-2xl font-bold text-gray-900">4.9</span>
+            <span className="text-2xl font-bold text-gray-900">{avgRating}</span>
             <span className="text-gray-500">({reviews.length} reviews)</span>
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
