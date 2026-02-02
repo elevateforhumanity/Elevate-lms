@@ -26,6 +26,8 @@ import {
   Bell,
   Settings,
   HelpCircle,
+  Info,
+  AlertTriangle,
 } from 'lucide-react';
 import EnrollmentDashboard from './EnrollmentDashboard';
 
@@ -353,7 +355,7 @@ export default async function StudentPortalPage() {
                     {announcement.title}
                   </h3>
                   <span
-                    className={`text-xs px-2 py-1 rounded-full ${
+                    className={`text-xs px-2 py-1 rounded-full inline-flex items-center gap-1 ${
                       announcement.type === 'important'
                         ? 'bg-red-100 text-red-700'
                         : announcement.type === 'event'
@@ -361,7 +363,10 @@ export default async function StudentPortalPage() {
                         : 'bg-blue-100 text-blue-700'
                     }`}
                   >
-                    {announcement.type}
+                    {announcement.type === 'important' && <AlertTriangle className="w-3 h-3" />}
+                    {announcement.type === 'event' && <Calendar className="w-3 h-3" />}
+                    {announcement.type === 'info' && <Info className="w-3 h-3" />}
+                    {announcement.type === 'important' ? 'Important' : announcement.type === 'event' ? 'Event' : 'Info'}
                   </span>
                 </div>
                 <p className="text-sm text-gray-500 mb-3">{announcement.date}</p>
