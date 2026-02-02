@@ -13,7 +13,6 @@ import { HostShopRequirements } from '@/components/compliance/HostShopRequiremen
 import PathwayDisclosure from '@/components/PathwayDisclosure';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Beauty Industry Apprenticeships | Barber, Cosmetology, Esthetics, Nails',

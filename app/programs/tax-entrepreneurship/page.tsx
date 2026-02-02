@@ -11,7 +11,6 @@ import Image from 'next/image';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Tax Preparation & Entrepreneurship',

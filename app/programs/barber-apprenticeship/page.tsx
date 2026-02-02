@@ -7,7 +7,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Barber Apprenticeship Program | Become a Licensed Barber | Elevate for Humanity',

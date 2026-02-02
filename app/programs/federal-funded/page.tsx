@@ -11,7 +11,6 @@ import { programs } from '@/app/data/programs';
 import { Shield, CheckCircle, Users, Award } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Federal Funded Programs | WIOA & WRG | Elevate for Humanity',

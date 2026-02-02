@@ -12,7 +12,6 @@ import PathwayDisclosure from '@/components/PathwayDisclosure';
 import PageAvatar from '@/components/PageAvatar';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:

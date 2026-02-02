@@ -14,7 +14,6 @@ import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import PageAvatar from '@/components/PageAvatar';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Direct Support Professional Training | Free DSP Program Indiana',

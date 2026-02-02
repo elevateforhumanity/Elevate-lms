@@ -12,7 +12,6 @@ import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import PageAvatar from '@/components/PageAvatar';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:

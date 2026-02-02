@@ -11,7 +11,6 @@ import { programs } from '@/app/data/programs';
 import { Zap, Clock, Target, TrendingUp } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:

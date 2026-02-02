@@ -12,7 +12,6 @@ import { Briefcase } from 'lucide-react';
 import { CompactHero } from '@/components/heroes/CompactHero';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Business & Financial Services Programs | Free Training',
