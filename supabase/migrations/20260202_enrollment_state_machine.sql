@@ -1,180 +1,142 @@
--- PR1: Enrollment State Machine Foundation
--- Adds enrollment state fields, indexes, transition helpers, and next action resolver
+-- ============================================================
+-- ENROLLMENT STATE MACHINE
+-- Adds columns for frictionless enrollment flow tracking
+-- ============================================================
 
--- ============================================
--- 1. Add enrollment state fields
--- ============================================
-ALTER TABLE program_enrollments 
-  ADD COLUMN IF NOT EXISTS enrollment_state TEXT NOT NULL DEFAULT 'applied';
+-- Add enrollment state tracking columns
+ALTER TABLE public.enrollments 
+ADD COLUMN IF NOT EXISTS orientation_completed_at TIMESTAMPTZ;
 
-ALTER TABLE program_enrollments 
-  ADD COLUMN IF NOT EXISTS enrollment_confirmed_at TIMESTAMPTZ;
+ALTER TABLE public.enrollments 
+ADD COLUMN IF NOT EXISTS documents_submitted_at TIMESTAMPTZ;
 
-ALTER TABLE program_enrollments 
-  ADD COLUMN IF NOT EXISTS orientation_completed_at TIMESTAMPTZ;
+ALTER TABLE public.enrollments 
+ADD COLUMN IF NOT EXISTS confirmed_at TIMESTAMPTZ;
 
-ALTER TABLE program_enrollments 
-  ADD COLUMN IF NOT EXISTS documents_completed_at TIMESTAMPTZ;
+ALTER TABLE public.enrollments 
+ADD COLUMN IF NOT EXISTS funding_source TEXT;
 
-ALTER TABLE program_enrollments 
-  ADD COLUMN IF NOT EXISTS next_required_action TEXT;
+ALTER TABLE public.enrollments 
+ADD COLUMN IF NOT EXISTS payment_method TEXT CHECK (payment_method IN ('self_pay', 'wioa', 'wrg', 'jri', 'employer', 'other'));
 
--- ============================================
--- 2. Add indexes
--- ============================================
-CREATE UNIQUE INDEX IF NOT EXISTS idx_program_enrollments_user_program 
-  ON program_enrollments(user_id, program_id);
+-- Drop existing status constraint and add new one with all states
+ALTER TABLE public.enrollments DROP CONSTRAINT IF EXISTS enrollments_status_check;
 
-CREATE INDEX IF NOT EXISTS idx_program_enrollments_state 
-  ON program_enrollments(enrollment_state);
+ALTER TABLE public.enrollments 
+ADD CONSTRAINT enrollments_status_check 
+CHECK (status IN (
+  'applied',
+  'approved', 
+  'paid',
+  'confirmed',
+  'orientation_complete',
+  'documents_complete',
+  'active',
+  'completed',
+  'withdrawn',
+  'suspended',
+  'pending'
+));
 
--- ============================================
--- 3. State transition helper
--- ============================================
-CREATE OR REPLACE FUNCTION advance_enrollment_state(
-  p_enrollment_id UUID,
-  p_target_state TEXT
-) RETURNS JSONB
-LANGUAGE plpgsql
-SECURITY DEFINER
-SET search_path = public
-AS $$
+-- Create index for faster state queries
+CREATE INDEX IF NOT EXISTS idx_enrollments_status ON public.enrollments(status);
+CREATE INDEX IF NOT EXISTS idx_enrollments_user_status ON public.enrollments(user_id, status);
+
+-- Function to get next required action for an enrollment
+CREATE OR REPLACE FUNCTION get_enrollment_next_action(enrollment_id UUID)
+RETURNS TABLE(action_label TEXT, action_href TEXT, action_description TEXT) AS $$
 DECLARE
-  v_current_state TEXT;
-  v_allowed_transitions JSONB := '{
-    "applied": ["approved"],
-    "approved": ["confirmed"],
-    "confirmed": ["orientation_complete"],
-    "orientation_complete": ["documents_complete"],
-    "documents_complete": ["active"]
-  }'::jsonb;
-  v_allowed_targets JSONB;
+  enrollment_record RECORD;
+  program_slug TEXT;
 BEGIN
-  -- Get current state
-  SELECT enrollment_state INTO v_current_state
-  FROM program_enrollments
-  WHERE id = p_enrollment_id;
-
-  IF v_current_state IS NULL THEN
-    RETURN jsonb_build_object('success', false, 'error', 'Enrollment not found');
-  END IF;
-
-  -- Check if transition is allowed
-  v_allowed_targets := v_allowed_transitions->v_current_state;
+  SELECT e.*, p.slug INTO enrollment_record
+  FROM enrollments e
+  LEFT JOIN programs p ON e.program_id = p.id
+  WHERE e.id = enrollment_id;
   
-  IF v_allowed_targets IS NULL OR NOT v_allowed_targets ? p_target_state THEN
-    RETURN jsonb_build_object(
-      'success', false, 
-      'error', format('Transition from %s to %s not allowed', v_current_state, p_target_state),
-      'current_state', v_current_state
-    );
+  IF NOT FOUND THEN
+    RETURN;
   END IF;
-
-  -- Perform transition with timestamp updates
-  UPDATE program_enrollments
-  SET 
-    enrollment_state = p_target_state,
-    enrollment_confirmed_at = CASE WHEN p_target_state = 'confirmed' THEN NOW() ELSE enrollment_confirmed_at END,
-    orientation_completed_at = CASE WHEN p_target_state = 'orientation_complete' THEN NOW() ELSE orientation_completed_at END,
-    documents_completed_at = CASE WHEN p_target_state = 'documents_complete' THEN NOW() ELSE documents_completed_at END
-  WHERE id = p_enrollment_id;
-
-  -- Update next required action cache
-  PERFORM update_next_required_action(p_enrollment_id);
-
-  RETURN jsonb_build_object(
-    'success', true,
-    'previous_state', v_current_state,
-    'new_state', p_target_state
-  );
-END;
-$$;
-
--- ============================================
--- 4. Next required action resolver
--- ============================================
-CREATE OR REPLACE FUNCTION get_next_required_action(p_enrollment_id UUID)
-RETURNS TEXT
-LANGUAGE plpgsql
-SECURITY DEFINER
-SET search_path = public
-AS $$
-DECLARE
-  v_state TEXT;
-BEGIN
-  SELECT enrollment_state INTO v_state
-  FROM program_enrollments
-  WHERE id = p_enrollment_id;
-
-  -- Priority order: orientation -> documents -> start_course -> await_placement
-  RETURN CASE v_state
-    WHEN 'applied' THEN 'AWAIT_APPROVAL'
-    WHEN 'approved' THEN 'COMPLETE_PAYMENT'
-    WHEN 'confirmed' THEN 'ORIENTATION'
-    WHEN 'orientation_complete' THEN 'DOCUMENTS'
-    WHEN 'documents_complete' THEN 'START_COURSE_1'
-    WHEN 'active' THEN 'CONTINUE_LEARNING'
-    ELSE 'UNKNOWN'
-  END;
-END;
-$$;
-
--- ============================================
--- 5. Update next action cache helper
--- ============================================
-CREATE OR REPLACE FUNCTION update_next_required_action(p_enrollment_id UUID)
-RETURNS VOID
-LANGUAGE plpgsql
-SECURITY DEFINER
-SET search_path = public
-AS $$
-BEGIN
-  UPDATE program_enrollments
-  SET next_required_action = get_next_required_action(p_enrollment_id)
-  WHERE id = p_enrollment_id;
-END;
-$$;
-
--- ============================================
--- 6. Auto-approve self-pay helper
--- ============================================
-CREATE OR REPLACE FUNCTION auto_approve_self_pay(p_enrollment_id UUID)
-RETURNS JSONB
-LANGUAGE plpgsql
-SECURITY DEFINER
-SET search_path = public
-AS $$
-DECLARE
-  v_funding TEXT;
-BEGIN
-  SELECT funding_source INTO v_funding
-  FROM program_enrollments
-  WHERE id = p_enrollment_id;
-
-  IF v_funding = 'SELF_PAY' OR v_funding = 'self_pay' THEN
-    RETURN advance_enrollment_state(p_enrollment_id, 'approved');
+  
+  program_slug := COALESCE(enrollment_record.slug, 'barber-apprenticeship');
+  
+  -- Priority 1: Orientation
+  IF enrollment_record.orientation_completed_at IS NULL THEN
+    RETURN QUERY SELECT 
+      'Complete Orientation'::TEXT,
+      ('/programs/' || program_slug || '/orientation')::TEXT,
+      'Complete your mandatory orientation to continue'::TEXT;
+    RETURN;
   END IF;
-
-  RETURN jsonb_build_object('success', false, 'error', 'Not self-pay enrollment');
+  
+  -- Priority 2: Documents
+  IF enrollment_record.documents_submitted_at IS NULL THEN
+    RETURN QUERY SELECT 
+      'Submit Required Documents'::TEXT,
+      ('/programs/' || program_slug || '/documents')::TEXT,
+      'Upload your required documents to access your program'::TEXT;
+    RETURN;
+  END IF;
+  
+  -- Priority 3: First course
+  RETURN QUERY SELECT 
+    'Begin Course 1'::TEXT,
+    '/apprentice/courses/1'::TEXT,
+    'Start your first course module'::TEXT;
 END;
-$$;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
--- ============================================
--- 7. Grant permissions
--- ============================================
-GRANT EXECUTE ON FUNCTION advance_enrollment_state TO service_role;
-GRANT EXECUTE ON FUNCTION get_next_required_action TO authenticated, service_role;
-GRANT EXECUTE ON FUNCTION update_next_required_action TO service_role;
-GRANT EXECUTE ON FUNCTION auto_approve_self_pay TO service_role;
+-- Grant execute permission
+GRANT EXECUTE ON FUNCTION get_enrollment_next_action(UUID) TO authenticated;
 
--- ============================================
--- 8. Update existing enrollments to have state
--- ============================================
-UPDATE program_enrollments
-SET enrollment_state = CASE 
-  WHEN status = 'active' OR status = 'ACTIVE' THEN 'active'
-  WHEN status = 'completed' OR status = 'COMPLETED' THEN 'active'
-  WHEN status = 'pending' OR status = 'PENDING' THEN 'applied'
-  ELSE 'applied'
-END
-WHERE enrollment_state = 'applied' OR enrollment_state IS NULL;
+COMMENT ON COLUMN public.enrollments.orientation_completed_at IS 'Timestamp when student completed mandatory orientation';
+COMMENT ON COLUMN public.enrollments.documents_submitted_at IS 'Timestamp when student submitted required documents';
+COMMENT ON COLUMN public.enrollments.confirmed_at IS 'Timestamp when enrollment was confirmed (post-payment)';
+
+-- ============================================================
+-- STORAGE BUCKET FOR ENROLLMENT DOCUMENTS
+-- ============================================================
+
+-- Create storage bucket for enrollment documents (if not exists)
+INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+VALUES (
+  'enrollment-documents',
+  'enrollment-documents',
+  false,
+  10485760, -- 10MB limit
+  ARRAY['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'application/pdf']
+)
+ON CONFLICT (id) DO NOTHING;
+
+-- RLS policies for enrollment-documents bucket
+CREATE POLICY "Users can upload their own documents"
+ON storage.objects FOR INSERT TO authenticated
+WITH CHECK (
+  bucket_id = 'enrollment-documents' AND
+  (storage.foldername(name))[1] = auth.uid()::text
+);
+
+CREATE POLICY "Users can view their own documents"
+ON storage.objects FOR SELECT TO authenticated
+USING (
+  bucket_id = 'enrollment-documents' AND
+  (storage.foldername(name))[1] = auth.uid()::text
+);
+
+CREATE POLICY "Users can delete their own documents"
+ON storage.objects FOR DELETE TO authenticated
+USING (
+  bucket_id = 'enrollment-documents' AND
+  (storage.foldername(name))[1] = auth.uid()::text
+);
+
+CREATE POLICY "Admins can access all enrollment documents"
+ON storage.objects FOR ALL TO authenticated
+USING (
+  bucket_id = 'enrollment-documents' AND
+  EXISTS (
+    SELECT 1 FROM profiles
+    WHERE profiles.id = auth.uid()
+    AND profiles.role IN ('admin', 'super_admin')
+  )
+);
