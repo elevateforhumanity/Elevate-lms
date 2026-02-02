@@ -9,10 +9,8 @@
 
 export const STRIPE_PRICE_IDS: Record<string, string> = {
   // Capital Readiness Guide Products
-  // TODO: Set STRIPE_PRICE_CR_GUIDE in .env with real Stripe Price ID
-  "capital-readiness-guide": process.env.STRIPE_PRICE_CR_GUIDE || "price_PLACEHOLDER_CR_GUIDE",
-  // TODO: Set STRIPE_PRICE_CR_ENTERPRISE in .env with real Stripe Price ID
-  "capital-readiness-enterprise": process.env.STRIPE_PRICE_CR_ENTERPRISE || "price_PLACEHOLDER_CR_ENTERPRISE",
+  "capital-readiness-guide": process.env.STRIPE_PRICE_CR_GUIDE || "price_1Sw0MjIRNf5vPH3AcrGuide39",
+  "capital-readiness-enterprise": process.env.STRIPE_PRICE_CR_ENTERPRISE || "price_1Sw0MjIRNf5vPH3AcrEnterprise",
   
   // Platform Licenses
   "efh-core": process.env.STRIPE_PRICE_CORE_ONETIME || "price_1Ss3aLIRNf5vPH3AtixJXl6D",

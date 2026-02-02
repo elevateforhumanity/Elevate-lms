@@ -325,26 +325,46 @@ export async function checkAndCancelCompletedSubscription(
 export async function handleFailedPayment(
   subscriptionId: string,
   studentId: string,
-  supabase?: any
+  supabaseClient?: any
 ): Promise<void> {
-  console.log(`Payment failed for subscription ${subscriptionId}, student ${studentId}`);
-  console.log(`Access should be suspended per INSTALLMENT_RULES.suspendOnFailure`);
+  let supabase = supabaseClient;
   
-  if (supabase) {
-    // Update enrollment status to suspended
-    const { error } = await supabase
-      .from('program_enrollments')
-      .update({ 
-        status: 'SUSPENDED',
-        payment_status: 'FAILED',
-        updated_at: new Date().toISOString(),
-      })
-      .eq('student_id', studentId);
+  if (!supabase) {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
     
-    if (error) {
-      console.error('Failed to suspend enrollment:', error);
-    } else {
-      console.log(`Enrollment suspended for student ${studentId}`);
+    if (!supabaseUrl || !supabaseKey) {
+      console.error('Supabase not configured for payment failure handling');
+      return;
     }
+    
+    const { createClient } = await import('@supabase/supabase-js');
+    supabase = createClient(supabaseUrl, supabaseKey);
   }
+  
+  console.log(`Payment failed for subscription ${subscriptionId}, student ${studentId}`);
+  
+  // Update enrollment status to suspended
+  const { error } = await supabase
+    .from('program_enrollments')
+    .update({ 
+      status: 'SUSPENDED',
+      payment_status: 'FAILED',
+      updated_at: new Date().toISOString(),
+    })
+    .eq('student_id', studentId);
+  
+  if (error) {
+    console.error('Failed to suspend enrollment:', error);
+  } else {
+    console.log(`Enrollment suspended for student ${studentId}`);
+  }
+  
+  // Log the payment failure
+  await supabase.from('payment_logs').insert({
+    student_id: studentId,
+    stripe_subscription_id: subscriptionId,
+    status: 'failed',
+    metadata: { reason: 'payment_failed', suspended: true },
+  }).catch((err: Error) => console.warn('Failed to log payment failure:', err));
 }

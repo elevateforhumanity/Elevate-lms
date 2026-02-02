@@ -30,26 +30,9 @@ export const metadata: Metadata = {
   },
 };
 
-const fallbackCategories = [
-  { name: 'Getting Started', slug: 'getting-started', article_count: 12 },
-  { name: 'Account & Billing', slug: 'account-billing', article_count: 8 },
-  { name: 'Courses & Learning', slug: 'courses-learning', article_count: 15 },
-  { name: 'Technical Support', slug: 'technical-support', article_count: 10 },
-  { name: 'Certifications', slug: 'certifications', article_count: 6 },
-  { name: 'Career Services', slug: 'career-services', article_count: 9 },
-];
-
-const fallbackArticles = [
-  { id: '1', title: 'How to enroll in a program', view_count: 2345, category: 'Getting Started', slug: 'how-to-enroll' },
-  { id: '2', title: 'Payment plans and financial aid options', view_count: 1876, category: 'Account & Billing', slug: 'payment-plans' },
-  { id: '3', title: 'Accessing your course materials', view_count: 1654, category: 'Courses & Learning', slug: 'accessing-materials' },
-  { id: '4', title: 'Scheduling your certification exam', view_count: 1432, category: 'Certifications', slug: 'scheduling-exam' },
-  { id: '5', title: 'Troubleshooting video playback issues', view_count: 1234, category: 'Technical Support', slug: 'video-troubleshooting' },
-];
-
 export default async function HelpArticlesPage() {
-  let categories = fallbackCategories;
-  let popularArticles = fallbackArticles;
+  let categories: any[] = [];
+  let popularArticles: any[] = [];
   
   try {
     const supabase = await createClient();
@@ -60,9 +43,7 @@ export default async function HelpArticlesPage() {
         .eq('is_active', true)
         .order('sort_order');
       
-      if (catData && catData.length > 0) {
-        categories = catData;
-      }
+      categories = catData || [];
 
       const { data: artData } = await supabase
         .from('help_articles')
@@ -71,12 +52,10 @@ export default async function HelpArticlesPage() {
         .order('view_count', { ascending: false })
         .limit(5);
       
-      if (artData && artData.length > 0) {
-        popularArticles = artData;
-      }
+      popularArticles = artData || [];
     }
-  } catch {
-    // Use fallback data
+  } catch (err) {
+    console.error('Failed to fetch help data:', err);
   }
 
   return (

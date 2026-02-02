@@ -32,19 +32,10 @@ export const metadata: Metadata = {
   },
 };
 
-const fallbackProducts = [
-  { id: '1', name: 'HVAC Tool Kit', price: 149.99, rating: 4.8, review_count: 124, category: 'Tools', image_url: '/images/shop/hvac-tool-kit.jpg', slug: 'hvac-tool-kit' },
-  { id: '2', name: 'Medical Scrubs Set', price: 49.99, rating: 4.6, review_count: 89, category: 'Apparel', image_url: '/images/shop/medical-scrubs.jpg', slug: 'medical-scrubs-set' },
-  { id: '3', name: 'Barber Shears Pro', price: 89.99, rating: 4.9, review_count: 156, category: 'Tools', image_url: '/images/shop/barber-shears.jpg', slug: 'barber-shears-pro' },
-  { id: '4', name: 'Study Guide Bundle', price: 29.99, rating: 4.7, review_count: 234, category: 'Books', image_url: '/images/shop/study-guides.jpg', slug: 'study-guide-bundle' },
-  { id: '5', name: 'Safety Glasses', price: 24.99, rating: 4.5, review_count: 67, category: 'Safety', image_url: '/images/shop/safety-glasses.jpg', slug: 'safety-glasses' },
-  { id: '6', name: 'Elevate Hoodie', price: 59.99, rating: 4.8, review_count: 178, category: 'Apparel', image_url: '/images/shop/elevate-hoodie.jpg', slug: 'elevate-hoodie' },
-];
-
 const categories = ['All', 'Tools', 'Apparel', 'Books', 'Safety', 'Accessories'];
 
 export default async function ShopPage() {
-  let products = fallbackProducts;
+  let products: any[] = [];
   
   try {
     const supabase = await createClient();
@@ -57,12 +48,10 @@ export default async function ShopPage() {
         .order('created_at', { ascending: false })
         .limit(12);
       
-      if (data && data.length > 0) {
-        products = data;
-      }
+      products = data || [];
     }
-  } catch {
-    // Use fallback products
+  } catch (err) {
+    console.error('Failed to fetch shop products:', err);
   }
 
   return (

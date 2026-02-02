@@ -26,17 +26,6 @@ interface Service {
   category: string;
 }
 
-// Fallback services if DB not available
-const fallbackServices = [
-  { id: 'consultation', name: 'Free Consultation', duration: '30 min', price: 'FREE' },
-  { id: 'body-contouring', name: 'Body Contouring', duration: '60 min', price: '$199' },
-  { id: 'skin-tightening', name: 'Skin Tightening', duration: '45 min', price: '$149' },
-  { id: 'cellulite-reduction', name: 'Cellulite Reduction', duration: '45 min', price: '$129' },
-  { id: 'lymphatic-drainage', name: 'Lymphatic Drainage', duration: '60 min', price: '$89' },
-  { id: 'package-3', name: 'Body Sculpting Package (3 sessions)', duration: '60 min each', price: '$499' },
-  { id: 'package-6', name: 'Body Sculpting Package (6 sessions)', duration: '60 min each', price: '$899' },
-];
-
 const timeSlots = [
   '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM',
   '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM',
@@ -239,14 +228,16 @@ export default function BookAppointmentPage() {
                   <Loader2 className="w-8 h-8 text-purple-600 animate-spin" />
                   <span className="ml-3 text-gray-600">Loading services...</span>
                 </div>
+              ) : services.length === 0 ? (
+                <div className="text-center py-12 text-gray-500">
+                  <p>No services available at this time.</p>
+                  <p className="text-sm mt-2">Please check back later or contact us directly.</p>
+                </div>
               ) : (
                 <div className="grid md:grid-cols-2 gap-4">
-                  {(services.length > 0 ? services : fallbackServices).map((service: any) => {
-                    const isDbService = 'duration_minutes' in service;
-                    const duration = isDbService ? `${service.duration_minutes} min` : service.duration;
-                    const price = isDbService 
-                      ? (service.price === 0 ? 'FREE' : `$${service.price}`)
-                      : service.price;
+                  {services.map((service) => {
+                    const duration = `${service.duration_minutes} min`;
+                    const price = service.price === 0 ? 'FREE' : `$${service.price}`;
                     
                     return (
                       <button

@@ -22,14 +22,11 @@ export function StudentEngagementChart() {
     async function fetchData() {
       try {
         const res = await fetch('/api/instructor/engagement-stats');
-        if (res.ok) {
-          const json = await res.json();
-          setData(json.engagement || []);
-        } else {
-          setData(getSampleEngagement());
-        }
-      } catch {
-        setData(getSampleEngagement());
+        const json = await res.json();
+        setData(json.engagement || []);
+      } catch (err) {
+        console.error('Failed to fetch engagement stats:', err);
+        setData([]);
       } finally {
         setLoading(false);
       }
@@ -90,14 +87,11 @@ export function CoursePerformanceChart() {
     async function fetchData() {
       try {
         const res = await fetch('/api/instructor/course-performance');
-        if (res.ok) {
-          const json = await res.json();
-          setData(json.courses || []);
-        } else {
-          setData(getSampleCourses());
-        }
-      } catch {
-        setData(getSampleCourses());
+        const json = await res.json();
+        setData(json.courses || []);
+      } catch (err) {
+        console.error('Failed to fetch course performance:', err);
+        setData([]);
       } finally {
         setLoading(false);
       }
@@ -135,23 +129,4 @@ export function CoursePerformanceChart() {
   );
 }
 
-function getSampleEngagement(): EngagementData[] {
-  return [
-    { day: 'Mon', views: 45, completions: 12 },
-    { day: 'Tue', views: 52, completions: 18 },
-    { day: 'Wed', views: 48, completions: 15 },
-    { day: 'Thu', views: 61, completions: 22 },
-    { day: 'Fri', views: 55, completions: 19 },
-    { day: 'Sat', views: 32, completions: 8 },
-    { day: 'Sun', views: 28, completions: 6 },
-  ];
-}
 
-function getSampleCourses(): CourseData[] {
-  return [
-    { name: 'Introduction to Barbering', students: 24, completion: 87 },
-    { name: 'Advanced Cutting Techniques', students: 18, completion: 72 },
-    { name: 'Business Management', students: 15, completion: 91 },
-    { name: 'Client Relations', students: 21, completion: 68 },
-  ];
-}

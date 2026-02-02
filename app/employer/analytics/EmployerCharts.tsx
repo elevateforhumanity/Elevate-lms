@@ -22,14 +22,11 @@ export function HiringTrendsChart() {
     async function fetchData() {
       try {
         const res = await fetch('/api/employer/hiring-trends');
-        if (res.ok) {
-          const json = await res.json();
-          setData(json.trends || []);
-        } else {
-          setData(getSampleHiring());
-        }
-      } catch {
-        setData(getSampleHiring());
+        const json = await res.json();
+        setData(json.trends || []);
+      } catch (err) {
+        console.error('Failed to fetch hiring trends:', err);
+        setData([]);
       } finally {
         setLoading(false);
       }
@@ -90,14 +87,11 @@ export function RetentionByRoleChart() {
     async function fetchData() {
       try {
         const res = await fetch('/api/employer/retention-stats');
-        if (res.ok) {
-          const json = await res.json();
-          setData(json.retention || []);
-        } else {
-          setData(getSampleRetention());
-        }
-      } catch {
-        setData(getSampleRetention());
+        const json = await res.json();
+        setData(json.retention || []);
+      } catch (err) {
+        console.error('Failed to fetch retention stats:', err);
+        setData([]);
       } finally {
         setLoading(false);
       }
@@ -142,22 +136,4 @@ export function RetentionByRoleChart() {
   );
 }
 
-function getSampleHiring(): HiringData[] {
-  return [
-    { month: 'Jul', hires: 5, applications: 28 },
-    { month: 'Aug', hires: 8, applications: 35 },
-    { month: 'Sep', hires: 6, applications: 31 },
-    { month: 'Oct', hires: 10, applications: 42 },
-    { month: 'Nov', hires: 9, applications: 38 },
-    { month: 'Dec', hires: 9, applications: 32 },
-  ];
-}
 
-function getSampleRetention(): RetentionData[] {
-  return [
-    { role: 'Barber', retention: 92, count: 18 },
-    { role: 'Apprentice', retention: 78, count: 12 },
-    { role: 'Receptionist', retention: 85, count: 4 },
-    { role: 'Manager', retention: 95, count: 3 },
-  ];
-}

@@ -17,15 +17,11 @@ export default function PerformanceChart() {
     async function fetchData() {
       try {
         const res = await fetch('/api/workforce-board/performance-trends');
-        if (res.ok) {
-          const json = await res.json();
-          setData(json.trends || []);
-        } else {
-          // Use sample data if API not available
-          setData(getSampleData());
-        }
-      } catch {
-        setData(getSampleData());
+        const json = await res.json();
+        setData(json.trends || []);
+      } catch (err) {
+        console.error('Failed to fetch performance trends:', err);
+        setData([]);
       } finally {
         setLoading(false);
       }
@@ -118,13 +114,4 @@ export default function PerformanceChart() {
   );
 }
 
-function getSampleData(): PerformanceData[] {
-  return [
-    { month: 'Jul', employmentRate: 72, credentialRate: 80, skillGains: 68 },
-    { month: 'Aug', employmentRate: 74, credentialRate: 82, skillGains: 70 },
-    { month: 'Sep', employmentRate: 75, credentialRate: 83, skillGains: 69 },
-    { month: 'Oct', employmentRate: 76, credentialRate: 84, skillGains: 71 },
-    { month: 'Nov', employmentRate: 77, credentialRate: 84, skillGains: 72 },
-    { month: 'Dec', employmentRate: 78, credentialRate: 85, skillGains: 72 },
-  ];
-}
+

@@ -9,16 +9,6 @@ import { createClient } from '@/lib/supabase/server';
 // Cache for 10 minutes - program listings don't change frequently
 export const revalidate = 600;
 
-// Fallback categories if DB is unavailable
-const fallbackCategories = [
-  { title: 'Healthcare', description: 'Start a rewarding career helping others in medical settings.', href: '/programs/healthcare', image: '/images/prog-healthcare.jpg', programs: ['CNA Training', 'Medical Assistant', 'Phlebotomy', 'EKG Technician'] },
-  { title: 'Skilled Trades', description: 'Build a hands-on career in high-demand technical fields.', href: '/programs/skilled-trades', image: '/images/prog-trades.jpg', programs: ['HVAC Technician', 'Electrical', 'Welding', 'Plumbing'] },
-  { title: 'Technology', description: 'Launch your career in the growing digital economy.', href: '/programs/technology', image: '/images/prog-technology.jpg', programs: ['IT Support', 'Cybersecurity', 'Web Development'] },
-  { title: 'CDL & Transportation', description: 'Get on the road to a stable driving career.', href: '/programs/cdl', image: '/images/prog-cdl.jpg', programs: ['Class A CDL', 'Class B CDL', 'Hazmat Endorsement'] },
-  { title: 'Beauty & Barbering', description: 'Turn your passion for style into a licensed career.', href: '/programs/barber-apprenticeship', image: '/images/prog-barber.jpg', programs: ['Barber Apprenticeship', 'Cosmetology', 'Esthetics'] },
-  { title: 'Business & Finance', description: 'Build skills for entrepreneurship and financial services.', href: '/programs/business', image: '/images/prog-business.jpg', programs: ['Tax Preparation', 'Entrepreneurship', 'Customer Service'] },
-];
-
 // Category image mapping
 const categoryImages: Record<string, string> = {
   'Healthcare': '/images/prog-healthcare.jpg',
@@ -32,43 +22,42 @@ const categoryImages: Record<string, string> = {
 };
 
 async function getCategories() {
-  try {
-    const supabase = await createClient();
-    if (!supabase) return fallbackCategories;
+  const supabase = await createClient();
+  
+  // Get active programs grouped by category
+  const { data: programs, error } = await supabase
+    .from('programs')
+    .select('id, title, slug, category, description')
+    .eq('status', 'active')
+    .order('category');
 
-    // Get active programs grouped by category
-    const { data: programs, error } = await supabase
-      .from('programs')
-      .select('id, title, slug, category, description')
-      .eq('status', 'active')
-      .order('category');
-
-    if (error || !programs || programs.length === 0) {
-      return fallbackCategories;
-    }
-
-    // Group programs by category
-    const categoryMap = new Map<string, { title: string; description: string; href: string; image: string; programs: string[] }>();
-    
-    for (const program of programs) {
-      const cat = program.category || 'Other';
-      if (!categoryMap.has(cat)) {
-        categoryMap.set(cat, {
-          title: cat,
-          description: `Explore ${cat.toLowerCase()} career opportunities.`,
-          href: `/programs/${cat.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '')}`,
-          image: categoryImages[cat] || categoryImages['default'],
-          programs: [],
-        });
-      }
-      categoryMap.get(cat)!.programs.push(program.title);
-    }
-
-    const categories = Array.from(categoryMap.values());
-    return categories.length > 0 ? categories : fallbackCategories;
-  } catch {
-    return fallbackCategories;
+  if (error) {
+    console.error('Failed to fetch programs:', error);
+    return [];
   }
+
+  if (!programs || programs.length === 0) {
+    return [];
+  }
+
+  // Group programs by category
+  const categoryMap = new Map<string, { title: string; description: string; href: string; image: string; programs: string[] }>();
+  
+  for (const program of programs) {
+    const cat = program.category || 'Other';
+    if (!categoryMap.has(cat)) {
+      categoryMap.set(cat, {
+        title: cat,
+        description: `Explore ${cat.toLowerCase()} career opportunities.`,
+        href: `/programs/${cat.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '')}`,
+        image: categoryImages[cat] || categoryImages['default'],
+        programs: [],
+      });
+    }
+    categoryMap.get(cat)!.programs.push(program.title);
+  }
+
+  return Array.from(categoryMap.values());
 }
 
 const roadmap = [
