@@ -28,9 +28,9 @@ export const Footer: React.FC = () => {
       { name: 'Apply Now', href: '/apply' },
       { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
       { name: 'Funding Options', href: '/funding' },
-      { name: 'Student Portal', href: '/lms/dashboard' },
+      { name: 'Student Portal', href: '/student-portal' },
       { name: 'Course Catalog', href: '/courses' },
-      { name: 'Success Stories', href: '/success-stories' },
+      { name: 'Success Stories', href: '/testimonials' },
     ],
     platform: [
       { name: 'LMS Overview', href: '/lms' },
@@ -50,8 +50,8 @@ export const Footer: React.FC = () => {
     resources: [
       { name: 'FAQ', href: '/faq' },
       { name: 'Blog', href: '/blog' },
-      { name: 'Help Center', href: '/help' },
-      { name: 'Calendar', href: '/calendar' },
+      { name: 'Help Center', href: '/help/articles' },
+      { name: 'Events', href: '/events' },
       { name: 'Contact Support', href: '/contact' },
     ],
     company: [
@@ -62,11 +62,11 @@ export const Footer: React.FC = () => {
       { name: 'Contact', href: '/contact' },
     ],
     legal: [
-      { name: 'Privacy Policy', href: '/privacy-policy' },
-      { name: 'Terms of Service', href: '/terms-of-service' },
+      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Terms of Service', href: '/terms' },
       { name: 'Accessibility', href: '/accessibility' },
       { name: 'Compliance', href: '/compliance' },
-      { name: 'Sitemap', href: '/sitemap-page' },
+      { name: 'Sitemap', href: '/site-map' },
     ],
   };
 
