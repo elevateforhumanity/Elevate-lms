@@ -9,8 +9,10 @@
 
 export const STRIPE_PRICE_IDS: Record<string, string> = {
   // Capital Readiness Guide Products
-  "capital-readiness-guide": process.env.STRIPE_PRICE_CR_GUIDE || "price_1Sw0MjIRNf5vPH3AcrGuide39",
-  "capital-readiness-enterprise": process.env.STRIPE_PRICE_CR_ENTERPRISE || "price_1Sw0MjIRNf5vPH3AcrEnterprise",
+  // Set STRIPE_PRICE_CR_GUIDE in .env for production
+  "capital-readiness-guide": process.env.STRIPE_PRICE_CR_GUIDE || "price_PLACEHOLDER_CR_GUIDE",
+  // Set STRIPE_PRICE_CR_ENTERPRISE in .env for production
+  "capital-readiness-enterprise": process.env.STRIPE_PRICE_CR_ENTERPRISE || "price_PLACEHOLDER_CR_ENTERPRISE",
   
   // Platform Licenses
   "efh-core": process.env.STRIPE_PRICE_CORE_ONETIME || "price_1Ss3aLIRNf5vPH3AtixJXl6D",

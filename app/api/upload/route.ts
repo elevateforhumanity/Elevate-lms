@@ -264,19 +264,39 @@ export async function DELETE(request: Request) {
       );
     }
 
-    // In production, verify ownership before deletion
     logger.info('File deletion requested', {
       userId: user.id,
       filename,
     });
 
-    // TODO: Implement actual file deletion with ownership verification
-    // const filepath = join(UPLOAD_DIR, filename);
-    // await fs.unlink(filepath);
+    // Delete from Supabase storage with ownership verification
+    const supabase = await createClient();
+    if (supabase) {
+      // Verify file belongs to user by checking path prefix
+      const userPrefix = `${user.id}/`;
+      if (!filename.startsWith(userPrefix)) {
+        return NextResponse.json(
+          { success: false, error: 'Unauthorized to delete this file' },
+          { status: 403 }
+        );
+      }
+
+      const { error } = await supabase.storage
+        .from('uploads')
+        .remove([filename]);
+
+      if (error) {
+        logger.error('Storage deletion error:', error);
+        return NextResponse.json(
+          { success: false, error: 'Failed to delete file from storage' },
+          { status: 500 }
+        );
+      }
+    }
 
     return NextResponse.json({
       success: true,
-      message: 'File deletion requested'
+      message: 'File deleted successfully'
     });
   } catch (error) {
     logger.error('Delete error:', error as Error);

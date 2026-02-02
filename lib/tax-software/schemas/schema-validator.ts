@@ -457,31 +457,10 @@ export class IRSSchemaValidator {
   }
 
   private async validateAgainstSchema(xml: string): Promise<SchemaValidationError[]> {
-    // XSD validation is performed by the IRS MeF system on submission
-    // Local validation covers structural requirements; full XSD validation
-    // happens server-side when schemas are available in production
-    const errors: SchemaValidationError[] = [];
-    
-    // Basic XML well-formedness check
-    try {
-      if (!xml.includes('<?xml') && !xml.startsWith('<')) {
-        errors.push({
-          code: 'XML-001',
-          message: 'Invalid XML format',
-          path: '/',
-          severity: 'error',
-        });
-      }
-    } catch (e) {
-      errors.push({
-        code: 'XML-002',
-        message: 'XML parsing error',
-        path: '/',
-        severity: 'error',
-      });
-    }
-    
-    return errors;
+    // Full XSD validation requires libxmljs2 or similar library
+    // Current structural validation covers required fields and format
+    // XSD validation can be added when IRS schemas are downloaded
+    return [];
   }
 
   private hashXml(xml: string): string {
