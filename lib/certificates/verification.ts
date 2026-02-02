@@ -22,7 +22,7 @@ export function generateVerificationCode(): string {
  * Get the verification URL for a certificate
  */
 export function getVerificationUrl(code: string): string {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
   return `${baseUrl}/verify/${code}`;
 }
 
