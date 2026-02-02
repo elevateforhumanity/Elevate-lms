@@ -1,3 +1,7 @@
+// Force static generation for performance
+export const dynamic = 'force-static';
+export const revalidate = 86400;
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';

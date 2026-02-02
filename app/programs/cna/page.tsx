@@ -1,3 +1,7 @@
+// Force static generation for performance
+export const dynamic = 'force-static';
+export const revalidate = 86400;
+
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { ProgramPageTemplate, ProgramData } from '@/components/programs/ProgramPageTemplate';

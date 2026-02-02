@@ -1,4 +1,4 @@
-// Programs page - pulls from database
+// Programs page - pulls from database with ISR caching
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { PathwayBlock } from '@/components/PathwayBlock';
@@ -6,7 +6,8 @@ import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import PageAvatar from '@/components/PageAvatar';
 import { createClient } from '@/lib/supabase/server';
 
-export const dynamic = 'force-dynamic';
+// Cache for 10 minutes - program listings don't change frequently
+export const revalidate = 600;
 
 // Fallback categories if DB is unavailable
 const fallbackCategories = [
