@@ -209,3 +209,85 @@ export async function DELETE(req: NextRequest) {
     );
   }
 }
+
+// Rename/move file (creates new file, deletes old)
+export async function PATCH(req: NextRequest) {
+  const userToken = req.headers.get('x-gh-token');
+
+  try {
+    const body = await req.json();
+    const { repo, old_path, new_path, branch = 'main', message } = body;
+
+    if (!repo || !old_path || !new_path) {
+      return NextResponse.json(
+        { error: 'Missing required fields (repo, old_path, new_path)' },
+        { status: 400 }
+      );
+    }
+
+    const { owner, name } = parseRepo(repo);
+    const client = userToken ? getUserOctokit(userToken) : gh();
+
+    // Get the old file content
+    const { data: oldFile } = await client.repos.getContent({
+      owner,
+      repo: name,
+      path: old_path,
+      ref: branch,
+    });
+
+    if (Array.isArray(oldFile)) {
+      return NextResponse.json(
+        { error: 'Cannot rename a directory' },
+        { status: 400 }
+      );
+    }
+
+    const content = Buffer.from(oldFile.content || '', 'base64').toString('utf8');
+    const commitMessage = message || `Rename ${old_path} to ${new_path}`;
+
+    // Create new file
+    const { data: newFile } = await client.repos.createOrUpdateFileContents({
+      owner,
+      repo: name,
+      path: new_path,
+      message: commitMessage,
+      content: Buffer.from(content, 'utf8').toString('base64'),
+      branch,
+    });
+
+    // Delete old file
+    await client.repos.deleteFile({
+      owner,
+      repo: name,
+      path: old_path,
+      message: commitMessage,
+      sha: oldFile.sha,
+      branch,
+    });
+
+    return NextResponse.json({
+      ok: true,
+      old_path,
+      new_path,
+      commit: newFile.commit.sha,
+      content: {
+        sha: newFile.content?.sha,
+        path: newFile.content?.path,
+      },
+    });
+  } catch (error) {
+    logger.error(
+      'GitHub file rename error:',
+      error instanceof Error ? error : new Error(String(error))
+    );
+    return NextResponse.json(
+      {
+        error: 'Failed to rename file',
+        message: toErrorMessage(error),
+        status: error.status,
+      },
+      { status: error.status || 500 }
+    );
+  }
+}

@@ -1,0 +1,52 @@
+import { NextRequest, NextResponse } from 'next/server';
+import OpenAI from 'openai';
+
+const getOpenAI = () => new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+export async function POST(req: NextRequest) {
+  try {
+    const { messages, fileContext } = await req.json();
+
+    const systemPrompt = `You are an expert coding assistant integrated into Dev Studio, a browser-based IDE.
+
+You help users:
+- Write and edit code
+- Debug issues
+- Explain code
+- Suggest improvements
+- Answer programming questions
+
+When the user asks you to edit a file, respond with the complete updated code wrapped in a code block with the filename, like:
+\`\`\`filename.tsx
+// complete file content here
+\`\`\`
+
+Current file context:
+${fileContext || 'No file currently open'}
+
+Be concise and direct. Provide working code.`;
+
+    const response = await getOpenAI().chat.completions.create({
+      model: 'gpt-4o',
+      messages: [
+        { role: 'system', content: systemPrompt },
+        ...messages,
+      ],
+      temperature: 0.7,
+      max_tokens: 4096,
+    });
+
+    return NextResponse.json({
+      message: response.choices[0].message.content,
+      usage: response.usage,
+    });
+  } catch (error) {
+    console.error('AI Chat error:', error);
+    return NextResponse.json(
+      { error: 'Failed to get AI response' },
+      { status: 500 }
+    );
+  }
+}
