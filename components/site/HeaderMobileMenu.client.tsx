@@ -104,11 +104,11 @@ export default function HeaderMobileMenu({ items }: HeaderMobileMenuProps) {
               Get Info
             </Link>
             <Link
-              href="/enroll"
+              href="/programs"
               onClick={() => setIsOpen(false)}
               className="block w-full text-center py-3 bg-blue-600 text-white rounded-lg font-semibold"
             >
-              Enroll Now
+              View Programs
             </Link>
           </div>
         </nav>

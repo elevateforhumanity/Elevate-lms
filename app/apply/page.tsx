@@ -166,12 +166,12 @@ export default async function ApplyPage({
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-700">Most programs are FREE with WIOA</span>
+                  <span className="text-slate-700">Funding available for qualifying students</span>
                 </li>
               </ul>
 
               <Link
-                href="/enroll"
+                href="/programs"
                 className="block w-full text-center py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors"
               >
                 View Programs & Enroll

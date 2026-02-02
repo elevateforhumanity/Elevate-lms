@@ -72,8 +72,8 @@ export default function HomePage() {
             Elevate for Humanity operates licensed workforce and licensure infrastructure, delivering both publicly funded and self-pay apprenticeship pathways through a managed platform.
           </p>
           <div className="flex flex-wrap justify-center gap-4 animate-fade-in animation-delay-400">
-            <Link href="/enroll" className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 hover:scale-105 transition-all shadow-lg">
-              Check Eligibility
+            <Link href="/programs" className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 hover:scale-105 transition-all shadow-lg">
+              View Programs
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -289,8 +289,8 @@ export default function HomePage() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">Your New Career Starts Here</h2>
           <p className="text-lg text-slate-400 mb-8">Apply today. Start training within weeks.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/apply" className="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 hover:scale-105 transition-all">
-              Apply Now — Free
+            <Link href="/programs" className="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 hover:scale-105 transition-all">
+              Browse Programs
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -305,8 +305,8 @@ export default function HomePage() {
       {/* MOBILE CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t p-3 shadow-lg">
         <div className="flex gap-2">
-          <Link href="/apply" className="flex-1 inline-flex items-center justify-center bg-blue-600 text-white py-3 rounded-full font-semibold text-sm">
-            Apply Now — Free
+          <Link href="/programs" className="flex-1 inline-flex items-center justify-center bg-blue-600 text-white py-3 rounded-full font-semibold text-sm">
+            Browse Programs
           </Link>
           <Link href="tel:317-314-3757" className="inline-flex items-center justify-center bg-slate-100 text-slate-700 px-4 py-3 rounded-full">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

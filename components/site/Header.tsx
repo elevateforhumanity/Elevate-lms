@@ -116,10 +116,10 @@ export default function Header() {
             Get Info
           </Link>
           <Link
-            href="/enroll"
+            href="/programs"
             className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition-colors"
           >
-            Enroll Now
+            View Programs
           </Link>
         </div>
 
