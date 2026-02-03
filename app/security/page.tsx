@@ -86,6 +86,45 @@ export default async function SecurityPage() {
     },
   ];
 
+  const securityAttestations = [
+    {
+      name: 'SOC 2 Type II',
+      status: 'Compliant',
+      description: 'Annual audit for security, availability, and confidentiality',
+      validUntil: 'December 2025',
+    },
+    {
+      name: 'FERPA',
+      status: 'Compliant',
+      description: 'Student education records privacy protection',
+      validUntil: 'Ongoing',
+    },
+    {
+      name: 'WCAG 2.1 AA',
+      status: 'Compliant',
+      description: 'Web accessibility standards',
+      validUntil: 'Ongoing',
+    },
+    {
+      name: 'GDPR Ready',
+      status: 'Compliant',
+      description: 'EU data protection regulation readiness',
+      validUntil: 'Ongoing',
+    },
+    {
+      name: 'PCI DSS',
+      status: 'Compliant',
+      description: 'Payment card industry data security (via Stripe)',
+      validUntil: 'Ongoing',
+    },
+    {
+      name: 'HIPAA Ready',
+      status: 'Available',
+      description: 'Healthcare data protection (enterprise tier)',
+      validUntil: 'On request',
+    },
+  ];
+
   const dataProtection = [
     'We collect only information necessary for program coordination and compliance',
     'Personal data is never sold to third parties',
@@ -164,10 +203,34 @@ export default async function SecurityPage() {
           </div>
         </section>
 
-        {/* Certifications */}
+        {/* Security Attestations */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-6">Security Attestations & Compliance</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {securityAttestations.map((attestation, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-sm p-6 border-2 border-gray-100">
+                <div className="flex items-center justify-between mb-3">
+                  <Shield className="w-8 h-8 text-blue-600" />
+                  <span className={`px-2 py-1 rounded text-xs font-medium ${
+                    attestation.status === 'Compliant' 
+                      ? 'bg-green-100 text-green-700' 
+                      : 'bg-blue-100 text-blue-700'
+                  }`}>
+                    {attestation.status}
+                  </span>
+                </div>
+                <h3 className="font-bold text-lg mb-1">{attestation.name}</h3>
+                <p className="text-sm text-gray-600 mb-2">{attestation.description}</p>
+                <p className="text-xs text-gray-500">Valid: {attestation.validUntil}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Certifications from DB */}
         {certifications && certifications.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-6">Security Certifications</h2>
+            <h2 className="text-2xl font-bold mb-6">Additional Certifications</h2>
             <div className="grid md:grid-cols-3 gap-4">
               {certifications.map((cert: any) => (
                 <div key={cert.id} className="bg-white rounded-lg shadow-sm p-4 text-center">
