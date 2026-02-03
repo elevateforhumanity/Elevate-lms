@@ -13,14 +13,18 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function HubWelcomePage() {
-  const supabase = await createClient();
-  
-  // If user is logged in, redirect to the main hub
-  if (supabase) {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      redirect('/hub');
+  try {
+    const supabase = await createClient();
+    
+    // If user is logged in, redirect to the main hub
+    if (supabase) {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        redirect('/hub');
+      }
     }
+  } catch {
+    // Continue rendering the welcome page if auth check fails
   }
 
   // Hub sub-pages with images

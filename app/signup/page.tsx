@@ -28,12 +28,20 @@ export default async function SignupPage() {
     );
   }
   
-  // Check if signups are enabled
-  const { data: settings } = await supabase
-    .from('site_settings')
-    .select('*')
-    .eq('key', 'signup_enabled')
-    .single();
+  // Check if signups are enabled (gracefully handle missing table)
+  let signupsEnabled = true;
+  try {
+    const { data: settings } = await supabase
+      .from('site_settings')
+      .select('*')
+      .eq('key', 'signup_enabled')
+      .single();
+    if (settings?.value === 'false') {
+      signupsEnabled = false;
+    }
+  } catch {
+    // Table doesn't exist or query failed - allow signups by default
+  }
   return (
     <div className="min-h-screen bg-slate-50">
       <div className="mx-auto max-w-3xl px-4 py-10">
