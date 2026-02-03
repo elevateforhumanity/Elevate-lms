@@ -1,9 +1,34 @@
-# Elevate for Humanity - Workforce Marketplace Platform
+# Elevate for Humanity - Workforce Operating System
 
 **Production URL:** https://www.elevateforhumanity.org  
 **Status:** ✅ Live and Operational  
 **Version:** 2.0.0  
-**Last Updated:** January 24, 2026
+**Last Updated:** February 3, 2026
+
+---
+
+## Platform Positioning
+
+**Top-tier workforce training and compliance marketplace platform.**
+
+This is not a general-purpose LMS. This is a vertically-integrated workforce operating system that unifies:
+- Multi-portal operations (Student, Admin, Partner, Workforce Board, Employer, Staff, Delegate)
+- Enrollment + approvals + compliance workflows
+- Funding navigation (WIOA, WRG, JRI, employer-sponsored)
+- Payment processing and revenue sharing
+- Employment pipeline and outcome tracking
+
+### Why "Workforce OS" vs "LMS"
+
+| Capability | Generic LMS | Elevate Workforce OS |
+|------------|-------------|---------------------|
+| Course delivery | ✅ | ✅ |
+| Multi-stakeholder portals | ❌ | ✅ 7 portals |
+| Government funding integration | ❌ | ✅ WIOA, WRG, JRI |
+| Compliance reporting | Basic | ✅ Automated DOL/DWD |
+| Employer partnerships | ❌ | ✅ Built-in |
+| Revenue sharing | ❌ | ✅ 1/3 partner share |
+| Apprenticeship management | ❌ | ✅ RAPIDS registered |
 
 ---
 
@@ -27,7 +52,7 @@ VITA (Free Tax Services) → Selfish Inc. (Mental Wellness) → Elevate (Trainin
 ```
 
 ### Platform Type
-**Workforce Development Marketplace** serving:
+**Workforce Operating System** - A vertically-integrated platform serving:
 - **Students** - Access to free/funded training (WIOA, WRG, JRI)
 - **Program Holders** - Training providers with 1/3 revenue share
 - **Employers** - Hiring trained graduates (Supersonic, Curvature, partners)
@@ -211,20 +236,22 @@ elevate-lms/
 
 ## Key Features
 
-### ✅ Core Platform
+### ✅ Workforce Operating System Core
 - **1,094 routes** - Fully compiled and deployed
-- **7 portals** - Student, Admin, Program Holder, Staff, Workforce Board, Partner, Delegate
-- **Multi-tenant** - Organization-based access control
+- **7 stakeholder portals** - Student, Admin, Program Holder, Staff, Workforce Board, Partner, Delegate
+- **Multi-tenant architecture** - Organization-based access control with data isolation
 - **Role-based access** - 10+ user roles with granular permissions
+- **Government compliance** - DOL registered (RAPIDS: 2025-IN-132301), DWD approved (INTraining: 10004621)
+- **Funding integration** - WIOA, WRG, JRI, EmployIndy workflows built-in
 
-### ✅ Learning Management System (LMS)
-- Course catalog and browsing
-- Video-based lessons
-- Progress tracking
+### ✅ Learning Management (Training Delivery)
+- Course catalog with 27+ programs
+- Video-based lessons with progress tracking
 - Quizzes and assessments
-- Certificate generation
-- Course completion tracking
-- Student dashboard
+- Certificate generation with verification
+- Student dashboard and progress analytics
+- AI tutoring assistance
+- Mobile-responsive (PWA ready)
 
 ### ✅ Enrollment System
 - Multiple enrollment flows
