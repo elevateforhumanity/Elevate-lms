@@ -408,9 +408,9 @@ export default function StudioPage() {
         display: 'flex', 
         flexDirection: 'column', 
         height: '100vh', 
-        background: studio.settings.theme === 'dark' ? '#1e1e1e' : '#fff',
-        color: studio.settings.theme === 'dark' ? '#fff' : '#000',
-        fontFamily: 'system-ui, -apple-system, sans-serif',
+        background: 'linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%)',
+        color: '#e6edf3',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
         position: 'relative',
       }}
       onDrop={handleDrop}
@@ -422,16 +422,27 @@ export default function StudioPage() {
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'rgba(35, 134, 54, 0.2)',
-          border: '3px dashed #238636',
+          background: 'rgba(35, 134, 54, 0.3)',
+          border: '3px dashed #3fb950',
           zIndex: 1000,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           fontSize: 24,
-          color: '#238636',
+          color: '#3fb950',
+          backdropFilter: 'blur(4px)',
         }}>
-          Drop files to upload
+          <div style={{
+            padding: '24px 48px',
+            background: 'rgba(0,0,0,0.8)',
+            borderRadius: 16,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 12,
+          }}>
+            <span style={{ fontSize: 32 }}>📁</span>
+            Drop files to upload
+          </div>
         </div>
       )}
       <style>{`
@@ -493,27 +504,39 @@ export default function StudioPage() {
         <div 
           className={panel === 'files' ? '' : 'desktop-panel'}
           style={{ 
-            width: 240, 
-            borderRight: '1px solid #3c3c3c', 
+            width: 260, 
+            borderRight: '1px solid #30363d', 
             display: 'flex', 
             flexDirection: 'column',
-            background: studio.settings.theme === 'dark' ? '#252526' : '#f3f3f3',
+            background: 'linear-gradient(180deg, #0d1117 0%, #161b22 100%)',
           }}
         >
-          <input
-            value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
-            placeholder="Search files..."
-            style={{ 
-              margin: 8, 
-              padding: 8, 
-              background: studio.settings.theme === 'dark' ? '#3c3c3c' : '#fff', 
-              border: studio.settings.theme === 'dark' ? 'none' : '1px solid #ddd',
-              borderRadius: 4, 
-              color: studio.settings.theme === 'dark' ? '#fff' : '#000',
-              fontSize: 13,
-            }}
-          />
+          {/* Search with icon */}
+          <div style={{ 
+            margin: 12, 
+            padding: '8px 12px',
+            background: 'rgba(255,255,255,0.05)',
+            border: '1px solid #30363d',
+            borderRadius: 8,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+          }}>
+            <span style={{ color: '#8b949e', fontSize: 14 }}>🔍</span>
+            <input
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              placeholder="Search files..."
+              style={{ 
+                flex: 1,
+                background: 'transparent', 
+                border: 'none',
+                color: '#e6edf3',
+                fontSize: 13,
+                outline: 'none',
+              }}
+            />
+          </div>
           <div style={{ flex: 1, overflow: 'auto' }}>
             <FileTree
               nodes={studio.fileTree}
@@ -540,22 +563,23 @@ export default function StudioPage() {
           
           {currentFile && (
             <div style={{ 
-              padding: '4px 12px', 
-              background: '#252526', 
+              padding: '6px 16px', 
+              background: 'linear-gradient(90deg, #161b22 0%, #0d1117 100%)', 
               display: 'flex', 
               alignItems: 'center', 
-              gap: 8, 
+              gap: 10, 
               fontSize: 12,
-              borderBottom: '1px solid #3c3c3c',
+              borderBottom: '1px solid #30363d',
             }}>
               {/* Breadcrumbs */}
-              <div style={{ flex: 1, overflow: 'hidden', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <div style={{ flex: 1, overflow: 'hidden', display: 'flex', alignItems: 'center', gap: 6 }}>
                 {currentFile.path.split('/').map((part, i, arr) => (
-                  <span key={i} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                    {i > 0 && <span style={{ color: '#555' }}>/</span>}
+                  <span key={i} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                    {i > 0 && <span style={{ color: '#30363d' }}>/</span>}
                     <span style={{ 
-                      color: i === arr.length - 1 ? '#fff' : '#888',
+                      color: i === arr.length - 1 ? '#e6edf3' : '#8b949e',
                       cursor: i < arr.length - 1 ? 'pointer' : 'default',
+                      fontWeight: i === arr.length - 1 ? 500 : 400,
                     }}>
                       {part}
                     </span>
@@ -566,13 +590,17 @@ export default function StudioPage() {
                 onClick={() => studio.saveFile(studio.activeFile)}
                 disabled={!currentFile.modified}
                 style={{
-                  padding: '4px 10px',
-                  background: currentFile.modified ? '#238636' : '#3c3c3c',
+                  padding: '6px 14px',
+                  background: currentFile.modified 
+                    ? 'linear-gradient(135deg, #238636 0%, #2ea043 100%)' 
+                    : 'rgba(255,255,255,0.05)',
                   border: 'none',
-                  borderRadius: 4,
+                  borderRadius: 6,
                   color: '#fff',
                   cursor: currentFile.modified ? 'pointer' : 'not-allowed',
-                  fontSize: 12,
+                  fontSize: 11,
+                  fontWeight: 500,
+                  boxShadow: currentFile.modified ? '0 2px 8px rgba(35, 134, 54, 0.3)' : 'none',
                 }}
               >
                 Save
@@ -758,39 +786,80 @@ export default function StudioPage() {
           }}
         >
           {/* Panel Tabs */}
-          <div style={{ display: 'flex', borderBottom: '1px solid #3c3c3c', flexWrap: 'wrap' }}>
-            {(['ai', 'git', 'preview', 'prs', 'actions', 'deploy', 'debug', 'ports'] as RightPanel[]).map(p => (
-              <button
-                key={p}
-                onClick={() => setRightPanel(p)}
-                style={{
-                  flex: '1 1 auto',
-                  padding: '8px 4px',
-                  background: rightPanel === p ? '#1e1e1e' : 'transparent',
-                  border: 'none',
-                  borderBottom: rightPanel === p ? '2px solid #0e639c' : '2px solid transparent',
-                  color: rightPanel === p ? '#fff' : '#888',
-                  cursor: 'pointer',
-                  fontSize: 10,
-                  textTransform: 'uppercase',
-                  minWidth: 40,
-                  position: 'relative',
-                }}
-              >
-                {p === 'prs' ? 'PRs' : p === 'actions' ? 'CI' : p}
-                {p === 'preview' && webcontainer.servers.some(s => s.status === 'running') && (
-                  <span style={{
-                    position: 'absolute',
-                    top: 4,
-                    right: 4,
-                    width: 6,
-                    height: 6,
-                    borderRadius: '50%',
-                    background: '#7ee787',
-                  }} />
-                )}
-              </button>
-            ))}
+          <div style={{ 
+            display: 'flex', 
+            borderBottom: '1px solid #30363d', 
+            flexWrap: 'wrap',
+            background: 'linear-gradient(180deg, #161b22 0%, #0d1117 100%)',
+          }}>
+            {(['ai', 'git', 'preview', 'prs', 'actions', 'deploy'] as RightPanel[]).map(p => {
+              const icons: Record<string, { icon: string; color: string }> = {
+                ai: { icon: '🤖', color: '#a855f7' },
+                git: { icon: '🌿', color: '#3fb950' },
+                preview: { icon: '👁', color: '#58a6ff' },
+                prs: { icon: '🔀', color: '#bc8cff' },
+                actions: { icon: '⚡', color: '#d29922' },
+                deploy: { icon: '🚀', color: '#f85149' },
+              };
+              const { icon, color } = icons[p] || { icon: '•', color: '#8b949e' };
+              
+              return (
+                <button
+                  key={p}
+                  onClick={() => setRightPanel(p)}
+                  style={{
+                    flex: '1 1 auto',
+                    padding: '10px 8px',
+                    background: rightPanel === p 
+                      ? 'linear-gradient(180deg, #21262d 0%, #0d1117 100%)' 
+                      : 'transparent',
+                    border: 'none',
+                    borderBottom: rightPanel === p ? `2px solid ${color}` : '2px solid transparent',
+                    color: rightPanel === p ? '#e6edf3' : '#8b949e',
+                    cursor: 'pointer',
+                    fontSize: 11,
+                    fontWeight: rightPanel === p ? 600 : 400,
+                    minWidth: 50,
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 4,
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  <span style={{ fontSize: 12 }}>{icon}</span>
+                  <span style={{ textTransform: 'capitalize' }}>
+                    {p === 'prs' ? 'PRs' : p === 'actions' ? 'CI' : p}
+                  </span>
+                  {p === 'preview' && webcontainer.servers.some(s => s.status === 'running') && (
+                    <span style={{
+                      position: 'absolute',
+                      top: 6,
+                      right: 6,
+                      width: 8,
+                      height: 8,
+                      borderRadius: '50%',
+                      background: '#3fb950',
+                      boxShadow: '0 0 8px #3fb950',
+                    }} />
+                  )}
+                  {p === 'git' && modifiedFiles.length > 0 && (
+                    <span style={{
+                      background: 'linear-gradient(135deg, #d29922 0%, #e3b341 100%)',
+                      color: '#000',
+                      borderRadius: 10,
+                      padding: '1px 6px',
+                      fontSize: 9,
+                      fontWeight: 700,
+                      marginLeft: 2,
+                    }}>
+                      {modifiedFiles.length}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           {/* Panel Content */}

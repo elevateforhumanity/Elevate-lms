@@ -88,33 +88,109 @@ export function AIChat({ messages, setMessages, currentFile, repoId, userId, onA
     setLoading(false);
   };
 
-  const extractCode = (content: string): string | null => {
-    const match = content.match(/```[\w.]*\n([\s\S]*?)```/);
-    return match ? match[1] : null;
-  };
+  const quickActions = [
+    { label: '✨ Explain', prompt: 'Explain this code' },
+    { label: '🐛 Fix bugs', prompt: 'Find and fix bugs in this code' },
+    { label: '♻️ Refactor', prompt: 'Refactor this code to be cleaner' },
+    { label: '🧪 Tests', prompt: 'Write tests for this code' },
+  ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <div style={{ padding: 8, borderBottom: '1px solid #3c3c3c', fontWeight: 500, fontSize: 13 }}>
-        AI Assistant
-        {currentFile && (
-          <span style={{ fontWeight: 400, color: '#888', marginLeft: 8 }}>
-            • {currentFile.path.split('/').pop()}
-          </span>
-        )}
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      height: '100%',
+      background: 'linear-gradient(180deg, #0d1117 0%, #161b22 100%)',
+    }}>
+      {/* Header */}
+      <div style={{ 
+        padding: '12px 16px', 
+        borderBottom: '1px solid #30363d', 
+        display: 'flex',
+        alignItems: 'center',
+        gap: 10,
+        background: 'rgba(168, 85, 247, 0.05)',
+      }}>
+        <span style={{ 
+          fontSize: 24,
+          filter: 'drop-shadow(0 0 8px rgba(168, 85, 247, 0.5))',
+        }}>
+          🤖
+        </span>
+        <div>
+          <div style={{ 
+            fontWeight: 600, 
+            fontSize: 14,
+            background: 'linear-gradient(90deg, #a855f7 0%, #ec4899 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}>
+            AI Assistant
+          </div>
+          {currentFile && (
+            <div style={{ fontSize: 11, color: '#8b949e' }}>
+              Context: {currentFile.path.split('/').pop()}
+            </div>
+          )}
+        </div>
       </div>
       
-      <div style={{ flex: 1, overflow: 'auto', padding: 8 }}>
+      {/* Messages */}
+      <div style={{ flex: 1, overflow: 'auto', padding: 16 }}>
         {messages.length === 0 && !streamingContent && (
-          <div style={{ color: '#888', fontSize: 13, padding: 12 }}>
-            <p style={{ margin: '0 0 8px' }}>Ask me to:</p>
-            <ul style={{ margin: 0, paddingLeft: 20 }}>
-              <li>Explain code</li>
-              <li>Fix bugs</li>
-              <li>Refactor</li>
-              <li>Write tests</li>
-              <li>Add features</li>
-            </ul>
+          <div style={{ 
+            textAlign: 'center', 
+            padding: 24,
+            color: '#8b949e',
+          }}>
+            <div style={{ 
+              fontSize: 48, 
+              marginBottom: 16,
+              filter: 'grayscale(0.5)',
+            }}>
+              💬
+            </div>
+            <div style={{ fontSize: 14, marginBottom: 16 }}>
+              Ask me anything about your code
+            </div>
+            
+            {/* Quick actions */}
+            <div style={{ 
+              display: 'flex', 
+              flexWrap: 'wrap', 
+              gap: 8, 
+              justifyContent: 'center',
+              marginTop: 16,
+            }}>
+              {quickActions.map(action => (
+                <button
+                  key={action.label}
+                  onClick={() => {
+                    setInput(action.prompt);
+                  }}
+                  style={{
+                    padding: '8px 14px',
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid #30363d',
+                    borderRadius: 20,
+                    color: '#e6edf3',
+                    cursor: 'pointer',
+                    fontSize: 12,
+                    transition: 'all 0.15s ease',
+                  }}
+                  onMouseEnter={e => {
+                    (e.target as HTMLElement).style.background = 'rgba(168, 85, 247, 0.2)';
+                    (e.target as HTMLElement).style.borderColor = 'rgba(168, 85, 247, 0.5)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.target as HTMLElement).style.background = 'rgba(255,255,255,0.05)';
+                    (e.target as HTMLElement).style.borderColor = '#30363d';
+                  }}
+                >
+                  {action.label}
+                </button>
+              ))}
+            </div>
           </div>
         )}
         
@@ -127,13 +203,32 @@ export function AIChat({ messages, setMessages, currentFile, repoId, userId, onA
         )}
         
         {loading && !streamingContent && (
-          <div style={{ color: '#888', fontSize: 13, padding: 8 }}>Thinking...</div>
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: 8, 
+            color: '#a855f7', 
+            fontSize: 13, 
+            padding: 12,
+          }}>
+            <span style={{ animation: 'pulse 1s ease-in-out infinite' }}>●</span>
+            <span style={{ animation: 'pulse 1s ease-in-out infinite', animationDelay: '0.2s' }}>●</span>
+            <span style={{ animation: 'pulse 1s ease-in-out infinite', animationDelay: '0.4s' }}>●</span>
+            <span style={{ marginLeft: 8, color: '#8b949e' }}>Thinking...</span>
+          </div>
         )}
         
         <div ref={messagesEndRef} />
       </div>
       
-      <div style={{ padding: 8, borderTop: '1px solid #3c3c3c', display: 'flex', gap: 8 }}>
+      {/* Input */}
+      <div style={{ 
+        padding: 16, 
+        borderTop: '1px solid #30363d', 
+        display: 'flex', 
+        gap: 10,
+        background: 'rgba(0,0,0,0.2)',
+      }}>
         <input
           value={input}
           onChange={e => setInput(e.target.value)}
@@ -142,65 +237,119 @@ export function AIChat({ messages, setMessages, currentFile, repoId, userId, onA
           disabled={loading}
           style={{ 
             flex: 1, 
-            padding: 10, 
-            background: '#3c3c3c', 
-            border: 'none', 
-            borderRadius: 6, 
-            color: '#fff',
-            fontSize: 13,
+            padding: '12px 16px', 
+            background: 'rgba(255,255,255,0.05)', 
+            border: '1px solid #30363d', 
+            borderRadius: 12, 
+            color: '#e6edf3',
+            fontSize: 14,
+            outline: 'none',
+            transition: 'border-color 0.15s ease',
           }}
+          onFocus={e => (e.target as HTMLElement).style.borderColor = '#a855f7'}
+          onBlur={e => (e.target as HTMLElement).style.borderColor = '#30363d'}
         />
         <button 
           onClick={sendMessage} 
           disabled={loading || !input.trim()}
           style={{ 
-            padding: '10px 16px', 
-            background: loading ? '#3c3c3c' : '#0e639c', 
+            padding: '12px 20px', 
+            background: loading || !input.trim() 
+              ? '#21262d' 
+              : 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)', 
             border: 'none', 
-            borderRadius: 6, 
+            borderRadius: 12, 
             color: '#fff', 
-            cursor: loading ? 'not-allowed' : 'pointer',
-            fontSize: 13,
+            cursor: loading || !input.trim() ? 'not-allowed' : 'pointer',
+            fontSize: 14,
+            fontWeight: 600,
+            boxShadow: loading || !input.trim() 
+              ? 'none' 
+              : '0 4px 12px rgba(168, 85, 247, 0.4)',
+            transition: 'all 0.15s ease',
           }}
         >
           Send
         </button>
       </div>
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
+        }
+      `}</style>
     </div>
   );
 }
 
 function ChatMessage({ message, onApply }: { message: Message; onApply: (code: string) => void }) {
-  const code = message.role === 'assistant' ? extractCode(message.content) : null;
+  const isUser = message.role === 'user';
+  const code = !isUser ? extractCode(message.content) : null;
   
   return (
     <div style={{ 
-      marginBottom: 12, 
-      padding: 12, 
-      background: message.role === 'user' ? '#0e639c' : '#2d2d2d', 
-      borderRadius: 8, 
-      fontSize: 13,
+      marginBottom: 16, 
+      display: 'flex',
+      justifyContent: isUser ? 'flex-end' : 'flex-start',
     }}>
-      <div style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-        {message.content}
+      <div style={{
+        maxWidth: '85%',
+        padding: 14,
+        background: isUser 
+          ? 'linear-gradient(135deg, #1f6feb 0%, #388bfd 100%)' 
+          : 'rgba(255,255,255,0.05)',
+        borderRadius: isUser ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
+        border: isUser ? 'none' : '1px solid #30363d',
+        boxShadow: isUser ? '0 4px 12px rgba(31, 111, 235, 0.3)' : 'none',
+      }}>
+        {!isUser && (
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: 6, 
+            marginBottom: 8,
+            fontSize: 11,
+            color: '#a855f7',
+            fontWeight: 600,
+          }}>
+            <span>🤖</span>
+            <span>AI</span>
+          </div>
+        )}
+        <div style={{ 
+          whiteSpace: 'pre-wrap', 
+          wordBreak: 'break-word',
+          fontSize: 13,
+          lineHeight: 1.6,
+          color: '#e6edf3',
+        }}>
+          {renderContent(message.content)}
+        </div>
+        {code && (
+          <button 
+            onClick={() => onApply(code)} 
+            style={{ 
+              marginTop: 12, 
+              padding: '8px 16px', 
+              background: 'linear-gradient(135deg, #238636 0%, #2ea043 100%)', 
+              border: 'none', 
+              borderRadius: 8, 
+              color: '#fff', 
+              cursor: 'pointer', 
+              fontSize: 12,
+              fontWeight: 600,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              boxShadow: '0 2px 8px rgba(35, 134, 54, 0.3)',
+            }}
+          >
+            <span>✓</span>
+            Apply Code
+          </button>
+        )}
       </div>
-      {code && (
-        <button 
-          onClick={() => onApply(code)} 
-          style={{ 
-            marginTop: 8, 
-            padding: '6px 12px', 
-            background: '#238636', 
-            border: 'none', 
-            borderRadius: 4, 
-            color: '#fff', 
-            cursor: 'pointer', 
-            fontSize: 12,
-          }}
-        >
-          Apply Code
-        </button>
-      )}
     </div>
   );
 }
@@ -208,4 +357,51 @@ function ChatMessage({ message, onApply }: { message: Message; onApply: (code: s
 function extractCode(content: string): string | null {
   const match = content.match(/```[\w.]*\n([\s\S]*?)```/);
   return match ? match[1] : null;
+}
+
+function renderContent(content: string) {
+  // Simple markdown-like rendering for code blocks
+  const parts = content.split(/(```[\w.]*\n[\s\S]*?```)/g);
+  
+  return parts.map((part, i) => {
+    if (part.startsWith('```')) {
+      const match = part.match(/```([\w.]*)\n([\s\S]*?)```/);
+      if (match) {
+        const [, lang, code] = match;
+        return (
+          <div key={i} style={{
+            margin: '12px 0',
+            background: '#0d1117',
+            borderRadius: 8,
+            overflow: 'hidden',
+            border: '1px solid #30363d',
+          }}>
+            {lang && (
+              <div style={{
+                padding: '6px 12px',
+                background: '#161b22',
+                borderBottom: '1px solid #30363d',
+                fontSize: 11,
+                color: '#8b949e',
+                fontFamily: 'monospace',
+              }}>
+                {lang}
+              </div>
+            )}
+            <pre style={{
+              margin: 0,
+              padding: 12,
+              overflow: 'auto',
+              fontSize: 12,
+              fontFamily: '"Fira Code", monospace',
+              color: '#e6edf3',
+            }}>
+              {code}
+            </pre>
+          </div>
+        );
+      }
+    }
+    return <span key={i}>{part}</span>;
+  });
 }
