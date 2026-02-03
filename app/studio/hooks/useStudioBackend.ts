@@ -531,6 +531,100 @@ export function useStudioBackend() {
     }
   }, [currentWorkspace]);
 
+  // Push to GitHub
+  const pushToGitHub = useCallback(async (message: string) => {
+    if (!currentWorkspace || !token) {
+      setStatus('No workspace or GitHub token');
+      return false;
+    }
+
+    const repoUrl = currentWorkspace.repoUrl || (currentRepo ? `https://github.com/${currentRepo}` : null);
+    if (!repoUrl) {
+      setStatus('No repository linked to workspace');
+      return false;
+    }
+
+    setLoading(true);
+    setStatus('Pushing to GitHub...');
+
+    try {
+      // Get all modified files
+      const filesToPush = openFiles
+        .filter(f => f.modified)
+        .map(f => ({ path: f.path, content: f.content }));
+
+      if (filesToPush.length === 0) {
+        setStatus('No modified files to push');
+        setLoading(false);
+        return false;
+      }
+
+      const result = await studioAPI.pushToGitHub(
+        currentWorkspace.id,
+        repoUrl,
+        filesToPush,
+        message,
+        token,
+        branch
+      );
+
+      if (result.success) {
+        // Mark files as not modified
+        setOpenFiles(prev => prev.map(f => ({ ...f, modified: false, originalContent: f.content })));
+        setStatus(`Pushed: ${result.commit?.slice(0, 7)}`);
+        return true;
+      } else {
+        setStatus(`Push failed: ${result.message}`);
+        return false;
+      }
+    } catch (e) {
+      setStatus(`Push failed: ${e instanceof Error ? e.message : 'Unknown error'}`);
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  }, [currentWorkspace, token, currentRepo, branch, openFiles]);
+
+  // Pull from GitHub
+  const pullFromGitHub = useCallback(async () => {
+    if (!currentWorkspace) {
+      setStatus('No workspace loaded');
+      return false;
+    }
+
+    const repoUrl = currentWorkspace.repoUrl || (currentRepo ? `https://github.com/${currentRepo}` : null);
+    if (!repoUrl) {
+      setStatus('No repository linked to workspace');
+      return false;
+    }
+
+    setLoading(true);
+    setStatus('Pulling from GitHub...');
+
+    try {
+      const result = await studioAPI.pullFromGitHub(
+        currentWorkspace.id,
+        repoUrl,
+        token || undefined,
+        branch
+      );
+
+      if (result.success) {
+        setStatus(`Pulled ${result.filesUpdated} files`);
+        await loadWorkspaceInternal(currentWorkspace.id);
+        return true;
+      } else {
+        setStatus('Pull failed');
+        return false;
+      }
+    } catch (e) {
+      setStatus(`Pull failed: ${e instanceof Error ? e.message : 'Unknown error'}`);
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  }, [currentWorkspace, token, currentRepo, branch]);
+
   // Load GitHub repos
   const loadRepos = useCallback(async () => {
     if (!userId) return;
@@ -682,6 +776,8 @@ export function useStudioBackend() {
     selectRepo,
     addRepo,
     cloneRepo,
+    pushToGitHub,
+    pullFromGitHub,
     
     // Terminal
     runCommand,

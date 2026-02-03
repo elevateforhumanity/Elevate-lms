@@ -99,6 +99,31 @@ class StudioAPI {
 
   async writeFile(workspaceId: string, path: string, content: string): Promise<void> {
     const params = new URLSearchParams({ workspace: workspaceId, path });
+    const MAX_CHUNK_SIZE = 5 * 1024 * 1024; // 5MB
+    
+    // Use chunked upload for large files
+    if (content.length > MAX_CHUNK_SIZE) {
+      const totalChunks = Math.ceil(content.length / MAX_CHUNK_SIZE);
+      let uploadId: string | undefined;
+      
+      for (let i = 0; i < totalChunks; i++) {
+        const chunk = content.slice(i * MAX_CHUNK_SIZE, (i + 1) * MAX_CHUNK_SIZE);
+        const response = await this.fetch(`/api/files?${params}`, {
+          method: 'PUT',
+          body: JSON.stringify({ 
+            chunk, 
+            chunkIndex: i, 
+            totalChunks,
+            uploadId 
+          }),
+        });
+        const result = await response.json();
+        uploadId = result.uploadId;
+      }
+      return;
+    }
+    
+    // Regular upload for small files
     await this.fetch(`/api/files?${params}`, {
       method: 'PUT',
       body: JSON.stringify({ content }),
@@ -116,6 +141,75 @@ class StudioAPI {
     const response = await this.fetch(`/api/git/clone?${params}`, {
       method: 'POST',
       body: JSON.stringify({ repoUrl, branch }),
+    });
+    return response.json();
+  }
+
+  async pushToGitHub(
+    workspaceId: string,
+    repoUrl: string,
+    files: { path: string; content: string }[],
+    message: string,
+    githubToken: string,
+    branch?: string
+  ): Promise<{ success: boolean; commit?: string; message?: string }> {
+    const params = new URLSearchParams({ workspace: workspaceId });
+    const response = await this.fetch(`/api/git/push?${params}`, {
+      method: 'POST',
+      headers: {
+        'x-github-token': githubToken,
+      },
+      body: JSON.stringify({ repoUrl, files, message, branch }),
+    });
+    return response.json();
+  }
+
+  async pullFromGitHub(
+    workspaceId: string,
+    repoUrl: string,
+    githubToken?: string,
+    branch?: string
+  ): Promise<{ success: boolean; filesUpdated: number }> {
+    const params = new URLSearchParams({ workspace: workspaceId });
+    const headers: Record<string, string> = {};
+    if (githubToken) {
+      headers['x-github-token'] = githubToken;
+    }
+    const response = await this.fetch(`/api/git/pull?${params}`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ repoUrl, branch }),
+    });
+    return response.json();
+  }
+
+  // Node modules cache operations
+  async checkNodeModulesCache(workspaceId: string, packageLockHash: string): Promise<{ exists: boolean; size?: number }> {
+    const params = new URLSearchParams({ workspace: workspaceId, hash: packageLockHash });
+    const response = await this.fetch(`/api/cache/node_modules?${params}`);
+    return response.json();
+  }
+
+  async saveNodeModulesCache(workspaceId: string, packageLockHash: string, tarball: string): Promise<{ success: boolean }> {
+    const params = new URLSearchParams({ workspace: workspaceId });
+    const response = await this.fetch(`/api/cache/node_modules?${params}`, {
+      method: 'POST',
+      body: JSON.stringify({ packageLockHash, tarball }),
+    });
+    return response.json();
+  }
+
+  async downloadNodeModulesCache(workspaceId: string, packageLockHash: string): Promise<{ tarball: string } | null> {
+    const params = new URLSearchParams({ workspace: workspaceId, hash: packageLockHash });
+    const response = await this.fetch(`/api/cache/node_modules/download?${params}`);
+    if (!response.ok) return null;
+    return response.json();
+  }
+
+  async clearNodeModulesCache(workspaceId: string): Promise<{ deleted: number }> {
+    const params = new URLSearchParams({ workspace: workspaceId });
+    const response = await this.fetch(`/api/cache/node_modules?${params}`, {
+      method: 'DELETE',
     });
     return response.json();
   }

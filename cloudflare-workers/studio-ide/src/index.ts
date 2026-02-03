@@ -59,6 +59,10 @@ export default {
         return handleGitRoutes(request, env, path);
       }
 
+      if (path.startsWith('/api/cache')) {
+        return handleCacheRoutes(request, env, path);
+      }
+
       return jsonResponse({ error: 'Not found' }, 404);
     } catch (error) {
       console.error('Worker error:', error);
@@ -189,16 +193,72 @@ async function handleFileRoutes(request: Request, env: Env, path: string): Promi
     }
   }
 
-  // PUT /api/files - Create or update file
+  // PUT /api/files - Create or update file (supports chunked upload)
   if (request.method === 'PUT') {
-    const body = await request.json() as { content: string };
+    const body = await request.json() as { 
+      content?: string; 
+      chunk?: string;
+      chunkIndex?: number;
+      totalChunks?: number;
+      uploadId?: string;
+    };
+    
+    // Chunked upload
+    if (body.chunk !== undefined && body.chunkIndex !== undefined && body.totalChunks !== undefined) {
+      const uploadId = body.uploadId || crypto.randomUUID();
+      const chunkKey = `uploads/${userId}/${workspaceId}/${uploadId}/chunk_${body.chunkIndex}`;
+      
+      await env.STUDIO_FILES.put(chunkKey, body.chunk);
+      
+      // If this is the last chunk, combine them
+      if (body.chunkIndex === body.totalChunks - 1) {
+        const chunks: string[] = [];
+        for (let i = 0; i < body.totalChunks; i++) {
+          const chunkData = await env.STUDIO_FILES.get(`uploads/${userId}/${workspaceId}/${uploadId}/chunk_${i}`);
+          if (chunkData) {
+            chunks.push(await chunkData.text());
+          }
+        }
+        
+        const fullContent = chunks.join('');
+        
+        await env.STUDIO_FILES.put(r2Key, fullContent, {
+          customMetadata: {
+            userId,
+            workspaceId,
+            path: filePath,
+            updatedAt: new Date().toISOString(),
+          },
+        });
+        
+        // Clean up chunks
+        for (let i = 0; i < body.totalChunks; i++) {
+          await env.STUDIO_FILES.delete(`uploads/${userId}/${workspaceId}/${uploadId}/chunk_${i}`);
+        }
+        
+        await env.STUDIO_DB.prepare(
+          'UPDATE workspaces SET updated_at = datetime() WHERE id = ?'
+        ).bind(workspaceId).run();
+        
+        return jsonResponse({ success: true, path: filePath, complete: true });
+      }
+      
+      return jsonResponse({ success: true, uploadId, chunkIndex: body.chunkIndex, complete: false });
+    }
+    
+    // Regular upload
+    const content = body.content || '';
     const maxSize = parseInt(env.MAX_FILE_SIZE);
     
-    if (body.content.length > maxSize) {
-      return jsonResponse({ error: `File too large. Max size: ${maxSize} bytes` }, 400);
+    if (content.length > maxSize) {
+      return jsonResponse({ 
+        error: `File too large. Max size: ${maxSize} bytes. Use chunked upload for larger files.`,
+        useChunkedUpload: true,
+        maxChunkSize: 5 * 1024 * 1024 // 5MB chunks
+      }, 400);
     }
 
-    await env.STUDIO_FILES.put(r2Key, body.content, {
+    await env.STUDIO_FILES.put(r2Key, content, {
       customMetadata: {
         userId,
         workspaceId,
@@ -207,7 +267,6 @@ async function handleFileRoutes(request: Request, env: Env, path: string): Promi
       },
     });
 
-    // Update workspace timestamp
     await env.STUDIO_DB.prepare(
       'UPDATE workspaces SET updated_at = datetime() WHERE id = ?'
     ).bind(workspaceId).run();
@@ -334,14 +393,280 @@ async function handleGitRoutes(request: Request, env: Env, path: string): Promis
     return jsonResponse({ success: true, filesCloned });
   }
 
-  // POST /api/git/push - Push changes (creates PR or commits)
+  // POST /api/git/push - Push changes to GitHub
   if (request.method === 'POST' && path === '/api/git/push') {
-    // This would require GitHub OAuth token from user
-    // For now, return instructions
-    return jsonResponse({ 
-      error: 'GitHub authentication required',
-      message: 'Connect your GitHub account in settings to push changes'
-    }, 400);
+    const githubToken = request.headers.get('x-github-token');
+    if (!githubToken) {
+      return jsonResponse({ 
+        error: 'GitHub token required',
+        message: 'Include x-github-token header with your GitHub personal access token'
+      }, 401);
+    }
+
+    const body = await request.json() as { 
+      repoUrl: string; 
+      branch?: string; 
+      message: string;
+      files: { path: string; content: string }[];
+    };
+
+    const repoMatch = body.repoUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
+    if (!repoMatch) {
+      return jsonResponse({ error: 'Invalid GitHub URL' }, 400);
+    }
+
+    const [, owner, repo] = repoMatch;
+    const repoName = repo.replace('.git', '');
+    const branch = body.branch || 'main';
+
+    try {
+      // Get the current commit SHA for the branch
+      const refResponse = await fetch(
+        `https://api.github.com/repos/${owner}/${repoName}/git/refs/heads/${branch}`,
+        { headers: { 'Authorization': `Bearer ${githubToken}`, 'User-Agent': 'Elevate-Studio' } }
+      );
+      
+      if (!refResponse.ok) {
+        return jsonResponse({ error: 'Failed to get branch reference' }, 400);
+      }
+      
+      const refData = await refResponse.json() as { object: { sha: string } };
+      const baseSha = refData.object.sha;
+
+      // Get the base tree
+      const commitResponse = await fetch(
+        `https://api.github.com/repos/${owner}/${repoName}/git/commits/${baseSha}`,
+        { headers: { 'Authorization': `Bearer ${githubToken}`, 'User-Agent': 'Elevate-Studio' } }
+      );
+      const commitData = await commitResponse.json() as { tree: { sha: string } };
+      const baseTreeSha = commitData.tree.sha;
+
+      // Create blobs for each file
+      const treeItems = [];
+      for (const file of body.files) {
+        const blobResponse = await fetch(
+          `https://api.github.com/repos/${owner}/${repoName}/git/blobs`,
+          {
+            method: 'POST',
+            headers: { 
+              'Authorization': `Bearer ${githubToken}`, 
+              'User-Agent': 'Elevate-Studio',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ content: file.content, encoding: 'utf-8' })
+          }
+        );
+        const blobData = await blobResponse.json() as { sha: string };
+        treeItems.push({
+          path: file.path,
+          mode: '100644',
+          type: 'blob',
+          sha: blobData.sha
+        });
+      }
+
+      // Create new tree
+      const treeResponse = await fetch(
+        `https://api.github.com/repos/${owner}/${repoName}/git/trees`,
+        {
+          method: 'POST',
+          headers: { 
+            'Authorization': `Bearer ${githubToken}`, 
+            'User-Agent': 'Elevate-Studio',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ base_tree: baseTreeSha, tree: treeItems })
+        }
+      );
+      const treeData = await treeResponse.json() as { sha: string };
+
+      // Create commit
+      const newCommitResponse = await fetch(
+        `https://api.github.com/repos/${owner}/${repoName}/git/commits`,
+        {
+          method: 'POST',
+          headers: { 
+            'Authorization': `Bearer ${githubToken}`, 
+            'User-Agent': 'Elevate-Studio',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: body.message,
+            tree: treeData.sha,
+            parents: [baseSha]
+          })
+        }
+      );
+      const newCommitData = await newCommitResponse.json() as { sha: string };
+
+      // Update branch reference
+      const updateRefResponse = await fetch(
+        `https://api.github.com/repos/${owner}/${repoName}/git/refs/heads/${branch}`,
+        {
+          method: 'PATCH',
+          headers: { 
+            'Authorization': `Bearer ${githubToken}`, 
+            'User-Agent': 'Elevate-Studio',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ sha: newCommitData.sha })
+        }
+      );
+
+      if (!updateRefResponse.ok) {
+        return jsonResponse({ error: 'Failed to update branch' }, 400);
+      }
+
+      return jsonResponse({ 
+        success: true, 
+        commit: newCommitData.sha,
+        message: `Pushed ${body.files.length} files to ${owner}/${repoName}@${branch}`
+      });
+    } catch (error) {
+      return jsonResponse({ error: 'Push failed: ' + (error instanceof Error ? error.message : 'Unknown error') }, 500);
+    }
+  }
+
+  // POST /api/git/pull - Pull latest changes from GitHub
+  if (request.method === 'POST' && path === '/api/git/pull') {
+    const githubToken = request.headers.get('x-github-token');
+    const body = await request.json() as { repoUrl: string; branch?: string };
+
+    const repoMatch = body.repoUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
+    if (!repoMatch) {
+      return jsonResponse({ error: 'Invalid GitHub URL' }, 400);
+    }
+
+    const [, owner, repo] = repoMatch;
+    const repoName = repo.replace('.git', '');
+    const branch = body.branch || 'main';
+
+    const headers: Record<string, string> = { 'User-Agent': 'Elevate-Studio' };
+    if (githubToken) {
+      headers['Authorization'] = `Bearer ${githubToken}`;
+    }
+
+    // Fetch repo tree
+    const treeResponse = await fetch(
+      `https://api.github.com/repos/${owner}/${repoName}/git/trees/${branch}?recursive=1`,
+      { headers }
+    );
+
+    if (!treeResponse.ok) {
+      return jsonResponse({ error: 'Failed to fetch repository' }, 400);
+    }
+
+    const tree = await treeResponse.json() as { tree: Array<{ path: string; type: string; sha: string }> };
+
+    // Fetch and store each file
+    let filesUpdated = 0;
+    for (const item of tree.tree) {
+      if (item.type === 'blob') {
+        const contentResponse = await fetch(
+          `https://api.github.com/repos/${owner}/${repoName}/contents/${item.path}?ref=${branch}`,
+          { headers: { ...headers, 'Accept': 'application/vnd.github.raw' } }
+        );
+
+        if (contentResponse.ok) {
+          const content = await contentResponse.text();
+          const r2Key = `${userId}/${workspaceId}/${item.path}`;
+          await env.STUDIO_FILES.put(r2Key, content);
+          filesUpdated++;
+        }
+      }
+    }
+
+    return jsonResponse({ success: true, filesUpdated });
+  }
+
+  return jsonResponse({ error: 'Not found' }, 404);
+}
+
+// Node modules cache routes
+async function handleCacheRoutes(request: Request, env: Env, path: string): Promise<Response> {
+  const userId = await getUserId(request);
+  if (!userId) {
+    return jsonResponse({ error: 'Unauthorized' }, 401);
+  }
+
+  const url = new URL(request.url);
+  const workspaceId = url.searchParams.get('workspace');
+  if (!workspaceId) {
+    return jsonResponse({ error: 'workspace parameter required' }, 400);
+  }
+
+  // POST /api/cache/node_modules - Save node_modules tarball
+  if (request.method === 'POST' && path === '/api/cache/node_modules') {
+    const body = await request.json() as { packageLockHash: string; tarball: string };
+    
+    const cacheKey = `cache/${userId}/${workspaceId}/node_modules/${body.packageLockHash}.tar.gz`;
+    
+    // Decode base64 tarball
+    const tarballData = Uint8Array.from(atob(body.tarball), c => c.charCodeAt(0));
+    
+    await env.STUDIO_FILES.put(cacheKey, tarballData, {
+      customMetadata: {
+        userId,
+        workspaceId,
+        packageLockHash: body.packageLockHash,
+        createdAt: new Date().toISOString(),
+      },
+    });
+
+    return jsonResponse({ success: true, cacheKey });
+  }
+
+  // GET /api/cache/node_modules - Check if cache exists
+  if (request.method === 'GET' && path === '/api/cache/node_modules') {
+    const packageLockHash = url.searchParams.get('hash');
+    if (!packageLockHash) {
+      return jsonResponse({ error: 'hash parameter required' }, 400);
+    }
+
+    const cacheKey = `cache/${userId}/${workspaceId}/node_modules/${packageLockHash}.tar.gz`;
+    const cached = await env.STUDIO_FILES.head(cacheKey);
+
+    if (cached) {
+      return jsonResponse({ 
+        exists: true, 
+        size: cached.size,
+        createdAt: cached.customMetadata?.createdAt,
+      });
+    }
+
+    return jsonResponse({ exists: false });
+  }
+
+  // GET /api/cache/node_modules/download - Download cached node_modules
+  if (request.method === 'GET' && path === '/api/cache/node_modules/download') {
+    const packageLockHash = url.searchParams.get('hash');
+    if (!packageLockHash) {
+      return jsonResponse({ error: 'hash parameter required' }, 400);
+    }
+
+    const cacheKey = `cache/${userId}/${workspaceId}/node_modules/${packageLockHash}.tar.gz`;
+    const cached = await env.STUDIO_FILES.get(cacheKey);
+
+    if (!cached) {
+      return jsonResponse({ error: 'Cache not found' }, 404);
+    }
+
+    const tarball = await cached.arrayBuffer();
+    const base64 = btoa(String.fromCharCode(...new Uint8Array(tarball)));
+
+    return jsonResponse({ tarball: base64 });
+  }
+
+  // DELETE /api/cache/node_modules - Clear cache
+  if (request.method === 'DELETE' && path === '/api/cache/node_modules') {
+    const prefix = `cache/${userId}/${workspaceId}/node_modules/`;
+    const list = await env.STUDIO_FILES.list({ prefix });
+    
+    for (const obj of list.objects) {
+      await env.STUDIO_FILES.delete(obj.key);
+    }
+
+    return jsonResponse({ success: true, deleted: list.objects.length });
   }
 
   return jsonResponse({ error: 'Not found' }, 404);

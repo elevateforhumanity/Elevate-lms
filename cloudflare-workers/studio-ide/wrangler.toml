@@ -37,8 +37,9 @@ routes = [
 
 [vars]
 ENVIRONMENT = "production"
-MAX_FILE_SIZE = "10485760"
-MAX_WORKSPACE_SIZE = "104857600"
+MAX_FILE_SIZE = "104857600"
+MAX_WORKSPACE_SIZE = "1073741824"
+MAX_CHUNK_SIZE = "5242880"
 R2_ENDPOINT = "https://ff0d5ca582b5911a626ba012935cf3ec.r2.cloudflarestorage.com"
 
 # Dev settings
