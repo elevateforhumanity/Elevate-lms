@@ -65,11 +65,11 @@ const STATUS_CONFIG: Record<AvailabilityStatus, {
     description: 'Opens when funding confirmed',
   },
   coming_soon: {
-    label: 'Coming Soon',
+    label: 'Launching',
     color: 'text-purple-700',
     bgColor: 'bg-purple-100',
     icon: Calendar,
-    description: 'New program launching soon',
+    description: 'New program launching',
   },
 };
 
