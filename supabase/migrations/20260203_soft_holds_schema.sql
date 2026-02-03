@@ -23,19 +23,48 @@ CHECK (status IN (
   'pending'                     -- Legacy: treat as 'applied'
 ));
 
--- Add new columns for enrollment tracking
-ALTER TABLE public.enrollments 
-ADD COLUMN IF NOT EXISTS application_id UUID REFERENCES public.applications(id),
-ADD COLUMN IF NOT EXISTS program_slug TEXT,
-ADD COLUMN IF NOT EXISTS payment_option TEXT CHECK (payment_option IN ('full', 'deposit', 'installment', 'funded', 'employer_paid')),
-ADD COLUMN IF NOT EXISTS amount_paid DECIMAL(10,2) DEFAULT 0,
-ADD COLUMN IF NOT EXISTS stripe_checkout_session_id TEXT,
-ADD COLUMN IF NOT EXISTS approved_at TIMESTAMP WITH TIME ZONE,
-ADD COLUMN IF NOT EXISTS approved_by UUID REFERENCES public.profiles(id),
-ADD COLUMN IF NOT EXISTS paused_at TIMESTAMP WITH TIME ZONE,
-ADD COLUMN IF NOT EXISTS pause_reason TEXT,
-ADD COLUMN IF NOT EXISTS agreement_signed BOOLEAN DEFAULT false,
-ADD COLUMN IF NOT EXISTS agreement_signed_at TIMESTAMP WITH TIME ZONE;
+-- Add new columns for enrollment tracking (one at a time for safety)
+DO $$ 
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'enrollments' AND column_name = 'application_id') THEN
+    ALTER TABLE public.enrollments ADD COLUMN application_id UUID;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'enrollments' AND column_name = 'program_slug') THEN
+    ALTER TABLE public.enrollments ADD COLUMN program_slug TEXT;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'enrollments' AND column_name = 'payment_option') THEN
+    ALTER TABLE public.enrollments ADD COLUMN payment_option TEXT;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'enrollments' AND column_name = 'amount_paid') THEN
+    ALTER TABLE public.enrollments ADD COLUMN amount_paid DECIMAL(10,2) DEFAULT 0;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'enrollments' AND column_name = 'stripe_checkout_session_id') THEN
+    ALTER TABLE public.enrollments ADD COLUMN stripe_checkout_session_id TEXT;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'enrollments' AND column_name = 'approved_at') THEN
+    ALTER TABLE public.enrollments ADD COLUMN approved_at TIMESTAMP WITH TIME ZONE;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'enrollments' AND column_name = 'approved_by') THEN
+    ALTER TABLE public.enrollments ADD COLUMN approved_by UUID;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'enrollments' AND column_name = 'paused_at') THEN
+    ALTER TABLE public.enrollments ADD COLUMN paused_at TIMESTAMP WITH TIME ZONE;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'enrollments' AND column_name = 'pause_reason') THEN
+    ALTER TABLE public.enrollments ADD COLUMN pause_reason TEXT;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'enrollments' AND column_name = 'agreement_signed') THEN
+    ALTER TABLE public.enrollments ADD COLUMN agreement_signed BOOLEAN DEFAULT false;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'enrollments' AND column_name = 'agreement_signed_at') THEN
+    ALTER TABLE public.enrollments ADD COLUMN agreement_signed_at TIMESTAMP WITH TIME ZONE;
+  END IF;
+END $$;
+
+-- Add constraint for payment_option
+ALTER TABLE public.enrollments DROP CONSTRAINT IF EXISTS enrollments_payment_option_check;
+ALTER TABLE public.enrollments ADD CONSTRAINT enrollments_payment_option_check 
+  CHECK (payment_option IS NULL OR payment_option IN ('full', 'deposit', 'installment', 'funded', 'employer_paid'));
 
 -- Index for faster lookups
 CREATE INDEX IF NOT EXISTS idx_enrollments_status ON public.enrollments(status);
@@ -46,18 +75,42 @@ CREATE INDEX IF NOT EXISTS idx_enrollments_program_slug ON public.enrollments(pr
 -- 2. PROGRAMS TABLE UPDATES
 -- ============================================
 
--- Add availability and funding cycle fields
-ALTER TABLE public.programs
-ADD COLUMN IF NOT EXISTS availability_status TEXT DEFAULT 'open' 
-  CHECK (availability_status IN ('open', 'waitlist', 'closed', 'funding_pending', 'coming_soon')),
-ADD COLUMN IF NOT EXISTS next_start_date DATE,
-ADD COLUMN IF NOT EXISTS enrollment_deadline DATE,
-ADD COLUMN IF NOT EXISTS seats_available INTEGER,
-ADD COLUMN IF NOT EXISTS total_seats INTEGER,
-ADD COLUMN IF NOT EXISTS funding_cycle TEXT,
-ADD COLUMN IF NOT EXISTS funding_confirmed BOOLEAN DEFAULT true,
-ADD COLUMN IF NOT EXISTS is_apprenticeship BOOLEAN DEFAULT false,
-ADD COLUMN IF NOT EXISTS requires_employer_match BOOLEAN DEFAULT false;
+-- Add availability and funding cycle fields (one at a time for safety)
+DO $$ 
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'programs' AND column_name = 'availability_status') THEN
+    ALTER TABLE public.programs ADD COLUMN availability_status TEXT DEFAULT 'open';
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'programs' AND column_name = 'next_start_date') THEN
+    ALTER TABLE public.programs ADD COLUMN next_start_date DATE;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'programs' AND column_name = 'enrollment_deadline') THEN
+    ALTER TABLE public.programs ADD COLUMN enrollment_deadline DATE;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'programs' AND column_name = 'seats_available') THEN
+    ALTER TABLE public.programs ADD COLUMN seats_available INTEGER;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'programs' AND column_name = 'total_seats') THEN
+    ALTER TABLE public.programs ADD COLUMN total_seats INTEGER;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'programs' AND column_name = 'funding_cycle') THEN
+    ALTER TABLE public.programs ADD COLUMN funding_cycle TEXT;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'programs' AND column_name = 'funding_confirmed') THEN
+    ALTER TABLE public.programs ADD COLUMN funding_confirmed BOOLEAN DEFAULT true;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'programs' AND column_name = 'is_apprenticeship') THEN
+    ALTER TABLE public.programs ADD COLUMN is_apprenticeship BOOLEAN DEFAULT false;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'programs' AND column_name = 'requires_employer_match') THEN
+    ALTER TABLE public.programs ADD COLUMN requires_employer_match BOOLEAN DEFAULT false;
+  END IF;
+END $$;
+
+-- Add constraint for availability_status
+ALTER TABLE public.programs DROP CONSTRAINT IF EXISTS programs_availability_status_check;
+ALTER TABLE public.programs ADD CONSTRAINT programs_availability_status_check 
+  CHECK (availability_status IS NULL OR availability_status IN ('open', 'waitlist', 'closed', 'funding_pending', 'coming_soon'));
 
 -- Index for availability queries
 CREATE INDEX IF NOT EXISTS idx_programs_availability ON public.programs(availability_status);
@@ -67,18 +120,42 @@ CREATE INDEX IF NOT EXISTS idx_programs_is_apprenticeship ON public.programs(is_
 -- 3. APPLICATIONS TABLE UPDATES
 -- ============================================
 
--- Ensure applications table has needed fields
-ALTER TABLE public.applications
-ADD COLUMN IF NOT EXISTS program_slug TEXT,
-ADD COLUMN IF NOT EXISTS payment_received_at TIMESTAMP WITH TIME ZONE,
-ADD COLUMN IF NOT EXISTS eligibility_status TEXT DEFAULT 'pending'
-  CHECK (eligibility_status IN ('pending', 'eligible', 'ineligible', 'review_needed')),
-ADD COLUMN IF NOT EXISTS eligibility_verified_at TIMESTAMP WITH TIME ZONE,
-ADD COLUMN IF NOT EXISTS eligibility_verified_by UUID REFERENCES public.profiles(id),
-ADD COLUMN IF NOT EXISTS advisor_assigned UUID REFERENCES public.profiles(id),
-ADD COLUMN IF NOT EXISTS advisor_notes TEXT,
-ADD COLUMN IF NOT EXISTS next_step TEXT,
-ADD COLUMN IF NOT EXISTS next_step_due_date DATE;
+-- Ensure applications table has needed fields (one at a time for safety)
+DO $$ 
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'applications' AND column_name = 'program_slug') THEN
+    ALTER TABLE public.applications ADD COLUMN program_slug TEXT;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'applications' AND column_name = 'payment_received_at') THEN
+    ALTER TABLE public.applications ADD COLUMN payment_received_at TIMESTAMP WITH TIME ZONE;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'applications' AND column_name = 'eligibility_status') THEN
+    ALTER TABLE public.applications ADD COLUMN eligibility_status TEXT DEFAULT 'pending';
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'applications' AND column_name = 'eligibility_verified_at') THEN
+    ALTER TABLE public.applications ADD COLUMN eligibility_verified_at TIMESTAMP WITH TIME ZONE;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'applications' AND column_name = 'eligibility_verified_by') THEN
+    ALTER TABLE public.applications ADD COLUMN eligibility_verified_by UUID;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'applications' AND column_name = 'advisor_assigned') THEN
+    ALTER TABLE public.applications ADD COLUMN advisor_assigned UUID;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'applications' AND column_name = 'advisor_notes') THEN
+    ALTER TABLE public.applications ADD COLUMN advisor_notes TEXT;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'applications' AND column_name = 'next_step') THEN
+    ALTER TABLE public.applications ADD COLUMN next_step TEXT;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'applications' AND column_name = 'next_step_due_date') THEN
+    ALTER TABLE public.applications ADD COLUMN next_step_due_date DATE;
+  END IF;
+END $$;
+
+-- Add constraint for eligibility_status
+ALTER TABLE public.applications DROP CONSTRAINT IF EXISTS applications_eligibility_status_check;
+ALTER TABLE public.applications ADD CONSTRAINT applications_eligibility_status_check 
+  CHECK (eligibility_status IS NULL OR eligibility_status IN ('pending', 'eligible', 'ineligible', 'review_needed'));
 
 -- Index for application lookups
 CREATE INDEX IF NOT EXISTS idx_applications_program_slug ON public.applications(program_slug);
