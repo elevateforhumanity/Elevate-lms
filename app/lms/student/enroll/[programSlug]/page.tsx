@@ -66,21 +66,21 @@ export default async function EnrollProgramPage({ params }: Props) {
                     <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
                       <Clock className="w-5 h-5 text-blue-600" />
                       <div>
-                        <p className="text-sm text-text-secondary">Duration</p>
+                        <p className="text-sm text-gray-500">Duration</p>
                         <p className="font-medium">{course.duration || '8-16 weeks'}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
                       <Award className="w-5 h-5 text-blue-600" />
                       <div>
-                        <p className="text-sm text-text-secondary">Certification</p>
+                        <p className="text-sm text-gray-500">Certification</p>
                         <p className="font-medium">Industry Recognized</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
                       <CheckCircle className="w-5 h-5 text-green-600" />
                       <div>
-                        <p className="text-sm text-text-secondary">Cost</p>
+                        <p className="text-sm text-gray-500">Cost</p>
                         <p className="font-medium text-green-600">Free with WIOA</p>
                       </div>
                     </div>
@@ -94,21 +94,21 @@ export default async function EnrollProgramPage({ params }: Props) {
                       <span className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold">1</span>
                       <div>
                         <p className="font-medium text-gray-900">Verify WIOA Eligibility</p>
-                        <p className="text-sm text-text-secondary">Complete the eligibility check to qualify for free training</p>
+                        <p className="text-sm text-gray-600">Complete the eligibility check to qualify for free training</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
                       <span className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold">2</span>
                       <div>
                         <p className="font-medium text-gray-900">Submit Application</p>
-                        <p className="text-sm text-text-secondary">Provide your information and select your preferred start date</p>
+                        <p className="text-sm text-gray-600">Provide your information and select your preferred start date</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
                       <span className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold">3</span>
                       <div>
                         <p className="font-medium text-gray-900">Begin Training</p>
-                        <p className="text-sm text-text-secondary">Start your journey to a new career</p>
+                        <p className="text-sm text-gray-600">Start your journey to a new career</p>
                       </div>
                     </li>
                   </ol>
@@ -131,7 +131,7 @@ export default async function EnrollProgramPage({ params }: Props) {
               </>
             ) : (
               <div className="text-center py-8">
-                <p className="text-text-secondary mb-6">
+                <p className="text-gray-600 mb-6">
                   Ready to enroll in {programTitle}? Start by checking your eligibility for free training.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

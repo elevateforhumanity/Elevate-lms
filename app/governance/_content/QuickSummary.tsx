@@ -36,7 +36,7 @@ export function QuickSummary({
         ))}
       </ul>
 
-      <p className="text-sm text-text-secondary mb-4 italic">
+      <p className="text-sm text-slate-600 mb-4 italic">
         Supersonic Fast Cash governance is defined by the canonical Elevate for Humanity governance documents.
       </p>
 
@@ -80,7 +80,7 @@ export function QuickSummary({
 
       {showSupersonicScope && (
         <div className="mt-4 pt-4 border-t border-emerald-200">
-          <p className="text-xs text-text-secondary">
+          <p className="text-xs text-slate-500">
             This page applies to Supersonic Fast Cash LLC tax preparation and optional refund-based advance services.
           </p>
         </div>

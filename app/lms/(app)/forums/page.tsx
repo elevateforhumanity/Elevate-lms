@@ -98,7 +98,7 @@ export default async function ForumsPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -130,7 +130,7 @@ export default async function ForumsPage() {
               <MessageSquare className="w-8 h-8 text-blue-600" />
               Discussion Forums
             </h1>
-            <p className="text-text-secondary mt-1">
+            <p className="text-gray-600 mt-1">
               Ask questions, share knowledge, and connect with the community
             </p>
           </div>
@@ -175,8 +175,8 @@ export default async function ForumsPage() {
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-gray-900">{category.name}</h3>
-                      <p className="text-text-secondary text-sm mt-1">{category.description}</p>
-                      <div className="flex gap-4 mt-3 text-sm text-text-secondary">
+                      <p className="text-gray-600 text-sm mt-1">{category.description}</p>
+                      <div className="flex gap-4 mt-3 text-sm text-gray-500">
                         <span>{category.topics} topics</span>
                         <span>{category.posts} posts</span>
                       </div>
@@ -206,7 +206,7 @@ export default async function ForumsPage() {
                       <h4 className="font-medium text-gray-900 text-sm truncate">
                         {topic.title}
                       </h4>
-                      <p className="text-xs text-text-secondary mt-1">
+                      <p className="text-xs text-gray-500 mt-1">
                         by {topic.author} in {topic.category}
                       </p>
                       <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
@@ -234,19 +234,19 @@ export default async function ForumsPage() {
               <h3 className="font-semibold text-gray-900 mb-4">Forum Statistics</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-text-secondary">Total Topics</span>
+                  <span className="text-gray-600">Total Topics</span>
                   <span className="font-medium text-gray-900">191</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-text-secondary">Total Posts</span>
+                  <span className="text-gray-600">Total Posts</span>
                   <span className="font-medium text-gray-900">1,088</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-text-secondary">Members</span>
+                  <span className="text-gray-600">Members</span>
                   <span className="font-medium text-gray-900">2,456</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-text-secondary">Online Now</span>
+                  <span className="text-gray-600">Online Now</span>
                   <span className="font-medium text-green-600">34</span>
                 </div>
               </div>

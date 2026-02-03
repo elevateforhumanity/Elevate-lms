@@ -108,28 +108,28 @@ export default function CompliancePage() {
                 <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-medium text-slate-900">Clear and Conspicuous</p>
-                  <p className="text-text-secondary text-sm">Disclosures are presented in plain language, visible without scrolling or clicking where possible.</p>
+                  <p className="text-slate-600 text-sm">Disclosures are presented in plain language, visible without scrolling or clicking where possible.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-medium text-slate-900">Timely</p>
-                  <p className="text-text-secondary text-sm">Disclosures are presented before the user commits to a transaction or action.</p>
+                  <p className="text-slate-600 text-sm">Disclosures are presented before the user commits to a transaction or action.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-medium text-slate-900">Accurate</p>
-                  <p className="text-text-secondary text-sm">All claims are supportable and aligned with authoritative documents.</p>
+                  <p className="text-slate-600 text-sm">All claims are supportable and aligned with authoritative documents.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-medium text-slate-900">Complete</p>
-                  <p className="text-text-secondary text-sm">Material terms, conditions, and limitations are disclosed, not hidden.</p>
+                  <p className="text-slate-600 text-sm">Material terms, conditions, and limitations are disclosed, not hidden.</p>
                 </div>
               </div>
             </div>
@@ -237,7 +237,7 @@ export default function CompliancePage() {
 
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-slate-200">
-          <p className="text-center text-text-secondary text-sm mb-6">End of Document</p>
+          <p className="text-center text-slate-500 text-sm mb-6">End of Document</p>
           <div className="flex justify-center gap-4">
             <Link 
               href="/governance"

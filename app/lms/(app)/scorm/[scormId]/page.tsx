@@ -45,7 +45,7 @@ export default async function ScormPage({ params }: Props) {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -90,7 +90,7 @@ export default async function ScormPage({ params }: Props) {
         {/* Back Link */}
         <Link
           href={course ? `/lms/courses/${course.id}` : '/lms/courses'}
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-slate-900 mb-6"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           {course ? `Back to ${course.title}` : 'Back to Courses'}
@@ -102,7 +102,7 @@ export default async function ScormPage({ params }: Props) {
             <div>
               <h1 className="text-3xl font-bold text-slate-900 mb-2">{scorm.title}</h1>
               {scorm.description && (
-                <p className="text-text-secondary">{scorm.description}</p>
+                <p className="text-slate-600">{scorm.description}</p>
               )}
             </div>
             {isCompleted && (
@@ -117,7 +117,7 @@ export default async function ScormPage({ params }: Props) {
           {progress && (
             <div className="mb-6">
               <div className="flex justify-between text-sm mb-2">
-                <span className="text-text-secondary">Progress</span>
+                <span className="text-slate-600">Progress</span>
                 <span className="font-semibold">{progressPercentage}%</span>
               </div>
               <div className="h-3 bg-slate-100 rounded-full overflow-hidden">
@@ -135,17 +135,17 @@ export default async function ScormPage({ params }: Props) {
           <div className="grid grid-cols-3 gap-4 mb-8">
             <div className="bg-slate-50 rounded-xl p-4 text-center">
               <BookOpen className="w-6 h-6 text-blue-600 mx-auto mb-2" />
-              <p className="text-sm text-text-secondary">Type</p>
+              <p className="text-sm text-slate-600">Type</p>
               <p className="font-semibold">SCORM {scorm.scorm_version || '1.2'}</p>
             </div>
             <div className="bg-slate-50 rounded-xl p-4 text-center">
               <Clock className="w-6 h-6 text-blue-600 mx-auto mb-2" />
-              <p className="text-sm text-text-secondary">Duration</p>
+              <p className="text-sm text-slate-600">Duration</p>
               <p className="font-semibold">{scorm.duration_minutes || 30} min</p>
             </div>
             <div className="bg-slate-50 rounded-xl p-4 text-center">
               <CheckCircle className="w-6 h-6 text-blue-600 mx-auto mb-2" />
-              <p className="text-sm text-text-secondary">Status</p>
+              <p className="text-sm text-slate-600">Status</p>
               <p className="font-semibold capitalize">{progress?.status || 'Not Started'}</p>
             </div>
           </div>
@@ -172,7 +172,7 @@ export default async function ScormPage({ params }: Props) {
         {/* Instructions */}
         <div className="bg-white rounded-2xl border border-slate-200 p-6">
           <h2 className="text-lg font-semibold text-slate-900 mb-4">Instructions</h2>
-          <ul className="space-y-3 text-text-secondary">
+          <ul className="space-y-3 text-slate-600">
             <li className="flex items-start gap-3">
               <span className="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-semibold">1</span>
               <span>Click the &quot;Start Learning&quot; button to launch the content in a new window.</span>

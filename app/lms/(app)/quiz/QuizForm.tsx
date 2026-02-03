@@ -56,7 +56,7 @@ export function QuizForm({ quizId, quizTitle, questions }: QuizFormProps) {
     <div className="bg-white rounded-xl border">
       <div className="p-6 border-b">
         <h2 className="text-xl font-bold text-gray-900">{quizTitle}</h2>
-        <p className="text-text-secondary mt-1">
+        <p className="text-gray-600 mt-1">
           {answeredCount} of {totalQuestions} questions answered
         </p>
       </div>
@@ -119,7 +119,7 @@ export function QuizForm({ quizId, quizTitle, questions }: QuizFormProps) {
               )}
             </button>
             {answeredCount < totalQuestions && (
-              <p className="text-center text-sm text-text-secondary mt-2">
+              <p className="text-center text-sm text-gray-500 mt-2">
                 Please answer all questions before submitting
               </p>
             )}

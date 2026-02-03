@@ -44,7 +44,7 @@ export default async function LeaderboardPage() {
             <Trophy className="w-8 h-8 text-yellow-600" />
           </div>
           <h1 className="text-3xl font-bold text-slate-900">Leaderboard</h1>
-          <p className="text-text-secondary mt-1">Top learners in the community</p>
+          <p className="text-slate-600 mt-1">Top learners in the community</p>
         </div>
 
         {/* User's Rank Card */}
@@ -72,9 +72,9 @@ export default async function LeaderboardPage() {
                 {topLearners[1]?.full_name?.charAt(0) || '2'}
               </div>
               <div className="bg-slate-200 rounded-t-lg px-6 py-8">
-                <Medal className="w-6 h-6 text-text-secondary mx-auto mb-2" />
+                <Medal className="w-6 h-6 text-slate-500 mx-auto mb-2" />
                 <p className="font-bold text-slate-900 truncate max-w-[100px]">{topLearners[1]?.full_name || 'Learner'}</p>
-                <p className="text-sm text-text-secondary">{topLearners[1]?.points || 0} pts</p>
+                <p className="text-sm text-slate-600">{topLearners[1]?.points || 0} pts</p>
               </div>
             </div>
 
@@ -89,7 +89,7 @@ export default async function LeaderboardPage() {
               <div className="bg-yellow-100 rounded-t-lg px-8 py-12">
                 <Trophy className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
                 <p className="font-bold text-slate-900 truncate max-w-[120px]">{topLearners[0]?.full_name || 'Learner'}</p>
-                <p className="text-sm text-text-secondary">{topLearners[0]?.points || 0} pts</p>
+                <p className="text-sm text-slate-600">{topLearners[0]?.points || 0} pts</p>
               </div>
             </div>
 
@@ -101,7 +101,7 @@ export default async function LeaderboardPage() {
               <div className="bg-orange-100 rounded-t-lg px-6 py-6">
                 <Star className="w-6 h-6 text-orange-500 mx-auto mb-2" />
                 <p className="font-bold text-slate-900 truncate max-w-[100px]">{topLearners[2]?.full_name || 'Learner'}</p>
-                <p className="text-sm text-text-secondary">{topLearners[2]?.points || 0} pts</p>
+                <p className="text-sm text-slate-600">{topLearners[2]?.points || 0} pts</p>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default async function LeaderboardPage() {
                 key={learner.id} 
                 className={`flex items-center gap-4 p-4 ${learner.id === user.id ? 'bg-green-50' : 'hover:bg-slate-50'}`}
               >
-                <div className="w-8 text-center font-bold text-text-secondary">
+                <div className="w-8 text-center font-bold text-slate-500">
                   {index + 4}
                 </div>
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-medium">
@@ -126,11 +126,11 @@ export default async function LeaderboardPage() {
                 </div>
                 <div className="flex-1">
                   <p className="font-medium text-slate-900">{learner.full_name || 'Learner'}</p>
-                  <p className="text-sm text-text-secondary">{learner.role || 'Student'}</p>
+                  <p className="text-sm text-slate-500">{learner.role || 'Student'}</p>
                 </div>
                 <div className="text-right">
                   <p className="font-bold text-slate-900">{learner.points || 0}</p>
-                  <p className="text-xs text-text-secondary">points</p>
+                  <p className="text-xs text-slate-500">points</p>
                 </div>
               </div>
             ))}

@@ -6,6 +6,70 @@
 @tailwind utilities;
 
 /* ============================================================================
+   DESIGN SYSTEM FOUNDATION - INSTITUTIONAL TYPOGRAPHY
+   Fixes "small + greyed out" text across marketing and LMS
+   ============================================================================ */
+
+@layer base {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: #111827;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Force readable text colors - override washed-out grays */
+  p, li, span, div {
+    color: inherit;
+  }
+
+  /* Upgrade gray-500/600 to gray-700 for body text */
+  .text-gray-500:not(.meta):not(.label):not(.caption),
+  .text-gray-600:not(.meta):not(.label):not(.caption),
+  .text-slate-500:not(.meta):not(.label):not(.caption),
+  .text-slate-600:not(.meta):not(.label):not(.caption) {
+    color: #374151 !important; /* gray-700 */
+  }
+}
+
+/* Marketing pages - larger body text */
+@layer components {
+  .marketing-content {
+    font-size: 18px;
+    line-height: 1.75;
+    color: #111827;
+  }
+
+  .marketing-content p {
+    margin-bottom: 1.25rem;
+  }
+
+  /* Compliance/Policy pages - auditor-readable */
+  .compliance-content {
+    font-size: 18px;
+    line-height: 1.75;
+    color: #111827;
+  }
+
+  .compliance-content h1 { font-size: 32px; font-weight: 700; }
+  .compliance-content h2 { font-size: 24px; font-weight: 600; margin-top: 2rem; }
+  .compliance-content h3 { font-size: 20px; font-weight: 600; margin-top: 1.5rem; }
+  .compliance-content p { margin-bottom: 1rem; }
+
+  /* Dashboard - base size with proper contrast */
+  .dashboard-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #111827;
+  }
+}
+
+/* ============================================================================
    SMOOTH ANIMATIONS & TRANSITIONS - Designer Polish
    ============================================================================ */
 
@@ -133,47 +197,6 @@ input:focus, select:focus, textarea:focus {
 html, body {
   opacity: 1;
   background-color: #ffffff;
-}
-
-/* ============================================================================
-   DESIGN SYSTEM FOUNDATION - CANONICAL TYPOGRAPHY
-   ============================================================================ */
-
-html {
-  font-size: 16px; /* do not go below 16 */
-}
-
-body {
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  color: #111827; /* text-primary */
-  line-height: 1.6;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Content readability defaults */
-p, li {
-  color: #111827;
-}
-
-small, .text-muted {
-  color: #6B7280; /* only for meta */
-}
-
-/* Make long-form content feel "official" */
-.prose-like p {
-  margin-bottom: 1rem;
-}
-.prose-like h2 {
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-}
-.prose-like h3 {
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
 }
 
 /* ============================================================================

@@ -24,7 +24,7 @@ export default async function PeerReviewPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -55,7 +55,7 @@ export default async function PeerReviewPage() {
             <Users className="w-8 h-8 text-blue-600" />
             Peer Review
           </h1>
-          <p className="text-text-secondary mt-1">
+          <p className="text-gray-600 mt-1">
             Review assignments from fellow learners and receive feedback on your work
           </p>
         </div>
@@ -69,7 +69,7 @@ export default async function PeerReviewPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">0</div>
-                <div className="text-text-secondary text-sm">Pending Reviews</div>
+                <div className="text-gray-600 text-sm">Pending Reviews</div>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default async function PeerReviewPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">0</div>
-                <div className="text-text-secondary text-sm">Completed</div>
+                <div className="text-gray-600 text-sm">Completed</div>
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@ export default async function PeerReviewPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">0</div>
-                <div className="text-text-secondary text-sm">My Submissions</div>
+                <div className="text-gray-600 text-sm">My Submissions</div>
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default async function PeerReviewPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">--</div>
-                <div className="text-text-secondary text-sm">Avg. Rating Given</div>
+                <div className="text-gray-600 text-sm">Avg. Rating Given</div>
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default async function PeerReviewPage() {
               <div className="text-center py-8">
                 <FileText className="w-12 h-12 text-gray-300 mx-auto mb-4" />
                 <h3 className="font-medium text-gray-900 mb-2">No pending reviews</h3>
-                <p className="text-text-secondary text-sm">
+                <p className="text-gray-600 text-sm">
                   When assignments are available for peer review, they'll appear here
                 </p>
               </div>
@@ -140,7 +140,7 @@ export default async function PeerReviewPage() {
               <div className="text-center py-8">
                 <CheckCircle className="w-12 h-12 text-gray-300 mx-auto mb-4" />
                 <h3 className="font-medium text-gray-900 mb-2">No submissions yet</h3>
-                <p className="text-text-secondary text-sm mb-4">
+                <p className="text-gray-600 text-sm mb-4">
                   Submit assignments in your courses to receive peer feedback
                 </p>
                 <Link
@@ -163,7 +163,7 @@ export default async function PeerReviewPage() {
                 <span className="text-xl font-bold text-blue-600">1</span>
               </div>
               <h3 className="font-medium text-gray-900 mb-2">Submit Your Work</h3>
-              <p className="text-text-secondary text-sm">
+              <p className="text-gray-600 text-sm">
                 Complete and submit assignments that have peer review enabled
               </p>
             </div>
@@ -172,7 +172,7 @@ export default async function PeerReviewPage() {
                 <span className="text-xl font-bold text-blue-600">2</span>
               </div>
               <h3 className="font-medium text-gray-900 mb-2">Review Others</h3>
-              <p className="text-text-secondary text-sm">
+              <p className="text-gray-600 text-sm">
                 Provide constructive feedback on your peers' submissions
               </p>
             </div>
@@ -181,7 +181,7 @@ export default async function PeerReviewPage() {
                 <span className="text-xl font-bold text-blue-600">3</span>
               </div>
               <h3 className="font-medium text-gray-900 mb-2">Receive Feedback</h3>
-              <p className="text-text-secondary text-sm">
+              <p className="text-gray-600 text-sm">
                 Get valuable insights from multiple reviewers on your work
               </p>
             </div>

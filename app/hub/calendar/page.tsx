@@ -47,7 +47,7 @@ export default async function CalendarPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-slate-900">Calendar</h1>
-            <p className="text-text-secondary mt-1">Upcoming events and sessions</p>
+            <p className="text-slate-600 mt-1">Upcoming events and sessions</p>
           </div>
           <button className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700">
             <Plus className="w-4 h-4" />
@@ -59,19 +59,19 @@ export default async function CalendarPage() {
         <div className="flex flex-wrap gap-4 mb-8">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-            <span className="text-sm text-text-secondary">Study Sessions</span>
+            <span className="text-sm text-slate-600">Study Sessions</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-purple-500"></div>
-            <span className="text-sm text-text-secondary">Workshops</span>
+            <span className="text-sm text-slate-600">Workshops</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
-            <span className="text-sm text-text-secondary">Webinars</span>
+            <span className="text-sm text-slate-600">Webinars</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-orange-500"></div>
-            <span className="text-sm text-text-secondary">Networking</span>
+            <span className="text-sm text-slate-600">Networking</span>
           </div>
         </div>
 
@@ -80,7 +80,7 @@ export default async function CalendarPage() {
           <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
             <Calendar className="w-16 h-16 text-slate-300 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-slate-900 mb-2">No upcoming events</h3>
-            <p className="text-text-secondary">Check back later for scheduled events and sessions.</p>
+            <p className="text-slate-600">Check back later for scheduled events and sessions.</p>
           </div>
         ) : (
         <div className="space-y-4">
@@ -92,14 +92,14 @@ export default async function CalendarPage() {
                   <div className="flex items-start justify-between">
                     <div>
                       <h3 className="font-bold text-slate-900 text-lg">{event.title}</h3>
-                      <p className="text-text-secondary mt-1">{event.description}</p>
+                      <p className="text-slate-600 mt-1">{event.description}</p>
                     </div>
                     <span className={`px-3 py-1 rounded-full text-xs font-medium text-white ${getEventColor(event.event_type)}`}>
                       {event.event_type || 'Event'}
                     </span>
                   </div>
                   
-                  <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-text-secondary">
+                  <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-slate-500">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
                       {new Date(event.start_date).toLocaleDateString('en-US', {
@@ -129,7 +129,7 @@ export default async function CalendarPage() {
                   </div>
 
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">
-                    <div className="flex items-center gap-2 text-sm text-text-secondary">
+                    <div className="flex items-center gap-2 text-sm text-slate-500">
                       <Users className="w-4 h-4" />
                       {event.attendee_count || 0} attending
                     </div>

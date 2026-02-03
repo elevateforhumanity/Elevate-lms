@@ -140,13 +140,13 @@ export default function GovernancePage() {
               >
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                    <link.icon className="w-5 h-5 text-text-secondary group-hover:text-blue-600" />
+                    <link.icon className="w-5 h-5 text-slate-600 group-hover:text-blue-600" />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
                       {link.title}
                     </h3>
-                    <p className="text-sm text-text-secondary mt-1">{link.description}</p>
+                    <p className="text-sm text-slate-600 mt-1">{link.description}</p>
                   </div>
                   <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors" />
                 </div>
@@ -189,7 +189,7 @@ export default function GovernancePage() {
         {/* Contact */}
         <section className="text-center py-8 border-t border-slate-200">
           <h2 className="text-xl font-bold text-slate-900 mb-4">Questions?</h2>
-          <p className="text-text-secondary mb-6">
+          <p className="text-slate-600 mb-6">
             For diligence inquiries or governance questions, contact our team.
           </p>
           <Link

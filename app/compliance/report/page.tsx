@@ -21,7 +21,7 @@ export default function ComplianceReportPage() {
         <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
           <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Report Submitted</h1>
-          <p className="text-text-secondary mb-6">Thank you for your report. Our compliance team will review it promptly.</p>
+          <p className="text-gray-600 mb-6">Thank you for your report. Our compliance team will review it promptly.</p>
           <Link href="/" className="text-blue-600 font-medium">Return to Home</Link>
         </div>
       </div>

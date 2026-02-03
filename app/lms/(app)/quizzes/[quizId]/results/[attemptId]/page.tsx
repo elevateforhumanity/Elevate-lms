@@ -36,7 +36,7 @@ export default async function QuizResultsPage({ params }: Props) {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -131,7 +131,7 @@ export default async function QuizResultsPage({ params }: Props) {
         {/* Back Link */}
         <Link
           href="/lms/quizzes"
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-slate-900 mb-6"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Quizzes
@@ -257,7 +257,7 @@ export default async function QuizResultsPage({ params }: Props) {
                       </div>
                       <div className="flex-1">
                         <p className="font-medium text-slate-900">{question.question_text}</p>
-                        <p className="text-sm text-text-secondary mt-1">
+                        <p className="text-sm text-slate-500 mt-1">
                           {answer.points_earned || 0} / {question.points || 1} points
                         </p>
                       </div>
@@ -297,7 +297,7 @@ export default async function QuizResultsPage({ params }: Props) {
         {/* If answers not shown */}
         {!quiz.show_correct_answers && (
           <div className="bg-white rounded-2xl border border-slate-200 p-8 text-center">
-            <p className="text-text-secondary">
+            <p className="text-slate-600">
               Detailed answer review is not available for this quiz.
             </p>
           </div>

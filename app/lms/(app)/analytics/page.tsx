@@ -37,7 +37,7 @@ export default async function AnalyticsPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -144,7 +144,7 @@ export default async function AnalyticsPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900">Learning Analytics</h1>
-          <p className="text-text-secondary mt-1">
+          <p className="text-slate-600 mt-1">
             Track your progress and performance across all courses
           </p>
         </div>
@@ -158,7 +158,7 @@ export default async function AnalyticsPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.totalCourses}</div>
-                <div className="text-xs text-text-secondary">Total Courses</div>
+                <div className="text-xs text-slate-600">Total Courses</div>
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@ export default async function AnalyticsPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.completedLessons}</div>
-                <div className="text-xs text-text-secondary">Lessons Done</div>
+                <div className="text-xs text-slate-600">Lessons Done</div>
               </div>
             </div>
           </div>
@@ -182,7 +182,7 @@ export default async function AnalyticsPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.avgQuizScore}%</div>
-                <div className="text-xs text-text-secondary">Avg Quiz Score</div>
+                <div className="text-xs text-slate-600">Avg Quiz Score</div>
               </div>
             </div>
           </div>
@@ -194,7 +194,7 @@ export default async function AnalyticsPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.totalHours}h</div>
-                <div className="text-xs text-text-secondary">Course Hours</div>
+                <div className="text-xs text-slate-600">Course Hours</div>
               </div>
             </div>
           </div>
@@ -220,11 +220,11 @@ export default async function AnalyticsPage() {
                         backgroundColor: count > 0 ? undefined : '#e2e8f0',
                       }}
                     />
-                    <span className="text-xs text-text-secondary">{dayNames[index]}</span>
+                    <span className="text-xs text-slate-500">{dayNames[index]}</span>
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-text-secondary mt-4 text-center">
+              <p className="text-sm text-slate-600 mt-4 text-center">
                 {lessonProgress?.filter(p => {
                   const date = new Date(p.updated_at);
                   const daysDiff = Math.floor((today.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
@@ -268,14 +268,14 @@ export default async function AnalyticsPage() {
                           {course.progress}%
                         </span>
                       </div>
-                      <p className="text-xs text-text-secondary mt-2">
+                      <p className="text-xs text-slate-500 mt-2">
                         {course.completedLessons} of {course.totalLessons} lessons
                       </p>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-text-secondary text-center py-8">
+                <p className="text-slate-600 text-center py-8">
                   Enroll in courses to track your progress
                 </p>
               )}
@@ -292,19 +292,19 @@ export default async function AnalyticsPage() {
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-text-secondary">Quizzes Taken</span>
+                  <span className="text-slate-600">Quizzes Taken</span>
                   <span className="font-bold text-slate-900">{stats.totalQuizzes}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-text-secondary">Avg Score</span>
+                  <span className="text-slate-600">Avg Score</span>
                   <span className="font-bold text-slate-900">{stats.avgQuizScore}%</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-text-secondary">Assignments</span>
+                  <span className="text-slate-600">Assignments</span>
                   <span className="font-bold text-slate-900">{stats.totalAssignments}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-text-secondary">Graded</span>
+                  <span className="text-slate-600">Graded</span>
                   <span className="font-bold text-slate-900">{stats.gradedAssignments}</span>
                 </div>
               </div>

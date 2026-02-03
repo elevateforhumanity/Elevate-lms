@@ -19,7 +19,7 @@ export default function ResponseSLAPage() {
         <article className="bg-white rounded-xl shadow-sm p-8 md:p-12">
           <div className="mb-8">
             <h1 className="text-4xl font-bold text-black mb-4">Response Time SLA</h1>
-            <p className="text-sm text-text-secondary">Last Updated: January 12, 2026</p>
+            <p className="text-sm text-gray-600">Last Updated: January 12, 2026</p>
           </div>
 
           <div className="prose prose-lg max-w-none">

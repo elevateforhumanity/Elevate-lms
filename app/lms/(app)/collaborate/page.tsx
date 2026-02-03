@@ -55,7 +55,7 @@ export default async function CollaboratePage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -87,7 +87,7 @@ export default async function CollaboratePage() {
               <Users className="w-8 h-8 text-blue-600" />
               Collaborate
             </h1>
-            <p className="text-text-secondary mt-1">
+            <p className="text-gray-600 mt-1">
               Work together with classmates on projects and study sessions
             </p>
           </div>
@@ -119,7 +119,7 @@ export default async function CollaboratePage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-gray-900">{tool.title}</h3>
-                  <p className="text-text-secondary text-sm mt-1">{tool.description}</p>
+                  <p className="text-gray-600 text-sm mt-1">{tool.description}</p>
                 </div>
                 <ChevronRight className="w-5 h-5 text-gray-400" />
               </div>
@@ -141,7 +141,7 @@ export default async function CollaboratePage() {
               <div className="text-center py-8">
                 <Users className="w-12 h-12 text-gray-300 mx-auto mb-4" />
                 <h3 className="font-medium text-gray-900 mb-2">No groups yet</h3>
-                <p className="text-text-secondary text-sm mb-4">
+                <p className="text-gray-600 text-sm mb-4">
                   Join a study group or create your own
                 </p>
                 <Link
@@ -166,7 +166,7 @@ export default async function CollaboratePage() {
               <div className="text-center py-8">
                 <Calendar className="w-12 h-12 text-gray-300 mx-auto mb-4" />
                 <h3 className="font-medium text-gray-900 mb-2">No upcoming sessions</h3>
-                <p className="text-text-secondary text-sm mb-4">
+                <p className="text-gray-600 text-sm mb-4">
                   Schedule a study session with your group
                 </p>
                 <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">

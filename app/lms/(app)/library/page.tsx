@@ -39,7 +39,7 @@ export default async function LibraryPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -118,7 +118,7 @@ export default async function LibraryPage() {
       case 'link':
         return 'bg-green-100 text-green-600';
       default:
-        return 'bg-slate-100 text-text-secondary';
+        return 'bg-slate-100 text-slate-600';
     }
   };
 
@@ -142,7 +142,7 @@ export default async function LibraryPage() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-slate-900">Learning Library</h1>
-            <p className="text-text-secondary mt-1">
+            <p className="text-slate-600 mt-1">
               Access course materials, documents, and learning resources
             </p>
           </div>
@@ -201,7 +201,7 @@ export default async function LibraryPage() {
                             </div>
                             <div>
                               <h3 className="font-bold text-slate-900">{enrollment.courses?.title}</h3>
-                              <p className="text-sm text-text-secondary">{materials.length} resources</p>
+                              <p className="text-sm text-slate-600">{materials.length} resources</p>
                             </div>
                           </div>
                         </div>
@@ -221,7 +221,7 @@ export default async function LibraryPage() {
                                   </div>
                                   <div>
                                     <p className="font-medium text-slate-900">{material.title}</p>
-                                    <div className="flex items-center gap-3 text-sm text-text-secondary">
+                                    <div className="flex items-center gap-3 text-sm text-slate-500">
                                       <span className="capitalize">{material.type}</span>
                                       <span>•</span>
                                       <span className="flex items-center gap-1">
@@ -287,16 +287,16 @@ export default async function LibraryPage() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <h3 className="font-bold text-slate-900 truncate">{resource.title}</h3>
-                            <p className="text-sm text-text-secondary capitalize">{resource.type}</p>
+                            <p className="text-sm text-slate-500 capitalize">{resource.type}</p>
                           </div>
                         </div>
                         {resource.description && (
-                          <p className="text-sm text-text-secondary mb-3 line-clamp-2">
+                          <p className="text-sm text-slate-600 mb-3 line-clamp-2">
                             {resource.description}
                           </p>
                         )}
                         <div className="flex items-center justify-between">
-                          <span className="text-xs text-text-secondary">
+                          <span className="text-xs text-slate-500">
                             {formatDate(resource.created_at)}
                           </span>
                           {resource.url && (
@@ -321,7 +321,7 @@ export default async function LibraryPage() {
           <div className="bg-white rounded-2xl border border-slate-200 p-16 text-center">
             <BookOpen className="w-16 h-16 text-slate-300 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-slate-900 mb-2">No Resources Yet</h2>
-            <p className="text-text-secondary mb-6 max-w-md mx-auto">
+            <p className="text-slate-600 mb-6 max-w-md mx-auto">
               Course materials and resources will appear here once you enroll in courses.
             </p>
             <Link

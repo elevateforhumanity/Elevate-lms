@@ -27,7 +27,7 @@ export default async function InteractiveCoursesPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -156,7 +156,7 @@ export default async function InteractiveCoursesPage() {
           <h2 className="text-2xl font-bold text-slate-900 mb-6">All Courses</h2>
           {displayCourses.length === 0 ? (
             <div className="bg-white rounded-xl shadow-md p-12 text-center">
-              <p className="text-text-secondary">No courses available yet. Check back soon!</p>
+              <p className="text-gray-500">No courses available yet. Check back soon!</p>
             </div>
           ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -195,8 +195,8 @@ export default async function InteractiveCoursesPage() {
                   </div>
                   <div className="p-4">
                     <h3 className="font-bold text-slate-900 mb-2">{course.title}</h3>
-                    <p className="text-text-secondary text-sm mb-3 line-clamp-2">{course.description}</p>
-                    <div className="flex items-center gap-4 text-sm text-text-secondary mb-4">
+                    <p className="text-slate-600 text-sm mb-3 line-clamp-2">{course.description}</p>
+                    <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
                       <span className="flex items-center gap-1">
                         <Clock className="w-4 h-4" />
                         {course.duration}

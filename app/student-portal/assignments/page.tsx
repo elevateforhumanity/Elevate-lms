@@ -84,22 +84,22 @@ export default async function AssignmentsPage() {
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Assignments</h1>
-          <p className="text-text-secondary mt-1">Track and submit your coursework</p>
+          <p className="text-gray-600 mt-1">Track and submit your coursework</p>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 mb-8">
           <div className="bg-white rounded-xl p-4 border">
             <p className="text-2xl font-bold text-yellow-600">{pendingCount}</p>
-            <p className="text-sm text-text-secondary">Pending</p>
+            <p className="text-sm text-gray-500">Pending</p>
           </div>
           <div className="bg-white rounded-xl p-4 border">
             <p className="text-2xl font-bold text-blue-600">{submittedCount}</p>
-            <p className="text-sm text-text-secondary">Submitted</p>
+            <p className="text-sm text-gray-500">Submitted</p>
           </div>
           <div className="bg-white rounded-xl p-4 border">
             <p className="text-2xl font-bold text-green-600">{gradedCount}</p>
-            <p className="text-sm text-text-secondary">Graded</p>
+            <p className="text-sm text-gray-500">Graded</p>
           </div>
         </div>
 
@@ -115,12 +115,12 @@ export default async function AssignmentsPage() {
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <FileText className="w-5 h-5 text-text-secondary" />
+                        <FileText className="w-5 h-5 text-gray-600" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900">{assignment.title}</h3>
-                        <p className="text-sm text-text-secondary">{assignment.courseName}</p>
-                        <div className="flex items-center gap-4 mt-2 text-sm text-text-secondary">
+                        <p className="text-sm text-gray-500">{assignment.courseName}</p>
+                        <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
                           <span className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
                             Due: {formatDate(assignment.dueDate)}
@@ -156,7 +156,7 @@ export default async function AssignmentsPage() {
           <div className="bg-white rounded-xl border p-12 text-center">
             <FileText className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h2 className="text-xl font-semibold text-gray-900 mb-2">No assignments</h2>
-            <p className="text-text-secondary mb-6">You don't have any assignments yet.</p>
+            <p className="text-gray-600 mb-6">You don't have any assignments yet.</p>
             <Link href="/student-portal/courses" className="text-blue-600 hover:underline">
               View your courses
             </Link>

@@ -169,7 +169,7 @@ export default function StudentProgressWidget() {
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-semibold text-gray-900">{program.name}</h3>
               {program.required_hours && (
-                <span className="text-sm text-text-secondary">
+                <span className="text-sm text-gray-500">
                   {enrollment.hours.verified} / {program.required_hours} hours
                 </span>
               )}
@@ -185,7 +185,7 @@ export default function StudentProgressWidget() {
             )}
 
             {enrollment.tasks.length > 0 && (
-              <div className="text-sm text-text-secondary">
+              <div className="text-sm text-gray-600">
                 {enrollment.tasks.filter(t => t.status === 'approved').length} of {enrollment.tasks.length} tasks completed
               </div>
             )}

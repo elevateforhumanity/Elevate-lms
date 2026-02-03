@@ -73,8 +73,8 @@ export default function CompliancePage() {
                       <td className="px-6 py-4">
                         <span className="font-medium text-gray-900">{doc.title}</span>
                       </td>
-                      <td className="px-6 py-4 text-text-secondary">{doc.version}</td>
-                      <td className="px-6 py-4 text-text-secondary">{doc.updated}</td>
+                      <td className="px-6 py-4 text-gray-600">{doc.version}</td>
+                      <td className="px-6 py-4 text-gray-600">{doc.updated}</td>
                       <td className="px-6 py-4 text-center">
                         <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-medium">
                           {doc.status}
@@ -101,7 +101,7 @@ export default function CompliancePage() {
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold text-gray-900">{cert.name}</h3>
-                    <p className="text-sm text-text-secondary mt-1">{cert.description}</p>
+                    <p className="text-sm text-gray-600 mt-1">{cert.description}</p>
                     <p className="text-xs text-green-600 font-medium mt-2">{cert.valid}</p>
                   </div>
                 </div>

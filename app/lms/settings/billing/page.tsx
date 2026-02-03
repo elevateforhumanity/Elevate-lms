@@ -179,14 +179,14 @@ export default function BillingSettingsPage() {
                 <div key={method.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-white rounded-lg border flex items-center justify-center">
-                      <CreditCard className="w-5 h-5 text-text-secondary" />
+                      <CreditCard className="w-5 h-5 text-gray-600" />
                     </div>
                     <div>
                       <p className="font-medium text-gray-900">
                         {method.brand || 'Card'} •••• {method.last4}
                       </p>
                       {method.expiry && (
-                        <p className="text-sm text-text-secondary">Expires {method.expiry}</p>
+                        <p className="text-sm text-gray-500">Expires {method.expiry}</p>
                       )}
                     </div>
                   </div>
@@ -203,7 +203,7 @@ export default function BillingSettingsPage() {
           ) : (
             <div className="text-center py-8">
               <CreditCard className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-              <p className="text-text-secondary mb-4">No payment methods on file</p>
+              <p className="text-gray-600 mb-4">No payment methods on file</p>
               <button
                 onClick={handleManageBilling}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -225,7 +225,7 @@ export default function BillingSettingsPage() {
                 <div key={invoice.id} className="py-4 flex items-center justify-between">
                   <div>
                     <p className="font-medium text-gray-900">{invoice.description}</p>
-                    <p className="text-sm text-text-secondary">{formatDate(invoice.date)}</p>
+                    <p className="text-sm text-gray-500">{formatDate(invoice.date)}</p>
                   </div>
                   <div className="flex items-center gap-4">
                     <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
@@ -245,7 +245,7 @@ export default function BillingSettingsPage() {
                         href={invoice.invoice_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 text-gray-400 hover:text-text-secondary"
+                        className="p-2 text-gray-400 hover:text-gray-600"
                       >
                         <Download className="w-4 h-4" />
                       </a>
@@ -257,7 +257,7 @@ export default function BillingSettingsPage() {
           ) : (
             <div className="text-center py-8">
               <DollarSign className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-              <p className="text-text-secondary">No billing history yet</p>
+              <p className="text-gray-600">No billing history yet</p>
             </div>
           )}
         </div>
@@ -271,7 +271,7 @@ export default function BillingSettingsPage() {
             Manage Billing
             <ExternalLink className="w-4 h-4" />
           </button>
-          <p className="text-xs text-text-secondary mt-2">Opens Stripe billing portal</p>
+          <p className="text-xs text-gray-500 mt-2">Opens Stripe billing portal</p>
         </div>
       </div>
     </div>

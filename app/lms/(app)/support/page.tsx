@@ -87,7 +87,7 @@ export default async function SupportPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -124,7 +124,7 @@ export default async function SupportPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold text-slate-900 mb-2">How Can We Help?</h1>
-          <p className="text-text-secondary">Search our help center or contact support</p>
+          <p className="text-slate-600">Search our help center or contact support</p>
         </div>
 
         {/* Search */}
@@ -152,7 +152,7 @@ export default async function SupportPage() {
                   <IconComponent className="w-6 h-6" />
                 </div>
                 <h3 className="font-bold text-slate-900 mb-1">{category.title}</h3>
-                <p className="text-sm text-text-secondary">{category.description}</p>
+                <p className="text-sm text-slate-600">{category.description}</p>
               </button>
             );
           })}
@@ -172,7 +172,7 @@ export default async function SupportPage() {
                       <span className="font-medium text-slate-900">{item.question}</span>
                       <ChevronRight className="w-5 h-5 text-slate-400 group-open:rotate-90 transition-transform" />
                     </summary>
-                    <div className="px-6 pb-6 text-text-secondary">
+                    <div className="px-6 pb-6 text-slate-600">
                       {item.answer}
                     </div>
                   </details>
@@ -206,7 +206,7 @@ export default async function SupportPage() {
             <div className="bg-white rounded-2xl border border-slate-200 p-6">
               <h3 className="font-bold text-slate-900 mb-4">Other Ways to Reach Us</h3>
               <div className="space-y-4">
-                <a href="tel:317-314-3757" className="flex items-center gap-3 text-text-secondary hover:text-blue-600">
+                <a href="tel:317-314-3757" className="flex items-center gap-3 text-slate-600 hover:text-blue-600">
                   <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
                     <Phone className="w-5 h-5" />
                   </div>
@@ -215,7 +215,7 @@ export default async function SupportPage() {
                     <div className="text-sm">(317) 314-3757</div>
                   </div>
                 </a>
-                <a href="mailto:elevate4humanityedu@gmail.com" className="flex items-center gap-3 text-text-secondary hover:text-blue-600">
+                <a href="mailto:elevate4humanityedu@gmail.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600">
                   <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
                     <Mail className="w-5 h-5" />
                   </div>

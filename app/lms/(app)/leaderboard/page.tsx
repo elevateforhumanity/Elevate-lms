@@ -46,7 +46,7 @@ export default async function LeaderboardPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -149,7 +149,7 @@ export default async function LeaderboardPage() {
     if (rank === 1) return <Crown className="w-6 h-6 text-yellow-500" />;
     if (rank === 2) return <Medal className="w-6 h-6 text-gray-400" />;
     if (rank === 3) return <Medal className="w-6 h-6 text-amber-600" />;
-    return <span className="w-6 h-6 flex items-center justify-center text-text-secondary font-bold">{rank}</span>;
+    return <span className="w-6 h-6 flex items-center justify-center text-slate-500 font-bold">{rank}</span>;
   };
 
   const getRankBg = (rank: number) => {
@@ -171,7 +171,7 @@ export default async function LeaderboardPage() {
             <Trophy className="w-8 h-8 text-yellow-600" />
           </div>
           <h1 className="text-3xl font-bold text-slate-900">Leaderboard</h1>
-          <p className="text-text-secondary mt-2">
+          <p className="text-slate-600 mt-2">
             Top learners ranked by points earned through courses, quizzes, and achievements
           </p>
         </div>
@@ -271,7 +271,7 @@ export default async function LeaderboardPage() {
                           </span>
                         )}
                       </p>
-                      <div className="flex items-center gap-4 text-sm text-text-secondary">
+                      <div className="flex items-center gap-4 text-sm text-slate-500">
                         <span className="flex items-center gap-1">
                           <BookOpen className="w-3 h-3" />
                           {entry.coursesCompleted} courses
@@ -288,7 +288,7 @@ export default async function LeaderboardPage() {
                         <Star className="w-4 h-4 text-yellow-500" />
                         {entry.points.toLocaleString()}
                       </div>
-                      <div className="text-xs text-text-secondary">points</div>
+                      <div className="text-xs text-slate-500">points</div>
                     </div>
                   </div>
                 );
@@ -298,7 +298,7 @@ export default async function LeaderboardPage() {
             <div className="p-16 text-center">
               <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">No Rankings Yet</h3>
-              <p className="text-text-secondary mb-6">
+              <p className="text-slate-600 mb-6">
                 Be the first to earn points by completing courses and quizzes!
               </p>
               <Link
@@ -322,7 +322,7 @@ export default async function LeaderboardPage() {
               </div>
               <div>
                 <div className="font-semibold text-slate-900">+100</div>
-                <div className="text-xs text-text-secondary">Complete a course</div>
+                <div className="text-xs text-slate-500">Complete a course</div>
               </div>
             </div>
             <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
@@ -331,7 +331,7 @@ export default async function LeaderboardPage() {
               </div>
               <div>
                 <div className="font-semibold text-slate-900">+10</div>
-                <div className="text-xs text-text-secondary">Complete a lesson</div>
+                <div className="text-xs text-slate-500">Complete a lesson</div>
               </div>
             </div>
             <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
@@ -340,7 +340,7 @@ export default async function LeaderboardPage() {
               </div>
               <div>
                 <div className="font-semibold text-slate-900">+0-50</div>
-                <div className="text-xs text-text-secondary">Quiz score bonus</div>
+                <div className="text-xs text-slate-500">Quiz score bonus</div>
               </div>
             </div>
             <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
@@ -349,7 +349,7 @@ export default async function LeaderboardPage() {
               </div>
               <div>
                 <div className="font-semibold text-slate-900">+25</div>
-                <div className="text-xs text-text-secondary">Earn a badge</div>
+                <div className="text-xs text-slate-500">Earn a badge</div>
               </div>
             </div>
           </div>

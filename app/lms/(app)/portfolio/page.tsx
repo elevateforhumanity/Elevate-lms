@@ -26,7 +26,7 @@ export default async function PortfolioPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -79,7 +79,7 @@ export default async function PortfolioPage() {
               <Briefcase className="w-8 h-8 text-blue-600" />
               My Portfolio
             </h1>
-            <p className="text-text-secondary mt-1">
+            <p className="text-gray-600 mt-1">
               Showcase your achievements and share with employers
             </p>
           </div>
@@ -106,7 +106,7 @@ export default async function PortfolioPage() {
                 <div className="text-2xl font-bold text-gray-900">
                   {certificates?.length || 0}
                 </div>
-                <div className="text-text-secondary text-sm">Certificates Earned</div>
+                <div className="text-gray-600 text-sm">Certificates Earned</div>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default async function PortfolioPage() {
                 <div className="text-2xl font-bold text-gray-900">
                   {completedCourses?.length || 0}
                 </div>
-                <div className="text-text-secondary text-sm">Courses Completed</div>
+                <div className="text-gray-600 text-sm">Courses Completed</div>
               </div>
             </div>
           </div>
@@ -130,7 +130,7 @@ export default async function PortfolioPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">0</div>
-                <div className="text-text-secondary text-sm">Projects Added</div>
+                <div className="text-gray-600 text-sm">Projects Added</div>
               </div>
             </div>
           </div>
@@ -153,8 +153,8 @@ export default async function PortfolioPage() {
                       <div className="flex items-start justify-between">
                         <div>
                           <h3 className="font-medium text-gray-900">{cert.title}</h3>
-                          <p className="text-sm text-text-secondary mt-1">{cert.issuer}</p>
-                          <div className="flex items-center gap-4 mt-2 text-sm text-text-secondary">
+                          <p className="text-sm text-gray-600 mt-1">{cert.issuer}</p>
+                          <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
                             <span className="flex items-center gap-1">
                               <Calendar className="w-4 h-4" />
                               Issued {new Date(cert.issued_at).toLocaleDateString()}
@@ -166,13 +166,13 @@ export default async function PortfolioPage() {
                         </div>
                         <div className="flex gap-2">
                           <button className="p-2 hover:bg-gray-100 rounded-lg" title="View">
-                            <Eye className="w-4 h-4 text-text-secondary" />
+                            <Eye className="w-4 h-4 text-gray-600" />
                           </button>
                           <button className="p-2 hover:bg-gray-100 rounded-lg" title="Download">
-                            <Download className="w-4 h-4 text-text-secondary" />
+                            <Download className="w-4 h-4 text-gray-600" />
                           </button>
                           <button className="p-2 hover:bg-gray-100 rounded-lg" title="Share">
-                            <ExternalLink className="w-4 h-4 text-text-secondary" />
+                            <ExternalLink className="w-4 h-4 text-gray-600" />
                           </button>
                         </div>
                       </div>
@@ -183,7 +183,7 @@ export default async function PortfolioPage() {
                 <div className="p-12 text-center">
                   <Award className="w-12 h-12 text-gray-300 mx-auto mb-4" />
                   <h3 className="font-medium text-gray-900 mb-2">No certificates yet</h3>
-                  <p className="text-text-secondary text-sm mb-4">
+                  <p className="text-gray-600 text-sm mb-4">
                     Complete courses to earn certificates and credentials
                   </p>
                   <Link
@@ -213,7 +213,7 @@ export default async function PortfolioPage() {
                           <h3 className="font-medium text-gray-900">
                             {enrollment.course?.title || 'Course'}
                           </h3>
-                          <p className="text-sm text-text-secondary mt-1">
+                          <p className="text-sm text-gray-600 mt-1">
                             Completed {new Date(enrollment.completed_at).toLocaleDateString()}
                           </p>
                         </div>
@@ -231,7 +231,7 @@ export default async function PortfolioPage() {
                 <div className="p-12 text-center">
                   <CheckCircle className="w-12 h-12 text-gray-300 mx-auto mb-4" />
                   <h3 className="font-medium text-gray-900 mb-2">No completed courses</h3>
-                  <p className="text-text-secondary text-sm">
+                  <p className="text-gray-600 text-sm">
                     Your completed courses will appear here
                   </p>
                 </div>
@@ -244,10 +244,10 @@ export default async function PortfolioPage() {
             {/* Add Project */}
             <div className="bg-white rounded-xl p-6 shadow-sm border mb-6">
               <h2 className="font-semibold text-gray-900 mb-4">Add to Portfolio</h2>
-              <p className="text-text-secondary text-sm mb-4">
+              <p className="text-gray-600 text-sm mb-4">
                 Showcase your work by adding projects, case studies, or work samples.
               </p>
-              <button className="w-full flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg text-text-secondary hover:border-blue-400 hover:text-blue-600 transition-colors">
+              <button className="w-full flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors">
                 <Plus className="w-5 h-5" />
                 Add Project
               </button>
@@ -302,7 +302,7 @@ export default async function PortfolioPage() {
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Star className="w-5 h-5 text-blue-600" />
                   </div>
-                  <p className="text-xs text-text-secondary">First Steps</p>
+                  <p className="text-xs text-gray-600">First Steps</p>
                 </div>
                 <div className="text-center p-3 bg-gray-50 rounded-lg opacity-40">
                   <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-2">

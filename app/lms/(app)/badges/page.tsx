@@ -137,7 +137,7 @@ export default async function BadgesPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -217,7 +217,7 @@ export default async function BadgesPage() {
             <Award className="w-8 h-8 text-yellow-600" />
           </div>
           <h1 className="text-3xl font-bold text-slate-900">My Badges</h1>
-          <p className="text-text-secondary mt-2">
+          <p className="text-slate-600 mt-2">
             Earn badges by completing courses, quizzes, and engaging with the community
           </p>
         </div>
@@ -226,17 +226,17 @@ export default async function BadgesPage() {
         <div className="grid grid-cols-3 gap-4 mb-8">
           <div className="bg-white rounded-xl border border-slate-200 p-4 text-center">
             <div className="text-3xl font-bold text-yellow-600">{earnedCount}</div>
-            <div className="text-sm text-text-secondary">Badges Earned</div>
+            <div className="text-sm text-slate-600">Badges Earned</div>
           </div>
           <div className="bg-white rounded-xl border border-slate-200 p-4 text-center">
             <div className="text-3xl font-bold text-slate-400">{totalBadges - earnedCount}</div>
-            <div className="text-sm text-text-secondary">Badges Remaining</div>
+            <div className="text-sm text-slate-600">Badges Remaining</div>
           </div>
           <div className="bg-white rounded-xl border border-slate-200 p-4 text-center">
             <div className="text-3xl font-bold text-blue-600">
               {totalBadges > 0 ? Math.round((earnedCount / totalBadges) * 100) : 0}%
             </div>
-            <div className="text-sm text-text-secondary">Completion</div>
+            <div className="text-sm text-slate-600">Completion</div>
           </div>
         </div>
 
@@ -264,7 +264,7 @@ export default async function BadgesPage() {
                         <IconComponent className={`w-8 h-8 ${colors.text}`} />
                       </div>
                       <h3 className="font-bold text-slate-900 mb-1">{badge.name}</h3>
-                      <p className="text-sm text-text-secondary mb-3">{badge.description}</p>
+                      <p className="text-sm text-slate-600 mb-3">{badge.description}</p>
                       {earnedBadge && (
                         <p className="text-xs text-green-600 font-medium">
                           Earned {new Date(earnedBadge.earned_at).toLocaleDateString()}
@@ -299,11 +299,11 @@ export default async function BadgesPage() {
                     <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 relative">
                       <IconComponent className="w-8 h-8 text-slate-400" />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <Lock className="w-4 h-4 text-text-secondary" />
+                        <Lock className="w-4 h-4 text-slate-500" />
                       </div>
                     </div>
                     <h3 className="font-bold text-slate-700 mb-1">{badge.name}</h3>
-                    <p className="text-sm text-text-secondary mb-3">{badge.description}</p>
+                    <p className="text-sm text-slate-500 mb-3">{badge.description}</p>
                     
                     {/* Progress bar */}
                     <div className="mt-3">
@@ -313,7 +313,7 @@ export default async function BadgesPage() {
                           style={{ width: `${progress}%` }}
                         />
                       </div>
-                      <p className="text-xs text-text-secondary mt-1">{Math.round(progress)}% complete</p>
+                      <p className="text-xs text-slate-500 mt-1">{Math.round(progress)}% complete</p>
                     </div>
                   </div>
                 );
@@ -326,7 +326,7 @@ export default async function BadgesPage() {
           <div className="bg-white rounded-2xl border border-slate-200 p-16 text-center">
             <Award className="w-16 h-16 text-slate-300 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-slate-900 mb-2">No Badges Available</h2>
-            <p className="text-text-secondary mb-6">
+            <p className="text-slate-600 mb-6">
               Badges will be available soon. Keep learning to be ready!
             </p>
             <Link

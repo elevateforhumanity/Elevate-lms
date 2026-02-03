@@ -138,12 +138,12 @@ export default function EnrollmentDashboard() {
                     </span>
 
                     {enrollment.provider_name && (
-                      <span className="text-xs text-text-secondary">
+                      <span className="text-xs text-gray-500">
                         via {enrollment.provider_name}
                       </span>
                     )}
 
-                    <span className="text-xs text-text-secondary capitalize">
+                    <span className="text-xs text-gray-500 capitalize">
                       {enrollment.status}
                     </span>
 
@@ -157,7 +157,7 @@ export default function EnrollmentDashboard() {
 
                   {enrollment.progress > 0 && (
                     <div className="mt-3">
-                      <div className="flex items-center justify-between text-xs text-text-secondary mb-1">
+                      <div className="flex items-center justify-between text-xs text-gray-500 mb-1">
                         <span>Progress</span>
                         <span>{enrollment.progress}%</span>
                       </div>

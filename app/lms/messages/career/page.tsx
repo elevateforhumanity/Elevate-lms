@@ -49,7 +49,7 @@ export default async function CareerMessagesPage() {
             </Link>
             <div>
               <h1 className="text-xl font-bold text-gray-900">Career Services</h1>
-              <p className="text-sm text-text-secondary">Get help with job placement and career guidance</p>
+              <p className="text-sm text-gray-500">Get help with job placement and career guidance</p>
             </div>
           </div>
         </div>
@@ -72,11 +72,11 @@ export default async function CareerMessagesPage() {
                         <p className="font-medium text-gray-900">
                           {isFromMe ? 'You' : msg.sender?.full_name || 'Career Services'}
                         </p>
-                        <span className="text-xs text-text-secondary">
+                        <span className="text-xs text-gray-500">
                           {new Date(msg.created_at).toLocaleDateString()}
                         </span>
                       </div>
-                      <p className="text-text-secondary mt-1">{msg.content}</p>
+                      <p className="text-gray-600 mt-1">{msg.content}</p>
                     </div>
                   </div>
                 </div>
@@ -87,7 +87,7 @@ export default async function CareerMessagesPage() {
           <div className="bg-white rounded-xl border p-12 text-center">
             <MessageSquare className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h2 className="text-xl font-semibold text-gray-900 mb-2">No messages yet</h2>
-            <p className="text-text-secondary mb-6">Reach out to our career services team for job placement assistance.</p>
+            <p className="text-gray-600 mb-6">Reach out to our career services team for job placement assistance.</p>
             <Link 
               href="/lms/messages/new?type=career"
               className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"

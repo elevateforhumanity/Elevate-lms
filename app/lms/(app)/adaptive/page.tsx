@@ -20,17 +20,17 @@ export default async function AdaptivePage() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-8">
-          <nav className="text-sm mb-4"><ol className="flex items-center space-x-2 text-text-secondary"><li><Link href="/lms" className="hover:text-primary">LMS</Link></li><li>/</li><li className="text-gray-900 font-medium">Adaptive Learning</li></ol></nav>
+          <nav className="text-sm mb-4"><ol className="flex items-center space-x-2 text-gray-500"><li><Link href="/lms" className="hover:text-primary">LMS</Link></li><li>/</li><li className="text-gray-900 font-medium">Adaptive Learning</li></ol></nav>
           <h1 className="text-3xl font-bold text-gray-900">Adaptive Learning</h1>
-          <p className="text-text-secondary mt-2">Personalized learning path based on your progress</p>
+          <p className="text-gray-600 mt-2">Personalized learning path based on your progress</p>
         </div>
         <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
           <h2 className="text-lg font-semibold mb-4">Your Learning Profile</h2>
           <div className="grid grid-cols-2 gap-4">
-            <div><p className="text-sm text-text-secondary">Learning Style</p><p className="font-medium">Visual Learner</p></div>
-            <div><p className="text-sm text-text-secondary">Pace</p><p className="font-medium">Moderate</p></div>
-            <div><p className="text-sm text-text-secondary">Strengths</p><p className="font-medium">Problem Solving</p></div>
-            <div><p className="text-sm text-text-secondary">Focus Areas</p><p className="font-medium">Technical Skills</p></div>
+            <div><p className="text-sm text-gray-500">Learning Style</p><p className="font-medium">Visual Learner</p></div>
+            <div><p className="text-sm text-gray-500">Pace</p><p className="font-medium">Moderate</p></div>
+            <div><p className="text-sm text-gray-500">Strengths</p><p className="font-medium">Problem Solving</p></div>
+            <div><p className="text-sm text-gray-500">Focus Areas</p><p className="font-medium">Technical Skills</p></div>
           </div>
         </div>
         <div className="bg-white rounded-lg shadow-sm border p-6">
@@ -38,13 +38,13 @@ export default async function AdaptivePage() {
           <div className="space-y-4">
             <div className="p-4 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <div className="flex items-center justify-between">
-                <div><p className="font-medium">Complete Module 3 Quiz</p><p className="text-sm text-text-secondary">Based on your progress</p></div>
+                <div><p className="font-medium">Complete Module 3 Quiz</p><p className="text-sm text-gray-500">Based on your progress</p></div>
                 <span className="text-blue-600">→</span>
               </div>
             </div>
             <div className="p-4 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <div className="flex items-center justify-between">
-                <div><p className="font-medium">Review: Data Analysis Basics</p><p className="text-sm text-text-secondary">Strengthen your foundation</p></div>
+                <div><p className="font-medium">Review: Data Analysis Basics</p><p className="text-sm text-gray-500">Strengthen your foundation</p></div>
                 <span className="text-blue-600">→</span>
               </div>
             </div>

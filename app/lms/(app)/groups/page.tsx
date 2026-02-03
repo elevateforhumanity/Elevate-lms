@@ -35,7 +35,7 @@ export default async function GroupsPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -105,7 +105,7 @@ export default async function GroupsPage() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-slate-900">My Groups</h1>
-            <p className="text-text-secondary mt-1">
+            <p className="text-slate-600 mt-1">
               Collaborate and learn with your study groups
             </p>
           </div>
@@ -141,7 +141,7 @@ export default async function GroupsPage() {
                       </div>
                       <div>
                         <h2 className="text-lg font-bold text-slate-900">{group.name}</h2>
-                        <p className="text-sm text-text-secondary">{group.courses?.title}</p>
+                        <p className="text-sm text-slate-600">{group.courses?.title}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -155,12 +155,12 @@ export default async function GroupsPage() {
                   </div>
 
                   {group.description && (
-                    <p className="text-sm text-text-secondary mb-4 line-clamp-2">
+                    <p className="text-sm text-slate-600 mb-4 line-clamp-2">
                       {group.description}
                     </p>
                   )}
 
-                  <div className="flex flex-wrap gap-4 text-sm text-text-secondary">
+                  <div className="flex flex-wrap gap-4 text-sm text-slate-500">
                     <span className="flex items-center gap-1">
                       <Users className="w-4 h-4" />
                       {group.memberCount} members
@@ -201,12 +201,12 @@ export default async function GroupsPage() {
                   <div className="space-y-4">
                     {recentMessages.slice(0, 5).map((message) => (
                       <div key={message.id} className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-sm font-medium text-text-secondary">
+                        <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-sm font-medium text-slate-600">
                           {message.profiles?.first_name?.charAt(0) || 'U'}
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm text-slate-900 truncate">{message.content}</p>
-                          <p className="text-xs text-text-secondary">
+                          <p className="text-xs text-slate-500">
                             {message.profiles?.first_name} • {formatDate(message.created_at)}
                           </p>
                         </div>
@@ -214,7 +214,7 @@ export default async function GroupsPage() {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-sm text-text-secondary text-center py-4">
+                  <p className="text-sm text-slate-500 text-center py-4">
                     No recent messages
                   </p>
                 )}
@@ -253,7 +253,7 @@ export default async function GroupsPage() {
           <div className="bg-white rounded-2xl border border-slate-200 p-16 text-center">
             <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-slate-900 mb-2">No Groups Yet</h2>
-            <p className="text-text-secondary mb-6 max-w-md mx-auto">
+            <p className="text-slate-600 mb-6 max-w-md mx-auto">
               Join a study group to collaborate with fellow learners, share resources, and stay motivated.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

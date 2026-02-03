@@ -35,7 +35,7 @@ export default async function GradesPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -247,7 +247,7 @@ export default async function GradesPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900">My Grades</h1>
-          <p className="text-text-secondary mt-1">
+          <p className="text-slate-600 mt-1">
             View your assignment scores, quiz results, and course grades
           </p>
         </div>
@@ -263,7 +263,7 @@ export default async function GradesPage() {
                 <div className="text-2xl font-bold text-slate-900">
                   {stats.coursesWithGrades.size}
                 </div>
-                <div className="text-xs text-text-secondary">Courses</div>
+                <div className="text-xs text-slate-600">Courses</div>
               </div>
             </div>
           </div>
@@ -277,7 +277,7 @@ export default async function GradesPage() {
                 <div className="text-2xl font-bold text-slate-900">
                   {stats.totalAssignments}
                 </div>
-                <div className="text-xs text-text-secondary">Assignments</div>
+                <div className="text-xs text-slate-600">Assignments</div>
               </div>
             </div>
           </div>
@@ -291,7 +291,7 @@ export default async function GradesPage() {
                 <div className="text-2xl font-bold text-slate-900">
                   {stats.totalQuizzes}
                 </div>
-                <div className="text-xs text-text-secondary">Quizzes</div>
+                <div className="text-xs text-slate-600">Quizzes</div>
               </div>
             </div>
           </div>
@@ -305,7 +305,7 @@ export default async function GradesPage() {
                 <div className="text-2xl font-bold text-slate-900">
                   {hasGrades ? Math.round((stats.avgAssignmentGrade + stats.avgQuizScore) / 2) : 0}%
                 </div>
-                <div className="text-xs text-text-secondary">Average</div>
+                <div className="text-xs text-slate-600">Average</div>
               </div>
             </div>
           </div>
@@ -329,7 +329,7 @@ export default async function GradesPage() {
                         <h2 className="text-xl font-bold text-slate-900">
                           {course.courseTitle}
                         </h2>
-                        <p className="text-sm text-text-secondary">
+                        <p className="text-sm text-slate-600">
                           {course.assignments.length} assignments • {course.quizzes.length} quizzes
                         </p>
                       </div>
@@ -347,7 +347,7 @@ export default async function GradesPage() {
                   {/* Assignments */}
                   {course.assignments.length > 0 && (
                     <div className="p-6">
-                      <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-4">
+                      <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4">
                         Assignments
                       </h3>
                       <div className="space-y-3">
@@ -362,14 +362,14 @@ export default async function GradesPage() {
                                 <FileText className="w-5 h-5 text-slate-400" />
                                 <div>
                                   <p className="font-medium text-slate-900">{assignment.title}</p>
-                                  <p className="text-sm text-text-secondary">{formatDate(assignment.date)}</p>
+                                  <p className="text-sm text-slate-500">{formatDate(assignment.date)}</p>
                                 </div>
                               </div>
                               <div className="text-right">
                                 <p className={`font-bold ${getGradeColor(percentage)} px-3 py-1 rounded-lg`}>
                                   {assignment.grade}/{assignment.maxPoints}
                                 </p>
-                                <p className="text-xs text-text-secondary mt-1">{percentage}%</p>
+                                <p className="text-xs text-slate-500 mt-1">{percentage}%</p>
                               </div>
                             </div>
                           );
@@ -381,7 +381,7 @@ export default async function GradesPage() {
                   {/* Quizzes */}
                   {course.quizzes.length > 0 && (
                     <div className="p-6">
-                      <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-4">
+                      <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4">
                         Quizzes
                       </h3>
                       <div className="space-y-3">
@@ -394,7 +394,7 @@ export default async function GradesPage() {
                               <CheckCircle className="w-5 h-5 text-slate-400" />
                               <div>
                                 <p className="font-medium text-slate-900">{quiz.title}</p>
-                                <p className="text-sm text-text-secondary">{formatDate(quiz.date)}</p>
+                                <p className="text-sm text-slate-500">{formatDate(quiz.date)}</p>
                               </div>
                             </div>
                             <div className="text-right">
@@ -446,7 +446,7 @@ export default async function GradesPage() {
           <div className="bg-white rounded-2xl border border-slate-200 p-16 text-center">
             <BarChart3 className="w-16 h-16 text-slate-300 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-slate-900 mb-2">No Grades Yet</h2>
-            <p className="text-text-secondary mb-6 max-w-md mx-auto">
+            <p className="text-slate-600 mb-6 max-w-md mx-auto">
               Complete assignments and quizzes in your enrolled courses to see your grades here.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

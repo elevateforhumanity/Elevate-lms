@@ -37,7 +37,7 @@ export default async function ProgressPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -173,7 +173,7 @@ export default async function ProgressPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900">My Progress</h1>
-          <p className="text-text-secondary mt-1">
+          <p className="text-slate-600 mt-1">
             Track your learning journey and achievements
           </p>
         </div>
@@ -187,7 +187,7 @@ export default async function ProgressPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.totalCourses}</div>
-                <div className="text-xs text-text-secondary">Courses</div>
+                <div className="text-xs text-slate-600">Courses</div>
               </div>
             </div>
           </div>
@@ -199,7 +199,7 @@ export default async function ProgressPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.completedCourses}</div>
-                <div className="text-xs text-text-secondary">Completed</div>
+                <div className="text-xs text-slate-600">Completed</div>
               </div>
             </div>
           </div>
@@ -211,7 +211,7 @@ export default async function ProgressPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.completedLessons}</div>
-                <div className="text-xs text-text-secondary">Lessons Done</div>
+                <div className="text-xs text-slate-600">Lessons Done</div>
               </div>
             </div>
           </div>
@@ -223,7 +223,7 @@ export default async function ProgressPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.totalHours}</div>
-                <div className="text-xs text-text-secondary">Hours</div>
+                <div className="text-xs text-slate-600">Hours</div>
               </div>
             </div>
           </div>
@@ -235,7 +235,7 @@ export default async function ProgressPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{overallProgress}%</div>
-                <div className="text-xs text-text-secondary">Overall</div>
+                <div className="text-xs text-slate-600">Overall</div>
               </div>
             </div>
           </div>
@@ -247,7 +247,7 @@ export default async function ProgressPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.streak}</div>
-                <div className="text-xs text-text-secondary">Day Streak</div>
+                <div className="text-xs text-slate-600">Day Streak</div>
               </div>
             </div>
           </div>
@@ -301,7 +301,7 @@ export default async function ProgressPage() {
                                 {enrollment.status === 'completed' ? 'Completed' : 'In Progress'}
                               </span>
                             </div>
-                            <p className="text-sm text-text-secondary mb-3">
+                            <p className="text-sm text-slate-600 mb-3">
                               {enrollment.completed_lessons || 0} of {enrollment.courses?.total_lessons || 0} lessons completed
                             </p>
                             <div className="flex items-center gap-4">
@@ -330,7 +330,7 @@ export default async function ProgressPage() {
                 <div className="p-16 text-center">
                   <BookOpen className="w-16 h-16 text-slate-300 mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-slate-900 mb-2">No Courses Yet</h3>
-                  <p className="text-text-secondary mb-6">
+                  <p className="text-slate-600 mb-6">
                     Enroll in courses to start tracking your progress.
                   </p>
                   <Link
@@ -361,7 +361,7 @@ export default async function ProgressPage() {
                         <p className="text-sm text-slate-900 truncate">
                           {activity.lessons?.title || 'Lesson'}
                         </p>
-                        <p className="text-xs text-text-secondary">
+                        <p className="text-xs text-slate-500">
                           {activity.courses?.title} • {formatTimeAgo(activity.updated_at)}
                         </p>
                       </div>
@@ -369,7 +369,7 @@ export default async function ProgressPage() {
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-text-secondary text-center py-4">
+                <p className="text-sm text-slate-600 text-center py-4">
                   No recent activity
                 </p>
               )}

@@ -72,7 +72,7 @@ export default async function StudyGroupsPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -164,7 +164,7 @@ export default async function StudyGroupsPage() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-slate-900">Study Groups</h1>
-            <p className="text-text-secondary mt-1">
+            <p className="text-slate-600 mt-1">
               Learn together with fellow students
             </p>
           </div>
@@ -216,7 +216,7 @@ export default async function StudyGroupsPage() {
                       </div>
                       <div>
                         <h3 className="font-bold text-slate-900">{group.name}</h3>
-                        <p className="text-sm text-text-secondary">{group.courses?.title}</p>
+                        <p className="text-sm text-slate-600">{group.courses?.title}</p>
                       </div>
                     </div>
                     {group.role === 'admin' && (
@@ -227,12 +227,12 @@ export default async function StudyGroupsPage() {
                   </div>
                   
                   {group.description && (
-                    <p className="text-sm text-text-secondary mb-4 line-clamp-2">
+                    <p className="text-sm text-slate-600 mb-4 line-clamp-2">
                       {group.description}
                     </p>
                   )}
 
-                  <div className="flex flex-wrap gap-4 text-sm text-text-secondary">
+                  <div className="flex flex-wrap gap-4 text-sm text-slate-500">
                     <span className="flex items-center gap-1">
                       <Users className="w-4 h-4" />
                       {group.memberCount}/{group.max_members || '∞'} members
@@ -281,22 +281,22 @@ export default async function StudyGroupsPage() {
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center">
-                          <Users className="w-6 h-6 text-text-secondary" />
+                          <Users className="w-6 h-6 text-slate-600" />
                         </div>
                         <div>
                           <h3 className="font-bold text-slate-900">{group.name}</h3>
-                          <p className="text-sm text-text-secondary">{group.courses?.title}</p>
+                          <p className="text-sm text-slate-600">{group.courses?.title}</p>
                         </div>
                       </div>
                     </div>
 
                     {group.description && (
-                      <p className="text-sm text-text-secondary mb-4 line-clamp-2">
+                      <p className="text-sm text-slate-600 mb-4 line-clamp-2">
                         {group.description}
                       </p>
                     )}
 
-                    <div className="flex flex-wrap gap-4 text-sm text-text-secondary mb-4">
+                    <div className="flex flex-wrap gap-4 text-sm text-slate-500 mb-4">
                       <span className="flex items-center gap-1">
                         <Users className="w-4 h-4" />
                         {memberCount}/{group.max_members || '∞'} members
@@ -341,7 +341,7 @@ export default async function StudyGroupsPage() {
             <div className="bg-white rounded-2xl border border-slate-200 p-16 text-center">
               <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">No Study Groups Yet</h3>
-              <p className="text-text-secondary mb-6 max-w-md mx-auto">
+              <p className="text-slate-600 mb-6 max-w-md mx-auto">
                 Be the first to create a study group for your course! Collaborate with classmates to learn together.
               </p>
               <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition">

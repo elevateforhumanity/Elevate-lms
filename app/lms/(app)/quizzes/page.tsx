@@ -23,7 +23,7 @@ export default async function QuizzesPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -114,7 +114,7 @@ export default async function QuizzesPage() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-slate-900">My Quizzes</h1>
-            <p className="text-text-secondary mt-1">Test your knowledge and track your progress</p>
+            <p className="text-slate-600 mt-1">Test your knowledge and track your progress</p>
           </div>
         </div>
 
@@ -126,7 +126,7 @@ export default async function QuizzesPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.available}</div>
-                <div className="text-sm text-text-secondary">Available</div>
+                <div className="text-sm text-slate-600">Available</div>
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default async function QuizzesPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.completed}</div>
-                <div className="text-sm text-text-secondary">Completed</div>
+                <div className="text-sm text-slate-600">Completed</div>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@ export default async function QuizzesPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.passed}</div>
-                <div className="text-sm text-text-secondary">Passed</div>
+                <div className="text-sm text-slate-600">Passed</div>
               </div>
             </div>
           </div>
@@ -159,7 +159,7 @@ export default async function QuizzesPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.avgScore}%</div>
-                <div className="text-sm text-text-secondary">Avg Score</div>
+                <div className="text-sm text-slate-600">Avg Score</div>
               </div>
             </div>
           </div>
@@ -189,8 +189,8 @@ export default async function QuizzesPage() {
                             <h3 className="font-bold text-slate-900 truncate">{quiz.title}</h3>
                             <span className={`px-2 py-1 rounded text-xs font-medium ${statusInfo.color}`}>{statusInfo.label}</span>
                           </div>
-                          <p className="text-sm text-text-secondary mb-2">{quiz.courses?.title}</p>
-                          <div className="flex flex-wrap items-center gap-4 text-sm text-text-secondary">
+                          <p className="text-sm text-slate-600 mb-2">{quiz.courses?.title}</p>
+                          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500">
                             <div className="flex items-center gap-1">
                               <FileQuestion className="w-4 h-4" />
                               <span>{quiz.question_count || 10} questions</span>
@@ -215,7 +215,7 @@ export default async function QuizzesPage() {
                             <Play className="w-4 h-4" /> Start
                           </span>
                         ) : (
-                          <span className="text-text-secondary font-medium">Review</span>
+                          <span className="text-slate-600 font-medium">Review</span>
                         )}
                         <ChevronRight className="w-5 h-5 text-slate-400" />
                       </div>
@@ -228,7 +228,7 @@ export default async function QuizzesPage() {
             <div className="p-16 text-center">
               <BookOpen className="w-16 h-16 text-slate-300 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">No Quizzes Available</h3>
-              <p className="text-text-secondary mb-6">Quizzes from your enrolled courses will appear here.</p>
+              <p className="text-slate-600 mb-6">Quizzes from your enrolled courses will appear here.</p>
               <Link href="/lms/courses" className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition">
                 Browse Courses
               </Link>

@@ -25,7 +25,7 @@ export default async function SocialPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -73,17 +73,17 @@ export default async function SocialPage() {
                 <h3 className="font-semibold text-gray-900 mt-2">
                   {profile?.full_name || 'Student'}
                 </h3>
-                <p className="text-sm text-text-secondary">
+                <p className="text-sm text-gray-600">
                   {profile?.headline || 'Elevate Learner'}
                 </p>
                 <div className="flex gap-4 mt-4 text-sm">
                   <div>
                     <span className="font-semibold text-gray-900">0</span>
-                    <span className="text-text-secondary ml-1">Connections</span>
+                    <span className="text-gray-600 ml-1">Connections</span>
                   </div>
                   <div>
                     <span className="font-semibold text-gray-900">0</span>
-                    <span className="text-text-secondary ml-1">Posts</span>
+                    <span className="text-gray-600 ml-1">Posts</span>
                   </div>
                 </div>
               </div>
@@ -121,16 +121,16 @@ export default async function SocialPage() {
                     <Users className="w-5 h-5 text-gray-400" />
                   )}
                 </div>
-                <button className="flex-1 text-left px-4 py-3 bg-gray-100 rounded-full text-text-secondary hover:bg-gray-200 transition-colors">
+                <button className="flex-1 text-left px-4 py-3 bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200 transition-colors">
                   Share an update or achievement...
                 </button>
               </div>
               <div className="flex gap-2 mt-4 pt-4 border-t">
-                <button className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 text-text-secondary">
+                <button className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 text-gray-600">
                   <ImageIcon className="w-5 h-5 text-green-600" />
                   Photo
                 </button>
-                <button className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 text-text-secondary">
+                <button className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 text-gray-600">
                   <MessageSquare className="w-5 h-5 text-blue-600" />
                   Article
                 </button>
@@ -143,7 +143,7 @@ export default async function SocialPage() {
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 Welcome to the Community!
               </h3>
-              <p className="text-text-secondary mb-6 max-w-md mx-auto">
+              <p className="text-gray-600 mb-6 max-w-md mx-auto">
                 Connect with fellow learners, share your achievements, and engage in discussions. 
                 Start by finding connections or joining a study group.
               </p>
@@ -176,7 +176,7 @@ export default async function SocialPage() {
                   <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
                   <div className="flex-1 min-w-0">
                     <div className="font-medium text-gray-900 truncate">Fellow Learner</div>
-                    <div className="text-sm text-text-secondary truncate">Healthcare Program</div>
+                    <div className="text-sm text-gray-500 truncate">Healthcare Program</div>
                   </div>
                   <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg">
                     <UserPlus className="w-5 h-5" />
@@ -186,7 +186,7 @@ export default async function SocialPage() {
                   <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
                   <div className="flex-1 min-w-0">
                     <div className="font-medium text-gray-900 truncate">Study Partner</div>
-                    <div className="text-sm text-text-secondary truncate">IT Certification</div>
+                    <div className="text-sm text-gray-500 truncate">IT Certification</div>
                   </div>
                   <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg">
                     <UserPlus className="w-5 h-5" />
@@ -207,15 +207,15 @@ export default async function SocialPage() {
               <div className="space-y-3">
                 <Link href="/lms/social/groups/healthcare" className="block p-3 rounded-lg hover:bg-gray-50">
                   <div className="font-medium text-gray-900">Healthcare Professionals</div>
-                  <div className="text-sm text-text-secondary">234 members</div>
+                  <div className="text-sm text-gray-500">234 members</div>
                 </Link>
                 <Link href="/lms/social/groups/trades" className="block p-3 rounded-lg hover:bg-gray-50">
                   <div className="font-medium text-gray-900">Skilled Trades Network</div>
-                  <div className="text-sm text-text-secondary">189 members</div>
+                  <div className="text-sm text-gray-500">189 members</div>
                 </Link>
                 <Link href="/lms/social/groups/career" className="block p-3 rounded-lg hover:bg-gray-50">
                   <div className="font-medium text-gray-900">Career Changers</div>
-                  <div className="text-sm text-text-secondary">156 members</div>
+                  <div className="text-sm text-gray-500">156 members</div>
                 </Link>
               </div>
               <Link

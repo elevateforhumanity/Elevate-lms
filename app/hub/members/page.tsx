@@ -33,7 +33,7 @@ export default async function MembersPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-slate-900">Members</h1>
-            <p className="text-text-secondary mt-1">{count?.toLocaleString() || 0} community members</p>
+            <p className="text-slate-600 mt-1">{count?.toLocaleString() || 0} community members</p>
           </div>
           <div className="flex items-center gap-4">
             <div className="relative">
@@ -45,7 +45,7 @@ export default async function MembersPage() {
               />
             </div>
             <button className="p-2 border border-slate-200 rounded-lg hover:bg-slate-50">
-              <Filter className="w-5 h-5 text-text-secondary" />
+              <Filter className="w-5 h-5 text-slate-600" />
             </button>
           </div>
         </div>
@@ -60,22 +60,22 @@ export default async function MembersPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-bold text-slate-900 truncate">{member.full_name || 'Member'}</h3>
-                  <p className="text-sm text-text-secondary capitalize">{member.role || 'Student'}</p>
+                  <p className="text-sm text-slate-500 capitalize">{member.role || 'Student'}</p>
                   {member.bio && (
-                    <p className="text-sm text-text-secondary mt-2 line-clamp-2">{member.bio}</p>
+                    <p className="text-sm text-slate-600 mt-2 line-clamp-2">{member.bio}</p>
                   )}
                 </div>
               </div>
               
               <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">
-                <span className="text-sm text-text-secondary">
+                <span className="text-sm text-slate-500">
                   {member.points || 0} points
                 </span>
                 <div className="flex items-center gap-2">
-                  <button className="p-2 text-text-secondary hover:text-blue-600 hover:bg-blue-50 rounded-lg transition">
+                  <button className="p-2 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition">
                     <MessageSquare className="w-4 h-4" />
                   </button>
-                  <button className="p-2 text-text-secondary hover:text-green-600 hover:bg-green-50 rounded-lg transition">
+                  <button className="p-2 text-slate-500 hover:text-green-600 hover:bg-green-50 rounded-lg transition">
                     <UserPlus className="w-4 h-4" />
                   </button>
                 </div>

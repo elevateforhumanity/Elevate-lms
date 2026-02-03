@@ -44,7 +44,7 @@ export default async function ClassroomPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-slate-900">Classroom</h1>
-            <p className="text-text-secondary mt-1">Continue your learning journey</p>
+            <p className="text-slate-600 mt-1">Continue your learning journey</p>
           </div>
           <Link 
             href="/programs" 
@@ -68,14 +68,14 @@ export default async function ClassroomPage() {
                     <h3 className="font-bold text-slate-900 mb-2">
                       {enrollment.courses?.title || enrollment.programs?.name || 'Course'}
                     </h3>
-                    <p className="text-sm text-text-secondary mb-4 line-clamp-2">
+                    <p className="text-sm text-slate-600 mb-4 line-clamp-2">
                       {enrollment.courses?.description || 'Continue your training'}
                     </p>
                     
                     {/* Progress */}
                     <div className="mb-4">
                       <div className="flex justify-between text-sm mb-1">
-                        <span className="text-text-secondary">Progress</span>
+                        <span className="text-slate-600">Progress</span>
                         <span className="font-medium">{enrollment.progress || 0}%</span>
                       </div>
                       <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
@@ -101,7 +101,7 @@ export default async function ClassroomPage() {
             <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
               <BookOpen className="w-16 h-16 text-slate-300 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">No courses yet</h3>
-              <p className="text-text-secondary mb-6">Start your learning journey by enrolling in a program</p>
+              <p className="text-slate-600 mb-6">Start your learning journey by enrolling in a program</p>
               <Link 
                 href="/programs" 
                 className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700"
@@ -125,9 +125,9 @@ export default async function ClassroomPage() {
                   </div>
                   <div className="p-6">
                     <h3 className="font-bold text-slate-900 mb-2">{course.title}</h3>
-                    <p className="text-sm text-text-secondary mb-4 line-clamp-2">{course.description}</p>
+                    <p className="text-sm text-slate-600 mb-4 line-clamp-2">{course.description}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-text-secondary flex items-center gap-1">
+                      <span className="text-sm text-slate-500 flex items-center gap-1">
                         <Clock className="w-4 h-4" />
                         {course.duration_hours || 10}h
                       </span>

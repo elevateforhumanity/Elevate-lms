@@ -28,13 +28,13 @@ function SuccessContent() {
             Payment Successful!
           </h1>
           
-          <p className="text-text-secondary mb-6">
+          <p className="text-gray-600 mb-6">
             Your {type === 'down-payment' ? 'down payment' : 'payment'} for {programNames[program] || program} has been processed.
           </p>
 
           <div className="bg-gray-50 rounded-xl p-4 mb-6 text-left">
             <h3 className="font-semibold mb-3">What happens next?</h3>
-            <ul className="space-y-3 text-sm text-text-secondary">
+            <ul className="space-y-3 text-sm text-gray-600">
               <li className="flex items-start gap-3">
                 <Calendar className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                 <span>You will receive an email with your class schedule within 24 hours</span>
@@ -68,7 +68,7 @@ function SuccessContent() {
           </div>
         </div>
 
-        <div className="mt-6 text-center text-sm text-text-secondary">
+        <div className="mt-6 text-center text-sm text-gray-600">
           <p>Questions? Contact us at</p>
           <p className="font-medium">elevate4humanityedu@gmail.com</p>
         </div>
@@ -83,7 +83,7 @@ export default function PaymentSuccessPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-text-secondary">Loading...</p>
+          <p className="mt-4 text-gray-600">Loading...</p>
         </div>
       </div>
     }>

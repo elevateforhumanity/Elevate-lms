@@ -146,7 +146,7 @@ export default function StudentApplicationPage() {
             )}
           </div>
           <h1 className="text-2xl font-bold mb-2">Application Already Submitted</h1>
-          <p className="text-text-secondary mb-4">
+          <p className="text-gray-600 mb-4">
             You submitted an application on {new Date(existingApplication.submitted_at).toLocaleDateString()}
           </p>
           <div className={`inline-block px-4 py-2 rounded-full text-sm font-medium ${
@@ -178,7 +178,7 @@ export default function StudentApplicationPage() {
         <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
           <h1 className="text-2xl font-bold mb-2">Application Submitted!</h1>
-          <p className="text-text-secondary">Redirecting to status page...</p>
+          <p className="text-gray-600">Redirecting to status page...</p>
         </div>
       </div>
     );
@@ -188,7 +188,7 @@ export default function StudentApplicationPage() {
     <div className="max-w-3xl mx-auto py-8 px-4">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">Program Application</h1>
-        <p className="text-text-secondary mt-2">Complete your application to enroll in a program</p>
+        <p className="text-gray-600 mt-2">Complete your application to enroll in a program</p>
       </div>
 
       {error && (
@@ -203,11 +203,11 @@ export default function StudentApplicationPage() {
           <h2 className="font-semibold text-gray-900 mb-3">Personal Information</h2>
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <span className="text-text-secondary">Name</span>
+              <span className="text-gray-500">Name</span>
               <p className="font-medium">{user?.first_name} {user?.last_name}</p>
             </div>
             <div>
-              <span className="text-text-secondary">Email</span>
+              <span className="text-gray-500">Email</span>
               <p className="font-medium">{user?.email}</p>
             </div>
           </div>

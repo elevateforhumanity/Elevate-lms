@@ -21,7 +21,7 @@ export default function IncidentResponsePage() {
         <article className="bg-white rounded-xl shadow-sm p-8 md:p-12">
           <div className="mb-8">
             <h1 className="text-4xl font-bold text-black mb-4">Incident Response Policy</h1>
-            <p className="text-sm text-text-secondary">Effective Date: January 24, 2026</p>
+            <p className="text-sm text-gray-600">Effective Date: January 24, 2026</p>
           </div>
 
           <div className="prose prose-lg max-w-none">

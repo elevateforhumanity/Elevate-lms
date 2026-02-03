@@ -132,10 +132,13 @@ export default {
       },
       colors: {
         // Canonical text colors (fixes washed-out gray)
-        'text-primary': '#111827',
-        'text-secondary': '#374151',
-        'text-muted': '#6B7280',
-        'text-disabled': '#9CA3AF',
+        // Usage: text-content-primary, text-content-secondary, etc.
+        content: {
+          primary: '#111827',
+          secondary: '#374151',
+          muted: '#6B7280',
+          disabled: '#9CA3AF',
+        },
 
         // Primary Brand Colors - Red, Blue, White, Black
         brand: {

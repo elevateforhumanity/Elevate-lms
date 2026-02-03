@@ -30,7 +30,7 @@ export default async function CertificationPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -43,7 +43,7 @@ export default async function CertificationPage() {
         <div className="bg-white rounded-xl shadow-sm border p-12 text-center">
           <Award className="w-16 h-16 mx-auto mb-4 text-gray-300" />
           <h2 className="text-xl font-semibold mb-2">Sign in to view certifications</h2>
-          <p className="text-text-secondary mb-6">Access your earned certificates and credentials.</p>
+          <p className="text-gray-600 mb-6">Access your earned certificates and credentials.</p>
           <Link href="/login?redirect=/lms/certification" className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700">
             Sign In
           </Link>
@@ -93,7 +93,7 @@ export default async function CertificationPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold">My Certifications</h1>
-          <p className="text-text-secondary">Manage your credentials and certificates</p>
+          <p className="text-gray-600">Manage your credentials and certificates</p>
         </div>
       </div>
 
@@ -102,17 +102,17 @@ export default async function CertificationPage() {
         <div className="bg-white rounded-xl shadow-sm border p-5 text-center">
           <Award className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
           <div className="text-2xl font-bold">{certificates?.length || 0}</div>
-          <div className="text-text-secondary text-sm">Earned</div>
+          <div className="text-gray-600 text-sm">Earned</div>
         </div>
         <div className="bg-white rounded-xl shadow-sm border p-5 text-center">
           <Clock className="w-8 h-8 text-blue-500 mx-auto mb-2" />
           <div className="text-2xl font-bold">{inProgress?.length || 0}</div>
-          <div className="text-text-secondary text-sm">In Progress</div>
+          <div className="text-gray-600 text-sm">In Progress</div>
         </div>
         <div className="bg-white rounded-xl shadow-sm border p-5 text-center">
           <FileText className="w-8 h-8 text-green-500 mx-auto mb-2" />
           <div className="text-2xl font-bold">{availableCerts?.length || 0}</div>
-          <div className="text-text-secondary text-sm">Available</div>
+          <div className="text-gray-600 text-sm">Available</div>
         </div>
       </div>
 
@@ -133,9 +133,9 @@ export default async function CertificationPage() {
                         <div>
                           <h3 className="font-semibold">{cert.title}</h3>
                           {cert.course && (
-                            <p className="text-sm text-text-secondary">{cert.course.title}</p>
+                            <p className="text-sm text-gray-500">{cert.course.title}</p>
                           )}
-                          <div className="flex items-center gap-4 mt-2 text-sm text-text-secondary">
+                          <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
                             <span className="flex items-center gap-1">
                               <Calendar className="w-4 h-4" />
                               Issued: {new Date(cert.issued_at).toLocaleDateString()}
@@ -173,7 +173,7 @@ export default async function CertificationPage() {
             ) : (
               <div className="text-center py-8">
                 <Award className="w-12 h-12 mx-auto mb-3 text-gray-300" />
-                <p className="text-text-secondary mb-3">No certificates earned yet</p>
+                <p className="text-gray-500 mb-3">No certificates earned yet</p>
                 <Link href="/lms/courses" className="text-indigo-600 font-medium hover:underline">
                   Browse courses to earn certificates
                 </Link>
@@ -191,7 +191,7 @@ export default async function CertificationPage() {
                     <Clock className="w-5 h-5 text-blue-600" />
                     <div className="flex-1">
                       <h3 className="font-medium">{item.course?.certification_name}</h3>
-                      <p className="text-sm text-text-secondary">{item.course?.title}</p>
+                      <p className="text-sm text-gray-500">{item.course?.title}</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -200,7 +200,7 @@ export default async function CertificationPage() {
                           style={{ width: `${item.progress}%` }}
                         />
                       </div>
-                      <span className="text-sm text-text-secondary">{item.progress}%</span>
+                      <span className="text-sm text-gray-500">{item.progress}%</span>
                     </div>
                     <Link href={`/lms/courses/${item.course?.id}`} className="text-blue-600 text-sm font-medium">
                       Continue
@@ -226,12 +226,12 @@ export default async function CertificationPage() {
                     className="block p-3 border rounded-lg hover:border-indigo-300 transition"
                   >
                     <h3 className="font-medium text-sm">{cert.certification_name}</h3>
-                    <p className="text-xs text-text-secondary">{cert.certification_body}</p>
+                    <p className="text-xs text-gray-500">{cert.certification_body}</p>
                   </Link>
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-text-secondary">No certifications available</p>
+              <p className="text-sm text-gray-500">No certifications available</p>
             )}
             <Link
               href="/programs"
@@ -245,7 +245,7 @@ export default async function CertificationPage() {
           <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-6">
             <CheckCircle className="w-8 h-8 text-indigo-600 mb-3" />
             <h3 className="font-semibold mb-2">Verify a Certificate</h3>
-            <p className="text-sm text-text-secondary mb-4">
+            <p className="text-sm text-gray-600 mb-4">
               Employers can verify certificates using the credential ID.
             </p>
             <Link

@@ -147,7 +147,7 @@ export default function AuthoritativeDocsPage() {
             <li><strong>Auditors & Reviewers:</strong> Each document includes scope, controls, and versioning.</li>
             <li><strong>Internal Teams:</strong> Product copy, features, and workflows must align with these documents.</li>
           </ul>
-          <p className="mt-4 text-text-secondary italic">
+          <p className="mt-4 text-slate-600 italic">
             Website pages summarize. These documents govern.
           </p>
         </section>
@@ -167,12 +167,12 @@ export default function AuthoritativeDocsPage() {
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm font-medium text-text-secondary">Document {doc.number}</span>
+                      <span className="text-sm font-medium text-slate-500">Document {doc.number}</span>
                     </div>
                     <h3 className="text-xl font-bold text-slate-900 mb-2">
                       {doc.title}
                     </h3>
-                    <p className="text-sm text-text-secondary mb-3">
+                    <p className="text-sm text-slate-600 mb-3">
                       <strong>Covers:</strong> {doc.covers}
                     </p>
                     <p className="text-slate-700 mb-4">
@@ -180,7 +180,7 @@ export default function AuthoritativeDocsPage() {
                     </p>
                     <div className="mb-4">
                       <p className="text-sm font-medium text-slate-900 mb-2">Governs:</p>
-                      <ul className="list-disc list-inside text-sm text-text-secondary space-y-1">
+                      <ul className="list-disc list-inside text-sm text-slate-600 space-y-1">
                         {doc.governs.map((item, i) => (
                           <li key={i}>{item}</li>
                         ))}
@@ -215,7 +215,7 @@ export default function AuthoritativeDocsPage() {
         {/* Request PDFs */}
         <section className="text-center py-8 border-t border-slate-200">
           <h2 className="text-xl font-bold text-slate-900 mb-4">Request Full Documents</h2>
-          <p className="text-text-secondary mb-6">
+          <p className="text-slate-600 mb-6">
             For PDF versions of these documents or additional diligence materials, 
             contact our governance team.
           </p>

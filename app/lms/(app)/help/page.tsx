@@ -96,7 +96,7 @@ export default async function HelpPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -152,7 +152,7 @@ export default async function HelpPage() {
               </div>
               <div>
                 <div className="font-semibold text-gray-900">Call Us</div>
-                <div className="text-text-secondary">(317) 314-3757</div>
+                <div className="text-gray-600">(317) 314-3757</div>
               </div>
             </a>
             <a href="mailto:support@elevateforhumanity.org" className="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
@@ -161,7 +161,7 @@ export default async function HelpPage() {
               </div>
               <div>
                 <div className="font-semibold text-gray-900">Email Support</div>
-                <div className="text-text-secondary">support@elevateforhumanity.org</div>
+                <div className="text-gray-600">support@elevateforhumanity.org</div>
               </div>
             </a>
             <Link href="/lms/messages/new" className="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
@@ -170,7 +170,7 @@ export default async function HelpPage() {
               </div>
               <div>
                 <div className="font-semibold text-gray-900">Send Message</div>
-                <div className="text-text-secondary">Contact your instructor</div>
+                <div className="text-gray-600">Contact your instructor</div>
               </div>
             </Link>
           </div>
@@ -190,7 +190,7 @@ export default async function HelpPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 text-lg">{category.title}</h3>
-                    <p className="text-text-secondary text-sm">{category.description}</p>
+                    <p className="text-gray-600 text-sm">{category.description}</p>
                   </div>
                 </div>
                 <ul className="space-y-2">
@@ -225,7 +225,7 @@ export default async function HelpPage() {
                   <span className="font-semibold text-gray-900">{faq.question}</span>
                   <ChevronRight className="w-5 h-5 text-gray-400 group-open:rotate-90 transition-transform" />
                 </summary>
-                <div className="px-6 pb-6 text-text-secondary">
+                <div className="px-6 pb-6 text-gray-600">
                   {faq.answer}
                 </div>
               </details>

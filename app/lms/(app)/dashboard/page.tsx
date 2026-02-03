@@ -254,7 +254,7 @@ export default async function StudentDashboardOrchestrated() {
             </div>
             <div className="flex items-center gap-2">
               <span className="w-5 h-5 rounded-full bg-slate-300 text-white flex items-center justify-center text-xs">🔒</span>
-              <span className="text-text-secondary">Training Access</span>
+              <span className="text-slate-500">Training Access</span>
             </div>
           </div>
           <p className="text-amber-700 text-sm mt-4">

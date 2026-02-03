@@ -59,7 +59,7 @@ export default async function ForumPage({ params }: Props) {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -107,7 +107,7 @@ export default async function ForumPage({ params }: Props) {
         {/* Back Link */}
         <Link
           href="/lms/forums"
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-slate-900 mb-6"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Forums
@@ -119,7 +119,7 @@ export default async function ForumPage({ params }: Props) {
             <div>
               <h1 className="text-2xl font-bold text-slate-900">{forum.name}</h1>
               {forum.description && (
-                <p className="text-text-secondary mt-2">{forum.description}</p>
+                <p className="text-slate-600 mt-2">{forum.description}</p>
               )}
             </div>
             <Link
@@ -131,7 +131,7 @@ export default async function ForumPage({ params }: Props) {
             </Link>
           </div>
 
-          <div className="flex items-center gap-6 text-sm text-text-secondary">
+          <div className="flex items-center gap-6 text-sm text-slate-600">
             <div className="flex items-center gap-2">
               <MessageSquare className="w-4 h-4" />
               <span>{typedThreads.length} threads</span>
@@ -168,7 +168,7 @@ export default async function ForumPage({ params }: Props) {
                         {thread.title}
                       </h3>
                     </div>
-                    <div className="flex items-center gap-3 text-sm text-text-secondary mt-1">
+                    <div className="flex items-center gap-3 text-sm text-slate-500 mt-1">
                       <span>{thread.profiles?.full_name || 'Anonymous'}</span>
                       <span>•</span>
                       <span className="flex items-center gap-1">
@@ -184,7 +184,7 @@ export default async function ForumPage({ params }: Props) {
           ) : (
             <div className="p-8 text-center">
               <MessageSquare className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-              <p className="text-text-secondary mb-4">No threads yet. Start the conversation!</p>
+              <p className="text-slate-600 mb-4">No threads yet. Start the conversation!</p>
               <Link
                 href={`/lms/forums/${forumId}/new`}
                 className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition"

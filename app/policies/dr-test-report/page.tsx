@@ -168,7 +168,7 @@ export default function DRTestReportPage() {
 
           {/* Footer */}
           <div className="mt-8 pt-8 border-t border-gray-200">
-            <p className="text-sm text-text-secondary">
+            <p className="text-sm text-gray-600">
               <strong>Report ID:</strong> DR-2026-001<br />
               <strong>Prepared by:</strong> Platform Operations<br />
               <strong>Classification:</strong> Internal / Partner Shareable

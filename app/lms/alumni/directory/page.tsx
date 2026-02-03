@@ -45,7 +45,7 @@ export default async function AlumniDirectoryPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Database connection failed.</p>
+          <p className="text-gray-600">Database connection failed.</p>
         </div>
       </div>
     );
@@ -82,7 +82,7 @@ export default async function AlumniDirectoryPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="flex items-center gap-2 text-sm text-text-secondary mb-4">
+          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
             <Link href="/lms" className="hover:text-gray-700">LMS</Link>
             <ChevronRight className="w-4 h-4" />
             <Link href="/lms/alumni" className="hover:text-gray-700">Alumni</Link>
@@ -92,7 +92,7 @@ export default async function AlumniDirectoryPage() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Alumni Directory</h1>
-              <p className="text-text-secondary mt-1">Connect with fellow program graduates</p>
+              <p className="text-gray-600 mt-1">Connect with fellow program graduates</p>
             </div>
             <div className="flex items-center gap-3">
               <div className="relative">
@@ -122,7 +122,7 @@ export default async function AlumniDirectoryPage() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-gray-900">{alumni?.length || 0}</p>
-                <p className="text-sm text-text-secondary">Total Alumni</p>
+                <p className="text-sm text-gray-500">Total Alumni</p>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default async function AlumniDirectoryPage() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-gray-900">{mentorCount || 0}</p>
-                <p className="text-sm text-text-secondary">Available Mentors</p>
+                <p className="text-sm text-gray-500">Available Mentors</p>
               </div>
             </div>
           </div>
@@ -144,7 +144,7 @@ export default async function AlumniDirectoryPage() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-gray-900">85%</p>
-                <p className="text-sm text-text-secondary">Employment Rate</p>
+                <p className="text-sm text-gray-500">Employment Rate</p>
               </div>
             </div>
           </div>
@@ -172,16 +172,16 @@ export default async function AlumniDirectoryPage() {
                       {person.full_name || 'Anonymous'}
                     </h3>
                     {person.job_title && (
-                      <p className="text-sm text-text-secondary truncate">{person.job_title}</p>
+                      <p className="text-sm text-gray-600 truncate">{person.job_title}</p>
                     )}
                     {person.company && (
-                      <p className="text-sm text-text-secondary truncate">{person.company}</p>
+                      <p className="text-sm text-gray-500 truncate">{person.company}</p>
                     )}
                   </div>
                 </div>
 
                 {(person.city || person.state) && (
-                  <div className="flex items-center gap-1 mt-4 text-sm text-text-secondary">
+                  <div className="flex items-center gap-1 mt-4 text-sm text-gray-500">
                     <MapPin className="w-4 h-4" />
                     <span>{[person.city, person.state].filter(Boolean).join(', ')}</span>
                   </div>
@@ -212,7 +212,7 @@ export default async function AlumniDirectoryPage() {
         ) : (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
             <GraduationCap className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-            <p className="text-text-secondary">No alumni profiles available yet</p>
+            <p className="text-gray-500">No alumni profiles available yet</p>
             <p className="text-sm text-gray-400 mt-1">Complete a program to join the alumni network</p>
           </div>
         )}

@@ -35,7 +35,7 @@ export default async function NotificationsPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-text-secondary">Please try again later.</p>
+          <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
     );
@@ -85,7 +85,7 @@ export default async function NotificationsPage() {
       case 'message': return 'bg-purple-100 text-purple-600';
       case 'alert': return 'bg-red-100 text-red-600';
       case 'success': return 'bg-green-100 text-green-600';
-      default: return 'bg-slate-100 text-text-secondary';
+      default: return 'bg-slate-100 text-slate-600';
     }
   };
 
@@ -125,7 +125,7 @@ export default async function NotificationsPage() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-slate-900">Notifications</h1>
-            <p className="text-text-secondary mt-1">
+            <p className="text-slate-600 mt-1">
               {unreadCount > 0 ? `${unreadCount} unread notification${unreadCount > 1 ? 's' : ''}` : 'All caught up!'}
             </p>
           </div>
@@ -148,7 +148,7 @@ export default async function NotificationsPage() {
             {/* Today */}
             {todayNotifications.length > 0 && (
               <div>
-                <h2 className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-4">Today</h2>
+                <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4">Today</h2>
                 <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden divide-y divide-slate-200">
                   {todayNotifications.map((notification) => {
                     const IconComponent = getIcon(notification.type);
@@ -168,9 +168,9 @@ export default async function NotificationsPage() {
                               {notification.title}
                             </p>
                             {notification.message && (
-                              <p className="text-sm text-text-secondary mt-1">{notification.message}</p>
+                              <p className="text-sm text-slate-600 mt-1">{notification.message}</p>
                             )}
-                            <div className="flex items-center gap-2 mt-2 text-sm text-text-secondary">
+                            <div className="flex items-center gap-2 mt-2 text-sm text-slate-500">
                               <Clock className="w-4 h-4" />
                               {formatTime(notification.created_at)}
                             </div>
@@ -194,7 +194,7 @@ export default async function NotificationsPage() {
             {/* Yesterday */}
             {yesterdayNotifications.length > 0 && (
               <div>
-                <h2 className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-4">Yesterday</h2>
+                <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4">Yesterday</h2>
                 <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden divide-y divide-slate-200">
                   {yesterdayNotifications.map((notification) => {
                     const IconComponent = getIcon(notification.type);
@@ -214,9 +214,9 @@ export default async function NotificationsPage() {
                               {notification.title}
                             </p>
                             {notification.message && (
-                              <p className="text-sm text-text-secondary mt-1">{notification.message}</p>
+                              <p className="text-sm text-slate-600 mt-1">{notification.message}</p>
                             )}
-                            <div className="flex items-center gap-2 mt-2 text-sm text-text-secondary">
+                            <div className="flex items-center gap-2 mt-2 text-sm text-slate-500">
                               <Clock className="w-4 h-4" />
                               {formatTime(notification.created_at)}
                             </div>
@@ -232,7 +232,7 @@ export default async function NotificationsPage() {
             {/* Older */}
             {olderNotifications.length > 0 && (
               <div>
-                <h2 className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-4">Earlier</h2>
+                <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4">Earlier</h2>
                 <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden divide-y divide-slate-200">
                   {olderNotifications.map((notification) => {
                     const IconComponent = getIcon(notification.type);
@@ -249,7 +249,7 @@ export default async function NotificationsPage() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="text-slate-700">{notification.title}</p>
-                            <div className="flex items-center gap-2 mt-2 text-sm text-text-secondary">
+                            <div className="flex items-center gap-2 mt-2 text-sm text-slate-500">
                               <Clock className="w-4 h-4" />
                               {formatTime(notification.created_at)}
                             </div>
@@ -266,7 +266,7 @@ export default async function NotificationsPage() {
           <div className="bg-white rounded-2xl border border-slate-200 p-16 text-center">
             <Bell className="w-16 h-16 text-slate-300 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-slate-900 mb-2">No Notifications</h3>
-            <p className="text-text-secondary">
+            <p className="text-slate-600">
               You&apos;re all caught up! New notifications will appear here.
             </p>
           </div>

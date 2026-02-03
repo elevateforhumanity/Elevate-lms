@@ -24,7 +24,7 @@ export default function StudentPortalResourcesPage() {
             </svg>
           </div>
           <h2 className="text-xl font-semibold mb-2">Digital Library</h2>
-          <p className="text-text-secondary mb-4">Access e-books, journals, and research databases.</p>
+          <p className="text-gray-600 mb-4">Access e-books, journals, and research databases.</p>
           <a href="/lms/library" className="text-blue-600 hover:underline">Browse Library →</a>
         </div>
 
@@ -36,7 +36,7 @@ export default function StudentPortalResourcesPage() {
             </svg>
           </div>
           <h2 className="text-xl font-semibold mb-2">Tutoring Center</h2>
-          <p className="text-text-secondary mb-4">Schedule one-on-one tutoring sessions.</p>
+          <p className="text-gray-600 mb-4">Schedule one-on-one tutoring sessions.</p>
           <a href="/tutoring" className="text-blue-600 hover:underline">Book Session →</a>
         </div>
 
@@ -48,7 +48,7 @@ export default function StudentPortalResourcesPage() {
             </svg>
           </div>
           <h2 className="text-xl font-semibold mb-2">Writing Center</h2>
-          <p className="text-text-secondary mb-4">Get help with essays, papers, and citations.</p>
+          <p className="text-gray-600 mb-4">Get help with essays, papers, and citations.</p>
           <a href="/writing-center" className="text-blue-600 hover:underline">Get Help →</a>
         </div>
 
@@ -60,7 +60,7 @@ export default function StudentPortalResourcesPage() {
             </svg>
           </div>
           <h2 className="text-xl font-semibold mb-2">Career Services</h2>
-          <p className="text-text-secondary mb-4">Resume help, job search, and career counseling.</p>
+          <p className="text-gray-600 mb-4">Resume help, job search, and career counseling.</p>
           <a href="/career-services" className="text-blue-600 hover:underline">Explore Careers →</a>
         </div>
 
@@ -72,7 +72,7 @@ export default function StudentPortalResourcesPage() {
             </svg>
           </div>
           <h2 className="text-xl font-semibold mb-2">IT Help Desk</h2>
-          <p className="text-text-secondary mb-4">Technical support for software and accounts.</p>
+          <p className="text-gray-600 mb-4">Technical support for software and accounts.</p>
           <a href="/support" className="text-blue-600 hover:underline">Get Support →</a>
         </div>
 
@@ -84,7 +84,7 @@ export default function StudentPortalResourcesPage() {
             </svg>
           </div>
           <h2 className="text-xl font-semibold mb-2">Study Materials</h2>
-          <p className="text-text-secondary mb-4">Course materials, past exams, and study guides.</p>
+          <p className="text-gray-600 mb-4">Course materials, past exams, and study guides.</p>
           <a href="/lms/resources" className="text-blue-600 hover:underline">View Materials →</a>
         </div>
       </div>

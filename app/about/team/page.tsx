@@ -88,7 +88,7 @@ export default async function TeamPage() {
                     {member.bio && (
                       <div className="prose prose-slate max-w-none">
                         {member.bio.split('\n\n').map((paragraph: string, idx: number) => (
-                          <p key={idx} className="text-text-secondary mb-4">
+                          <p key={idx} className="text-slate-600 mb-4">
                             {paragraph}
                           </p>
                         ))}
@@ -117,7 +117,7 @@ export default async function TeamPage() {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-text-secondary">Contact us to learn more about our team.</p>
+              <p className="text-slate-500">Contact us to learn more about our team.</p>
             </div>
           )}
         </div>
@@ -129,7 +129,7 @@ export default async function TeamPage() {
           <h2 className="text-3xl font-bold text-slate-900 mb-4">
             Join Our Mission
           </h2>
-          <p className="text-lg text-text-secondary mb-8">
+          <p className="text-lg text-slate-600 mb-8">
             We are always looking for passionate individuals to join our team.
           </p>
           <Link

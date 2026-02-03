@@ -82,7 +82,7 @@ export default async function PartnersPage() {
                   )}
                   <h3 className="font-semibold text-slate-900 mb-2">{partner.name}</h3>
                   {partner.description && (
-                    <p className="text-sm text-text-secondary">{partner.description}</p>
+                    <p className="text-sm text-slate-600">{partner.description}</p>
                   )}
                 </div>
               ))}
@@ -115,7 +115,7 @@ export default async function PartnersPage() {
                   )}
                   <h3 className="font-semibold text-slate-900 mb-2">{partner.name}</h3>
                   {partner.description && (
-                    <p className="text-sm text-text-secondary">{partner.description}</p>
+                    <p className="text-sm text-slate-600">{partner.description}</p>
                   )}
                 </div>
               ))}
@@ -137,7 +137,7 @@ export default async function PartnersPage() {
                 <div key={partner.id} className="bg-white border rounded-xl p-6 shadow-sm">
                   <h3 className="font-semibold text-slate-900 mb-2">{partner.name}</h3>
                   {partner.description && (
-                    <p className="text-sm text-text-secondary mb-3">{partner.description}</p>
+                    <p className="text-sm text-slate-600 mb-3">{partner.description}</p>
                   )}
                   {partner.website_url && (
                     <a href={partner.website_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-sm hover:underline">
@@ -159,7 +159,7 @@ export default async function PartnersPage() {
               <Briefcase className="w-8 h-8 text-orange-600" />
               <h2 className="text-3xl font-bold text-slate-900">Employer Partners</h2>
             </div>
-            <p className="text-text-secondary mb-8">
+            <p className="text-slate-600 mb-8">
               Our graduates are hired by leading employers across healthcare, skilled trades, and professional services.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">

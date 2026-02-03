@@ -79,13 +79,13 @@ export function AssignmentSubmitForm({ assignmentId, assignmentTitle }: Assignme
               />
             </label>
             {fileName && (
-              <span className="flex items-center gap-2 text-sm text-text-secondary">
+              <span className="flex items-center gap-2 text-sm text-gray-600">
                 <FileText className="w-4 h-4" />
                 {fileName}
               </span>
             )}
           </div>
-          <p className="text-xs text-text-secondary mt-1">
+          <p className="text-xs text-gray-500 mt-1">
             Accepted: PDF, DOC, DOCX, TXT, JPG, PNG (max 10MB)
           </p>
         </div>

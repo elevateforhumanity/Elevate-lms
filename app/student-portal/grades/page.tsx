@@ -18,15 +18,15 @@ export default function StudentPortalGradesPage() {
       {/* GPA Summary */}
       <div className="grid md:grid-cols-3 gap-4 mb-8">
         <div className="bg-white rounded-lg shadow p-6 text-center">
-          <p className="text-sm text-text-secondary mb-1">Current Semester GPA</p>
+          <p className="text-sm text-gray-600 mb-1">Current Semester GPA</p>
           <p className="text-4xl font-bold text-blue-600">3.75</p>
         </div>
         <div className="bg-white rounded-lg shadow p-6 text-center">
-          <p className="text-sm text-text-secondary mb-1">Cumulative GPA</p>
+          <p className="text-sm text-gray-600 mb-1">Cumulative GPA</p>
           <p className="text-4xl font-bold text-green-600">3.68</p>
         </div>
         <div className="bg-white rounded-lg shadow p-6 text-center">
-          <p className="text-sm text-text-secondary mb-1">Credits Earned</p>
+          <p className="text-sm text-gray-600 mb-1">Credits Earned</p>
           <p className="text-4xl font-bold text-purple-600">72</p>
         </div>
       </div>
@@ -48,7 +48,7 @@ export default function StudentPortalGradesPage() {
               <tr className="border-b">
                 <td className="py-3">
                   <div className="font-medium">English Composition 101</div>
-                  <div className="text-sm text-text-secondary">ENG 101</div>
+                  <div className="text-sm text-gray-600">ENG 101</div>
                 </td>
                 <td className="py-3">3</td>
                 <td className="py-3 text-green-600 font-medium">A (94%)</td>
@@ -57,7 +57,7 @@ export default function StudentPortalGradesPage() {
               <tr className="border-b">
                 <td className="py-3">
                   <div className="font-medium">Calculus II</div>
-                  <div className="text-sm text-text-secondary">MATH 202</div>
+                  <div className="text-sm text-gray-600">MATH 202</div>
                 </td>
                 <td className="py-3">4</td>
                 <td className="py-3 text-green-600 font-medium">B+ (88%)</td>
@@ -66,7 +66,7 @@ export default function StudentPortalGradesPage() {
               <tr className="border-b">
                 <td className="py-3">
                   <div className="font-medium">Chemistry 201</div>
-                  <div className="text-sm text-text-secondary">CHEM 201</div>
+                  <div className="text-sm text-gray-600">CHEM 201</div>
                 </td>
                 <td className="py-3">4</td>
                 <td className="py-3 text-green-600 font-medium">A- (91%)</td>
@@ -75,7 +75,7 @@ export default function StudentPortalGradesPage() {
               <tr className="border-b">
                 <td className="py-3">
                   <div className="font-medium">History 150</div>
-                  <div className="text-sm text-text-secondary">HIST 150</div>
+                  <div className="text-sm text-gray-600">HIST 150</div>
                 </td>
                 <td className="py-3">3</td>
                 <td className="py-3 text-green-600 font-medium">A (96%)</td>
@@ -102,7 +102,7 @@ export default function StudentPortalGradesPage() {
               <tr className="border-b">
                 <td className="py-3">
                   <div className="font-medium">Introduction to Psychology</div>
-                  <div className="text-sm text-text-secondary">PSY 101</div>
+                  <div className="text-sm text-gray-600">PSY 101</div>
                 </td>
                 <td className="py-3">3</td>
                 <td className="py-3 font-medium">A</td>
@@ -110,7 +110,7 @@ export default function StudentPortalGradesPage() {
               <tr className="border-b">
                 <td className="py-3">
                   <div className="font-medium">Calculus I</div>
-                  <div className="text-sm text-text-secondary">MATH 201</div>
+                  <div className="text-sm text-gray-600">MATH 201</div>
                 </td>
                 <td className="py-3">4</td>
                 <td className="py-3 font-medium">A-</td>
@@ -118,7 +118,7 @@ export default function StudentPortalGradesPage() {
               <tr className="border-b">
                 <td className="py-3">
                   <div className="font-medium">Biology 101</div>
-                  <div className="text-sm text-text-secondary">BIO 101</div>
+                  <div className="text-sm text-gray-600">BIO 101</div>
                 </td>
                 <td className="py-3">4</td>
                 <td className="py-3 font-medium">B+</td>
@@ -126,7 +126,7 @@ export default function StudentPortalGradesPage() {
             </tbody>
           </table>
         </div>
-        <p className="text-sm text-text-secondary mt-4">Semester GPA: 3.62</p>
+        <p className="text-sm text-gray-600 mt-4">Semester GPA: 3.62</p>
       </section>
     </div>
   );

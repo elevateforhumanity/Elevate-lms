@@ -43,62 +43,62 @@ export default function StudentPortalSchedulePage() {
             <tbody>
               {timeSlots.map((time, idx) => (
                 <tr key={time} className="border-t">
-                  <td className="py-3 px-4 text-sm text-text-secondary">{time}</td>
+                  <td className="py-3 px-4 text-sm text-gray-600">{time}</td>
                   {days.map(day => (
                     <td key={`${day}-${time}`} className="py-1 px-2">
                       {/* Sample classes */}
                       {day === 'Monday' && time === '9:00 AM' && (
                         <div className="bg-blue-100 border-l-4 border-blue-500 p-2 rounded text-sm">
                           <div className="font-medium">ENG 101</div>
-                          <div className="text-text-secondary">Room 204</div>
+                          <div className="text-gray-600">Room 204</div>
                         </div>
                       )}
                       {day === 'Monday' && time === '2:00 PM' && (
                         <div className="bg-green-100 border-l-4 border-green-500 p-2 rounded text-sm">
                           <div className="font-medium">MATH 202</div>
-                          <div className="text-text-secondary">Room 115</div>
+                          <div className="text-gray-600">Room 115</div>
                         </div>
                       )}
                       {day === 'Tuesday' && time === '10:00 AM' && (
                         <div className="bg-purple-100 border-l-4 border-purple-500 p-2 rounded text-sm">
                           <div className="font-medium">CHEM 201</div>
-                          <div className="text-text-secondary">Lab 302</div>
+                          <div className="text-gray-600">Lab 302</div>
                         </div>
                       )}
                       {day === 'Wednesday' && time === '9:00 AM' && (
                         <div className="bg-blue-100 border-l-4 border-blue-500 p-2 rounded text-sm">
                           <div className="font-medium">ENG 101</div>
-                          <div className="text-text-secondary">Room 204</div>
+                          <div className="text-gray-600">Room 204</div>
                         </div>
                       )}
                       {day === 'Wednesday' && time === '2:00 PM' && (
                         <div className="bg-green-100 border-l-4 border-green-500 p-2 rounded text-sm">
                           <div className="font-medium">MATH 202</div>
-                          <div className="text-text-secondary">Room 115</div>
+                          <div className="text-gray-600">Room 115</div>
                         </div>
                       )}
                       {day === 'Thursday' && time === '10:00 AM' && (
                         <div className="bg-purple-100 border-l-4 border-purple-500 p-2 rounded text-sm">
                           <div className="font-medium">CHEM 201</div>
-                          <div className="text-text-secondary">Lab 302</div>
+                          <div className="text-gray-600">Lab 302</div>
                         </div>
                       )}
                       {day === 'Thursday' && time === '1:00 PM' && (
                         <div className="bg-orange-100 border-l-4 border-orange-500 p-2 rounded text-sm">
                           <div className="font-medium">HIST 150</div>
-                          <div className="text-text-secondary">Room 410</div>
+                          <div className="text-gray-600">Room 410</div>
                         </div>
                       )}
                       {day === 'Friday' && time === '9:00 AM' && (
                         <div className="bg-blue-100 border-l-4 border-blue-500 p-2 rounded text-sm">
                           <div className="font-medium">ENG 101</div>
-                          <div className="text-text-secondary">Room 204</div>
+                          <div className="text-gray-600">Room 204</div>
                         </div>
                       )}
                       {day === 'Friday' && time === '2:00 PM' && (
                         <div className="bg-green-100 border-l-4 border-green-500 p-2 rounded text-sm">
                           <div className="font-medium">MATH 202</div>
-                          <div className="text-text-secondary">Room 115</div>
+                          <div className="text-gray-600">Room 115</div>
                         </div>
                       )}
                     </td>
@@ -119,32 +119,32 @@ export default function StudentPortalSchedulePage() {
               <div className="w-4 h-4 bg-blue-500 rounded"></div>
               <h3 className="font-medium">English Composition 101</h3>
             </div>
-            <p className="text-sm text-text-secondary">MWF 9:00 AM - 9:50 AM | Room 204</p>
-            <p className="text-sm text-text-secondary">Instructor</p>
+            <p className="text-sm text-gray-600">MWF 9:00 AM - 9:50 AM | Room 204</p>
+            <p className="text-sm text-gray-600">Instructor</p>
           </div>
           <div className="border rounded-lg p-4">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-4 h-4 bg-green-500 rounded"></div>
               <h3 className="font-medium">Calculus II</h3>
             </div>
-            <p className="text-sm text-text-secondary">MWF 2:00 PM - 2:50 PM | Room 115</p>
-            <p className="text-sm text-text-secondary">Instructor</p>
+            <p className="text-sm text-gray-600">MWF 2:00 PM - 2:50 PM | Room 115</p>
+            <p className="text-sm text-gray-600">Instructor</p>
           </div>
           <div className="border rounded-lg p-4">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-4 h-4 bg-purple-500 rounded"></div>
               <h3 className="font-medium">Chemistry 201</h3>
             </div>
-            <p className="text-sm text-text-secondary">TTh 10:00 AM - 11:30 AM | Lab 302</p>
-            <p className="text-sm text-text-secondary">Instructor</p>
+            <p className="text-sm text-gray-600">TTh 10:00 AM - 11:30 AM | Lab 302</p>
+            <p className="text-sm text-gray-600">Instructor</p>
           </div>
           <div className="border rounded-lg p-4">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-4 h-4 bg-orange-500 rounded"></div>
               <h3 className="font-medium">History 150</h3>
             </div>
-            <p className="text-sm text-text-secondary">Th 1:00 PM - 2:30 PM | Room 410</p>
-            <p className="text-sm text-text-secondary">Instructor</p>
+            <p className="text-sm text-gray-600">Th 1:00 PM - 2:30 PM | Room 410</p>
+            <p className="text-sm text-gray-600">Instructor</p>
           </div>
         </div>
       </section>

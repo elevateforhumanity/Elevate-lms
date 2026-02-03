@@ -104,7 +104,7 @@ export default async function LMSPage() {
             </div>
             <div className="flex items-center gap-3">
               <Link href="/lms/notifications" className="relative p-3 bg-slate-100 rounded-full hover:bg-slate-200 transition">
-                <Bell className="w-5 h-5 text-text-secondary" />
+                <Bell className="w-5 h-5 text-slate-600" />
                 {notificationCount && notificationCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium">
                     {notificationCount > 9 ? '9+' : notificationCount}
@@ -112,7 +112,7 @@ export default async function LMSPage() {
                 )}
               </Link>
               <Link href="/lms/settings" className="p-3 bg-slate-100 rounded-full hover:bg-slate-200 transition">
-                <Settings className="w-5 h-5 text-text-secondary" />
+                <Settings className="w-5 h-5 text-slate-600" />
               </Link>
             </div>
           </div>
@@ -124,19 +124,19 @@ export default async function LMSPage() {
         <div className="flex flex-wrap justify-center gap-8 sm:gap-16 mb-12">
           <div className="text-center">
             <div className="text-4xl sm:text-5xl font-bold text-blue-600">{typedEnrollments.length}</div>
-            <div className="text-sm text-text-secondary mt-1">Courses Enrolled</div>
+            <div className="text-sm text-slate-500 mt-1">Courses Enrolled</div>
           </div>
           <div className="text-center">
             <div className="text-4xl sm:text-5xl font-bold text-green-600">{completedCourses}</div>
-            <div className="text-sm text-text-secondary mt-1">Completed</div>
+            <div className="text-sm text-slate-500 mt-1">Completed</div>
           </div>
           <div className="text-center">
             <div className="text-4xl sm:text-5xl font-bold text-yellow-600">{typedCertificates.length}</div>
-            <div className="text-sm text-text-secondary mt-1">Certificates</div>
+            <div className="text-sm text-slate-500 mt-1">Certificates</div>
           </div>
           <div className="text-center">
             <div className="text-4xl sm:text-5xl font-bold text-red-600">{totalProgress}%</div>
-            <div className="text-sm text-text-secondary mt-1">Overall Progress</div>
+            <div className="text-sm text-slate-500 mt-1">Overall Progress</div>
           </div>
         </div>
 
@@ -158,7 +158,7 @@ export default async function LMSPage() {
                   <div className="flex-1 max-w-xs h-2 bg-slate-200 rounded-full overflow-hidden">
                     <div className="h-full bg-blue-600 rounded-full" style={{ width: `${continueCourse.progress}%` }} />
                   </div>
-                  <span className="text-sm font-medium text-text-secondary">{continueCourse.progress}% complete</span>
+                  <span className="text-sm font-medium text-slate-600">{continueCourse.progress}% complete</span>
                 </div>
                 <Link href={`/lms/courses/${continueCourse.course?.id}`} className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
                   <Play className="w-4 h-4" /> Continue Course
@@ -194,7 +194,7 @@ export default async function LMSPage() {
                           <div className="flex-1 max-w-[120px] h-1.5 bg-slate-200 rounded-full overflow-hidden">
                             <div className="h-full bg-blue-600 rounded-full" style={{ width: `${enrollment.progress || 0}%` }} />
                           </div>
-                          <span className="text-xs text-text-secondary">{enrollment.progress || 0}%</span>
+                          <span className="text-xs text-slate-500">{enrollment.progress || 0}%</span>
                         </div>
                       </div>
                       <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-blue-600 transition" />
@@ -204,7 +204,7 @@ export default async function LMSPage() {
               ) : (
                 <div className="text-center py-12">
                   <BookOpen className="w-12 h-12 mx-auto mb-4 text-slate-300" />
-                  <p className="text-text-secondary mb-4">No courses enrolled yet</p>
+                  <p className="text-slate-500 mb-4">No courses enrolled yet</p>
                   <Link href="/programs" className="text-blue-600 font-semibold hover:underline">Browse Programs →</Link>
                 </div>
               )}
@@ -223,7 +223,7 @@ export default async function LMSPage() {
                       <div className="w-12 h-12 bg-green-200 rounded-xl flex items-center justify-center"><Award className="w-6 h-6 text-green-700" /></div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-slate-900 truncate">{enrollment.program?.name || 'Program'}</h3>
-                        <p className="text-sm text-text-secondary">{enrollment.status === 'IN_PROGRESS' ? 'In Progress' : enrollment.status}</p>
+                        <p className="text-sm text-slate-500">{enrollment.status === 'IN_PROGRESS' ? 'In Progress' : enrollment.status}</p>
                       </div>
                       <span className="px-3 py-1 bg-green-200 text-green-800 text-xs font-semibold rounded-full">Workforce</span>
                     </Link>
@@ -233,7 +233,7 @@ export default async function LMSPage() {
                       <div className="w-12 h-12 bg-purple-200 rounded-xl flex items-center justify-center"><Award className="w-6 h-6 text-purple-700" /></div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-slate-900 truncate">{enrollment.program_slug || 'Apprenticeship'}</h3>
-                        <p className="text-sm text-text-secondary">Active Apprenticeship</p>
+                        <p className="text-sm text-slate-500">Active Apprenticeship</p>
                       </div>
                       <span className="px-3 py-1 bg-purple-200 text-purple-800 text-xs font-semibold rounded-full">Apprentice</span>
                     </Link>
@@ -254,11 +254,11 @@ export default async function LMSPage() {
                     <div key={assignment.id} className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl">
                       <div>
                         <h3 className="font-semibold text-slate-900">{assignment.title}</h3>
-                        <p className="text-sm text-text-secondary">{assignment.course_title}</p>
+                        <p className="text-sm text-slate-500">{assignment.course_title}</p>
                       </div>
                       <div className="text-right">
                         <p className="text-sm font-semibold text-red-600">{new Date(assignment.due_date).toLocaleDateString()}</p>
-                        <p className="text-xs text-text-secondary">Due</p>
+                        <p className="text-xs text-slate-500">Due</p>
                       </div>
                     </div>
                   ))}
@@ -266,7 +266,7 @@ export default async function LMSPage() {
               ) : (
                 <div className="text-center py-8">
                   <CheckCircle className="w-10 h-10 mx-auto mb-3 text-green-400" />
-                  <p className="text-text-secondary">No upcoming assignments</p>
+                  <p className="text-slate-500">No upcoming assignments</p>
                 </div>
               )}
             </div>
@@ -284,13 +284,13 @@ export default async function LMSPage() {
                       <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="text-sm font-medium text-slate-900">{activity.lesson?.title}</p>
-                        <p className="text-xs text-text-secondary">{new Date(activity.completed_at).toLocaleDateString()}</p>
+                        <p className="text-xs text-slate-500">{new Date(activity.completed_at).toLocaleDateString()}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-text-secondary">No recent activity</p>
+                <p className="text-sm text-slate-500">No recent activity</p>
               )}
             </div>
 
@@ -307,7 +307,7 @@ export default async function LMSPage() {
                       <Award className="w-6 h-6 text-yellow-600" />
                       <div className="flex-1 min-w-0">
                         <p className="font-medium text-sm text-slate-900 truncate">{cert.title}</p>
-                        <p className="text-xs text-text-secondary">{new Date(cert.issued_at).toLocaleDateString()}</p>
+                        <p className="text-xs text-slate-500">{new Date(cert.issued_at).toLocaleDateString()}</p>
                       </div>
                     </div>
                   ))}
@@ -315,7 +315,7 @@ export default async function LMSPage() {
               ) : (
                 <div className="text-center py-6">
                   <Award className="w-10 h-10 mx-auto mb-3 text-slate-300" />
-                  <p className="text-sm text-text-secondary">Complete courses to earn certificates</p>
+                  <p className="text-sm text-slate-500">Complete courses to earn certificates</p>
                 </div>
               )}
             </div>
