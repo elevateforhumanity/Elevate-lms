@@ -5,49 +5,43 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-// STUDENT-FIRST FOOTER - Primary sections for students, secondary for others
+// GOVERNMENT-GRADE FOOTER - Clean, senior, compliant
+// 4 columns: About, Programs, Compliance & Trust, Access & Support
 const footerSections = [
-  {
-    title: 'Programs',
-    links: [
-      { name: 'All Programs', href: '/programs' },
-      { name: 'Healthcare', href: '/programs/healthcare' },
-      { name: 'Skilled Trades', href: '/programs/skilled-trades' },
-      { name: 'Technology', href: '/programs/technology' },
-      { name: 'Business', href: '/programs/business' },
-    ],
-  },
-  {
-    title: 'Get Started',
-    links: [
-      { name: 'Check Eligibility', href: '/enroll' },
-      { name: 'How It Works', href: '/how-it-works' },
-      { name: 'Funding Options', href: '/funding' },
-      { name: 'FAQ', href: '/faq' },
-    ],
-  },
   {
     title: 'About',
     links: [
-      { name: 'Our Mission', href: '/about' },
-      { name: 'Success Stories', href: '/success-stories' },
+      { name: 'About Elevate', href: '/about' },
+      { name: 'Workforce Operating System', href: '/store/licenses' },
+      { name: 'Our Mission', href: '/about#mission' },
+      { name: 'Indiana Outcomes', href: '/outcomes/indiana' },
       { name: 'Contact', href: '/contact' },
-      { name: 'Locations', href: '/locations' },
     ],
   },
   {
-    title: 'Account',
+    title: 'Programs',
     links: [
-      { name: 'Sign In', href: '/login' },
-      { name: 'Student Dashboard', href: '/lms/dashboard' },
+      { name: 'Training Programs', href: '/programs' },
+      { name: 'Career Pathways', href: '/how-it-works' },
+      { name: 'Apprenticeships', href: '/programs/barber-apprenticeship' },
+      { name: 'Employer Partnerships', href: '/employer' },
     ],
   },
   {
-    title: 'Legal',
+    title: 'Compliance & Trust',
     links: [
-      { name: 'Privacy Policy', href: '/privacy-policy' },
-      { name: 'Terms of Service', href: '/terms-of-service' },
+      { name: 'Governance', href: '/governance' },
+      { name: 'Data Privacy', href: '/governance/data' },
       { name: 'Accessibility', href: '/accessibility' },
+      { name: 'AI Governance', href: '/governance/ai' },
+    ],
+  },
+  {
+    title: 'Access',
+    links: [
+      { name: 'Student Portal', href: '/login' },
+      { name: 'Partner Portal', href: '/partner/login' },
+      { name: 'Support', href: '/support' },
     ],
   },
 ];
@@ -123,7 +117,7 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      {/* Bottom Bar - Compact */}
+      {/* Bottom Bar - Legal only */}
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-center sm:text-left">
@@ -140,8 +134,10 @@ export default function SiteFooter() {
               </span>
             </div>
             <div className="flex justify-center gap-4 text-xs text-gray-500">
-              <Link href="/privacy-policy" className="py-1 min-h-[24px] hover:text-white">Privacy</Link>
               <Link href="/terms-of-service" className="py-1 min-h-[24px] hover:text-white">Terms</Link>
+              <Link href="/privacy-policy" className="py-1 min-h-[24px] hover:text-white">Privacy</Link>
+              <Link href="/governance/security" className="py-1 min-h-[24px] hover:text-white">Security</Link>
+              <Link href="/store/licenses" className="py-1 min-h-[24px] hover:text-white">Licensing</Link>
             </div>
           </div>
         </div>

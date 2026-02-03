@@ -6,48 +6,36 @@ import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
+  // GOVERNMENT-GRADE FOOTER - Clean, senior, compliant
   const footerLinks = {
-    programs: [
-      { name: 'Healthcare', href: '/programs/healthcare' },
-      { name: 'Skilled Trades', href: '/programs/skilled-trades' },
-      { name: 'Beauty & Wellness', href: '/programs/beauty' },
-      { name: 'Business & Finance', href: '/programs/business-financial' },
-      { name: 'Technology', href: '/programs/technology' },
-      { name: 'Apprenticeships', href: '/programs/apprenticeships' },
-      { name: 'All Programs', href: '/programs' },
-    ],
-    getStarted: [
-      { name: 'Check Eligibility', href: '/enroll' },
-      { name: 'Apply Now', href: '/apply' },
-      { name: 'Funding Options', href: '/funding' },
-      { name: 'Success Stories', href: '/testimonials' },
-      { name: 'FAQ', href: '/faq' },
-    ],
-    employers: [
-      { name: 'Hire Graduates', href: '/hire-graduates' },
-      { name: 'Post a Job', href: '/employers/post-job' },
-      { name: 'Workforce Partners', href: '/workforce-partners' },
-    ],
-    resources: [
-      { name: 'FAQ', href: '/faq' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'Help Center', href: '/help/articles' },
-      { name: 'Events', href: '/events' },
-      { name: 'Contact Support', href: '/contact' },
-    ],
-    company: [
-      { name: 'About Us', href: '/about' },
-      { name: 'Leadership Team', href: '/about/team' },
-      { name: 'Partners', href: '/partners' },
-      { name: 'Careers', href: '/careers' },
+    about: [
+      { name: 'About Elevate', href: '/about' },
+      { name: 'Workforce Operating System', href: '/store/licenses' },
+      { name: 'Indiana Outcomes', href: '/outcomes/indiana' },
       { name: 'Contact', href: '/contact' },
     ],
-    legal: [
-      { name: 'Privacy Policy', href: '/privacy' },
-      { name: 'Terms of Service', href: '/terms' },
+    programs: [
+      { name: 'Training Programs', href: '/programs' },
+      { name: 'Career Pathways', href: '/how-it-works' },
+      { name: 'Apprenticeships', href: '/programs/barber-apprenticeship' },
+      { name: 'Employer Partnerships', href: '/employer' },
+    ],
+    compliance: [
+      { name: 'Governance', href: '/governance' },
+      { name: 'Data Privacy', href: '/governance/data' },
       { name: 'Accessibility', href: '/accessibility' },
-      { name: 'Compliance', href: '/compliance' },
-      { name: 'Sitemap', href: '/site-map' },
+      { name: 'AI Governance', href: '/governance/ai' },
+    ],
+    access: [
+      { name: 'Student Portal', href: '/login' },
+      { name: 'Partner Portal', href: '/partner/login' },
+      { name: 'Support', href: '/support' },
+    ],
+    legal: [
+      { name: 'Terms of Service', href: '/terms-of-service' },
+      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Security', href: '/governance/security' },
+      { name: 'Licensing', href: '/store/licenses' },
     ],
   };
 
@@ -98,9 +86,26 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Footer Content - Student-first simplified layout */}
+      {/* Main Footer Content - Government-grade 4 columns */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {/* About */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">About</h4>
+            <ul className="space-y-2">
+              {footerLinks.about.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-slate-300 text-sm font-medium hover:text-orange-400 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Programs */}
           <div>
             <h4 className="text-white font-semibold mb-4">Programs</h4>
@@ -118,11 +123,11 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Get Started */}
+          {/* Compliance & Trust */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Get Started</h4>
+            <h4 className="text-white font-semibold mb-4">Compliance & Trust</h4>
             <ul className="space-y-2">
-              {footerLinks.getStarted.map((link) => (
+              {footerLinks.compliance.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -135,62 +140,11 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* For Employers */}
+          {/* Access */}
           <div>
-            <h4 className="text-white font-semibold mb-4">For Employers</h4>
+            <h4 className="text-white font-semibold mb-4">Access</h4>
             <ul className="space-y-2">
-              {footerLinks.employers.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-300 text-sm font-medium hover:text-orange-400 transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Resources</h4>
-            <ul className="space-y-2">
-              {footerLinks.resources.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-300 text-sm font-medium hover:text-orange-400 transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Company</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-300 text-sm font-medium hover:text-orange-400 transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Legal</h4>
-            <ul className="space-y-2">
-              {footerLinks.legal.map((link) => (
+              {footerLinks.access.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -256,13 +210,22 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Copyright */}
-          <div className="mt-8 pt-8 border-t border-slate-800 text-center text-sm text-slate-500">
-            <p>
-              © {currentYear} Elevate for Humanity. All rights reserved.
-              {' | '}
-              Funded by the Workforce Innovation and Opportunity Act (WIOA)
-            </p>
+          {/* Copyright & Legal Links */}
+          <div className="mt-8 pt-8 border-t border-slate-800">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-slate-500">
+              <p>© {currentYear} Elevate for Humanity. All rights reserved.</p>
+              <div className="flex flex-wrap justify-center sm:justify-end gap-4">
+                {footerLinks.legal.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
