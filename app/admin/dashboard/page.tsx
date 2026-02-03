@@ -16,6 +16,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { SystemStatusPanel } from '@/components/admin/SystemStatusPanel';
 
 export const metadata: Metadata = {
   title: 'Admin Dashboard | Elevate For Humanity',
@@ -179,12 +180,27 @@ export default async function AdminDashboardOrchestrated() {
       {/* Header */}
       <section className="bg-white border-b border-slate-200 py-6">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl font-bold text-black">
+          <h1 className="text-3xl font-bold text-slate-900">
             System Oversight Dashboard
           </h1>
-          <p className="text-black mt-2">
+          <p className="text-slate-700 mt-2">
             Real-time monitoring and compliance tracking
           </p>
+        </div>
+      </section>
+
+      {/* System Governance Panel */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            {/* This space intentionally left for main content flow */}
+          </div>
+          <div>
+            <SystemStatusPanel 
+              lastComplianceReview="2026-01-15"
+              environment="Production"
+            />
+          </div>
         </div>
       </section>
 

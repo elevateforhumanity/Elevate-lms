@@ -5,6 +5,79 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================================
+   ADMIN PORTAL - INSTITUTIONAL TYPOGRAPHY
+   Enterprise-grade visual standards for audit-safe presentation
+   ============================================================================ */
+
+/* Admin portal base typography - minimum 16px, darker colors */
+[class*="/admin"] body,
+.admin-portal {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Override light grays with institutional dark tones */
+.admin-portal .text-gray-500,
+[class*="/admin"] .text-gray-500 {
+  color: #374151 !important; /* gray-700 */
+}
+
+.admin-portal .text-gray-600,
+[class*="/admin"] .text-gray-600 {
+  color: #1f2937 !important; /* gray-800 */
+}
+
+.admin-portal .text-gray-400,
+[class*="/admin"] .text-gray-400 {
+  color: #4b5563 !important; /* gray-600 */
+}
+
+/* Admin headings - always dark and authoritative */
+.admin-portal h1,
+.admin-portal h2,
+.admin-portal h3,
+.admin-portal h4,
+[class*="/admin"] h1,
+[class*="/admin"] h2,
+[class*="/admin"] h3,
+[class*="/admin"] h4 {
+  color: #111827; /* gray-900 */
+  font-weight: 600;
+}
+
+/* Admin body text minimum size */
+.admin-portal p,
+.admin-portal span,
+.admin-portal td,
+.admin-portal th,
+.admin-portal label,
+[class*="/admin"] p,
+[class*="/admin"] span,
+[class*="/admin"] td,
+[class*="/admin"] th,
+[class*="/admin"] label {
+  font-size: max(0.875rem, 14px);
+}
+
+/* Admin tables - clear, readable */
+.admin-portal table,
+[class*="/admin"] table {
+  font-size: 14px;
+}
+
+.admin-portal th,
+[class*="/admin"] th {
+  font-weight: 600;
+  color: #111827;
+  background-color: #f9fafb;
+}
+
+.admin-portal td,
+[class*="/admin"] td {
+  color: #374151;
+}
+
 
 
 /* ============================================================================
