@@ -148,10 +148,10 @@ export default function AnnouncementsFeed() {
                   {getLabel(announcement.severity)}
                 </span>
               </div>
-              <p className="text-sm text-gray-500 mb-3">
+              <p className="text-sm text-text-secondary mb-3">
                 {formatDate(announcement.published_at)}
               </p>
-              <p className="text-gray-600">{announcement.body}</p>
+              <p className="text-text-secondary">{announcement.body}</p>
             </div>
           ))}
         </div>

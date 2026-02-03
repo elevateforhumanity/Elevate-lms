@@ -72,7 +72,7 @@ export default function AnnouncementsList() {
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
         <Bell className="w-12 h-12 text-gray-300 mx-auto mb-4" />
         <h2 className="text-xl font-semibold text-gray-900 mb-2">No Announcements</h2>
-        <p className="text-gray-600">
+        <p className="text-text-secondary">
           There are no announcements at this time. Check back later for updates.
         </p>
       </div>
@@ -154,7 +154,7 @@ export default function AnnouncementsList() {
                 <h2 className="text-xl font-bold text-gray-900">
                   {announcement.title}
                 </h2>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-text-secondary">
                   {formatDate(announcement.published_at)}
                 </p>
               </div>

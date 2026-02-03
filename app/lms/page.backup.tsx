@@ -254,7 +254,7 @@ export default async function LMSPage() {
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs sm:text-sm text-gray-500">Continue where you left off</p>
+                  <p className="text-xs sm:text-sm text-text-secondary">Continue where you left off</p>
                   <h2 className="font-semibold text-sm sm:text-lg truncate">{continueCourse.course?.title}</h2>
                   <div className="flex items-center gap-2 mt-1">
                     <div className="w-20 sm:w-32 h-1.5 sm:h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -263,7 +263,7 @@ export default async function LMSPage() {
                         style={{ width: `${continueCourse.progress}%` }} 
                       />
                     </div>
-                    <span className="text-xs sm:text-sm text-gray-500">{continueCourse.progress}%</span>
+                    <span className="text-xs sm:text-sm text-text-secondary">{continueCourse.progress}%</span>
                   </div>
                 </div>
               </div>
@@ -282,22 +282,22 @@ export default async function LMSPage() {
           <div className="bg-white rounded-xl shadow-sm border p-3 sm:p-5">
             <BookOpen className="w-5 h-5 sm:w-7 sm:h-7 text-blue-900 mb-1 sm:mb-2" />
             <div className="text-xl sm:text-2xl font-bold">{typedEnrollments.length}</div>
-            <div className="text-gray-600 text-xs sm:text-sm">Enrolled</div>
+            <div className="text-text-secondary text-xs sm:text-sm">Enrolled</div>
           </div>
           <div className="bg-white rounded-xl shadow-sm border p-3 sm:p-5">
             <CheckCircle className="w-5 h-5 sm:w-7 sm:h-7 text-green-600 mb-1 sm:mb-2" />
             <div className="text-xl sm:text-2xl font-bold">{completedCourses}</div>
-            <div className="text-gray-600 text-xs sm:text-sm">Completed</div>
+            <div className="text-text-secondary text-xs sm:text-sm">Completed</div>
           </div>
           <div className="bg-white rounded-xl shadow-sm border p-3 sm:p-5">
             <Award className="w-5 h-5 sm:w-7 sm:h-7 text-yellow-500 mb-1 sm:mb-2" />
             <div className="text-xl sm:text-2xl font-bold">{typedCertificates.length}</div>
-            <div className="text-gray-600 text-xs sm:text-sm">Certificates</div>
+            <div className="text-text-secondary text-xs sm:text-sm">Certificates</div>
           </div>
           <div className="bg-white rounded-xl shadow-sm border p-3 sm:p-5">
             <Target className="w-5 h-5 sm:w-7 sm:h-7 text-red-600 mb-1 sm:mb-2" />
             <div className="text-xl sm:text-2xl font-bold">{totalProgress}%</div>
-            <div className="text-gray-600 text-xs sm:text-sm">Progress</div>
+            <div className="text-text-secondary text-xs sm:text-sm">Progress</div>
           </div>
         </div>
 
@@ -338,7 +338,7 @@ export default async function LMSPage() {
                               style={{ width: `${enrollment.progress || 0}%` }} 
                             />
                           </div>
-                          <span className="text-[10px] sm:text-xs text-gray-500">{enrollment.progress || 0}%</span>
+                          <span className="text-[10px] sm:text-xs text-text-secondary">{enrollment.progress || 0}%</span>
                         </div>
                       </div>
                       <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 flex-shrink-0" />
@@ -348,7 +348,7 @@ export default async function LMSPage() {
               ) : (
                 <div className="text-center py-8">
                   <BookOpen className="w-12 h-12 mx-auto mb-3 text-gray-300" />
-                  <p className="text-gray-500 mb-3">No courses enrolled yet</p>
+                  <p className="text-text-secondary mb-3">No courses enrolled yet</p>
                   <Link href="/programs" className="text-blue-900 font-medium hover:underline">
                     Browse Available Programs
                   </Link>
@@ -377,7 +377,7 @@ export default async function LMSPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-medium truncate">{enrollment.program?.name || 'Program'}</h3>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-text-secondary">
                           {enrollment.status === 'IN_PROGRESS' ? 'In Progress' : enrollment.status}
                         </p>
                       </div>
@@ -398,7 +398,7 @@ export default async function LMSPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-medium truncate">{enrollment.program_slug || 'Apprenticeship'}</h3>
-                        <p className="text-sm text-gray-500">Active Apprenticeship</p>
+                        <p className="text-sm text-text-secondary">Active Apprenticeship</p>
                       </div>
                       <span className="px-2 py-1 bg-purple-200 text-purple-800 text-xs font-medium rounded">
                         Apprentice
@@ -424,19 +424,19 @@ export default async function LMSPage() {
                     <div key={assignment.id} className="flex items-center justify-between p-3 border rounded-lg">
                       <div>
                         <h3 className="font-medium">{assignment.title}</h3>
-                        <p className="text-sm text-gray-500">{assignment.course_title}</p>
+                        <p className="text-sm text-text-secondary">{assignment.course_title}</p>
                       </div>
                       <div className="text-right">
                         <p className="text-sm font-medium text-red-600">
                           {new Date(assignment.due_date).toLocaleDateString()}
                         </p>
-                        <p className="text-xs text-gray-500">Due</p>
+                        <p className="text-xs text-text-secondary">Due</p>
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-6 text-gray-500">
+                <div className="text-center py-6 text-text-secondary">
                   <CheckCircle className="w-8 h-8 mx-auto mb-2 text-green-400" />
                   <p>No upcoming assignments</p>
                 </div>
@@ -456,7 +456,7 @@ export default async function LMSPage() {
                       <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="text-sm font-medium">{activity.lesson?.title}</p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-text-secondary">
                           {new Date(activity.completed_at).toLocaleDateString()}
                         </p>
                       </div>
@@ -464,7 +464,7 @@ export default async function LMSPage() {
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-gray-500">No recent activity</p>
+                <p className="text-sm text-text-secondary">No recent activity</p>
               )}
             </div>
 
@@ -483,7 +483,7 @@ export default async function LMSPage() {
                       <Award className="w-5 h-5 text-yellow-600" />
                       <div className="flex-1 min-w-0">
                         <p className="font-medium text-sm truncate">{cert.title}</p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-text-secondary">
                           {new Date(cert.issued_at).toLocaleDateString()}
                         </p>
                       </div>
@@ -493,7 +493,7 @@ export default async function LMSPage() {
               ) : (
                 <div className="text-center py-4">
                   <Award className="w-8 h-8 mx-auto mb-2 text-gray-300" />
-                  <p className="text-sm text-gray-500">Complete courses to earn certificates</p>
+                  <p className="text-sm text-text-secondary">Complete courses to earn certificates</p>
                 </div>
               )}
             </div>

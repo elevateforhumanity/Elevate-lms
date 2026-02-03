@@ -63,7 +63,7 @@ export default async function SupportMessagesPage() {
               </Link>
               <div>
                 <h1 className="text-xl font-bold text-gray-900">Support Tickets</h1>
-                <p className="text-sm text-gray-500">Get help with technical issues</p>
+                <p className="text-sm text-text-secondary">Get help with technical issues</p>
               </div>
             </div>
             <Link
@@ -93,7 +93,7 @@ export default async function SupportMessagesPage() {
                     </div>
                     <div>
                       <p className="font-medium text-gray-900">{ticket.subject || 'Support Request'}</p>
-                      <p className="text-sm text-gray-500 mt-1 line-clamp-1">{ticket.description}</p>
+                      <p className="text-sm text-text-secondary mt-1 line-clamp-1">{ticket.description}</p>
                       <p className="text-xs text-gray-400 mt-2">
                         {new Date(ticket.created_at).toLocaleDateString()}
                       </p>
@@ -111,7 +111,7 @@ export default async function SupportMessagesPage() {
           <div className="bg-white rounded-xl border p-12 text-center">
             <MessageSquare className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h2 className="text-xl font-semibold text-gray-900 mb-2">No support tickets</h2>
-            <p className="text-gray-600 mb-6">Need help? Create a support ticket and we'll assist you.</p>
+            <p className="text-text-secondary mb-6">Need help? Create a support ticket and we'll assist you.</p>
             <Link 
               href="/lms/messages/support/new"
               className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"

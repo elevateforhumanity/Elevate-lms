@@ -185,7 +185,7 @@ export default function DisclosuresPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Policies & Disclosures
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
               Click on any policy below to view the complete document.
             </p>
           </div>
@@ -218,7 +218,7 @@ export default function DisclosuresPage() {
                     <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition">
                       {policy.title}
                     </h4>
-                    <span className="text-sm text-gray-500 group-hover:text-blue-500 flex items-center gap-1 mt-2">
+                    <span className="text-sm text-text-secondary group-hover:text-blue-500 flex items-center gap-1 mt-2">
                       View Policy <ArrowRight className="w-3 h-3" />
                     </span>
                   </Link>
@@ -255,7 +255,7 @@ export default function DisclosuresPage() {
                     <h4 className="font-semibold text-gray-900 group-hover:text-purple-600 transition">
                       {policy.title}
                     </h4>
-                    <span className="text-sm text-gray-500 group-hover:text-purple-500 flex items-center gap-1 mt-2">
+                    <span className="text-sm text-text-secondary group-hover:text-purple-500 flex items-center gap-1 mt-2">
                       View Policy <ArrowRight className="w-3 h-3" />
                     </span>
                   </Link>
@@ -292,7 +292,7 @@ export default function DisclosuresPage() {
                     <h4 className="font-semibold text-gray-900 group-hover:text-green-600 transition">
                       {policy.title}
                     </h4>
-                    <span className="text-sm text-gray-500 group-hover:text-green-500 flex items-center gap-1 mt-2">
+                    <span className="text-sm text-text-secondary group-hover:text-green-500 flex items-center gap-1 mt-2">
                       View Policy <ArrowRight className="w-3 h-3" />
                     </span>
                   </Link>
@@ -329,7 +329,7 @@ export default function DisclosuresPage() {
                     <h4 className="font-semibold text-gray-900 group-hover:text-orange-600 transition">
                       {policy.title}
                     </h4>
-                    <span className="text-sm text-gray-500 group-hover:text-orange-500 flex items-center gap-1 mt-2">
+                    <span className="text-sm text-text-secondary group-hover:text-orange-500 flex items-center gap-1 mt-2">
                       View Policy <ArrowRight className="w-3 h-3" />
                     </span>
                   </Link>
@@ -440,10 +440,10 @@ export default function DisclosuresPage() {
           <p className="font-semibold text-gray-900">
             This institution is an equal opportunity provider and employer.
           </p>
-          <p className="text-gray-600 mt-2">
+          <p className="text-text-secondary mt-2">
             Auxiliary aids and services are available upon request to individuals with disabilities. TTY/TDD: 711 (Indiana Relay)
           </p>
-          <p className="text-gray-500 text-sm mt-4">
+          <p className="text-text-secondary text-sm mt-4">
             Last Updated: January 2026
           </p>
         </div>

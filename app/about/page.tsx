@@ -56,7 +56,7 @@ export default function AboutPage() {
             <div>
               <p className="text-blue-600 font-semibold mb-2">Meet Our Founder</p>
               <h2 className="text-4xl font-bold text-slate-900 mb-2">Elizabeth Greene</h2>
-              <p className="text-slate-500 mb-6">Founder & Chief Executive Officer</p>
+              <p className="text-text-secondary mb-6">Founder & Chief Executive Officer</p>
               
               <div className="prose prose-lg max-w-none text-slate-700 space-y-4">
                 <p>
@@ -97,7 +97,7 @@ export default function AboutPage() {
               </div>
               <div className="p-8">
                 <h3 className="font-bold text-slate-900 text-xl mb-4">Career Training & Workforce Development</h3>
-                <p className="text-slate-600">
+                <p className="text-text-secondary">
                   Elevate for Humanity is a workforce development organization that helps connect 
                   eligible participants with career training through WIOA, JRI, and WRG funding programs.
                 </p>
@@ -222,7 +222,7 @@ export default function AboutPage() {
                 />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">Justice-Involved</h3>
-              <p className="text-slate-600 text-sm">Second chance training through JRI funding</p>
+              <p className="text-text-secondary text-sm">Second chance training through JRI funding</p>
             </div>
             <div className="text-center">
               <div className="relative w-40 h-40 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
@@ -234,7 +234,7 @@ export default function AboutPage() {
                 />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">Low-Income Families</h3>
-              <p className="text-slate-600 text-sm">Free training through WIOA funding</p>
+              <p className="text-text-secondary text-sm">Free training through WIOA funding</p>
             </div>
             <div className="text-center">
               <div className="relative w-40 h-40 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
@@ -246,7 +246,7 @@ export default function AboutPage() {
                 />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">Veterans</h3>
-              <p className="text-slate-600 text-sm">Career transition support</p>
+              <p className="text-text-secondary text-sm">Career transition support</p>
             </div>
             <div className="text-center">
               <div className="relative w-40 h-40 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
@@ -258,7 +258,7 @@ export default function AboutPage() {
                 />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">Career Changers</h3>
-              <p className="text-slate-600 text-sm">New skills for new opportunities</p>
+              <p className="text-text-secondary text-sm">New skills for new opportunities</p>
             </div>
           </div>
         </div>
@@ -340,12 +340,12 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-6">
             <Link href="/store/guides/capital-readiness" className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition border border-slate-200">
               <h3 className="font-semibold text-lg mb-2">Capital Readiness Guide</h3>
-              <p className="text-slate-600 text-sm mb-3">Build institutional trust and funding readiness for workforce-aligned organizations.</p>
+              <p className="text-text-secondary text-sm mb-3">Build institutional trust and funding readiness for workforce-aligned organizations.</p>
               <span className="text-blue-600 text-sm font-medium">Get the guide →</span>
             </Link>
             <Link href="/partner" className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition border border-slate-200">
               <h3 className="font-semibold text-lg mb-2">Partner With Us</h3>
-              <p className="text-slate-600 text-sm mb-3">Become a training provider, employer partner, or community organization.</p>
+              <p className="text-text-secondary text-sm mb-3">Become a training provider, employer partner, or community organization.</p>
               <span className="text-blue-600 text-sm font-medium">Learn more →</span>
             </Link>
           </div>

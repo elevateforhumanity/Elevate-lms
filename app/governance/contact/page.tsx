@@ -96,7 +96,7 @@ export default function GovernanceContactPage() {
                   </div>
                   <h3 className="font-semibold text-slate-900">{category.title}</h3>
                 </div>
-                <p className="text-slate-600 text-sm mb-4">{category.description}</p>
+                <p className="text-text-secondary text-sm mb-4">{category.description}</p>
                 <a 
                   href={`mailto:${category.email}`}
                   className="inline-flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700"
@@ -104,7 +104,7 @@ export default function GovernanceContactPage() {
                   <Mail className="w-4 h-4" />
                   {category.email}
                 </a>
-                <p className="text-xs text-slate-500 mt-2">
+                <p className="text-xs text-text-secondary mt-2">
                   Typical response: {category.responseTime}
                 </p>
               </div>
@@ -157,7 +157,7 @@ export default function GovernanceContactPage() {
             <Shield className="w-4 h-4" />
             elevate4humanityedu@gmail.com
           </a>
-          <p className="text-sm text-slate-600 mt-4">
+          <p className="text-sm text-text-secondary mt-4">
             Security reports are prioritized and reviewed within 24 hours.
           </p>
         </section>

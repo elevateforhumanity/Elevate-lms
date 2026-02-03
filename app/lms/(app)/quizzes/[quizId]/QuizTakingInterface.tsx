@@ -136,7 +136,7 @@ export default function QuizTakingInterface({ quiz, questions, attemptId, visito
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-xl font-bold text-slate-900">{quiz.title}</h1>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-text-secondary">
                 Question {currentIndex + 1} of {shuffledQuestions.length}
               </p>
             </div>
@@ -168,7 +168,7 @@ export default function QuizTakingInterface({ quiz, questions, attemptId, visito
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <p className="text-sm text-slate-600 mt-1">
+            <p className="text-sm text-text-secondary mt-1">
               {answeredCount} of {shuffledQuestions.length} answered
             </p>
           </div>
@@ -186,7 +186,7 @@ export default function QuizTakingInterface({ quiz, questions, attemptId, visito
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">
                     {currentQuestion.points} {currentQuestion.points === 1 ? 'point' : 'points'}
                   </span>
-                  <span className="text-slate-500 text-sm capitalize">
+                  <span className="text-text-secondary text-sm capitalize">
                     {currentQuestion.question_type.replace('_', ' ')}
                   </span>
                 </div>
@@ -195,7 +195,7 @@ export default function QuizTakingInterface({ quiz, questions, attemptId, visito
                   className={`p-2 rounded-lg transition ${
                     flagged.has(currentQuestion.id)
                       ? 'bg-yellow-100 text-yellow-600'
-                      : 'bg-slate-100 text-slate-400 hover:text-slate-600'
+                      : 'bg-slate-100 text-slate-400 hover:text-text-secondary'
                   }`}
                   title={flagged.has(currentQuestion.id) ? 'Unflag question' : 'Flag for review'}
                 >
@@ -229,7 +229,7 @@ export default function QuizTakingInterface({ quiz, questions, attemptId, visito
                         <span className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
                           isSelected
                             ? 'bg-blue-600 text-white'
-                            : 'bg-slate-100 text-slate-600'
+                            : 'bg-slate-100 text-text-secondary'
                         }`}>
                           {letter}
                         </span>
@@ -246,7 +246,7 @@ export default function QuizTakingInterface({ quiz, questions, attemptId, visito
                 <button
                   onClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}
                   disabled={currentIndex === 0}
-                  className="flex items-center gap-2 px-4 py-2 text-slate-600 hover:text-slate-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-4 py-2 text-text-secondary hover:text-slate-900 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <ChevronLeft className="w-5 h-5" />
                   Previous
@@ -254,7 +254,7 @@ export default function QuizTakingInterface({ quiz, questions, attemptId, visito
                 <button
                   onClick={() => setCurrentIndex(prev => Math.min(shuffledQuestions.length - 1, prev + 1))}
                   disabled={currentIndex === shuffledQuestions.length - 1}
-                  className="flex items-center gap-2 px-4 py-2 text-slate-600 hover:text-slate-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-4 py-2 text-text-secondary hover:text-slate-900 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Next
                   <ChevronRight className="w-5 h-5" />
@@ -282,7 +282,7 @@ export default function QuizTakingInterface({ quiz, questions, attemptId, visito
                           ? 'bg-blue-600 text-white'
                           : isAnswered
                           ? 'bg-green-100 text-green-700'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                          : 'bg-slate-100 text-text-secondary hover:bg-slate-200'
                       }`}
                     >
                       {idx + 1}
@@ -297,15 +297,15 @@ export default function QuizTakingInterface({ quiz, questions, attemptId, visito
               <div className="mt-4 pt-4 border-t border-slate-200 space-y-2 text-sm">
                 <div className="flex items-center gap-2">
                   <span className="w-4 h-4 bg-green-100 rounded" />
-                  <span className="text-slate-600">Answered</span>
+                  <span className="text-text-secondary">Answered</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-4 h-4 bg-slate-100 rounded" />
-                  <span className="text-slate-600">Unanswered</span>
+                  <span className="text-text-secondary">Unanswered</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-4 h-4 bg-yellow-400 rounded-full" />
-                  <span className="text-slate-600">Flagged</span>
+                  <span className="text-text-secondary">Flagged</span>
                 </div>
               </div>
             </div>
@@ -332,7 +332,7 @@ export default function QuizTakingInterface({ quiz, questions, attemptId, visito
               </div>
             )}
             
-            <p className="text-slate-600 mb-6">
+            <p className="text-text-secondary mb-6">
               Once submitted, you cannot change your answers. Are you sure you want to submit?
             </p>
             

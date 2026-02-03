@@ -69,7 +69,7 @@ export default function DataSettingsPage() {
       </div>
 <div className="bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+          <nav className="flex items-center gap-2 text-sm text-text-secondary mb-4">
             <Link href="/lms" className="hover:text-gray-700">LMS</Link>
             <ChevronRight className="w-4 h-4" />
             <Link href="/lms/settings" className="hover:text-gray-700">Settings</Link>
@@ -77,7 +77,7 @@ export default function DataSettingsPage() {
             <span className="text-gray-900 font-medium">Data & Privacy</span>
           </nav>
           <h1 className="text-2xl font-bold text-gray-900">Data & Privacy</h1>
-          <p className="text-gray-600 mt-1">Manage your data and privacy settings</p>
+          <p className="text-text-secondary mt-1">Manage your data and privacy settings</p>
         </div>
       </div>
 
@@ -90,7 +90,7 @@ export default function DataSettingsPage() {
             </div>
             <div className="flex-1">
               <h2 className="text-lg font-semibold text-gray-900">Export Your Data</h2>
-              <p className="text-gray-600 mt-1 mb-4">
+              <p className="text-text-secondary mt-1 mb-4">
                 Download a copy of all your personal data, including profile information, 
                 course progress, certificates, and activity history.
               </p>
@@ -127,7 +127,7 @@ export default function DataSettingsPage() {
             <div className="px-6 py-4 flex items-center justify-between">
               <div>
                 <p className="font-medium text-gray-900">Profile Visibility</p>
-                <p className="text-sm text-gray-500">Allow other students to see your profile</p>
+                <p className="text-sm text-text-secondary">Allow other students to see your profile</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" defaultChecked className="sr-only peer" />
@@ -137,7 +137,7 @@ export default function DataSettingsPage() {
             <div className="px-6 py-4 flex items-center justify-between">
               <div>
                 <p className="font-medium text-gray-900">Show in Alumni Directory</p>
-                <p className="text-sm text-gray-500">Appear in the alumni directory after graduation</p>
+                <p className="text-sm text-text-secondary">Appear in the alumni directory after graduation</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" defaultChecked className="sr-only peer" />
@@ -147,7 +147,7 @@ export default function DataSettingsPage() {
             <div className="px-6 py-4 flex items-center justify-between">
               <div>
                 <p className="font-medium text-gray-900">Activity Tracking</p>
-                <p className="text-sm text-gray-500">Allow tracking of learning activity for personalized recommendations</p>
+                <p className="text-sm text-text-secondary">Allow tracking of learning activity for personalized recommendations</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" defaultChecked className="sr-only peer" />
@@ -157,7 +157,7 @@ export default function DataSettingsPage() {
             <div className="px-6 py-4 flex items-center justify-between">
               <div>
                 <p className="font-medium text-gray-900">Marketing Communications</p>
-                <p className="text-sm text-gray-500">Receive promotional emails and offers</p>
+                <p className="text-sm text-text-secondary">Receive promotional emails and offers</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" className="sr-only peer" />
@@ -175,7 +175,7 @@ export default function DataSettingsPage() {
             </div>
             <div>
               <h2 className="text-lg font-semibold text-gray-900">Data Retention</h2>
-              <p className="text-gray-600 mt-1 mb-4">
+              <p className="text-text-secondary mt-1 mb-4">
                 Your education records are retained in accordance with FERPA regulations and 
                 accreditation requirements. Transcripts and certificates are kept permanently.
               </p>
@@ -243,7 +243,7 @@ export default function DataSettingsPage() {
                     <AlertTriangle className="w-5 h-5" />
                     <span className="font-medium">This action is irreversible</span>
                   </div>
-                  <p className="text-sm text-gray-600 mb-3">
+                  <p className="text-sm text-text-secondary mb-3">
                     Type DELETE to confirm account deletion:
                   </p>
                   <input

@@ -81,7 +81,7 @@ export default async function SettingsPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+          <p className="text-text-secondary">Please try again later.</p>
         </div>
       </div>
     );
@@ -117,7 +117,7 @@ export default async function SettingsPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900">Settings</h1>
-          <p className="text-slate-600 mt-1">Manage your account and preferences</p>
+          <p className="text-text-secondary mt-1">Manage your account and preferences</p>
         </div>
 
         {/* Profile Card */}
@@ -135,7 +135,7 @@ export default async function SettingsPage() {
               <h2 className="text-xl font-bold text-slate-900">
                 {profile?.full_name || 'Student'}
               </h2>
-              <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-slate-600">
+              <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-text-secondary">
                 <div className="flex items-center gap-1">
                   <Mail className="w-4 h-4" />
                   {user.email}
@@ -175,7 +175,7 @@ export default async function SettingsPage() {
                     <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition">
                       {section.title}
                     </h3>
-                    <p className="text-sm text-slate-600 mt-1">{section.description}</p>
+                    <p className="text-sm text-text-secondary mt-1">{section.description}</p>
                   </div>
                   <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
                 </div>
@@ -196,11 +196,11 @@ export default async function SettingsPage() {
             >
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
-                  <CreditCard className="w-5 h-5 text-slate-600" />
+                  <CreditCard className="w-5 h-5 text-text-secondary" />
                 </div>
                 <div>
                   <h3 className="font-medium text-slate-900">Billing & Payments</h3>
-                  <p className="text-sm text-slate-600">Manage payment methods and view invoices</p>
+                  <p className="text-sm text-text-secondary">Manage payment methods and view invoices</p>
                 </div>
               </div>
               <ChevronRight className="w-5 h-5 text-slate-400" />
@@ -211,11 +211,11 @@ export default async function SettingsPage() {
             >
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
-                  <Shield className="w-5 h-5 text-slate-600" />
+                  <Shield className="w-5 h-5 text-text-secondary" />
                 </div>
                 <div>
                   <h3 className="font-medium text-slate-900">Data & Privacy</h3>
-                  <p className="text-sm text-slate-600">Download your data or delete your account</p>
+                  <p className="text-sm text-text-secondary">Download your data or delete your account</p>
                 </div>
               </div>
               <ChevronRight className="w-5 h-5 text-slate-400" />
@@ -231,7 +231,7 @@ export default async function SettingsPage() {
                   </div>
                   <div>
                     <h3 className="font-medium text-red-600">Sign Out</h3>
-                    <p className="text-sm text-slate-600">Sign out of your account on this device</p>
+                    <p className="text-sm text-text-secondary">Sign out of your account on this device</p>
                   </div>
                 </div>
               </button>
@@ -241,7 +241,7 @@ export default async function SettingsPage() {
 
         {/* Help */}
         <div className="mt-8 text-center">
-          <p className="text-slate-600">
+          <p className="text-text-secondary">
             Need help? Visit our{' '}
             <Link href="/lms/support" className="text-blue-600 font-medium hover:text-blue-700">
               Support Center

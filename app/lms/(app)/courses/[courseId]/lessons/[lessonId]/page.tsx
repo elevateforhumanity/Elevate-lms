@@ -254,7 +254,7 @@ export default function LessonPage() {
                 >
                   {l.title}
                 </div>
-                <div className="text-xs text-slate-500">{l.duration}</div>
+                <div className="text-xs text-text-secondary">{l.duration}</div>
               </div>
             </Link>
           ))}
@@ -361,7 +361,7 @@ export default function LessonPage() {
                       </div>
                       <div>
                         <div className="font-semibold">{resource.name}</div>
-                        <div className="text-sm text-slate-500">
+                        <div className="text-sm text-text-secondary">
                           {resource.size}
                         </div>
                       </div>

@@ -75,7 +75,7 @@ export default function MissionPage() {
             <div className="bg-white p-8 rounded-xl shadow-sm">
               <Heart className="w-12 h-12 text-orange-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Compassion</h3>
-              <p className="text-gray-600">
+              <p className="text-text-secondary">
                 We meet people where they are, understanding that everyone&apos;s journey is different. 
                 We provide wraparound support services to address barriers to success.
               </p>
@@ -83,7 +83,7 @@ export default function MissionPage() {
             <div className="bg-white p-8 rounded-xl shadow-sm">
               <Users className="w-12 h-12 text-orange-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Community</h3>
-              <p className="text-gray-600">
+              <p className="text-text-secondary">
                 We build lasting relationships with students, employers, and community partners. 
                 Together, we create pathways to prosperity for all.
               </p>
@@ -91,7 +91,7 @@ export default function MissionPage() {
             <div className="bg-white p-8 rounded-xl shadow-sm">
               <GraduationCap className="w-12 h-12 text-orange-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Excellence</h3>
-              <p className="text-gray-600">
+              <p className="text-text-secondary">
                 We deliver industry-recognized training that prepares students for real careers. 
                 Strong placement outcomes through employer partnerships reflect our commitment to quality.
               </p>
@@ -99,7 +99,7 @@ export default function MissionPage() {
             <div className="bg-white p-8 rounded-xl shadow-sm">
               <Briefcase className="w-12 h-12 text-orange-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Opportunity</h3>
-              <p className="text-gray-600">
+              <p className="text-text-secondary">
                 We connect graduates with employers actively hiring in high-demand fields. 
                 Career services continue long after graduation.
               </p>
@@ -107,7 +107,7 @@ export default function MissionPage() {
             <div className="bg-white p-8 rounded-xl shadow-sm">
               <HandHeart className="w-12 h-12 text-orange-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Accessibility</h3>
-              <p className="text-gray-600">
+              <p className="text-text-secondary">
                 Funded training through WIOA, WRG, and JRI funding. No tuition, no fees, 
                 no debt. Financial barriers should never prevent career advancement.
               </p>
@@ -115,7 +115,7 @@ export default function MissionPage() {
             <div className="bg-white p-8 rounded-xl shadow-sm">
               <Target className="w-12 h-12 text-orange-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Impact</h3>
-              <p className="text-gray-600">
+              <p className="text-text-secondary">
                 We measure success by lives changed. Hundreds of Indiana residents trained, 
                 families supported, and communities strengthened since 2020.
               </p>
@@ -152,15 +152,15 @@ export default function MissionPage() {
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div className="bg-orange-50 p-4 rounded-lg">
                   <div className="text-3xl font-bold text-orange-600">1,000+</div>
-                  <div className="text-sm text-gray-600">Students Trained</div>
+                  <div className="text-sm text-text-secondary">Students Trained</div>
                 </div>
                 <div className="bg-orange-50 p-4 rounded-lg">
                   <div className="text-3xl font-bold text-orange-600">85%</div>
-                  <div className="text-sm text-gray-600">Job Placement</div>
+                  <div className="text-sm text-text-secondary">Job Placement</div>
                 </div>
                 <div className="bg-orange-50 p-4 rounded-lg">
                   <div className="text-3xl font-bold text-orange-600">100%</div>
-                  <div className="text-sm text-gray-600">Free Training</div>
+                  <div className="text-sm text-text-secondary">Free Training</div>
                 </div>
               </div>
             </div>

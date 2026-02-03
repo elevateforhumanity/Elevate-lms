@@ -49,7 +49,7 @@ export default async function CourseEnrollPage({ params }: Props) {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+          <p className="text-text-secondary">Please try again later.</p>
         </div>
       </div>
     );
@@ -111,7 +111,7 @@ export default async function CourseEnrollPage({ params }: Props) {
         {/* Back Link */}
         <Link
           href={`/lms/courses/${courseId}`}
-          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-6"
+          className="inline-flex items-center gap-2 text-text-secondary hover:text-slate-900 mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Course
@@ -124,7 +124,7 @@ export default async function CourseEnrollPage({ params }: Props) {
               <h1 className="text-2xl font-bold text-slate-900 mb-2">
                 Enroll in {course.title}
               </h1>
-              <p className="text-slate-600 mb-8">
+              <p className="text-text-secondary mb-8">
                 Complete your enrollment to start learning immediately.
               </p>
 
@@ -185,21 +185,21 @@ export default async function CourseEnrollPage({ params }: Props) {
 
                 {/* Course Stats */}
                 <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-3 text-slate-600">
+                  <div className="flex items-center gap-3 text-text-secondary">
                     <BookOpen className="w-5 h-5" />
                     <span>{lessonCount || 0} lessons</span>
                   </div>
                   {course.duration_hours && (
-                    <div className="flex items-center gap-3 text-slate-600">
+                    <div className="flex items-center gap-3 text-text-secondary">
                       <Clock className="w-5 h-5" />
                       <span>{course.duration_hours} hours</span>
                     </div>
                   )}
-                  <div className="flex items-center gap-3 text-slate-600">
+                  <div className="flex items-center gap-3 text-text-secondary">
                     <Users className="w-5 h-5" />
                     <span>{studentCount || 0} students enrolled</span>
                   </div>
-                  <div className="flex items-center gap-3 text-slate-600">
+                  <div className="flex items-center gap-3 text-text-secondary">
                     <Award className="w-5 h-5" />
                     <span>Certificate of completion</span>
                   </div>
@@ -209,23 +209,23 @@ export default async function CourseEnrollPage({ params }: Props) {
                 <div className="border-t border-slate-200 pt-4">
                   <h3 className="font-semibold text-slate-900 mb-3">What&apos;s included:</h3>
                   <ul className="space-y-2">
-                    <li className="flex items-center gap-2 text-sm text-slate-600">
+                    <li className="flex items-center gap-2 text-sm text-text-secondary">
                       <CheckCircle className="w-4 h-4 text-green-500" />
                       Full course access
                     </li>
-                    <li className="flex items-center gap-2 text-sm text-slate-600">
+                    <li className="flex items-center gap-2 text-sm text-text-secondary">
                       <CheckCircle className="w-4 h-4 text-green-500" />
                       Downloadable resources
                     </li>
-                    <li className="flex items-center gap-2 text-sm text-slate-600">
+                    <li className="flex items-center gap-2 text-sm text-text-secondary">
                       <CheckCircle className="w-4 h-4 text-green-500" />
                       Quizzes & assessments
                     </li>
-                    <li className="flex items-center gap-2 text-sm text-slate-600">
+                    <li className="flex items-center gap-2 text-sm text-text-secondary">
                       <CheckCircle className="w-4 h-4 text-green-500" />
                       Certificate upon completion
                     </li>
-                    <li className="flex items-center gap-2 text-sm text-slate-600">
+                    <li className="flex items-center gap-2 text-sm text-text-secondary">
                       <CheckCircle className="w-4 h-4 text-green-500" />
                       Lifetime access
                     </li>
@@ -233,7 +233,7 @@ export default async function CourseEnrollPage({ params }: Props) {
                 </div>
 
                 {/* Trust Badge */}
-                <div className="mt-6 flex items-center gap-2 text-sm text-slate-500">
+                <div className="mt-6 flex items-center gap-2 text-sm text-text-secondary">
                   <Shield className="w-4 h-4" />
                   <span>Secure enrollment</span>
                 </div>

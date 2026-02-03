@@ -156,7 +156,7 @@ export default function OperationalControlsPage() {
               ))}
             </div>
           </div>
-          <p className="text-slate-600 text-sm mt-4">
+          <p className="text-text-secondary text-sm mt-4">
             If any check fails, the deployment is blocked until issues are resolved.
           </p>
         </section>
@@ -167,15 +167,15 @@ export default function OperationalControlsPage() {
           <div className="space-y-4">
             <div>
               <p className="font-medium text-slate-900">Weekly</p>
-              <p className="text-slate-600 text-sm">Search Console coverage, index count verification, broken link checks</p>
+              <p className="text-text-secondary text-sm">Search Console coverage, index count verification, broken link checks</p>
             </div>
             <div>
               <p className="font-medium text-slate-900">Monthly</p>
-              <p className="text-slate-600 text-sm">Full indexed page inventory, metadata audit, canonical verification</p>
+              <p className="text-text-secondary text-sm">Full indexed page inventory, metadata audit, canonical verification</p>
             </div>
             <div>
               <p className="font-medium text-slate-900">Quarterly</p>
-              <p className="text-slate-600 text-sm">LMS course audit, Store product audit, compliance language review</p>
+              <p className="text-text-secondary text-sm">LMS course audit, Store product audit, compliance language review</p>
             </div>
           </div>
         </section>
@@ -193,7 +193,7 @@ export default function OperationalControlsPage() {
             <li>• Adding new public routes</li>
             <li>• Removing disclosures or compliance language</li>
           </ul>
-          <p className="text-slate-600 text-sm mt-4">
+          <p className="text-text-secondary text-sm mt-4">
             Emergency fixes may be deployed but must be reviewed within 24 hours.
           </p>
         </section>

@@ -144,7 +144,7 @@ export default function AlumniProfilePage() {
       </div>
 <div className="bg-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+          <nav className="flex items-center gap-2 text-sm text-text-secondary mb-4">
             <Link href="/lms" className="hover:text-gray-700">LMS</Link>
             <ChevronRight className="w-4 h-4" />
             <Link href="/lms/alumni" className="hover:text-gray-700">Alumni</Link>
@@ -152,7 +152,7 @@ export default function AlumniProfilePage() {
             <span className="text-gray-900 font-medium">My Profile</span>
           </nav>
           <h1 className="text-2xl font-bold text-gray-900">Alumni Profile</h1>
-          <p className="text-gray-600 mt-1">Manage your alumni directory profile</p>
+          <p className="text-text-secondary mt-1">Manage your alumni directory profile</p>
         </div>
       </div>
 
@@ -182,7 +182,7 @@ export default function AlumniProfilePage() {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900">Profile Photo</h3>
-                <p className="text-sm text-gray-500">Upload a professional photo for your alumni profile</p>
+                <p className="text-sm text-text-secondary">Upload a professional photo for your alumni profile</p>
               </div>
             </div>
           </div>
@@ -218,7 +218,7 @@ export default function AlumniProfilePage() {
                       id="email"
                       value={profile.email}
                       disabled
-                      className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-500"
+                      className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-text-secondary"
                     />
                   </div>
                 </div>
@@ -348,7 +348,7 @@ export default function AlumniProfilePage() {
                 />
                 <div>
                   <p className="font-medium text-gray-900">Show in Alumni Directory</p>
-                  <p className="text-sm text-gray-500">Allow other alumni to find and connect with you</p>
+                  <p className="text-sm text-text-secondary">Allow other alumni to find and connect with you</p>
                 </div>
               </label>
               <label className="flex items-start gap-3">
@@ -360,7 +360,7 @@ export default function AlumniProfilePage() {
                 />
                 <div>
                   <p className="font-medium text-gray-900">Available as Mentor</p>
-                  <p className="text-sm text-gray-500">Offer to mentor current students and recent graduates</p>
+                  <p className="text-sm text-text-secondary">Offer to mentor current students and recent graduates</p>
                 </div>
               </label>
             </div>

@@ -246,7 +246,7 @@ export default function SecurityDocumentPage() {
 
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-slate-200">
-          <p className="text-center text-slate-500 text-sm mb-6">End of Document</p>
+          <p className="text-center text-text-secondary text-sm mb-6">End of Document</p>
           <div className="flex justify-center gap-4">
             <Link 
               href="/governance"

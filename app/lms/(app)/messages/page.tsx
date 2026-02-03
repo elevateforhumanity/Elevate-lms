@@ -97,7 +97,7 @@ export default async function MessagesPage() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-slate-900">Messages</h1>
-            <p className="text-slate-600 mt-1">
+            <p className="text-text-secondary mt-1">
               {unreadCount > 0 ? `${unreadCount} unread message${unreadCount > 1 ? 's' : ''}` : 'All caught up!'}
             </p>
           </div>
@@ -122,10 +122,10 @@ export default async function MessagesPage() {
                 />
               </div>
               <div className="flex gap-2">
-                <button className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg" title="Starred">
+                <button className="p-2 text-text-secondary hover:bg-slate-100 rounded-lg" title="Starred">
                   <Star className="w-5 h-5" />
                 </button>
-                <button className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg" title="Archive">
+                <button className="p-2 text-text-secondary hover:bg-slate-100 rounded-lg" title="Archive">
                   <Archive className="w-5 h-5" />
                 </button>
               </div>
@@ -150,11 +150,11 @@ export default async function MessagesPage() {
                         <h3 className={`font-semibold truncate ${conv.unread > 0 ? 'text-slate-900' : 'text-slate-700'}`}>
                           {conv.participant?.full_name || 'Unknown User'}
                         </h3>
-                        <span className="text-sm text-slate-500 flex-shrink-0 ml-2">
+                        <span className="text-sm text-text-secondary flex-shrink-0 ml-2">
                           {formatTime(conv.lastMessage.created_at)}
                         </span>
                       </div>
-                      <p className={`text-sm truncate ${conv.unread > 0 ? 'text-slate-900 font-medium' : 'text-slate-600'}`}>
+                      <p className={`text-sm truncate ${conv.unread > 0 ? 'text-slate-900 font-medium' : 'text-text-secondary'}`}>
                         {conv.lastMessage.sender_id === user.id && (
                           <span className="text-slate-400 mr-1">You:</span>
                         )}
@@ -179,7 +179,7 @@ export default async function MessagesPage() {
             <div className="p-16 text-center">
               <MessageSquare className="w-16 h-16 text-slate-300 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">No Messages Yet</h3>
-              <p className="text-slate-600 mb-6">
+              <p className="text-text-secondary mb-6">
                 Start a conversation with your instructors or classmates.
               </p>
               <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition">
@@ -201,7 +201,7 @@ export default async function MessagesPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-slate-900">Student Support</h3>
-                  <p className="text-sm text-slate-600">Get help with your account</p>
+                  <p className="text-sm text-text-secondary">Get help with your account</p>
                 </div>
               </div>
             </Link>
@@ -212,7 +212,7 @@ export default async function MessagesPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-slate-900">My Instructor</h3>
-                  <p className="text-sm text-slate-600">Ask course questions</p>
+                  <p className="text-sm text-text-secondary">Ask course questions</p>
                 </div>
               </div>
             </Link>
@@ -223,7 +223,7 @@ export default async function MessagesPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-slate-900">Career Services</h3>
-                  <p className="text-sm text-slate-600">Job placement help</p>
+                  <p className="text-sm text-text-secondary">Job placement help</p>
                 </div>
               </div>
             </Link>

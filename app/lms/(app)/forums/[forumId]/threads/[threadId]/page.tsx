@@ -55,7 +55,7 @@ export default async function ThreadPage({ params }: Props) {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+          <p className="text-text-secondary">Please try again later.</p>
         </div>
       </div>
     );
@@ -101,7 +101,7 @@ export default async function ThreadPage({ params }: Props) {
     <div className="min-h-screen bg-slate-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-slate-600 mb-6">
+        <nav className="flex items-center gap-2 text-sm text-text-secondary mb-6">
           <Link href="/lms/forums" className="hover:text-slate-900">Forums</Link>
           <span>/</span>
           <Link href={`/lms/forums/${forumId}`} className="hover:text-slate-900">
@@ -134,7 +134,7 @@ export default async function ThreadPage({ params }: Props) {
                 <p className="font-medium text-slate-900">
                   {author?.full_name || 'Anonymous'}
                 </p>
-                <p className="text-sm text-slate-500 flex items-center gap-1">
+                <p className="text-sm text-text-secondary flex items-center gap-1">
                   <Clock className="w-3 h-3" />
                   {new Date(thread.created_at).toLocaleDateString('en-US', {
                     month: 'long',
@@ -157,11 +157,11 @@ export default async function ThreadPage({ params }: Props) {
 
           {/* Thread Actions */}
           <div className="px-6 py-3 bg-slate-50 border-t border-slate-100 flex items-center gap-4">
-            <button className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition">
+            <button className="flex items-center gap-2 text-text-secondary hover:text-blue-600 transition">
               <ThumbsUp className="w-4 h-4" />
               <span className="text-sm">Like</span>
             </button>
-            <button className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition">
+            <button className="flex items-center gap-2 text-text-secondary hover:text-slate-900 transition">
               <Flag className="w-4 h-4" />
               <span className="text-sm">Report</span>
             </button>
@@ -192,7 +192,7 @@ export default async function ThreadPage({ params }: Props) {
                             className="w-10 h-10 rounded-full object-cover"
                           />
                         ) : (
-                          <span className="text-slate-600 font-semibold">
+                          <span className="text-text-secondary font-semibold">
                             {replyAuthor?.full_name?.charAt(0) || 'A'}
                           </span>
                         )}
@@ -203,7 +203,7 @@ export default async function ThreadPage({ params }: Props) {
                             <span className="font-medium text-slate-900">
                               {replyAuthor?.full_name || 'Anonymous'}
                             </span>
-                            <span className="text-sm text-slate-500 ml-2">
+                            <span className="text-sm text-text-secondary ml-2">
                               {new Date(reply.created_at).toLocaleDateString('en-US', {
                                 month: 'short',
                                 day: 'numeric',
@@ -212,7 +212,7 @@ export default async function ThreadPage({ params }: Props) {
                               })}
                             </span>
                           </div>
-                          <button className="text-slate-400 hover:text-slate-600">
+                          <button className="text-slate-400 hover:text-text-secondary">
                             <MoreHorizontal className="w-4 h-4" />
                           </button>
                         </div>
@@ -226,7 +226,7 @@ export default async function ThreadPage({ params }: Props) {
           ) : (
             <div className="bg-white rounded-xl border border-slate-200 p-8 text-center">
               <MessageSquare className="w-10 h-10 text-slate-300 mx-auto mb-3" />
-              <p className="text-slate-600">No replies yet. Be the first to respond!</p>
+              <p className="text-text-secondary">No replies yet. Be the first to respond!</p>
             </div>
           )}
         </div>

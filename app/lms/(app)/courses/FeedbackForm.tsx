@@ -48,7 +48,7 @@ export function FeedbackForm({ courseId, courseName, onSubmit }: FeedbackFormPro
   return (
     <div className="bg-white border rounded-xl p-6">
       <h3 className="text-lg font-bold text-gray-900 mb-2">Rate This Course</h3>
-      <p className="text-gray-600 text-sm mb-4">{courseName}</p>
+      <p className="text-text-secondary text-sm mb-4">{courseName}</p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Star Rating */}

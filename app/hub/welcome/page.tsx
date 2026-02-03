@@ -149,7 +149,7 @@ export default async function HubWelcomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">How the Hub Works</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
               Unlike traditional learning platforms, the Hub shows you the system working for you.
             </p>
           </div>
@@ -172,7 +172,7 @@ export default async function HubWelcomePage() {
                 </div>
                 <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
                   <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">{feature.title}</h3>
-                  <p className="text-lg text-slate-600 mb-6 leading-relaxed">{feature.description}</p>
+                  <p className="text-lg text-text-secondary mb-6 leading-relaxed">{feature.description}</p>
                   <ul className="space-y-3">
                     <li className="flex items-center gap-3 text-slate-700">
                       <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
@@ -199,7 +199,7 @@ export default async function HubWelcomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Explore the Hub</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
               Your central destination for learning, connecting, and tracking your progress.
             </p>
           </div>
@@ -221,7 +221,7 @@ export default async function HubWelcomePage() {
                   <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">{page.title}</h3>
                 </div>
                 <div className="p-5">
-                  <p className="text-slate-600 text-sm">{page.description}</p>
+                  <p className="text-text-secondary text-sm">{page.description}</p>
                   <div className="mt-4 flex items-center text-green-600 font-medium text-sm group-hover:text-green-700">
                     Explore
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -287,7 +287,7 @@ export default async function HubWelcomePage() {
                   />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Apply for a Program</h3>
-                <p className="text-slate-600">Choose from healthcare, skilled trades, technology, or business programs. Many are fully funded.</p>
+                <p className="text-text-secondary">Choose from healthcare, skilled trades, technology, or business programs. Many are fully funded.</p>
               </div>
             </div>
 
@@ -303,7 +303,7 @@ export default async function HubWelcomePage() {
                   />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Get Enrolled</h3>
-                <p className="text-slate-600">Once approved, you'll receive access to your personalized Hub with your courses and schedule.</p>
+                <p className="text-text-secondary">Once approved, you'll receive access to your personalized Hub with your courses and schedule.</p>
               </div>
             </div>
 
@@ -319,7 +319,7 @@ export default async function HubWelcomePage() {
                   />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Complete & Succeed</h3>
-                <p className="text-slate-600">Follow the system's guidance, track your progress, and graduate ready for your new career.</p>
+                <p className="text-text-secondary">Follow the system's guidance, track your progress, and graduate ready for your new career.</p>
               </div>
             </div>
           </div>

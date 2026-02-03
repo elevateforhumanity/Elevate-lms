@@ -52,7 +52,7 @@ export function SupersonicScopeSection({ pageType }: SupersonicScopeSectionProps
         ))}
       </ul>
 
-      <p className="mt-4 text-sm text-slate-600 italic">
+      <p className="mt-4 text-sm text-text-secondary italic">
         This section clarifies scope only. It does not create separate rules, retention periods, 
         security claims, or disclosures beyond what is defined in the canonical governance documents.
       </p>

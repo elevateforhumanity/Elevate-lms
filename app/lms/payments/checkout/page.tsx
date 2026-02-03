@@ -60,7 +60,7 @@ function CheckoutContent() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-lg mx-auto px-4 py-12">
-        <Link href={`/programs/${program}-certification/enroll`} className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8">
+        <Link href={`/programs/${program}-certification/enroll`} className="inline-flex items-center gap-2 text-text-secondary hover:text-gray-900 mb-8">
           <ArrowLeft className="w-4 h-4" />
           Back to Enrollment
         </Link>
@@ -71,7 +71,7 @@ function CheckoutContent() {
               <CreditCard className="w-8 h-8 text-blue-600" />
             </div>
             <h1 className="text-2xl font-bold">Complete Payment</h1>
-            <p className="text-gray-600 mt-2">
+            <p className="text-text-secondary mt-2">
               {programNames[program] || program} - {type === 'down-payment' ? 'Down Payment' : 'Full Payment'}
             </p>
           </div>
@@ -82,7 +82,7 @@ function CheckoutContent() {
               <span className="text-2xl font-bold text-blue-600">${amount}</span>
             </div>
             {type === 'down-payment' && (
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-text-secondary mt-2">
                 Weekly payments of $50 will begin next Monday
               </p>
             )}
@@ -168,13 +168,13 @@ function CheckoutContent() {
             </button>
           </form>
 
-          <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500">
+          <div className="mt-6 flex items-center justify-center gap-2 text-sm text-text-secondary">
             <Lock className="w-4 h-4" />
             <span>Secured by Stripe - 256-bit SSL encryption</span>
           </div>
         </div>
 
-        <div className="mt-6 text-center text-sm text-gray-600">
+        <div className="mt-6 text-center text-sm text-text-secondary">
           <p>Questions? Contact us at</p>
           <p className="font-medium">elevate4humanityedu@gmail.com</p>
         </div>
@@ -189,7 +189,7 @@ export default function LMSPaymentCheckoutPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading checkout...</p>
+          <p className="mt-4 text-text-secondary">Loading checkout...</p>
         </div>
       </div>
     }>

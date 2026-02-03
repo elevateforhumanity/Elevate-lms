@@ -21,7 +21,7 @@ export default function AboutPage() {
             <Zap className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-4xl font-bold text-slate-900 mb-4">Welcome to Elevate Hub</h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
             A community of learners, mentors, and professionals committed to growth and success.
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function AboutPage() {
         {/* Mission */}
         <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-8">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">Our Mission</h2>
-          <p className="text-slate-600 leading-relaxed">
+          <p className="text-text-secondary leading-relaxed">
             Elevate for Humanity exists to break down barriers to career advancement. We believe everyone 
             deserves access to quality education, supportive community, and pathways to meaningful employment. 
             Through our platform, we connect learners with funded training programs, industry certifications, 
@@ -44,7 +44,7 @@ export default function AboutPage() {
               <Users className="w-6 h-6 text-blue-600" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">Community First</h3>
-            <p className="text-slate-600">
+            <p className="text-text-secondary">
               Learning is better together. Our community supports each other through study groups, 
               peer mentoring, and celebrating wins.
             </p>
@@ -55,7 +55,7 @@ export default function AboutPage() {
               <BookOpen className="w-6 h-6 text-green-600" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">Quality Education</h3>
-            <p className="text-slate-600">
+            <p className="text-text-secondary">
               Industry-aligned curriculum, expert instructors, and hands-on training that 
               prepares you for real-world success.
             </p>
@@ -66,7 +66,7 @@ export default function AboutPage() {
               <Target className="w-6 h-6 text-purple-600" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">Outcome Focused</h3>
-            <p className="text-slate-600">
+            <p className="text-text-secondary">
               We measure success by your success. Job placement, career advancement, and 
               financial stability are our goals.
             </p>
@@ -77,7 +77,7 @@ export default function AboutPage() {
               <Heart className="w-6 h-6 text-orange-600" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">Accessible to All</h3>
-            <p className="text-slate-600">
+            <p className="text-text-secondary">
               Through WIOA funding, grants, and scholarships, we work to ensure cost is never 
               a barrier to your education.
             </p>
@@ -87,7 +87,7 @@ export default function AboutPage() {
         {/* Community Guidelines */}
         <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-8">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">Community Guidelines</h2>
-          <ul className="space-y-3 text-slate-600">
+          <ul className="space-y-3 text-text-secondary">
             <li className="flex items-start gap-3">
               <span className="text-green-500 font-bold">1.</span>
               <span><strong>Be Respectful</strong> - Treat all members with kindness and respect.</span>

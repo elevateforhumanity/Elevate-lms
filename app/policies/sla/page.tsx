@@ -22,7 +22,7 @@ export default function SLAPage() {
               <Shield className="w-8 h-8 text-orange-600" />
               <h1 className="text-4xl font-bold text-black">Service Level Agreement</h1>
         </div>
-        <p className="text-sm text-gray-600">Last Updated: January 24, 2026</p>
+        <p className="text-sm text-text-secondary">Last Updated: January 24, 2026</p>
       </div>
 
       <div className="prose prose-lg max-w-none">

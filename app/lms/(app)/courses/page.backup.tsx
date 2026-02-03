@@ -23,7 +23,7 @@ export default async function InteractiveCoursesPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+          <p className="text-text-secondary">Please try again later.</p>
         </div>
       </div>
     );
@@ -228,8 +228,8 @@ export default async function InteractiveCoursesPage() {
                   </div>
                   <div className="p-4">
                     <h3 className="font-bold text-slate-900 mb-2">{course.title}</h3>
-                    <p className="text-slate-600 text-sm mb-3 line-clamp-2">{course.description}</p>
-                    <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                    <p className="text-text-secondary text-sm mb-3 line-clamp-2">{course.description}</p>
+                    <div className="flex items-center gap-4 text-sm text-text-secondary mb-4">
                       <span className="flex items-center gap-1">
                         <Clock className="w-4 h-4" />
                         {course.duration}
@@ -281,7 +281,7 @@ export default async function InteractiveCoursesPage() {
                     </div>
                     <div className="p-4">
                       <h3 className="font-bold text-slate-900 mb-2">{course.title}</h3>
-                      <p className="text-slate-600 text-sm line-clamp-2">
+                      <p className="text-text-secondary text-sm line-clamp-2">
                         {course.description || 'Start your learning journey'}
                       </p>
                       <span className="inline-flex items-center gap-1 text-blue-600 font-medium text-sm mt-3">

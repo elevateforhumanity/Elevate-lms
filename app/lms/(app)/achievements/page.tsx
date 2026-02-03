@@ -39,7 +39,7 @@ export default async function AchievementsPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+          <p className="text-text-secondary">Please try again later.</p>
         </div>
       </div>
     );
@@ -237,7 +237,7 @@ export default async function AchievementsPage() {
             <Trophy className="w-8 h-8 text-yellow-600" />
           </div>
           <h1 className="text-3xl font-bold text-slate-900">My Achievements</h1>
-          <p className="text-slate-600 mt-2">
+          <p className="text-text-secondary mt-2">
             Track your learning milestones and celebrate your progress
           </p>
         </div>
@@ -273,7 +273,7 @@ export default async function AchievementsPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.quizzesCompleted}</div>
-                <div className="text-xs text-slate-600">Quizzes Passed</div>
+                <div className="text-xs text-text-secondary">Quizzes Passed</div>
               </div>
             </div>
           </div>
@@ -284,7 +284,7 @@ export default async function AchievementsPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.perfectQuizzes}</div>
-                <div className="text-xs text-slate-600">Perfect Scores</div>
+                <div className="text-xs text-text-secondary">Perfect Scores</div>
               </div>
             </div>
           </div>
@@ -295,7 +295,7 @@ export default async function AchievementsPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.certificatesEarned}</div>
-                <div className="text-xs text-slate-600">Certificates</div>
+                <div className="text-xs text-text-secondary">Certificates</div>
               </div>
             </div>
           </div>
@@ -306,7 +306,7 @@ export default async function AchievementsPage() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.badgesEarned}</div>
-                <div className="text-xs text-slate-600">Badges</div>
+                <div className="text-xs text-text-secondary">Badges</div>
               </div>
             </div>
           </div>
@@ -332,7 +332,7 @@ export default async function AchievementsPage() {
                       <IconComponent className={`w-7 h-7 ${colors.text}`} />
                     </div>
                     <h3 className="font-bold text-slate-900 mb-1">{milestone.title}</h3>
-                    <p className="text-sm text-slate-600 mb-2">{milestone.description}</p>
+                    <p className="text-sm text-text-secondary mb-2">{milestone.description}</p>
                     <div className="flex items-center justify-center gap-1 text-green-600 font-semibold">
                       <Star className="w-4 h-4" />
                       +{milestone.points} pts
@@ -365,7 +365,7 @@ export default async function AchievementsPage() {
                       <IconComponent className={`w-7 h-7 ${colors.text}`} />
                     </div>
                     <h3 className="font-bold text-slate-900 mb-1">{milestone.title}</h3>
-                    <p className="text-sm text-slate-600 mb-3">{milestone.description}</p>
+                    <p className="text-sm text-text-secondary mb-3">{milestone.description}</p>
                     <div className="mb-2">
                       <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
                         <div
@@ -374,7 +374,7 @@ export default async function AchievementsPage() {
                         />
                       </div>
                     </div>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-text-secondary">
                       {milestone.current} / {milestone.target} ({progress}%)
                     </p>
                   </div>
@@ -403,7 +403,7 @@ export default async function AchievementsPage() {
                       <IconComponent className="w-7 h-7 text-slate-400" />
                     </div>
                     <h3 className="font-bold text-slate-700 mb-1">{milestone.title}</h3>
-                    <p className="text-sm text-slate-500 mb-2">{milestone.description}</p>
+                    <p className="text-sm text-text-secondary mb-2">{milestone.description}</p>
                     <div className="flex items-center justify-center gap-1 text-slate-400 text-sm">
                       <Star className="w-4 h-4" />
                       {milestone.points} pts
@@ -420,7 +420,7 @@ export default async function AchievementsPage() {
           <div className="bg-white rounded-2xl border border-slate-200 p-16 text-center">
             <Trophy className="w-16 h-16 text-slate-300 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-slate-900 mb-2">Start Your Journey</h2>
-            <p className="text-slate-600 mb-6">
+            <p className="text-text-secondary mb-6">
               Begin learning to unlock achievements and earn points!
             </p>
             <Link

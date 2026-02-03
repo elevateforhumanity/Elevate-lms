@@ -46,7 +46,7 @@ export default async function AlumniJobsPage() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Alumni Job Board</h1>
-          <p className="text-gray-600 mt-1">Exclusive opportunities from our employer partners</p>
+          <p className="text-text-secondary mt-1">Exclusive opportunities from our employer partners</p>
         </div>
 
         {jobList.length > 0 ? (
@@ -60,8 +60,8 @@ export default async function AlumniJobsPage() {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900">{job.title}</h3>
-                      <p className="text-gray-600">{job.company}</p>
-                      <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-gray-500">
+                      <p className="text-text-secondary">{job.company}</p>
+                      <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-text-secondary">
                         <span className="flex items-center gap-1">
                           <MapPin className="w-4 h-4" />
                           {job.location || 'Remote'}
@@ -87,7 +87,7 @@ export default async function AlumniJobsPage() {
                   </Link>
                 </div>
                 {job.description && (
-                  <p className="text-gray-600 mt-4 line-clamp-2">{job.description}</p>
+                  <p className="text-text-secondary mt-4 line-clamp-2">{job.description}</p>
                 )}
               </div>
             ))}
@@ -96,7 +96,7 @@ export default async function AlumniJobsPage() {
           <div className="bg-white rounded-xl border p-12 text-center">
             <Briefcase className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h2 className="text-xl font-semibold text-gray-900 mb-2">No job postings yet</h2>
-            <p className="text-gray-600 mb-6">Check back soon for exclusive job opportunities from our employer partners.</p>
+            <p className="text-text-secondary mb-6">Check back soon for exclusive job opportunities from our employer partners.</p>
             <Link 
               href="/lms/alumni"
               className="text-blue-600 hover:underline"

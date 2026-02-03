@@ -204,9 +204,8 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body
-        className={`${inter.className} min-h-dvh bg-white antialiased`}
+        className={`${inter.className} font-sans text-base text-text-primary min-h-dvh bg-white antialiased`}
         style={{
-          fontSize: '16px',
           backgroundColor: '#ffffff',
         }}
       >

@@ -1,6 +1,10 @@
 // Marketing layout - uses root layout's header/footer via ConditionalLayout
-// This layout is for route grouping only, no additional wrapper needed
+// Applies larger text size for marketing pages
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <div className="text-lg leading-relaxed text-text-primary">
+      {children}
+    </div>
+  );
 }

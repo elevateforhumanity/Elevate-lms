@@ -73,7 +73,7 @@ export default async function CoursePage({ params }: { params: Params }) {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+          <p className="text-text-secondary">Please try again later.</p>
         </div>
       </div>
     );
@@ -211,7 +211,7 @@ export default async function CoursePage({ params }: { params: Params }) {
                   {/* Progress */}
                   <div className="mb-4">
                     <div className="flex justify-between text-sm mb-2">
-                      <span className="text-slate-600">Progress</span>
+                      <span className="text-text-secondary">Progress</span>
                       <span className="font-semibold">{progressPercentage}%</span>
                     </div>
                     <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
@@ -279,7 +279,7 @@ export default async function CoursePage({ params }: { params: Params }) {
                           <div className="flex-1">
                             <h3 className="font-medium text-slate-900">{lesson.title}</h3>
                             {lesson.duration_minutes && (
-                              <p className="text-sm text-slate-500">{lesson.duration_minutes} min</p>
+                              <p className="text-sm text-text-secondary">{lesson.duration_minutes} min</p>
                             )}
                           </div>
                         </div>
@@ -303,7 +303,7 @@ export default async function CoursePage({ params }: { params: Params }) {
                           </div>
                           <div className="flex-1">
                             <h3 className="font-medium text-slate-900">{lesson.title}</h3>
-                            <div className="flex items-center gap-3 text-sm text-slate-500">
+                            <div className="flex items-center gap-3 text-sm text-text-secondary">
                               {lesson.duration_minutes && (
                                 <span>{lesson.duration_minutes} min</span>
                               )}
@@ -322,7 +322,7 @@ export default async function CoursePage({ params }: { params: Params }) {
             ) : (
               <div className="bg-white rounded-2xl border border-slate-200 p-8 text-center">
                 <BookOpen className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-                <p className="text-slate-600">No lessons available yet.</p>
+                <p className="text-text-secondary">No lessons available yet.</p>
               </div>
             )}
 
@@ -342,7 +342,7 @@ export default async function CoursePage({ params }: { params: Params }) {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-medium text-slate-900">{quiz.title}</h3>
-                        <p className="text-sm text-slate-500">Quiz</p>
+                        <p className="text-sm text-text-secondary">Quiz</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-slate-400" />
                     </Link>
@@ -359,21 +359,21 @@ export default async function CoursePage({ params }: { params: Params }) {
               <h3 className="font-semibold text-slate-900 mb-4">Course Details</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600">Lessons</span>
+                  <span className="text-text-secondary">Lessons</span>
                   <span className="font-medium">{typedLessons.length}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600">Duration</span>
+                  <span className="text-text-secondary">Duration</span>
                   <span className="font-medium">
                     {totalHours > 0 ? `${totalHours}h ` : ''}{remainingMinutes}m
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600">Quizzes</span>
+                  <span className="text-text-secondary">Quizzes</span>
                   <span className="font-medium">{quizzes?.length || 0}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600">Certificate</span>
+                  <span className="text-text-secondary">Certificate</span>
                   <span className="font-medium text-green-600">Yes</span>
                 </div>
               </div>
@@ -385,19 +385,19 @@ export default async function CoursePage({ params }: { params: Params }) {
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600">Industry-relevant skills</span>
+                  <span className="text-text-secondary">Industry-relevant skills</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600">Hands-on practical experience</span>
+                  <span className="text-text-secondary">Hands-on practical experience</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600">Professional certification</span>
+                  <span className="text-text-secondary">Professional certification</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600">Career-ready knowledge</span>
+                  <span className="text-text-secondary">Career-ready knowledge</span>
                 </li>
               </ul>
             </div>

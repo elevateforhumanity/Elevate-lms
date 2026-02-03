@@ -60,7 +60,7 @@ export default function ApplicationStatusPage() {
         <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
           <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
           <h1 className="text-2xl font-bold mb-2">No Application Found</h1>
-          <p className="text-gray-600 mb-6">You haven't submitted an application yet.</p>
+          <p className="text-text-secondary mb-6">You haven't submitted an application yet.</p>
           <Link
             href="/lms/apply"
             className="inline-block bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700"
@@ -138,21 +138,21 @@ export default function ApplicationStatusPage() {
             <h2 className="font-semibold text-gray-900 mb-4">Application Details</h2>
             <div className="grid grid-cols-2 gap-4 text-left">
               <div>
-                <span className="text-gray-500 text-sm">Program</span>
+                <span className="text-text-secondary text-sm">Program</span>
                 <p className="font-medium">{application.program_id || 'Not specified'}</p>
               </div>
               <div>
-                <span className="text-gray-500 text-sm">Submitted</span>
+                <span className="text-text-secondary text-sm">Submitted</span>
                 <p className="font-medium">
                   {new Date(application.submitted_at).toLocaleDateString()}
                 </p>
               </div>
               <div>
-                <span className="text-gray-500 text-sm">Application ID</span>
+                <span className="text-text-secondary text-sm">Application ID</span>
                 <p className="font-medium text-xs">{application.id}</p>
               </div>
               <div>
-                <span className="text-gray-500 text-sm">Status</span>
+                <span className="text-text-secondary text-sm">Status</span>
                 <p className="font-medium capitalize">{application.status}</p>
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function ApplicationStatusPage() {
           {application.status === 'pending' && (
             <div className="mt-8 p-4 bg-white rounded-lg">
               <h3 className="font-semibold mb-2">While you wait:</h3>
-              <ul className="text-left text-gray-600 space-y-1">
+              <ul className="text-left text-text-secondary space-y-1">
                 <li>• Complete your student profile</li>
                 <li>• Explore available courses</li>
                 <li>• Prepare any required documents</li>
@@ -182,7 +182,7 @@ export default function ApplicationStatusPage() {
       </div>
 
       <div className="mt-6 text-center">
-        <p className="text-gray-600">
+        <p className="text-text-secondary">
           Questions? Call us at{' '}
           <a href="tel:317-314-3757" className="text-emerald-600 font-medium">
             317-314-3757

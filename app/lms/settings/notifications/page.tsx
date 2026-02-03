@@ -171,7 +171,7 @@ export default function NotificationSettingsPage() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Notification Settings</h1>
-              <p className="text-gray-600 mt-1">Manage how you receive notifications</p>
+              <p className="text-text-secondary mt-1">Manage how you receive notifications</p>
             </div>
             <button
               onClick={handleSave}
@@ -209,7 +209,7 @@ export default function NotificationSettingsPage() {
                 <GraduationCap className="w-5 h-5 text-gray-400" />
                 <div>
                   <p className="font-medium text-gray-900">Course Updates</p>
-                  <p className="text-sm text-gray-500">New content, announcements, and changes</p>
+                  <p className="text-sm text-text-secondary">New content, announcements, and changes</p>
                 </div>
               </div>
               <Toggle checked={settings.email.course_updates} onChange={(v) => updateEmailSetting('course_updates', v)} />
@@ -219,7 +219,7 @@ export default function NotificationSettingsPage() {
                 <Calendar className="w-5 h-5 text-gray-400" />
                 <div>
                   <p className="font-medium text-gray-900">Assignment Reminders</p>
-                  <p className="text-sm text-gray-500">Upcoming due dates and deadlines</p>
+                  <p className="text-sm text-text-secondary">Upcoming due dates and deadlines</p>
                 </div>
               </div>
               <Toggle checked={settings.email.assignment_reminders} onChange={(v) => updateEmailSetting('assignment_reminders', v)} />
@@ -229,7 +229,7 @@ export default function NotificationSettingsPage() {
                 <GraduationCap className="w-5 h-5 text-gray-400" />
                 <div>
                   <p className="font-medium text-gray-900">Grade Posted</p>
-                  <p className="text-sm text-gray-500">When instructors post grades or feedback</p>
+                  <p className="text-sm text-text-secondary">When instructors post grades or feedback</p>
                 </div>
               </div>
               <Toggle checked={settings.email.grade_posted} onChange={(v) => updateEmailSetting('grade_posted', v)} />
@@ -239,7 +239,7 @@ export default function NotificationSettingsPage() {
                 <MessageSquare className="w-5 h-5 text-gray-400" />
                 <div>
                   <p className="font-medium text-gray-900">Instructor Messages</p>
-                  <p className="text-sm text-gray-500">Direct messages from instructors</p>
+                  <p className="text-sm text-text-secondary">Direct messages from instructors</p>
                 </div>
               </div>
               <Toggle checked={settings.email.instructor_messages} onChange={(v) => updateEmailSetting('instructor_messages', v)} />
@@ -249,7 +249,7 @@ export default function NotificationSettingsPage() {
                 <DollarSign className="w-5 h-5 text-gray-400" />
                 <div>
                   <p className="font-medium text-gray-900">Billing Alerts</p>
-                  <p className="text-sm text-gray-500">Payment confirmations and reminders</p>
+                  <p className="text-sm text-text-secondary">Payment confirmations and reminders</p>
                 </div>
               </div>
               <Toggle checked={settings.email.billing_alerts} onChange={(v) => updateEmailSetting('billing_alerts', v)} />
@@ -259,7 +259,7 @@ export default function NotificationSettingsPage() {
                 <Mail className="w-5 h-5 text-gray-400" />
                 <div>
                   <p className="font-medium text-gray-900">Weekly Digest</p>
-                  <p className="text-sm text-gray-500">Summary of your weekly activity</p>
+                  <p className="text-sm text-text-secondary">Summary of your weekly activity</p>
                 </div>
               </div>
               <Toggle checked={settings.email.weekly_digest} onChange={(v) => updateEmailSetting('weekly_digest', v)} />
@@ -277,21 +277,21 @@ export default function NotificationSettingsPage() {
             <div className="px-6 py-4 flex items-center justify-between">
               <div>
                 <p className="font-medium text-gray-900">Course Updates</p>
-                <p className="text-sm text-gray-500">Real-time course notifications</p>
+                <p className="text-sm text-text-secondary">Real-time course notifications</p>
               </div>
               <Toggle checked={settings.push.course_updates} onChange={(v) => updatePushSetting('course_updates', v)} />
             </div>
             <div className="px-6 py-4 flex items-center justify-between">
               <div>
                 <p className="font-medium text-gray-900">Assignment Reminders</p>
-                <p className="text-sm text-gray-500">Push reminders for deadlines</p>
+                <p className="text-sm text-text-secondary">Push reminders for deadlines</p>
               </div>
               <Toggle checked={settings.push.assignment_reminders} onChange={(v) => updatePushSetting('assignment_reminders', v)} />
             </div>
             <div className="px-6 py-4 flex items-center justify-between">
               <div>
                 <p className="font-medium text-gray-900">Live Sessions</p>
-                <p className="text-sm text-gray-500">Alerts when live sessions start</p>
+                <p className="text-sm text-text-secondary">Alerts when live sessions start</p>
               </div>
               <Toggle checked={settings.push.live_sessions} onChange={(v) => updatePushSetting('live_sessions', v)} />
             </div>
@@ -308,21 +308,21 @@ export default function NotificationSettingsPage() {
             <div className="px-6 py-4 flex items-center justify-between">
               <div>
                 <p className="font-medium text-gray-900">Urgent Alerts</p>
-                <p className="text-sm text-gray-500">Critical updates and emergencies</p>
+                <p className="text-sm text-text-secondary">Critical updates and emergencies</p>
               </div>
               <Toggle checked={settings.sms.urgent_alerts} onChange={(v) => updateSmsSetting('urgent_alerts', v)} />
             </div>
             <div className="px-6 py-4 flex items-center justify-between">
               <div>
                 <p className="font-medium text-gray-900">Appointment Reminders</p>
-                <p className="text-sm text-gray-500">Reminders for scheduled appointments</p>
+                <p className="text-sm text-text-secondary">Reminders for scheduled appointments</p>
               </div>
               <Toggle checked={settings.sms.appointment_reminders} onChange={(v) => updateSmsSetting('appointment_reminders', v)} />
             </div>
             <div className="px-6 py-4 flex items-center justify-between">
               <div>
                 <p className="font-medium text-gray-900">Payment Reminders</p>
-                <p className="text-sm text-gray-500">SMS reminders for upcoming payments</p>
+                <p className="text-sm text-text-secondary">SMS reminders for upcoming payments</p>
               </div>
               <Toggle checked={settings.sms.payment_reminders} onChange={(v) => updateSmsSetting('payment_reminders', v)} />
             </div>

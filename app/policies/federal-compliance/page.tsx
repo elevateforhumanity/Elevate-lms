@@ -64,7 +64,7 @@ export default function FederalCompliancePage() {
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900">FERPA Compliance</h2>
-              <p className="text-gray-600">Family Educational Rights and Privacy Act</p>
+              <p className="text-text-secondary">Family Educational Rights and Privacy Act</p>
             </div>
           </div>
           
@@ -107,7 +107,7 @@ export default function FederalCompliancePage() {
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900">Title IX Compliance</h2>
-              <p className="text-gray-600">Education Amendments of 1972</p>
+              <p className="text-text-secondary">Education Amendments of 1972</p>
             </div>
           </div>
           
@@ -153,7 +153,7 @@ export default function FederalCompliancePage() {
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900">ADA & Section 504 Compliance</h2>
-              <p className="text-gray-600">Americans with Disabilities Act & Rehabilitation Act</p>
+              <p className="text-text-secondary">Americans with Disabilities Act & Rehabilitation Act</p>
             </div>
           </div>
           
@@ -194,7 +194,7 @@ export default function FederalCompliancePage() {
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900">WIOA Compliance</h2>
-              <p className="text-gray-600">Workforce Innovation and Opportunity Act</p>
+              <p className="text-text-secondary">Workforce Innovation and Opportunity Act</p>
             </div>
           </div>
           

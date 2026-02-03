@@ -27,38 +27,37 @@ export default {
         ],
       },
 
-      // Typography Scale (LOCKED)
+      // Typography Scale (CANONICAL - DO NOT MODIFY)
       fontSize: {
-        // Display (Hero headlines)
-        'display-lg': [
-          '3.75rem',
-          { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' },
-        ], // 60px
-        'display-md': [
-          '3rem',
-          { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' },
-        ], // 48px
-        'display-sm': [
-          '2.25rem',
-          { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '700' },
-        ], // 36px
+        // Readable system-wide scale
+        'xs': ['13px', { lineHeight: '1.5' }],
+        'sm': ['14px', { lineHeight: '1.5' }],
+        'base': ['16px', { lineHeight: '1.6' }],
+        'lg': ['18px', { lineHeight: '1.75' }],
+        'xl': ['20px', { lineHeight: '1.5' }],
+        '2xl': ['24px', { lineHeight: '1.4' }],
+        '3xl': ['30px', { lineHeight: '1.3' }],
+        '4xl': ['36px', { lineHeight: '1.2' }],
+        '5xl': ['48px', { lineHeight: '1.15' }],
 
-        // Headings
-        h1: [
-          '2rem',
-          { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '700' },
-        ], // 32px
-        h2: ['1.5rem', { lineHeight: '1.3', fontWeight: '700' }], // 24px
-        h3: ['1.25rem', { lineHeight: '1.4', fontWeight: '600' }], // 20px
-        h4: ['1.125rem', { lineHeight: '1.4', fontWeight: '600' }], // 18px
+        // Display (Hero headlines) - kept for compatibility
+        'display-lg': ['48px', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-md': ['36px', { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-sm': ['30px', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '700' }],
 
-        // Body
-        'body-lg': ['1.125rem', { lineHeight: '1.6' }], // 18px
-        body: ['1rem', { lineHeight: '1.6' }], // 16px
-        'body-sm': ['0.875rem', { lineHeight: '1.5' }], // 14px
+        // Headings - kept for compatibility
+        h1: ['32px', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '700' }],
+        h2: ['24px', { lineHeight: '1.4', fontWeight: '700' }],
+        h3: ['20px', { lineHeight: '1.4', fontWeight: '600' }],
+        h4: ['18px', { lineHeight: '1.4', fontWeight: '600' }],
+
+        // Body - kept for compatibility
+        'body-lg': ['18px', { lineHeight: '1.75' }],
+        'body': ['16px', { lineHeight: '1.6' }],
+        'body-sm': ['14px', { lineHeight: '1.5' }],
 
         // Meta/Small
-        meta: ['0.75rem', { lineHeight: '1.5', fontWeight: '500' }], // 12px
+        'meta': ['13px', { lineHeight: '1.5', fontWeight: '500' }],
       },
 
       // Spacing Scale (LOCKED)
@@ -132,6 +131,12 @@ export default {
         'fade-in-right': 'fade-in-right 0.6s ease-out forwards',
       },
       colors: {
+        // Canonical text colors (fixes washed-out gray)
+        'text-primary': '#111827',
+        'text-secondary': '#374151',
+        'text-muted': '#6B7280',
+        'text-disabled': '#9CA3AF',
+
         // Primary Brand Colors - Red, Blue, White, Black
         brand: {
           red: {

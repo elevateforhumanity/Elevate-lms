@@ -36,7 +36,7 @@ export default async function EnrollPage({ searchParams }: Props) {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+          <p className="text-text-secondary">Please try again later.</p>
         </div>
       </div>
     );
@@ -104,7 +104,7 @@ export default async function EnrollPage({ searchParams }: Props) {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900 mb-2">Enroll in Courses</h1>
-          <p className="text-slate-600">
+          <p className="text-text-secondary">
             Choose from our catalog of courses to start your learning journey.
           </p>
         </div>
@@ -142,13 +142,13 @@ export default async function EnrollPage({ searchParams }: Props) {
                         {course.title}
                       </h3>
                       {course.description && (
-                        <p className="text-slate-600 text-sm mb-4 line-clamp-2">
+                        <p className="text-text-secondary text-sm mb-4 line-clamp-2">
                           {course.description}
                         </p>
                       )}
 
                       {/* Course Meta */}
-                      <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                      <div className="flex items-center gap-4 text-sm text-text-secondary mb-4">
                         {course.duration_hours && (
                           <div className="flex items-center gap-1">
                             <Clock className="w-4 h-4" />
@@ -213,13 +213,13 @@ export default async function EnrollPage({ searchParams }: Props) {
                         {course.course_name}
                       </h3>
                       {course.description && (
-                        <p className="text-slate-600 text-sm mb-4 line-clamp-2">
+                        <p className="text-text-secondary text-sm mb-4 line-clamp-2">
                           {course.description}
                         </p>
                       )}
 
                       {/* Course Meta */}
-                      <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                      <div className="flex items-center gap-4 text-sm text-text-secondary mb-4">
                         {course.hours && (
                           <div className="flex items-center gap-1">
                             <Clock className="w-4 h-4" />
@@ -276,7 +276,7 @@ export default async function EnrollPage({ searchParams }: Props) {
               <CheckCircle className="w-8 h-8 text-blue-600" />
             </div>
             <h2 className="text-xl font-bold text-slate-900 mb-2">All Caught Up!</h2>
-            <p className="text-slate-600 mb-6">
+            <p className="text-text-secondary mb-6">
               You&apos;re enrolled in all available courses. Check back later for new courses.
             </p>
             <Link

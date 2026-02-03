@@ -68,7 +68,7 @@ export default function EnrollmentForm({ courseId, courseName, price, userEmail,
         <h3 className="font-semibold text-slate-900 mb-3">Enrolling as:</h3>
         <div className="space-y-2">
           <p className="text-slate-700">{userName || 'Student'}</p>
-          <p className="text-slate-600 text-sm">{userEmail}</p>
+          <p className="text-text-secondary text-sm">{userEmail}</p>
         </div>
       </div>
 
@@ -77,7 +77,7 @@ export default function EnrollmentForm({ courseId, courseName, price, userEmail,
         <div className="flex justify-between items-center">
           <div>
             <p className="font-medium text-slate-900">{courseName}</p>
-            <p className="text-sm text-slate-600">Full course access</p>
+            <p className="text-sm text-text-secondary">Full course access</p>
           </div>
           <div className="text-right">
             {isFree ? (
@@ -97,7 +97,7 @@ export default function EnrollmentForm({ courseId, courseName, price, userEmail,
           onChange={(e) => setAgreed(e.target.checked)}
           className="mt-1 w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
         />
-        <span className="text-sm text-slate-600">
+        <span className="text-sm text-text-secondary">
           I agree to the{' '}
           <a href="/terms" className="text-blue-600 hover:underline">Terms of Service</a>
           {' '}and{' '}
@@ -139,14 +139,14 @@ export default function EnrollmentForm({ courseId, courseName, price, userEmail,
 
       {/* Security Note */}
       {!isFree && (
-        <p className="text-center text-sm text-slate-500">
+        <p className="text-center text-sm text-text-secondary">
           Secure payment powered by Stripe. Your payment information is encrypted.
         </p>
       )}
 
       {/* Free Course Note */}
       {isFree && (
-        <p className="text-center text-sm text-slate-500">
+        <p className="text-center text-sm text-text-secondary">
           This course is completely free. No payment required.
         </p>
       )}

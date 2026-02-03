@@ -95,7 +95,7 @@ export default function PoliciesIndexPage() {
           The following policies describe how the Elevate for Humanity platform is operated, 
           monitored, and governed.
         </p>
-        <p className="text-gray-600">
+        <p className="text-text-secondary">
           They outline our service targets, incident response procedures, disaster recovery 
           practices, data retention standards, and security controls in support of partners, 
           agencies, training providers, and other institutional stakeholders.
@@ -121,7 +121,7 @@ export default function PoliciesIndexPage() {
                   <Icon className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <h3 className="font-semibold text-black">{policy.name}</h3>
-                    <p className="text-sm text-gray-600">{policy.description}</p>
+                    <p className="text-sm text-text-secondary">{policy.description}</p>
                   </div>
                 </Link>
               );

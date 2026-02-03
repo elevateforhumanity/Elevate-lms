@@ -50,7 +50,7 @@ export default async function QuizPage({ params }: Props) {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+          <p className="text-text-secondary">Please try again later.</p>
         </div>
       </div>
     );
@@ -147,7 +147,7 @@ export default async function QuizPage({ params }: Props) {
         {/* Back Link */}
         <Link 
           href="/lms/quizzes" 
-          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-6"
+          className="inline-flex items-center gap-2 text-text-secondary hover:text-slate-900 mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Quizzes
@@ -176,20 +176,20 @@ export default async function QuizPage({ params }: Props) {
           </div>
 
           {quiz.description && (
-            <p className="text-slate-600 mb-6">{quiz.description}</p>
+            <p className="text-text-secondary mb-6">{quiz.description}</p>
           )}
 
           {/* Quiz Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div className="bg-slate-50 rounded-xl p-4">
-              <div className="flex items-center gap-2 text-slate-600 mb-1">
+              <div className="flex items-center gap-2 text-text-secondary mb-1">
                 <FileText className="w-4 h-4" />
                 <span className="text-sm">Questions</span>
               </div>
               <p className="text-2xl font-bold text-slate-900">{questions?.length || 0}</p>
             </div>
             <div className="bg-slate-50 rounded-xl p-4">
-              <div className="flex items-center gap-2 text-slate-600 mb-1">
+              <div className="flex items-center gap-2 text-text-secondary mb-1">
                 <Clock className="w-4 h-4" />
                 <span className="text-sm">Time Limit</span>
               </div>
@@ -198,14 +198,14 @@ export default async function QuizPage({ params }: Props) {
               </p>
             </div>
             <div className="bg-slate-50 rounded-xl p-4">
-              <div className="flex items-center gap-2 text-slate-600 mb-1">
+              <div className="flex items-center gap-2 text-text-secondary mb-1">
                 <Target className="w-4 h-4" />
                 <span className="text-sm">Passing Score</span>
               </div>
               <p className="text-2xl font-bold text-slate-900">{quiz.passing_score || 70}%</p>
             </div>
             <div className="bg-slate-50 rounded-xl p-4">
-              <div className="flex items-center gap-2 text-slate-600 mb-1">
+              <div className="flex items-center gap-2 text-text-secondary mb-1">
                 <Trophy className="w-4 h-4" />
                 <span className="text-sm">Total Points</span>
               </div>
@@ -278,7 +278,7 @@ export default async function QuizPage({ params }: Props) {
                         <p className="font-semibold text-slate-900">
                           Attempt {completedAttempts.length - index}
                         </p>
-                        <p className="text-sm text-slate-600">
+                        <p className="text-sm text-text-secondary">
                           {new Date(attempt.completed_at).toLocaleDateString('en-US', {
                             month: 'short',
                             day: 'numeric',
@@ -295,7 +295,7 @@ export default async function QuizPage({ params }: Props) {
                       }`}>
                         {attempt.score}%
                       </p>
-                      <p className="text-sm text-slate-600">
+                      <p className="text-sm text-text-secondary">
                         {passed ? 'Passed' : 'Not Passed'}
                       </p>
                     </div>

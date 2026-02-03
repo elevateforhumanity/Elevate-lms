@@ -23,9 +23,9 @@ export default async function BuilderPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
-          <nav className="text-sm mb-4"><ol className="flex items-center space-x-2 text-gray-500"><li><Link href="/lms" className="hover:text-primary">LMS</Link></li><li>/</li><li className="text-gray-900 font-medium">Builder</li></ol></nav>
+          <nav className="text-sm mb-4"><ol className="flex items-center space-x-2 text-text-secondary"><li><Link href="/lms" className="hover:text-primary">LMS</Link></li><li>/</li><li className="text-gray-900 font-medium">Builder</li></ol></nav>
           <h1 className="text-3xl font-bold text-gray-900">Course Builder</h1>
-          <p className="text-gray-600 mt-2">Create and customize course content</p>
+          <p className="text-text-secondary mt-2">Create and customize course content</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <div className="lg:col-span-1 bg-white rounded-lg shadow-sm border p-4">
@@ -41,7 +41,7 @@ export default async function BuilderPage() {
           </div>
           <div className="lg:col-span-3 bg-white rounded-lg shadow-sm border p-6">
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center min-h-[400px] flex items-center justify-center">
-              <div><svg className="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg><p className="text-gray-500">Drag content blocks here to build your course</p></div>
+              <div><svg className="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg><p className="text-text-secondary">Drag content blocks here to build your course</p></div>
             </div>
           </div>
         </div>

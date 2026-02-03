@@ -132,7 +132,7 @@ export default function AITutorPage() {
               className={`flex-1 p-3 rounded-xl border-2 transition ${
                 mode === m.id
                   ? 'border-purple-600 bg-purple-50 text-purple-700'
-                  : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                  : 'border-slate-200 bg-white text-text-secondary hover:border-slate-300'
               }`}
             >
               <div className="font-semibold">{m.label}</div>
@@ -197,7 +197,7 @@ export default function AITutorPage() {
                   key={index}
                   onClick={() => sendMessage(prompt.prompt)}
                   disabled={isLoading}
-                  className="flex items-center gap-2 px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm text-slate-600 hover:border-purple-300 hover:text-purple-600 transition whitespace-nowrap disabled:opacity-50"
+                  className="flex items-center gap-2 px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm text-text-secondary hover:border-purple-300 hover:text-purple-600 transition whitespace-nowrap disabled:opacity-50"
                 >
                   <prompt.icon className="w-4 h-4" />
                   {prompt.text}

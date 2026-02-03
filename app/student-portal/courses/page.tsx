@@ -59,7 +59,7 @@ export default async function StudentCoursesPage() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">My Courses</h1>
-          <p className="text-gray-600 mt-1">Continue your learning journey</p>
+          <p className="text-text-secondary mt-1">Continue your learning journey</p>
         </div>
 
         {courses.length > 0 ? (
@@ -79,19 +79,19 @@ export default async function StudentCoursesPage() {
                       {course.status === 'completed' ? 'Completed' : 'In Progress'}
                     </span>
                     {course.durationWeeks > 0 && (
-                      <span className="text-xs text-gray-500 flex items-center gap-1">
+                      <span className="text-xs text-text-secondary flex items-center gap-1">
                         <Clock className="w-3 h-3" />
                         {course.durationWeeks} weeks
                       </span>
                     )}
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-1">{course.name}</h3>
-                  <p className="text-sm text-gray-500 line-clamp-2 mb-4">{course.description}</p>
+                  <p className="text-sm text-text-secondary line-clamp-2 mb-4">{course.description}</p>
                   
                   {/* Progress Bar */}
                   <div className="mb-4">
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-gray-600">Progress</span>
+                      <span className="text-text-secondary">Progress</span>
                       <span className="font-medium">{course.progress}%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
@@ -128,7 +128,7 @@ export default async function StudentCoursesPage() {
           <div className="bg-white rounded-xl border p-12 text-center">
             <BookOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h2 className="text-xl font-semibold text-gray-900 mb-2">No courses yet</h2>
-            <p className="text-gray-600 mb-6">Explore our programs and start learning today.</p>
+            <p className="text-text-secondary mb-6">Explore our programs and start learning today.</p>
             <Link
               href="/programs"
               className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"

@@ -200,7 +200,7 @@ export default async function ResourcesPage() {
         </div>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
+          <p className="text-text-secondary">Please try again later.</p>
         </div>
       </div>
     );
@@ -222,7 +222,7 @@ export default async function ResourcesPage() {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold text-gray-900">Student Resources</h1>
-          <p className="text-gray-600 mt-2">
+          <p className="text-text-secondary mt-2">
             Everything you need to succeed in your program and career
           </p>
         </div>
@@ -292,7 +292,7 @@ export default async function ResourcesPage() {
                             <p className="font-medium text-gray-900">
                               {resource.title}
                             </p>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-text-secondary">
                               {resource.description}
                             </p>
                           </div>
@@ -324,11 +324,11 @@ export default async function ResourcesPage() {
                   </div>
                   <div>
                     <p className="font-medium text-gray-900">{resource.title}</p>
-                    <p className="text-sm text-gray-600">{resource.description}</p>
+                    <p className="text-sm text-text-secondary">{resource.description}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-xs text-gray-500">{resource.fileType}</span>
+                  <span className="text-xs text-text-secondary">{resource.fileType}</span>
                   <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
                     <Download className="w-4 h-4" />
                     <span className="text-sm font-medium">Download</span>

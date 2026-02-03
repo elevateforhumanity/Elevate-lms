@@ -66,9 +66,9 @@ export default async function ChatPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-6">
-          <nav className="text-sm mb-4"><ol className="flex items-center space-x-2 text-gray-500"><li><Link href="/lms" className="hover:text-primary">LMS</Link></li><li>/</li><li className="text-gray-900 font-medium">Chat</li></ol></nav>
+          <nav className="text-sm mb-4"><ol className="flex items-center space-x-2 text-text-secondary"><li><Link href="/lms" className="hover:text-primary">LMS</Link></li><li>/</li><li className="text-gray-900 font-medium">Chat</li></ol></nav>
           <h1 className="text-3xl font-bold text-gray-900">Messages</h1>
-          <p className="text-gray-600 mt-2">Connect with instructors and classmates</p>
+          <p className="text-text-secondary mt-2">Connect with instructors and classmates</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-1 bg-white rounded-lg shadow-sm border">
@@ -83,13 +83,13 @@ export default async function ChatPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-medium truncate">{conv.name}</p>
-                        <p className="text-sm text-gray-500 truncate">{conv.lastMessage}</p>
+                        <p className="text-sm text-text-secondary truncate">{conv.lastMessage}</p>
                       </div>
                     </div>
                   </div>
                 ))
               ) : (
-                <div className="p-4 text-center text-gray-500">
+                <div className="p-4 text-center text-text-secondary">
                   <p>No conversations yet</p>
                 </div>
               )}
@@ -123,7 +123,7 @@ export default async function ChatPage() {
                 </div>
               </>
             ) : (
-              <div className="flex-1 flex items-center justify-center text-gray-500">
+              <div className="flex-1 flex items-center justify-center text-text-secondary">
                 <p>Select a conversation or start a new one</p>
               </div>
             )}

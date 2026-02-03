@@ -21,7 +21,7 @@ export default function AnnouncementsPage() {
 
       <div className="max-w-7xl mx-auto px-4 pb-16">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Announcements</h1>
-        <p className="text-gray-600 mb-8">
+        <p className="text-text-secondary mb-8">
           Stay updated with the latest news and important information.
         </p>
 

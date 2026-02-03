@@ -86,7 +86,7 @@ export default async function AssignmentDetailPage({ params }: Props) {
         {/* Back Link */}
         <Link
           href="/lms/assignments"
-          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-6"
+          className="inline-flex items-center gap-2 text-text-secondary hover:text-slate-900 mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Assignments
@@ -176,7 +176,7 @@ export default async function AssignmentDetailPage({ params }: Props) {
                         rel="noopener noreferrer"
                         className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg hover:bg-slate-100"
                       >
-                        <FileText className="w-5 h-5 text-slate-500" />
+                        <FileText className="w-5 h-5 text-text-secondary" />
                         <span className="flex-1">{attachment.name}</span>
                         <Download className="w-4 h-4 text-slate-400" />
                       </a>
@@ -196,7 +196,7 @@ export default async function AssignmentDetailPage({ params }: Props) {
                 <div className="space-y-4">
                   {/* Submission Details */}
                   <div className="p-4 bg-slate-50 rounded-lg">
-                    <p className="text-sm text-slate-600 mb-1">Submitted on</p>
+                    <p className="text-sm text-text-secondary mb-1">Submitted on</p>
                     <p className="font-medium text-slate-900">
                       {new Date(submission.submitted_at).toLocaleString()}
                     </p>
@@ -204,7 +204,7 @@ export default async function AssignmentDetailPage({ params }: Props) {
 
                   {submission.content && (
                     <div>
-                      <p className="text-sm text-slate-600 mb-2">Your Response</p>
+                      <p className="text-sm text-text-secondary mb-2">Your Response</p>
                       <div className="p-4 bg-slate-50 rounded-lg whitespace-pre-wrap">
                         {submission.content}
                       </div>
@@ -213,7 +213,7 @@ export default async function AssignmentDetailPage({ params }: Props) {
 
                   {submission.file_url && (
                     <div>
-                      <p className="text-sm text-slate-600 mb-2">Uploaded File</p>
+                      <p className="text-sm text-text-secondary mb-2">Uploaded File</p>
                       <a
                         href={submission.file_url}
                         target="_blank"
@@ -262,7 +262,7 @@ export default async function AssignmentDetailPage({ params }: Props) {
                 <div className="flex items-center gap-3">
                   <FileText className="w-5 h-5 text-slate-400" />
                   <div>
-                    <p className="text-sm text-slate-600">Type</p>
+                    <p className="text-sm text-text-secondary">Type</p>
                     <p className="font-medium text-slate-900 capitalize">
                       {assignment.type || 'Standard'}
                     </p>
@@ -271,7 +271,7 @@ export default async function AssignmentDetailPage({ params }: Props) {
                 <div className="flex items-center gap-3">
                   <BookOpen className="w-5 h-5 text-slate-400" />
                   <div>
-                    <p className="text-sm text-slate-600">Points</p>
+                    <p className="text-sm text-text-secondary">Points</p>
                     <p className="font-medium text-slate-900">
                       {assignment.max_points || 100} points
                     </p>
@@ -281,7 +281,7 @@ export default async function AssignmentDetailPage({ params }: Props) {
                   <div className="flex items-center gap-3">
                     <Clock className="w-5 h-5 text-slate-400" />
                     <div>
-                      <p className="text-sm text-slate-600">Attempts</p>
+                      <p className="text-sm text-text-secondary">Attempts</p>
                       <p className="font-medium text-slate-900">
                         {assignment.attempts_allowed} allowed
                       </p>
@@ -294,7 +294,7 @@ export default async function AssignmentDetailPage({ params }: Props) {
             {/* Submission Guidelines */}
             <div className="bg-white rounded-2xl border border-slate-200 p-6">
               <h3 className="font-semibold text-slate-900 mb-4">Submission Guidelines</h3>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-text-secondary">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                   <span>Submit before the due date</span>
