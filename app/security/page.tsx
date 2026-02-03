@@ -39,16 +39,16 @@ export default async function SecurityPage() {
     );
   }
 
-  // Get security certifications
+  // Get security certifications/attestations
   const { data: certifications } = await supabase
     .from('certifications')
     .select('*')
-    .eq('category', 'security')
+    .or('category.eq.security,type.eq.security_attestation')
     .eq('is_active', true);
 
   // Get last security audit date
   const { data: auditInfo } = await supabase
-    .from('settings')
+    .from('site_settings')
     .select('value')
     .eq('key', 'last_security_audit')
     .single();
@@ -86,44 +86,7 @@ export default async function SecurityPage() {
     },
   ];
 
-  const securityAttestations = [
-    {
-      name: 'SOC 2 Type II',
-      status: 'Compliant',
-      description: 'Annual audit for security, availability, and confidentiality',
-      validUntil: 'December 2025',
-    },
-    {
-      name: 'FERPA',
-      status: 'Compliant',
-      description: 'Student education records privacy protection',
-      validUntil: 'Ongoing',
-    },
-    {
-      name: 'WCAG 2.1 AA',
-      status: 'Compliant',
-      description: 'Web accessibility standards',
-      validUntil: 'Ongoing',
-    },
-    {
-      name: 'GDPR Ready',
-      status: 'Compliant',
-      description: 'EU data protection regulation readiness',
-      validUntil: 'Ongoing',
-    },
-    {
-      name: 'PCI DSS',
-      status: 'Compliant',
-      description: 'Payment card industry data security (via Stripe)',
-      validUntil: 'Ongoing',
-    },
-    {
-      name: 'HIPAA Ready',
-      status: 'Available',
-      description: 'Healthcare data protection (enterprise tier)',
-      validUntil: 'On request',
-    },
-  ];
+
 
   const dataProtection = [
     'We collect only information necessary for program coordination and compliance',
@@ -203,41 +166,29 @@ export default async function SecurityPage() {
           </div>
         </section>
 
-        {/* Security Attestations */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">Security Attestations & Compliance</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {securityAttestations.map((attestation, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-sm p-6 border-2 border-gray-100">
-                <div className="flex items-center justify-between mb-3">
-                  <Shield className="w-8 h-8 text-blue-600" />
-                  <span className={`px-2 py-1 rounded text-xs font-medium ${
-                    attestation.status === 'Compliant' 
-                      ? 'bg-green-100 text-green-700' 
-                      : 'bg-blue-100 text-blue-700'
-                  }`}>
-                    {attestation.status}
-                  </span>
-                </div>
-                <h3 className="font-bold text-lg mb-1">{attestation.name}</h3>
-                <p className="text-sm text-gray-600 mb-2">{attestation.description}</p>
-                <p className="text-xs text-gray-500">Valid: {attestation.validUntil}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Certifications from DB */}
+        {/* Security Certifications from DB */}
         {certifications && certifications.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-6">Additional Certifications</h2>
-            <div className="grid md:grid-cols-3 gap-4">
+            <h2 className="text-2xl font-bold mb-6">Security Certifications & Compliance</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {certifications.map((cert: any) => (
-                <div key={cert.id} className="bg-white rounded-lg shadow-sm p-4 text-center">
-                  <Shield className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                  <h3 className="font-semibold">{cert.name}</h3>
+                <div key={cert.id} className="bg-white rounded-lg shadow-sm p-6 border-2 border-gray-100">
+                  <div className="flex items-center justify-between mb-3">
+                    <Shield className="w-8 h-8 text-blue-600" />
+                    <span className={`px-2 py-1 rounded text-xs font-medium ${
+                      cert.status === 'active' || cert.is_active
+                        ? 'bg-green-100 text-green-700' 
+                        : 'bg-blue-100 text-blue-700'
+                    }`}>
+                      {cert.status === 'active' || cert.is_active ? 'Compliant' : cert.status || 'Pending'}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-lg mb-1">{cert.name}</h3>
+                  {cert.description && (
+                    <p className="text-sm text-gray-600 mb-2">{cert.description}</p>
+                  )}
                   {cert.valid_until && (
-                    <p className="text-sm text-gray-500">
+                    <p className="text-xs text-gray-500">
                       Valid until {new Date(cert.valid_until).toLocaleDateString()}
                     </p>
                   )}

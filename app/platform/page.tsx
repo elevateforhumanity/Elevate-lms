@@ -33,6 +33,21 @@ export default async function PlatformPage() {
     .select('*')
     .eq('key', 'platform_info')
     .single();
+
+  // Fetch accreditations/credentials from database
+  const { data: accreditations } = await supabase
+    .from('accreditations')
+    .select('*')
+    .eq('is_active', true)
+    .order('order', { ascending: true });
+
+  // Fetch platform features from database
+  const { data: platformFeatures } = await supabase
+    .from('platform_features')
+    .select('*')
+    .order('order_index', { ascending: true })
+    .limit(6);
+
   return (
     <div className="bg-white">
       <Breadcrumbs
@@ -53,37 +68,28 @@ export default async function PlatformPage() {
             single system.
           </p>
 
-          <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6 text-left">
-            <h2 className="text-xl font-bold mb-4 text-black">
-              Official Credentials
-            </h2>
-            <ul className="space-y-2 text-black">
-              <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold">•</span>
-                <span>
-                  U.S. Department of Labor Registered Apprenticeship Sponsor
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold">•</span>
-                <span>WIOA / Workforce Ready Grant eligible programs</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold">•</span>
-                <span>ETPL-approved training provider in Indiana</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold">•</span>
-                <span>
-                  Multi-tenant SaaS platform licensed to schools & partners
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-blue-600 font-bold">•</span>
-                <span>Mobile app, AI tutoring, compliance reporting</span>
-              </li>
-            </ul>
-          </div>
+          {accreditations && accreditations.length > 0 && (
+            <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6 text-left">
+              <h2 className="text-xl font-bold mb-4 text-black">
+                Official Credentials
+              </h2>
+              <ul className="space-y-2 text-black">
+                {accreditations.map((accred: any) => (
+                  <li key={accred.id} className="flex items-start gap-2">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span>
+                      {accred.name}
+                      {accred.id_number && (
+                        <span className="text-sm text-gray-600 ml-2">
+                          ({accred.id_number})
+                        </span>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <p className="mt-6 text-xl font-bold text-zinc-900">
             This is not a course platform.
