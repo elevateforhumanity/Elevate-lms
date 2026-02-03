@@ -2,6 +2,7 @@
 export const dynamic = 'force-static';
 export const revalidate = 86400;
 
+import PageAvatar from '@/components/PageAvatar';
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -61,6 +62,12 @@ export default async function BarberApprenticeshipPage() {
   
   return (
     <main className="min-h-screen bg-white text-gray-900">
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/barber-guide.mp4" 
+        title="Barber Program Guide" 
+      />
+
       {/* VIDEO HERO */}
       <section className="relative min-h-screen flex items-center">
         <video

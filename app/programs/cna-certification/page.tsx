@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import PageAvatar from '@/components/PageAvatar';
 import { 
   CheckCircle, Clock, DollarSign, Award, ArrowRight, 
   Heart, Users, BookOpen, Stethoscope, Phone, Calendar
@@ -77,6 +78,12 @@ const careers = [
 export default function CNACertificationPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/avatars/healthcare-guide.mp4" 
+        title="CNA Program Guide" 
+      />
+
       {/* Breadcrumbs */}
       <div className="bg-slate-50 border-b">
         <div className="max-w-6xl mx-auto px-4 py-3">

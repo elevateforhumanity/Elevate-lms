@@ -4,6 +4,7 @@ export const revalidate = 86400;
 
 import Link from 'next/link';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
+import PageAvatar from '@/components/PageAvatar';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -38,7 +39,7 @@ const beautyPrograms = [
     title: 'Cosmetology Apprenticeship',
     description: 'Full cosmetology training covering hair, skin, and nails. 1,500-hour program prepares you for state licensure.',
     href: '/programs/cosmetology-apprenticeship',
-    image: '/hero-images/barber-beauty-cat-new.jpg',
+    image: '/images/beauty/hero-program-cosmetology.jpg',
     hours: 1500,
     price: 4980,
     duration: '12-18 months',

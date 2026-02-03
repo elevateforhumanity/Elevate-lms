@@ -4,6 +4,7 @@ export const maxDuration = 30;
 
 import { NextResponse } from 'next/server';
 import { sendEmail } from '@/lib/email/resend';
+import { createClient } from '@/lib/supabase/server';
 
 const ADMIN_EMAIL = 'elevate4humanityedu@gmail.com';
 const ADMIN_SMS = '3177607908@txt.att.net';
@@ -27,6 +28,24 @@ export async function POST(req: Request) {
     }
 
     const { name, email, phone, program, funding } = data;
+
+    // Save inquiry to database
+    try {
+      const supabase = await createClient();
+      await supabase.from('inquiries').insert({
+        name,
+        email,
+        phone,
+        program_interest: program,
+        funding_type: funding || null,
+        status: 'new',
+        source: 'website',
+        created_at: new Date().toISOString(),
+      });
+    } catch (dbError) {
+      console.error('Failed to save inquiry to database:', dbError);
+      // Continue with email even if DB fails
+    }
 
     if (!name || !email || !phone || !program) {
       return NextResponse.json(
