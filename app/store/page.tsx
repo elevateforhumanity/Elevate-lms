@@ -11,7 +11,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Store | Elevate for Humanity',
-  description: 'Shop gear, browse courses, download workbooks, and license our workforce platform.',
+  description: 'Access workforce development resources, training courses, and platform solutions. The Workforce Operating System that runs funded training pathways end-to-end.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/store',
   },
@@ -62,13 +62,13 @@ export default function StorePage() {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl sm:text-5xl font-black mb-4">
-                Elevate Store
+                Workforce Operating System
               </h1>
               <p className="text-xl text-slate-300 mb-4">
-                Everything you need for workforce development - courses, tools, and platform licenses.
+                Run funded training pathways end-to-end, including compliance and outcomes.
               </p>
               <p className="text-sm text-slate-400 mb-8">
-                Individual access starts at $49. Enterprise and licensure infrastructure solutions are contract-based. Source code and ownership are not transferred.
+                This is not an LMS. It includes an LMS. The platform automates operations while authority stays with workforce administrators. Individual courses start at $49. Managed platform and enterprise solutions are contract-based.
               </p>
               
               {/* Universal Search with Quick Filters */}
