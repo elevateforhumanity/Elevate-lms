@@ -4,9 +4,28 @@ on:
   deployment_status:
 
 jobs:
+  # Skip non-terminal deployment states gracefully
+  check-state:
+    runs-on: ubuntu-latest
+    outputs:
+      should_notify: ${{ steps.check.outputs.should_notify }}
+    steps:
+      - name: Check deployment state
+        id: check
+        run: |
+          STATE="${{ github.event.deployment_status.state }}"
+          if [ "$STATE" = "success" ] || [ "$STATE" = "failure" ]; then
+            echo "should_notify=true" >> $GITHUB_OUTPUT
+            echo "Deployment state is $STATE - will send notification"
+          else
+            echo "should_notify=false" >> $GITHUB_OUTPUT
+            echo "Deployment state is $STATE - skipping notification"
+          fi
+
   notify:
     runs-on: ubuntu-latest
-    if: github.event.deployment_status.state == 'success' || github.event.deployment_status.state == 'failure'
+    needs: check-state
+    if: ${{ needs.check-state.outputs.should_notify == 'true' }}
 
     steps:
       - name: Checkout code
