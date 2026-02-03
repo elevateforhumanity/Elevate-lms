@@ -311,10 +311,10 @@ export default function DisclosuresPage() {
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
+                { title: 'Verify Credentials', href: '/verify-credentials', icon: Shield },
                 { title: 'Equal Opportunity', href: '/equal-opportunity', icon: Scale },
-                { title: 'Federal Compliance', href: '/policies/federal-compliance', icon: Shield },
-                { title: 'Grievance Procedure', href: '/policies/grievance', icon: AlertCircle },
-                { title: 'Governance', href: '/governance', icon: Building },
+                { title: 'Federal Compliance', href: '/federal-compliance', icon: Shield },
+                { title: 'Grievance Procedure', href: '/grievance', icon: AlertCircle },
               ].map((policy) => {
                 const Icon = policy.icon;
                 return (

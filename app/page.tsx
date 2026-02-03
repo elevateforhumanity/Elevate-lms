@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import HomeHeroVideo from './HomeHeroVideo';
+import { CredentialBadges } from '@/components/ui/CredentialBadges';
 import { CheckCircle, Clock, DollarSign, Briefcase, Users, Award, Phone, ArrowRight, Star, Shield, Calendar } from 'lucide-react';
 
 const STATS = [
@@ -80,19 +82,16 @@ const TESTIMONIALS = [
     quote: "I went from unemployed to making $52,000 a year as an HVAC tech in just 4 months. The training was free through WIOA.",
     name: "Marcus J.",
     role: "HVAC Technician",
-    image: "/images/testimonials/marcus.jpg",
   },
   {
     quote: "The CNA program changed my life. I'm now working at a hospital with full benefits. They helped me every step of the way.",
     name: "Keisha T.",
     role: "Certified Nursing Assistant",
-    image: "/images/testimonials/keisha.jpg",
   },
   {
     quote: "Got my CDL in 4 weeks and had 3 job offers before I even finished. Best decision I ever made.",
     name: "David R.",
     role: "CDL Driver",
-    image: "/images/testimonials/david.jpg",
   },
 ];
 
@@ -109,80 +108,87 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* ============================================ */}
-      {/* HERO - Clear value prop, single primary CTA */}
+      {/* VIDEO HERO - With clear value prop overlay */}
       {/* ============================================ */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white">
-        <div className="absolute inset-0 opacity-20">
-          <Image 
-            src="/images/hero/hero-career-training.jpg" 
-            alt="" 
-            fill 
-            className="object-cover" 
-            priority 
-          />
+      <section className="relative h-[85vh] min-h-[600px] overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0">
+          <HomeHeroVideo />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50" />
         </div>
-        <div className="relative max-w-6xl mx-auto px-4 py-20 lg:py-28">
-          <div className="max-w-3xl">
-            {/* Urgency badge */}
-            <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-              Spring Classes Start February 17th — Limited Seats
+        
+        {/* Content Overlay */}
+        <div className="relative h-full flex items-center">
+          <div className="max-w-6xl mx-auto px-4 w-full">
+            <div className="max-w-2xl animate-fade-in">
+              {/* Urgency badge */}
+              <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                Spring Classes Start February 17th — Limited Seats
+              </div>
+              
+              {/* Main headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">
+                Get Trained. Get Hired.
+                <span className="block text-blue-400">No Tuition. No Debt.</span>
+              </h1>
+              
+              {/* Subheadline */}
+              <p className="text-xl text-slate-300 mb-8 max-w-xl">
+                Free career training in healthcare, skilled trades, and technology. 
+                Most students complete in 8-16 weeks and get hired within 30 days.
+              </p>
+              
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <Link 
+                  href="/programs" 
+                  className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:scale-105 shadow-lg hover-lift"
+                >
+                  See Available Programs
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <Link 
+                  href="/eligibility" 
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all border border-white/30 backdrop-blur-sm"
+                >
+                  Check If You Qualify
+                </Link>
+              </div>
+              
+              {/* Trust indicators */}
+              <div className="flex flex-wrap items-center gap-6 text-sm text-slate-300">
+                <span className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  USDOL Registered
+                </span>
+                <span className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  State Approved
+                </span>
+                <span className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  94% Job Placement
+                </span>
+              </div>
             </div>
-            
-            {/* Main headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Get Trained. Get Hired.
-              <span className="block text-blue-400">No Tuition. No Debt.</span>
-            </h1>
-            
-            {/* Subheadline with specifics */}
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl">
-              Free career training in healthcare, skilled trades, and technology. 
-              Most students complete in 8-16 weeks and get hired within 30 days.
-            </p>
-            
-            {/* Primary CTA */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Link 
-                href="/programs" 
-                className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:scale-105 shadow-lg"
-              >
-                See Available Programs
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link 
-                href="/eligibility" 
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all border border-white/20"
-              >
-                Check If You Qualify
-              </Link>
-            </div>
-            
-            {/* Trust indicators */}
-            <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400">
-              <span className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                USDOL Registered
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                State Approved
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                94% Job Placement
-              </span>
-            </div>
+          </div>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+            <div className="w-1.5 h-3 bg-white/50 rounded-full animate-pulse"></div>
           </div>
         </div>
       </section>
 
       {/* ============================================ */}
-      {/* STATS BAR - Concrete numbers */}
+      {/* STATS BAR */}
       {/* ============================================ */}
       <section className="bg-slate-100 border-y border-slate-200">
         <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 stagger-children">
             {STATS.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl lg:text-4xl font-bold text-slate-900">{stat.value}</div>
@@ -194,7 +200,16 @@ export default function HomePage() {
       </section>
 
       {/* ============================================ */}
-      {/* HOW IT WORKS - Simple 3-step process */}
+      {/* CREDENTIAL VERIFICATION STRIP */}
+      {/* ============================================ */}
+      <section className="bg-white border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <CredentialBadges variant="compact" />
+        </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* HOW IT WORKS */}
       {/* ============================================ */}
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
@@ -207,14 +222,14 @@ export default function HomePage() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 stagger-children">
             {[
               { step: '1', title: 'Apply Online', desc: 'Complete a 5-minute application. We\'ll check your eligibility for free training.', icon: Calendar },
               { step: '2', title: 'Get Trained', desc: 'Attend classes online or in-person. Most programs are 8-16 weeks.', icon: Award },
               { step: '3', title: 'Get Hired', desc: 'We connect you with 500+ employer partners. 94% of graduates get hired.', icon: Briefcase },
             ].map((item) => (
-              <div key={item.step} className="relative bg-slate-50 rounded-2xl p-8 text-center">
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
+              <div key={item.step} className="relative bg-slate-50 rounded-2xl p-8 text-center hover-lift">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
                   {item.step}
                 </div>
                 <item.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
@@ -227,7 +242,7 @@ export default function HomePage() {
       </section>
 
       {/* ============================================ */}
-      {/* PROGRAMS - Cards with outcomes */}
+      {/* PROGRAMS */}
       {/* ============================================ */}
       <section className="py-16 lg:py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
@@ -240,26 +255,26 @@ export default function HomePage() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
             {PROGRAMS.map((program) => (
               <Link 
                 key={program.name} 
                 href={program.href}
-                className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200 hover:border-blue-300"
+                className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200 hover:border-blue-300 hover-lift"
               >
                 <div className="relative h-48 overflow-hidden">
                   <Image 
                     src={program.image} 
                     alt={program.name} 
                     fill 
-                    className="object-cover group-hover:scale-105 transition-transform duration-300" 
+                    className="object-cover group-hover:scale-105 transition-transform duration-500" 
                   />
                   {program.hot && (
                     <div className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
                       <Star className="w-3 h-3" /> High Demand
                     </div>
                   )}
-                  <div className="absolute top-3 left-3 bg-white/90 text-slate-700 px-3 py-1 rounded-full text-xs font-medium">
+                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-700 px-3 py-1 rounded-full text-xs font-medium">
                     {program.category}
                   </div>
                 </div>
@@ -296,7 +311,7 @@ export default function HomePage() {
           <div className="text-center mt-10">
             <Link 
               href="/programs" 
-              className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-lg font-semibold transition-all"
+              className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-lg font-semibold transition-all hover-lift"
             >
               View All Programs
               <ArrowRight className="w-5 h-5" />
@@ -306,7 +321,7 @@ export default function HomePage() {
       </section>
 
       {/* ============================================ */}
-      {/* TESTIMONIALS - Real outcomes */}
+      {/* TESTIMONIALS */}
       {/* ============================================ */}
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
@@ -316,20 +331,18 @@ export default function HomePage() {
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 stagger-children">
             {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="bg-slate-50 rounded-2xl p-6">
+              <div key={i} className="bg-slate-50 rounded-2xl p-6 hover-lift">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, j) => (
                     <Star key={j} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
-                <p className="text-slate-700 mb-6 italic">"{t.quote}"</p>
+                <p className="text-slate-700 mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-slate-300 rounded-full overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold">
-                      {t.name.charAt(0)}
-                    </div>
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    {t.name.charAt(0)}
                   </div>
                   <div>
                     <div className="font-semibold text-slate-900">{t.name}</div>
@@ -350,7 +363,7 @@ export default function HomePage() {
           <p className="text-center text-sm text-slate-500 mb-6">Approved and funded by</p>
           <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
             {TRUST_BADGES.map((badge) => (
-              <div key={badge.name} className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity">
+              <div key={badge.name} className="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity duration-300">
                 <img src={badge.logo} alt={badge.name} className="h-10 w-auto object-contain" />
               </div>
             ))}
@@ -359,7 +372,7 @@ export default function HomePage() {
       </section>
 
       {/* ============================================ */}
-      {/* FAQ - Address objections */}
+      {/* FAQ */}
       {/* ============================================ */}
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4">
@@ -376,19 +389,19 @@ export default function HomePage() {
               { q: 'How long until I can start working?', a: 'Most programs are 8-16 weeks. Our CDL program is just 4 weeks. 94% of graduates receive job offers within 30 days of completion.' },
               { q: 'Do you help with job placement?', a: 'Yes. We have partnerships with 500+ employers. We provide resume help, interview prep, and direct introductions to hiring managers.' },
             ].map((faq, i) => (
-              <div key={i} className="border border-slate-200 rounded-xl overflow-hidden">
+              <div key={i} className="border border-slate-200 rounded-xl overflow-hidden transition-all hover:border-slate-300">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full text-left p-5 flex items-center justify-between bg-white hover:bg-slate-50 transition-colors"
                 >
                   <span className="font-semibold text-slate-900">{faq.q}</span>
-                  <ArrowRight className={`w-5 h-5 text-slate-400 transition-transform ${openFaq === i ? 'rotate-90' : ''}`} />
+                  <ArrowRight className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${openFaq === i ? 'rotate-90' : ''}`} />
                 </button>
-                {openFaq === i && (
+                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-48' : 'max-h-0'}`}>
                   <div className="px-5 pb-5 bg-slate-50">
                     <p className="text-slate-600">{faq.a}</p>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
@@ -396,9 +409,9 @@ export default function HomePage() {
       </section>
 
       {/* ============================================ */}
-      {/* FINAL CTA - Strong close */}
+      {/* FINAL CTA */}
       {/* ============================================ */}
-      <section className="py-16 lg:py-20 bg-slate-900 text-white">
+      <section className="py-16 lg:py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             Ready to Start Your New Career?
@@ -409,9 +422,9 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/apply" 
-              className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all"
+              className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:scale-105 shadow-lg"
             >
-              Apply Now — It's Free
+              Apply Now — It&apos;s Free
               <ArrowRight className="w-5 h-5" />
             </Link>
             <a 
@@ -431,17 +444,17 @@ export default function HomePage() {
       {/* ============================================ */}
       {/* MOBILE STICKY CTA */}
       {/* ============================================ */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-slate-200 p-3 shadow-lg">
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/95 backdrop-blur-sm border-t border-slate-200 p-3 shadow-lg">
         <div className="flex gap-2">
           <Link 
             href="/apply" 
-            className="flex-1 inline-flex items-center justify-center bg-blue-600 text-white py-3 rounded-lg font-semibold"
+            className="flex-1 inline-flex items-center justify-center bg-blue-600 text-white py-3 rounded-lg font-semibold transition-all active:scale-98"
           >
             Apply Now
           </Link>
           <a 
             href="tel:317-314-3757" 
-            className="inline-flex items-center justify-center bg-slate-100 text-slate-700 px-4 py-3 rounded-lg"
+            className="inline-flex items-center justify-center bg-slate-100 text-slate-700 px-4 py-3 rounded-lg transition-all active:scale-98"
           >
             <Phone className="w-5 h-5" />
           </a>

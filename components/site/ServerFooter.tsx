@@ -69,6 +69,14 @@ const footerLinks = {
     { name: 'Governance', href: '/governance' },
     { name: 'Site Map', href: '/site-map' },
   ],
+  compliance: [
+    { name: 'Verify Credentials', href: '/verify-credentials' },
+    { name: 'Accreditation', href: '/accreditation' },
+    { name: 'Federal Compliance', href: '/federal-compliance' },
+    { name: 'Disclosures', href: '/disclosures' },
+    { name: 'FERPA', href: '/ferpa' },
+    { name: 'Equal Opportunity', href: '/equal-opportunity' },
+  ],
 };
 
 export default function ServerFooter() {
@@ -149,7 +157,7 @@ export default function ServerFooter() {
         </div>
 
         {/* Secondary Footer Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 border-t border-slate-800 pt-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 border-t border-slate-800 pt-8">
           {/* Portals */}
           <div>
             <h3 className="font-semibold mb-4 text-white">Portals</h3>
@@ -183,6 +191,20 @@ export default function ServerFooter() {
             <h3 className="font-semibold mb-4 text-white">Legal</h3>
             <ul className="space-y-2">
               {footerLinks.legal.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Compliance */}
+          <div>
+            <h3 className="font-semibold mb-4 text-white">Compliance</h3>
+            <ul className="space-y-2">
+              {footerLinks.compliance.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
                     {link.name}
