@@ -57,14 +57,14 @@ export default async function HubPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center gap-2 text-slate-500 text-sm mb-2">
+          <div className="flex items-center gap-2 text-slate-700 text-sm mb-2">
             <LayoutDashboard className="w-4 h-4" />
             <span>Command Center</span>
           </div>
           <h1 className="text-3xl font-bold text-slate-900">
             Welcome back{profile?.full_name ? `, ${profile.full_name.split(' ')[0]}` : ''}
           </h1>
-          <p className="text-slate-600 mt-1">
+          <p className="text-slate-700 mt-1">
             Track your progress and see what's happening in the system.
           </p>
         </div>
@@ -79,7 +79,7 @@ export default async function HubPage() {
             >
               <item.icon className="w-6 h-6 text-slate-400 group-hover:text-green-600 mb-2" />
               <h3 className="font-medium text-slate-900">{item.name}</h3>
-              <p className="text-sm text-slate-500">{item.description}</p>
+              <p className="text-sm text-slate-700">{item.description}</p>
             </Link>
           ))}
         </div>

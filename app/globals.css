@@ -247,11 +247,13 @@ html, body {
   }
 
   body {
-    @apply bg-white text-slate-900 antialiased;
+    @apply bg-white text-gray-900 antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100dvh; /* Use dynamic viewport height for mobile */
     display: flex;
+    font-size: 16px;
+    line-height: 1.6;
     flex-direction: column;
   }
 
@@ -1801,5 +1803,79 @@ header[role="banner"] a.\!text-white {
 .hover-lift:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* ============================================================================
+   INSTITUTIONAL TYPOGRAPHY - Government/Enterprise Grade
+   ============================================================================ */
+
+/* Content pages: compliance, eligibility, funding, policies */
+.prose-institutional {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #111827; /* gray-900 */
+}
+
+.prose-institutional p {
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+
+.prose-institutional h1,
+.prose-institutional h2,
+.prose-institutional h3,
+.prose-institutional h4 {
+  color: #111827;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose-institutional h1 { font-size: 2rem; }
+.prose-institutional h2 { font-size: 1.5rem; }
+.prose-institutional h3 { font-size: 1.25rem; }
+.prose-institutional h4 { font-size: 1.125rem; }
+
+.prose-institutional ul,
+.prose-institutional ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose-institutional li {
+  margin-bottom: 0.5rem;
+}
+
+/* Override grey text in content areas */
+.content-area .text-gray-500,
+.content-area .text-gray-600,
+.content-area .text-slate-500,
+.content-area .text-slate-600 {
+  color: #374151 !important; /* gray-700 minimum */
+}
+
+/* Dashboard and form typography */
+.dashboard-text {
+  color: #111827;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.form-label {
+  color: #111827;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.form-help {
+  color: #4b5563; /* gray-600 */
+  font-size: 0.8125rem;
+}
+
+/* Ensure body text is never too light */
+main p:not([class*="text-"]),
+article p:not([class*="text-"]),
+section p:not([class*="text-"]) {
+  color: #1f2937; /* gray-800 */
 }
 
