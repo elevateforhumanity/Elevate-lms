@@ -309,6 +309,9 @@ export default async function ProgramsPage() {
               (317) 314-3757
             </Link>
           </div>
+          <p className="text-blue-200 text-sm mt-4">
+            Enrollment is availability- and eligibility-based. A workforce advisor will confirm your placement and start date.
+          </p>
         </div>
       </section>
     </div>

@@ -252,6 +252,9 @@ export default function HowItWorksPage() {
               Contact Us
             </Link>
           </div>
+          <p className="text-blue-100 text-sm mt-4">
+            After applying, a workforce advisor will confirm your eligibility and start date.
+          </p>
         </div>
       </section>
     </div>

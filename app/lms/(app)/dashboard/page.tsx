@@ -232,6 +232,37 @@ export default async function StudentDashboardOrchestrated() {
         </div>
       </div>
 
+      {/* Pending Enrollment Notice - Show when enrolled but not yet active */}
+      {activeEnrollment && activeEnrollment.status === 'enrolled_pending_approval' && (
+        <div className="mb-8 bg-amber-50 border border-amber-200 rounded-xl p-6">
+          <h3 className="font-semibold text-amber-900 mb-2">Enrollment Pending Approval</h3>
+          <p className="text-amber-800 mb-4">
+            Your enrollment is confirmed. Training access unlocks after approval and shop assignment.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            <div className="flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-green-500 text-white flex items-center justify-center text-xs">✓</span>
+              <span className="text-amber-900">Applied</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-green-500 text-white flex items-center justify-center text-xs">✓</span>
+              <span className="text-amber-900">Payment Received</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-amber-400 text-white flex items-center justify-center text-xs">⏳</span>
+              <span className="text-amber-700">Shop Assignment</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-slate-300 text-white flex items-center justify-center text-xs">🔒</span>
+              <span className="text-slate-500">Training Access</span>
+            </div>
+          </div>
+          <p className="text-amber-700 text-sm mt-4">
+            Questions? Call <a href="tel:317-314-3757" className="underline">(317) 314-3757</a>
+          </p>
+        </div>
+      )}
+
       <StateAwareDashboard
         dominantAction={stateData.dominantAction}
         availableSections={stateData.availableSections}

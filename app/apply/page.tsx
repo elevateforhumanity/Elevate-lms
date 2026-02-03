@@ -5,20 +5,21 @@ import Link from 'next/link';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { GraduationCap, Phone, CheckCircle, ArrowRight } from 'lucide-react';
+import { MessageSquare, GraduationCap, Phone, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
   title: 'Apply | Elevate for Humanity',
-  description: 'Start your journey to a new career. Check your eligibility and enroll in funded workforce training programs.',
+  description: 'Start your journey to a new career. Choose to get more information or enroll directly in our free workforce training programs.',
 };
 
 // Program-specific redirects to modern intake forms
 const programRedirects: Record<string, string> = {
-  'barber-apprenticeship': '/programs/barber-apprenticeship/apply',
-  'barber': '/programs/barber-apprenticeship/apply',
-  'cna': '/programs/cna-certification',
-  'hvac': '/programs/hvac-technician',
-  'medical-assistant': '/programs/medical-assistant',
+  'barber-apprenticeship': '/forms/barber-apprenticeship-inquiry',
+  'barber': '/forms/barber-apprenticeship-inquiry',
+  'cna': '/forms/cna-inquiry',
+  'hvac': '/forms/hvac-inquiry',
+  'medical-assistant': '/forms/medical-assistant-inquiry',
 };
 
 export default async function ApplyPage({
@@ -27,12 +28,11 @@ export default async function ApplyPage({
   searchParams: Promise<{ program?: string }>;
 }) {
   const params = await searchParams;
-  // Redirect program-specific apply links to program pages
+  // Redirect program-specific apply links to modern forms
   const program = (params?.program || '').toLowerCase();
   if (program && programRedirects[program]) {
     redirect(programRedirects[program]);
   }
-
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Breadcrumbs */}
@@ -44,121 +44,177 @@ export default async function ApplyPage({
 
       {/* Hero */}
       <section 
-        className="relative py-20 px-4 bg-gradient-to-br from-blue-900 to-slate-900"
+        className="relative py-20 px-4"
+        style={{ 
+          backgroundImage: 'url(/hero-images/apply-hero.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
       >
         <div className="max-w-4xl mx-auto text-center text-white">
-          <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <GraduationCap className="w-10 h-10 text-white" />
-          </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Start Your Career Training
+            Let's Match You to the Fastest Enrollment Path
           </h1>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Browse our programs, check your eligibility for funding, and begin your enrollment in minutes.
+          <p className="text-xl text-blue-100 mb-2">
+            We'll ask a few quick questions to route you to funded options if you qualify, or self-pay if you don't.
           </p>
-          
-          <Link
-            href="/programs"
-            className="inline-flex items-center gap-2 bg-white text-blue-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 transition-colors"
-          >
-            Browse Programs & Apply
-            <ArrowRight className="w-5 h-5" />
-          </Link>
+          <p className="text-blue-200">
+            Answer honestly—this doesn't lock you in. It just routes you to the fastest approval path.
+          </p>
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* Avatar Guide */}
+      <PageAvatar 
+        videoSrc="/videos/apply-section-video.mp4" 
+        title="Start Your Journey" 
+      />
+
+      {/* Eligibility Notice */}
+      <section className="py-6 px-4 bg-amber-50 border-b border-amber-100">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-start gap-4">
+            <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-amber-900 font-medium">
+                Eligibility approval through WorkOne / Indiana Career Connect is required before enrollment.
+              </p>
+              <Link 
+                href="/check-eligibility" 
+                className="text-amber-700 text-sm hover:underline mt-1 inline-block"
+              >
+                Check eligibility before applying →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Two Options */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-center text-slate-900 mb-12">
-            How Enrollment Works
+          <h2 className="text-2xl font-bold text-center text-slate-900 mb-4">
+            Choose Your Enrollment Path
           </h2>
+          <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+            Your answers help route you to funded options if you qualify. We'll match you with funded training (WIOA/WRG/JRI or partner funding), or self-pay / employer-pay.
+          </p>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 font-bold text-lg">1</span>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Inquiry Option */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-transparent hover:border-blue-500 transition-all">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                <MessageSquare className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="font-semibold text-slate-900 mb-2">Choose a Program</h3>
-              <p className="text-slate-600 text-sm">Browse our career training programs and find the right fit.</p>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">Get More Information</h3>
+              <p className="text-slate-600 mb-6">
+                Not sure which program is right for you? Submit an inquiry and our enrollment team will contact you to discuss your options.
+              </p>
+              
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Quick 2-minute form</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Get personalized program recommendations</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Learn about funding options</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Response within 1-2 business days</span>
+                </li>
+              </ul>
+
+              <Link
+                href="/inquiry"
+                className="block w-full text-center py-4 border-2 border-blue-600 text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-colors"
+              >
+                Submit an Inquiry
+              </Link>
             </div>
 
-            <div className="text-center">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 font-bold text-lg">2</span>
+            {/* Enroll Option */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-blue-600 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                Most Popular
               </div>
-              <h3 className="font-semibold text-slate-900 mb-2">Check Eligibility</h3>
-              <p className="text-slate-600 text-sm">See if you qualify for WIOA, WRG, or other funding options.</p>
-            </div>
+              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                <GraduationCap className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">Enroll Now</h3>
+              <p className="text-slate-600 mb-6">
+                Ready to start? Choose your program and begin the enrollment process. Our team will guide you through funding eligibility.
+              </p>
+              
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Browse all available programs</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">See program details and schedules</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Start enrollment immediately</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">Most programs are FREE with WIOA</span>
+                </li>
+              </ul>
 
-            <div className="text-center">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 font-bold text-lg">3</span>
-              </div>
-              <h3 className="font-semibold text-slate-900 mb-2">Complete Application</h3>
-              <p className="text-slate-600 text-sm">Submit your application and required documents.</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 font-bold text-lg">4</span>
-              </div>
-              <h3 className="font-semibold text-slate-900 mb-2">Start Training</h3>
-              <p className="text-slate-600 text-sm">Begin your career training once approved.</p>
+              <Link
+                href="/programs"
+                className="block w-full text-center py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors"
+              >
+                View Programs & Apply
+              </Link>
+              <p className="text-xs text-slate-500 mt-3 text-center">
+                A workforce advisor will confirm your eligibility and start date after you apply.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Benefits */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-center text-slate-900 mb-8">
-            Why Train With Us
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="flex items-start gap-4 p-4">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
-              <div>
-                <h3 className="font-semibold text-slate-900">Funding Available</h3>
-                <p className="text-slate-600 text-sm">Many students qualify for funded training through WIOA, WRG, JRI, or employer sponsorship.</p>
+          {/* Enrollment Process Explanation */}
+          <div className="mt-12 bg-slate-100 rounded-xl p-6">
+            <h3 className="font-semibold text-slate-900 mb-4 text-center">What Happens After You Apply</h3>
+            <div className="grid md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span className="text-blue-600 font-bold">1</span>
+                </div>
+                <p className="text-sm font-medium text-slate-900">Application Review</p>
+                <p className="text-xs text-slate-500">1-2 business days</p>
+              </div>
+              <div className="text-center">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span className="text-blue-600 font-bold">2</span>
+                </div>
+                <p className="text-sm font-medium text-slate-900">Eligibility Check</p>
+                <p className="text-xs text-slate-500">WorkOne verification</p>
+              </div>
+              <div className="text-center">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span className="text-blue-600 font-bold">3</span>
+                </div>
+                <p className="text-sm font-medium text-slate-900">Funding Confirmed</p>
+                <p className="text-xs text-slate-500">WIOA/WRG approval</p>
+              </div>
+              <div className="text-center">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span className="text-blue-600 font-bold">4</span>
+                </div>
+                <p className="text-sm font-medium text-slate-900">Start Date Assigned</p>
+                <p className="text-xs text-slate-500">Based on cohort availability</p>
               </div>
             </div>
-            
-            <div className="flex items-start gap-4 p-4">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
-              <div>
-                <h3 className="font-semibold text-slate-900">Industry Credentials</h3>
-                <p className="text-slate-600 text-sm">Earn recognized certifications and licenses that employers value.</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-4 p-4">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
-              <div>
-                <h3 className="font-semibold text-slate-900">Career Support</h3>
-                <p className="text-slate-600 text-sm">Get help with job placement and career advancement after training.</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-4 p-4">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
-              <div>
-                <h3 className="font-semibold text-slate-900">Flexible Schedules</h3>
-                <p className="text-slate-600 text-sm">Programs designed to fit around work and family commitments.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-8">
-            <Link
-              href="/programs"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors"
-            >
-              View All Programs
-              <ArrowRight className="w-5 h-5" />
-            </Link>
           </div>
         </div>
       </section>
@@ -167,10 +223,10 @@ export default async function ApplyPage({
       <section className="py-12 px-4 bg-slate-100">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-xl font-bold text-slate-900 mb-4">
-            Have Questions?
+            Prefer to Talk to Someone?
           </h2>
           <p className="text-slate-600 mb-6">
-            Our enrollment team is here to help. Call us or submit an inquiry.
+            Our enrollment team is available Monday-Friday, 9am-5pm EST
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
@@ -181,10 +237,10 @@ export default async function ApplyPage({
               <span className="font-semibold text-slate-900">(317) 314-3757</span>
             </a>
             <Link
-              href="/inquiry"
+              href="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
             >
-              <span className="font-semibold text-slate-900">Submit an Inquiry</span>
+              <span className="font-semibold text-slate-900">Contact Us Online</span>
             </Link>
           </div>
         </div>
