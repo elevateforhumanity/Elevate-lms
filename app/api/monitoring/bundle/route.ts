@@ -1,14 +1,22 @@
 import { NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
 
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
-import { createAdminClient } from '@/lib/supabase/admin';
-import { auditExport } from '@/lib/auditLog';
+
+function getSupabaseAdmin() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) {
+    throw new Error('Missing Supabase credentials');
+  }
+  return createClient(url, key);
+}
 
 export async function GET(req: Request) {
   try {
-    const supabase = createAdminClient();
+    const supabase = getSupabaseAdmin();
 
     // Fetch all monitoring data in parallel
     const [auditResult, etplResult, rulesResult, rapidsResult, fundingResult] =
@@ -19,14 +27,6 @@ export async function GET(req: Request) {
         supabase.from('rapids_tracking').select('*'),
         supabase.from('funding_cases').select('*'),
       ]);
-
-    // Log the bundle export
-    await auditExport(
-      'audit_snapshot',
-      req.headers.get('x-user-id') || undefined,
-      'workone',
-      req
-    );
 
     const bundle = {
       generated_at: new Date().toISOString(),
@@ -41,12 +41,19 @@ export async function GET(req: Request) {
         total_rapids_tracked: rapidsResult.data?.length || 0,
         states_supported: rulesResult.data?.length || 0,
       },
+      errors: {
+        audit_snapshot: auditResult.error?.message || null,
+        etpl_metrics: etplResult.error?.message || null,
+        state_rules: rulesResult.error?.message || null,
+        rapids_tracking: rapidsResult.error?.message || null,
+        funding_cases: fundingResult.error?.message || null,
+      }
     };
 
     return NextResponse.json(bundle);
   } catch (err: any) {
     return NextResponse.json(
-      { err: err instanceof Error ? err.message : String(err) },
+      { error: err instanceof Error ? err.message : String(err) },
       { status: 500 }
     );
   }
