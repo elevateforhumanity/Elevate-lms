@@ -272,7 +272,7 @@ export default async function CommunityPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
               <div className="relative h-48">
                 <Image
-                  src="/images/community/event-1.jpg"
+                  src="/images/community/community-hero.jpg"
                   alt="Career Workshop"
                   fill
                   className="object-cover"
@@ -290,7 +290,7 @@ export default async function CommunityPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
               <div className="relative h-48">
                 <Image
-                  src="/images/community/event-2.jpg"
+                  src="/images/heroes-hq/success-hero.jpg"
                   alt="Networking Event"
                   fill
                   className="object-cover"
@@ -308,7 +308,7 @@ export default async function CommunityPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
               <div className="relative h-48">
                 <Image
-                  src="/images/community/event-3.jpg"
+                  src="/images/heroes-hq/team-hero.jpg"
                   alt="Q&A Session"
                   fill
                   className="object-cover"
@@ -359,7 +359,7 @@ export default async function CommunityPage() {
 
             <div className="relative">
               <Image
-                src="/images/community/event-4.jpg"
+                src="/images/heroes-hq/employer-hero.jpg"
                 alt="Community members learning together"
                 width={600}
                 height={500}

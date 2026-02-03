@@ -102,7 +102,7 @@ export default async function Page() {
             </p>
             <div className="relative h-[300px] rounded-xl overflow-hidden mt-6">
               <Image
-                src="/images/gallery/image2.jpg"
+                src="/images/gallery/image1.jpg"
                 alt="DSP training session"
                 fill
                 className="object-cover"

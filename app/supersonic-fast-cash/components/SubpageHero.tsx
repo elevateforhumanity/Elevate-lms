@@ -11,7 +11,7 @@ export function SubpageHero({ title, description, badge }: SubpageHeroProps) {
     <section className="relative bg-gradient-to-br from-blue-900 to-blue-700 text-white overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/images/tax-office-1.jpg"
+          src="/images/business/tax-prep.jpg"
           alt="Supersonic Fast Cash"
           fill
           className="object-cover opacity-20"

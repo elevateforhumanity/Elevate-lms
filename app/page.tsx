@@ -7,19 +7,19 @@ import PageAvatar from '@/components/PageAvatar';
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection';
 
 const programCategories = [
-  { title: 'Healthcare', href: '/programs/healthcare', image: '/images/healthcare-vibrant.jpg', desc: 'CNA, Medical Assistant, Phlebotomy' },
-  { title: 'Skilled Trades', href: '/programs/skilled-trades', image: '/images/skilled-trades-vibrant.jpg', desc: 'HVAC, Electrical, Welding, Plumbing' },
-  { title: 'Technology', href: '/programs/technology', image: '/images/technology-vibrant.jpg', desc: 'IT Support, Cybersecurity, Web Dev' },
-  { title: 'CDL & Transportation', href: '/programs/cdl', image: '/images/cdl-vibrant.jpg', desc: 'Commercial Driving License' },
-  { title: 'Beauty & Barbering', href: '/programs/barber-apprenticeship', image: '/images/barber-vibrant.jpg', desc: 'Barber Apprenticeship, Cosmetology' },
-  { title: 'Business', href: '/programs/business', image: '/images/business-vibrant.jpg', desc: 'Tax Prep, Entrepreneurship' },
+  { title: 'Healthcare', href: '/programs/healthcare', image: '/images/programs-hq/healthcare-hero.jpg', desc: 'CNA, Medical Assistant, Phlebotomy' },
+  { title: 'Skilled Trades', href: '/programs/skilled-trades', image: '/images/programs-hq/skilled-trades-hero.jpg', desc: 'HVAC, Electrical, Welding, Plumbing' },
+  { title: 'Technology', href: '/programs/technology', image: '/images/programs-hq/technology-hero.jpg', desc: 'IT Support, Cybersecurity, Web Dev' },
+  { title: 'CDL & Transportation', href: '/programs/cdl', image: '/images/programs-hq/cdl-trucking.jpg', desc: 'Commercial Driving License' },
+  { title: 'Beauty & Barbering', href: '/programs/barber-apprenticeship', image: '/images/beauty/hero-program-barber.jpg', desc: 'Barber Apprenticeship, Cosmetology' },
+  { title: 'Business', href: '/programs/business', image: '/images/programs-hq/business-training.jpg', desc: 'Tax Prep, Entrepreneurship' },
 ];
 
 const tabs = [
-  { id: 'healthcare', label: 'Healthcare', content: 'Start a rewarding career helping others. CNA, Medical Assistant, and Phlebotomy programs available.' },
-  { id: 'trades', label: 'Skilled Trades', content: 'Build a hands-on career in high-demand fields. HVAC, Electrical, Welding, and Plumbing training.' },
-  { id: 'technology', label: 'Technology', content: 'Launch your career in the digital economy. IT Support, Cybersecurity, and Web Development.' },
-  { id: 'cdl', label: 'CDL', content: 'Get on the road to a stable driving career. Class A and Class B CDL training available.' },
+  { id: 'healthcare', label: 'Healthcare', content: 'Start a rewarding career helping others. CNA, Medical Assistant, and Phlebotomy programs available.', image: '/images/healthcare/hero-healthcare-professionals.jpg' },
+  { id: 'trades', label: 'Skilled Trades', content: 'Build a hands-on career in high-demand fields. HVAC, Electrical, Welding, and Plumbing training.', image: '/images/trades/program-hvac-technician.jpg' },
+  { id: 'technology', label: 'Technology', content: 'Launch your career in the digital economy. IT Support, Cybersecurity, and Web Development.', image: '/images/technology/hero-program-cybersecurity.jpg' },
+  { id: 'cdl', label: 'CDL', content: 'Get on the road to a stable driving career. Class A and Class B CDL training available.', image: '/images/trades/hero-program-cdl.jpg' },
 ];
 
 // Testimonials now loaded from database via TestimonialsSection component
@@ -79,6 +79,19 @@ export default function HomePage() {
               </svg>
             </Link>
           </div>
+          
+          {/* 3 Featured Images */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-6xl mx-auto">
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+              <img src="/images/healthcare/hero-healthcare-professionals.jpg" alt="Healthcare Training" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+              <img src="/images/trades/welding-hero.jpg" alt="Skilled Trades Training" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+              <img src="/images/technology/hero-program-cybersecurity.jpg" alt="Technology Training" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -137,7 +150,7 @@ export default function HomePage() {
             </div>
             <div className="order-1 lg:order-2">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img src="/images/team-vibrant.jpg" alt="Career training" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                <img src="/images/heroes-hq/team-hero.jpg" alt="Career training" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
           </div>
@@ -175,7 +188,7 @@ export default function HomePage() {
             <div className="lg:sticky lg:top-24">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
                 <img 
-                  src={programCategories.find(p => p.title.toLowerCase().includes(activeTab))?.image || '/images/healthcare-vibrant.jpg'} 
+                  src={tabs.find(t => t.id === activeTab)?.image || '/images/healthcare/hero-healthcare-professionals.jpg'} 
                   alt={activeTab} 
                   className="w-full h-full object-cover transition-all duration-500"
                 />

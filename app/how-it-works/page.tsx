@@ -47,19 +47,19 @@ const resources = [
   {
     title: 'WIOA Eligibility',
     description: 'Find out if you qualify for free training.',
-    image: '/images/workforce-1.jpg',
+    image: '/images/heroes-hq/funding-hero.jpg',
     href: '/wioa-eligibility',
   },
   {
     title: 'Funding Options',
     description: 'Learn about grants and payment options.',
-    image: '/images/workforce-2.jpg',
+    image: '/images/heroes-hq/career-services-hero.jpg',
     href: '/funding',
   },
   {
     title: 'Training Programs',
     description: 'Explore healthcare, trades, technology, and more.',
-    image: '/images/workforce-3.jpg',
+    image: '/images/heroes-hq/programs-hero.jpg',
     href: '/programs',
   },
   {

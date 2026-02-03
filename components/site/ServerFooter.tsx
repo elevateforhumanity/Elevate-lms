@@ -1,81 +1,46 @@
 // Server Component - NO 'use client'
-// Footer that renders on the server
+// Government-grade footer - clean, senior, compliant
 
 import Link from 'next/link';
 import Image from 'next/image';
 
+// GOVERNMENT-GRADE FOOTER STRUCTURE
+// 4 columns: About, Programs, Compliance & Trust, Access
+// Bottom bar: Legal links only
+// Principle: If a first-time visitor or government reviewer wouldn't expect to see it, remove it
+
 const footerLinks = {
-  programs: [
-    // WIOA
-    { name: 'WIOA Programs', href: '/wioa-eligibility' },
-    { name: 'CNA Training', href: '/programs/cna-certification' },
-    { name: 'HVAC Technician', href: '/programs/hvac-technician' },
-    { name: 'CDL Training', href: '/programs/cdl-training' },
-    // Apprenticeships
-    { name: 'Apprenticeships', href: '/apprenticeships' },
-    { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
-    // Microclasses
-    { name: 'Microclasses', href: '/microclasses' },
-    { name: 'CPR & First Aid', href: '/programs/cpr-first-aid-hsi' },
-  ],
-  funding: [
-    { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
-    { name: 'JRI Programs', href: '/jri' },
-    { name: 'Financial Aid', href: '/financial-aid' },
-    { name: 'How It Works', href: '/how-it-works' },
-    { name: 'Tuition & Costs', href: '/tuition' },
-    { name: 'Scholarships', href: '/scholarships' },
-  ],
-  resources: [
-    { name: 'Career Services', href: '/career-services' },
-    { name: 'Certifications', href: '/certifications' },
-    { name: 'Student Handbook', href: '/student-handbook' },
-    { name: 'FAQ', href: '/faq' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Events', href: '/events' },
-    { name: 'Support', href: '/support' },
-  ],
-  licensing: [
-    { name: 'Platform Licensing', href: '/licenses' },
-    { name: 'Managed LMS', href: '/licenses' },
-    { name: 'Enterprise Review', href: '/licenses/enterprise-review' },
-  ],
-  partners: [
-    { name: 'Become a Partner', href: '/partners' },
-    { name: 'Employer Partners', href: '/employers' },
-    { name: 'Training Providers', href: '/training-providers' },
-    { name: 'Workforce Board', href: '/workforce-board' },
-    { name: 'Partner Portal', href: '/partner-portal' },
-  ],
-  portals: [
-    { name: 'Student Portal', href: '/student-portal' },
-    { name: 'Employer Portal', href: '/employer-portal' },
-    { name: 'Instructor Portal', href: '/instructor' },
-    { name: 'Admin Portal', href: '/admin' },
-    { name: 'Sign In', href: '/login' },
-  ],
-  company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Our Team', href: '/about/team' },
-    { name: 'Success Stories', href: '/testimonials' },
+  about: [
+    { name: 'About Elevate', href: '/about' },
+    { name: 'Workforce Operating System', href: '/store/licenses' },
+    { name: 'Our Mission', href: '/about' },
+    { name: 'Indiana Outcomes', href: '/outcomes/indiana' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Locations', href: '/locations' },
   ],
-  legal: [
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
-    { name: 'Accessibility', href: '/accessibility' },
-    { name: 'Governance', href: '/governance' },
-    { name: 'Site Map', href: '/site-map' },
+  programs: [
+    { name: 'Training Programs', href: '/programs' },
+    { name: 'Career Pathways', href: '/how-it-works' },
+    { name: 'Apprenticeships', href: '/programs/barber-apprenticeship' },
+    { name: 'Employer Partnerships', href: '/employer' },
+    { name: 'Success Stories', href: '/success-stories' },
   ],
   compliance: [
-    { name: 'Verify Credentials', href: '/verify-credentials' },
-    { name: 'Accreditation', href: '/accreditation' },
-    { name: 'Federal Compliance', href: '/federal-compliance' },
-    { name: 'Disclosures', href: '/disclosures' },
-    { name: 'FERPA', href: '/ferpa' },
-    { name: 'Equal Opportunity', href: '/equal-opportunity' },
+    { name: 'Governance', href: '/governance' },
+    { name: 'Data Privacy', href: '/governance/data' },
+    { name: 'Accessibility', href: '/accessibility' },
+    { name: 'AI Governance', href: '/governance/ai' },
+    { name: 'Verify Credentials', href: '/verify' },
+  ],
+  access: [
+    { name: 'Student Portal', href: '/login' },
+    { name: 'Partner Portal', href: '/partner/login' },
+    { name: 'Support', href: '/support' },
+  ],
+  legal: [
+    { name: 'Terms of Service', href: '/terms-of-service' },
+    { name: 'Privacy Policy', href: '/privacy-policy' },
+    { name: 'Security', href: '/governance/security' },
+    { name: 'Licensing', href: '/store/licenses' },
   ],
 };
 
@@ -83,12 +48,26 @@ export default function ServerFooter() {
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 mb-8">
-          {/* Programs */}
+        {/* Government-Grade 4-Column Footer */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          {/* Column 1: About */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Programs</h3>
-            <ul className="space-y-2">
+            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">About</h3>
+            <ul className="space-y-3">
+              {footerLinks.about.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 2: Programs */}
+          <div>
+            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Programs</h3>
+            <ul className="space-y-3">
               {footerLinks.programs.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
@@ -99,111 +78,10 @@ export default function ServerFooter() {
             </ul>
           </div>
 
-          {/* Funding */}
+          {/* Column 3: Compliance & Trust */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Funding</h3>
-            <ul className="space-y-2">
-              {footerLinks.funding.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="font-semibold mb-4 text-white">Resources</h3>
-            <ul className="space-y-2">
-              {footerLinks.resources.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Licensing */}
-          <div>
-            <h3 className="font-semibold mb-4 text-white">Licensing</h3>
-            <ul className="space-y-2">
-              {footerLinks.licensing.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Partners */}
-          <div>
-            <h3 className="font-semibold mb-4 text-white">Partners</h3>
-            <ul className="space-y-2">
-              {footerLinks.partners.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Secondary Footer Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 border-t border-slate-800 pt-8">
-          {/* Portals */}
-          <div>
-            <h3 className="font-semibold mb-4 text-white">Portals</h3>
-            <ul className="space-y-2">
-              {footerLinks.portals.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="font-semibold mb-4 text-white">Company</h3>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="font-semibold mb-4 text-white">Legal</h3>
-            <ul className="space-y-2">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Compliance */}
-          <div>
-            <h3 className="font-semibold mb-4 text-white">Compliance</h3>
-            <ul className="space-y-2">
+            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Compliance & Trust</h3>
+            <ul className="space-y-3">
               {footerLinks.compliance.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
@@ -214,53 +92,50 @@ export default function ServerFooter() {
             </ul>
           </div>
 
-          {/* Brand & Contact */}
+          {/* Column 4: Access */}
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <Image
-                src="/logo.png"
-                alt="Elevate"
-                width={32}
-                height={32}
-                className="w-8 h-8"
-              />
-              <span className="font-bold text-lg">Elevate</span>
-            </Link>
-            <p className="text-slate-400 text-sm mb-3">
-              Free career training through WIOA funding.
-            </p>
-            <p className="text-slate-400 text-sm">
-              <a href="tel:317-314-3757" className="hover:text-white">(317) 314-3757</a>
-            </p>
-            <p className="text-slate-400 text-sm">
-              <a href="mailto:info@elevateforhumanity.org" className="hover:text-white">info@elevateforhumanity.org</a>
-            </p>
+            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Access</h3>
+            <ul className="space-y-3">
+              {footerLinks.access.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* Licensing Notice */}
-        <div className="border-t border-slate-800 mt-8 pt-6">
-          <p className="text-slate-500 text-xs text-center max-w-3xl mx-auto">
-            All platform products are licensed access to systems operated by Elevate for Humanity. 
-            Ownership of software, infrastructure, and intellectual property is not transferred.
-          </p>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-slate-800 mt-6 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-slate-400 text-sm">
-            © {new Date().getFullYear()} Elevate for Humanity. All rights reserved.
-          </p>
-          <div className="flex gap-4 text-sm">
-            <Link href="/privacy" className="text-slate-400 hover:text-white">
-              Privacy
-            </Link>
-            <Link href="/terms" className="text-slate-400 hover:text-white">
-              Terms
-            </Link>
-            <Link href="/accessibility" className="text-slate-400 hover:text-white">
-              Accessibility
-            </Link>
+        {/* Bottom Bar: Legal Links + Copyright */}
+        <div className="border-t border-slate-800 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            {/* Logo and Copyright */}
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="Elevate"
+                width={28}
+                height={28}
+                className="w-7 h-7"
+              />
+              <p className="text-slate-400 text-sm">
+                © {new Date().getFullYear()} Elevate for Humanity. All rights reserved.
+              </p>
+            </div>
+            
+            {/* Legal Links */}
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
+              {footerLinks.legal.map((link) => (
+                <Link 
+                  key={link.name}
+                  href={link.href} 
+                  className="text-slate-400 hover:text-white"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

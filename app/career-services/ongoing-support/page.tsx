@@ -93,7 +93,7 @@ export default async function OngoingSupportPage() {
       <section className="relative min-h-[400px] flex items-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/community/event-2.jpg)' }}
+          style={{ backgroundImage: 'url(/images/heroes-hq/success-hero.jpg)' }}
         />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-white">

@@ -15,7 +15,7 @@ const programs = [
     id: 'wotc',
     name: 'Work Opportunity Tax Credit',
     description: 'Earn up to $9,600 per eligible hire through federal tax credits for hiring from target groups.',
-    image: '/images/community/event-5.jpg',
+    image: '/images/heroes-hq/career-services-hero.jpg',
     savings: 'Up to $9,600/hire',
     eligibility: ['Veterans', 'SNAP Recipients', 'Ex-Felons', 'Long-term Unemployed'],
     status: 'Active',
@@ -33,7 +33,7 @@ const programs = [
     id: 'ojt',
     name: 'On-the-Job Training',
     description: 'Get reimbursed up to 75% of wages during training period for eligible WIOA participants.',
-    image: '/images/community/event-4.jpg',
+    image: '/images/heroes-hq/employer-hero.jpg',
     savings: '50-75% wage reimbursement',
     eligibility: ['WIOA Eligible', 'New Hires', 'Skill Development'],
     status: 'Active',
@@ -42,7 +42,7 @@ const programs = [
     id: 'fidelity-bond',
     name: 'Federal Bonding Program',
     description: 'Free fidelity bonds for at-risk hires, protecting your business from employee dishonesty.',
-    image: '/images/community/event-2.jpg',
+    image: '/images/heroes-hq/success-hero.jpg',
     savings: 'Free $5,000-$25,000 bonds',
     eligibility: ['Ex-Offenders', 'Recovering Addicts', 'Welfare Recipients'],
     status: 'Active',
@@ -55,7 +55,7 @@ export default function EmployerProgramsPage() {
             <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Programs" }]} />
 <div className="relative h-64 bg-gradient-to-r from-purple-900 to-indigo-900">
         <Image
-          src="/images/community/event-1.jpg"
+          src="/images/community/community-hero.jpg"
           alt="Employer programs"
           fill
           className="object-cover opacity-20"

@@ -15,7 +15,7 @@ const steps = [
     number: 1,
     title: 'Post Your Job',
     description: 'Create a job listing with requirements, pay rate, and benefits. Our team reviews and optimizes for WOTC-eligible candidates.',
-    image: '/images/community/event-5.jpg',
+    image: '/images/heroes-hq/career-services-hero.jpg',
     tips: ['Include clear job requirements', 'Specify training provided', 'Highlight growth opportunities'],
   },
   {
@@ -29,28 +29,28 @@ const steps = [
     number: 3,
     title: 'Interview & Select',
     description: 'Schedule interviews through our platform. We provide interview guides and help coordinate schedules.',
-    image: '/images/community/event-4.jpg',
+    image: '/images/heroes-hq/employer-hero.jpg',
     tips: ['Use structured interviews', 'Assess cultural fit', 'Discuss growth path'],
   },
   {
     number: 4,
     title: 'Complete WOTC Forms',
     description: 'We handle IRS Form 8850 and state forms. Just verify hire date and we submit within the 28-day deadline.',
-    image: '/images/community/event-2.jpg',
+    image: '/images/heroes-hq/success-hero.jpg',
     tips: ['Sign forms within 28 days', 'Verify start date accuracy', 'Keep copies for records'],
   },
   {
     number: 5,
     title: 'Onboard & Train',
     description: 'Use our onboarding checklists and training resources. Track progress and certifications in one place.',
-    image: '/images/community/event-1.jpg',
+    image: '/images/community/community-hero.jpg',
     tips: ['Complete I-9 and W-4', 'Assign training modules', 'Set 90-day goals'],
   },
   {
     number: 6,
     title: 'Claim Tax Credits',
     description: 'After 120+ hours worked, we process your WOTC certification. Credits appear on your next tax filing.',
-    image: '/images/community/event-3.jpg',
+    image: '/images/heroes-hq/team-hero.jpg',
     tips: ['Track hours worked', 'Maintain employment records', 'File with annual taxes'],
   },
 ];
@@ -68,7 +68,7 @@ export default function HiringGuidePage() {
             <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Hiring Guide" }]} />
 <div className="relative h-80 bg-gradient-to-r from-purple-900 to-indigo-900">
         <Image
-          src="/images/community/event-5.jpg"
+          src="/images/heroes-hq/career-services-hero.jpg"
           alt="Hiring guide"
           fill
           className="object-cover opacity-20"

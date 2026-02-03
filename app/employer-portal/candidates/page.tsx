@@ -68,7 +68,7 @@ export default async function CandidatesPage() {
       <section className="relative bg-gradient-to-br from-green-800 to-emerald-900 text-white py-16">
         <div className="absolute inset-0">
           <Image
-            src="/images/community/event-2.jpg"
+            src="/images/heroes-hq/success-hero.jpg"
             alt="Candidates"
             fill
             className="object-cover opacity-20"

@@ -53,7 +53,7 @@ export default async function FeaturesPage() {
 {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/community/event-4.jpg"
+          src="/images/heroes-hq/employer-hero.jpg"
           alt="Platform Features"
           fill
           className="object-cover"

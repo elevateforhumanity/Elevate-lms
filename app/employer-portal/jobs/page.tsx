@@ -41,7 +41,7 @@ export default async function JobPostingsPage() {
       views: 245,
       status: 'Active',
       posted: '5 days ago',
-      image: '/images/marketplace/medical.jpg',
+      image: '/images/healthcare/hero-healthcare-professionals.jpg',
     },
     {
       id: 2,

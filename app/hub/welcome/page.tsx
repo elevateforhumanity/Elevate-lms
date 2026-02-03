@@ -44,13 +44,13 @@ export default async function HubWelcomePage() {
     {
       title: 'Members',
       description: 'Connect with fellow learners, mentors, and industry professionals.',
-      image: '/images/community/event-2.jpg',
+      image: '/images/heroes-hq/success-hero.jpg',
       href: '/hub/members',
     },
     {
       title: 'Calendar',
       description: 'View upcoming events, workshops, and live sessions.',
-      image: '/images/community/event-1.jpg',
+      image: '/images/community/community-hero.jpg',
       href: '/hub/calendar',
     },
   ];
@@ -65,12 +65,12 @@ export default async function HubWelcomePage() {
     {
       title: 'Automated Guidance',
       description: 'The platform tells you what to do next. Receive smart nudges, reminders, and step-by-step guidance to stay on track.',
-      image: '/images/hub/team.jpg',
+      image: '/images/heroes-hq/team-hero.jpg',
     },
     {
       title: 'Compliance Documentation',
       description: 'All your hours, credentials, and progress are documented automatically. Ready for audits, certifications, and employer verification.',
-      image: '/images/community/event-5.jpg',
+      image: '/images/heroes-hq/career-services-hero.jpg',
     },
   ];
 
@@ -92,7 +92,7 @@ export default async function HubWelcomePage() {
       name: 'Tech Graduate',
       program: 'IT Support',
       quote: 'Having everything in one place - courses, certifications, job prep - made all the difference.',
-      image: '/images/hub/employer.jpg',
+      image: '/images/heroes-hq/employer-hero.jpg',
     },
   ];
 
@@ -102,7 +102,7 @@ export default async function HubWelcomePage() {
       <section className="relative min-h-[70vh] flex items-center">
         <div className="absolute inset-0">
           <Image
-            src="/images/community/event-3.jpg"
+            src="/images/heroes-hq/team-hero.jpg"
             alt="Students collaborating and learning together"
             fill
             className="object-cover"
@@ -280,7 +280,7 @@ export default async function HubWelcomePage() {
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 h-full">
                 <div className="relative h-40 rounded-xl overflow-hidden mb-6">
                   <Image
-                    src="/images/hub/feature-1.jpg"
+                    src="/images/heroes-hq/success-hero.jpg"
                     alt="Apply for a program"
                     fill
                     className="object-cover"
@@ -296,7 +296,7 @@ export default async function HubWelcomePage() {
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 h-full">
                 <div className="relative h-40 rounded-xl overflow-hidden mb-6">
                   <Image
-                    src="/images/community/event-4.jpg"
+                    src="/images/heroes-hq/employer-hero.jpg"
                     alt="Get enrolled"
                     fill
                     className="object-cover"
@@ -312,7 +312,7 @@ export default async function HubWelcomePage() {
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 h-full">
                 <div className="relative h-40 rounded-xl overflow-hidden mb-6">
                   <Image
-                    src="/images/hub/feature-2.jpg"
+                    src="/images/heroes-hq/funding-hero.jpg"
                     alt="Complete and succeed"
                     fill
                     className="object-cover"
@@ -330,7 +330,7 @@ export default async function HubWelcomePage() {
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0">
           <Image
-            src="/images/hub/cta.jpg"
+            src="/images/heroes-hq/programs-hero.jpg"
             alt="Team celebrating success"
             fill
             className="object-cover"
