@@ -9,8 +9,20 @@ import HeaderDesktopNav from './HeaderDesktopNav';
 // Navigation structure
 export const NAV_ITEMS = [
   { 
+    name: 'Platform', 
+    href: '/platform',
+    subItems: [
+      { name: 'Platform Overview', href: '/platform' },
+      { name: 'Student Portal', href: '/platform/student-portal' },
+      { name: 'Partner Portal', href: '/platform/partner-portal' },
+      { name: 'Employer Portal', href: '/platform/employer-portal' },
+      { name: 'Workforce Boards', href: '/platform/workforce-boards' },
+      { name: 'Compliance & Reporting', href: '/compliance' },
+    ]
+  },
+  { 
     name: 'Programs', 
-    href: '/wioa-eligibility',
+    href: '/programs',
     subItems: [
       // WIOA Programs
       { name: '— WIOA Programs —', href: '/wioa-eligibility', isHeader: true },
@@ -20,39 +32,10 @@ export const NAV_ITEMS = [
       { name: 'HVAC Technician', href: '/programs/hvac-technician' },
       { name: 'CDL Training', href: '/programs/cdl-training' },
       { name: 'IT Support', href: '/programs/it-support' },
-      { name: 'Tax Preparation', href: '/programs/tax-prep-financial-services' },
       // Apprenticeships
       { name: '— Apprenticeships —', href: '/apprenticeships', isHeader: true },
       { name: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
       { name: 'Cosmetology Apprenticeship', href: '/programs/cosmetology-apprenticeship' },
-      { name: 'HVAC Apprenticeship', href: '/programs/hvac-apprenticeship' },
-      { name: 'Electrical Apprenticeship', href: '/programs/electrical-apprenticeship' },
-      // Microclasses
-      { name: '— Microclasses —', href: '/microclasses', isHeader: true },
-      { name: 'CPR & First Aid', href: '/programs/cpr-first-aid-hsi' },
-      { name: 'Food Handler', href: '/programs/food-handler' },
-      { name: 'OSHA Safety', href: '/programs/osha-safety' },
-    ]
-  },
-  { 
-    name: 'Funding', 
-    href: '/funding',
-    subItems: [
-      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
-      { name: 'JRI Programs', href: '/jri' },
-      { name: 'Financial Aid', href: '/financial-aid' },
-      { name: 'How It Works', href: '/how-it-works' },
-      { name: 'Tuition & Costs', href: '/tuition' },
-    ]
-  },
-  { 
-    name: 'Services', 
-    href: '/services',
-    subItems: [
-      { name: 'Career Services', href: '/career-services' },
-      { name: 'Certifications', href: '/certifications' },
-      { name: 'Tax Services', href: '/supersonic-fast-cash' },
-      { name: 'Job Placement', href: '/career-services' },
     ]
   },
   { 
@@ -65,16 +48,22 @@ export const NAV_ITEMS = [
       { name: 'Partner Portal', href: '/partner-portal' },
     ]
   },
-  { name: 'Licensing', href: '/licenses' },
   { 
-    name: 'About', 
-    href: '/about',
+    name: 'Managed Platform', 
+    href: '/managed',
+  },
+  { 
+    name: 'Enterprise', 
+    href: '/enterprise',
+  },
+  { 
+    name: 'Support', 
+    href: '/support',
     subItems: [
-      { name: 'Our Mission', href: '/about/mission' },
-      { name: 'Our Team', href: '/about/team' },
-      { name: 'Success Stories', href: '/testimonials' },
+      { name: 'Help Center', href: '/help' },
       { name: 'Contact Us', href: '/contact' },
-      { name: 'Blog', href: '/blog' },
+      { name: 'Documentation', href: '/docs' },
+      { name: 'System Status', href: '/status' },
     ]
   },
 ];

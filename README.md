@@ -1,34 +1,73 @@
-# Elevate for Humanity - Workforce Operating System
+# Elevate for Humanity — Workforce Operating System
+
+> **Important Notice**  
+> This repository does not represent the complete production system.  
+> Elevate for Humanity provides managed platform access and restricted enterprise source-use under formal agreements.  
+> Public materials are provided for transparency, documentation, and evaluation only.
+
+---
 
 **Production URL:** https://www.elevateforhumanity.org  
 **Status:** ✅ Live and Operational  
 **Version:** 2.0.0  
-**Last Updated:** February 3, 2026
 
 ---
 
-## Platform Positioning
+## What This Is
 
-**Top-tier workforce training and compliance marketplace platform.**
+Elevate for Humanity operates a vertically integrated **Workforce Operating System** designed to deliver funded training, manage compliance, and track employment outcomes across multiple stakeholders.
 
-This is not a general-purpose LMS. This is a vertically-integrated workforce operating system that unifies:
-- Multi-portal operations (Student, Admin, Partner, Workforce Board, Employer, Staff, Delegate)
-- Enrollment + approvals + compliance workflows
-- Funding navigation (WIOA, WRG, JRI, employer-sponsored)
-- Payment processing and revenue sharing
-- Employment pipeline and outcome tracking
+**This platform is not a general-purpose LMS.**  
+It is a managed workforce infrastructure that unifies enrollment, learning delivery, funding workflows, and reporting into a single system.
 
-### Why "Workforce OS" vs "LMS"
+### Delivery Models
+
+| Model | Description |
+|-------|-------------|
+| **Managed Platform Access** | Fully operated by Elevate for Humanity. Subscription-based. No source code access. |
+| **Enterprise Source-Use** | Restricted source-use for qualified enterprises. Approval required. |
+
+---
+
+## Platform Capabilities
 
 | Capability | Generic LMS | Elevate Workforce OS |
 |------------|-------------|---------------------|
 | Course delivery | ✅ | ✅ |
 | Multi-stakeholder portals | ❌ | ✅ 7 portals |
+| Enrollment + approvals + waitlists | ❌ | ✅ Built-in |
 | Government funding integration | ❌ | ✅ WIOA, WRG, JRI |
 | Compliance reporting | Basic | ✅ Automated DOL/DWD |
 | Employer partnerships | ❌ | ✅ Built-in |
-| Revenue sharing | ❌ | ✅ 1/3 partner share |
+| Employment outcome tracking | ❌ | ✅ End-to-end |
 | Apprenticeship management | ❌ | ✅ RAPIDS registered |
+
+---
+
+## Category Statement
+
+> Elevate for Humanity is a Workforce Operating System — a managed, AI-assisted platform that automates funded enrollment, training delivery, compliance, and employment outcomes.  
+> **It includes an LMS. It is not an LMS.**
+
+---
+
+## Licensing Model
+
+Elevate for Humanity provides licensed access to enterprise platforms it operates. Ownership of software, infrastructure, and intellectual property is not transferred.
+
+**Managed Platform Access**
+- Subscription-based
+- Fully operated by Elevate for Humanity
+- No source code access
+- Suspension on non-payment
+
+**Enterprise Source-Use Access**
+- Restricted source-use only
+- No resale, rebranding, or credential authority
+- Enterprise-only agreements
+- Approval required
+
+**We sell operational access and outcomes — not software ownership.**
 
 ---
 

@@ -53,96 +53,51 @@ export default async function InteractiveCoursesPage() {
   const enrolledCourseIds = new Set(enrollments?.map(e => e.course_id) || []);
   const enrollmentMap = new Map(enrollments?.map(e => [e.course_id, e]) || []);
 
+  // Category images mapping
+  const categoryImages: Record<string, string> = {
+    healthcare: '/hero-images/healthcare-cat-new.jpg',
+    trades: '/hero-images/skilled-trades-cat-new.jpg',
+    technology: '/hero-images/technology-cat-new.jpg',
+    business: '/hero-images/business-hero.jpg',
+    default: '/hero-images/healthcare-cat-new.jpg',
+  };
+
   const courseCategories = [
     {
       image: '/hero-images/healthcare-cat-new.jpg',
       title: 'Healthcare',
-      count: courses?.filter(c => c.category === 'healthcare').length || 5,
+      count: courses?.filter(c => c.category === 'healthcare').length || 0,
       href: '/lms/courses?category=healthcare',
     },
     {
       image: '/hero-images/skilled-trades-cat-new.jpg',
       title: 'Skilled Trades',
-      count: courses?.filter(c => c.category === 'trades').length || 4,
+      count: courses?.filter(c => c.category === 'trades').length || 0,
       href: '/lms/courses?category=trades',
     },
     {
       image: '/hero-images/technology-cat-new.jpg',
       title: 'Technology',
-      count: courses?.filter(c => c.category === 'technology').length || 6,
+      count: courses?.filter(c => c.category === 'technology').length || 0,
       href: '/lms/courses?category=technology',
     },
     {
       image: '/hero-images/business-hero.jpg',
       title: 'Business',
-      count: courses?.filter(c => c.category === 'business').length || 3,
+      count: courses?.filter(c => c.category === 'business').length || 0,
       href: '/lms/courses?category=business',
     },
   ];
 
-  // Featured courses with unique images
-  const featuredCourses = [
-    {
-      id: 'healthcare-fundamentals',
-      title: 'Healthcare Fundamentals',
-      description: 'Learn essential healthcare skills including patient care, medical terminology, and safety protocols.',
-      image: '/hero-images/healthcare-category.jpg',
-      duration: '4-6 weeks',
-      students: 1250,
-      rating: 4.9,
-      level: 'Beginner',
-    },
-    {
-      id: 'hvac-technician',
-      title: 'HVAC Technician Training',
-      description: 'Master heating, ventilation, and air conditioning systems installation and repair.',
-      image: '/hero-images/skilled-trades-category.jpg',
-      duration: '8-12 weeks',
-      students: 890,
-      rating: 4.8,
-      level: 'Intermediate',
-    },
-    {
-      id: 'it-support',
-      title: 'IT Support Specialist',
-      description: 'Build skills in computer hardware, software troubleshooting, and network basics.',
-      image: '/hero-images/technology-category.jpg',
-      duration: '6-10 weeks',
-      students: 2100,
-      rating: 4.9,
-      level: 'Beginner',
-    },
-    {
-      id: 'business-management',
-      title: 'Business Management',
-      description: 'Develop leadership, communication, and management skills for career advancement.',
-      image: '/hero-images/business-category.jpg',
-      duration: '8 weeks',
-      students: 750,
-      rating: 4.7,
-      level: 'Intermediate',
-    },
-    {
-      id: 'cdl-training',
-      title: 'CDL Training',
-      description: 'Prepare for your Commercial Driver License with comprehensive training.',
-      image: '/hero-images/cdl-transportation-category.jpg',
-      duration: '3-4 weeks',
-      students: 560,
-      rating: 4.9,
-      level: 'Beginner',
-    },
-    {
-      id: 'barber-apprenticeship',
-      title: 'Barber Apprenticeship',
-      description: 'Learn professional barbering techniques from licensed master barbers.',
-      image: '/hero-images/barber-beauty-category.jpg',
-      duration: '15-17 months',
-      students: 320,
-      rating: 4.8,
-      level: 'All Levels',
-    },
-  ];
+  // Use database courses with fallback image mapping
+  const displayCourses = (courses || []).map((course: any) => ({
+    ...course,
+    image: course.thumbnail_url || categoryImages[course.category] || categoryImages.default,
+    duration: course.duration || 'Self-paced',
+    students: course.enrollment_count || 0,
+    rating: course.rating || 4.5,
+    level: course.level || 'All Levels',
+  }));
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -199,8 +154,13 @@ export default async function InteractiveCoursesPage() {
 
           {/* Course Grid */}
           <h2 className="text-2xl font-bold text-slate-900 mb-6">All Courses</h2>
+          {displayCourses.length === 0 ? (
+            <div className="bg-white rounded-xl shadow-md p-12 text-center">
+              <p className="text-gray-500">No courses available yet. Check back soon!</p>
+            </div>
+          ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredCourses.map((course) => {
+            {displayCourses.map((course: any) => {
               const isEnrolled = enrolledCourseIds.has(course.id);
               const enrollment = enrollmentMap.get(course.id);
               
@@ -243,7 +203,7 @@ export default async function InteractiveCoursesPage() {
                       </span>
                       <span className="flex items-center gap-1">
                         <Users className="w-4 h-4" />
-                        {course.students.toLocaleString()}
+                        {(course.students || 0).toLocaleString()}
                       </span>
                     </div>
                     {isEnrolled ? (
@@ -266,40 +226,9 @@ export default async function InteractiveCoursesPage() {
               );
             })}
           </div>
-
-          {/* Database Courses */}
-          {courses && courses.length > 0 && (
-            <>
-              <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">More Courses</h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {courses.slice(0, 6).map((course: any) => (
-                  <Link
-                    key={course.id}
-                    href={`/lms/courses/${course.id}`}
-                    className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition"
-                  >
-                    <div className="relative h-40">
-                      <Image
-                        src={course.thumbnail_url || '/hero-images/how-it-works-hero.jpg'}
-                        alt={course.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <h3 className="font-bold text-slate-900 mb-2">{course.title}</h3>
-                      <p className="text-slate-600 text-sm line-clamp-2">
-                        {course.description || 'Start your learning journey'}
-                      </p>
-                      <span className="inline-flex items-center gap-1 text-blue-600 font-medium text-sm mt-3">
-                        View Course <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </>
           )}
+
+
         </div>
       </section>
     </div>
