@@ -12,8 +12,6 @@ import { canAccessRoute, getUnauthorizedRedirect } from '@/lib/auth/lms-routes';
 function LmsAppLayoutInner({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const isDemoMode = searchParams.get('demo') === 'true';
   
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
@@ -21,21 +19,7 @@ function LmsAppLayoutInner({ children }: { children: ReactNode }) {
   const [authorized, setAuthorized] = useState(true);
 
   useEffect(() => {
-    // Demo mode - skip auth and use sample data
-    if (isDemoMode) {
-      setUser({ id: 'demo-user', email: 'elevate4humanityedu@gmail.com' });
-      setProfile({
-        id: 'demo-user',
-        full_name: 'Demo Student',
-        role: 'student',
-        avatar_url: '/images/testimonials/student-marcus.jpg',
-        program: 'Healthcare Training',
-        progress: 67,
-      });
-      setLoading(false);
-      return;
-    }
-
+    // NO DEMO MODE BYPASS - All users must authenticate
     const supabase = createClient();
 
     supabase?.auth.getUser().then(({ data, error }) => {
@@ -64,7 +48,7 @@ function LmsAppLayoutInner({ children }: { children: ReactNode }) {
           setLoading(false);
         });
     });
-  }, [router, isDemoMode, pathname]);
+  }, [router, pathname]);
 
   if (loading || !authorized) {
     return (
@@ -79,11 +63,6 @@ function LmsAppLayoutInner({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {isDemoMode && (
-        <div className="bg-green-600 text-white text-center py-2 px-4 text-sm">
-          Demo Mode — Exploring LMS features with sample data
-        </div>
-      )}
       <LMSNavigation user={user} profile={profile} />
       <main>{children}</main>
       {/* Logo stamp for brand recognition */}

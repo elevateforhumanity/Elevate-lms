@@ -357,8 +357,8 @@ export async function proxy(request: NextRequest) {
   );
 
   if (requiresOnboarding) {
-    // Skip onboarding check for the welcome page itself
-    if (pathname === '/hub/welcome') {
+    // Skip onboarding check for the onboarding pages themselves
+    if (pathname.startsWith('/onboarding') || pathname === '/hub/welcome') {
       return response;
     }
 
@@ -378,7 +378,24 @@ export async function proxy(request: NextRequest) {
       return response;
     }
 
-    // If onboarding not completed, redirect to onboarding
+    // Check if user has completed onboarding status
+    const { data: onboardingStatus } = await supabase
+      .from('user_onboarding_status')
+      .select('status, agreements_signed')
+      .eq('user_id', user.id)
+      .single();
+
+    // If no onboarding record or incomplete, redirect to legal agreements
+    if (!onboardingStatus || onboardingStatus.status !== 'complete') {
+      return NextResponse.redirect(new URL('/onboarding/legal', request.url), { status: 307 });
+    }
+
+    // If agreements not signed, redirect to legal agreements
+    if (!onboardingStatus.agreements_signed) {
+      return NextResponse.redirect(new URL('/onboarding/legal', request.url), { status: 307 });
+    }
+
+    // Legacy check - if onboarding not completed in profile, redirect
     if (!profile?.onboarding_completed) {
       return NextResponse.redirect(new URL('/onboarding', request.url), { status: 307 });
     }

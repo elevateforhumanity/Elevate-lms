@@ -27,8 +27,8 @@ async function getCategories() {
   // Get active programs grouped by category
   const { data: programs, error } = await supabase
     .from('programs')
-    .select('id, title, slug, category, description')
-    .eq('status', 'active')
+    .select('id, name, slug, category, description')
+    .eq('is_active', true)
     .order('category');
 
   if (error) {
@@ -37,7 +37,15 @@ async function getCategories() {
   }
 
   if (!programs || programs.length === 0) {
-    return [];
+    // Return default categories if no programs in database
+    return [
+      { title: 'Healthcare', description: 'CNA, Medical Assistant, Phlebotomy training programs.', href: '/programs/healthcare', image: categoryImages['Healthcare'], programs: ['CNA Training', 'Medical Assistant', 'Phlebotomy'] },
+      { title: 'Skilled Trades', description: 'HVAC, Electrical, Welding, Plumbing training programs.', href: '/programs/skilled-trades', image: categoryImages['Skilled Trades'], programs: ['HVAC Technician', 'Electrical', 'Welding'] },
+      { title: 'Technology', description: 'IT Support, Cybersecurity, Web Development programs.', href: '/programs/technology', image: categoryImages['Technology'], programs: ['IT Support', 'Cybersecurity', 'Web Dev'] },
+      { title: 'CDL & Transportation', description: 'Commercial driving license training programs.', href: '/programs/cdl', image: categoryImages['CDL & Transportation'], programs: ['CDL Class A', 'CDL Class B'] },
+      { title: 'Beauty & Barbering', description: 'Barber apprenticeship and cosmetology programs.', href: '/programs/barber-apprenticeship', image: categoryImages['Beauty & Barbering'], programs: ['Barber Apprenticeship', 'Cosmetology'] },
+      { title: 'Business & Finance', description: 'Tax preparation and business training programs.', href: '/programs/business', image: categoryImages['Business & Finance'], programs: ['Tax Preparation', 'Business Admin'] },
+    ];
   }
 
   // Group programs by category
@@ -54,7 +62,7 @@ async function getCategories() {
         programs: [],
       });
     }
-    categoryMap.get(cat)!.programs.push(program.title);
+    categoryMap.get(cat)!.programs.push(program.name);
   }
 
   return Array.from(categoryMap.values());

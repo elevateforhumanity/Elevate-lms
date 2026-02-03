@@ -151,26 +151,14 @@ export async function getAuthUser(): Promise<AuthUser | null> {
 }
 
 // =====================================================
-// DEMO MODE CHECK
+// DEMO MODE - DISABLED IN PRODUCTION
 // =====================================================
 
+// Demo mode is permanently disabled for compliance
+// All users must authenticate through proper channels
 function isDemoMode(): boolean {
-  // Only enable demo mode if explicitly set - NOT in development by default
-  // This ensures proper auth is required even in development
-  return process.env.DEMO_MODE === 'true';
+  return false; // NEVER enable demo mode in production
 }
-
-// Mock session for demo mode
-const DEMO_SESSION = {
-  user: {
-    id: 'demo-admin-user',
-    email: 'elevate4humanityedu@gmail.com',
-    role: 'admin' as UserRole,
-  },
-  access_token: 'demo-token',
-  refresh_token: 'demo-refresh',
-  expires_at: Date.now() + 86400000,
-};
 
 // =====================================================
 // ROLE CHECKING
