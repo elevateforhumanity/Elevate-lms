@@ -1,15 +1,28 @@
 'use client';
 
-// Dynamic import to avoid SSR issues
-let WebContainer: any = null;
+// Dynamic import to avoid SSR issues - WebContainer SDK must only be loaded client-side
+let WebContainerClass: any = null;
+
+// Check if cross-origin isolation is enabled
+export function isCrossOriginIsolated(): boolean {
+  if (typeof window === 'undefined') return false;
+  return window.crossOriginIsolated === true;
+}
 
 async function loadWebContainer() {
   if (typeof window === 'undefined') return null;
-  if (!WebContainer) {
-    const module = await import('@webcontainer/api');
-    WebContainer = module.WebContainer;
+  
+  // Check for cross-origin isolation
+  if (!window.crossOriginIsolated) {
+    console.warn('WebContainer requires cross-origin isolation. Headers may not be set correctly.');
   }
-  return WebContainer;
+  
+  if (!WebContainerClass) {
+    // Use dynamic import with webpackIgnore to prevent bundling during SSR
+    const module = await (eval('import("@webcontainer/api")') as Promise<any>);
+    WebContainerClass = module.WebContainer;
+  }
+  return WebContainerClass;
 }
 
 let webcontainerInstance: any = null;
@@ -40,7 +53,7 @@ export async function bootWebContainer(): Promise<any> {
     throw new Error('WebContainer not available in this environment');
   }
 
-  bootPromise = WC.boot();
+  bootPromise = WC.boot({ workdirName: 'project' });
   webcontainerInstance = await bootPromise;
   return webcontainerInstance;
 }

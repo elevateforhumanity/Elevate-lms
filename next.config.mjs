@@ -352,9 +352,30 @@ const nextConfig = {
     }
 
     return [
+      // Studio route - Cross-Origin Isolation for WebContainer
+      {
+        source: '/studio/:path*',
+        headers: [
+          { key: 'Cross-Origin-Embedder-Policy', value: 'credentialless' },
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+          { key: 'Cross-Origin-Resource-Policy', value: 'cross-origin' },
+          { key: 'Cache-Control', value: 'no-store, max-age=0' },
+          { key: 'X-Build-ID', value: process.env.COMMIT_REF?.slice(0, 7) || 'dev' },
+        ],
+      },
+      {
+        source: '/studio',
+        headers: [
+          { key: 'Cross-Origin-Embedder-Policy', value: 'credentialless' },
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+          { key: 'Cross-Origin-Resource-Policy', value: 'cross-origin' },
+          { key: 'Cache-Control', value: 'no-store, max-age=0' },
+          { key: 'X-Build-ID', value: process.env.COMMIT_REF?.slice(0, 7) || 'dev' },
+        ],
+      },
       // 1) Never allow HTML / app routes to be cached for a year
       {
-        source: '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)',
+        source: '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|studio).*)',
         headers: [
           { key: 'Cache-Control', value: 'no-store, max-age=0' },
           { key: 'Pragma', value: 'no-cache' },

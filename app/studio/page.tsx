@@ -2,12 +2,14 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useStudio } from './hooks/useStudio';
+import { useStudioBackend } from './hooks/useStudioBackend';
 import { useWebContainer } from './hooks/useWebContainer';
 import { FileTree } from './components/FileTree';
 import { Editor } from './components/Editor';
 import { Tabs } from './components/Tabs';
 import { AIChat } from './components/AIChat';
 import { GitPanel } from './components/GitPanel';
+import { WorkspaceSelector } from './components/WorkspaceSelector';
 import { SettingsModal } from './components/SettingsModal';
 import { Header } from './components/Header';
 import { Terminal } from './components/Terminal';
@@ -35,8 +37,15 @@ interface Conflict {
 }
 
 export default function StudioPage() {
-  const studio = useStudio();
-  const webcontainer = useWebContainer();
+  // Use persistent backend (Cloudflare) or GitHub-only mode
+  const [usePersistentStorage, setUsePersistentStorage] = useState(true);
+  const studioBackend = useStudioBackend();
+  const studioGitHub = useStudio();
+  
+  // Use backend hook if persistent storage enabled, otherwise GitHub-only
+  const studio = usePersistentStorage ? studioBackend : studioGitHub;
+  const webcontainer = usePersistentStorage ? studioBackend.webcontainer : useWebContainer();
+  
   const [panel, setPanel] = useState<Panel>('files');
   const [showTerminal, setShowTerminal] = useState(false);
   const [showCommandPalette, setShowCommandPalette] = useState(false);
@@ -59,6 +68,7 @@ export default function StudioPage() {
   const [conflicts, setConflicts] = useState<Conflict[]>([]);
   const [conflictBranches, setConflictBranches] = useState<{ ours: string; theirs: string }>({ ours: '', theirs: '' });
   const [showRefactor, setShowRefactor] = useState(false);
+  const [showWorkspaceSelector, setShowWorkspaceSelector] = useState(false);
 
   // Check for conflicts when switching branches or before merge
   const checkConflicts = useCallback(async (baseBranch: string, headBranch: string) => {
@@ -511,6 +521,18 @@ export default function StudioPage() {
             background: 'linear-gradient(180deg, #0d1117 0%, #161b22 100%)',
           }}
         >
+          {/* Workspace Selector (only in persistent mode) */}
+          {usePersistentStorage && 'workspaces' in studioBackend && (
+            <div style={{ borderBottom: '1px solid #30363d' }}>
+              <WorkspaceSelector
+                workspaces={studioBackend.workspaces}
+                currentWorkspace={studioBackend.currentWorkspace}
+                onSelect={studioBackend.loadWorkspace}
+                onCreate={studioBackend.createWorkspace}
+              />
+            </div>
+          )}
+          
           {/* Search with icon */}
           <div style={{ 
             margin: 12, 

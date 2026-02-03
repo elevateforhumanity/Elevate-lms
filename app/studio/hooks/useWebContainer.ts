@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react';
 import type { WebContainerFile, ProcessOutput } from '../lib/webcontainer';
+import { isCrossOriginIsolated } from '../lib/webcontainer';
 
 export interface TerminalLine {
   id: string;
@@ -28,30 +29,7 @@ export function useWebContainer() {
   const [installing, setInstalling] = useState(false);
   const processRef = useRef<any>(null);
 
-  // Boot WebContainer
-  const boot = useCallback(async () => {
-    if (booted || booting || typeof window === 'undefined') return;
-    
-    setBooting(true);
-    setError(null);
-    
-    addLine('main', 'system', 'Booting WebContainer...');
-    
-    try {
-      const { bootWebContainer } = await import('../lib/webcontainer');
-      await bootWebContainer();
-      setBooted(true);
-      addLine('main', 'system', 'WebContainer ready!');
-    } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
-      setError(msg);
-      addLine('main', 'error', `Boot failed: ${msg}`);
-    } finally {
-      setBooting(false);
-    }
-  }, [booted, booting]);
-
-  // Add line to terminal
+  // Add line to terminal - defined first since other functions depend on it
   const addLine = useCallback((terminalId: string, type: TerminalLine['type'], content: string) => {
     setTerminals(prev => prev.map(t => 
       t.id === terminalId
@@ -67,6 +45,43 @@ export function useWebContainer() {
         : t
     ));
   }, []);
+
+  // Boot WebContainer
+  const boot = useCallback(async () => {
+    if (booted || booting || typeof window === 'undefined') return;
+    
+    setBooting(true);
+    setError(null);
+    
+    // Check cross-origin isolation first
+    if (!isCrossOriginIsolated()) {
+      addLine('main', 'system', '⚠️ Cross-origin isolation not enabled');
+      addLine('main', 'system', 'Attempting to boot anyway...');
+    } else {
+      addLine('main', 'system', '✓ Cross-origin isolation enabled');
+    }
+    
+    addLine('main', 'system', 'Booting WebContainer...');
+    
+    try {
+      const { bootWebContainer } = await import('../lib/webcontainer');
+      await bootWebContainer();
+      setBooted(true);
+      addLine('main', 'system', '✓ WebContainer ready!');
+      addLine('main', 'system', 'Run "npm install" to install dependencies');
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setError(msg);
+      addLine('main', 'error', `Boot failed: ${msg}`);
+      
+      if (msg.includes('cross-origin') || msg.includes('SharedArrayBuffer')) {
+        addLine('main', 'error', 'WebContainer requires cross-origin isolation headers.');
+        addLine('main', 'error', 'Make sure COOP/COEP headers are set on this page.');
+      }
+    } finally {
+      setBooting(false);
+    }
+  }, [booted, booting, addLine]);
 
   // Clear terminal
   const clearTerminal = useCallback((terminalId: string) => {

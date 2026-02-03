@@ -146,7 +146,8 @@ export function PreviewPanel({ servers, onRefresh }: PreviewPanelProps) {
               background: '#fff',
             }}
             title="Preview"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-downloads"
+            allow="cross-origin-isolated"
           />
         )}
       </div>
