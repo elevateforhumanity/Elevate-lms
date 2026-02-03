@@ -50,14 +50,12 @@ const fundingLinks = [
   { href: '/funding/federal-programs', label: 'Federal Programs' },
 ];
 
-// Simplified top-level navigation (4-6 items max)
+// Simplified top-level navigation - STUDENT FOCUSED
 const mainLinks = [
   { href: '/programs', label: 'Programs' },
   { href: '/funding', label: 'Funding' },
-  { href: '/resources', label: 'Resources' },
-  { href: '/services', label: 'Services' },
-  { href: '/community', label: 'Community' },
   { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 // Resources & Tools dropdown
@@ -96,16 +94,10 @@ const communityLinks = [
   { href: '/events', label: 'Events' },
 ];
 
-// "More" dropdown - everything else
+// "More" dropdown - hidden from main nav, accessible via /partners or direct URL
 const moreLinks = [
-  { href: '/platform', label: 'Platform', badge: 'NEW' },
-  { href: '/metrics', label: 'Impact Metrics', badge: 'NEW' },
-  { href: '/licensing', label: 'Licensing' },
-  { href: '/agencies', label: 'For Agencies', badge: 'NEW' },
-  { href: '/students', label: 'For Students' },
   { href: '/employers', label: 'For Employers' },
-  { href: '/transparency', label: 'Transparency', badge: 'NEW' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/faq', label: 'FAQ' },
 ];
 
 // Student features (authenticated users only)

@@ -6,140 +6,52 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
-// Navigation structure for mobile menu
+// STUDENT-FIRST NAVIGATION - Locked for 30 days
+// Only paths that move students toward enrollment
 const NAV_ITEMS = [
   { 
     name: 'Programs', 
     href: '/programs',
     subItems: [
-      { name: 'Barber Apprenticeship', href: '/programs/barber' },
       { name: 'Healthcare', href: '/programs/healthcare' },
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
       { name: 'Business', href: '/programs/business' },
-      { name: 'Apprenticeships', href: '/apprenticeships' },
-      { name: 'JRI Programs', href: '/jri' },
-      { name: 'Micro Classes', href: '/micro-classes' },
+      { name: 'All Programs', href: '/programs' },
     ]
   },
-  { 
-    name: 'Services', 
-    href: '/services',
-    subItems: [
-      { name: 'Career Services', href: '/career-services' },
-      { name: 'Drug Testing', href: '/drug-testing' },
-      { name: 'Certifications', href: '/certifications' },
-      { name: 'Training Providers', href: '/training-providers' },
-      { name: 'Mentorship', href: '/mentorship' },
-    ]
-  },
-
   { 
     name: 'How It Works', 
     href: '/how-it-works',
     subItems: [
-      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
-      { name: 'Funding & Grants', href: '/funding' },
-      { name: 'Tuition & Fees', href: '/tuition-fees' },
+      { name: 'Check Eligibility', href: '/enroll' },
+      { name: 'Funding Options', href: '/funding' },
       { name: 'FAQ', href: '/faq' },
-      { name: 'Outcomes', href: '/outcomes' },
-    ]
-  },
-  { 
-    name: 'For Employers', 
-    href: '/employer',
-    subItems: [
-      { name: 'Hire Graduates', href: '/hire-graduates' },
-      { name: 'Partner With Us', href: '/partners' },
-      { name: 'Workforce Solutions', href: '/solutions' },
-      { name: 'OJT & Funding', href: '/ojt-and-funding' },
-      { name: 'Workforce Board', href: '/workforce-board' },
-    ]
-  },
-  { 
-    name: 'LMS', 
-    href: '/lms',
-    subItems: [
-      { name: 'Student Dashboard', href: '/lms' },
-      { name: 'My Courses', href: '/lms/courses' },
-      { name: 'Certificates', href: '/certificates' },
-      { name: 'Leaderboard', href: '/leaderboard' },
-      { name: 'Community', href: '/community' },
-    ]
-  },
-  { 
-    name: 'Store', 
-    href: '/store',
-    subItems: [
-      { name: 'Platform Licenses', href: '/store/licenses' },
-      { name: 'AI Tools & Apps', href: '/store/apps' },
-      { name: 'Digital Resources', href: '/store/digital' },
-      { name: 'Courses', href: '/store/courses' },
-    ]
-  },
-  { 
-    name: 'Portals', 
-    href: '/dashboard',
-    subItems: [
-      { name: 'Sign In', href: '/login' },
-      { name: 'Create Account', href: '/signup' },
-      { name: 'Student Portal', href: '/student-portal' },
-      { name: 'Employer Portal', href: '/employer-portal' },
-      { name: 'Partner Portal', href: '/partner-portal' },
-      { name: 'Instructor Portal', href: '/instructor' },
-      { name: 'Admin Dashboard', href: '/admin' },
     ]
   },
   { 
     name: 'About', 
     href: '/about',
     subItems: [
-      { name: 'Our Team', href: '/team' },
-      { name: 'Success Stories', href: '/success-stories' },
+      { name: 'Our Mission', href: '/about' },
+      { name: 'Success Stories', href: '/testimonials' },
       { name: 'Contact', href: '/contact' },
-      { name: 'Careers', href: '/careers' },
-      { name: 'Locations', href: '/locations' },
-      { name: 'Impact', href: '/impact' },
-    ]
-  },
-  { 
-    name: 'Resources', 
-    href: '/resources',
-    subItems: [
-      { name: 'Blog', href: '/blog' },
-      { name: 'News', href: '/news' },
-      { name: 'Events', href: '/events' },
-      { name: 'Webinars', href: '/webinars' },
-      { name: 'Support', href: '/support' },
-      { name: 'Help Center', href: '/help' },
     ]
   },
 ];
 
 // Desktop navigation links with dropdowns
+// STUDENT-FIRST: Only paths that move students toward enrollment
 const DESKTOP_NAV_LINKS = [
   { 
     name: 'Programs', 
     href: '/programs',
     subItems: [
       { name: 'All Programs', href: '/programs' },
-      { name: 'Barber Apprenticeship', href: '/programs/barber' },
       { name: 'Healthcare', href: '/programs/healthcare' },
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
       { name: 'Business', href: '/programs/business' },
-      { name: 'Apprenticeships', href: '/apprenticeships' },
-    ]
-  },
-  { 
-    name: 'Store', 
-    href: '/store',
-    subItems: [
-      { name: 'Store Home', href: '/store' },
-      { name: 'Platform Licenses', href: '/store/licenses' },
-      { name: 'Courses', href: '/store/courses' },
-      { name: 'Digital Downloads', href: '/store/digital' },
-      { name: 'Try Demo', href: '/store/demo' },
     ]
   },
   { 
@@ -147,27 +59,16 @@ const DESKTOP_NAV_LINKS = [
     href: '/how-it-works',
     subItems: [
       { name: 'Overview', href: '/how-it-works' },
-      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
-      { name: 'Financial Aid', href: '/financial-aid' },
+      { name: 'Check Eligibility', href: '/enroll' },
+      { name: 'Funding Options', href: '/funding' },
       { name: 'FAQ', href: '/faq' },
-    ]
-  },
-  { 
-    name: 'For Employers', 
-    href: '/employer',
-    subItems: [
-      { name: 'Employer Overview', href: '/employer' },
-      { name: 'Hire Graduates', href: '/hire-graduates' },
-      { name: 'Partner With Us', href: '/partners' },
-      { name: 'Workforce Board', href: '/workforce-board' },
     ]
   },
   { 
     name: 'About', 
     href: '/about',
     subItems: [
-      { name: 'About Us', href: '/about' },
-      { name: 'Our Team', href: '/team' },
+      { name: 'Our Mission', href: '/about' },
       { name: 'Success Stories', href: '/success-stories' },
       { name: 'Contact', href: '/contact' },
     ]

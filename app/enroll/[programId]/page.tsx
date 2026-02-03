@@ -13,9 +13,13 @@ import {
 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
+// Apprenticeship programs require approval flow, not direct enrollment
+const APPRENTICESHIP_SLUGS = ['barber', 'barber-apprenticeship', 'cosmetology-apprenticeship', 'esthetician-apprenticeship', 'nail-technician-apprenticeship'];
+
 interface Program {
   id: string;
   name: string;
+  slug?: string;
   description: string;
   duration_weeks: number;
   requires_license: boolean;
@@ -23,6 +27,7 @@ interface Program {
   price: number | null;
   total_cost: number | null;
   funding_eligible: boolean;
+  category?: string;
 }
 
 export default function EnrollPage() {
@@ -52,6 +57,17 @@ export default function EnrollPage() {
         .single();
 
       if (error) throw error;
+      
+      // Apprenticeships require approval flow - redirect to application
+      const isApprenticeship = data?.category?.toLowerCase().includes('apprenticeship') ||
+        data?.slug && APPRENTICESHIP_SLUGS.includes(data.slug) ||
+        data?.name?.toLowerCase().includes('apprenticeship');
+      
+      if (isApprenticeship) {
+        router.replace(`/apply?program=${programId}`);
+        return;
+      }
+      
       setProgram(data);
 
       await checkEligibility();

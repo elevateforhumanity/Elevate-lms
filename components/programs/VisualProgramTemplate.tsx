@@ -9,6 +9,9 @@ interface VisualProgramTemplateProps {
   slug: string;
 }
 
+// Apprenticeship programs have special enrollment flow
+const APPRENTICESHIP_SLUGS = ['barber', 'barber-apprenticeship', 'cosmetology-apprenticeship', 'esthetician-apprenticeship', 'nail-technician-apprenticeship'];
+
 /**
  * Visual-first program page template
  * 
@@ -20,6 +23,9 @@ interface VisualProgramTemplateProps {
  */
 export function VisualProgramTemplate({ program, slug }: VisualProgramTemplateProps) {
   const images = getProgramImages(slug);
+  const isApprenticeship = APPRENTICESHIP_SLUGS.includes(slug) || 
+    program.name?.toLowerCase().includes('apprenticeship') ||
+    program.category?.toLowerCase().includes('apprenticeship');
 
   return (
     <main className="bg-white">
@@ -46,18 +52,12 @@ export function VisualProgramTemplate({ program, slug }: VisualProgramTemplatePr
               {program.name || program.heroTitle}
             </h1>
             <p className="text-white/90 text-sm md:text-base mb-4 max-w-2xl">
-              Eligibility approval through WorkOne / Indiana Career Connect is required before enrollment.
+              Eligibility approval is required before enrollment. Start your application to check eligibility.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/apply"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition shadow-lg"
-              >
-                Start Eligibility Review
-              </Link>
-              <Link
-                href="/check-eligibility"
-                className="bg-white/20 hover:bg-white/30 backdrop-blur text-white px-6 py-3 rounded-lg font-medium transition border border-white/30"
               >
                 Check Eligibility
               </Link>
@@ -134,13 +134,49 @@ export function VisualProgramTemplate({ program, slug }: VisualProgramTemplatePr
             Final eligibility is confirmed after review with WorkOne.
           </p>
           <Link
-            href="/check-eligibility"
+            href="/apply"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition"
           >
-            Check Eligibility Before Applying
+            Check Eligibility
           </Link>
         </div>
       </section>
+
+      {/* WHAT UNLOCKS AFTER ENROLLMENT - apprenticeships only */}
+      {isApprenticeship && (
+        <section className="py-12 px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8">
+              <h2 className="text-2xl font-bold mb-4 text-slate-900 text-center">What Unlocks After Enrollment</h2>
+              <p className="text-slate-600 mb-6 text-center">
+                Payment secures your enrollment. Training access unlocks after approval and shop assignment.
+              </p>
+              <div className="space-y-4 max-w-md mx-auto">
+                <div className="flex items-center gap-3">
+                  <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">1</span>
+                  <span className="text-slate-700">Application submitted</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">2</span>
+                  <span className="text-slate-700">Payment received (if self-pay)</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-sm">⏳</span>
+                  <span className="text-slate-700">Shop assignment</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-sm">⏳</span>
+                  <span className="text-slate-700">Compliance approval</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-6 h-6 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center text-sm">🔒</span>
+                  <span className="text-slate-500">Training access (unlocks after approval)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* WHAT HAPPENS NEXT - 4-Step Visual Flow */}
       <section className="py-12 px-4">

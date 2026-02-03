@@ -207,6 +207,105 @@ export async function POST(request: NextRequest) {
         break;
       }
 
+      // ========== APPRENTICESHIP ENROLLMENT (SELF-PAY) ==========
+      // Payment moves student from applied → enrolled_pending_approval
+      // Training access unlocks ONLY after admin approval (→ active)
+      if (session.metadata?.kind === 'apprenticeship_enrollment') {
+        try {
+          const studentId = session.metadata.student_id;
+          const applicationId = session.metadata.application_id;
+          const program = session.metadata.program;
+          const paymentOption = session.metadata.payment_option;
+          const amountPaid = (session.amount_total || 0) / 100;
+
+          if (!studentId || !applicationId) {
+            console.error('[webhook] apprenticeship_enrollment missing required metadata', {
+              studentId, applicationId, program, paymentOption
+            });
+            break;
+          }
+
+          console.log('[webhook] Processing apprenticeship_enrollment', {
+            studentId, applicationId, program, paymentOption, amountPaid
+          });
+
+          // Update application status
+          const { error: appError } = await supabase
+            .from('applications')
+            .update({ 
+              status: 'payment_received',
+              payment_received_at: new Date().toISOString(),
+            })
+            .eq('id', applicationId);
+
+          if (appError) {
+            console.error('[webhook] Failed to update application', appError);
+          }
+
+          // Create or update enrollment with enrolled_pending_approval status
+          // CRITICAL: Status is NOT 'active' - training access is locked
+          const { data: enrollment, error: enrollError } = await supabase
+            .from('enrollments')
+            .upsert({
+              user_id: studentId,
+              application_id: applicationId,
+              program_slug: program === 'barber_apprenticeship' ? 'barber-apprenticeship' : program,
+              status: 'enrolled_pending_approval', // NOT active - requires admin approval
+              payment_status: 'paid',
+              payment_option: paymentOption,
+              amount_paid: amountPaid,
+              stripe_checkout_session_id: session.id,
+              enrolled_at: new Date().toISOString(),
+            }, {
+              onConflict: 'application_id',
+            })
+            .select('id')
+            .single();
+
+          if (enrollError) {
+            console.error('[webhook] Failed to create enrollment', enrollError);
+          } else {
+            console.log('[webhook] Apprenticeship enrollment created', {
+              enrollmentId: enrollment?.id,
+              status: 'enrolled_pending_approval',
+              studentId,
+              program
+            });
+
+            // Audit log
+            await auditLog({
+              action: AuditAction.ENROLLMENT_CREATED,
+              entity: AuditEntity.ENROLLMENT,
+              entityId: enrollment?.id,
+              userId: studentId,
+              metadata: {
+                program,
+                payment_option: paymentOption,
+                amount_paid: amountPaid,
+                checkout_session_id: session.id,
+                enrollment_flow: 'apprenticeship_self_pay',
+                status: 'enrolled_pending_approval',
+              },
+            });
+          }
+
+          // Update payment log
+          await supabase
+            .from('payment_logs')
+            .update({ 
+              status: 'completed',
+              completed_at: new Date().toISOString(),
+            })
+            .eq('stripe_session_id', session.id);
+
+          logger.info(`✅ Apprenticeship enrollment created (pending approval): ${program} for student ${studentId}`);
+        } catch (err: any) {
+          console.error('[webhook] Error processing apprenticeship_enrollment:', err);
+          logger.error('Error processing apprenticeship_enrollment:', err instanceof Error ? err : new Error(String(err)));
+        }
+        break;
+      }
+
       // LANE 0: Handle TRIAL-TO-SUBSCRIPTION UPGRADE
       if (session.metadata?.upgrade_from === 'trial' && session.mode === 'subscription') {
         try {
@@ -1535,6 +1634,50 @@ export async function POST(request: NextRequest) {
           await enforceSubscriptionStatus((invoice as any).subscription);
         } catch (err) {
           logger.error('Error enforcing subscription status:', err);
+        }
+      }
+
+      // Handle failed apprenticeship installment payment
+      // Pause enrollment and lock portal access
+      if (invoice.metadata?.kind === 'apprenticeship_enrollment') {
+        try {
+          const applicationId = invoice.metadata.application_id;
+          const studentId = invoice.metadata.student_id;
+
+          console.log('[webhook] Apprenticeship payment failed, pausing enrollment', {
+            applicationId, studentId
+          });
+
+          // Update enrollment status to paused
+          const { error: pauseError } = await supabase
+            .from('enrollments')
+            .update({
+              status: 'paused',
+              paused_at: new Date().toISOString(),
+              pause_reason: 'payment_failed',
+            })
+            .eq('application_id', applicationId);
+
+          if (pauseError) {
+            console.error('[webhook] Failed to pause enrollment', pauseError);
+          } else {
+            logger.warn(`⚠️ Apprenticeship enrollment paused due to payment failure: ${applicationId}`);
+            
+            // Audit log
+            await auditLog({
+              action: AuditAction.ENROLLMENT_UPDATED,
+              entity: AuditEntity.ENROLLMENT,
+              entityId: applicationId,
+              userId: studentId,
+              metadata: {
+                status: 'paused',
+                reason: 'payment_failed',
+                invoice_id: invoice.id,
+              },
+            });
+          }
+        } catch (err) {
+          console.error('[webhook] Error handling apprenticeship payment failure:', err);
         }
       }
       break;

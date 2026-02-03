@@ -16,36 +16,17 @@ export const Footer: React.FC = () => {
       { name: 'Apprenticeships', href: '/programs/apprenticeships' },
       { name: 'All Programs', href: '/programs' },
     ],
-    services: [
-      { name: 'Tax Services', href: '/tax' },
-      { name: 'SupersonicFastCash', href: '/supersonic-fast-cash' },
-      { name: 'VITA Free Tax Help', href: '/tax' },
-      { name: 'Rise Foundation', href: '/rise-foundation' },
-      { name: 'Career Services', href: '/career-services' },
-      { name: 'AI Studio', href: '/ai-studio' },
-    ],
-    students: [
+    getStarted: [
+      { name: 'Check Eligibility', href: '/enroll' },
       { name: 'Apply Now', href: '/apply' },
-      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
       { name: 'Funding Options', href: '/funding' },
-      { name: 'Student Portal', href: '/student-portal' },
-      { name: 'Course Catalog', href: '/courses' },
       { name: 'Success Stories', href: '/testimonials' },
-    ],
-    platform: [
-      { name: 'LMS Overview', href: '/lms' },
-      { name: 'Store & Licensing', href: '/store' },
-      { name: 'Platform Demo', href: '/store/demo' },
-      { name: 'Pricing', href: '/pricing' },
-      { name: 'Community Hub', href: '/community' },
-      { name: 'Marketplace', href: '/marketplace' },
+      { name: 'FAQ', href: '/faq' },
     ],
     employers: [
       { name: 'Hire Graduates', href: '/hire-graduates' },
       { name: 'Post a Job', href: '/employers/post-job' },
-      { name: 'Employer Portal', href: '/employer/dashboard' },
       { name: 'Workforce Partners', href: '/workforce-partners' },
-      { name: 'Apprenticeships', href: '/employers/apprenticeships' },
     ],
     resources: [
       { name: 'FAQ', href: '/faq' },
@@ -117,10 +98,9 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Footer Content */}
+      {/* Main Footer Content - Student-first simplified layout */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* First row - 4 columns on laptop */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {/* Programs */}
           <div>
             <h4 className="text-white font-semibold mb-4">Programs</h4>
@@ -138,11 +118,11 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Get Started */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Services</h4>
+            <h4 className="text-white font-semibold mb-4">Get Started</h4>
             <ul className="space-y-2">
-              {footerLinks.services.map((link) => (
+              {footerLinks.getStarted.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -155,43 +135,6 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* For Students */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">For Students</h4>
-            <ul className="space-y-2">
-              {footerLinks.students.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-300 text-sm font-medium hover:text-orange-400 transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Platform */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Platform</h4>
-            <ul className="space-y-2">
-              {footerLinks.platform.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-300 text-sm font-medium hover:text-orange-400 transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Second row - 4 columns on laptop */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* For Employers */}
           <div>
             <h4 className="text-white font-semibold mb-4">For Employers</h4>

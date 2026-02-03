@@ -8,7 +8,14 @@ import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import { EligibilityNotice } from '@/components/EligibilityNotice';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
+// Apprenticeship programs hide pricing until after application
+const APPRENTICESHIP_SLUGS = ['barber', 'barber-apprenticeship', 'cosmetology-apprenticeship', 'esthetician-apprenticeship', 'nail-technician-apprenticeship'];
+
 export function ProgramTemplate({ program }: { program: Program }) {
+  const isApprenticeship = APPRENTICESHIP_SLUGS.includes(program.slug) || 
+    program.name?.toLowerCase().includes('apprenticeship') ||
+    program.category?.toLowerCase().includes('apprenticeship');
+
   return (
     <main className="bg-white">
       {/* Breadcrumbs */}
@@ -39,7 +46,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
                 {program.heroSubtitle}
               </p>
 
-              {/* Format chips */}
+              {/* Format chips - hide pricing for apprenticeships */}
               <div className="flex flex-wrap gap-3 mb-8">
                 <span className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-sm font-medium">
                   {program.duration}
@@ -47,39 +54,26 @@ export function ProgramTemplate({ program }: { program: Program }) {
                 <span className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-sm font-medium">
                   {program.delivery}
                 </span>
-                <span className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-sm font-medium">
-                  {program.price ? `$${program.price}` : '$0 with funding'}
-                </span>
+                {!isApprenticeship && (
+                  <span className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-sm font-medium">
+                    {program.price ? `$${program.price}` : '$0 with funding'}
+                  </span>
+                )}
+                {isApprenticeship && (
+                  <span className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-sm font-medium">
+                    Apply to see funding options
+                  </span>
+                )}
               </div>
 
-              {/* CTAs */}
+              {/* Single CTA - Check Eligibility */}
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href={program.ctaPrimary.href}
+                  href="/apply"
                   className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg"
                 >
-                  {program.ctaPrimary.label}
+                  Check Eligibility
                 </Link>
-                <Link
-                  href={`/programs/${program.slug}/courses`}
-                  className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg"
-                >
-                  View Courses
-                </Link>
-                <Link
-                  href={`/programs/${program.slug}/discussions`}
-                  className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg"
-                >
-                  Community
-                </Link>
-                {program.ctaSecondary && (
-                  <Link
-                    href={program.ctaSecondary.href}
-                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md hover:bg-white/20 border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg transition"
-                  >
-                    {program.ctaSecondary.label}
-                  </Link>
-                )}
               </div>
             </div>
           </div>
@@ -255,8 +249,8 @@ export function ProgramTemplate({ program }: { program: Program }) {
             </div>
           </div>
 
-          {/* Right: Payment/Enrollment */}
-          {program.price && (
+          {/* Right: Payment/Enrollment - hidden for apprenticeships */}
+          {program.price && !isApprenticeship && (
             <div>
               <ProgramPaymentButton
                 programSlug={program.slug}
@@ -294,18 +288,62 @@ export function ProgramTemplate({ program }: { program: Program }) {
         </section>
       )}
 
-      {/* PRICING OPTIONS */}
-      <section className="max-w-6xl mx-auto px-4 py-12">
-        <PricingTiers
-          programSlug={program.slug}
-          programName={program.name}
-          tiers={program.pricingTiers}
-          basePrice={program.price || 0}
-          examVoucherPrice={program.examVoucherPrice || 0}
-          retakeVoucherPrice={program.retakeVoucherPrice || 0}
-          fundingAvailable={program.fundingOptions && program.fundingOptions.length > 0}
-        />
-      </section>
+      {/* PRICING OPTIONS - hidden for apprenticeships (payment after application) */}
+      {!isApprenticeship && (
+        <section className="max-w-6xl mx-auto px-4 py-12">
+          <PricingTiers
+            programSlug={program.slug}
+            programName={program.name}
+            tiers={program.pricingTiers}
+            basePrice={program.price || 0}
+            examVoucherPrice={program.examVoucherPrice || 0}
+            retakeVoucherPrice={program.retakeVoucherPrice || 0}
+            fundingAvailable={program.fundingOptions && program.fundingOptions.length > 0}
+          />
+        </section>
+      )}
+
+      {/* WHAT UNLOCKS AFTER ENROLLMENT - apprenticeships only */}
+      {isApprenticeship && (
+        <section className="max-w-4xl mx-auto px-4 py-12">
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8">
+            <h2 className="text-2xl font-bold mb-6 text-slate-900">What Unlocks After Enrollment</h2>
+            <p className="text-slate-600 mb-6">
+              Payment secures your enrollment. Training access unlocks after approval and shop assignment.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">1</span>
+                <span className="text-slate-700">Application submitted</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">2</span>
+                <span className="text-slate-700">Payment received (if self-pay)</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-sm">⏳</span>
+                <span className="text-slate-700">Shop assignment</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-sm">⏳</span>
+                <span className="text-slate-700">Compliance approval</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center text-sm">🔒</span>
+                <span className="text-slate-500">Training access (unlocks after approval)</span>
+              </div>
+            </div>
+            <div className="mt-8">
+              <Link
+                href="/apply"
+                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+              >
+                Start Application
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* HOW TO ENROLL */}
       <section className="max-w-6xl mx-auto px-4 py-12">

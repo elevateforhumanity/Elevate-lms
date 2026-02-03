@@ -5,119 +5,41 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
+// STUDENT-FIRST FOOTER - Primary sections for students, secondary for others
 const footerSections = [
   {
     title: 'Programs',
     links: [
       { name: 'All Programs', href: '/programs' },
-      { name: 'Barber Apprenticeship', href: '/programs/barber' },
       { name: 'Healthcare', href: '/programs/healthcare' },
       { name: 'Skilled Trades', href: '/programs/skilled-trades' },
       { name: 'Technology', href: '/programs/technology' },
       { name: 'Business', href: '/programs/business' },
-      { name: 'Apprenticeships', href: '/apprenticeships' },
-    ],
-  },
-  {
-    title: 'Services',
-    links: [
-      { name: 'Career Services', href: '/career-services' },
-      { name: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
-      { name: 'Drug Testing', href: '/drug-testing' },
-      { name: 'Certifications', href: '/certifications' },
-      { name: 'Mentorship', href: '/mentorship' },
-      { name: 'Training Providers', href: '/training-providers' },
-      { name: 'Volunteer', href: '/volunteer' },
-    ],
-  },
-  {
-    title: 'Store',
-    links: [
-      { name: 'Store Home', href: '/store' },
-      { name: 'Platform Licenses', href: '/store/licenses' },
-      { name: 'AI Tools & Apps', href: '/store/apps' },
-      { name: 'Digital Resources', href: '/store/digital' },
-      { name: 'Courses', href: '/store/courses' },
     ],
   },
   {
     title: 'Get Started',
     links: [
-      { name: 'Apply Now', href: '/apply' },
-      { name: 'Check Eligibility', href: '/check-eligibility' },
+      { name: 'Check Eligibility', href: '/enroll' },
       { name: 'How It Works', href: '/how-it-works' },
-      { name: 'WIOA Eligibility', href: '/wioa-eligibility' },
-      { name: 'Funding & Grants', href: '/funding' },
-      { name: 'Financial Aid', href: '/financial-aid' },
-      { name: 'Tuition & Fees', href: '/tuition-fees' },
-      { name: 'Outcomes', href: '/outcomes' },
+      { name: 'Funding Options', href: '/funding' },
       { name: 'FAQ', href: '/faq' },
     ],
   },
   {
-    title: 'For Employers',
+    title: 'About',
     links: [
-      { name: 'Employer Overview', href: '/employer' },
-      { name: 'Hire Graduates', href: '/hire-graduates' },
-      { name: 'Partner With Us', href: '/partner-with-us' },
-      { name: 'Partners', href: '/partners' },
-      { name: 'OJT & Funding', href: '/ojt-and-funding' },
-      { name: 'Workforce Board', href: '/workforce-board' },
-      { name: 'Workforce Partners', href: '/workforce-partners' },
-      { name: 'Government', href: '/government' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { name: 'About Us', href: '/about' },
-      { name: 'Contact', href: '/contact' },
-      { name: 'Team', href: '/team' },
-      { name: 'Founder', href: '/founder' },
-      { name: 'Careers', href: '/careers' },
-      { name: 'Locations', href: '/locations' },
-      { name: 'Donate', href: '/donate' },
-      { name: 'Impact', href: '/impact' },
+      { name: 'Our Mission', href: '/about' },
       { name: 'Success Stories', href: '/success-stories' },
-      { name: 'Transparency', href: '/transparency' },
-      { name: 'Accreditation', href: '/accreditation' },
+      { name: 'Contact', href: '/contact' },
+      { name: 'Locations', href: '/locations' },
     ],
   },
   {
-    title: 'Resources',
-    links: [
-      { name: 'Blog', href: '/blog' },
-      { name: 'News', href: '/news' },
-      { name: 'Events', href: '/events' },
-      { name: 'Webinars', href: '/webinars' },
-      { name: 'Support', href: '/support' },
-      { name: 'Help Center', href: '/help' },
-      { name: 'Community', href: '/community' },
-      { name: 'Alumni', href: '/alumni' },
-      { name: 'Forums', href: '/forums' },
-    ],
-  },
-  {
-    title: 'Portals',
+    title: 'Account',
     links: [
       { name: 'Sign In', href: '/login' },
-      { name: 'Create Account', href: '/signup' },
-      { name: 'Student LMS', href: '/lms' },
-      { name: 'Student Portal', href: '/student-portal' },
-      { name: 'Employer Portal', href: '/employer-portal' },
-      { name: 'Partner Portal', href: '/partner-portal' },
-      { name: 'Instructor Portal', href: '/instructor' },
-    ],
-  },
-  {
-    title: 'Governance',
-    links: [
-      { name: 'Governance Hub', href: '/governance' },
-      { name: 'Security & Data Protection', href: '/governance/security' },
-      { name: 'Compliance & Disclosures', href: '/governance/compliance' },
-      { name: 'Authoritative Documents', href: '/governance/authoritative-docs' },
-      { name: 'Operational Controls', href: '/governance/operational-controls' },
-      { name: 'Governance Contact', href: '/governance/contact' },
+      { name: 'Student Dashboard', href: '/lms/dashboard' },
     ],
   },
   {
@@ -125,12 +47,7 @@ const footerSections = [
     links: [
       { name: 'Privacy Policy', href: '/privacy-policy' },
       { name: 'Terms of Service', href: '/terms-of-service' },
-      { name: 'Refund Policy', href: '/refund-policy' },
       { name: 'Accessibility', href: '/accessibility' },
-      { name: 'Disclosures', href: '/disclosures' },
-      { name: 'All Policies', href: '/policies' },
-      { name: 'Equal Opportunity', href: '/equal-opportunity' },
-      { name: 'Site Map', href: '/site-map' },
     ],
   },
 ];

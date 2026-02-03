@@ -69,20 +69,14 @@ export default function HomePage() {
             Free training is available for eligible participants through public funding. Some licensure apprenticeships are offered as self-pay or employer-paid pathways.
           </p>
           <p className="text-sm text-slate-500 max-w-2xl mx-auto mb-8 animate-fade-in animation-delay-300">
-            Elevate for Humanity operates licensed workforce and licensure infrastructure, delivering both publicly funded and self-pay apprenticeship pathways through a managed platform.
+            Based in Marion County, Indiana. Connecting people to funded training programs since 2019.
           </p>
           <div className="flex flex-wrap justify-center gap-4 animate-fade-in animation-delay-400">
             <Link href="/programs" className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 hover:scale-105 transition-all shadow-lg">
-              View Programs
+              Find a Funded Program
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </Link>
-            <Link href="tel:317-314-3757" className="inline-flex items-center gap-2 border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-blue-600 hover:text-blue-600 hover:scale-105 transition-all">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-              </svg>
-              (317) 314-3757
             </Link>
           </div>
         </div>
