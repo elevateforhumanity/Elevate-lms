@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import { requireAdmin } from '@/lib/auth';
+import { requireDevToolsAccess } from '@/lib/admin/guards';
 
 export const metadata: Metadata = {
   title: 'Admin | Test funding | Elevate for Humanity',
@@ -12,6 +14,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const { role } = await requireAdmin();
+  requireDevToolsAccess(role);
   return <>{children}</>;
 }

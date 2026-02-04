@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import EnvironmentBadge from './EnvironmentBadge';
 import {
   LayoutDashboard,
   Users,
@@ -91,11 +92,32 @@ const NAV_SECTIONS = [
   },
 ];
 
+// Environment detection for badge
+const isNetlify = process.env.NEXT_PUBLIC_NETLIFY === 'true';
+const netlifyContext = process.env.NEXT_PUBLIC_CONTEXT;
+const isProd = isNetlify 
+  ? netlifyContext === 'production' 
+  : process.env.NODE_ENV === 'production';
+const isPreview = isNetlify 
+  ? netlifyContext === 'deploy-preview' || netlifyContext === 'branch-deploy'
+  : false;
+
+function getEnvBadge(): { label: string; color: string } {
+  if (isProd) {
+    return { label: 'PRODUCTION', color: 'bg-red-100 text-red-800 border-red-200' };
+  }
+  if (isPreview) {
+    return { label: 'PREVIEW', color: 'bg-yellow-100 text-yellow-800 border-yellow-200' };
+  }
+  return { label: 'DEVELOPMENT', color: 'bg-blue-100 text-blue-800 border-blue-200' };
+}
+
 export default function AdminHeader() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [deploying, setDeploying] = useState(false);
+  const envBadge = getEnvBadge();
 
   const handleDeploy = async () => {
     setDeploying(true);
@@ -124,6 +146,9 @@ export default function AdminHeader() {
           <Shield className="w-8 h-8 text-blue-400" />
           <span className="font-bold text-lg hidden sm:block">Admin Panel</span>
         </Link>
+        
+        {/* Environment Badge */}
+        <EnvironmentBadge label={envBadge.label} color={envBadge.color} />
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-1">

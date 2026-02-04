@@ -4,7 +4,7 @@ import React from 'react';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import {
   Code,
   BookOpen,
@@ -27,6 +27,7 @@ import {
 
 interface AdminNavProps {
   userRole: string;
+  showDevTools?: boolean;
 }
 
 interface NavItem {
@@ -36,11 +37,24 @@ interface NavItem {
   submenu?: { href: string; label: string }[];
 }
 
-export default function AdminNav({ userRole }: AdminNavProps) {
+// Routes that should be hidden in production
+const DEV_TOOL_HREFS = [
+  '/admin/dev-studio',
+  '/admin/autopilots',
+  '/admin/autopilot',
+  '/admin/ai-console',
+  '/admin/test-emails',
+  '/admin/test-funding',
+  '/admin/test-payments',
+  '/admin/test-webhook',
+  '/admin/automation',
+];
+
+export default function AdminNav({ userRole, showDevTools = false }: AdminNavProps) {
   const pathname = usePathname();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-  const navItems: NavItem[] = [
+  const baseNavItems: NavItem[] = [
     { href: '/admin', label: 'Dashboard', icon: Home },
     {
       label: 'Students',
@@ -163,6 +177,24 @@ export default function AdminNav({ userRole }: AdminNavProps) {
       ],
     },
   ];
+
+  // Filter out dev tools from navigation in production
+  const navItems = useMemo(() => {
+    if (showDevTools) return baseNavItems;
+    
+    return baseNavItems.map(item => {
+      if (!item.submenu) return item;
+      
+      const filteredSubmenu = item.submenu.filter(
+        sub => !DEV_TOOL_HREFS.includes(sub.href)
+      );
+      
+      // If all submenu items were filtered out, exclude the entire section
+      if (filteredSubmenu.length === 0) return null;
+      
+      return { ...item, submenu: filteredSubmenu };
+    }).filter((item): item is NavItem => item !== null);
+  }, [showDevTools]);
 
   const isActive = (href: string) => {
     if (href === '/admin') {

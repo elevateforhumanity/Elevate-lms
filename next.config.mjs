@@ -281,6 +281,10 @@ const nextConfig = {
       { source: '/testimonials', destination: '/success-stories', permanent: true },
       { source: '/for-workforce-boards', destination: '/workforce-board', permanent: true },
       { source: '/get-started', destination: '/start', permanent: true },
+      
+      // Admin route consolidation
+      { source: '/admin/autopilots', destination: '/admin/autopilot', permanent: true },
+      { source: '/admin/analytics-dashboard', destination: '/admin/analytics', permanent: true },
     ];
   },
   async headers() {

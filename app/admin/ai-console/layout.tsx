@@ -3,11 +3,8 @@ import { requireAdmin } from '@/lib/auth';
 import { requireDevToolsAccess } from '@/lib/admin/guards';
 
 export const metadata: Metadata = {
-  title: 'Admin | Test webhook | Elevate for Humanity',
+  title: 'Admin | AI Console | Elevate for Humanity',
   description: 'Elevate for Humanity - Career training and workforce development programs.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/admin/test-webhook',
-  },
   robots: {
     index: false,
     follow: false,

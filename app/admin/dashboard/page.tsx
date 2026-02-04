@@ -571,6 +571,49 @@ export default async function AdminDashboardOrchestrated() {
         </div>
       </section>
 
+      {/* Compliance Snapshot */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6">
+          <div className="flex items-center gap-3 mb-6">
+            <Shield className="h-6 w-6 text-green-600" />
+            <h2 className="text-xl font-bold text-black">Compliance Snapshot</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="flex items-center gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
+              <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+              <div>
+                <div className="text-sm font-medium text-green-900">Audit Logging</div>
+                <div className="text-xs text-green-700">Enabled</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
+              <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+              <div>
+                <div className="text-sm font-medium text-green-900">Route Access</div>
+                <div className="text-xs text-green-700">Role-gated</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg border border-slate-200">
+              <Shield className="h-5 w-5 text-slate-600 flex-shrink-0" />
+              <div>
+                <div className="text-sm font-medium text-slate-900">Environment</div>
+                <div className="text-xs text-slate-600">
+                  {process.env.CONTEXT === 'production' ? 'Production' : 
+                   process.env.CONTEXT === 'deploy-preview' ? 'Preview' : 'Development'}
+                </div>
+              </div>
+            </div>
+          </div>
+          <Link
+            href="/admin/audit-logs"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition"
+          >
+            <FileText className="h-4 w-4" />
+            View Audit Logs
+          </Link>
+        </div>
+      </section>
+
       {/* ALL ADMIN FEATURES - Gitpod-style Control Panel */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <h2 className="text-xl sm:text-2xl font-bold text-black mb-4 sm:mb-6">
