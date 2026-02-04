@@ -5,7 +5,7 @@ import { loadCaseFile } from '@/lib/case-file/loader';
 import { 
   User, FileText, GraduationCap, Briefcase, Shield, 
   Clock, CheckCircle, AlertCircle, XCircle, ChevronRight,
-  Phone, Mail, MapPin, Calendar
+  Phone, Mail, MapPin, Calendar,
 } from 'lucide-react';
 
 export const metadata: Metadata = {

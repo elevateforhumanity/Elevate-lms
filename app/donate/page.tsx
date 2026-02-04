@@ -11,7 +11,8 @@ import {
   CheckCircle,
   Shield,
   Award,
-, Phone} from 'lucide-react';
+  Phone,
+} from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {

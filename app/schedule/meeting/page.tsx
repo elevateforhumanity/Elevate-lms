@@ -12,7 +12,7 @@ import {
   CheckCircle, 
   User,
   Mail,
-  MessageSquare
+  MessageSquare,
 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 

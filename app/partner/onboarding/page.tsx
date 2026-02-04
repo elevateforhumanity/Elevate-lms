@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { 
   Building2, User, Mail, Phone, MapPin, 
   FileText, Users, CheckCircle, ArrowRight, 
-  ArrowLeft, Loader2, AlertCircle, Upload, X
+  ArrowLeft, Loader2, AlertCircle, Upload, X,
 } from 'lucide-react';
 import { 
   DOCUMENT_TYPE_LABELS, 
