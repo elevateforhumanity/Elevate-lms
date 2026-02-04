@@ -1,22 +1,10 @@
-
-
 'use client';
 
-import { Metadata } from 'next';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
-
-
-export const metadata: Metadata = {
-  title: 'Verify Email | Elevate for Humanity',
-  description: 'Elevate for Humanity - Career training and workforce development programs.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/verify-email',
-  },
-};
 
 export default function VerifyEmailPage() {
   const [email, setEmail] = useState('');

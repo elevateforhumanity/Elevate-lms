@@ -1,10 +1,6 @@
-
-
 'use client';
 
-import { Metadata } from 'next';
 import React from 'react';
-
 import { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -15,17 +11,6 @@ function formatPct(p?: number) {
   if (typeof p !== 'number') return '0%';
   return `${p}%`;
 }
-
-
-
-
-export const metadata: Metadata = {
-  title: 'Next Steps | Elevate for Humanity',
-  description: 'Elevate for Humanity - Career training and workforce development programs.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/next-steps',
-  },
-};
 
 export default function NextStepsPage() {
   const [data, setData] = useState<Checklist | null>(null);
