@@ -134,14 +134,13 @@ export default function AdminNav({ userRole, showDevTools = false }: AdminNavPro
       ],
     },
     {
-      label: 'Tools',
+      label: 'System',
       icon: Wrench,
       submenu: [
-        { href: '/admin/dev-studio', label: 'Dev Studio' },
-        { href: '/admin/autopilots', label: 'Autopilots' },
-        { href: '/admin/workflows', label: 'Workflows' },
+        { href: '/admin/advanced-tools', label: 'Advanced Tools' },
         { href: '/admin/integrations', label: 'Integrations' },
-        { href: '/admin/migrations', label: 'Migrations' },
+        { href: '/admin/settings', label: 'Settings' },
+        { href: '/admin/audit-logs', label: 'Audit Logs' },
       ],
     },
     {
