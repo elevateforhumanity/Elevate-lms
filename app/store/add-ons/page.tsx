@@ -45,15 +45,15 @@ const addOns = [
   },
 ];
 
-const comingSoon = [
+const enterpriseAddOns = [
   {
     title: 'Analytics Pro',
-    description: 'Advanced reporting and predictive analytics for student outcomes.',
+    description: 'Advanced reporting and predictive analytics for student outcomes. Includes custom dashboards and data exports.',
     icon: BarChart3,
   },
   {
     title: 'Compliance Automation',
-    description: 'Automated compliance tracking and reporting for WIOA and grants.',
+    description: 'Automated compliance tracking and reporting for WIOA, grants, and accreditation requirements.',
     icon: Shield,
   },
 ];
@@ -242,25 +242,28 @@ export default function AddOnsPage() {
         </div>
       </section>
 
-      {/* Coming Soon */}
+      {/* Additional Add-Ons */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Coming Soon</h2>
-            <p className="text-lg text-slate-600">More powerful add-ons in development</p>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Enterprise Add-Ons</h2>
+            <p className="text-lg text-slate-600">Advanced features available for enterprise clients</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {comingSoon.map((item) => (
-              <div key={item.title} className="bg-white rounded-xl p-8 border-2 border-dashed border-slate-300">
-                <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6 text-slate-400" />
+            {enterpriseAddOns.map((item) => (
+              <div key={item.title} className="bg-white rounded-xl p-8 border border-slate-200 shadow-sm">
+                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                  <item.icon className="w-6 h-6 text-purple-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-400 mb-2">{item.title}</h3>
-                <p className="text-slate-500 mb-4">{item.description}</p>
-                <span className="inline-block bg-slate-100 text-slate-500 px-3 py-1 rounded-full text-sm font-medium">
-                  Coming Q2 2025
-                </span>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                <p className="text-slate-600 mb-4">{item.description}</p>
+                <Link 
+                  href="/contact"
+                  className="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors"
+                >
+                  Contact for Pricing
+                </Link>
               </div>
             ))}
           </div>
