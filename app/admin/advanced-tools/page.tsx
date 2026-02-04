@@ -1,5 +1,8 @@
-// app/admin/advanced-tools/page.tsx
+'use client';
+
 import Link from "next/link";
+import { useState, useEffect, useMemo } from "react";
+import { Search, Star, X } from "lucide-react";
 
 type ToolLink = {
   title: string;
@@ -92,60 +95,202 @@ const CATEGORIES: ToolCategory[] = [
   },
 ];
 
+const STORAGE_KEY = "elevate-admin-pinned-tools";
+
 function Badge({ kind }: { kind: NonNullable<ToolLink["badge"]> }) {
-  const base =
-    "inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium";
+  const base = "inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium";
   const byKind: Record<typeof kind, string> = {
-    TEST: "border-red-200 text-red-700",
-    POWER: "border-amber-200 text-amber-800",
-    AI: "border-indigo-200 text-indigo-800",
-    SYSTEM: "border-slate-200 text-slate-800",
+    TEST: "border-red-200 text-red-700 bg-red-50",
+    POWER: "border-amber-200 text-amber-800 bg-amber-50",
+    AI: "border-indigo-200 text-indigo-800 bg-indigo-50",
+    SYSTEM: "border-slate-200 text-slate-800 bg-slate-50",
   };
   return <span className={`${base} ${byKind[kind]}`}>{kind}</span>;
 }
 
+function ToolCard({ 
+  item, 
+  isPinned, 
+  onTogglePin 
+}: { 
+  item: ToolLink; 
+  isPinned: boolean; 
+  onTogglePin: (href: string) => void;
+}) {
+  return (
+    <div className="relative rounded-xl border border-gray-200 bg-white p-4 hover:border-gray-300 hover:shadow-sm transition-all">
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          onTogglePin(item.href);
+        }}
+        className={`absolute top-3 right-3 p-1 rounded-md transition-colors ${
+          isPinned 
+            ? "text-yellow-500 hover:text-yellow-600" 
+            : "text-gray-300 hover:text-gray-400"
+        }`}
+        title={isPinned ? "Unpin from favorites" : "Pin to favorites"}
+      >
+        <Star className={`w-4 h-4 ${isPinned ? "fill-current" : ""}`} />
+      </button>
+      <Link href={item.href} className="block">
+        <div className="flex items-start justify-between gap-3 pr-6">
+          <div className="space-y-1">
+            <div className="text-base font-semibold text-gray-900">{item.title}</div>
+            {item.desc && <div className="text-sm text-gray-600">{item.desc}</div>}
+            <div className="text-xs text-gray-500">{item.href}</div>
+          </div>
+          {item.badge && <Badge kind={item.badge} />}
+        </div>
+      </Link>
+    </div>
+  );
+}
+
 export default function AdvancedToolsPage() {
+  const [search, setSearch] = useState("");
+  const [pinnedTools, setPinnedTools] = useState<string[]>([]);
+
+  // Load pinned tools from localStorage
+  useEffect(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      try {
+        setPinnedTools(JSON.parse(stored));
+      } catch {
+        setPinnedTools([]);
+      }
+    }
+  }, []);
+
+  // Save pinned tools to localStorage
+  const togglePin = (href: string) => {
+    setPinnedTools((prev) => {
+      const next = prev.includes(href) 
+        ? prev.filter((h) => h !== href) 
+        : [...prev, href];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      return next;
+    });
+  };
+
+  // Get all tools flattened for search
+  const allTools = useMemo(() => {
+    return CATEGORIES.flatMap((cat) => 
+      cat.items.map((item) => ({ ...item, category: cat.title }))
+    );
+  }, []);
+
+  // Filter tools based on search
+  const filteredCategories = useMemo(() => {
+    if (!search.trim()) return CATEGORIES;
+    
+    const q = search.toLowerCase();
+    return CATEGORIES.map((cat) => ({
+      ...cat,
+      items: cat.items.filter(
+        (item) =>
+          item.title.toLowerCase().includes(q) ||
+          item.href.toLowerCase().includes(q) ||
+          item.desc?.toLowerCase().includes(q) ||
+          item.badge?.toLowerCase().includes(q)
+      ),
+    })).filter((cat) => cat.items.length > 0);
+  }, [search]);
+
+  // Get pinned tools as items
+  const pinnedItems = useMemo(() => {
+    return allTools.filter((tool) => pinnedTools.includes(tool.href));
+  }, [allTools, pinnedTools]);
+
+  const totalTools = allTools.length;
+  const visibleTools = filteredCategories.reduce((acc, cat) => acc + cat.items.length, 0);
+
   return (
     <div className="space-y-6">
+      {/* Header */}
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold text-gray-900">Advanced Tools</h1>
-        <p className="text-base text-gray-800">
-          This directory contains non-routine admin surfaces (automation, AI, builders, data tools, monitoring, and test tools).
-          Everything here is active. Use intentionally.
+        <p className="text-base text-gray-600">
+          Non-routine admin surfaces. Everything here is active. Use intentionally.
         </p>
       </div>
 
+      {/* Search */}
+      <div className="relative max-w-md">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+        <input
+          type="text"
+          placeholder="Search tools..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+        {search && (
+          <button
+            onClick={() => setSearch("")}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        )}
+      </div>
+
+      {/* Stats */}
+      <div className="text-sm text-gray-500">
+        {search ? `${visibleTools} of ${totalTools} tools` : `${totalTools} tools`}
+        {pinnedItems.length > 0 && ` · ${pinnedItems.length} pinned`}
+      </div>
+
+      {/* Pinned Tools */}
+      {pinnedItems.length > 0 && !search && (
+        <section className="space-y-3">
+          <div className="flex items-center gap-2">
+            <Star className="w-4 h-4 text-yellow-500 fill-current" />
+            <h2 className="text-lg font-semibold text-gray-900">Pinned</h2>
+          </div>
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {pinnedItems.map((item) => (
+              <ToolCard
+                key={item.href}
+                item={item}
+                isPinned={true}
+                onTogglePin={togglePin}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Categories */}
       <div className="space-y-8">
-        {CATEGORIES.map((cat) => (
+        {filteredCategories.map((cat) => (
           <section key={cat.title} className="space-y-3">
             <div className="space-y-1">
               <h2 className="text-lg font-semibold text-gray-900">{cat.title}</h2>
-              <p className="text-sm text-gray-800">{cat.desc}</p>
+              <p className="text-sm text-gray-600">{cat.desc}</p>
             </div>
 
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               {cat.items.map((item) => (
-                <Link
+                <ToolCard
                   key={item.href + item.title}
-                  href={item.href}
-                  className="rounded-xl border border-gray-200 bg-white p-4 hover:border-gray-300"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="space-y-1">
-                      <div className="text-base font-semibold text-gray-900">{item.title}</div>
-                      {item.desc ? (
-                        <div className="text-sm text-gray-800">{item.desc}</div>
-                      ) : null}
-                      <div className="text-xs text-gray-700">{item.href}</div>
-                    </div>
-                    {item.badge ? <Badge kind={item.badge} /> : null}
-                  </div>
-                </Link>
+                  item={item}
+                  isPinned={pinnedTools.includes(item.href)}
+                  onTogglePin={togglePin}
+                />
               ))}
             </div>
           </section>
         ))}
       </div>
+
+      {/* No results */}
+      {filteredCategories.length === 0 && (
+        <div className="text-center py-12 text-gray-500">
+          No tools match "{search}"
+        </div>
+      )}
     </div>
   );
 }
