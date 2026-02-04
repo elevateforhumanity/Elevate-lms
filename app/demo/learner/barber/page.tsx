@@ -310,7 +310,7 @@ export default function BarberApprenticeshipDemoPage() {
                   </div>
                   <div className="group cursor-pointer">
                     <div className="relative aspect-video bg-slate-200 rounded-lg overflow-hidden mb-2">
-                      <Image src="/hero-images/barber-beauty-cat-new.jpg" alt="Lesson" fill className="object-cover" />
+                      <Image src="/images/beauty/hero-program-barber.jpg" alt="Lesson" fill className="object-cover" />
                       <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
                         <Play className="w-12 h-12 text-white" />
                       </div>

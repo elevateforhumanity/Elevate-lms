@@ -37,19 +37,19 @@ export default async function WorkforceBoardPage() {
 
   const features = [
     {
-      image: '/hero-images/healthcare-cat-new.jpg',
+      image: '/images/healthcare/hero-healthcare-professionals.jpg',
       title: 'Performance Dashboards',
       description: 'Real-time metrics on enrollment, completion, and employment outcomes',
       href: '/workforce-board/reports',
     },
     {
-      image: '/hero-images/skilled-trades-cat-new.jpg',
+      image: '/images/trades/hero-program-hvac.jpg',
       title: 'Compliance Reporting',
       description: 'Automated WIOA, DOL, and state compliance reports with audit trails',
       href: '/workforce-board/reports',
     },
     {
-      image: '/hero-images/technology-cat-new.jpg',
+      image: '/images/technology/hero-program-cybersecurity.jpg',
       title: 'Participant Tracking',
       description: 'Monitor participant progress, services, and outcomes across all programs',
       href: '/workforce-board/participants',
@@ -61,13 +61,13 @@ export default async function WorkforceBoardPage() {
       href: '/workforce-board/reports',
     },
     {
-      image: '/hero-images/cdl-cat-new.jpg',
+      image: '/images/trades/hero-program-cdl.jpg',
       title: 'Goal Monitoring',
       description: 'Track progress toward performance goals and benchmarks',
       href: '/workforce-board/reports/performance',
     },
     {
-      image: '/hero-images/barber-beauty-cat-new.jpg',
+      image: '/images/beauty/hero-program-barber.jpg',
       title: 'Audit Readiness',
       description: 'Maintain audit-ready documentation and compliance records',
       href: '/workforce-board/reports',
@@ -94,7 +94,7 @@ export default async function WorkforceBoardPage() {
       href: '/workforce-board/employment',
     },
     {
-      image: '/hero-images/business-category.jpg',
+      image: '/images/business/professional-1.jpg',
       title: 'Supportive Services',
       description: 'Review supportive services provided',
       href: '/workforce-board/supportive-services',

@@ -148,12 +148,12 @@ export default function ProgramCoursesPage() {
                   '/images/programs/web-development.jpg'
                 ],
                 'business': [
-                  '/hero-images/business-category.jpg',
+                  '/images/business/professional-1.jpg',
                   '/images/programs/efh-business-startup-marketing-hero.jpg',
                   '/images/programs/efh-tax-office-startup-hero.jpg'
                 ],
                 'transportation': [
-                  '/hero-images/cdl-transportation-category.jpg',
+                  '/images/trades/hero-program-cdl.jpg',
                   '/images/programs/cdl-hero.jpg',
                   '/images/programs/cdl-hero.jpg'
                 ],

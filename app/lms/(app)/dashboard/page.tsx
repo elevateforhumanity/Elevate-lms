@@ -394,7 +394,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="Certification Exam"
                     description="Schedule your final exam"
                     href="/lms/certification"
-                    image="/hero-images/business-category.jpg"
+                    image="/images/business/professional-1.jpg"
                     badge="Ready"
                   />
                 )}
@@ -404,7 +404,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="Job Placement"
                     description="Connect with employers"
                     href="/lms/placement"
-                    image="/hero-images/cdl-transportation-category.jpg"
+                    image="/images/trades/hero-program-cdl.jpg"
                   />
                 )}
 
