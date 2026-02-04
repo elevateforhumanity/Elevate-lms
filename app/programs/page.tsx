@@ -24,24 +24,43 @@ const categoryImages: Record<string, string> = {
   'Skilled Trades': '/images/prog-trades.jpg',
   'Technology': '/images/prog-technology.jpg',
   'CDL & Transportation': '/images/prog-cdl.jpg',
-  'Transportation': '/images/prog-cdl.jpg',
   'Beauty & Barbering': '/images/prog-barber.jpg',
-  'Cosmetology': '/images/prog-barber.jpg',
   'Business & Finance': '/images/prog-business.jpg',
-  'Business': '/images/prog-business.jpg',
+  'Hospitality': '/images/prog-business.jpg',
   'default': '/images/prog-hero-main.jpg',
 };
 
-// Normalize category names to consolidate duplicates
+// Normalize category names to consolidate duplicates (fallback if DB not updated)
 const categoryNormalization: Record<string, string> = {
-  'Healthcare & Wellness': 'Healthcare',
+  // Healthcare consolidation
   'Healthcare': 'Healthcare',
-  'Transportation': 'CDL & Transportation',
-  'CDL & Transportation': 'CDL & Transportation',
-  'Cosmetology': 'Beauty & Barbering',
+  'Healthcare & Wellness': 'Healthcare',
+  'Social Services': 'Healthcare',
+  
+  // Beauty consolidation
   'Beauty & Barbering': 'Beauty & Barbering',
-  'Business': 'Business & Finance',
+  'Beauty & Wellness': 'Beauty & Barbering',
+  'Cosmetology': 'Beauty & Barbering',
+  
+  // Business consolidation
   'Business & Finance': 'Business & Finance',
+  'Business': 'Business & Finance',
+  'Retail': 'Business & Finance',
+  'Sales': 'Business & Finance',
+  'Professional': 'Business & Finance',
+  
+  // Transportation consolidation
+  'CDL & Transportation': 'CDL & Transportation',
+  'Transportation': 'CDL & Transportation',
+  'transportation': 'CDL & Transportation',
+  
+  // Hospitality consolidation
+  'Hospitality': 'Hospitality',
+  'Culinary Arts': 'Hospitality',
+  
+  // Pass-through (no change needed)
+  'Skilled Trades': 'Skilled Trades',
+  'Technology': 'Technology',
 };
 
 async function getCategories() {
