@@ -28,7 +28,7 @@ const footerLinks = {
     { name: 'Governance', href: '/governance' },
     { name: 'Data Privacy', href: '/governance/data' },
     { name: 'Accessibility', href: '/accessibility' },
-    { name: 'AI Governance', href: '/governance/ai' },
+    { name: 'Security', href: '/governance/security' },
     { name: 'Verify Credentials', href: '/verify' },
   ],
   access: [
