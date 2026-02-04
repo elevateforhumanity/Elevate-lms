@@ -28,13 +28,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   'users': Users,
 };
 
-// Quick Stats
-const stats = [
-  { label: 'Products Available', value: '500+' },
-  { label: 'Courses', value: '50+' },
-  { label: 'Downloads', value: '200+' },
-  { label: 'Organizations', value: '150+' },
-];
+
 
 export default function StorePage() {
   return (
@@ -88,19 +82,7 @@ export default function StorePage() {
           title="Store Assistant" 
         />
 
-        {/* Stats Strip */}
-        <section className="bg-orange-600 py-4">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-white">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-2xl font-black">{stat.value}</p>
-                  <p className="text-sm text-orange-100">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+
 
         {/* Primary Cards - Tier 1 (Above the fold) */}
         <section className="py-12">
