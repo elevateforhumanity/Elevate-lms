@@ -4,6 +4,9 @@
 	"hostRequirements": {
 		"memory": "8gb"
 	},
+	"containerEnv": {
+		"ENABLE_ADMIN_DEVTOOLS": "true"
+	},
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
 			"version": "20"
