@@ -278,13 +278,17 @@ const nextConfig = {
       { source: '/ai-instructor', destination: '/ai-tutor', permanent: true },
       
       // Marketing redirects
-      { source: '/testimonials', destination: '/success-stories', permanent: true },
+      { source: '/success-stories', destination: '/testimonials', permanent: true },
       { source: '/for-workforce-boards', destination: '/workforce-board', permanent: true },
       { source: '/get-started', destination: '/start', permanent: true },
       
       // Admin route consolidation
       { source: '/admin/autopilots', destination: '/admin/autopilot', permanent: true },
       { source: '/admin/analytics-dashboard', destination: '/admin/analytics', permanent: true },
+      
+      // Hide metrics/outcomes until enrollment data exists
+      { source: '/outcomes/:path*', destination: '/programs', permanent: false },
+      { source: '/metrics', destination: '/programs', permanent: false },
     ];
   },
   async headers() {

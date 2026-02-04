@@ -24,10 +24,24 @@ const categoryImages: Record<string, string> = {
   'Skilled Trades': '/images/prog-trades.jpg',
   'Technology': '/images/prog-technology.jpg',
   'CDL & Transportation': '/images/prog-cdl.jpg',
+  'Transportation': '/images/prog-cdl.jpg',
   'Beauty & Barbering': '/images/prog-barber.jpg',
   'Cosmetology': '/images/prog-barber.jpg',
   'Business & Finance': '/images/prog-business.jpg',
+  'Business': '/images/prog-business.jpg',
   'default': '/images/prog-hero-main.jpg',
+};
+
+// Normalize category names to consolidate duplicates
+const categoryNormalization: Record<string, string> = {
+  'Healthcare & Wellness': 'Healthcare',
+  'Healthcare': 'Healthcare',
+  'Transportation': 'CDL & Transportation',
+  'CDL & Transportation': 'CDL & Transportation',
+  'Cosmetology': 'Beauty & Barbering',
+  'Beauty & Barbering': 'Beauty & Barbering',
+  'Business': 'Business & Finance',
+  'Business & Finance': 'Business & Finance',
 };
 
 async function getCategories() {
@@ -57,11 +71,14 @@ async function getCategories() {
     ];
   }
 
-  // Group programs by category
+  // Group programs by category (with normalization to consolidate duplicates)
   const categoryMap = new Map<string, { title: string; description: string; href: string; image: string; programs: string[] }>();
   
   for (const program of programs) {
-    const cat = program.category || 'Other';
+    const rawCat = program.category || 'Other';
+    // Normalize category name to consolidate duplicates
+    const cat = categoryNormalization[rawCat] || rawCat;
+    
     if (!categoryMap.has(cat)) {
       categoryMap.set(cat, {
         title: cat,
