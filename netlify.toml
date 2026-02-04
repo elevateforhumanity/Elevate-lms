@@ -13,6 +13,8 @@
   # Disable secret scanning - NEXT_PUBLIC_* vars are intentionally public
   SECRETS_SCAN_ENABLED = "false"
   SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXTAUTH_URL"
+  # Admin dev tools - enabled for all builds, production guards handle access
+  ENABLE_ADMIN_DEVTOOLS = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
