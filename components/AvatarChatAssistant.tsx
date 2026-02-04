@@ -236,14 +236,14 @@ export default function AvatarChatAssistant({
 
       {!isMinimized && (
         <>
-          {/* Avatar Video Display */}
-          <div className="bg-slate-900 p-2">
+          {/* Avatar Video Display - cropped to hide branding */}
+          <div className="bg-slate-900 p-2 overflow-hidden">
             <video
               src={avatarVideoUrl}
               muted={isMuted}
               playsInline
               autoPlay={autoPlayVideo}
-              className="w-full h-32 object-contain rounded-lg"
+              className="w-full h-28 object-cover object-top rounded-lg"
             />
           </div>
 

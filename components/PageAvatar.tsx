@@ -15,14 +15,17 @@ export default function PageAvatar({ videoSrc, title }: PageAvatarProps) {
     <section className="w-full bg-slate-100 py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="rounded-2xl overflow-hidden shadow-xl bg-black relative">
-          <video
-            ref={videoRef}
-            className="w-full aspect-video object-contain"
-            src={videoSrc}
-            playsInline
-            controls
-            preload="metadata"
-          />
+          {/* Cropped video container to hide bottom branding */}
+          <div className="relative overflow-hidden" style={{ paddingBottom: '50%' }}>
+            <video
+              ref={videoRef}
+              className="absolute inset-0 w-full h-[110%] object-cover object-top"
+              src={videoSrc}
+              playsInline
+              controls
+              preload="metadata"
+            />
+          </div>
           {/* Logo overlay - covers bottom right corner where HeyGen logo appears */}
           <div className="absolute bottom-2 right-2 z-10 pointer-events-none">
             <div className="bg-black/80 rounded px-2 py-1 flex items-center gap-1">
