@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { GuidedDemoChat } from '@/components/store/GuidedDemoChat';
+import StoreClientWrapper from './StoreClientWrapper';
 
 export const metadata: Metadata = {
   title: 'Store — License the Elevate Workforce Platform',
@@ -52,9 +52,8 @@ export default function StoreLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <StoreClientWrapper>
       {children}
-      <GuidedDemoChat />
-    </>
+    </StoreClientWrapper>
   );
 }
