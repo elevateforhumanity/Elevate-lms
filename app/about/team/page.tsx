@@ -13,6 +13,18 @@ export const metadata: Metadata = {
     "Meet the dedicated professionals leading Elevate For Humanity's mission to transform lives through education and career training.",
 };
 
+// Fallback team data when database is empty
+const fallbackTeam = [
+  {
+    id: '1',
+    name: 'Elizabeth Greene',
+    title: 'Founder & Chief Executive Officer',
+    image_url: '/images/elizabeth-greene-founder.jpg',
+    bio: 'Elizabeth Greene founded Elevate for Humanity to create pathways out of poverty and into prosperity for those who need it most.\n\nBased in Indianapolis, Indiana, Elevate for Humanity serves justice-involved individuals, low-income families, veterans, and anyone facing barriers to employment.\n\nWith over 15 years of experience in workforce development and community service, Elizabeth has dedicated her career to helping underserved populations access quality education and career opportunities.',
+    email: 'elizabeth@elevateforhumanity.org',
+  },
+];
+
 export default async function TeamPage() {
   const supabase = await createClient();
 
@@ -23,7 +35,8 @@ export default async function TeamPage() {
     .eq('is_active', true)
     .order('display_order');
 
-  const members = teamMembers || [];
+  // Use fallback if no data from database
+  const members = (teamMembers && teamMembers.length > 0) ? teamMembers : fallbackTeam;
 
   return (
     <div className="min-h-screen bg-white">

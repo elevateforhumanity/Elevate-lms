@@ -80,7 +80,6 @@ export default async function BarberApprenticeshipPage() {
         >
           <source src="/videos/barber-hero-final.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-28 md:py-32">
           <div className="max-w-3xl">
