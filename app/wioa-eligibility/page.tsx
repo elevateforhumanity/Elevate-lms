@@ -121,8 +121,8 @@ export default async function WIOAEligibilityPage() {
         </div>
       </div>
 
-      {/* Hero - Image only */}
-      <section className="relative h-[50vh] min-h-[350px]">
+      {/* Hero */}
+      <section className="relative h-[50vh] min-h-[350px] flex items-center justify-center">
         <Image
           src="/images/heroes-hq/funding-hero.jpg"
           alt="WIOA Eligibility"
@@ -130,6 +130,10 @@ export default async function WIOAEligibilityPage() {
           className="object-cover"
           priority
         />
+        <div className="relative z-10 text-center text-white px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">WIOA Eligibility</h1>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto">Free career training funded by the Workforce Innovation and Opportunity Act</p>
+        </div>
       </section>
 
       {/* Quick Links */}

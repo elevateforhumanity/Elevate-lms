@@ -119,8 +119,8 @@ export default function HowItWorksPage() {
         </div>
       </div>
 
-      {/* Hero - Image only, no overlay */}
-      <section className="relative h-[50vh] min-h-[350px]">
+      {/* Hero */}
+      <section className="relative h-[50vh] min-h-[350px] flex items-center justify-center">
         <Image
           src="/images/heroes-hq/how-it-works-hero.jpg"
           alt="Career training"
@@ -128,6 +128,10 @@ export default function HowItWorksPage() {
           className="object-cover"
           priority
         />
+        <div className="relative z-10 text-center text-white px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h1>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto">Your path to a new career in 4 simple steps</p>
+        </div>
       </section>
 
       {/* Steps */}

@@ -89,7 +89,7 @@ export default function HealthcareProgramsPage() {
 
 
       {/* Hero */}
-      <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-end overflow-hidden bg-slate-900">
+      <section className="relative w-full h-[50vh] sm:h-[60vh] flex items-center overflow-hidden bg-slate-900">
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover brightness-110"
@@ -102,23 +102,26 @@ export default function HealthcareProgramsPage() {
         >
           <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/cna-hero.mp4" type="video/mp4" />
         </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-900/40" />
         
-        
-        
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
-          <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <Link 
-              href="/apply?program=healthcare"
-              className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors text-lg"
-            >
-              Apply Now
-            </Link>
-            <Link 
-              href="/wioa-eligibility"
-              className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
-            >
-              Check Eligibility
-            </Link>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Healthcare Programs</h1>
+            <p className="text-xl text-white/90 max-w-2xl mb-8">Start your career in healthcare with free, WIOA-funded training programs</p>
+            <div className="flex flex-wrap gap-4">
+              <Link 
+                href="/apply?program=healthcare"
+                className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors text-lg"
+              >
+                Apply Now
+              </Link>
+              <Link 
+                href="/wioa-eligibility"
+                className="inline-flex items-center text-white text-lg border-b-2 border-white pb-1 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
+              >
+                Check Eligibility
+              </Link>
+            </div>
           </div>
         </div>
       </section>

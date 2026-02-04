@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { Mail, Phone, MapPin, Clock, Send, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, AlertCircle, Loader2, CheckCircle } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 import Turnstile from '@/components/Turnstile';
 
@@ -67,8 +67,8 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Hero - Image only */}
-      <div className="relative h-[40vh] min-h-[300px]">
+      {/* Hero */}
+      <div className="relative h-[40vh] min-h-[300px] flex items-center justify-center">
         <Image
           src="/images/heroes-hq/contact-hero.jpg"
           alt="Contact Us"
@@ -76,6 +76,10 @@ export default function ContactPage() {
           className="object-cover"
           priority
         />
+        <div className="relative z-10 text-center text-white px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+          <p className="text-xl text-white/90">We&apos;re here to help you start your career journey</p>
+        </div>
       </div>
 
       {/* Avatar Guide */}
