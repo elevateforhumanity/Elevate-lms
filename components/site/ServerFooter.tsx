@@ -22,7 +22,6 @@ const footerLinks = {
     { name: 'Career Pathways', href: '/how-it-works' },
     { name: 'Apprenticeships', href: '/programs/barber-apprenticeship' },
     { name: 'Employer Partnerships', href: '/employer' },
-    { name: 'Success Stories', href: '/success-stories' },
   ],
   compliance: [
     { name: 'Governance', href: '/governance' },

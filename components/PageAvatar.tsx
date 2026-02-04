@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 
 interface PageAvatarProps {
   videoSrc: string;
@@ -13,7 +14,7 @@ export default function PageAvatar({ videoSrc, title }: PageAvatarProps) {
   return (
     <section className="w-full bg-slate-100 py-8">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="rounded-2xl overflow-hidden shadow-xl bg-black">
+        <div className="rounded-2xl overflow-hidden shadow-xl bg-black relative">
           <video
             ref={videoRef}
             className="w-full aspect-video object-contain"
@@ -22,6 +23,19 @@ export default function PageAvatar({ videoSrc, title }: PageAvatarProps) {
             controls
             preload="metadata"
           />
+          {/* Logo overlay - covers bottom right corner where HeyGen logo appears */}
+          <div className="absolute bottom-2 right-2 z-10 pointer-events-none">
+            <div className="bg-black/80 rounded px-2 py-1 flex items-center gap-1">
+              <Image 
+                src="/logo.png" 
+                alt="Elevate" 
+                width={20} 
+                height={20} 
+                className="opacity-90"
+              />
+              <span className="text-white text-xs font-medium">Elevate</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

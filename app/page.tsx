@@ -9,7 +9,7 @@ import TestimonialsSection from '@/components/testimonials/TestimonialsSection';
 const programCategories = [
   { title: 'Healthcare', href: '/programs/healthcare', image: '/images/programs-hq/healthcare-hero.jpg', desc: 'CNA, Medical Assistant, Phlebotomy' },
   { title: 'Skilled Trades', href: '/programs/skilled-trades', image: '/images/programs-hq/skilled-trades-hero.jpg', desc: 'HVAC, Electrical, Welding, Plumbing' },
-  { title: 'Technology', href: '/programs/technology', image: '/images/programs-hq/technology-hero.jpg', desc: 'IT Support, Cybersecurity, Web Dev' },
+  { title: 'Technology', href: '/programs/technology', image: '/images/programs-hq/cybersecurity.jpg', desc: 'IT Support, Cybersecurity, Web Dev' },
   { title: 'CDL & Transportation', href: '/programs/cdl', image: '/images/programs-hq/cdl-trucking.jpg', desc: 'Commercial Driving License' },
   { title: 'Beauty & Barbering', href: '/programs/barber-apprenticeship', image: '/images/beauty/hero-program-barber.jpg', desc: 'Barber Apprenticeship, Cosmetology' },
   { title: 'Business', href: '/programs/business', image: '/images/programs-hq/business-training.jpg', desc: 'Tax Prep, Entrepreneurship' },

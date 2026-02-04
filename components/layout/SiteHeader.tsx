@@ -34,7 +34,6 @@ const NAV_ITEMS = [
     href: '/about',
     subItems: [
       { name: 'Our Mission', href: '/about' },
-      { name: 'Success Stories', href: '/testimonials' },
       { name: 'Contact', href: '/contact' },
     ]
   },
@@ -69,7 +68,6 @@ const DESKTOP_NAV_LINKS = [
     href: '/about',
     subItems: [
       { name: 'Our Mission', href: '/about' },
-      { name: 'Success Stories', href: '/success-stories' },
       { name: 'Contact', href: '/contact' },
     ]
   },
