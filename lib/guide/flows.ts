@@ -68,7 +68,7 @@ export const storeGuideFlow: GuideFlow = {
           route: '/store/licenses',
           startTour: true,
           tourId: 'licenses-tour',
-          description: 'Full workforce platform for organizations and schools',
+          description: 'Run your workforce programs on proven infrastructure. Managed hosting from $1,500/mo or enterprise source-use from $75,000.',
         },
         {
           id: 'not-sure',
@@ -108,7 +108,7 @@ export const storeGuideFlow: GuideFlow = {
           route: '/store/licenses',
           startTour: true,
           tourId: 'licenses-tour',
-          description: 'Explore platform licensing options',
+          description: 'License the Workforce Operating System for your training provider, workforce board, or agency. Managed or self-hosted options.',
         },
         {
           id: 'browse',
@@ -192,21 +192,33 @@ export const destinationTours: Record<string, DestinationTour> = {
     name: 'Platform Licenses Tour',
     steps: [
       {
-        target: '[data-tour="license-tiers"]',
-        title: 'License Tiers',
-        content: 'Choose from Core, School, or Enterprise licenses based on your organization size.',
+        target: '[data-tour="license-hero"]',
+        title: 'Workforce Operating System',
+        content: 'License a complete platform for enrollment, training delivery, compliance reporting, and outcome tracking. Stop building from scratch.',
+        placement: 'bottom',
+      },
+      {
+        target: '[data-tour="license-managed"]',
+        title: 'Managed Platform ($1,500-$3,500/mo)',
+        content: 'We host and maintain everything. You get your own branded instance with your domain. Includes LMS, student/instructor/employer portals, WIOA compliance, and 24/7 support. Launch in 2 weeks.',
+        placement: 'bottom',
+      },
+      {
+        target: '[data-tour="license-source"]',
+        title: 'Source-Use License ($75,000+)',
+        content: 'For large agencies requiring on-premise deployment. Get restricted code access to deploy on your infrastructure. Requires dedicated DevOps team and enterprise approval.',
         placement: 'bottom',
       },
       {
         target: '[data-tour="license-features"]',
-        title: "What's Included",
-        content: 'Each tier includes LMS, admin dashboard, compliance tools, and support.',
+        title: 'What Every License Includes',
+        content: 'Complete LMS with courses and certificates, multi-stakeholder portals, WIOA-compliant reporting, automated workflows, enterprise security, and dedicated support.',
         placement: 'bottom',
       },
       {
         target: '[data-tour="license-cta"]',
-        title: 'Get Started',
-        content: 'Request a demo or contact sales to discuss your needs.',
+        title: 'Ready to Get Started?',
+        content: 'View detailed pricing, watch a demo, or schedule a call with our team to discuss your specific needs.',
         placement: 'top',
       },
     ],
