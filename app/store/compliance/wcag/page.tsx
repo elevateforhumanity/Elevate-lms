@@ -23,7 +23,7 @@ const features = [
   {
     title: 'Keyboard Navigation',
     description: 'Complete keyboard accessibility for all interactive elements.',
-    image: '/images/hero-program-it-support.jpg',
+    image: '/images/technology/hero-program-it-support.jpg',
     items: ['Tab order optimization', 'Skip links', 'Focus indicators', 'Shortcut keys'],
   },
   {

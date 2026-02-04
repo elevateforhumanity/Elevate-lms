@@ -35,7 +35,7 @@ const features = [
   {
     title: 'One-Click Exports',
     description: 'Export reports in any format required by your funders.',
-    image: '/images/hero-program-it-support.jpg',
+    image: '/images/technology/hero-program-it-support.jpg',
     items: ['Excel exports', 'PDF reports', 'CSV data files', 'API integrations'],
   },
 ];

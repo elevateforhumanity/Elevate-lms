@@ -35,7 +35,7 @@ const features = [
   {
     title: 'Quarterly & Annual Reports',
     description: 'Pre-built report templates for all required WIOA submissions.',
-    image: '/images/hero-program-it-support.jpg',
+    image: '/images/technology/hero-program-it-support.jpg',
     items: ['ETA-9169 reports', 'ETA-9170 reports', 'Custom report builder', 'Scheduled generation'],
   },
 ];
@@ -234,7 +234,7 @@ export default function WIOACompliancePage() {
               { step: '1', title: 'Setup', desc: 'Configure your program and eligibility criteria', image: '/images/technology/hero-programs-technology.jpg' },
               { step: '2', title: 'Enroll', desc: 'Participants complete digital intake forms', image: '/images/business/tax-prep-certification.jpg' },
               { step: '3', title: 'Track', desc: 'Automatic performance metric tracking', image: '/images/team-hq/team-meeting.jpg' },
-              { step: '4', title: 'Report', desc: 'Generate PIRL exports and quarterly reports', image: '/images/hero-program-it-support.jpg' },
+              { step: '4', title: 'Report', desc: 'Generate PIRL exports and quarterly reports', image: '/images/technology/hero-program-it-support.jpg' },
             ].map((item) => (
               <div key={item.step} className="text-center">
                 <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-green-600">

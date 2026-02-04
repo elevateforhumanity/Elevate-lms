@@ -33,7 +33,7 @@ const apprenticeships = [
     name: 'Cosmetology Apprenticeship', 
     duration: '1,500 hours', 
     wage: 'Earn while learning',
-    image: '/images/beauty/cosmetology-training.jpg',
+    image: '/images/beauty/hero-program-cosmetology.jpg',
     href: '/programs/cosmetology-apprenticeship',
     description: 'Full cosmetology training covering hair, nails, and skincare.'
   },

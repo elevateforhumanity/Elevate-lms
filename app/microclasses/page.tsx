@@ -15,7 +15,7 @@ const microclasses = [
     price: 'Free with WIOA',
     certification: 'HSI CPR/AED/First Aid',
     href: '/programs/cpr-first-aid-hsi',
-    image: '/images/programs/cpr-training.jpg',
+    image: '/images/programs/cpr-certification-group-hd.jpg',
   },
   {
     title: 'Food Handler Certification',
@@ -24,7 +24,7 @@ const microclasses = [
     price: 'Free with WIOA',
     certification: 'Indiana Food Handler Card',
     href: '/programs/food-handler',
-    image: '/images/programs/food-handler.jpg',
+    image: '/images/programs/default.jpg',
   },
   {
     title: 'OSHA 10-Hour Safety',
@@ -33,7 +33,7 @@ const microclasses = [
     price: 'Free with WIOA',
     certification: 'OSHA 10 Card',
     href: '/programs/osha-safety',
-    image: '/images/programs/osha-safety.jpg',
+    image: '/images/trades/hero-program-welding.jpg',
   },
   {
     title: 'OSHA 30-Hour Safety',
@@ -42,7 +42,7 @@ const microclasses = [
     price: 'Free with WIOA',
     certification: 'OSHA 30 Card',
     href: '/programs/osha-30',
-    image: '/images/programs/osha-30.jpg',
+    image: '/images/trades/hero-program-welding.jpg',
   },
   {
     title: 'Forklift Certification',
@@ -51,7 +51,7 @@ const microclasses = [
     price: 'Free with WIOA',
     certification: 'Forklift Operator Card',
     href: '/programs/forklift',
-    image: '/images/programs/forklift.jpg',
+    image: '/images/trades/program-building-construction.jpg',
   },
   {
     title: 'Bloodborne Pathogens',
@@ -60,7 +60,7 @@ const microclasses = [
     price: 'Free with WIOA',
     certification: 'BBP Certificate',
     href: '/programs/bloodborne-pathogens',
-    image: '/images/programs/bloodborne.jpg',
+    image: '/images/healthcare/hero-programs-healthcare.jpg',
   },
 ];
 
