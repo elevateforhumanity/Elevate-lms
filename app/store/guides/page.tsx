@@ -43,11 +43,6 @@ const guides = [
       'Case studies from funded organizations',
       'Lifetime updates included',
     ],
-    stats: {
-      downloads: '2,500+',
-      rating: '4.9/5',
-      organizations: '500+',
-    },
   },
   {
     id: 'licensing',
@@ -68,11 +63,6 @@ const guides = [
       'Support options',
       'FAQ and troubleshooting',
     ],
-    stats: {
-      downloads: '10,000+',
-      rating: '4.8/5',
-      organizations: '1,200+',
-    },
   },
 ];
 
@@ -137,29 +127,7 @@ export default function GuidesPage() {
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <section className="bg-blue-600 py-6">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-              <div className="text-3xl font-black text-white">15,000+</div>
-              <div className="text-blue-200 text-sm">Downloads</div>
-            </div>
-            <div>
-              <div className="text-3xl font-black text-white">4.9/5</div>
-              <div className="text-blue-200 text-sm">Average Rating</div>
-            </div>
-            <div>
-              <div className="text-3xl font-black text-white">500+</div>
-              <div className="text-blue-200 text-sm">Organizations</div>
-            </div>
-            <div>
-              <div className="text-3xl font-black text-white">Free</div>
-              <div className="text-blue-200 text-sm">Updates Forever</div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Category Pills */}
       <section className="py-8 border-b">
@@ -217,21 +185,7 @@ export default function GuidesPage() {
                         {guide.badge}
                       </span>
                     </div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex gap-4 text-white text-sm">
-                        <span className="flex items-center gap-1">
-                          <Download className="w-4 h-4" />
-                          {guide.stats.downloads}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          ⭐ {guide.stats.rating}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Users className="w-4 h-4" />
-                          {guide.stats.organizations}
-                        </span>
-                      </div>
-                    </div>
+
                   </div>
 
                   {/* Content Side */}

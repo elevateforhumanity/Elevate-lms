@@ -51,12 +51,7 @@ const features = [
   },
 ];
 
-const metrics = [
-  { label: 'Data Points Tracked', value: '500+' },
-  { label: 'Report Templates', value: '50+' },
-  { label: 'Export Formats', value: '10+' },
-  { label: 'API Integrations', value: '25+' },
-];
+
 
 const useCases = [
   {
@@ -133,19 +128,7 @@ export default function AnalyticsProPage() {
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <section className="bg-indigo-600 py-6">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {metrics.map((metric) => (
-              <div key={metric.label}>
-                <div className="text-3xl font-black text-white">{metric.value}</div>
-                <div className="text-indigo-200 text-sm">{metric.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Features Grid */}
       <section id="features" className="py-16 lg:py-24">

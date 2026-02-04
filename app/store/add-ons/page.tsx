@@ -117,29 +117,7 @@ export default function AddOnsPage() {
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <section className="bg-purple-600 py-6">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-              <div className="text-3xl font-black text-white">40%</div>
-              <div className="text-purple-200 text-sm">Engagement Increase</div>
-            </div>
-            <div>
-              <div className="text-3xl font-black text-white">150+</div>
-              <div className="text-purple-200 text-sm">Organizations Using</div>
-            </div>
-            <div>
-              <div className="text-3xl font-black text-white">Lifetime</div>
-              <div className="text-purple-200 text-sm">Access Included</div>
-            </div>
-            <div>
-              <div className="text-3xl font-black text-white">24/7</div>
-              <div className="text-purple-200 text-sm">Support Available</div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Add-Ons Grid */}
       <section id="add-ons" className="py-16 lg:py-24">
