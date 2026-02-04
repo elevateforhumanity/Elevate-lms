@@ -45,15 +45,19 @@ const addOns = [
   },
 ];
 
-const enterpriseAddOns = [
+const comingSoon = [
   {
+    id: 'analytics-pro',
     title: 'Analytics Pro',
     description: 'Advanced reporting and predictive analytics for student outcomes. Includes custom dashboards and data exports.',
+    href: '/store/add-ons/analytics-pro',
     icon: BarChart3,
   },
   {
+    id: 'compliance-automation',
     title: 'Compliance Automation',
     description: 'Automated compliance tracking and reporting for WIOA, grants, and accreditation requirements.',
+    href: '/store/add-ons/compliance-automation',
     icon: Shield,
   },
 ];
@@ -242,29 +246,30 @@ export default function AddOnsPage() {
         </div>
       </section>
 
-      {/* Additional Add-Ons */}
+      {/* More Add-Ons */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Enterprise Add-Ons</h2>
-            <p className="text-lg text-slate-600">Advanced features available for enterprise clients</p>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">More Add-Ons</h2>
+            <p className="text-lg text-slate-600">Expand your platform with additional capabilities</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {enterpriseAddOns.map((item) => (
-              <div key={item.title} className="bg-white rounded-xl p-8 border border-slate-200 shadow-sm">
-                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+            {comingSoon.map((item) => (
+              <Link 
+                key={item.id} 
+                href={item.href}
+                className="group bg-white rounded-xl p-8 border border-slate-200 shadow-sm hover:shadow-lg transition-all"
+              >
+                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors">
                   <item.icon className="w-6 h-6 text-purple-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition-colors">{item.title}</h3>
                 <p className="text-slate-600 mb-4">{item.description}</p>
-                <Link 
-                  href="/contact"
-                  className="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors"
-                >
-                  Contact for Pricing
-                </Link>
-              </div>
+                <span className="inline-flex items-center gap-2 text-purple-600 font-semibold">
+                  Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>
