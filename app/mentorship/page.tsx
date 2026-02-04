@@ -6,6 +6,9 @@ import { Users, MessageSquare, Calendar, Star, CheckCircle, ArrowRight } from 'l
 export const metadata: Metadata = {
   title: 'Mentorship Program | Elevate For Humanity',
   description: 'Connect with experienced mentors to guide your career journey.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/mentorship',
+  },
 };
 
 const benefits = [

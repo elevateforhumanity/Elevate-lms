@@ -1,6 +1,15 @@
 // Programs page - pulls from database with ISR caching
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+
+export const metadata: Metadata = {
+  title: 'Training Programs | Free Career Training',
+  description: 'Explore free career training programs in healthcare, skilled trades, technology, CDL, barbering, and business. WIOA-funded programs available. Start your new career today.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/programs',
+  },
+};
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import PageAvatar from '@/components/PageAvatar';

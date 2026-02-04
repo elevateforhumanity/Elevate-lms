@@ -11,6 +11,9 @@ import PageAvatar from '@/components/PageAvatar';
 export const metadata: Metadata = {
   title: 'Apply | Elevate for Humanity',
   description: 'Start your journey to a new career. Choose to get more information or enroll directly in our free workforce training programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/apply',
+  },
 };
 
 // Program-specific redirects to modern intake forms

@@ -7,6 +7,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = { 
   title: 'Compliance Center | Elevate LMS',
   description: 'Access our policies, certifications, and compliance documentation.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/compliance',
+  },
 };
 
 export default function CompliancePage() {

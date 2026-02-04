@@ -5,6 +5,9 @@ import { Clock, Award, CheckCircle, ArrowRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Microclasses | Elevate for Humanity',
   description: 'Short, focused certification courses you can complete in days. CPR, First Aid, Food Handler, OSHA Safety and more.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/microclasses',
+  },
 };
 
 const microclasses = [

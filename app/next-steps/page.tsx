@@ -2,6 +2,7 @@
 
 'use client';
 
+import { Metadata } from 'next';
 import React from 'react';
 
 import { useEffect, useMemo, useState } from 'react';
@@ -16,6 +17,15 @@ function formatPct(p?: number) {
 }
 
 
+
+
+export const metadata: Metadata = {
+  title: 'Next Steps | Elevate for Humanity',
+  description: 'Elevate for Humanity - Career training and workforce development programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/next-steps',
+  },
+};
 
 export default function NextStepsPage() {
   const [data, setData] = useState<Checklist | null>(null);

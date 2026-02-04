@@ -9,6 +9,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'My Calendar | Elevate For Humanity',
   description: 'View your personal schedule, enrolled classes, and important dates.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/calendar',
+  },
 };
 
 export const dynamic = 'force-dynamic';

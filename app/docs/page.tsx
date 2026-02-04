@@ -6,6 +6,9 @@ import { BookOpen, Users, GraduationCap, Building, Code, FileText, ArrowRight } 
 export const metadata: Metadata = {
   title: 'Documentation | Elevate For Humanity',
   description: 'Guides and documentation for students, instructors, partners, and administrators.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/docs',
+  },
 };
 
 const docCategories = [

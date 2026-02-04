@@ -8,6 +8,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Financial Aid & Funding | Elevate For Humanity',
   description: 'Learn about free training through WIOA, state grants, and other funding options. Most students pay $0 for their career training.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/financial-aid',
+  },
 };
 
 const fundingOptions = [

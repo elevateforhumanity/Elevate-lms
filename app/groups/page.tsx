@@ -7,6 +7,9 @@ import { Users, Plus, Search, MessageSquare, AlertCircle } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Study Groups | Elevate For Humanity',
   description: 'Join study groups to collaborate with fellow learners.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/groups',
+  },
   robots: { index: false, follow: false },
 };
 

@@ -13,6 +13,9 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: 'How to Pay for Training | Elevate for Humanity',
   description: 'Elevate for Humanity places students into one of three funding pathways—workforce-funded, employer-sponsored, or structured tuition.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/tuition',
+  },
 };
 
 export default async function TuitionPage() {

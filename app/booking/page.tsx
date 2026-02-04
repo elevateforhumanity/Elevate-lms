@@ -8,6 +8,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Book an Appointment | Elevate For Humanity',
   description: 'Schedule a consultation, campus tour, or advising session with our team.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/booking',
+  },
 };
 
 export const dynamic = 'force-dynamic';

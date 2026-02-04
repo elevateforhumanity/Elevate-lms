@@ -6,6 +6,9 @@ import { BookOpen, Users, Award, BarChart, FileText, Video, ArrowRight } from 'l
 export const metadata: Metadata = {
   title: 'Educator Hub | Elevate For Humanity',
   description: 'Resources and tools for instructors and educators to create engaging learning experiences.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/educatorhub',
+  },
 };
 
 const resources = [

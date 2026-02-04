@@ -6,6 +6,9 @@ import { ClipboardList, ArrowRight, CheckCircle, Clock, Phone } from 'lucide-rea
 export const metadata: Metadata = {
   title: 'Intake Form | Elevate For Humanity',
   description: 'Complete your intake form to begin the enrollment process for career training programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/intake',
+  },
 };
 
 export default function IntakePage() {

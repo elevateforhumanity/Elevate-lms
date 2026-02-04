@@ -4,6 +4,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Test Images | Elevate For Humanity',
   description: 'Elevate For Humanity - Career training and workforce development',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/test-images',
+  },
 };
 
 export default function TestImagesPage() {

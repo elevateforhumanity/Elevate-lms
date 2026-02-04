@@ -8,6 +8,9 @@ import { Folder, File, Upload, Search, Grid, List, Plus } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'File Manager | Elevate For Humanity',
   description: 'Manage your documents, certificates, and course materials.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/file-manager',
+  },
   robots: { index: false, follow: false },
 };
 

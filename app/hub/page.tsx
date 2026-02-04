@@ -18,6 +18,9 @@ import CohortView from '@/components/hub/CohortView';
 export const metadata: Metadata = {
   title: 'Hub | Elevate for Humanity',
   description: 'Your operational command center - track progress, view automation, and manage your journey.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/hub',
+  },
 };
 
 export const dynamic = 'force-dynamic';

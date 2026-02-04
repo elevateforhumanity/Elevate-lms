@@ -7,6 +7,9 @@ import { Sparkles, Target, TrendingUp, ArrowRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Selfish Inc | Elevate for Humanity',
   description: 'Personal development and entrepreneurship program. Invest in yourself to create the life you deserve.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/selfish-inc',
+  },
 };
 
 export default function SelfishIncPage() {

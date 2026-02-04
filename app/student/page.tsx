@@ -18,6 +18,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Student Portal | Elevate',
   description: 'Access your courses, track progress, and manage your learning journey.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/student',
+  },
   robots: { index: false, follow: false },
 };
 

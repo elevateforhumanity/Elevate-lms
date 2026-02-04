@@ -6,6 +6,9 @@ import { Phone, Clock, MessageSquare, Mail, MapPin, CheckCircle } from 'lucide-r
 export const metadata: Metadata = {
   title: 'Call Now | Elevate For Humanity',
   description: 'Contact us by phone for immediate assistance with enrollment, programs, and support.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/call-now',
+  },
 };
 
 export default function CallNowPage() {

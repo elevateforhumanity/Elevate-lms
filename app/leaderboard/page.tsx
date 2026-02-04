@@ -7,6 +7,9 @@ import { Trophy, Medal, Star, Flame, TrendingUp } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Leaderboard | Elevate For Humanity',
   description: 'See top learners and compete for the top spots.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/leaderboard',
+  },
   robots: { index: false, follow: false },
 };
 

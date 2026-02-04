@@ -8,6 +8,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Employee Portal | Elevate For Humanity',
   description: 'Employee self-service portal for HR, payroll, and benefits.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/employee',
+  },
 };
 
 export const dynamic = 'force-dynamic';

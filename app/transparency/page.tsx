@@ -7,6 +7,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Transparency | Elevate For Humanity',
   description: 'Our commitment to transparency. View our outcomes, financials, and impact data.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/transparency',
+  },
 };
 
 export default function TransparencyPage() {

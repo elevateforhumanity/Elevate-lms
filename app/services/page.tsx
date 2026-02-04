@@ -79,7 +79,7 @@ export default function ServicesPage() {
         </div>
       </div>
 
-      {/* Hero - Image only */}
+      {/* Hero */}
       <section className="relative h-[50vh] min-h-[350px]">
         <Image
           src="/images/heroes/hero-homepage.jpg"
@@ -88,6 +88,11 @@ export default function ServicesPage() {
           className="object-cover"
           priority
         />
+        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
+            Support Services
+          </h1>
+        </div>
       </section>
 
       {/* Services Grid */}

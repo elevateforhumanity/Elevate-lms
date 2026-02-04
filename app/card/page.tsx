@@ -7,6 +7,9 @@ import { CreditCard, Shield, Smartphone, DollarSign, CheckCircle } from 'lucide-
 export const metadata: Metadata = {
   title: 'Elevate Card | Elevate For Humanity',
   description: 'Get your Elevate prepaid card for receiving refunds and stipends.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/card',
+  },
 };
 
 export const dynamic = 'force-dynamic';

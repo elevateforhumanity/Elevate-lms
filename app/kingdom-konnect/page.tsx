@@ -7,6 +7,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Kingdom Konnect | Elevate for Humanity',
   description: 'Faith-based community partnerships for workforce development and community transformation.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/kingdom-konnect',
+  },
 };
 
 export default function KingdomKonnectPage() {

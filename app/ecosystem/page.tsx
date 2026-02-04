@@ -6,6 +6,9 @@ import { Users, Building, GraduationCap, Briefcase, Heart, ArrowRight } from 'lu
 export const metadata: Metadata = {
   title: 'Our Ecosystem | Elevate For Humanity',
   description: 'Explore the Elevate ecosystem connecting learners, employers, training providers, and workforce boards.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/ecosystem',
+  },
 };
 
 const partners = [

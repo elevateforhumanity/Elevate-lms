@@ -6,6 +6,9 @@ import { BookOpen, Shield, DollarSign, FileText, CheckCircle, ArrowRight } from 
 export const metadata: Metadata = {
   title: 'Consumer Education | Elevate For Humanity',
   description: 'Free educational resources on financial literacy, consumer rights, and career development.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/consumer-education',
+  },
 };
 
 const topics = [

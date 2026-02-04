@@ -1,5 +1,15 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { Scissors, Building2, ChevronRight } from 'lucide-react';
+
+
+export const metadata: Metadata = {
+  title: 'Pwa | Elevate for Humanity',
+  description: 'Elevate for Humanity - Career training and workforce development programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/pwa',
+  },
+};
 
 export default function PWAIndexPage() {
   return (

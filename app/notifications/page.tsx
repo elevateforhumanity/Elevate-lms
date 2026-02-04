@@ -6,6 +6,9 @@ import NotificationsClient from './NotificationsClient';
 export const metadata: Metadata = {
   title: 'Notifications | Elevate For Humanity',
   description: 'View your notifications and updates.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/notifications',
+  },
 };
 
 export const dynamic = 'force-dynamic';

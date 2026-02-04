@@ -9,6 +9,9 @@ import { getNextRequiredAction } from '@/lib/enrollment/gate';
 export const metadata: Metadata = {
   title: 'Apprentice Portal | Elevate For Humanity',
   description: 'Track your apprenticeship progress, hours, and certifications.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/apprentice',
+  },
 };
 
 export const dynamic = 'force-dynamic';

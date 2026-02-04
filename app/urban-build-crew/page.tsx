@@ -7,6 +7,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Urban Build Crew | Elevate for Humanity',
   description: 'Construction and skilled trades training for urban communities. Build skills, build careers, build communities.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/urban-build-crew',
+  },
 };
 
 export default function UrbanBuildCrewPage() {

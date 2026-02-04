@@ -5,6 +5,9 @@ import { AlertTriangle, CreditCard, Mail, Phone } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'License Suspended | Elevate for Humanity',
   description: 'Your license has been suspended. Please update your billing to restore access.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/license-suspended',
+  },
 };
 
 export default function LicenseSuspendedPage() {

@@ -22,6 +22,9 @@ import {
 export const metadata: Metadata = {
   title: 'Career Services | Elevate For Humanity',
   description: 'Resume building, interview prep, job placement assistance, and career coaching to help you land your dream job.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/career-services',
+  },
 };
 
 export const dynamic = 'force-dynamic';

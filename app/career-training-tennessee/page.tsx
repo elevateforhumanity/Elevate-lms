@@ -8,6 +8,9 @@ const state = STATES.tennessee;
 export const metadata: Metadata = {
   title: `${state.careerTraining.headline} | Elevate for Humanity`,
   description: state.careerTraining.description,
+  alternates: {
+    canonical: `https://www.elevateforhumanity.org/career-training-${state.slug}`,
+  },
   openGraph: {
     title: `${state.careerTraining.headline} | Elevate for Humanity`,
     description: state.careerTraining.description,

@@ -8,6 +8,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Volunteer Opportunities | Elevate For Humanity',
   description: 'Make a difference in your community. Join our volunteer programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/volunteer',
+  },
 };
 
 export const dynamic = 'force-dynamic';

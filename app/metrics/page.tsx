@@ -5,6 +5,9 @@ import { createClient } from '@/lib/supabase/server';
 export const metadata: Metadata = {
   title: 'Metrics | Elevate For Humanity',
   description: 'Elevate For Humanity - Career training and workforce development',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/metrics',
+  },
 };
 
 import { ComplianceBar } from '@/components/ComplianceBar';

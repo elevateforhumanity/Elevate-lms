@@ -20,6 +20,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Achievements | Elevate for Humanity',
   description: 'View your earned achievements and badges from your learning journey.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/achievements',
+  },
 };
 
 export const dynamic = 'force-dynamic';

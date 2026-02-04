@@ -8,6 +8,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Instructor Portal | Elevate For Humanity',
   description: 'Manage courses, track student progress, and access teaching tools.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/instructor',
+  },
 };
 
 export default function InstructorPortalLanding() {

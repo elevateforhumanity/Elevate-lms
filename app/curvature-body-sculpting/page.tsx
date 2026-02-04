@@ -21,6 +21,9 @@ import Testimonials from './components/Testimonials';
 export const metadata: Metadata = {
   title: 'Curvature Body Sculpting | Body Contouring & Meri-Go-Round Wellness Products | Indianapolis',
   description: 'Professional body sculpting services and Meri-Go-Round wellness products in Indianapolis. Non-invasive body contouring, handcrafted teas, butters, oils, and soaps. Partner of VITA and Selfish Inc.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/curvature-body-sculpting',
+  },
   openGraph: {
     title: 'Curvature Body Sculpting - Body Contouring & Wellness',
     description: 'Professional body sculpting services and Meri-Go-Round wellness products in Indianapolis.',

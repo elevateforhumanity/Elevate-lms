@@ -7,6 +7,9 @@ import { ChevronRight, FileText, Download, Eye, Search, FolderOpen, File, Upload
 export const metadata: Metadata = {
   title: 'Documents | Elevate For Humanity',
   description: 'Access your documents and resources.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/documents',
+  },
   robots: { index: false, follow: false },
 };
 

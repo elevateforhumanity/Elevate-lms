@@ -6,6 +6,9 @@ import { CheckCircle, XCircle, Search, Award, Calendar, User, Building2 } from '
 export const metadata: Metadata = {
   title: 'Verify Certificate | Elevate for Humanity',
   description: 'Verify the authenticity of certificates issued by Elevate for Humanity.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/verify',
+  },
 };
 
 export const dynamic = 'force-dynamic';

@@ -6,6 +6,9 @@ import MessagesClient from './MessagesClient';
 export const metadata: Metadata = {
   title: 'Messages | Elevate For Humanity',
   description: 'Direct messages with community members.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/messages',
+  },
 };
 
 export const dynamic = 'force-dynamic';

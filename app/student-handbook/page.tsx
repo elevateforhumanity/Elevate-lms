@@ -8,6 +8,9 @@ import { redirect } from 'next/navigation';
 export const metadata: Metadata = {
   title: 'Student Handbook | Elevate For Humanity',
   description: 'Complete guide to policies, procedures, and expectations for students in our training programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/student-handbook',
+  },
 };
 
 export const dynamic = 'force-dynamic';

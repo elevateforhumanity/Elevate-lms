@@ -1,3 +1,13 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Builder | Elevate for Humanity',
+  description: 'Build and customize your learning experience with Elevate for Humanity.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/builder',
+  },
+};
+
 export default function BuilderLayout({
   children,
 }: {

@@ -17,6 +17,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Donate | Support Career Training | Elevate for Humanity',
   description: 'Support free career training for underserved communities. Your donation helps provide job skills, certifications, and employment opportunities.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/donate',
+  },
 };
 
 export const dynamic = 'force-dynamic';

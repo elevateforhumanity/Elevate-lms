@@ -8,6 +8,9 @@ const state = STATES.tennessee;
 export const metadata: Metadata = {
   title: `${state.communityServices.headline} | Elevate for Humanity`,
   description: state.communityServices.description,
+  alternates: {
+    canonical: `https://www.elevateforhumanity.org/community-services-${state.slug}`,
+  },
   keywords: [
     `community services ${state.name}`,
     `job placement ${state.name}`,

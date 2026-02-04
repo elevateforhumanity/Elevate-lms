@@ -7,6 +7,9 @@ export const dynamic = 'force-dynamic';
 export const metadata = {
   title: 'Sitemap | Elevate for Humanity',
   description: 'Browse all pages and features of the Elevate for Humanity platform.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/site-map',
+  },
 };
 
 const sitemapSections = [

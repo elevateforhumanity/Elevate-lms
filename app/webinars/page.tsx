@@ -6,6 +6,9 @@ import { Video, Calendar, Clock, Users, Play, Bell } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Webinars | Elevate For Humanity',
   description: 'Join live webinars and watch recordings on career development, industry trends, and skill building.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/webinars',
+  },
 };
 
 const upcomingWebinars = [

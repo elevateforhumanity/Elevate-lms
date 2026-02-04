@@ -7,6 +7,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Alumni Network | Elevate For Humanity',
   description: 'Join our alumni network. Connect with graduates, access job opportunities, and continue your professional development.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/alumni',
+  },
 };
 
 const stats = [

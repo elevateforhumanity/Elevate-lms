@@ -5,6 +5,9 @@ import { PauseCircle, Mail, ArrowLeft } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Access Paused | Elevate For Humanity',
   description: 'Your access has been paused. Please contact your administrator.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/access-paused',
+  },
 };
 
 /**

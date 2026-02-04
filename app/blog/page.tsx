@@ -8,6 +8,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Blog | Elevate For Humanity',
   description: 'Insights, stories, and tips from our community.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/blog',
+  },
 };
 
 // Dynamic rendering - fetches fresh data on each request

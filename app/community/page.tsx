@@ -12,6 +12,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Community | Elevate For Humanity',
   description: 'Join our thriving community of learners, mentors, and professionals. Connect, learn, and grow together.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/community',
+  },
   openGraph: {
     title: 'Community | Elevate For Humanity',
     description: 'Join our thriving community of learners, mentors, and professionals.',

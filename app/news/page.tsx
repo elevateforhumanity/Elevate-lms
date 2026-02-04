@@ -8,6 +8,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'News | Elevate For Humanity',
   description: 'Latest news, updates, and announcements from Elevate for Humanity.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/news',
+  },
 };
 
 export const dynamic = 'force-dynamic';

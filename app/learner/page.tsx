@@ -6,7 +6,8 @@ export const dynamic = 'force-dynamic';
 
 
 export const metadata: Metadata = {
-  title: 'Learner',
+  title: 'Learner Dashboard | Elevate for Humanity',
+  description: 'Access your learner dashboard to track progress, complete courses, and manage your career training journey.',
   alternates: { canonical: 'https://www.elevateforhumanity.org/learner' },
 };
 

@@ -8,6 +8,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Support | Elevate For Humanity',
   description: 'Get help with your account, programs, or technical issues.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/support',
+  },
 };
 
 export const dynamic = 'force-dynamic';

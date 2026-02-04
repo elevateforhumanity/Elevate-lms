@@ -7,6 +7,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'For Employers | Elevate for Humanity',
   description: 'Hire trained workers. No recruiting fees. Build your workforce pipeline.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/employer',
+  },
 };
 
 export default function EmployerPage() {
