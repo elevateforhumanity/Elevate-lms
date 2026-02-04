@@ -11,7 +11,8 @@ import {
   CheckCircle,
   Server,
   Key,
-, Phone} from 'lucide-react';
+  Phone,
+} from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
