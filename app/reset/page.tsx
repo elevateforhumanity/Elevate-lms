@@ -38,11 +38,11 @@ export default function ResetPage() {
 
     try {
       setStatus('Clearing IndexedDB...');
-      if ('indexedDB' in window && 'databases' in indexedDB) {
-        // @ts-ignore
-        const dbs = await indexedDB.databases();
+      const idb = window.indexedDB as IDBFactory & { databases?: () => Promise<Array<{ name: string; version: number }>> };
+      if (idb && typeof idb.databases === 'function') {
+        const dbs = await idb.databases();
         await Promise.all(
-          (dbs || []).map((db: any) =>
+          (dbs || []).map((db) =>
             db?.name
               ? new Promise<void>((resolve) => {
                   const req = indexedDB.deleteDatabase(db.name);

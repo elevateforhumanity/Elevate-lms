@@ -142,11 +142,11 @@ export default function BarberApprenticeshipDemoPage() {
                 <span className="font-bold text-slate-900">Elevate LMS</span>
               </Link>
               <nav className="hidden md:flex items-center gap-4">
-                <Link href="#" className="text-sm font-medium text-orange-600 border-b-2 border-orange-600 pb-1">Dashboard</Link>
-                <Link href="#" className="text-sm font-medium text-slate-600 hover:text-orange-600">Courses</Link>
-                <Link href="#" className="text-sm font-medium text-slate-600 hover:text-orange-600">Schedule</Link>
-                <Link href="#" className="text-sm font-medium text-slate-600 hover:text-orange-600">Grades</Link>
-                <Link href="#" className="text-sm font-medium text-slate-600 hover:text-orange-600">Messages</Link>
+                <span className="text-sm font-medium text-orange-600 border-b-2 border-orange-600 pb-1 cursor-default">Dashboard</span>
+                <span className="text-sm font-medium text-slate-600 cursor-default" title="Demo navigation">Courses</span>
+                <span className="text-sm font-medium text-slate-600 cursor-default" title="Demo navigation">Schedule</span>
+                <span className="text-sm font-medium text-slate-600 cursor-default" title="Demo navigation">Grades</span>
+                <span className="text-sm font-medium text-slate-600 cursor-default" title="Demo navigation">Messages</span>
               </nav>
             </div>
             <div className="flex items-center gap-4">
@@ -294,7 +294,7 @@ export default function BarberApprenticeshipDemoPage() {
               <div className="bg-white rounded-xl border border-slate-200 p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-semibold text-slate-900">Continue Learning</h3>
-                  <Link href="#" className="text-sm text-orange-600 hover:underline">View All →</Link>
+                  <span className="text-sm text-orange-600 cursor-default" title="Demo link">View All →</span>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="group cursor-pointer">
@@ -326,7 +326,7 @@ export default function BarberApprenticeshipDemoPage() {
               <div className="bg-white rounded-xl border border-slate-200 p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-semibold text-slate-900">Recent Grades</h3>
-                  <Link href="#" className="text-sm text-orange-600 hover:underline">View All →</Link>
+                  <span className="text-sm text-orange-600 cursor-default" title="Demo link">View All →</span>
                 </div>
                 <div className="space-y-3">
                   {recentGrades.map((item, idx) => (
