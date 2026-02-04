@@ -1,31 +1,15 @@
 {
-  "timestamp": "2026-02-04T15:42:57.820Z",
+  "timestamp": "2026-02-04T17:30:34.767Z",
   "totalPages": 248,
-  "pagesWithIssues": 44,
+  "pagesWithIssues": 9,
   "highPriority": 0,
   "mediumPriority": 0,
-  "lowPriority": 44,
+  "lowPriority": 9,
   "issueCounts": {
-    "Missing call-to-action": 43,
-    "Missing main heading": 1,
-    "Very short page content": 2
+    "Missing call-to-action": 9,
+    "Very short page content": 1
   },
   "results": [
-    {
-      "page": "app/academic-integrity/page.tsx",
-      "route": "/academic-integrity",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 22019,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
     {
       "page": "app/access-paused/page.tsx",
       "route": "/access-paused",
@@ -42,81 +26,6 @@
       "priority": "low"
     },
     {
-      "page": "app/ai-chat/page.tsx",
-      "route": "/ai-chat",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 9901,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/apps/page.tsx",
-      "route": "/apps",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 4429,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/attendance-policy/page.tsx",
-      "route": "/attendance-policy",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 13882,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/blog/page.tsx",
-      "route": "/blog",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 5871,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/builder/page.tsx",
-      "route": "/builder",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": true,
-      "hasHeading": false,
-      "contentLength": 17098,
-      "issues": [
-        "Missing main heading"
-      ],
-      "priority": "low"
-    },
-    {
       "page": "app/cache-diagnostic/page.tsx",
       "route": "/cache-diagnostic",
       "hasMetadata": true,
@@ -126,126 +35,6 @@
       "hasCTA": false,
       "hasHeading": true,
       "contentLength": 2600,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/community/page.tsx",
-      "route": "/community",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 16931,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/consumer-education/page.tsx",
-      "route": "/consumer-education",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 3284,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/docs/page.tsx",
-      "route": "/docs",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 2858,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/donate/page.tsx",
-      "route": "/donate",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 10217,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/ecosystem/page.tsx",
-      "route": "/ecosystem",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 3039,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/enrollment-agreement/page.tsx",
-      "route": "/enrollment-agreement",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 12395,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/enterprise/page.tsx",
-      "route": "/enterprise",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 10797,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/governance/page.tsx",
-      "route": "/governance",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 8073,
       "issues": [
         "Missing call-to-action"
       ],
@@ -267,66 +56,6 @@
       "priority": "low"
     },
     {
-      "page": "app/kingdom-konnect/page.tsx",
-      "route": "/kingdom-konnect",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 3169,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/learning/page.tsx",
-      "route": "/learning",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 6215,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/marketplace/page.tsx",
-      "route": "/marketplace",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 6269,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/mentorship/page.tsx",
-      "route": "/mentorship",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 4030,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
       "page": "app/metrics/page.tsx",
       "route": "/metrics",
       "hasMetadata": true,
@@ -336,96 +65,6 @@
       "hasCTA": false,
       "hasHeading": true,
       "contentLength": 6074,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/news/page.tsx",
-      "route": "/news",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 4630,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/next-steps/page.tsx",
-      "route": "/next-steps",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 26812,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/nonprofit/page.tsx",
-      "route": "/nonprofit",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 10494,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/platform/page.tsx",
-      "route": "/platform",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 13250,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/policies/page.tsx",
-      "route": "/policies",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 6747,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/privacy/page.tsx",
-      "route": "/privacy",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 6572,
       "issues": [
         "Missing call-to-action"
       ],
@@ -462,22 +101,6 @@
       "priority": "low"
     },
     {
-      "page": "app/reels/page.tsx",
-      "route": "/reels",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 1498,
-      "issues": [
-        "Missing call-to-action",
-        "Very short page content"
-      ],
-      "priority": "low"
-    },
-    {
       "page": "app/reset/page.tsx",
       "route": "/reset",
       "hasMetadata": true,
@@ -487,81 +110,6 @@
       "hasCTA": false,
       "hasHeading": true,
       "contentLength": 3213,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/satisfactory-academic-progress/page.tsx",
-      "route": "/satisfactory-academic-progress",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 15149,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/security/page.tsx",
-      "route": "/security",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 9419,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/shop/page.tsx",
-      "route": "/shop",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 3134,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/solutions/page.tsx",
-      "route": "/solutions",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 9982,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/student-support/page.tsx",
-      "route": "/student-support",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 5563,
       "issues": [
         "Missing call-to-action"
       ],
@@ -583,66 +131,6 @@
       "priority": "low"
     },
     {
-      "page": "app/supersonic/page.tsx",
-      "route": "/supersonic",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 5825,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/tax-self-prep/page.tsx",
-      "route": "/tax-self-prep",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 24686,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/tax/page.tsx",
-      "route": "/tax",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 21288,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/terms/page.tsx",
-      "route": "/terms",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 6949,
-      "issues": [
-        "Missing call-to-action"
-      ],
-      "priority": "low"
-    },
-    {
       "page": "app/test-images/page.tsx",
       "route": "/test-images",
       "hasMetadata": true,
@@ -655,21 +143,6 @@
       "issues": [
         "Missing call-to-action",
         "Very short page content"
-      ],
-      "priority": "low"
-    },
-    {
-      "page": "app/tuition-fees/page.tsx",
-      "route": "/tuition-fees",
-      "hasMetadata": true,
-      "hasTitle": true,
-      "hasDescription": true,
-      "hasCanonical": true,
-      "hasCTA": false,
-      "hasHeading": true,
-      "contentLength": 9148,
-      "issues": [
-        "Missing call-to-action"
       ],
       "priority": "low"
     }

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { 
   MessageSquare, Bot, Sparkles, Clock, BookOpen, 
   HelpCircle, ArrowRight, CheckCircle, Zap
-} from 'lucide-react';
+, Phone} from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
@@ -226,6 +226,28 @@ export default function AIChatPage() {
             <MessageSquare className="w-5 h-5" />
             Start Chatting Now
           </Link>
+        </div>
+      </section>
+      {/* CTA Section */}
+      <section className="bg-blue-700 text-white py-12">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3">Ready to Start Your Career?</h2>
+          <p className="text-blue-100 mb-6">Apply today for free career training programs.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/apply"
+              className="inline-flex items-center justify-center bg-white text-blue-700 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition"
+            >
+              Apply Now
+            </Link>
+            <a
+              href="tel:317-314-3757"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition"
+            >
+              <Phone className="w-4 h-4" />
+              (317) 314-3757
+            </a>
+          </div>
         </div>
       </section>
     </div>

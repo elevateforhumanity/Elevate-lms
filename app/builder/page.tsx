@@ -219,10 +219,11 @@ export default function BuildPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col">
-            <div className="max-w-7xl mx-auto px-4 py-4">
+      <h1 className="sr-only">AI Platform Builder - Create Your Training Platform</h1>
+      <div className="max-w-7xl mx-auto px-4 py-4">
         <Breadcrumbs items={[{ label: "Builder" }]} />
       </div>
-{/* Header */}
+      {/* Header */}
       <header className="border-b border-white/10 bg-slate-900/50 backdrop-blur sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
