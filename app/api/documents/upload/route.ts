@@ -126,6 +126,21 @@ export const POST = withErrorHandling(async (request: NextRequest) => {
     },
   });
 
+  // Trigger evidence processor asynchronously (non-blocking)
+  // On error: creates review_queue item, never blocks user flow
+  try {
+    fetch(`${process.env.NEXT_PUBLIC_APP_URL || ''}/api/automation/process-document`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ documentId: document.id }),
+    }).catch((err) => {
+      console.error('[document-upload] Evidence processor trigger failed (non-fatal):', err);
+    });
+  } catch (triggerError) {
+    // Never block user flow - log and continue
+    console.error('[document-upload] Evidence processor trigger error (non-fatal):', triggerError);
+  }
+
   return NextResponse.json({
     success: true,
     document,

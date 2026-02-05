@@ -6,10 +6,10 @@ import Link from 'next/link';
 import { Check, ArrowRight, Clock, Shield } from 'lucide-react';
 
 const trialFeatures = [
-  '14-day evaluation access',
+  '14-day free trial',
   'Full platform functionality',
   'Demo data included',
-  'No credit card required',
+  'Card required, charged after trial',
   'Some admin actions limited',
 ];
 
@@ -110,7 +110,7 @@ export default function TrialPage() {
             Start Your Platform Trial
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Evaluate the Elevate Workforce Platform for 14 days. No credit card required.
+            Evaluate the Elevate Workforce Platform for 14 days. Card required, not charged until trial ends.
           </p>
         </div>
 
@@ -258,7 +258,7 @@ export default function TrialPage() {
               <div className="flex items-center justify-center gap-4 text-sm text-gray-500 pt-2">
                 <div className="flex items-center gap-1">
                   <Shield className="w-4 h-4" />
-                  No credit card required
+                  Not charged until trial ends
                 </div>
               </div>
             </form>

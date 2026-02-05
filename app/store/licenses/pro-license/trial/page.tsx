@@ -19,7 +19,7 @@ export default function ProLicenseTrialPage() {
             Try Pro License Free
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get full access to all Pro features for 14 days. No credit card required.
+            Get full access to all Pro features for 14 days. Card required, not charged until trial ends.
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export default function ProLicenseTrialPage() {
                   Start Free Trial
                 </button>
                 <p className="text-xs text-gray-500 text-center">
-                  No credit card required. Cancel anytime.
+                  Not charged until trial ends. Cancel anytime.
                 </p>
               </form>
             </div>

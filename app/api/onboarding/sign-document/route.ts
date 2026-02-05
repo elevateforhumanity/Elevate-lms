@@ -125,6 +125,38 @@ export async function POST(request: NextRequest) {
       p_role: role,
     });
 
+    // Audit log: document signed
+    try {
+      await supabase.from('audit_logs').insert({
+        actor_id: user.id,
+        actor_role: role,
+        action: 'DOCUMENT_SIGNED',
+        entity: 'ONBOARDING_DOCUMENT',
+        entity_id: documentId,
+        metadata: {
+          document_hash: documentHash,
+          signature_type: signatureType,
+          ip_address: ip,
+        },
+      });
+    } catch (auditErr) {
+      console.error('[sign-document] Audit log failed (non-fatal):', auditErr);
+    }
+
+    // Trigger review queue check if MOU signed (non-blocking)
+    // On error: never blocks user flow
+    try {
+      fetch(`${process.env.NEXT_PUBLIC_APP_URL || ''}/api/automation/partner-approval`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: user.id, documentId, role }),
+      }).catch((err) => {
+        console.error('[sign-document] Partner approval trigger failed (non-fatal):', err);
+      });
+    } catch (triggerError) {
+      console.error('[sign-document] Partner approval trigger error (non-fatal):', triggerError);
+    }
+
     return NextResponse.json({
       success: true,
       isComplete: completionCheck,

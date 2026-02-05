@@ -275,7 +275,7 @@ export default function AIStudioPage() {
             Ready to Create with AI?
           </h2>
           <p className="text-xl text-purple-200 mb-10 max-w-2xl mx-auto">
-            Start your free trial today. No credit card required.
+            Start your free trial today. Card required, not charged until trial ends.
           </p>
           <Link
             href="/store/ai-studio/checkout?plan=professional"
