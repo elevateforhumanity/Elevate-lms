@@ -364,6 +364,33 @@ export default async function CareerServicesPage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Career Services FAQ</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'Are career services free?', a: 'Yes, all career services are included with your training program at no additional cost. This includes resume help, interview prep, and job placement assistance.' },
+              { q: 'When do career services start?', a: 'Career services begin during your training program. We start working on your resume and job search strategy before you complete training so you\'re ready to apply immediately.' },
+              { q: 'Do you guarantee job placement?', a: 'We don\'t guarantee placement, but we have an 85% placement rate goal. We work closely with employer partners who actively hire our graduates.' },
+              { q: 'What if I need help after I get hired?', a: 'We provide ongoing support even after placement. If you have issues at work or want to advance your career, our team is here to help.' },
+              { q: 'Can I use career services if I didn\'t train with you?', a: 'Career services are primarily for our program graduates. However, contact us to discuss your situation - we may be able to help or refer you to resources.' },
+              { q: 'How do I access job listings?', a: 'Job listings are available on this page and in your student dashboard. We also send job alerts via email for positions matching your training.' },
+            ].map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl overflow-hidden shadow-sm group">
+                <summary className="p-5 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 text-slate-600">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">

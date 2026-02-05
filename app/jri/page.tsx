@@ -317,6 +317,35 @@ export default function JRIPage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">JRI Program FAQ</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'What is JRI funding?', a: 'Justice Reinvestment Initiative (JRI) is Indiana state funding that provides free career training to justice-involved individuals. It covers tuition, materials, certifications, and supportive services.' },
+              { q: 'Do I qualify if I have a felony?', a: 'Yes. JRI is specifically designed for people with criminal records, including felonies. Your conviction type does not automatically disqualify you.' },
+              { q: 'How recent does my involvement need to be?', a: 'Generally, you should have been released from incarceration or supervision within the past 3 years. Contact us to discuss your specific situation.' },
+              { q: 'What programs can I use JRI for?', a: 'JRI covers approved training programs including healthcare (CNA), skilled trades (HVAC, welding), technology, CDL, and more. See the list above for current options.' },
+              { q: 'Is JRI really free?', a: 'Yes. JRI covers 100% of training costs for eligible participants. There are no hidden fees or repayment requirements.' },
+              { q: 'How long does the application take?', a: 'The initial application takes about 10 minutes. Eligibility verification typically takes 1-2 weeks. You can start training as soon as you\'re approved.' },
+              { q: 'What if I don\'t qualify for JRI?', a: 'You may still qualify for other funding programs like WIOA or SNAP E&T. Our team will help identify all available options for you.' },
+              { q: 'Will employers hire me with a record?', a: 'Yes. Many employers actively hire our graduates. We work with employers who believe in second chances and understand the value of trained, motivated workers.' },
+            ].map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl overflow-hidden shadow-sm group">
+                <summary className="p-5 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 text-slate-600">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-green-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

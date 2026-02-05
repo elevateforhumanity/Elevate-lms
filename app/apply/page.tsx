@@ -222,6 +222,33 @@ export default async function ApplyPage({
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center">Application FAQ</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'How long does the application take?', a: 'The initial application takes about 5-10 minutes. After submission, our team reviews it within 1-2 business days.' },
+              { q: 'Do I need to pay anything to apply?', a: 'No. The application is free. If you qualify for WIOA or other funding, training is also free. Self-pay options are available for those who don\'t qualify.' },
+              { q: 'What documents do I need?', a: 'For the initial application, just basic contact info. For funding verification, you may need ID, proof of income, and proof of address. We\'ll guide you through it.' },
+              { q: 'How soon can I start training?', a: 'Most people start within 2-4 weeks of completing the eligibility process. Some programs have set start dates based on cohorts.' },
+              { q: 'What if I don\'t qualify for free training?', a: 'We offer self-pay and payment plan options. Some programs also have employer-sponsored spots. We\'ll discuss all options with you.' },
+              { q: 'Can I apply for multiple programs?', a: 'Yes, you can express interest in multiple programs. Our team will help you choose the best fit based on your goals and eligibility.' },
+            ].map((faq, i) => (
+              <details key={i} className="bg-slate-50 rounded-xl overflow-hidden group">
+                <summary className="p-5 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 text-slate-600">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section className="py-12 px-4 bg-slate-100">
         <div className="max-w-4xl mx-auto text-center">

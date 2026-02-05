@@ -281,6 +281,31 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+
+      {/* FAQ */}
+      <div className="max-w-3xl mx-auto px-4 py-16">
+        <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Contact FAQ</h2>
+        <div className="space-y-4">
+          {[
+            { q: 'What are your office hours?', a: 'Our team is available Monday-Friday, 9am-5pm EST. You can leave a message anytime and we\'ll respond within 1-2 business days.' },
+            { q: 'How quickly will I get a response?', a: 'We typically respond to inquiries within 1-2 business days. For urgent matters, please call us directly at (317) 314-3757.' },
+            { q: 'Can I visit your office in person?', a: 'Yes, but please schedule an appointment first. Training locations vary by program. Call us to arrange a visit.' },
+            { q: 'Who should I contact about enrollment?', a: 'For enrollment questions, select "Enrollment Questions" in the contact form or call us directly. Our enrollment team will assist you.' },
+            { q: 'How do I check my application status?', a: 'Log into your student dashboard to check status, or call us with your name and the program you applied for.' },
+            { q: 'I\'m an employer - who do I contact?', a: 'Select "Employer Partnership" in the contact form or email us directly. Our employer relations team will reach out to discuss partnership opportunities.' },
+          ].map((faq, i) => (
+            <details key={i} className="bg-slate-50 rounded-xl overflow-hidden group">
+              <summary className="p-5 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                {faq.q}
+                <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="px-5 pb-5 text-slate-600">{faq.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

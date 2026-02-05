@@ -223,29 +223,55 @@ export default async function HireGraduatesPage() {
         </div>
       </section>
 
+      {/* FAQ for Employers */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Employer FAQ</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'Is there a fee to hire graduates?', a: 'No. There is no recruiting fee or placement fee. We are funded by workforce development grants, not employer fees.' },
+              { q: 'What training do graduates receive?', a: 'Graduates complete industry-recognized training programs with certifications. Programs include healthcare (CNA, MA), skilled trades (HVAC, welding), technology (IT, cybersecurity), and more.' },
+              { q: 'How do I request candidates?', a: 'Contact us through the form above or call (317) 314-3757. Tell us about your hiring needs and we\'ll match you with qualified candidates.' },
+              { q: 'Can I interview candidates before hiring?', a: 'Yes. We provide candidate profiles and you conduct your own interviews. We facilitate introductions but hiring decisions are yours.' },
+              { q: 'Do you provide ongoing support after hiring?', a: 'Yes. We offer retention support for both employers and new hires. If issues arise, our team can help mediate and provide additional resources.' },
+              { q: 'What if a hire doesn\'t work out?', a: 'We work with you to understand what happened and can provide replacement candidates. Our goal is long-term successful placements.' },
+            ].map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl overflow-hidden shadow-sm group">
+                <summary className="p-5 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 text-slate-600">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-brand-blue-700 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
+              Ready to Hire Trained Talent?
             </h2>
             <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
+              Connect with job-ready graduates at no cost to your organization.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
-                href="/contact"
+                href="/contact?type=employer"
                 className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
               >
-                Apply Now
+                Request Candidates
               </Link>
               <Link
-                href="/programs"
+                href="/employer"
                 className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
               >
-                Browse Programs
+                Learn More
               </Link>
             </div>
           </div>

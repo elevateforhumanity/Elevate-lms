@@ -241,19 +241,31 @@ export default async function WIOAEligibilityPage() {
           )}
 
           {/* FAQs */}
-          {faqs && faqs.length > 0 && (
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
-              <div className="space-y-4">
-                {faqs.map((faq: any) => (
-                  <div key={faq.id} className="bg-white rounded-lg p-6 border">
-                    <h4 className="font-semibold mb-2">{faq.question}</h4>
-                    <p className="text-gray-600">{faq.answer}</p>
-                  </div>
-                ))}
-              </div>
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
+            <div className="space-y-4">
+              {(faqs && faqs.length > 0 ? faqs : [
+                { id: 1, question: 'What is WIOA?', answer: 'The Workforce Innovation and Opportunity Act (WIOA) is a federal program that provides funding for job training and employment services. It helps adults, dislocated workers, and youth access career training at no cost.' },
+                { id: 2, question: 'How do I know if I qualify?', answer: 'You likely qualify if you are unemployed, underemployed, receiving public assistance (SNAP, TANF, Medicaid), a veteran, or have household income below 200% of poverty level. Take our eligibility check or call us.' },
+                { id: 3, question: 'What does WIOA cover?', answer: 'WIOA can cover tuition, books, supplies, certification exam fees, and even supportive services like transportation and childcare assistance for eligible participants.' },
+                { id: 4, question: 'How long does the application process take?', answer: 'The eligibility determination typically takes 1-2 weeks. You will work with a WorkOne case manager who will verify your eligibility and help you enroll in training.' },
+                { id: 5, question: 'Can I work while receiving WIOA training?', answer: 'Yes, you can work while in training. WIOA is designed to help you gain skills for better employment, whether you are currently employed or not.' },
+                { id: 6, question: 'What if I have a criminal record?', answer: 'A criminal record does not automatically disqualify you from WIOA. Many programs specifically serve justice-involved individuals. JRI funding may also be available.' },
+                { id: 7, question: 'Do I have to pay anything back?', answer: 'No. WIOA funding is not a loan. You do not have to pay anything back. It is a grant program designed to help you gain employment skills.' },
+                { id: 8, question: 'What programs can I use WIOA for?', answer: 'WIOA can be used for approved training programs including healthcare, skilled trades, technology, CDL, and more. Check with us for current approved programs.' },
+              ]).map((faq: any) => (
+                <details key={faq.id} className="bg-white rounded-lg border overflow-hidden group">
+                  <summary className="p-6 cursor-pointer font-semibold flex justify-between items-center">
+                    {faq.question}
+                    <svg className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <div className="px-6 pb-6 text-gray-600">{faq.answer}</div>
+                </details>
+              ))}
             </div>
-          )}
+          </div>
 
           {/* CTA Form */}
           <div id="form" className="bg-white rounded-2xl shadow-lg p-8 border-2 border-green-500">
