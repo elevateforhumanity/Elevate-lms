@@ -266,7 +266,7 @@ export default function SupersonicFastCashPage() {
               <div className="space-y-6">
                 <div className="border-b border-white/10 pb-6">
                   <div className="text-slate-400 text-sm mb-2">
-                    IRS Certified
+                    PTIN-Credentialed
                   </div>
                   <div className="text-4xl font-bold text-brand-green-500">•</div>
                 </div>

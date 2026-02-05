@@ -109,7 +109,7 @@ export default function RefundApplyPage() {
             </div>
             <div className="flex items-center justify-center gap-2">
               <CheckCircle className="w-5 h-5 text-green-600" />
-              <span className="text-sm font-medium">IRS Certified</span>
+              <span className="text-sm font-medium">PTIN-Credentialed</span>
             </div>
           </div>
         </div>

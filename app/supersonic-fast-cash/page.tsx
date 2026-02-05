@@ -78,10 +78,13 @@ export default function SupersonicFastCashPage() {
                 href="/supersonic-fast-cash/diy-taxes"
                 className="group px-12 py-6 bg-white text-blue-900 text-xl sm:text-2xl font-black rounded-2xl hover:bg-gray-50 shadow-2xl uppercase transform hover:scale-105 transition-all duration-300"
               >
-                <span className="flex items-center justify-center gap-3">
-                  <FileText className="w-6 h-6" />
-                  File Yourself
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                <span className="flex flex-col items-center justify-center gap-1">
+                  <span className="flex items-center gap-3">
+                    <FileText className="w-6 h-6" />
+                    File Yourself
+                    <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                  </span>
+                  <span className="text-xs font-normal normal-case text-gray-500">Secure login required</span>
                 </span>
               </Link>
             </div>
@@ -105,7 +108,7 @@ export default function SupersonicFastCashPage() {
               </div>
               <div className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl text-center border border-white/20 hover:bg-white/20 transition-all transform hover:scale-105">
                 <BadgeCheck className="w-12 h-12 mx-auto mb-3 text-yellow-400" />
-                <div className="font-black text-xl text-white mb-1">IRS Certified</div>
+                <div className="font-black text-xl text-white mb-1">PTIN-Credentialed</div>
                 <div className="text-gray-300 text-sm">Licensed Pros</div>
               </div>
             </div>
@@ -196,7 +199,7 @@ export default function SupersonicFastCashPage() {
                   Tax Preparation
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  Professional tax prep by IRS-certified experts.
+                  Professional tax prep by PTIN-credentialed experts.
                 </p>
               </div>
             </Link>
@@ -413,6 +416,17 @@ export default function SupersonicFastCashPage() {
           </div>
           <p className="mt-6 text-red-200 text-sm">
             Or call us at <a href="tel:3173143757" className="underline font-bold text-white">(317) 314-3757</a>
+          </p>
+        </div>
+      </section>
+
+      {/* E-File Disclosure */}
+      <section className="py-6 bg-gray-100 border-t">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-xs text-gray-500">
+            Electronic filing is subject to IRS validation. Acceptance is not guaranteed. 
+            Refund advance amounts and availability subject to eligibility requirements and lender approval.
+            All tax preparers are PTIN-credentialed and authorized for IRS e-file.
           </p>
         </div>
       </section>

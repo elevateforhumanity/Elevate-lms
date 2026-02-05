@@ -209,7 +209,7 @@ export default function BookAppointment() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Book Your Tax Appointment</h1>
           <p className="text-xl text-black mb-6">
-            Schedule online, video, or phone consultation with IRS-certified tax
+            Schedule online, video, or phone consultation with PTIN-credentialed tax
             pro
           </p>
           

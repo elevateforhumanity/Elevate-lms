@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = {
   title: 'Tax Services | Supersonic Fast Cash',
   description:
-    'Professional tax preparation, refund advances, business returns, and more. IRS-certified preparers serving Indianapolis and all 50 states.',
+    'Professional tax preparation, refund advances, business returns, and more. PTIN-credentialed preparers serving Indianapolis and all 50 states.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/services',
   },
@@ -231,10 +231,10 @@ export default async function ServicesPage() {
                 <Shield className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-2">
-                IRS Certified
+                PTIN-Credentialed
               </h3>
               <p className="text-black">
-                All preparers are IRS-certified with years of experience
+                All preparers are PTIN-credentialed with years of experience
               </p>
             </div>
 

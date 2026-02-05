@@ -44,10 +44,10 @@ const steps = [
   {
     number: 3,
     title: 'We Prepare Your Return',
-    description: 'Our IRS-certified tax professionals prepare your return, maximizing your refund while ensuring accuracy.',
+    description: 'Our PTIN-credentialed tax professionals prepare your return, maximizing your refund while ensuring accuracy.',
     icon: Calculator,
     details: [
-      'IRS-certified preparers',
+      'PTIN-credentialed preparers',
       'Maximum refund guarantee',
       'Accuracy guarantee',
       'Review before filing',

@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Tax Preparer Training | Supersonic Fast Cash',
-  description: 'IRS-certified tax preparer training program. Learn tax preparation and complete your training.',
+  description: 'PTIN-credentialed tax preparer training program. Learn tax preparation and complete your training.',
 };
 
 export default async function TrainingPage() {
@@ -52,7 +52,7 @@ export default async function TrainingPage() {
               Tax Preparer Training
             </h1>
             <p className="text-xl">
-              Become an IRS-certified tax professional
+              Become an PTIN-credentialed tax professional
             </p>
           </div>
         </div>
@@ -65,7 +65,7 @@ export default async function TrainingPage() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Professional Tax Training</h2>
               <p className="text-black mb-4">
-                Our training program prepares you to become an IRS-certified tax preparer. Learn the skills needed to prepare individual and business tax returns accurately and efficiently.
+                Our training program prepares you to become an PTIN-credentialed tax preparer. Learn the skills needed to prepare individual and business tax returns accurately and efficiently.
               </p>
               <p className="text-black mb-6">
                 Training includes federal tax law, tax software operation, client communication, and ethics requirements.

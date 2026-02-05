@@ -1,35 +1,20 @@
-import { createClient } from '@/lib/supabase/server';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FileText, DollarSign, Clock, CheckCircle } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-static';
+export const revalidate = 86400;
 
 export const metadata = {
   title: 'Tax Preparation Services | Supersonic Fast Cash',
-  description: 'Professional tax preparation for individuals and families. IRS-certified preparers.',
+  description: 'Professional tax preparation for individuals and families. PTIN-credentialed preparers with IRS e-file authorization.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/services/tax-preparation',
+  },
 };
 
-export default async function TaxPreparationPage() {
-  const supabase = await createClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
-          <p className="text-gray-600">Please try again later.</p>
-        </div>
-      </div>
-    );
-  }
-  
-  // Fetch tax preparation services
-  const { data: services } = await supabase
-    .from('tax_services')
-    .select('*')
-    .eq('type', 'tax_preparation');
+export default function TaxPreparationPage() {
   return (
     <div className="min-h-screen bg-white">
             <div className="max-w-7xl mx-auto px-4 py-4">
@@ -60,7 +45,7 @@ export default async function TaxPreparationPage() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Individual Tax Returns</h2>
               <p className="text-black mb-6">
-                Our IRS-certified tax preparers handle all types of individual tax returns, from simple W-2 filings to complex returns with multiple income sources, deductions, and credits.
+                Our PTIN-credentialed tax preparers handle all types of individual tax returns, from simple W-2 filings to complex returns with multiple income sources, deductions, and credits.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -124,7 +109,7 @@ export default async function TaxPreparationPage() {
                 <FileText className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Accurate Filing</h3>
-              <p className="text-black">IRS-certified preparers ensure accuracy</p>
+              <p className="text-black">PTIN-credentialed preparers ensure accuracy</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">

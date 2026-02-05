@@ -39,7 +39,7 @@ const benefits = [
   {
     icon: Users,
     title: 'Comprehensive Training',
-    description: 'IRS-certified tax preparer training and ongoing education',
+    description: 'PTIN-credentialed tax preparer training and ongoing education',
   },
   {
     icon: Headphones,

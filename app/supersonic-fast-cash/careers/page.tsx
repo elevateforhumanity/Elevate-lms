@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   title:
     'Tax Preparer Jobs Indianapolis | Work From Home | Supersonic Fast Cash Careers',
   description:
-    'Join our team of IRS-certified tax preparers. Earn $20-$50/hour. Work from home anywhere in the USA or in-office (Indianapolis). Flexible schedule. Tax season and year-round positions available nationwide.',
+    'Join our team of PTIN-credentialed tax preparers. Earn $20-$50/hour. Work from home anywhere in the USA or in-office (Indianapolis). Flexible schedule. Tax season and year-round positions available nationwide.',
   keywords: [
     'tax preparer jobs Indianapolis',
     'tax preparer hiring Indianapolis',
-    'IRS certified tax preparer jobs',
+    'tax preparer jobs',
     'work from home tax preparer Indiana',
     'remote tax preparer jobs',
     'seasonal tax jobs Indianapolis',
@@ -174,7 +174,7 @@ export default async function TaxCareersPage() {
             </div>
             <h1 className="text-5xl font-bold mb-6">Join Our Tax Team</h1>
             <p className="text-2xl text-green-100 mb-8">
-              Earn $20-$50/hour as an IRS-certified tax preparer. Work from home
+              Earn $20-$50/hour as an PTIN-credentialed tax preparer. Work from home
               anywhere in the USA or in our Indianapolis offices.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">

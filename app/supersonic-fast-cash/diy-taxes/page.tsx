@@ -2,7 +2,7 @@
 
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { logger } from '@/lib/logger';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ChevronRight,
   ChevronLeft,
@@ -12,6 +12,8 @@ import {
   DollarSign,
   CheckCircle,
 } from 'lucide-react';
+
+const SOFTWARE_VERSION = '2026.1.0';
 
 interface TaxReturn {
   // Personal Info
@@ -152,6 +154,22 @@ export default function DIYTaxesPage() {
 
   const [estimatedRefund, setEstimatedRefund] = useState(0);
   const [calculating, setCalculating] = useState(false);
+  const hasLoggedEntry = useRef(false);
+
+  // Audit log: DIY tax flow opened
+  useEffect(() => {
+    if (!hasLoggedEntry.current) {
+      hasLoggedEntry.current = true;
+      fetch('/api/audit/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'tax_diy_opened',
+          metadata: { path: '/supersonic-fast-cash/diy-taxes', software_version: SOFTWARE_VERSION },
+        }),
+      }).catch(() => {}); // Non-blocking
+    }
+  }, []);
 
   // Calculate estimated refund whenever data changes
   useEffect(() => {
@@ -246,6 +264,21 @@ export default function DIYTaxesPage() {
           <p className="text-xl text-black">
             Step-by-step guidance to maximize your refund
           </p>
+        </div>
+
+        {/* Security Notice */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
+          <div className="flex items-start gap-3">
+            <svg className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+            </svg>
+            <div>
+              <p className="text-sm font-medium text-blue-900">Secure Session</p>
+              <p className="text-sm text-blue-700">
+                Your information is protected with industry-standard encryption. Sensitive data such as Social Security Numbers is collected only within this secure, authenticated session and is never stored unencrypted.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Progress Bar */}
@@ -1343,10 +1376,20 @@ export default function DIYTaxesPage() {
                   onClick={async () => {
                     if (
                       window.confirm(
-                        'Ready to file your tax return? This will submit your return to the IRS via Drake Software.'
+                        'Ready to file your tax return? This will submit your return to the IRS via e-file.'
                       )
                     ) {
                       try {
+                        // Audit log: tax return submission
+                        fetch('/api/audit/log', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            action: 'tax_return_submitted',
+                            metadata: { software_version: SOFTWARE_VERSION },
+                          }),
+                        }).catch(() => {});
+
                         const response = await fetch(
                           '/api/supersonic-fast-cash/file-return',
                           {

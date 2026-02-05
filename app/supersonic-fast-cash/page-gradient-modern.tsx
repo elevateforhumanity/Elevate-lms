@@ -265,7 +265,7 @@ export default function SupersonicMarketingPage() {
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-blue-900 flex-shrink-0 mt-0.5" />
                     <span className="text-lg font-semibold text-black">
-                      IRS-certified preparers
+                      PTIN-credentialed preparers
                     </span>
                   </li>
                   <li className="flex items-start gap-3">

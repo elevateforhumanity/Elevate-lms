@@ -52,7 +52,7 @@ const howItWorks = [
   {
     step: 2,
     title: 'We Prepare Your Return',
-    description: 'Our IRS-certified pros handle everything',
+    description: 'Our PTIN-credentialed pros handle everything',
   },
   {
     step: 3,
