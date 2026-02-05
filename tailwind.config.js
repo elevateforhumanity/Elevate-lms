@@ -140,7 +140,7 @@ export default {
           disabled: '#9CA3AF',
         },
 
-        // Primary Brand Colors - Red, Blue, White, Black
+        // Primary Brand Colors - Red, Blue, Orange, Green, White, Black
         brand: {
           red: {
             50: '#fef2f2',
@@ -165,6 +165,30 @@ export default {
             700: '#1d4ed8',
             800: '#1e40af',
             900: '#1e3a8a',
+          },
+          orange: {
+            50: '#fff7ed',
+            100: '#ffedd5',
+            200: '#fed7aa',
+            300: '#fdba74',
+            400: '#fb923c',
+            500: '#f97316', // Main orange
+            600: '#ea580c', // Primary orange (CTA)
+            700: '#c2410c',
+            800: '#9a3412',
+            900: '#7c2d12',
+          },
+          green: {
+            50: '#f0fdf4',
+            100: '#dcfce7',
+            200: '#bbf7d0',
+            300: '#86efac',
+            400: '#4ade80',
+            500: '#22c55e', // Main green
+            600: '#16a34a', // Primary green (success)
+            700: '#15803d',
+            800: '#166534',
+            900: '#14532d',
           },
         },
         // Legacy brand colors (updated to red/blue)

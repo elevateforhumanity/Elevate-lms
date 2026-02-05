@@ -21,14 +21,15 @@ export default async function TrainingPage() {
 {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/success-new/success-9.jpg"
+          src="/images/hero/hero-hands-on-training.jpg"
           alt="Training Programs"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           quality={100}
           priority
           sizes="100vw"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/30" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">

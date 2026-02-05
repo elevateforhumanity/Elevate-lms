@@ -84,7 +84,7 @@ export default function ContactPage() {
 
       {/* Avatar Guide */}
       <PageAvatar 
-        videoSrc="/videos/avatars/orientation-guide.mp4" 
+        videoSrc="/videos/avatars/home-welcome.mp4" 
         title="Contact Us" 
       />
 

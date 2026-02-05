@@ -125,7 +125,7 @@ export default function PartnersPage() {
 
       {/* Avatar Guide */}
       <PageAvatar 
-        videoSrc="/videos/avatars/orientation-guide.mp4" 
+        videoSrc="/videos/avatars/home-welcome.mp4" 
         title="Partner With Us" 
       />
 
@@ -274,10 +274,178 @@ export default function PartnersPage() {
         </div>
       </section>
 
+      {/* How Partnership Works */}
+      <section className="bg-slate-900 text-white">
+        <div className="mx-auto max-w-6xl px-6 py-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">How Partnership Works</h2>
+          <p className="text-lg text-slate-400 text-center mb-12 max-w-2xl mx-auto">
+            A simple process to get started, whether you&apos;re an employer or workforce agency.
+          </p>
+          
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-black text-white">1</span>
+              </div>
+              <h3 className="font-bold text-white text-lg mb-2">Submit Inquiry</h3>
+              <p className="text-slate-400 text-sm">
+                Complete our partner intake form with your organization details and goals.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-black text-white">2</span>
+              </div>
+              <h3 className="font-bold text-white text-lg mb-2">Discovery Call</h3>
+              <p className="text-slate-400 text-sm">
+                Meet with our team to discuss alignment, needs, and partnership structure.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-black text-white">3</span>
+              </div>
+              <h3 className="font-bold text-white text-lg mb-2">Agreement</h3>
+              <p className="text-slate-400 text-sm">
+                Sign partnership agreement outlining roles, expectations, and outcomes.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-black text-white">4</span>
+              </div>
+              <h3 className="font-bold text-white text-lg mb-2">Launch</h3>
+              <p className="text-slate-400 text-sm">
+                Begin receiving candidates, referrals, or program support based on partnership type.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partner Outcomes */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Partner Outcomes</h2>
+          <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            What our partners achieve through collaboration.
+          </p>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-5xl font-black text-brand-blue-600 mb-2">50+</div>
+              <p className="text-gray-600">Active employer partners</p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-black text-brand-blue-600 mb-2">85%</div>
+              <p className="text-gray-600">Candidate retention at 90 days</p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-black text-brand-blue-600 mb-2">$0</div>
+              <p className="text-gray-600">Recruiting fees for employers</p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-black text-brand-blue-600 mb-2">2 weeks</div>
+              <p className="text-gray-600">Average time to first candidate</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-slate-50">
+        <div className="mx-auto max-w-4xl px-6 py-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Partner FAQ</h2>
+          <p className="text-lg text-gray-600 text-center mb-12">
+            Common questions about partnering with Elevate for Humanity.
+          </p>
+          
+          <div className="space-y-4">
+            <details className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden group">
+              <summary className="p-6 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                Is there a cost to become a partner?
+                <svg className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="px-6 pb-6 text-gray-600">
+                No. Employer partnerships are free. We are funded by workforce development grants, not employer fees. 
+                You receive pre-screened, trained candidates at no cost.
+              </div>
+            </details>
+            
+            <details className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden group">
+              <summary className="p-6 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                What types of organizations can partner?
+                <svg className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="px-6 pb-6 text-gray-600">
+                We partner with employers (any size), workforce development boards, government agencies, 
+                community organizations, training providers, and educational institutions.
+              </div>
+            </details>
+            
+            <details className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden group">
+              <summary className="p-6 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                What is expected of employer partners?
+                <svg className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="px-6 pb-6 text-gray-600">
+                Employer partners commit to: interviewing referred candidates in good faith, providing feedback 
+                on hires, and supporting new employee retention. No minimum hiring commitments required.
+              </div>
+            </details>
+            
+            <details className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden group">
+              <summary className="p-6 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                How quickly can we start receiving candidates?
+                <svg className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="px-6 pb-6 text-gray-600">
+                Most employer partners receive their first candidate referrals within 2 weeks of completing 
+                the partnership agreement. Timing depends on current program cohorts and your hiring needs.
+              </div>
+            </details>
+            
+            <details className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden group">
+              <summary className="p-6 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                What industries do you serve?
+                <svg className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="px-6 pb-6 text-gray-600">
+                Healthcare, skilled trades (HVAC, electrical, welding), technology, transportation/CDL, 
+                beauty/barbering, retail, and business services. We can discuss custom training pathways for other industries.
+              </div>
+            </details>
+            
+            <details className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden group">
+              <summary className="p-6 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                Do you work with justice-involved individuals?
+                <svg className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="px-6 pb-6 text-gray-600">
+                Yes. Many of our participants are justice-involved individuals seeking second-chance employment. 
+                We provide additional support and can discuss your organization&apos;s hiring policies during onboarding.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
       {/* Become a Partner CTA */}
       <section className="bg-brand-blue-700 text-white">
         <div className="mx-auto max-w-4xl px-6 py-16 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Become a Partner</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Partner?</h2>
           <p className="text-xl text-blue-100 mb-8">
             Join our network of employers, training providers, and workforce organizations 
             committed to creating pathways to sustainable careers.
@@ -296,6 +464,9 @@ export default function PartnersPage() {
               Agency Partnership
             </Link>
           </div>
+          <p className="mt-8 text-sm text-blue-200">
+            Questions? Call (317) 314-3757 or email elevate4humanityedu@gmail.com
+          </p>
         </div>
       </section>
     </main>

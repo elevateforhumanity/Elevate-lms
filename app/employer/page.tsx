@@ -89,28 +89,50 @@ export default function EmployerPage() {
       {/* Benefits */}
       <section className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12">
-            Why partner with us
-          </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Why Partner With Elevate for Humanity?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We solve your hiring challenges by providing trained, motivated workers ready to contribute from day one.
+            </p>
+          </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">No Fees</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                <DollarSign className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Zero Recruiting Fees</h3>
               <p className="text-gray-600">
-                Access our talent pipeline at no cost. We're funded by workforce development grants.
+                Access our talent pipeline at no cost. We&apos;re funded by WIOA, JRI, and workforce development grants - not employer fees.
               </p>
             </div>
-            <div className="bg-white rounded-2xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Trained Workers</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                <Award className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Certified & Job-Ready</h3>
               <p className="text-gray-600">
-                Candidates come with industry certifications and hands-on training.
+                Every candidate completes industry-recognized training with certifications. They arrive ready to work, not ready to learn basics.
               </p>
             </div>
-            <div className="bg-white rounded-2xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Ongoing Support</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Retention Support</h3>
               <p className="text-gray-600">
-                We provide retention support and can help build apprenticeship programs.
+                We don&apos;t disappear after placement. Our team provides ongoing support to help new hires succeed and stay.
               </p>
             </div>
+          </div>
+          <div className="text-center mt-12">
+            <Link
+              href="/contact?type=employer"
+              className="inline-flex items-center gap-2 bg-brand-blue-600 hover:bg-brand-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all"
+            >
+              Start Hiring Today <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
@@ -180,20 +202,31 @@ export default function EmployerPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 lg:py-28 bg-gray-900">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+      <section className="py-20 lg:py-28 bg-brand-blue-700">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            Ready to build your workforce?
+            Ready to Build Your Workforce Pipeline?
           </h2>
-          <p className="text-lg text-gray-300 mb-8">
-            No fees. Trained candidates. Ongoing support.
+          <p className="text-xl text-blue-100 mb-4">
+            Join 50+ Indiana employers who hire from our trained talent pool.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 text-base font-medium rounded-full hover:bg-gray-100 transition-colors"
-          >
-            Contact Us
-          </Link>
+          <p className="text-lg text-blue-200 mb-8">
+            No recruiting fees. Pre-screened candidates. Ongoing retention support.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/contact?type=employer"
+              className="inline-flex items-center gap-2 px-10 py-5 bg-white text-brand-blue-700 text-lg font-bold rounded-full hover:bg-gray-100 transition-colors"
+            >
+              Partner With Us <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/hire-graduates"
+              className="inline-flex items-center px-10 py-5 bg-transparent border-2 border-white text-white text-lg font-bold rounded-full hover:bg-white/10 transition-colors"
+            >
+              View Available Candidates
+            </Link>
+          </div>
         </div>
       </section>
     </>

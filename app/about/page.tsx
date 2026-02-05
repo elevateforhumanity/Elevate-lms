@@ -41,13 +41,25 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* MISSION */}
+      <section id="mission" className="py-16 bg-blue-600">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
+          <p className="text-xl text-blue-100 leading-relaxed">
+            To create pathways out of poverty and into prosperity by providing free, high-quality 
+            career training to justice-involved individuals, low-income families, veterans, and 
+            anyone facing barriers to employment.
+          </p>
+        </div>
+      </section>
+
       {/* THE FOUNDER */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/elizabeth-greene-founder.jpg"
+                src="/images/team/founder/elizabeth-greene-founder-hero-01.jpg"
                 alt="Elizabeth Greene, Founder & CEO"
                 fill
                 className="object-cover object-top"
@@ -60,12 +72,21 @@ export default function AboutPage() {
               
               <div className="prose prose-lg max-w-none text-slate-700 space-y-4">
                 <p>
-                  Elizabeth Greene founded Elevate for Humanity to create pathways out of poverty 
-                  and into prosperity for those who need it most.
+                  Elizabeth Greene founded Elevate for Humanity in 2019 with a mission to create 
+                  pathways out of poverty and into prosperity for those who need it most. Her vision 
+                  was born from witnessing firsthand the barriers that prevent talented individuals 
+                  from accessing career opportunities.
                 </p>
                 <p>
-                  Based in Indianapolis, Indiana, Elevate for Humanity serves justice-involved 
-                  individuals, low-income families, veterans, and anyone facing barriers to employment.
+                  Under her leadership, Elevate for Humanity has grown into a U.S. Department of Labor 
+                  Registered Apprenticeship Sponsor and Indiana DWD Approved Training Provider, serving 
+                  thousands of participants across Indianapolis and beyond.
+                </p>
+                <p>
+                  Elizabeth&apos;s approach combines workforce development expertise with a deep commitment 
+                  to serving justice-involved individuals, low-income families, veterans, and anyone 
+                  facing barriers to employment. She believes that everyone deserves access to quality 
+                  career training regardless of their background.
                 </p>
               </div>
               
@@ -239,7 +260,7 @@ export default function AboutPage() {
             <div className="text-center">
               <div className="relative w-40 h-40 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src="/images/hero/hero-skilled-trades.jpg"
+                  src="/images/hero/hero-career-services.jpg"
                   alt="Veterans"
                   fill
                   className="object-cover object-center"
@@ -251,7 +272,7 @@ export default function AboutPage() {
             <div className="text-center">
               <div className="relative w-40 h-40 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src="/images/hero/hero-tech-careers.jpg"
+                  src="/images/hero/hero-business.jpg"
                   alt="Career Changers"
                   fill
                   className="object-cover object-center"

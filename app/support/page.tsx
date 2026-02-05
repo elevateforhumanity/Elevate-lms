@@ -53,11 +53,12 @@ export default async function SupportPage() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-sky-600 to-sky-700 text-white py-16">
+      <div className="bg-gradient-to-r from-brand-blue-600 to-brand-blue-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Support Center</h1>
-          <p className="text-xl text-sky-100 max-w-2xl">
-            We're here to help. Choose how you'd like to get support.
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Student Support Center</h1>
+          <p className="text-xl text-blue-100 max-w-2xl">
+            Need help with enrollment, training programs, or your student account? 
+            Our team is here to support your career journey.
           </p>
         </div>
       </div>
