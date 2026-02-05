@@ -2,7 +2,9 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Store, Search, Filter, Star, Users, Clock, ChevronRight , Phone} from 'lucide-react';
+import { Store, Search, Filter, Star, Users, Clock, ChevronRight,
+  Phone
+} from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
 
 const SITE_URL = 'https://www.elevateforhumanity.org';

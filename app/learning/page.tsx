@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { BookOpen, FileText, NotebookPen, Compass, BookMarked, GraduationCap, ArrowRight , Phone} from 'lucide-react';
+import { BookOpen, FileText, NotebookPen, Compass, BookMarked, GraduationCap, ArrowRight,
+  Phone
+} from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';

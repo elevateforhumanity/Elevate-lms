@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { 
   Users, MessageSquare, Calendar, Award, ArrowRight, 
   BookOpen, Trophy, Video, Sparkles, Heart, Star,
-  TrendingUp, Clock, CheckCircle
-, Phone} from 'lucide-react';
+  TrendingUp, Clock, CheckCircle, Phone
+} from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {

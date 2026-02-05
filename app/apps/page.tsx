@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Building2, DollarSign, Layout, Lock, ArrowRight, Star , Phone} from 'lucide-react';
+import { Building2, DollarSign, Layout, Lock, ArrowRight, Star,
+  Phone
+} from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {

@@ -13,8 +13,9 @@ import {
   BookOpen,
   CheckCircle,
   Building,
-  Gavel
-, Phone} from 'lucide-react';
+  Gavel,
+  Phone
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Policies & Compliance | Elevate for Humanity',

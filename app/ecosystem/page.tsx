@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { Users, Building, GraduationCap, Briefcase, Heart, ArrowRight , Phone} from 'lucide-react';
+import { Users, Building, GraduationCap, Briefcase, Heart, ArrowRight,
+  Phone
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Our Ecosystem | Elevate For Humanity',

@@ -3,8 +3,8 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { 
   MessageSquare, Bot, Sparkles, Clock, BookOpen, 
-  HelpCircle, ArrowRight, CheckCircle, Zap
-, Phone} from 'lucide-react';
+  HelpCircle, ArrowRight, CheckCircle, Zap, Phone
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {

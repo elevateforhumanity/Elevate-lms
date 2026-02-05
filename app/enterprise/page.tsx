@@ -7,8 +7,9 @@ import {
   AlertTriangle,
   Building2,
   Scale,
-  ClipboardCheck
-, Phone} from 'lucide-react';
+  ClipboardCheck,
+  Phone
+} from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {

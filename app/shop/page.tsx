@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingBag , Phone} from 'lucide-react';
+import { ShoppingBag,
+  Phone
+} from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
 import { ShopClient } from './ShopClient';
 import { PageTracker } from '@/components/analytics/PageTracker';

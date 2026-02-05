@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { BookOpen, Shield, DollarSign, FileText, CheckCircle, ArrowRight , Phone} from 'lucide-react';
+import { BookOpen, Shield, DollarSign, FileText, CheckCircle, ArrowRight,
+  Phone
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Consumer Education | Elevate For Humanity',

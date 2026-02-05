@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
   FileText, Shield, Scale, Search, Settings, Mail, 
-  ArrowRight, Building2, CheckCircle 
-, Phone} from 'lucide-react';
+  ArrowRight, Building2, CheckCircle, Phone
+} from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {

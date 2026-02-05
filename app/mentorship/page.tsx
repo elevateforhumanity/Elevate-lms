@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { Users, MessageSquare, Calendar, Star, CheckCircle, ArrowRight , Phone} from 'lucide-react';
+import { Users, MessageSquare, Calendar, Star, CheckCircle, ArrowRight,
+  Phone
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Mentorship Program | Elevate For Humanity',

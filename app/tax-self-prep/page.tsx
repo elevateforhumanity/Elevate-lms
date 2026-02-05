@@ -5,7 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { CountUp } from '@/components/animations/CountUp';
-import { BarChart, Lock, Smartphone, Zap , Phone} from 'lucide-react';
+import { BarChart, Lock, Smartphone, Zap,
+  Phone
+} from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';

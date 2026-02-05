@@ -4,7 +4,9 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Zap, Rocket, Target, TrendingUp, Clock, Award, ArrowRight, CheckCircle , Phone} from 'lucide-react';
+import { Zap, Rocket, Target, TrendingUp, Clock, Award, ArrowRight, CheckCircle,
+  Phone
+} from 'lucide-react';
 
 interface Program {
   name: string;
