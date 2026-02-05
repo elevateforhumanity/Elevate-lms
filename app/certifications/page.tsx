@@ -90,6 +90,32 @@ export default function CertificationsPage() {
         </div>
       </section>
 
+      <section className="py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Certification FAQ</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'Are certification exams included in the training?', a: 'Yes, for most programs. WIOA funding covers certification exam fees for eligible participants. Self-pay students may have exam fees included or pay separately depending on the program.' },
+              { q: 'What if I fail the certification exam?', a: 'Most programs include exam prep and practice tests. If you don\'t pass on the first attempt, we provide additional study support. Some funding covers retake fees.' },
+              { q: 'How long are certifications valid?', a: 'It varies by certification. Some like OSHA 10 don\'t expire. Others like CNA require renewal every 2 years. We\'ll explain the requirements for your specific certification.' },
+              { q: 'Will employers recognize these certifications?', a: 'Yes. All certifications we offer are industry-recognized and valued by employers. Many are required for employment in the field.' },
+              { q: 'Can I get certified without taking a full program?', a: 'Some certifications like OSHA 10/30 are standalone courses. Others require completing a full training program first. Contact us to discuss your goals.' },
+              { q: 'Do I need prior experience to get certified?', a: 'No prior experience needed for most certifications. Our training programs prepare you from the basics through certification.' },
+            ].map((faq, i) => (
+              <details key={i} className="bg-slate-50 rounded-xl overflow-hidden group">
+                <summary className="p-5 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 text-slate-600">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 bg-green-700 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Get Certified Today</h2>

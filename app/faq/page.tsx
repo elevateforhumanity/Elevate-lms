@@ -44,34 +44,25 @@ export default async function FAQPage() {
     .eq('is_active', true)
     .order('display_order', { ascending: true });
 
-  if (error || !faqs || faqs.length === 0) {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        <section className="relative h-64 overflow-hidden">
-          <Image
-            src="/images/healthcare/healthcare-programs-grid.jpg"
-            alt="FAQ"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="relative z-10 h-full flex items-center justify-center">
-            <h1 className="text-4xl font-bold text-white">Frequently Asked Questions</h1>
-          </div>
-        </section>
-        <div className="max-w-4xl mx-auto px-4 py-12 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">No FAQs Available</h2>
-          <p className="text-gray-600 mb-6">Have a question? Contact us directly.</p>
-          <Link href="/contact" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-            Contact Us
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  const defaultFaqs: FAQ[] = [
+    { id: '1', question: 'Is the training really free?', answer: 'Yes, for eligible participants. Federal and state workforce programs (WIOA, WRG, JRI) cover tuition, books, and supplies. Some programs like Barber Apprenticeship are self-pay with payment plans available.', category: 'Enrollment', display_order: 1 },
+    { id: '2', question: 'How do I know if I qualify for free training?', answer: 'You likely qualify if you are unemployed, underemployed, receiving public assistance (SNAP, TANF, Medicaid), a veteran, or have household income below 200% of poverty level. Take our 2-minute eligibility check.', category: 'Enrollment', display_order: 2 },
+    { id: '3', question: 'What programs do you offer?', answer: 'Healthcare (CNA, Medical Assistant, Phlebotomy), Skilled Trades (HVAC, Electrical, Welding), Technology (IT Support, Cybersecurity), CDL/Transportation, Beauty & Barbering, and Business programs.', category: 'Programs', display_order: 3 },
+    { id: '4', question: 'How long are the programs?', answer: 'Most certification programs are 4-16 weeks. CDL training is 3-6 weeks. Apprenticeships like Barber are 12-18 months.', category: 'Programs', display_order: 4 },
+    { id: '5', question: 'Do I need prior experience?', answer: 'Most programs require only a high school diploma or GED. No prior experience needed. We start from the basics.', category: 'Enrollment', display_order: 5 },
+    { id: '6', question: 'What if I have a criminal record?', answer: 'We specialize in serving justice-involved individuals. Many programs are specifically designed for people with records. JRI funding covers training for eligible participants.', category: 'Eligibility', display_order: 6 },
+    { id: '7', question: 'Do you help with job placement?', answer: 'Yes! Every program includes career services: resume writing, interview preparation, and direct connections to 50+ employer partners actively hiring our graduates.', category: 'Career Services', display_order: 7 },
+    { id: '8', question: 'Where are you located?', answer: 'We are based in Indianapolis, Indiana (Marion County). Training locations vary by program. Some programs offer hybrid or online options.', category: 'General', display_order: 8 },
+    { id: '9', question: 'How do I get started?', answer: 'Step 1: Check your eligibility (2 minutes). Step 2: Choose a program. Step 3: Complete the application. Step 4: Meet with an advisor. Most people start training within 2-4 weeks.', category: 'Enrollment', display_order: 9 },
+    { id: '10', question: 'What certifications will I earn?', answer: 'Depends on your program. Examples: CNA, OSHA 10/30, CompTIA A+, CDL Class A, Phlebotomy, Medical Assistant, HVAC EPA 608, AWS Welding.', category: 'Programs', display_order: 10 },
+    { id: '11', question: 'Can I work while in training?', answer: 'Yes, many students work part-time while in training. We offer flexible scheduling when possible to accommodate working adults.', category: 'Programs', display_order: 11 },
+    { id: '12', question: 'What support services are available?', answer: 'Eligible participants may receive help with transportation, childcare, work supplies, and other supportive services through WIOA funding.', category: 'Support', display_order: 12 },
+  ];
+
+  const faqsToUse = (faqs && faqs.length > 0) ? faqs : defaultFaqs;
 
   // Group FAQs by category
-  const categories = [...new Set(faqs.map((faq: FAQ) => faq.category))];
+  const categories = [...new Set(faqsToUse.map((faq: FAQ) => faq.category))];
 
   return (
     <div className="min-h-screen bg-gray-50">
