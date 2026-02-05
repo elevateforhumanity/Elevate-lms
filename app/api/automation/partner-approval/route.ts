@@ -1,0 +1,69 @@
+import { NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
+import { checkPartnerApproval, processPartnerDocument } from '@/lib/automation/partner-approval';
+
+export const dynamic = 'force-dynamic';
+
+/**
+ * POST /api/automation/partner-approval
+ * Check partner approval status or process a partner document
+ */
+export async function POST(req: Request) {
+  try {
+    const supabase = await createClient();
+    if (!supabase) {
+      return NextResponse.json({ error: 'Service unavailable' }, { status: 503 });
+    }
+
+    // Check auth
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Check admin role
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+
+    if (!profile || !['admin', 'super_admin', 'staff'].includes(profile.role)) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
+    const body = await req.json();
+    const { partner_id, document_id, program_id, state } = body;
+
+    if (!partner_id) {
+      return NextResponse.json({ error: 'partner_id required' }, { status: 400 });
+    }
+
+    let result;
+
+    if (document_id) {
+      // Process specific document and check approval
+      result = await processPartnerDocument(
+        partner_id,
+        document_id,
+        program_id || 'barber_apprenticeship',
+        state || 'IN'
+      );
+    } else {
+      // Just check approval status
+      result = await checkPartnerApproval(
+        partner_id,
+        program_id || 'barber_apprenticeship',
+        state || 'IN'
+      );
+    }
+
+    return NextResponse.json(result);
+  } catch (error) {
+    console.error('Partner approval error:', error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Unknown error' },
+      { status: 500 }
+    );
+  }
+}
