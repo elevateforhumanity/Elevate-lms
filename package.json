@@ -183,6 +183,7 @@
     "ci:check": "pnpm archetype:check && pnpm typecheck && pnpm lint && pnpm seo:check",
     "seo:check": "node scripts/ci/seo-check.mjs",
     "seo:validate": "node scripts/ci/seo-validation.ts",
+    "audit:programs": "tsx scripts/audit-program-pages.ts",
     "verify": "pnpm typecheck && pnpm lint && pnpm build && pnpm smoke",
     "smoke": "next build && node -e \"require('fs').access('.next', err => { if (err) process.exit(1); else console.log('✅ Build OK'); })\"",
     "clean:full": "rimraf node_modules dist .vite .turbo .next out && pnpm store prune",

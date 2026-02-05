@@ -7,11 +7,22 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
+const SITE_URL = 'https://www.elevateforhumanity.org';
 
 export const metadata: Metadata = {
   title: 'Barber Apprenticeship Program | Become a Licensed Barber | Elevate for Humanity',
   description: 'Become a licensed barber through real-world apprenticeship training in Indianapolis. Train in approved barbershops, earn hours, track progress digitally, and graduate job-ready.',
+  alternates: { canonical: `${SITE_URL}/programs/barber-apprenticeship` },
+  openGraph: {
+    title: 'Barber Apprenticeship Program | Elevate for Humanity',
+    description: 'Become a licensed barber through real-world apprenticeship training. Train in approved barbershops, earn hours, and graduate job-ready.',
+    url: `${SITE_URL}/programs/barber-apprenticeship`,
+    siteName: 'Elevate for Humanity',
+    images: [{ url: `${SITE_URL}/hero-images/barber-hero.jpg`, width: 1200, height: 630, alt: 'Barber Apprenticeship Program' }],
+    type: 'website',
+  },
 };
 
 const IMAGES = {
@@ -62,6 +73,18 @@ export default async function BarberApprenticeshipPage() {
   
   return (
     <main className="min-h-screen bg-white text-gray-900">
+      {/* BREADCRUMBS */}
+      <div className="bg-gray-50 border-b">
+        <div className="max-w-7xl mx-auto px-6 py-3">
+          <Breadcrumbs
+            items={[
+              { label: 'Programs', href: '/programs' },
+              { label: 'Barber Apprenticeship' },
+            ]}
+          />
+        </div>
+      </div>
+
       {/* Avatar Guide */}
       <PageAvatar 
         videoSrc="/videos/avatars/barber-guide.mp4" 

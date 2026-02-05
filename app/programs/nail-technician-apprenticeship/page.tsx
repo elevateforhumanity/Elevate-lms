@@ -37,7 +37,7 @@ export default async function NailTechnicianApprenticeshipPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h1>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Service Unavailable</h2>
           <p className="text-gray-600">Please try again later.</p>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default async function NailTechnicianApprenticeshipPage() {
       />
       {/* Hero Section */}
       <section className="relative w-full -mt-[72px] min-h-[70vh] flex items-center bg-gradient-to-br from-pink-600 via-purple-600 to-indigo-700">
-        {/* overlay removed */}
+        <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-32 md:py-40">
           <div className="flex flex-wrap items-center gap-2 mb-4">
             <FundingBadge type="self-pay" className="bg-amber-500 text-white border-0" />
