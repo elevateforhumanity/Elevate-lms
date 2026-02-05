@@ -201,11 +201,14 @@ export async function getRoutingRecommendations(
       // Skip if no capacity
       if (availableCapacity < rules.min_capacity) continue;
       
+      // Skip shops without geocoded coordinates - they can't be distance-scored
+      if (!shop.latitude || !shop.longitude) continue;
+      
       // Calculate distance
       let distanceMiles: number | undefined;
-      let distanceScore = 0.5; // Default if no location data
+      let distanceScore = 0.5; // Default if no applicant location data
       
-      if (applicantLat && applicantLon && shop.latitude && shop.longitude) {
+      if (applicantLat && applicantLon) {
         distanceMiles = calculateDistance(
           applicantLat,
           applicantLon,
