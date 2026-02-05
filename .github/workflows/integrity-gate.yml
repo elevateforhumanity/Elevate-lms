@@ -40,18 +40,15 @@ jobs:
       # Integrity checks - each fails the build if issues found
       - name: Link integrity check
         run: pnpm run integrity:links
-        continue-on-error: false
 
       - name: Media integrity check
         run: pnpm run integrity:media
-        continue-on-error: false
 
       - name: LMS course integrity check
         run: pnpm run integrity:lms
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        continue-on-error: false
 
       - name: Store product integrity check
         run: pnpm run integrity:store
@@ -59,7 +56,6 @@ jobs:
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        continue-on-error: false
 
       - name: Upload integrity reports
         if: always()
