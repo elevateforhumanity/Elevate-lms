@@ -126,11 +126,35 @@ export const POST = withErrorHandling(async (request: NextRequest) => {
     },
   });
 
+  // Trigger automated document processing (non-blocking)
+  // This runs OCR, validates against rulesets, and either auto-approves or routes to review
+  triggerDocumentProcessing(document.id, publicUrl, documentType).catch(err => {
+    console.error('[Document Upload] Automation trigger failed (non-blocking):', err);
+  });
+
   return NextResponse.json({
     success: true,
     document,
   });
 });
+
+/**
+ * Trigger automated document processing.
+ * Non-blocking - failures don't affect upload success.
+ */
+async function triggerDocumentProcessing(
+  documentId: string,
+  fileUrl: string,
+  documentType: string
+): Promise<void> {
+  try {
+    const { processDocument } = await import('@/lib/automation/evidence-processor');
+    await processDocument(documentId, fileUrl, documentType as any);
+  } catch (error) {
+    // Log but don't throw - processing can be retried later
+    console.error('[Document Processing] Failed:', error);
+  }
+}
 
 export const GET = withErrorHandling(async (request: NextRequest) => {
   const supabase = await createClient();
