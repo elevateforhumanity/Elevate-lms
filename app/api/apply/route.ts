@@ -9,6 +9,7 @@ import { contactRateLimit } from '@/lib/rate-limit';
 import { applicationSchema } from '@/lib/api/validation-schemas';
 import { sendEmail } from '@/lib/email/resend';
 import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
+import { getRoutingRecommendations } from '@/lib/automation/shop-routing';
 
 const ADMIN_EMAIL = 'elevate4humanityedu@gmail.com';
 const ADMIN_SMS = '3177607908@txt.att.net'; // AT&T email-to-SMS gateway
@@ -96,6 +97,15 @@ export const POST = withRateLimit(
         entityId: application?.id,
         metadata: { program, funding, email, eligible },
       });
+
+      // Trigger routing automation for apprenticeship programs (non-blocking)
+      if (process.env.AUTOMATION_ENABLE_TRIGGERS !== 'false' && application?.id) {
+        if (program?.toLowerCase().includes('apprentice')) {
+          getRoutingRecommendations(application.id).catch((err) => {
+            console.error('Routing automation error (non-blocking):', err);
+          });
+        }
+      }
 
       // Send confirmation email to applicant
       await sendEmail({

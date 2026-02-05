@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import { withErrorHandling, APIErrors, ErrorCode } from '@/lib/api';
 import { NextRequest, NextResponse } from 'next/server';
 import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
+import { processDocument, processTransferHours } from '@/lib/automation/evidence-processor';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -125,6 +126,23 @@ export const POST = withErrorHandling(async (request: NextRequest) => {
       mime_type: file.type,
     },
   });
+
+  // Trigger automation processing (non-blocking, errors don't fail upload)
+  if (process.env.AUTOMATION_ENABLE_TRIGGERS !== 'false') {
+    try {
+      if (documentType === 'transcript' || documentType === 'school_transcript') {
+        // Process transcript for transfer hours
+        const applicationId = parsedMetadata?.application_id;
+        const enrollmentId = parsedMetadata?.enrollment_id;
+        processTransferHours(user.id, document.id, applicationId, enrollmentId).catch(console.error);
+      } else {
+        // General document processing
+        processDocument(document.id).catch(console.error);
+      }
+    } catch (automationError) {
+      console.error('Automation trigger error (non-blocking):', automationError);
+    }
+  }
 
   return NextResponse.json({
     success: true,

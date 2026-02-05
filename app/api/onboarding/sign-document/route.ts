@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
 import { createClient } from '@/utils/supabase/server';
 import * as crypto from 'node:crypto';
+import { checkPartnerApproval } from '@/lib/automation/partner-approval';
 
 export async function POST(request: NextRequest) {
   try {
@@ -124,6 +125,24 @@ export async function POST(request: NextRequest) {
       p_user_id: user.id,
       p_role: role,
     });
+
+    // Trigger partner approval check for MOU signatures (non-blocking)
+    if (process.env.AUTOMATION_ENABLE_TRIGGERS !== 'false') {
+      if (role === 'partner' || role === 'program_holder' || documentId?.includes('mou')) {
+        // Get partner_id from user's profile or partner record
+        const { data: partnerRecord } = await supabase
+          .from('partners')
+          .select('id')
+          .eq('user_id', user.id)
+          .single();
+        
+        if (partnerRecord?.id) {
+          checkPartnerApproval(partnerRecord.id).catch((err) => {
+            console.error('Partner approval check error (non-blocking):', err);
+          });
+        }
+      }
+    }
 
     return NextResponse.json({
       success: true,
