@@ -185,8 +185,8 @@ export default async function ProgramsPage() {
         </div>
       </section>
 
-      {/* AVATAR - DIFFERENT from homepage */}
-      <PageAvatar videoSrc="/videos/avatars/orientation-guide.mp4" title="Program Guide" />
+      {/* AVATAR */}
+      <PageAvatar videoSrc="/videos/avatars/ai-tutor.mp4" title="Program Guide" />
 
       {/* PROGRAMS GRID - Consistent card sizes */}
       <section className="py-16 lg:py-24 bg-slate-50">
@@ -317,11 +317,14 @@ export default async function ProgramsPage() {
           
           <div className="space-y-4">
             {[
-              { q: 'Is the training really free?', a: 'Yes! WIOA and other workforce programs cover tuition, books, and supplies for eligible participants.' },
-              { q: 'How do I know if I qualify?', a: 'Most Indiana residents who are unemployed, underemployed, or looking to change careers qualify. Complete our eligibility check to find out.' },
-              { q: 'How long are the programs?', a: 'Most programs are 8-16 weeks. Apprenticeships are longer but you earn while you learn.' },
-              { q: 'Will I get help finding a job?', a: 'Yes. We provide career coaching, resume help, interview prep, and direct connections to hiring employers.' },
-              { q: 'What support services are available?', a: 'Eligible participants may receive help with transportation, childcare, work supplies, and other support services.' },
+              { q: 'Is the training really free?', a: 'Yes! WIOA, WRG, and JRI programs cover tuition, books, and supplies for eligible participants. Some programs like Barber Apprenticeship are self-pay with payment plans available.' },
+              { q: 'How do I know if I qualify for free training?', a: 'You likely qualify if you are unemployed, underemployed, receiving public assistance (SNAP, TANF, Medicaid), a veteran, or have household income below 200% of poverty level. Take our 2-minute eligibility check.' },
+              { q: 'How long are the programs?', a: 'Most certification programs are 4-16 weeks. CDL training is 3-6 weeks. Apprenticeships like Barber are 12-18 months but you earn while you learn.' },
+              { q: 'Do I need prior experience or education?', a: 'Most programs require only a high school diploma or GED. No prior experience needed. We start from the basics and build your skills.' },
+              { q: 'What if I have a criminal record?', a: 'We specialize in serving justice-involved individuals. Many programs are specifically designed for people with records. JRI funding covers training for eligible participants.' },
+              { q: 'Will I get help finding a job?', a: 'Yes. Every program includes career services: resume writing, interview preparation, and direct connections to 50+ employer partners actively hiring our graduates.' },
+              { q: 'What certifications will I earn?', a: 'Depends on your program. Examples: CNA, OSHA 10/30, CompTIA A+, CDL Class A, Phlebotomy, Medical Assistant, HVAC EPA 608, and more.' },
+              { q: 'Where are classes held?', a: 'Training locations vary by program. Most are in the Indianapolis/Marion County area. Some programs offer hybrid or online options. Contact us for specific locations.' },
             ].map((faq, i) => (
               <details key={i} className="group bg-slate-50 rounded-2xl overflow-hidden">
                 <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-slate-900">
