@@ -78,7 +78,15 @@ export default function EmployersPage() {
       {/* Avatar Guide */}
       <PageAvatar 
         videoSrc="/videos/avatars/orientation-guide.mp4" 
-        title="Employer Partners" 
+        title="Why Smart Employers Partner With Us"
+        highlights={[
+          "Access pre-screened, trained candidates at zero cost",
+          "Reduce hiring time from weeks to days",
+          "Get workers with verified industry certifications",
+          "Lower turnover with motivated, career-focused employees",
+          "Tap into OJT funding to offset training costs",
+          "Build your talent pipeline for future growth"
+        ]}
       />
 
       {/* Quick Links */}
@@ -101,49 +109,189 @@ export default function EmployersPage() {
         </div>
       </section>
 
+      {/* The Problem We Solve */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            The Hiring Problem You Face
+          </h2>
+          <p className="text-center text-slate-300 mb-12 max-w-3xl mx-auto text-lg">
+            Finding qualified workers is harder than ever. High turnover, skills gaps, and lengthy 
+            recruiting cycles cost you time and money.
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                stat: '45%',
+                label: 'of employers struggle to find qualified candidates',
+              },
+              {
+                stat: '$4,700',
+                label: 'average cost per hire in recruiting and onboarding',
+              },
+              {
+                stat: '42 days',
+                label: 'average time to fill an open position',
+              },
+            ].map((item) => (
+              <div key={item.label} className="text-center">
+                <div className="text-5xl font-black text-orange-400 mb-2">{item.stat}</div>
+                <p className="text-slate-300">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why Partner */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
-            Why Employers Partner With Us
+            Why Partner With Elevate for Humanity
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            We solve your hiring challenges by providing trained, vetted candidates 
-            who are ready to contribute from day one.
+          <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto text-lg">
+            We eliminate your hiring headaches by delivering trained, certified, job-ready 
+            candidates directly to you—at no cost.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: 'Pre-Screened Talent',
-                description: 'Candidates have completed training and demonstrated commitment.',
-                image: '/images/healthcare/healthcare-programs-grid.jpg',
-              },
-              {
-                title: 'Certified Skills',
-                description: 'Industry-recognized credentials verify their competency.',
-                image: '/images/healthcare/healthcare-professional-portrait-1.jpg',
-              },
-              {
-                title: 'No Recruiting Fees',
-                description: 'Access our talent pipeline at no cost to your organization.',
-                image: '/images/business/handshake-1.jpg',
-              },
-              {
-                title: 'Faster Onboarding',
-                description: 'Trained candidates require less ramp-up time.',
-                image: '/images/trades/program-building-construction.jpg',
-              },
-            ].map((item) => (
-              <div key={item.title} className="bg-white rounded-xl overflow-hidden shadow-sm border">
-                <div className="relative h-32">
-                  <Image src={item.image} alt={item.title} fill className="object-cover" />
-                </div>
-                <div className="p-4 text-center">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm">{item.description}</p>
-                </div>
-              </div>
-            ))}
+          
+          {/* Key Benefits Grid */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8">
+              <DollarSign className="w-12 h-12 text-orange-600 mb-4" />
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Zero Recruiting Costs</h3>
+              <p className="text-gray-700 mb-4">
+                No placement fees. No recruiting agency costs. No job board subscriptions. 
+                We connect you with qualified candidates completely free.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  No placement fees ever
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  No subscription costs
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  No hidden charges
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8">
+              <Award className="w-12 h-12 text-blue-600 mb-4" />
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Pre-Trained & Certified</h3>
+              <p className="text-gray-700 mb-4">
+                Every candidate has completed hands-on training and earned industry-recognized 
+                credentials. They arrive ready to work, not ready to learn.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  Industry certifications verified
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  Hands-on training completed
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  Soft skills development included
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8">
+              <Clock className="w-12 h-12 text-green-600 mb-4" />
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Faster Time-to-Productivity</h3>
+              <p className="text-gray-700 mb-4">
+                Skip the weeks of basic training. Our candidates have already mastered 
+                fundamentals and can contribute from day one.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  Reduce onboarding time by 50%+
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  Immediate productivity
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  Lower training costs
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8">
+              <Users className="w-12 h-12 text-purple-600 mb-4" />
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Motivated, Committed Workers</h3>
+              <p className="text-gray-700 mb-4">
+                Our candidates invested their time in training because they want careers, 
+                not just jobs. They show up ready to prove themselves.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  Higher retention rates
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  Strong work ethic
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  Career-focused mindset
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Comparison Table */}
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border">
+            <div className="bg-gray-900 text-white p-6">
+              <h3 className="text-xl font-bold text-center">Traditional Hiring vs. Elevate Partnership</h3>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-gray-900 font-semibold">Factor</th>
+                    <th className="px-6 py-4 text-center text-gray-900 font-semibold">Traditional Hiring</th>
+                    <th className="px-6 py-4 text-center text-orange-600 font-semibold">With Elevate</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y">
+                  <tr>
+                    <td className="px-6 py-4 text-gray-700">Recruiting Cost</td>
+                    <td className="px-6 py-4 text-center text-gray-500">$3,000 - $10,000+</td>
+                    <td className="px-6 py-4 text-center text-green-600 font-bold">$0</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="px-6 py-4 text-gray-700">Time to Fill Position</td>
+                    <td className="px-6 py-4 text-center text-gray-500">30-60 days</td>
+                    <td className="px-6 py-4 text-center text-green-600 font-bold">1-2 weeks</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 text-gray-700">Training Required</td>
+                    <td className="px-6 py-4 text-center text-gray-500">Extensive</td>
+                    <td className="px-6 py-4 text-center text-green-600 font-bold">Minimal</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="px-6 py-4 text-gray-700">Skills Verified</td>
+                    <td className="px-6 py-4 text-center text-gray-500">Resume only</td>
+                    <td className="px-6 py-4 text-center text-green-600 font-bold">Certified & Tested</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 text-gray-700">Candidate Commitment</td>
+                    <td className="px-6 py-4 text-center text-gray-500">Unknown</td>
+                    <td className="px-6 py-4 text-center text-green-600 font-bold">Proven (completed training)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
