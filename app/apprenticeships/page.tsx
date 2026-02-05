@@ -91,7 +91,7 @@ export default function ApprenticeshipsPage() {
       {/* Hero */}
       <section className="relative h-[55vh] min-h-[400px]">
         <Image src="/images/skilled-trades-vibrant.jpg" alt="Apprenticeship training" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <!-- overlay removed -->
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
           <div className="max-w-5xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">

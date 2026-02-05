@@ -95,7 +95,7 @@ export default function ComplianceAutomationPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/90 to-emerald-900/70" />
+        <!-- overlay removed -->
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
           <div className="flex items-center gap-3 mb-4">

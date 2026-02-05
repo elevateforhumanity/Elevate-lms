@@ -61,7 +61,7 @@ export default async function TeamPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-900/40" />
+        <!-- overlay removed -->
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-6xl mx-auto px-4 w-full">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">

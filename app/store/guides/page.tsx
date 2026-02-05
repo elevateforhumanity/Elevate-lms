@@ -92,7 +92,7 @@ export default function GuidesPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-900/70" />
+        <!-- overlay removed -->
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
           <div className="flex items-center gap-3 mb-4">
@@ -175,7 +175,7 @@ export default function GuidesPage() {
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <!-- overlay removed -->
                     <div className="absolute top-4 left-4">
                       <span className={`inline-block px-4 py-2 rounded-full text-sm font-bold ${
                         guide.price === 'Free' 

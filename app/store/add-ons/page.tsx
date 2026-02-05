@@ -83,7 +83,7 @@ export default function AddOnsPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-purple-900/70" />
+        <!-- overlay removed -->
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
           <div className="flex items-center gap-3 mb-4">
@@ -140,7 +140,7 @@ export default function AddOnsPage() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <!-- overlay removed -->
                   <button 
                     onClick={() => setActiveVideo(addon.id)}
                     className="absolute inset-0 flex items-center justify-center group"
