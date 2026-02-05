@@ -73,6 +73,35 @@ const AUTH_REQUIRED_ROUTES = ['/student', '/my-courses', '/my-progress', '/setti
 // Routes that require onboarding completion
 const ONBOARDING_REQUIRED_ROUTES = ['/hub', '/lms', '/student-portal', '/my-courses', '/my-progress'];
 
+// Routes that require agreement signing (COMPLIANCE GATING)
+const AGREEMENT_REQUIRED_ROUTES = ['/lms', '/student-portal', '/program-holder', '/employer-portal', '/employer', '/staff-portal', '/partner-portal'];
+
+// Routes exempt from agreement gating
+const AGREEMENT_EXEMPT_ROUTES = ['/legal/agreements', '/onboarding', '/student-portal/onboarding', '/api/legal'];
+
+// Required agreements by role
+// Valid enum values: enrollment, handbook, program_holder_mou, employer_agreement, staff_agreement, license
+const REQUIRED_AGREEMENTS_BY_ROLE: Record<string, Array<{ type: string; version: string }>> = {
+  student: [
+    { type: 'enrollment', version: '1.0' },
+    { type: 'handbook', version: '1.0' },
+  ],
+  program_holder: [
+    { type: 'program_holder_mou', version: '1.0' },
+  ],
+  employer: [
+    { type: 'employer_agreement', version: '1.0' },
+  ],
+  staff: [{ type: 'staff_agreement', version: '1.0' }],
+  admin: [{ type: 'staff_agreement', version: '1.0' }],
+  super_admin: [{ type: 'staff_agreement', version: '1.0' }],
+  partner: [
+    { type: 'program_holder_mou', version: '1.0' },
+  ],
+  instructor: [{ type: 'staff_agreement', version: '1.0' }],
+  mentor: [{ type: 'staff_agreement', version: '1.0' }],
+};
+
 // Super admin emails - full platform access (platform owner)
 const SUPER_ADMIN_EMAILS = ['elizabethpowell6262@gmail.com'];
 
@@ -375,6 +404,63 @@ export async function proxy(request: NextRequest) {
     // If onboarding not completed, redirect to onboarding
     if (!profile?.onboarding_completed) {
       return NextResponse.redirect(new URL('/onboarding', request.url), { status: 307 });
+    }
+  }
+
+  // ============================================
+  // AGREEMENT GATING (COMPLIANCE ENFORCEMENT)
+  // ============================================
+  const requiresAgreements = AGREEMENT_REQUIRED_ROUTES.some((route) =>
+    pathname.startsWith(route)
+  );
+  const isAgreementExempt = AGREEMENT_EXEMPT_ROUTES.some((route) =>
+    pathname.startsWith(route)
+  );
+
+  if (requiresAgreements && !isAgreementExempt) {
+    // Admin emails bypass agreement requirement
+    if (ADMIN_EMAILS.includes(user.email || '')) {
+      // Still allow but don't block
+    } else {
+      // Get user's role
+      const { data: profileForAgreements } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', user.id)
+        .single();
+
+      const userRole = profileForAgreements?.role || 'student';
+      const requiredAgreements = REQUIRED_AGREEMENTS_BY_ROLE[userRole] || REQUIRED_AGREEMENTS_BY_ROLE.student;
+
+      if (requiredAgreements.length > 0) {
+        // Get user's signed agreements
+        const { data: signedAgreements } = await supabase
+          .from('license_agreement_acceptances')
+          .select('agreement_type, document_version')
+          .eq('user_id', user.id);
+
+        const signedSet = new Set(
+          (signedAgreements || []).map(
+            (s: { agreement_type: string; document_version: string }) => `${s.agreement_type}:${s.document_version}`
+          )
+        );
+
+        // Check if all required agreements are signed
+        const missingAgreements = requiredAgreements.filter(
+          (req) => !signedSet.has(`${req.type}:${req.version}`)
+        );
+
+        if (missingAgreements.length > 0) {
+          // Missing agreements - redirect to signing page
+          const agreementsUrl = new URL('/legal/agreements', request.url);
+          agreementsUrl.searchParams.set('next', pathname);
+          agreementsUrl.searchParams.set(
+            'missing',
+            missingAgreements.map((a) => a.type).join(',')
+          );
+          return NextResponse.redirect(agreementsUrl, { status: 307 });
+        }
+      }
     }
   }
 
