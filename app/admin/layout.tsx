@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 import { AdminLicenseWrapper } from '@/components/licensing/AdminLicenseWrapper';
 import { getLicenseAccessMode } from '@/lib/licensing/billing-authority';
 import AdminHeader from '@/components/admin/AdminHeader';
+import { DemoTourProvider } from '@/components/demo/DemoTourProvider';
 
 export const dynamic = 'force-dynamic';
 
@@ -98,21 +99,23 @@ export default async function AdminLayout({
   // If no license context, render without wrapper (handles demo mode, etc.)
   if (!context) {
     return (
-      <>
+      <DemoTourProvider>
         <AdminHeader />
         <div className="pt-16">{children}</div>
-      </>
+      </DemoTourProvider>
     );
   }
 
   return (
-    <AdminLicenseWrapper
-      license={context.license}
-      userRole={context.userRole}
-      tenantId={context.tenantId}
-    >
-      <AdminHeader />
-      <div className="pt-16">{children}</div>
-    </AdminLicenseWrapper>
+    <DemoTourProvider>
+      <AdminLicenseWrapper
+        license={context.license}
+        userRole={context.userRole}
+        tenantId={context.tenantId}
+      >
+        <AdminHeader />
+        <div className="pt-16">{children}</div>
+      </AdminLicenseWrapper>
+    </DemoTourProvider>
   );
 }
