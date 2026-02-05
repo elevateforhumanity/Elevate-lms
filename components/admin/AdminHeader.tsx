@@ -88,6 +88,7 @@ const NAV_SECTIONS = [
       { name: 'API Keys', href: '/admin/api-keys' },
       { name: 'Audit Logs', href: '/admin/audit-logs' },
       { name: 'System Health', href: '/admin/system-health' },
+      { name: 'Advanced Tools', href: '/admin/advanced-tools' },
     ],
   },
 ];
