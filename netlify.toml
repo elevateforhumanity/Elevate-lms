@@ -99,11 +99,7 @@
   status = 301
   force = true
 
-[[redirects]]
-  from = "/contact/"
-  to = "/contact"
-  status = 301
-  force = true
+# Removed /contact/ redirect - Next.js handles trailing slashes via trailingSlash: false
 
 [[redirects]]
   from = "/help/articles/article/"
