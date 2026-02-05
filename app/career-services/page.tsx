@@ -104,7 +104,7 @@ export default async function CareerServicesPage() {
       <section className="relative">
         <div className="relative h-[450px] bg-gray-900">
           <Image
-            src="/images/healthcare/program-medical-assistant.jpg"
+            src="/images/heroes-hq/career-services-hero.jpg"
             alt="Career Services - Job Placement and Career Support"
             fill
             className="object-cover object-center"

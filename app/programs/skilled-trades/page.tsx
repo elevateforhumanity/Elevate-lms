@@ -89,7 +89,7 @@ export default function SkilledTradesProgramsPage() {
           playsInline
           autoPlay
           preload="metadata"
-          poster="/images/artlist/hero-training-2.jpg"
+          poster="/images/skilled-trades-vibrant.jpg"
         >
           <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/hvac-hero-final.mp4" type="video/mp4" />
         </video>

@@ -90,7 +90,7 @@ export default function ApprenticeshipsPage() {
 
       {/* Hero */}
       <section className="relative h-[55vh] min-h-[400px]">
-        <Image src="/images/hero/hero-skilled-trades.jpg" alt="Apprenticeship training" fill className="object-cover" priority />
+        <Image src="/images/skilled-trades-vibrant.jpg" alt="Apprenticeship training" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
           <div className="max-w-5xl mx-auto">

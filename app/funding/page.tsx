@@ -165,7 +165,7 @@ export default function FundingPage() {
       {/* Hero - Clean image, no text overlay */}
       <section className="relative h-[50vh] overflow-hidden">
         <Image
-          src="/images/heroes/hero-state-funding.jpg"
+          src="/images/heroes-hq/funding-hero.jpg"
           alt="Free career training funding"
           fill
           className="object-cover"

@@ -27,13 +27,12 @@ export default function AboutPage() {
       {/* HERO */}
       <section className="relative h-[50vh] min-h-[400px] flex items-end">
         <Image
-          src="/images/heroes-hq/about-hero.jpg"
-          alt="Elevate for Humanity"
+          src="/images/team-vibrant.jpg"
+          alt="Elevate for Humanity Team"
           fill
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-12">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4">
             Our Story

@@ -79,7 +79,7 @@ export default function BusinessPage() {
             </div>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
               <Image
-                src="/images/heroes/cash-bills.jpg"
+                src="/images/business-vibrant.jpg"
                 alt="Business training"
                 fill
                 className="object-cover"

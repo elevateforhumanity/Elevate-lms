@@ -116,8 +116,11 @@ export default function CDLProgramPage() {
       </div>
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-orange-900 via-orange-800 to-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
+      <section className="relative text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/images/cdl-vibrant.jpg" alt="CDL Training" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
         
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
           <div className="max-w-2xl">

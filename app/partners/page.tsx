@@ -98,7 +98,7 @@ export default function PartnersPage() {
       </div>
 <header className="relative min-h-[400px] flex items-center">
         <Image
-          src="/images/heroes/partner-hero.jpg"
+          src="/images/team-vibrant.jpg"
           alt="Partner with Elevate for Humanity"
           fill
           className="object-cover"

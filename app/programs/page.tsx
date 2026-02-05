@@ -137,7 +137,7 @@ export default async function ProgramsPage() {
       {/* HERO - Full width, consistent height */}
       <section className="relative w-full h-[45vh] sm:h-[50vh] lg:h-[55vh]">
         <div className="absolute inset-0">
-          <img src="/images/prog-hero-main.jpg" alt="Career training programs" className="w-full h-full object-cover" />
+          <img src="/images/programs-hero-vibrant.jpg" alt="Career training programs" className="w-full h-full object-cover" />
         </div>
         <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8">
           <span className="inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold">
