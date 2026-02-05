@@ -60,7 +60,7 @@ const RECOMMENDED_PATTERNS = {
   breadcrumbs: /Breadcrumbs|breadcrumb/i,
   canonical: /canonical|alternates/i,
   outcomes: /outcomes|learn|skills/i,
-  funding: /funding|payment|cost|tuition|wioa|wrg/i,
+  funding: /funding|payment|cost|tuition|wioa|wrg|price|fee/i,
 };
 
 function auditProgramPage(filePath: string): AuditResult {
