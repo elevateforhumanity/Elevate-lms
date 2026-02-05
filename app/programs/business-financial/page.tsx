@@ -8,7 +8,7 @@ import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Briefcase } from 'lucide-react';
+import { Briefcase, Clock, DollarSign, Shield, Award, CheckCircle, Users } from 'lucide-react';
 import { CompactHero } from '@/components/heroes/CompactHero';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
@@ -108,28 +108,28 @@ export default async function BusinessFinancialPage() {
           <h2 className="text-3xl font-bold text-black mb-8">At-a-Glance</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="flex items-start gap-4">
-              <Image src="/images/icons/clock.png" alt="Duration" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
+              <Clock className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Duration</h3>
                 <p className="text-black">8-16 weeks</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
+              <DollarSign className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Cost</h3>
                 <p className="text-black">Free with funding when eligible</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Image src="/images/icons/shield.png" alt="Format" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
+              <Shield className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Format</h3>
                 <p className="text-black">Online / Hybrid</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Image src="/images/icons/award.png" alt="Outcome" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
+              <Award className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Outcome</h3>
                 <p className="text-black">Job placement or certification</p>
@@ -148,25 +148,25 @@ export default async function BusinessFinancialPage() {
           <div className="bg-white rounded-xl p-8 shadow-sm">
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">
                   Individuals seeking career change or advancement
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">
                   No prior experience required for most programs
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">
                   Justice-impacted individuals welcome
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">
                   Barriers support available
                 </span>
@@ -222,25 +222,25 @@ export default async function BusinessFinancialPage() {
           <div className="bg-white rounded-xl p-8 shadow-sm">
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">Case management</span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">
                   Justice navigation for returning citizens
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">Transportation resources</span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">Childcare referrals</span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">Documentation support</span>
               </li>
             </ul>
