@@ -35,7 +35,7 @@ Weekly payment examples:
 • 40 hrs/week: ~$64.74/week for 50 weeks
 • 30 hrs/week: ~$48.31/week for 67 weeks
 
-Payment plans are available. Looking for free training? Check your WIOA/WRG eligibility!`,
+Payment plans are available. Contact us for employer-sponsored funding options.`,
 
   'wioa|wrg|funding|free|financial aid': `This is a **fee-based program** ($4,980 total).
 

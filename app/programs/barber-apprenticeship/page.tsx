@@ -87,9 +87,6 @@ export default async function BarberApprenticeshipPage() {
               <span className="px-4 py-2 bg-blue-600 text-white text-sm font-bold rounded-full">
                 USDOL Registered
               </span>
-              <span className="px-4 py-2 bg-green-600 text-white text-sm font-bold rounded-full">
-                WRG Funding Available
-              </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-white drop-shadow-lg">
               Barber Apprenticeship
@@ -99,21 +96,21 @@ export default async function BarberApprenticeshipPage() {
               Train at approved partner sites, track hours in your dashboard, and complete the pathway with structured support.
             </p>
             <p className="mt-2 text-sm text-white/70">
-              *Eligible participants may qualify for WRG or employer-sponsored funding. Self-pay options available.
+              Payment plans and employer-sponsored funding options available.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
-                href="/programs/barber-apprenticeship/inquiry"
-                className="rounded-2xl bg-white text-slate-900 px-8 py-4 font-semibold shadow-lg hover:bg-gray-100 transition text-center"
-              >
-                Request Information
-              </Link>
-              <Link
                 href="/programs/barber-apprenticeship/apply"
                 className="rounded-2xl bg-purple-600 text-white px-8 py-4 font-semibold shadow-lg hover:bg-purple-700 transition text-center"
               >
-                Apply to Program
+                Enroll & Pay
+              </Link>
+              <Link
+                href="/inquiry?program=barber-apprenticeship"
+                className="rounded-2xl bg-white text-slate-900 px-8 py-4 font-semibold shadow-lg hover:bg-gray-100 transition text-center"
+              >
+                Request Information
               </Link>
             </div>
 
@@ -127,12 +124,12 @@ export default async function BarberApprenticeshipPage() {
                 <div className="text-sm text-gray-600">Related instruction</div>
               </div>
               <div className="rounded-2xl bg-white/90 px-5 py-4 text-gray-900">
-                <div className="text-2xl font-bold">${stats.tuition?.toLocaleString() || '4,980'}</div>
+                <div className="text-2xl font-bold">${stats.tuition?.toLocaleString() || '5,250'}</div>
                 <div className="text-sm text-gray-600">Program tuition</div>
               </div>
               <div className="rounded-2xl bg-white/90 px-5 py-4 text-gray-900">
-                <div className="text-2xl font-bold">$0*</div>
-                <div className="text-sm text-gray-600">With WRG funding</div>
+                <div className="text-2xl font-bold">Hybrid</div>
+                <div className="text-sm text-gray-600">Apprenticeship + Online</div>
               </div>
             </div>
           </div>
@@ -179,65 +176,6 @@ export default async function BarberApprenticeshipPage() {
             <p className="mt-3 text-gray-600">
               Clock hours, sign your MOU, and report progress in your dashboard until completion.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* WRG FUNDING SECTION */}
-      <section className="bg-green-50 py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="px-4 py-2 bg-green-600 text-white text-sm font-bold rounded-full">
-                Workforce Ready Grant
-              </span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-6">
-              WRG Funding May Cover Your Tuition
-            </h2>
-            <p className="text-lg text-green-800 mb-8">
-              Indiana residents may qualify for Workforce Ready Grant (WRG) funding through the State of Indiana. 
-              This grant can cover the full cost of your barber apprenticeship tuition.
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-white rounded-2xl p-6 border border-green-200">
-                <h3 className="font-bold text-green-900 mb-3">Eligibility Requirements</h3>
-                <ul className="space-y-2 text-green-800">
-                  <li>• Indiana resident</li>
-                  <li>• 18 years or older</li>
-                  <li>• High school diploma or GED</li>
-                  <li>• Not currently enrolled in college</li>
-                  <li>• Meet income guidelines</li>
-                </ul>
-              </div>
-              <div className="bg-white rounded-2xl p-6 border border-green-200">
-                <h3 className="font-bold text-green-900 mb-3">How to Apply</h3>
-                <ul className="space-y-2 text-green-800">
-                  <li>1. Check eligibility at your local WorkOne</li>
-                  <li>2. Complete WRG application</li>
-                  <li>3. Get approved for funding</li>
-                  <li>4. Enroll in our program with $0 out of pocket</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/programs/barber-apprenticeship/eligibility"
-                className="rounded-2xl bg-green-600 text-white px-8 py-4 font-semibold hover:bg-green-700 transition text-center"
-              >
-                Check Your Eligibility
-              </Link>
-              <a
-                href="https://www.in.gov/dwd/workone/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-2xl bg-white text-green-700 border-2 border-green-600 px-8 py-4 font-semibold hover:bg-green-50 transition text-center"
-              >
-                Find Your Local WorkOne
-              </a>
-            </div>
           </div>
         </div>
       </section>
@@ -369,15 +307,9 @@ export default async function BarberApprenticeshipPage() {
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold">Ready to start your barber career?</h2>
           <p className="mt-4 text-lg text-white/90">
-            Self-pay or WRG funded - we'll help you find the right path.
+            Enroll today or request more information about the program.
           </p>
           <div className="mt-10 flex justify-center gap-4 flex-col sm:flex-row">
-            <Link
-              href="/programs/barber-apprenticeship/eligibility"
-              className="rounded-2xl bg-green-600 text-white px-8 py-4 font-semibold hover:bg-green-700 transition"
-            >
-              Check WRG Eligibility
-            </Link>
             <Link
               href="/programs/barber-apprenticeship/apply"
               className="rounded-2xl bg-purple-600 text-white px-8 py-4 font-semibold hover:bg-purple-700 transition"
@@ -385,7 +317,7 @@ export default async function BarberApprenticeshipPage() {
               Enroll & Pay Now
             </Link>
             <Link
-              href="/programs/barber-apprenticeship/inquiry"
+              href="/inquiry?program=barber-apprenticeship"
               className="rounded-2xl bg-white text-slate-900 px-8 py-4 font-semibold hover:bg-gray-100 transition"
             >
               Request Info

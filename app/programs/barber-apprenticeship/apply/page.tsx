@@ -477,12 +477,12 @@ export default function BarberApprenticeshipApplyPage() {
               </div>
             </div>
 
-            {/* WRG Notice */}
-            <div className="mt-6 bg-green-50 border border-green-200 rounded-xl p-4">
-              <p className="text-green-800 text-sm">
-                <strong>Looking for funded training?</strong> You may qualify for WRG funding.{' '}
-                <Link href="/programs/barber-apprenticeship/eligibility" className="text-green-700 font-medium hover:underline">
-                  Check your eligibility →
+            {/* Payment Options Notice */}
+            <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4">
+              <p className="text-blue-800 text-sm">
+                <strong>Have questions?</strong> Contact us for payment plan options or employer-sponsored funding.{' '}
+                <Link href="/inquiry?program=barber-apprenticeship" className="text-blue-700 font-medium hover:underline">
+                  Request information →
                 </Link>
               </p>
             </div>
