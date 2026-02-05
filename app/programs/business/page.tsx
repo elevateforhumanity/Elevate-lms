@@ -192,21 +192,133 @@ export default function BusinessPage() {
         </div>
       </section>
 
+      {/* Requirements */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Requirements</h2>
+            <p className="text-lg text-slate-600">What you need to start business training.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-slate-50 rounded-2xl p-8">
+              <h3 className="text-xl font-bold text-green-700 mb-4">Basic Requirements</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">18 years or older</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">High school diploma or GED</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Basic math and computer skills</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Pass background check (for tax prep)</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-slate-50 rounded-2xl p-8">
+              <h3 className="text-xl font-bold text-slate-700 mb-4">For Free Training (WIOA)</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-slate-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Indiana resident</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-slate-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Unemployed or underemployed</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-slate-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">OR receiving public assistance</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-slate-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">OR veteran status</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 lg:py-24 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-8 text-center">Business Program FAQ</h2>
+          
+          <div className="space-y-4">
+            {[
+              { q: 'What business programs do you offer?', a: 'Tax Preparation, Bookkeeping, QuickBooks Certification, and Financial Services training. Programs vary by funding availability.' },
+              { q: 'Is the training really free?', a: 'Yes, for eligible participants. WIOA funding covers tuition, materials, and certification fees. Check your eligibility to see if you qualify.' },
+              { q: 'How long are the programs?', a: 'Most programs are 8-12 weeks. Tax preparation training is often accelerated before tax season.' },
+              { q: 'What certifications will I earn?', a: 'Depends on your program. Tax prep leads to IRS PTIN registration. Bookkeeping leads to QuickBooks certification. These are industry-recognized credentials.' },
+              { q: 'Can I start my own business after training?', a: 'Yes! Many graduates start their own tax preparation or bookkeeping businesses. We cover entrepreneurship basics and business planning.' },
+              { q: 'What if I have a criminal record?', a: 'Tax preparation requires IRS background checks. Some convictions may affect eligibility. We can discuss your specific situation and identify available programs.' },
+              { q: 'Do you help with job placement?', a: 'Yes! We have partnerships with accounting firms, tax offices, and businesses needing bookkeepers. We provide resume help and interview preparation.' },
+              { q: 'When is the best time to start tax prep training?', a: 'Fall is ideal to be ready for tax season (January-April). However, we offer training year-round for bookkeeping and other business skills.' },
+            ].map((faq, i) => (
+              <details key={i} className="group bg-white rounded-2xl overflow-hidden shadow-sm">
+                <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-slate-900">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5">
+                  <p className="text-slate-600">{faq.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 lg:py-28 bg-gray-900">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            Start your business career
+            Start Your Business Career
           </h2>
           <p className="text-lg text-gray-300 mb-8">
             Free training for eligible Indiana residents.
           </p>
-          <Link
-            href="/apply"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 text-base font-medium rounded-full hover:bg-gray-100 transition-colors"
-          >
-            Apply Now
-          </Link>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/apply"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 text-base font-medium rounded-full hover:bg-gray-100 transition-colors"
+            >
+              Apply Now
+            </Link>
+            <Link
+              href="/wioa-eligibility"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white text-base font-medium rounded-full hover:bg-white/10 transition-colors"
+            >
+              Check Eligibility
+            </Link>
+          </div>
         </div>
       </section>
     </>

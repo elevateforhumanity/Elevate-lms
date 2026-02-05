@@ -174,15 +174,205 @@ export default function TechnologyProgramsPage() {
         </div>
       </section>
 
+      {/* What You'll Learn */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">What You&apos;ll Learn</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Industry-recognized skills and certifications for in-demand tech careers.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-slate-50 rounded-2xl p-6">
+              <h3 className="font-bold text-slate-900 mb-4">IT Support</h3>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Hardware troubleshooting</li>
+                <li>• Operating systems (Windows, Mac, Linux)</li>
+                <li>• Network fundamentals</li>
+                <li>• Help desk procedures</li>
+                <li>• CompTIA A+ certification prep</li>
+              </ul>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-6">
+              <h3 className="font-bold text-slate-900 mb-4">Cybersecurity</h3>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Security fundamentals</li>
+                <li>• Threat detection and prevention</li>
+                <li>• Network security</li>
+                <li>• Compliance and regulations</li>
+                <li>• CompTIA Security+ prep</li>
+              </ul>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-6">
+              <h3 className="font-bold text-slate-900 mb-4">Professional Skills</h3>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Technical documentation</li>
+                <li>• Customer service</li>
+                <li>• Problem-solving methodology</li>
+                <li>• Team collaboration</li>
+                <li>• Project management basics</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Requirements */}
+      <section className="py-16 lg:py-24 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Requirements</h2>
+            <p className="text-lg text-slate-600">What you need to start technology training.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-2xl p-8 shadow-sm">
+              <h3 className="text-xl font-bold text-green-700 mb-4">Basic Requirements</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">18 years or older</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">High school diploma or GED</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Basic computer literacy</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Access to a computer for coursework</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-8 shadow-sm">
+              <h3 className="text-xl font-bold text-purple-600 mb-4">For Free Training (WIOA)</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Indiana resident</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Unemployed or underemployed</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">OR receiving public assistance</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">OR veteran status</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Outcomes */}
+      <section className="py-16 lg:py-24 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Career Outcomes</h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              Tech careers offer strong wages, growth potential, and job security.
+            </p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-5xl font-black text-white mb-2">$18-$28</div>
+              <p className="text-slate-400">Starting hourly wage</p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-black text-white mb-2">85%+</div>
+              <p className="text-slate-400">Job placement rate</p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-black text-white mb-2">8-16 wks</div>
+              <p className="text-slate-400">Typical program duration</p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-black text-white mb-2">Growing</div>
+              <p className="text-slate-400">Industry demand</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-8 text-center">Technology Program FAQ</h2>
+          
+          <div className="space-y-4">
+            {[
+              { q: 'What technology programs do you offer?', a: 'IT Support Specialist, Cybersecurity Analyst, and related tech programs. Availability varies by funding and demand.' },
+              { q: 'Do I need prior tech experience?', a: 'No prior experience required. We start with fundamentals and build your skills. Basic computer literacy (using email, web browsing) is helpful.' },
+              { q: 'What certifications will I earn?', a: 'Depends on your program. IT Support leads to CompTIA A+. Cybersecurity leads to CompTIA Security+. These are industry-recognized credentials.' },
+              { q: 'Is the training really free?', a: 'Yes, for eligible participants. WIOA funding covers tuition, certification exams, and materials. Check your eligibility to see if you qualify.' },
+              { q: 'How long are the programs?', a: 'Most programs are 8-16 weeks. Some include additional lab time and exam preparation.' },
+              { q: 'What if I have a criminal record?', a: 'Many tech employers are open to candidates with records. We work with justice-involved individuals and can help identify opportunities.' },
+              { q: 'Do you help with job placement?', a: 'Yes! We have partnerships with IT companies, help desks, and managed service providers. We provide resume help and interview preparation.' },
+              { q: 'Can I work while in training?', a: 'Yes, many students work part-time while in training. Some programs offer evening or weekend options.' },
+            ].map((faq, i) => (
+              <details key={i} className="group bg-slate-50 rounded-2xl overflow-hidden">
+                <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-slate-900">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5">
+                  <p className="text-slate-600">{faq.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="py-10 bg-purple-600">
+      <section className="py-16 bg-purple-600">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <Link
-            href="/apply?program=technology"
-            className="inline-block bg-white text-purple-600 px-8 py-3 font-semibold rounded-full hover:bg-purple-50 transition-colors"
-          >
-            Start Your Tech Career
-          </Link>
+          <h2 className="text-3xl font-bold text-white mb-4">Ready to Start Your Tech Career?</h2>
+          <p className="text-purple-100 mb-8">Free training available for eligible Indiana residents.</p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/apply?program=technology"
+              className="inline-block bg-white text-purple-600 px-8 py-4 font-semibold rounded-full hover:bg-purple-50 transition-colors"
+            >
+              Apply Now
+            </Link>
+            <Link
+              href="/wioa-eligibility"
+              className="inline-block border-2 border-white text-white px-8 py-4 font-semibold rounded-full hover:bg-white/10 transition-colors"
+            >
+              Check Eligibility
+            </Link>
+          </div>
         </div>
       </section>
     </div>
