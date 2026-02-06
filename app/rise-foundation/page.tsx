@@ -258,7 +258,7 @@ export default async function RiseFoundationPage() {
       {/* Contact CTA */}
       <section className="py-16 bg-slate-700 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Take the First Step?</h2>
+          <h2 className="text-3xl font-bold mb-4">Need Help? We're Here</h2>
           <p className="text-xl text-purple-100 mb-8">
             Our compassionate team is here to support you. All services are confidential.
           </p>

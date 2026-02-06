@@ -164,7 +164,7 @@ export default async function AddictionRehabilitationPage() {
         {/* CTA */}
         <section className="bg-teal-50 border border-teal-200 rounded-xl p-8 text-center">
           <Heart className="w-12 h-12 text-teal-600 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold mb-4">Take the First Step</h3>
+          <h3 className="text-2xl font-bold mb-4">Get Help Today</h3>
           <p className="text-gray-600 mb-6">
             Recovery begins with a single step. Reach out today for a confidential assessment.
           </p>
