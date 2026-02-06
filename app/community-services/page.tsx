@@ -236,7 +236,7 @@ export default function CommunityServicesPage() {
       {/* Contact */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Get Started Today</h2>
+          <h2 className="text-3xl font-bold mb-6">Apply Now</h2>
           <p className="text-gray-600 mb-8">
             Not sure where to start? Call us and we'll help connect you with the right services.
           </p>

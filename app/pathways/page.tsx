@@ -66,7 +66,7 @@ export default function PathwaysPage() {
 
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Why Choose Elevate?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How Our Programs Work</h2>
           <div className="grid md:grid-cols-4 gap-8">
             {[
               { icon: Clock, title: 'Fast-Track Training', desc: 'Complete programs in weeks, not years' },
@@ -88,8 +88,8 @@ export default function PathwaysPage() {
 
       <section className="py-16 bg-blue-900 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Start Your Journey?</h2>
-          <p className="text-xl text-blue-100 mb-8">Take the first step toward a rewarding career.</p>
+          <h2 className="text-3xl font-bold mb-6">Questions? Call Us</h2>
+          <p className="text-xl text-blue-100 mb-8">(317) 314-3757 - We'll help you find the right program for your situation.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/apply" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-bold transition">Apply Now</Link>
             <Link href="/contact" className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg text-lg font-bold transition border-2 border-white/30">Contact Us</Link>

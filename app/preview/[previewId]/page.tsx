@@ -653,7 +653,7 @@ export default function PreviewPage() {
               className="text-3xl md:text-4xl font-black mb-4"
               style={{ fontFamily: `${fonts.heading}, sans-serif`, color: colors.textOnPrimary }}
             >
-              Ready to Start Your Journey?
+              Questions? Call Us
             </h2>
             <p className="text-xl mb-8 opacity-90" style={{ color: colors.textOnPrimary }}>
               Join hundreds of successful graduates. Your new career starts here.

@@ -401,7 +401,7 @@ export default function MediaStudioPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                Ready to Transform Your Career?
+                Ready to Improve Your Career?
               </h2>
               <p className="text-base md:text-lg mb-8 text-blue-100">
                 Join thousands who have launched successful careers through our

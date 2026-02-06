@@ -269,7 +269,7 @@ export default function FounderPage() {
       <section className="py-16 bg-blue-600">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to Transform Your Future?
+            Ready to Improve Your Future?
           </h2>
           <p className="text-blue-100 text-lg mb-8">
             Join the thousands of individuals who have found their pathway to prosperity through Elevate.

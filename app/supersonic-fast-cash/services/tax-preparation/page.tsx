@@ -72,7 +72,7 @@ export default function TaxPreparationPage() {
               </div>
             </div>
             <div className="bg-orange-50 rounded-lg p-8 border border-orange-200">
-              <h3 className="text-2xl font-bold mb-4">Get Started Today</h3>
+              <h3 className="text-2xl font-bold mb-4">Apply Now</h3>
               <p className="text-gray-700 mb-6">
                 Contact us for a free consultation and personalized quote based on your tax situation.
               </p>

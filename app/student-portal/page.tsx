@@ -437,7 +437,7 @@ export default async function StudentPortalPage() {
       <section className="py-16 bg-slate-700 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-black mb-6">
-            Ready to Start Your Journey?
+            Questions? Call Us
           </h2>
           <p className="text-xl text-white/90 mb-8">
             Join thousands of students building successful careers through our programs

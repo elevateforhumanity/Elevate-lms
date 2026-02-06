@@ -334,7 +334,7 @@ export default async function LicensePage() {
       <section className="py-16 bg-orange-600">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to Transform Your Workforce Programs?
+            Ready to Improve Your Workforce Programs?
           </h2>
           <p className="text-orange-100 mb-8">
             Schedule a demo to see how the Elevate platform can work for your organization.

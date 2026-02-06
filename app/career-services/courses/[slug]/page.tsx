@@ -252,7 +252,7 @@ export default async function CourseDetailPage({
       {/* Final CTA */}
       <section className="py-16 bg-slate-700 text-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Career?</h2>
+          <h2 className="text-3xl font-bold mb-4">Ready to Improve Your Career?</h2>
           <p className="text-purple-100 mb-8">
             Join thousands of professionals who have accelerated their careers with our courses.
           </p>

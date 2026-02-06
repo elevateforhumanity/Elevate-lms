@@ -421,7 +421,7 @@ export default function StoreLicensesPage() {
       {/* Final CTA */}
       <section className="py-16 bg-slate-900">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Workforce Programs?</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Ready to Improve Your Workforce Programs?</h2>
           <p className="text-xl text-slate-400 mb-8">
             Join organizations that have streamlined operations and improved student outcomes.
           </p>

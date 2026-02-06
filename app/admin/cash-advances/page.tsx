@@ -472,7 +472,7 @@ export default async function CashAdvancesAdminPage() {
               Ready to Get Started?
             </h2>
             <p className="text-base md:text-lg mb-8 text-blue-100">
-              Take the first step toward a better career today.
+              Call (317) 314-3757 or apply online for a better career today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

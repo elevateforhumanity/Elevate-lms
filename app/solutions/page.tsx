@@ -112,11 +112,12 @@ export default function SolutionsPage() {
                 Trusted by 100+ Organizations
               </div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Workforce Training Solutions That Scale
+                Workforce Training for Agencies, Providers & Employers
               </h1>
               <p className="text-base md:text-lg mb-8 text-blue-50">
-                White-label LMS platform with integrated content partners.
-                Deploy workforce training programs in days, not months.
+                We partner with workforce boards, training providers, and employers 
+                to deliver WIOA-compliant programs. Our platform handles enrollment, 
+                tracking, and reporting so you can focus on outcomes.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -246,11 +247,11 @@ export default function SolutionsPage() {
       <section className="py-20 bg-white text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-2xl md:text-2xl md:text-3xl font-bold mb-6">
-            Ready to Transform Your Workforce Training?
+            Questions About Our Programs?
           </h2>
           <p className="text-base md:text-lg text-slate-300 mb-8">
-            Schedule a demo to see how our platform can help you deliver
-            training programs at scale.
+            Call us at (317) 314-3757 or schedule a walkthrough of our platform.
+            We'll show you exactly how enrollment, tracking, and reporting works.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

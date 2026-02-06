@@ -16,7 +16,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Find Your Pathway | Start Your Career Training Journey',
-  description: 'Take the first step toward a new career. Explore training programs, check eligibility for funding, and connect with employers in Indiana.',
+  description: 'Call (317) 314-3757 or apply online for a new career. Explore training programs, check eligibility for funding, and connect with employers in Indiana.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/start',
   },
@@ -133,7 +133,7 @@ export default async function StartPage() {
             Find Your Pathway
           </h1>
           <p className="text-xl md:text-2xl text-blue-100 mb-8">
-            Take the first step toward a new career. We'll help you find the right program and funding.
+            Call (317) 314-3757 or apply online for a new career. We'll help you find the right program and funding.
           </p>
         </div>
       </section>

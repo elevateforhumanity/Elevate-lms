@@ -183,7 +183,7 @@ export default async function FeaturesPage() {
       {/* Highlights */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Elevate?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">How Our Programs Work</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl p-6 shadow-sm text-center">
               <Zap className="w-12 h-12 text-orange-600 mx-auto mb-4" />
