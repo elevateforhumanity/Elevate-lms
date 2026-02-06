@@ -84,6 +84,7 @@
     "next": "16.1.1",
     "next-intl": "4.5.2",
     "node-pty": "^1.1.0",
+    "oauth-1.0a": "^2.2.6",
     "openai": "6.9.1",
     "passport-google-oauth20": "2.0.0",
     "pdf-lib": "1.17.1",

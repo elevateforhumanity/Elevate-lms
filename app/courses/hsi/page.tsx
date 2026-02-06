@@ -94,7 +94,7 @@ export default async function HsiPage() {
           priority
           sizes="100vw"
         />
-        <!-- overlay removed -->
+        {/* overlay removed */}
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">

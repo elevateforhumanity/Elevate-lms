@@ -103,7 +103,7 @@ export default async function BarberApprenticeshipPage() {
         >
           <source src="/videos/barber-training.mp4" type="video/mp4" />
         </video>
-        <!-- overlay removed -->
+        {/* overlay removed */}
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-28 md:py-32">
           <div className="max-w-3xl">

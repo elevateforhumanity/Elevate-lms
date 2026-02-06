@@ -83,7 +83,7 @@ export default function AddOnsPage() {
           className="object-cover"
           priority
         />
-        <!-- overlay removed -->
+        {/* overlay removed */}
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
           <div className="flex items-center gap-3 mb-4">
@@ -140,7 +140,7 @@ export default function AddOnsPage() {
                     fill
                     className="object-cover"
                   />
-                  <!-- overlay removed -->
+                  {/* overlay removed */}
                   <button 
                     onClick={() => setActiveVideo(addon.id)}
                     className="absolute inset-0 flex items-center justify-center group"
