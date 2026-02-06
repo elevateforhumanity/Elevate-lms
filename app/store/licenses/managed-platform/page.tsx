@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { Check, Shield, Users, BarChart3, Lock, Headphones, ArrowRight, AlertTriangle } from 'lucide-react';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Managed Enterprise LMS Platform | Elevate for Humanity',
@@ -11,322 +11,300 @@ export const metadata: Metadata = {
   },
 };
 
-const plans = [
-  {
-    id: 'growth',
-    name: 'Growth',
-    description: 'For training providers scaling operations',
-    monthlyPrice: 1500,
-    setupFee: 7500,
-    features: [
-      'Up to 500 active learners',
-      'Your custom domain',
-      'Your branding & logo',
-      'Full LMS features',
-      'Course & enrollment management',
-      'Progress tracking & certificates',
-      'Analytics dashboard',
-      'Email support',
-    ],
-    cta: 'Request License',
-    href: '/contact?subject=Managed%20Platform%20-%20Growth',
-    popular: false,
-  },
-  {
-    id: 'professional',
-    name: 'Professional',
-    description: 'For established organizations',
-    monthlyPrice: 2500,
-    setupFee: 10000,
-    features: [
-      'Up to 2,000 active learners',
-      'Your custom domain',
-      'Your branding & logo',
-      'Full LMS + workforce tools',
-      'Partner & employer dashboards',
-      'Compliance reporting',
-      'API access',
-      'Priority support',
-      'Dedicated onboarding',
-    ],
-    cta: 'Request License',
-    href: '/contact?subject=Managed%20Platform%20-%20Professional',
-    popular: true,
-  },
-  {
-    id: 'enterprise',
-    name: 'Enterprise',
-    description: 'For large organizations & agencies',
-    monthlyPrice: 3500,
-    setupFee: 15000,
-    features: [
-      'Unlimited learners',
-      'Your custom domain',
-      'Your branding & logo',
-      'Full platform access',
-      'Dedicated success manager',
-      'Custom integrations',
-      'SLA guarantee',
-      'Advanced compliance reporting',
-      'Credential add-ons available',
-      'Multi-location support',
-    ],
-    cta: 'Contact Sales',
-    href: '/contact?subject=Managed%20Platform%20-%20Enterprise',
-    popular: false,
-  },
-];
-
 export default function ManagedPlatformPage() {
   return (
-    <div className="min-h-screen bg-slate-950">
-            <div className="max-w-7xl mx-auto px-4 py-4">
-        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Managed Platform" }]} />
+    <div className="min-h-screen bg-white">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Store', href: '/store' }, { label: 'Licenses', href: '/store/licenses' }, { label: 'Managed Platform' }]} />
+        </div>
       </div>
-{/* Hero */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-2 mb-6">
-              <Shield className="w-4 h-4 text-orange-500" />
-              <span className="text-orange-400 text-sm font-medium">Managed Enterprise LMS</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
-              Your Platform.<br />
-              <span className="text-orange-500">Our Infrastructure.</span>
-            </h1>
-            
-            <p className="text-xl text-slate-300 mb-4">
-              This is a managed platform license. Elevate for Humanity operates the LMS; 
-              the licensee operates their organization within it.
-            </p>
-            <p className="text-slate-400 mb-8">
-              Your branding, your domain, your programs — backed by our technology and operations team.
-            </p>
 
+      {/* Hero - Image Only */}
+      <section className="relative h-[400px] overflow-hidden">
+        <Image
+          src="/images/heroes-hq/programs-hero.jpg"
+          alt="Managed Platform"
+          fill
+          className="object-cover"
+          priority
+        />
+      </section>
+
+      {/* Main Content */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h1 className="text-4xl font-bold text-slate-900 mb-6">Managed Platform License</h1>
+          <p className="text-xl text-slate-600 mb-8 max-w-4xl">
+            Get a fully-branded learning management system without hiring developers or managing servers. 
+            We set up your platform with your logo, colors, and domain. We handle all the technical work - 
+            hosting, security, updates, and backups. You focus on enrolling students and delivering training.
+          </p>
+          <p className="text-lg text-slate-600 mb-12 max-w-4xl">
+            This is perfect for training providers, workforce boards, and nonprofits who want enterprise 
+            software without enterprise IT costs. Launch in 2 weeks, not 6 months.
+          </p>
+
+          {/* What You Get Section */}
+          <h2 className="text-3xl font-bold text-slate-900 mb-8">Everything You Need to Run Training Programs</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <div className="bg-slate-50 rounded-xl p-8">
+              <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
+                <Image
+                  src="/images/programs-hq/business-office.jpg"
+                  alt="Your Branded Platform"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Your Branded Platform</h3>
+              <p className="text-slate-600 mb-4">
+                Your students see your organization, not ours. We configure your custom domain 
+                (training.yourorg.com), upload your logo, and match your brand colors. When students 
+                log in, they see a professional platform that represents your organization.
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-slate-600">
+                <li>Custom domain with SSL certificate</li>
+                <li>Your logo on every page</li>
+                <li>Brand colors throughout the interface</li>
+                <li>Custom email templates with your branding</li>
+              </ul>
+            </div>
+
+            <div className="bg-slate-50 rounded-xl p-8">
+              <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
+                <Image
+                  src="/images/programs-hq/students-learning.jpg"
+                  alt="Complete LMS Features"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Complete LMS Features</h3>
+              <p className="text-slate-600 mb-4">
+                Everything you need to create courses, enroll students, track progress, and issue 
+                certificates. Upload videos, create quizzes, set prerequisites, and automate 
+                certificate generation when students complete training.
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-slate-600">
+                <li>Unlimited courses and lessons</li>
+                <li>Video hosting and streaming included</li>
+                <li>Quizzes, assignments, and assessments</li>
+                <li>Automated certificates with your signature</li>
+              </ul>
+            </div>
+
+            <div className="bg-slate-50 rounded-xl p-8">
+              <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
+                <Image
+                  src="/images/heroes-hq/success-hero.jpg"
+                  alt="Enrollment and Student Management"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Enrollment and Student Management</h3>
+              <p className="text-slate-600 mb-4">
+                Accept applications online, review eligibility, and enroll students with a few clicks. 
+                Track attendance, monitor progress, and communicate with students through the platform. 
+                All student data is organized and searchable.
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-slate-600">
+                <li>Online application forms</li>
+                <li>Eligibility screening workflows</li>
+                <li>Attendance tracking</li>
+                <li>Student communication tools</li>
+              </ul>
+            </div>
+
+            <div className="bg-slate-50 rounded-xl p-8">
+              <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
+                <Image
+                  src="/images/store/sam-gov-assistant.jpg"
+                  alt="Reporting and Compliance"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Reporting and Compliance</h3>
+              <p className="text-slate-600 mb-4">
+                Generate reports for funders, accreditors, and state agencies. Track outcomes like 
+                employment rates, wage gains, and credential attainment. Export data in formats 
+                required by WIOA, state workforce boards, and grant programs.
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-slate-600">
+                <li>WIOA-compliant data collection</li>
+                <li>Outcome tracking dashboards</li>
+                <li>Automated quarterly reports</li>
+                <li>Export to Excel, PDF, or CSV</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Pricing Section */}
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Pricing Plans</h2>
+          <p className="text-lg text-slate-600 mb-8">
+            Choose the plan that fits your organization size. All plans include full platform features, 
+            your custom branding, and our support team. Setup fee covers onboarding, configuration, 
+            and training for your staff.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {/* Growth Plan */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-slate-200 shadow-sm">
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">Growth</h3>
+              <p className="text-slate-600 mb-6">For training providers scaling operations</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-slate-900">$1,500</span>
+                <span className="text-slate-500">/month</span>
+                <p className="text-sm text-slate-500 mt-1">+ $7,500 one-time setup</p>
+              </div>
+              <ul className="list-disc list-inside space-y-2 text-slate-600 mb-8">
+                <li>Up to 500 active learners</li>
+                <li>Your custom domain</li>
+                <li>Your branding and logo</li>
+                <li>Full LMS features</li>
+                <li>Course and enrollment management</li>
+                <li>Progress tracking and certificates</li>
+                <li>Analytics dashboard</li>
+                <li>Email support</li>
+              </ul>
+              <Link
+                href="/store/licenses/checkout/growth"
+                className="block w-full text-center bg-slate-900 text-white py-4 rounded-lg font-bold hover:bg-slate-800 transition-colors"
+              >
+                Buy Now - $1,500/mo
+              </Link>
+            </div>
+
+            {/* Professional Plan */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-blue-500 shadow-lg relative">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-sm font-bold px-4 py-1 rounded-full">
+                Most Popular
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">Professional</h3>
+              <p className="text-slate-600 mb-6">For established organizations</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-slate-900">$2,500</span>
+                <span className="text-slate-500">/month</span>
+                <p className="text-sm text-slate-500 mt-1">+ $10,000 one-time setup</p>
+              </div>
+              <ul className="list-disc list-inside space-y-2 text-slate-600 mb-8">
+                <li>Up to 2,000 active learners</li>
+                <li>Your custom domain</li>
+                <li>Your branding and logo</li>
+                <li>Full LMS + workforce tools</li>
+                <li>Partner and employer dashboards</li>
+                <li>Compliance reporting</li>
+                <li>API access</li>
+                <li>Priority support</li>
+                <li>Dedicated onboarding</li>
+              </ul>
+              <Link
+                href="/store/licenses/checkout/professional"
+                className="block w-full text-center bg-blue-600 text-white py-4 rounded-lg font-bold hover:bg-blue-700 transition-colors"
+              >
+                Buy Now - $2,500/mo
+              </Link>
+            </div>
+
+            {/* Enterprise Plan */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-slate-200 shadow-sm">
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">Enterprise</h3>
+              <p className="text-slate-600 mb-6">For large organizations and agencies</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-slate-900">$3,500</span>
+                <span className="text-slate-500">/month</span>
+                <p className="text-sm text-slate-500 mt-1">+ $15,000 one-time setup</p>
+              </div>
+              <ul className="list-disc list-inside space-y-2 text-slate-600 mb-8">
+                <li>Unlimited learners</li>
+                <li>Your custom domain</li>
+                <li>Your branding and logo</li>
+                <li>Full platform access</li>
+                <li>Dedicated success manager</li>
+                <li>Custom integrations</li>
+                <li>SLA guarantee</li>
+                <li>Advanced compliance reporting</li>
+                <li>Credential add-ons available</li>
+                <li>Multi-location support</li>
+              </ul>
+              <Link
+                href="/store/licenses/checkout/enterprise"
+                className="block w-full text-center bg-slate-900 text-white py-4 rounded-lg font-bold hover:bg-slate-800 transition-colors"
+              >
+                Buy Now - $3,500/mo
+              </Link>
+            </div>
+          </div>
+
+          {/* We Handle Everything Section */}
+          <div className="bg-slate-50 rounded-2xl p-12 mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">We Handle the Technical Work</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">What We Do</h3>
+                <ul className="list-disc list-inside space-y-2 text-slate-600">
+                  <li>Host your platform on secure, fast servers</li>
+                  <li>Manage SSL certificates and security updates</li>
+                  <li>Perform daily backups of all your data</li>
+                  <li>Monitor uptime and fix issues before you notice</li>
+                  <li>Deploy new features and improvements automatically</li>
+                  <li>Provide technical support when you need help</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">What You Do</h3>
+                <ul className="list-disc list-inside space-y-2 text-slate-600">
+                  <li>Create and manage your training programs</li>
+                  <li>Enroll and support your students</li>
+                  <li>Track progress and issue certificates</li>
+                  <li>Generate reports for your funders</li>
+                  <li>Build relationships with employers</li>
+                  <li>Focus on your mission, not IT problems</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Demo Video */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">Watch the Platform Demo</h2>
+            <p className="text-lg text-slate-600 mb-8 text-center max-w-2xl mx-auto">
+              See how the managed platform works. This demo shows the admin dashboard, student portal, 
+              and automated workflows in action.
+            </p>
+            <div className="bg-black rounded-2xl overflow-hidden">
+              <video
+                className="w-full aspect-video"
+                controls
+                autoPlay
+                muted
+                playsInline
+              >
+                <source src="/videos/store-demo-narrated.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="bg-blue-600 rounded-2xl p-12 text-center">
+            <h2 className="text-3xl font-bold text-white mb-4">Start Your 14-Day Free Trial</h2>
+            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+              Full access to all features. No credit card required. Your platform will be ready 
+              within 24 hours of signing up.
+            </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="#plans"
-                className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-4 rounded-lg transition"
+                href="/store/licenses/checkout/professional"
+                className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors"
               >
-                View Plans
-              </Link>
-              <Link
-                href="/demo"
-                className="bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-lg transition"
-              >
-                Request Demo
+                Start Free Trial - Professional Plan
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* What You Get */}
-      <section className="py-16 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-white text-center mb-12">What You Get</h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: Users, title: 'Your Branding', desc: 'Your logo, colors, and domain. It looks like your platform.' },
-              { icon: Lock, title: 'We Operate', desc: 'We handle hosting, security, updates, backups, and maintenance.' },
-              { icon: BarChart3, title: 'Your Data', desc: 'Your learners, your programs, your reports. Fully yours to manage.' },
-              { icon: Headphones, title: 'Our Support', desc: 'Dedicated support team. We keep it running so you can focus on training.' },
-            ].map((item) => (
-              <div key={item.title} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-                <item.icon className="w-10 h-10 text-orange-500 mb-4" />
-                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-slate-400 text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* License Terms - Clear */}
-      <section className="py-12 bg-slate-800/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-slate-800 border border-slate-700 rounded-xl p-8">
-            <h3 className="text-xl font-bold text-white mb-6">This is a Managed Platform License</h3>
-            
-            <div className="grid md:grid-cols-2 gap-8 mb-6">
-              <div>
-                <h4 className="text-green-400 font-semibold mb-3 flex items-center gap-2">
-                  <Check className="w-5 h-5" />
-                  What You Get
-                </h4>
-                <ul className="space-y-2 text-slate-300 text-sm">
-                  <li>• Enterprise LMS with your branding</li>
-                  <li>• Custom domain (yourorg.com)</li>
-                  <li>• Course creation & management</li>
-                  <li>• Student enrollment & tracking</li>
-                  <li>• Certificates & credentials</li>
-                  <li>• Analytics & reporting</li>
-                  <li>• Hosting, security, backups included</li>
-                  <li>• Ongoing updates & maintenance</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-red-400 font-semibold mb-3 flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5" />
-                  What This is NOT
-                </h4>
-                <ul className="space-y-2 text-slate-300 text-sm">
-                  <li>• Software ownership</li>
-                  <li>• Source code access</li>
-                  <li>• Self-hosted deployment</li>
-                  <li>• Lifetime or perpetual access</li>
-                  <li>• White-label rights</li>
-                  <li>• Resale or sublicensing rights</li>
-                  <li>• Automatic credential authority</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-600">
-              <p className="text-slate-300 text-sm">
-                <strong className="text-white">Continued access requires an active subscription.</strong>{' '}
-                Non-payment results in total platform lockout. Your data is retained but access is revoked until billing is resolved.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Plans */}
-      <section id="plans" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white text-center mb-4">Pricing</h2>
-          <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
-            All plans include your custom domain, branding, and full platform features. 
-            Annual billing preferred. Setup fee covers onboarding and configuration.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {plans.map((plan) => (
-              <div
-                key={plan.id}
-                className={`relative bg-slate-800 rounded-2xl p-8 border ${
-                  plan.popular ? 'border-orange-500' : 'border-slate-700'
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-sm font-bold px-4 py-1 rounded-full">
-                    Most Popular
-                  </div>
-                )}
-
-                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                <p className="text-slate-400 text-sm mb-6">{plan.description}</p>
-
-                <div className="mb-6">
-                  <span className="text-4xl font-black text-white">${plan.monthlyPrice.toLocaleString()}</span>
-                  <span className="text-slate-400">/month</span>
-                  <p className="text-sm text-slate-500 mt-1">
-                    + ${plan.setupFee.toLocaleString()} one-time setup
-                  </p>
-                </div>
-
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-slate-300 text-sm">
-                      <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  href={plan.href}
-                  className={`block text-center py-3 px-6 rounded-lg font-bold transition ${
-                    plan.popular
-                      ? 'bg-orange-600 hover:bg-orange-700 text-white'
-                      : 'bg-slate-700 hover:bg-slate-600 text-white'
-                  }`}
-                >
-                  {plan.cta}
-                </Link>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center text-slate-500 text-sm mt-8">
-            Annual contracts preferred. Custom pricing available for multi-year agreements.
-          </p>
-        </div>
-      </section>
-
-      {/* Credential Add-ons */}
-      <section className="py-16 bg-slate-900/50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-white text-center mb-4">Credential Add-ons</h2>
-          <p className="text-slate-400 text-center mb-8 max-w-2xl mx-auto">
-            Need ETPL listing, WIOA compliance, or state board recognition? 
-            These are available as separate paid add-ons with approval required.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { name: 'ETPL Listing Support', desc: 'Assistance with Eligible Training Provider List applications', price: 'From $2,500' },
-              { name: 'WIOA Compliance Package', desc: 'Reporting templates and compliance documentation', price: 'From $1,500/year' },
-              { name: 'State Board Recognition', desc: 'Support for state workforce board approval processes', price: 'Custom quote' },
-            ].map((addon) => (
-              <div key={addon.name} className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                <h3 className="text-lg font-bold text-white mb-2">{addon.name}</h3>
-                <p className="text-slate-400 text-sm mb-4">{addon.desc}</p>
-                <p className="text-orange-400 font-semibold">{addon.price}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center text-slate-500 text-sm mt-8">
-            Credential add-ons require active Managed Platform License and approval process.
-            Credential delegation is a revocable operational license, not a transfer of authority.
-          </p>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Launch Your Platform?</h2>
-          <p className="text-slate-400 mb-8">
-            Contact us to discuss your requirements and get started.
-          </p>
-          <Link
-            href="/contact?subject=Managed%20Platform%20License"
-            className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-4 rounded-lg transition"
-          >
-            Request License
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
-      </section>
-
-      {/* Alternative - Source Use */}
-      <section className="py-12 border-t border-slate-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-slate-500 text-sm mb-4">
-            Need to deploy on your own infrastructure for compliance reasons?
-          </p>
-          <Link
-            href="/store/licenses/source-use"
-            className="text-slate-400 hover:text-white text-sm underline"
-          >
-            View Restricted Source-Use License (Enterprise Only) →
-          </Link>
-        </div>
-      </section>
-
-      {/* Footer - Master Line */}
-      <section className="py-8 border-t border-slate-800 bg-slate-900/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-slate-500 text-xs">
-            All products are licensed access to platforms operated by Elevate for Humanity. 
-            Ownership of software, infrastructure, and intellectual property is not transferred.
-          </p>
         </div>
       </section>
     </div>

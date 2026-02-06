@@ -68,6 +68,7 @@ function useSpeech() {
 export default function StoreGuideChat({ onStartTour, forceOpen = false }: StoreGuideChatProps) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [showInitialChoice, setShowInitialChoice] = useState(true);
   const [currentQuestionId, setCurrentQuestionId] = useState('main');
   const [selectedChoice, setSelectedChoice] = useState<GuideChoice | null>(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -99,16 +100,28 @@ export default function StoreGuideChat({ onStartTour, forceOpen = false }: Store
 
   const handleOpen = useCallback(() => {
     setIsOpen(true);
+    setShowInitialChoice(true);
     setCurrentQuestionId('main');
     setSelectedChoice(null);
     setShowConfirmation(false);
     console.log(GUIDE_ANALYTICS.GUIDE_OPENED, { auto: false });
-    
+  }, []);
+
+  const handleStartGuide = useCallback(() => {
+    setShowInitialChoice(false);
     const mainQuestion = storeGuideFlow.questions.find(q => q.id === 'main');
     if (mainQuestion) {
       setTimeout(() => speak(storeGuideFlow.welcomeMessage + '. ' + mainQuestion.question), 300);
     }
   }, [speak]);
+
+  const handleSelfTour = useCallback(() => {
+    setIsOpen(false);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(GUIDE_STORAGE_KEYS.DISMISSED, 'true');
+    }
+    console.log(GUIDE_ANALYTICS.GUIDE_DISMISSED, { reason: 'self_tour' });
+  }, []);
 
   const handleClose = useCallback(() => {
     stop();
@@ -239,7 +252,49 @@ export default function StoreGuideChat({ onStartTour, forceOpen = false }: Store
 
           {/* Content */}
           <div className="p-4 max-h-[60vh] overflow-y-auto">
-            {!showConfirmation ? (
+            {showInitialChoice ? (
+              /* Initial Choice: Guide or Self Tour */
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-black mb-2">
+                  Welcome to the Store!
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  How would you like to explore?
+                </p>
+                
+                <div className="space-y-3">
+                  <button
+                    onClick={handleStartGuide}
+                    className="w-full flex items-center gap-4 p-4 bg-orange-50 hover:bg-orange-100 border-2 border-orange-500 rounded-xl transition-all text-left"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-bold text-black text-lg">Guide Me</p>
+                      <p className="text-sm text-gray-600">I'll help you find exactly what you need</p>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={handleSelfTour}
+                    className="w-full flex items-center gap-4 p-4 bg-white hover:bg-gray-50 border-2 border-gray-200 hover:border-gray-300 rounded-xl transition-all text-left"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-bold text-black text-lg">Browse on My Own</p>
+                      <p className="text-sm text-gray-600">I'll explore the store myself</p>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            ) : !showConfirmation ? (
               <>
                 <h3 className="text-lg font-bold text-black mb-4">
                   {currentQuestion?.question}

@@ -191,37 +191,12 @@ function ManagedLicenseContent() {
       )}
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-bold mb-4">
-              <Shield className="w-4 h-4" />
-              Managed Platform
-            </div>
-            <h1 className="text-4xl lg:text-5xl font-black mb-4">
-              {MANAGED_LICENSE.name}
-            </h1>
-            <p className="text-xl text-slate-300 mb-6">
-              {MANAGED_LICENSE.description} You manage your organization, users, and programs. 
-              We manage the platform, infrastructure, security, and enforcement.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/store/demo"
-                className="inline-flex items-center gap-2 bg-white text-slate-900 px-6 py-3 rounded-lg font-bold hover:bg-slate-100 transition-colors"
-              >
-                Watch Demo
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="#pricing"
-                className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
-              >
-                View Pricing
-              </Link>
-            </div>
-          </div>
-        </div>
+      <section className="relative h-[400px] overflow-hidden">
+        <img
+          src="/images/store/platform-hero.jpg"
+          alt="Managed Platform"
+          className="w-full h-full object-cover"
+        />
       </section>
 
       {/* What's Included */}

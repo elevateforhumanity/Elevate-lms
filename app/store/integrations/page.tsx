@@ -143,7 +143,126 @@ export default async function IntegrationsPage() {
         </div>
       </section>
 
+      {/* Data Import Options */}
       <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">Data Import Options</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+            Multiple ways to get your existing data into the platform. Import students, courses, employers, and enrollments from any source.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* CSV Upload */}
+            <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 hover:border-blue-300 transition">
+              <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+                <Database className="w-6 h-6 text-gray-700" />
+              </div>
+              <h3 className="font-bold text-lg mb-2">CSV File Upload</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Drag-and-drop CSV files to import data. Download templates for each data type. Supports bulk imports of thousands of records.
+              </p>
+              <div className="text-xs text-gray-500 mb-4">
+                <strong>Imports:</strong> Students, Courses, Programs, Employers, Enrollments
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Available Now</span>
+                <span className="text-xs text-gray-500">Setup: 2 min</span>
+              </div>
+            </div>
+
+            {/* Excel Upload */}
+            <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 hover:border-green-300 transition">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                <Database className="w-6 h-6 text-green-700" />
+              </div>
+              <h3 className="font-bold text-lg mb-2">Excel / XLSX Upload</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Upload Excel spreadsheets directly. Supports .xlsx and .xls formats with multiple sheets. Auto-detects column headers.
+              </p>
+              <div className="text-xs text-gray-500 mb-4">
+                <strong>Imports:</strong> Students, Courses, Programs, Employers, Enrollments
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Available Now</span>
+                <span className="text-xs text-gray-500">Setup: 2 min</span>
+              </div>
+            </div>
+
+            {/* Google Sheets */}
+            <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 hover:border-blue-300 transition">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <Database className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-lg mb-2">Google Sheets Sync</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Connect a Google Sheet for automatic scheduled sync. Great for teams already using spreadsheets. Two-way sync available.
+              </p>
+              <div className="text-xs text-gray-500 mb-4">
+                <strong>Syncs:</strong> Any data type, custom fields supported
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Available Now</span>
+                <span className="text-xs text-gray-500">Setup: 5 min</span>
+              </div>
+            </div>
+
+            {/* REST API */}
+            <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 hover:border-purple-300 transition">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <Code className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="font-bold text-lg mb-2">REST API Import</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Programmatic JSON import via API. Build custom integrations, automate data pipelines, or connect to any system.
+              </p>
+              <div className="text-xs text-gray-500 mb-4">
+                <strong>Supports:</strong> All data types, webhooks, real-time sync
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Available Now</span>
+                <span className="text-xs text-gray-500">Setup: Varies</span>
+              </div>
+            </div>
+
+            {/* Salesforce Import */}
+            <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 hover:border-blue-300 transition">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-lg mb-2">Salesforce Import</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Import contacts, accounts, and opportunities from Salesforce. Bi-directional sync keeps both systems updated automatically.
+              </p>
+              <div className="text-xs text-gray-500 mb-4">
+                <strong>Syncs:</strong> Contacts→Students, Accounts→Employers, Opportunities→Enrollments
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Available Now</span>
+                <span className="text-xs text-gray-500">Setup: 15 min</span>
+              </div>
+            </div>
+
+            {/* HubSpot Import */}
+            <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 hover:border-orange-300 transition">
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-orange-600" />
+              </div>
+              <h3 className="font-bold text-lg mb-2">HubSpot Import</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Import contacts and companies from HubSpot CRM. Sync enrollment status back to HubSpot for marketing automation.
+              </p>
+              <div className="text-xs text-gray-500 mb-4">
+                <strong>Syncs:</strong> Contacts→Students, Companies→Employers, Deals→Enrollments
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Available Now</span>
+                <span className="text-xs text-gray-500">Setup: 10 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Built-In Integrations</h2>
           <div className="grid md:grid-cols-3 gap-6">

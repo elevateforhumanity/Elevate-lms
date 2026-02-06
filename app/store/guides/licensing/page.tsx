@@ -1,259 +1,328 @@
-import { Metadata } from 'next';
+'use client';
+
+import { useState } from 'react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, AlertTriangle } from 'lucide-react';
+import Image from 'next/image';
 
-export const metadata: Metadata = {
-  title: 'Licensing Guide | Elevate LMS Platform',
-  description: 'Step-by-step guide to licensing the Elevate LMS platform. Understand managed vs source-use options, setup process, and billing.',
-};
+type Answer = 'managed' | 'source' | 'either';
 
-const MASTER_STATEMENT = `All platform products are licensed access to systems operated by Elevate for Humanity. Ownership of software, infrastructure, and intellectual property is not transferred.`;
+interface Question {
+  id: string;
+  question: string;
+  description: string;
+  options: {
+    text: string;
+    points: Answer;
+  }[];
+}
+
+const questions: Question[] = [
+  {
+    id: 'it-team',
+    question: 'Do you have an IT team that can manage servers and deployments?',
+    description: 'Source-use licenses require technical staff to deploy and maintain the platform.',
+    options: [
+      { text: 'No, we do not have dedicated IT staff', points: 'managed' },
+      { text: 'Yes, we have DevOps engineers who manage our infrastructure', points: 'source' },
+      { text: 'We have basic IT support but not server management expertise', points: 'managed' },
+    ],
+  },
+  {
+    id: 'data-residency',
+    question: 'Do you have strict data residency or compliance requirements?',
+    description: 'Some organizations must host data on specific servers or in specific locations.',
+    options: [
+      { text: 'No, standard cloud hosting is fine', points: 'managed' },
+      { text: 'Yes, we must host data on our own servers or specific cloud regions', points: 'source' },
+      { text: 'We have some compliance needs but can work with a managed provider', points: 'either' },
+    ],
+  },
+  {
+    id: 'budget',
+    question: 'What is your budget for the platform?',
+    description: 'This helps us recommend the right option for your organization.',
+    options: [
+      { text: 'Monthly subscription ($1,500-$3,500/month)', points: 'managed' },
+      { text: 'One-time purchase ($75,000+)', points: 'source' },
+      { text: 'We are flexible and want to understand both options', points: 'either' },
+    ],
+  },
+  {
+    id: 'timeline',
+    question: 'How quickly do you need to launch?',
+    description: 'Managed platforms launch faster. Source-use requires deployment time.',
+    options: [
+      { text: 'As soon as possible (within 2 weeks)', points: 'managed' },
+      { text: 'We can wait 1-3 months for deployment', points: 'source' },
+      { text: 'Timeline is flexible', points: 'either' },
+    ],
+  },
+  {
+    id: 'customization',
+    question: 'Do you need to modify the source code?',
+    description: 'Source-use allows code modifications. Managed platform is configured, not customized.',
+    options: [
+      { text: 'No, we just need to configure it with our branding and programs', points: 'managed' },
+      { text: 'Yes, we need to integrate with internal systems or modify functionality', points: 'source' },
+      { text: 'We might need some integrations but nothing major', points: 'either' },
+    ],
+  },
+  {
+    id: 'users',
+    question: 'How many students will use the platform?',
+    description: 'This helps determine which plan tier is right for you.',
+    options: [
+      { text: 'Under 500 students', points: 'managed' },
+      { text: '500-2,000 students', points: 'either' },
+      { text: 'Over 2,000 students', points: 'either' },
+    ],
+  },
+];
 
 export default function LicensingGuidePage() {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [showResults, setShowResults] = useState(false);
+
+  const handleAnswer = (points: Answer) => {
+    const newAnswers = [...answers, points];
+    setAnswers(newAnswers);
+
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setShowResults(true);
+    }
+  };
+
+  const getRecommendation = () => {
+    const managedCount = answers.filter(a => a === 'managed').length;
+    const sourceCount = answers.filter(a => a === 'source').length;
+
+    if (sourceCount >= 3) return 'source';
+    if (managedCount >= 3) return 'managed';
+    return 'managed'; // Default to managed
+  };
+
+  const resetQuiz = () => {
+    setCurrentQuestion(0);
+    setAnswers([]);
+    setShowResults(false);
+  };
+
+  const recommendation = getRecommendation();
+
   return (
     <div className="min-h-screen bg-white">
-            <div className="max-w-7xl mx-auto px-4 py-4">
-        <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Licensing" }]} />
-      </div>
-{/* Header */}
-      <section className="bg-slate-900 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl font-black mb-4">Licensing Guide</h1>
-          <p className="text-xl text-slate-300">
-            Everything you need to know about licensing the Elevate LMS platform.
-          </p>
+      {/* Breadcrumbs */}
+      <div className="bg-slate-50 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <Breadcrumbs items={[{ label: 'Store', href: '/store' }, { label: 'Guides', href: '/store/guides' }, { label: 'Find Your License' }]} />
         </div>
+      </div>
+
+      {/* Hero */}
+      <section className="relative h-[300px] overflow-hidden">
+        <Image
+          src="/images/heroes-hq/how-it-works-hero.jpg"
+          alt="Find the Right License"
+          fill
+          className="object-cover"
+          priority
+        />
       </section>
 
-      {/* Content */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto prose prose-slate prose-lg">
+      {/* Main Content */}
+      <section className="py-16">
+        <div className="max-w-3xl mx-auto px-4">
           
-          {/* Step 1 */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
-              Choose Your License Type
-            </h2>
-            <div className="mt-4 grid md:grid-cols-2 gap-6">
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                <h3 className="font-bold text-blue-900 mb-2">Managed Platform (Recommended)</h3>
-                <ul className="text-sm text-blue-800 space-y-1">
-                  <li>• Setup: $7,500–$15,000</li>
-                  <li>• Monthly: $1,500–$3,500</li>
-                  <li>• We handle hosting, security, updates</li>
-                  <li>• Self-service checkout available</li>
-                </ul>
-                <Link href="/store/licenses/managed" className="inline-block mt-4 text-blue-600 font-medium hover:underline">
-                  View Managed License →
-                </Link>
+          {!showResults ? (
+            <>
+              <div className="text-center mb-12">
+                <h1 className="text-3xl font-bold text-slate-900 mb-4">Find the Right License for Your Organization</h1>
+                <p className="text-lg text-slate-600">
+                  Answer a few questions and we will recommend the best option for your needs. 
+                  Takes less than 2 minutes.
+                </p>
               </div>
-              <div className="bg-slate-100 border border-slate-200 rounded-xl p-6">
-                <h3 className="font-bold text-slate-900 mb-2">Source-Use (Enterprise Only)</h3>
-                <ul className="text-sm text-slate-600 space-y-1">
-                  <li>• Starting at $75,000</li>
-                  <li>• Requires enterprise approval</li>
-                  <li>• Internal use only, no resale</li>
-                  <li>• You assume operational responsibility</li>
-                </ul>
-                <Link href="/store/licenses/source-use" className="inline-block mt-4 text-slate-600 font-medium hover:underline">
-                  View Source-Use License →
-                </Link>
-              </div>
-            </div>
-          </div>
 
-          {/* Step 2 */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
-              Complete Checkout (Managed Only)
-            </h2>
-            <p className="text-slate-600 mt-4">
-              For managed licenses, checkout is self-service. You'll pay the setup fee and first month's subscription via Stripe. No sales call required.
-            </p>
-            <ul className="mt-4 space-y-2">
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Enter organization details</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Accept license agreement</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Complete payment</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Step 3 */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
-              Tenant Provisioning
-            </h2>
-            <p className="text-slate-600 mt-4">
-              After payment, we provision your dedicated organization space within 24 hours. You'll receive:
-            </p>
-            <ul className="mt-4 space-y-2">
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Admin account credentials</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Organization subdomain (yourorg.elevateforhumanity.org)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Onboarding checklist</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Step 4 */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">4</span>
-              Invite Team & Assign Roles
-            </h2>
-            <p className="text-slate-600 mt-4">
-              Add your team members and assign appropriate roles:
-            </p>
-            <ul className="mt-4 space-y-2">
-              <li><strong>Admin:</strong> Full platform access, user management, settings</li>
-              <li><strong>Instructor:</strong> Course creation, grading, student management</li>
-              <li><strong>Staff:</strong> Limited admin access, enrollment management</li>
-            </ul>
-          </div>
-
-          {/* Step 5 */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">5</span>
-              Add Programs & Content
-            </h2>
-            <p className="text-slate-600 mt-4">
-              Set up your training programs, courses, and content. You can:
-            </p>
-            <ul className="mt-4 space-y-2">
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Create courses from scratch</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Import existing content (SCORM, video, documents)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Use our course templates</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Step 6 */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">6</span>
-              Domain Options
-            </h2>
-            <p className="text-slate-600 mt-4">
-              Choose how users access your platform:
-            </p>
-            <div className="mt-4 space-y-4">
-              <div className="bg-slate-50 p-4 rounded-lg">
-                <h4 className="font-bold text-slate-900">Default: Subdomain</h4>
-                <p className="text-sm text-slate-600">yourorg.elevateforhumanity.org — No setup required, works immediately.</p>
-              </div>
-              <div className="bg-slate-50 p-4 rounded-lg">
-                <h4 className="font-bold text-slate-900">Optional: Custom Domain</h4>
-                <p className="text-sm text-slate-600">lms.yourcompany.com — Requires DNS configuration. We provide instructions.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Step 7 - Billing & Enforcement */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center text-sm font-bold">7</span>
-              Billing & Enforcement
-            </h2>
-            <div className="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-6">
-              <div className="flex items-start gap-3">
-                <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="font-bold text-amber-900">Payment Enforcement Policy</h4>
-                  <p className="text-amber-800 mt-2">
-                    An active subscription is required for continued platform operation. 
-                    Non-payment results in automatic platform lockout. This is not negotiable.
-                  </p>
-                  <ul className="mt-4 text-sm text-amber-800 space-y-1">
-                    <li>• Invoices are sent monthly via Stripe</li>
-                    <li>• 7-day grace period after failed payment</li>
-                    <li>• Platform access suspended after grace period</li>
-                    <li>• Data retained for 30 days after suspension</li>
-                    <li>• Reactivation requires payment of outstanding balance</li>
-                  </ul>
+              {/* Progress */}
+              <div className="mb-8">
+                <div className="flex justify-between text-sm text-slate-500 mb-2">
+                  <span>Question {currentQuestion + 1} of {questions.length}</span>
+                  <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}% complete</span>
+                </div>
+                <div className="h-2 bg-slate-200 rounded-full">
+                  <div 
+                    className="h-2 bg-blue-600 rounded-full transition-all duration-300"
+                    style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+                  />
                 </div>
               </div>
+
+              {/* Question */}
+              <div className="bg-slate-50 rounded-2xl p-8 mb-8">
+                <h2 className="text-2xl font-bold text-slate-900 mb-2">
+                  {questions[currentQuestion].question}
+                </h2>
+                <p className="text-slate-600 mb-8">
+                  {questions[currentQuestion].description}
+                </p>
+
+                <div className="space-y-4">
+                  {questions[currentQuestion].options.map((option, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleAnswer(option.points)}
+                      className="w-full text-left p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition-colors"
+                    >
+                      <span className="text-lg text-slate-900">{option.text}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Results */}
+              <div className="text-center mb-12">
+                <h1 className="text-3xl font-bold text-slate-900 mb-4">Your Recommendation</h1>
+                <p className="text-lg text-slate-600">
+                  Based on your answers, here is what we recommend for your organization.
+                </p>
+              </div>
+
+              {recommendation === 'managed' ? (
+                <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-8 mb-8">
+                  <div className="relative h-48 mb-6 rounded-xl overflow-hidden">
+                    <Image
+                      src="/images/heroes-hq/programs-hero.jpg"
+                      alt="Managed Platform"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-4">Managed Platform License</h2>
+                  <p className="text-slate-600 mb-6">
+                    The managed platform is perfect for your organization. We handle all the technical 
+                    work - hosting, security, updates, and backups. You focus on your students and programs. 
+                    Launch in as little as 2 weeks with no IT staff required.
+                  </p>
+                  <div className="mb-6">
+                    <div className="text-3xl font-bold text-slate-900">$1,500 - $3,500/month</div>
+                    <p className="text-slate-500">Plus $7,500 - $15,000 one-time setup</p>
+                  </div>
+                  <p className="text-slate-700 mb-6 font-medium">Why this is right for you:</p>
+                  <ul className="list-disc list-inside space-y-2 text-slate-600 mb-8">
+                    <li>No IT team required - we manage everything</li>
+                    <li>Launch quickly without deployment delays</li>
+                    <li>Predictable monthly costs</li>
+                    <li>Automatic updates and security patches</li>
+                    <li>24/7 monitoring and support</li>
+                  </ul>
+                  <div className="flex flex-wrap gap-4">
+                    <Link
+                      href="/store/licenses/managed-platform"
+                      className="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors"
+                    >
+                      View Managed Platform Plans
+                    </Link>
+                    <Link
+                      href="/store/demo"
+                      className="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-slate-100 transition-colors"
+                    >
+                      Watch Demo First
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-slate-100 border-2 border-slate-300 rounded-2xl p-8 mb-8">
+                  <div className="relative h-48 mb-6 rounded-xl overflow-hidden">
+                    <Image
+                      src="/images/technology/hero-programs-technology.jpg"
+                      alt="Source-Use License"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-4">Source-Use License</h2>
+                  <p className="text-slate-600 mb-6">
+                    The source-use license gives you full control. Deploy on your own infrastructure, 
+                    modify the code as needed, and meet your specific compliance requirements. 
+                    Your IT team manages the platform while you own the license forever.
+                  </p>
+                  <div className="mb-6">
+                    <div className="text-3xl font-bold text-slate-900">$75,000</div>
+                    <p className="text-slate-500">One-time license fee</p>
+                  </div>
+                  <p className="text-slate-700 mb-6 font-medium">Why this is right for you:</p>
+                  <ul className="list-disc list-inside space-y-2 text-slate-600 mb-8">
+                    <li>Full source code access</li>
+                    <li>Deploy on your own servers</li>
+                    <li>Meet strict data residency requirements</li>
+                    <li>Customize and integrate as needed</li>
+                    <li>No ongoing subscription fees</li>
+                  </ul>
+                  <div className="flex flex-wrap gap-4">
+                    <Link
+                      href="/store/licenses/source-use"
+                      className="bg-slate-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-slate-800 transition-colors"
+                    >
+                      View Source-Use License
+                    </Link>
+                    <Link
+                      href="/store/licenses/source-use/trial"
+                      className="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-white transition-colors"
+                    >
+                      Start 14-Day Free Trial
+                    </Link>
+                  </div>
+                </div>
+              )}
+
+              {/* Other Option */}
+              <div className="bg-slate-50 rounded-xl p-6 mb-8">
+                <h3 className="font-bold text-slate-900 mb-2">
+                  {recommendation === 'managed' ? 'Also Consider: Source-Use License' : 'Also Consider: Managed Platform'}
+                </h3>
+                <p className="text-slate-600 mb-4">
+                  {recommendation === 'managed' 
+                    ? 'If you have IT staff and need full control, the source-use license might also work for you.'
+                    : 'If you want to launch faster without managing infrastructure, consider the managed platform.'
+                  }
+                </p>
+                <Link
+                  href={recommendation === 'managed' ? '/store/licenses/source-use' : '/store/licenses/managed-platform'}
+                  className="text-blue-600 font-medium hover:underline"
+                >
+                  Learn more about {recommendation === 'managed' ? 'Source-Use License' : 'Managed Platform'}
+                </Link>
+              </div>
+
+              {/* Retake */}
+              <div className="text-center">
+                <button
+                  onClick={resetQuiz}
+                  className="text-slate-500 hover:text-slate-700 font-medium"
+                >
+                  Retake the quiz
+                </button>
+              </div>
+            </>
+          )}
+
+          {/* Skip to Compare */}
+          {!showResults && (
+            <div className="text-center">
+              <Link
+                href="/store/licenses"
+                className="text-slate-500 hover:text-slate-700 font-medium"
+              >
+                Skip quiz and compare all options
+              </Link>
             </div>
-          </div>
-
-          {/* Step 8 */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
-              <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">8</span>
-              Support & SLA
-            </h2>
-            <p className="text-slate-600 mt-4">
-              All managed licenses include:
-            </p>
-            <ul className="mt-4 space-y-2">
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Email support (24-48 hour response)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>99.9% uptime SLA</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Automatic security updates</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span>Daily backups</span>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Master Statement */}
-      <section className="py-8 px-4 bg-slate-100">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm text-slate-600 italic">{MASTER_STATEMENT}</p>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 px-4 bg-blue-600 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-black mb-4">Ready to Get Started?</h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/store/demo" className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50">
-              Try Demo First
-            </Link>
-            <Link href="/store/licenses/managed" className="inline-flex items-center justify-center gap-2 bg-blue-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-900">
-              Start License Setup <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
+          )}
         </div>
       </section>
     </div>

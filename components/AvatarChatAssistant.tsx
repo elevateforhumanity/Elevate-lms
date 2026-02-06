@@ -71,7 +71,7 @@ export default function AvatarChatAssistant({
 }: AvatarChatAssistantProps) {
   const [isOpen, setIsOpen] = useState(autoOpen);
   const [isMinimized, setIsMinimized] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: 'assistant', content: welcomeMessage },
   ]);

@@ -13,7 +13,7 @@ export default function PageAvatar({ videoSrc, title, highlights }: PageAvatarPr
   const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
-    <section className="w-full bg-gradient-to-b from-slate-900 to-slate-800 py-12">
+    <section className="w-full bg-slate-900 py-12">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Video Section */}
@@ -26,7 +26,8 @@ export default function PageAvatar({ videoSrc, title, highlights }: PageAvatarPr
                 src={videoSrc}
                 playsInline
                 controls
-                preload="metadata"
+                autoPlay
+                preload="auto"
               />
             </div>
             {/* Logo overlay - covers bottom right corner where HeyGen logo appears */}
