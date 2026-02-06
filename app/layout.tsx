@@ -169,14 +169,13 @@ export default function RootLayout({
         )}
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
-        {/* Critical CSS to prevent FOUC on mobile - FIXED: removed forced black text */}
+        {/* Critical CSS to prevent FOUC on mobile */}
         <style dangerouslySetInnerHTML={{__html: `
           *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
           html{-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;background:#fff}
           body{margin:0;line-height:1.6;background:#fff;font-size:16px;min-height:100vh}
           img{max-width:100%;height:auto;display:block}
           button,input,select,textarea{font-family:inherit;font-size:100%}
-          .hidden{display:none}
           .flex{display:flex}
           .items-center{align-items:center}
           .justify-between{justify-content:space-between}
