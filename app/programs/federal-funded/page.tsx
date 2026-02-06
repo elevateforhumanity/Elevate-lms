@@ -26,7 +26,6 @@ const federalFundedSlugs = [
   'medical-assistant',
   'phlebotomy-technician',
   'home-health-aide',
-  'direct-support-professional',
   'cdl-training',
 ];
 
