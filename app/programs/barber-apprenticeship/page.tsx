@@ -94,7 +94,7 @@ export default async function BarberApprenticeshipPage() {
           "Learn from experienced licensed barbers in real shop environments",
           "Access Milady curriculum for theory and state board preparation",
           "Track your hours digitally and monitor progress in your dashboard",
-          "Flexible payment plans starting at $415/month",
+          "Pay in full or use Affirm/Klarna/Afterpay to split payments",
           "Graduate job-ready with skills employers want"
         ]}
       />
