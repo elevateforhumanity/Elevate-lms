@@ -34,10 +34,10 @@ BEGIN
     ) VALUES (
       'barber-apprenticeship',
       'Barber Apprenticeship',
-      'USDOL Registered Apprenticeship program for barber licensure. 1,500 hours of combined OJT and RTI.',
+      'USDOL Registered Apprenticeship program for barber licensure. 2,000 hours of combined OJT and RTI.',
       'BARBER-APP',
       52,
-      1500,
+      2000,
       4980.00,
       true,
       'active',

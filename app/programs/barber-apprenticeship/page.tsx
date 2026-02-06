@@ -59,12 +59,12 @@ async function getProgramStats() {
 
     return {
       totalHours: program?.total_hours || 2000,
-      tuition: program?.tuition || 5250,
+      tuition: program?.tuition || 4980,
       enrolledCount: enrolledCount || 0,
       completedCount: completedCount || 0,
     };
   } catch {
-    return { totalHours: 2000, tuition: 5250, enrolledCount: 0, completedCount: 0 };
+    return { totalHours: 2000, tuition: 4980, enrolledCount: 0, completedCount: 0 };
   }
 }
 
@@ -158,7 +158,7 @@ export default async function BarberApprenticeshipPage() {
                 <div className="text-sm text-gray-600">Related instruction</div>
               </div>
               <div className="rounded-2xl bg-white/90 px-5 py-4 text-gray-900">
-                <div className="text-2xl font-bold">${stats.tuition?.toLocaleString() || '5,250'}</div>
+                <div className="text-2xl font-bold">${stats.tuition?.toLocaleString() || '4,980'}</div>
                 <div className="text-sm text-gray-600">Program tuition</div>
               </div>
               <div className="rounded-2xl bg-white/90 px-5 py-4 text-gray-900">

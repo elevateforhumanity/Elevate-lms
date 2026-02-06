@@ -77,7 +77,7 @@ INSERT INTO products (name, slug, description, price, type, category, image_url,
 
 -- Training Programs (as products for purchase)
 INSERT INTO products (name, slug, description, price, type, category, image_url, is_active) VALUES
-  ('Barber Apprenticeship Program', 'barber-program', '1,500-hour state-approved apprenticeship with master barber instruction. WIOA eligible.', 0, 'program', 'training', '/images/barber-hero.jpg', true),
+  ('Barber Apprenticeship Program', 'barber-program', '2,000-hour state-approved apprenticeship with master barber instruction. WIOA eligible.', 0, 'program', 'training', '/images/barber-hero.jpg', true),
   ('CNA Training Program', 'cna-program', '6-week certified nursing assistant training with clinical hours. WIOA eligible.', 0, 'program', 'training', '/images/healthcare-highlight.jpg', true),
   ('HVAC Certification Program', 'hvac-program', '8-week HVAC technician certification with hands-on training. WRG available.', 0, 'program', 'training', '/images/hvac-hero.jpg', true),
   ('CDL Training Program', 'cdl-program', '4-week commercial driver license training. WIOA eligible.', 0, 'program', 'training', '/images/cdl-hero.jpg', true),
