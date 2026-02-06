@@ -45,7 +45,7 @@ const jobPostings = [
 const candidates = [
   {
     id: 1,
-    name: 'Marcus Johnson',
+    name: 'James W.',
     program: 'Barber Apprenticeship',
     completionDate: 'Jan 2025',
     skills: ['Fades', 'Beard Trimming', 'Customer Service'],

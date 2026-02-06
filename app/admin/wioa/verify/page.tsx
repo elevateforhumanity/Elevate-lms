@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const applicant = {
-  name: 'Marcus Johnson',
+  name: 'James W.',
   email: 'marcus@email.com',
   phone: '(555) 123-4567',
   dob: 'March 15, 1995',

@@ -70,7 +70,7 @@ const trendingPosts = [
 
 const topContributors = [
   { name: 'Sarah M.', posts: 45, helpful: 234 },
-  { name: 'Marcus J.', posts: 38, helpful: 198 },
+  { name: 'Graduate J.', posts: 38, helpful: 198 },
   { name: 'Lisa K.', posts: 32, helpful: 167 },
   { name: 'David L.', posts: 28, helpful: 145 },
 ];

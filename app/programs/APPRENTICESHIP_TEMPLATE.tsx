@@ -437,7 +437,7 @@ export default function ApprenticeshipPage() {
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 bg-slate-700 rounded-full"></div>
                 <div>
-                  <div className="font-bold text-lg">Marcus Johnson</div>
+                  <div className="font-bold text-lg">James W.</div>
                   <div className="text-slate-400">Apprentice, 6 months</div>
                 </div>
               </div>

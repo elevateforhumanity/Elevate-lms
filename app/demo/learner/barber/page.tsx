@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function BarberApprenticeshipDemoPage() {
   const student = {
-    name: 'Marcus Johnson',
+    name: 'James W.',
     email: 'marcus.j@email.com',
     avatar: '/images/avatars/student-1.jpg',
     enrollmentDate: 'September 15, 2025',
@@ -63,7 +63,7 @@ export default function BarberApprenticeshipDemoPage() {
     format: 'Hybrid (Online + Shop Training)',
     certification: 'Indiana State Barber License',
     fundingSource: 'WIOA Adult Program',
-    shopPlacement: "Marcus's Barbershop - Downtown",
+    shopPlacement: "Graduate's Barbershop - Downtown",
     mentor: 'James Williams, Master Barber',
   };
 
@@ -80,7 +80,7 @@ export default function BarberApprenticeshipDemoPage() {
 
   const upcomingClasses = [
     { day: 'Today', time: '6:00 PM', title: 'Chemical Services Lab', location: 'Training Center Room 204' },
-    { day: 'Tomorrow', time: '9:00 AM', title: 'Shop Practicum', location: "Marcus's Barbershop" },
+    { day: 'Tomorrow', time: '9:00 AM', title: 'Shop Practicum', location: "Graduate's Barbershop" },
     { day: 'Wed', time: '6:00 PM', title: 'Color Theory Online', location: 'Virtual Classroom' },
   ];
 

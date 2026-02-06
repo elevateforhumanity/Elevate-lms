@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const followUps = [
-  { id: 1, contact: 'Marcus Johnson', type: 'call', reason: 'Program enrollment follow-up', dueDate: 'Today, 2:00 PM', priority: 'high', status: 'pending' },
+  { id: 1, contact: 'James W.', type: 'call', reason: 'Program enrollment follow-up', dueDate: 'Today, 2:00 PM', priority: 'high', status: 'pending' },
   { id: 2, contact: 'ABC Healthcare', type: 'email', reason: 'WOTC application status', dueDate: 'Today, 4:00 PM', priority: 'medium', status: 'pending' },
   { id: 3, contact: 'Sarah Williams', type: 'call', reason: 'Training completion check-in', dueDate: 'Tomorrow, 10:00 AM', priority: 'low', status: 'pending' },
   { id: 4, contact: 'Tech Solutions Inc', type: 'meeting', reason: 'Partnership renewal discussion', dueDate: 'Jan 22, 2025', priority: 'high', status: 'scheduled' },

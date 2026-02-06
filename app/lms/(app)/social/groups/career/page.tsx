@@ -36,7 +36,7 @@ const recentDiscussions = [
   },
   {
     id: 2,
-    author: 'Marcus J.',
+    author: 'Graduate J.',
     avatar: null,
     title: 'Tips for explaining career gaps in interviews',
     preview: 'I was nervous about my 2-year gap, but here is what worked for me...',

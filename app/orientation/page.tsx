@@ -257,7 +257,7 @@ export default async function OrientationPage() {
                     The instructors actually care."
                   </p>
                   <p className="text-sm font-semibold text-black">
-                    — Marcus, CNA Graduate
+                    — Graduate, CNA Graduate
                   </p>
                 </div>
                 <div className="bg-white rounded-lg p-6 shadow-sm">

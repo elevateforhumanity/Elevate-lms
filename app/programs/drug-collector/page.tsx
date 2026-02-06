@@ -15,15 +15,15 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 
 export const metadata: Metadata = {
-  title: 'Drug & Alcohol Specimen Collector Certification | Free DOT Training',
+  title: 'Drug & Alcohol Specimen Collector Certification | DOT Training',
   description:
-    'Funded DOT-certified drug collector training. Fast-track to a specialized healthcare career. High demand across transportation, healthcare, and corporate sectors.',
+    'DOT-certified drug collector training. Fast-track to a specialized healthcare career. High demand across transportation, healthcare, and corporate sectors.',
   keywords: [
     'Drug Collector Indianapolis',
-    'free Drug Collector training',
-    'WIOA Drug Collector',
-    'Drug Collector apprenticeship',
+    'Drug Collector training',
+    'Drug Collector certification',
     'DOT certification',
+    'specimen collector training',
   ],
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/drug-collector',
@@ -67,7 +67,7 @@ export default async function Page() {
           href: '/programs/healthcare',
         }}
         headline="Drug & Alcohol Specimen Collector: DOT-certified training"
-        description="Funded training to become a certified specimen collector. Work in healthcare facilities, labs, and workplace testing programs. High demand across multiple sectors."
+        description="Training to become a certified specimen collector. Work in healthcare facilities, labs, and workplace testing programs. High demand across multiple sectors."
         primaryCTA={{ text: 'Apply Now', href: '/apply' }}
         secondaryCTA={{ text: 'Talk to an Advisor', href: '/contact' }}
       />
@@ -97,7 +97,7 @@ export default async function Page() {
                 <CheckCircle className="w-4 h-4" /> Job Placement
               </span>
               <span className="flex items-center gap-2 text-green-600 text-sm font-medium">
-                <CheckCircle className="w-4 h-4" /> Free Training
+                <CheckCircle className="w-4 h-4" /> Fast Certification
               </span>
             </div>
             <div className="relative h-[250px] rounded-xl overflow-hidden mt-6">
@@ -120,7 +120,7 @@ export default async function Page() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Cost:</span>
-                <span className="text-black">$0 with funding</span>
+                <span className="text-black">Contact for pricing</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Format:</span>

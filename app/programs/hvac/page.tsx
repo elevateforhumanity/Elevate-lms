@@ -105,7 +105,7 @@ export default function HVACProgramPage() {
 
   const successStories = [
     {
-      name: "Marcus Johnson",
+      name: "James W.",
       role: "HVAC Service Technician",
       company: "Comfort Systems USA",
       quote: "I was working retail making $12/hour with no future. Six months after graduating, I'm earning $52,000 with full benefits. This program changed my life.",

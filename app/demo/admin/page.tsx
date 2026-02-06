@@ -20,7 +20,7 @@ export default function AdminDemo() {
   const [students, setStudents] = useState([
     { id: 1, name: 'Darius Williams', email: 'd.williams@email.com', program: 'Barber', progress: 42, status: 'active', avatar: '/images/testimonials/student-marcus.jpg' },
     { id: 2, name: 'Sarah Mitchell', email: 's.mitchell@email.com', program: 'CNA', progress: 95, status: 'active', avatar: '/images/gallery/image9.jpg' },
-    { id: 3, name: 'Marcus Johnson', email: 'm.johnson@email.com', program: 'HVAC', progress: 28, status: 'active', avatar: '/images/testimonials/student-david.jpg' },
+    { id: 3, name: 'James W.', email: 'm.johnson@email.com', program: 'HVAC', progress: 28, status: 'active', avatar: '/images/testimonials/student-david.jpg' },
     { id: 4, name: 'Lisa Rodriguez', email: 'l.rodriguez@email.com', program: 'MA', progress: 67, status: 'active', avatar: '/images/testimonials/testimonial-medical-assistant.jpg' },
     { id: 5, name: 'James Thompson', email: 'j.thompson@email.com', program: 'CDL', progress: 85, status: 'active', avatar: '/images/testimonials/student-graduate-testimonial.jpg' },
   ]);
@@ -50,7 +50,7 @@ export default function AdminDemo() {
   const filtered = students.filter(s => s.name.toLowerCase().includes(search.toLowerCase()) || s.program.toLowerCase().includes(search.toLowerCase()));
 
   const activity = [
-    { msg: 'Marcus J. enrolled in Barber', time: '15m ago', type: 'enroll' },
+    { msg: 'Graduate J. enrolled in Barber', time: '15m ago', type: 'enroll' },
     { msg: 'Sarah M. completed CNA', time: '1h ago', type: 'complete' },
     { msg: '24 OJT hours verified', time: '2h ago', type: 'verify' },
     { msg: 'New partner onboarded', time: '4h ago', type: 'partner' },

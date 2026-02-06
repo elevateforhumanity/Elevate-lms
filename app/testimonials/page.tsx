@@ -23,12 +23,12 @@ type Testimonial = {
 const fallbackTestimonials: Testimonial[] = [
   {
     id: '1',
-    name: 'Marcus Johnson',
+    name: 'James W.',
     program_completed: 'HVAC Technician',
     current_job_title: 'HVAC Service Technician',
     current_employer: 'Johnson Controls',
     quote: 'Elevate gave me a second chance. After being incarcerated, I thought my career options were limited. Now I have a stable job making over $50,000 a year with full benefits.',
-    image_url: '/images/testimonials/student-marcus.jpg',
+    image_url: '/images/testimonials/student-1.jpg',
     salary_before: 18000,
     salary_after: 52000,
     featured: true,
