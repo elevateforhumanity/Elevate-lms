@@ -25,12 +25,12 @@ export const metadata: Metadata = {
 };
 
 const credentials = [
-  { icon: Shield, title: 'DOL Registered', desc: 'Apprenticeship Sponsor', color: 'blue' },
-  { icon: CheckCircle, title: 'WIOA Approved', desc: 'Training Provider', color: 'green' },
-  { icon: Building, title: 'Indiana DWD', desc: 'INTraining Provider', color: 'purple' },
-  { icon: GraduationCap, title: 'Indiana DOE', desc: 'State Recognized', color: 'indigo' },
-  { icon: Heart, title: 'JRI Approved', desc: 'Justice Programs', color: 'red' },
-  { icon: Award, title: 'Certiport CATC', desc: 'Testing Center', color: 'orange' },
+  { icon: Shield, title: 'DOL Registered', desc: 'Apprenticeship Sponsor', color: 'blue', image: '/images/partners/usdol.webp' },
+  { icon: CheckCircle, title: 'WIOA Approved', desc: 'Training Provider', color: 'green', image: '/images/highlights/government-certified.jpg' },
+  { icon: Building, title: 'Indiana DWD', desc: 'INTraining Provider', color: 'purple', image: '/images/partners/dwd.webp' },
+  { icon: Building, title: 'Gov Contractor', desc: '501(c)(3) Nonprofit', color: 'indigo', image: '/images/highlights/free-training.jpg' },
+  { icon: Award, title: 'ITAP Certified', desc: 'State Bidder', color: 'teal', image: '/images/partners/nextleveljobs.webp' },
+  { icon: Heart, title: 'ByBlack', desc: 'Certified Business', color: 'red', image: '/images/partners/workone.webp' },
 ];
 
 const achievements = [
@@ -98,10 +98,20 @@ export default function FounderPage() {
           <h2 className="text-center text-white font-semibold mb-6">Credentials & Approvals Achieved</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {credentials.map((cred, i) => (
-              <div key={i} className="bg-slate-800 rounded-lg p-4 text-center">
-                <cred.icon className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                <div className="font-bold text-white text-sm">{cred.title}</div>
-                <div className="text-slate-400 text-xs">{cred.desc}</div>
+              <div key={i} className="bg-slate-800 rounded-lg overflow-hidden">
+                <div className="relative h-20 w-full bg-white flex items-center justify-center p-2">
+                  <Image
+                    src={cred.image}
+                    alt={cred.title}
+                    width={80}
+                    height={60}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="p-3 text-center">
+                  <div className="font-bold text-white text-sm">{cred.title}</div>
+                  <div className="text-slate-400 text-xs">{cred.desc}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -115,12 +125,12 @@ export default function FounderPage() {
             {/* Photo */}
             <div className="lg:col-span-1">
               <div className="sticky top-8">
-                <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl mb-6">
+                <div className="relative aspect-[3/4] max-w-[350px] mx-auto rounded-2xl overflow-hidden shadow-xl mb-6">
                   <Image
                     src="/images/team/elizabeth-greene.jpg"
                     alt="Elizabeth Greene"
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                 </div>
                 <div className="bg-blue-50 rounded-xl p-6">
@@ -155,8 +165,9 @@ export default function FounderPage() {
                   Under Elizabeth's visionary leadership, Elevate for Humanity has achieved unprecedented 
                   recognition and approval from federal, state, and local agencies. The organization is a 
                   U.S. Department of Labor (DOL) Registered Apprenticeship Sponsor, approved by the Indiana 
-                  Department of Workforce Development (DWD) as an INTraining provider, and recognized by 
-                  the Indiana Department of Education (DOE).
+                  Department of Workforce Development (DWD) as an INTraining provider, a registered government 
+                  contractor, 501(c)(3) nonprofit, Indiana State Bidder, ITAP certified, Indiana Department 
+                  of Revenue registered, and ByBlack certified.
                 </p>
 
                 <p>

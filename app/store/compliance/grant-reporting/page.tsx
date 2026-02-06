@@ -89,9 +89,9 @@ export default function GrantReportingPage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative bg-orange-600 text-white py-20 overflow-hidden">
+      <section className="relative text-white py-20 overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/heroes-hq/funding-hero.jpg" alt="Grant Reporting" fill className="object-cover opacity-30" />
+          <Image src="/images/heroes-hq/funding-hero.jpg" alt="Grant Reporting" fill className="object-cover" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

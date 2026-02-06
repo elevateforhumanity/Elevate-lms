@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { Shield, CheckCircle, FileText, Lock, Download, ExternalLink } from 'lucide-react';
+import { Shield, FileText, Lock, Download, ExternalLink } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -55,30 +55,15 @@ export default async function CompliancePage() {
           <h2 className="text-3xl font-bold text-center mb-12">Compliance Standards</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-xl p-8 shadow-lg">
-              <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-                <CheckCircle className="w-8 h-8 text-green-600" />
-              </div>
               <h3 className="text-2xl font-bold mb-4">WIOA Compliance</h3>
               <p className="text-gray-700 mb-4">
                 Workforce Innovation and Opportunity Act (WIOA) compliant data collection, reporting, and performance tracking.
               </p>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span>Participant intake and eligibility tracking</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span>Performance metrics (employment, wages, credentials)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span>Quarterly and annual reporting</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span>PIRL (Participant Individual Record Layout) export</span>
-                </li>
+              <ul className="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                <li>Participant intake and eligibility tracking</li>
+                <li>Performance metrics (employment, wages, credentials)</li>
+                <li>Quarterly and annual reporting</li>
+                <li>PIRL (Participant Individual Record Layout) export</li>
               </ul>
               <Link
                 href="/store/compliance/wioa"
@@ -97,23 +82,11 @@ export default async function CompliancePage() {
               <p className="text-gray-700 mb-4">
                 Family Educational Rights and Privacy Act (FERPA) compliant student data protection and access controls.
               </p>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span>Encrypted data storage (AES-256)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span>Role-based access control (RBAC)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span>Audit logging and access tracking</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span>Student consent management</span>
-                </li>
+              <ul className="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                <li>Encrypted data storage (AES-256)</li>
+                <li>Role-based access control (RBAC)</li>
+                <li>Audit logging and access tracking</li>
+                <li>Student consent management</li>
               </ul>
               <Link
                 href="/store/compliance/ferpa"
@@ -125,30 +98,15 @@ export default async function CompliancePage() {
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-lg">
-              <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                <FileText className="w-8 h-8 text-purple-600" />
-              </div>
               <h3 className="text-2xl font-bold mb-4">WCAG AA Accessibility</h3>
               <p className="text-gray-700 mb-4">
                 Web Content Accessibility Guidelines (WCAG) 2.1 Level AA compliant for inclusive learning.
               </p>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span>Screen reader compatible</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span>Keyboard navigation support</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span>Color contrast compliance</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span>Closed captions and transcripts</span>
-                </li>
+              <ul className="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                <li>Screen reader compatible</li>
+                <li>Keyboard navigation support</li>
+                <li>Color contrast compliance</li>
+                <li>Closed captions and transcripts</li>
               </ul>
               <Link
                 href="/store/compliance/wcag"
@@ -160,30 +118,15 @@ export default async function CompliancePage() {
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-lg">
-              <div className="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
-                <FileText className="w-8 h-8 text-orange-600" />
-              </div>
               <h3 className="text-2xl font-bold mb-4">Grant Reporting</h3>
               <p className="text-gray-700 mb-4">
                 Automated reporting for federal and state workforce grants with customizable templates.
               </p>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                  <span>Automated data collection</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                  <span>Custom report templates</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                  <span>Outcome tracking and metrics</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                  <span>Export to Excel, PDF, CSV</span>
-                </li>
+              <ul className="list-disc list-inside space-y-2 mb-6 text-gray-700">
+                <li>Automated data collection</li>
+                <li>Custom report templates</li>
+                <li>Outcome tracking and metrics</li>
+                <li>Export to Excel, PDF, CSV</li>
               </ul>
               <Link
                 href="/store/compliance/grant-reporting"

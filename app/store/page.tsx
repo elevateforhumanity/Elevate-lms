@@ -49,7 +49,7 @@ export default function StorePage() {
               src="/images/store/platform-hero.jpg"
               alt="Elevate Store"
               fill
-              className="object-cover opacity-20"
+              className="object-cover"
               priority
             />
           </div>
@@ -82,7 +82,21 @@ export default function StorePage() {
           title="Store Assistant" 
         />
 
-
+        {/* Find Your License Guide */}
+        <section className="py-8 bg-blue-50">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">Not Sure Which License is Right for You?</h2>
+            <p className="text-slate-600 mb-6">
+              Answer a few quick questions and we will recommend the best option for your organization. Takes less than 2 minutes.
+            </p>
+            <Link 
+              href="/store/guides/licensing"
+              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors"
+            >
+              Find Your License
+            </Link>
+          </div>
+        </section>
 
         {/* Primary Cards - Tier 1 (Above the fold) */}
         <section className="py-12">

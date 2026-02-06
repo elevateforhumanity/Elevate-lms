@@ -7,14 +7,11 @@ import {
   Users, 
   Puzzle, 
   ArrowRight, 
-  Zap, 
   MessageSquare, 
-  Trophy, 
   Calendar, 
   Star,
   Shield,
   BarChart3,
-  CheckCircle,
   Play
 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -173,30 +170,18 @@ export default function AddOnsPage() {
 
                   <div className="grid sm:grid-cols-2 gap-6 mb-8">
                     <div>
-                      <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                        <Zap className="w-4 h-4 text-purple-500" />
-                        Features Included
-                      </h4>
-                      <ul className="space-y-2">
+                      <h4 className="font-semibold text-slate-900 mb-3">Features Included</h4>
+                      <ul className="list-disc list-inside space-y-2 text-sm text-slate-600">
                         {addon.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-2 text-sm text-slate-600">
-                            <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                            {feature}
-                          </li>
+                          <li key={feature}>{feature}</li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                        <Trophy className="w-4 h-4 text-purple-500" />
-                        Benefits
-                      </h4>
-                      <ul className="space-y-2">
+                      <h4 className="font-semibold text-slate-900 mb-3">Benefits</h4>
+                      <ul className="list-disc list-inside space-y-2 text-sm text-slate-600">
                         {addon.benefits.map((benefit) => (
-                          <li key={benefit} className="flex items-start gap-2 text-sm text-slate-600">
-                            <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                            {benefit}
-                          </li>
+                          <li key={benefit}>{benefit}</li>
                         ))}
                       </ul>
                     </div>

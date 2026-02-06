@@ -31,13 +31,8 @@ ON CONFLICT DO NOTHING;
 -- ============================================================================
 -- TEAM MEMBERS
 -- ============================================================================
-INSERT INTO team_members (name, title, department, bio, display_order) VALUES
-('Executive Director', 'Executive Director', 'leadership', 'Leading Elevate for Humanity''s mission to provide accessible workforce training to Indiana communities.', 1),
-('Program Director', 'Program Director', 'leadership', 'Overseeing all training programs and ensuring quality education delivery.', 2),
-('Career Services Manager', 'Career Services Manager', 'staff', 'Connecting graduates with employers and providing job placement support.', 3),
-('Enrollment Advisor', 'Enrollment Advisor', 'staff', 'Helping prospective students navigate the enrollment process and funding options.', 4),
-('Healthcare Instructor', 'Healthcare Program Instructor', 'instructors', 'Certified healthcare professional with 10+ years of clinical and teaching experience.', 5),
-('Trades Instructor', 'Skilled Trades Instructor', 'instructors', 'Licensed tradesperson bringing real-world experience to the classroom.', 6)
+INSERT INTO team_members (name, title, department, bio, display_order, image_url, email) VALUES
+('Elizabeth Greene', 'Founder & Chief Executive Officer', 'leadership', 'Elizabeth Greene founded Elevate for Humanity to create pathways out of poverty and into prosperity for those who need it most. Based in Indianapolis, Indiana, Elevate for Humanity serves justice-involved individuals, low-income families, veterans, and anyone facing barriers to employment. Under her leadership, Elevate has become a U.S. Department of Labor Registered Apprenticeship Sponsor and Indiana DWD Approved Training Provider.', 1, '/images/elizabeth-greene-founder.jpg', 'elizabeth@elevateforhumanity.org')
 ON CONFLICT DO NOTHING;
 
 -- ============================================================================

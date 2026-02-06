@@ -66,7 +66,7 @@ export default function AppsPage() {
         <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Apps" }]} />
       </div>
 {/* Hero */}
-      <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 px-4">
+      <section className="bg-slate-900 text-white py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Apps & Tools</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">

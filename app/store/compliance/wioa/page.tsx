@@ -137,13 +137,13 @@ export default function WIOACompliancePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative bg-green-700 text-white py-20 overflow-hidden">
+      <section className="relative text-white py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/heroes-hq/funding-hero.jpg"
             alt="WIOA Compliance"
             fill
-            className="object-cover opacity-30"
+            className="object-cover"
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

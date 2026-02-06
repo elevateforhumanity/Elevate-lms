@@ -19,9 +19,51 @@ const fallbackTeam = [
     id: '1',
     name: 'Elizabeth Greene',
     title: 'Founder & Chief Executive Officer',
-    image_url: '/images/elizabeth-greene-founder.jpg',
-    bio: 'Elizabeth Greene founded Elevate for Humanity to create pathways out of poverty and into prosperity for those who need it most.\n\nBased in Indianapolis, Indiana, Elevate for Humanity serves justice-involved individuals, low-income families, veterans, and anyone facing barriers to employment.\n\nWith over 15 years of experience in workforce development and community service, Elizabeth has dedicated her career to helping underserved populations access quality education and career opportunities.',
+    image_url: '/images/team/elizabeth-greene.jpg',
+    bio: 'Elizabeth Greene is a transformational leader, workforce development pioneer, and social entrepreneur who has dedicated her career to creating pathways out of poverty and into prosperity. She founded Elevate for Humanity with a mission to connect everyday people to free workforce training.\n\nAs Founder and CEO, she has built one of Indiana\'s most innovative workforce development organizations—serving justice-involved individuals, low-income families, and barrier-facing populations with dignity, excellence, and measurable results. She also owns Textures Institute of Cosmetology, Greene Staffing Solutions, and Greene Property Management—creating a holistic ecosystem for training, employment, and housing.\n\nUnder Elizabeth\'s leadership, Elevate for Humanity has achieved recognition as a U.S. Department of Labor Registered Apprenticeship Sponsor and approved by the Indiana Department of Workforce Development as an INTraining provider. The organization is a registered government contractor, 501(c)(3) nonprofit, Indiana State Bidder, ITAP certified, Indiana Department of Revenue registered, and ByBlack certified.',
     email: 'elizabeth@elevateforhumanity.org',
+  },
+  {
+    id: '2',
+    name: 'Jozanna George',
+    title: 'Director of Enrollment & Beauty Industry Programs | Site Coordinator, Textures Institute of Cosmetology',
+    image_url: '/images/jozanna-george.jpg',
+    bio: 'Jozanna George is a multi-licensed beauty professional holding Nail Technician, Nail Instructor, and Esthetician licenses. With extensive experience in the beauty industry, she brings both technical expertise and a passion for education to her role.\n\nAs Director of Enrollment & Beauty Industry Programs, Jozanna oversees the nail program at Textures Institute of Cosmetology and manages enrollment operations for Elevate for Humanity. She works directly with prospective students to guide them through the enrollment process and connect them with funding opportunities.\n\nHer dedication to student success and her hands-on approach to education have helped countless individuals launch careers in the beauty industry.',
+  },
+  {
+    id: '3',
+    name: 'Dr. Carlina Wilkes',
+    title: 'Executive Director of Financial Operations & Organizational Compliance',
+    image_url: '/images/carlina-wilkes.jpg',
+    bio: 'Dr. Carlina Wilkes brings over 24 years of federal experience with the Defense Finance and Accounting Service (DFAS), where she developed expertise in financial management, compliance, and organizational operations.\n\nShe holds the Department of Defense Financial Management Certification Level II, demonstrating her advanced knowledge of federal financial regulations and best practices. At Elevate for Humanity, Dr. Wilkes oversees all financial operations and ensures organizational compliance with federal, state, and local requirements.\n\nHer extensive background in federal financial management ensures that Elevate for Humanity maintains the highest standards of fiscal responsibility and regulatory compliance.',
+  },
+  {
+    id: '4',
+    name: 'Sharon Douglass',
+    title: 'Respiratory Therapy & Health Informatics Specialist',
+    image_url: '/images/sharon-douglas.jpg',
+    bio: 'Sharon Douglass brings over 30 years of experience as a Respiratory Therapist, combined with advanced education including a Master\'s degree in Health Informatics. Her unique combination of clinical expertise and health information technology knowledge makes her invaluable to Elevate for Humanity\'s healthcare training programs.\n\nAs Respiratory Therapy & Health Informatics Specialist, Sharon supports healthcare training programs and workforce readiness initiatives. She helps develop curriculum, mentors students, and ensures that training programs meet industry standards and prepare graduates for successful careers in healthcare.\n\nHer decades of hands-on clinical experience provide students with real-world insights into healthcare careers.',
+  },
+  {
+    id: '5',
+    name: 'Leslie Wafford',
+    title: 'Director of Community Services',
+    image_url: '/images/leslie-wafford.jpg',
+    bio: 'Leslie Wafford serves as Director of Community Services at Elevate for Humanity, where she leads initiatives focused on housing stability and community support. Her work is guided by her personal philosophy of "reach one, teach one"—believing that helping one person creates a ripple effect throughout the community.\n\nLeslie promotes low-barrier housing access and eviction prevention, helping families navigate housing challenges and connect with resources. She understands that stable housing is foundational to successful workforce development outcomes.\n\nHer compassionate approach and deep community connections have helped countless families achieve housing stability while pursuing career training opportunities.',
+  },
+  {
+    id: '6',
+    name: 'Alina Smith, PMHNP',
+    title: 'Psychiatric Mental Health Nurse Practitioner',
+    image_url: '/images/alina-smith.jpg',
+    bio: 'Alina Smith is a board-certified Psychiatric Mental Health Nurse Practitioner (PMHNP) who earned her advanced degree from Purdue University. Her specialized training enables her to provide comprehensive mental health services to program participants.\n\nAt Elevate for Humanity, Alina provides mental health assessments, therapeutic interventions, and medication management for program participants. She understands that mental health support is essential for individuals facing barriers to employment, particularly those with histories of trauma or justice involvement.\n\nHer integrated approach to mental health care helps participants address underlying challenges while pursuing their career goals, leading to better outcomes and sustained success.',
+  },
+  {
+    id: '7',
+    name: 'Delores Reynolds',
+    title: 'Social Media & Digital Engagement Coordinator',
+    image_url: '/images/delores-reynolds.jpg',
+    bio: 'Delores Reynolds serves as Social Media & Digital Engagement Coordinator at Elevate for Humanity, where she manages the organization\'s digital presence and communications strategy. Her work helps spread awareness of free training opportunities to those who need them most.\n\nDelores manages digital communications across multiple platforms, sharing student success stories and promoting program offerings. She creates compelling content that resonates with potential students and community partners alike.\n\nHer strategic approach to digital engagement has expanded Elevate for Humanity\'s reach, connecting more individuals with life-changing career training opportunities throughout Indiana.',
   },
 ];
 
@@ -61,17 +103,6 @@ export default async function TeamPage() {
           className="object-cover"
           priority
         />
-        
-        <div className="absolute inset-0 flex items-center">
-          <div className="max-w-6xl mx-auto px-4 w-full">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Our Team
-            </h1>
-            <p className="text-xl text-slate-200 max-w-2xl">
-              Meet the dedicated professionals transforming lives through education and career training.
-            </p>
-          </div>
-        </div>
       </section>
 
       {/* Team Members */}
@@ -82,12 +113,12 @@ export default async function TeamPage() {
               {members.map((member: any) => (
                 <div key={member.id} className="grid md:grid-cols-3 gap-8 items-start">
                   <div className="md:col-span-1">
-                    <div className="relative w-full aspect-square max-w-[300px] mx-auto rounded-xl overflow-hidden shadow-lg">
+                    <div className="relative w-full aspect-[3/4] max-w-[300px] mx-auto rounded-xl overflow-hidden shadow-lg">
                       <Image
                         src={member.image_url || '/images/placeholder-avatar.jpg'}
                         alt={member.name}
                         fill
-                        className="object-cover"
+                        className="object-cover object-top"
                       />
                     </div>
                   </div>

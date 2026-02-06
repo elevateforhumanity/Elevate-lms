@@ -14,32 +14,32 @@ export const metadata: Metadata = {
 
 const steps = [
   {
-    step: 1,
-    title: 'Apply',
-    description: 'Complete a simple online application or call us.',
+    title: 'Submit Your Application',
+    description: 'Complete our free online application in under 5 minutes. No fees, no obligations. We will review your information and contact you within 24-48 hours to discuss your eligibility for funded training programs including WIOA, Next Level Jobs, and employer-sponsored options.',
     image: '/images/success-new/success-1.jpg',
     href: '/apply',
+    cta: 'Start Application',
   },
   {
-    step: 2,
-    title: 'Get Matched',
-    description: 'We connect you with the right training program.',
+    title: 'Meet With Your Advisor',
+    description: 'Schedule a one-on-one consultation with a career advisor who will assess your goals, experience, and eligibility. We will help you choose the right training program and connect you with funding sources that cover tuition, books, and certification fees.',
     image: '/images/success-new/success-2.jpg',
     href: '/programs',
+    cta: 'View Programs',
   },
   {
-    step: 3,
-    title: 'Train',
-    description: 'Complete your training with hands-on instruction.',
+    title: 'Complete Your Training',
+    description: 'Attend classes online or in-person at our Indianapolis training center. Our industry-certified instructors provide hands-on training with real equipment. Programs range from 2 weeks to 6 months depending on your career path.',
     image: '/images/success-new/success-3.jpg',
     href: '/programs',
+    cta: 'Explore Training',
   },
   {
-    step: 4,
-    title: 'Get Hired',
-    description: 'Earn your credential and connect with employers.',
+    title: 'Earn Credentials & Get Hired',
+    description: 'Graduate with industry-recognized certifications that employers demand. Our career services team provides resume writing, interview coaching, and direct connections to hiring employers. 85% of our graduates find employment within 90 days.',
     image: '/images/success-new/success-4.jpg',
     href: '/career-services',
+    cta: 'Career Services',
   },
 ];
 
@@ -137,34 +137,40 @@ export default function HowItWorksPage() {
       {/* Steps */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            How It Works
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
+            Your Path to a New Career
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+            We make career training simple and accessible. No confusing paperwork, no hidden fees. 
+            Here is exactly what happens when you start with Elevate for Humanity.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
             {steps.map((item) => (
-              <Link
-                key={item.step}
-                href={item.href}
-                className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+              <div
+                key={item.title}
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
               >
-                <div className="relative h-48">
+                <div className="relative h-56">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute top-4 left-4 w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center text-lg font-bold">
-                    {item.step}
-                  </div>
                 </div>
-                <div className="p-5">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 text-sm">{item.description}</p>
+                  <p className="text-gray-600 mb-4">{item.description}</p>
+                  <Link
+                    href={item.href}
+                    className="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                  >
+                    {item.cta}
+                  </Link>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>

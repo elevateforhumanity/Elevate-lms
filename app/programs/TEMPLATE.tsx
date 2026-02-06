@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Clock, DollarSign, MapPin, CheckCircle, Award } from 'lucide-react';
+import { Clock, DollarSign, MapPin, Award } from 'lucide-react';
 
 // COPY THIS TEMPLATE FOR ALL PROGRAM PAGES
 // Replace the metadata and content sections below
@@ -98,41 +98,29 @@ export default function ProgramTemplate() {
             What You'll Learn
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-black mb-1">Skill 1</h3>
-                <p className="text-black">
-                  Description of what students will learn
-                </p>
-              </div>
+            <div>
+              <h3 className="font-bold text-black mb-2">Skill 1</h3>
+              <p className="text-black">
+                Description of what students will learn
+              </p>
             </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-black mb-1">Skill 2</h3>
-                <p className="text-black">
-                  Description of what students will learn
-                </p>
-              </div>
+            <div>
+              <h3 className="font-bold text-black mb-2">Skill 2</h3>
+              <p className="text-black">
+                Description of what students will learn
+              </p>
             </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-black mb-1">Skill 3</h3>
-                <p className="text-black">
-                  Description of what students will learn
-                </p>
-              </div>
+            <div>
+              <h3 className="font-bold text-black mb-2">Skill 3</h3>
+              <p className="text-black">
+                Description of what students will learn
+              </p>
             </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-black mb-1">Skill 4</h3>
-                <p className="text-black">
-                  Description of what students will learn
-                </p>
-              </div>
+            <div>
+              <h3 className="font-bold text-black mb-2">Skill 4</h3>
+              <p className="text-black">
+                Description of what students will learn
+              </p>
             </div>
           </div>
         </div>
