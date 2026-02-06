@@ -1,0 +1,58 @@
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+import { NextRequest, NextResponse } from 'next/server';
+import { supabaseServer } from '@/lib/supabase-server';
+
+export async function GET(req: NextRequest) {
+  const userId = req.headers.get('x-user-id');
+  if (!userId) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const supabase = supabaseServer();
+  const { data, error } = await supabase
+    .from('studio_settings')
+    .select('*')
+    .eq('user_id', userId)
+    .single();
+
+  if (error && error.code !== 'PGRST116') {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json(data || {
+    theme: 'dark',
+    font_size: 14,
+    word_wrap: true,
+    minimap: false,
+    auto_save: false,
+    keyboard_shortcuts: {}
+  });
+}
+
+export async function PUT(req: NextRequest) {
+  const userId = req.headers.get('x-user-id');
+  if (!userId) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const body = await req.json();
+  const supabase = supabaseServer();
+
+  const { data, error } = await supabase
+    .from('studio_settings')
+    .upsert({
+      user_id: userId,
+      ...body,
+      updated_at: new Date().toISOString()
+    }, { onConflict: 'user_id' })
+    .select()
+    .single();
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json(data);
+}

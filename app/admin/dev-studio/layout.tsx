@@ -3,11 +3,8 @@ import { requireAdmin } from '@/lib/auth';
 import { requireDevToolsAccess } from '@/lib/admin/guards';
 
 export const metadata: Metadata = {
-  title: 'Admin | Dev studio | Elevate for Humanity',
-  description: 'Elevate for Humanity - Career training and workforce development programs.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/admin/dev-studio',
-  },
+  title: 'Dev Studio | Elevate for Humanity',
+  description: 'Browser-based development environment with AI assistance.',
   robots: {
     index: false,
     follow: false,

@@ -1,0 +1,80 @@
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+import { NextRequest, NextResponse } from 'next/server';
+import { supabaseServer } from '@/lib/supabase-server';
+
+export async function GET(req: NextRequest) {
+  const userId = req.headers.get('x-user-id');
+  if (!userId) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const supabase = supabaseServer();
+  const { data, error } = await supabase
+    .from('studio_repos')
+    .select('*')
+    .eq('user_id', userId)
+    .order('last_accessed_at', { ascending: false });
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json(data || []);
+}
+
+export async function POST(req: NextRequest) {
+  const userId = req.headers.get('x-user-id');
+  if (!userId) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const { repo_full_name, default_branch } = await req.json();
+  if (!repo_full_name) {
+    return NextResponse.json({ error: 'repo_full_name required' }, { status: 400 });
+  }
+
+  const supabase = supabaseServer();
+  const { data, error } = await supabase
+    .from('studio_repos')
+    .upsert({
+      user_id: userId,
+      repo_full_name,
+      default_branch: default_branch || 'main',
+      last_accessed_at: new Date().toISOString()
+    }, { onConflict: 'user_id,repo_full_name' })
+    .select()
+    .single();
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json(data);
+}
+
+export async function DELETE(req: NextRequest) {
+  const userId = req.headers.get('x-user-id');
+  if (!userId) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const { repo_id } = await req.json();
+  if (!repo_id) {
+    return NextResponse.json({ error: 'repo_id required' }, { status: 400 });
+  }
+
+  const supabase = supabaseServer();
+  const { error } = await supabase
+    .from('studio_repos')
+    .delete()
+    .eq('id', repo_id)
+    .eq('user_id', userId);
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json({ ok: true });
+}

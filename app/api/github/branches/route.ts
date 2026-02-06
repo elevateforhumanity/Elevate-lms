@@ -53,3 +53,57 @@ export async function GET(req: NextRequest) {
     );
   }
 }
+
+export async function POST(req: NextRequest) {
+  const userToken = req.headers.get('x-gh-token');
+
+  try {
+    const { repo, name: branchName, from } = await req.json();
+
+    if (!repo || !branchName) {
+      return NextResponse.json(
+        { error: 'Missing required fields (repo, name)' },
+        { status: 400 }
+      );
+    }
+
+    const { owner, name } = parseRepo(repo);
+    const client = userToken ? getUserOctokit(userToken) : gh();
+
+    // Get the SHA of the source branch (default to main)
+    const sourceBranch = from || 'main';
+    const { data: refData } = await client.git.getRef({
+      owner,
+      repo: name,
+      ref: `heads/${sourceBranch}`,
+    });
+
+    // Create the new branch
+    const { data } = await client.git.createRef({
+      owner,
+      repo: name,
+      ref: `refs/heads/${branchName}`,
+      sha: refData.object.sha,
+    });
+
+    return NextResponse.json({
+      ok: true,
+      name: branchName,
+      sha: data.object.sha,
+      url: data.url,
+    });
+  } catch (error) {
+    logger.error(
+      'GitHub create branch error:',
+      error instanceof Error ? error : new Error(String(error))
+    );
+    return NextResponse.json(
+      {
+        error: 'Failed to create branch',
+        message: toErrorMessage(error),
+        status: error.status,
+      },
+      { status: error.status || 500 }
+    );
+  }
+}

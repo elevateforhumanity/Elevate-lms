@@ -6,187 +6,79 @@
 @tailwind utilities;
 
 /* ============================================================================
-   DESIGN SYSTEM FOUNDATION - INSTITUTIONAL TYPOGRAPHY
-   Fixes "small + greyed out" text across marketing and LMS
+   ADMIN PORTAL - INSTITUTIONAL TYPOGRAPHY
+   Enterprise-grade visual standards for audit-safe presentation
    ============================================================================ */
 
-@layer base {
-  html {
-    font-size: 16px;
-  }
-
-  body {
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    color: #111827;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Force readable text colors - override washed-out grays */
-  p, li, span, div {
-    color: inherit;
-  }
-
-  /* Upgrade gray-500/600 to gray-700 for body text */
-  .text-gray-500:not(.meta):not(.label):not(.caption),
-  .text-gray-600:not(.meta):not(.label):not(.caption),
-  .text-slate-500:not(.meta):not(.label):not(.caption),
-  .text-slate-600:not(.meta):not(.label):not(.caption) {
-    color: #374151 !important; /* gray-700 */
-  }
+/* Admin portal base typography - minimum 16px, darker colors */
+[class*="/admin"] body,
+.admin-portal {
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* Marketing pages - larger body text */
-@layer components {
-  .marketing-content {
-    font-size: 18px;
-    line-height: 1.75;
-    color: #111827;
-  }
-
-  .marketing-content p {
-    margin-bottom: 1.25rem;
-  }
-
-  /* Compliance/Policy pages - auditor-readable */
-  .compliance-content {
-    font-size: 18px;
-    line-height: 1.75;
-    color: #111827;
-  }
-
-  .compliance-content h1 { font-size: 32px; font-weight: 700; }
-  .compliance-content h2 { font-size: 24px; font-weight: 600; margin-top: 2rem; }
-  .compliance-content h3 { font-size: 20px; font-weight: 600; margin-top: 1.5rem; }
-  .compliance-content p { margin-bottom: 1rem; }
-
-  /* Dashboard - base size with proper contrast */
-  .dashboard-content {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #111827;
-  }
+/* Override light grays with institutional dark tones */
+.admin-portal .text-gray-500,
+[class*="/admin"] .text-gray-500 {
+  color: #374151 !important; /* gray-700 */
 }
 
-/* ============================================================================
-   SMOOTH ANIMATIONS & TRANSITIONS - Designer Polish
-   ============================================================================ */
-
-/* Global smooth scrolling */
-html {
-  scroll-behavior: smooth;
+.admin-portal .text-gray-600,
+[class*="/admin"] .text-gray-600 {
+  color: #1f2937 !important; /* gray-800 */
 }
 
-/* Reduce motion for accessibility */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+.admin-portal .text-gray-400,
+[class*="/admin"] .text-gray-400 {
+  color: #4b5563 !important; /* gray-600 */
 }
 
-/* Default transition for interactive elements */
-a, button, input, select, textarea, [role="button"] {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+/* Admin headings - always dark and authoritative */
+.admin-portal h1,
+.admin-portal h2,
+.admin-portal h3,
+.admin-portal h4,
+[class*="/admin"] h1,
+[class*="/admin"] h2,
+[class*="/admin"] h3,
+[class*="/admin"] h4 {
+  color: #111827; /* gray-900 */
+  font-weight: 600;
 }
 
-/* Smooth image loading */
-img {
-  transition: opacity 0.3s ease-in-out;
+/* Admin body text minimum size */
+.admin-portal p,
+.admin-portal span,
+.admin-portal td,
+.admin-portal th,
+.admin-portal label,
+[class*="/admin"] p,
+[class*="/admin"] span,
+[class*="/admin"] td,
+[class*="/admin"] th,
+[class*="/admin"] label {
+  font-size: max(0.875rem, 14px);
 }
 
-/* Card hover lift effect */
-.hover-lift {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+/* Admin tables - clear, readable */
+.admin-portal table,
+[class*="/admin"] table {
+  font-size: 14px;
 }
 
-/* Fade in animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in {
-  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.admin-portal th,
+[class*="/admin"] th {
+  font-weight: 600;
+  color: #111827;
+  background-color: #f9fafb;
 }
 
-/* Stagger children animation */
-.stagger-children > * {
-  opacity: 0;
-  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
-.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
-.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
-.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
-.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
-.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
-
-/* Slide in from bottom */
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-slide-up {
-  animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.admin-portal td,
+[class*="/admin"] td {
+  color: #374151;
 }
 
-/* Scale in */
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-.animate-scale-in {
-  animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
 
-/* Pulse glow for CTAs */
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
-  50% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
-}
-.animate-pulse-glow {
-  animation: pulseGlow 2s infinite;
-}
-
-/* Shimmer loading effect */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-.skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: 4px;
-}
-
-/* Button press effect */
-button:active:not(:disabled), 
-[role="button"]:active:not(:disabled),
-a[class*="bg-"]:active {
-  transform: scale(0.98);
-}
-
-/* Focus ring - accessible and beautiful */
-:focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-/* Input focus glow */
-input:focus, select:focus, textarea:focus {
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-}
 
 /* ============================================================================
    PREVENT FLASH OF UNSTYLED CONTENT ON FIRST LOAD
@@ -311,13 +203,11 @@ html, body {
   }
 
   body {
-    @apply bg-white text-gray-900 antialiased;
+    @apply bg-white text-slate-900 antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100dvh; /* Use dynamic viewport height for mobile */
     display: flex;
-    font-size: 16px;
-    line-height: 1.6;
     flex-direction: column;
   }
 
@@ -1867,79 +1757,5 @@ header[role="banner"] a.\!text-white {
 .hover-lift:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
-
-/* ============================================================================
-   INSTITUTIONAL TYPOGRAPHY - Government/Enterprise Grade
-   ============================================================================ */
-
-/* Content pages: compliance, eligibility, funding, policies */
-.prose-institutional {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: #111827; /* gray-900 */
-}
-
-.prose-institutional p {
-  margin-bottom: 1.25rem;
-  font-weight: 400;
-}
-
-.prose-institutional h1,
-.prose-institutional h2,
-.prose-institutional h3,
-.prose-institutional h4 {
-  color: #111827;
-  font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.prose-institutional h1 { font-size: 2rem; }
-.prose-institutional h2 { font-size: 1.5rem; }
-.prose-institutional h3 { font-size: 1.25rem; }
-.prose-institutional h4 { font-size: 1.125rem; }
-
-.prose-institutional ul,
-.prose-institutional ol {
-  margin-bottom: 1.25rem;
-  padding-left: 1.5rem;
-}
-
-.prose-institutional li {
-  margin-bottom: 0.5rem;
-}
-
-/* Override grey text in content areas */
-.content-area .text-gray-500,
-.content-area .text-gray-600,
-.content-area .text-slate-500,
-.content-area .text-slate-600 {
-  color: #374151 !important; /* gray-700 minimum */
-}
-
-/* Dashboard and form typography */
-.dashboard-text {
-  color: #111827;
-  font-size: 0.9375rem;
-  line-height: 1.5;
-}
-
-.form-label {
-  color: #111827;
-  font-weight: 500;
-  font-size: 0.875rem;
-}
-
-.form-help {
-  color: #4b5563; /* gray-600 */
-  font-size: 0.8125rem;
-}
-
-/* Ensure body text is never too light */
-main p:not([class*="text-"]),
-article p:not([class*="text-"]),
-section p:not([class*="text-"]) {
-  color: #1f2937; /* gray-800 */
 }
 
