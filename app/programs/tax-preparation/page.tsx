@@ -16,11 +16,11 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title:
-    'Free Tax Preparation Training | IRS Certified | VITA Volunteer | Start Your Tax Business | Indianapolis',
+    'Tax Preparation Training | IRS Certified | Start Your Tax Business | Indianapolis',
   description:
-    'Funded IRS-certified tax preparation training in Indianapolis. Become a VITA volunteer or start your own tax business. IRS Link & Learn certified. Earn $40k-$100k+ per year. H&R Block alternative. TurboTax Pro alternative.',
+    'IRS-certified tax preparation training in Indianapolis. $1,500 tuition. Become a VITA volunteer or start your own tax business. IRS Link & Learn certified. Earn $40k-$100k+ per year.',
   keywords:
-    'free tax preparation training, IRS certified tax preparer, VITA volunteer training, start tax business, tax preparer course Indianapolis, IRS Link and Learn, become tax preparer, tax business training, H&R Block alternative, TurboTax Pro alternative, tax franchise alternative, PTIN certification, tax season business',
+    'tax preparation training, IRS certified tax preparer, VITA volunteer training, start tax business, tax preparer course Indianapolis, IRS Link and Learn, become tax preparer, tax business training, H&R Block alternative, TurboTax Pro alternative, tax franchise alternative, PTIN certification, tax season business',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/tax-preparation',
   },
@@ -78,7 +78,7 @@ export default async function Page() {
                 Start Your Tax Preparation Business
               </h1>
               <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                Funded IRS-certified training. Earn $40k-$100k+ per year. Work
+                IRS-certified training for $1,500. Earn $40k-$100k+ per year. Work
                 from home. Be your own boss.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,7 +86,7 @@ export default async function Page() {
                   href="/apply"
                   className="inline-flex items-center justify-center px-8 py-4 bg-white text-green-600 font-bold rounded-xl hover:bg-gray-100 transition text-lg shadow-lg"
                 >
-                  Start Free Training
+                  Apply Now
                 </Link>
                 <a
                   href="https://www.indianacareerconnect.com"
@@ -163,7 +163,7 @@ export default async function Page() {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg mb-2">
-                    Complete Our Free Training Course
+                    Complete Our Training Course
                   </h3>
                   <p className="text-black">
                     Learn tax preparation fundamentals, IRS regulations, and
@@ -320,7 +320,7 @@ export default async function Page() {
           </p>
           <div className="bg-white rounded-xl p-8 shadow-lg">
             <h3 className="text-2xl font-bold mb-6 text-green-600">
-              Our Training is 100% FREE
+              Our Training: $1,500 (No Ongoing Fees)
             </h3>
             <div className="grid md:grid-cols-2 gap-6 text-left">
               <div>
@@ -345,7 +345,7 @@ export default async function Page() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-bold mb-3">What You Save:</h4>
+                <h4 className="font-bold mb-3">What You Save vs Franchises:</h4>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
@@ -357,7 +357,7 @@ export default async function Page() {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                    <span>$0 training costs</span>
+                    <span>$0 ongoing fees after training</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
@@ -377,7 +377,7 @@ export default async function Page() {
             Ready to Start Your Tax Business?
           </h2>
           <p className="text-xl mb-8">
-            Funded training. IRS-certified. Start earning this tax season.
+            $1,500 tuition. IRS-certified. Start earning this tax season.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
