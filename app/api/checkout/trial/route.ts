@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
     // Create Stripe checkout session with trial period
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
-      payment_method_types: ['card'],
+      payment_method_types: ['card', 'affirm', 'klarna', 'afterpay_clearpay'],
       customer_email: email,
       metadata: {
         license_slug: licenseSlug,
