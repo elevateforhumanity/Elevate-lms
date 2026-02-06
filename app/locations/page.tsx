@@ -221,6 +221,30 @@ export default async function LocationsPage() {
           </section>
         )}
 
+        {/* FAQ */}
+        <section className="bg-slate-50 rounded-2xl p-8 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Locations FAQ</h2>
+          <div className="space-y-4 max-w-2xl mx-auto">
+            {[
+              { q: 'Do I need to visit in person to enroll?', a: 'No, you can complete the enrollment process online or by phone. However, we welcome campus visits to tour facilities and meet staff.' },
+              { q: 'Where does training take place?', a: 'Training locations vary by program. Some programs are at our main facility, others at partner sites. Your enrollment advisor will provide specific location details.' },
+              { q: 'Is parking available?', a: 'Yes, free parking is available at all our training locations. Specific parking instructions are provided during orientation.' },
+              { q: 'Are locations accessible?', a: 'Yes, all our facilities are ADA accessible. Contact us if you need specific accommodations.' },
+              { q: 'Can I transfer between locations?', a: 'In some cases, yes. Speak with your program coordinator about transfer options if your situation changes.' },
+            ].map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl overflow-hidden shadow-sm group">
+                <summary className="p-4 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-4 pb-4 text-slate-600">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to Visit?</h2>

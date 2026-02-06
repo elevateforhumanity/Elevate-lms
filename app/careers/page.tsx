@@ -336,6 +336,33 @@ export default async function CareersPage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Careers FAQ</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'What types of positions do you hire for?', a: 'We hire instructors, career coaches, enrollment specialists, administrative staff, and program coordinators. Positions vary based on current needs.' },
+              { q: 'Do I need teaching experience to be an instructor?', a: 'Industry experience is most important. We provide training on instructional methods. Relevant certifications and work experience in your field are required.' },
+              { q: 'Are positions full-time or part-time?', a: 'We offer both. Many instructor positions are part-time or contract-based. Administrative roles are typically full-time.' },
+              { q: 'Can I work remotely?', a: 'Some administrative positions offer remote or hybrid options. Instructor and student-facing roles are typically on-site.' },
+              { q: 'What benefits do you offer?', a: 'Full-time employees receive health insurance, paid time off, and professional development opportunities. Benefits vary by position type.' },
+              { q: 'How do I apply?', a: 'Click on any open position to apply online. You can also send your resume to elevate4humanityedu@gmail.com for general consideration.' },
+            ].map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl overflow-hidden shadow-sm group">
+                <summary className="p-5 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 text-slate-600">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-brand-orange-600 text-white">
         <div className="container mx-auto px-4">

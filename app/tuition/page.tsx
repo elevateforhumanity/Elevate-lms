@@ -245,6 +245,33 @@ export default async function TuitionPage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-12 sm:py-16 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center">Tuition FAQ</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'Is training really free?', a: 'Yes, for eligible participants. WIOA, WRG, and JRI funding covers 100% of tuition for qualifying students. Self-pay options are available for those who don\'t qualify.' },
+              { q: 'What if I don\'t qualify for free training?', a: 'We offer payment plans for self-pay students. Some programs have employer-sponsored spots. Our team will discuss all options with you.' },
+              { q: 'Are there any hidden fees?', a: 'No hidden fees. We clearly disclose all costs upfront. Funded students have no out-of-pocket costs. Self-pay students know exact costs before enrolling.' },
+              { q: 'Do I need to pay anything upfront?', a: 'For funded programs, no. For self-pay programs like Barber Apprenticeship, a deposit is required with the balance paid over time.' },
+              { q: 'What does tuition include?', a: 'Tuition covers instruction, materials, certification exam fees (for most programs), and career services. Specific inclusions vary by program.' },
+              { q: 'Can I get a refund if I withdraw?', a: 'Refund policies vary by program and funding source. Contact us for specific refund terms before enrolling.' },
+            ].map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl overflow-hidden shadow-sm group">
+                <summary className="p-5 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 text-slate-600">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Our Commitment */}
       <section className="py-12 sm:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

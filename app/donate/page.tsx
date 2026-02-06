@@ -244,6 +244,33 @@ export default async function DonatePage() {
           </div>
         </div>
       </section>
+      {/* FAQ */}
+      <section className="py-12 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Donation FAQ</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'Is my donation tax-deductible?', a: 'Yes. Elevate for Humanity is a 501(c)(3) nonprofit organization. Your donation is tax-deductible to the extent allowed by law.' },
+              { q: 'How is my donation used?', a: 'Donations support student scholarships, training materials, supportive services (transportation, childcare), and program expansion.' },
+              { q: 'Can I donate to a specific program?', a: 'Yes. You can designate your gift to a specific program or let us allocate it where needed most. Contact us to discuss designated giving.' },
+              { q: 'Do you accept corporate donations?', a: 'Yes. We welcome corporate partnerships and sponsorships. Contact us to discuss corporate giving opportunities.' },
+              { q: 'Can I set up recurring donations?', a: 'Yes. Monthly giving provides sustained support for our programs. You can set up recurring donations through our online form.' },
+              { q: 'Will I receive a receipt?', a: 'Yes. You will receive an email receipt immediately after donating. Annual giving statements are provided for tax purposes.' },
+            ].map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl overflow-hidden shadow-sm group">
+                <summary className="p-5 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 text-slate-600">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-blue-700 text-white py-12">
         <div className="max-w-4xl mx-auto px-4 text-center">

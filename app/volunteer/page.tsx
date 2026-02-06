@@ -145,6 +145,30 @@ export default async function VolunteerPage() {
           </div>
         )}
 
+        {/* FAQ */}
+        <div className="mt-12 bg-slate-50 rounded-xl p-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Volunteer FAQ</h2>
+          <div className="space-y-4 max-w-2xl mx-auto">
+            {[
+              { q: 'What volunteer opportunities are available?', a: 'We need mentors, guest speakers, mock interview partners, resume reviewers, and event volunteers. Opportunities vary based on current needs.' },
+              { q: 'How much time do I need to commit?', a: 'Commitments vary. Some roles are one-time (guest speaker), others are ongoing (mentor). We work with your schedule.' },
+              { q: 'Do I need specific qualifications?', a: 'It depends on the role. Mentors should have industry experience. Other roles just require enthusiasm and reliability.' },
+              { q: 'Is there a background check?', a: 'Yes, volunteers working directly with students undergo background checks. This is standard for educational organizations.' },
+              { q: 'Can I volunteer remotely?', a: 'Some roles like resume review can be done remotely. Others like mock interviews work best in person. We\'ll match you with appropriate opportunities.' },
+            ].map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl overflow-hidden shadow-sm group">
+                <summary className="p-4 cursor-pointer font-semibold text-slate-900 flex justify-between items-center">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-4 pb-4 text-slate-600">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+
         {/* CTA */}
         <div className="mt-12 bg-gradient-to-r from-gray-900 to-gray-800 rounded-xl p-8 text-center text-white">
           <h2 className="text-2xl font-bold mb-4">Ready to Make a Difference?</h2>
