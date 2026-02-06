@@ -116,7 +116,7 @@ export default function CNAProgramPage() {
       </div>
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-pink-800 via-pink-700 to-slate-900 text-white overflow-hidden">
+      <section className="relative bg-pink-700 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
         
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
@@ -245,7 +245,7 @@ export default function CNAProgramPage() {
       </section>
 
       {/* Career Path */}
-      <section className="py-20 bg-gradient-to-br from-slate-800 to-slate-900 text-white">
+      <section className="py-20 bg-slate-800 text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block bg-white/10 text-pink-300 text-sm font-semibold px-4 py-1 rounded-full mb-4">Career Growth</span>
@@ -295,7 +295,7 @@ export default function CNAProgramPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-pink-600 to-pink-800 text-white">
+      <section className="py-20 bg-pink-600 text-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Start Caring for Others?</h2>
           <p className="text-xl text-pink-100 mb-8 max-w-2xl mx-auto">Begin your nursing journey with CNA certification. Check your eligibility for free WIOA-funded training.</p>

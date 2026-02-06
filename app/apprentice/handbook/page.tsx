@@ -94,7 +94,7 @@ export default async function ApprenticeHandbookPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+      <section className="bg-blue-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <BookOpen className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Apprentice Handbook</h1>

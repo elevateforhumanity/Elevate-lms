@@ -90,7 +90,7 @@ export default function ShopWeeklyReportPage() {
 
   return (
     <div className="min-h-screen bg-slate-900 pb-20">
-      <header className="bg-gradient-to-br from-blue-600 to-blue-800 px-4 pt-12 pb-6 safe-area-inset-top">
+      <header className="bg-slate-700 px-4 pt-12 pb-6 safe-area-inset-top">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
             <Link href="/pwa/shop-owner/reports" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">

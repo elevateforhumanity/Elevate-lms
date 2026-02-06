@@ -108,7 +108,7 @@ export default async function CompanyProfilePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Cover Image */}
-      <div className="relative h-64 bg-gradient-to-r from-purple-600 to-blue-600">
+      <div className="relative h-64 bg-purple-600">
         {companyData.cover && companyData.cover !== '/images/defaults/company-cover.jpg' && (
           <Image
             src={companyData.cover}

@@ -326,7 +326,7 @@ export default async function WorkforceBoardDashboard() {
           </Link>
         </div>
 
-        <div className="mt-8 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl border border-green-200 p-6">
+        <div className="mt-8 bg-slate-700 rounded-xl border border-green-200 p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <CheckCircle className="w-8 h-8 text-green-600 mr-3" />

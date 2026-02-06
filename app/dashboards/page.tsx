@@ -97,7 +97,7 @@ const portals = [
 
 export default function PortalsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 py-16">
+    <div className="min-h-screen bg-slate-800 py-16">
             <div className="max-w-7xl mx-auto px-4 py-4">
         <Breadcrumbs items={[{ label: "Dashboards" }]} />
       </div>

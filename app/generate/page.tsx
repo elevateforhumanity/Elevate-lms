@@ -82,7 +82,7 @@ export default function GenerateSitePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-slate-800">
             <div className="max-w-7xl mx-auto px-4 py-4">
         <Breadcrumbs items={[{ label: "Generate" }]} />
       </div>
@@ -246,7 +246,7 @@ export default function GenerateSitePage() {
                 </button>
                 <button
                   onClick={handleGenerate}
-                  className="flex-1 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-lg flex items-center justify-center gap-2 transition-all"
+                  className="flex-1 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg flex items-center justify-center gap-2 transition-all"
                 >
                   <Sparkles className="w-5 h-5" />
                   Generate My Site
@@ -313,7 +313,7 @@ export default function GenerateSitePage() {
               </div>
 
               {/* Mini Preview Hero */}
-              <div className="p-8 bg-gradient-to-b from-slate-50 to-white">
+              <div className="p-8 bg-slate-50">
                 <h2 className="text-2xl font-bold text-slate-900 mb-2">
                   {siteConfig.homepage.heroTitle}
                 </h2>

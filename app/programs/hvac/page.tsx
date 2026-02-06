@@ -151,7 +151,7 @@ export default function HVACProgramPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 text-white overflow-hidden">
+      <section className="relative bg-blue-800 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
         
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
@@ -350,7 +350,7 @@ export default function HVACProgramPage() {
       </section>
 
       {/* Certifications */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 to-slate-900 text-white">
+      <section className="py-20 bg-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block bg-white/10 text-blue-300 text-sm font-semibold px-4 py-1 rounded-full mb-4">
@@ -498,7 +498,7 @@ export default function HVACProgramPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+      <section className="py-20 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
             Ready to Start Your HVAC Career?

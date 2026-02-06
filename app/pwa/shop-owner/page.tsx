@@ -28,7 +28,7 @@ function LandingPage() {
   return (
     <div className="min-h-screen bg-slate-900">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 px-6 pt-16 pb-12 text-center">
+      <div className="bg-slate-700 px-6 pt-16 pb-12 text-center">
         <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
           <Building2 className="w-10 h-10 text-white" />
         </div>
@@ -118,7 +118,7 @@ function Dashboard({
   return (
     <div className="min-h-screen bg-slate-900 pb-20">
       {/* Header */}
-      <header className="bg-gradient-to-r from-blue-600 to-blue-800 px-4 pt-12 pb-6 safe-area-inset-top">
+      <header className="bg-slate-700 px-4 pt-12 pb-6 safe-area-inset-top">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
@@ -185,7 +185,7 @@ function Dashboard({
         <div className="space-y-3">
           <h2 className="text-white font-bold text-lg">Quick Actions</h2>
           
-          <Link href="/pwa/shop-owner/approve-hours" className="flex items-center gap-4 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-xl p-4 active:opacity-80">
+          <Link href="/pwa/shop-owner/approve-hours" className="flex items-center gap-4 bg-amber-500/20 border border-amber-500/30 rounded-xl p-4 active:opacity-80">
             <div className="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center">
               <CheckCircle className="w-6 h-6 text-white" />
             </div>
@@ -196,7 +196,7 @@ function Dashboard({
             <ChevronRight className="w-5 h-5 text-amber-400" />
           </Link>
 
-          <Link href="/pwa/shop-owner/checkin" className="flex items-center gap-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-xl p-4 active:opacity-80">
+          <Link href="/pwa/shop-owner/checkin" className="flex items-center gap-4 bg-blue-500/20 border border-blue-500/30 rounded-xl p-4 active:opacity-80">
             <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
               <QrCode className="w-6 h-6 text-white" />
             </div>

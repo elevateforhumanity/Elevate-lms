@@ -82,7 +82,7 @@ export default function CommunityHubPage() {
         <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Community Hub" }]} />
       </div>
 {/* Hero */}
-      <section className="relative py-20 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500">
+      <section className="relative py-20 bg-slate-700">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-white">

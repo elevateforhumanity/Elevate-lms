@@ -189,7 +189,7 @@ export default function DemosPage() {
                       <Play className="w-10 h-10 text-blue-600 ml-1" />
                     </Link>
                   </div>
-                  <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm flex items-center gap-1">
+                  <div className="absolute top-4 right-4 bg-slate-800 text-white px-3 py-1 rounded-full text-sm flex items-center gap-1">
                     <Clock className="w-3 h-3" />
                     {demo.duration}
                   </div>
@@ -228,7 +228,7 @@ export default function DemosPage() {
       </section>
 
       {/* Live Demo CTA */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 to-blue-700 text-white">
+      <section className="py-20 bg-blue-700 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Users className="w-16 h-16 mx-auto mb-6 text-blue-300" />
           <h2 className="text-3xl md:text-4xl font-black mb-4">

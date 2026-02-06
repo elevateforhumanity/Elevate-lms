@@ -194,7 +194,7 @@ export default async function AchievementsPage() {
                     className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-14 h-14 bg-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0">
                         <IconComponent className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -240,7 +240,7 @@ export default async function AchievementsPage() {
                     <div className="flex items-start gap-4">
                       <div className={`w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 ${
                         isEarned 
-                          ? 'bg-gradient-to-br from-yellow-400 to-orange-500' 
+                          ? 'bg-yellow-500' 
                           : 'bg-gray-300'
                       }`}>
                         {isEarned ? (

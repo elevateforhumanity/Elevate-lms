@@ -91,7 +91,7 @@ export default async function StateBoardExamPage() {
 
         {/* Readiness Status */}
         {isReady ? (
-          <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-6 text-white">
+          <div className="bg-green-500 rounded-2xl p-6 text-white">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
                 <CheckCircle className="w-10 h-10" />
@@ -105,7 +105,7 @@ export default async function StateBoardExamPage() {
             </div>
           </div>
         ) : (
-          <div className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl p-6 text-white">
+          <div className="bg-amber-500 rounded-2xl p-6 text-white">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
                 <Lock className="w-10 h-10" />

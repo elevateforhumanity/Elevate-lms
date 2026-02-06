@@ -152,7 +152,7 @@ export default function CurvatureBodySculptingPage() {
                 key={service.name}
                 className="bg-white rounded-2xl p-6 border hover:shadow-xl hover:border-pink-200 transition group"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center mb-4">
                   <service.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">{service.name}</h3>
@@ -173,7 +173,7 @@ export default function CurvatureBodySculptingPage() {
       </section>
 
       {/* Wellness Products */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+      <section className="py-20 bg-pink-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full text-purple-700 text-sm font-medium mb-4">
@@ -192,7 +192,7 @@ export default function CurvatureBodySculptingPage() {
                 key={product.name}
                 className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition"
               >
-                <div className="w-full h-40 bg-gradient-to-br from-pink-100 to-purple-100 rounded-xl mb-4 flex items-center justify-center">
+                <div className="w-full h-40 bg-pink-100 rounded-xl mb-4 flex items-center justify-center">
                   <Sparkles className="w-12 h-12 text-purple-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">{product.name}</h3>
@@ -359,7 +359,7 @@ export default function CurvatureBodySculptingPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-pink-500 to-purple-600 text-white">
+      <section className="py-20 bg-pink-500 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Transform?</h2>
           <p className="text-pink-100 mb-8">

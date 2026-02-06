@@ -243,7 +243,7 @@ export default async function AchievementsPage() {
         </div>
 
         {/* Stats Overview */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 text-white mb-8">
+        <div className="bg-blue-600 rounded-2xl p-6 text-white mb-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="text-4xl font-black">{stats.totalPoints.toLocaleString()}</div>

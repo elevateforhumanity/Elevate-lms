@@ -380,7 +380,7 @@ export default function DisclosuresPage() {
       </section>
 
       {/* Complaint Process CTA */}
-      <section className="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+      <section className="py-16 bg-gray-800 text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>

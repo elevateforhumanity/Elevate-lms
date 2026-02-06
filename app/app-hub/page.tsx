@@ -75,7 +75,7 @@ export default function AppHubPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-20">
+      <section className="bg-blue-600 text-white py-20">
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -114,7 +114,7 @@ export default function AppHubPage() {
             <div className="flex justify-center">
               <div className="relative">
                 <div className="w-64 h-[500px] bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
-                  <div className="w-full h-full bg-gradient-to-b from-blue-500 to-purple-600 rounded-[2.5rem] flex items-center justify-center">
+                  <div className="w-full h-full bg-blue-500 rounded-[2.5rem] flex items-center justify-center">
                     <Smartphone className="w-24 h-24 text-white/50" />
                   </div>
                 </div>

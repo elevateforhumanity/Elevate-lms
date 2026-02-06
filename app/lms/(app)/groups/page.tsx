@@ -136,7 +136,7 @@ export default async function GroupsPage() {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
+                      <div className="w-14 h-14 bg-blue-500 rounded-xl flex items-center justify-center text-white font-bold text-xl">
                         {group.name?.charAt(0).toUpperCase()}
                       </div>
                       <div>
@@ -221,7 +221,7 @@ export default async function GroupsPage() {
               </div>
 
               {/* Quick Actions */}
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl p-6 text-white">
+              <div className="bg-blue-600 rounded-xl p-6 text-white">
                 <h3 className="font-bold mb-4">Quick Actions</h3>
                 <div className="space-y-2">
                   <Link

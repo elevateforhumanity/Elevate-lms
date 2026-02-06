@@ -49,7 +49,7 @@ export default function GrantsAppPage() {
         <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Grants" }]} />
       </div>
 {/* Hero */}
-      <section className="bg-gradient-to-br from-green-800 to-green-600 text-white py-16 px-4">
+      <section className="bg-slate-700 text-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>

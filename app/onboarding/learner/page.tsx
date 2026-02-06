@@ -141,7 +141,7 @@ export default async function LearnerOnboardingPage() {
       </div>
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-12">
+      <div className="bg-blue-600 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">
           <h1 className="text-3xl font-bold mb-2">Welcome to Elevate for Humanity</h1>
           <p className="text-blue-100 text-lg">

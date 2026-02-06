@@ -92,7 +92,7 @@ export default async function ProductDetailPage({ params }: Props) {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Product Image */}
           <div className="space-y-4">
-            <div className="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl overflow-hidden relative">
+            <div className="aspect-square bg-slate-700 rounded-2xl overflow-hidden relative">
               {product.image_url ? (
                 <Image
                   src={product.image_url}
@@ -175,7 +175,7 @@ export default async function ProductDetailPage({ params }: Props) {
                   href={`/curvature-body-sculpting/shop/${related.slug}`}
                   className="group"
                 >
-                  <div className="aspect-square bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl overflow-hidden mb-3 relative">
+                  <div className="aspect-square bg-slate-700 rounded-xl overflow-hidden mb-3 relative">
                     {related.image_url ? (
                       <Image
                         src={related.image_url}

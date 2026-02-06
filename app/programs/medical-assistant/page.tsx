@@ -122,7 +122,7 @@ export default function MedicalAssistantProgramPage() {
       </div>
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-rose-800 via-rose-700 to-slate-900 text-white overflow-hidden">
+      <section className="relative bg-rose-700 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
         
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
@@ -273,7 +273,7 @@ export default function MedicalAssistantProgramPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-rose-600 to-rose-800 text-white">
+      <section className="py-20 bg-rose-600 text-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Start Your Healthcare Career?</h2>
           <p className="text-xl text-rose-100 mb-8 max-w-2xl mx-auto">Join a rewarding profession helping patients every day. Check your eligibility for free WIOA-funded training.</p>

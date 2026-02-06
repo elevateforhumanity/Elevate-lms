@@ -188,7 +188,7 @@ export default async function InteractiveCoursesPage() {
                         </span>
                       </div>
                     )}
-                    <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded text-sm flex items-center gap-1">
+                    <div className="absolute bottom-3 right-3 bg-slate-800 text-white px-2 py-1 rounded text-sm flex items-center gap-1">
                       <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                       {course.rating}
                     </div>

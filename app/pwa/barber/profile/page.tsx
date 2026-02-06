@@ -92,7 +92,7 @@ export default function BarberProfilePage() {
   return (
     <div className="min-h-screen bg-slate-900 pb-20">
       {/* Header */}
-      <header className="bg-gradient-to-r from-purple-600 to-purple-800 px-4 pt-12 pb-8 safe-area-inset-top">
+      <header className="bg-purple-600 px-4 pt-12 pb-8 safe-area-inset-top">
         <div className="flex items-center justify-between mb-6">
           <Link href="/pwa/barber" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
             <ArrowLeft className="w-5 h-5 text-white" />
@@ -122,7 +122,7 @@ export default function BarberProfilePage() {
           </div>
           <div className="h-3 bg-slate-700 rounded-full overflow-hidden mb-3">
             <div 
-              className="h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full"
+              className="h-full bg-purple-500 rounded-full"
               style={{ width: `${Math.min(progressPercent, 100)}%` }}
             />
           </div>

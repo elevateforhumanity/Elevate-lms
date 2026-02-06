@@ -66,7 +66,7 @@ export default function HiringGuidePage() {
   return (
     <div className="min-h-screen bg-gray-50">
             <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Hiring Guide" }]} />
-<div className="relative h-80 bg-gradient-to-r from-purple-900 to-indigo-900">
+<div className="relative h-80 bg-purple-800">
         <Image
           src="/images/heroes-hq/career-services-hero.jpg"
           alt="Hiring guide"
@@ -164,7 +164,7 @@ export default function HiringGuidePage() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-purple-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">Ready to Start Hiring?</h3>
           <p className="text-purple-200 mb-6 max-w-2xl mx-auto">
             Post your first job and connect with pre-screened, WOTC-eligible candidates today.

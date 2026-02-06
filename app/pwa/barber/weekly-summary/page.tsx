@@ -80,7 +80,7 @@ export default function WeeklySummaryPage() {
 
   return (
     <div className="min-h-screen bg-slate-900 pb-20">
-      <header className="bg-gradient-to-br from-purple-600 to-purple-800 px-4 pt-12 pb-6 safe-area-inset-top">
+      <header className="bg-slate-700 px-4 pt-12 pb-6 safe-area-inset-top">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
             <Link href="/pwa/barber" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -176,7 +176,7 @@ export default function WeeklySummaryPage() {
         </div>
 
         {/* Cumulative Progress */}
-        <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 border border-purple-500/30 rounded-xl p-4">
+        <div className="bg-purple-500/20 border border-purple-500/30 rounded-xl p-4">
           <div className="flex items-center gap-2 mb-3">
             <TrendingUp className="w-5 h-5 text-purple-400" />
             <span className="text-purple-300 font-medium">Overall Progress</span>
@@ -190,7 +190,7 @@ export default function WeeklySummaryPage() {
           </div>
           <div className="h-3 bg-slate-700 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full"
+              className="h-full bg-slate-700 rounded-full"
               style={{ width: `${summary.progressPercent}%` }}
             />
           </div>

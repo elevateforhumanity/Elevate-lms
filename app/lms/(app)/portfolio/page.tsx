@@ -254,7 +254,7 @@ export default async function PortfolioPage() {
             </div>
 
             {/* Gamification Stats */}
-            <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl p-6 mb-6">
+            <div className="bg-orange-500 rounded-xl p-6 mb-6">
               <PointsDisplay userId={user.id} />
             </div>
 

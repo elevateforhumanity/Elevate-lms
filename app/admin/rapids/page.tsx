@@ -55,7 +55,7 @@ export default function RapidsAdminPage() {
         </div>
 
         {/* Quick Actions */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-6 mb-6 text-white">
+        <div className="bg-blue-600 rounded-xl p-6 mb-6 text-white">
           <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
           <div className="grid md:grid-cols-3 gap-4">
             <Link

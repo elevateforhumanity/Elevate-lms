@@ -89,7 +89,7 @@ export default async function TaxToolsPage() {
               href="https://www.irs.gov/forms-pubs/about-schedule-c-form-1040"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-gradient-to-br from-green-50 to-white rounded-2xl p-6 border-2 border-green-200 hover:border-green-500 transition-all transform hover:scale-105"
+              className="group bg-green-50 rounded-2xl p-6 border-2 border-green-200 hover:border-green-500 transition-all transform hover:scale-105"
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-2xl font-black text-green-600">
@@ -108,7 +108,7 @@ export default async function TaxToolsPage() {
               href="https://www.irs.gov/forms-pubs/about-form-w-2"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-gradient-to-br from-orange-50 to-white rounded-2xl p-6 border-2 border-orange-200 hover:border-orange-500 transition-all transform hover:scale-105"
+              className="group bg-orange-50 rounded-2xl p-6 border-2 border-orange-200 hover:border-orange-500 transition-all transform hover:scale-105"
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-2xl font-black text-orange-600">
@@ -127,7 +127,7 @@ export default async function TaxToolsPage() {
               href="https://www.irs.gov/forms-pubs/about-form-1099-misc"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-gradient-to-br from-purple-50 to-white rounded-2xl p-6 border-2 border-purple-200 hover:border-purple-500 transition-all transform hover:scale-105"
+              className="group bg-purple-50 rounded-2xl p-6 border-2 border-purple-200 hover:border-purple-500 transition-all transform hover:scale-105"
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-2xl font-black text-purple-600">
@@ -146,7 +146,7 @@ export default async function TaxToolsPage() {
               href="https://www.irs.gov/forms-pubs/about-schedule-a-form-1040"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-gradient-to-br from-red-50 to-white rounded-2xl p-6 border-2 border-red-200 hover:border-red-500 transition-all transform hover:scale-105"
+              className="group bg-red-50 rounded-2xl p-6 border-2 border-red-200 hover:border-red-500 transition-all transform hover:scale-105"
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-2xl font-black text-red-600">Schedule A</h3>
@@ -163,7 +163,7 @@ export default async function TaxToolsPage() {
               href="https://www.irs.gov/forms-pubs"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border-2 border-gray-300 hover:border-gray-500 transition-all transform hover:scale-105"
+              className="group bg-gray-50 rounded-2xl p-6 border-2 border-gray-300 hover:border-gray-500 transition-all transform hover:scale-105"
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-2xl font-black text-black">All Forms</h3>
@@ -352,7 +352,7 @@ export default async function TaxToolsPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <Link
               href="/supersonic-fast-cash/calculator"
-              className="group bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 border-2 border-blue-200 hover:border-blue-500 transition-all transform hover:scale-105"
+              className="group bg-blue-50 rounded-2xl p-8 border-2 border-blue-200 hover:border-blue-500 transition-all transform hover:scale-105"
             >
               <Calculator className="w-12 h-12 text-blue-600 mb-4" />
               <h3 className="text-2xl font-black text-black mb-3">
@@ -371,7 +371,7 @@ export default async function TaxToolsPage() {
               href="https://www.irs.gov/individuals/tax-withholding-estimator"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-gradient-to-br from-green-50 to-white rounded-2xl p-8 border-2 border-green-200 hover:border-green-500 transition-all transform hover:scale-105"
+              className="group bg-green-50 rounded-2xl p-8 border-2 border-green-200 hover:border-green-500 transition-all transform hover:scale-105"
             >
               <Calculator className="w-12 h-12 text-green-600 mb-4" />
               <h3 className="text-2xl font-black text-black mb-3">
@@ -388,7 +388,7 @@ export default async function TaxToolsPage() {
               href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border-2 border-orange-200 hover:border-orange-500 transition-all transform hover:scale-105"
+              className="group bg-orange-50 rounded-2xl p-8 border-2 border-orange-200 hover:border-orange-500 transition-all transform hover:scale-105"
             >
               <Calculator className="w-12 h-12 text-orange-600 mb-4" />
               <h3 className="text-2xl font-black text-black mb-3">
@@ -405,7 +405,7 @@ export default async function TaxToolsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-green-600 to-blue-600 text-white">
+      <section className="py-20 bg-slate-700 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-black mb-6 uppercase">
             Need Professional Help?

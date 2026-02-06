@@ -211,7 +211,7 @@ export default function SmartUploadPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4">
+    <div className="min-h-screen bg-gray-50 py-12 px-4">
             <div className="max-w-7xl mx-auto px-4 py-4">
         <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Smart Upload" }]} />
       </div>
@@ -503,7 +503,7 @@ export default function SmartUploadPage() {
 
         {/* CTA */}
         {files.some((f) => f.status === 'completed') && (
-          <div className="mt-8 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl shadow-xl p-8 text-white text-center">
+          <div className="mt-8 bg-slate-700 rounded-2xl shadow-xl p-8 text-white text-center">
             <h3 className="text-2xl font-bold mb-3">
               Ready to File Your Return?
             </h3>

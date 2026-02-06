@@ -55,7 +55,7 @@ export default async function MembersPage() {
       </div>
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-orange-600 to-amber-700 text-white py-20">
+      <section className="relative bg-orange-600 text-white py-20">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4">
@@ -122,7 +122,7 @@ export default async function MembersPage() {
               {members.map((member: any) => (
                 <div key={member.id} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
                   <div className="flex items-start gap-4">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                    <div className="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
                       {getInitial(member.full_name)}
                     </div>
                     <div className="flex-1 min-w-0">

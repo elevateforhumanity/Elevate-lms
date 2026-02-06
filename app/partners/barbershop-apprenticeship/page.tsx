@@ -134,7 +134,7 @@ export default function BarbershopPartnerPage() {
         <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Barbershop Apprenticeship" }]} />
       </div>
 {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
+      <section className="bg-slate-800 text-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center gap-2 text-slate-300 mb-4">
             <Building2 className="w-5 h-5" />
@@ -459,7 +459,7 @@ export default function BarbershopPartnerPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-700">
+      <section className="py-20 bg-blue-600">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
             Ready to Host an Apprentice?

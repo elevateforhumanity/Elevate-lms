@@ -79,7 +79,7 @@ export default function StateBoardPrepPage() {
 
   return (
     <div className="min-h-screen bg-slate-900 pb-20">
-      <header className="bg-gradient-to-br from-indigo-600 to-indigo-800 px-4 pt-12 pb-6 safe-area-inset-top">
+      <header className="bg-indigo-600 px-4 pt-12 pb-6 safe-area-inset-top">
         <div className="flex items-center gap-4 mb-4">
           <Link href="/pwa/barber/training" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
             <ArrowLeft className="w-5 h-5 text-white" />

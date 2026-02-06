@@ -99,7 +99,7 @@ export default async function WorkshopsPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-20">
+      <section className="bg-purple-600 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Calendar className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Workshops</h1>

@@ -52,7 +52,7 @@ export default async function TrainingCoursesPage() {
         <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Courses" }]} />
       </div>
 {/* Hero */}
-      <section className="bg-gradient-to-r from-orange-600 to-orange-700 text-white py-16">
+      <section className="bg-slate-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -86,7 +86,7 @@ export default async function TrainingCoursesPage() {
                 className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow"
               >
                 {/* Course Header */}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6 text-white">
+                <div className="bg-slate-700 p-6 text-white">
                   <div className="flex justify-between items-start mb-2">
                     <BookOpen className="w-8 h-8" />
                     <span className="bg-white text-blue-600 px-3 py-1 rounded-full text-sm font-bold">

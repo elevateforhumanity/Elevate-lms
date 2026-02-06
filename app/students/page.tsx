@@ -52,7 +52,7 @@ export default async function StudentsPage() {
         ]}
       />
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 to-purple-600 text-white py-20">
+      <section className="relative bg-slate-700 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">

@@ -90,7 +90,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ c
         <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "[Courseid]" }]} />
       </div>
 {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-12">
+      <section className="bg-slate-700 text-white py-12">
         <div className="max-w-7xl mx-auto px-6">
           <Link
             href="/supersonic-fast-cash/training/courses"

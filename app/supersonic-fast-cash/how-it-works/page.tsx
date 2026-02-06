@@ -104,7 +104,7 @@ export default function HowItWorksPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-orange-600 to-orange-700 text-white py-20">
+      <section className="bg-slate-700 text-white py-20">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
             Tax Prep Made Simple
@@ -171,7 +171,7 @@ export default function HowItWorksPage() {
                 </div>
 
                 {/* Step Number Visual */}
-                <div className="w-48 h-48 bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl flex items-center justify-center shadow-xl">
+                <div className="w-48 h-48 bg-slate-700 rounded-3xl flex items-center justify-center shadow-xl">
                   <span className="text-8xl font-black text-white/30">{step.number}</span>
                 </div>
               </div>
@@ -201,7 +201,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Refund Advance Callout */}
-      <section className="py-20 bg-gradient-to-r from-green-600 to-green-700 text-white">
+      <section className="py-20 bg-slate-700 text-white">
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>

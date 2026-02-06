@@ -232,7 +232,7 @@ export default async function CareerServicesPage() {
       </section>
 
       {/* Self-Paced Courses CTA */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 to-blue-600">
+      <section className="py-16 bg-purple-600">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="text-white">

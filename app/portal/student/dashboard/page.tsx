@@ -70,7 +70,7 @@ export default async function StudentDashboardPage() {
     <div className="min-h-screen bg-gray-50">
             <Breadcrumbs items={[{ label: "Portal", href: "/portal" }, { label: "Student", href: "/portal/student/dashboard" }, { label: "Dashboard" }]} />
 {/* Header */}
-      <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-8">
+      <div className="bg-orange-500 text-white py-8">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-3xl font-bold">Welcome back, {profile?.first_name || profile?.full_name || 'Student'}!</h1>
           <p className="text-orange-100 mt-1">Continue your learning journey</p>

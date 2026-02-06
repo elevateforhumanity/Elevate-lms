@@ -146,7 +146,7 @@ export default function CapitalReadinessGuidePage() {
       />
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 lg:py-28">
+      <section className="relative bg-slate-700 text-white py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -187,7 +187,7 @@ export default function CapitalReadinessGuidePage() {
             </div>
 
             <div className="relative">
-              <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-8 shadow-2xl">
+              <div className="bg-slate-700 rounded-2xl p-8 shadow-2xl">
                 <div className="aspect-[3/4] bg-white rounded-lg flex items-center justify-center">
                   <div className="text-center p-8">
                     <BookOpen className="w-16 h-16 text-slate-400 mx-auto mb-4" />
@@ -339,7 +339,7 @@ export default function CapitalReadinessGuidePage() {
       {/* Pricing */}
       <section className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-8 lg:p-12 text-white text-center">
+          <div className="bg-slate-700 rounded-2xl p-8 lg:p-12 text-white text-center">
             <h2 className="text-3xl font-bold mb-4">Get the Guide</h2>
             <p className="text-blue-100 mb-8 max-w-xl mx-auto">
               Start building institutional trust today. Includes the full ebook, integrated workbook, 

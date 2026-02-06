@@ -22,7 +22,7 @@ export default function FederalCompliancePage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 text-white py-20">
+      <section className="bg-zinc-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">

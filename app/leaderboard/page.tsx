@@ -37,7 +37,7 @@ export default async function LeaderboardPage() {
         </div>
       </div>
 
-      <section className="bg-gradient-to-br from-yellow-500 to-orange-600 text-white py-16">
+      <section className="bg-yellow-500 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Trophy className="w-16 h-16 mx-auto mb-4" />
           <h1 className="text-4xl font-bold mb-4">Leaderboard</h1>

@@ -492,7 +492,7 @@ export default function CurvatureShopPage() {
         <Breadcrumbs items={[{ label: "Curvature Body Sculpting", href: "/curvature-body-sculpting" }, { label: "Shop" }]} />
       </div>
 {/* Header */}
-      <section className="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-12">
+      <section className="bg-pink-500 text-white py-12">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div>
@@ -591,7 +591,7 @@ export default function CurvatureShopPage() {
                     className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group"
                   >
                     {/* Product Image */}
-                    <div className="relative h-48 bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center overflow-hidden">
+                    <div className="relative h-48 bg-pink-100 flex items-center justify-center overflow-hidden">
                       {product.image ? (
                         <Image
                           src={product.image}

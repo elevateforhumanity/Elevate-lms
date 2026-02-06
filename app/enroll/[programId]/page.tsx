@@ -239,7 +239,7 @@ export default function EnrollPage() {
       <div className="py-4 sm:py-8 md:py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 text-white">
+          <div className="bg-slate-700 px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 text-white">
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
               <BookOpen className="w-10 h-10 sm:w-12 sm:h-12" />
               <div>

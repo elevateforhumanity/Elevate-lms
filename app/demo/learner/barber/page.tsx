@@ -122,7 +122,7 @@ export default function BarberApprenticeshipDemoPage() {
         <Breadcrumbs items={[{ label: "Demo", href: "/demo" }, { label: "Barber" }]} />
       </div>
 {/* Demo Mode Banner */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 text-center">
+      <div className="bg-blue-600 text-white py-3 px-4 text-center">
         <Info className="w-4 h-4 inline mr-2" />
         <span className="font-semibold">Full Feature Demo</span> — Barber Apprenticeship Student Portal Experience
         <Link href="/store" className="ml-4 underline hover:no-underline">
@@ -155,7 +155,7 @@ export default function BarberApprenticeshipDemoPage() {
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
               </button>
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
                   MJ
                 </div>
                 <span className="hidden sm:block text-sm font-medium text-slate-900">{student.name}</span>
@@ -233,7 +233,7 @@ export default function BarberApprenticeshipDemoPage() {
               
               {/* Program Progress Card */}
               <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-                <div className="bg-gradient-to-r from-slate-900 to-slate-700 p-6 text-white">
+                <div className="bg-slate-800 p-6 text-white">
                   <div className="flex items-start justify-between">
                     <div>
                       <h2 className="text-xl font-bold mb-1">{program.name}</h2>
@@ -249,7 +249,7 @@ export default function BarberApprenticeshipDemoPage() {
                       <span className="font-semibold">56%</span>
                     </div>
                     <div className="w-full bg-slate-600 rounded-full h-3">
-                      <div className="bg-gradient-to-r from-orange-500 to-orange-400 h-3 rounded-full" style={{ width: '56%' }}></div>
+                      <div className="bg-orange-500 h-3 rounded-full" style={{ width: '56%' }}></div>
                     </div>
                   </div>
                 </div>
@@ -367,7 +367,7 @@ export default function BarberApprenticeshipDemoPage() {
             <div className="space-y-6">
               
               {/* Shop Placement Card */}
-              <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl p-6 text-white">
+              <div className="bg-orange-500 rounded-xl p-6 text-white">
                 <h3 className="font-semibold mb-3">Shop Placement</h3>
                 <p className="font-bold text-lg mb-1">{program.shopPlacement}</p>
                 <p className="text-orange-100 text-sm mb-4">Mentor: {program.mentor}</p>
@@ -480,7 +480,7 @@ export default function BarberApprenticeshipDemoPage() {
           </div>
 
           {/* Feature Showcase Banner */}
-          <div className="mt-8 bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl p-8 text-white">
+          <div className="mt-8 bg-slate-800 rounded-xl p-8 text-white">
             <div className="max-w-3xl">
               <h2 className="text-2xl font-bold mb-4">Full LMS Feature Set Included</h2>
               <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">

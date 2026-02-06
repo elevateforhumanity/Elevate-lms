@@ -335,7 +335,7 @@ export default async function LibraryPage() {
         )}
 
         {/* Quick Access */}
-        <div className="mt-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 text-white">
+        <div className="mt-8 bg-blue-600 rounded-2xl p-6 text-white">
           <h2 className="text-xl font-bold mb-4">Quick Access</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
             <Link

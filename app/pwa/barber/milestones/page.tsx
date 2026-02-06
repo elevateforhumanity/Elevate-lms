@@ -80,7 +80,7 @@ export default function MilestonesPage() {
 
   return (
     <div className="min-h-screen bg-slate-900 pb-20">
-      <header className="bg-gradient-to-br from-amber-500 via-amber-600 to-orange-600 px-4 pt-12 pb-6 safe-area-inset-top">
+      <header className="bg-amber-500 px-4 pt-12 pb-6 safe-area-inset-top">
         <div className="flex items-center gap-4 mb-4">
           <Link href="/pwa/barber" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
             <ArrowLeft className="w-5 h-5 text-white" />
@@ -135,7 +135,7 @@ export default function MilestonesPage() {
           <>
             {/* Next Milestone */}
             {nextMilestone && (
-              <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 border border-purple-500/30 rounded-xl p-4">
+              <div className="bg-purple-500/20 border border-purple-500/30 rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-3">
                   <Sparkles className="w-5 h-5 text-purple-400" />
                   <span className="text-purple-300 text-sm font-medium">Next Milestone</span>

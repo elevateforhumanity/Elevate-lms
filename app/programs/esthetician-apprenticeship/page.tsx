@@ -60,7 +60,7 @@ export default async function EstheticianApprenticeshipPage() {
         ]}
       />
       {/* Hero Section */}
-      <section className="relative w-full -mt-[72px] min-h-[70vh] flex items-center bg-gradient-to-br from-teal-500 via-emerald-600 to-green-700">
+      <section className="relative w-full -mt-[72px] min-h-[70vh] flex items-center bg-teal-500">
         {/* overlay removed */}
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-32 md:py-40">
           <div className="flex flex-wrap items-center gap-2 mb-4">

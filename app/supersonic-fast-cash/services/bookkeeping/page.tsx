@@ -512,7 +512,7 @@ export default async function BookkeepingPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-orange-600 to-orange-700 text-white">
+      <section className="py-16 bg-slate-700 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-black mb-6">
             Ready to Get Your Books in Order?

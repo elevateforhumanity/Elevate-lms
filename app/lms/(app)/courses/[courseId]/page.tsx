@@ -147,7 +147,7 @@ export default async function CoursePage({ params }: { params: Params }) {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Course Header */}
-      <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white">
+      <div className="bg-slate-700 text-white">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">

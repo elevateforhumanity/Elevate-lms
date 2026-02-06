@@ -193,7 +193,7 @@ export default function VerifyCredentialsPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white py-16">
+      <section className="bg-slate-700 text-white py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center gap-3 mb-4">
             <BadgeCheck className="w-10 h-10 text-blue-400" />

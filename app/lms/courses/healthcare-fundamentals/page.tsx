@@ -97,7 +97,7 @@ export default function HealthcareFundamentalsCoursePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 to-teal-600 text-white py-20">
+      <section className="relative bg-blue-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -358,7 +358,7 @@ export default function HealthcareFundamentalsCoursePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-teal-600 text-white">
+      <section className="py-20 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6">
             Ready to Start Your Healthcare Career?

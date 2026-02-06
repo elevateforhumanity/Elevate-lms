@@ -56,7 +56,7 @@ export default function AlumniPage() {
       </div>
 
       {/* Hero */}
-      <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-blue-900 to-blue-700 text-white">
+      <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-blue-700 text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-5xl font-bold mb-6">

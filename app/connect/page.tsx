@@ -87,7 +87,7 @@ export default function ConnectPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-slate-800">
             <div className="max-w-7xl mx-auto px-4 py-4">
         <Breadcrumbs items={[{ label: "Connect" }]} />
       </div>
@@ -320,7 +320,7 @@ export default function ConnectPage() {
                 <div>
                   <label className="block text-slate-400 text-sm mb-1">Site ID</label>
                   <div className="flex">
-                    <code className="flex-1 px-4 py-2 bg-black/30 rounded-l-lg text-cyan-400 font-mono text-sm">
+                    <code className="flex-1 px-4 py-2 bg-slate-700 rounded-l-lg text-cyan-400 font-mono text-sm">
                       {integration.siteId}
                     </code>
                     <button
@@ -334,7 +334,7 @@ export default function ConnectPage() {
                 <div>
                   <label className="block text-slate-400 text-sm mb-1">API Key</label>
                   <div className="flex">
-                    <code className="flex-1 px-4 py-2 bg-black/30 rounded-l-lg text-cyan-400 font-mono text-sm truncate">
+                    <code className="flex-1 px-4 py-2 bg-slate-700 rounded-l-lg text-cyan-400 font-mono text-sm truncate">
                       {integration.apiKey}
                     </code>
                     <button
@@ -363,7 +363,7 @@ export default function ConnectPage() {
                   Copy
                 </button>
               </div>
-              <pre className="bg-black/30 rounded-lg p-4 overflow-x-auto">
+              <pre className="bg-slate-700 rounded-lg p-4 overflow-x-auto">
                 <code className="text-green-400 text-sm font-mono whitespace-pre">
                   {integration.embedScript}
                 </code>
@@ -389,7 +389,7 @@ export default function ConnectPage() {
               </h3>
               <div className="space-y-4">
                 {integration.components.map((comp, idx) => (
-                  <div key={idx} className="p-4 bg-black/20 rounded-lg">
+                  <div key={idx} className="p-4 bg-slate-700 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <p className="text-white font-medium">{comp.name}</p>
                       <button
@@ -400,7 +400,7 @@ export default function ConnectPage() {
                       </button>
                     </div>
                     <p className="text-slate-400 text-sm mb-2">{comp.description}</p>
-                    <code className="block bg-black/30 rounded px-3 py-2 text-cyan-400 text-sm font-mono">
+                    <code className="block bg-slate-700 rounded px-3 py-2 text-cyan-400 text-sm font-mono">
                       {comp.embedCode}
                     </code>
                   </div>
@@ -414,7 +414,7 @@ export default function ConnectPage() {
                 <h3 className="text-white font-bold mb-4">WordPress Shortcodes</h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   {integration.platformSpecific.shortcodes.map((sc: any, idx: number) => (
-                    <div key={idx} className="p-3 bg-black/20 rounded-lg">
+                    <div key={idx} className="p-3 bg-slate-700 rounded-lg">
                       <code className="text-cyan-400 font-mono text-sm">{sc.code}</code>
                       <p className="text-slate-400 text-xs mt-1">{sc.description}</p>
                     </div>
@@ -424,7 +424,7 @@ export default function ConnectPage() {
             )}
 
             {/* Next Steps */}
-            <div className="bg-gradient-to-r from-cyan-600/20 to-blue-600/20 rounded-2xl p-6 border border-cyan-500/30">
+            <div className="bg-cyan-600/20 rounded-2xl p-6 border border-cyan-500/30">
               <h3 className="text-white font-bold mb-4">Next Steps</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <a

@@ -119,18 +119,18 @@ export default function RefundTrackerPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'received':
-        return 'from-blue-600 to-blue-700';
+        return 'bg-blue-600';
       case 'approved':
-        return 'from-green-600 to-green-700';
+        return 'bg-green-600';
       case 'sent':
-        return 'from-purple-600 to-purple-700';
+        return 'bg-purple-600';
       default:
-        return 'from-gray-600 to-gray-700';
+        return 'bg-gray-600';
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4">
+    <div className="min-h-screen bg-gray-50 py-12 px-4">
             <div className="max-w-7xl mx-auto px-4 py-4">
         <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Refund Tracker" }]} />
       </div>
@@ -275,7 +275,7 @@ export default function RefundTrackerPage() {
           <div className="space-y-6">
             {/* Main Status Card */}
             <div
-              className={`bg-gradient-to-br ${getStatusColor(
+              className={`${getStatusColor(
                 refundStatus.status
               )} rounded-2xl shadow-xl p-8 text-white`}
             >
@@ -431,7 +431,7 @@ export default function RefundTrackerPage() {
             {refundStatus.status !== 'sent' &&
               refundStatus.refundAmount &&
               refundStatus.refundAmount >= 250 && (
-                <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl shadow-xl p-8 text-black">
+                <div className="bg-slate-700 rounded-2xl shadow-xl p-8 text-black">
                   <h3 className="text-2xl font-bold mb-3">
                     <DollarSign className="w-5 h-5 inline-block" /> Get Your
                     Money Today!

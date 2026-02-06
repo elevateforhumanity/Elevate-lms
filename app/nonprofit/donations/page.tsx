@@ -94,7 +94,7 @@ export default async function DonationsPage() {
       </div>
 
       {/* Hero */}
-      <section className="py-20 px-4 bg-gradient-to-br from-purple-50 to-white text-center">
+      <section className="py-20 px-4 bg-purple-50 text-center">
         <div className="max-w-4xl mx-auto">
           <Heart className="w-16 h-16 text-purple-600 mx-auto mb-6" />
           <h1 className="text-5xl md:text-6xl font-black text-black mb-6">

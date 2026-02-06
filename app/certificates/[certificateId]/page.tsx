@@ -72,7 +72,7 @@ export default async function CertificateViewPage({ params }: Props) {
   const recipientName = recipient ? `${recipient.first_name} ${recipient.last_name}` : certificate.recipient_name || 'Student';
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12">
+    <div className="min-h-screen bg-blue-50 py-12">
             <div className="max-w-7xl mx-auto px-4 py-4">
         <Breadcrumbs items={[{ label: "Certificates", href: "/certificates" }, { label: "[Certificateid]" }]} />
       </div>
@@ -88,7 +88,7 @@ export default async function CertificateViewPage({ params }: Props) {
         {/* Certificate Card */}
         <div className="bg-white rounded-3xl shadow-xl border-4 border-blue-100 overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white p-8 text-center">
+          <div className="bg-slate-700 text-white p-8 text-center">
             <Award className="w-16 h-16 mx-auto mb-4 text-yellow-400" />
             <h1 className="text-3xl font-bold mb-2">Certificate of Completion</h1>
             <p className="text-blue-200">Elevate for Humanity</p>

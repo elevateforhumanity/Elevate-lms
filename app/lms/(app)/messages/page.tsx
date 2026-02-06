@@ -142,7 +142,7 @@ export default async function MessagesPage() {
                   className={`block p-4 hover:bg-slate-50 transition ${conv.unread > 0 ? 'bg-blue-50' : ''}`}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                    <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
                       {conv.participant?.full_name?.[0]?.toUpperCase() || 'U'}
                     </div>
                     <div className="flex-1 min-w-0">

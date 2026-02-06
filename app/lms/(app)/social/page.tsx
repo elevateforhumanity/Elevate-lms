@@ -61,7 +61,7 @@ export default async function SocialPage() {
           <div className="lg:col-span-1">
             {/* Profile Card */}
             <div className="bg-white rounded-xl shadow-sm border overflow-hidden mb-6">
-              <div className="h-20 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+              <div className="h-20 bg-blue-500"></div>
               <div className="px-4 pb-4">
                 <div className="w-16 h-16 bg-gray-200 rounded-full border-4 border-white -mt-8 flex items-center justify-center">
                   {profile?.avatar_url ? (

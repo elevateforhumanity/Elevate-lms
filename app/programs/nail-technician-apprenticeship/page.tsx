@@ -60,7 +60,7 @@ export default async function NailTechnicianApprenticeshipPage() {
         ]}
       />
       {/* Hero Section */}
-      <section className="relative w-full -mt-[72px] min-h-[70vh] flex items-center bg-gradient-to-br from-pink-600 via-purple-600 to-indigo-700">
+      <section className="relative w-full -mt-[72px] min-h-[70vh] flex items-center bg-pink-600">
         <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-32 md:py-40">
           <div className="flex flex-wrap items-center gap-2 mb-4">

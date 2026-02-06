@@ -128,7 +128,7 @@ export default function JobPlacementPage() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-gray-50 to-orange-50 rounded-2xl p-8 md:p-12">
+        <div className="bg-orange-50 rounded-2xl p-8 md:p-12">
           <h2 className="text-3xl font-bold text-black mb-8 text-center">How Job Placement Works</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-6">
@@ -422,7 +422,7 @@ export default function JobPlacementPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-brand-orange-600 to-brand-purple-600 text-white py-16">
+      <section className="bg-brand-orange-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-4xl font-black mb-6 text-center">
             Success Stories

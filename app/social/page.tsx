@@ -75,7 +75,7 @@ const socialPlatforms = [
   {
     name: 'Instagram',
     icon: Instagram,
-    color: 'bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600',
+    color: 'bg-slate-700 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600',
     href: 'https://www.instagram.com/elevateforhumanity',
     followers: '3.4K',
     description: 'Behind-the-scenes content, student spotlights, and daily inspiration',
@@ -269,7 +269,7 @@ export default function SocialMediaPage() {
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Follow Our
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+              <span className="block text-transparent bg-clip-text bg-slate-700">
                 Journey
               </span>
             </h1>
@@ -504,7 +504,7 @@ export default function SocialMediaPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+      <section className="py-20 bg-slate-700">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Join Our Community Today

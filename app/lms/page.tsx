@@ -81,7 +81,7 @@ export default async function LMSPage() {
   const continueCourse = typedEnrollments.find(e => (e.progress || 0) > 0 && (e.progress || 0) < 100);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-blue-50">
       {/* Breadcrumbs */}
       <div className="bg-slate-50 border-b">
         <div className="max-w-6xl mx-auto px-4 py-3">

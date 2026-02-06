@@ -189,7 +189,7 @@ export default async function SupportPage() {
           {/* Contact Options */}
           <div className="space-y-6">
             {/* Live Chat */}
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-6 text-white">
+            <div className="bg-blue-600 rounded-2xl p-6 text-white">
               <MessageSquare className="w-10 h-10 mb-4 opacity-90" />
               <h3 className="text-xl font-bold mb-2">Live Chat</h3>
               <p className="text-blue-100 mb-4">Chat with our support team in real-time.</p>

@@ -140,8 +140,8 @@ export default async function QuizResultsPage({ params }: Props) {
         {/* Results Header */}
         <div className={`rounded-2xl p-8 mb-8 ${
           passed 
-            ? 'bg-gradient-to-br from-green-500 to-emerald-600' 
-            : 'bg-gradient-to-br from-red-500 to-rose-600'
+            ? 'bg-slate-700' 
+            : 'bg-slate-700'
         } text-white`}>
           <div className="flex items-center justify-between mb-6">
             <div>

@@ -32,7 +32,7 @@ export default function WebinarsPage() {
         </div>
       </div>
 
-      <section className="bg-gradient-to-br from-red-600 to-pink-600 text-white py-20">
+      <section className="bg-slate-700 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Video className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Live Webinars</h1>

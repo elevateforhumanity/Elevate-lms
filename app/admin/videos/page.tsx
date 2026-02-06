@@ -181,7 +181,7 @@ export default async function VideosPage() {
                             fill
                             className="object-cover"
                           />
-                          <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                          <div className="absolute inset-0 flex items-center justify-center bg-slate-800/20">
                             <Play className="h-12 w-12 text-white" />
                           </div>
                         </div>

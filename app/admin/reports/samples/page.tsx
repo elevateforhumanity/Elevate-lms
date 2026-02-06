@@ -262,7 +262,7 @@ export default function SampleReportsPage() {
           
           <div className="p-6">
             {/* Certificate Preview */}
-            <div className="border-2 border-purple-200 rounded-xl p-8 bg-gradient-to-br from-purple-50 to-white mb-6">
+            <div className="border-2 border-purple-200 rounded-xl p-8 bg-purple-50 mb-6">
               <div className="text-center">
                 <div className="text-purple-600 font-bold text-sm tracking-widest mb-2">CERTIFICATE OF COMPLETION</div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-1">{SAMPLE_CERTIFICATE.student.name}</h3>

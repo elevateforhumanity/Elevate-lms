@@ -93,7 +93,7 @@ export default async function DonatePage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-r from-teal-600 to-teal-700 text-white py-20">
+      <section className="bg-teal-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full mb-6">
             <Shield className="w-5 h-5" />
@@ -196,7 +196,7 @@ export default async function DonatePage() {
 
             {/* Total Raised */}
             {totalRaised > 0 && (
-              <div className="bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl p-6 text-center">
+              <div className="bg-teal-500 text-white rounded-xl p-6 text-center">
                 <TrendingUp className="w-10 h-10 mx-auto mb-3" />
                 <p className="text-teal-100 mb-1">Total Raised</p>
                 <p className="text-4xl font-bold">${totalRaised.toLocaleString()}</p>

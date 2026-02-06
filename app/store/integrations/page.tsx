@@ -38,7 +38,7 @@ export default async function IntegrationsPage() {
             <div className="max-w-7xl mx-auto px-4 py-4">
         <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Integrations" }]} />
       </div>
-<section className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white py-20">
+<section className="bg-slate-700 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <Plug className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-5xl font-black mb-6">
@@ -251,7 +251,7 @@ export default async function IntegrationsPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-12 text-center">
+          <div className="bg-slate-700 rounded-2xl p-12 text-center">
             <Plug className="w-16 h-16 text-indigo-600 mx-auto mb-6" />
             <h2 className="text-3xl font-bold mb-4">Need a Custom Integration?</h2>
             <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">

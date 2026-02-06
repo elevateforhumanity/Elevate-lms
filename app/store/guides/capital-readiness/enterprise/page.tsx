@@ -5,7 +5,7 @@ import { ArrowLeft, Building2, Shield, Globe, Users, FileCheck, Scale, Briefcase
 
 export default function EnterpriseCapitalReadinessPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-slate-700">
       {/* Header */}
       <header className="border-b border-white/10 bg-black/20 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -220,7 +220,7 @@ export default function EnterpriseCapitalReadinessPage() {
           </h2>
           
           <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-blue-500 to-green-500"></div>
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-700"></div>
             
             <div className="space-y-8">
               {[
@@ -475,7 +475,7 @@ export default function EnterpriseCapitalReadinessPage() {
 
         {/* CTA */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl border border-purple-500/30 p-12">
+          <div className="bg-purple-500/20 rounded-2xl border border-purple-500/30 p-12">
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready for Enterprise Deployment?
             </h2>

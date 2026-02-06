@@ -41,7 +41,7 @@ export default async function StudentCoursesPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course) => (
             <div key={course.id} className="bg-white rounded-xl shadow-sm overflow-hidden">
-              <div className="h-32 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
+              <div className="h-32 bg-slate-700 flex items-center justify-center">
                 <BookOpen className="w-12 h-12 text-white opacity-80" />
               </div>
               <div className="p-6">

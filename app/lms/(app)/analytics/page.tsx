@@ -311,7 +311,7 @@ export default async function AnalyticsPage() {
             </div>
 
             {/* Completion Stats */}
-            <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-6 text-white">
+            <div className="bg-blue-600 rounded-2xl p-6 text-white">
               <h3 className="font-bold mb-4 flex items-center gap-2">
                 <Award className="w-5 h-5" />
                 Completion Stats

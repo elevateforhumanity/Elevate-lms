@@ -120,7 +120,7 @@ export default async function TalentPipelinePage() {
         <Breadcrumbs items={[{ label: "Employers", href: "/employers" }, { label: "Talent Pipeline" }]} />
       </div>
 {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-800 to-slate-900 text-white py-20 md:py-28">
+      <section className="relative bg-slate-800 text-white py-20 md:py-28">
         <div className="absolute inset-0 opacity-20">
           <Image
             src="/images/hero/hero-career-services.jpg"

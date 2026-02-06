@@ -53,7 +53,7 @@ export default function EmployerProgramsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
             <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Programs" }]} />
-<div className="relative h-64 bg-gradient-to-r from-purple-900 to-indigo-900">
+<div className="relative h-64 bg-purple-800">
         <Image
           src="/images/community/community-hero.jpg"
           alt="Employer programs"
@@ -139,7 +139,7 @@ export default function EmployerProgramsPage() {
           ))}
         </div>
 
-        <div className="mt-12 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-8 text-white">
+        <div className="mt-12 bg-purple-600 rounded-2xl p-8 text-white">
           <div className="md:flex items-center justify-between">
             <div>
               <h3 className="text-2xl font-bold mb-2">Need Help Choosing a Program?</h3>

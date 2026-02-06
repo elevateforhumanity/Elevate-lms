@@ -41,7 +41,7 @@ export default async function JoinCommunityPage() {
       </div>
 
       {/* Hero */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-900 to-purple-900 text-white overflow-hidden">
+      <section className="relative py-20 bg-blue-800 text-white overflow-hidden">
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Join the Elevate Community</h1>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">

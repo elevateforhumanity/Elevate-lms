@@ -99,7 +99,7 @@ export default function CNAEnrollPage() {
         <Breadcrumbs items={[{ label: "Programs", href: "/programs" }, { label: "Enroll" }]} />
       </div>
 {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-8">
+      <div className="bg-blue-600 text-white py-8">
         <div className="max-w-4xl mx-auto px-4">
           <Link href="/programs/cna" className="inline-flex items-center gap-2 text-blue-100 hover:text-white mb-4">
             <ArrowLeft className="w-4 h-4" />

@@ -132,7 +132,7 @@ export default async function EnrollPage({ searchParams }: Props) {
                         />
                       </div>
                     ) : (
-                      <div className="h-40 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                      <div className="h-40 bg-blue-600 flex items-center justify-center">
                         <BookOpen className="w-12 h-12 text-white/50" />
                       </div>
                     )}
@@ -199,7 +199,7 @@ export default async function EnrollPage({ searchParams }: Props) {
                     key={course.id}
                     className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition"
                   >
-                    <div className="h-40 bg-gradient-to-br from-purple-600 to-indigo-800 flex items-center justify-center">
+                    <div className="h-40 bg-purple-600 flex items-center justify-center">
                       <BookOpen className="w-12 h-12 text-white/50" />
                     </div>
 

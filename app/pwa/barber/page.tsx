@@ -29,7 +29,7 @@ function LandingPage() {
   return (
     <div className="min-h-screen bg-slate-900">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-purple-600 via-purple-700 to-purple-900 px-6 pt-16 pb-12 text-center">
+      <div className="bg-purple-700 px-6 pt-16 pb-12 text-center">
         <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
           <Scissors className="w-10 h-10 text-white" />
         </div>
@@ -113,7 +113,7 @@ function Dashboard({ apprentice, onLogout }: { apprentice: ApprenticeData; onLog
   return (
     <div className="min-h-screen bg-slate-900 pb-20">
       {/* Header */}
-      <header className="bg-gradient-to-r from-purple-600 to-purple-800 px-4 pt-12 pb-6 safe-area-inset-top">
+      <header className="bg-purple-600 px-4 pt-12 pb-6 safe-area-inset-top">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
@@ -142,7 +142,7 @@ function Dashboard({ apprentice, onLogout }: { apprentice: ApprenticeData; onLog
           </div>
           <div className="h-3 bg-white/20 rounded-full overflow-hidden mb-3">
             <div 
-              className="h-full bg-gradient-to-r from-green-400 to-emerald-500 rounded-full transition-all duration-500"
+              className="h-full bg-green-500 rounded-full transition-all duration-500"
               style={{ width: `${Math.min(progressPercent, 100)}%` }}
             />
           </div>
@@ -175,7 +175,7 @@ function Dashboard({ apprentice, onLogout }: { apprentice: ApprenticeData; onLog
 
         {/* Next Milestone */}
         {apprentice.nextMilestone && (
-          <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-xl p-4">
+          <div className="bg-amber-500/20 border border-amber-500/30 rounded-xl p-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center">
                 <Award className="w-6 h-6 text-white" />
@@ -197,7 +197,7 @@ function Dashboard({ apprentice, onLogout }: { apprentice: ApprenticeData; onLog
         <div className="space-y-3">
           <h2 className="text-white font-bold text-lg">Quick Actions</h2>
           
-          <Link href="/pwa/barber/checkin" className="flex items-center gap-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-4 active:opacity-80">
+          <Link href="/pwa/barber/checkin" className="flex items-center gap-4 bg-green-500/20 border border-green-500/30 rounded-xl p-4 active:opacity-80">
             <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
               <CheckCircle className="w-6 h-6 text-white" />
             </div>

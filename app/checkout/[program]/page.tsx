@@ -253,7 +253,7 @@ function CheckoutPageContent() {
                 </div>
 
                 {/* BNPL Info */}
-                <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg p-4 mb-6">
+                <div className="bg-slate-700 rounded-lg p-4 mb-6">
                   <p className="font-semibold text-black mb-2">Buy Now, Pay Later Options</p>
                   <p className="text-sm text-slate-700">
                     Split your payment into 4 interest-free installments with Klarna, Afterpay, or Zip. 

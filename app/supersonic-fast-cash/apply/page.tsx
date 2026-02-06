@@ -47,7 +47,7 @@ export default function RefundApplyPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-green-50 to-white flex items-center justify-center px-4">
+      <div className="min-h-screen bg-green-50 flex items-center justify-center px-4">
         <div className="max-w-md w-full text-center">
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-10 h-10 text-green-600" />
@@ -76,7 +76,7 @@ export default function RefundApplyPage() {
         <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Apply" }]} />
       </div>
 {/* Hero */}
-      <section className="bg-gradient-to-r from-orange-600 to-orange-500 text-white py-12">
+      <section className="bg-slate-700 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">
           <Link href="/supersonic-fast-cash" className="inline-flex items-center gap-2 text-orange-100 hover:text-white mb-4">
             <ArrowLeft className="w-4 h-4" />

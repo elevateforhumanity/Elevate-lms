@@ -83,7 +83,7 @@ export default function DrakeDownloadPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4">
+    <div className="min-h-screen bg-gray-50 py-12 px-4">
             <div className="max-w-7xl mx-auto px-4 py-4">
         <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Drake Download" }]} />
       </div>
@@ -106,7 +106,7 @@ export default function DrakeDownloadPage() {
         </div>
 
         {/* Credentials Section - For Authorized Staff Only */}
-        <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-xl p-8 text-white mb-8">
+        <div className="bg-slate-700 rounded-2xl shadow-xl p-8 text-white mb-8">
           <div className="flex items-start justify-between mb-6">
             <div>
               <h2 className="text-2xl font-bold mb-2">Drake Account Access</h2>

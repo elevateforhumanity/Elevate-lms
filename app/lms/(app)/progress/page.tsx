@@ -376,7 +376,7 @@ export default async function ProgressPage() {
             </div>
 
             {/* Learning Streak */}
-            <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl p-6 text-white">
+            <div className="bg-orange-500 rounded-2xl p-6 text-white">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
                   <Award className="w-8 h-8" />

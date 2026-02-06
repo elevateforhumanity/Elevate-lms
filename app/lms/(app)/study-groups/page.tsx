@@ -353,7 +353,7 @@ export default async function StudyGroupsPage() {
         </div>
 
         {/* Benefits Section */}
-        <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+        <div className="mt-12 bg-blue-600 rounded-2xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-6 text-center">Why Join a Study Group?</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">

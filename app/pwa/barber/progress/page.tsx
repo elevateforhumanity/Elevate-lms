@@ -137,7 +137,7 @@ export default function ProgressPage() {
   return (
     <div className="min-h-screen bg-slate-900 pb-20">
       {/* Header */}
-      <header className="bg-gradient-to-r from-purple-600 to-purple-800 px-4 pt-12 pb-6 safe-area-inset-top">
+      <header className="bg-purple-600 px-4 pt-12 pb-6 safe-area-inset-top">
         <div className="flex items-center gap-4 mb-6">
           <Link href="/pwa/barber" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
             <ArrowLeft className="w-5 h-5 text-white" />
@@ -154,7 +154,7 @@ export default function ProgressPage() {
           
           <div className="h-4 bg-white/20 rounded-full overflow-hidden mb-4">
             <div 
-              className="h-full bg-gradient-to-r from-green-400 to-emerald-500 rounded-full"
+              className="h-full bg-green-500 rounded-full"
               style={{ width: `${Math.min(progressPercent, 100)}%` }}
             />
           </div>

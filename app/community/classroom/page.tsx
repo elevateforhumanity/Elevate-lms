@@ -58,7 +58,7 @@ export default async function ClassroomPage() {
       </div>
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-green-800 to-emerald-900 text-white py-20">
+      <section className="relative bg-green-800 text-white py-20">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4">
@@ -166,7 +166,7 @@ export default async function ClassroomPage() {
                           <Lock className="w-3 h-3" /> PREMIUM
                         </span>
                       )}
-                      <button className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity">
+                      <button className="absolute inset-0 flex items-center justify-center bg-slate-800/20 opacity-0 hover:opacity-100 transition-opacity">
                         <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
                           <Play className="w-8 h-8 text-green-600 ml-1" />
                         </div>

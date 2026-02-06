@@ -149,7 +149,7 @@ export default function ShopOwnerProgressPage() {
 
   return (
     <div className="min-h-screen bg-slate-900 pb-20">
-      <header className="bg-gradient-to-r from-blue-600 to-blue-800 px-4 pt-12 pb-6 safe-area-inset-top">
+      <header className="bg-slate-700 px-4 pt-12 pb-6 safe-area-inset-top">
         <h1 className="text-2xl font-bold text-white mb-2">Shop Progress</h1>
         <p className="text-blue-200">Track your team's advancement</p>
 

@@ -169,7 +169,7 @@ export default async function StudentDashboardPage() {
                   <span className="text-xs sm:text-sm font-semibold text-orange-700">{streak.current_streak || 0}</span>
                 </div>
               )}
-              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-xs sm:text-sm">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-slate-700 rounded-full flex items-center justify-center text-white font-semibold text-xs sm:text-sm">
                 {initials}
               </div>
             </div>
@@ -204,7 +204,7 @@ export default async function StudentDashboardPage() {
         <NextActionBannerWrapper />
 
         {/* Welcome Banner */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6 text-white">
+        <div className="bg-slate-700 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6 text-white">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="min-w-0">
               <h1 className="text-lg sm:text-2xl font-bold mb-0.5 sm:mb-1 truncate">Welcome back, {firstName}!</h1>

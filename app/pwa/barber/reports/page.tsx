@@ -85,7 +85,7 @@ export default function BarberReportsPage() {
         </div>
 
         {/* Progress to Goal */}
-        <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 border border-purple-500/30 rounded-xl p-4">
+        <div className="bg-purple-500/20 border border-purple-500/30 rounded-xl p-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <Award className="w-5 h-5 text-purple-400" />
@@ -95,7 +95,7 @@ export default function BarberReportsPage() {
           </div>
           <div className="h-3 bg-slate-700 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full"
+              className="h-full bg-purple-500 rounded-full"
               style={{ width: `${summary.milestoneProgress}%` }}
             />
           </div>

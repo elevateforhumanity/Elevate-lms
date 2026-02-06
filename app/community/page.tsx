@@ -123,7 +123,7 @@ export default async function CommunityPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-violet-900 via-purple-800 to-indigo-900 text-white overflow-hidden">
+      <section className="relative bg-purple-800 text-white overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/community/community-hero.jpg"

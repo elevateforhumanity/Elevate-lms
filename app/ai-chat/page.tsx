@@ -57,7 +57,7 @@ export default function AIChatPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-20">
+      <section className="bg-purple-600 text-white py-20">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full mb-6">
             <Sparkles className="w-5 h-5" />
@@ -85,7 +85,7 @@ export default function AIChatPage() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-white rounded-2xl shadow-xl border overflow-hidden">
             {/* Chat Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-4 flex items-center gap-3">
+            <div className="bg-purple-600 p-4 flex items-center gap-3">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                 <Bot className="w-6 h-6 text-white" />
               </div>
@@ -213,7 +213,7 @@ export default function AIChatPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+      <section className="py-16 bg-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-purple-100 mb-8">

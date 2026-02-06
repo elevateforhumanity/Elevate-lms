@@ -55,7 +55,7 @@ export default async function BlogPage() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white py-16">
+      <div className="bg-emerald-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
           <p className="text-xl text-emerald-100 max-w-2xl">

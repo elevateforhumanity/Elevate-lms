@@ -92,7 +92,7 @@ export default function DemoCenterPage() {
         <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Demo" }]} />
       </div>
 {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16">
+      <section className="bg-slate-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-600 text-white rounded-full text-sm font-bold mb-6">
             <Play className="w-4 h-4" />

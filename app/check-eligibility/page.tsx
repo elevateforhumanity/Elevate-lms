@@ -25,7 +25,7 @@ export default function CheckEligibilityPage() {
         <Breadcrumbs items={[{ label: "Check Eligibility" }]} />
       </div>
 {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-900 to-blue-800 text-white py-16 px-4">
+      <section className="bg-blue-800 text-white py-16 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
             Check Eligibility (Before WorkOne)

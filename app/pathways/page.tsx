@@ -28,7 +28,7 @@ export default function PathwaysPage() {
         </div>
       </div>
 
-      <section className="py-16 bg-gradient-to-br from-blue-900 to-purple-900 text-white">
+      <section className="py-16 bg-blue-800 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Find Your Career Pathway</h1>
           <p className="text-xl text-blue-100 mb-8">Explore training programs designed to launch your career in high-demand industries</p>

@@ -155,7 +155,7 @@ function CheckInContent() {
 
         <main className="px-4 py-6 space-y-6">
           {/* Active Session Card */}
-          <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-center">
+          <div className="bg-green-500 rounded-2xl p-6 text-center">
             <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-10 h-10 text-white" />
             </div>

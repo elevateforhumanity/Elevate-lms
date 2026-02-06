@@ -41,8 +41,8 @@ export default async function PartnersPage() {
       </div>
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-800 to-slate-900 text-white py-20 md:py-28">
-        <div className="absolute inset-0 opacity-20">
+      <section className="relative bg-slate-800 text-white py-20 md:py-28">
+        <div className="absolute inset-0">
           <Image
             src="/images/heroes/workforce-partner-1.jpg"
             alt="Partners background"

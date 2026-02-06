@@ -503,7 +503,7 @@ export default function FundingPage() {
           <div className="mt-16 text-center">
             <Link
               href="/apply"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-10 py-5 rounded-xl text-lg font-black shadow-xl hover:shadow-2xl hover:scale-105 transition-all uppercase"
+              className="inline-flex items-center gap-3 bg-orange-500 text-white px-10 py-5 rounded-xl text-lg font-black shadow-xl hover:shadow-2xl hover:scale-105 transition-all uppercase"
             >
               <span>Apply for Free Training</span>
               <ArrowRight className="w-6 h-6" />

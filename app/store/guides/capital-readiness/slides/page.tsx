@@ -130,7 +130,7 @@ export default function CapitalReadinessSlidesPage() {
           {slides.map((slide, index) => (
             <div 
               key={slide.id}
-              className="bg-gradient-to-br from-slate-800 to-slate-850 rounded-2xl overflow-hidden shadow-xl"
+              className="bg-slate-700 rounded-2xl overflow-hidden shadow-xl"
             >
               {/* Slide Number */}
               <div className="bg-slate-700/50 px-6 py-2 flex items-center justify-between">

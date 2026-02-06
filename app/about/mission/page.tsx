@@ -27,8 +27,8 @@ export default function MissionPage() {
       </div>
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-orange-600 to-orange-700 text-white py-20 md:py-28">
-        <div className="absolute inset-0 opacity-20">
+      <section className="relative bg-orange-600 text-white py-20 md:py-28">
+        <div className="absolute inset-0">
           <Image
             src="/images/hero/hero-main-welcome.jpg"
             alt="Mission background"

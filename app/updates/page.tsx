@@ -109,7 +109,7 @@ export default async function UpdatesPage() {
 
       <div className="max-w-5xl mx-auto px-6 py-8">
         {/* Subscribe Banner */}
-        <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-6 mb-8 text-white">
+        <div className="bg-slate-700 rounded-xl p-6 mb-8 text-white">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-3">
               <Bell className="w-6 h-6" />

@@ -198,7 +198,7 @@ export default async function RiseFoundationPage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500" />
+                    <div className="w-full h-full bg-slate-700" />
                   )}
                   
                   <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">
@@ -256,7 +256,7 @@ export default async function RiseFoundationPage() {
       )}
 
       {/* Contact CTA */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+      <section className="py-16 bg-slate-700 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Take the First Step?</h2>
           <p className="text-xl text-purple-100 mb-8">

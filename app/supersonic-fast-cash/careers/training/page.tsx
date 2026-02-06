@@ -343,7 +343,7 @@ export default function TrainingPage() {
       </div>
 <div className="max-w-7xl mx-auto px-6">
         {/* New Applicant Banner */}
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-xl shadow-lg p-8 mb-8 text-white">
+        <div className="bg-slate-700 rounded-xl shadow-lg p-8 mb-8 text-white">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-4">
               <GraduationCap className="w-5 h-5 inline-block" /> Two Ways to
@@ -480,7 +480,7 @@ export default function TrainingPage() {
         </div>
 
         {/* Training Bundles */}
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-xl shadow-lg p-8 mb-12 text-white">
+        <div className="bg-slate-700 rounded-xl shadow-lg p-8 mb-12 text-white">
           <h2 className="text-2xl font-bold mb-4">
             Training Bundles - Save Big!
           </h2>
@@ -556,7 +556,7 @@ export default function TrainingPage() {
                   !prerequisiteMet ? 'opacity-60' : ''
                 } ${module.price === 0 ? 'ring-4 ring-yellow-400' : ''}`}
               >
-                <div className="bg-gradient-to-r from-green-600 to-blue-600 p-6 text-white relative">
+                <div className="bg-slate-700 p-6 text-white relative">
                   {module.price === 0 && (
                     <div className="absolute top-2 right-2 bg-yellow-400 text-black px-3 py-2 rounded-full text-xs font-bold">
                       FREE!
@@ -754,7 +754,7 @@ export default function TrainingPage() {
         {selectedModuleData && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-6 z-50">
             <div className="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="bg-gradient-to-r from-green-600 to-blue-600 p-8 text-white">
+              <div className="bg-slate-700 p-8 text-white">
                 <h2 className="text-3xl font-bold mb-2">
                   {selectedModuleData.title}
                 </h2>

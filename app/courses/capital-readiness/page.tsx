@@ -103,7 +103,7 @@ export default function CapitalReadinessCoursePage() {
 
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-slate-900 text-white py-20 lg:py-28">
+        <section className="relative bg-emerald-800 text-white py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
@@ -151,7 +151,7 @@ export default function CapitalReadinessCoursePage() {
               </div>
 
               <div className="relative">
-                <div className="bg-gradient-to-br from-emerald-700 to-emerald-800 rounded-2xl p-8 shadow-2xl">
+                <div className="bg-emerald-700 rounded-2xl p-8 shadow-2xl">
                   <div className="aspect-video bg-slate-900 rounded-lg flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -235,7 +235,7 @@ export default function CapitalReadinessCoursePage() {
         {/* Certificate */}
         <section className="py-16 lg:py-24">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-br from-emerald-50 to-slate-50 rounded-2xl p-8 lg:p-12 text-center">
+            <div className="bg-emerald-50 rounded-2xl p-8 lg:p-12 text-center">
               <Award className="w-16 h-16 text-emerald-600 mx-auto mb-6" />
               <h2 className="text-3xl font-bold mb-4">Certificate of Completion</h2>
               <p className="text-slate-600 mb-6 max-w-xl mx-auto">

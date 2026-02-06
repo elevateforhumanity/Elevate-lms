@@ -51,7 +51,7 @@ export default async function EnrollProgramPage({ params }: Props) {
       <div className="max-w-3xl mx-auto px-4">
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8">
+          <div className="bg-slate-700 text-white p-8">
             <h1 className="text-3xl font-bold mb-2">Enroll in {programTitle}</h1>
             <p className="text-blue-100">Complete your enrollment to get started</p>
           </div>

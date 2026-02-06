@@ -44,7 +44,7 @@ export default async function ImpactPage() {
       </div>
 
       {/* Hero */}
-      <section className="w-full py-20 bg-gradient-to-br from-brand-blue-700 to-brand-purple-700 text-white">
+      <section className="w-full py-20 bg-brand-blue-700 text-white">
         <div className="mx-auto w-full max-w-6xl px-6">
           <h1 className="text-5xl md:text-6xl font-black mb-6">
             Measurable Impact, Sustainable Systems

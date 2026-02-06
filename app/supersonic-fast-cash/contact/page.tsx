@@ -57,7 +57,7 @@ export default function ContactPage() {
         <Breadcrumbs items={[{ label: "Supersonic Fast Cash", href: "/supersonic-fast-cash" }, { label: "Contact" }]} />
       </div>
 {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-20">
+      <section className="bg-slate-700 text-white py-20">
         <div className="max-w-7xl mx-auto px-6">
           <h1 className="text-5xl font-black mb-6">Contact Us</h1>
           <p className="text-xl text-white/90 max-w-3xl">
@@ -102,7 +102,7 @@ export default function ContactPage() {
         </div>
 
         {/* Hours */}
-        <div className="bg-gradient-to-br from-blue-50 to-orange-50 rounded-2xl p-8 mb-16">
+        <div className="bg-slate-700 rounded-2xl p-8 mb-16">
           <div className="flex items-center gap-3 mb-6">
             <Clock className="w-8 h-8 text-blue-600" />
             <h2 className="text-3xl font-bold text-black">Business Hours</h2>
@@ -293,7 +293,7 @@ export default function ContactPage() {
       </section>
 
       {/* Quick Actions */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-16">
+      <section className="bg-slate-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-black mb-8 text-center">Ready to Get Started?</h2>
           <div className="grid md:grid-cols-3 gap-6">

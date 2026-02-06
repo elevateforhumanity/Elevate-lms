@@ -116,7 +116,7 @@ export default async function SellOnMarketplacePage() {
       </div>
 
       {/* Hero */}
-      <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-16">
+      <div className="bg-purple-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold mb-4">Share Your Expertise, Earn Revenue</h1>
           <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
@@ -203,7 +203,7 @@ export default async function SellOnMarketplacePage() {
         </div>
 
         {/* Revenue Split */}
-        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 mb-16">
+        <div className="bg-green-50 rounded-2xl p-8 mb-16">
           <div className="max-w-2xl mx-auto text-center">
             <DollarSign className="w-12 h-12 text-green-600 mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Competitive Revenue Share</h2>

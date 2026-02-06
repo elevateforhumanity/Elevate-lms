@@ -223,7 +223,7 @@ export default async function TaxInformationPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-red-50 to-white rounded-2xl p-8 border-2 border-red-200">
+            <div className="bg-red-50 rounded-2xl p-8 border-2 border-red-200">
               <h3 className="text-2xl font-black text-red-600 mb-4">Keep 3 Years</h3>
               <ul className="space-y-2 text-black">
                 <li>• Employment tax records</li>
@@ -234,7 +234,7 @@ export default async function TaxInformationPage() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border-2 border-orange-200">
+            <div className="bg-orange-50 rounded-2xl p-8 border-2 border-orange-200">
               <h3 className="text-2xl font-black text-orange-600 mb-4">Keep 7 Years</h3>
               <ul className="space-y-2 text-black">
                 <li>• Tax returns and supporting docs</li>
@@ -245,7 +245,7 @@ export default async function TaxInformationPage() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-green-50 to-white rounded-2xl p-8 border-2 border-green-200">
+            <div className="bg-green-50 rounded-2xl p-8 border-2 border-green-200">
               <h3 className="text-2xl font-black text-green-600 mb-4">Keep Permanently</h3>
               <ul className="space-y-2 text-black">
                 <li>• Tax returns (copies)</li>
@@ -282,7 +282,7 @@ export default async function TaxInformationPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-green-600 text-white">
+      <section className="py-20 bg-slate-700 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-black mb-6 uppercase">
             Need Help With Your Taxes?

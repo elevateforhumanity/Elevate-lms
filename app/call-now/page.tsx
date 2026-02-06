@@ -20,7 +20,7 @@ export default function CallNowPage() {
         </div>
       </div>
 
-      <section className="bg-gradient-to-br from-green-600 to-green-700 text-white py-20">
+      <section className="bg-green-600 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Phone className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Call Us Now</h1>

@@ -135,7 +135,7 @@ export default function ApprenticeDetailPage({ params }: { params: Promise<{ id:
   return (
     <div className="min-h-screen bg-slate-900 pb-20">
       {/* Header */}
-      <header className="bg-gradient-to-r from-blue-600 to-blue-800 px-4 pt-12 pb-6 safe-area-inset-top">
+      <header className="bg-slate-700 px-4 pt-12 pb-6 safe-area-inset-top">
         <div className="flex items-center gap-4 mb-4">
           <Link href="/pwa/shop-owner/apprentices" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
             <ArrowLeft className="w-5 h-5 text-white" />

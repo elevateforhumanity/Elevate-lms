@@ -51,7 +51,7 @@ export default function WebsiteBuilderAppPage() {
         <Breadcrumbs items={[{ label: "Store", href: "/store" }, { label: "Website Builder" }]} />
       </div>
 {/* Hero */}
-      <section className="bg-gradient-to-br from-purple-900 to-purple-700 text-white py-16 px-4">
+      <section className="bg-slate-700 text-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>

@@ -341,7 +341,7 @@ export default async function ResourcesPage() {
 
         {/* Contact Support */}
         <section>
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-white">
+          <div className="bg-blue-600 rounded-xl p-8 text-white">
             <div className="max-w-2xl">
               <h2 className="text-2xl font-bold mb-2">Need Help?</h2>
               <p className="text-blue-100 mb-6">

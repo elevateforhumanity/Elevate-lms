@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PartnerOnboardingSuccessPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800">
+    <div className="min-h-screen bg-slate-800">
       {/* Breadcrumbs */}
       <div className="bg-slate-50 border-b">
         <div className="max-w-6xl mx-auto px-4 py-3">

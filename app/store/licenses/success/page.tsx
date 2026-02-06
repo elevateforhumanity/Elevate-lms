@@ -98,7 +98,7 @@ function SuccessContent() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Success Header */}
-      <section className="bg-gradient-to-br from-green-600 to-emerald-700 text-white py-16">
+      <section className="bg-slate-700 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-12 h-12" />

@@ -186,7 +186,7 @@ export default function AnalyticsProPage() {
       {/* Pricing */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-2xl p-8 md:p-12 text-white text-center">
+          <div className="bg-slate-700 rounded-2xl p-8 md:p-12 text-white text-center">
             <h2 className="text-3xl font-bold mb-4">Enterprise Pricing</h2>
             <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
               Analytics Pro is available as an add-on to Enterprise licenses. 

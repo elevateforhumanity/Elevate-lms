@@ -100,7 +100,7 @@ export default function BarberEnrollPage() {
         </header>
 
         <main className="px-4 py-6 space-y-6">
-          <div className="bg-gradient-to-r from-purple-600/20 to-purple-800/20 border border-purple-500/30 rounded-xl p-6">
+          <div className="bg-purple-600/20 border border-purple-500/30 rounded-xl p-6">
             <div className="w-16 h-16 bg-purple-500 rounded-xl flex items-center justify-center mb-4">
               <Scissors className="w-8 h-8 text-white" />
             </div>

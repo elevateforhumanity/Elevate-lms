@@ -24,7 +24,7 @@ export default function WorkforceAnalyticsPage() {
         </div>
       </div>
 
-      <section className="bg-gradient-to-br from-indigo-600 to-indigo-700 text-white py-20">
+      <section className="bg-indigo-600 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <BarChart className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Workforce Analytics</h1>

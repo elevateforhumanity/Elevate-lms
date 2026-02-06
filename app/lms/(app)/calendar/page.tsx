@@ -296,7 +296,7 @@ export default async function CalendarPage() {
               )}
             </div>
 
-            <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-6 text-white">
+            <div className="bg-blue-600 rounded-2xl p-6 text-white">
               <h3 className="font-bold mb-4">Quick Actions</h3>
               <div className="space-y-2">
                 <Link href="/lms/assignments" className="block w-full text-center bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition">

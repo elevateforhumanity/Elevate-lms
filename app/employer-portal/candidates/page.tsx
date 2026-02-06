@@ -65,7 +65,7 @@ export default async function CandidatesPage() {
     <div className="min-h-screen bg-gray-50">
             <Breadcrumbs items={[{ label: "Employer Portal", href: "/employer-portal" }, { label: "Candidates" }]} />
 {/* Hero */}
-      <section className="relative bg-gradient-to-br from-green-800 to-emerald-900 text-white py-16">
+      <section className="relative bg-green-800 text-white py-16">
         <div className="absolute inset-0">
           <Image
             src="/images/heroes-hq/success-hero.jpg"
@@ -154,7 +154,7 @@ export default async function CandidatesPage() {
                           className="object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-xl font-bold">
+                        <div className="w-full h-full bg-green-500 flex items-center justify-center text-white text-xl font-bold">
                           {candidate.name.charAt(0)}
                         </div>
                       )}

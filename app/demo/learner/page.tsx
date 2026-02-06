@@ -109,7 +109,7 @@ export default function LearnerDemo() {
         {/* HOME TAB */}
         {tab === 'home' && (
           <div className="space-y-4">
-            <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-4 text-white">
+            <div className="bg-orange-500 rounded-xl p-4 text-white">
               <p className="text-sm opacity-90">Welcome back,</p>
               <h1 className="text-xl font-bold">Darius Williams</h1>
               <div className="flex gap-6 mt-3">

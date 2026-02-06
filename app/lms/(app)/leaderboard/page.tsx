@@ -153,9 +153,9 @@ export default async function LeaderboardPage() {
   };
 
   const getRankBg = (rank: number) => {
-    if (rank === 1) return 'bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-200';
-    if (rank === 2) return 'bg-gradient-to-r from-slate-50 to-gray-50 border-gray-200';
-    if (rank === 3) return 'bg-gradient-to-r from-orange-50 to-amber-50 border-amber-200';
+    if (rank === 1) return 'bg-yellow-50 border-yellow-200';
+    if (rank === 2) return 'bg-slate-50 border-gray-200';
+    if (rank === 3) return 'bg-orange-50 border-amber-200';
     return 'bg-white border-slate-200';
   };
 
@@ -178,7 +178,7 @@ export default async function LeaderboardPage() {
 
         {/* Current User Stats */}
         {currentUserEntry && currentUserEntry.points > 0 && (
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 text-white mb-8">
+          <div className="bg-blue-600 rounded-2xl p-6 text-white mb-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">

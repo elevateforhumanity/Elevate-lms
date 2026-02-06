@@ -49,7 +49,7 @@ function ApplyPageContent() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-pink-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-xl">
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-10 h-10 text-green-600" />
@@ -72,9 +72,9 @@ function ApplyPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50">
+    <div className="min-h-screen bg-pink-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-8">
+      <div className="bg-pink-500 text-white py-8">
         <div className="max-w-4xl mx-auto px-4">
           <Link href="/curvature-body-sculpting/careers" className="text-pink-200 hover:text-white text-sm mb-2 inline-flex items-center gap-1">
             <ArrowLeft className="w-4 h-4" />
@@ -299,7 +299,7 @@ function ApplyPageContent() {
 
 function LoadingFallback() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center">
+    <div className="min-h-screen bg-pink-50 flex items-center justify-center">
             <div className="max-w-7xl mx-auto px-4 py-4">
         <Breadcrumbs items={[{ label: "Curvature Body Sculpting", href: "/curvature-body-sculpting" }, { label: "Apply" }]} />
       </div>

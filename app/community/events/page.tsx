@@ -130,7 +130,7 @@ export default async function EventsPage() {
       </div>
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-purple-700 to-indigo-800 text-white py-16">
+      <section className="relative bg-purple-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4">

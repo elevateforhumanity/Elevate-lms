@@ -53,7 +53,7 @@ export default async function SupportPage() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-brand-blue-600 to-brand-blue-700 text-white py-16">
+      <div className="bg-brand-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Student Support Center</h1>
           <p className="text-xl text-blue-100 max-w-2xl">

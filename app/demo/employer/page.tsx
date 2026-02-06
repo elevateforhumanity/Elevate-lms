@@ -194,7 +194,7 @@ export default function EmployerDemo() {
 
         {tab === 'incentives' && (
           <div className="space-y-4">
-            <div className="bg-gradient-to-r from-green-600 to-green-500 rounded-xl p-4 text-white">
+            <div className="bg-green-600 rounded-xl p-4 text-white">
               <DollarSign className="w-8 h-8 mb-2 opacity-80" />
               <h2 className="text-lg font-bold mb-1">Hiring Incentives</h2>
               <p className="text-sm opacity-90 mb-3">Up to $50,000/year available</p>

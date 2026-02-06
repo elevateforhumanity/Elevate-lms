@@ -71,7 +71,7 @@ export default function MicroclassesPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-16 lg:py-24">
+      <section className="bg-blue-600 text-white py-16 lg:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center">
             <span className="inline-block bg-white/20 text-white px-4 py-1 rounded-full text-sm font-medium mb-4">
@@ -107,7 +107,7 @@ export default function MicroclassesPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {microclasses.map((course, index) => (
               <div key={index} className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition group">
-                <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                <div className="h-48 bg-blue-500 flex items-center justify-center">
                   <Award className="w-16 h-16 text-white/80" />
                 </div>
                 <div className="p-6">

@@ -54,7 +54,7 @@ export default function SupersonicFastCashPage() {
           <div className="text-center">
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight leading-none mb-8">
               Get Your Tax Refund
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-500 to-red-600 animate-pulse">
+              <span className="block text-transparent bg-clip-text bg-slate-700 animate-pulse">
                 TODAY!
               </span>
             </h1>
@@ -67,7 +67,7 @@ export default function SupersonicFastCashPage() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
               <Link
                 href="/supersonic-fast-cash/apply"
-                className="group px-12 py-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-xl sm:text-2xl font-black rounded-2xl hover:from-blue-700 hover:to-blue-800 shadow-2xl hover:shadow-blue-500/50 uppercase transform hover:scale-105 transition-all duration-300"
+                className="group px-12 py-6 bg-slate-700 text-white text-xl sm:text-2xl font-black rounded-2xl hover:from-blue-700 hover:to-blue-800 shadow-2xl hover:shadow-blue-500/50 uppercase transform hover:scale-105 transition-all duration-300"
               >
                 <span className="flex items-center justify-center gap-3">
                   💵 Get Cash Now
@@ -397,7 +397,7 @@ export default function SupersonicFastCashPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-red-600 to-red-700">
+      <section className="py-20 bg-slate-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
             Ready to Get Your Money?

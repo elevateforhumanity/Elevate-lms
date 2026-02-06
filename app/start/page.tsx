@@ -127,7 +127,7 @@ export default async function StartPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
+      <section className="py-16 md:py-24 bg-slate-700 text-white">
         <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
           <h1 className="text-3xl md:text-5xl font-black mb-4">
             Find Your Pathway

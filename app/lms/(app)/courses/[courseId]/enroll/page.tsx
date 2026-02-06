@@ -152,7 +152,7 @@ export default async function CourseEnrollPage({ params }: Props) {
                   />
                 </div>
               ) : (
-                <div className="h-40 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                <div className="h-40 bg-slate-700 flex items-center justify-center">
                   <BookOpen className="w-16 h-16 text-white/50" />
                 </div>
               )}

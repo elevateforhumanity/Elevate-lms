@@ -55,7 +55,7 @@ export default async function ParentPortalPage() {
           { label: 'Parent Portal' },
         ]}
       />
-      <section className="bg-gradient-to-br from-pink-600 to-purple-600 text-white py-20">
+      <section className="bg-pink-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             <div className="mb-8">
@@ -152,7 +152,7 @@ export default async function ParentPortalPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-pink-600 to-purple-600 text-white">
+      <section className="py-20 bg-pink-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-black mb-6">
             Ready to Access the Portal?

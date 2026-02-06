@@ -79,7 +79,7 @@ export default async function AdminsPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-16">
+      <section className="bg-purple-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <Settings className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Administrator Resources</h1>

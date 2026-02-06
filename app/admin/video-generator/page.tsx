@@ -141,7 +141,7 @@ export default function VideoGeneratorPage() {
             <div className="mb-6">
               <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
                 <div 
-                  className="h-full bg-gradient-to-r from-blue-500 to-green-500 transition-all duration-500"
+                  className="h-full bg-blue-500 transition-all duration-500"
                   style={{ width: `${status.percentComplete}%` }}
                 />
               </div>

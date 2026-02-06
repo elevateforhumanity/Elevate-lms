@@ -47,7 +47,7 @@ export default function ClientPortalPage() {
         <Breadcrumbs items={[{ label: "Client Portal" }]} />
       </div>
 {/* Hero */}
-      <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-br from-slate-900 to-slate-700 text-white">
+      <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-slate-700 text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-full text-sm font-medium mb-6">

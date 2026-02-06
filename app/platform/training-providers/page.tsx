@@ -24,7 +24,7 @@ export default function TrainingProvidersPage() {
         </div>
       </div>
 
-      <section className="bg-gradient-to-br from-teal-600 to-teal-700 text-white py-20">
+      <section className="bg-teal-600 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">For Training Providers</h1>
           <p className="text-xl text-teal-100 mb-8">Grow your training business and reach more students</p>

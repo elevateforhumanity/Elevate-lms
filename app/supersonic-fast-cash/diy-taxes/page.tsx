@@ -1278,7 +1278,7 @@ export default function DIYTaxesPage() {
                 </div>
 
                 {/* Refund Summary */}
-                <div className="p-8 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg text-center">
+                <div className="p-8 bg-slate-700 text-white rounded-lg text-center">
                   <div className="text-lg mb-2">Your Estimated Refund</div>
                   <div className="text-5xl font-bold mb-4">
                     ${estimatedRefund.toLocaleString()}

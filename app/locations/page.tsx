@@ -78,7 +78,7 @@ export default async function LocationsPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-20">
+      <section className="bg-blue-600 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <MapPin className="h-20 w-20 text-white mx-auto mb-6" />
@@ -246,7 +246,7 @@ export default async function LocationsPage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-8 text-white text-center">
+        <section className="bg-blue-600 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to Visit?</h2>
           <p className="text-blue-100 mb-6 max-w-xl mx-auto">
             Schedule a campus tour or meet with an enrollment advisor to learn about our programs.

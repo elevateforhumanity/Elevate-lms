@@ -181,7 +181,7 @@ export default function ForumsPage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl p-8 text-white text-center">
+        <section className="bg-indigo-600 rounded-2xl p-8 text-white text-center">
           <Users className="w-12 h-12 mx-auto mb-4 text-indigo-200" />
           <h2 className="text-2xl font-bold mb-4">Join the Conversation</h2>
           <p className="text-indigo-100 mb-6 max-w-lg mx-auto">

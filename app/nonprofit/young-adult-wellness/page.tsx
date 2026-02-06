@@ -75,7 +75,7 @@ export default async function YoungAdultWellnessPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-teal-500 to-teal-700 text-white py-20">
+      <section className="bg-teal-500 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Sparkles className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Young Adult Wellness</h1>

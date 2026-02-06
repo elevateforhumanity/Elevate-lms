@@ -161,7 +161,7 @@ export default function ApprenticesPage() {
                         </div>
                         <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
                           <div 
-                            className="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full"
+                            className="h-full bg-slate-700 rounded-full"
                             style={{ width: `${Math.min(apprentice.progress, 100)}%` }}
                           />
                         </div>

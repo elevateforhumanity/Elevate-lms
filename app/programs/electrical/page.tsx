@@ -122,7 +122,7 @@ export default function ElectricalProgramPage() {
       </div>
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-yellow-600 via-yellow-700 to-slate-900 text-white overflow-hidden">
+      <section className="relative bg-yellow-600 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
         
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
@@ -320,7 +320,7 @@ export default function ElectricalProgramPage() {
       </section>
 
       {/* Career Path */}
-      <section className="py-20 bg-gradient-to-br from-slate-800 to-slate-900 text-white">
+      <section className="py-20 bg-slate-800 text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block bg-white/10 text-yellow-300 text-sm font-semibold px-4 py-1 rounded-full mb-4">
@@ -403,7 +403,7 @@ export default function ElectricalProgramPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-yellow-500 to-yellow-600 text-slate-900">
+      <section className="py-20 bg-yellow-500 text-slate-900">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
             Ready to Power Your Future?

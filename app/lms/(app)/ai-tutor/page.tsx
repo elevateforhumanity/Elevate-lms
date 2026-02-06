@@ -104,7 +104,7 @@ export default function AITutorPage() {
         <Breadcrumbs items={[{ label: "LMS", href: "/lms/dashboard" }, { label: "Ai Tutor" }]} />
       </div>
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-6">
+      <div className="bg-purple-600 text-white py-6">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">

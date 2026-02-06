@@ -214,7 +214,7 @@ export default function CommunityProductsPage() {
         </div>
 
         {/* Sell Products CTA */}
-        <div className="mt-12 bg-gradient-to-r from-green-600 to-teal-600 rounded-xl p-8 text-white text-center">
+        <div className="mt-12 bg-green-600 rounded-xl p-8 text-white text-center">
           <Tag className="w-12 h-12 mx-auto mb-4 opacity-80" />
           <h2 className="text-2xl font-bold mb-2">Sell Your Products</h2>
           <p className="text-green-100 mb-6 max-w-xl mx-auto">

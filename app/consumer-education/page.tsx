@@ -29,7 +29,7 @@ export default function ConsumerEducationPage() {
         </div>
       </div>
 
-      <section className="bg-gradient-to-br from-blue-600 to-blue-700 text-white py-20">
+      <section className="bg-blue-600 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Consumer Education</h1>
           <p className="text-xl text-blue-100 mb-8">Free resources to help you make informed decisions about education, finances, and career</p>

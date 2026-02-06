@@ -434,7 +434,7 @@ export default async function StudentPortalPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white">
+      <section className="py-16 bg-slate-700 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-black mb-6">
             Ready to Start Your Journey?

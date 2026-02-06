@@ -317,7 +317,7 @@ export default function CDLProgramPage() {
       </section>
 
       {/* Requirements */}
-      <section className="py-20 bg-gradient-to-br from-slate-800 to-slate-900 text-white">
+      <section className="py-20 bg-slate-800 text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block bg-white/10 text-orange-300 text-sm font-semibold px-4 py-1 rounded-full mb-4">
@@ -429,7 +429,7 @@ export default function CDLProgramPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-orange-600 to-orange-800 text-white">
+      <section className="py-20 bg-orange-600 text-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
             Ready to Hit the Road?

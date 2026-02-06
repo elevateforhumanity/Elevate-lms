@@ -76,7 +76,7 @@ export default async function MentalWellnessPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-20">
+      <section className="bg-purple-600 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Brain className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Mental Wellness</h1>

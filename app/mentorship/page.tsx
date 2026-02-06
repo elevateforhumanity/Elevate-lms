@@ -31,7 +31,7 @@ export default function MentorshipPage() {
         </div>
       </div>
 
-      <section className="bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-20">
+      <section className="bg-indigo-600 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Users className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Mentorship Program</h1>

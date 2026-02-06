@@ -275,7 +275,7 @@ export default async function BeautyProgramsPage() {
         <div className="max-w-4xl mx-auto text-center">
           <Link
             href="/apply"
-            className="inline-block bg-gradient-to-br from-brand-blue-600 to-brand-purple-600 rounded-2xl px-8 py-6 shadow-xl hover:shadow-2xl transition-all hover:scale-105 transform"
+            className="inline-block bg-brand-blue-600 rounded-2xl px-8 py-6 shadow-xl hover:shadow-2xl transition-all hover:scale-105 transform"
           >
             <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
               Ready to Start Your Beauty Career?

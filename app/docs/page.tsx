@@ -31,7 +31,7 @@ export default function DocsPage() {
         </div>
       </div>
 
-      <section className="bg-gradient-to-br from-slate-700 to-slate-800 text-white py-20">
+      <section className="bg-slate-700 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <BookOpen className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Documentation</h1>

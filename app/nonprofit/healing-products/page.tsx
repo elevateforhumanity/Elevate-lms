@@ -101,7 +101,7 @@ export default async function HealingProductsPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-amber-500 to-orange-600 text-white py-20">
+      <section className="bg-amber-500 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Gift className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Healing Products</h1>

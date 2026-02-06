@@ -278,7 +278,7 @@ function SubscriptionsContent() {
                 }`}
               >
                 {/* Plan Header */}
-                <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-6">
+                <div className="bg-slate-700 text-white p-6">
                   <h3 className="text-2xl font-bold mb-2">
                     {plan.product_name}
                   </h3>

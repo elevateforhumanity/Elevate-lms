@@ -224,10 +224,10 @@ export default function BuildPage() {
         <Breadcrumbs items={[{ label: "Builder" }]} />
       </div>
       {/* Header */}
-      <header className="border-b border-white/10 bg-slate-900/50 backdrop-blur sticky top-0 z-10">
+      <header className="border-b border-white/10 bg-slate-800 backdrop-blur sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -261,7 +261,7 @@ export default function BuildPage() {
               >
                 {message.role === 'ai' && (
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-1">
                       <Sparkles className="w-4 h-4 text-white" />
                     </div>
                     <div className="space-y-3">
@@ -314,7 +314,7 @@ export default function BuildPage() {
           {/* Typing indicator */}
           {isTyping && (
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
                 <Sparkles className="w-4 h-4 text-white" />
               </div>
               <div className="flex gap-1 py-3">
@@ -328,7 +328,7 @@ export default function BuildPage() {
           {/* Generating animation */}
           {isGenerating && (
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
                 <Sparkles className="w-4 h-4 text-white" />
               </div>
               <div className="bg-white/5 rounded-2xl p-6 space-y-4">
@@ -386,7 +386,7 @@ export default function BuildPage() {
               <div className="mt-6 flex flex-col sm:flex-row gap-4">
                 <a
                   href={`/preview/${generatedSite.previewId}`}
-                  className="flex-1 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all"
+                  className="flex-1 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all"
                 >
                   View Full Preview
                   <ArrowRight className="w-5 h-5" />
@@ -407,7 +407,7 @@ export default function BuildPage() {
               </div>
 
               {/* Upgrade CTA */}
-              <div className="mt-6 p-6 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl">
+              <div className="mt-6 p-6 bg-green-500/20 border border-green-500/30 rounded-xl">
                 <p className="text-green-400 font-bold mb-2">Ready to launch?</p>
                 <p className="text-slate-300 text-sm mb-4">
                   Upgrade to publish your site and start enrolling students.
@@ -429,7 +429,7 @@ export default function BuildPage() {
 
       {/* Input */}
       {showInput && currentMessage?.inputType === 'text' && (
-        <div className="border-t border-white/10 bg-slate-900/80 backdrop-blur sticky bottom-0">
+        <div className="border-t border-white/10 bg-slate-800 backdrop-blur sticky bottom-0">
           <div className="max-w-3xl mx-auto px-4 py-4">
             <form
               onSubmit={(e) => {

@@ -144,7 +144,7 @@ export default function BusinessPage() {
                   href={`/programs/${program.slug}`}
                   className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-100"
                 >
-                  <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-slate-700 to-slate-900">
+                  <div className="aspect-[4/3] relative overflow-hidden bg-slate-700">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="text-white/20 text-6xl font-bold">{program.name.charAt(0)}</span>
                     </div>
