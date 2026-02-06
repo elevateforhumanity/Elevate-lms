@@ -16,7 +16,7 @@ import { Clock, DollarSign, Shield, Award, CheckCircle, Users } from 'lucide-rea
 export const metadata: Metadata = {
   title: 'Tax Preparation & Entrepreneurship',
   description:
-    'Tax preparation certification and small business development training. Free with funding when eligible.',
+    'Tax preparation certification and small business development training. $1,500 tuition with payment plans available.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/tax-entrepreneurship',
   },
@@ -54,8 +54,8 @@ export default async function TaxEntrepreneurshipPage() {
       <section className="bg-white text-white py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex items-center gap-3 mb-4">
-            <span className="px-4 py-2 bg-green-500 text-white text-sm font-bold rounded-full">
-              Free with funding
+            <span className="px-4 py-2 bg-blue-500 text-white text-sm font-bold rounded-full">
+              $1,500 Tuition
             </span>
             <span className="px-4 py-2 bg-blue-500 text-white text-sm font-bold rounded-full">
               Online / Hybrid
@@ -109,7 +109,7 @@ export default async function TaxEntrepreneurshipPage() {
               <DollarSign className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Cost</h3>
-                <p className="text-black">Free with funding when eligible</p>
+                <p className="text-black">$1,500 (payment plans available)</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -173,24 +173,24 @@ export default async function TaxEntrepreneurshipPage() {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-3xl font-bold text-black mb-6">
-            Funding Options
+            Payment Options
           </h2>
-          <p className="text-black mb-6">You may qualify for:</p>
+          <p className="text-black mb-6">Flexible ways to pay:</p>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">WIOA</h3>
+              <h3 className="font-bold text-black mb-2">Pay in Full</h3>
               <p className="text-black text-sm">
-                Workforce Innovation and Opportunity Act funding
+                $1,500 one-time payment
               </p>
             </div>
             <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">WRG</h3>
-              <p className="text-black text-sm">Workforce Ready Grant</p>
+              <h3 className="font-bold text-black mb-2">Payment Plan</h3>
+              <p className="text-black text-sm">Split into monthly payments</p>
             </div>
             <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">JRI</h3>
+              <h3 className="font-bold text-black mb-2">Affirm/Klarna</h3>
               <p className="text-black text-sm">
-                Justice Reinvestment Initiative
+                Buy now, pay later options at checkout
               </p>
             </div>
             <div className="bg-blue-50 rounded-lg p-6">
