@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
+import { Clock, DollarSign, Shield, Award, CheckCircle, Users } from 'lucide-react';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
 import PageAvatar from '@/components/PageAvatar';
@@ -15,11 +16,11 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title:
-    'Free Tax Preparation Training | IRS Certified | VITA Volunteer | Start Your Tax Business | Indianapolis',
+    'Tax Preparation Training | IRS Certified | Start Your Tax Business | Indianapolis',
   description:
-    'Funded IRS-certified tax preparation training in Indianapolis. Become a VITA volunteer or start your own tax business. IRS Link & Learn certified. Earn $40k-$100k+ per year. H&R Block alternative. TurboTax Pro alternative.',
+    'IRS-certified tax preparation training in Indianapolis. $1,500 tuition. Become a VITA volunteer or start your own tax business. IRS Link & Learn certified. Earn $40k-$100k+ per year.',
   keywords:
-    'free tax preparation training, IRS certified tax preparer, VITA volunteer training, start tax business, tax preparer course Indianapolis, IRS Link and Learn, become tax preparer, tax business training, H&R Block alternative, TurboTax Pro alternative, tax franchise alternative, PTIN certification, tax season business',
+    'tax preparation training, IRS certified tax preparer, VITA volunteer training, start tax business, tax preparer course Indianapolis, IRS Link and Learn, become tax preparer, tax business training, H&R Block alternative, TurboTax Pro alternative, tax franchise alternative, PTIN certification, tax season business',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/tax-preparation',
   },
@@ -68,7 +69,7 @@ export default async function Page() {
           <div className="relative z-10 flex items-center justify-center min-h-[70vh]">
             <div className="max-w-5xl mx-auto px-6 text-center text-white">
               <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/30">
-                <Image src="/images/icons/award.png" alt="Award" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                <Award className="w-6 h-6 text-purple-600 flex-shrink-0" />
                 <span className="text-sm font-semibold">
                   IRS Certified Training
                 </span>
@@ -77,7 +78,7 @@ export default async function Page() {
                 Start Your Tax Preparation Business
               </h1>
               <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                Funded IRS-certified training. Earn $40k-$100k+ per year. Work
+                IRS-certified training for $1,500. Earn $40k-$100k+ per year. Work
                 from home. Be your own boss.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -85,7 +86,7 @@ export default async function Page() {
                   href="/apply"
                   className="inline-flex items-center justify-center px-8 py-4 bg-white text-green-600 font-bold rounded-xl hover:bg-gray-100 transition text-lg shadow-lg"
                 >
-                  Start Free Training
+                  Apply Now
                 </Link>
                 <a
                   href="https://www.indianacareerconnect.com"
@@ -116,14 +117,14 @@ export default async function Page() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                <DollarSign className="w-6 h-6 text-purple-600 flex-shrink-0" />
               </div>
               <h3 className="font-bold text-lg mb-2">High Income</h3>
               <p className="text-black">$40k-$100k+ per year</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Image src="/images/icons/clock.png" alt="Duration" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                <Clock className="w-6 h-6 text-purple-600 flex-shrink-0" />
               </div>
               <h3 className="font-bold text-lg mb-2">Flexible Schedule</h3>
               <p className="text-black">
@@ -132,14 +133,14 @@ export default async function Page() {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0" loading="lazy" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0" />
               </div>
               <h3 className="font-bold text-lg mb-2">Be Your Own Boss</h3>
               <p className="text-black">Start your own tax business</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Image src="/images/icons/award.png" alt="Award" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                <Award className="w-6 h-6 text-purple-600 flex-shrink-0" />
               </div>
               <h3 className="font-bold text-lg mb-2">IRS Certified</h3>
               <p className="text-black">Nationally recognized credential</p>
@@ -162,7 +163,7 @@ export default async function Page() {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg mb-2">
-                    Complete Our Free Training Course
+                    Complete Our Training Course
                   </h3>
                   <p className="text-black">
                     Learn tax preparation fundamentals, IRS regulations, and
@@ -246,19 +247,19 @@ export default async function Page() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                   <span>Gain experience helping real clients</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                   <span>IRS-certified training and support</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                   <span>Flexible volunteer hours</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                   <span>Make a difference in your community</span>
                 </li>
               </ul>
@@ -282,19 +283,19 @@ export default async function Page() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                   <span>Be your own boss</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                   <span>Work from home or open an office</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                   <span>Set your own rates and schedule</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                   <span>Build recurring client base</span>
                 </li>
               </ul>
@@ -319,47 +320,47 @@ export default async function Page() {
           </p>
           <div className="bg-white rounded-xl p-8 shadow-lg">
             <h3 className="text-2xl font-bold mb-6 text-green-600">
-              Our Training is 100% FREE
+              Our Training: $1,500 (No Ongoing Fees)
             </h3>
             <div className="grid md:grid-cols-2 gap-6 text-left">
               <div>
                 <h4 className="font-bold mb-3">What You Get:</h4>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
-                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <span>IRS-certified training</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <span>Business setup guidance</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <span>Marketing strategies</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <span>Tax software recommendations</span>
                   </li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-bold mb-3">What You Save:</h4>
+                <h4 className="font-bold mb-3">What You Save vs Franchises:</h4>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
-                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <span>$0 franchise fees</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <span>$0 royalty payments</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
-                    <span>$0 training costs</span>
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <span>$0 ongoing fees after training</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" loading="lazy" />
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <span>Keep 100% of your profits</span>
                   </li>
                 </ul>
@@ -376,7 +377,7 @@ export default async function Page() {
             Ready to Start Your Tax Business?
           </h2>
           <p className="text-xl mb-8">
-            Funded training. IRS-certified. Start earning this tax season.
+            $1,500 tuition. IRS-certified. Start earning this tax season.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

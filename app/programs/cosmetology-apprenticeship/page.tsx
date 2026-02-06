@@ -242,36 +242,25 @@ export default async function CosmetologyApprenticeshipPage() {
               </Link>
 
               <Link
-                href="/apply?program=cosmetology-apprenticeship&payment=?method=plan&months=4"
+                href="/apply?program=cosmetology-apprenticeship&payment=bnpl"
                 className="w-full flex items-center justify-between px-6 py-4 bg-white border-2 border-fuchsia-300 hover:border-fuchsia-500 text-black font-bold rounded-lg transition-all"
               >
                 <div>
-                  <div className="font-bold text-lg">4-Month Plan</div>
-                  <div className="text-sm text-slate-600">4 payments of $1,245</div>
+                  <div className="font-bold text-lg">Affirm / Klarna / Afterpay</div>
+                  <div className="text-sm text-slate-600">Split into payments (terms set by lender)</div>
                 </div>
-                <span className="text-xl font-bold text-fuchsia-600">$1,245/mo</span>
+                <span className="text-xl font-bold text-fuchsia-600">BNPL</span>
               </Link>
 
               <Link
-                href="/apply?program=cosmetology-apprenticeship&payment=?method=plan&months=6"
+                href="/apply?program=cosmetology-apprenticeship&payment=weekly"
                 className="w-full flex items-center justify-between px-6 py-4 bg-white border-2 border-fuchsia-300 hover:border-fuchsia-500 text-black font-bold rounded-lg transition-all"
               >
                 <div>
-                  <div className="font-bold text-lg">6-Month Plan</div>
-                  <div className="text-sm text-slate-600">6 payments of $830</div>
+                  <div className="font-bold text-lg">Setup Fee + Weekly</div>
+                  <div className="text-sm text-slate-600">35% setup fee, then weekly payments</div>
                 </div>
-                <span className="text-xl font-bold text-fuchsia-600">$830/mo</span>
-              </Link>
-
-              <Link
-                href="/apply?program=cosmetology-apprenticeship&payment=?method=plan&months=12"
-                className="w-full flex items-center justify-between px-6 py-4 bg-white border-2 border-fuchsia-300 hover:border-fuchsia-500 text-black font-bold rounded-lg transition-all"
-              >
-                <div>
-                  <div className="font-bold text-lg">12-Month Plan</div>
-                  <div className="text-sm text-slate-600">12 payments of $415</div>
-                </div>
-                <span className="text-xl font-bold text-fuchsia-600">$415/mo</span>
+                <span className="text-xl font-bold text-fuchsia-600">Weekly</span>
               </Link>
             </div>
           </div>

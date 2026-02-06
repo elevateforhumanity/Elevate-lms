@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const conversations = [
   {
     id: 1,
-    name: 'Marcus Johnson',
+    name: 'James W.',
     role: 'Barber Apprentice Candidate',
     avatar: '/images/employer/avatar-1.jpg',
     lastMessage: 'Thank you for the interview opportunity! I am very excited about the position.',
@@ -48,7 +48,7 @@ const conversations = [
 const messages = [
   {
     id: 1,
-    sender: 'Marcus Johnson',
+    sender: 'James W.',
     content: 'Hello! I saw the Barber Apprentice position and I am very interested.',
     time: '9:15 AM',
     isMe: false,
@@ -56,13 +56,13 @@ const messages = [
   {
     id: 2,
     sender: 'You',
-    content: 'Hi Marcus! Thanks for reaching out. We would love to schedule an interview. Are you available Thursday at 2 PM?',
+    content: 'Hi Graduate! Thanks for reaching out. We would love to schedule an interview. Are you available Thursday at 2 PM?',
     time: '9:45 AM',
     isMe: true,
   },
   {
     id: 3,
-    sender: 'Marcus Johnson',
+    sender: 'James W.',
     content: 'Yes, Thursday at 2 PM works perfectly! Should I bring anything?',
     time: '10:00 AM',
     isMe: false,
@@ -76,7 +76,7 @@ const messages = [
   },
   {
     id: 5,
-    sender: 'Marcus Johnson',
+    sender: 'James W.',
     content: 'Thank you for the interview opportunity! I am very excited about the position.',
     time: '10:30 AM',
     isMe: false,

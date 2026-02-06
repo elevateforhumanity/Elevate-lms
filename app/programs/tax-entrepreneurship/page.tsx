@@ -10,12 +10,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { Clock, DollarSign, Shield, Award, CheckCircle, Users } from 'lucide-react';
 
 
 export const metadata: Metadata = {
   title: 'Tax Preparation & Entrepreneurship',
   description:
-    'Tax preparation certification and small business development training. Free with funding when eligible.',
+    'Tax preparation certification and small business development training. $1,500 tuition with payment plans available.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/tax-entrepreneurship',
   },
@@ -53,8 +54,8 @@ export default async function TaxEntrepreneurshipPage() {
       <section className="bg-white text-white py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex items-center gap-3 mb-4">
-            <span className="px-4 py-2 bg-green-500 text-white text-sm font-bold rounded-full">
-              Free with funding
+            <span className="px-4 py-2 bg-blue-500 text-white text-sm font-bold rounded-full">
+              $1,500 Tuition
             </span>
             <span className="px-4 py-2 bg-blue-500 text-white text-sm font-bold rounded-full">
               Online / Hybrid
@@ -98,28 +99,28 @@ export default async function TaxEntrepreneurshipPage() {
           <h2 className="text-3xl font-bold text-black mb-8">At-a-Glance</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="flex items-start gap-4">
-              <Image src="/images/icons/clock.png" alt="Duration" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
+              <Clock className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Duration</h3>
                 <p className="text-black">6-12 weeks</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
+              <DollarSign className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Cost</h3>
-                <p className="text-black">Free with funding when eligible</p>
+                <p className="text-black">$1,500 (payment plans available)</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Image src="/images/icons/shield.png" alt="Format" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
+              <Shield className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Format</h3>
                 <p className="text-black">Online / Hybrid</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Image src="/images/icons/award.png" alt="Outcome" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
+              <Award className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Outcome</h3>
                 <p className="text-black">
@@ -140,25 +141,25 @@ export default async function TaxEntrepreneurshipPage() {
           <div className="bg-white rounded-xl p-8 shadow-sm">
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">
                   Individuals seeking career change or advancement
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">
                   No prior experience required for most programs
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">
                   Justice-impacted individuals welcome
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">
                   Barriers support available
                 </span>
@@ -172,24 +173,24 @@ export default async function TaxEntrepreneurshipPage() {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-3xl font-bold text-black mb-6">
-            Funding Options
+            Payment Options
           </h2>
-          <p className="text-black mb-6">You may qualify for:</p>
+          <p className="text-black mb-6">Flexible ways to pay:</p>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">WIOA</h3>
+              <h3 className="font-bold text-black mb-2">Pay in Full</h3>
               <p className="text-black text-sm">
-                Workforce Innovation and Opportunity Act funding
+                $1,500 one-time payment
               </p>
             </div>
             <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">WRG</h3>
-              <p className="text-black text-sm">Workforce Ready Grant</p>
+              <h3 className="font-bold text-black mb-2">Payment Plan</h3>
+              <p className="text-black text-sm">Split into monthly payments</p>
             </div>
             <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-bold text-black mb-2">JRI</h3>
+              <h3 className="font-bold text-black mb-2">Affirm/Klarna</h3>
               <p className="text-black text-sm">
-                Justice Reinvestment Initiative
+                Buy now, pay later options at checkout
               </p>
             </div>
             <div className="bg-blue-50 rounded-lg p-6">
@@ -214,25 +215,25 @@ export default async function TaxEntrepreneurshipPage() {
           <div className="bg-white rounded-xl p-8 shadow-sm">
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">Case management</span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">
                   Justice navigation for returning citizens
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">Transportation resources</span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">Childcare referrals</span>
               </li>
               <li className="flex items-start gap-3">
-                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                 <span className="text-black">Documentation support</span>
               </li>
             </ul>

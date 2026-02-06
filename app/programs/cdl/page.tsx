@@ -119,7 +119,7 @@ export default function CDLProgramPage() {
       <section className="relative text-white overflow-hidden">
         <div className="absolute inset-0">
           <img src="/images/cdl-vibrant.jpg" alt="CDL Training" className="w-full h-full object-cover" />
-          <!-- overlay removed -->
+          
         </div>
         
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">

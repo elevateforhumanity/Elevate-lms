@@ -25,8 +25,7 @@ const programImages: Record<string, string> = {
   'cna': '/images/healthcare/hero-program-patient-care.jpg',
   'cna-cert': '/images/healthcare/hero-program-patient-care.jpg',
   'cna-training-wrg': '/images/healthcare/hero-program-patient-care.jpg',
-  'direct-support-professional': '/images/healthcare/hero-program-medical-assistant.jpg',
-  'dsp-training': '/images/healthcare/hero-program-medical-assistant.jpg',
+
   'drug-collector': '/images/healthcare/hero-program-phlebotomy.jpg',
   'medical-assistant': '/images/healthcare/hero-program-medical-assistant.jpg',
   'phlebotomy-technician': '/images/healthcare/hero-program-phlebotomy.jpg',
@@ -102,7 +101,7 @@ export default function HealthcareProgramsPage() {
         >
           <source src="https://pub-23811be4d3844e45a8bc2d3dc5e7aaec.r2.dev/videos/cna-hero.mp4" type="video/mp4" />
         </video>
-        <!-- overlay removed -->
+        
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -348,7 +347,7 @@ export default function HealthcareProgramsPage() {
           
           <div className="space-y-4">
             {[
-              { q: 'What healthcare certifications can I earn?', a: 'CNA (Certified Nursing Assistant), Phlebotomy Technician, Medical Assistant, Direct Support Professional, and more depending on the program.' },
+              { q: 'What healthcare certifications can I earn?', a: 'CNA (Certified Nursing Assistant), Phlebotomy Technician, Medical Assistant, and more depending on the program.' },
               { q: 'How long is CNA training?', a: 'CNA training is typically 4-6 weeks including classroom instruction and clinical hours. You must complete 75 hours of training to be eligible for the state exam.' },
               { q: 'Is the training really free?', a: 'Yes, for eligible participants. WIOA funding covers tuition, books, scrubs, and certification exam fees. Check your eligibility to see if you qualify.' },
               { q: 'Where will I do clinical training?', a: 'Clinical training takes place at approved healthcare facilities in the Indianapolis area, including nursing homes, hospitals, and clinics.' },

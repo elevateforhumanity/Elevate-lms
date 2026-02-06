@@ -560,8 +560,8 @@ VALUES (
   'Professional Barber Program',
   'State-licensed barber training program covering cutting, styling, shaving, and business management.',
   52,
-  1500,
-  15000.00,
+  2000,
+  4980.00,
   true,
   'active',
   'Cosmetology'

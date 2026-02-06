@@ -65,7 +65,7 @@ export default async function DrugTestingTrainingPage() {
           className="object-cover" 
           priority 
         />
-        <!-- overlay removed -->
+        
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-6xl mx-auto px-4 text-white">
             <Link href="/drug-testing" className="inline-flex items-center gap-2 text-blue-200 hover:text-white mb-4">

@@ -15,28 +15,25 @@ import {
 const SITE_URL = 'https://www.elevateforhumanity.org';
 
 export const metadata: Metadata = {
-  title: 'CNA Certification Training | Free Healthcare Training Indianapolis | Elevate',
-  description: 'Become a Certified Nursing Assistant in 4-6 weeks. Free CNA training through WIOA funding in Indianapolis. State certification exam included. 89% job placement rate.',
+  title: 'CNA Certification Training | Healthcare Training Indianapolis | Elevate',
+  description: 'Become a Certified Nursing Assistant in 4-6 weeks. CNA training in Indianapolis with state certification exam included. 89% job placement rate. $1,200 tuition.',
   alternates: { canonical: `${SITE_URL}/programs/cna-certification` },
   keywords: [
     'CNA certification Indianapolis',
-    'free CNA training Indiana',
+    'CNA training Indiana',
     'certified nursing assistant program',
-    'WIOA CNA training',
     'healthcare training Indianapolis',
     'nursing assistant school Indiana',
     'CNA classes near me',
-    'free healthcare certification',
     'CNA state exam prep',
     'nursing home jobs Indianapolis',
     'hospital CNA jobs Indiana',
     'home health aide training',
-    'medical career training free',
-    'WorkOne CNA program',
+    'medical career training',
   ],
   openGraph: {
-    title: 'CNA Certification Training | Free Healthcare Training Indianapolis',
-    description: 'Become a Certified Nursing Assistant in 4-6 weeks. Free training through WIOA funding. State certification exam included.',
+    title: 'CNA Certification Training | Healthcare Training Indianapolis',
+    description: 'Become a Certified Nursing Assistant in 4-6 weeks. State certification exam included. $1,200 tuition with payment plans available.',
     url: `${SITE_URL}/programs/cna-certification`,
     siteName: 'Elevate for Humanity',
     images: [{ url: `${SITE_URL}/images/healthcare/hero-programs-healthcare.jpg`, width: 1200, height: 630, alt: 'CNA Training Program' }],
@@ -44,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CNA Certification Training | Free Healthcare Training',
-    description: 'Become a Certified Nursing Assistant in 4-6 weeks. Free training through WIOA funding.',
+    title: 'CNA Certification Training | Healthcare Training Indianapolis',
+    description: 'Become a Certified Nursing Assistant in 4-6 weeks. State certification exam included.',
     images: [`${SITE_URL}/images/healthcare/hero-programs-healthcare.jpg`],
   },
 };
@@ -106,21 +103,21 @@ export default function CNACertificationPage() {
         />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
           <div className="max-w-5xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
-              <Heart className="w-4 h-4" /> WIOA Funding Available
+            <div className="inline-flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
+              <Heart className="w-4 h-4" /> Start Your Healthcare Career
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white mb-4">
               CNA Certification
             </h1>
             <p className="text-xl text-white/90 max-w-xl mb-6">
-              Start your healthcare career in just 4-6 weeks. Free training, state certification, and job placement assistance.
+              Start your healthcare career in just 4-6 weeks. $1,200 tuition, state certification, and job placement assistance.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/apply" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105">
                 Apply Now <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link href="/wioa-eligibility" className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-full font-bold text-lg transition-all border border-white/40">
-                Check Eligibility
+              <Link href="/programs/cna-certification/enroll" className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-full font-bold text-lg transition-all border border-white/40">
+                View Payment Options
               </Link>
             </div>
           </div>
@@ -138,8 +135,8 @@ export default function CNACertificationPage() {
             </div>
             <div>
               <DollarSign className="w-8 h-8 text-green-400 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">Funded</div>
-              <div className="text-slate-400 text-sm">For Qualifying Students</div>
+              <div className="text-2xl font-bold text-white">$1,200</div>
+              <div className="text-slate-400 text-sm">Tuition</div>
             </div>
             <div>
               <Award className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
@@ -211,7 +208,7 @@ export default function CNACertificationPage() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-black mb-4">Eligibility Requirements</h2>
-          <p className="text-slate-600 mb-8">Most adults qualify for free training through WIOA funding</p>
+          <p className="text-slate-600 mb-8">Basic requirements to enroll in our CNA program</p>
           
           <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8">
             {[
@@ -229,8 +226,8 @@ export default function CNACertificationPage() {
             ))}
           </div>
           
-          <Link href="/wioa-eligibility" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105">
-            Check Your Eligibility <ArrowRight className="w-5 h-5" />
+          <Link href="/apply" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105">
+            Apply Now <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
       </section>
@@ -243,7 +240,7 @@ export default function CNACertificationPage() {
           <div className="grid md:grid-cols-4 gap-6">
             {[
               { num: 1, title: 'Apply Online', desc: 'Complete our simple application' },
-              { num: 2, title: 'Check Eligibility', desc: 'Verify WIOA funding eligibility' },
+              { num: 2, title: 'Choose Payment', desc: 'Select payment plan option' },
               { num: 3, title: 'Orientation', desc: 'Attend program orientation' },
               { num: 4, title: 'Start Training', desc: 'Begin your CNA journey' },
             ].map((step, i) => (

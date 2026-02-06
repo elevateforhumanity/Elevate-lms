@@ -326,7 +326,7 @@ export default function StorePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { name: 'Barber Apprenticeship', image: '/images/programs-hq/barber-hero.jpg', href: '/programs/barber-apprenticeship', duration: '12 months', funding: 'WIOA Eligible' },
-              { name: 'CNA Training', image: '/images/programs-hq/cna-training.jpg', href: '/programs/cna', duration: '6 weeks', funding: 'WIOA Eligible' },
+              { name: 'CNA Training', image: '/images/programs-hq/cna-training.jpg', href: '/programs/cna', duration: '6 weeks', funding: '$1,200' },
               { name: 'HVAC Certification', image: '/images/programs-hq/hvac-technician.jpg', href: '/programs/hvac', duration: '8 weeks', funding: 'WRG Available' },
               { name: 'CDL Training', image: '/images/programs-hq/cdl-trucking.jpg', href: '/programs/cdl', duration: '4 weeks', funding: 'WIOA Eligible' },
             ].map((program) => (
