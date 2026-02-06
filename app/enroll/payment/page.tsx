@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, CreditCard, Calendar, Loader2, AlertCircle } from 'lucide-react';
@@ -29,7 +29,7 @@ const PRICING = {
 
 type PaymentOption = 'full' | 'deposit' | 'installment';
 
-export default function EnrollPaymentPage() {
+function EnrollPaymentContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const applicationId = searchParams.get('application_id');
@@ -324,5 +324,17 @@ export default function EnrollPaymentPage() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function EnrollPaymentPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+      </div>
+    }>
+      <EnrollPaymentContent />
+    </Suspense>
   );
 }
