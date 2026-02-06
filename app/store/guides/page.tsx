@@ -92,7 +92,6 @@ export default function GuidesPage() {
           className="object-cover"
           priority
         />
-        {/* overlay removed */}
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
           <div className="flex items-center gap-3 mb-4">
@@ -175,7 +174,6 @@ export default function GuidesPage() {
                       fill
                       className="object-cover"
                     />
-                    {/* overlay removed */}
                     <div className="absolute top-4 left-4">
                       <span className={`inline-block px-4 py-2 rounded-full text-sm font-bold ${
                         guide.price === 'Free' 

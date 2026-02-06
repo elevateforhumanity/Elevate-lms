@@ -94,7 +94,6 @@ export default function AnalyticsProPage() {
           className="object-cover"
           priority
         />
-        {/* overlay removed */}
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
           <div className="flex items-center gap-3 mb-4">

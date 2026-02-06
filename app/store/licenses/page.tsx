@@ -122,7 +122,6 @@ export default function StoreLicensesPage() {
           className="object-cover"
           priority
         />
-        <!-- overlay removed -->
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 w-full">
           <div className="max-w-3xl">
