@@ -85,18 +85,7 @@ export default function HomePage() {
             </Link>
           </div>
           
-          {/* 3 Featured Images */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-6xl mx-auto">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-              <img src="/images/healthcare/hero-healthcare-professionals.jpg" alt="Healthcare Training" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-              <img src="/images/trades/welding-hero.jpg" alt="Skilled Trades Training" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-              <img src="/images/technology/hero-program-cybersecurity.jpg" alt="Technology Training" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-            </div>
-          </div>
+
         </div>
       </section>
 
