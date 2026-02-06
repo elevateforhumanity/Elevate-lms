@@ -565,7 +565,7 @@ export default async function BarberApprenticeshipPage() {
                 <span className="text-slate-300">Open your own barbershop</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-brand-brand-orange-500 rounded-full"></div>
                 <span className="text-slate-300">Mobile barbering services</span>
               </div>
             </div>
@@ -702,7 +702,7 @@ export default async function BarberApprenticeshipPage() {
           <div className="mt-10 flex justify-center gap-4 flex-col sm:flex-row">
             <Link
               href="/programs/barber-apprenticeship/apply"
-              className="rounded-2xl bg-brand-orange-600 text-white px-8 py-4 font-semibold hover:bg-brand-orange-700 transition"
+              className="rounded-2xl bg-brand-brand-orange-600 text-white px-8 py-4 font-semibold hover:bg-brand-brand-orange-700 transition"
             >
               Enroll & Pay Now
             </Link>

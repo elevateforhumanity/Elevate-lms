@@ -161,6 +161,13 @@ export default function RootLayout({
           sizes="180x180"
         />
         <meta name="theme-color" content="#10b981" />
+        {/* Preload hero image for faster LCP */}
+        <link
+          rel="preload"
+          href="/images/hero-poster.jpg"
+          as="image"
+          fetchPriority="high"
+        />
         {!isProduction && (
           <>
             <meta httpEquiv="Cache-Control" content="no-cache" />

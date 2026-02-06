@@ -188,6 +188,54 @@ export default async function PaymentPage() {
               </div>
             </div>
 
+            {/* Barber Program Payment */}
+            <div className="mt-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg shadow-lg p-8 text-white">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div>
+                  <h2 className="text-2xl font-bold mb-2">
+                    Barber Apprenticeship Program
+                  </h2>
+                  <p className="text-orange-100 mb-4">
+                    Start your career as a licensed barber. USDOL registered apprenticeship with flexible payment options.
+                  </p>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-center gap-2">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      $1,743 setup fee + weekly payments
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      Total program: $4,980
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      WIOA funding may cover full cost
+                    </li>
+                  </ul>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <Link
+                    href="/enroll/barber-apprenticeship"
+                    className="bg-white text-orange-600 hover:bg-orange-50 px-8 py-4 rounded-lg font-bold text-center transition-colors"
+                  >
+                    Enroll & Pay with Stripe
+                  </Link>
+                  <Link
+                    href="/check-eligibility"
+                    className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-lg font-semibold text-center transition-colors"
+                  >
+                    Check WIOA Eligibility
+                  </Link>
+                </div>
+              </div>
+            </div>
+
             {/* Funding Options */}
             <div className="mt-12 bg-white rounded-lg shadow-sm border p-8">
               <h2 className="text-2xl font-bold mb-4 text-center">
@@ -200,16 +248,16 @@ export default async function PaymentPage() {
               <div className="grid md:grid-cols-3 gap-6">
                 <Link
                   href="/funding"
-                  className="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors border"
                 >
                   <h3 className="font-semibold mb-2">WIOA Funding</h3>
                   <p className="text-sm text-gray-600">
-                    Workforce Innovation and Opportunity Act
+                    Workforce Innovation and Opportunity Act - may cover 100% of tuition
                   </p>
                 </Link>
                 <Link
                   href="/grants"
-                  className="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors border"
                 >
                   <h3 className="font-semibold mb-2">Grants</h3>
                   <p className="text-sm text-gray-600">
@@ -217,8 +265,8 @@ export default async function PaymentPage() {
                   </p>
                 </Link>
                 <Link
-                  href="/eligibility"
-                  className="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors"
+                  href="/check-eligibility"
+                  className="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors border"
                 >
                   <h3 className="font-semibold mb-2">Check Eligibility</h3>
                   <p className="text-sm text-gray-600">

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 const R2_URL = process.env.NEXT_PUBLIC_R2_URL;
 
@@ -15,38 +16,31 @@ export default function HomeHeroVideo() {
 
     const playVideo = async () => {
       try {
-        // Ensure video is muted (required for autoplay)
         video.muted = true;
         video.playsInline = true;
         await video.play();
         setIsPlaying(true);
       } catch (err) {
-        // Autoplay blocked - show poster image
-        console.log('Video autoplay blocked, showing poster');
+        // Autoplay blocked - poster image already visible
       }
     };
 
-    // Try to play immediately
     playVideo();
     
-    // Retry on user interaction if autoplay was blocked
     const handleInteraction = () => {
       if (!isPlaying) {
         playVideo();
       }
     };
 
-    // Also try on various events
     video.addEventListener('loadeddata', playVideo);
     video.addEventListener('canplay', playVideo);
     document.addEventListener('click', handleInteraction, { once: true });
     document.addEventListener('touchstart', handleInteraction, { once: true });
     document.addEventListener('scroll', handleInteraction, { once: true });
     
-    // Retry after delays as fallback
     const timeout1 = setTimeout(playVideo, 100);
     const timeout2 = setTimeout(playVideo, 500);
-    const timeout3 = setTimeout(playVideo, 1000);
     
     return () => {
       video.removeEventListener('loadeddata', playVideo);
@@ -56,29 +50,30 @@ export default function HomeHeroVideo() {
       document.removeEventListener('scroll', handleInteraction);
       clearTimeout(timeout1);
       clearTimeout(timeout2);
-      clearTimeout(timeout3);
     };
   }, [isPlaying]);
 
   return (
     <>
-      {/* Fallback poster image - loads instantly via CSS background */}
-      <div 
-        className="absolute inset-0 w-full h-full z-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero-poster.jpg')" }}
+      {/* Priority poster image for fast LCP */}
+      <Image
+        src="/images/hero-poster.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover z-0"
         aria-hidden="true"
       />
-      {/* Video on top */}
+      {/* Video on top - loads after poster */}
       <video
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover z-10"
-        style={{ objectFit: 'cover' }}
+        className={`absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-500 ${isPlaying ? 'opacity-100' : 'opacity-0'}`}
         loop
         muted
         playsInline
         autoPlay
-        preload="auto"
-        poster="/images/hero-poster.jpg"
+        preload="metadata"
       >
         <source src={videoSrc} type="video/mp4" />
       </video>

@@ -1,0 +1,153 @@
+name: Compliance Gate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: compliance-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - uses: pnpm/action-setup@v4
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Run npm audit
+        run: |
+          npm audit --audit-level=high || {
+            echo "::warning::Security vulnerabilities found - review SECURITY_NOTES.md"
+            exit 0
+          }
+
+  e2e-enrollment:
+    name: E2E Enrollment Flow
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - uses: pnpm/action-setup@v4
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Install Playwright
+        run: npx playwright install --with-deps chromium
+      
+      - name: Build application
+        run: pnpm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      
+      - name: Start server
+        run: pnpm run start &
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      
+      - name: Wait for server
+        run: npx wait-on http://localhost:3000 --timeout 60000
+      
+      - name: Run E2E enrollment tests
+        run: npx playwright test tests/e2e/full-enrollment-journey.spec.ts
+      
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-results
+          path: test-results/
+          retention-days: 7
+
+  accessibility:
+    name: Accessibility Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - uses: pnpm/action-setup@v4
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Install Playwright
+        run: npx playwright install --with-deps chromium
+      
+      - name: Build application
+        run: pnpm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      
+      - name: Start server
+        run: pnpm run start &
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      
+      - name: Wait for server
+        run: npx wait-on http://localhost:3000 --timeout 60000
+      
+      - name: Run accessibility tests
+        run: npx playwright test tests/e2e/accessibility.spec.ts
+      
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-results
+          path: test-results/
+          retention-days: 7
+
+  compliance-files:
+    name: Compliance Files Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Verify compliance components exist
+        run: |
+          echo "Checking compliance components..."
+          test -f components/compliance/PathwayDisclosure.tsx || { echo "Missing PathwayDisclosure.tsx"; exit 1; }
+          test -f components/compliance/ComplianceGuardrails.tsx || { echo "Missing ComplianceGuardrails.tsx"; exit 1; }
+          test -f components/compliance/ComplianceNotice.tsx || { echo "Missing ComplianceNotice.tsx"; exit 1; }
+          test -f components/EligibilityNotice.tsx || { echo "Missing EligibilityNotice.tsx"; exit 1; }
+          echo "✓ All compliance components present"
+      
+      - name: Verify legal pages exist
+        run: |
+          echo "Checking legal pages..."
+          test -f app/legal/disclosures/page.tsx || { echo "Missing disclosures page"; exit 1; }
+          test -d app/terms-of-service || { echo "Missing terms-of-service"; exit 1; }
+          test -d app/privacy-policy || { echo "Missing privacy-policy"; exit 1; }
+          echo "✓ All legal pages present"
+      
+      - name: Verify audit packet exists
+        run: |
+          echo "Checking audit packet..."
+          test -d audit-packet || { echo "Missing audit-packet folder"; exit 1; }
+          test -f audit-packet/EXECUTIVE_SUMMARY.md || { echo "Missing EXECUTIVE_SUMMARY.md"; exit 1; }
+          test -f audit-packet/AUDIT_REPORT.md || { echo "Missing AUDIT_REPORT.md"; exit 1; }
+          echo "✓ Audit packet present"

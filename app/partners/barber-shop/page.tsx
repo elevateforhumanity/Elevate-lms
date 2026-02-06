@@ -3,6 +3,7 @@
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, CheckCircle, Loader2, Building2, Users, Award, ArrowRight } from 'lucide-react';
 
 export default function BarberShopPartnerPage() {
@@ -51,17 +52,17 @@ export default function BarberShopPartnerPage() {
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-8 h-8 text-green-600" />
           </div>
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">Thank You!</h1>
-          <p className="text-slate-600 mb-6">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Thank You!</h1>
+          <p className="text-gray-700 mb-6">
             We received your partnership inquiry. Our team will contact you within 1-2 business days to discuss next steps.
           </p>
-          <p className="text-slate-600 mb-8">
+          <p className="text-gray-700 mb-8">
             Questions? Call us at{' '}
-            <a href="tel:+13173143757" className="text-orange-600 font-semibold">(317) 314-3757</a>
+            <a href="tel:+13173143757" className="text-brand-orange-600 font-semibold">(317) 314-3757</a>
           </p>
           <Link
             href="/programs/barber"
-            className="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600"
+            className="inline-block bg-brand-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-orange-600"
           >
             Back to Barber Program
           </Link>
@@ -76,22 +77,25 @@ export default function BarberShopPartnerPage() {
         <Breadcrumbs items={[{ label: "Partners", href: "/partners" }, { label: "Barber Shop" }]} />
       </div>
 {/* Hero */}
-      <section 
-        className="relative py-20 px-4"
-        style={{ 
-          backgroundImage: 'linear-gradient(to right, rgba(194, 65, 12, 0.95), rgba(234, 88, 12, 0.9)), url(/images/beauty/program-barber-training.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <span className="inline-block bg-white/20 px-4 py-1 rounded-full text-sm font-semibold mb-4">
+      <section className="relative py-20 px-4">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/barber/gallery-1.jpg"
+            alt="Barber shop interior"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center text-white">
+          <span className="inline-block bg-brand-orange-500 px-4 py-1 rounded-full text-sm font-semibold mb-4">
             Partner Program
           </span>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Become a Barber Shop Partner
           </h1>
-          <p className="text-xl text-orange-100 mb-6">
+          <p className="text-xl text-white mb-6">
             Host apprentices at your shop and help train the next generation of barbers.
           </p>
         </div>
@@ -100,28 +104,49 @@ export default function BarberShopPartnerPage() {
       {/* Benefits */}
       <section className="py-12 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-center text-slate-900 mb-8">Why Partner With Us?</h2>
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">Why Partner With Us?</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-orange-50 rounded-xl p-6">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                <Users className="w-6 h-6 text-orange-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+              <div className="relative h-48">
+                <Image
+                  src="/images/barber/gallery-2.jpg"
+                  alt="Barber training apprentice"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">Develop Talent</h3>
-              <p className="text-slate-600 text-sm">Train apprentices in your shop's style and culture. Build a pipeline of skilled barbers.</p>
+              <div className="p-6">
+                <h3 className="font-bold text-gray-900 mb-2">Develop Talent</h3>
+                <p className="text-gray-700 text-sm">Train apprentices in your shop's style and culture. Build a pipeline of skilled barbers.</p>
+              </div>
             </div>
-            <div className="bg-orange-50 rounded-xl p-6">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                <Award className="w-6 h-6 text-orange-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+              <div className="relative h-48">
+                <Image
+                  src="/images/barber/gallery-3.jpg"
+                  alt="Professional barbershop"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">No Cost to You</h3>
-              <p className="text-slate-600 text-sm">Training costs covered through WIOA funding. We handle paperwork and compliance.</p>
+              <div className="p-6">
+                <h3 className="font-bold text-gray-900 mb-2">No Cost to You</h3>
+                <p className="text-gray-700 text-sm">Training costs covered through WIOA funding. We handle paperwork and compliance.</p>
+              </div>
             </div>
-            <div className="bg-orange-50 rounded-xl p-6">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                <Building2 className="w-6 h-6 text-orange-600" />
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+              <div className="relative h-48">
+                <Image
+                  src="/images/barber/training.jpg"
+                  alt="USDOL registered program"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">USDOL Registered</h3>
-              <p className="text-slate-600 text-sm">Official U.S. Department of Labor registered apprenticeship program.</p>
+              <div className="p-6">
+                <h3 className="font-bold text-gray-900 mb-2">USDOL Registered</h3>
+                <p className="text-gray-700 text-sm">Official U.S. Department of Labor registered apprenticeship program.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -132,12 +157,12 @@ export default function BarberShopPartnerPage() {
         <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                <Building2 className="w-6 h-6 text-orange-600" />
+              <div className="w-12 h-12 bg-brand-orange-100 rounded-full flex items-center justify-center">
+                <Building2 className="w-6 h-6 text-brand-orange-600" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-slate-900">Shop Partner Application</h2>
-                <p className="text-slate-600 text-sm">Tell us about your barbershop</p>
+                <h2 className="text-xl font-bold text-gray-900">Shop Partner Application</h2>
+                <p className="text-gray-700 text-sm">Tell us about your barbershop</p>
               </div>
             </div>
 
@@ -149,7 +174,7 @@ export default function BarberShopPartnerPage() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="shopName" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="shopName" className="block text-sm font-medium text-gray-800 mb-1">
                   Shop Name *
                 </label>
                 <input
@@ -157,13 +182,13 @@ export default function BarberShopPartnerPage() {
                   id="shopName"
                   name="shopName"
                   required
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-orange-500 focus:border-brand-orange-500"
                   placeholder="Your Barbershop Name"
                 />
               </div>
 
               <div>
-                <label htmlFor="ownerName" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="ownerName" className="block text-sm font-medium text-gray-800 mb-1">
                   Owner/Manager Name *
                 </label>
                 <input
@@ -171,14 +196,14 @@ export default function BarberShopPartnerPage() {
                   id="ownerName"
                   name="ownerName"
                   required
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-orange-500 focus:border-brand-orange-500"
                   placeholder="John Smith"
                 />
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-800 mb-1">
                     Email Address *
                   </label>
                   <input
@@ -186,12 +211,12 @@ export default function BarberShopPartnerPage() {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-orange-500 focus:border-brand-orange-500"
                     placeholder="shop@example.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-800 mb-1">
                     Phone Number *
                   </label>
                   <input
@@ -199,14 +224,14 @@ export default function BarberShopPartnerPage() {
                     id="phone"
                     name="phone"
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-orange-500 focus:border-brand-orange-500"
                     placeholder="(317) 555-1234"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="address" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="address" className="block text-sm font-medium text-gray-800 mb-1">
                   Shop Address *
                 </label>
                 <input
@@ -214,14 +239,14 @@ export default function BarberShopPartnerPage() {
                   id="address"
                   name="address"
                   required
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-orange-500 focus:border-brand-orange-500"
                   placeholder="123 Main Street"
                 />
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="city" className="block text-sm font-medium text-slate-700 mb-1">
+                  <label htmlFor="city" className="block text-sm font-medium text-gray-800 mb-1">
                     City *
                   </label>
                   <input
@@ -229,19 +254,19 @@ export default function BarberShopPartnerPage() {
                     id="city"
                     name="city"
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-orange-500 focus:border-brand-orange-500"
                     placeholder="Indianapolis"
                   />
                 </div>
                 <div>
-                  <label htmlFor="licensedBarbers" className="block text-sm font-medium text-slate-700 mb-1">
+                  <label htmlFor="licensedBarbers" className="block text-sm font-medium text-gray-800 mb-1">
                     # of Licensed Barbers *
                   </label>
                   <select
                     id="licensedBarbers"
                     name="licensedBarbers"
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-orange-500 focus:border-brand-orange-500"
                   >
                     <option value="">Select...</option>
                     <option value="1">1</option>
@@ -253,14 +278,14 @@ export default function BarberShopPartnerPage() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-800 mb-1">
                   Tell Us About Your Shop (Optional)
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   rows={3}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-orange-500 focus:border-brand-orange-500"
                   placeholder="Years in business, specialties, why you want to host apprentices..."
                 />
               </div>
@@ -268,7 +293,7 @@ export default function BarberShopPartnerPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-orange-500 text-white py-4 rounded-lg font-semibold text-lg hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full bg-brand-orange-500 text-white py-4 rounded-lg font-semibold text-lg hover:bg-brand-orange-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>
@@ -284,20 +309,20 @@ export default function BarberShopPartnerPage() {
             </form>
 
             <div className="mt-8 pt-6 border-t border-slate-200">
-              <p className="text-center text-slate-600 mb-4">
+              <p className="text-center text-gray-700 mb-4">
                 Questions about the partnership?
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="tel:+13173143757"
-                  className="inline-flex items-center justify-center gap-2 bg-slate-100 text-slate-700 px-6 py-3 rounded-lg font-medium hover:bg-slate-200"
+                  className="inline-flex items-center justify-center gap-2 bg-slate-100 text-gray-800 px-6 py-3 rounded-lg font-medium hover:bg-slate-200"
                 >
                   <Phone className="w-5 h-5" />
                   (317) 314-3757
                 </a>
                 <a
                   href="mailto:partners@elevateforhumanity.org"
-                  className="inline-flex items-center justify-center gap-2 bg-slate-100 text-slate-700 px-6 py-3 rounded-lg font-medium hover:bg-slate-200"
+                  className="inline-flex items-center justify-center gap-2 bg-slate-100 text-gray-800 px-6 py-3 rounded-lg font-medium hover:bg-slate-200"
                 >
                   <Mail className="w-5 h-5" />
                   Email Us
@@ -308,38 +333,75 @@ export default function BarberShopPartnerPage() {
         </div>
       </section>
 
+      {/* Image Section */}
+      <section className="py-12 px-4 bg-slate-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src="/images/barber/gallery-1.jpg"
+                alt="Barber training apprentice"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Train the Next Generation</h2>
+              <p className="text-gray-700 mb-4">
+                As a partner shop, you'll mentor apprentices through hands-on training while they complete their 2,000 required hours. Your expertise shapes future barbers.
+              </p>
+              <p className="text-gray-700">
+                We provide curriculum support, compliance tracking, and handle all WIOA paperwork so you can focus on what you do best — cutting hair and teaching your craft.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Requirements */}
       <section className="py-12 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-center text-slate-900 mb-8">Partner Requirements</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                <p className="text-slate-700">Licensed barbershop in Indiana</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                <p className="text-slate-700">At least one licensed barber on staff</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                <p className="text-slate-700">Willingness to mentor apprentices</p>
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">Partner Requirements</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="md:col-span-2">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <p className="text-gray-800">Licensed barbershop in Indiana</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <p className="text-gray-800">At least one licensed barber on staff</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <p className="text-gray-800">Willingness to mentor apprentices</p>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <p className="text-gray-800">Commitment to 2,000 training hours</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <p className="text-gray-800">Safe, professional work environment</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <p className="text-gray-800">Current business license and insurance</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                <p className="text-slate-700">Commitment to 2,000 training hours</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                <p className="text-slate-700">Safe, professional work environment</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                <p className="text-slate-700">Current business license and insurance</p>
-              </div>
+            <div className="relative h-64 rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src="/images/barber/gallery-2.jpg"
+                alt="Professional barbershop"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </div>
