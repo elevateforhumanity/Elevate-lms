@@ -122,7 +122,7 @@ export default function CNAProgramPage() {
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
           <div className="max-w-2xl">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <FundingBadge type="funded" />
+              <FundingBadge type="self-pay" />
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-6 mb-6 leading-tight">
                 Become a
@@ -139,7 +139,7 @@ export default function CNAProgramPage() {
                   <Clock className="w-4 h-4 text-pink-300" />6-8 Weeks
                 </span>
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur rounded-full text-sm">
-                  <DollarSign className="w-4 h-4 text-green-400" />$0 with WIOA Funding
+                  <DollarSign className="w-4 h-4 text-green-400" />$1,200 Tuition
                 </span>
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur rounded-full text-sm">
                   <HeartPulse className="w-4 h-4 text-pink-300" />Pathway to Nursing
@@ -147,8 +147,8 @@ export default function CNAProgramPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/wioa-eligibility" className="inline-flex items-center justify-center px-8 py-4 bg-pink-500 hover:bg-pink-400 text-white font-semibold rounded-full transition-all transform hover:scale-105 shadow-lg shadow-pink-500/30">
-                  Check Your Eligibility<ArrowRight className="w-5 h-5 ml-2" />
+                <Link href="/apply" className="inline-flex items-center justify-center px-8 py-4 bg-pink-500 hover:bg-pink-400 text-white font-semibold rounded-full transition-all transform hover:scale-105 shadow-lg shadow-pink-500/30">
+                  Apply Now<ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
                 <Link href="#curriculum" className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur text-white font-semibold rounded-full transition-all">
                   <Play className="w-5 h-5 mr-2" />View Curriculum
@@ -298,10 +298,10 @@ export default function CNAProgramPage() {
       <section className="py-20 bg-gradient-to-br from-pink-600 to-pink-800 text-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Start Caring for Others?</h2>
-          <p className="text-xl text-pink-100 mb-8 max-w-2xl mx-auto">Begin your nursing journey with CNA certification. Check your eligibility for free WIOA-funded training.</p>
+          <p className="text-xl text-pink-100 mb-8 max-w-2xl mx-auto">Begin your nursing journey with CNA certification. $1,200 tuition with payment plans available.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/wioa-eligibility" className="inline-flex items-center justify-center px-8 py-4 bg-white text-pink-600 font-semibold rounded-full hover:bg-pink-50 transition-all transform hover:scale-105 shadow-lg">
-              Check Eligibility Now<ArrowRight className="w-5 h-5 ml-2" />
+            <Link href="/apply" className="inline-flex items-center justify-center px-8 py-4 bg-white text-pink-600 font-semibold rounded-full hover:bg-pink-50 transition-all transform hover:scale-105 shadow-lg">
+              Apply Now<ArrowRight className="w-5 h-5 ml-2" />
             </Link>
             <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-pink-700 hover:bg-pink-600 text-white font-semibold rounded-full transition-all">
               <Phone className="w-5 h-5 mr-2" />Talk to an Advisor
