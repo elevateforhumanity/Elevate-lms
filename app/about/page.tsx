@@ -25,7 +25,7 @@ export default function AboutPage() {
       </div>
 
       {/* HERO */}
-      <section className="relative h-[50vh] min-h-[400px] flex items-end">
+      <section className="relative h-[40vh] sm:h-[50vh] min-h-[300px] sm:min-h-[400px] flex items-end">
         <Image
           src="/images/team-vibrant.jpg"
           alt="Elevate for Humanity Team"
@@ -33,18 +33,18 @@ export default function AboutPage() {
           className="object-cover object-center"
           priority
         />
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-12">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pb-8 sm:pb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
             Our Story
           </h1>
         </div>
       </section>
 
       {/* MISSION */}
-      <section id="mission" className="py-16 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
-          <p className="text-xl text-blue-100 leading-relaxed">
+      <section id="mission" className="py-10 sm:py-12 md:py-16 bg-blue-600">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Our Mission</h2>
+          <p className="text-base sm:text-lg md:text-xl text-blue-100 leading-relaxed">
             To create pathways out of poverty and into prosperity by providing free, high-quality 
             career training to justice-involved individuals, low-income families, veterans, and 
             anyone facing barriers to employment.
@@ -53,10 +53,10 @@ export default function AboutPage() {
       </section>
 
       {/* THE FOUNDER */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
+            <div className="relative aspect-[4/5] sm:aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/team/founder/elizabeth-greene-founder-hero-01.jpg"
                 alt="Elizabeth Greene, Founder & CEO"
@@ -65,9 +65,9 @@ export default function AboutPage() {
               />
             </div>
             <div>
-              <p className="text-blue-600 font-semibold mb-2">Meet Our Founder</p>
-              <h2 className="text-4xl font-bold text-slate-900 mb-2">Elizabeth Greene</h2>
-              <p className="text-slate-500 mb-6">Founder & Chief Executive Officer</p>
+              <p className="text-blue-600 font-semibold mb-2 text-sm sm:text-base">Meet Our Founder</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-2">Elizabeth Greene</h2>
+              <p className="text-slate-500 mb-4 sm:mb-6 text-sm sm:text-base">Founder & Chief Executive Officer</p>
               
               <div className="prose prose-lg max-w-none text-slate-700 space-y-4">
                 <p>
@@ -333,7 +333,7 @@ export default function AboutPage() {
             <Link href="/programs/barber-apprenticeship" className="group">
               <div className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
                 <div className="relative h-32">
-                  <Image src="/images/barber-vibrant.jpg" alt="Beauty" fill className="object-cover object-center" />
+                  <Image src="/images/barber/gallery-3.jpg" alt="Beauty" fill className="object-cover object-center" />
                 </div>
                 <div className="p-4 bg-white text-center">
                   <h3 className="font-bold text-slate-900">Beauty</h3>

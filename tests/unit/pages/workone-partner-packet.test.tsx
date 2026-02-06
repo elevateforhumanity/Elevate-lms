@@ -100,7 +100,7 @@ describe('WorkOnePartnerPacketPage', () => {
     const phoneLink = screen.getByRole('link', { name: /317.*314.*3757/i });
     expect(phoneLink).toHaveAttribute('href', 'tel:+13173143757');
     
-    const emailLink = screen.getByRole('link', { name: /workone@elevateforhumanity/i });
+    const emailLink = screen.getByRole('link', { name: /elevate4humanityedu@gmail/i });
     expect(emailLink).toHaveAttribute('href', 'mailto:elevate4humanityedu@gmail.com');
   });
 

@@ -1,24 +1,61 @@
 # Elevate for Humanity - robots.txt
+# https://www.elevateforhumanity.org
+
 User-agent: *
 Allow: /
 
 # Sitemaps
 Sitemap: https://www.elevateforhumanity.org/sitemap.xml
 
-# Disallow admin and private areas
-Disallow: /admin/
+# API routes
 Disallow: /api/
+
+# Auth flows
+Disallow: /auth/
+Disallow: /login
+Disallow: /signup
+Disallow: /reset-password
+Disallow: /forgot-password
+
+# Dashboard routes (all protected areas)
+Disallow: /admin/
 Disallow: /dashboard/
 Disallow: /staff-portal/
-Disallow: /employer-portal/
-Disallow: /partner-portal/
-Disallow: /hub/
-Disallow: /lms/dashboard/
-Disallow: /student/dashboard/
+Disallow: /instructor/
+Disallow: /creator/
+Disallow: /program-holder/dashboard
+Disallow: /workforce-board/dashboard
+Disallow: /employer/dashboard
+Disallow: /employer/settings
+Disallow: /partner/dashboard
+Disallow: /student/
+Disallow: /learner/
+Disallow: /portal/
 
-# Allow public LMS pages
+# LMS protected routes
+Disallow: /lms/dashboard
+Disallow: /lms/profile
+Disallow: /lms/settings
+Disallow: /lms/messages
+Disallow: /lms/certificates
+Disallow: /lms/grades
+
+# Checkout and payment
+Disallow: /checkout/
+Disallow: /payment/
+
+# Internal pages
+Disallow: /onboarding/
+Disallow: /demo/
+
+# Allow public pages explicitly
+Allow: /programs/
+Allow: /about/
+Allow: /contact
+Allow: /careers
+Allow: /partners
+Allow: /store
 Allow: /lms/$
-Allow: /lms/courses/
 
 # Crawl delay for politeness
 Crawl-delay: 1

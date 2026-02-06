@@ -86,7 +86,7 @@ export default function JRIProgramsPage() {
       </section>
 
       {/* Avatar Guide */}
-      <PageAvatar videoSrc="/videos/avatars/jri-guide.mp4" title="JRI Programs Guide" />
+      <PageAvatar videoSrc="/videos/avatars/orientation-guide.mp4" title="JRI Programs Guide" />
 
       {/* What is JRI */}
       <section className="py-20 bg-slate-50">

@@ -190,7 +190,7 @@ const nextConfig = {
       { source: '/students/:path*', destination: '/lms/:path*', permanent: true },
       { source: '/learners/:path*', destination: '/lms/:path*', permanent: true },
       { source: '/program-holder-portal/:path*', destination: '/program-holder/:path*', permanent: true },
-      { source: '/admin-portal/:path*', destination: '/admin/:path*', permanent: true },
+      // /admin-portal is now a public landing page - no redirect needed
       // /dashboard redirect removed - handled by middleware with auth check
 
       // Tax consolidation

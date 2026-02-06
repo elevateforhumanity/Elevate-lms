@@ -45,7 +45,7 @@ export default async function AiTutorPage() {
       </div>
 {/* Hero Banner */}
       <ModernLandingHero
-        badge="🤖 AI-Powered Learning"
+        badge="AI-Powered Learning"
         headline="Your Personal AI"
         accentText="Tutor"
         subheadline="24/7 Learning Support Powered by Artificial Intelligence"

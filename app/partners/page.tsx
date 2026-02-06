@@ -125,7 +125,7 @@ export default function PartnersPage() {
 
       {/* Avatar Guide */}
       <PageAvatar 
-        videoSrc="/videos/avatars/home-welcome.mp4" 
+        videoSrc="/videos/avatars/orientation-guide.mp4" 
         title="Partner With Us" 
       />
 

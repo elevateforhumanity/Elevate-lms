@@ -86,7 +86,7 @@ const programs = [
   {
     title: 'Technology',
     description: 'IT Support, Cybersecurity, Web Development',
-    image: '/images/technology/hero-programs-technology.jpg',
+    image: '/images/technology/hero-program-it-support.jpg',
     href: '/programs/technology',
   },
   {
@@ -98,7 +98,7 @@ const programs = [
   {
     title: 'Barber Apprenticeship',
     description: 'USDOL Registered Program',
-    image: '/images/beauty/program-barber-training.jpg',
+    image: '/images/barber/training.jpg',
     href: '/programs/barber-apprenticeship',
   },
   {

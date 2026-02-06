@@ -81,7 +81,7 @@ export default async function Page() {
       </section>
 
       {/* Avatar Guide */}
-      <PageAvatar videoSrc="/videos/avatars/dsp-guide.mp4" title="DSP Program Guide" />
+      <PageAvatar videoSrc="/videos/avatars/healthcare-guide.mp4" title="DSP Program Guide" />
 
       {/* Program Overview */}
       <section className="max-w-7xl mx-auto px-4 py-16">

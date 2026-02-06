@@ -94,7 +94,7 @@ export default async function CosmetologyApprenticeshipPage() {
       </section>
 
       {/* Avatar Guide */}
-      <PageAvatar videoSrc="/videos/avatars/cosmetology-guide.mp4" title="Cosmetology Apprenticeship Guide" />
+      <PageAvatar videoSrc="/videos/avatars/barber-guide.mp4" title="Cosmetology Apprenticeship Guide" />
 
       {/* Pathway Disclosure */}
       <PathwayDisclosure programName="Cosmetology Apprenticeship" programSlug="cosmetology-apprenticeship" />

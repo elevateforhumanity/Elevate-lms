@@ -136,7 +136,7 @@ export default async function FAQPage() {
         )}
 
         {/* FAQ List with Search */}
-        <FAQSearch faqs={faqs} />
+        <FAQSearch faqs={faqsToUse} />
 
         {/* Contact CTA */}
         <div className="mt-12 bg-orange-50 rounded-xl p-8 text-center">

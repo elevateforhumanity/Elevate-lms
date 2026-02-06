@@ -72,7 +72,7 @@ function InquiryForm() {
         <Breadcrumbs items={[{ label: "Inquiry" }]} />
       </div>
 <ModernLandingHero
-        badge="⚡ Limited Seats Available"
+        badge="Limited Seats Available"
         headline="Start Your Career"
         accentText="In 10 Minutes"
         subheadline="Quick application. Fast response. Real results."

@@ -53,7 +53,7 @@ export default async function SponsorLicensingPage() {
       </div>
 {/* Hero Banner */}
       <ModernLandingHero
-        badge="🤝 Sponsor-in-a-Box Licensing"
+        badge="Sponsor-in-a-Box Licensing"
         headline="License Our Apprenticeship"
         accentText="Infrastructure"
         subheadline="Operate Compliant, Funded Programs Without Building From Scratch"

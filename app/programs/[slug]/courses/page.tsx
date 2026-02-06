@@ -159,7 +159,7 @@ export default function ProgramCoursesPage() {
                 ],
                 'barber': [
                   '/hero-images/barber-beauty-category.jpg',
-                  '/images/programs/barber-hero.jpg',
+                  '/images/barber/hero.jpg',
                   '/images/programs/efh-barber-hero.jpg'
                 ]
               };

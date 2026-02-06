@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 const programRedirects: Record<string, string> = {
   'barber-apprenticeship': '/forms/barber-apprenticeship-inquiry',
   'barber': '/forms/barber-apprenticeship-inquiry',
-  'cna': '/forms/cna-inquiry',
-  'hvac': '/forms/hvac-inquiry',
-  'medical-assistant': '/forms/medical-assistant-inquiry',
+  'cna': '/inquiry?program=cna',
+  'hvac': '/inquiry?program=hvac',
+  'medical-assistant': '/inquiry?program=medical-assistant',
 };
 
 export default async function ApplyPage({
@@ -47,7 +47,7 @@ export default async function ApplyPage({
 
       {/* Hero */}
       <section 
-        className="relative py-20 px-4"
+        className="relative py-12 sm:py-16 md:py-20 px-4"
         style={{ 
           backgroundImage: 'url(/hero-images/apply-hero.jpg)',
           backgroundSize: 'cover',
@@ -55,13 +55,13 @@ export default async function ApplyPage({
         }}
       >
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
             Let's Match You to the Fastest Enrollment Path
           </h1>
-          <p className="text-xl text-blue-100 mb-2">
+          <p className="text-base sm:text-lg md:text-xl text-blue-100 mb-2">
             We'll ask a few quick questions to route you to funded options if you qualify, or self-pay if you don't.
           </p>
-          <p className="text-blue-200">
+          <p className="text-sm sm:text-base text-blue-200">
             Answer honestly—this doesn't lock you in. It just routes you to the fastest approval path.
           </p>
         </div>

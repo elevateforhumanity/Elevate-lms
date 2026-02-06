@@ -136,7 +136,7 @@ export default async function IndustriesPage() {
         <Breadcrumbs items={[{ label: "Industries" }]} />
       </div>
 <ModernLandingHero
-        badge="⚡ 8 High-Demand Industries"
+        badge="8 High-Demand Industries"
         headline="Industries"
         accentText="We Serve"
         subheadline="Career training across multiple high-demand industries"

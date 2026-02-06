@@ -113,7 +113,7 @@ export default async function CareersPage() {
 
       {/* Hero Banner */}
       <ModernLandingHero
-        badge="💼 Join Our Team"
+        badge="Join Our Team"
         headline="Transform Lives Through"
         accentText="Workforce Development"
         subheadline="Help Us Provide Free Career Training to Thousands"
@@ -132,7 +132,7 @@ export default async function CareersPage() {
 
       {/* Avatar Guide */}
       <PageAvatar 
-        videoSrc="/videos/avatars/home-welcome.mp4" 
+        videoSrc="/videos/avatars/orientation-guide.mp4" 
         title="Join Our Team" 
       />
 

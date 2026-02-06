@@ -5,10 +5,23 @@
 
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 // Lazy load chat widget - doesn't block initial render
 const FloatingChatWidget = dynamic(
   () => import('@/components/FloatingChatWidget'),
+  { ssr: false, loading: () => null }
+);
+
+// Lazy load funding toast - shows WIOA/free tuition info
+const FundingToast = dynamic(
+  () => import('@/components/ui/FundingToast'),
+  { ssr: false, loading: () => null }
+);
+
+// Lazy load sticky mobile CTA - shows on program pages
+const StickyMobileCTA = dynamic(
+  () => import('@/components/programs/StickyMobileCTA').then(mod => ({ default: mod.StickyMobileCTA })),
   { ssr: false, loading: () => null }
 );
 
@@ -17,6 +30,14 @@ const FloatingChatWidget = dynamic(
 
 export default function ClientWidgets() {
   const [showChat, setShowChat] = useState(false);
+  const [showFundingToast, setShowFundingToast] = useState(false);
+  const pathname = usePathname();
+
+  // Show sticky CTA on program pages, apply page, and inquiry page
+  const showStickyCTA = pathname?.startsWith('/programs/') || 
+                        pathname === '/apply' || 
+                        pathname === '/inquiry' ||
+                        pathname?.startsWith('/forms/');
 
   useEffect(() => {
     // Defer chat widget loading:
@@ -43,6 +64,9 @@ export default function ClientWidgets() {
     const handleClick = () => loadChat();
     window.addEventListener('click', handleClick, { once: true });
 
+    // Show funding toast after short delay (handled internally by component)
+    setShowFundingToast(true);
+
     return () => {
       clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
@@ -52,6 +76,12 @@ export default function ClientWidgets() {
 
   return (
     <>
+      {/* Funding Toast - WIOA/free tuition notification */}
+      {showFundingToast && <FundingToast />}
+      
+      {/* Sticky Mobile CTA - Apply/Contact buttons on program pages */}
+      {showStickyCTA && <StickyMobileCTA />}
+      
       {/* AI Chat Widget - deferred load for performance */}
       {showChat && <FloatingChatWidget />}
     </>

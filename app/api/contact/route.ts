@@ -108,38 +108,42 @@ export async function POST(req: Request) {
 
     const data = parsed.data;
 
-    // Save to database using admin client (bypasses RLS for public form)
-    const supabase = createAdminClient();
+    // Try to save to database (non-blocking - form should work even without DB)
+    let dbSaved = false;
+    try {
+      const supabase = createAdminClient();
+      
+      // Split name into first/last for marketing_contacts table
+      const nameParts = data.name.trim().split(/\s+/);
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+      
+      const { error: dbError } = await supabase
+        .from('marketing_contacts')
+        .insert({
+          first_name: firstName,
+          last_name: lastName,
+          email: data.email,
+          tags: ['contact_form', data.role || 'general', data.program || data.interest || 'inquiry'].filter(Boolean),
+        });
 
-    // Split name into first/last for marketing_contacts table
-    const nameParts = data.name.trim().split(/\s+/);
-    const firstName = nameParts[0] || '';
-    const lastName = nameParts.slice(1).join(' ') || '';
-    
-    const { error: dbError } = await supabase
-      .from('marketing_contacts')
-      .insert({
-        first_name: firstName,
-        last_name: lastName,
-        email: data.email,
-        tags: ['contact_form', data.role || 'general', data.program || data.interest || 'inquiry'].filter(Boolean),
-      });
-
-    if (dbError) {
-      logger.error('Error inserting contact request:', dbError);
-      return NextResponse.json(
-        { ok: false, error: 'Could not submit request. Please try again.' },
-        { status: 500 }
-      );
+      if (dbError) {
+        logger.warn('Could not save contact to database (non-blocking):', dbError);
+      } else {
+        dbSaved = true;
+      }
+    } catch (dbErr) {
+      logger.warn('Database unavailable for contact form (non-blocking):', dbErr);
     }
 
-    // Send email notification (non-blocking)
+    // Send email notification (non-blocking but important fallback when DB unavailable)
     sendEmailNotification(data).catch((err) => {
       logger.error('Error sending email notification:', err);
-      // Don't fail the request if email fails
     });
 
-    return NextResponse.json({ ok: true });
+    // Return success - form submission is valid even if DB save failed
+    // Email notification serves as backup
+    return NextResponse.json({ ok: true, dbSaved });
   } catch (err) {
     logger.error('Contact API error:', err);
     return NextResponse.json(

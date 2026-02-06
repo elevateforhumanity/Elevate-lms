@@ -25,7 +25,7 @@ export default function HostShopsPage() {
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[450px] max-h-[600px]">
         <Image
-          src="/images/programs/barber-apprenticeship.jpg"
+          src="/images/barber/gallery-1.jpg"
           alt="Professional barbershop interior"
           fill
           className="object-cover"

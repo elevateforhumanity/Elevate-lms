@@ -14,7 +14,7 @@ const features = [
   { title: 'Attendance', desc: 'Track and record student attendance.', image: '/images/trades/program-building-construction.jpg' },
   { title: 'Reports', desc: 'Generate and view performance reports.', image: '/images/business/tax-prep.jpg' },
   { title: 'Scheduling', desc: 'Manage class schedules and appointments.', image: '/images/healthcare/medical-assistant.jpg' },
-  { title: 'Documents', desc: 'Access and manage important documents.', image: '/images/technology/hero-programs-technology.jpg' },
+  { title: 'Documents', desc: 'Access and manage important documents.', image: '/images/technology/hero-program-it-support.jpg' },
   { title: 'Settings', desc: 'Configure portal preferences and settings.', image: '/images/healthcare/hero-programs-healthcare.jpg' },
 ];
 

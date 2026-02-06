@@ -46,7 +46,7 @@ export default async function RiseFoundationPage() {
 {/* Hero Section */}
       <section className="relative h-[600px] overflow-hidden bg-slate-900">
         <Image
-          src="/images/programs/barber-apprenticeship.jpg"
+          src="/images/barber/gallery-1.jpg"
           alt="RISE Foundation"
           fill
           className="object-cover opacity-40"

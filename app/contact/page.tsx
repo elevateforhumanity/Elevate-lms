@@ -68,7 +68,7 @@ export default function ContactPage() {
       </div>
 
       {/* Hero */}
-      <div className="relative h-[40vh] min-h-[300px] flex items-center justify-center">
+      <div className="relative h-[35vh] sm:h-[40vh] min-h-[250px] sm:min-h-[300px] flex items-center justify-center">
         <Image
           src="/images/heroes-hq/contact-hero.jpg"
           alt="Contact Us"
@@ -77,19 +77,19 @@ export default function ContactPage() {
           priority
         />
         <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl text-white/90">We&apos;re here to help you start your career journey</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Contact Us</h1>
+          <p className="text-base sm:text-lg md:text-xl text-white/90">We&apos;re here to help you start your career journey</p>
         </div>
       </div>
 
       {/* Avatar Guide */}
       <PageAvatar 
-        videoSrc="/videos/avatars/home-welcome.mp4" 
+        videoSrc="/videos/avatars/orientation-guide.mp4" 
         title="Contact Us" 
       />
 
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div className="max-w-7xl mx-auto px-4 py-8 sm:py-10 md:py-12">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10 md:mb-12">
           {contactInfo.map((info, index) => (
             <div key={index} className="bg-white rounded-xl shadow-sm p-6 text-center">
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">

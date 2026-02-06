@@ -67,7 +67,8 @@ describe('SiteHeader', () => {
       'utf-8'
     );
 
-    // Mobile menu button should have gray-900 text (visible on white)
-    expect(headerSource).toContain('text-gray-900 transition-colors');
+    // Mobile menu button should have gray-900 icon (visible on white)
+    // The Menu icon uses text-gray-900 class
+    expect(headerSource).toContain('Menu className="w-6 h-6 text-gray-900"');
   });
 });
