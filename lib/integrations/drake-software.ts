@@ -105,10 +105,18 @@ class DrakeIntegration {
     this.serialNumber = process.env.DRAKE_SERIAL_NUMBER || '';
     this.efilePassword = process.env.DRAKE_EFILE_PASSWORD || '';
     this.apiUrl = process.env.DRAKE_API_URL || 'https://api.drakesoftware.com';
+    // Credentials warning moved to runtime methods to avoid build-time noise
+  }
 
+  private checkCredentials(): boolean {
     if (!this.accountNumber || !this.serialNumber) {
-      console.warn('Drake Software credentials not configured');
+      if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+        // Only warn at runtime in production, not during build
+        console.warn('[Drake] Credentials not configured - tax operations will fail');
+      }
+      return false;
     }
+    return true;
   }
 
   /**
@@ -350,5 +358,26 @@ class DrakeIntegration {
   }
 }
 
-// Export singleton instance
-export const drakeIntegration = new DrakeIntegration();
+// Lazy singleton - only instantiated when first accessed at runtime
+let _drakeInstance: DrakeIntegration | null = null;
+
+export const drakeIntegration = {
+  get instance(): DrakeIntegration {
+    if (!_drakeInstance) {
+      _drakeInstance = new DrakeIntegration();
+    }
+    return _drakeInstance;
+  },
+  createReturn: (...args: Parameters<DrakeIntegration['createReturn']>) => 
+    drakeIntegration.instance.createReturn(...args),
+  calculateTax: (...args: Parameters<DrakeIntegration['calculateTax']>) => 
+    drakeIntegration.instance.calculateTax(...args),
+  eFileReturn: (...args: Parameters<DrakeIntegration['eFileReturn']>) => 
+    drakeIntegration.instance.eFileReturn(...args),
+  getReturnStatus: (...args: Parameters<DrakeIntegration['getReturnStatus']>) => 
+    drakeIntegration.instance.getReturnStatus(...args),
+  generateForm: (...args: Parameters<DrakeIntegration['generateForm']>) => 
+    drakeIntegration.instance.generateForm(...args),
+  uploadDocument: (...args: Parameters<DrakeIntegration['uploadDocument']>) => 
+    drakeIntegration.instance.uploadDocument(...args),
+};
