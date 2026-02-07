@@ -1,0 +1,256 @@
+/**
+ * Sezzle Checkout API - V2
+ * 
+ * Creates a Sezzle checkout session for BNPL payments.
+ * Sezzle splits the purchase into 4 interest-free payments over 6 weeks.
+ * 
+ * Flow:
+ * 1. Create session with order details
+ * 2. Return checkout_url to redirect customer
+ * 3. Customer completes checkout on Sezzle
+ * 4. Customer redirected back to complete_url
+ * 5. Webhook notifies of order completion
+ */
+
+import { NextRequest, NextResponse } from 'next/server';
+import { sezzle, SezzleSessionRequest } from '@/lib/sezzle/client';
+import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/logger';
+
+export async function POST(request: NextRequest) {
+  try {
+    // Check if Sezzle is configured
+    if (!sezzle.isConfigured()) {
+      return NextResponse.json(
+        { error: 'Sezzle is not configured. Please contact support.' },
+        { status: 503 }
+      );
+    }
+
+    const body = await request.json();
+    const {
+      // Customer info
+      firstName,
+      lastName,
+      email,
+      phone,
+      dob, // YYYY-MM-DD format
+      // Billing address
+      billingAddress,
+      billingCity,
+      billingState,
+      billingZip,
+      // Shipping address (optional)
+      shippingAddress,
+      shippingCity,
+      shippingState,
+      shippingZip,
+      // Order info
+      programId,
+      programSlug,
+      programName,
+      amount, // in dollars
+      description,
+      // Optional
+      taxAmount,
+      discountAmount,
+      discountName,
+      // Reference
+      applicationId,
+      enrollmentId,
+      studentId,
+      // Intent: AUTH (capture later) or CAPTURE (capture immediately)
+      intent = 'CAPTURE',
+    } = body;
+
+    // Validate required fields
+    if (!firstName || !lastName || !email || !amount) {
+      return NextResponse.json(
+        { error: 'Missing required fields: firstName, lastName, email, amount' },
+        { status: 400 }
+      );
+    }
+
+    // Sezzle limits: $35 min, $2,500 max
+    if (amount < 35) {
+      return NextResponse.json(
+        { error: 'Sezzle requires a minimum purchase of $35' },
+        { status: 400 }
+      );
+    }
+
+    if (amount > 2500) {
+      return NextResponse.json(
+        { error: 'Sezzle has a maximum purchase limit of $2,500' },
+        { status: 400 }
+      );
+    }
+
+    const supabase = await createClient();
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
+
+    // Generate a unique reference ID
+    const referenceId = `EFH-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+
+    // Build session request
+    const sessionRequest: SezzleSessionRequest = {
+      cancel_url: {
+        href: `${siteUrl}/enroll/payment?canceled=true&provider=sezzle&ref=${referenceId}`,
+        method: 'GET',
+      },
+      complete_url: {
+        href: `${siteUrl}/enroll/success?provider=sezzle&ref=${referenceId}`,
+        method: 'GET',
+      },
+      customer: {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        phone: phone || undefined,
+        dob: dob || undefined,
+        billing_address: billingAddress ? {
+          street: billingAddress,
+          city: billingCity || '',
+          state: billingState || '',
+          postal_code: billingZip || '',
+          country_code: 'US',
+        } : undefined,
+        shipping_address: shippingAddress ? {
+          street: shippingAddress,
+          city: shippingCity || '',
+          state: shippingState || '',
+          postal_code: shippingZip || '',
+          country_code: 'US',
+        } : undefined,
+      },
+      order: {
+        intent: intent as 'AUTH' | 'CAPTURE',
+        reference_id: referenceId,
+        description: description || `${programName || 'Program'} Enrollment`,
+        order_amount: {
+          amount_in_cents: Math.round(amount * 100),
+          currency: 'USD',
+        },
+        items: programName ? [
+          {
+            name: programName,
+            sku: programSlug || 'PROGRAM',
+            quantity: 1,
+            price: {
+              amount_in_cents: Math.round(amount * 100),
+              currency: 'USD',
+            },
+          },
+        ] : undefined,
+        tax_amount: taxAmount ? {
+          amount_in_cents: Math.round(taxAmount * 100),
+          currency: 'USD',
+        } : undefined,
+        discounts: discountAmount ? [
+          {
+            name: discountName || 'Discount',
+            amount: {
+              amount_in_cents: Math.round(discountAmount * 100),
+              currency: 'USD',
+            },
+          },
+        ] : undefined,
+        metadata: {
+          program_id: programId || '',
+          program_slug: programSlug || '',
+          application_id: applicationId || '',
+          enrollment_id: enrollmentId || '',
+          student_id: studentId || '',
+        },
+      },
+    };
+
+    // Create Sezzle session
+    const session = await sezzle.createSession(sessionRequest);
+
+    // Get checkout URL from response
+    const checkoutUrl = session.order?.checkout_url || 
+      session.links?.find(l => l.rel === 'checkout')?.href;
+
+    if (!checkoutUrl) {
+      throw new Error('No checkout URL returned from Sezzle');
+    }
+
+    // Store the Sezzle order reference in database
+    if (supabase && applicationId) {
+      await supabase
+        .from('applications')
+        .update({
+          sezzle_session_uuid: session.uuid,
+          sezzle_order_uuid: session.order?.uuid,
+          sezzle_reference_id: referenceId,
+          payment_provider: 'sezzle',
+          payment_status: 'pending',
+        })
+        .eq('id', applicationId);
+    }
+
+    // Log for tracking
+    logger.info('Sezzle checkout session created', {
+      sessionUuid: session.uuid,
+      orderUuid: session.order?.uuid,
+      referenceId,
+      amount,
+      email,
+      programSlug,
+      intent,
+    });
+
+    return NextResponse.json({
+      ok: true,
+      checkoutUrl,
+      sessionUuid: session.uuid,
+      orderUuid: session.order?.uuid,
+      referenceId,
+    });
+  } catch (error) {
+    logger.error('Sezzle checkout error:', error);
+    const message = error instanceof Error ? error.message : 'Failed to create Sezzle checkout';
+    return NextResponse.json(
+      { error: message },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * GET - Check session/order status
+ */
+export async function GET(request: NextRequest) {
+  try {
+    if (!sezzle.isConfigured()) {
+      return NextResponse.json(
+        { error: 'Sezzle is not configured' },
+        { status: 503 }
+      );
+    }
+
+    const { searchParams } = new URL(request.url);
+    const orderUuid = searchParams.get('order_uuid');
+    const sessionUuid = searchParams.get('session_uuid');
+
+    if (orderUuid) {
+      const order = await sezzle.getOrder(orderUuid);
+      return NextResponse.json({ ok: true, order });
+    }
+
+    if (sessionUuid) {
+      const session = await sezzle.getSession(sessionUuid);
+      return NextResponse.json({ ok: true, session });
+    }
+
+    return NextResponse.json(
+      { error: 'Provide order_uuid or session_uuid' },
+      { status: 400 }
+    );
+  } catch (error) {
+    logger.error('Sezzle status check error:', error);
+    const message = error instanceof Error ? error.message : 'Failed to check status';
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}

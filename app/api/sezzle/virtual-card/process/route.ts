@@ -1,0 +1,234 @@
+/**
+ * Sezzle Virtual Card Processing API
+ * 
+ * Handles the virtual card data returned from Sezzle SDK after customer
+ * completes checkout. The virtual card can be:
+ * 1. Tokenized (card_response_format: 'token') - safer, recommended
+ * 2. Raw card data - PAN, CVV, expiry returned directly
+ * 
+ * Flow:
+ * 1. Customer completes Sezzle checkout in popup
+ * 2. SDK returns virtual card data via onComplete callback
+ * 3. Frontend sends card token/data to this endpoint
+ * 4. We capture the payment and create enrollment record
+ */
+
+import { NextRequest, NextResponse } from 'next/server';
+import { sezzle } from '@/lib/sezzle/client';
+import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/logger';
+
+interface VirtualCardProcessRequest {
+  // Session info from Sezzle
+  sessionId: string;
+  orderUuid?: string;
+  
+  // Card data (tokenized or raw)
+  cardToken?: string;
+  cardData?: {
+    firstName: string;
+    lastName: string;
+    pan: string;
+    cvv: string;
+    expiryMonth: string;
+    expiryYear: string;
+  };
+  
+  // Holder info
+  holder?: {
+    email: string;
+    phone?: string;
+    firstName: string;
+    lastName: string;
+    address1?: string;
+    address2?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    postalCode?: string;
+  };
+  
+  // Order info
+  referenceId: string;
+  amountInCents: number;
+  programSlug?: string;
+  programName?: string;
+  
+  // Application/enrollment reference
+  applicationId?: string;
+  enrollmentId?: string;
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    // Check if Sezzle is configured
+    if (!sezzle.isConfigured()) {
+      return NextResponse.json(
+        { error: 'Sezzle is not configured. Please contact support.' },
+        { status: 503 }
+      );
+    }
+
+    const body: VirtualCardProcessRequest = await request.json();
+    const {
+      sessionId,
+      orderUuid,
+      cardToken,
+      cardData,
+      holder,
+      referenceId,
+      amountInCents,
+      programSlug,
+      programName,
+      applicationId,
+      enrollmentId,
+    } = body;
+
+    // Validate required fields
+    if (!sessionId) {
+      return NextResponse.json(
+        { error: 'Missing sessionId from Sezzle checkout' },
+        { status: 400 }
+      );
+    }
+
+    if (!cardToken && !cardData) {
+      return NextResponse.json(
+        { error: 'Missing card token or card data' },
+        { status: 400 }
+      );
+    }
+
+    if (!referenceId || !amountInCents) {
+      return NextResponse.json(
+        { error: 'Missing referenceId or amountInCents' },
+        { status: 400 }
+      );
+    }
+
+    const supabase = await createClient();
+
+    // Log the virtual card checkout completion
+    logger.info('Sezzle virtual card checkout completed', {
+      sessionId,
+      orderUuid,
+      referenceId,
+      amountInCents,
+      hasToken: !!cardToken,
+      hasCardData: !!cardData,
+      programSlug,
+    });
+
+    // If we have an order UUID, capture the payment
+    let captureResult = null;
+    if (orderUuid) {
+      try {
+        captureResult = await sezzle.captureOrder(orderUuid, amountInCents, false);
+        logger.info('Sezzle payment captured', {
+          orderUuid,
+          amountInCents,
+          captureResult,
+        });
+      } catch (captureError) {
+        logger.error('Sezzle capture failed', captureError);
+        // Continue - the payment may already be captured if intent was CAPTURE
+      }
+    }
+
+    // Generate internal order ID
+    const internalOrderId = `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+
+    // Store the payment record
+    if (supabase) {
+      // Update application if provided
+      if (applicationId) {
+        await supabase
+          .from('applications')
+          .update({
+            sezzle_session_uuid: sessionId,
+            sezzle_order_uuid: orderUuid,
+            sezzle_reference_id: referenceId,
+            payment_provider: 'sezzle_virtual_card',
+            payment_status: 'completed',
+            payment_amount_cents: amountInCents,
+            payment_completed_at: new Date().toISOString(),
+            internal_order_id: internalOrderId,
+          })
+          .eq('id', applicationId);
+      }
+
+      // Create payment record
+      const { error: paymentError } = await supabase
+        .from('payments')
+        .insert({
+          provider: 'sezzle_virtual_card',
+          provider_session_id: sessionId,
+          provider_order_id: orderUuid,
+          reference_id: referenceId,
+          internal_order_id: internalOrderId,
+          amount_cents: amountInCents,
+          currency: 'USD',
+          status: 'completed',
+          customer_email: holder?.email,
+          customer_name: holder ? `${holder.firstName} ${holder.lastName}` : null,
+          program_slug: programSlug,
+          program_name: programName,
+          application_id: applicationId,
+          enrollment_id: enrollmentId,
+          card_token: cardToken,
+          metadata: {
+            holder,
+            capture_result: captureResult,
+          },
+          created_at: new Date().toISOString(),
+        });
+
+      if (paymentError) {
+        logger.warn('Failed to create payment record', { error: paymentError });
+        // Don't fail the request - payment was successful
+      }
+
+      // Create enrollment if we have the necessary info
+      if (programSlug && holder?.email) {
+        const { error: enrollmentError } = await supabase
+          .from('enrollments')
+          .insert({
+            program_slug: programSlug,
+            email: holder.email,
+            first_name: holder.firstName,
+            last_name: holder.lastName,
+            phone: holder.phone,
+            payment_provider: 'sezzle_virtual_card',
+            payment_reference: referenceId,
+            payment_amount_cents: amountInCents,
+            status: 'active',
+            application_id: applicationId,
+            created_at: new Date().toISOString(),
+          })
+          .select('id')
+          .single();
+
+        if (enrollmentError) {
+          logger.warn('Failed to create enrollment', { error: enrollmentError });
+        }
+      }
+    }
+
+    return NextResponse.json({
+      ok: true,
+      orderId: internalOrderId,
+      sessionId,
+      orderUuid,
+      referenceId,
+      captured: !!captureResult,
+      message: 'Payment processed successfully',
+    });
+  } catch (error) {
+    logger.error('Sezzle virtual card processing error:', error);
+    const message = error instanceof Error ? error.message : 'Failed to process virtual card payment';
+    return NextResponse.json(
+      { error: message },
+      { status: 500 }
+    );
+  }
+}

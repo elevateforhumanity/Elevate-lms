@@ -88,6 +88,13 @@ export function CourseDetailClient({ course }: { course: Course }) {
 
   const finalPrice = promoApplied ? promoApplied.newTotal : Number(course.price);
 
+  // Reinitialize Sezzle widget when price changes
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).Sezzle) {
+      (window as any).Sezzle.init();
+    }
+  }, [finalPrice]);
+
   return (
     <>
       {/* Promo Code Section */}
@@ -137,24 +144,32 @@ export function CourseDetailClient({ course }: { course: Course }) {
               )}
             </div>
 
-            <button
-              onClick={handlePurchase}
-              disabled={purchasing}
-              className="flex items-center gap-2 bg-purple-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-purple-700 disabled:bg-gray-400"
-            >
-              {purchasing ? (
-                <Loader2 className="w-5 h-5 animate-spin" />
-              ) : (
-                <ShoppingCart className="w-5 h-5" />
+            <div className="flex flex-col items-end gap-2">
+              <button
+                onClick={handlePurchase}
+                disabled={purchasing}
+                className="flex items-center gap-2 bg-purple-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-purple-700 disabled:bg-gray-400"
+              >
+                {purchasing ? (
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                ) : (
+                  <ShoppingCart className="w-5 h-5" />
+                )}
+                {promoApplied ? (
+                  <>
+                    Buy Now - <span className="line-through opacity-70">${Number(course.price).toFixed(0)}</span> ${finalPrice.toFixed(0)}
+                  </>
+                ) : (
+                  `Buy Now - $${Number(course.price).toFixed(0)}`
+                )}
+              </button>
+              {/* Sezzle Widget */}
+              {finalPrice >= 35 && finalPrice <= 2500 && (
+                <div className="sezzle-widget-container">
+                  <span className="sezzle-price-target" style={{ display: 'none' }}>${finalPrice.toFixed(2)}</span>
+                </div>
               )}
-              {promoApplied ? (
-                <>
-                  Buy Now - <span className="line-through opacity-70">${Number(course.price).toFixed(0)}</span> ${finalPrice.toFixed(0)}
-                </>
-              ) : (
-                `Buy Now - $${Number(course.price).toFixed(0)}`
-              )}
-            </button>
+            </div>
           </div>
         </div>
       </section>

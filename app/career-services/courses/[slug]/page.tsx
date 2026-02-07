@@ -119,19 +119,25 @@ export default async function CourseDetailPage({
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div>
-                  <span className="text-4xl font-bold">${Number(course.price).toFixed(0)}</span>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-4">
+                  <div>
+                    <span className="text-4xl font-bold sezzle-hero-price">${Number(course.price).toFixed(0)}</span>
+                    {course.original_price && (
+                      <span className="text-xl text-gray-400 line-through ml-3">
+                        ${Number(course.original_price).toFixed(0)}
+                      </span>
+                    )}
+                  </div>
                   {course.original_price && (
-                    <span className="text-xl text-gray-400 line-through ml-3">
-                      ${Number(course.original_price).toFixed(0)}
+                    <span className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+                      Save ${(Number(course.original_price) - Number(course.price)).toFixed(0)}
                     </span>
                   )}
                 </div>
-                {course.original_price && (
-                  <span className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full">
-                    Save ${(Number(course.original_price) - Number(course.price)).toFixed(0)}
-                  </span>
+                {/* Sezzle Widget - shows "or 4 interest-free payments" */}
+                {Number(course.price) >= 35 && Number(course.price) <= 2500 && (
+                  <div className="sezzle-hero-widget text-purple-200" />
                 )}
               </div>
             </div>

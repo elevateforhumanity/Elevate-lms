@@ -200,8 +200,12 @@ export default function ShoppingCartPage() {
                   <div className="border-t border-gray-200 pt-3">
                     <div className="flex justify-between text-lg font-semibold text-gray-900">
                       <span>Total</span>
-                      <span>${total.toFixed(2)}</span>
+                      <span className="cart-total">${total.toFixed(2)}</span>
                     </div>
+                    {/* Sezzle Widget - shows "or 4 interest-free payments" */}
+                    {total >= 35 && total <= 2500 && (
+                      <div className="mt-2 text-right sezzle-cart-widget" />
+                    )}
                   </div>
                 </div>
 
