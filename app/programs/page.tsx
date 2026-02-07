@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 import { PathwayBlock } from '@/components/PathwayBlock';
 import PathwayDisclosure from '@/components/compliance/PathwayDisclosure';
 import PageAvatar from '@/components/PageAvatar';
-import { createClient } from '@/lib/supabase/server';
+import { createPublicClient } from '@/lib/supabase/public';
 
 // Cache for 10 minutes - program listings don't change frequently
 export const revalidate = 600;
@@ -64,7 +64,7 @@ const categoryNormalization: Record<string, string> = {
 };
 
 async function getCategories() {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   
   // Get active programs grouped by category
   const { data: programs, error } = await supabase
