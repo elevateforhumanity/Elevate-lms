@@ -59,29 +59,29 @@ export default function BarberProgramPage() {
               Learn from master barbers in real shops. Earn money while you train. Get your Indiana Barber License in 15-24 months.
             </p>
             
-            {/* 3 Main Action Buttons */}
+            {/* 3 Main Action Buttons - scroll to forms */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Link
-                href="/apply?program=barber"
+              <a
+                href="#apply-form"
                 className="inline-flex items-center justify-center gap-2 bg-brand-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-orange-600 transition-colors"
               >
                 <GraduationCap className="w-6 h-6" />
                 Apply to Program
-              </Link>
-              <Link
-                href="/partners/barber-shop"
+              </a>
+              <a
+                href="#shop-form"
                 className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors"
               >
                 <Building2 className="w-6 h-6" />
                 Partner Shop Sign-Up
-              </Link>
-              <Link
-                href="/contact?type=barber"
+              </a>
+              <a
+                href="#inquiry-form"
                 className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-colors"
               >
                 <Phone className="w-6 h-6" />
                 Inquiry
-              </Link>
+              </a>
             </div>
 
             {/* Quick Stats */}
@@ -272,13 +272,13 @@ export default function BarberProgramPage() {
                   <span>Ongoing support & resources</span>
                 </li>
               </ul>
-              <Link
-                href="/partners/barber-shop"
+              <a
+                href="#shop-form"
                 className="inline-flex items-center gap-2 bg-white text-brand-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors"
               >
                 <Building2 className="w-6 h-6" />
                 Become a Partner Shop
-              </Link>
+              </a>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-xl">
               <h3 className="font-bold text-gray-900 text-xl mb-6">Shop Requirements</h3>
@@ -310,40 +310,85 @@ export default function BarberProgramPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-16 bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Start Your Barber Career?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Join our apprenticeship program and become a licensed barber.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply?program=barber"
-              className="inline-flex items-center justify-center gap-2 bg-brand-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-orange-600"
-            >
-              <GraduationCap className="w-6 h-6" />
-              Apply to Program
-            </Link>
-            <Link
-              href="/partners/barber-shop"
-              className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100"
-            >
-              <Building2 className="w-6 h-6" />
-              Partner Shop Sign-Up
-            </Link>
-            <Link
-              href="/contact?type=barber"
-              className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10"
-            >
-              <Phone className="w-6 h-6" />
-              Inquiry
-            </Link>
+      {/* FORMS SECTION */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get Started Today</h2>
+            <p className="text-xl text-gray-600">Choose the option that fits you best</p>
           </div>
-          <p className="mt-8 text-gray-400">
-            Or call us: <a href="tel:+13173143757" className="text-orange-400 font-semibold">(317) 314-3757</a>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Application Form */}
+            <div id="apply-form" className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 border-2 border-orange-200">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-brand-orange-500 rounded-full flex items-center justify-center">
+                  <GraduationCap className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Apply to Program</h3>
+              </div>
+              <p className="text-gray-600 mb-6">Start your barber apprenticeship journey</p>
+              <form className="space-y-4" action="/api/barber/apply" method="POST">
+                <input type="hidden" name="program" value="barber-apprenticeship" />
+                <input type="text" name="name" placeholder="Full Name *" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500" />
+                <input type="email" name="email" placeholder="Email *" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500" />
+                <input type="tel" name="phone" placeholder="Phone *" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500" />
+                <select name="experience" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
+                  <option value="">Experience Level</option>
+                  <option value="none">No Experience</option>
+                  <option value="some">Some Experience</option>
+                  <option value="licensed">Already Licensed</option>
+                </select>
+                <button type="submit" className="w-full bg-brand-orange-500 text-white py-3 rounded-lg font-bold hover:bg-brand-orange-600 transition-colors">
+                  Submit Application
+                </button>
+              </form>
+            </div>
+
+            {/* Shop Partner Form */}
+            <div id="shop-form" className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-2 border-blue-200">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                  <Building2 className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Partner Shop Sign-Up</h3>
+              </div>
+              <p className="text-gray-600 mb-6">Host apprentices at your barbershop</p>
+              <form className="space-y-4" action="/api/barber/partner" method="POST">
+                <input type="text" name="shopName" placeholder="Shop Name *" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                <input type="text" name="ownerName" placeholder="Owner Name *" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                <input type="email" name="email" placeholder="Email *" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                <input type="tel" name="phone" placeholder="Phone *" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                <input type="text" name="address" placeholder="Shop Address" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">
+                  Become a Partner
+                </button>
+              </form>
+            </div>
+
+            {/* Inquiry Form */}
+            <div id="inquiry-form" className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 border-2 border-gray-200">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Have Questions?</h3>
+              </div>
+              <p className="text-gray-600 mb-6">Send us an inquiry and we'll get back to you</p>
+              <form className="space-y-4" action="/api/barber/inquiry" method="POST">
+                <input type="text" name="name" placeholder="Your Name *" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gray-500 focus:border-gray-500" />
+                <input type="email" name="email" placeholder="Email *" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gray-500 focus:border-gray-500" />
+                <input type="tel" name="phone" placeholder="Phone" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gray-500 focus:border-gray-500" />
+                <textarea name="message" placeholder="Your Question *" required rows={3} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gray-500 focus:border-gray-500"></textarea>
+                <button type="submit" className="w-full bg-gray-700 text-white py-3 rounded-lg font-bold hover:bg-gray-800 transition-colors">
+                  Send Inquiry
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <p className="mt-8 text-center text-gray-600">
+            Or call us directly: <a href="tel:+13173143757" className="text-brand-orange-600 font-semibold">(317) 314-3757</a>
           </p>
         </div>
       </section>
