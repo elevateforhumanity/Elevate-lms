@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Supersonic Fast Cash | Tax Preparation & Refund Services',
   description: 'Fast tax preparation and refund services. Get your maximum refund with professional tax preparers.',

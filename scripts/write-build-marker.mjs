@@ -14,7 +14,7 @@ try {
 
 const payload = {
   builtAt: new Date().toISOString(),
-  nodeEnv: process.env.NODE_ENV ?? null,
+  nodeEnv: (process.env.NODE_ENV ?? "").trim() || null,
   gitCommit: gitCommitFull,
   gitCommitShort: gitCommitFull ? gitCommitFull.substring(0, 8) : null,
 };
