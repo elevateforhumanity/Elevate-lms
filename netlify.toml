@@ -48,12 +48,9 @@
 [functions]
   node_bundler = "esbuild"
   external_node_modules = [
-    "@prisma/client",
-    "prisma",
     "sharp",
     "@aws-sdk/client-s3",
-    "@aws-sdk/s3-request-presigner",
-    "tesseract.js"
+    "@aws-sdk/s3-request-presigner"
   ]
 
 # Social Media Scheduler - DISABLED due to AWS Lambda 4KB env var limit
