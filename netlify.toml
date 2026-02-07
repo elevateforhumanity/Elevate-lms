@@ -10,6 +10,8 @@
 [build.environment]
   NODE_VERSION = "20"
   NETLIFY_USE_PNPM = "true"
+  # Fix NODE_ENV - override any misconfigured dashboard value
+  NODE_ENV = "production"
   # Disable secret scanning - NEXT_PUBLIC_* vars are intentionally public
   SECRETS_SCAN_ENABLED = "false"
   SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXTAUTH_URL"
