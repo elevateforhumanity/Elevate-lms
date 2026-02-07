@@ -43,7 +43,7 @@ export function useStudio() {
     if (savedSettings) {
       try {
         setSettings({ ...DEFAULT_SETTINGS, ...JSON.parse(savedSettings) });
-      } catch {}
+      } catch { /* ignore */ }
     }
     setMounted(true);
   }, []);
@@ -103,7 +103,7 @@ export function useStudio() {
       const res = await fetch('/api/studio/repos', { headers: headers() });
       const data = await res.json();
       if (Array.isArray(data)) setRepos(data);
-    } catch {}
+    } catch { /* ignore */ }
   }, [userId, headers]);
 
   // Add a repo
@@ -155,7 +155,7 @@ export function useStudio() {
           setBranch(data[0]?.name || 'main');
         }
       }
-    } catch {}
+    } catch { /* ignore */ }
   }, [token, currentRepo, branch]);
 
   // Build tree from flat file list
@@ -504,7 +504,7 @@ export function useStudio() {
       const res = await fetch(url, { headers: { 'x-gh-token': token } });
       const data = await res.json();
       setCommits(data.commits || []);
-    } catch {}
+    } catch { /* ignore */ }
   }, [token, currentRepo, branch]);
 
   // View file at specific commit
@@ -544,7 +544,7 @@ export function useStudio() {
       });
       const data = await res.json();
       if (Array.isArray(data)) setRecentFiles(data);
-    } catch {}
+    } catch { /* ignore */ }
   }, [userId, currentRepoId, headers]);
 
   // Update settings

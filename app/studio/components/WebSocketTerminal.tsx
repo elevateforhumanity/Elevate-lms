@@ -131,13 +131,26 @@ export function WebSocketTerminal({ wsUrl = 'http://localhost:3001', cwd, onPort
   // Parse ANSI codes for display
   const parseAnsi = (text: string) => {
     // Simple ANSI parser - convert to spans with colors
+    // eslint-disable-next-line no-control-regex
+    const ansi32 = /\x1b\[32m/g;
+    // eslint-disable-next-line no-control-regex
+    const ansi33 = /\x1b\[33m/g;
+    // eslint-disable-next-line no-control-regex
+    const ansi31 = /\x1b\[31m/g;
+    // eslint-disable-next-line no-control-regex
+    const ansi34 = /\x1b\[34m/g;
+    // eslint-disable-next-line no-control-regex
+    const ansi0 = /\x1b\[0m/g;
+    // eslint-disable-next-line no-control-regex
+    const ansiAny = /\x1b\[\d+m/g;
+    
     return text
-      .replace(/\x1b\[32m/g, '<span style="color:#7ee787">')
-      .replace(/\x1b\[33m/g, '<span style="color:#e2c08d">')
-      .replace(/\x1b\[31m/g, '<span style="color:#f85149">')
-      .replace(/\x1b\[34m/g, '<span style="color:#58a6ff">')
-      .replace(/\x1b\[0m/g, '</span>')
-      .replace(/\x1b\[\d+m/g, '');
+      .replace(ansi32, '<span style="color:#7ee787">')
+      .replace(ansi33, '<span style="color:#e2c08d">')
+      .replace(ansi31, '<span style="color:#f85149">')
+      .replace(ansi34, '<span style="color:#58a6ff">')
+      .replace(ansi0, '</span>')
+      .replace(ansiAny, '');
   };
 
   return (

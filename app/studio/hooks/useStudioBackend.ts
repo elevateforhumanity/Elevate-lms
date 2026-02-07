@@ -78,7 +78,7 @@ export function useStudioBackend() {
       if (savedSettings) {
         try {
           setSettings({ ...DEFAULT_SETTINGS, ...JSON.parse(savedSettings) });
-        } catch {}
+        } catch { /* ignore */ }
       }
       
       if (savedToken) {
@@ -182,7 +182,7 @@ export function useStudioBackend() {
         try {
           const content = await studioAPI.readFile(workspaceId, file.path);
           fileMap.set(file.path, content);
-        } catch {}
+        } catch { /* ignore */ }
       }
       setFiles(fileMap);
       
@@ -632,7 +632,7 @@ export function useStudioBackend() {
       const res = await fetch('/api/studio/repos', { headers: headers() });
       const data = await res.json();
       if (Array.isArray(data)) setRepos(data);
-    } catch {}
+    } catch { /* ignore */ }
   }, [userId, headers]);
 
   // Load branches
@@ -649,7 +649,7 @@ export function useStudioBackend() {
           setBranch(data[0]?.name || 'main');
         }
       }
-    } catch {}
+    } catch { /* ignore */ }
   }, [token, currentRepo, branch]);
 
   // Load commits
@@ -661,7 +661,7 @@ export function useStudioBackend() {
       });
       const data = await res.json();
       if (Array.isArray(data)) setCommits(data);
-    } catch {}
+    } catch { /* ignore */ }
   }, [token, currentRepo, branch]);
 
   // Load files from GitHub (for initial sync)
