@@ -47,7 +47,6 @@
 
 [functions]
   node_bundler = "esbuild"
-  timeout = 26
 
 # Social Media Scheduler - DISABLED due to AWS Lambda 4KB env var limit
 # TODO: Re-enable with reduced env vars or use background functions
