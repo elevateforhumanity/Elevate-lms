@@ -48,19 +48,7 @@ export default function PageHero({
         />
       )}
 
-      {/* Content */}
-      <div className="absolute inset-0 flex items-center justify-center text-center px-4 pointer-events-none">
-        <div className="max-w-4xl w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white uppercase tracking-wide">
-            {title}
-          </h1>
-          {subtitle && (
-            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-white">
-              {subtitle}
-            </p>
-          )}
-        </div>
-      </div>
+      {/* Text removed from hero banner - clean image only */}
     </section>
   );
 }

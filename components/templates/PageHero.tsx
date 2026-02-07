@@ -53,16 +53,7 @@ export default function PageHero({ title, description, forceHero }: PageHeroProp
         />
       )}
 
-      {title && (
-        <div className="absolute inset-0 flex items-center justify-center text-center px-4">
-          <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">{title}</h1>
-            {description && (
-              <p className="text-xl text-white/90">{description}</p>
-            )}
-          </div>
-        </div>
-      )}
+      {/* Text removed from hero banner - clean image only */}
     </section>
   );
 }

@@ -36,7 +36,7 @@ export function VisualProgramTemplate({ program, slug }: VisualProgramTemplatePr
         </div>
       </div>
 
-      {/* HERO - Full-width photo with program title */}
+      {/* HERO - Full-width photo only, no text overlay */}
       <section className="relative h-[60vh] min-h-[400px] max-h-[600px]">
         <Image
           src={images.hero}
@@ -45,25 +45,6 @@ export function VisualProgramTemplate({ program, slug }: VisualProgramTemplatePr
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
-          <div className="max-w-5xl mx-auto">
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-3">
-              {program.name || program.heroTitle}
-            </h1>
-            <p className="text-white/90 text-sm md:text-base mb-4 max-w-2xl">
-              Eligibility approval is required before enrollment. Start your application to check eligibility.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/apply"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition shadow-lg"
-              >
-                Check Eligibility
-              </Link>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* PROGRAM SNAPSHOT - 4 Photo Cards */}

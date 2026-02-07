@@ -41,33 +41,7 @@ export default function ProgramHero({
           <div className="absolute inset-0    " />
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 h-full flex items-center">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
-            <div className="max-w-4xl">
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 md:mb-8 tracking-tight drop-shadow-2xl">
-                {title}
-              </h1>
-              <p className="text-xl sm:text-2xl md:text-3xl text-white mb-8 md:mb-10 leading-relaxed drop-shadow-lg max-w-3xl">
-                {description}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/apply"
-                  className="inline-flex items-center justify-center px-8 py-4 md:px-10 md:py-5 text-lg md:text-xl font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 transition-all hover:scale-105 shadow-2xl"
-                >
-                  Apply Now - Free Training
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 md:px-10 md:py-5 text-lg md:text-xl font-bold text-white bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all hover:scale-105 border-2 border-white/50 shadow-2xl"
-                >
-                  Learn More
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Text removed from hero banner - clean image only */}
       </section>
 
       {/* Quick Facts */}
