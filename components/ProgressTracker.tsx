@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
-import { Circle, Circle, Clock } from 'lucide-react';
+import { Circle, Clock } from 'lucide-react';
 
 interface Module {
   id: string;

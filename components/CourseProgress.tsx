@@ -1,6 +1,6 @@
 "use client";
 
-import { Circle, Circle } from 'lucide-react';
+import { Circle } from 'lucide-react';
 
 interface CourseProgressProps {
   current: number;

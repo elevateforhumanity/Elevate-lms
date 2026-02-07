@@ -1,13 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
-import {
-  extractTextFromImage,
-  autoExtract,
-  extractW2Data,
-  extract1099Data,
-  extractIDData,
-} from '@/lib/ocr/tesseract-ocr';
+
+// Dynamic import to avoid bundling tesseract.js into the main handler
+async function getOCRFunctions() {
+  const ocr = await import('@/lib/ocr/tesseract-ocr');
+  return {
+    extractTextFromImage: ocr.extractTextFromImage,
+    autoExtract: ocr.autoExtract,
+    extractW2Data: ocr.extractW2Data,
+    extract1099Data: ocr.extract1099Data,
+    extractIDData: ocr.extractIDData,
+  };
+}
 
 // Helper to check if file is PDF
 function isPDF(file: File | Blob): boolean {
@@ -187,8 +192,9 @@ export async function POST(request: NextRequest) {
         processingTime: Date.now() - startTime,
       };
     } else {
-      // Handle image files with OCR
+      // Handle image files with OCR (dynamic import)
       const buffer = Buffer.from(await file.arrayBuffer());
+      const { extractW2Data, extract1099Data, extractIDData, autoExtract } = await getOCRFunctions();
 
       switch (documentType.toLowerCase()) {
         case 'w2':

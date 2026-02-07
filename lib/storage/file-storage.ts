@@ -3,10 +3,23 @@
  * 
  * Handles secure file storage and signed URL generation for digital downloads.
  * Supports Cloudflare R2 (S3-compatible) and AWS S3.
+ * 
+ * Uses dynamic imports to avoid bundling AWS SDK into the main handler.
  */
 
-import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+// Dynamic imports to reduce bundle size
+async function getS3Modules() {
+  const [s3Client, presigner] = await Promise.all([
+    import('@aws-sdk/client-s3'),
+    import('@aws-sdk/s3-request-presigner'),
+  ]);
+  return {
+    S3Client: s3Client.S3Client,
+    GetObjectCommand: s3Client.GetObjectCommand,
+    PutObjectCommand: s3Client.PutObjectCommand,
+    getSignedUrl: presigner.getSignedUrl,
+  };
+}
 
 // Storage configuration
 const STORAGE_CONFIG = {
@@ -20,23 +33,24 @@ const STORAGE_CONFIG = {
   bucket: process.env.R2_BUCKET || process.env.AWS_S3_BUCKET || 'elevate-media',
 };
 
-// Initialize S3 client (works with R2 and S3)
-let s3Client: S3Client | null = null;
+// Cached S3 client instance
+let s3ClientInstance: any = null;
 
-function getS3Client(): S3Client {
-  if (!s3Client) {
+async function getS3Client() {
+  if (!s3ClientInstance) {
     if (!STORAGE_CONFIG.credentials.accessKeyId || !STORAGE_CONFIG.credentials.secretAccessKey) {
       throw new Error('Storage credentials not configured. Set R2_ACCESS_KEY/R2_SECRET_KEY or AWS credentials.');
     }
 
-    s3Client = new S3Client({
+    const { S3Client } = await getS3Modules();
+    s3ClientInstance = new S3Client({
       endpoint: STORAGE_CONFIG.endpoint,
       region: STORAGE_CONFIG.region,
       credentials: STORAGE_CONFIG.credentials,
       forcePathStyle: !!STORAGE_CONFIG.endpoint, // Required for R2
     });
   }
-  return s3Client;
+  return s3ClientInstance;
 }
 
 /**
@@ -111,7 +125,8 @@ export async function generateSignedDownloadUrl(
   }
 
   try {
-    const client = getS3Client();
+    const { GetObjectCommand, getSignedUrl } = await getS3Modules();
+    const client = await getS3Client();
     const command = new GetObjectCommand({
       Bucket: STORAGE_CONFIG.bucket,
       Key: fileInfo.path,
@@ -144,7 +159,8 @@ export async function uploadFile(
   }
 
   try {
-    const client = getS3Client();
+    const { PutObjectCommand } = await getS3Modules();
+    const client = await getS3Client();
     const command = new PutObjectCommand({
       Bucket: STORAGE_CONFIG.bucket,
       Key: key,

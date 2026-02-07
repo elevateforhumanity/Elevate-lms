@@ -3,10 +3,25 @@
  * 
  * R2 is S3-compatible, so we use the AWS SDK.
  * Free egress makes it ideal for video/image CDN.
+ * 
+ * Uses dynamic imports to avoid bundling AWS SDK into the main handler.
  */
 
-import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand, ListObjectsV2Command } from '@aws-sdk/client-s3';
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+// Dynamic imports to reduce bundle size
+async function getS3Modules() {
+  const [s3Client, presigner] = await Promise.all([
+    import('@aws-sdk/client-s3'),
+    import('@aws-sdk/s3-request-presigner'),
+  ]);
+  return {
+    S3Client: s3Client.S3Client,
+    PutObjectCommand: s3Client.PutObjectCommand,
+    DeleteObjectCommand: s3Client.DeleteObjectCommand,
+    GetObjectCommand: s3Client.GetObjectCommand,
+    ListObjectsV2Command: s3Client.ListObjectsV2Command,
+    getSignedUrl: presigner.getSignedUrl,
+  };
+}
 
 // R2 Configuration
 const R2_ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
@@ -20,20 +35,27 @@ export const isR2Configured = () => {
   return !!(R2_ACCOUNT_ID && R2_ACCESS_KEY_ID && R2_SECRET_ACCESS_KEY);
 };
 
+// Cached client instance
+let r2ClientInstance: any = null;
+
 // Create S3-compatible client for R2
-const getR2Client = () => {
+const getR2Client = async () => {
   if (!isR2Configured()) {
     throw new Error('Cloudflare R2 is not configured. Set CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_R2_ACCESS_KEY_ID, and CLOUDFLARE_R2_SECRET_ACCESS_KEY');
   }
 
-  return new S3Client({
-    region: 'auto',
-    endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-    credentials: {
-      accessKeyId: R2_ACCESS_KEY_ID!,
-      secretAccessKey: R2_SECRET_ACCESS_KEY!,
-    },
-  });
+  if (!r2ClientInstance) {
+    const { S3Client } = await getS3Modules();
+    r2ClientInstance = new S3Client({
+      region: 'auto',
+      endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+      credentials: {
+        accessKeyId: R2_ACCESS_KEY_ID!,
+        secretAccessKey: R2_SECRET_ACCESS_KEY!,
+      },
+    });
+  }
+  return r2ClientInstance;
 };
 
 export interface UploadResult {
@@ -52,7 +74,8 @@ export async function uploadToR2(
   contentType: string
 ): Promise<UploadResult> {
   try {
-    const client = getR2Client();
+    const { PutObjectCommand } = await getS3Modules();
+    const client = await getR2Client();
 
     await client.send(new PutObjectCommand({
       Bucket: R2_BUCKET_NAME,
@@ -107,7 +130,8 @@ export async function uploadFromUrlToR2(
  */
 export async function deleteFromR2(key: string): Promise<boolean> {
   try {
-    const client = getR2Client();
+    const { DeleteObjectCommand } = await getS3Modules();
+    const client = await getR2Client();
 
     await client.send(new DeleteObjectCommand({
       Bucket: R2_BUCKET_NAME,
@@ -126,7 +150,8 @@ export async function deleteFromR2(key: string): Promise<boolean> {
  */
 export async function getSignedR2Url(key: string, expiresIn = 3600): Promise<string | null> {
   try {
-    const client = getR2Client();
+    const { GetObjectCommand, getSignedUrl } = await getS3Modules();
+    const client = await getR2Client();
 
     const url = await getSignedUrl(
       client,
@@ -149,7 +174,8 @@ export async function getSignedR2Url(key: string, expiresIn = 3600): Promise<str
  */
 export async function listR2Files(prefix?: string): Promise<string[]> {
   try {
-    const client = getR2Client();
+    const { ListObjectsV2Command } = await getS3Modules();
+    const client = await getR2Client();
 
     const response = await client.send(new ListObjectsV2Command({
       Bucket: R2_BUCKET_NAME,
