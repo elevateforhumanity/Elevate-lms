@@ -6,7 +6,7 @@ import {
   FileText, 
   Award, 
   ArrowRight, 
-  CheckCircle,
+  Circle,
   Download,
   Users,
   TrendingUp,
@@ -209,7 +209,7 @@ export default function GuidesPage() {
                       <ul className="grid sm:grid-cols-2 gap-2">
                         {guide.features.map((feature) => (
                           <li key={feature} className="flex items-start gap-2 text-sm text-slate-600">
-                            <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                            <Circle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}

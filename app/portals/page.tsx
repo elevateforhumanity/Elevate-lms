@@ -10,7 +10,7 @@ import {
   ArrowRight,
   Shield,
   Clock,
-  CheckCircle,
+  Circle,
 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
@@ -125,7 +125,7 @@ export default function PortalsPage() {
               <span>24/7 Availability</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-purple-400" />
+              <Circle className="w-5 h-5 text-purple-400" />
               <span>Real-Time Updates</span>
             </div>
           </div>

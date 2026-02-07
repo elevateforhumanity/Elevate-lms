@@ -11,7 +11,7 @@ import {
   CreditCard,
   GraduationCap,
   Users,
-  CheckCircle,
+  Circle,
   ArrowRight,
   Search,
   Filter,
@@ -139,7 +139,7 @@ const tutorials = [
     description: 'Tips for completing online assessments and viewing your results.',
     duration: '5:00',
     category: 'courses',
-    icon: CheckCircle,
+    icon: Circle,
     color: 'purple',
     steps: [
       'Starting a quiz',
@@ -401,7 +401,7 @@ export default async function TutorialsPage() {
                   <div className="space-y-2 mb-4">
                     {tutorial.steps.slice(0, 3).map((step, index) => (
                       <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
-                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                        <Circle className="w-4 h-4 text-green-500 flex-shrink-0" />
                         <span>{step}</span>
                       </div>
                     ))}

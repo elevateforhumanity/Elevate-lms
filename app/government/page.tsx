@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { Building2, Users, FileText, Shield, CheckCircle, Award, Briefcase, Phone, Mail, TrendingUp, Target, Handshake, BarChart3 } from 'lucide-react';
+import { Building2, Users, FileText, Shield, Circle, Award, Briefcase, Phone, Mail, TrendingUp, Target, Handshake, BarChart3 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -101,23 +101,23 @@ export default async function GovernmentPage() {
                 <h3 className="text-xl font-bold text-white mb-6">Our Credentials</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-400" />
+                    <Circle className="w-6 h-6 text-green-400" />
                     <span className="text-white">ETPL Approved Provider</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-400" />
+                    <Circle className="w-6 h-6 text-green-400" />
                     <span className="text-white">WIOA Title I Compliant</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-400" />
+                    <Circle className="w-6 h-6 text-green-400" />
                     <span className="text-white">Registered Apprenticeship Sponsor</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-400" />
+                    <Circle className="w-6 h-6 text-green-400" />
                     <span className="text-white">WRG Eligible Programs</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-400" />
+                    <Circle className="w-6 h-6 text-green-400" />
                     <span className="text-white">DOL Oversight Compliant</span>
                   </div>
                 </div>
@@ -164,15 +164,15 @@ export default async function GovernmentPage() {
                 </p>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <Circle className="w-4 h-4 text-green-600" />
                     WIOA Title I Adult & Dislocated Worker
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <Circle className="w-4 h-4 text-green-600" />
                     Youth Programs (OSY & ISY)
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <Circle className="w-4 h-4 text-green-600" />
                     Rapid Response Services
                   </li>
                 </ul>
@@ -200,15 +200,15 @@ export default async function GovernmentPage() {
                 </p>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <Circle className="w-4 h-4 text-green-600" />
                     Department of Workforce Development
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <Circle className="w-4 h-4 text-green-600" />
                     Department of Education
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <Circle className="w-4 h-4 text-green-600" />
                     Vocational Rehabilitation
                   </li>
                 </ul>
@@ -236,15 +236,15 @@ export default async function GovernmentPage() {
                 </p>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <Circle className="w-4 h-4 text-green-600" />
                     DOL Apprenticeship Programs
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <Circle className="w-4 h-4 text-green-600" />
                     Reentry Programs (JRI)
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <Circle className="w-4 h-4 text-green-600" />
                     Veterans Programs (GI Bill, VR&E)
                   </li>
                 </ul>

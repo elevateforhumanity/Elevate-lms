@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Award, CheckCircle, Circle, Target, TrendingUp } from 'lucide-react';
+import { Award, Circle, Circle, Target, TrendingUp } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
@@ -83,7 +83,7 @@ export default async function ApprenticeSkillsPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'completed':
-        return <CheckCircle className="w-5 h-5 text-green-500" />;
+        return <Circle className="w-5 h-5 text-green-500" />;
       case 'in-progress':
         return <TrendingUp className="w-5 h-5 text-blue-500" />;
       default:
@@ -167,7 +167,7 @@ export default async function ApprenticeSkillsPage() {
           <h3 className="font-semibold mb-4">Status Legend</h3>
           <div className="flex flex-wrap gap-6">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-green-500" />
+              <Circle className="w-5 h-5 text-green-500" />
               <span>Completed</span>
             </div>
             <div className="flex items-center gap-2">

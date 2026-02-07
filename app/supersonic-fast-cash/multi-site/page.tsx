@@ -6,7 +6,7 @@ import {
   DollarSign,
   Users,
   TrendingUp,
-  CheckCircle,
+  Circle,
   ArrowRight,
   MapPin,
   Briefcase,
@@ -232,7 +232,7 @@ export default function MultiSitePage() {
               <ul className="space-y-3">
                 {whatYouGet.map((item, idx) => (
                   <li key={idx} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                     <span className="text-gray-700">{item}</span>
                   </li>
                 ))}

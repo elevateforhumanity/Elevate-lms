@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Play, CheckCircle } from 'lucide-react';
+import { ArrowRight, Play, Circle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Hub | Elevate for Humanity',
@@ -175,15 +175,15 @@ export default async function HubWelcomePage() {
                   <p className="text-lg text-slate-600 mb-6 leading-relaxed">{feature.description}</p>
                   <ul className="space-y-3">
                     <li className="flex items-center gap-3 text-slate-700">
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                       <span>Real-time updates</span>
                     </li>
                     <li className="flex items-center gap-3 text-slate-700">
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                       <span>Automated tracking</span>
                     </li>
                     <li className="flex items-center gap-3 text-slate-700">
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                       <span>No manual entry required</span>
                     </li>
                   </ul>

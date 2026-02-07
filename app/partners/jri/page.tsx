@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 import {
   ExternalLink,
-  CheckCircle,
+  Circle,
   Clock,
   Award,
   Users,
@@ -74,29 +74,29 @@ export default function JRIPage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <Circle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div className="text-black">
                 6 badge courses + 2 additional courses
               </div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <Circle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div className="text-black">Self-paced online learning</div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <Circle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div className="text-black">Industry-backed credentials</div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <Circle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div className="text-black">Progress tracking dashboard</div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <Circle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div className="text-black">
                 Facilitator support available
               </div>

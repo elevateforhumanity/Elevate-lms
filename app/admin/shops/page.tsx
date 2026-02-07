@@ -12,7 +12,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import {
   Building2,
-  CheckCircle,
+  Circle,
   Clock,
   XCircle,
   FileText,
@@ -99,7 +99,7 @@ export default async function AdminShopsPage() {
   function getShopStatus(shop: any) {
     if (!shop.active) return { color: 'red', label: 'Inactive', icon: XCircle };
     if (shop.docsComplete && shop.shop_onboarding?.[0]?.completed_at) {
-      return { color: 'green', label: 'Complete', icon: CheckCircle };
+      return { color: 'green', label: 'Complete', icon: Circle };
     }
     if (shop.docsApproved > 0) {
       return { color: 'yellow', label: 'In Progress', icon: Clock };
@@ -154,7 +154,7 @@ export default async function AdminShopsPage() {
 
           <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6">
             <div className="flex items-center gap-3">
-              <CheckCircle className="w-8 h-8 text-brand-green-600" />
+              <Circle className="w-8 h-8 text-brand-green-600" />
               <div>
                 <div className="text-2xl font-bold text-black">
                   {shopsWithDocs.filter((s) => s.docsComplete).length}

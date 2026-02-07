@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, Clock, Save, AlertCircle, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Clock, Save, AlertCircle, Circle } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
@@ -101,7 +101,7 @@ export default function LogHoursPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
-          <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+          <Circle className="w-16 h-16 text-green-600 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Hours Logged!</h1>
           <p className="text-gray-600 mb-4">Your training hours have been submitted for approval.</p>
           <p className="text-sm text-gray-500">Redirecting to hours dashboard...</p>

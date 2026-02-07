@@ -6,7 +6,7 @@ import {
   Code, 
   ArrowRight, 
   Shield, 
-  CheckCircle,
+  Circle,
   Users,
   Building2,
   Zap,
@@ -193,7 +193,7 @@ export default function StoreLicensesPage() {
                   'Ongoing updates and security patches',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">{item}</span>
                   </li>
                 ))}
@@ -274,7 +274,7 @@ export default function StoreLicensesPage() {
                       'Teams that want to launch fast',
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-2 text-slate-600">
-                        <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                        <Circle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                         {item}
                       </li>
                     ))}

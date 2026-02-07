@@ -532,27 +532,27 @@ export function CopilotDeployment() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-green-700">
             <div>
-              <div className="font-medium">✅ Data Entry & Processing</div>
+              <div className="font-medium">• Data Entry & Processing</div>
               <div>Smart copy/paste with automatic formatting</div>
             </div>
             <div>
-              <div className="font-medium">✅ Learning Analytics</div>
+              <div className="font-medium">• Learning Analytics</div>
               <div>Automatic barrier detection and remediation</div>
             </div>
             <div>
-              <div className="font-medium">✅ Attrition Tracking</div>
+              <div className="font-medium">• Attrition Tracking</div>
               <div>Real-time monitoring and interventions</div>
             </div>
             <div>
-              <div className="font-medium">✅ Program Generation</div>
+              <div className="font-medium">• Program Generation</div>
               <div>AI-powered curriculum creation and deployment</div>
             </div>
             <div>
-              <div className="font-medium">✅ Excel Reporting</div>
+              <div className="font-medium">• Excel Reporting</div>
               <div>Automatic chart generation and export</div>
             </div>
             <div>
-              <div className="font-medium">✅ WIOA Compliance</div>
+              <div className="font-medium">• WIOA Compliance</div>
               <div>Automated reporting and monitoring</div>
             </div>
           </div>

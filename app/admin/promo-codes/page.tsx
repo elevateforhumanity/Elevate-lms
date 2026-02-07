@@ -9,7 +9,7 @@ import {
   Trash2, 
   Edit, 
   Copy, 
-  CheckCircle,
+  Circle,
   ArrowLeft,
   Loader2,
   Calendar,
@@ -376,7 +376,7 @@ export default function PromoCodesAdminPage() {
                             className="text-gray-400 hover:text-gray-600"
                           >
                             {copiedCode === promo.code ? (
-                              <CheckCircle className="w-4 h-4 text-green-500" />
+                              <Circle className="w-4 h-4 text-green-500" />
                             ) : (
                               <Copy className="w-4 h-4" />
                             )}

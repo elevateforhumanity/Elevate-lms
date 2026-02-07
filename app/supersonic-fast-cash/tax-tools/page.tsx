@@ -7,7 +7,7 @@ import {
   Calculator,
   ExternalLink,
   Download,
-  CheckCircle,
+  Circle,
 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';

@@ -9,7 +9,7 @@ import {
   Download,
   Plus,
   Trash2,
-  CheckCircle,
+  Circle,
   AlertCircle,
   Loader2,
   ExternalLink,
@@ -235,7 +235,7 @@ export default function BillingSettingsPage() {
                         ? 'bg-yellow-100 text-yellow-700'
                         : 'bg-red-100 text-red-700'
                     }`}>
-                      {invoice.status === 'paid' && <CheckCircle className="w-3 h-3" />}
+                      {invoice.status === 'paid' && <Circle className="w-3 h-3" />}
                       {invoice.status === 'failed' && <AlertCircle className="w-3 h-3" />}
                       {invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)}
                     </span>

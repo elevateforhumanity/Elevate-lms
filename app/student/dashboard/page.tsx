@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   Clock,
-  CheckCircle,
+  Circle,
   Play,
   FileText,
   MessageSquare,
@@ -264,7 +264,7 @@ export default async function StudentDashboardPage() {
                               'bg-slate-100 text-slate-600'
                             }`}>
                               {enrollment.status === 'active' && <Play className="w-2.5 h-2.5 sm:w-3 sm:h-3" />}
-                              {enrollment.status === 'completed' && <CheckCircle className="w-2.5 h-2.5 sm:w-3 sm:h-3" />}
+                              {enrollment.status === 'completed' && <Circle className="w-2.5 h-2.5 sm:w-3 sm:h-3" />}
                               {enrollment.status.charAt(0).toUpperCase() + enrollment.status.slice(1)}
                             </span>
                             <span className="text-[10px] sm:text-xs text-slate-500">
@@ -354,12 +354,12 @@ export default async function StudentDashboardPage() {
                         <span className="font-semibold text-slate-900 text-xs sm:text-base">{Math.round((entry.minutes || 0) / 60)}h</span>
                         {entry.status === 'APPROVED' && (
                           <span className="hidden sm:flex items-center gap-1 text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
-                            <CheckCircle className="w-3 h-3" />
+                            <Circle className="w-3 h-3" />
                             Verified
                           </span>
                         )}
                         {entry.status === 'APPROVED' && (
-                          <CheckCircle className="w-4 h-4 text-green-500 sm:hidden" />
+                          <Circle className="w-4 h-4 text-green-500 sm:hidden" />
                         )}
                       </div>
                     </div>

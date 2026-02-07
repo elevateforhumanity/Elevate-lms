@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
-import { ArrowRight, Clock, DollarSign, Award, CheckCircle } from 'lucide-react';
+import { ArrowRight, Clock, DollarSign, Award, Circle } from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
 import PathwayDisclosure from '@/components/PathwayDisclosure';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -149,7 +149,7 @@ export default async function BeautyProgramsPage() {
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-              <CheckCircle className="w-12 h-12 text-orange-600 mx-auto mb-4" />
+              <Circle className="w-12 h-12 text-orange-600 mx-auto mb-4" />
               <h3 className="text-lg font-bold text-black mb-2">DOL Registered</h3>
               <p className="text-gray-600 text-sm">
                 Official Department of Labor registered apprenticeship programs

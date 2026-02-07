@@ -6,7 +6,7 @@ import {
   Calculator,
   FileText,
   TrendingUp,
-  CheckCircle,
+  Circle,
   Clock,
   DollarSign,
   BarChart3,
@@ -308,15 +308,15 @@ export default async function BookkeepingPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-white/90">
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5" />
+                <Circle className="w-5 h-5" />
                 <span>Monthly Statements</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5" />
+                <Circle className="w-5 h-5" />
                 <span>Payroll Processing</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5" />
+                <Circle className="w-5 h-5" />
                 <span>QuickBooks Support</span>
               </div>
             </div>
@@ -350,7 +350,7 @@ export default async function BookkeepingPage() {
                       key={idx}
                       className="flex items-start gap-2 text-sm text-gray-600"
                     >
-                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                      <Circle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -418,7 +418,7 @@ export default async function BookkeepingPage() {
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <Circle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-600">{feature}</span>
                     </li>
                   ))}

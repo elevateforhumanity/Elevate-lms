@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { 
   Smartphone, Download, Star, Shield, Bell, 
-  Wifi, Clock, CheckCircle, Apple, Play
+  Wifi, Clock, Circle, Apple, Play
 } from 'lucide-react';
 
 export const metadata: Metadata = {

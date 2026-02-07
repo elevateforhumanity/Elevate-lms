@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { CheckCircle, Clock, Users, DollarSign, FileText, Shield } from 'lucide-react';
+import { Circle, Clock, Users, DollarSign, FileText, Shield } from 'lucide-react';
 import { getOrientationConfig, formatCurrency } from '@/lms-data/orientationConfig';
 
 const config = getOrientationConfig('esthetician-apprenticeship')!;
@@ -22,15 +22,15 @@ export default function EstheticianOrientationPage() {
           <p>Upon successful completion of this program, you will be eligible to:</p>
           <ul className="space-y-2">
             <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+              <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
               <span>Obtain your {config.licenseTitle} through the {config.licensingBody}</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+              <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
               <span>Work legally as a licensed esthetician in the state of Indiana</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+              <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
               <span>Earn {config.salaryRange} annually depending on location and specialization</span>
             </li>
           </ul>
@@ -126,19 +126,19 @@ export default function EstheticianOrientationPage() {
           <p>By continuing, you acknowledge:</p>
           <ul className="space-y-2">
             <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+              <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
               <span>This is a state-regulated apprenticeship program with legal requirements</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+              <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
               <span>You must complete all required hours and coursework to earn your license</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+              <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
               <span>Your progress is tracked and reported to regulatory bodies</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+              <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
               <span>Withdrawal or dismissal does not automatically entitle you to a refund</span>
             </li>
           </ul>

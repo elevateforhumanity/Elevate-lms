@@ -5,7 +5,7 @@ import Image from 'next/image';
 import {
   CreditCard,
   Shield,
-  CheckCircle,
+  Circle,
   MapPin,
   Smartphone,
   ArrowRight,
@@ -71,7 +71,7 @@ export default function PrepaidCardPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-6">
             <div className="bg-white rounded-lg p-6 text-center shadow-sm">
-              <CheckCircle className="w-10 h-10 text-purple-600 mx-auto mb-3" />
+              <Circle className="w-10 h-10 text-purple-600 mx-auto mb-3" />
               <h3 className="font-bold text-gray-900 mb-2">No Bank Required</h3>
               <p className="text-sm text-gray-600">Get your refund without a bank account</p>
             </div>
@@ -130,28 +130,28 @@ export default function PrepaidCardPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Everything You Need</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" />
+                  <Circle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold text-gray-900">Shop Online & In-Store</p>
                     <p className="text-gray-600">Use your card anywhere Visa is accepted worldwide</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" />
+                  <Circle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold text-gray-900">Pay Bills</p>
                     <p className="text-gray-600">Set up automatic payments for utilities, rent, and more</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" />
+                  <Circle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold text-gray-900">Get Cash</p>
                     <p className="text-gray-600">Withdraw cash at any ATM displaying the Visa logo</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" />
+                  <Circle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold text-gray-900">Mobile App</p>
                     <p className="text-gray-600">Check balance, view transactions, and manage your card</p>

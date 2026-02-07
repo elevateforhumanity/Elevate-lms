@@ -243,7 +243,7 @@ export function DeployPanel({ repo, branch, userId }: DeployPanelProps) {
     switch (status) {
       case 'ready':
       case 'success':
-        return '✅';
+        return '•';
       case 'error':
       case 'failed':
         return '❌';
@@ -299,7 +299,7 @@ export function DeployPanel({ repo, branch, userId }: DeployPanelProps) {
             }}
           >
             ▲ Vercel
-            {hasToken('vercel') && <span style={{ color: '#7ee787', fontSize: 10 }}>✓</span>}
+            {hasToken('vercel') && <span style={{ color: '#7ee787', fontSize: 10 }}>•</span>}
           </button>
           <button
             onClick={() => setProvider('netlify')}
@@ -319,7 +319,7 @@ export function DeployPanel({ repo, branch, userId }: DeployPanelProps) {
             }}
           >
             ◆ Netlify
-            {hasToken('netlify') && <span style={{ color: '#7ee787', fontSize: 10 }}>✓</span>}
+            {hasToken('netlify') && <span style={{ color: '#7ee787', fontSize: 10 }}>•</span>}
           </button>
         </div>
 
@@ -329,7 +329,7 @@ export function DeployPanel({ repo, branch, userId }: DeployPanelProps) {
             <div style={{ marginBottom: 8 }}>
               <label style={{ display: 'block', fontSize: 11, color: '#888', marginBottom: 4 }}>
                 {provider === 'vercel' ? 'Vercel Token' : 'Netlify Token'}
-                {hasToken(provider) && <span style={{ color: '#7ee787', marginLeft: 8 }}>Saved ✓</span>}
+                {hasToken(provider) && <span style={{ color: '#7ee787', marginLeft: 8 }}>Saved •</span>}
               </label>
               <input
                 type="password"

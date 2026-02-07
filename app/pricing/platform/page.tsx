@@ -6,7 +6,7 @@ import {
   ArrowRight,
   Building2,
   Check,
-  CheckCircle,
+  Circle,
   Globe,
   Mail,
   Package,
@@ -133,14 +133,14 @@ export default async function PlatformLicensingPage() {
               <h3 className="text-xl font-bold mb-4">Federal Approvals</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="font-semibold">DOL Registered Sponsor</div>
                     <div className="text-black">RAPIDS: 2025-IN-132301</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="font-semibold">WIOA Eligible Provider</div>
                     <div className="text-black">
@@ -164,21 +164,21 @@ export default async function PlatformLicensingPage() {
               <h3 className="text-xl font-bold mb-4">State Approvals</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="font-semibold">ETPL Listed</div>
                     <div className="text-black">Provider ID: 10000949</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="font-semibold">Indiana DWD Approved</div>
                     <div className="text-black">INTraining: 10004621</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="font-semibold">WRG Approved</div>
                     <div className="text-black">State funding eligible</div>
@@ -200,7 +200,7 @@ export default async function PlatformLicensingPage() {
               <h3 className="text-xl font-bold mb-4">Official Partnerships</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="font-semibold">JRI Partner</div>
                     <div className="text-black">
@@ -209,14 +209,14 @@ export default async function PlatformLicensingPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="font-semibold">WorkOne Approved</div>
                     <div className="text-black">WIOA referrals</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="font-semibold">SNAP E&T Partner</div>
                     <div className="text-black">SNAP recipients</div>
@@ -291,19 +291,19 @@ export default async function PlatformLicensingPage() {
                 <div className="font-bold mb-2">Use OUR Credentials:</div>
                 <div className="space-y-1 text-sm">
                   <div>
-                    <CheckCircle className="w-5 h-5 inline-block" /> ETPL
+                    <Circle className="w-5 h-5 inline-block" /> ETPL
                     Provider: 10000949
                   </div>
                   <div>
-                    <CheckCircle className="w-5 h-5 inline-block" /> DOL RAPIDS:
+                    <Circle className="w-5 h-5 inline-block" /> DOL RAPIDS:
                     2025-IN-132301
                   </div>
                   <div>
-                    <CheckCircle className="w-5 h-5 inline-block" /> INTraining:
+                    <Circle className="w-5 h-5 inline-block" /> INTraining:
                     10004621
                   </div>
                   <div>
-                    <CheckCircle className="w-5 h-5 inline-block" /> WIOA, WRG,
+                    <Circle className="w-5 h-5 inline-block" /> WIOA, WRG,
                     JRI, WorkOne, SNAP E&T
                   </div>
                 </div>
@@ -402,7 +402,7 @@ export default async function PlatformLicensingPage() {
 
               <div className="bg-green-50 rounded-lg p-4 mb-6 text-sm">
                 <div className="font-bold text-green-900 mb-1">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Best For:
+                  <Circle className="w-5 h-5 inline-block" /> Best For:
                 </div>
                 <div className="text-green-800">
                   Organizations with existing credentials or willing to get
@@ -472,7 +472,7 @@ export default async function PlatformLicensingPage() {
 
               <div className="bg-blue-50 rounded-lg p-4 mb-6 text-sm">
                 <div className="font-bold text-blue-900 mb-1">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Best For:
+                  <Circle className="w-5 h-5 inline-block" /> Best For:
                 </div>
                 <div className="text-blue-800">
                   Organizations focused only on apprenticeships.
@@ -542,7 +542,7 @@ export default async function PlatformLicensingPage() {
 
               <div className="bg-slate-50 rounded-lg p-4 mb-6 text-sm">
                 <div className="font-bold text-black mb-1">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Best For:
+                  <Circle className="w-5 h-5 inline-block" /> Best For:
                 </div>
                 <div className="text-black">
                   Organizations with specific needs or smaller budgets.

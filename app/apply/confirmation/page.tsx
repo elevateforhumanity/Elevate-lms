@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { CheckCircle, Phone, Mail, ArrowRight } from 'lucide-react';
+import { Circle, Phone, Mail, ArrowRight } from 'lucide-react';
 import ConfirmationTracking from './ConfirmationTracking';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
@@ -46,7 +46,7 @@ export default async function ConfirmationPage() {
           {/* Success Card */}
           <div className="bg-white border border-slate-200 rounded-lg p-8 sm:p-12 text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 rounded-full mb-6">
-              <CheckCircle className="w-10 h-10 text-emerald-600" />
+              <Circle className="w-10 h-10 text-emerald-600" />
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-bold text-black mb-4">

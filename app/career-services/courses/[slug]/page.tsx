@@ -7,7 +7,7 @@ import {
   Play, 
   Clock, 
   Award, 
-  CheckCircle, 
+  Circle, 
   Star, 
   Users,
   Download,
@@ -172,7 +172,7 @@ export default async function CourseDetailPage({
           <div className="grid md:grid-cols-2 gap-4">
             {sortedFeatures.map((feature: any, index: number) => (
               <div key={index} className="flex items-start gap-3 bg-white p-4 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                <Circle className="w-6 h-6 text-green-500 flex-shrink-0" />
                 <span className="text-gray-700">{feature.feature}</span>
               </div>
             ))}

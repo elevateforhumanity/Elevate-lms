@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, Clock, Shield, Zap } from 'lucide-react';
+import { Circle, Clock, Shield, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Pro License Trial | Elevate for Humanity',
@@ -39,7 +39,7 @@ export default function ProLicenseTrialPage() {
                   'Bulk enrollment',
                 ].map((feature, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                     <span className="text-gray-700">{feature}</span>
                   </li>
                 ))}

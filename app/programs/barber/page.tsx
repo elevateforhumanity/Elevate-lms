@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Scissors, Clock, DollarSign, Award, MapPin, CheckCircle, Play, Users, Building2, GraduationCap, Phone } from 'lucide-react';
+import { Scissors, Clock, DollarSign, Award, MapPin, Circle, Play, Users, Building2, GraduationCap, Phone } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
@@ -215,19 +215,19 @@ export default function BarberProgramPage() {
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                <Circle className="w-6 h-6 text-green-600 flex-shrink-0" />
                 <span className="text-gray-700">18 years or older</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                <Circle className="w-6 h-6 text-green-600 flex-shrink-0" />
                 <span className="text-gray-700">High school diploma or GED</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                <Circle className="w-6 h-6 text-green-600 flex-shrink-0" />
                 <span className="text-gray-700">Valid ID</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                <Circle className="w-6 h-6 text-green-600 flex-shrink-0" />
                 <span className="text-gray-700">Passion for barbering</span>
               </div>
             </div>
@@ -256,19 +256,19 @@ export default function BarberProgramPage() {
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-white" />
+                  <Circle className="w-6 h-6 text-white" />
                   <span>Develop talent trained in YOUR style</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-white" />
+                  <Circle className="w-6 h-6 text-white" />
                   <span>USDOL registered program</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-white" />
+                  <Circle className="w-6 h-6 text-white" />
                   <span>We handle all paperwork</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-white" />
+                  <Circle className="w-6 h-6 text-white" />
                   <span>Ongoing support & resources</span>
                 </li>
               </ul>

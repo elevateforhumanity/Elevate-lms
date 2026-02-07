@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useState, useEffect } from 'react';
 import { 
-  CheckCircle, 
+  Circle, 
   XCircle, 
   Clock, 
   AlertTriangle,
@@ -457,7 +457,7 @@ function IntakeDetailModal({
                     : 'bg-gray-100 text-gray-400'
                 }`}>
                   {step.completed ? (
-                    <CheckCircle className="w-5 h-5" />
+                    <Circle className="w-5 h-5" />
                   ) : (
                     <step.icon className="w-5 h-5" />
                   )}

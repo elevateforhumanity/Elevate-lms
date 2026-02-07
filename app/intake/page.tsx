@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { ClipboardList, ArrowRight, CheckCircle, Clock, Phone } from 'lucide-react';
+import { ClipboardList, ArrowRight, Circle, Clock, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Intake Form | Elevate For Humanity',
@@ -33,7 +33,7 @@ export default function IntakePage() {
               10-15 minutes
             </span>
             <span className="flex items-center gap-1">
-              <CheckCircle className="w-4 h-4" />
+              <Circle className="w-4 h-4" />
               Save progress anytime
             </span>
           </div>

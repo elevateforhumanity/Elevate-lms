@@ -4,7 +4,7 @@ import { redirect, notFound } from 'next/navigation';
 import Link from 'next/link';
 import { 
   Clock, 
-  CheckCircle, 
+  Circle, 
   XCircle, 
   AlertCircle,
   ArrowLeft,
@@ -270,7 +270,7 @@ export default async function QuizPage({ params }: Props) {
                         passed ? 'bg-green-100' : 'bg-red-100'
                       }`}>
                         {passed 
-                          ? <CheckCircle className="w-5 h-5 text-green-600" />
+                          ? <Circle className="w-5 h-5 text-green-600" />
                           : <XCircle className="w-5 h-5 text-red-600" />
                         }
                       </div>

@@ -10,7 +10,7 @@ import {
   Image as ImageIcon,
   Video,
   File,
-  CheckCircle,
+  Circle,
   AlertCircle,
   Loader2,
 } from 'lucide-react';
@@ -265,7 +265,7 @@ export function AdvancedFileUpload({
             {files.length} file{files.length !== 1 ? 's' : ''}
           </span>
           {successCount > 0 && (
-            <span className="text-green-600">✓ {successCount} uploaded</span>
+            <span className="text-green-600">• {successCount} uploaded</span>
           )}
           {uploadingCount > 0 && (
             <span className="text-blue-600">↑ {uploadingCount} uploading</span>
@@ -342,7 +342,7 @@ export function AdvancedFileUpload({
                     <Loader2 className="h-5 w-5 text-blue-500 animate-spin" />
                   )}
                   {uploadFile.status === 'success' && (
-                    <CheckCircle className="h-5 w-5 text-green-500" />
+                    <Circle className="h-5 w-5 text-green-500" />
                   )}
                   {uploadFile.status === 'error' && (
                     <button

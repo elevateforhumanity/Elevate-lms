@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import { Award, Lock, CheckCircle } from 'lucide-react';
+import { Award, Lock, Circle } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
@@ -70,7 +70,7 @@ export default async function BadgesPage() {
                 <p className="text-xs text-gray-500 mt-1">{badge.description}</p>
                 {earned ? (
                   <div className="mt-2 flex items-center justify-center gap-1 text-green-600 text-xs">
-                    <CheckCircle className="w-3 h-3" />
+                    <Circle className="w-3 h-3" />
                     Earned
                   </div>
                 ) : (

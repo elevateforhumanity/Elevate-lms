@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { BookOpen, Clock, Award, DollarSign, CheckCircle, Users } from 'lucide-react';
+import { BookOpen, Clock, Award, DollarSign, Circle, Users } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -255,7 +255,7 @@ export default function ProgramCoursesPage() {
                     >
                       {course.price === 0 ? (
                         <>
-                          <CheckCircle className="w-5 h-5" />
+                          <Circle className="w-5 h-5" />
                           Enroll Free
                         </>
                       ) : (

@@ -15,7 +15,7 @@ import {
   Zap,
   Medal,
   Crown,
-  CheckCircle,
+  Circle,
   TrendingUp,
   Calendar,
 } from 'lucide-react';
@@ -316,7 +316,7 @@ export default async function AchievementsPage() {
         {completedMilestones.length > 0 && (
           <div className="mb-8">
             <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <Circle className="w-5 h-5 text-green-600" />
               Completed Milestones
             </h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

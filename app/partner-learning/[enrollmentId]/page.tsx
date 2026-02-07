@@ -7,7 +7,7 @@ import {
   ExternalLink, 
   Mail, 
   Clock, 
-  CheckCircle,
+  Circle,
   AlertCircle,
   Building2,
   BookOpen
@@ -61,7 +61,7 @@ export default async function PartnerLearningPage({ params }: Props) {
   const getStatusInfo = (status: string) => {
     switch (status?.toLowerCase()) {
       case 'completed':
-        return { icon: CheckCircle, color: 'text-green-600 bg-green-50', label: 'Completed' };
+        return { icon: Circle, color: 'text-green-600 bg-green-50', label: 'Completed' };
       case 'active':
       case 'enrolled':
       case 'in_progress':

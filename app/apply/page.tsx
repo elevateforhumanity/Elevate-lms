@@ -5,7 +5,7 @@ import Link from 'next/link';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { MessageSquare, GraduationCap, Phone, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import { MessageSquare, GraduationCap, Phone, Clock, Circle, AlertCircle } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 
 export const metadata: Metadata = {
@@ -116,15 +116,15 @@ export default async function ApplyPage({
               
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Quick 2-minute form</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Get personalized program recommendations</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Learn about funding options</span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -156,19 +156,19 @@ export default async function ApplyPage({
               
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Browse all available programs</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">See program details and schedules</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Start enrollment immediately</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Most programs are FREE with WIOA</span>
                 </li>
               </ul>

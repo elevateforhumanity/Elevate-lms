@@ -11,7 +11,7 @@ import {
   Handshake,
   TrendingUp,
   Shield,
-  CheckCircle,
+  Circle,
   ArrowRight,
   Briefcase,
   Clock,
@@ -26,7 +26,7 @@ export default function FundingPage() {
       description: 'Check if you qualify for free training.',
       fullDescription: 'Most adults qualify based on income, public assistance, veteran status, or job displacement.',
       href: '/wioa-eligibility',
-      icon: CheckCircle,
+      icon: Circle,
       color: 'green',
       category: 'Eligibility',
       image: '/images/business/collaboration-1.jpg',
@@ -136,7 +136,7 @@ export default function FundingPage() {
       description: 'Our compliance standards.',
       fullDescription: 'Meeting all federal workforce regulations.',
       href: '/federal-compliance',
-      icon: CheckCircle,
+      icon: Circle,
       color: 'teal',
       category: 'Compliance',
       image: '/images/business/collaboration-1.jpg',
@@ -305,7 +305,7 @@ export default function FundingPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-                <CheckCircle className="w-6 h-6 text-green-600" />
+                <Circle className="w-6 h-6 text-green-600" />
               </div>
               <h3 className="font-bold text-gray-900 text-lg mb-2">We Track Your Progress</h3>
               <p className="text-gray-600">
@@ -360,23 +360,23 @@ export default function FundingPage() {
               <p className="text-black mb-4">Most adults qualify if you meet ONE of these:</p>
               <ul className="space-y-2 text-black">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                   <span>Low income (based on family size)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                   <span>Receiving public assistance (SNAP, TANF, SSI)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                   <span>Veteran or military spouse</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                   <span>Displaced worker or laid off</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                   <span>Individual with a disability</span>
                 </li>
               </ul>

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { Heart, Shield, Users, Phone, CheckCircle } from 'lucide-react';
+import { Heart, Shield, Users, Phone, Circle } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
@@ -102,7 +102,7 @@ export default async function TraumaRecoveryPage() {
           <div className="grid md:grid-cols-2 gap-6">
             {displayServices.map((service: any, index: number) => (
               <div key={index} className="bg-purple-50 rounded-xl p-6">
-                <CheckCircle className="w-6 h-6 text-purple-600 mb-3" />
+                <Circle className="w-6 h-6 text-purple-600 mb-3" />
                 <h3 className="font-bold text-lg mb-2">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
               </div>

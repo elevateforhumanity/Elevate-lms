@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Compass, CheckCircle, ArrowRight, Users, Target, TrendingUp } from 'lucide-react';
+import { Compass, Circle, ArrowRight, Users, Target, TrendingUp } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Career Guidance Mentorship | Elevate for Humanity',
@@ -52,7 +52,7 @@ export default function CareerGuidancePage() {
             {benefits.map((benefit, i) => (
               <div key={i} className="text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-blue-600" />
+                  <Circle className="w-8 h-8 text-blue-600" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{benefit.title}</h3>
                 <p className="text-gray-600">{benefit.description}</p>

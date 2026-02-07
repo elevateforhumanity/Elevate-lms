@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   FileText, Download, Clock, Users, 
-  Building2, ChevronRight, ChevronDown, CheckCircle,
+  Building2, ChevronRight, ChevronDown, Circle,
   AlertTriangle, TrendingUp, Loader2, AlertCircle
 } from 'lucide-react';
 
@@ -197,7 +197,7 @@ export default function ShopOwnerReportsPage() {
         <StatCard 
           label="Compliant" 
           value={`${summary.compliantCount}/${summary.totalApprentices}`} 
-          icon={CheckCircle}
+          icon={Circle}
           color="bg-amber-500"
         />
       </div>
@@ -206,7 +206,7 @@ export default function ShopOwnerReportsPage() {
         <div className="flex gap-2">
           {([
             { type: 'hours', label: 'Hours', icon: Clock },
-            { type: 'compliance', label: 'Compliance', icon: CheckCircle },
+            { type: 'compliance', label: 'Compliance', icon: Circle },
             { type: 'progress', label: 'Progress', icon: TrendingUp },
           ] as const).map(({ type, label, icon: Icon }) => (
             <button

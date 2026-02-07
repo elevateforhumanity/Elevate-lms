@@ -9,7 +9,7 @@ import PageAvatar from '@/components/PageAvatar';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Stethoscope, CheckCircle } from 'lucide-react';
+import { Stethoscope, Circle } from 'lucide-react';
 import { CompactHero } from '@/components/heroes/CompactHero';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
@@ -91,13 +91,13 @@ export default async function Page() {
             </p>
             <div className="flex flex-wrap gap-3 mt-4">
               <span className="flex items-center gap-2 text-green-600 text-sm font-medium">
-                <CheckCircle className="w-4 h-4" /> DOT Certified
+                <Circle className="w-4 h-4" /> DOT Certified
               </span>
               <span className="flex items-center gap-2 text-green-600 text-sm font-medium">
-                <CheckCircle className="w-4 h-4" /> Job Placement
+                <Circle className="w-4 h-4" /> Job Placement
               </span>
               <span className="flex items-center gap-2 text-green-600 text-sm font-medium">
-                <CheckCircle className="w-4 h-4" /> Free Training
+                <Circle className="w-4 h-4" /> Free Training
               </span>
             </div>
             <div className="relative h-[250px] rounded-xl overflow-hidden mt-6">

@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState, useEffect } from 'react';
-import { TrendingUp, Award, Clock, Target, BookOpen, CheckCircle } from 'lucide-react';
+import { TrendingUp, Award, Clock, Target, BookOpen, Circle } from 'lucide-react';
 
 interface ProgressData {
   overall_progress: number;
@@ -98,7 +98,7 @@ export function ProgressDashboard({ userId }: { userId: string }) {
     {
       label: 'Assignments',
       value: `${data.assignments_completed}/${data.assignments_total}`,
-      icon: CheckCircle,
+      icon: Circle,
       color: 'text-green-600',
       bgColor: 'bg-green-50',
     },

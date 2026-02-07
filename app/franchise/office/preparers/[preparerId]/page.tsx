@@ -21,7 +21,7 @@ import {
   Edit,
   Save,
   Loader2,
-  CheckCircle,
+  Circle,
   XCircle
 } from 'lucide-react';
 import Link from 'next/link';
@@ -400,10 +400,10 @@ export default function PreparerDetailPage() {
                     </div>
                     <div className="flex gap-2">
                       {preparer.is_efin_authorized && (
-                        <Badge variant="outline"><CheckCircle className="h-3 w-3 mr-1" />EFIN</Badge>
+                        <Badge variant="outline"><Circle className="h-3 w-3 mr-1" />EFIN</Badge>
                       )}
                       {preparer.is_ero_authorized && (
-                        <Badge variant="outline"><CheckCircle className="h-3 w-3 mr-1" />ERO</Badge>
+                        <Badge variant="outline"><Circle className="h-3 w-3 mr-1" />ERO</Badge>
                       )}
                     </div>
                   </>
@@ -524,7 +524,7 @@ export default function PreparerDetailPage() {
             <CardContent className="space-y-4">
               {preparer.status === 'pending' && (
                 <Button className="w-full justify-start" onClick={() => updateStatus('active')}>
-                  <CheckCircle className="mr-2 h-4 w-4" />
+                  <Circle className="mr-2 h-4 w-4" />
                   Activate Preparer
                 </Button>
               )}
@@ -536,7 +536,7 @@ export default function PreparerDetailPage() {
               )}
               {preparer.status === 'suspended' && (
                 <Button className="w-full justify-start" onClick={() => updateStatus('active')}>
-                  <CheckCircle className="mr-2 h-4 w-4" />
+                  <Circle className="mr-2 h-4 w-4" />
                   Reactivate Preparer
                 </Button>
               )}

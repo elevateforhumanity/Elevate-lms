@@ -113,7 +113,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
                 .filter((outcome) => outcome && outcome.trim())
                 .map((outcome, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="text-blue-600 font-bold text-xl">✓</span>
+                    <span className="text-blue-600 font-bold text-xl">•</span>
                     <span className="text-black">{outcome}</span>
                   </li>
                 ))}
@@ -145,7 +145,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
                 <div className="bg-white rounded-xl p-4 border border-green-200">
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-green-600 font-bold">✅</span>
+                      <span className="text-green-600 font-bold">•</span>
                     </div>
                     <div>
                       <h4 className="font-bold text-gray-900">Industry Certification</h4>

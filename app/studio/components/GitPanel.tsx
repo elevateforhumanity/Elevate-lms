@@ -406,7 +406,7 @@ export function GitPanel({
                       transition: 'all 0.15s ease',
                     }}
                   >
-                    ✓ Commit {modifiedFiles.length} file{modifiedFiles.length > 1 ? 's' : ''}
+                    • Commit {modifiedFiles.length} file{modifiedFiles.length > 1 ? 's' : ''}
                   </button>
                 </div>
               </>

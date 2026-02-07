@@ -84,9 +84,9 @@ export function EmployerList() {
                   )}
                 </div>
                 <div className="mt-2 flex flex-wrap gap-2 text-[10px] text-slate-400">
-                  {emp.wantsWex && <span>WEX ✔</span>}
-                  {emp.wantsOjt && <span>OJT ✔</span>}
-                  {emp.wantsApprenticeship && <span>Apprenticeship ✔</span>}
+                  {emp.wantsWex && <span>WEX •</span>}
+                  {emp.wantsOjt && <span>OJT •</span>}
+                  {emp.wantsApprenticeship && <span>Apprenticeship •</span>}
                 </div>
               </div>
               <div className="flex flex-col gap-2 text-[11px] md:items-end">

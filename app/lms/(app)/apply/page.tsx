@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { FileText, Upload, CheckCircle, AlertCircle } from 'lucide-react';
+import { FileText, Upload, Circle, AlertCircle } from 'lucide-react';
 
 interface UserProfile {
   id: string;
@@ -138,7 +138,7 @@ export default function StudentApplicationPage() {
         <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
           <div className="flex justify-center mb-4">
             {existingApplication.status === 'approved' ? (
-              <CheckCircle className="w-16 h-16 text-green-500" />
+              <Circle className="w-16 h-16 text-green-500" />
             ) : existingApplication.status === 'rejected' ? (
               <AlertCircle className="w-16 h-16 text-red-500" />
             ) : (
@@ -176,7 +176,7 @@ export default function StudentApplicationPage() {
     return (
       <div className="max-w-2xl mx-auto py-12 px-4">
         <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
-          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+          <Circle className="w-16 h-16 text-green-500 mx-auto mb-4" />
           <h1 className="text-2xl font-bold mb-2">Application Submitted!</h1>
           <p className="text-gray-600">Redirecting to status page...</p>
         </div>

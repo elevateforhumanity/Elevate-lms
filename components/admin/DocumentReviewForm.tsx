@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import {
-  CheckCircle,
+  Circle,
   XCircle,
   FileText,
   User,
@@ -179,7 +179,7 @@ export function DocumentReviewForm({ document, adminId }: Props) {
                   : 'border-slate-300 hover:border-green-600'
               }`}
             >
-              <CheckCircle
+              <Circle
                 className={`w-6 h-6 ${action === 'approve' ? 'text-green-600' : 'text-slate-400'}`}
               />
               <div className="text-left">

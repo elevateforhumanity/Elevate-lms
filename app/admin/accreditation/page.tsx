@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import {
-  CheckCircle,
+  Circle,
   AlertTriangle,
   FileText,
   Users,
@@ -268,7 +268,7 @@ export default async function AccreditationPage() {
               </div>
               <div className="text-blue-100 mt-2">
                 {readinessScore >= 95
-                  ? '<CheckCircle className="w-5 h-5 inline-block" /> Ready'
+                  ? '<Circle className="w-5 h-5 inline-block" /> Ready'
                   : readinessScore >= 85
                     ? '<AlertTriangle className="w-5 h-5 inline-block" /> Nearly Ready'
                     : '🔄 In Progress'}
@@ -352,7 +352,7 @@ export default async function AccreditationPage() {
                     >
                       <div className="flex items-center gap-3">
                         {item.status === 'complete' ? (
-                          <CheckCircle className="w-5 h-5 text-brand-green-600" />
+                          <Circle className="w-5 h-5 text-brand-green-600" />
                         ) : (
                           <AlertTriangle className="w-5 h-5 text-brand-orange-600" />
                         )}

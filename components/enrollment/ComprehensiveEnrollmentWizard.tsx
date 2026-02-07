@@ -5,7 +5,7 @@ import { memo } from 'react';
 
 import { useState, useEffect } from 'react';
 import {
-  CheckCircle,
+  Circle,
   ChevronRight,
   ChevronLeft,
   Upload,
@@ -106,7 +106,7 @@ const STEPS = [
   { id: 2, name: 'Contact', icon: FileText },
   { id: 3, name: 'Demographics', icon: Users },
   { id: 4, name: 'Education', icon: FileText },
-  { id: 5, name: 'WIOA Eligibility', icon: CheckCircle },
+  { id: 5, name: 'WIOA Eligibility', icon: Circle },
   { id: 6, name: 'Referral', icon: Users },
   { id: 7, name: 'Background Check', icon: Shield },
   { id: 8, name: 'Documents', icon: Upload },
@@ -400,7 +400,7 @@ export default function ComprehensiveEnrollmentWizard({
                       'bg-gray-200 text-gray-500'
                     }`}>
                       {currentStep > step.id ? (
-                        <CheckCircle className="w-6 h-6" />
+                        <Circle className="w-6 h-6" />
                       ) : (
                         <StepIcon className="w-6 h-6" />
                       )}
@@ -708,7 +708,7 @@ export default function ComprehensiveEnrollmentWizard({
                 </>
               ) : (
                 <>
-                  <CheckCircle className="w-5 h-5" />
+                  <Circle className="w-5 h-5" />
                   Complete Enrollment
                 </>
               )}

@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import {
   Check,
-  CheckCircle,
+  Circle,
   XCircle,
   Users,
   Shield,
@@ -390,27 +390,27 @@ export default async function ProgramHolderLicensePage() {
               </h3>
               <ul className="space-y-2 text-sm text-green-800">
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Located in
+                  <Circle className="w-5 h-5 inline-block" /> Located in
                   Indiana (for now - expanding soon)
                 </li>
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Clean
+                  <Circle className="w-5 h-5 inline-block" /> Clean
                   compliance history
                 </li>
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Quality
+                  <Circle className="w-5 h-5 inline-block" /> Quality
                   training programs
                 </li>
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Professional
+                  <Circle className="w-5 h-5 inline-block" /> Professional
                   references
                 </li>
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Financial
+                  <Circle className="w-5 h-5 inline-block" /> Financial
                   stability
                 </li>
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Programs
+                  <Circle className="w-5 h-5 inline-block" /> Programs
                   align with our approvals
                 </li>
               </ul>

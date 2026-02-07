@@ -40,7 +40,7 @@ export async function generateMetadata({
 import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Clock, Users, Award, BookOpen, Play, CheckCircle } from 'lucide-react';
+import { Clock, Users, Award, BookOpen, Play, Circle } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default async function CourseDetailPage({
@@ -199,7 +199,7 @@ export default async function CourseDetailPage({
                         )}
                       </div>
                       {enrollment && (
-                        <CheckCircle className="h-10 w-10 text-green-600" />
+                        <Circle className="h-10 w-10 text-green-600" />
                       )}
                     </div>
                   </div>

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, CheckCircle, ArrowLeft, Clock, Calendar, Shield } from 'lucide-react';
+import { Phone, Circle, ArrowLeft, Clock, Calendar, Shield } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Hair Follicle Drug Tests | Drug Testing Services',
@@ -103,7 +103,7 @@ export default function HairTestsPage() {
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm text-center">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-purple-600" />
+                <Circle className="w-8 h-8 text-purple-600" />
               </div>
               <h3 className="font-bold text-gray-900 mb-2">Pattern Detection</h3>
               <p className="text-gray-600 text-sm">Shows history of use, not just a single point in time</p>
@@ -173,7 +173,7 @@ export default function HairTestsPage() {
                       <ul className="grid md:grid-cols-2 gap-2">
                         {test.includes.map((item, idx) => (
                           <li key={idx} className="flex items-start gap-2 text-gray-700">
-                            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                            <Circle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
                             <span className="text-sm">{item}</span>
                           </li>
                         ))}

@@ -10,7 +10,7 @@ import {
   TrendingUp,
   Calendar,
   Clock,
-  CheckCircle,
+  Circle,
   AlertCircle,
   ArrowRight,
   Download,
@@ -106,7 +106,7 @@ export default function SupersonicAdminDashboard() {
             <div className="text-sm text-gray-600">Pending Returns</div>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-sm border">
-            <CheckCircle className="w-8 h-8 text-green-600 mb-2" />
+            <Circle className="w-8 h-8 text-green-600 mb-2" />
             <div className="text-2xl font-bold text-gray-900">{stats.completedReturns}</div>
             <div className="text-sm text-gray-600">Completed</div>
           </div>

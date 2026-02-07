@@ -251,7 +251,7 @@ export default function TransferHoursApproval({
               {th.status === 'approved' && (
                 <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3">
                   <div className="text-sm text-green-400 font-medium mb-2">
-                    ✓ Approved Hours Applied
+                    • Approved Hours Applied
                   </div>
                   <div className="text-xs text-slate-300 space-y-1">
                     <div>Theory: {th.hours_theory_accepted} hrs accepted</div>

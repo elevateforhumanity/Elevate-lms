@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import { BookOpen, Clock, CheckCircle, Play, Award } from 'lucide-react';
+import { BookOpen, Clock, Circle, Play, Award } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = { title: 'My Courses | Student Portal' };

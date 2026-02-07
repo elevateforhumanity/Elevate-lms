@@ -7,7 +7,7 @@ import {
   Calendar,
   Clock,
   AlertCircle,
-  CheckCircle,
+  Circle,
   Plus,
 } from 'lucide-react';
 
@@ -213,7 +213,7 @@ export default async function FerpaCalendarPage() {
                             </div>
                           </div>
                           {event.status === 'completed' && (
-                            <CheckCircle className="w-5 h-5 text-green-600" />
+                            <Circle className="w-5 h-5 text-green-600" />
                           )}
                         </div>
                       </div>

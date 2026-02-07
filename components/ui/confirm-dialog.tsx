@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { AlertTriangle, Trash2, CheckCircle } from 'lucide-react';
+import { AlertTriangle, Trash2, Circle } from 'lucide-react';
 
 interface ConfirmDialogProps {
   open: boolean;
@@ -48,7 +48,7 @@ export function ConfirmDialog({
     onOpenChange(false);
   };
 
-  const Icon = variant === 'danger' ? Trash2 : variant === 'warning' ? AlertTriangle : CheckCircle;
+  const Icon = variant === 'danger' ? Trash2 : variant === 'warning' ? AlertTriangle : Circle;
   const iconColor = variant === 'danger' ? 'text-red-600' : variant === 'warning' ? 'text-yellow-600' : 'text-blue-600';
   const confirmButtonClass = variant === 'danger' 
     ? 'bg-red-600 hover:bg-red-700 text-white' 

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { GraduationCap, DollarSign, Users, BarChart, CheckCircle, ArrowRight } from 'lucide-react';
+import { GraduationCap, DollarSign, Users, BarChart, Circle, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Training Provider Solutions | Elevate For Humanity',

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Users, CheckCircle, ArrowRight, Briefcase, MessageSquare, Globe } from 'lucide-react';
+import { Users, Circle, ArrowRight, Briefcase, MessageSquare, Globe } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Networking Mentorship | Elevate for Humanity',
@@ -74,7 +74,7 @@ export default function NetworkingPage() {
               'Building your personal brand',
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-lg p-4 flex items-center shadow-sm">
-                <CheckCircle className="w-5 h-5 text-purple-600 mr-3 flex-shrink-0" />
+                <Circle className="w-5 h-5 text-purple-600 mr-3 flex-shrink-0" />
                 <span className="text-gray-700">{item}</span>
               </div>
             ))}

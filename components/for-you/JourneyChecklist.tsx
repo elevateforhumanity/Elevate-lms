@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  CheckCircle,
+  Circle,
   Clock,
   FileCheck,
   GraduationCap,
@@ -36,7 +36,7 @@ const STEPS: Step[] = [
     title: 'Check Eligibility',
     duration: '1 week',
     description: 'We handle all funding paperwork and eligibility verification',
-    icon: <CheckCircle className="h-10 w-10" />,
+    icon: <Circle className="h-10 w-10" />,
   },
   {
     number: 4,

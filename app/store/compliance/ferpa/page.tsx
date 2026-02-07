@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Home, ChevronRight, CheckCircle, Lock, Shield, Eye, Key } from 'lucide-react';
+import { ArrowRight, Home, ChevronRight, Circle, Lock, Shield, Eye, Key } from 'lucide-react';
 import AvatarGuide from '@/components/AvatarGuide';
 
 export const metadata: Metadata = {
@@ -153,7 +153,7 @@ export default function FERPACompliancePage() {
                   <ul className="space-y-2">
                     {feature.items.map((item) => (
                       <li key={item} className="flex items-center gap-2 text-sm text-black">
-                        <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                        <Circle className="w-4 h-4 text-blue-600 flex-shrink-0" />
                         {item}
                       </li>
                     ))}
@@ -182,7 +182,7 @@ export default function FERPACompliancePage() {
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-center gap-2 text-sm text-black">
-                      <CheckCircle className="w-4 h-4 text-blue-600" />
+                      <Circle className="w-4 h-4 text-blue-600" />
                       {f}
                     </li>
                   ))}

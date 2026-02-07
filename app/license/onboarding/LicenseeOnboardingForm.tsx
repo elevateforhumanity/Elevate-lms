@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { CheckCircle } from 'lucide-react';
+import { Circle } from 'lucide-react';
 import AgreementSigningForm from '@/components/legal/AgreementSigningForm';
 
 interface Props {
@@ -29,7 +29,7 @@ export default function LicenseeOnboardingForm({
   if (allAccepted) {
     return (
       <div className="text-center py-6">
-        <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
+        <Circle className="w-12 h-12 text-green-600 mx-auto mb-3" />
         <p className="text-green-600 font-medium">All agreements signed</p>
       </div>
     );

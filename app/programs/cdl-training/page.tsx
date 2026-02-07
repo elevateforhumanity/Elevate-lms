@@ -8,7 +8,7 @@ import Image from 'next/image';
 import PageAvatar from '@/components/PageAvatar';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { 
-  CheckCircle, Clock, DollarSign, Award, ArrowRight, 
+  Circle, Clock, DollarSign, Award, ArrowRight, 
   Truck, Users, BookOpen, MapPin, Phone, Shield, Route, Fuel
 } from 'lucide-react';
 
@@ -173,7 +173,7 @@ export default function CDLTrainingPage() {
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-5 h-5 text-white" />
+                    <Circle className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900">Massive Shortage</h3>
@@ -182,7 +182,7 @@ export default function CDLTrainingPage() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-5 h-5 text-white" />
+                    <Circle className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900">Immediate Employment</h3>
@@ -191,7 +191,7 @@ export default function CDLTrainingPage() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-5 h-5 text-white" />
+                    <Circle className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900">Sign-On Bonuses</h3>
@@ -200,7 +200,7 @@ export default function CDLTrainingPage() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-5 h-5 text-white" />
+                    <Circle className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900">Be Your Own Boss</h3>
@@ -292,7 +292,7 @@ export default function CDLTrainingPage() {
               'No DUI in past 5 years',
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-                <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                <Circle className="w-6 h-6 text-green-500 flex-shrink-0" />
                 <span className="font-medium text-slate-700">{item}</span>
               </div>
             ))}

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { Phone, Clock, MessageSquare, Mail, MapPin, CheckCircle } from 'lucide-react';
+import { Phone, Clock, MessageSquare, Mail, MapPin, Circle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Call Now | Elevate For Humanity',
@@ -60,7 +60,7 @@ export default function CallNowPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {['Program Enrollment', 'Eligibility Questions', 'Technical Support', 'Career Guidance', 'Funding Options', 'Partner Inquiries'].map((item, i) => (
               <div key={i} className="flex items-center gap-2 justify-center">
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <Circle className="w-5 h-5 text-green-600" />
                 <span className="text-gray-700">{item}</span>
               </div>
             ))}

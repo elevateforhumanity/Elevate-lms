@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { FileText, Clock, CheckCircle, AlertCircle, Calendar, Upload, ChevronRight, Filter, BookOpen } from 'lucide-react';
+import { FileText, Clock, Circle, AlertCircle, Calendar, Upload, ChevronRight, Filter, BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'My Assignments | Student Portal',
@@ -96,9 +96,9 @@ export default async function AssignmentsPage() {
 
     if (submission) {
       if (submission.grade !== null) {
-        return { status: 'graded', label: 'Graded', color: 'bg-green-100 text-green-700', icon: CheckCircle };
+        return { status: 'graded', label: 'Graded', color: 'bg-green-100 text-green-700', icon: Circle };
       }
-      return { status: 'submitted', label: 'Submitted', color: 'bg-blue-100 text-blue-700', icon: CheckCircle };
+      return { status: 'submitted', label: 'Submitted', color: 'bg-blue-100 text-blue-700', icon: Circle };
     }
     if (dueDate < now) {
       return { status: 'overdue', label: 'Overdue', color: 'bg-red-100 text-red-700', icon: AlertCircle };
@@ -168,7 +168,7 @@ export default async function AssignmentsPage() {
           <div className="bg-white rounded-xl border border-slate-200 p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <Circle className="w-5 h-5 text-green-600" />
               </div>
               <div>
                 <div className="text-2xl font-bold text-slate-900">{stats.graded}</div>

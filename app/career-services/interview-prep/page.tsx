@@ -4,7 +4,7 @@ import Image from 'next/image';
 import {
   Users,
   Video,
-  CheckCircle,
+  Circle,
   MessageSquare,
   Target,
   ArrowRight,
@@ -222,7 +222,7 @@ export default function InterviewPrepPage() {
           <div className="grid md:grid-cols-2 gap-4">
             {tips.map((tip, index) => (
               <div key={index} className="bg-white rounded-lg p-4 flex items-start shadow-sm">
-                <CheckCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                <Circle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
                 <p className="text-gray-700">{tip}</p>
               </div>
             ))}

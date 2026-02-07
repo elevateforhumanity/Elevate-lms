@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import {
-  CheckCircle,
+  Circle,
   ChevronLeft,
   ChevronRight,
   FileText,
@@ -243,7 +243,7 @@ export default function LessonPage() {
                 }`}
               >
                 {l.completed ? (
-                  <CheckCircle className="w-5 h-5" />
+                  <Circle className="w-5 h-5" />
                 ) : (
                   <span className="text-sm font-bold">{idx + 1}</span>
                 )}

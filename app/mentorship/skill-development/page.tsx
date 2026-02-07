@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Wrench, CheckCircle, ArrowRight, BookOpen, Target, Award } from 'lucide-react';
+import { Wrench, Circle, ArrowRight, BookOpen, Target, Award } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Skill Development Mentorship | Elevate for Humanity',
@@ -54,7 +54,7 @@ export default function SkillDevelopmentPage() {
                 <ul className="space-y-3">
                   {skill.examples.map((example, j) => (
                     <li key={j} className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                      <Circle className="w-5 h-5 text-green-600 mr-2" />
                       <span className="text-gray-700">{example}</span>
                     </li>
                   ))}

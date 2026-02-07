@@ -567,7 +567,7 @@ export function AutoPolishedPage({ route, label, section }: AutoPolishedPageProp
               <ul className="space-y-3 text-black">
                 {config.bullets.map((b) => (
                   <li key={b} className="flex gap-3">
-                    <span className="text-orange-500 font-bold">✓</span>
+                    <span className="text-orange-500 font-bold">•</span>
                     <span>{b}</span>
                   </li>
                 ))}

@@ -7,7 +7,7 @@ import {
   ExternalLink, 
   ArrowRight, 
   AlertCircle,
-  CheckCircle,
+  Circle,
   Clock,
   GraduationCap,
   Building2
@@ -84,7 +84,7 @@ export default function EnrollmentDashboard() {
   const getStatusIcon = (status: string) => {
     switch (status.toLowerCase()) {
       case 'completed':
-        return <CheckCircle className="w-5 h-5 text-green-500" />;
+        return <Circle className="w-5 h-5 text-green-500" />;
       case 'active':
       case 'enrolled':
       case 'in_progress':

@@ -8,7 +8,7 @@ import {
   Calendar,
   Star,
   ArrowRight,
-  CheckCircle,
+  Circle,
   Zap,
   Shield,
   BarChart3,
@@ -116,23 +116,23 @@ export default function CommunityHubPage() {
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-white">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <Circle className="w-5 h-5 text-green-400" />
                     <span>One-time purchase</span>
                   </div>
                   <div className="flex items-center gap-3 text-white">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <Circle className="w-5 h-5 text-green-400" />
                     <span>Lifetime access</span>
                   </div>
                   <div className="flex items-center gap-3 text-white">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <Circle className="w-5 h-5 text-green-400" />
                     <span>Unlimited members</span>
                   </div>
                   <div className="flex items-center gap-3 text-white">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <Circle className="w-5 h-5 text-green-400" />
                     <span>Full source code access</span>
                   </div>
                   <div className="flex items-center gap-3 text-white">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <Circle className="w-5 h-5 text-green-400" />
                     <span>Integrates with your LMS</span>
                   </div>
                 </div>
@@ -205,7 +205,7 @@ export default function CommunityHubPage() {
                   'Direct messaging',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -225,7 +225,7 @@ export default function CommunityHubPage() {
                   'API access',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}

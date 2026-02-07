@@ -70,7 +70,7 @@ export default function ModuleProgressList({
   function getStatusIcon(status: string) {
     switch (status) {
       case 'completed':
-        return '✓';
+        return '•';
       case 'in_progress':
         return '▶';
       case 'awaiting_proof':

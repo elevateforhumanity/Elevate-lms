@@ -98,7 +98,7 @@ export function CourseCompletionTracking() {
                   milestone.progress > 0 ? 'bg-blue-500 text-white' :
                   'bg-gray-300 text-black'
                 }`}>
-                  {milestone.completed ? '✓' : index + 1}
+                  {milestone.completed ? '•' : index + 1}
                 </div>
 
                 <div className="flex-1">

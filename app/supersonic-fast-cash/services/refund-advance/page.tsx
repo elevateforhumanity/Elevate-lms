@@ -5,7 +5,7 @@ import {
   DollarSign,
   Clock,
   Shield,
-  CheckCircle,
+  Circle,
   ArrowRight,
   CreditCard,
   Zap,

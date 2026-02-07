@@ -3,7 +3,7 @@
 import { useState, Suspense } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { CheckCircle, CreditCard, Lightbulb } from 'lucide-react';
+import { Circle, CreditCard, Lightbulb } from 'lucide-react';
 
 interface ProgramPricing {
   name: string;
@@ -221,31 +221,31 @@ function CheckoutPageContent() {
 
                 <div className="space-y-4 mb-6">
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-black">
                       All major credit and debit cards accepted
                     </span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-black">
                       Pay-in-4 with Klarna, Afterpay, or Zip
                     </span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-black">
                       Bank transfer (ACH) for lower fees
                     </span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-black">
                       Cash App, PayPal, Venmo accepted
                     </span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-black">
                       Instant enrollment confirmation
                     </span>

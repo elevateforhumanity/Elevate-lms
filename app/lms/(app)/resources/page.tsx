@@ -16,7 +16,7 @@ import {
   DollarSign,
   Phone,
   Clock,
-  CheckCircle,
+  Circle,
   Video,
   Users,
   HelpCircle,
@@ -164,7 +164,7 @@ const resourceCategories = [
 
 const quickLinks = [
   { title: 'My Courses', href: '/lms/courses', icon: BookOpen },
-  { title: 'My Progress', href: '/lms/progress', icon: CheckCircle },
+  { title: 'My Progress', href: '/lms/progress', icon: Circle },
   { title: 'Certificates', href: '/lms/certificates', icon: GraduationCap },
   { title: 'Messages', href: '/lms/messages', icon: Users },
   { title: 'Schedule', href: '/lms/schedule', icon: Clock },

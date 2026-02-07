@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import { 
-  CheckCircle, 
+  Circle, 
   Clock, 
   AlertTriangle, 
   ArrowRight,
@@ -44,7 +44,7 @@ const statusConfig: Record<EnrollmentStatus, {
     label: 'Enrolled', 
     color: 'text-green-700', 
     bgColor: 'bg-green-100',
-    icon: CheckCircle 
+    icon: Circle 
   },
   in_progress: { 
     label: 'In Progress', 

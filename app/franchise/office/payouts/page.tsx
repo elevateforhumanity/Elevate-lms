@@ -12,7 +12,7 @@ import {
   ArrowLeft,
   DollarSign,
   Users,
-  CheckCircle,
+  Circle,
   Clock,
   Loader2,
   Download
@@ -474,7 +474,7 @@ export default function PayoutsPage() {
                         payout.status === 'approved' ? 'secondary' :
                         'outline'
                       }>
-                        {payout.status === 'paid' && <CheckCircle className="h-3 w-3 mr-1" />}
+                        {payout.status === 'paid' && <Circle className="h-3 w-3 mr-1" />}
                         {payout.status === 'pending' && <Clock className="h-3 w-3 mr-1" />}
                         {payout.status}
                       </Badge>

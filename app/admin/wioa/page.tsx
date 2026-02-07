@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { FileText, Users, CheckCircle, Clock, AlertTriangle, Download, Filter, Search } from 'lucide-react';
+import { FileText, Users, Circle, Clock, AlertTriangle, Download, Filter, Search } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
 export const metadata: Metadata = {
@@ -51,7 +51,7 @@ export default async function WIOAPage() {
   const stats = [
     { label: 'Total WIOA Participants', value: String(dbStats.total), icon: Users, color: 'blue' },
     { label: 'Pending Verification', value: String(dbStats.pending), icon: Clock, color: 'yellow' },
-    { label: 'Verified Eligible', value: String(dbStats.verified), icon: CheckCircle, color: 'green' },
+    { label: 'Verified Eligible', value: String(dbStats.verified), icon: Circle, color: 'green' },
     { label: 'Needs Attention', value: String(dbStats.needsAttention), icon: AlertTriangle, color: 'red' },
   ];
 

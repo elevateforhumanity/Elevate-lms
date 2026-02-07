@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { Briefcase, Users, Search, FileText, CheckCircle, ArrowRight } from 'lucide-react';
+import { Briefcase, Users, Search, FileText, Circle, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Employer Portal | Elevate For Humanity',

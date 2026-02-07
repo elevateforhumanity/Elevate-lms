@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Home, ChevronRight, CheckCircle, Download, FileText, Users, BarChart3, Shield } from 'lucide-react';
+import { ArrowRight, Home, ChevronRight, Circle, Download, FileText, Users, BarChart3, Shield } from 'lucide-react';
 import AvatarGuide from '@/components/AvatarGuide';
 
 export const metadata: Metadata = {
@@ -45,7 +45,7 @@ const metrics = [
   { label: 'Employment Rate Q4', target: '68%', icon: Users },
   { label: 'Median Earnings Q2', target: '$6,500', icon: BarChart3 },
   { label: 'Credential Rate', target: '65%', icon: FileText },
-  { label: 'Measurable Skill Gains', target: '55%', icon: CheckCircle },
+  { label: 'Measurable Skill Gains', target: '55%', icon: Circle },
   { label: 'Effectiveness in Serving Employers', target: 'Baseline', icon: Shield },
 ];
 
@@ -213,7 +213,7 @@ export default function WIOACompliancePage() {
                   <ul className="space-y-2">
                     {feature.items.map((item) => (
                       <li key={item} className="flex items-center gap-2 text-sm text-black">
-                        <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                        <Circle className="w-4 h-4 text-green-600 flex-shrink-0" />
                         {item}
                       </li>
                     ))}
@@ -275,7 +275,7 @@ export default function WIOACompliancePage() {
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2 text-sm text-black">
-                        <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                        <Circle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                         {feature}
                       </li>
                     ))}

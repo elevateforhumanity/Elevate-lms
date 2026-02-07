@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BookOpen, CheckCircle, ArrowRight, FileText, Users, DollarSign, Clock, Award, Download } from 'lucide-react';
+import { BookOpen, Circle, ArrowRight, FileText, Users, DollarSign, Clock, Award, Download } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Hiring Guide | Employer Portal',
@@ -131,7 +131,7 @@ export default function HiringGuidePage() {
                   <ul className="space-y-2">
                     {step.tips.map((tip, i) => (
                       <li key={i} className="flex items-center gap-2 text-gray-700">
-                        <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                        <Circle className="w-4 h-4 text-purple-600 flex-shrink-0" />
                         {tip}
                       </li>
                     ))}

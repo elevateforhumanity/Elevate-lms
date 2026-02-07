@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { Building, BarChart, Users, FileText, CheckCircle, ArrowRight } from 'lucide-react';
+import { Building, BarChart, Users, FileText, Circle, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Workforce Board Solutions | Elevate For Humanity',
@@ -58,7 +58,7 @@ export default function WorkforceBoardsPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             {['WIOA Compliant', 'DOL Reporting', 'Real-time Analytics', 'Secure & Auditable'].map((item, i) => (
               <span key={i} className="flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full text-blue-700">
-                <CheckCircle className="w-4 h-4" /> {item}
+                <Circle className="w-4 h-4" /> {item}
               </span>
             ))}
           </div>

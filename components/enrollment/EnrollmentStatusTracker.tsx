@@ -9,7 +9,7 @@
 
 'use client';
 
-import { CheckCircle, Clock, Circle, AlertCircle } from 'lucide-react';
+import { Circle, Clock, Circle, AlertCircle } from 'lucide-react';
 
 export type EnrollmentStep = 
   | 'applied'
@@ -83,7 +83,7 @@ export function EnrollmentStatusTracker({
                   ${isCurrent ? 'bg-blue-500 text-white ring-4 ring-blue-100' : ''}
                   ${isPending ? 'bg-slate-100 text-slate-400 border border-slate-200' : ''}
                 `}>
-                  {isComplete && <CheckCircle className="w-5 h-5" />}
+                  {isComplete && <Circle className="w-5 h-5" />}
                   {isCurrent && <Clock className="w-5 h-5" />}
                   {isPending && <Circle className="w-4 h-4" />}
                 </div>

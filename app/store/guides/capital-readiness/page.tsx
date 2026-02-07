@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
-  CheckCircle, 
+  Circle, 
   BookOpen, 
   FileText, 
   Award, 
@@ -230,7 +230,7 @@ export default function CapitalReadinessGuidePage() {
               <ul className="space-y-4">
                 {audiences.map((audience, index) => (
                   <li key={index} className="flex items-center gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <Circle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <span className="text-lg text-slate-700">{audience}</span>
                   </li>
                 ))}

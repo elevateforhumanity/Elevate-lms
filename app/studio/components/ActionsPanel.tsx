@@ -258,7 +258,7 @@ export function ActionsPanel({ repo, repoId, branch, token, userId }: ActionsPan
   const getStatusIcon = (status: string, conclusion: string | null) => {
     if (status === 'in_progress') return '🔄';
     if (status === 'queued') return '⏳';
-    if (conclusion === 'success') return '✅';
+    if (conclusion === 'success') return '•';
     if (conclusion === 'failure') return '❌';
     if (conclusion === 'cancelled') return '⚪';
     return '⚪';

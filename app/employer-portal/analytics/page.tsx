@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { 
   BarChart3, TrendingUp, TrendingDown, Users, Briefcase,
-  Eye, Clock, CheckCircle, ArrowRight, Download
+  Eye, Clock, Circle, ArrowRight, Download
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default async function AnalyticsPage() {
     { label: 'Total Applications', value: '247', change: '+12%', trend: 'up', icon: Users },
     { label: 'Job Views', value: '1,892', change: '+8%', trend: 'up', icon: Eye },
     { label: 'Avg. Time to Hire', value: '14 days', change: '-3 days', trend: 'up', icon: Clock },
-    { label: 'Offer Acceptance', value: '78%', change: '+5%', trend: 'up', icon: CheckCircle },
+    { label: 'Offer Acceptance', value: '78%', change: '+5%', trend: 'up', icon: Circle },
   ];
 
   const topJobs = [

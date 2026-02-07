@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Heart, DollarSign, Users, Award, ArrowRight, CheckCircle } from 'lucide-react';
+import { Heart, DollarSign, Users, Award, ArrowRight, Circle } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
@@ -112,7 +112,7 @@ export default function DonationsPage() {
                 <div className="flex-1">
                   <p className="text-gray-900 font-medium">{level.impact}</p>
                 </div>
-                <CheckCircle className="w-6 h-6 text-green-600" />
+                <Circle className="w-6 h-6 text-green-600" />
               </div>
             ))}
           </div>

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { 
   Inbox, 
   Clock, 
-  CheckCircle, 
+  Circle, 
   AlertCircle, 
   Filter,
   Search,
@@ -131,7 +131,7 @@ export default function AdminSupportPage() {
           <div className="bg-white p-6 rounded-xl shadow-sm">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-green-600" />
+                <Circle className="w-6 h-6 text-green-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold text-black">{stats.resolved}</p>

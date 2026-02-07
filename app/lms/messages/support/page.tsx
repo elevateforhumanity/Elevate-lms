@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { MessageSquare, Plus, HelpCircle, ChevronLeft, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import { MessageSquare, Plus, HelpCircle, ChevronLeft, Clock, Circle, AlertCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Support Tickets | LMS',
@@ -33,7 +33,7 @@ export default async function SupportMessagesPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'resolved':
-        return <CheckCircle className="w-4 h-4 text-green-600" />;
+        return <Circle className="w-4 h-4 text-green-600" />;
       case 'in_progress':
         return <Clock className="w-4 h-4 text-yellow-600" />;
       default:

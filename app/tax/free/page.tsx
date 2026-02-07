@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Image from 'next/image';
-import { CheckCircle, Users, MapPin, Calendar } from 'lucide-react';
+import { Circle, Users, MapPin, Calendar } from 'lucide-react';
 
 export const metadata = {
   title: 'Free Tax Preparation | VITA Program',
@@ -40,21 +40,21 @@ export default function FreeTaxPage() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                  <Circle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Income Limit</h3>
                     <p className="text-black">Earn $64,000 or less per year</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                  <Circle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Disabilities</h3>
                     <p className="text-black">Persons with disabilities</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                  <Circle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Limited English</h3>
                     <p className="text-black">Limited English-speaking taxpayers</p>
@@ -122,7 +122,7 @@ export default function FreeTaxPage() {
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-blue-600" />
+                  <Circle className="w-8 h-8 text-blue-600" />
                 </div>
                 <h4 className="font-semibold mb-2">4. File Free</h4>
                 <p className="text-sm text-black">E-file at no cost</p>

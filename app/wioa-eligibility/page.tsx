@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { DollarSign, Home, Users, Briefcase, ArrowRight, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
+import { DollarSign, Home, Users, Briefcase, ArrowRight, AlertCircle, Circle, XCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
@@ -193,7 +193,7 @@ export default async function WIOAEligibilityPage() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                      <Circle className="w-5 h-5 text-green-600 flex-shrink-0" />
                       {criteria.title}
                     </h3>
                     <p className="text-gray-600">{criteria.description}</p>
@@ -212,7 +212,7 @@ export default async function WIOAEligibilityPage() {
             <div className="grid md:grid-cols-2 gap-3">
               {priorityGroups.map((group, index) => (
                 <div key={index} className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <Circle className="w-4 h-4 text-blue-600 flex-shrink-0" />
                   <span className="text-gray-700">{group}</span>
                 </div>
               ))}

@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
-import { TrendingUp, Users, BookOpen, Award, Clock, Target, DollarSign, CheckCircle } from 'lucide-react';
+import { TrendingUp, Users, BookOpen, Award, Clock, Target, DollarSign, Circle } from 'lucide-react';
 
 interface AnalyticsData {
   totalStudents: number;
@@ -41,7 +41,7 @@ export function AnalyticsDashboard({ data, timeframe = 'month' }: AnalyticsDashb
       title: 'Completion Rate',
       value: `${data.completionRate}%`,
       change: '+5%',
-      icon: CheckCircle,
+      icon: Circle,
       color: 'text-orange-600',
       bgColor: 'bg-orange-100',
     },

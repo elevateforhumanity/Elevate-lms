@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState } from 'react';
-import { Upload, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { Upload, Circle, AlertCircle, Loader2 } from 'lucide-react';
 
 interface VideoUploaderProps {
   onUploadComplete?: (url: string) => void;
@@ -138,7 +138,7 @@ export default function VideoUploader({
           {result && !error && (
             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
               <div className="flex items-start gap-3">
-                <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="h-10 w-10 text-green-600 flex-shrink-0 mt-0.5" />
                 <div className="flex-1">
                   <h4 className="font-semibold text-green-900 mb-1">
                     Video Enhanced Successfully!

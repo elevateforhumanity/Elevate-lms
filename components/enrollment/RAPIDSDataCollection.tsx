@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Shield, AlertCircle, CheckCircle, Info } from 'lucide-react';
+import { Shield, AlertCircle, Circle, Info } from 'lucide-react';
 
 interface RAPIDSData {
   // Personal
@@ -306,7 +306,7 @@ export function RAPIDSDataCollection({
       {/* Validation Status */}
       {data.rapidsConsent && data.dateOfBirth && data.gender && data.raceEthnicity && data.educationLevel && (
         <div className="mt-6 flex items-center gap-2 text-green-600">
-          <CheckCircle className="w-5 h-5" />
+          <Circle className="w-5 h-5" />
           <span className="text-sm font-medium">RAPIDS information complete</span>
         </div>
       )}

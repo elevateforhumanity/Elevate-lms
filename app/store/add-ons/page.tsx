@@ -14,7 +14,7 @@ import {
   Star,
   Shield,
   BarChart3,
-  CheckCircle,
+  Circle,
   Play
 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -178,7 +178,7 @@ export default function AddOnsPage() {
                       <ul className="space-y-2">
                         {addon.features.map((feature) => (
                           <li key={feature} className="flex items-start gap-2 text-sm text-slate-600">
-                            <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                            <Circle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -192,7 +192,7 @@ export default function AddOnsPage() {
                       <ul className="space-y-2">
                         {addon.benefits.map((benefit) => (
                           <li key={benefit} className="flex items-start gap-2 text-sm text-slate-600">
-                            <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                            <Circle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                             {benefit}
                           </li>
                         ))}

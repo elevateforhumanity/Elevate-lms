@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { 
   ArrowRight, 
-  CheckCircle, 
+  Circle, 
   Briefcase, 
   GraduationCap,
   Heart,

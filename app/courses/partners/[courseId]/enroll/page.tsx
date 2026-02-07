@@ -10,7 +10,7 @@ import {
 
   AlertTriangle,
   BookOpen,
-  CheckCircle,
+  Circle,
   Clock,
   ExternalLink,
 } from 'lucide-react';
@@ -242,7 +242,7 @@ export default function EnrollPage({
             {/* What Happens Next */}
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
               <h3 className="text-lg font-semibold text-black mb-4 flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-brand-blue-600" />
+                <Circle className="w-5 h-5 text-brand-blue-600" />
                 What Happens Next
               </h3>
               <ol className="space-y-3 text-black">

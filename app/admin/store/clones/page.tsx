@@ -7,7 +7,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  CheckCircle,
+  Circle,
   DollarSign,
   Eye,
   Package,
@@ -430,7 +430,7 @@ export default function StoreBuilderPage() {
                     <div className="text-xs text-black mb-1">Demo</div>
                     <div className="text-xs text-black">
                       {product.demo.enabled
-                        ? '<CheckCircle className="w-5 h-5 inline-block" /> Enabled'
+                        ? '<Circle className="w-5 h-5 inline-block" /> Enabled'
                         : '<XCircle className="w-5 h-5 inline-block" /> Disabled'}
                     </div>
                   </div>

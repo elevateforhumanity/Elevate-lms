@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { Clock, DollarSign, Award, Wrench, Truck, CheckCircle } from 'lucide-react';
+import { Clock, DollarSign, Award, Wrench, Truck, Circle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Diesel Mechanic Training | Elevate for Humanity',
@@ -82,7 +82,7 @@ export default function DieselMechanicPage() {
                   'Safety protocols and best practices',
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <Circle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                     <span className="text-slate-700">{item}</span>
                   </li>
                 ))}

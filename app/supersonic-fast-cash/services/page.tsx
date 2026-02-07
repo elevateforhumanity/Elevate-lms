@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FileText, DollarSign, Building, Calculator, Shield, Clock, CheckCircle } from 'lucide-react';
+import { FileText, DollarSign, Building, Calculator, Shield, Clock, Circle } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -195,7 +195,7 @@ export default async function ServicesPage() {
                       key={idx}
                       className="flex items-start gap-2 text-sm text-black"
                     >
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                       {feature}
                     </li>
                   ))}

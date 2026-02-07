@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Shield, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
+import { Shield, Circle, XCircle, AlertCircle } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface Consent {
@@ -130,7 +130,7 @@ export default function StudentPrivacyPage() {
                       
                       <div className="flex items-center gap-2">
                         {isGranted ? (
-                          <CheckCircle className="w-5 h-5 text-green-600" />
+                          <Circle className="w-5 h-5 text-green-600" />
                         ) : (
                           <XCircle className="w-5 h-5 text-black" />
                         )}

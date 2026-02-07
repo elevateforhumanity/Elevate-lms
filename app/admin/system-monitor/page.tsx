@@ -2,7 +2,7 @@
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useState, useEffect } from 'react';
-import { Activity, AlertCircle, CheckCircle, Database, Server, Zap, Users } from 'lucide-react';
+import { Activity, AlertCircle, Circle, Database, Server, Zap, Users } from 'lucide-react';
 import Link from 'next/link';
 
 
@@ -112,7 +112,7 @@ export default function SystemMonitorPage() {
               {Object.entries(status.production_ready).map(([key, value]: [string, any]) => (
                 <div key={key} className="flex items-start gap-2">
                   {typeof value === 'string' && value.includes('•') ? (
-                    <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Circle className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
                   ) : (
                     <AlertCircle className="h-4 w-4 text-yellow-600 flex-shrink-0 mt-0.5" />
                   )}

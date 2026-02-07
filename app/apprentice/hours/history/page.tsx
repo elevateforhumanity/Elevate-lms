@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { ChevronRight, Clock, Calendar, CheckCircle, TrendingUp, Plus } from 'lucide-react';
+import { ChevronRight, Clock, Calendar, Circle, TrendingUp, Plus } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
@@ -83,7 +83,7 @@ export default async function HoursHistoryPage() {
             <p className="text-gray-600 text-sm">Total Hours Logged</p>
           </div>
           <div className="bg-white rounded-xl p-6 border">
-            <CheckCircle className="w-8 h-8 text-green-500 mb-2" />
+            <Circle className="w-8 h-8 text-green-500 mb-2" />
             <p className="text-2xl font-bold">{approvedHours}</p>
             <p className="text-gray-600 text-sm">Approved Hours</p>
           </div>
@@ -146,7 +146,7 @@ export default async function HoursHistoryPage() {
                         entry.status === 'rejected' ? 'bg-red-100 text-red-700' :
                         'bg-yellow-100 text-yellow-700'
                       }`}>
-                        {entry.status === 'approved' && <CheckCircle className="w-3 h-3" />}
+                        {entry.status === 'approved' && <Circle className="w-3 h-3" />}
                         {entry.status}
                       </span>
                     </td>

@@ -8,7 +8,7 @@ import {
   Mail,
   TrendingUp,
   Calendar,
-  CheckCircle,
+  Circle,
   Clock,
   DollarSign,
   Target,

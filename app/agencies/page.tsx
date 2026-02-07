@@ -8,7 +8,7 @@ import {
   TrendingUp,
   FileCheck,
   Phone,
-  CheckCircle,
+  Circle,
   DollarSign,
   Building2,
   Users,
@@ -173,7 +173,7 @@ export default async function AgenciesPage() {
               <ul className="space-y-3">
                 {platformFeatures.map((feature, index) => (
                   <li key={index} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -217,7 +217,7 @@ export default async function AgenciesPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {governanceFeatures.map((feature, index) => (
               <div key={index} className="flex items-start gap-3 bg-white rounded-lg p-5 shadow-sm border">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">{feature}</span>
               </div>
             ))}

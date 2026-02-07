@@ -9,7 +9,7 @@ import {
   UserPlus, 
   BookOpen, 
   Clock, 
-  CheckCircle,
+  Circle,
   AlertTriangle,
   RefreshCw
 } from 'lucide-react';
@@ -31,7 +31,7 @@ const eventIcons: Record<string, any> = {
   sms: Mail,
   progress: BookOpen,
   nudge: Clock,
-  verification: CheckCircle,
+  verification: Circle,
 };
 
 const statusColors: Record<string, string> = {

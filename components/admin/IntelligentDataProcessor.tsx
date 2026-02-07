@@ -67,7 +67,7 @@ export function IntelligentDataProcessor() {
     const formatDetected = detectDataFormat(input);
     setCopilotMessages((prev) => [
       ...prev,
-      `✅ Detected format: ${formatDetected}`,
+      `• Detected format: ${formatDetected}`,
     ]);
 
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -399,7 +399,7 @@ Sarah Johnson IT Support         2025-01-22    sarah@email.com"
         <div className="results space-y-6">
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">
             <h3 className="font-semibold text-green-900 mb-2">
-              ✅ Processing Complete!
+              • Processing Complete!
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div>

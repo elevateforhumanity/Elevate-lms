@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { 
   BarChart3, 
   ArrowRight, 
-  CheckCircle,
+  Circle,
   TrendingUp,
   Users,
   Target,

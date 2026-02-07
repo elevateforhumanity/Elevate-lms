@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronRight, Award, CheckCircle } from 'lucide-react';
+import { ChevronRight, Award, Circle } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -116,28 +116,28 @@ export default async function CredentialsPage() {
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                    <Circle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
                       <strong className="text-black">National Certifications</strong>
                       <p className="text-black">Recognized across all 50 states</p>
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                    <Circle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
                       <strong className="text-black">State Licenses</strong>
                       <p className="text-black">Required credentials for regulated professions</p>
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                    <Circle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
                       <strong className="text-black">Exam Preparation</strong>
                       <p className="text-black">We prepare you to pass certification exams</p>
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                    <Circle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
                       <strong className="text-black">Funded</strong>
                       <p className="text-black">Training and exam costs covered</p>

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import {
   Upload,
   FileText,
-  CheckCircle,
+  Circle,
   AlertCircle,
   Loader2,
   X,
@@ -186,7 +186,7 @@ export default function TransferRequestForm({
   if (success) {
     return (
       <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
-        <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+        <Circle className="w-16 h-16 text-green-600 mx-auto mb-4" />
         <h2 className="text-2xl font-bold text-green-900 mb-2">
           Request Submitted!
         </h2>
@@ -341,7 +341,7 @@ export default function TransferRequestForm({
                     }`}
                   >
                     {uploaded ? (
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <Circle className="w-5 h-5 text-green-600" />
                     ) : (
                       <FileText className="w-5 h-5 text-gray-400" />
                     )}

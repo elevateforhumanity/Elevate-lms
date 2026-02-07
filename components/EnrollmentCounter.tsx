@@ -279,7 +279,7 @@ export default function EnrollmentCounter() {
           </div>
 
           <p className="mt-6 text-white/60 text-sm">
-            ✓ No application fee  ✓ Financial aid available  ✓ Start in weeks, not months
+            • No application fee  • Financial aid available  • Start in weeks, not months
           </p>
         </motion.div>
       </div>

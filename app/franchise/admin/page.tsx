@@ -14,7 +14,7 @@ import {
   DollarSign, 
   TrendingUp,
   AlertCircle,
-  CheckCircle,
+  Circle,
   Clock,
   BarChart3
 } from 'lucide-react';
@@ -281,7 +281,7 @@ export default function FranchiseAdminDashboard() {
                 {stats?.pendingReturns || 0}
               </Badge>
               <Badge variant="default" className="text-xs bg-green-500">
-                <CheckCircle className="h-3 w-3 mr-1" />
+                <Circle className="h-3 w-3 mr-1" />
                 {stats?.acceptedReturns || 0}
               </Badge>
               <Badge variant="destructive" className="text-xs">

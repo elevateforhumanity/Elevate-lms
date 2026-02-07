@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { 
   GraduationCap, Users, Award, ArrowRight, 
-  Clock, BarChart3, CheckCircle, Star,
+  Clock, BarChart3, Circle, Star,
   Menu, X, Lock, Play, ChevronRight,
   BookOpen, Trophy, Briefcase, Mail, Phone, MapPin
 } from 'lucide-react';

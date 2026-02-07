@@ -10,7 +10,7 @@ import {
   Calendar,
   MessageSquare,
   AlertCircle,
-  CheckCircle,
+  Circle,
   Clock,
   Settings,
   Trash2,
@@ -72,7 +72,7 @@ export default async function NotificationsPage() {
       case 'grade': return Award;
       case 'message': return MessageSquare;
       case 'alert': return AlertCircle;
-      case 'success': return CheckCircle;
+      case 'success': return Circle;
       default: return Bell;
     }
   };

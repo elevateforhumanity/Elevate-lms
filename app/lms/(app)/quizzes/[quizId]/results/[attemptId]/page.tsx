@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   Trophy,
   XCircle,
-  CheckCircle,
+  Circle,
   ArrowLeft,
   RotateCcw,
   Home,
@@ -262,7 +262,7 @@ export default async function QuizResultsPage({ params }: Props) {
                         </p>
                       </div>
                       {answer.is_correct ? (
-                        <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                        <Circle className="w-6 h-6 text-green-500 flex-shrink-0" />
                       ) : (
                         <XCircle className="w-6 h-6 text-red-500 flex-shrink-0" />
                       )}

@@ -70,7 +70,7 @@ export function CopilotAssistant() {
     const messages: CopilotMessage[] = [
       {
         type: 'success',
-        message: `✅ Great! I found ${records.length} student records. Here's what I detected:`,
+        message: `• Great! I found ${records.length} student records. Here's what I detected:`,
       },
       {
         type: 'info',

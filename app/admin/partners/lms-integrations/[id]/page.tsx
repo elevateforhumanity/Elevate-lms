@@ -7,7 +7,7 @@ import {
   Globe,
   Key,
   RefreshCw,
-  CheckCircle,
+  Circle,
   XCircle,
   AlertCircle,
   Settings,
@@ -126,7 +126,7 @@ export default async function LMSIntegrationDetailPage({ params }: Props) {
                   statusColors[provider.status] || 'bg-gray-100 text-gray-800'
                 }`}>
                   {provider.status === 'active' ? (
-                    <CheckCircle className="w-3 h-3" />
+                    <Circle className="w-3 h-3" />
                   ) : (
                     <XCircle className="w-3 h-3" />
                   )}
@@ -271,7 +271,7 @@ export default async function LMSIntegrationDetailPage({ params }: Props) {
                         log.status === 'error' ? 'bg-red-100' : 'bg-yellow-100'
                       }`}>
                         {log.status === 'success' ? (
-                          <CheckCircle className="w-4 h-4 text-green-600" />
+                          <Circle className="w-4 h-4 text-green-600" />
                         ) : log.status === 'error' ? (
                           <XCircle className="w-4 h-4 text-red-600" />
                         ) : (

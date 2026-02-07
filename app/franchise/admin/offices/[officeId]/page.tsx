@@ -19,7 +19,7 @@ import {
   Edit,
   Save,
   Loader2,
-  CheckCircle,
+  Circle,
   XCircle,
   AlertTriangle
 } from 'lucide-react';
@@ -597,7 +597,7 @@ export default function AdminOfficeDetailPage() {
             <CardContent className="space-y-4">
               {office.status === 'pending' && (
                 <Button className="w-full justify-start" onClick={() => updateStatus('active')}>
-                  <CheckCircle className="mr-2 h-4 w-4" />
+                  <Circle className="mr-2 h-4 w-4" />
                   Activate Office
                 </Button>
               )}
@@ -609,7 +609,7 @@ export default function AdminOfficeDetailPage() {
               )}
               {office.status === 'suspended' && (
                 <Button className="w-full justify-start" onClick={() => updateStatus('active')}>
-                  <CheckCircle className="mr-2 h-4 w-4" />
+                  <Circle className="mr-2 h-4 w-4" />
                   Reactivate Office
                 </Button>
               )}

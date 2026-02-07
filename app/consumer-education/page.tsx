@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { BookOpen, Shield, DollarSign, FileText, CheckCircle, ArrowRight,
+import { BookOpen, Shield, DollarSign, FileText, Circle, ArrowRight,
   Phone
 } from 'lucide-react';
 
@@ -57,7 +57,7 @@ export default function ConsumerEducationPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {['Transparent Information', 'No Hidden Fees', 'Student-First Approach'].map((item, i) => (
               <div key={i} className="flex items-center gap-2 justify-center">
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <Circle className="w-5 h-5 text-green-600" />
                 <span className="text-gray-700">{item}</span>
               </div>
             ))}

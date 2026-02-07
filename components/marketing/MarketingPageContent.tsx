@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, Circle } from 'lucide-react';
 import type { MarketingPage, MarketingSection } from '@/lib/api/marketing';
 
 interface MarketingPageContentProps {
@@ -91,7 +91,7 @@ function FeaturesSection({ section }: { section: MarketingSection }) {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, idx) => (
             <div key={idx} className="bg-white rounded-xl p-6 shadow-sm">
-              <CheckCircle className="w-8 h-8 text-green-600 mb-4" />
+              <Circle className="w-8 h-8 text-green-600 mb-4" />
               <p className="text-gray-700">{feature}</p>
             </div>
           ))}

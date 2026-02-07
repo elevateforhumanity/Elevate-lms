@@ -11,7 +11,7 @@ import {
   MapPin,
   Briefcase,
   DollarSign,
-  CheckCircle,
+  Circle,
   ArrowLeft,
   Send,
 } from 'lucide-react';
@@ -83,7 +83,7 @@ export default function MultiSiteApplyPage() {
         <div className="max-w-2xl mx-auto px-4">
           <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-10 h-10 text-green-600" />
+              <Circle className="w-10 h-10 text-green-600" />
             </div>
             <h1 className="text-3xl font-black text-gray-900 mb-4">
               Application Received!

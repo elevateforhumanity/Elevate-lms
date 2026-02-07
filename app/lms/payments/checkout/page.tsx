@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { CreditCard, Lock, CheckCircle, ArrowLeft } from 'lucide-react';
+import { CreditCard, Lock, Circle, ArrowLeft } from 'lucide-react';
 
 function CheckoutContent() {
   const searchParams = useSearchParams();

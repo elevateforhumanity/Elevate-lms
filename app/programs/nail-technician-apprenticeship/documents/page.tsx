@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Upload, FileText, CheckCircle, AlertCircle, X } from 'lucide-react';
+import { Upload, FileText, Circle, AlertCircle, X } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
 interface UploadedFile {
@@ -99,7 +99,7 @@ export default function NailTechDocumentsPage() {
                   <h3 className="font-bold text-slate-900">Government-Issued ID</h3>
                   <p className="text-sm text-slate-500">Driver's license, state ID, or passport</p>
                 </div>
-                {governmentId?.status === 'complete' && <CheckCircle className="w-6 h-6 text-green-500" />}
+                {governmentId?.status === 'complete' && <Circle className="w-6 h-6 text-green-500" />}
               </div>
 
               {governmentId ? (

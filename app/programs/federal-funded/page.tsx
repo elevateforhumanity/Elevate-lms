@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { programs } from '@/app/data/programs';
-import { Shield, CheckCircle, Users, Award } from 'lucide-react';
+import { Shield, Circle, Users, Award } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 
@@ -186,7 +186,7 @@ export default async function FederalFundedProgramsPage() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-green-100 text-brand-green-600 mb-4">
-                <CheckCircle className="w-8 h-8" />
+                <Circle className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Tuition</h3>
               <p className="text-black">100% of training costs covered</p>

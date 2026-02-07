@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 import {
   ChevronRight,
   Shield,
-  CheckCircle,
+  Circle,
   AlertTriangle,
   Clock,
   Users,
@@ -124,7 +124,7 @@ export default async function FerpaCompliancePage() {
           <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <Circle className="w-5 h-5 text-green-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold text-gray-900">{trainingRate}%</p>
@@ -166,7 +166,7 @@ export default async function FerpaCompliancePage() {
               <div key={index} className="px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   {check.status === 'compliant' ? (
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <Circle className="w-5 h-5 text-green-600" />
                   ) : (
                     <AlertTriangle className="w-5 h-5 text-yellow-600" />
                   )}

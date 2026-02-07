@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { CheckCircle, Save } from 'lucide-react';
+import { Circle, Save } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
 interface Student {
@@ -67,7 +67,7 @@ export default function AttendanceRecordForm({
   if (submitted) {
     return (
       <div className="text-center py-12">
-        <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+        <Circle className="w-16 h-16 text-green-600 mx-auto mb-4" />
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Attendance Recorded!</h2>
         <p className="text-gray-600">Redirecting...</p>
       </div>

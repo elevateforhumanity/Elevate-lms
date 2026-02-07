@@ -245,7 +245,7 @@ export default function QuestionManagerClient({ quiz, initialQuestions, quizId, 
                     >
                       {option}
                       {option === question.correct_answer && (
-                        <span className="ml-2 text-green-600">✓ Correct</span>
+                        <span className="ml-2 text-green-600">• Correct</span>
                       )}
                     </div>
                   ))}

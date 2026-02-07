@@ -4,7 +4,7 @@ import Image from 'next/image';
 import {
   Compass,
   Users,
-  CheckCircle,
+  Circle,
   Target,
   ArrowRight,
   Calendar,
@@ -184,7 +184,7 @@ export default function CareerCounselingPage() {
           <div className="grid md:grid-cols-2 gap-6">
             {assessments.map((assessment, index) => (
               <div key={index} className="bg-gray-50 rounded-xl p-6 flex items-start">
-                <CheckCircle className="w-6 h-6 text-purple-600 mr-4 flex-shrink-0 mt-1" />
+                <Circle className="w-6 h-6 text-purple-600 mr-4 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-bold text-gray-900 mb-1">{assessment.name}</h3>
                   <p className="text-gray-600 text-sm">{assessment.description}</p>
@@ -210,15 +210,15 @@ export default function CareerCounselingPage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Identify transferable skills
                 </li>
                 <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Explore new industries
                 </li>
                 <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Plan your transition
                 </li>
               </ul>
@@ -231,15 +231,15 @@ export default function CareerCounselingPage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Explore career options
                 </li>
                 <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Build your professional brand
                 </li>
                 <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Navigate the job market
                 </li>
               </ul>
@@ -252,15 +252,15 @@ export default function CareerCounselingPage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Address employment gaps
                 </li>
                 <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Update your skills
                 </li>
                 <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Rebuild confidence
                 </li>
               </ul>
@@ -287,15 +287,15 @@ export default function CareerCounselingPage() {
               </p>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   60-minute sessions
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Hands-on activities
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Access to resource library
                 </li>
               </ul>
@@ -311,15 +311,15 @@ export default function CareerCounselingPage() {
               </p>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Flexible scheduling
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   No travel required
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                  <Circle className="w-4 h-4 text-green-600 mr-2" />
                   Screen sharing for resources
                 </li>
               </ul>

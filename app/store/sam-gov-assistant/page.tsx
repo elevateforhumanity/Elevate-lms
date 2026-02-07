@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   MessageCircle,
-  CheckCircle,
+  Circle,
   ArrowRight,
   FileText,
   Building2,
@@ -250,15 +250,15 @@ Come back anytime if you need help!`,
             </p>
             <div className="flex flex-wrap gap-4 text-sm text-blue-200">
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
+                <Circle className="w-5 h-5 text-green-400" />
                 Interactive walkthrough
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
+                <Circle className="w-5 h-5 text-green-400" />
                 Real-time guidance
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
+                <Circle className="w-5 h-5 text-green-400" />
                 Troubleshooting help
               </div>
             </div>

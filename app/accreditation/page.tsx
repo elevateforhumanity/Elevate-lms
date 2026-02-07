@@ -5,7 +5,7 @@ import Image from 'next/image';
 import {
   Award,
   Shield,
-  CheckCircle,
+  Circle,
   FileCheck,
   Building2,
   ExternalLink,
@@ -91,7 +91,7 @@ export default async function AccreditationPage() {
       name: 'WRG Approved',
       description: 'Workforce Ready Grant eligible programs',
       id_number: null,
-      icon: CheckCircle,
+      icon: Circle,
     },
     {
       name: 'JRI Partner',
@@ -172,7 +172,7 @@ export default async function AccreditationPage() {
           <h2 className="text-3xl font-bold text-center mb-8">What This Means for You</h2>
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <Circle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-lg">Quality Assurance</h3>
                 <p className="text-gray-600">
@@ -182,7 +182,7 @@ export default async function AccreditationPage() {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <Circle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-lg">Funding Eligibility</h3>
                 <p className="text-gray-600">
@@ -192,7 +192,7 @@ export default async function AccreditationPage() {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <Circle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-lg">Employer Recognition</h3>
                 <p className="text-gray-600">
@@ -202,7 +202,7 @@ export default async function AccreditationPage() {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <Circle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-lg">Transferable Credits</h3>
                 <p className="text-gray-600">
@@ -228,7 +228,7 @@ export default async function AccreditationPage() {
                   className="bg-white rounded-lg p-4 border hover:shadow-md transition flex items-center justify-between"
                 >
                   <span className="font-medium">{program.name}</span>
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <Circle className="w-5 h-5 text-green-500" />
                 </Link>
               ))}
             </div>

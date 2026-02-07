@@ -107,7 +107,7 @@ export function ConflictResolver({
   if (!currentConflict) {
     return (
       <div style={{ padding: 20, textAlign: 'center' }}>
-        <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
+        <div style={{ fontSize: 48, marginBottom: 16 }}>•</div>
         <div style={{ fontSize: 18, marginBottom: 8 }}>All conflicts resolved!</div>
         <button
           onClick={finishResolving}
@@ -315,7 +315,7 @@ export function ConflictResolver({
             fontSize: 12,
             color: '#7ee787',
           }}>
-            ✓ Resolved
+            • Resolved
           </div>
           <pre style={{
             margin: 0,

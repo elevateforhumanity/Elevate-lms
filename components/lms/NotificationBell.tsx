@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState, useEffect } from 'react';
-import { Bell, CheckCircle, BookOpen, Award, X } from 'lucide-react';
+import { Bell, Circle, BookOpen, Award, X } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
 interface Notification {
@@ -106,7 +106,7 @@ export function NotificationBell() {
       case 'message':
         return <Bell className="w-5 h-5 text-green-600" />;
       default:
-        return <CheckCircle className="w-5 h-5 text-black" />;
+        return <Circle className="w-5 h-5 text-black" />;
     }
   };
 

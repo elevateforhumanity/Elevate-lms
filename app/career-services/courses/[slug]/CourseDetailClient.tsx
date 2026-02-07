@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ShoppingCart, Tag, CheckCircle, X, Loader2 } from 'lucide-react';
+import { ShoppingCart, Tag, Circle, X, Loader2 } from 'lucide-react';
 
 interface Course {
   id: string;
@@ -135,7 +135,7 @@ export function CourseDetailClient({ course }: { course: Course }) {
               </div>
               {promoApplied && (
                 <span className="flex items-center gap-1 text-green-600 text-sm">
-                  <CheckCircle className="w-4 h-4" />
+                  <Circle className="w-4 h-4" />
                   {promoApplied.promo.description} - Save ${promoApplied.discountAmount.toFixed(2)}
                 </span>
               )}

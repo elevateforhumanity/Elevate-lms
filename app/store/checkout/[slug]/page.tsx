@@ -13,7 +13,7 @@ import {
   useElements,
 } from '@stripe/react-stripe-js';
 import { getDigitalProduct } from '@/lib/store/digital-products';
-import { ArrowLeft, Lock, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Lock, Circle } from 'lucide-react';
 import Link from 'next/link';
 
 const stripePromise = loadStripe(
@@ -205,7 +205,7 @@ export default function CheckoutPage() {
                 </h3>
                 {product.features.map((feature: string, index: number) => (
                   <div key={index} className="flex items-start gap-2">
-                    <CheckCircle
+                    <Circle
                       className="text-green-600 flex-shrink-0 mt-0.5"
                       size={16}
                     />

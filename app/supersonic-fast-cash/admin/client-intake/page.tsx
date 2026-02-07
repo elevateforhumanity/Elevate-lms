@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import {
   Users,
   FileText,
-  CheckCircle,
+  Circle,
   Clock,
   AlertCircle,
   ExternalLink,
@@ -131,7 +131,7 @@ export default function ClientIntakeDashboard() {
               <span className="text-sm font-medium text-black">
                 Completed
               </span>
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <Circle className="w-5 h-5 text-green-600" />
             </div>
             <div className="text-3xl font-bold">
               {clients.filter((c) => c.status === 'completed').length}
@@ -278,7 +278,7 @@ export default function ClientIntakeDashboard() {
                         }`}
                       >
                         {client.status === 'completed' && (
-                          <CheckCircle className="w-3 h-3" />
+                          <Circle className="w-3 h-3" />
                         )}
                         {client.status === 'review' && (
                           <AlertCircle className="w-3 h-3" />

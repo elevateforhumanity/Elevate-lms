@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { BookOpen, Clock, CheckCircle, Play } from 'lucide-react';
+import { BookOpen, Clock, Circle, Play } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'My Courses | Student Portal',
@@ -110,7 +110,7 @@ export default async function StudentCoursesPage() {
                   >
                     {course.status === 'completed' ? (
                       <>
-                        <CheckCircle className="w-4 h-4" />
+                        <Circle className="w-4 h-4" />
                         Review Course
                       </>
                     ) : (

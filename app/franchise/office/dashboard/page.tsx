@@ -13,7 +13,7 @@ import {
   DollarSign, 
   TrendingUp,
   Clock,
-  CheckCircle,
+  Circle,
   AlertCircle,
   Building2
 } from 'lucide-react';
@@ -465,7 +465,7 @@ export default function OfficeDashboard() {
             </Link>
             <Link href="/franchise/office/ero-queue">
               <Button variant="outline" className="w-full justify-start">
-                <CheckCircle className="mr-2 h-4 w-4" />
+                <Circle className="mr-2 h-4 w-4" />
                 ERO Queue
               </Button>
             </Link>

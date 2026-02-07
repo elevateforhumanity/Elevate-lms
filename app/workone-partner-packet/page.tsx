@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { 
   Award, 
-  CheckCircle, 
+  Circle, 
   Users, 
   Briefcase, 
   FileText, 
@@ -173,28 +173,28 @@ export default function WorkOnePartnerPacketPage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-6">What Makes Us Different</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                    <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-gray-900">Employer-Driven Model</div>
                       <div className="text-gray-600 text-sm">Training aligned with actual job requirements</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                    <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-gray-900">Compliance Built-In</div>
                       <div className="text-gray-600 text-sm">WIOA, FERPA, ADA, EEO compliant from day one</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                    <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-gray-900">Outcome-Focused</div>
                       <div className="text-gray-600 text-sm">Employment and wage gains, not just completions</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                    <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                     <div>
                       <div className="font-semibold text-gray-900">Automated Reporting</div>
                       <div className="text-gray-600 text-sm">Real-time data for case managers and funders</div>
@@ -365,7 +365,7 @@ export default function WorkOnePartnerPacketPage() {
                 <div className="grid grid-cols-2 gap-3">
                   {['WIOA Title I (Adult)', 'WIOA Title I (DW)', 'WIOA Title I (Youth)', 'WRG (Workforce Ready Grant)', 'SNAP E&T', 'TANF', 'TAA', 'Veterans Benefits'].map((source, index) => (
                     <div key={index} className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <Circle className="w-4 h-4 text-green-600" />
                       <span className="text-gray-700 text-sm">{source}</span>
                     </div>
                   ))}

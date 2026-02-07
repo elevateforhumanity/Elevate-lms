@@ -13,7 +13,7 @@ import { Progress } from '@/components/ui/Progress';
 import { 
   Calculator, 
   Send, 
-  CheckCircle, 
+  Circle, 
   AlertCircle,
   DollarSign,
   User,
@@ -671,7 +671,7 @@ export default function DIYTaxesPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 {submissionResult.success ? (
-                  <CheckCircle className="h-5 w-5 text-green-600" />
+                  <Circle className="h-5 w-5 text-green-600" />
                 ) : (
                   <AlertCircle className="h-5 w-5 text-red-600" />
                 )}

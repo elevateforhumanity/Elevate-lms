@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { 
-  CheckCircle, 
+  Circle, 
   Clock, 
   AlertTriangle, 
   FileCheck,
@@ -118,7 +118,7 @@ export default function ProgressCompliance({ userId }: { userId?: string }) {
   }
 
   const statusConfig = {
-    compliant: { label: 'On Track', color: 'text-green-700', bg: 'bg-green-100', icon: CheckCircle },
+    compliant: { label: 'On Track', color: 'text-green-700', bg: 'bg-green-100', icon: Circle },
     at_risk: { label: 'At Risk', color: 'text-amber-700', bg: 'bg-amber-100', icon: AlertTriangle },
     non_compliant: { label: 'Behind', color: 'text-red-700', bg: 'bg-red-100', icon: AlertTriangle },
   };

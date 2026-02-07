@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
 import { 
   FileText, 
-  CheckCircle, 
+  Circle, 
   AlertCircle,
   Loader2,
   ArrowLeft
@@ -259,7 +259,7 @@ export default function EROQueuePage() {
               </>
             ) : (
               <>
-                <CheckCircle className="mr-2 h-4 w-4" />
+                <Circle className="mr-2 h-4 w-4" />
                 Sign Selected ({selectedIds.size})
               </>
             )}
@@ -278,7 +278,7 @@ export default function EROQueuePage() {
         <CardContent>
           {pendingReturns.length === 0 ? (
             <div className="text-center py-12">
-              <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+              <Circle className="h-12 w-12 text-green-500 mx-auto mb-4" />
               <p className="text-lg font-medium">All caught up!</p>
               <p className="text-muted-foreground">No returns pending your signature</p>
             </div>

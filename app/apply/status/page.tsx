@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, CheckCircle, Clock, XCircle, Phone } from 'lucide-react';
+import { Search, Circle, Clock, XCircle, Phone } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 interface ApplicationStatus {
@@ -49,7 +49,7 @@ export default function ApplicationStatusPage() {
     switch (status) {
       case 'approved':
         return {
-          icon: <CheckCircle className="w-12 h-12 text-green-500" />,
+          icon: <Circle className="w-12 h-12 text-green-500" />,
           title: 'Approved!',
           color: 'bg-green-50 border-green-200',
           textColor: 'text-green-800',

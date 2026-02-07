@@ -7,7 +7,7 @@ import PageAvatar from '@/components/PageAvatar';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { FundingBadge } from '@/components/programs/FundingBadge';
 import { 
-  Clock, DollarSign, TrendingUp, CheckCircle, ArrowRight, 
+  Clock, DollarSign, TrendingUp, Circle, ArrowRight, 
   Flame, Award, Users, Calendar, ChevronDown, ChevronUp, 
   Play, Phone, GraduationCap, Briefcase, Shield, Factory,
   Wrench, HardHat, Zap, Target
@@ -302,7 +302,7 @@ export default function WeldingProgramPage() {
                     <div className="grid md:grid-cols-2 gap-4 mb-4">
                       {module.topics.map((topic, i) => (
                         <div key={i} className="flex items-center gap-2">
-                          <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                          <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                           <span className="text-gray-700">{topic}</span>
                         </div>
                       ))}

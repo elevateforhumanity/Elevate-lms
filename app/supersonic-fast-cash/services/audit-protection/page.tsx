@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import {
   Shield,
-  CheckCircle,
+  Circle,
   ArrowRight,
   FileText,
   Users,
@@ -168,7 +168,7 @@ export default function AuditProtectionPage() {
               <ul className="space-y-4">
                 {whatsCovered.map((item, idx) => (
                   <li key={idx} className="flex items-center gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                    <Circle className="w-6 h-6 text-green-500 flex-shrink-0" />
                     <span className="text-gray-700 font-medium">{item}</span>
                   </li>
                 ))}

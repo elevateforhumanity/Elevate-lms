@@ -12,7 +12,7 @@ import {
   Search,
   MapPin,
   Clock,
-  CheckCircle,
+  Circle,
   Star,
   MessageCircle,
   Plus

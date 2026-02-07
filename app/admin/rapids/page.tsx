@@ -2,7 +2,7 @@
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { RAPIDS_CONFIG } from '@/lib/compliance/rapids-config';
-import { CheckCircle, XCircle, Copy, Shield, FileText, Users, Download, ExternalLink } from 'lucide-react';
+import { Circle, XCircle, Copy, Shield, FileText, Users, Download, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 export default function RapidsAdminPage() {
@@ -173,7 +173,7 @@ export default function RapidsAdminPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                        <CheckCircle className="w-3 h-3" />
+                        <Circle className="w-3 h-3" />
                         Yes
                       </span>
                     </td>

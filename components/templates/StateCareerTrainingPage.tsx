@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, CheckCircle, MapPin } from 'lucide-react';
+import { ArrowRight, Circle, MapPin } from 'lucide-react';
 import { StateConfig, getOtherStates } from '@/config/states';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
@@ -74,7 +74,7 @@ export default function StateCareerTrainingPage({ state }: StateCareerTrainingPa
           <div className="grid md:grid-cols-2 gap-6">
             {state.careerTraining.features.map((item) => (
               <div key={item} className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">{item}</span>
               </div>
             ))}

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { 
   Shield, 
-  CheckCircle, 
+  Circle, 
   ExternalLink, 
   Building2, 
   Award, 
@@ -120,7 +120,7 @@ function StatusBadge({ status }: { status: 'active' | 'pending' | 'renewal' }) {
 
   return (
     <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${styles[status]}`}>
-      {status === 'active' && <CheckCircle className="w-3 h-3" />}
+      {status === 'active' && <Circle className="w-3 h-3" />}
       {status === 'pending' && <Clock className="w-3 h-3" />}
       {status === 'renewal' && <AlertCircle className="w-3 h-3" />}
       {labels[status]}
@@ -222,15 +222,15 @@ export default function VerifyCredentialsPage() {
                 </p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-300 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-blue-300 flex-shrink-0 mt-0.5" />
                     <span><strong>ETPL:</strong> INTraining Location ID 10004621</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-300 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-blue-300 flex-shrink-0 mt-0.5" />
                     <span><strong>RAPIDS:</strong> 2025-IN-132301</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-300 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-blue-300 flex-shrink-0 mt-0.5" />
                     <span><strong>Legal Name:</strong> Elevate for Humanity Inc.</span>
                   </li>
                 </ul>

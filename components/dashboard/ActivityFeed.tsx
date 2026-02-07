@@ -1,12 +1,12 @@
 "use client";
 
-import { CheckCircle, Award, BookOpen, TrendingUp } from 'lucide-react';
+import { Circle, Award, BookOpen, TrendingUp } from 'lucide-react';
 
 const activities = [
   {
     id: 1,
     type: 'completion',
-    icon: CheckCircle,
+    icon: Circle,
     color: 'text-green-600',
     bgColor: 'bg-green-100',
     title: 'Completed Module 2',

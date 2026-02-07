@@ -11,7 +11,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  CheckCircle,
+  Circle,
   XCircle,
 } from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
@@ -141,15 +141,15 @@ export default async function EstheticianApprenticeshipPage() {
             <h3 className="text-xl font-bold text-blue-900 mb-3">Indiana Esthetician Requirements</h3>
             <ul className="space-y-2 text-blue-900">
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                 <span><strong>700 hours</strong> of esthetician training required</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                 <span>Pass written and practical exams</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                 <span>Prepares learners for licensure through <strong>Indiana Professional Licensing Agency (IPLA)</strong></span>
               </li>
             </ul>
@@ -159,28 +159,28 @@ export default async function EstheticianApprenticeshipPage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-green-50 border-2 border-green-200 rounded-xl p-6">
               <h3 className="text-xl font-bold text-green-900 mb-4 flex items-center gap-2">
-                <CheckCircle className="w-6 h-6" />
+                <Circle className="w-6 h-6" />
                 What the Program Fee Covers
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-green-900">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span>DOL Registered Apprenticeship sponsorship</span>
                 </li>
                 <li className="flex items-start gap-3 text-green-900">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span>Compliance and RAPIDS reporting</span>
                 </li>
                 <li className="flex items-start gap-3 text-green-900">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span>Employer (spa/salon) coordination and OJT verification</span>
                 </li>
                 <li className="flex items-start gap-3 text-green-900">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span>Program monitoring and completion documentation</span>
                 </li>
                 <li className="flex items-start gap-3 text-green-900">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span>Related Instruction: Milady theory curriculum</span>
                 </li>
               </ul>

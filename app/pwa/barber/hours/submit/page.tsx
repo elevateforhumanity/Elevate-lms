@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { 
   ArrowLeft, Clock, Camera, Image, X, 
-  CheckCircle, Loader2, AlertCircle, Calendar,
+  Circle, Loader2, AlertCircle, Calendar,
   MapPin, FileText
 } from 'lucide-react';
 
@@ -104,7 +104,7 @@ export default function SubmitHoursPage() {
       <div className="min-h-screen bg-slate-900 flex items-center justify-center p-6">
         <div className="text-center max-w-md">
           <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-10 h-10 text-white" />
+            <Circle className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-white mb-4">Hours Submitted!</h1>
           <p className="text-slate-400 mb-2">
@@ -329,7 +329,7 @@ export default function SubmitHoursPage() {
             </>
           ) : (
             <>
-              <CheckCircle className="w-5 h-5" />
+              <Circle className="w-5 h-5" />
               Submit Hours
             </>
           )}

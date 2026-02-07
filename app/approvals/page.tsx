@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  CheckCircle,
+  Circle,
   Award,
   Building2,
   Shield,
@@ -68,7 +68,7 @@ export default function ApprovalsPage() {
             {/* INTraining */}
             <div className="bg-slate-50 rounded-2xl p-8 border-l-4 border-brand-blue-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     INTraining Approved Provider – Indiana Department of
@@ -90,7 +90,7 @@ export default function ApprovalsPage() {
             {/* ETPL */}
             <div className="bg-slate-50 rounded-2xl p-8 border-l-4 border-brand-blue-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     Eligible Training Provider (ETP) – WIOA-funded training
@@ -106,7 +106,7 @@ export default function ApprovalsPage() {
             {/* WRG */}
             <div className="bg-slate-50 rounded-2xl p-8 border-l-4 border-brand-blue-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     Workforce Ready Grant (WRG) Training Provider
@@ -122,7 +122,7 @@ export default function ApprovalsPage() {
             {/* JRI */}
             <div className="bg-slate-50 rounded-2xl p-8 border-l-4 border-brand-blue-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     Job Ready Indy (JRI) Training Partner – Marion County
@@ -138,7 +138,7 @@ export default function ApprovalsPage() {
             {/* ITAP */}
             <div className="bg-slate-50 rounded-2xl p-8 border-l-4 border-brand-blue-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     ITAP / INDOT Registration
@@ -168,7 +168,7 @@ export default function ApprovalsPage() {
             {/* DOL Apprenticeship */}
             <div className="bg-white rounded-2xl p-8 border-l-4 border-red-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     U.S. Department of Labor Registered Apprenticeship Sponsor
@@ -189,7 +189,7 @@ export default function ApprovalsPage() {
             {/* SAM.gov */}
             <div className="bg-white rounded-2xl p-8 border-l-4 border-red-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     SAM.gov Active Federal Contractor (Selfish Inc)
@@ -223,7 +223,7 @@ export default function ApprovalsPage() {
             {/* Certiport */}
             <div className="bg-slate-50 rounded-2xl p-8 border-l-4 border-brand-orange-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     Certiport Authorized Testing Center
@@ -266,7 +266,7 @@ export default function ApprovalsPage() {
             {/* Milady RISE */}
             <div className="bg-slate-50 rounded-2xl p-8 border-l-4 border-brand-orange-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     Milady RISE Partner School – Client Well-Being & Safety
@@ -290,7 +290,7 @@ export default function ApprovalsPage() {
             {/* CareerSafe */}
             <div className="bg-slate-50 rounded-2xl p-8 border-l-4 border-brand-orange-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     CareerSafe / OSHA-aligned Safety Training
@@ -320,7 +320,7 @@ export default function ApprovalsPage() {
             {/* 501(c)(3) */}
             <div className="bg-white rounded-2xl p-8 border-l-4 border-purple-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     501(c)(3) Nonprofit – Selfish Inc
@@ -335,7 +335,7 @@ export default function ApprovalsPage() {
             {/* Candid */}
             <div className="bg-white rounded-2xl p-8 border-l-4 border-purple-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     Candid/Guidestar Registered Nonprofit
@@ -351,7 +351,7 @@ export default function ApprovalsPage() {
             {/* ByBlack */}
             <div className="bg-white rounded-2xl p-8 border-l-4 border-purple-600">
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
+                <Circle className="w-8 h-8 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     ByBlack Certified Black-Owned Business

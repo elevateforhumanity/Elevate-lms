@@ -11,7 +11,7 @@ import {
   Award,
   TrendingUp,
   Clock,
-  CheckCircle,
+  Circle,
   Video,
   MessageSquare,
   Briefcase,
@@ -241,15 +241,15 @@ export default async function StudentPortalPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-white/90 mb-8">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
+              <Circle className="w-5 h-5" />
               <span>24/7 Course Access</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
+              <Circle className="w-5 h-5" />
               <span>Real-Time Grades</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
+              <Circle className="w-5 h-5" />
               <span>Career Support</span>
             </div>
           </div>

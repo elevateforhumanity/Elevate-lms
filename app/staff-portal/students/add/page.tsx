@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, User, Mail, Phone, Calendar, MapPin, GraduationCap, Save, CheckCircle } from 'lucide-react';
+import { ArrowLeft, User, Mail, Phone, Calendar, MapPin, GraduationCap, Save, Circle } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function AddStudentPage() {
@@ -73,7 +73,7 @@ export default function AddStudentPage() {
 
           {submitted && (
             <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <Circle className="w-5 h-5 text-green-600" />
               <span className="text-green-800">Student added successfully!</span>
             </div>
           )}

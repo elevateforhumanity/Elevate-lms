@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { CheckCircle, ArrowRight, Mail, Phone, Calendar } from 'lucide-react';
+import { Circle, ArrowRight, Mail, Phone, Calendar } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
@@ -119,7 +119,7 @@ export default async function ApplicationSuccessPage({
         {/* Success Icon */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
-            <CheckCircle className="w-12 h-12 text-green-600" />
+            <Circle className="w-12 h-12 text-green-600" />
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {currentRole.title}

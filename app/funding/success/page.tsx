@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = 'force-dynamic';
-import { CheckCircle } from 'lucide-react';
+import { Circle } from 'lucide-react';
 
 export default async function FundingSuccessPage() {
   const supabase = await createClient();
@@ -39,11 +39,11 @@ export default async function FundingSuccessPage() {
       <div className="flex items-center justify-center px-4 py-12">
       <div className="max-w-2xl w-full text-center">
         <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-green-600 rounded-full mb-6">
-          <CheckCircle className="w-12 h-12 text-white" />
+          <Circle className="w-12 h-12 text-white" />
         </div>
 
         <h1 className="text-4xl font-bold text-black mb-4">
-          <CheckCircle className="w-5 h-5 inline-block" /> Funding Approved &
+          <Circle className="w-5 h-5 inline-block" /> Funding Approved &
           Processed!
         </h1>
 

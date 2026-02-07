@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CheckCircle, Shield, Award, Briefcase, Phone } from 'lucide-react';
+import { Circle, Shield, Award, Briefcase, Phone } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
@@ -53,7 +53,7 @@ export default async function VeteransPage() {
     { title: 'Priority Enrollment', description: 'First access to training programs', icon: Award },
     { title: 'Expedited Processing', description: 'Faster application review', icon: Shield },
     { title: 'Dedicated Counselor', description: 'Veteran-focused career advisor', icon: Briefcase },
-    { title: 'Funded Training', description: 'Tuition covered for eligible veterans', icon: CheckCircle },
+    { title: 'Funded Training', description: 'Tuition covered for eligible veterans', icon: Circle },
   ];
 
   const qualifications = [
@@ -132,7 +132,7 @@ export default async function VeteransPage() {
           <ul className="space-y-3">
             {qualifications.map((qual, index) => (
               <li key={index} className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">{qual}</span>
               </li>
             ))}
@@ -145,7 +145,7 @@ export default async function VeteransPage() {
           <ul className="space-y-3">
             {requiredDocuments.map((doc, index) => (
               <li key={index} className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">{doc}</span>
               </li>
             ))}

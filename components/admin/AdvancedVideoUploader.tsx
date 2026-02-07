@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState } from 'react';
-import { Upload, CheckCircle, AlertCircle, Loader2, Music, Mic, FileVideo } from 'lucide-react';
+import { Upload, Circle, AlertCircle, Loader2, Music, Mic, FileVideo } from 'lucide-react';
 
 export default function AdvancedVideoUploader() {
   const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -108,7 +108,7 @@ Apply today and start your journey.`;
             />
             {videoFile && (
               <p className="mt-2 text-sm text-green-600">
-                ✓ {videoFile.name} ({(videoFile.size / 1024 / 1024).toFixed(2)} MB)
+                • {videoFile.name} ({(videoFile.size / 1024 / 1024).toFixed(2)} MB)
               </p>
             )}
           </div>
@@ -191,7 +191,7 @@ Apply today and start your journey.`;
                   />
                   {voiceoverFile && (
                     <p className="mt-2 text-sm text-green-600">
-                      ✓ {voiceoverFile.name}
+                      • {voiceoverFile.name}
                     </p>
                   )}
                 </div>
@@ -214,7 +214,7 @@ Apply today and start your journey.`;
             {musicFile && (
               <>
                 <p className="mt-2 text-sm text-green-600">
-                  ✓ {musicFile.name}
+                  • {musicFile.name}
                 </p>
                 <div className="mt-3 flex items-center gap-4">
                   <label className="text-sm font-semibold text-black">
@@ -275,7 +275,7 @@ Apply today and start your journey.`;
           {result && !error && (
             <div className="   border-2 border-green-200 rounded-lg p-6">
               <div className="flex items-start gap-4">
-                <CheckCircle className="h-11 w-11 text-green-600 flex-shrink-0 mt-1" />
+                <Circle className="h-11 w-11 text-green-600 flex-shrink-0 mt-1" />
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-green-900 mb-2">
                     🎉 Video Enhanced Successfully!

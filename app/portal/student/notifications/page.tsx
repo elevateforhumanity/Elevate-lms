@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { ChevronRight, Bell, CheckCircle, Info, AlertTriangle, Award, BookOpen, Calendar } from 'lucide-react';
+import { ChevronRight, Bell, Circle, Info, AlertTriangle, Award, BookOpen, Calendar } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Notifications | Student Portal | Elevate For Humanity',
@@ -15,7 +15,7 @@ export const dynamic = 'force-dynamic';
 
 const getNotificationIcon = (type: string) => {
   switch (type) {
-    case 'success': return CheckCircle;
+    case 'success': return Circle;
     case 'warning': return AlertTriangle;
     case 'achievement': return Award;
     case 'course': return BookOpen;

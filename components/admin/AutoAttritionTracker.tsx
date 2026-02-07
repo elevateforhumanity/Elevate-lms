@@ -584,7 +584,7 @@ export function AutoAttritionTracker() {
                       key={index}
                       className="text-xs bg-blue-50 text-brand-info px-2 py-2 rounded"
                     >
-                      ✅ {action}
+                      • {action}
                     </div>
                   ))}
                 </div>

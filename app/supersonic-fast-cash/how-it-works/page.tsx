@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { 
-  FileText, Upload, Calculator, Clock, CheckCircle, 
+  FileText, Upload, Calculator, Clock, Circle, 
   DollarSign, Shield, Phone, ArrowRight, Zap
 } from 'lucide-react';
 
@@ -84,7 +84,7 @@ const features = [
     description: 'Most returns completed in 30 minutes or less.',
   },
   {
-    icon: CheckCircle,
+    icon: Circle,
     title: 'Maximum Refund',
     description: 'We find every deduction and credit you qualify for.',
   },
@@ -163,7 +163,7 @@ export default function HowItWorksPage() {
                   <ul className="space-y-2">
                     {step.details.map((detail, i) => (
                       <li key={i} className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                         <span className="text-gray-700">{detail}</span>
                       </li>
                     ))}
@@ -217,19 +217,19 @@ export default function HowItWorksPage() {
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-300" />
+                  <Circle className="w-5 h-5 text-green-300" />
                   <span>0% APR - No interest charges</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-300" />
+                  <Circle className="w-5 h-5 text-green-300" />
                   <span>No credit check required</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-300" />
+                  <Circle className="w-5 h-5 text-green-300" />
                   <span>Funds available same day</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-300" />
+                  <Circle className="w-5 h-5 text-green-300" />
                   <span>Repaid automatically from your refund</span>
                 </li>
               </ul>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { loadCaseFile } from '@/lib/case-file/loader';
 import { 
   User, FileText, GraduationCap, Briefcase, Shield, 
-  Clock, CheckCircle, AlertCircle, XCircle, ChevronRight,
+  Clock, Circle, AlertCircle, XCircle, ChevronRight,
   Phone, Mail, MapPin, Calendar,
 } from 'lucide-react';
 
@@ -14,16 +14,16 @@ export const metadata: Metadata = {
 
 // Status badge component
 function StatusBadge({ status }: { status: string }) {
-  const config: Record<string, { bg: string; text: string; icon: typeof CheckCircle }> = {
-    active: { bg: 'bg-green-100', text: 'text-green-700', icon: CheckCircle },
-    completed: { bg: 'bg-blue-100', text: 'text-blue-700', icon: CheckCircle },
+  const config: Record<string, { bg: string; text: string; icon: typeof Circle }> = {
+    active: { bg: 'bg-green-100', text: 'text-green-700', icon: Circle },
+    completed: { bg: 'bg-blue-100', text: 'text-blue-700', icon: Circle },
     pending: { bg: 'bg-amber-100', text: 'text-amber-700', icon: Clock },
-    eligible: { bg: 'bg-green-100', text: 'text-green-700', icon: CheckCircle },
+    eligible: { bg: 'bg-green-100', text: 'text-green-700', icon: Circle },
     ineligible: { bg: 'bg-red-100', text: 'text-red-700', icon: XCircle },
     enrolled_pending_approval: { bg: 'bg-amber-100', text: 'text-amber-700', icon: Clock },
     paused: { bg: 'bg-red-100', text: 'text-red-700', icon: AlertCircle },
     withdrawn: { bg: 'bg-slate-100', text: 'text-slate-700', icon: XCircle },
-    approved: { bg: 'bg-green-100', text: 'text-green-700', icon: CheckCircle },
+    approved: { bg: 'bg-green-100', text: 'text-green-700', icon: Circle },
     rejected: { bg: 'bg-red-100', text: 'text-red-700', icon: XCircle },
   };
 
@@ -235,7 +235,7 @@ export default async function CaseFilePage({ params }: { params: Promise<{ id: s
                   <div className="flex items-center gap-2">
                     {cred.verified && (
                       <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs flex items-center gap-1">
-                        <CheckCircle className="w-3 h-3" /> Verified
+                        <Circle className="w-3 h-3" /> Verified
                       </span>
                     )}
                     {cred.verificationUrl && (

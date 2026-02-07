@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
-import { Video, Play, Clock, CheckCircle, BookOpen, Users, Award } from 'lucide-react';
+import { Video, Play, Clock, Circle, BookOpen, Users, Award } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Instructor Training Videos | Elevate for Humanity',

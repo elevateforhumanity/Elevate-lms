@@ -8,7 +8,7 @@ import {
   ArrowRight, 
   Play,
   Lock,
-  CheckCircle,
+  Circle,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -137,7 +137,7 @@ export default function DemoCenterPage() {
                   
                   <div className="p-6">
                     <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <Circle className="w-5 h-5 text-green-600" />
                       What You Can Do
                     </h3>
                     <ul className="space-y-2 mb-6">

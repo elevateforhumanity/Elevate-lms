@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
-import { CheckCircle, FileText, Shield, AlertCircle } from 'lucide-react';
+import { Circle, FileText, Shield, AlertCircle } from 'lucide-react';
 
 interface Agreement {
   type: string;
@@ -226,7 +226,7 @@ export default function LegalOnboardingPage() {
                     agreement.signed ? 'bg-green-100' : 'bg-slate-100'
                   }`}>
                     {agreement.signed ? (
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <Circle className="w-5 h-5 text-green-600" />
                     ) : (
                       <FileText className="w-5 h-5 text-slate-400" />
                     )}

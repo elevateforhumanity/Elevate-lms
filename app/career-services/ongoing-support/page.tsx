@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Heart, Users, TrendingUp, MessageSquare, Calendar, ArrowRight, CheckCircle, Phone } from 'lucide-react';
+import { Heart, Users, TrendingUp, MessageSquare, Calendar, ArrowRight, Circle, Phone } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
@@ -143,7 +143,7 @@ export default async function OngoingSupportPage() {
                     <ul className="space-y-2">
                       {service.features.map((feature) => (
                         <li key={feature} className="flex items-center gap-2 text-sm text-gray-500">
-                          <CheckCircle className="w-4 h-4 text-pink-500" />
+                          <Circle className="w-4 h-4 text-pink-500" />
                           {feature}
                         </li>
                       ))}
@@ -159,7 +159,7 @@ export default async function OngoingSupportPage() {
               <div className="grid md:grid-cols-2 gap-3">
                 {benefits.map((benefit) => (
                   <div key={benefit} className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                     <span className="text-gray-600">{benefit}</span>
                   </div>
                 ))}

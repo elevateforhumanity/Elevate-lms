@@ -4,7 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
-  CheckCircle,
+  Circle,
   Users,
   Palette,
   BookOpen,
@@ -20,7 +20,7 @@ const MASTER_STATEMENT = `All platform products are licensed access to systems o
 
 const NEXT_STEPS = [
   {
-    icon: CheckCircle,
+    icon: Circle,
     title: 'Organization Created',
     description: 'Your tenant space has been provisioned.',
     status: 'complete',
@@ -101,7 +101,7 @@ function SuccessContent() {
       <section className="bg-slate-700 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-12 h-12" />
+            <Circle className="w-12 h-12" />
           </div>
           <h1 className="text-4xl font-black mb-4">License Activated!</h1>
           <p className="text-xl text-green-100 max-w-2xl mx-auto">

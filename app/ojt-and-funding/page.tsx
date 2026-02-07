@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { DollarSign, CheckCircle, Briefcase, Building2, ArrowRight, Users, Clock, Award, TrendingUp, Zap } from 'lucide-react';
+import { DollarSign, Circle, Briefcase, Building2, ArrowRight, Users, Clock, Award, TrendingUp, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'On-the-Job Training (OJT) | Get Paid While You Learn | Elevate For Humanity',
@@ -193,7 +193,7 @@ export default function OJTAndFundingPage() {
               'Looking for better job',
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm">
-                <CheckCircle className="w-6 h-6 text-green-500" />
+                <Circle className="w-6 h-6 text-green-500" />
                 <span className="font-medium text-slate-700">{item}</span>
               </div>
             ))}

@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import PageAvatar from '@/components/PageAvatar';
 import { 
-  CheckCircle, Clock, DollarSign, Award, ArrowRight, 
+  Circle, Clock, DollarSign, Award, ArrowRight, 
   Heart, Users, BookOpen, Stethoscope, Phone, Calendar
 } from 'lucide-react';
 
@@ -223,7 +223,7 @@ export default function CNACertificationPage() {
               'Reliable transportation',
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-                <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                <Circle className="w-6 h-6 text-green-500 flex-shrink-0" />
                 <span className="font-medium text-slate-700">{item}</span>
               </div>
             ))}

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
-  ArrowLeft, Clock, Calendar, CheckCircle, XCircle,
+  ArrowLeft, Clock, Calendar, Circle, XCircle,
   AlertCircle, Loader2, Filter, Scissors, BookOpen, TrendingUp
 } from 'lucide-react';
 
@@ -67,7 +67,7 @@ export default function BarberHistoryPage() {
       case 'approved':
         return (
           <span className="flex items-center gap-1 text-green-400 text-xs">
-            <CheckCircle className="w-3 h-3" />
+            <Circle className="w-3 h-3" />
             Approved
           </span>
         );

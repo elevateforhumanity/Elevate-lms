@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ExternalLink, BookOpen, CheckCircle, Loader2, AlertCircle, Copy, Check } from 'lucide-react';
+import { ExternalLink, BookOpen, Circle, Loader2, AlertCircle, Copy, Check } from 'lucide-react';
 
 interface MiladyAccessInfo {
   accessUrl?: string;
@@ -92,7 +92,7 @@ export function MiladyAccessCard({
         </div>
         {miladyCompleted ? (
           <span className="bg-green-500 text-white text-xs font-bold px-3 py-2 rounded-full flex items-center gap-1">
-            <CheckCircle className="w-3 h-3" />
+            <Circle className="w-3 h-3" />
             Complete
           </span>
         ) : isActive ? (
@@ -183,7 +183,7 @@ export function MiladyAccessCard({
           <span className="text-purple-200">Status:</span>
           <span className="font-semibold">
             {miladyCompleted
-              ? '✅ Theory Complete'
+              ? '• Theory Complete'
               : isActive
                 ? '📚 In Progress'
                 : isPending

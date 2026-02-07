@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useEffect } from 'react';
 import { 
   AlertTriangle, 
-  CheckCircle, 
+  Circle, 
   XCircle,
   FileText,
   Users,
@@ -370,7 +370,7 @@ function SignoffCard({
     }`}>
       <div className="flex items-center gap-2 mb-2">
         {signed ? (
-          <CheckCircle className="w-5 h-5 text-green-600" />
+          <Circle className="w-5 h-5 text-green-600" />
         ) : (
           <Signature className="w-5 h-5 text-gray-400" />
         )}

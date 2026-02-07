@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Info, Menu, X, Home, BookOpen, Clock, Award, Play, CheckCircle, Calendar, Plus, ChevronRight, FileText, MessageCircle, HelpCircle } from 'lucide-react';
+import { Info, Menu, X, Home, BookOpen, Clock, Award, Play, Circle, Calendar, Plus, ChevronRight, FileText, MessageCircle, HelpCircle } from 'lucide-react';
 
 
 
@@ -130,7 +130,7 @@ export default function LearnerDemo() {
               </div>
               {lessons.slice(0, 4).map(l => (
                 <div key={l.id} className={`flex items-center gap-2 p-2 rounded-lg mb-1 ${l.current ? 'bg-orange-50 border border-orange-200' : ''}`}>
-                  {l.done ? <CheckCircle className="w-4 h-4 text-green-500" /> : <div className="w-4 h-4 rounded-full border-2 border-gray-300" />}
+                  {l.done ? <Circle className="w-4 h-4 text-green-500" /> : <div className="w-4 h-4 rounded-full border-2 border-gray-300" />}
                   <span className={`flex-1 text-sm ${l.done ? 'text-gray-400' : 'text-gray-900'}`}>{l.title}</span>
                   {l.current && <button className="bg-orange-600 text-white text-xs px-2 py-2 rounded flex items-center gap-1"><Play className="w-3 h-3"/>Play</button>}
                 </div>
@@ -191,7 +191,7 @@ export default function LearnerDemo() {
               {modules.map(m => (
                 <button key={m.id} disabled={m.locked} className={`w-full flex items-center gap-3 p-3 border-b last:border-0 text-left ${m.locked ? 'opacity-50' : 'hover:bg-gray-50'}`}>
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${m.done ? 'bg-green-100 text-green-600' : m.locked ? 'bg-gray-100 text-gray-400' : 'bg-orange-100 text-orange-600'}`}>
-                    {m.done ? <CheckCircle className="w-4 h-4" /> : m.id}
+                    {m.done ? <Circle className="w-4 h-4" /> : m.id}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="text-sm font-medium text-gray-900 truncate">{m.name}</div>
@@ -251,7 +251,7 @@ export default function LearnerDemo() {
             <h1 className="text-lg font-bold text-gray-900">Certificates</h1>
             <div className="bg-white rounded-xl p-4 border">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"><CheckCircle className="w-6 h-6 text-green-600" /></div>
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"><Circle className="w-6 h-6 text-green-600" /></div>
                 <div>
                   <div className="font-bold text-gray-900">Sanitation & Safety</div>
                   <div className="text-xs text-gray-500">Issued Oct 15, 2024</div>

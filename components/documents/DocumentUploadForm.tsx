@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Upload, CheckCircle, AlertCircle } from 'lucide-react';
+import { Upload, Circle, AlertCircle } from 'lucide-react';
 
 interface DocumentRequirement {
   id: string;
@@ -95,7 +95,7 @@ export function DocumentUploadForm({ requirements }: Props) {
     return (
       <div className="max-w-2xl mx-auto p-8 bg-green-50 border-2 border-green-600 rounded-lg">
         <div className="flex items-center gap-4 mb-4">
-          <CheckCircle className="w-12 h-12 text-green-600" />
+          <Circle className="w-12 h-12 text-green-600" />
           <div>
             <h2 className="text-2xl font-bold text-green-900">
               Document Uploaded!
@@ -190,7 +190,7 @@ export function DocumentUploadForm({ requirements }: Props) {
             {file && (
               <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
                 <p className="text-sm text-green-800 font-semibold">
-                  ✓ {file.name} ({(file.size / 1024 / 1024).toFixed(2)}MB)
+                  • {file.name} ({(file.size / 1024 / 1024).toFixed(2)}MB)
                 </p>
               </div>
             )}

@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import {
   ChevronRight,
   Shield,
-  CheckCircle,
+  Circle,
   RefreshCw,
   CreditCard,
   Lock,
@@ -45,7 +45,7 @@ export default function BuyerProtectionPage() {
       description: 'Get help from sellers directly through our messaging system.',
     },
     {
-      icon: CheckCircle,
+      icon: Circle,
       title: 'Verified Sellers',
       description: 'All sellers are verified professionals with proven expertise in their field.',
     },

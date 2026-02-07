@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Mail, CheckCircle, Loader2, Building2, Users, Award, ArrowRight } from 'lucide-react';
+import { Phone, Mail, Circle, Loader2, Building2, Users, Award, ArrowRight } from 'lucide-react';
 
 export default function BarberShopPartnerPage() {
   const [loading, setLoading] = useState(false);
@@ -50,7 +50,7 @@ export default function BarberShopPartnerPage() {
       <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-8 h-8 text-green-600" />
+            <Circle className="w-8 h-8 text-green-600" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Thank You!</h1>
           <p className="text-gray-700 mb-6">
@@ -367,29 +367,29 @@ export default function BarberShopPartnerPage() {
               <div className="grid sm:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <Circle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <p className="text-gray-800">Licensed barbershop in Indiana</p>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <Circle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <p className="text-gray-800">At least one licensed barber on staff</p>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <Circle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <p className="text-gray-800">Willingness to mentor apprentices</p>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <Circle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <p className="text-gray-800">Commitment to 2,000 training hours</p>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <Circle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <p className="text-gray-800">Safe, professional work environment</p>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <Circle className="w-6 h-6 text-green-600 flex-shrink-0" />
                     <p className="text-gray-800">Current business license and insurance</p>
                   </div>
                 </div>

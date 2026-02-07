@@ -16,7 +16,7 @@ import {
   User,
   FileText,
   DollarSign,
-  CheckCircle,
+  Circle,
   Loader2
 } from 'lucide-react';
 import Link from 'next/link';
@@ -330,7 +330,7 @@ export default function NewReturnPage() {
             <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
               currentStep >= step ? 'bg-primary text-primary-foreground' : 'bg-muted'
             }`}>
-              {currentStep > step ? <CheckCircle className="h-5 w-5" /> : step}
+              {currentStep > step ? <Circle className="h-5 w-5" /> : step}
             </div>
             {step < 4 && (
               <div className={`w-16 h-1 ${currentStep > step ? 'bg-primary' : 'bg-muted'}`} />
@@ -606,7 +606,7 @@ export default function NewReturnPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5" />
+              <Circle className="h-5 w-5" />
               Review & Submit
             </CardTitle>
             <CardDescription>
@@ -693,7 +693,7 @@ export default function NewReturnPage() {
                   </>
                 ) : (
                   <>
-                    <CheckCircle className="mr-2 h-4 w-4" />
+                    <Circle className="mr-2 h-4 w-4" />
                     Create Return
                   </>
                 )}

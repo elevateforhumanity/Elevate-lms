@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState } from "react";
-import { CheckCircle, XCircle, AlertCircle, ArrowRight } from "lucide-react";
+import { Circle, XCircle, AlertCircle, ArrowRight } from "lucide-react";
 
 interface QuizQuestion {
   id: string;
@@ -83,7 +83,7 @@ export function InteractiveQuiz({
           passed ? "bg-green-500/20" : "bg-brand-orange-500/20"
         }`}>
           {passed ? (
-            <CheckCircle className="w-12 h-12 text-green-400" />
+            <Circle className="w-12 h-12 text-green-400" />
           ) : (
             <XCircle className="w-12 h-12 text-red-400" />
           )}
@@ -183,7 +183,7 @@ export function InteractiveQuiz({
         }`}>
           <div className="flex items-start gap-3">
             {JSON.stringify(answers[question.id]) === JSON.stringify(question.correct_answer) ? (
-              <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+              <Circle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
             ) : (
               <AlertCircle className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
             )}

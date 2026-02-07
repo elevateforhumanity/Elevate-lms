@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import { CreditCard, Calendar, CheckCircle, AlertTriangle } from 'lucide-react';
+import { CreditCard, Calendar, Circle, AlertTriangle } from 'lucide-react';
 
 /**
  * Flat Fee Payment Calculator
@@ -217,7 +217,7 @@ export function FlatFeePaymentCalculator({
                   </div>
                   <div className="text-sm text-slate-600">{plan.label}</div>
                   {selectedPlan === plan.months && (
-                    <CheckCircle className="w-5 h-5 text-purple-600 mt-2" />
+                    <Circle className="w-5 h-5 text-purple-600 mt-2" />
                   )}
                 </button>
               ))}
@@ -225,7 +225,7 @@ export function FlatFeePaymentCalculator({
           </div>
         ) : downPaymentNum >= programFee ? (
           <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4 text-center">
-            <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-2" />
+            <Circle className="w-8 h-8 text-green-600 mx-auto mb-2" />
             <div className="font-bold text-green-800">Paying in Full!</div>
             <div className="text-sm text-green-700">No monthly payments required</div>
           </div>

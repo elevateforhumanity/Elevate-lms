@@ -1,7 +1,7 @@
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FileText, DollarSign, Clock, CheckCircle } from 'lucide-react';
+import { FileText, DollarSign, Clock, Circle } from 'lucide-react';
 
 export const dynamic = 'force-static';
 export const revalidate = 86400;
@@ -49,21 +49,21 @@ export default function TaxPreparationPage() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                  <Circle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">W-2 and 1099 Income</h3>
                     <p className="text-black">Employment and contract income</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                  <Circle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Itemized Deductions</h3>
                     <p className="text-black">Maximize your tax savings</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                  <Circle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Tax Credits</h3>
                     <p className="text-black">EITC, Child Tax Credit, and more</p>
@@ -78,15 +78,15 @@ export default function TaxPreparationPage() {
               </p>
               <div className="space-y-4 mb-6">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <Circle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                   <span>Free initial consultation</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <Circle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                   <span>Transparent pricing - no hidden fees</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <Circle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                   <span>Maximum refund guarantee</span>
                 </div>
               </div>

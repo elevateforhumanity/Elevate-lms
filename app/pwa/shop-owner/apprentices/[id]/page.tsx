@@ -4,7 +4,7 @@ import { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { 
   ArrowLeft, Clock, TrendingUp, Award, Calendar,
-  Mail, Phone, AlertTriangle, CheckCircle, Loader2, AlertCircle,
+  Mail, Phone, AlertTriangle, Circle, Loader2, AlertCircle,
   Building2, Users, FileText
 } from 'lucide-react';
 
@@ -45,7 +45,7 @@ interface ApprenticeData {
 
 function ComplianceStatusBadge({ status }: { status: ApprenticeDetails['complianceStatus'] }) {
   const config = {
-    compliant: { bg: 'bg-green-500/20', text: 'text-green-400', label: 'Compliant', icon: CheckCircle },
+    compliant: { bg: 'bg-green-500/20', text: 'text-green-400', label: 'Compliant', icon: Circle },
     warning: { bg: 'bg-amber-500/20', text: 'text-amber-400', label: 'Warning', icon: AlertTriangle },
     'non-compliant': { bg: 'bg-red-500/20', text: 'text-red-400', label: 'Non-Compliant', icon: AlertTriangle },
   };
@@ -246,7 +246,7 @@ export default function ApprenticeDetailPage({ params }: { params: Promise<{ id:
                     </p>
                   </div>
                   {milestone.achieved && (
-                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <Circle className="w-5 h-5 text-green-400" />
                   )}
                 </div>
               </div>

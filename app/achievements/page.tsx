@@ -12,7 +12,7 @@ import {
   BookOpen,
   Clock,
   Users,
-  CheckCircle,
+  Circle,
   Lock
 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -31,7 +31,7 @@ export const dynamic = 'force-dynamic';
 const achievementIcons: Record<string, any> = {
   'first-login': Star,
   'first-course': BookOpen,
-  'course-complete': CheckCircle,
+  'course-complete': Circle,
   'perfect-score': Trophy,
   'streak-7': Flame,
   'streak-30': Zap,

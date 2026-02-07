@@ -6,7 +6,7 @@ import {
   Sparkles,
   Heart,
   Star,
-  CheckCircle,
+  Circle,
   ArrowRight,
   Phone,
   MapPin,
@@ -275,19 +275,19 @@ export default function CurvatureBodySculptingPage() {
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <Circle className="w-5 h-5 text-green-400" />
                   <span>Paid training provided</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <Circle className="w-5 h-5 text-green-400" />
                   <span>Competitive pay + commission</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <Circle className="w-5 h-5 text-green-400" />
                   <span>Career advancement opportunities</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <Circle className="w-5 h-5 text-green-400" />
                   <span>Flexible scheduling</span>
                 </li>
               </ul>

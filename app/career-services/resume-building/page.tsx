@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   FileText,
-  CheckCircle,
+  Circle,
   Target,
   ArrowRight,
   Download,
@@ -158,7 +158,7 @@ export default function ResumeBuildingPage() {
                     <ul className="space-y-2">
                       {section.tips.map((tip, tipIndex) => (
                         <li key={tipIndex} className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                          <Circle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
                           <span className="text-gray-600">{tip}</span>
                         </li>
                       ))}
@@ -278,27 +278,27 @@ export default function ResumeBuildingPage() {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Use standard section headings</span>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Include keywords from the job posting</span>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Use a simple, clean format</span>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Avoid tables, graphics, and headers/footers</span>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Save as .docx or .pdf (check job posting)</span>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Spell out acronyms at least once</span>
               </div>
             </div>

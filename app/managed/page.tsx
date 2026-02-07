@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
-  CheckCircle, 
+  Circle, 
   Calendar,
   Shield,
   Clock,
@@ -181,7 +181,7 @@ export default function ManagedPlatformPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {includedFeatures.map((feature, index) => (
               <div key={index} className="flex items-start gap-3 bg-white p-4 rounded-lg border">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">{feature}</span>
               </div>
             ))}
@@ -248,7 +248,7 @@ export default function ManagedPlatformPage() {
                 <ul className="space-y-3 mb-8">
                   {tier.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                       <span className="text-gray-700">{feature}</span>
                     </li>
                   ))}

@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState, useCallback } from 'react';
 import { 
   Upload, FileSpreadsheet, Users, BookOpen, Building2, 
-  GraduationCap, CheckCircle, AlertCircle, X, Download,
+  GraduationCap, Circle, AlertCircle, X, Download,
   ArrowRight, Loader2, FileText, Table
 } from 'lucide-react';
 
@@ -458,7 +458,7 @@ export default function AdminImportPage() {
                 }`}>
                   <div className="flex items-start gap-4">
                     {importResult.failed === 0 ? (
-                      <CheckCircle className="w-8 h-8 text-green-600" />
+                      <Circle className="w-8 h-8 text-green-600" />
                     ) : (
                       <AlertCircle className="w-8 h-8 text-yellow-600" />
                     )}

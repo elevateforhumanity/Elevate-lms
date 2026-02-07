@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Info, Home, Users, Briefcase, DollarSign, Award, Star, ChevronRight, Plus, CheckCircle, MapPin, X } from 'lucide-react';
+import { Info, Home, Users, Briefcase, DollarSign, Award, Star, ChevronRight, Plus, Circle, MapPin, X } from 'lucide-react';
 
 
 

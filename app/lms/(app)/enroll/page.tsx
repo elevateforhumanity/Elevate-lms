@@ -8,7 +8,7 @@ import {
   BookOpen,
   Clock,
   Award,
-  CheckCircle,
+  Circle,
   Search,
   ArrowRight,
 } from 'lucide-react';
@@ -273,7 +273,7 @@ export default async function EnrollPage({ searchParams }: Props) {
         {availableCourses.length === 0 && availablePartnerCourses.length === 0 && (
           <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
             <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="w-8 h-8 text-blue-600" />
+              <Circle className="w-8 h-8 text-blue-600" />
             </div>
             <h2 className="text-xl font-bold text-slate-900 mb-2">All Caught Up!</h2>
             <p className="text-slate-600 mb-6">

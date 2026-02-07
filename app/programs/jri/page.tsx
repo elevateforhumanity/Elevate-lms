@@ -8,7 +8,7 @@ import { Metadata } from 'next';
 import PageAvatar from '@/components/PageAvatar';
 import {
   Heart,
-  CheckCircle,
+  Circle,
   ArrowRight,
   Play,
   Users,
@@ -177,7 +177,7 @@ export default function JRIProgramsPage() {
                 'Committed to completing training and obtaining employment',
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700 text-lg">{item}</span>
                 </li>
               ))}

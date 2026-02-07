@@ -8,7 +8,7 @@ import {
   FileText,
   Users,
   Target,
-  CheckCircle,
+  Circle,
   ArrowRight,
   MapPin,
   DollarSign,
@@ -247,19 +247,19 @@ export default async function CareerServicesPage() {
               </p>
               <ul className="space-y-2 mb-8">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <Circle className="w-5 h-5 text-green-400" />
                   <span>Resume Mastery - $197</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <Circle className="w-5 h-5 text-green-400" />
                   <span>Interview Domination - $297</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <Circle className="w-5 h-5 text-green-400" />
                   <span>Job Search Accelerator - $397</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-yellow-400" />
+                  <Circle className="w-5 h-5 text-yellow-400" />
                   <span>Bundle All 3 & Save - $597</span>
                 </li>
               </ul>

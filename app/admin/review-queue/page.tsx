@@ -6,7 +6,7 @@ import {
   FileText,
   Clock,
   AlertCircle,
-  CheckCircle,
+  Circle,
   User,
   Building2,
   MapPin,
@@ -129,7 +129,7 @@ export default async function ReviewQueuePage({
         </div>
       ) : !items || items.length === 0 ? (
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
-          <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
+          <Circle className="w-12 h-12 text-green-500 mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-gray-900 mb-2">Queue Empty</h3>
           <p className="text-gray-600">No items require review at this time.</p>
         </div>

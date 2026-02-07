@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Building, CheckCircle, ArrowRight, AlertCircle } from 'lucide-react';
+import { Building, Circle, ArrowRight, AlertCircle } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export default function PartnerApplyPage() {
@@ -21,7 +21,7 @@ export default function PartnerApplyPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
-          <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+          <Circle className="w-16 h-16 text-green-600 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Application Submitted!</h1>
           <p className="text-gray-600 mb-6">Thank you for your interest in partnering with Elevate. Our team will review your application and contact you within 2-3 business days.</p>
           <Link href="/" className="text-blue-600 font-medium hover:text-blue-700">Return to Home</Link>

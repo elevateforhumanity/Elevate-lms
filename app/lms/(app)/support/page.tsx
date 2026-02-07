@@ -14,7 +14,7 @@ import {
   Search,
   ChevronRight,
   Clock,
-  CheckCircle,
+  Circle,
   PenSquare
 } from 'lucide-react';
 import { SupportForm } from './SupportForm';
@@ -71,7 +71,7 @@ const SUPPORT_CATEGORIES = [
   {
     title: 'Career Services',
     description: 'Job placement, resume help, or career guidance',
-    icon: CheckCircle,
+    icon: Circle,
     color: 'bg-orange-100 text-orange-600',
   },
 ];

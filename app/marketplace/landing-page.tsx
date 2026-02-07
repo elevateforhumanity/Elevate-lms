@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {
   ShoppingBag, Store, CreditCard, TrendingUp, Shield,
-  Users, Zap, Award, CheckCircle, ArrowRight, Star
+  Users, Zap, Award, Circle, ArrowRight, Star
 } from 'lucide-react';
 
 export const metadata = {

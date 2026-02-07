@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Info, Home, Users, GraduationCap, FileText, Building2, Search, Plus, ChevronRight, Bell, Download, AlertCircle, CheckCircle, Clock } from 'lucide-react';
+import { Info, Home, Users, GraduationCap, FileText, Building2, Search, Plus, ChevronRight, Bell, Download, AlertCircle, Circle, Clock } from 'lucide-react';
 
 interface AdminDemoClientProps {
   stats: {
@@ -104,7 +104,7 @@ export default function AdminDemoClient({ stats, students, programs, activity }:
               {[
                 { label: 'Students', value: stats.students, icon: Users, color: 'text-blue-600' },
                 { label: 'Programs', value: stats.programs, icon: GraduationCap, color: 'text-green-600' },
-                { label: 'Active', value: stats.activeEnrollments, icon: CheckCircle, color: 'text-purple-600' },
+                { label: 'Active', value: stats.activeEnrollments, icon: Circle, color: 'text-purple-600' },
                 { label: 'Partners', value: stats.partners, icon: Building2, color: 'text-orange-600' },
               ].map((s, i) => (
                 <div key={i} className="bg-white rounded-xl p-3 border">

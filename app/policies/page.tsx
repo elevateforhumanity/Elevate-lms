@@ -11,7 +11,7 @@ import {
   Users, 
   Scale,
   BookOpen,
-  CheckCircle,
+  Circle,
   Building,
   Gavel,
   Phone
@@ -32,7 +32,7 @@ const policies = [
       { name: 'Service Level Agreement', href: '/policies/sla', icon: Clock, description: 'Uptime targets and service credits' },
       { name: 'Incident Response Policy', href: '/policies/incident-response', icon: AlertTriangle, description: 'How we handle security and operational incidents' },
       { name: 'Disaster Recovery Policy', href: '/policies/disaster-recovery', icon: Shield, description: 'Business continuity and data recovery procedures' },
-      { name: 'Disaster Recovery Test Report', href: '/policies/disaster-recovery-test', icon: CheckCircle, description: 'Latest DR drill results and documentation' },
+      { name: 'Disaster Recovery Test Report', href: '/policies/disaster-recovery-test', icon: Circle, description: 'Latest DR drill results and documentation' },
       { name: 'Response Time SLA', href: '/policies/response-sla', icon: Clock, description: 'Support response time commitments' },
     ]
   },
@@ -59,7 +59,7 @@ const policies = [
       { name: 'Academic Integrity', href: '/policies/academic-integrity', icon: BookOpen, description: 'Honesty and ethics in learning' },
       { name: 'Student Code of Conduct', href: '/policies/student-code', icon: Users, description: 'Expected student behavior' },
       { name: 'Attendance Policy', href: '/policies/attendance', icon: Clock, description: 'Attendance requirements' },
-      { name: 'Progress Policy', href: '/policies/progress', icon: CheckCircle, description: 'Academic progress standards' },
+      { name: 'Progress Policy', href: '/policies/progress', icon: Circle, description: 'Academic progress standards' },
       { name: 'Grievance Policy', href: '/policies/grievance', icon: Gavel, description: 'How to file complaints' },
     ]
   },
@@ -67,7 +67,7 @@ const policies = [
     category: 'Admissions & Enrollment',
     items: [
       { name: 'Admissions Policy', href: '/policies/admissions', icon: Building, description: 'Enrollment requirements' },
-      { name: 'Credential Verification', href: '/policies/credentials', icon: CheckCircle, description: 'How we verify credentials' },
+      { name: 'Credential Verification', href: '/policies/credentials', icon: Circle, description: 'How we verify credentials' },
       { name: 'Revocation Policy', href: '/policies/revocation', icon: AlertTriangle, description: 'Credential revocation procedures' },
     ]
   },

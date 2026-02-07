@@ -5,7 +5,7 @@
 import React from 'react';
 
 import { useState, useEffect } from 'react';
-import { Search, CheckCircle, Clock, XCircle, Phone, Mail } from 'lucide-react';
+import { Search, Circle, Clock, XCircle, Phone, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
@@ -42,7 +42,7 @@ const statusConfig = {
       'An advisor has reached out to you. Please check your email or phone.',
   },
   approved: {
-    icon: CheckCircle,
+    icon: Circle,
     color: 'text-brand-green-600',
     bg: 'bg-green-50',
     border: 'border-green-200',

@@ -345,7 +345,7 @@ function ChatMessage({ message, onApply }: { message: Message; onApply: (code: s
               boxShadow: '0 2px 8px rgba(35, 134, 54, 0.3)',
             }}
           >
-            <span>✓</span>
+            <span>•</span>
             Apply Code
           </button>
         )}

@@ -9,7 +9,7 @@ import {
   Shield,
   Zap,
   ArrowRight,
-  CheckCircle,
+  Circle,
   Clock,
   Calendar,
 } from 'lucide-react';
@@ -206,7 +206,7 @@ export default function ServicesPage() {
                       <ul className="grid grid-cols-2 gap-2">
                         {service.benefits.map((benefit) => (
                           <li key={benefit} className="flex items-center gap-2 text-sm text-gray-600">
-                            <CheckCircle className={`w-4 h-4 ${colors.text}`} />
+                            <Circle className={`w-4 h-4 ${colors.text}`} />
                             {benefit}
                           </li>
                         ))}

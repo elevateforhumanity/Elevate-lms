@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, User, FileText, CheckCircle, XCircle, AlertTriangle, Download, Upload } from 'lucide-react';
+import { ArrowLeft, User, FileText, Circle, XCircle, AlertTriangle, Download, Upload } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Verify Eligibility | Admin',
@@ -54,7 +54,7 @@ export default function WIOAVerifyPage() {
               Deny
             </button>
             <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition flex items-center gap-2">
-              <CheckCircle className="w-4 h-4" />
+              <Circle className="w-4 h-4" />
               Approve
             </button>
           </div>
@@ -105,7 +105,7 @@ export default function WIOAVerifyPage() {
                       criteria.status === 'verified' ? 'bg-green-100' :
                       criteria.status === 'pending' ? 'bg-yellow-100' : 'bg-red-100'
                     }`}>
-                      {criteria.status === 'verified' && <CheckCircle className="w-5 h-5 text-green-600" />}
+                      {criteria.status === 'verified' && <Circle className="w-5 h-5 text-green-600" />}
                       {criteria.status === 'pending' && <AlertTriangle className="w-5 h-5 text-yellow-600" />}
                       {criteria.status === 'failed' && <XCircle className="w-5 h-5 text-red-600" />}
                     </div>

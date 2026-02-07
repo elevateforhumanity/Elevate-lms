@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { CheckCircle, CreditCard, Calendar, Loader2, AlertCircle } from 'lucide-react';
+import { Circle, CreditCard, Calendar, Loader2, AlertCircle } from 'lucide-react';
 
 // Pricing configuration
 const PRICING = {
@@ -176,7 +176,7 @@ function EnrollPaymentContent() {
                 <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                   selectedOption === 'full' ? 'border-blue-600 bg-blue-600' : 'border-gray-300'
                 }`}>
-                  {selectedOption === 'full' && <CheckCircle className="w-4 h-4 text-white" />}
+                  {selectedOption === 'full' && <Circle className="w-4 h-4 text-white" />}
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
@@ -209,7 +209,7 @@ function EnrollPaymentContent() {
                 <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                   selectedOption === 'deposit' ? 'border-blue-600 bg-blue-600' : 'border-gray-300'
                 }`}>
-                  {selectedOption === 'deposit' && <CheckCircle className="w-4 h-4 text-white" />}
+                  {selectedOption === 'deposit' && <Circle className="w-4 h-4 text-white" />}
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
@@ -242,7 +242,7 @@ function EnrollPaymentContent() {
                 <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                   selectedOption === 'installment' ? 'border-blue-600 bg-blue-600' : 'border-gray-300'
                 }`}>
-                  {selectedOption === 'installment' && <CheckCircle className="w-4 h-4 text-white" />}
+                  {selectedOption === 'installment' && <Circle className="w-4 h-4 text-white" />}
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
@@ -300,7 +300,7 @@ function EnrollPaymentContent() {
           <h3 className="font-semibold text-gray-900 mb-4">What happens after payment?</h3>
           <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <span className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-sm font-bold">✓</span>
+              <span className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-sm font-bold">•</span>
               <span className="text-gray-700">Enrollment confirmed</span>
             </div>
             <div className="flex items-center gap-3">

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Info, Menu, X, Home, Users, GraduationCap, FileText, Building2, Search, Plus, ChevronRight, Bell, Download, AlertCircle, CheckCircle, Clock } from 'lucide-react';
+import { Info, Menu, X, Home, Users, GraduationCap, FileText, Building2, Search, Plus, ChevronRight, Bell, Download, AlertCircle, Circle, Clock } from 'lucide-react';
 
 interface Program {
   name: string;
@@ -113,7 +113,7 @@ export default function AdminDemo() {
               {[
                 { label: 'Students', value: 312, icon: Users, color: 'text-blue-600' },
                 { label: 'Programs', value: 12, icon: GraduationCap, color: 'text-green-600' },
-                { label: 'Completion', value: '78%', icon: CheckCircle, color: 'text-purple-600' },
+                { label: 'Completion', value: '78%', icon: Circle, color: 'text-purple-600' },
                 { label: 'Partners', value: 24, icon: Building2, color: 'text-orange-600' },
               ].map((s, i) => (
                 <div key={i} className="bg-white rounded-xl p-3 border">

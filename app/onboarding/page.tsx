@@ -10,7 +10,7 @@ import {
   Users,
   Building2,
   GraduationCap,
-  CheckCircle,
+  Circle,
   ArrowRight,
 } from 'lucide-react';
 
@@ -101,21 +101,21 @@ export default async function OnboardingPage() {
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start text-sm">
-                  <CheckCircle
+                  <Circle
                     className="text-brand-green-600 mr-2 flex-shrink-0 mt-0.5"
                     size={16}
                   />
                   <span>Access 30+ training programs</span>
                 </li>
                 <li className="flex items-start text-sm">
-                  <CheckCircle
+                  <Circle
                     className="text-brand-green-600 mr-2 flex-shrink-0 mt-0.5"
                     size={16}
                   />
                   <span>Free for eligible participants</span>
                 </li>
                 <li className="flex items-start text-sm">
-                  <CheckCircle
+                  <Circle
                     className="text-brand-green-600 mr-2 flex-shrink-0 mt-0.5"
                     size={16}
                   />
@@ -145,21 +145,21 @@ export default async function OnboardingPage() {
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start text-sm">
-                  <CheckCircle
+                  <Circle
                     className="text-brand-green-600 mr-2 flex-shrink-0 mt-0.5"
                     size={16}
                   />
                   <span>Enroll and manage students</span>
                 </li>
                 <li className="flex items-start text-sm">
-                  <CheckCircle
+                  <Circle
                     className="text-brand-green-600 mr-2 flex-shrink-0 mt-0.5"
                     size={16}
                   />
                   <span>Track student progress</span>
                 </li>
                 <li className="flex items-start text-sm">
-                  <CheckCircle
+                  <Circle
                     className="text-brand-green-600 mr-2 flex-shrink-0 mt-0.5"
                     size={16}
                   />
@@ -189,21 +189,21 @@ export default async function OnboardingPage() {
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start text-sm">
-                  <CheckCircle
+                  <Circle
                     className="text-brand-green-600 mr-2 flex-shrink-0 mt-0.5"
                     size={16}
                   />
                   <span>Access trained candidates</span>
                 </li>
                 <li className="flex items-start text-sm">
-                  <CheckCircle
+                  <Circle
                     className="text-brand-green-600 mr-2 flex-shrink-0 mt-0.5"
                     size={16}
                   />
                   <span>Custom training programs</span>
                 </li>
                 <li className="flex items-start text-sm">
-                  <CheckCircle
+                  <Circle
                     className="text-brand-green-600 mr-2 flex-shrink-0 mt-0.5"
                     size={16}
                   />

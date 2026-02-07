@@ -4,7 +4,7 @@ import Link from 'next/link';
 import {
   Building2,
   Check,
-  CheckCircle,
+  Circle,
   Lightbulb,
   Shield,
   Zap,
@@ -246,7 +246,7 @@ export default async function IndependentLicensePage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-green-50 rounded-xl p-6 border-2 border-green-200">
               <h3 className="text-lg font-bold text-green-900 mb-4">
-                <CheckCircle className="w-5 h-5 inline-block" /> Choose This If:
+                <Circle className="w-5 h-5 inline-block" /> Choose This If:
               </h3>
               <ul className="space-y-2 text-sm text-green-800">
                 <li>• You already have ETPL/WIOA/RAPIDS credentials</li>

@@ -3,7 +3,7 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { CheckCircle, ArrowLeft, Play, Pause, RotateCcw, AlertCircle } from 'lucide-react';
+import { Circle, ArrowLeft, Play, Pause, RotateCcw, AlertCircle } from 'lucide-react';
 interface SCORMPlayerProps {
   scormPackageId: string;
   enrollmentId: string;
@@ -267,7 +267,7 @@ export function SCORMPlayer({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-6 h-6" />
+                <Circle className="w-6 h-6" />
                 <div>
                   <p className="font-semibold">
                     {isPassed ? 'Course Completed Successfully!' : 'Course Completed'}

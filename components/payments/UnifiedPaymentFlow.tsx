@@ -8,7 +8,7 @@ import {
   Calendar,
   DollarSign,
   Shield,
-  CheckCircle,
+  Circle,
   AlertCircle,
   Loader2,
   Info
@@ -168,7 +168,7 @@ export default function UnifiedPaymentFlow({
                 <DollarSign className="w-6 h-6 text-blue-600" />
               </div>
               {paymentType === 'full' && (
-                <CheckCircle className="w-6 h-6 text-blue-600" />
+                <Circle className="w-6 h-6 text-blue-600" />
               )}
             </div>
             <h3 className="text-lg font-bold text-black mb-2">
@@ -197,7 +197,7 @@ export default function UnifiedPaymentFlow({
                   <Calendar className="w-6 h-6 text-green-600" />
                 </div>
                 {paymentType === 'plan' && (
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+                  <Circle className="w-6 h-6 text-green-600" />
                 )}
               </div>
               <h3 className="text-lg font-bold text-black mb-2">
@@ -257,7 +257,7 @@ export default function UnifiedPaymentFlow({
                   <div className="flex items-center justify-between mb-1">
                     <h3 className="font-bold text-black">{method.name}</h3>
                     {selectedMethod === method.id && (
-                      <CheckCircle className="w-5 h-5 text-blue-600" />
+                      <Circle className="w-5 h-5 text-blue-600" />
                     )}
                   </div>
                   <p className="text-sm text-black">{method.description}</p>

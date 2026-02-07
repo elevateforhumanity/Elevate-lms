@@ -17,7 +17,7 @@ import {
   Bell,
   Settings,
   ArrowRight,
-  CheckCircle,
+  Circle,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -245,7 +245,7 @@ export default async function StudentPortalPage() {
                 </div>
               ) : (
                 <div className="text-center py-6 text-gray-700">
-                  <CheckCircle className="w-8 h-8 mx-auto mb-2 text-green-400" />
+                  <Circle className="w-8 h-8 mx-auto mb-2 text-green-400" />
                   <p>No pending tasks</p>
                 </div>
               )}

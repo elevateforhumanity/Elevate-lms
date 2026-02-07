@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { FileText, Clock, CheckCircle, AlertCircle, Calendar } from 'lucide-react';
+import { FileText, Clock, Circle, AlertCircle, Calendar } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Assignments | Student Portal',
@@ -65,7 +65,7 @@ export default async function AssignmentsPage() {
       case 'submitted':
         return { label: 'Submitted', color: 'bg-blue-100 text-blue-700', icon: Clock };
       case 'graded':
-        return { label: 'Graded', color: 'bg-green-100 text-green-700', icon: CheckCircle };
+        return { label: 'Graded', color: 'bg-green-100 text-green-700', icon: Circle };
       default:
         return { label: 'Pending', color: 'bg-yellow-100 text-yellow-700', icon: Clock };
     }

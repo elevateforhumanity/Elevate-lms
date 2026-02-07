@@ -9,7 +9,7 @@
  * Use on program cards and program detail pages.
  */
 
-import { Calendar, Users, Clock, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
+import { Calendar, Users, Clock, Circle, XCircle, AlertCircle } from 'lucide-react';
 
 export type AvailabilityStatus = 
   | 'open'           // Accepting applications
@@ -33,14 +33,14 @@ const STATUS_CONFIG: Record<AvailabilityStatus, {
   label: string;
   color: string;
   bgColor: string;
-  icon: typeof CheckCircle;
+  icon: typeof Circle;
   description: string;
 }> = {
   open: {
     label: 'Open',
     color: 'text-green-700',
     bgColor: 'bg-green-100',
-    icon: CheckCircle,
+    icon: Circle,
     description: 'Accepting applications',
   },
   waitlist: {

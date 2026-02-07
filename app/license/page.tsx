@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { 
   ArrowRight, 
-  CheckCircle, 
+  Circle, 
   Building2, 
   Users, 
   Briefcase,
@@ -151,7 +151,7 @@ export default async function LicensePage() {
                 <ul className="space-y-3">
                   {features.slice(0, 4).map((feature, index) => (
                     <li key={index} className="flex items-center gap-3 text-slate-300">
-                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                      <Circle className="w-5 h-5 text-green-400 flex-shrink-0" />
                       {feature.title}
                     </li>
                   ))}
@@ -191,23 +191,23 @@ export default async function LicensePage() {
           <div className="max-w-2xl mx-auto">
             <ul className="space-y-4">
               <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
-                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <Circle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
                 <span className="text-slate-200 text-lg">Automated enrollment orchestration</span>
               </li>
               <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
-                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <Circle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
                 <span className="text-slate-200 text-lg">Rules-based progress and hour tracking</span>
               </li>
               <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
-                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <Circle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
                 <span className="text-slate-200 text-lg">Automated nudges and interventions</span>
               </li>
               <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
-                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <Circle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
                 <span className="text-slate-200 text-lg">Auto-generated compliance and outcome reports</span>
               </li>
               <li className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
-                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <Circle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
                 <span className="text-slate-200 text-lg">Credential issuance with public verification</span>
               </li>
             </ul>
@@ -243,7 +243,7 @@ export default async function LicensePage() {
                 <ul className="space-y-3 mb-8">
                   {tier.features?.map((feature: string, i: number) => (
                     <li key={i} className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                       <span className="text-gray-700">{feature}</span>
                     </li>
                   ))}
@@ -274,7 +274,7 @@ export default async function LicensePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {governanceFeatures.map((feature, index) => (
               <div key={index} className="flex items-start gap-3 bg-gray-50 rounded-lg p-5 border">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">{feature}</span>
               </div>
             ))}

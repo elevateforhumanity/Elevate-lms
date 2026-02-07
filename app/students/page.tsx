@@ -7,7 +7,7 @@ import {
   DollarSign, 
   Briefcase, 
   Users, 
-  CheckCircle,
+  Circle,
   ArrowRight,
   Clock,
   Award,
@@ -106,15 +106,15 @@ export default async function StudentsPage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">Free training</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">Free materials</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">Free certification</span>
                 </li>
               </ul>
@@ -130,15 +130,15 @@ export default async function StudentsPage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">4-16 week programs</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">Flexible schedules</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">Online & in-person</span>
                 </li>
               </ul>
@@ -154,15 +154,15 @@ export default async function StudentsPage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">Resume building</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">Interview prep</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">Employer connections</span>
                 </li>
               </ul>

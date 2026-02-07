@@ -7,7 +7,7 @@ import {
   Award,
   DollarSign,
   Clock,
-  CheckCircle,
+  Circle,
   ArrowRight,
   Phone,
   Building2,
@@ -206,7 +206,7 @@ export default function EmployersPage() {
                     'Contribute to the profession',
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-orange-400" />
+                      <Circle className="w-5 h-5 text-orange-400" />
                       <span>{item}</span>
                     </li>
                   ))}

@@ -10,7 +10,7 @@ import {
   Plus, 
   ArrowLeft,
   Calendar,
-  CheckCircle,
+  Circle,
   Loader2,
   AlertCircle,
   FileText,
@@ -249,7 +249,7 @@ export default function BarberPartnerPage() {
         
         {success && (
           <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3 text-green-700">
-            <CheckCircle className="w-5 h-5" />
+            <Circle className="w-5 h-5" />
             {success}
           </div>
         )}

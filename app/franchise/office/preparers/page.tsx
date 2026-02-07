@@ -13,7 +13,7 @@ import {
   FileText,
   DollarSign,
   Shield,
-  CheckCircle
+  Circle
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -222,7 +222,7 @@ export default function PreparersPage() {
                         )}
                         {preparer.is_efin_authorized && (
                           <Badge variant="outline" className="text-xs">
-                            <CheckCircle className="h-3 w-3 mr-1" />
+                            <Circle className="h-3 w-3 mr-1" />
                             EFIN
                           </Badge>
                         )}

@@ -6,7 +6,7 @@ import { requireRole } from '@/lib/auth/require-role';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import {
-  CheckCircle,
+  Circle,
   XCircle,
   Clock,
   FileText,
@@ -139,7 +139,7 @@ export default async function ProgramHolderVerificationPage() {
                   }
                 </p>
               </div>
-              <CheckCircle className="w-12 h-12 text-green-600" />
+              <Circle className="w-12 h-12 text-green-600" />
             </div>
           </div>
 

@@ -15,7 +15,7 @@ import {
   Edit,
   MessageSquare,
   FileText,
-  CheckCircle,
+  Circle,
   AlertCircle,
   Target,
 } from 'lucide-react';
@@ -230,7 +230,7 @@ export default async function CMLearnerDetailPage({ params }: Props) {
                         goal.status === 'completed' ? 'bg-green-100' : 'bg-yellow-100'
                       }`}>
                         {goal.status === 'completed' ? (
-                          <CheckCircle className="w-4 h-4 text-green-600" />
+                          <Circle className="w-4 h-4 text-green-600" />
                         ) : (
                           <Target className="w-4 h-4 text-yellow-600" />
                         )}

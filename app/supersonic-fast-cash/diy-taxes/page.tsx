@@ -10,7 +10,7 @@ import {
   Calculator,
   FileText,
   DollarSign,
-  CheckCircle,
+  Circle,
 } from 'lucide-react';
 
 const SOFTWARE_VERSION = '2026.1.0';
@@ -102,8 +102,8 @@ const STEPS = [
   { id: 2, title: 'Filing Status', icon: FileText },
   { id: 3, title: 'Income', icon: DollarSign },
   { id: 4, title: 'Deductions', icon: Calculator },
-  { id: 5, title: 'Credits', icon: CheckCircle },
-  { id: 6, title: 'Review & File', icon: CheckCircle },
+  { id: 5, title: 'Credits', icon: Circle },
+  { id: 6, title: 'Review & File', icon: Circle },
 ];
 
 
@@ -295,7 +295,7 @@ export default function DIYTaxesPage() {
                     }`}
                   >
                     {currentStep > step.id ? (
-                      <CheckCircle className="w-6 h-6" />
+                      <Circle className="w-6 h-6" />
                     ) : (
                       step.id
                     )}
@@ -541,7 +541,7 @@ export default function DIYTaxesPage() {
                         }`}
                       >
                         {taxReturn.filingStatus === status.value && (
-                          <CheckCircle className="w-4 h-4 text-white" />
+                          <Circle className="w-4 h-4 text-white" />
                         )}
                       </div>
                       <div>
@@ -878,7 +878,7 @@ export default function DIYTaxesPage() {
                       }`}
                     >
                       {taxReturn.deductionType === 'standard' && (
-                        <CheckCircle className="w-4 h-4 text-white" />
+                        <Circle className="w-4 h-4 text-white" />
                       )}
                     </div>
                     <div>
@@ -912,7 +912,7 @@ export default function DIYTaxesPage() {
                       }`}
                     >
                       {taxReturn.deductionType === 'itemized' && (
-                        <CheckCircle className="w-4 h-4 text-white" />
+                        <Circle className="w-4 h-4 text-white" />
                       )}
                     </div>
                     <div>

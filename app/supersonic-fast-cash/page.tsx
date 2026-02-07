@@ -8,7 +8,7 @@ import {
   BadgeCheck,
   Calculator,
   Calendar,
-  CheckCircle,
+  Circle,
   Clock,
   CreditCard,
   DollarSign,

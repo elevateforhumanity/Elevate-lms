@@ -8,7 +8,7 @@ import {
   BookOpen,
   Clock,
   Award,
-  CheckCircle,
+  Circle,
   Users,
   Shield,
 } from 'lucide-react';
@@ -210,23 +210,23 @@ export default async function CourseEnrollPage({ params }: Props) {
                   <h3 className="font-semibold text-slate-900 mb-3">What&apos;s included:</h3>
                   <ul className="space-y-2">
                     <li className="flex items-center gap-2 text-sm text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <Circle className="w-4 h-4 text-green-500" />
                       Full course access
                     </li>
                     <li className="flex items-center gap-2 text-sm text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <Circle className="w-4 h-4 text-green-500" />
                       Downloadable resources
                     </li>
                     <li className="flex items-center gap-2 text-sm text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <Circle className="w-4 h-4 text-green-500" />
                       Quizzes & assessments
                     </li>
                     <li className="flex items-center gap-2 text-sm text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <Circle className="w-4 h-4 text-green-500" />
                       Certificate upon completion
                     </li>
                     <li className="flex items-center gap-2 text-sm text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <Circle className="w-4 h-4 text-green-500" />
                       Lifetime access
                     </li>
                   </ul>

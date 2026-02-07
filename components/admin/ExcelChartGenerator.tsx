@@ -574,9 +574,9 @@ fill="white" />
                 🤖 Generating Excel File with Charts...
               </h3>
               <div className="text-sm text-green-700 mt-1">
-                <div>✅ Creating pie charts with professional formatting</div>
-                <div>✅ Adding data tables and WIOA compliance sheets</div>
-                <div>✅ Applying colors, labels, and percentages</div>
+                <div>• Creating pie charts with professional formatting</div>
+                <div>• Adding data tables and WIOA compliance sheets</div>
+                <div>• Applying colors, labels, and percentages</div>
                 <div>🔄 Finalizing Excel workbook...</div>
               </div>
             </div>

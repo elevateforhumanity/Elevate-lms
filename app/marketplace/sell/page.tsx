@@ -11,7 +11,7 @@ import {
   BookOpen,
   Video,
   FileText,
-  CheckCircle,
+  Circle,
   ArrowRight,
 } from 'lucide-react';
 
@@ -175,7 +175,7 @@ export default async function SellOnMarketplacePage() {
                   <ul className="space-y-2">
                     {type.examples.map((example, i) => (
                       <li key={i} className="flex items-center gap-2 text-sm text-gray-500">
-                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <Circle className="w-4 h-4 text-green-500" />
                         {example}
                       </li>
                     ))}

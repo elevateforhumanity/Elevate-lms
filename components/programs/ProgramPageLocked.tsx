@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/locked/Button';
 import {
-  CheckCircle,
+  Circle,
   Clock,
   DollarSign,
   Award,
@@ -116,7 +116,7 @@ export function ProgramPageLocked({
                 key={index}
                 className="flex items-start gap-4 bg-white p-6 rounded-lg border border-slate-200"
               >
-                <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
+                <Circle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
                 <p className="text-lg text-black font-semibold">
                   {outcome}
                 </p>

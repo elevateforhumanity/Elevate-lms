@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Database, RefreshCw, CheckCircle, XCircle, Loader2 } from 'lucide-react';
+import { Database, RefreshCw, Circle, XCircle, Loader2 } from 'lucide-react';
 
 interface ActionResult {
   success: boolean;
@@ -98,7 +98,7 @@ export function DemoQAClient() {
         }`}>
           <div className="flex items-center gap-2 mb-2">
             {seedResult.success ? (
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <Circle className="w-5 h-5 text-green-600" />
             ) : (
               <XCircle className="w-5 h-5 text-red-600" />
             )}
@@ -123,7 +123,7 @@ export function DemoQAClient() {
         }`}>
           <div className="flex items-center gap-2 mb-2">
             {resetResult.success ? (
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <Circle className="w-5 h-5 text-green-600" />
             ) : (
               <XCircle className="w-5 h-5 text-red-600" />
             )}

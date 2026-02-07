@@ -6,7 +6,7 @@ import {
   ChevronRight,
   Plus,
   Clock,
-  CheckCircle,
+  Circle,
   XCircle,
   AlertCircle,
   User,
@@ -56,10 +56,10 @@ const REQUEST_TYPE_LABELS: Record<string, string> = {
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: typeof Clock }> = {
   pending: { label: 'Pending', color: 'bg-yellow-100 text-yellow-800', icon: Clock },
   under_review: { label: 'Under Review', color: 'bg-blue-100 text-blue-800', icon: AlertCircle },
-  approved: { label: 'Approved', color: 'bg-green-100 text-green-800', icon: CheckCircle },
+  approved: { label: 'Approved', color: 'bg-green-100 text-green-800', icon: Circle },
   partially_approved: { label: 'Partially Approved', color: 'bg-orange-100 text-orange-800', icon: AlertCircle },
   denied: { label: 'Denied', color: 'bg-red-100 text-red-800', icon: XCircle },
-  completed: { label: 'Completed', color: 'bg-gray-100 text-gray-800', icon: CheckCircle },
+  completed: { label: 'Completed', color: 'bg-gray-100 text-gray-800', icon: Circle },
   cancelled: { label: 'Cancelled', color: 'bg-gray-100 text-gray-500', icon: XCircle },
 };
 
@@ -194,7 +194,7 @@ export default async function FerpaRequestsPage() {
           <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <Circle className="w-5 h-5 text-green-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold text-gray-900">{(requests?.length || 0) - pendingCount - reviewCount}</p>

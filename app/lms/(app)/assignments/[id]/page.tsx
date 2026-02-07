@@ -8,7 +8,7 @@ import {
   Clock,
   FileText,
   Upload,
-  CheckCircle,
+  Circle,
   AlertCircle,
   Download,
   BookOpen,
@@ -112,7 +112,7 @@ export default async function AssignmentDetailPage({ params }: Props) {
                 {isSubmitted ? (
                   isGraded ? (
                     <span className="flex items-center gap-1 px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                      <CheckCircle className="w-4 h-4" />
+                      <Circle className="w-4 h-4" />
                       Graded
                     </span>
                   ) : (
@@ -296,19 +296,19 @@ export default async function AssignmentDetailPage({ params }: Props) {
               <h3 className="font-semibold text-slate-900 mb-4">Submission Guidelines</h3>
               <ul className="space-y-2 text-sm text-slate-600">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Circle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                   <span>Submit before the due date</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Circle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                   <span>Accepted formats: PDF, DOC, DOCX</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Circle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                   <span>Maximum file size: 10MB</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Circle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                   <span>Include your name in the file</span>
                 </li>
               </ul>

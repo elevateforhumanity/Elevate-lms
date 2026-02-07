@@ -7,7 +7,7 @@ import {
 
   BookOpen,
   Key,
-  CheckCircle,
+  Circle,
   AlertCircle,
   ArrowRight,
 } from 'lucide-react';
@@ -290,7 +290,7 @@ export default function EnrollPage() {
                 {message.includes('Error') ? (
                   <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5" />
                 ) : (
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5" />
                 )}
                 <span>{message}</span>
               </div>
@@ -342,25 +342,25 @@ export default function EnrollPage() {
               </h3>
               <ul className="space-y-2 sm:space-y-3">
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 text-sm sm:text-base">
                     Full access to course materials
                   </span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 text-sm sm:text-base">
                     Interactive lessons and assessments
                   </span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 text-sm sm:text-base">
                     Certificate upon completion
                   </span>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 text-sm sm:text-base">
                     Instructor support
                   </span>

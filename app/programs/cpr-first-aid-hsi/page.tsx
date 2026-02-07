@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import PageAvatar from '@/components/PageAvatar';
 import { 
-  CheckCircle, Clock, Award, ArrowRight, Heart, 
+  Circle, Clock, Award, ArrowRight, Heart, 
   Users, Shield, Phone, Calendar, Building, Briefcase
 } from 'lucide-react';
 
@@ -306,7 +306,7 @@ export default function CPRFirstAidPage() {
                   'Certificates issued same day',
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-200" />
+                    <Circle className="w-5 h-5 text-blue-200" />
                     <span>{item}</span>
                   </li>
                 ))}

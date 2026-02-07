@@ -14,7 +14,7 @@ import {
   MapPin,
   Edit,
   MoreHorizontal,
-  CheckCircle,
+  Circle,
   XCircle,
   AlertCircle,
 } from 'lucide-react';
@@ -171,7 +171,7 @@ export default async function LearnerDetailPage({ params }: Props) {
         <div className="bg-white rounded-xl border border-slate-200 p-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <Circle className="w-5 h-5 text-green-600" />
             </div>
             <div>
               <p className="text-2xl font-bold text-slate-900">{completedCourses}</p>
@@ -267,7 +267,7 @@ export default async function LearnerDetailPage({ params }: Props) {
                       activity.completed ? 'bg-green-100' : 'bg-blue-100'
                     }`}>
                       {activity.completed ? (
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <Circle className="w-4 h-4 text-green-600" />
                       ) : (
                         <Clock className="w-4 h-4 text-blue-600" />
                       )}

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { 
   Users, MessageSquare, Calendar, Award, ArrowRight, 
   BookOpen, Trophy, Video, Sparkles, Heart, Star,
-  TrendingUp, Clock, CheckCircle, Phone
+  TrendingUp, Clock, Circle, Phone
 } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
@@ -345,7 +345,7 @@ export default async function CommunityPage() {
               <ul className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{benefit}</span>
                   </li>
                 ))}

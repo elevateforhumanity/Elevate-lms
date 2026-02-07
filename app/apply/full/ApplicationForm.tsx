@@ -4,7 +4,7 @@ import Turnstile from '@/components/Turnstile';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { User, GraduationCap, Briefcase, FileText, CheckCircle, ChevronRight, ChevronLeft, AlertCircle } from 'lucide-react';
+import { User, GraduationCap, Briefcase, FileText, Circle, ChevronRight, ChevronLeft, AlertCircle } from 'lucide-react';
 
 interface Program {
   id: string;
@@ -42,7 +42,7 @@ const steps = [
   { id: 2, name: 'Education', icon: GraduationCap, state: 'eligibility_complete' },
   { id: 3, name: 'Program', icon: Briefcase, state: 'documents_complete' },
   { id: 4, name: 'Documents', icon: FileText, state: 'review_ready' },
-  { id: 5, name: 'Review', icon: CheckCircle, state: 'review_ready' },
+  { id: 5, name: 'Review', icon: Circle, state: 'review_ready' },
 ];
 
 const STORAGE_KEY = 'elevate_application_draft';
@@ -435,7 +435,7 @@ export default function ApplicationForm({ programs, fundingTypes, existingProfil
               currentStep > step.id ? 'bg-green-500 text-white' :
               currentStep === step.id ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-500'
             }`}>
-              {currentStep > step.id ? <CheckCircle className="w-5 h-5" /> : <step.icon className="w-5 h-5" />}
+              {currentStep > step.id ? <Circle className="w-5 h-5" /> : <step.icon className="w-5 h-5" />}
             </div>
             <span className={`ml-2 text-sm hidden sm:block ${currentStep === step.id ? 'font-medium text-gray-900' : 'text-gray-500'}`}>
               {step.name}

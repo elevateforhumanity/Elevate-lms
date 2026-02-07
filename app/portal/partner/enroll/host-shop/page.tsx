@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { CheckCircle, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Circle, ArrowLeft, ArrowRight } from 'lucide-react';
 
 type Step = 'intake' | 'review' | 'agreement' | 'confirmation';
 
@@ -505,7 +505,7 @@ export default function HostShopEnrollmentPage() {
           {step === 'confirmation' && (
             <div className="text-center py-8">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-10 h-10 text-green-600" />
+                <Circle className="w-10 h-10 text-green-600" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Application Received!</h2>
               <p className="text-gray-600 mb-6">

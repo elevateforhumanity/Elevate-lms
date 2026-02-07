@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { Users, Target, Clock, DollarSign, Award, CheckCircle, ArrowRight, Building2 } from 'lucide-react';
+import { Users, Target, Clock, DollarSign, Award, Circle, ArrowRight, Building2 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -88,7 +88,7 @@ const benefits = [
     description: 'Access candidates from underrepresented communities, supporting your DEI initiatives.',
   },
   {
-    icon: CheckCircle,
+    icon: Circle,
     title: 'Retention Support',
     description: 'We provide ongoing support to help new hires succeed and stay with your organization.',
   },
@@ -251,7 +251,7 @@ export default async function TalentPipelinePage() {
                 <ul className="space-y-2">
                   {industry.roles.map((role) => (
                     <li key={role} className="text-gray-600 flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-orange-600" />
+                      <Circle className="w-4 h-4 text-orange-600" />
                       {role}
                     </li>
                   ))}
@@ -278,19 +278,19 @@ export default async function TalentPipelinePage() {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3 text-slate-300">
-                  <CheckCircle className="w-5 h-5 text-orange-500" />
+                  <Circle className="w-5 h-5 text-orange-500" />
                   No placement fees
                 </li>
                 <li className="flex items-center gap-3 text-slate-300">
-                  <CheckCircle className="w-5 h-5 text-orange-500" />
+                  <Circle className="w-5 h-5 text-orange-500" />
                   No training costs passed to employers
                 </li>
                 <li className="flex items-center gap-3 text-slate-300">
-                  <CheckCircle className="w-5 h-5 text-orange-500" />
+                  <Circle className="w-5 h-5 text-orange-500" />
                   Eligible for employer training grants
                 </li>
                 <li className="flex items-center gap-3 text-slate-300">
-                  <CheckCircle className="w-5 h-5 text-orange-500" />
+                  <Circle className="w-5 h-5 text-orange-500" />
                   On-the-job training reimbursement available
                 </li>
               </ul>

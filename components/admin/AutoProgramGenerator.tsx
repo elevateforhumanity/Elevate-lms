@@ -411,12 +411,12 @@ export function AutoProgramGenerator() {
                 🤖 AI Program Generator Working...
               </h3>
               <div className="text-sm text-brand-info mt-1">
-                <div>✅ Analyzing industry demand and job market trends</div>
+                <div>• Analyzing industry demand and job market trends</div>
                 <div>
-                  ✅ Generating curriculum based on employer requirements
+                  • Generating curriculum based on employer requirements
                 </div>
-                <div>✅ Creating hands-on labs and practical exercises</div>
-                <div>✅ Designing assessment and certification pathways</div>
+                <div>• Creating hands-on labs and practical exercises</div>
+                <div>• Designing assessment and certification pathways</div>
                 <div>🔄 Optimizing for nationwide deployment...</div>
               </div>
             </div>

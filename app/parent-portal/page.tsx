@@ -9,7 +9,7 @@ import {
   MessageSquare,
   Calendar,
   Bell,
-  CheckCircle,
+  Circle,
   ArrowRight,
   Eye,
   Shield,

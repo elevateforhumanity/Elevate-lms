@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { CheckCircle, XCircle, Clock, Search, ArrowLeft, User, FileCheck, Plus } from 'lucide-react';
+import { Circle, XCircle, Clock, Search, ArrowLeft, User, FileCheck, Plus } from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
@@ -147,7 +147,7 @@ export default async function WIOAEligibilityPage() {
                           app.status === 'denied' ? 'bg-red-100 text-red-700' :
                           'bg-gray-100 text-gray-700'
                         }`}>
-                          {app.status === 'approved' && <CheckCircle className="w-4 h-4" />}
+                          {app.status === 'approved' && <Circle className="w-4 h-4" />}
                           {app.status === 'pending' && <Clock className="w-4 h-4" />}
                           {app.status === 'denied' && <XCircle className="w-4 h-4" />}
                           {app.status}

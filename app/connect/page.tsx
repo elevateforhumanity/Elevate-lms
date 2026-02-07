@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { useState } from 'react';
 import Link from 'next/link';
 import { 
-  Globe, ArrowRight, Loader2, CheckCircle, Code, 
+  Globe, ArrowRight, Loader2, Circle, Code, 
   Plug, Copy, Check, ExternalLink, Zap, Shield,
   BookOpen, CreditCard, Users, BarChart3
 } from 'lucide-react';
@@ -302,7 +302,7 @@ export default function ConnectPage() {
           <div className="space-y-8">
             <div className="text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 text-green-400 rounded-full text-sm font-medium mb-4">
-                <CheckCircle className="w-4 h-4" />
+                <Circle className="w-4 h-4" />
                 Integration Ready!
               </div>
               <h1 className="text-4xl font-black text-white mb-4">

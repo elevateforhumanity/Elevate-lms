@@ -8,7 +8,7 @@ import {
   FileCheck,
   AlertTriangle,
   Mail,
-  CheckCircle,
+  Circle,
   Server,
   Key,
   Phone,
@@ -159,7 +159,7 @@ export default async function SecurityPage() {
             <ul className="space-y-4">
               {dataProtection.map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <Circle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700">{item}</span>
                 </li>
               ))}

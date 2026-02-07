@@ -7,7 +7,7 @@ import {
   MapPin,
   Clock,
   DollarSign,
-  CheckCircle,
+  Circle,
   ArrowRight,
   GraduationCap,
   Heart,
@@ -268,7 +268,7 @@ export default function CurvatureCareersPage() {
                       <ul className="space-y-1">
                         {position.requirements.map((req, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                            <CheckCircle className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
+                            <Circle className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
                             {req}
                           </li>
                         ))}
@@ -279,7 +279,7 @@ export default function CurvatureCareersPage() {
                       <ul className="space-y-1">
                         {position.benefits.map((benefit, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                            <Circle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
                             {benefit}
                           </li>
                         ))}

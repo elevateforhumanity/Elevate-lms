@@ -9,7 +9,7 @@ import {
   TrendingUp,
   Users,
   Award,
-  CheckCircle2,
+  Circle2,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -195,7 +195,7 @@ export default function SocialProof() {
 
               <div className="space-y-3 mb-8">
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  <Circle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
                   <span className="text-black font-semibold">
                     {currentTestimonial.outcome}
                   </span>

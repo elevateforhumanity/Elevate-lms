@@ -8,7 +8,7 @@ import {
   Briefcase,
   Users,
   ArrowRight,
-  CheckCircle,
+  Circle,
   Phone,
   MapPin,
 } from 'lucide-react';
@@ -184,7 +184,7 @@ export default function CommunityServicesPage() {
                     <ul className="space-y-3 mb-6">
                       {service.benefits.map((benefit) => (
                         <li key={benefit} className="flex items-center gap-3">
-                          <CheckCircle className={`w-5 h-5 ${colors.text}`} />
+                          <Circle className={`w-5 h-5 ${colors.text}`} />
                           <span className="text-gray-700">{benefit}</span>
                         </li>
                       ))}

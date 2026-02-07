@@ -7,7 +7,7 @@ import {
   Calendar,
   Phone,
   ArrowRight,
-  CheckCircle
+  Circle
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -86,7 +86,7 @@ export default function StartPage() {
                 <ul className="space-y-2 mb-6">
                   {option.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                      <Circle className="w-4 h-4 text-green-600 flex-shrink-0" />
                       {feature}
                     </li>
                   ))}

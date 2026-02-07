@@ -170,7 +170,7 @@ export default function HoursSummaryWidget({
             </div>
             {transferred > 0 && (
               <div className="text-xs text-blue-400 mt-2">
-                ✓ {transferred} hours credited from transfer
+                • {transferred} hours credited from transfer
               </div>
             )}
           </div>

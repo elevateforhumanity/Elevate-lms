@@ -6,7 +6,7 @@ import {
   ArrowLeft,
   Play,
   Clock,
-  CheckCircle,
+  Circle,
   BookOpen,
   ExternalLink,
 } from 'lucide-react';
@@ -107,7 +107,7 @@ export default async function ScormPage({ params }: Props) {
             </div>
             {isCompleted && (
               <div className="flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full">
-                <CheckCircle className="w-5 h-5" />
+                <Circle className="w-5 h-5" />
                 <span className="font-semibold">Completed</span>
               </div>
             )}
@@ -144,7 +144,7 @@ export default async function ScormPage({ params }: Props) {
               <p className="font-semibold">{scorm.duration_minutes || 30} min</p>
             </div>
             <div className="bg-slate-50 rounded-xl p-4 text-center">
-              <CheckCircle className="w-6 h-6 text-blue-600 mx-auto mb-2" />
+              <Circle className="w-6 h-6 text-blue-600 mx-auto mb-2" />
               <p className="text-sm text-slate-600">Status</p>
               <p className="font-semibold capitalize">{progress?.status || 'Not Started'}</p>
             </div>

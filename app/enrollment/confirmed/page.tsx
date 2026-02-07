@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { CheckCircle, Calendar, Building2, Award } from 'lucide-react';
+import { Circle, Calendar, Building2, Award } from 'lucide-react';
 import Link from 'next/link';
 
 interface EnrollmentData {
@@ -106,7 +106,7 @@ function EnrollmentConfirmedContent() {
         {/* Success Icon */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
-            <CheckCircle className="w-12 h-12 text-green-600" />
+            <Circle className="w-12 h-12 text-green-600" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900">
             You are now officially enrolled.
@@ -125,7 +125,7 @@ function EnrollmentConfirmedContent() {
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
+              <Circle className="w-5 h-5 text-green-600 mt-0.5" />
               <div>
                 <p className="text-sm text-gray-500">Status</p>
                 <p className="font-semibold text-green-600">Active Enrollment</p>

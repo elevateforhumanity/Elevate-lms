@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { Calendar, Clock, Video, CheckCircle, Phone } from 'lucide-react';
+import { Calendar, Clock, Video, Circle, Phone } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
@@ -86,7 +86,7 @@ export default async function DemoPage() {
               <ul className="space-y-3">
                 {demoIncludes.map((item, index) => (
                   <li key={index} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <Circle className="w-5 h-5 text-green-500 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}

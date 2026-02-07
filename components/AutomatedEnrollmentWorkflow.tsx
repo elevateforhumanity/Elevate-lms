@@ -37,7 +37,7 @@ export default function AutomatedEnrollmentWorkflow() {
                   item.status === 'in-progress' ? 'bg-blue-500 text-white' :
                   'bg-gray-300 text-black'
                 }`}>
-                  {item.status === 'completed' ? '✓' : item.step}
+                  {item.status === 'completed' ? '•' : item.step}
                 </div>
                 <div className="flex-1">
                   <p className="font-bold">{item.title}</p>

@@ -12,7 +12,7 @@ import {
   Briefcase,
   MessageSquare,
   Send,
-  CheckCircle,
+  Circle,
   TrendingUp,
 } from 'lucide-react';
 
@@ -76,7 +76,7 @@ export default function FSSAPartnershipRequestPage() {
         <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-12 h-12 text-green-600" />
+              <Circle className="w-12 h-12 text-green-600" />
             </div>
             <h1 className="text-3xl font-bold text-black mb-4">
               Thank You for Your Interest!
@@ -166,7 +166,7 @@ export default function FSSAPartnershipRequestPage() {
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           <div className="bg-white rounded-xl p-6 shadow-md">
             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <CheckCircle className="w-6 h-6 text-blue-600" />
+              <Circle className="w-6 h-6 text-blue-600" />
             </div>
             <h3 className="font-bold text-black mb-2">ETPL Approved</h3>
             <p className="text-sm text-black">

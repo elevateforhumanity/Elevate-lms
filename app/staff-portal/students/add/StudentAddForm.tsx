@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { User, GraduationCap, Briefcase, FileText, CheckCircle, ChevronRight, ChevronLeft, Upload } from 'lucide-react';
+import { User, GraduationCap, Briefcase, FileText, Circle, ChevronRight, ChevronLeft, Upload } from 'lucide-react';
 import EnrollmentDocumentStep from '@/components/enrollment/EnrollmentDocumentStep';
 
 interface Program {
@@ -47,7 +47,7 @@ const steps = [
   { id: 3, name: 'Funding', icon: Briefcase },
   { id: 4, name: 'Documents', icon: Upload },
   { id: 5, name: 'Case Manager', icon: FileText },
-  { id: 6, name: 'Review', icon: CheckCircle },
+  { id: 6, name: 'Review', icon: Circle },
 ];
 
 export default function StudentAddForm({ programs, fundingTypes, staffId }: Props) {
@@ -154,7 +154,7 @@ export default function StudentAddForm({ programs, fundingTypes, staffId }: Prop
               currentStep > step.id ? 'bg-green-500 text-white' :
               currentStep === step.id ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-500'
             }`}>
-              {currentStep > step.id ? <CheckCircle className="w-5 h-5" /> : <step.icon className="w-5 h-5" />}
+              {currentStep > step.id ? <Circle className="w-5 h-5" /> : <step.icon className="w-5 h-5" />}
             </div>
             <span className={`ml-2 text-sm hidden sm:block ${currentStep === step.id ? 'font-medium text-gray-900' : 'text-gray-500'}`}>
               {step.name}
@@ -349,7 +349,7 @@ export default function StudentAddForm({ programs, fundingTypes, staffId }: Prop
                   <ul className="text-sm text-gray-600 space-y-1">
                     {uploadedDocuments.map(doc => (
                       <li key={doc.id} className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <Circle className="w-4 h-4 text-green-500" />
                         {doc.file_name} ({doc.document_type})
                       </li>
                     ))}

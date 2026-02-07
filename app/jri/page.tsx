@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import {
-  CheckCircle,
+  Circle,
   Users,
   BookOpen,
   ArrowRight,
@@ -233,7 +233,7 @@ export default function JRIPage() {
               <ul className="space-y-4">
                 {eligibilityRequirements.map((req, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{req}</span>
                   </li>
                 ))}

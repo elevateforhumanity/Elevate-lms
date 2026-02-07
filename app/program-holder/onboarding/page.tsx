@@ -7,7 +7,7 @@ import {
   Users,
   BarChart,
   MessageSquare,
-  CheckCircle,
+  Circle,
   Video,
   FileText,
   HelpCircle,
@@ -108,7 +108,7 @@ export default async function ProgramHolderOnboarding() {
             </p>
             <ul className="space-y-3 text-black">
               <li className="flex items-start">
-                <CheckCircle
+                <Circle
                   className="text-brand-green-600 mr-3 flex-shrink-0 mt-1"
                   size={20}
                 />
@@ -118,7 +118,7 @@ export default async function ProgramHolderOnboarding() {
                 </span>
               </li>
               <li className="flex items-start">
-                <CheckCircle
+                <Circle
                   className="text-brand-green-600 mr-3 flex-shrink-0 mt-1"
                   size={20}
                 />
@@ -128,7 +128,7 @@ export default async function ProgramHolderOnboarding() {
                 </span>
               </li>
               <li className="flex items-start">
-                <CheckCircle
+                <Circle
                   className="text-brand-green-600 mr-3 flex-shrink-0 mt-1"
                   size={20}
                 />
@@ -138,7 +138,7 @@ export default async function ProgramHolderOnboarding() {
                 </span>
               </li>
               <li className="flex items-start">
-                <CheckCircle
+                <Circle
                   className="text-brand-green-600 mr-3 flex-shrink-0 mt-1"
                   size={20}
                 />
@@ -147,7 +147,7 @@ export default async function ProgramHolderOnboarding() {
                 </span>
               </li>
               <li className="flex items-start">
-                <CheckCircle
+                <Circle
                   className="text-brand-green-600 mr-3 flex-shrink-0 mt-1"
                   size={20}
                 />

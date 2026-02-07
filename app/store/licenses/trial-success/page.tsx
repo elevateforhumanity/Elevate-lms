@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
-  CheckCircle,
+  Circle,
   Download,
   BookOpen,
   MessageCircle,
@@ -33,7 +33,7 @@ function TrialSuccessContent() {
         {/* Success Header */}
         <div className="text-center mb-10">
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-12 h-12 text-green-600" />
+            <Circle className="w-12 h-12 text-green-600" />
           </div>
           <h1 className="text-3xl font-black text-gray-900 mb-3">
             Your Trial Has Started!

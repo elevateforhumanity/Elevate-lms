@@ -251,7 +251,7 @@ export function ProgramPageLayout(props: ProgramPageLayoutProps) {
           <ul className="space-y-2 text-sm text-black">
             {outcomes.map((item) => (
               <li key={item} className="flex gap-2">
-                <span className="mt-[3px] text-green-500">✔</span>
+                <span className="mt-[3px] text-green-500">•</span>
                 <span>{item}</span>
               </li>
             ))}

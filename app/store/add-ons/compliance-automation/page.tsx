@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { 
   Shield, 
   ArrowRight, 
-  CheckCircle,
+  Circle,
   FileText,
   Clock,
   AlertTriangle,
@@ -169,7 +169,7 @@ export default function ComplianceAutomationPage() {
                 <ul className="space-y-2">
                   {area.items.map((item) => (
                     <li key={item} className="flex items-center gap-2 text-sm text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <Circle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
                       {item}
                     </li>
                   ))}

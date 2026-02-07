@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { Mail, Phone, MapPin, Clock, Send, AlertCircle, Loader2, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, AlertCircle, Loader2, Circle } from 'lucide-react';
 import PageAvatar from '@/components/PageAvatar';
 import Turnstile from '@/components/Turnstile';
 
@@ -112,7 +112,7 @@ export default function ContactPage() {
             
             {formState === 'success' ? (
               <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
-                <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
+                <Circle className="w-12 h-12 text-green-500 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Message Sent!</h3>
                 <p className="text-gray-600 mb-4">
                   Thank you for contacting us. We&apos;ll get back to you within 24 hours.

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { submitQuiz } from './actions';
-import { CheckCircle, Loader2 } from 'lucide-react';
+import { Circle, Loader2 } from 'lucide-react';
 
 interface Question {
   id: string;
@@ -63,7 +63,7 @@ export function QuizForm({ quizId, quizTitle, questions }: QuizFormProps) {
 
       {result ? (
         <div className={`p-8 text-center ${result.success ? 'bg-green-50' : 'bg-red-50'}`}>
-          <CheckCircle className={`w-16 h-16 mx-auto mb-4 ${result.success ? 'text-green-600' : 'text-red-600'}`} />
+          <Circle className={`w-16 h-16 mx-auto mb-4 ${result.success ? 'text-green-600' : 'text-red-600'}`} />
           <h3 className="text-xl font-bold mb-2">{result.message}</h3>
           {result.score !== undefined && (
             <p className="text-2xl font-bold text-green-600">Score: {result.score}%</p>

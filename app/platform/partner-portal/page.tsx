@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { Users, BarChart, FileText, Settings, CheckCircle, ArrowRight } from 'lucide-react';
+import { Users, BarChart, FileText, Settings, Circle, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Partner Portal | Elevate For Humanity',

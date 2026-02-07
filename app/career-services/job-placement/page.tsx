@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { Briefcase, Building2, TrendingUp, ArrowRight, Users, Target, Award, Search, Handshake, CheckCircle } from 'lucide-react';
+import { Briefcase, Building2, TrendingUp, ArrowRight, Users, Target, Award, Search, Handshake, Circle } from 'lucide-react';
 import { CareerHero } from '../components/CareerHero';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
@@ -65,15 +65,15 @@ export default function JobPlacementPage() {
             </p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Pre-vetted hiring partners</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Exclusive job postings</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Direct referrals to hiring managers</span>
               </li>
             </ul>
@@ -89,15 +89,15 @@ export default function JobPlacementPage() {
             </p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Skills-based matching</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Location and schedule preferences</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Career goals alignment</span>
               </li>
             </ul>
@@ -113,15 +113,15 @@ export default function JobPlacementPage() {
             </p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Interview scheduling assistance</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Company-specific preparation</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Follow-up support</span>
               </li>
             </ul>
@@ -340,15 +340,15 @@ export default function JobPlacementPage() {
             </p>
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Regular employer engagement and feedback</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Understanding of employer needs and culture</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Direct access to hiring managers</span>
               </li>
             </ul>
@@ -362,15 +362,15 @@ export default function JobPlacementPage() {
             </p>
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>One-on-one career coaching</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Skills and interest assessment</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Location and schedule flexibility</span>
               </li>
             </ul>
@@ -384,15 +384,15 @@ export default function JobPlacementPage() {
             </p>
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>90-day check-ins after placement</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Career advancement coaching</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Lifetime alumni services</span>
               </li>
             </ul>
@@ -406,15 +406,15 @@ export default function JobPlacementPage() {
             </p>
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Free for all graduates</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>No placement fees or commissions</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <Circle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <span>Unlimited job search support</span>
               </li>
             </ul>

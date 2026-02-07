@@ -7,7 +7,7 @@ import {
   Users,
   Briefcase,
   Building2,
-  CheckCircle,
+  Circle,
 } from 'lucide-react';
 
 export const metadata = {
@@ -316,7 +316,7 @@ export default function ContractsPage() {
               </p>
             </div>
             <div className="mt-6 flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              <Circle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <p className="text-sm text-black">
                 This language protects your WIOA/WRG position and is exactly
                 what auditors expect to see.

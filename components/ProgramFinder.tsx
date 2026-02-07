@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Heart, Wrench, Scissors, Truck, Stethoscope, Code,
-  ChevronRight, ChevronLeft, CheckCircle, Clock, DollarSign,
+  ChevronRight, ChevronLeft, Circle, Clock, DollarSign,
   TrendingUp, Award, ArrowRight, Sparkles
 } from 'lucide-react';
 
@@ -63,7 +63,7 @@ const questions: Question[] = [
       { id: '3a', text: 'Get a job quickly', icon: TrendingUp, value: 'employment' },
       { id: '3b', text: 'Increase my income', icon: DollarSign, value: 'income' },
       { id: '3c', text: 'Start a new career', icon: Award, value: 'career' },
-      { id: '3d', text: 'Gain certifications', icon: CheckCircle, value: 'certification' }
+      { id: '3d', text: 'Gain certifications', icon: Circle, value: 'certification' }
     ]
   },
   {
@@ -239,7 +239,7 @@ export default function ProgramFinder() {
             className="text-center mb-12"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold mb-4">
-              <CheckCircle className="w-4 h-4" />
+              <Circle className="w-4 h-4" />
               Your Personalized Results
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
@@ -436,7 +436,7 @@ export default function ProgramFinder() {
                       {option.text}
                     </span>
                     {isSelected && (
-                      <CheckCircle className="w-6 h-6 text-blue-600" />
+                      <Circle className="w-6 h-6 text-blue-600" />
                     )}
                   </motion.button>
                 );

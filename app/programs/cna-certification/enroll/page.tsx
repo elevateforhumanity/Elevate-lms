@@ -13,7 +13,7 @@ import {
   Clock,
   GraduationCap,
   DollarSign,
-  CheckCircle
+  Circle
 } from 'lucide-react';
 
 const PROGRAM_DETAILS = {
@@ -487,11 +487,11 @@ export default function CNAEnrollPage() {
                   <span>Secure payment via Stripe</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <Circle className="w-5 h-5 text-green-600" />
                   <span>State-approved program</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <Circle className="w-5 h-5 text-green-600" />
                   <span>Job placement support</span>
                 </div>
               </div>

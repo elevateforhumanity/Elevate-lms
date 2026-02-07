@@ -3,13 +3,13 @@
 import React from 'react';
 
 import { useState, useRef, useEffect } from 'react';
-import { Bell, CheckCircle, Award, BookOpen, AlertCircle } from 'lucide-react';
+import { Bell, Circle, Award, BookOpen, AlertCircle } from 'lucide-react';
 
 const notifications = [
   {
     id: 1,
     type: 'success',
-    icon: CheckCircle,
+    icon: Circle,
     color: 'text-green-600',
     title: 'Module Completed',
     message: 'You completed Module 2 in CNA Certification',

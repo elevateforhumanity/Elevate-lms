@@ -1,7 +1,7 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import Link from 'next/link';
-import { CheckCircle, Clock, XCircle, Eye } from 'lucide-react';
+import { Circle, Clock, XCircle, Eye } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,7 +31,7 @@ export default async function EmployerOnboardingReview() {
   const statusIcons: Record<string, any> = {
     submitted: Clock,
     reviewed: Eye,
-    approved: CheckCircle,
+    approved: Circle,
     rejected: XCircle,
   };
 
