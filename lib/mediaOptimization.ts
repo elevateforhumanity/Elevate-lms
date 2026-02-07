@@ -1,5 +1,10 @@
-import sharp from 'sharp';
 import { createClient } from '@/lib/supabase/server';
+
+// Dynamic import to avoid bundling sharp into the main Next.js handler
+async function getSharp() {
+  const sharpModule = await import('sharp');
+  return sharpModule.default || sharpModule;
+}
 
 // =====================================================
 // IMAGE OPTIMIZATION
@@ -28,6 +33,7 @@ export async function optimizeImage(
     fit = 'cover',
   } = options;
 
+  const sharp = await getSharp();
   let pipeline = sharp(buffer);
 
   // Resize if dimensions provided

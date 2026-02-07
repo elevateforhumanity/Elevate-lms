@@ -4,7 +4,15 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
-import { extractTextFromImage, extractStructuredData, COMMON_PATTERNS } from '@/lib/ocr/tesseract-ocr';
+
+// Dynamic imports to avoid bundling heavy OCR dependencies
+async function getOCRFunctions() {
+  const ocr = await import('@/lib/ocr/tesseract-ocr');
+  return {
+    extractTextFromImage: ocr.extractTextFromImage,
+    extractStructuredData: ocr.extractStructuredData,
+  };
+}
 
 // Types
 export interface DocumentExtraction {
@@ -199,14 +207,13 @@ export async function extractFields(
   fileUrl: string,
   docType: string
 ): Promise<{ extracted: Record<string, any>; rawText: string; confidence: number }> {
-  const supabase = getSupabaseAdmin();
-  
   // Fetch the file
   const response = await fetch(fileUrl);
   const buffer = Buffer.from(await response.arrayBuffer());
   
-  // Run OCR
+  // Run OCR (dynamic import)
   const patterns = EXTRACTION_PATTERNS[docType] || {};
+  const { extractStructuredData } = await getOCRFunctions();
   const result = await extractStructuredData(buffer, patterns);
   
   return {
@@ -279,12 +286,14 @@ export async function processDocument(documentId: string): Promise<ProcessingRes
     // 2. Run OCR and classify
     const response = await fetch(doc.file_url);
     const buffer = Buffer.from(await response.arrayBuffer());
+    const { extractTextFromImage } = await getOCRFunctions();
     const ocrResult = await extractTextFromImage(buffer);
     
     const { docType, confidence: classifyConfidence } = classifyDocument(ocrResult.text);
     
     // 3. Extract fields
     const patterns = EXTRACTION_PATTERNS[docType] || {};
+    const { extractStructuredData } = await getOCRFunctions();
     const extractResult = await extractStructuredData(buffer, patterns);
     
     // 4. Validate

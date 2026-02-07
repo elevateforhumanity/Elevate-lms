@@ -47,6 +47,16 @@ const nextConfig = {
     } : false,
   },
 
+  // Server external packages - exclude heavy dependencies from the server bundle
+  // These are loaded at runtime instead of being bundled, reducing Lambda size
+  serverExternalPackages: [
+    'tesseract.js',
+    'sharp',
+    'pdf-parse',
+    '@aws-sdk/client-s3',
+    '@aws-sdk/s3-request-presigner',
+  ],
+
   // Experimental features for better performance
   experimental: {
     optimizePackageImports: [

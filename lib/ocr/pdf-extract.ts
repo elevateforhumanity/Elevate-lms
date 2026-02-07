@@ -2,9 +2,15 @@
  * PDF Text Extraction Utility
  * 
  * Extracts text content from PDF files for document processing.
+ * Uses dynamic imports to avoid bundling heavy dependencies.
  */
 
-import { createWorker } from 'tesseract.js';
+// Dynamic import to avoid bundling tesseract.js into the main Next.js handler
+async function createTesseractWorker(lang: string) {
+  const tesseract = await import('tesseract.js');
+  const createWorker = tesseract.createWorker;
+  return createWorker(lang);
+}
 
 interface ExtractedPage {
   pageNumber: number;
@@ -28,7 +34,7 @@ export async function extractTextFromPDF(pdfBuffer: Buffer): Promise<ExtractionR
     // For now, use a simple approach - convert PDF pages to images and OCR them
     // In production, you might want to use pdf-parse for text-based PDFs first
     
-    const worker = await createWorker('eng');
+    const worker = await createTesseractWorker('eng');
     
     // Convert buffer to base64 for processing
     const base64 = pdfBuffer.toString('base64');
@@ -65,7 +71,7 @@ export async function extractTextFromPDF(pdfBuffer: Buffer): Promise<ExtractionR
  */
 export async function extractTextFromImage(imageBuffer: Buffer, mimeType: string): Promise<ExtractionResult> {
   try {
-    const worker = await createWorker('eng');
+    const worker = await createTesseractWorker('eng');
     
     const base64 = imageBuffer.toString('base64');
     const dataUrl = `data:${mimeType};base64,${base64}`;

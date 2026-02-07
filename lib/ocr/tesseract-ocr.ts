@@ -1,10 +1,20 @@
 /**
  * Tesseract.js OCR Utility
  * Server-side OCR with image preprocessing using Sharp
+ * 
+ * Uses dynamic imports to avoid bundling heavy dependencies into the main handler
  */
 
-import Tesseract from 'tesseract.js';
-import sharp from 'sharp';
+// Dynamic import to avoid bundling tesseract.js into the main Next.js handler
+async function getTesseract() {
+  const Tesseract = await import('tesseract.js');
+  return Tesseract.default || Tesseract;
+}
+
+async function getSharp() {
+  const sharp = await import('sharp');
+  return sharp.default || sharp;
+}
 
 export interface OCRResult {
   text: string;
@@ -45,6 +55,7 @@ const DEFAULT_OPTIONS: OCROptions = {
  */
 async function preprocessImage(imageBuffer: Buffer): Promise<Buffer> {
   try {
+    const sharp = await getSharp();
     const processed = await sharp(imageBuffer)
       .grayscale()
       .normalize()
@@ -109,9 +120,10 @@ export async function extractTextFromImage(
       imageBuffer = await preprocessImage(imageBuffer);
     }
 
-    // Run Tesseract OCR
+    // Run Tesseract OCR (dynamic import)
+    const Tesseract = await getTesseract();
     const result = await Tesseract.recognize(imageBuffer, opts.language || 'eng', {
-      logger: (m) => {
+      logger: (m: { status: string; progress: number }) => {
         // Silent logging - can enable for debugging
         // if (m.status === 'recognizing text') console.log(`OCR Progress: ${Math.round(m.progress * 100)}%`);
       },
