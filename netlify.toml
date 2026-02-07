@@ -52,7 +52,14 @@
   external_node_modules = [
     "sharp",
     "@aws-sdk/client-s3",
-    "@aws-sdk/s3-request-presigner"
+    "@aws-sdk/s3-request-presigner",
+    "@sentry/nextjs",
+    "@sentry/node",
+    "@sentry/core",
+    "tesseract.js",
+    "pdf-parse",
+    "@react-pdf/renderer",
+    "openai"
   ]
 
 # Social Media Scheduler - DISABLED due to AWS Lambda 4KB env var limit

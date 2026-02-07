@@ -55,6 +55,11 @@ const nextConfig = {
     'pdf-parse',
     '@aws-sdk/client-s3',
     '@aws-sdk/s3-request-presigner',
+    '@sentry/nextjs',
+    '@sentry/node',
+    '@sentry/core',
+    '@react-pdf/renderer',
+    'openai',
   ],
 
   // Experimental features for better performance
