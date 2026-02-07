@@ -200,8 +200,8 @@ export default async function ProgramsPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.map((cat) => (
               <Link key={cat.title} href={cat.href} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-100">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={cat.image} alt={cat.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <div className="relative w-full h-48 sm:h-52 lg:h-56 overflow-hidden">
+                  <img src={cat.image} alt={cat.title} className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div className="p-5">
                   <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{cat.title}</h3>
