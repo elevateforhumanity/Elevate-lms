@@ -9,21 +9,11 @@ import HeaderDesktopNav from './HeaderDesktopNav';
 // Navigation structure
 export const NAV_ITEMS = [
   { 
-    name: 'Platform', 
-    href: '/platform',
-    subItems: [
-      { name: 'Platform Overview', href: '/platform' },
-      { name: 'Student Portal', href: '/platform/student-portal' },
-      { name: 'Partner Portal', href: '/platform/partner-portal' },
-      { name: 'Employer Portal', href: '/platform/employer-portal' },
-      { name: 'Workforce Boards', href: '/platform/workforce-boards' },
-      { name: 'Compliance & Reporting', href: '/compliance' },
-    ]
-  },
-  { 
     name: 'Programs', 
     href: '/programs',
     subItems: [
+      { name: 'All Programs', href: '/programs' },
+      { name: 'Course Catalog', href: '/courses' },
       // WIOA Programs
       { name: '— WIOA Programs —', href: '/wioa-eligibility', isHeader: true },
       { name: 'CNA Training', href: '/programs/cna-certification' },
@@ -39,6 +29,28 @@ export const NAV_ITEMS = [
     ]
   },
   { 
+    name: 'Services', 
+    href: '/career-services',
+    subItems: [
+      { name: 'Career Services', href: '/career-services' },
+      { name: 'Job Placement', href: '/career-services/placement' },
+      { name: 'Resume Help', href: '/career-services/resume' },
+      { name: 'Interview Prep', href: '/career-services/interview' },
+      { name: 'Employer Connections', href: '/hire-graduates' },
+    ]
+  },
+  { 
+    name: 'Community', 
+    href: '/community',
+    subItems: [
+      { name: 'Community Hub', href: '/hub' },
+      { name: 'Member Directory', href: '/community/members' },
+      { name: 'Events', href: '/events' },
+      { name: 'Success Stories', href: '/testimonials' },
+      { name: 'Blog', href: '/blog' },
+    ]
+  },
+  { 
     name: 'Partners', 
     href: '/partners',
     subItems: [
@@ -49,22 +61,29 @@ export const NAV_ITEMS = [
     ]
   },
   { 
-    name: 'Licensing', 
-    href: '/store/licenses',
+    name: 'Platform', 
+    href: '/platform',
     subItems: [
-      { name: 'Workforce OS Overview', href: '/store/licenses' },
+      { name: 'Platform Overview', href: '/platform' },
+      { name: 'Student Portal', href: '/lms' },
+      { name: 'Partner Portal', href: '/platform/partner-portal' },
+      { name: 'Employer Portal', href: '/platform/employer-portal' },
+      { name: 'Workforce Boards', href: '/platform/workforce-boards' },
+      { name: '— Licensing —', href: '/store/licenses', isHeader: true },
+      { name: 'Workforce OS', href: '/store/licenses' },
       { name: 'Managed Platform', href: '/managed' },
-      { name: 'Enterprise Source-Use', href: '/enterprise' },
-      { name: 'Compare Plans', href: '/pricing' },
+      { name: 'Enterprise', href: '/enterprise' },
+      { name: 'Pricing', href: '/pricing' },
     ]
   },
   { 
-    name: 'Support', 
-    href: '/support',
+    name: 'Resources', 
+    href: '/resources',
     subItems: [
       { name: 'Help Center', href: '/help' },
-      { name: 'Contact Us', href: '/contact' },
+      { name: 'FAQ', href: '/faq' },
       { name: 'Documentation', href: '/docs' },
+      { name: 'Contact Us', href: '/contact' },
       { name: 'System Status', href: '/status' },
     ]
   },

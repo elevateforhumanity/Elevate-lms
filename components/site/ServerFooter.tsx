@@ -10,40 +10,50 @@ import Image from 'next/image';
 // Principle: If a first-time visitor or government reviewer wouldn't expect to see it, remove it
 
 const footerLinks = {
-  about: [
-    { name: 'About Elevate', href: '/about' },
-    { name: 'Our Mission', href: '/about' },
-    { name: 'Indiana Outcomes', href: '/outcomes/indiana' },
-    { name: 'Contact', href: '/contact' },
+  programs: [
+    { name: 'All Programs', href: '/programs' },
+    { name: 'Course Catalog', href: '/courses' },
+    { name: 'Career Pathways', href: '/how-it-works' },
+    { name: 'Apprenticeships', href: '/apprenticeships' },
+    { name: 'Career Services', href: '/career-services' },
   ],
-  licensing: [
+  community: [
+    { name: 'Community Hub', href: '/hub' },
+    { name: 'Events', href: '/events' },
+    { name: 'Success Stories', href: '/testimonials' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'FAQ', href: '/faq' },
+  ],
+  partners: [
+    { name: 'Become a Partner', href: '/partners' },
+    { name: 'Employer Partners', href: '/employers' },
+    { name: 'Training Providers', href: '/training-providers' },
+    { name: 'Hire Graduates', href: '/hire-graduates' },
+  ],
+  platform: [
+    { name: 'Platform Overview', href: '/platform' },
     { name: 'Workforce OS', href: '/store/licenses' },
     { name: 'Managed Platform', href: '/managed' },
     { name: 'Enterprise', href: '/enterprise' },
     { name: 'Pricing', href: '/pricing' },
   ],
-  programs: [
-    { name: 'Training Programs', href: '/programs' },
-    { name: 'Career Pathways', href: '/how-it-works' },
-    { name: 'Apprenticeships', href: '/programs/barber-apprenticeship' },
-    { name: 'Employer Partnerships', href: '/employer' },
-  ],
-  compliance: [
-    { name: 'Governance', href: '/governance' },
-    { name: 'Data Privacy', href: '/governance/data' },
-    { name: 'Accessibility', href: '/accessibility' },
-    { name: 'Security', href: '/governance/security' },
-    { name: 'Verify Credentials', href: '/verify' },
+  resources: [
+    { name: 'Help Center', href: '/help' },
+    { name: 'Documentation', href: '/docs' },
+    { name: 'Contact Us', href: '/contact' },
+    { name: 'System Status', href: '/status' },
   ],
   access: [
-    { name: 'Student Portal', href: '/login' },
-    { name: 'Partner Portal', href: '/partner/login' },
-    { name: 'Support', href: '/support' },
+    { name: 'Student Portal', href: '/lms' },
+    { name: 'Partner Portal', href: '/partner-portal' },
+    { name: 'Employer Portal', href: '/employer-portal' },
+    { name: 'Sign In', href: '/login' },
   ],
   legal: [
     { name: 'Terms of Service', href: '/terms-of-service' },
     { name: 'Privacy Policy', href: '/privacy-policy' },
-    { name: 'Security', href: '/governance/security' },
+    { name: 'Accessibility', href: '/accessibility' },
+    { name: 'Governance', href: '/governance' },
   ],
 };
 
@@ -51,23 +61,9 @@ export default function ServerFooter() {
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* 5-Column Footer */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
-          {/* Column 1: About */}
-          <div>
-            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">About</h3>
-            <ul className="space-y-3">
-              {footerLinks.about.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 2: Programs */}
+        {/* 6-Column Footer */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
+          {/* Column 1: Programs */}
           <div>
             <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Programs</h3>
             <ul className="space-y-3">
@@ -81,11 +77,11 @@ export default function ServerFooter() {
             </ul>
           </div>
 
-          {/* Column 3: Licensing */}
+          {/* Column 2: Community */}
           <div>
-            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Licensing</h3>
+            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Community</h3>
             <ul className="space-y-3">
-              {footerLinks.licensing.map((link) => (
+              {footerLinks.community.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
                     {link.name}
@@ -95,11 +91,11 @@ export default function ServerFooter() {
             </ul>
           </div>
 
-          {/* Column 4: Compliance & Trust */}
+          {/* Column 3: Partners */}
           <div>
-            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Compliance</h3>
+            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Partners</h3>
             <ul className="space-y-3">
-              {footerLinks.compliance.map((link) => (
+              {footerLinks.partners.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
                     {link.name}
@@ -109,7 +105,35 @@ export default function ServerFooter() {
             </ul>
           </div>
 
-          {/* Column 5: Access */}
+          {/* Column 4: Platform */}
+          <div>
+            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Platform</h3>
+            <ul className="space-y-3">
+              {footerLinks.platform.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 5: Resources */}
+          <div>
+            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Resources</h3>
+            <ul className="space-y-3">
+              {footerLinks.resources.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 6: Access */}
           <div>
             <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Access</h3>
             <ul className="space-y-3">
