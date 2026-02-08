@@ -14,6 +14,8 @@ export async function POST(req: Request) {
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+    // NOTE: No hard enforcement here - onboarding should flow freely
+    // Regulated actions (timeclock, hours) will enforce compliance
 
     const formData = await req.formData();
     const file = formData.get('file') as File;

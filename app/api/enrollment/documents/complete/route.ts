@@ -55,11 +55,12 @@ export async function POST(req: Request) {
     }
 
     // Advance state to documents_complete, then immediately to active
+    const now = new Date().toISOString();
     const { error: updateError } = await supabase
       .from('program_enrollments')
       .update({
         enrollment_state: 'active',
-        documents_completed_at: new Date().toISOString(),
+        documents_completed_at: now,
         next_required_action: 'START_COURSE_1',
         status: 'ACTIVE',
       })
@@ -69,6 +70,23 @@ export async function POST(req: Request) {
       console.error('Failed to update enrollment:', updateError);
       return NextResponse.json({ error: 'Failed to complete documents' }, { status: 500 });
     }
+
+    // Sync to enrollments and student_enrollments tables
+    await supabase
+      .from('enrollments')
+      .update({ 
+        documents_submitted_at: now,
+        status: 'active'
+      })
+      .eq('user_id', user.id);
+
+    await supabase
+      .from('student_enrollments')
+      .update({ 
+        documents_submitted_at: now,
+        status: 'active'
+      })
+      .eq('student_id', user.id);
 
     return NextResponse.json({
       success: true,

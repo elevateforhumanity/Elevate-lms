@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/server';
+import { 
+  checkEnrollmentPermission, 
+  EnrollmentAction,
+  logPermissionCheck,
+} from '@/lib/enrollment';
 
 const MAX_ACCURACY_M = 50;
 const LUNCH_DURATION_MINUTES = 60;
@@ -105,6 +110,41 @@ export async function POST(request: NextRequest) {
         { error: 'Database not configured' },
         { status: 503 }
       );
+    }
+
+    // Get apprentice's user_id for enforcement check
+    const { data: apprentice } = await supabase
+      .from('apprentices')
+      .select('user_id')
+      .eq('id', apprentice_id)
+      .single();
+
+    if (apprentice?.user_id) {
+      // ENFORCEMENT: Check if user can perform timeclock action
+      const enrollmentAction = action === 'clock_in' ? EnrollmentAction.CLOCK_IN
+        : action === 'clock_out' ? EnrollmentAction.CLOCK_OUT
+        : EnrollmentAction.CLOCK_IN;
+
+      const permission = await checkEnrollmentPermission(
+        apprentice.user_id,
+        enrollmentAction,
+        { partnerId: partner_id }
+      );
+
+      if (!permission.allowed) {
+        await logPermissionCheck(
+          apprentice.user_id,
+          enrollmentAction,
+          permission,
+          { partnerId: partner_id, metadata: { apprentice_id, action } }
+        );
+
+        return NextResponse.json({
+          error: permission.message,
+          code: permission.reason,
+          state: permission.state,
+        }, { status: 403 });
+      }
     }
 
     // Load site geofence

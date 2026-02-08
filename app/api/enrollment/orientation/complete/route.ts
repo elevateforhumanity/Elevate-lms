@@ -49,11 +49,12 @@ export async function POST(req: Request) {
     }
 
     // Advance state
+    const now = new Date().toISOString();
     const { error: updateError } = await supabase
       .from('program_enrollments')
       .update({
         enrollment_state: 'orientation_complete',
-        orientation_completed_at: new Date().toISOString(),
+        orientation_completed_at: now,
         next_required_action: 'DOCUMENTS',
       })
       .eq('id', enrollment_id);
@@ -62,6 +63,23 @@ export async function POST(req: Request) {
       console.error('Failed to update enrollment:', updateError);
       return NextResponse.json({ error: 'Failed to complete orientation' }, { status: 500 });
     }
+
+    // Sync to enrollments and student_enrollments tables
+    await supabase
+      .from('enrollments')
+      .update({ 
+        orientation_completed_at: now,
+        status: 'orientation_complete'
+      })
+      .eq('user_id', user.id);
+
+    await supabase
+      .from('student_enrollments')
+      .update({ 
+        orientation_completed_at: now,
+        status: 'orientation_complete'
+      })
+      .eq('student_id', user.id);
 
     return NextResponse.json({
       success: true,
