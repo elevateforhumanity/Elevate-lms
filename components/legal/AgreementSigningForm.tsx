@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { SignatureCanvas } from '@/components/SignatureCanvas';
-import { Circle, Circle, AlertTriangle, FileText, Pen } from 'lucide-react';
+import { Circle, AlertTriangle, FileText, Pen } from 'lucide-react';
 
 interface Agreement {
   type: string;
