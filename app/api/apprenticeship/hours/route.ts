@@ -5,6 +5,7 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 import { createClient } from '@/lib/supabase/server';
 import { toError, toErrorMessage } from '@/lib/safe';
+import { checkEnrollmentPermission, EnrollmentAction } from '@/lib/enrollment';
 
 export async function POST(req: Request) {
   try {
@@ -17,6 +18,16 @@ export async function POST(req: Request) {
 
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // ENFORCEMENT: Check if user can log hours
+    const permission = await checkEnrollmentPermission(user.id, EnrollmentAction.LOG_HOURS);
+    if (!permission.allowed) {
+      return NextResponse.json({
+        error: permission.message,
+        code: permission.reason,
+        state: permission.state,
+      }, { status: 403 });
     }
 
     const { date_worked, hours, category, notes, program_slug } = body;

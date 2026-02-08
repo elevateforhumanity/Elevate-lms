@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { checkEnrollmentPermission, EnrollmentAction } from '@/lib/enrollment';
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,6 +10,16 @@ export async function POST(request: NextRequest) {
     
     if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // ENFORCEMENT: Check if user can check out
+    const permission = await checkEnrollmentPermission(user.id, EnrollmentAction.CLOCK_OUT);
+    if (!permission.allowed) {
+      return NextResponse.json({
+        error: permission.message,
+        code: permission.reason,
+        state: permission.state,
+      }, { status: 403 });
     }
 
     // Get apprentice record

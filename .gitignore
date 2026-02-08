@@ -140,3 +140,6 @@ certs/
 # ATS Evidence (large files)
 reports/ats-evidence/
 # Trigger rebuild
+-e 
+# Audit packet archives (store as external artifacts)
+audit-packet-*.zip

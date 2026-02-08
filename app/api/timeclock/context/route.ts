@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { checkEnrollmentPermission, EnrollmentAction } from '@/lib/enrollment';
 
 export const dynamic = 'force-dynamic';
 
@@ -32,6 +33,10 @@ export async function GET(request: NextRequest) {
         { status: 401 }
       );
     }
+
+    // ENFORCEMENT: Check timeclock eligibility (don't block, return status)
+    const permission = await checkEnrollmentPermission(user.id, EnrollmentAction.VIEW_TIMECLOCK_CONTEXT);
+    // Note: We return eligibility status but don't block - UI needs context to show why
 
     // Get user profile
     const { data: profile } = await supabase
@@ -179,6 +184,13 @@ export async function GET(request: NextRequest) {
       defaultSiteId: allowedSites[0]?.id || null,
       allowedSites,
       activeShift,
+      // Enforcement status - UI can show why user is blocked
+      enforcement: {
+        canClockIn: permission.allowed,
+        reason: permission.reason || null,
+        message: permission.message || null,
+        state: permission.state || null,
+      },
     });
   } catch (error) {
     console.error('Timeclock context error:', error);
