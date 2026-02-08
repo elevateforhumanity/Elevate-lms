@@ -7,7 +7,7 @@ const programs = [
   { 
     name: 'Healthcare', 
     href: '/programs/healthcare', 
-    image: '/images/healthcare-vibrant.jpg', 
+    image: '/images/prog-healthcare.jpg', 
     description: 'CNA, Medical Assistant, Phlebotomy certifications',
     duration: '8-12 weeks',
     careers: ['Certified Nursing Assistant', 'Medical Assistant', 'Phlebotomist'],
@@ -16,7 +16,7 @@ const programs = [
   { 
     name: 'Skilled Trades', 
     href: '/programs/skilled-trades', 
-    image: '/images/skilled-trades-vibrant.jpg', 
+    image: '/images/prog-trades.jpg', 
     description: 'HVAC, Electrical, Welding, Plumbing training',
     duration: '12-16 weeks',
     careers: ['HVAC Technician', 'Electrician', 'Welder'],
@@ -25,7 +25,7 @@ const programs = [
   { 
     name: 'Technology', 
     href: '/programs/technology', 
-    image: '/images/technology-vibrant.jpg', 
+    image: '/images/prog-technology.jpg', 
     description: 'IT Support, Cybersecurity certifications',
     duration: '10-14 weeks',
     careers: ['IT Support Specialist', 'Help Desk Technician', 'Network Admin'],
@@ -34,7 +34,7 @@ const programs = [
   { 
     name: 'CDL Training', 
     href: '/programs/cdl', 
-    image: '/images/cdl-vibrant.jpg', 
+    image: '/images/prog-cdl.jpg', 
     description: 'Class A and Class B commercial driving',
     duration: '3-6 weeks',
     careers: ['Truck Driver', 'Delivery Driver', 'Bus Driver'],
@@ -43,7 +43,7 @@ const programs = [
   { 
     name: 'Barbering', 
     href: '/programs/barber-apprenticeship', 
-    image: '/images/barber/gallery-3.jpg', 
+    image: '/images/prog-barber.jpg', 
     description: 'Licensed barber apprenticeship program',
     duration: '12-18 months',
     careers: ['Licensed Barber', 'Shop Owner', 'Stylist'],
@@ -52,7 +52,7 @@ const programs = [
   { 
     name: 'Business', 
     href: '/programs/business', 
-    image: '/images/business-vibrant.jpg', 
+    image: '/images/prog-business.jpg', 
     description: 'Tax preparation, entrepreneurship training',
     duration: '6-10 weeks',
     careers: ['Tax Preparer', 'Bookkeeper', 'Business Owner'],
