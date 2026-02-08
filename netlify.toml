@@ -50,16 +50,42 @@
 [functions]
   node_bundler = "esbuild"
   external_node_modules = [
+    # Image processing
     "sharp",
+    # AWS SDK
     "@aws-sdk/client-s3",
     "@aws-sdk/s3-request-presigner",
+    # Monitoring
     "@sentry/nextjs",
     "@sentry/node",
     "@sentry/core",
+    "@opentelemetry/api",
+    "@opentelemetry/sdk-node",
+    "@opentelemetry/exporter-trace-otlp-http",
+    # OCR & PDF
     "tesseract.js",
+    "tesseract.js-core",
     "pdf-parse",
+    "pdfjs-dist",
+    "pdf-lib",
+    "jspdf",
     "@react-pdf/renderer",
-    "openai"
+    # AI
+    "openai",
+    # Google APIs
+    "googleapis",
+    "googleapis-common",
+    # Editor
+    "monaco-editor",
+    # Terminal
+    "node-pty",
+    # Video
+    "video.js",
+    # Payments
+    "stripe",
+    # Browser automation
+    "puppeteer-core",
+    "chromium-bidi"
   ]
 
 # Social Media Scheduler - DISABLED due to AWS Lambda 4KB env var limit

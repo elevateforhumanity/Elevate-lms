@@ -50,16 +50,42 @@ const nextConfig = {
   // Server external packages - exclude heavy dependencies from the server bundle
   // These are loaded at runtime instead of being bundled, reducing Lambda size
   serverExternalPackages: [
-    'tesseract.js',
+    // Image processing
     'sharp',
-    'pdf-parse',
+    // AWS SDK
     '@aws-sdk/client-s3',
     '@aws-sdk/s3-request-presigner',
+    // Monitoring
     '@sentry/nextjs',
     '@sentry/node',
     '@sentry/core',
+    '@opentelemetry/api',
+    '@opentelemetry/sdk-node',
+    '@opentelemetry/exporter-trace-otlp-http',
+    // OCR & PDF
+    'tesseract.js',
+    'tesseract.js-core',
+    'pdf-parse',
+    'pdfjs-dist',
+    'pdf-lib',
+    'jspdf',
     '@react-pdf/renderer',
+    // AI
     'openai',
+    // Google APIs
+    'googleapis',
+    'googleapis-common',
+    // Editor
+    'monaco-editor',
+    // Terminal
+    'node-pty',
+    // Video
+    'video.js',
+    // Payments
+    'stripe',
+    // Browser automation
+    'puppeteer-core',
+    'chromium-bidi',
   ],
 
   // Experimental features for better performance
