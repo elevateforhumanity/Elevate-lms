@@ -324,39 +324,33 @@ export default function HomePage() {
               <Link 
                 key={program.name}
                 href={program.href}
-                className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-brand-red-300 hover:shadow-2xl transition-all duration-300"
+                className="group bg-white rounded-xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-300"
               >
-                <div className="aspect-[16/10] relative overflow-hidden">
+                <div className="aspect-[16/10] overflow-hidden">
                   <Image
                     src={program.image}
                     alt={program.name}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-2xl font-bold text-white mb-1">{program.name}</h3>
-                    <p className="text-white/80 text-sm">{program.description}</p>
-                  </div>
                 </div>
                 <div className="p-5">
-                  <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-brand-red-600 transition-colors">{program.name}</h3>
+                  <p className="text-slate-600 text-sm mb-4">{program.description}</p>
+                  <div className="flex items-center justify-between text-sm">
                     <div>
-                      <p className="text-xs text-slate-500 uppercase tracking-wide">Duration</p>
-                      <p className="text-slate-900 font-semibold">{program.duration}</p>
+                      <p className="text-slate-500">Duration</p>
+                      <p className="text-slate-900 font-medium">{program.duration}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-xs text-slate-500 uppercase tracking-wide">Avg. Salary</p>
-                      <p className="text-green-600 font-semibold">{program.salary}</p>
+                      <p className="text-slate-500">Avg. Salary</p>
+                      <p className="text-green-600 font-medium">{program.salary}</p>
                     </div>
                   </div>
                   <div className="mt-4 pt-4 border-t border-slate-100">
                     <span className="text-brand-red-600 font-semibold text-sm group-hover:underline flex items-center">
-                      Learn More
-                      <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
+                      Learn More →
                     </span>
                   </div>
                 </div>

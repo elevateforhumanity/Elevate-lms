@@ -18,15 +18,15 @@ import { createPublicClient } from '@/lib/supabase/public';
 // Cache for 10 minutes - program listings don't change frequently
 export const revalidate = 600;
 
-// Category image mapping
+// Category image mapping - using real program-specific images
 const categoryImages: Record<string, string> = {
-  'Healthcare': '/images/prog-healthcare.jpg',
-  'Skilled Trades': '/images/prog-trades.jpg',
-  'Technology': '/images/prog-technology.jpg',
-  'CDL & Transportation': '/images/prog-cdl.jpg',
-  'Beauty & Barbering': '/images/prog-barber.jpg',
-  'Business & Finance': '/images/prog-business.jpg',
-  'Hospitality': '/images/prog-business.jpg',
+  'Healthcare': '/images/healthcare/hero-program-medical-assistant.jpg',
+  'Skilled Trades': '/images/trades/program-hvac-technician.jpg',
+  'Technology': '/images/technology/program-it-support-training.jpg',
+  'CDL & Transportation': '/images/trades/hero-program-cdl.jpg',
+  'Beauty & Barbering': '/images/barber/training.jpg',
+  'Business & Finance': '/images/business/program-tax-preparation.jpg',
+  'Hospitality': '/images/trades/hero-program-carpentry.jpg',
   'default': '/images/prog-hero-main.jpg',
 };
 
@@ -197,25 +197,25 @@ export default async function ProgramsPage() {
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">Each program is designed to take you from beginner to job-ready.</p>
           </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((cat) => (
-              <Link key={cat.title} href={cat.href} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-100">
-                <div className="aspect-[4/3] overflow-hidden">
+              <Link key={cat.title} href={cat.href} className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-200">
+                <div className="aspect-[16/10] overflow-hidden">
                   <img src={cat.image} alt={cat.title} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" />
                 </div>
-                <div className="p-5">
+                <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{cat.title}</h3>
-                  <p className="text-slate-600 text-sm mb-3">{cat.description}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-3">
+                  <p className="text-slate-600 text-sm mb-4">{cat.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {cat.programs.slice(0, 2).map((p, i) => (
-                      <span key={i} className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">{p}</span>
+                      <span key={i} className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded">{p}</span>
                     ))}
                     {cat.programs.length > 2 && (
-                      <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">+{cat.programs.length - 2}</span>
+                      <span className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded">+{cat.programs.length - 2}</span>
                     )}
                   </div>
                   <span className="text-blue-600 font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Explore Programs <span>→</span>
+                    Explore Programs →
                   </span>
                 </div>
               </Link>
