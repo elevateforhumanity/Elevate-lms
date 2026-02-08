@@ -1,6 +1,6 @@
 "use client";
 
-import { Circle, Circle, Lock, PlayCircle } from 'lucide-react';
+import { Circle, Lock, PlayCircle } from 'lucide-react';
 
 interface MobileLessonCardProps {
   id: string;

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Clock, ArrowRight, X, Circle, Circle } from 'lucide-react';
+import { Clock, ArrowRight, X, Circle } from 'lucide-react';
 
 interface TrialBannerProps {
   expiresAt: Date;

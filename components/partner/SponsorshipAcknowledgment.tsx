@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState } from 'react';
-import { Circle, Circle, AlertCircle } from 'lucide-react';
+import { Circle, AlertCircle } from 'lucide-react';
 
 interface SponsorshipAcknowledgmentProps {
   onComplete: (acknowledged: boolean) => void;
