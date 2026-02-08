@@ -65,7 +65,7 @@ export const NAV_ITEMS = [
     href: '/platform',
     subItems: [
       { name: 'Platform Overview', href: '/platform' },
-      { name: 'Student Portal', href: '/lms' },
+      { name: 'Student Portal', href: '/platform/student-portal' },
       { name: 'Partner Portal', href: '/platform/partner-portal' },
       { name: 'Employer Portal', href: '/platform/employer-portal' },
       { name: 'Workforce Boards', href: '/platform/workforce-boards' },

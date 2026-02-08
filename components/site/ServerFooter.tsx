@@ -44,9 +44,9 @@ const footerLinks = {
     { name: 'System Status', href: '/status' },
   ],
   access: [
-    { name: 'Student Portal', href: '/lms' },
-    { name: 'Partner Portal', href: '/partner-portal' },
-    { name: 'Employer Portal', href: '/employer-portal' },
+    { name: 'Student Portal', href: '/platform/student-portal' },
+    { name: 'Partner Portal', href: '/platform/partner-portal' },
+    { name: 'Employer Portal', href: '/platform/employer-portal' },
     { name: 'Sign In', href: '/login' },
   ],
   legal: [
