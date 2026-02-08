@@ -8,9 +8,11 @@
  * 2. License Codes - Assign pre-purchased license codes to students
  * 3. School Portal - Manual provisioning via Milady school admin portal
  * 4. SSO Link - Generate SSO links for pre-authorized students
+ * 
+ * Called from Stripe webhook after payment is confirmed.
  */
 
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 
 // Milady course codes by program
 const MILADY_COURSE_CODES: Record<string, string> = {
@@ -55,7 +57,17 @@ export async function provisionMiladyAccess(
   student: StudentInfo,
   programSlug: string
 ): Promise<MiladyProvisioningResult> {
-  const supabase = await createClient();
+  const supabase = createAdminClient();
+
+  if (!supabase) {
+    console.error('[Milady Provisioning] Supabase admin client not configured');
+    return {
+      success: false,
+      method: 'manual',
+      error: 'Database not configured',
+      requiresManualSetup: true,
+    };
+  }
 
   // Method 1: Try API provisioning if configured
   if (process.env.MILADY_API_KEY && process.env.MILADY_SCHOOL_ID) {
@@ -229,7 +241,11 @@ export async function getMiladyAccess(
   studentId: string,
   programSlug: string
 ): Promise<MiladyProvisioningResult | null> {
-  const supabase = await createClient();
+  const supabase = createAdminClient();
+
+  if (!supabase) {
+    return null;
+  }
 
   const { data, error } = await supabase
     .from('milady_access')
@@ -261,7 +277,11 @@ export async function markManuallyProvisioned(
   programSlug: string,
   credentials: { username?: string; accessUrl?: string }
 ) {
-  const supabase = await createClient();
+  const supabase = createAdminClient();
+
+  if (!supabase) {
+    return { success: false, error: 'Database not configured' };
+  }
 
   await supabase
     .from('milady_access')

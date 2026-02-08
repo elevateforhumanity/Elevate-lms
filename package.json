@@ -176,6 +176,7 @@
   },
   "scripts": {
     "preinstall": "corepack enable || true",
+    "enforcement:scan": "node scripts/enforcement-scan.mjs",
     "integrity:links": "node scripts/integrity/links.mjs",
     "integrity:media": "node scripts/integrity/media.mjs",
     "integrity:lms": "node scripts/integrity/lms.mjs",

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import {
-  Circle2,
+  Circle,
   Circle,
   ChevronDown,
   ChevronUp,
@@ -244,7 +244,7 @@ export function TrialChecklist({
         >
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-              <Circle2 className="w-5 h-5 text-blue-600" />
+              <Circle className="w-5 h-5 text-blue-600" />
             </div>
             <div className="text-left">
               <p className="font-semibold text-slate-900">Trial Setup Progress</p>
@@ -323,7 +323,7 @@ export function TrialChecklist({
                     }`}
                   >
                     {phaseCompleted === phaseTotal ? (
-                      <Circle2 className="w-5 h-5" />
+                      <Circle className="w-5 h-5" />
                     ) : (
                       phase
                     )}
@@ -364,7 +364,7 @@ export function TrialChecklist({
                           }`}
                         >
                           {isComplete ? (
-                            <Circle2 className="w-5 h-5 text-green-700" />
+                            <Circle className="w-5 h-5 text-green-700" />
                           ) : (
                             <Icon className="w-4 h-4 text-slate-400" />
                           )}

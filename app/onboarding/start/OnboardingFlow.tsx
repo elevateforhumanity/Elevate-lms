@@ -4,7 +4,7 @@ import React from 'react';
 import { sanitizeHtml } from '@/lib/sanitize';
 
 import { useState } from 'react';
-import { Circle2, Circle, Lock, FileText, DollarSign } from 'lucide-react';
+import { Circle, Lock, FileText, DollarSign } from 'lucide-react';
 
 interface OnboardingFlowProps {
   user: any;
@@ -104,7 +104,7 @@ export default function OnboardingFlow({
                       }`}
                     >
                       {isComplete ? (
-                        <Circle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                        <Circle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
                       ) : isCurrent ? (
                         <Circle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                       ) : (
@@ -142,7 +142,7 @@ export default function OnboardingFlow({
                   }`}
                 >
                   {payrollComplete ? (
-                    <Circle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
                   ) : currentStep === documents.length ? (
                     <Circle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                   ) : (
@@ -264,7 +264,7 @@ function DocumentStep({
     return (
       <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
         <div className="text-center">
-          <Circle2 className="w-16 h-16 text-brand-green-600 mx-auto mb-4" />
+          <Circle className="w-16 h-16 text-brand-green-600 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-black mb-2">
             {document.title}
           </h2>
@@ -396,7 +396,7 @@ function PayrollSetupStep({
 
       {currentStatus === 'PENDING' || currentStatus === 'ACTIVE' ? (
         <div className="text-center py-8">
-          <Circle2 className="w-16 h-16 text-brand-green-600 mx-auto mb-4" />
+          <Circle className="w-16 h-16 text-brand-green-600 mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-black mb-2">
             Payroll Setup Complete
           </h3>

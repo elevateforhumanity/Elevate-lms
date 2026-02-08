@@ -25,13 +25,36 @@ export default async function EnrollmentSuccessPage() {
   }
 
   // Get enrollment to verify and get start date
-  const { data: enrollment } = await supabase
+  // Try enrollments table first, then student_enrollments as fallback
+  let enrollment: any = null;
+  
+  const { data: enrollmentData } = await supabase
     .from('enrollments')
     .select('id, enrolled_at, status, program_id, programs(name, slug)')
     .eq('user_id', user.id)
     .order('enrolled_at', { ascending: false })
     .limit(1)
-    .single();
+    .maybeSingle();
+
+  if (enrollmentData) {
+    enrollment = enrollmentData;
+  } else {
+    // Fallback to student_enrollments table
+    const { data: studentEnrollment } = await supabase
+      .from('student_enrollments')
+      .select('id, enrolled_at, status, program_slug')
+      .eq('student_id', user.id)
+      .order('enrolled_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    
+    if (studentEnrollment) {
+      enrollment = {
+        ...studentEnrollment,
+        programs: { name: 'Barber Apprenticeship', slug: studentEnrollment.program_slug }
+      };
+    }
+  }
 
   // Redirect if no enrollment or already completed orientation
   if (!enrollment) {
@@ -40,10 +63,17 @@ export default async function EnrollmentSuccessPage() {
 
   // Mark enrollment as confirmed if not already
   if (enrollment.status === 'paid' || enrollment.status === 'approved') {
+    const now = new Date().toISOString();
+    // Update both tables
     await supabase
       .from('enrollments')
-      .update({ status: 'confirmed', confirmed_at: new Date().toISOString() })
-      .eq('id', enrollment.id);
+      .update({ status: 'confirmed', confirmed_at: now })
+      .eq('user_id', user.id);
+    
+    await supabase
+      .from('student_enrollments')
+      .update({ status: 'confirmed', confirmed_at: now })
+      .eq('student_id', user.id);
   }
 
   // Get program name from DB

@@ -91,6 +91,36 @@ export default async function BarberApprenticeshipPage() {
         title="Barber Program Guide" 
       />
 
+      {/* QUICK NAVIGATION */}
+      <nav className="bg-white border-b sticky top-0 z-20 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-6 overflow-x-auto text-sm font-medium">
+              <a href="#overview" className="text-gray-600 hover:text-blue-600 whitespace-nowrap">Overview</a>
+              <a href="#requirements" className="text-gray-600 hover:text-blue-600 whitespace-nowrap">Requirements</a>
+              <a href="#curriculum" className="text-gray-600 hover:text-blue-600 whitespace-nowrap">Curriculum</a>
+              <a href="#how-it-works" className="text-gray-600 hover:text-blue-600 whitespace-nowrap">How It Works</a>
+              <a href="#partner-shops" className="text-gray-600 hover:text-blue-600 whitespace-nowrap">Partner Shops</a>
+              <a href="#faq" className="text-gray-600 hover:text-blue-600 whitespace-nowrap">FAQ</a>
+            </div>
+            <div className="flex items-center gap-3 ml-4">
+              <Link
+                href="/inquiry?program=barber-apprenticeship"
+                className="text-sm text-gray-600 hover:text-blue-600 whitespace-nowrap hidden sm:block"
+              >
+                Have Questions?
+              </Link>
+              <Link
+                href="/programs/barber-apprenticeship/apply"
+                className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-purple-700 whitespace-nowrap"
+              >
+                Apply Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
       {/* VIDEO HERO */}
       <section className="relative min-h-screen flex items-center">
         <video
@@ -176,7 +206,7 @@ export default async function BarberApprenticeshipPage() {
       </section>
 
       {/* WHAT IS THIS PROGRAM */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section id="overview" className="max-w-7xl mx-auto px-6 py-20 scroll-mt-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">What Is a Barber Apprenticeship?</h2>
@@ -228,7 +258,7 @@ export default async function BarberApprenticeshipPage() {
       </section>
 
       {/* WHO SHOULD APPLY */}
-      <section className="bg-slate-50 py-20">
+      <section id="requirements" className="bg-slate-50 py-20 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 text-center">Who Should Apply</h2>
           <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
@@ -312,7 +342,7 @@ export default async function BarberApprenticeshipPage() {
       </section>
 
       {/* WHAT YOU'LL LEARN */}
-      <section className="py-20 bg-white">
+      <section id="curriculum" className="py-20 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 text-center">What You&apos;ll Learn</h2>
           <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
@@ -355,7 +385,7 @@ export default async function BarberApprenticeshipPage() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="max-w-7xl mx-auto px-6 py-20 bg-blue-600">
+      <section id="how-it-works" className="max-w-7xl mx-auto px-6 py-20 bg-blue-600 scroll-mt-20">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white text-center">How the Program Works</h2>
         <p className="text-lg text-blue-100 text-center mb-12 max-w-2xl mx-auto">
           From enrollment to licensure in 4 clear steps.
@@ -422,7 +452,7 @@ export default async function BarberApprenticeshipPage() {
       </section>
 
       {/* PARTNERSHIP SECTION */}
-      <section className="py-20 bg-blue-900 text-white">
+      <section id="partner-shops" className="py-20 bg-blue-900 text-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -475,10 +505,10 @@ export default async function BarberApprenticeshipPage() {
                   Learn More
                 </Link>
                 <Link
-                  href="/forms/host-shop-inquiry"
+                  href="/partner/apply"
                   className="rounded-2xl bg-transparent border-2 border-white text-white px-8 py-4 font-semibold hover:bg-white/10 transition"
                 >
-                  Partner Inquiry
+                  Apply as Partner Shop
                 </Link>
               </div>
             </div>
@@ -574,7 +604,7 @@ export default async function BarberApprenticeshipPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-slate-50">
+      <section id="faq" className="py-20 bg-slate-50 scroll-mt-20">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 text-center">Frequently Asked Questions</h2>
           <p className="text-lg text-gray-600 text-center mb-12">
