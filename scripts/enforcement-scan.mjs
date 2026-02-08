@@ -23,6 +23,7 @@ const TARGET_DIR = path.join(ROOT, "app", "api");
 
 // Routes that MUST use enrollment enforcement
 // Add paths here as you convert routes
+// Multi-program enforcement: ALL clock-based routes must enforce
 const MUST_ENFORCE_PATH_SUBSTRINGS = [
   "/timeclock/",
   "/checkin",
@@ -31,6 +32,10 @@ const MUST_ENFORCE_PATH_SUBSTRINGS = [
   "/enrollment/upload-document",
   "/enrollment/submit-documents",
   "/apprentice/",
+  // CNA-specific routes
+  "/cna/clinical/",
+  // Generic program routes that touch hours
+  "/programs/*/hours/",
 ];
 
 // Patterns that indicate enforcement is being used
@@ -40,6 +45,9 @@ const ENFORCEMENT_PATTERNS = [
   "assertEnrollmentPermissionWithOverride(",
   "checkEnrollmentPermission(",
   "requireEnrollmentPermission(",
+  // Program type checks (for HVAC blocking)
+  "programAllowsHours(",
+  "programAllowsPlacements(",
 ];
 
 // Routes that are explicitly exempt (webhooks, public endpoints, etc.)

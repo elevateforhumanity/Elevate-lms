@@ -1,0 +1,134 @@
+{
+  "$schema": "./program-requirements.schema.json",
+  "_comment": "Single source of truth for program-specific enforcement rules. Enforcement engine reads this config - no per-program logic in routes.",
+  
+  "program_types": {
+    "internal_apprenticeship": {
+      "description": "Registered apprenticeship with hours tracking and site placements (e.g., Barber)",
+      "requires_hours": true,
+      "requires_placement": true,
+      "requires_documents": ["government_id"],
+      "completion_criteria": "hours_and_documents",
+      "timeclock_enabled": true,
+      "lms_provider": "milady",
+      "hours_required": 2000
+    },
+    
+    "internal_clock_program": {
+      "description": "Clock-hour program with hours tracking, no formal apprenticeship (e.g., Cosmetology, Nails, Esthetics, CNA)",
+      "requires_hours": true,
+      "requires_placement": false,
+      "requires_documents": ["government_id"],
+      "completion_criteria": "hours_and_documents",
+      "timeclock_enabled": true,
+      "lms_provider": null,
+      "hours_required": null
+    },
+    
+    "external_lms_wrapped": {
+      "description": "External LMS delivery with credential verification (e.g., HVAC via CareerSafe)",
+      "requires_hours": false,
+      "requires_placement": false,
+      "requires_documents": ["credential_certificate"],
+      "completion_criteria": "credential_verification",
+      "timeclock_enabled": false,
+      "lms_provider": "careersafe",
+      "hours_required": null
+    }
+  },
+  
+  "program_overrides": {
+    "cna": {
+      "program_type": "internal_clock_program",
+      "requires_documents": [
+        "government_id",
+        "background_check",
+        "tb_test",
+        "clinical_clearance"
+      ],
+      "hours_required": 75,
+      "clinical_hours_required": 16,
+      "completion_criteria": "hours_and_documents_and_clinical"
+    },
+    
+    "barber-apprenticeship": {
+      "program_type": "internal_apprenticeship",
+      "hours_required": 2000,
+      "lms_provider": "milady"
+    },
+    
+    "cosmetology-apprenticeship": {
+      "program_type": "internal_clock_program",
+      "hours_required": 1500
+    },
+    
+    "nail-technician-apprenticeship": {
+      "program_type": "internal_clock_program",
+      "hours_required": 450
+    },
+    
+    "esthetician-apprenticeship": {
+      "program_type": "internal_clock_program",
+      "hours_required": 700
+    },
+    
+    "hvac-technician": {
+      "program_type": "external_lms_wrapped",
+      "lms_provider": "careersafe",
+      "lms_course_id": "HVAC-OSHA-10"
+    }
+  },
+  
+  "document_types": {
+    "government_id": {
+      "label": "Government-Issued ID",
+      "description": "Valid driver's license, state ID, or passport",
+      "required_for": ["all"]
+    },
+    "background_check": {
+      "label": "Background Check",
+      "description": "Criminal background check clearance",
+      "required_for": ["cna"],
+      "validity_days": 365
+    },
+    "tb_test": {
+      "label": "TB Test Results",
+      "description": "Tuberculosis test (negative result required)",
+      "required_for": ["cna"],
+      "validity_days": 365
+    },
+    "clinical_clearance": {
+      "label": "Clinical Site Clearance",
+      "description": "Approval to begin clinical training",
+      "required_for": ["cna"]
+    },
+    "credential_certificate": {
+      "label": "Credential Certificate",
+      "description": "Certificate of completion from external LMS",
+      "required_for": ["external_lms_wrapped"]
+    }
+  },
+  
+  "denial_codes": {
+    "PROGRAM_TYPE_HOURS_BLOCKED": {
+      "message": "Hours logging is not available for this program type.",
+      "applies_to": ["external_lms_wrapped"]
+    },
+    "PROGRAM_TYPE_PLACEMENT_BLOCKED": {
+      "message": "Site placements are not available for this program type.",
+      "applies_to": ["external_lms_wrapped"]
+    },
+    "CNA_BACKGROUND_CHECK_REQUIRED": {
+      "message": "Background check must be completed before clinical training.",
+      "applies_to": ["cna"]
+    },
+    "CNA_TB_TEST_REQUIRED": {
+      "message": "TB test results must be submitted before clinical training.",
+      "applies_to": ["cna"]
+    },
+    "CNA_CLINICAL_CLEARANCE_REQUIRED": {
+      "message": "Clinical site clearance required to begin clinical hours.",
+      "applies_to": ["cna"]
+    }
+  }
+}

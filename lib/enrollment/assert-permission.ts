@@ -119,7 +119,7 @@ export async function assertEnrollmentPermission(
   const programSlug = context.programSlug || 'barber-apprenticeship';
 
   // ═══════════════════════════════════════════════════════════════════════
-  // STEP 1: Load enrollment data
+  // STEP 1: Load enrollment data with program_type
   // ═══════════════════════════════════════════════════════════════════════
   
   const { data: enrollment } = await supabase
@@ -134,7 +134,12 @@ export async function assertEnrollmentPermission(
       documents_submitted_at,
       program_start_date,
       milady_enrolled,
-      created_at
+      created_at,
+      program_id,
+      programs:program_id (
+        id,
+        program_type
+      )
     `)
     .eq('student_id', userId)
     .eq('program_slug', programSlug)
@@ -167,6 +172,25 @@ export async function assertEnrollmentPermission(
       return allow();
     }
     return deny(DenialReason.NO_ENROLLMENT);
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // STEP 2.5: Program type enforcement (HARD GATE)
+  // external_lms_wrapped programs CANNOT use timeclock/hours/placements
+  // ═══════════════════════════════════════════════════════════════════════
+  
+  const programType = (enrollment as any)?.programs?.program_type || 'internal_apprenticeship';
+  
+  if (programType === 'external_lms_wrapped') {
+    // HVAC and similar programs - NO hours, NO timeclock, NO placements
+    if (isTimeclockAction(action)) {
+      return deny(
+        DenialReason.ACTION_NOT_ALLOWED,
+        'Hours logging is not available for this program type. Complete your coursework through the external LMS.',
+        undefined,
+        { program_type: programType, blocked_reason: 'external_lms_wrapped' }
+      );
+    }
   }
 
   // ═══════════════════════════════════════════════════════════════════════
@@ -655,6 +679,12 @@ export async function logPermissionCheck(
         allowed: result.allowed,
         reason: result.reason,
         message: result.message,
+        // Program type for multi-program audit trail
+        program_type: result.data?.program_type,
+        program_slug: context?.programSlug,
+        // Additional context
+        partner_id: context?.partnerId,
+        shop_id: context?.shopId,
         context,
       },
     });

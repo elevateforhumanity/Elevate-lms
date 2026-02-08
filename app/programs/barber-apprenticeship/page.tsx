@@ -112,7 +112,7 @@ export default async function BarberApprenticeshipPage() {
               </Link>
               <Link
                 href="/programs/barber-apprenticeship/apply"
-                className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-purple-700 whitespace-nowrap"
+                className="bg-brand-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-brand-orange-700 whitespace-nowrap"
               >
                 Apply Now
               </Link>
@@ -155,7 +155,7 @@ export default async function BarberApprenticeshipPage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/programs/barber-apprenticeship/apply"
-                className="rounded-2xl bg-purple-600 text-white px-8 py-4 font-semibold shadow-lg hover:bg-purple-700 transition text-center"
+                className="rounded-2xl bg-brand-orange-600 text-white px-8 py-4 font-semibold shadow-lg hover:bg-brand-orange-700 transition text-center"
               >
                 Enroll & Pay
               </Link>
@@ -177,7 +177,7 @@ export default async function BarberApprenticeshipPage() {
                 <div className="text-sm text-gray-600">Related instruction</div>
               </div>
               <div className="rounded-2xl bg-white/90 px-5 py-4 text-gray-900">
-                <div className="text-2xl font-bold">${stats.tuition?.toLocaleString() || '5,250'}</div>
+                <div className="text-2xl font-bold">${stats.tuition?.toLocaleString() || '4,980'}</div>
                 <div className="text-sm text-gray-600">Program tuition</div>
               </div>
               <div className="rounded-2xl bg-white/90 px-5 py-4 text-gray-900">
@@ -242,7 +242,7 @@ export default async function BarberApprenticeshipPage() {
               </div>
               <div className="flex justify-between border-b border-blue-100 pb-3">
                 <span className="text-gray-600">Program Tuition</span>
-                <span className="font-bold text-slate-900">${stats.tuition?.toLocaleString() || '5,250'}</span>
+                <span className="font-bold text-slate-900">${stats.tuition?.toLocaleString() || '4,980'}</span>
               </div>
               <div className="flex justify-between border-b border-blue-100 pb-3">
                 <span className="text-gray-600">Payment Options</span>
@@ -591,7 +591,7 @@ export default async function BarberApprenticeshipPage() {
                 <span className="text-slate-300">Rent a chair and build clientele</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-brand-orange-500 rounded-full"></div>
                 <span className="text-slate-300">Open your own barbershop</span>
               </div>
               <div className="flex items-center gap-3">
@@ -620,7 +620,7 @@ export default async function BarberApprenticeshipPage() {
                 </svg>
               </summary>
               <div className="px-6 pb-6 text-gray-600">
-                Total program tuition is ${stats.tuition?.toLocaleString() || '5,250'}. You pay a $500 deposit to enroll, then $100/week during training. 
+                Total program tuition is ${stats.tuition?.toLocaleString() || '4,980'}. You pay a $1,743 setup fee to enroll, then $65/week during training. 
                 Some employer-sponsored positions may cover part or all of the tuition. Payment plans are available.
               </div>
             </details>
@@ -727,7 +727,7 @@ export default async function BarberApprenticeshipPage() {
             Enroll today and begin your journey to becoming a licensed barber.
           </p>
           <p className="mt-2 text-sm text-white/60">
-            $500 deposit to start. Payment plans available.
+            $1,743 setup fee to start. Payment plans available.
           </p>
           <div className="mt-10 flex justify-center gap-4 flex-col sm:flex-row">
             <Link

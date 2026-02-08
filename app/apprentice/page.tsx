@@ -35,14 +35,19 @@ export default async function ApprenticePortalPage() {
     .eq('id', user.id)
     .single();
 
-  // Get active enrollment with program info
+  // Get active enrollment with program info including program_type
   const { data: enrollment } = await supabase
     .from('enrollments')
-    .select('*, programs(slug, name)')
+    .select('*, programs(slug, name, program_type)')
     .eq('user_id', user.id)
     .order('created_at', { ascending: false })
     .limit(1)
     .single();
+  
+  // Determine program type for UI gating
+  const programType = enrollment?.programs?.program_type || 'internal_apprenticeship';
+  const isExternalLMS = programType === 'external_lms_wrapped';
+  const showHoursFeatures = !isExternalLMS; // HVAC doesn't show hours/timeclock
 
   // Gate: Redirect if orientation or documents not complete
   if (enrollment) {
@@ -79,13 +84,26 @@ export default async function ApprenticePortalPage() {
   const totalHours = hoursData?.reduce((sum, h) => sum + (h.hours_logged || 0), 0) || 0;
   const requiredHours = 1500; // Barber requirement
 
+  // Build quick links based on program type
   const quickLinks = [
-    { name: 'Log Hours', href: '/apprentice/hours', icon: Clock, description: 'Record your work hours' },
+    // Hours features - only for clock-based programs
+    ...(showHoursFeatures ? [
+      { name: 'Log Hours', href: '/apprentice/hours', icon: Clock, description: 'Record your work hours' },
+      { name: 'Transfer Hours', href: '/apprentice/transfer-hours', icon: ArrowRight, description: 'Request hour transfers' },
+    ] : []),
+    // External LMS - show course access
+    ...(isExternalLMS ? [
+      { name: 'Access Courses', href: '/apprentice/courses', icon: BookOpen, description: 'Continue your online training' },
+      { name: 'Upload Credential', href: '/apprentice/documents?type=credential', icon: Award, description: 'Submit completion certificate' },
+    ] : []),
+    // Common features for all programs
     { name: 'Documents', href: '/apprentice/documents', icon: FileText, description: 'View required documents' },
     { name: 'Skills Checklist', href: '/apprentice/skills', icon: Award, description: 'Track skill competencies' },
-    { name: 'Handbook', href: '/apprentice/handbook', icon: BookOpen, description: 'Apprenticeship guidelines' },
-    { name: 'Transfer Hours', href: '/apprentice/transfer-hours', icon: ArrowRight, description: 'Request hour transfers' },
-    { name: 'State Board', href: '/apprentice/state-board', icon: GraduationCap, description: 'Exam preparation' },
+    { name: 'Handbook', href: '/apprentice/handbook', icon: BookOpen, description: 'Program guidelines' },
+    // State board - only for licensed trades
+    ...(!isExternalLMS ? [
+      { name: 'State Board', href: '/apprentice/state-board', icon: GraduationCap, description: 'Exam preparation' },
+    ] : []),
   ];
 
   return (
