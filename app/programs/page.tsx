@@ -186,7 +186,7 @@ export default async function ProgramsPage() {
       </section>
 
       {/* AVATAR */}
-      <PageAvatar videoSrc="/videos/avatars/orientation-guide.mp4" title="Program Guide" />
+      <PageAvatar videoSrc="/videos/hero-programs-avatar.mp4" title="Program Guide" />
 
       {/* PROGRAMS GRID - Consistent card sizes */}
       <section className="py-16 lg:py-24 bg-slate-50">
