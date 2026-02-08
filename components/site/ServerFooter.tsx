@@ -12,10 +12,15 @@ import Image from 'next/image';
 const footerLinks = {
   about: [
     { name: 'About Elevate', href: '/about' },
-    { name: 'Workforce Operating System', href: '/store/licenses' },
     { name: 'Our Mission', href: '/about' },
     { name: 'Indiana Outcomes', href: '/outcomes/indiana' },
     { name: 'Contact', href: '/contact' },
+  ],
+  licensing: [
+    { name: 'Workforce OS', href: '/store/licenses' },
+    { name: 'Managed Platform', href: '/managed' },
+    { name: 'Enterprise', href: '/enterprise' },
+    { name: 'Pricing', href: '/pricing' },
   ],
   programs: [
     { name: 'Training Programs', href: '/programs' },
@@ -39,7 +44,6 @@ const footerLinks = {
     { name: 'Terms of Service', href: '/terms-of-service' },
     { name: 'Privacy Policy', href: '/privacy-policy' },
     { name: 'Security', href: '/governance/security' },
-    { name: 'Licensing', href: '/store/licenses' },
   ],
 };
 
@@ -47,8 +51,8 @@ export default function ServerFooter() {
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Government-Grade 4-Column Footer */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        {/* 5-Column Footer */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Column 1: About */}
           <div>
             <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">About</h3>
@@ -77,9 +81,23 @@ export default function ServerFooter() {
             </ul>
           </div>
 
-          {/* Column 3: Compliance & Trust */}
+          {/* Column 3: Licensing */}
           <div>
-            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Compliance & Trust</h3>
+            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Licensing</h3>
+            <ul className="space-y-3">
+              {footerLinks.licensing.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-slate-400 hover:text-white text-sm">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Compliance & Trust */}
+          <div>
+            <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Compliance</h3>
             <ul className="space-y-3">
               {footerLinks.compliance.map((link) => (
                 <li key={link.name}>
@@ -91,7 +109,7 @@ export default function ServerFooter() {
             </ul>
           </div>
 
-          {/* Column 4: Access */}
+          {/* Column 5: Access */}
           <div>
             <h3 className="font-semibold mb-4 text-white text-sm uppercase tracking-wide">Access</h3>
             <ul className="space-y-3">

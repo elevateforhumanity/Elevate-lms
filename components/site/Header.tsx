@@ -49,12 +49,14 @@ export const NAV_ITEMS = [
     ]
   },
   { 
-    name: 'Managed Platform', 
-    href: '/managed',
-  },
-  { 
-    name: 'Enterprise', 
-    href: '/enterprise',
+    name: 'Licensing', 
+    href: '/store/licenses',
+    subItems: [
+      { name: 'Workforce OS Overview', href: '/store/licenses' },
+      { name: 'Managed Platform', href: '/managed' },
+      { name: 'Enterprise Source-Use', href: '/enterprise' },
+      { name: 'Compare Plans', href: '/pricing' },
+    ]
   },
   { 
     name: 'Support', 
