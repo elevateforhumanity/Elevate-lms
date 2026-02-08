@@ -9,7 +9,7 @@
 
 'use client';
 
-import { Circle, Clock, Circle, AlertCircle } from 'lucide-react';
+import { Circle, Clock, AlertCircle } from 'lucide-react';
 
 export type EnrollmentStep = 
   | 'applied'
