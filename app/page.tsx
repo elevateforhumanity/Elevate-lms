@@ -6,7 +6,7 @@ const programs = [
   { 
     name: 'Healthcare', 
     href: '/programs/healthcare', 
-    image: '/images/prog-healthcare.jpg', 
+    image: '/images/healthcare/hero-program-medical-assistant.jpg', 
     description: 'CNA, Medical Assistant, Phlebotomy certifications',
     duration: '8-12 weeks',
     salary: '$35,000 - $45,000'
@@ -14,7 +14,7 @@ const programs = [
   { 
     name: 'Skilled Trades', 
     href: '/programs/skilled-trades', 
-    image: '/images/prog-trades.jpg', 
+    image: '/images/trades/program-hvac-technician.jpg', 
     description: 'HVAC, Electrical, Welding, Plumbing training',
     duration: '12-16 weeks',
     salary: '$40,000 - $65,000'
@@ -22,7 +22,7 @@ const programs = [
   { 
     name: 'Technology', 
     href: '/programs/technology', 
-    image: '/images/prog-technology.jpg', 
+    image: '/images/technology/program-it-support-training.jpg', 
     description: 'IT Support, Cybersecurity certifications',
     duration: '10-14 weeks',
     salary: '$45,000 - $70,000'
@@ -30,7 +30,7 @@ const programs = [
   { 
     name: 'CDL Training', 
     href: '/programs/cdl', 
-    image: '/images/prog-cdl.jpg', 
+    image: '/images/trades/hero-program-cdl.jpg', 
     description: 'Class A and Class B commercial driving',
     duration: '3-6 weeks',
     salary: '$50,000 - $80,000'
@@ -38,7 +38,7 @@ const programs = [
   { 
     name: 'Barbering', 
     href: '/programs/barber-apprenticeship', 
-    image: '/images/prog-barber.jpg', 
+    image: '/images/barber/training.jpg', 
     description: 'Licensed barber apprenticeship program',
     duration: '12-18 months',
     salary: '$30,000 - $60,000'
@@ -46,7 +46,7 @@ const programs = [
   { 
     name: 'Business', 
     href: '/programs/business', 
-    image: '/images/prog-business.jpg', 
+    image: '/images/business/program-tax-preparation.jpg', 
     description: 'Tax preparation, entrepreneurship training',
     duration: '6-10 weeks',
     salary: '$35,000 - $55,000'
