@@ -57,40 +57,44 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
 
-      {/* ===== VIDEO HERO ===== */}
+      {/* ===== VIDEO HERO WITH AVATAR ===== */}
       <section className="relative h-[100svh] min-h-[600px] sm:h-[85vh] sm:min-h-[600px] sm:max-h-[800px]">
         <HomeHeroVideo />
         
-        <div className="relative z-10 h-full flex items-center">
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl">
-              <p className="text-brand-red-400 font-semibold text-sm sm:text-base mb-3 tracking-wide">
-                INDIANA WORKFORCE DEVELOPMENT
-              </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6">
-                Train for a Career.<br />
-                <span className="text-brand-red-400">Get Paid to Learn.</span>
-              </h1>
-              <p className="text-lg sm:text-xl text-white/90 mb-8 leading-relaxed">
-                Elevate for Humanity provides free career training and paid apprenticeships 
-                for Indiana residents. Earn industry certifications in healthcare, skilled trades, 
-                technology, and more—at no cost to you.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link 
-                  href="/apply"
-                  className="bg-brand-red-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-brand-red-700 transition-all hover:scale-105 text-center shadow-lg"
-                >
-                  Apply Now — It's Free
-                </Link>
-                <Link 
-                  href="/programs"
-                  className="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-all text-center"
-                >
-                  Explore Programs
-                </Link>
-              </div>
+        {/* Avatar overlay - bottom right */}
+        <div className="absolute bottom-8 right-8 z-20 hidden md:block">
+          <div className="w-72 lg:w-80 rounded-2xl overflow-hidden shadow-2xl bg-slate-900/90 backdrop-blur-sm">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full aspect-video object-cover"
+            >
+              <source src="/videos/avatars/home-welcome.mp4" type="video/mp4" />
+            </video>
+            <div className="p-4">
+              <p className="text-white font-semibold text-sm">Welcome to Elevate</p>
+              <p className="text-slate-400 text-xs">Free career training for Indiana residents</p>
             </div>
+          </div>
+        </div>
+
+        {/* Minimal CTA buttons - bottom left */}
+        <div className="absolute bottom-8 left-8 z-20">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link 
+              href="/apply"
+              className="bg-brand-red-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-brand-red-700 transition-all hover:scale-105 text-center shadow-lg"
+            >
+              Apply Now — It's Free
+            </Link>
+            <Link 
+              href="/programs"
+              className="bg-white/20 backdrop-blur-sm border-2 border-white/50 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/30 transition-all text-center"
+            >
+              Explore Programs
+            </Link>
           </div>
         </div>
       </section>
@@ -424,61 +428,6 @@ export default function HomePage() {
             <Image src="/images/partners/dwd.webp" alt="Indiana DWD" width={60} height={60} className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" />
             <Image src="/images/partners/workone.webp" alt="WorkOne" width={60} height={60} className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" />
             <Image src="/images/partners/nextleveljobs.webp" alt="Next Level Jobs" width={60} height={60} className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" />
-          </div>
-        </div>
-      </section>
-
-      {/* ===== AVATAR GUIDE ===== */}
-      <section className="py-16 sm:py-20 md:py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="order-2 lg:order-1">
-              <div className="aspect-video relative rounded-2xl overflow-hidden shadow-2xl bg-slate-900">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
-                  poster="/images/hero-poster.jpg"
-                >
-                  <source src="/videos/avatars/home-welcome.mp4" type="video/mp4" />
-                </video>
-              </div>
-            </div>
-            <div className="order-1 lg:order-2">
-              <p className="text-brand-red-600 font-semibold text-sm mb-3 tracking-wide">MEET YOUR GUIDE</p>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                We're Here to Help You Succeed
-              </h2>
-              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                At Elevate for Humanity, we believe everyone deserves a pathway to a meaningful career. 
-                Our team of career advisors, instructors, and support staff are dedicated to helping 
-                you every step of the way—from enrollment to employment.
-              </p>
-              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                Whether you're starting fresh, changing careers, or returning to the workforce after 
-                a setback, we're here to guide you. Our programs are designed for real people with 
-                real challenges, and we're committed to your success.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link 
-                  href="/contact"
-                  className="inline-flex items-center bg-brand-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red-700 transition-all"
-                >
-                  Talk to an Advisor
-                </Link>
-                <Link 
-                  href="/about"
-                  className="inline-flex items-center text-slate-700 font-semibold hover:text-brand-red-600 group"
-                >
-                  Learn About Our Team
-                  <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>
