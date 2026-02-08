@@ -1,0 +1,390 @@
+
+Running 22 tests using 1 worker
+
+  ✘   1 [chromium] › tests/e2e/audit-journeys.spec.ts:21:3 › Journey 1: Full-Pay Happy Path › 1.1 Program page loads with correct information (9ms)
+  -   2 [chromium] › tests/e2e/audit-journeys.spec.ts:32:3 › Journey 1: Full-Pay Happy Path › 1.2 Application page loads
+  -   3 [chromium] › tests/e2e/audit-journeys.spec.ts:39:3 › Journey 1: Full-Pay Happy Path › 1.3 Inquiry page loads
+  -   4 [chromium] › tests/e2e/audit-journeys.spec.ts:44:3 › Journey 1: Full-Pay Happy Path › 1.4 Orientation page loads (requires auth)
+  -   5 [chromium] › tests/e2e/audit-journeys.spec.ts:51:3 › Journey 1: Full-Pay Happy Path › 1.5 Documents page loads (requires auth)
+  ✘   6 [chromium] › tests/e2e/audit-journeys.spec.ts:21:3 › Journey 1: Full-Pay Happy Path › 1.1 Program page loads with correct information (retry #1) (9ms)
+  -   7 [chromium] › tests/e2e/audit-journeys.spec.ts:32:3 › Journey 1: Full-Pay Happy Path › 1.2 Application page loads (retry #1)
+  -   8 [chromium] › tests/e2e/audit-journeys.spec.ts:39:3 › Journey 1: Full-Pay Happy Path › 1.3 Inquiry page loads (retry #1)
+  -   9 [chromium] › tests/e2e/audit-journeys.spec.ts:44:3 › Journey 1: Full-Pay Happy Path › 1.4 Orientation page loads (requires auth) (retry #1)
+  -  10 [chromium] › tests/e2e/audit-journeys.spec.ts:51:3 › Journey 1: Full-Pay Happy Path › 1.5 Documents page loads (requires auth) (retry #1)
+  ✘  11 [chromium] › tests/e2e/audit-journeys.spec.ts:59:3 › Journey 2: Apprentice Portal Access › 2.1 Apprentice dashboard redirects to login when unauthenticated (9ms)
+  ✘  12 [chromium] › tests/e2e/audit-journeys.spec.ts:59:3 › Journey 2: Apprentice Portal Access › 2.1 Apprentice dashboard redirects to login when unauthenticated (retry #1) (12ms)
+  ✘  13 [chromium] › tests/e2e/audit-journeys.spec.ts:67:3 › Journey 2: Apprentice Portal Access › 2.2 Timeclock page loads (6ms)
+  ✘  14 [chromium] › tests/e2e/audit-journeys.spec.ts:67:3 › Journey 2: Apprentice Portal Access › 2.2 Timeclock page loads (retry #1) (14ms)
+  ✘  15 [chromium] › tests/e2e/audit-journeys.spec.ts:73:3 › Journey 2: Apprentice Portal Access › 2.3 Handbook page loads (5ms)
+  ✘  16 [chromium] › tests/e2e/audit-journeys.spec.ts:73:3 › Journey 2: Apprentice Portal Access › 2.3 Handbook page loads (retry #1) (6ms)
+  ✘  17 [chromium] › tests/e2e/audit-journeys.spec.ts:80:3 › Journey 3: PWA Check-in › 3.1 PWA barber checkin page loads (5ms)
+  ✘  18 [chromium] › tests/e2e/audit-journeys.spec.ts:80:3 › Journey 3: PWA Check-in › 3.1 PWA barber checkin page loads (retry #1) (14ms)
+  ✓  19 [chromium] › tests/e2e/audit-journeys.spec.ts:87:3 › API Enforcement Tests › 4.1 Timeclock API requires authentication (96ms)
+  ✘  20 [chromium] › tests/e2e/audit-journeys.spec.ts:92:3 › API Enforcement Tests › 4.2 Timeclock action API requires authentication (74ms)
+  ✘  21 [chromium] › tests/e2e/audit-journeys.spec.ts:92:3 › API Enforcement Tests › 4.2 Timeclock action API requires authentication (retry #1) (160ms)
+  ✓  22 [chromium] › tests/e2e/audit-journeys.spec.ts:108:3 › API Enforcement Tests › 4.3 Checkin API requires authentication (95ms)
+  ✓  23 [chromium] › tests/e2e/audit-journeys.spec.ts:115:3 › API Enforcement Tests › 4.4 Document upload API requires authentication (60ms)
+  ✓  24 [chromium] › tests/e2e/audit-journeys.spec.ts:120:3 › API Enforcement Tests › 4.5 Submit documents API requires authentication (99ms)
+  ✓  25 [chromium] › tests/e2e/audit-journeys.spec.ts:127:3 › API Enforcement Tests › 4.6 Complete orientation API requires authentication (30ms)
+  ✓  26 [chromium] › tests/e2e/audit-journeys.spec.ts:134:3 › API Enforcement Tests › 4.7 Barber checkout API requires authentication (41ms)
+  ✓  27 [chromium] › tests/e2e/audit-journeys.spec.ts:141:3 › API Enforcement Tests › 4.8 Admin override API requires authentication (62ms)
+  ✓  28 [chromium] › tests/e2e/audit-journeys.spec.ts:156:3 › Stripe Webhook Security › 5.1 Webhook rejects requests without signature (481ms)
+  ✘  29 [chromium] › tests/e2e/audit-journeys.spec.ts:164:3 › Stripe Webhook Security › 5.2 Webhook rejects invalid signature (407ms)
+  ✘  30 [chromium] › tests/e2e/audit-journeys.spec.ts:164:3 › Stripe Webhook Security › 5.2 Webhook rejects invalid signature (retry #1) (255ms)
+  ✘  31 [chromium] › tests/e2e/audit-journeys.spec.ts:176:3 › Policy Documents › 6.1 Student handbook page loads (5ms)
+  ✘  32 [chromium] › tests/e2e/audit-journeys.spec.ts:176:3 › Policy Documents › 6.1 Student handbook page loads (retry #1) (4ms)
+  ✘  33 [chromium] › tests/e2e/audit-journeys.spec.ts:181:3 › Policy Documents › 6.2 Program holder handbook loads (9ms)
+  ✘  34 [chromium] › tests/e2e/audit-journeys.spec.ts:181:3 › Policy Documents › 6.2 Program holder handbook loads (retry #1) (6ms)
+  ✘  35 [chromium] › tests/e2e/audit-journeys.spec.ts:188:3 › Policy Documents › 6.3 Rights and responsibilities page loads (5ms)
+  ✘  36 [chromium] › tests/e2e/audit-journeys.spec.ts:188:3 › Policy Documents › 6.3 Rights and responsibilities page loads (retry #1) (5ms)
+
+
+  1) [chromium] › tests/e2e/audit-journeys.spec.ts:21:3 › Journey 1: Full-Pay Happy Path › 1.1 Program page loads with correct information 
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-audit-journeys-Journey-b1c01-ds-with-correct-information-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-audit-journeys-Journey-b1c01-ds-with-correct-information-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › tests/e2e/audit-journeys.spec.ts:59:3 › Journey 2: Apprentice Portal Access › 2.1 Apprentice dashboard redirects to login when unauthenticated 
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-audit-journeys-Journey-b07ec--login-when-unauthenticated-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-audit-journeys-Journey-b07ec--login-when-unauthenticated-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › tests/e2e/audit-journeys.spec.ts:67:3 › Journey 2: Apprentice Portal Access › 2.2 Timeclock page loads 
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-audit-journeys-Journey-1317f-ss-2-2-Timeclock-page-loads-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-audit-journeys-Journey-1317f-ss-2-2-Timeclock-page-loads-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › tests/e2e/audit-journeys.spec.ts:73:3 › Journey 2: Apprentice Portal Access › 2.3 Handbook page loads 
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-audit-journeys-Journey-895dc-ess-2-3-Handbook-page-loads-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-audit-journeys-Journey-895dc-ess-2-3-Handbook-page-loads-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › tests/e2e/audit-journeys.spec.ts:80:3 › Journey 3: PWA Check-in › 3.1 PWA barber checkin page loads 
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-audit-journeys-Journey-cc1c4-A-barber-checkin-page-loads-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-audit-journeys-Journey-cc1c4-A-barber-checkin-page-loads-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › tests/e2e/audit-journeys.spec.ts:92:3 › API Enforcement Tests › 4.2 Timeclock action API requires authentication 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m503[39m
+    Received array: [31m[401, 500][39m
+
+      103 |     });
+      104 |     // Should be 401 (unauthorized) or 500 (missing auth context)
+    > 105 |     expect([401, 500]).toContain(response.status());
+          |                        ^
+      106 |   });
+      107 |
+      108 |   test('4.3 Checkin API requires authentication', async ({ request }) => {
+        at /workspaces/Elevate-lms/tests/e2e/audit-journeys.spec.ts:105:24
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected value: [32m503[39m
+    Received array: [31m[401, 500][39m
+
+      103 |     });
+      104 |     // Should be 401 (unauthorized) or 500 (missing auth context)
+    > 105 |     expect([401, 500]).toContain(response.status());
+          |                        ^
+      106 |   });
+      107 |
+      108 |   test('4.3 Checkin API requires authentication', async ({ request }) => {
+        at /workspaces/Elevate-lms/tests/e2e/audit-journeys.spec.ts:105:24
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-audit-journeys-API-Enf-d1a0b-API-requires-authentication-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-audit-journeys-API-Enf-d1a0b-API-requires-authentication-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › tests/e2e/audit-journeys.spec.ts:164:3 › Stripe Webhook Security › 5.2 Webhook rejects invalid signature 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m400[39m
+    Received: [31m500[39m
+
+      169 |       data: JSON.stringify({ type: 'checkout.session.completed' }),
+      170 |     });
+    > 171 |     expect(response.status()).toBe(400);
+          |                               ^
+      172 |   });
+      173 | });
+      174 |
+        at /workspaces/Elevate-lms/tests/e2e/audit-journeys.spec.ts:171:31
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m400[39m
+    Received: [31m500[39m
+
+      169 |       data: JSON.stringify({ type: 'checkout.session.completed' }),
+      170 |     });
+    > 171 |     expect(response.status()).toBe(400);
+          |                               ^
+      172 |   });
+      173 | });
+      174 |
+        at /workspaces/Elevate-lms/tests/e2e/audit-journeys.spec.ts:171:31
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-audit-journeys-Stripe--3d141-k-rejects-invalid-signature-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-audit-journeys-Stripe--3d141-k-rejects-invalid-signature-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium] › tests/e2e/audit-journeys.spec.ts:176:3 › Policy Documents › 6.1 Student handbook page loads 
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-audit-journeys-Policy--d0fd7-Student-handbook-page-loads-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-audit-journeys-Policy--d0fd7-Student-handbook-page-loads-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [chromium] › tests/e2e/audit-journeys.spec.ts:181:3 › Policy Documents › 6.2 Program holder handbook loads 
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-audit-journeys-Policy--1adf3-ogram-holder-handbook-loads-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-audit-journeys-Policy--1adf3-ogram-holder-handbook-loads-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [chromium] › tests/e2e/audit-journeys.spec.ts:188:3 › Policy Documents › 6.3 Rights and responsibilities page loads 
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/node/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e-audit-journeys-Policy--25fc4-responsibilities-page-loads-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e-audit-journeys-Policy--25fc4-responsibilities-page-loads-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10 failed
+    [chromium] › tests/e2e/audit-journeys.spec.ts:21:3 › Journey 1: Full-Pay Happy Path › 1.1 Program page loads with correct information 
+    [chromium] › tests/e2e/audit-journeys.spec.ts:59:3 › Journey 2: Apprentice Portal Access › 2.1 Apprentice dashboard redirects to login when unauthenticated 
+    [chromium] › tests/e2e/audit-journeys.spec.ts:67:3 › Journey 2: Apprentice Portal Access › 2.2 Timeclock page loads 
+    [chromium] › tests/e2e/audit-journeys.spec.ts:73:3 › Journey 2: Apprentice Portal Access › 2.3 Handbook page loads 
+    [chromium] › tests/e2e/audit-journeys.spec.ts:80:3 › Journey 3: PWA Check-in › 3.1 PWA barber checkin page loads 
+    [chromium] › tests/e2e/audit-journeys.spec.ts:92:3 › API Enforcement Tests › 4.2 Timeclock action API requires authentication 
+    [chromium] › tests/e2e/audit-journeys.spec.ts:164:3 › Stripe Webhook Security › 5.2 Webhook rejects invalid signature 
+    [chromium] › tests/e2e/audit-journeys.spec.ts:176:3 › Policy Documents › 6.1 Student handbook page loads 
+    [chromium] › tests/e2e/audit-journeys.spec.ts:181:3 › Policy Documents › 6.2 Program holder handbook loads 
+    [chromium] › tests/e2e/audit-journeys.spec.ts:188:3 › Policy Documents › 6.3 Rights and responsibilities page loads 
+  4 did not run
+  8 passed (23.8s)

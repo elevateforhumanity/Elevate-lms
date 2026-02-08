@@ -1,0 +1,45 @@
+🔍 Enforcement Scan Starting...
+
+Scanning: /workspaces/Elevate-lms/app/api
+
+═══════════════════════════════════════════════════════════════
+                    ENFORCEMENT SCAN RESULTS                    
+═══════════════════════════════════════════════════════════════
+
+✅ PASSING (8 routes):
+   /app/api/apprenticeship/hours/route.ts
+   /app/api/checkin/checkout/route.ts
+   /app/api/checkin/route.ts
+   /app/api/enrollment/complete-orientation/route.ts
+   /app/api/enrollment/submit-documents/route.ts
+   /app/api/enrollment/upload-document/route.ts
+   /app/api/timeclock/action/route.ts
+   /app/api/timeclock/context/route.ts
+
+❌ FAILING (13 routes):
+   /app/api/apprentice/documents/route.ts
+   /app/api/apprentice/email-alerts/route.ts
+   /app/api/apprentice/handbook/route.ts
+   /app/api/apprentice/hours-summary/route.ts
+   /app/api/apprentice/onboarding/status/route.ts
+   /app/api/apprentice/transfer-hours/route.ts
+   /app/api/apprentice/transfer-request/route.ts
+   /app/api/apprenticeship/hours/approve/route.ts
+   /app/api/apprenticeship/hours/reject/route.ts
+   /app/api/checkin/status/route.ts
+   /app/api/enrollments/apprentice/route.ts
+   /app/api/shop/checkin/qr/route.ts
+   /app/api/timeclock/heartbeat/route.ts
+
+These routes are in the MUST_ENFORCE list but don't use enforcement.
+Add one of these patterns to the route:
+   - withEnrollmentEnforcement(
+   - assertEnrollmentPermission(
+   - assertEnrollmentPermissionWithOverride(
+   - checkEnrollmentPermission(
+   - requireEnrollmentPermission(
+
+📊 Summary: 8 passing, 13 failing, 892 skipped
+
+❌ ENFORCEMENT SCAN FAILED
+

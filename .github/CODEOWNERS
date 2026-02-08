@@ -37,6 +37,23 @@
 # Database migrations
 /supabase/migrations/ @elevateforhumanity
 
+# Apprenticeship program - enrollment and licensing enforcement
+/app/apprentice/ @elevateforhumanity
+/app/api/apprentice/ @elevateforhumanity
+/app/api/apprenticeship/ @elevateforhumanity
+/app/api/apprenticeships/ @elevateforhumanity
+/app/api/enrollments/apprentice/ @elevateforhumanity
+/app/programs/*apprenticeship/ @elevateforhumanity
+/app/enroll/*apprenticeship/ @elevateforhumanity
+/app/employer/apprenticeship/ @elevateforhumanity
+
+# License enforcement
+/app/api/test-license-enforcement/ @elevateforhumanity
+/lib/enforcement/ @elevateforhumanity
+
+# Audit documentation
+/audit-packet/ @elevateforhumanity
+
 # Security documentation
 /SECURITY.md @elevateforhumanity
 /.github/CODEOWNERS @elevateforhumanity
