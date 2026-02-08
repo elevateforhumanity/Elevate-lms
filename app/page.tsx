@@ -428,6 +428,61 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ===== AVATAR GUIDE ===== */}
+      <section className="py-16 sm:py-20 md:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="aspect-video relative rounded-2xl overflow-hidden shadow-2xl bg-slate-900">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                  poster="/images/hero-poster.jpg"
+                >
+                  <source src="/videos/avatars/home-welcome.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <p className="text-brand-red-600 font-semibold text-sm mb-3 tracking-wide">MEET YOUR GUIDE</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                We're Here to Help You Succeed
+              </h2>
+              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+                At Elevate for Humanity, we believe everyone deserves a pathway to a meaningful career. 
+                Our team of career advisors, instructors, and support staff are dedicated to helping 
+                you every step of the way—from enrollment to employment.
+              </p>
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                Whether you're starting fresh, changing careers, or returning to the workforce after 
+                a setback, we're here to guide you. Our programs are designed for real people with 
+                real challenges, and we're committed to your success.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link 
+                  href="/contact"
+                  className="inline-flex items-center bg-brand-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-red-700 transition-all"
+                >
+                  Talk to an Advisor
+                </Link>
+                <Link 
+                  href="/about"
+                  className="inline-flex items-center text-slate-700 font-semibold hover:text-brand-red-600 group"
+                >
+                  Learn About Our Team
+                  <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ===== CTA ===== */}
       <section className="py-16 sm:py-20 md:py-24 bg-brand-red-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
